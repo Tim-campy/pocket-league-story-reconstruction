@@ -32,7 +32,7 @@ def write_json(path, value):
 
 def write_csv(path, rows, columns):
     with path.open('w', newline='', encoding='utf-8') as file:
-        writer=csv.DictWriter(file, fieldnames=columns)
+        writer=csv.DictWriter(file, fieldnames=columns, lineterminator='\n')
         writer.writeheader(); writer.writerows(rows)
 
 
