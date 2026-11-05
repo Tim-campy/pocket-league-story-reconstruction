@@ -27,10 +27,14 @@ O alvo é recuperar fontes C# que recompilam os métodos e metadados das DLLs pr
 
 A equivalência dos tokens deve usar a identidade dos membros referidos, e não apenas seu número. MVID e timestamp não serão normalizados sem duas compilações consecutivas do mesmo fonte que provem a diferença. **A lista atual de exceções está vazia.** Nenhum ajuste posterior da DLL compilada é permitido.
 
-## Pendências que impedem iniciar ajustes
+## Estado atualizado da linha de base
+
+Unity 5.3.4f1 instalado e sondas compatíveis em ambas as DLLs. KairoLibrary recuperada e compilada integralmente com dois Roslyn; pacote 1.3.2 escolhido como melhor candidato experimental, sem afirmar identidade histórica. Comparador de corpos e vínculo mecânico de membros gerados implementados: 2.783 métodos matched; quatro outros corpos iguais ainda retidos. As 424 falhas de corpos foram agrupadas antes de iniciar ajustes. Detalhes em [docs/notes/kairo-baseline.md](docs/notes/kairo-baseline.md). As etapas acima registram o plano inicial; decompilação/build Kairo e comparação por método já foram executados.
+
+## Pendências para concluir a reconstrução
 
 - Validar compilador, referências, perfil de API, versão C#, flags e símbolos por DLL.
-- Disponibilizar um decompilador C# compatível, com instalação autorizada quando necessária.
+- Recuperar e compilar Assembly-CSharp com o Mono validado pelas sondas; ILSpy já disponível.
 - Mapear o método de origem de 337 membros gerados; os casos ainda não comprovados ficam `UNKNOWN`.
-- Implementar o comparador de métodos, tipos e assemblies antes de permitir promoção automática a `matched`.
+- Implementar comparação completa dos tipos e assemblies; o comparador de métodos já promove automaticamente com recibos e proteção contra regressões.
 - Ofuscação, criptografia e stripping: estado **UNKNOWN**. Nomes e corpos legíveis comprovam acessibilidade dos elementos observados, não ausência dessas transformações.

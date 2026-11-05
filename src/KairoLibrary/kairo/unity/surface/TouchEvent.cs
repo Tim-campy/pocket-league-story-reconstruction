@@ -1,0 +1,138 @@
+namespace kairo.unity.surface
+{
+	public class TouchEvent
+	{
+		public const int TYPE_DOWN = 0;
+
+		public const int TYPE_UP = 1;
+
+		public const int TYPE_ENTER = 2;
+
+		public const int TYPE_LEAVE = 3;
+
+		public const int TYPE_MOVE = 4;
+
+		public const int TYPE_CLICK = 5;
+
+		public const int TYPE_LOST = 6;
+
+		public const int TYPE_DRAG = 7;
+
+		public const int TYPE_GRID_DRAG = 8;
+
+		public const int TYPE_CELL_DRAG = 9;
+
+		public const int TYPE_CANCEL = 10;
+
+		public const int TYPE_PINCH_START = 11;
+
+		public const int TYPE_PINCH = 12;
+
+		public const int TYPE_ON = 13;
+
+		public int type;
+
+		public int x;
+
+		public int y;
+
+		public int dx;
+
+		public int dy;
+
+		public float speedX;
+
+		public float speedY;
+
+		public int pinch;
+
+		public int[][] pinchPointBegin_;
+
+		public int[][] pinchPointNow_;
+
+		public TouchComponent component;
+
+		public TouchEvent()
+		{
+			Init();
+		}
+
+		public TouchEvent(int type, TouchComponent component)
+		{
+			Init();
+			this.type = type;
+			this.component = component;
+		}
+
+		public void Init()
+		{
+			component = null;
+			type = 0;
+			x = 0;
+			y = 0;
+			dx = 0;
+			dy = 0;
+			speedX = 0f;
+			speedY = 0f;
+			pinch = 0;
+			if (pinchPointBegin_ != null)
+			{
+				for (int i = 0; i < pinchPointBegin_.Length; i++)
+				{
+					for (int j = 0; j < pinchPointBegin_[i].Length; j++)
+					{
+						pinchPointBegin_[i][j] = 0;
+					}
+				}
+			}
+			if (pinchPointNow_ == null)
+			{
+				return;
+			}
+			for (int k = 0; k < pinchPointNow_.Length; k++)
+			{
+				for (int l = 0; l < pinchPointNow_[k].Length; l++)
+				{
+					pinchPointNow_[k][l] = 0;
+				}
+			}
+		}
+
+		public override string ToString()
+		{
+			if (component == null)
+			{
+				return string.Concat(this, ":component=") ?? "";
+			}
+			string text = "";
+			text = ((type == 0) ? "TYPE_DOWN" : ((type == 1) ? "TYPE_UP" : ((type == 2) ? "TYPE_ENTER" : ((type == 3) ? "TYPE_LEAVE" : ((type == 4) ? "TYPE_MOVE" : ((type == 5) ? "TYPE_CLICK" : ((type == 6) ? "TYPE_LOST" : ((type == 7) ? "TYPE_DRAG" : ((type == 8) ? "TYPE_GRID_DRAG" : ((type == 9) ? "TYPE_CELL_DRAG" : ((type == 10) ? "TYPE_CANCEL" : ((type != 13) ? ("NONE[" + type + "]") : "TYPE_ON"))))))))))));
+			return "TouchEvent:" + text + " (" + component.id + "," + component.value + ")";
+		}
+
+		public static bool IsPositive(int type)
+		{
+			switch (type)
+			{
+			case 0:
+			case 2:
+			case 4:
+			case 7:
+			case 8:
+			case 9:
+				return true;
+			default:
+				return false;
+			}
+		}
+
+		public bool IsPositive()
+		{
+			return IsPositive(type);
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
+		}
+	}
+}

@@ -7,26 +7,81 @@
   "non_deterministic_exceptions": [],
   "assemblies": {
     "Assembly-CSharp": {
-      "compiler": "UNKNOWN",
-      "compiler_version": "UNKNOWN",
+      "compiler": "mono-smcs",
+      "compiler_version": "2.6.5.0",
       "flags": "UNKNOWN",
       "language_version": "UNKNOWN",
-      "api_profile": "UNKNOWN",
+      "api_profile": "Unity 2.0.5.0",
       "defines": "UNKNOWN",
-      "references_order": "UNKNOWN",
+      "references_order": [
+        "mscorlib, Version=2.0.5.0",
+        "KairoLibrary, Version=1.0.0.0",
+        "UnityEngine, Version=0.0.0.0",
+        "System.Core, Version=2.0.5.0",
+        "System, Version=2.0.5.0"
+      ],
       "validated": false,
-      "validated_probe_methods": []
+      "validated_probe_methods": [
+        "data.BaseData::Check(System.Int32)",
+        "data.EventData::CheckScript(System.Int32[][],System.Int32)",
+        "data.FanActData::Init()",
+        "data.FanBonusData::Init()"
+      ],
+      "historical_compiler_version": "UNKNOWN",
+      "candidate_compatible": true,
+      "validation_scope": "four complete method bodies with resolved tokens",
+      "optimization_tested": true,
+      "debug_tested": false,
+      "compiler_fingerprints": {
+        "mono.exe": "3d102d9a63dae72e48396998bdbae4e9b2d8952ca6a8ebbcba698d3bc4345076",
+        "smcs.exe": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0"
+      }
     },
     "KairoLibrary": {
-      "compiler": "UNKNOWN",
-      "compiler_version": "UNKNOWN",
-      "flags": "UNKNOWN",
-      "language_version": "UNKNOWN",
-      "api_profile": "UNKNOWN",
-      "defines": "UNKNOWN",
-      "references_order": "UNKNOWN",
-      "validated": false,
-      "validated_probe_methods": []
+      "compiler": "roslyn-csc",
+      "compiler_version": "1.3.1.60621",
+      "flags": [
+        "/noconfig",
+        "/nostdlib+",
+        "/target:library",
+        "/platform:anycpu",
+        "/optimize+",
+        "/debug:pdbonly",
+        "/deterministic-",
+        "/langversion:6",
+        "/unsafe+",
+        "/checked-",
+        "/codepage:65001",
+        "/utf8output"
+      ],
+      "language_version": "6 (candidate)",
+      "api_profile": ".NET 2.0 (System.Core reference 3.5.0.0)",
+      "defines": "none (candidate)",
+      "references_order": [
+        "mscorlib, Version=2.0.0.0",
+        "System.Core, Version=3.5.0.0",
+        "UnityEngine, Version=0.0.0.0",
+        "System, Version=2.0.0.0"
+      ],
+      "validated": true,
+      "validated_probe_methods": [
+        "kairo.unity.util.BitUtil::Check(System.Int64,System.Int64)",
+        "kairo.unity.util.Compressor::_setBitBuffer(System.Byte[])",
+        "kairo.unity.math.KairoMath::CheckHitPointRect(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)",
+        "java.lang.JMath::Abs(System.Int32)"
+      ],
+      "historical_compiler_version": "UNKNOWN",
+      "candidate_compatible": true,
+      "validation_scope": "complete candidate build; 2787/3211 original bodies equal with resolved tokens; full historical toolchain UNKNOWN",
+      "optimization_tested": true,
+      "debug_tested": true,
+      "compiler_fingerprints": {
+        "csc.exe": "d14ba119edd71bdcb82b12659647427aa46d819caf6e72ac6d4ae86c81eb36c9"
+      },
+      "baseline_requested": true,
+      "modern_baseline_compiler_version": "5.8.0-1.26319.2 (375c93f06396eff88a355bc473d1586bf71befb5)",
+      "compiler_package": "Microsoft.Net.Compilers 1.3.2",
+      "package_sha256": "37aaedd86f96df0ccfef1ada743d6fefd36135b31b75f5305140b84da98918d7"
     }
   },
   "installed_compiler_candidates": {
@@ -36,5 +91,6 @@
     "bleeding_mcs": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\MonoBleedingEdge\\lib\\mono\\4.5\\mcs.exe",
     "mono_cecil": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Managed\\Mono.Cecil.dll"
   },
-  "compiler_availability_smoke": "PASS"
+  "compiler_availability_smoke": "PASS",
+  "compiler_selection_state": "USER_DIRECTED_CROSS_COMPILER_BASELINE_1_3_2_SELECTED"
 }
