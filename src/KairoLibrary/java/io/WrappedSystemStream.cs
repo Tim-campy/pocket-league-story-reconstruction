@@ -111,17 +111,17 @@ namespace java.io
 
 		public override long Seek(long offset, SeekOrigin origin)
 		{
-			switch (origin)
+			if (origin == SeekOrigin.Begin)
 			{
-			case SeekOrigin.Begin:
 				Position = offset;
-				break;
-			case SeekOrigin.Current:
+			}
+			else if (origin == SeekOrigin.Current)
+			{
 				Position += offset;
-				break;
-			case SeekOrigin.End:
+			}
+			else if (origin == SeekOrigin.End)
+			{
 				Position = Length + offset;
-				break;
 			}
 			return Position;
 		}

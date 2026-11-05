@@ -81,7 +81,7 @@ namespace kairo.unity.m3d4.util3d
 
 		public static float InnerIntToFloat(int v)
 		{
-			return (float)v / 4096f;
+			return (float)((float)v / 4096f);
 		}
 
 		public static float Mul(float x, float y)

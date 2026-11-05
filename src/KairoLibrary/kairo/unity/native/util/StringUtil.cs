@@ -14,13 +14,16 @@ namespace kairo.unity.native.util
 				return "";
 			}
 			StringBuilder stringBuilder = new StringBuilder(str.Length);
-			foreach (char value in str)
+			int num = 0;
+			while (num < str.Length)
 			{
+				char value = str[num];
 				if (",&@\\".IndexOf(value) != -1)
 				{
 					stringBuilder.Append('\\');
 				}
 				stringBuilder.Append(value);
+				num++;
 			}
 			return "\"" + stringBuilder.ToString() + "\"";
 		}

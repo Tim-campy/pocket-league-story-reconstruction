@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections.Generic;
 using java.io;
@@ -230,14 +231,6 @@ namespace kairo.unity.ui
 
 		public static Filter DEFAULT_FILTER = Filter.Point;
 
-		private static int[] getOptimize_result = new int[7];
-
-		private static int[] getOptimizeSeb_result = new int[4];
-
-		private static int[] getPaletteInfo_result = new int[2];
-
-		private static int[] getAreaSize_result = new int[2];
-
 		public bool IsDisposed => isDisposed_;
 
 		public Image()
@@ -347,15 +340,12 @@ namespace kairo.unity.ui
 			}
 			return (Image)IApplication.GetCurrentApp().RunOnUiThread(delegate
 			{
-				Image image = new Image(new Texture2D(width, height, (TextureFormat)format, false)
-				{
-					filterMode = (FilterMode)filterMode
-				})
-				{
-					isCreateImage_ = true,
-					lockExpiration_ = true,
-					checkCount_ = Config.checkCount_
-				};
+				Texture2D texture2D = new Texture2D(width, height, (TextureFormat)format, false);
+				texture2D.filterMode = (FilterMode)filterMode;
+				Image image = new Image(texture2D);
+				image.isCreateImage_ = true;
+				image.lockExpiration_ = true;
+				image.checkCount_ = Config.checkCount_;
 				sourceImageList_.AddElement(image);
 				sourceImagePixels_ += image.GetWidth() * image.GetHeight();
 				return image;
@@ -397,6 +387,10 @@ namespace kairo.unity.ui
 				}
 			}, true);
 		}
+
+		private static int[] getOptimize_result = new int[7];
+
+		private static int[] getOptimizeSeb_result = new int[4];
 
 		public static Image Load(string path, Format format = Format.Default, Filter filterMode = Filter.Default)
 		{
@@ -640,20 +634,20 @@ namespace kairo.unity.ui
 
 		public int[] GetOptimize(int bx, int by, int passIndex)
 		{
-			if (optimizeAccess_ != null)
+			if (this.optimizeAccess_ != null)
 			{
-				sbyte b = optimizeAccess_[(by * optimizeWidthNum_ + bx) * optimizePass_ + passIndex];
-				if (b != -1)
-				{
-					return GetOptimize(((b & 0x80) != 0) ? 1 : 0, b & 0x7F);
-				}
-			}
-			else if (optimizeAccessL_ != null)
-			{
-				short num = optimizeAccessL_[(by * optimizeWidthNum_ + bx) * optimizePass_ + passIndex];
+				sbyte num = this.optimizeAccess_[(by * this.optimizeWidthNum_ + bx) * this.optimizePass_ + passIndex];
 				if (num != -1)
 				{
-					return GetOptimize(((num & 0x8000) != 0) ? 1 : 0, num & 0x7FFF);
+					return this.GetOptimize(((num & 128) == 0 ? 0 : 1), num & 127);
+				}
+			}
+			else if (this.optimizeAccessL_ != null)
+			{
+				short num1 = this.optimizeAccessL_[(by * this.optimizeWidthNum_ + bx) * this.optimizePass_ + passIndex];
+				if (num1 != -1)
+				{
+					return this.GetOptimize(((num1 & 32768) == 0 ? 0 : 1), num1 & 32767);
 				}
 			}
 			return null;
@@ -661,12 +655,12 @@ namespace kairo.unity.ui
 
 		public int[] GetOptimize(sbyte access)
 		{
-			return GetOptimize(((access & 0x80) != 0) ? 1 : 0, access & 0x7F);
+			return this.GetOptimize(((access & 128) == 0 ? 0 : 1), access & 127);
 		}
 
 		public int[] GetOptimize(short access)
 		{
-			return GetOptimize(((access & 0x8000) != 0) ? 1 : 0, access & 0x7FFF);
+			return this.GetOptimize(((access & 32768) == 0 ? 0 : 1), access & 32767);
 		}
 
 		public int[] GetOptimize(int type, int index)
@@ -720,7 +714,11 @@ namespace kairo.unity.ui
 
 		public void Use()
 		{
-			if ((object)image_ != null || (src_ == null && file_ == null))
+			if ((object)image_ != null)
+			{
+				return;
+			}
+			if (src_ == null && file_ == null)
 			{
 				return;
 			}
@@ -828,7 +826,11 @@ namespace kairo.unity.ui
 
 		public void Unuse()
 		{
-			if ((object)image_ == null || (!isCreateImage_ && src_ == null && file_ == null))
+			if ((object)image_ == null)
+			{
+				return;
+			}
+			if (!isCreateImage_ && src_ == null && file_ == null)
 			{
 				return;
 			}
@@ -999,6 +1001,10 @@ namespace kairo.unity.ui
 			}, true);
 		}
 
+		private static int[] getPaletteInfo_result = new int[2];
+
+		private static int[] getAreaSize_result = new int[2];
+
 		public static void SetSourceImageMaxCount(int max)
 		{
 			sourceImageMaxCount_ = max;
@@ -1044,18 +1050,19 @@ namespace kairo.unity.ui
 
 		public void EraseColor(int color)
 		{
-			Texture2D texture2D = GetTexture2D();
-			if (!(texture2D == null))
+			Texture2D texture2D = this.GetTexture2D();
+			if (texture2D == null)
 			{
-				Color[] pixels = texture2D.GetPixels();
-				Color color2 = Graphics.ArgbToColor(color);
-				for (int i = 0; i < pixels.Length; i++)
-				{
-					pixels[i] = color2;
-				}
-				texture2D.SetPixels(pixels);
-				texture2D.Apply();
+				return;
 			}
+			Color[] pixels = texture2D.GetPixels();
+			Color color1 = kairo.unity.ui.Graphics.ArgbToColor(color);
+			for (int i = 0; i < (int)pixels.Length; i++)
+			{
+				pixels[i] = color1;
+			}
+			texture2D.SetPixels(pixels);
+			texture2D.Apply();
 		}
 
 		public void EraseColor(int r, int g, int b, int a)
@@ -1114,9 +1121,9 @@ namespace kairo.unity.ui
 				int num = 13;
 				while (num < data.Length)
 				{
-					switch (data[num])
+					int num2 = data[num];
+					if (num2 == 44)
 					{
-					case 44:
 						b = data[num + 9];
 						if (((b >> 7) & 1) == 1)
 						{
@@ -1125,15 +1132,16 @@ namespace kairo.unity.ui
 							return getPaletteInfo_result;
 						}
 						return null;
-					case 33:
-						num += 3 + data[num + 2];
-						if (data[num] == 0)
-						{
-							num++;
-						}
-						continue;
 					}
-					break;
+					if (num2 != 33)
+					{
+						break;
+					}
+					num += 3 + data[num + 2];
+					if (data[num] == 0)
+					{
+						num++;
+					}
 				}
 			}
 			else if (fileFormat == "png")
@@ -1202,22 +1210,26 @@ namespace kairo.unity.ui
 
 		protected static int GetAlphaType(byte[] data)
 		{
-			switch (GetFileFormat(data))
+			string fileFormat = GetFileFormat(data);
+			if (fileFormat == "gif")
 			{
-			case "gif":
 				return 1;
-			case "jpg":
+			}
+			if (fileFormat == "jpg")
+			{
 				return 0;
-			case "png":
-				switch (data[25])
+			}
+			if (fileFormat == "png")
+			{
+				int num = data[25];
+				if (num == 0 || num == 2)
 				{
-				case 0:
-				case 2:
 					return 0;
-				case 3:
+				}
+				if (num == 3)
+				{
 					return 1;
 				}
-				break;
 			}
 			return -1;
 		}
@@ -1343,12 +1355,13 @@ namespace kairo.unity.ui
 
 		public void SetPixel(int x, int y, Color color)
 		{
-			Texture2D texture2D = GetTexture2D();
-			if (!(texture2D == null))
+			Texture2D texture2D = this.GetTexture2D();
+			if (texture2D == null)
 			{
-				texture2D.SetPixel(x, texture2D.height - 1 - y, color);
-				texture2D.Apply();
+				return;
 			}
+			texture2D.SetPixel(x, texture2D.height - 1 - y, color);
+			texture2D.Apply();
 		}
 
 		public void SetRGBPixel(int x, int y, int color)
@@ -1534,17 +1547,19 @@ namespace kairo.unity.ui
 
 		internal static RenderTextureFormat GetRenderTextureFormat(Format format)
 		{
-			switch (format)
+			if (format == Format.ARGB4444)
 			{
-			case Format.ARGB4444:
 				return RenderTextureFormat.ARGB4444;
-			case Format.RGB24:
-				return RenderTextureFormat.ARGB32;
-			case Format.RGB565:
-				return RenderTextureFormat.RGB565;
-			default:
+			}
+			if (format == Format.RGB24)
+			{
 				return RenderTextureFormat.ARGB32;
 			}
+			if (format == Format.RGB565)
+			{
+				return RenderTextureFormat.RGB565;
+			}
+			return RenderTextureFormat.ARGB32;
 		}
 
 		internal static bool IsAlphaFormat(Format format)
@@ -1621,25 +1636,25 @@ namespace kairo.unity.ui
 
 		public void SetFilterMode(Filter filterMode)
 		{
-			IApplication.GetCurrentApp().RunOnUiThread(delegate
-			{
-				Texture2D texture2D = GetTexture2D();
-				if (!(texture2D == null))
+			IApplication.GetCurrentApp().RunOnUiThread(() => {
+				Texture2D texture2D = this.GetTexture2D();
+				if (texture2D == null)
 				{
-					texture2D.filterMode = (FilterMode)filterMode;
+					return;
 				}
+				texture2D.filterMode = (FilterMode)filterMode;
 			}, true);
 		}
 
 		public void SetWrapMode(bool repeat)
 		{
-			IApplication.GetCurrentApp().RunOnUiThread(delegate
-			{
-				Texture2D texture2D = GetTexture2D();
-				if (!(texture2D == null))
+			IApplication.GetCurrentApp().RunOnUiThread(() => {
+				Texture2D texture2D = this.GetTexture2D();
+				if (texture2D == null)
 				{
-					texture2D.wrapMode = ((!repeat) ? TextureWrapMode.Clamp : TextureWrapMode.Repeat);
+					return;
 				}
+				texture2D.wrapMode = (repeat ? TextureWrapMode.Repeat : TextureWrapMode.Clamp);
 			}, true);
 		}
 

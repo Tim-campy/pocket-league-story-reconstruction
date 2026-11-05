@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using kairo.unity.form;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,6 +26,10 @@ namespace kairo.unity.system
 {
 	public abstract class KairoBase
 	{
+
+	protected KairoBase()
+	{
+	}
 		protected class AccessCount
 		{
 			public string name_;
@@ -225,28 +231,6 @@ namespace kairo.unity.system
 
 		private Stack<ConnectObject> connects_ = new Stack<ConnectObject>();
 
-		private List<PaymentDataRecord> paymemtList_ = new List<PaymentDataRecord>();
-
-		private const int PAY_MODE_GET = 1;
-
-		private const int PAY_MODE_ADD = 2;
-
-		private const int PAY_MODE_USE = 3;
-
-		private static readonly int[] CONNECT_TRY = new int[4] { 1, 2, 3, 1 };
-
-		private const int CONNECT_TRY_SLEEP = 100;
-
-		private const bool NEXT_STARTUP_ASYSC = false;
-
-		private const string PAY_ASYNC_TAG = "startUpSync";
-
-		private const string PAY_ASYNC_TAG_S = "sus";
-
-		private const string PAYMENT_CGI = "virtual_currency.php";
-
-		public List<string> connectPaymemtMoneyResponse_ = new List<string>();
-
 		public static KairoBase GetInstance()
 		{
 			if (instance_ == null)
@@ -312,38 +296,33 @@ namespace kairo.unity.system
 					{
 						Dialog dialog2 = new Dialog(4, "ﾒｯｾｰｼﾞ");
 						dialog2.SetText("本番サーバーのユーザーIDです。\n本番サーバーへ接続しますか？");
-						switch (dialog2.Show())
-						{
-						default:
-							continue;
-						case 4:
-						{
-							Dialog dialog4 = new Dialog(3, "ﾒｯｾｰｼﾞ");
-							dialog4.SetText("本番サーバーへ接続します。");
-							if (dialog4.Show() != 4)
-							{
-								continue;
-							}
-							break;
-						}
-						case 8:
+						int num = dialog2.Show();
+						if (num == 4)
 						{
 							Dialog dialog3 = new Dialog(3, "ﾒｯｾｰｼﾞ");
-							dialog3.SetText("開発サーバーへ接続します。");
-							if (dialog3.Show() != 4)
+							dialog3.SetText("本番サーバーへ接続します。");
+							if (dialog3.Show() == 4)
 							{
-								continue;
+								break;
 							}
-							text = devHost;
-							COMMON_SERVER = "https://applidev.kairogame.jp/";
-							accountType_ = 0;
-							break;
 						}
-						case 2:
+						else if (num == 8)
+						{
+							Dialog dialog4 = new Dialog(3, "ﾒｯｾｰｼﾞ");
+							dialog4.SetText("開発サーバーへ接続します。");
+							if (dialog4.Show() == 4)
+							{
+								text = devHost;
+								COMMON_SERVER = "https://applidev.kairogame.jp/";
+								accountType_ = 0;
+								break;
+							}
+						}
+						else if (num == 2)
+						{
 							flag = true;
 							break;
 						}
-						break;
 					}
 				}
 			}
@@ -468,6 +447,28 @@ namespace kairo.unity.system
 			AnalyticsTracker.DispatchPageView();
 		}
 
+		private List<PaymentDataRecord> paymemtList_ = new List<PaymentDataRecord>();
+
+		private const int PAY_MODE_GET = 1;
+
+		private const int PAY_MODE_ADD = 2;
+
+		private const int PAY_MODE_USE = 3;
+
+		private static readonly int[] CONNECT_TRY = new int[4] { 1, 2, 3, 1 };
+
+		private const int CONNECT_TRY_SLEEP = 100;
+
+		private const bool NEXT_STARTUP_ASYSC = false;
+
+		private const string PAY_ASYNC_TAG = "startUpSync";
+
+		private const string PAY_ASYNC_TAG_S = "sus";
+
+		private const string PAYMENT_CGI = "virtual_currency.php";
+
+		public List<string> connectPaymemtMoneyResponse_ = new List<string>();
+
 		protected void Load(byte[] data)
 		{
 			if (data == null || data.Length == 0)
@@ -562,15 +563,27 @@ namespace kairo.unity.system
 
 		public void NewGame(bool take)
 		{
-			GetTapjoy()?.CallBalance();
+			ITapjoy tapjoy = GetTapjoy();
+			if (tapjoy != null)
+			{
+				tapjoy.CallBalance();
+			}
 			flag_ = new SecureInt(flag_.Get() & 0xFFFF);
 			OnNewGame(take);
-			GetInstance()?.SetGameState(true);
+			KairoBase instance = GetInstance();
+			if (instance != null)
+			{
+				instance.SetGameState(true);
+			}
 		}
 
 		public void LoadGame(byte[] data)
 		{
-			GetTapjoy()?.CallBalance();
+			ITapjoy tapjoy = GetTapjoy();
+			if (tapjoy != null)
+			{
+				tapjoy.CallBalance();
+			}
 			if (data != null && data.Length != 0)
 			{
 				ByteArrayInputStream byteArrayInputStream = null;
@@ -582,11 +595,18 @@ namespace kairo.unity.system
 				}
 				finally
 				{
-					byteArrayInputStream?.Close();
+					if (byteArrayInputStream != null)
+					{
+						byteArrayInputStream.Close();
+					}
 					byteArrayInputStream = null;
 				}
 			}
-			GetInstance()?.SetGameState(true);
+			KairoBase instance = GetInstance();
+			if (instance != null)
+			{
+				instance.SetGameState(true);
+			}
 		}
 
 		public byte[] WriteGame()
@@ -735,17 +755,15 @@ namespace kairo.unity.system
 		{
 			Vector vector = ((type == 0) ? accessCounter_ : userCounter_);
 			AccessCount accessCount = null;
-			for (int i = 0; i < vector.Size(); i++)
+			int num = 0;
+			while (num < vector.Size() && accessCount == null)
 			{
-				if (accessCount != null)
-				{
-					break;
-				}
-				AccessCount accessCount2 = (AccessCount)vector.ElementAt(i);
+				AccessCount accessCount2 = (AccessCount)vector.ElementAt(num);
 				if (name.Equals(accessCount2.name_))
 				{
 					accessCount = accessCount2;
 				}
+				num++;
 			}
 			if (accessCount == null)
 			{
@@ -767,71 +785,72 @@ namespace kairo.unity.system
 
 		private void ConnectAccessCounter()
 		{
-			if (!login_)
+			if (!this.login_)
 			{
 				return;
 			}
-			if (accessCounter_.Size() > 0)
+			if (this.accessCounter_.Size() > 0)
 			{
-				string text = "";
-				for (int i = 0; i < accessCounter_.Size(); i++)
+				string str = "";
+				for (int i = 0; i < this.accessCounter_.Size(); i++)
 				{
-					if (text.Length() > 0)
+					if (str.Length() > 0)
 					{
-						text += ",";
+						str = string.Concat(str, ",");
 					}
-					text += accessCounter_.ElementAt(i);
+					str = string.Concat(str, this.accessCounter_.ElementAt(i));
 				}
-				text = MakeQuery("values", text);
-				string text2 = MakeQuery("pkg", IApplication.GetCurrentApp().GetPackageName());
-				string cgi = "counter.php" + text + text2;
-				Vector vector = accessCounter_;
-				accessCounter_ = new Vector();
+				str = KairoBase.MakeQuery("values", str);
+				string str1 = KairoBase.MakeQuery("pkg", IApplication.GetCurrentApp().GetPackageName());
+				string str2 = string.Concat("counter.php", str, str1);
+				Vector vector = this.accessCounter_;
+				this.accessCounter_ = new Vector();
 				try
 				{
-					HttpConnect(MakeUrl(cgi), null, true);
-					Save();
+					this.HttpConnect(this.MakeUrl(str2), null, true);
+					this.Save();
 				}
-				catch (Exception ex)
+				catch (Exception exception1)
 				{
+					Exception exception = exception1;
 					if (Config.PRINT)
 					{
-						Debug.LogException(ex);
+						Debug.LogException(exception);
 					}
-					accessCounter_ = vector;
-					throw ex;
+					this.accessCounter_ = vector;
+					throw exception;
 				}
 			}
-			if (userCounter_.Size() <= 0)
+			if (this.userCounter_.Size() > 0)
 			{
-				return;
-			}
-			string text3 = "";
-			for (int j = 0; j < userCounter_.Size(); j++)
-			{
-				if (text3.Length() > 0)
+				string str3 = "";
+				for (int j = 0; j < this.userCounter_.Size(); j++)
 				{
-					text3 += ",";
+					if (str3.Length() > 0)
+					{
+						str3 = string.Concat(str3, ",");
+					}
+					str3 = string.Concat(str3, this.userCounter_.ElementAt(j));
 				}
-				text3 += userCounter_.ElementAt(j);
-			}
-			text3 = MakeQuery("values", text3);
-			string cgi2 = "user_counter.php" + text3;
-			Vector vector2 = userCounter_;
-			userCounter_ = new Vector();
-			try
-			{
-				HttpConnect(MakeUrl(cgi2), null, true);
-				Save();
-			}
-			catch (Exception ex2)
-			{
-				if (Config.PRINT)
+				str3 = KairoBase.MakeQuery("values", str3);
+				string str4 = string.Concat("user_counter.php", str3);
+				Vector vector1 = this.userCounter_;
+				this.userCounter_ = new Vector();
+				try
 				{
-					Debug.LogException(ex2);
+					this.HttpConnect(this.MakeUrl(str4), null, true);
+					this.Save();
 				}
-				userCounter_ = vector2;
-				throw ex2;
+				catch (Exception exception3)
+				{
+					Exception exception2 = exception3;
+					if (Config.PRINT)
+					{
+						Debug.LogException(exception2);
+					}
+					this.userCounter_ = vector1;
+					throw exception2;
+				}
 			}
 		}
 
@@ -1282,9 +1301,9 @@ namespace kairo.unity.system
 				return value;
 			}
 			byte[] array = value;
-			switch (GetColumnType(table, name))
+			int columnType = GetColumnType(table, name);
+			if (columnType == 1)
 			{
-			case 1:
 				try
 				{
 					array = JString.New(value, "UTF-8").GetBytes();
@@ -1292,19 +1311,16 @@ namespace kairo.unity.system
 				catch (Exception)
 				{
 				}
-				break;
-			case 2:
-				if (value.Length != 0)
+			}
+			else if (columnType == 2 && value.Length != 0)
+			{
+				bool num = value[0] == 1;
+				array = new byte[value.Length - 1];
+				JSystem.Arraycopy(value, 1, array, 0, array.Length);
+				if (num)
 				{
-					bool num = value[0] == 1;
-					array = new byte[value.Length - 1];
-					JSystem.Arraycopy(value, 1, array, 0, array.Length);
-					if (num)
-					{
-						array = Compressor.Expand(array);
-					}
+					array = Compressor.Expand(array);
 				}
-				break;
 			}
 			return array;
 		}
@@ -1316,23 +1332,24 @@ namespace kairo.unity.system
 				return value;
 			}
 			byte[] array = value;
-			switch (GetColumnType(table, name))
-			{
-			case 1:
+			int columnType = GetColumnType(table, name);
+			if (columnType == 1)
 			{
 				string text = JString.New(value);
 				string text2 = text.Trim();
 				if (!text2.Equals("CURRENT_TIMESTAMP()"))
 				{
 					StringBuilder stringBuilder = new StringBuilder();
-					for (int i = 0; i < text2.Length(); i++)
+					int num = 0;
+					while (num < text2.Length())
 					{
-						char c = text2.CharAt(i);
+						char c = text2.CharAt(num);
 						stringBuilder.Append(c);
 						if (c == '\'')
 						{
 							stringBuilder.Append(c);
 						}
+						num++;
 					}
 					text = "'" + stringBuilder.ToString() + "'";
 				}
@@ -1344,9 +1361,8 @@ namespace kairo.unity.system
 				{
 					array = text.GetBytes();
 				}
-				break;
 			}
-			case 2:
+			else if (columnType == 2)
 			{
 				byte[] array2 = null;
 				try
@@ -1372,8 +1388,6 @@ namespace kairo.unity.system
 					array[0] = 1;
 					JSystem.Arraycopy(array2, 0, array, 1, array2.Length);
 				}
-				break;
-			}
 			}
 			return array;
 		}
@@ -1939,10 +1953,10 @@ namespace kairo.unity.system
 
 		public void SetReserveSave(bool all)
 		{
-			int num = ((!all) ? 1 : 2);
-			if (reserveSave < num)
+			int num = (all ? 2 : 1);
+			if (this.reserveSave < num)
 			{
-				reserveSave = num;
+				this.reserveSave = num;
 			}
 		}
 
@@ -2039,29 +2053,18 @@ namespace kairo.unity.system
 				else
 				{
 					int num = ConnectPaymemtMoney(2, paymemtList_, async);
-					switch (num)
+					if (num == 1)
 					{
-					case 1:
 						return true;
-					case 2:
-					case 3:
+					}
+					if (num == 2 || num == 3)
+					{
 						throw new IllegalPurchaseException();
-					default:
-						if (!async && num != 1)
-						{
-							num = ConnectPaymemtMoney(2, paymemtList_, true);
-							if (num == 0)
-							{
-								try
-								{
-									Save();
-								}
-								catch (Exception)
-								{
-								}
-							}
-						}
-						if (async && num == 0)
+					}
+					if (!async && num != 1)
+					{
+						num = ConnectPaymemtMoney(2, paymemtList_, true);
+						if (num == 0)
 						{
 							try
 							{
@@ -2070,9 +2073,18 @@ namespace kairo.unity.system
 							catch (Exception)
 							{
 							}
-							return true;
 						}
-						break;
+					}
+					if (async && num == 0)
+					{
+						try
+						{
+							Save();
+						}
+						catch (Exception)
+						{
+						}
+						return true;
 					}
 				}
 			}
@@ -2564,20 +2576,17 @@ namespace kairo.unity.system
 
 		internal void SetGameState(bool playing)
 		{
-			if (isPlaying_ == playing)
+			if (this.isPlaying_ != playing)
 			{
-				return;
-			}
-			isPlaying_ = playing;
-			NotifyManager instance = NotifyManager.GetInstance();
-			if (instance != null)
-			{
-				if (playing)
+				this.isPlaying_ = playing;
+				NotifyManager instance = NotifyManager.GetInstance();
+				if (instance != null)
 				{
-					instance.DoCancel();
-				}
-				else
-				{
+					if (playing)
+					{
+						instance.DoCancel();
+						return;
+					}
 					instance.DoNotify();
 				}
 			}

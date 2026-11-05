@@ -1,3 +1,4 @@
+using System;
 namespace kairo.unity.surface
 {
 	public class TouchEvent
@@ -66,34 +67,33 @@ namespace kairo.unity.surface
 
 		public void Init()
 		{
-			component = null;
-			type = 0;
-			x = 0;
-			y = 0;
-			dx = 0;
-			dy = 0;
-			speedX = 0f;
-			speedY = 0f;
-			pinch = 0;
-			if (pinchPointBegin_ != null)
+			this.component = null;
+			this.type = 0;
+			this.x = 0;
+			this.y = 0;
+			this.dx = 0;
+			this.dy = 0;
+			this.speedX = 0f;
+			this.speedY = 0f;
+			this.pinch = 0;
+			if (this.pinchPointBegin_ != null)
 			{
-				for (int i = 0; i < pinchPointBegin_.Length; i++)
+				for (int i = 0; i < (int)this.pinchPointBegin_.Length; i++)
 				{
-					for (int j = 0; j < pinchPointBegin_[i].Length; j++)
+					for (int j = 0; j < (int)this.pinchPointBegin_[i].Length; j++)
 					{
-						pinchPointBegin_[i][j] = 0;
+						this.pinchPointBegin_[i][j] = 0;
 					}
 				}
 			}
-			if (pinchPointNow_ == null)
+			if (this.pinchPointNow_ != null)
 			{
-				return;
-			}
-			for (int k = 0; k < pinchPointNow_.Length; k++)
-			{
-				for (int l = 0; l < pinchPointNow_[k].Length; l++)
+				for (int k = 0; k < (int)this.pinchPointNow_.Length; k++)
 				{
-					pinchPointNow_[k][l] = 0;
+					for (int l = 0; l < (int)this.pinchPointNow_[k].Length; l++)
+					{
+						this.pinchPointNow_[k][l] = 0;
+					}
 				}
 			}
 		}

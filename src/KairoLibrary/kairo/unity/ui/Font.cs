@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System;
 using System.Collections.Generic;
 using kairo.common.cfg;
 using kairo.unity.util;
@@ -68,8 +70,6 @@ namespace kairo.unity.ui
 
 		public static bool LT_DISABLE_TEXTLAYOUT = false;
 
-		private static GUIContent guiContents_ = new GUIContent();
-
 		public Font()
 		{
 			Init();
@@ -87,6 +87,8 @@ namespace kairo.unity.ui
 				_init();
 			}, true);
 		}
+
+		private static GUIContent guiContents_ = new GUIContent();
 
 		private void _init()
 		{
@@ -346,10 +348,11 @@ namespace kairo.unity.ui
 
 		public static void PopLocalizeSetting()
 		{
-			if (localizeSettingCount_ > 0)
+			if (kairo.unity.ui.Font.localizeSettingCount_ <= 0)
 			{
-				localizeSettingCount_--;
+				return;
 			}
+			kairo.unity.ui.Font.localizeSettingCount_--;
 		}
 
 		internal static void ClearLocalizeSettings()
@@ -364,11 +367,12 @@ namespace kairo.unity.ui
 
 		private void UpdateFontScale()
 		{
-			if (requestFontScale_ != fontScale_)
+			if (kairo.unity.ui.Font.requestFontScale_ == this.fontScale_)
 			{
-				fontScale_ = requestFontScale_;
-				SetSize(GetSize());
+				return;
 			}
+			this.fontScale_ = kairo.unity.ui.Font.requestFontScale_;
+			this.SetSize(this.GetSize(), true);
 		}
 
 		private static UnityEngine.Font GetDefaultGUIFont()

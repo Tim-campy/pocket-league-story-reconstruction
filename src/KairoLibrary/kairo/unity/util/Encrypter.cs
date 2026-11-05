@@ -1,3 +1,4 @@
+using System;
 namespace kairo.unity.util
 {
 	public class Encrypter
@@ -29,9 +30,9 @@ namespace kairo.unity.util
 
 		public static void Encode(byte[] src, byte[] key)
 		{
-			for (int i = 0; i < src.Length; i++)
+			for (int i = 0; i < (int)src.Length; i++)
 			{
-				src[i] ^= key[i % key.Length];
+				src[i] = (byte)(src[i] ^ key[i % (int)key.Length]);
 			}
 		}
 

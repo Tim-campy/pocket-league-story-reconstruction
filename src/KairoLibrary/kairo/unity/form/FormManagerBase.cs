@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -159,7 +160,7 @@ namespace kairo.unity.form
 				}
 				else if (num2 == -1)
 				{
-					bool value = instance?.IsGamePlaying() ?? false;
+					bool value = instance != null && instance.IsGamePlaying();
 					formIsGame_.Add(new KeyValuePair<FormBase, bool>(form, value));
 				}
 				return true;
@@ -310,37 +311,39 @@ namespace kairo.unity.form
 			kairo.unity.ui.Canvas instance = kairo.unity.ui.Canvas.GetInstance();
 			IApplication.GetCurrentApp();
 			SurfaceManagerBase surfaceManager = instance.GetSurfaceManager();
-			for (int num = formStack_.Size() - 1; num >= 0; num--)
+			for (int i = this.formStack_.Size() - 1; i >= 0; i--)
 			{
-				FormBase formBase = (FormBase)formStack_.ElementAt(num);
+				FormBase formBase = (FormBase)this.formStack_.ElementAt(i);
 				if (formBase.formProcMode_ == 4)
 				{
 					try
 					{
-						currentForm_ = formBase;
+						this.currentForm_ = formBase;
 						if (formBase.Finish())
 						{
 							if (formBase.formProcMode_ == 4)
 							{
-								formStack_.RemoveElementAt(num);
+								this.formStack_.RemoveElementAt(i);
+								goto Label0;
 							}
 						}
-						else if (!warning_)
+						else if (!this.warning_)
 						{
-							warning_ = true;
-							KairoPlugin.ShowToast(string.Concat(formBase, " の Finish() で false が返されました。"));
+							this.warning_ = true;
+							KairoPlugin.ShowToast(string.Concat(formBase, " の Finish() で false が返されました。"), 0);
 						}
 					}
 					finally
 					{
-						currentForm_ = null;
+						this.currentForm_ = null;
 					}
+				Label0:
 					if (surfaceManager != null)
 					{
 						Vector<SurfaceBase> surfaceList = surfaceManager.GetSurfaceList();
-						for (int i = 0; i < surfaceList.Size(); i++)
+						for (int j = 0; j < surfaceList.Size(); j++)
 						{
-							SurfaceBase surfaceBase = surfaceList.ElementAt(i);
+							SurfaceBase surfaceBase = surfaceList.ElementAt(j);
 							if (surfaceBase.IsGameSurface())
 							{
 								surfaceBase.ClearTouchComponent();
@@ -350,46 +353,47 @@ namespace kairo.unity.form
 					instance.ClearKeyBuffer();
 				}
 			}
-			for (int j = 0; j < formStack_.Size(); j++)
+			for (int k = 0; k < this.formStack_.Size(); k++)
 			{
-				FormBase formBase2 = (FormBase)formStack_.ElementAt(j);
-				if (formBase2.formProcMode_ != 0)
+				FormBase formBase1 = (FormBase)this.formStack_.ElementAt(k);
+				if (formBase1.formProcMode_ == 0)
 				{
-					continue;
-				}
-				try
-				{
-					currentForm_ = formBase2;
-					if (formBase2.Init())
+					try
 					{
-						if (formBase2.formProcMode_ == 0)
+						this.currentForm_ = formBase1;
+						if (formBase1.Init())
 						{
-							formBase2.formProcMode_ = 1;
+							if (formBase1.formProcMode_ == 0)
+							{
+								formBase1.formProcMode_ = 1;
+								goto Label1;
+							}
+						}
+						else if (!this.warning_)
+						{
+							this.warning_ = true;
+							KairoPlugin.ShowToast(string.Concat(formBase1, " の Init() で false が返されました。"), 0);
 						}
 					}
-					else if (!warning_)
+					finally
 					{
-						warning_ = true;
-						KairoPlugin.ShowToast(string.Concat(formBase2, " の Init() で false が返されました。"));
+						this.currentForm_ = null;
 					}
-				}
-				finally
-				{
-					currentForm_ = null;
-				}
-				if (surfaceManager != null)
-				{
-					Vector<SurfaceBase> surfaceList2 = surfaceManager.GetSurfaceList();
-					for (int k = 0; k < surfaceList2.Size(); k++)
+				Label1:
+					if (surfaceManager != null)
 					{
-						SurfaceBase surfaceBase2 = surfaceList2.ElementAt(k);
-						if (surfaceBase2.IsGameSurface())
+						Vector<SurfaceBase> surfaceBases = surfaceManager.GetSurfaceList();
+						for (int l = 0; l < surfaceBases.Size(); l++)
 						{
-							surfaceBase2.ClearTouchComponent();
+							SurfaceBase surfaceBase1 = surfaceBases.ElementAt(l);
+							if (surfaceBase1.IsGameSurface())
+							{
+								surfaceBase1.ClearTouchComponent();
+							}
 						}
 					}
+					instance.ClearKeyBuffer();
 				}
-				instance.ClearKeyBuffer();
 			}
 		}
 
@@ -651,7 +655,10 @@ namespace kairo.unity.form
 				Config.drawSourceImageArea_ = 0;
 			}
 			Config.checkCount_ = (Config.checkCount_ + 1) % int.MaxValue;
-			surfaceManager?.ClearTouchComponent();
+			if (surfaceManager != null)
+			{
+				surfaceManager.ClearTouchComponent();
+			}
 			if (!drawskip_)
 			{
 				surfaceManager?.AdjustSurfaceLayout();
@@ -663,13 +670,19 @@ namespace kairo.unity.form
 						DrawAllForms();
 						surfaceChanged_ = false;
 					}
-					surfaceManager?.BeginTouchRegist(graphics);
+					if (surfaceManager != null)
+					{
+						surfaceManager.BeginTouchRegist(graphics);
+					}
 					surfaceManager?.Draw(graphics);
 					if (printForm_ != null)
 					{
 						DrawPrintForm(graphics);
 					}
-					surfaceManager?.EndTouchRegist(graphics);
+					if (surfaceManager != null)
+					{
+						surfaceManager.EndTouchRegist(graphics);
+					}
 					surfaceManager?.DrawComponents(graphics);
 					InterstitialAd.DrawLoading(graphics);
 					instance.EndPaint();
@@ -708,7 +721,11 @@ namespace kairo.unity.form
 		{
 			resume_ = true;
 			kairo.unity.ui.Canvas instance = kairo.unity.ui.Canvas.GetInstance();
-			instance.GetSurfaceManager()?.ClearTouchComponent();
+			SurfaceManagerBase surfaceManager = instance.GetSurfaceManager();
+			if (surfaceManager != null)
+			{
+				surfaceManager.ClearTouchComponent();
+			}
 			instance.ClearKeyBuffer();
 		}
 
@@ -1055,10 +1072,16 @@ namespace kairo.unity.form
 		internal static void ProcessEvent(AppEventType type, params object[] args)
 		{
 			IApplication currentApp = IApplication.GetCurrentApp();
-			if (!(currentApp == null))
+			if (currentApp == null)
 			{
-				currentApp.GetFormManager()?.ProcessEvent(new AppEvent(type, args));
+				return;
 			}
+			FormManagerBase formManager = currentApp.GetFormManager();
+			if (formManager == null)
+			{
+				return;
+			}
+			formManager.ProcessEvent(new AppEvent(type, args));
 		}
 
 		public void Capture(SurfaceBase view, string[] captureTables = null, OnCaptureCompleted method = null, bool saveToTmpDirectory = false)
@@ -1078,7 +1101,7 @@ namespace kairo.unity.form
 			canvas.Fullscreen(true);
 			capturing_ = true;
 			int stopFrame = IApplication.GetCurrentApp().GetTotalFrames();
-			new JThread(delegate
+			JThread captureThread = new JThread(delegate
 			{
 				try
 				{
@@ -1208,7 +1231,10 @@ namespace kairo.unity.form
 							}
 							finally
 							{
-								image?.Dispose();
+								if (image != null)
+								{
+									image.Dispose();
+								}
 								image = null;
 							}
 							return true;
@@ -1237,7 +1263,8 @@ namespace kairo.unity.form
 					canvas.Fullscreen(bkFullscreen);
 					canvas.SetAspectRatio();
 				}
-			}).Start();
+			});
+			captureThread.Start();
 		}
 
 		public bool IsCapturing()
@@ -1247,13 +1274,14 @@ namespace kairo.unity.form
 
 		internal void WaitLateUpdate()
 		{
-			if (!IApplication.GetCurrentApp().CheckUiThread())
+			if (IApplication.GetCurrentApp().CheckUiThread())
 			{
-				waitLateUpdate_ = true;
-				while (waitLateUpdate_)
-				{
-					JThread.Sleep(1L);
-				}
+				return;
+			}
+			this.waitLateUpdate_ = true;
+			while (this.waitLateUpdate_)
+			{
+				JThread.Sleep((long)1);
 			}
 		}
 

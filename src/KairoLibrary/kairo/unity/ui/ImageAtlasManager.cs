@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections.Generic;
 
@@ -141,12 +142,12 @@ namespace kairo.unity.ui
 
 		internal void RemoveAtlas(Image image)
 		{
-			IApplication.GetCurrentApp().RunOnUiThread(delegate
-			{
-				if (image.atlasRegion_ != null)
+			IApplication.GetCurrentApp().RunOnUiThread(() => {
+				if (image.atlasRegion_ == null)
 				{
-					image.atlasRegion_.Atlas.RemoveAtlas(image);
+					return;
 				}
+				image.atlasRegion_.Atlas.RemoveAtlas(image);
 			}, true);
 		}
 

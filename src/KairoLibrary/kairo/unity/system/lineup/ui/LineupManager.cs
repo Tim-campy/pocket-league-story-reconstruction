@@ -434,7 +434,10 @@ namespace kairo.unity.system.lineup.ui
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (jarInflater != null)
+				{
+					jarInflater.Close();
+				}
 				jarInflater = null;
 			}
 			return lineupList_;

@@ -78,22 +78,23 @@ namespace kairo.unity.io
 
 		public static Storage Open(int media, bool security)
 		{
-			switch (media)
+			if (media == 2)
 			{
-			case 2:
 				if (Config.USE_HEAP_STORAGE)
 				{
 					return new Storage(null, media, security);
 				}
 				throw new IOException("media not found");
-			case 3:
-				return new Storage(null, media, security);
-			case 1:
-			case 4:
-				return new Storage(GetFolder(media), media, security);
-			default:
-				return null;
 			}
+			if (media == 3)
+			{
+				return new Storage(null, media, security);
+			}
+			if (media == 1 || media == 4)
+			{
+				return new Storage(GetFolder(media), media, security);
+			}
+			return null;
 		}
 
 		public static string GetFolder(int media)
@@ -113,14 +114,13 @@ namespace kairo.unity.io
 				{
 					text += "/";
 				}
-				switch (media)
+				if (media == 1)
 				{
-				case 1:
 					text += "files";
-					break;
-				case 4:
+				}
+				else if (media == 4)
+				{
 					text += "rs";
-					break;
 				}
 				return text;
 			}
@@ -414,7 +414,10 @@ namespace kairo.unity.io
 			}
 			finally
 			{
-				storage?.Close();
+				if (storage != null)
+				{
+					storage.Close();
+				}
 				storage = null;
 			}
 		}
@@ -430,7 +433,10 @@ namespace kairo.unity.io
 			}
 			finally
 			{
-				storage?.Close();
+				if (storage != null)
+				{
+					storage.Close();
+				}
 				storage = null;
 			}
 		}
@@ -446,7 +452,10 @@ namespace kairo.unity.io
 			}
 			finally
 			{
-				storage?.Close();
+				if (storage != null)
+				{
+					storage.Close();
+				}
 				storage = null;
 			}
 		}

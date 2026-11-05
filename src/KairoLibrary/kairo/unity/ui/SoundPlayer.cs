@@ -1,3 +1,5 @@
+using Object = UnityEngine.Object;
+using System;
 using java.util;
 using UnityEngine;
 
@@ -28,7 +30,7 @@ namespace kairo.unity.ui
 
 		public const int LOOP_MAX = 255;
 
-		private static SoundPlayer instance_;
+		private static SoundPlayer instance_ = null;
 
 		private int[] volume_ = new int[2];
 
@@ -96,11 +98,12 @@ namespace kairo.unity.ui
 
 		public void Dispose()
 		{
-			if (instance_ != null)
+			if (SoundPlayer.instance_ == null)
 			{
-				StopAll();
-				instance_ = null;
+				return;
 			}
+			this.StopAll();
+			SoundPlayer.instance_ = null;
 		}
 
 		public static SoundPlayer GetInstance()
@@ -162,10 +165,11 @@ namespace kairo.unity.ui
 
 		public void Play(SoundBase s)
 		{
-			if (!isSilentMode_)
+			if (this.isSilentMode_)
 			{
-				s.Play(volume_[s.type_] * masterVolume_[s.type_], mute_[s.type_]);
+				return;
 			}
+			s.Play(this.volume_[s.type_] * this.masterVolume_[s.type_], this.mute_[s.type_]);
 		}
 
 		public void Stop(SoundBase s)
@@ -184,18 +188,20 @@ namespace kairo.unity.ui
 
 		public void Resume()
 		{
-			if (suspend2_)
+			if (!this.suspend2_)
 			{
-				suspend2_ = false;
+				return;
 			}
+			this.suspend2_ = false;
 		}
 
 		public void Suspend()
 		{
-			if (!suspend2_)
+			if (this.suspend2_)
 			{
-				suspend2_ = true;
+				return;
 			}
+			this.suspend2_ = true;
 		}
 
 		internal int GetPort(int priority)

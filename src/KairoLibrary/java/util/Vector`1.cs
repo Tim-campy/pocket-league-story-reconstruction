@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -82,13 +85,14 @@ namespace java.util
 
 		public void CopyInto(T[] anArray)
 		{
-			if (anArray != null)
+			if (anArray == null)
 			{
-				int num = ((anArray.Length < list_.Count) ? anArray.Length : list_.Count);
-				for (int i = 0; i < num; i++)
-				{
-					anArray[i] = (T)list_[i];
-				}
+				return;
+			}
+			int num = ((int)anArray.Length < this.list_.Count ? (int)anArray.Length : this.list_.Count);
+			for (int i = 0; i < num; i++)
+			{
+				anArray[i] = (T)this.list_[i];
 			}
 		}
 

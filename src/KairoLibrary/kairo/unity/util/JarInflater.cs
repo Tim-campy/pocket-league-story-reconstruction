@@ -74,27 +74,31 @@ namespace kairo.unity.util
 			{
 				directory_ += "/";
 			}
-			string text = directory_.Substring(0, directory_.Length() - 1) + ".dat";
+			string text = string.Concat(directory_.Substring(0, directory_.Length() - 1), ".dat");
 			string[] array = new string[2]
 			{
 				text,
-				directory_ + text
+				string.Concat(directory_, text)
 			};
 			for (int i = 0; i < array.Length; i++)
 			{
 				InputStream resourceAsStream = GetResourceAsStream(array[i]);
-				if (resourceAsStream != null)
+				if (resourceAsStream == null)
 				{
-					try
+					continue;
+				}
+				try
+				{
+					_load(resourceAsStream);
+					break;
+				}
+				finally
+				{
+					if (resourceAsStream != null)
 					{
-						_load(resourceAsStream);
-						break;
+						resourceAsStream.Close();
 					}
-					finally
-					{
-						resourceAsStream?.Close();
-						resourceAsStream = null;
-					}
+					resourceAsStream = null;
 				}
 			}
 		}

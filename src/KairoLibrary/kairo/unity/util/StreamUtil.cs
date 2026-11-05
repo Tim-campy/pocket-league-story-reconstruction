@@ -1,3 +1,4 @@
+using System.Collections;
 using System;
 using System.Text;
 using java.io;
@@ -573,20 +574,21 @@ namespace kairo.unity.util
 				return dst;
 			}
 			long num = 0L;
-			switch (arrayLengthBytes)
+			if (arrayLengthBytes == 1)
 			{
-			case 1:
 				num = ReadByte(stream);
-				break;
-			case 2:
+			}
+			else if (arrayLengthBytes == 2)
+			{
 				num = ReadShort(stream);
-				break;
-			case 8:
+			}
+			else if (arrayLengthBytes == 8)
+			{
 				num = ReadLong(stream);
-				break;
-			default:
+			}
+			else
+			{
 				num = ReadInt(stream);
-				break;
 			}
 			if (num == -1)
 			{
@@ -720,12 +722,8 @@ namespace kairo.unity.util
 					array.SetValue(SecureString.ValueOf(ReadString(stream)), num13);
 				}
 			}
-			else
+			else if (type.GetInterface(typeof(ISerializable).Name) != null)
 			{
-				if (type.GetInterface(typeof(ISerializable).Name) == null)
-				{
-					throw new ArgumentException("StreamUtil.ReadArray : unsupported by " + type.FullName);
-				}
 				for (int num14 = 0; num14 < num; num14++)
 				{
 					ISerializable serializable = null;
@@ -736,6 +734,10 @@ namespace kairo.unity.util
 					}
 					array.SetValue(serializable, num14);
 				}
+			}
+			else
+			{
+				throw new ArgumentException("StreamUtil.ReadArray : unsupported by " + type.FullName);
 			}
 			if (dst != null)
 			{
@@ -759,13 +761,18 @@ namespace kairo.unity.util
 			{
 				WriteByte(os, (byte)0);
 				WriteInt(os, data.Length);
-				foreach (int[] array in data)
+				int num = 0;
+				while (num < data.Length)
 				{
+					int[] array = data[num];
 					WriteInt(os, array.Length);
-					for (int j = 0; j < array.Length; j++)
+					int num2 = 0;
+					while (num2 < array.Length)
 					{
-						WriteInt(os, array[j]);
+						WriteInt(os, array[num2]);
+						num2++;
 					}
+					num++;
 				}
 			}
 			else

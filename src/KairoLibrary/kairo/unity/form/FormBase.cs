@@ -1,3 +1,4 @@
+using System;
 using kairo.unity.surface;
 using kairo.unity.ui;
 
@@ -65,14 +66,15 @@ namespace kairo.unity.form
 
 		public void SetSoftLabel(string left, string right, string soft3 = null, string soft4 = null)
 		{
-			if (CheckUsable())
+			if (!this.CheckUsable())
 			{
-				leftSoftLabel_ = left;
-				rightSoftLabel_ = right;
-				softLabel3_ = soft3;
-				softLabel4_ = soft4;
-				Canvas.GetInstance().SetSoftLabel(left, right, soft3, soft4);
+				return;
 			}
+			this.leftSoftLabel_ = left;
+			this.rightSoftLabel_ = right;
+			this.softLabel3_ = soft3;
+			this.softLabel4_ = soft4;
+			Canvas.GetInstance().SetSoftLabel(left, right, soft3, soft4);
 		}
 
 		public string GetLeftSoftLabel()

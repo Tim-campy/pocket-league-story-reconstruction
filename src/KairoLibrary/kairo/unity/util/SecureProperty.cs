@@ -1,3 +1,4 @@
+using System;
 using java.io;
 using java.lang;
 
@@ -51,109 +52,118 @@ namespace kairo.unity.util
 
 		public SecureProperty(SecureProperty property)
 		{
-			if (property != null)
+			if (property == null)
 			{
-				SetData(property.ints);
-				SetData(property.lngs);
-				SetData(property.strs);
-				SetData(property.bins);
-				SetData(property.pros);
+				return;
 			}
+			this.SetData(property.ints);
+			this.SetData(property.lngs);
+			this.SetData(property.strs);
+			this.SetData(property.bins);
+			this.SetData(property.pros);
 		}
 
 		public void SetData(SecureInt[] data)
 		{
-			ints = null;
-			if (data != null)
+			this.ints = null;
+			if (data == null)
 			{
-				ints = new SecureInt[data.Length];
-				JSystem.Arraycopy(data, 0, ints, 0, ints.Length);
+				return;
 			}
+			this.ints = new SecureInt[(int)data.Length];
+			JSystem.Arraycopy(data, 0, this.ints, 0, (int)this.ints.Length);
 		}
 
 		public void SetData(int[] data)
 		{
-			ints = null;
-			if (data != null)
+			this.ints = null;
+			if (data == null)
 			{
-				ints = new SecureInt[data.Length];
-				for (int i = 0; i < data.Length; i++)
-				{
-					ints[i] = new SecureInt(data[i]);
-				}
+				return;
+			}
+			this.ints = new SecureInt[(int)data.Length];
+			for (int i = 0; i < (int)data.Length; i++)
+			{
+				this.ints[i] = new SecureInt(data[i]);
 			}
 		}
 
 		public void SetData(SecureLong[] data)
 		{
-			lngs = null;
-			if (data != null)
+			this.lngs = null;
+			if (data == null)
 			{
-				lngs = new SecureLong[data.Length];
-				JSystem.Arraycopy(data, 0, lngs, 0, lngs.Length);
+				return;
 			}
+			this.lngs = new SecureLong[(int)data.Length];
+			JSystem.Arraycopy(data, 0, this.lngs, 0, (int)this.lngs.Length);
 		}
 
 		public void SetData(long[] data)
 		{
-			lngs = null;
-			if (data != null)
+			this.lngs = null;
+			if (data == null)
 			{
-				lngs = new SecureLong[data.Length];
-				for (int i = 0; i < lngs.Length; i++)
-				{
-					lngs[i] = new SecureLong(data[i]);
-				}
+				return;
+			}
+			this.lngs = new SecureLong[(int)data.Length];
+			for (int i = 0; i < (int)this.lngs.Length; i++)
+			{
+				this.lngs[i] = new SecureLong(data[i]);
 			}
 		}
 
 		public void SetData(SecureString[] data)
 		{
-			strs = null;
-			if (data != null)
+			this.strs = null;
+			if (data == null)
 			{
-				strs = new SecureString[data.Length];
-				SecureString.Arraycopy(data, 0, strs, 0, strs.Length);
+				return;
 			}
+			this.strs = new SecureString[(int)data.Length];
+			SecureString.Arraycopy(data, 0, this.strs, 0, (int)this.strs.Length);
 		}
 
 		public void SetData(string[] data)
 		{
-			strs = null;
-			if (data != null)
+			this.strs = null;
+			if (data == null)
 			{
-				strs = new SecureString[data.Length];
-				for (int i = 0; i < strs.Length; i++)
-				{
-					strs[i] = SecureString.ValueOf(data[i]);
-				}
+				return;
+			}
+			this.strs = new SecureString[(int)data.Length];
+			for (int i = 0; i < (int)this.strs.Length; i++)
+			{
+				this.strs[i] = SecureString.ValueOf(data[i]);
 			}
 		}
 
 		public void SetData(byte[][] data)
 		{
-			bins = null;
-			if (data != null)
+			this.bins = null;
+			if (data == null)
 			{
-				bins = new byte[data.Length][];
-				for (int i = 0; i < bins.Length; i++)
-				{
-					bins[i] = new byte[data[i].Length];
-					JSystem.Arraycopy(data[i], 0, bins[i], 0, bins[i].Length);
-				}
+				return;
+			}
+			this.bins = new byte[(int)data.Length][];
+			for (int i = 0; i < (int)this.bins.Length; i++)
+			{
+				this.bins[i] = new byte[(int)data[i].Length];
+				JSystem.Arraycopy(data[i], 0, this.bins[i], 0, (int)this.bins[i].Length);
 			}
 		}
 
 		public void SetData(SecureProperty[] data)
 		{
-			pros = null;
-			if (data != null)
+			this.pros = null;
+			if (data == null)
 			{
-				pros = new SecureProperty[data.Length];
-				for (int i = 0; i < pros.Length; i++)
-				{
-					pros[i] = new SecureProperty(data[i]);
-				}
+				return;
+			}
+			this.pros = new SecureProperty[(int)data.Length];
+			for (int i = 0; i < (int)this.pros.Length; i++)
+			{
+				this.pros[i] = new SecureProperty(data[i]);
 			}
 		}
 
@@ -214,141 +224,148 @@ namespace kairo.unity.util
 
 		protected void Read(InputStream stream, int type, int size, byte[] ids)
 		{
-			switch (type)
+			if (type == 0)
 			{
-			case 0:
-			{
-				if (pros == null)
+				if (this.pros == null)
 				{
-					pros = new SecureProperty[size];
-				}
-				for (int l = 0; l < size; l++)
-				{
-					SecureProperty secureProperty = new SecureProperty(pros[l]);
-					secureProperty.Load(StreamUtil.Read(stream, true));
-					if (0 <= l && l < pros.Length)
-					{
-						pros[l] = secureProperty;
-					}
-				}
-				break;
-			}
-			case 1:
-			{
-				if (ints == null)
-				{
-					ints = SecureInt.Array(size);
-				}
-				for (int k = 0; k < size; k++)
-				{
-					int value2 = StreamUtil.ReadInt(stream);
-					if (0 <= k && k < ints.Length)
-					{
-						ints[k].Set(value2);
-					}
-				}
-				break;
-			}
-			case 2:
-			{
-				if (lngs == null)
-				{
-					lngs = SecureLong.Array(size);
-				}
-				for (int j = 0; j < size; j++)
-				{
-					long value = StreamUtil.ReadLong(stream);
-					if (0 <= j && j < lngs.Length)
-					{
-						lngs[j].Set(value);
-					}
-				}
-				break;
-			}
-			case 3:
-			{
-				if (strs == null)
-				{
-					strs = new SecureString[size];
-				}
-				for (int m = 0; m < size; m++)
-				{
-					byte[] bytes = StreamUtil.Read(stream, true);
-					if (0 <= m && m < strs.Length)
-					{
-						strs[m] = new SecureString(StringUtil.GetString(bytes));
-					}
-				}
-				break;
-			}
-			case 4:
-			{
-				if (bins == null)
-				{
-					bins = new byte[size][];
+					this.pros = new SecureProperty[size];
 				}
 				for (int i = 0; i < size; i++)
 				{
-					byte[] array = StreamUtil.Read(stream, true);
-					if (0 <= i && i < bins.Length)
+					SecureProperty secureProperty = new SecureProperty(this.pros[i]);
+					secureProperty.Load(StreamUtil.Read(stream, true));
+					if (0 <= i && i < (int)this.pros.Length)
 					{
-						bins[i] = array;
+						this.pros[i] = secureProperty;
 					}
 				}
-				break;
+				return;
 			}
+			if (type == 1)
+			{
+				if (this.ints == null)
+				{
+					this.ints = SecureInt.Array(size);
+				}
+				for (int j = 0; j < size; j++)
+				{
+					int num = StreamUtil.ReadInt(stream);
+					if (0 <= j && j < (int)this.ints.Length)
+					{
+						this.ints[j].Set(num);
+					}
+				}
+				return;
+			}
+			if (type == 2)
+			{
+				if (this.lngs == null)
+				{
+					this.lngs = SecureLong.Array(size);
+				}
+				for (int k = 0; k < size; k++)
+				{
+					long num1 = StreamUtil.ReadLong(stream);
+					if (0 <= k && k < (int)this.lngs.Length)
+					{
+						this.lngs[k].Set(num1);
+					}
+				}
+				return;
+			}
+			if (type == 3)
+			{
+				if (this.strs == null)
+				{
+					this.strs = new SecureString[size];
+				}
+				for (int l = 0; l < size; l++)
+				{
+					byte[] numArray = StreamUtil.Read(stream, true);
+					if (0 <= l && l < (int)this.strs.Length)
+					{
+						this.strs[l] = new SecureString(StringUtil.GetString(numArray));
+					}
+				}
+				return;
+			}
+			if (type == 4)
+			{
+				if (this.bins == null)
+				{
+					this.bins = new byte[size][];
+				}
+				for (int m = 0; m < size; m++)
+				{
+					byte[] numArray1 = StreamUtil.Read(stream, true);
+					if (0 <= m && m < (int)this.bins.Length)
+					{
+						this.bins[m] = numArray1;
+					}
+				}
 			}
 		}
 
 		protected void Write(OutputStream os, int type)
 		{
-			switch (type)
+			if (type == 0)
 			{
-			case 0:
-				if (pros != null)
+				if (this.pros == null)
 				{
-					for (int j = 0; j < pros.Length; j++)
-					{
-						StreamUtil.Write(os, pros[j].ToByteArray(), true);
-					}
+					return;
 				}
-				break;
-			case 1:
-				if (ints != null)
+				for (int i = 0; i < (int)this.pros.Length; i++)
 				{
-					for (int m = 0; m < ints.Length; m++)
-					{
-						StreamUtil.WriteInt(os, ints[m].Get());
-					}
+					StreamUtil.Write(os, this.pros[i].ToByteArray(), true);
 				}
-				break;
-			case 2:
-				if (lngs != null)
+				return;
+			}
+			if (type == 1)
+			{
+				if (this.ints == null)
 				{
-					for (int k = 0; k < lngs.Length; k++)
-					{
-						StreamUtil.WriteLong(os, lngs[k].Get());
-					}
+					return;
 				}
-				break;
-			case 3:
-				if (strs != null)
+				for (int j = 0; j < (int)this.ints.Length; j++)
 				{
-					for (int l = 0; l < strs.Length; l++)
-					{
-						StreamUtil.Write(os, strs[l].GetBytes(), true);
-					}
+					StreamUtil.WriteInt(os, this.ints[j].Get());
 				}
-				break;
-			case 4:
-				if (bins != null)
+				return;
+			}
+			if (type == 2)
+			{
+				if (this.lngs == null)
 				{
-					for (int i = 0; i < bins.Length; i++)
-					{
-						StreamUtil.Write(os, bins[i], true);
-					}
+					return;
 				}
-				break;
+				for (int k = 0; k < (int)this.lngs.Length; k++)
+				{
+					StreamUtil.WriteLong(os, this.lngs[k].Get());
+				}
+				return;
+			}
+			if (type == 3)
+			{
+				if (this.strs == null)
+				{
+					return;
+				}
+				for (int l = 0; l < (int)this.strs.Length; l++)
+				{
+					StreamUtil.Write(os, this.strs[l].GetBytes(), true);
+				}
+				return;
+			}
+			if (type == 4)
+			{
+				if (this.bins == null)
+				{
+					return;
+				}
+				for (int m = 0; m < (int)this.bins.Length; m++)
+				{
+					StreamUtil.Write(os, this.bins[m], true);
+				}
 			}
 		}
 
@@ -384,21 +401,27 @@ namespace kairo.unity.util
 
 		public string GetTypeTag(int type)
 		{
-			switch (type)
+			if (type == 0)
 			{
-			case 0:
 				return "pro";
-			case 1:
-				return "int";
-			case 2:
-				return "lng";
-			case 3:
-				return "str";
-			case 4:
-				return "bin";
-			default:
-				return null;
 			}
+			if (type == 1)
+			{
+				return "int";
+			}
+			if (type == 2)
+			{
+				return "lng";
+			}
+			if (type == 3)
+			{
+				return "str";
+			}
+			if (type == 4)
+			{
+				return "bin";
+			}
+			return null;
 		}
 
 		public void DisposeBin()

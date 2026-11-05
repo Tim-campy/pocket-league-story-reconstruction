@@ -143,7 +143,7 @@ namespace kairo.unity.system
 
 		public void Add(string name, string value)
 		{
-			Add(name, value?.GetBytes());
+			Add(name, (value == null) ? null : value.GetBytes());
 		}
 
 		public void Add(string name, long value)

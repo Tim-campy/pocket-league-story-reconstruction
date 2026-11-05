@@ -23,22 +23,6 @@ namespace kairo.unity.ui
 
 		protected static Vector soundList_ = new Vector();
 
-		internal string name_ = "";
-
-		internal AudioClip data_;
-
-		internal int type_;
-
-		internal int loop_;
-
-		internal int priority_;
-
-		public const int MIN_PRIORITY = 0;
-
-		public const int NORM_PRIORITY = 1;
-
-		public const int MAX_PRIORITY = 2;
-
 		protected AudioSource track_ => SoundPlayer.GetInstance().GetAudioSource(this);
 
 		protected int state_
@@ -60,6 +44,22 @@ namespace kairo.unity.ui
 				return 3;
 			}
 		}
+
+		internal string name_ = "";
+
+		internal AudioClip data_;
+
+		internal int type_;
+
+		internal int loop_;
+
+		internal int priority_;
+
+		public const int MIN_PRIORITY = 0;
+
+		public const int NORM_PRIORITY = 1;
+
+		public const int MAX_PRIORITY = 2;
 
 		public SoundBase(AudioClip data, int type, int loop)
 		{

@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using kairo.unity.surface;
 using System;
 using System.Collections.Generic;
 using kairo.common.cfg;
@@ -89,10 +91,9 @@ namespace kairo.unity.graphics
 				component.StaticRedner = staticRender;
 				component.GetLayout = layout;
 				offscreenList_.Add(component);
-				component.image_ = new Image(new RenderTexture(1, 1, 24, RenderTextureFormat.ARGB32)
-				{
-					enableRandomWrite = false
-				});
+				RenderTexture renderTexture = new RenderTexture(1, 1, 24, RenderTextureFormat.ARGB32);
+				renderTexture.enableRandomWrite = false;
+				component.image_ = new Image(renderTexture);
 				int width;
 				int height;
 				Image.Format format;
@@ -122,10 +123,9 @@ namespace kairo.unity.graphics
 				obj.AddComponent<Offscreen>();
 				Offscreen component = obj.GetComponent<Offscreen>();
 				component.DynamicRender = render;
-				component.image_ = new Image(new RenderTexture(1, 1, 24, RenderTextureFormat.ARGB32)
-				{
-					enableRandomWrite = false
-				});
+				RenderTexture renderTexture = new RenderTexture(1, 1, 24, RenderTextureFormat.ARGB32);
+				renderTexture.enableRandomWrite = false;
+				component.image_ = new Image(renderTexture);
 				component.Resize(image.GetWidth(), image.GetHeight(), (Image.Format)((Texture2D)image.GetImage()).format, (Image.Filter)image.GetImage().filterMode, true);
 				component.image_.SetAlphaType(image.GetAlphaType());
 				obj.GetComponent<Camera>().Render();
@@ -200,11 +200,9 @@ namespace kairo.unity.graphics
 				}
 				GetComponent<Camera>().targetTexture = null;
 				image_.Dispose();
-				RenderTexture renderTexture2 = new RenderTexture(num, num2, 24, Image.GetRenderTextureFormat(format))
-				{
-					enableRandomWrite = false,
-					filterMode = (FilterMode)filterMode
-				};
+				RenderTexture renderTexture2 = new RenderTexture(num, num2, 24, Image.GetRenderTextureFormat(format));
+				renderTexture2.enableRandomWrite = false;
+				renderTexture2.filterMode = (FilterMode)filterMode;
 				image_ = new Image(renderTexture2);
 				if (Image.IsAlphaFormat(format))
 				{
@@ -311,17 +309,20 @@ namespace kairo.unity.graphics
 		public void RenderAlterStatics(RenderMethod method)
 		{
 			kairo.unity.ui.Canvas instance = kairo.unity.ui.Canvas.GetInstance();
-			kairo.unity.ui.Graphics graphics = instance.BeginAlterStaticRender(graStatics_);
-			if (graphics != null)
+			kairo.unity.ui.Graphics graphic = instance.BeginAlterStaticRender(this.graStatics_, -1);
+			if (graphic != null)
 			{
 				try
 				{
-					method?.Invoke(graphics, this);
+					if (method != null)
+					{
+						method(graphic, this);
+					}
 				}
 				finally
 				{
-					instance.EndAlterStaticRender(graphics);
-					isEmpty_ = false;
+					instance.EndAlterStaticRender(graphic, -1);
+					this.isEmpty_ = false;
 				}
 			}
 		}
@@ -634,13 +635,14 @@ namespace kairo.unity.graphics
 
 		internal void Flush()
 		{
-			if (image_ != null && !dispose_)
+			if (this.image_ == null || this.dispose_)
 			{
-				MeshManager meshManager = graDynamics_.GetMeshManager();
-				meshManager.EndMesh();
-				meshManager.RenderMesh(dynamicTransform_);
-				meshManager.BeginMesh();
+				return;
 			}
+			MeshManager meshManager = this.graDynamics_.GetMeshManager();
+			meshManager.EndMesh();
+			meshManager.RenderMesh(this.dynamicTransform_);
+			meshManager.BeginMesh();
 		}
 
 		public int GetWidth()
@@ -660,16 +662,17 @@ namespace kairo.unity.graphics
 
 		public void Clear(int color)
 		{
-			if (image_ != null && !dispose_)
+			if (this.image_ == null || this.dispose_)
 			{
-				Color backgroundColor = kairo.unity.ui.Graphics.ArgbToColor(color);
-				if (image_.format_ == Image.Format.RGB24 || image_.format_ == Image.Format.RGB565)
-				{
-					backgroundColor.a = 1f;
-				}
-				isEmpty_ = true;
-				GL.Clear(false, true, backgroundColor);
+				return;
 			}
+			Color color1 = kairo.unity.ui.Graphics.ArgbToColor(color);
+			if (this.image_.format_ == kairo.unity.ui.Image.Format.RGB24 || this.image_.format_ == kairo.unity.ui.Image.Format.RGB565)
+			{
+				color1.a = 1f;
+			}
+			this.isEmpty_ = true;
+			GL.Clear(false, true, color1);
 		}
 
 		public void Clear(int r, int g, int b, int a = 255)

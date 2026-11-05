@@ -1,3 +1,6 @@
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System;
 using System.IO;
 using java.lang;
@@ -34,44 +37,6 @@ namespace kairo.unity.native
 		private static string fepNegative_;
 
 		private static int fepMaxLength_;
-
-		private static string signature_;
-
-		private static int sdk_ = -1;
-
-		private static string release_;
-
-		private static int isTablet_ = -1;
-
-		private static int systemBarHeight_ = int.MaxValue;
-
-		private static int statusBarHeight_ = int.MaxValue;
-
-		private static int unityVarsion_ = int.MaxValue;
-
-		private static int statusBarPosition_ = int.MaxValue;
-
-		private static int lastCanvasWidth_;
-
-		private static int lastCanvasHeight_;
-
-		private static int appWidth_ = -1;
-
-		private static int appHeight_ = -1;
-
-		private static float scaleRatio_;
-
-		private static int scaleRatioReqWidth_;
-
-		private static int scaleRatioReqHeight_;
-
-		private static int scaleRatioAppWidth_;
-
-		private static int scaleRatioAppHeight_;
-
-		private static float scaleRatioBase_;
-
-		private static string packageName_;
 
 		public static void Init(int language, bool log, string licenseKey)
 		{
@@ -125,6 +90,8 @@ namespace kairo.unity.native
 			return signature_;
 		}
 
+		private static string signature_;
+
 		private static string _getSignature()
 		{
 			if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
@@ -149,6 +116,8 @@ namespace kairo.unity.native
 			}
 			return sdk_;
 		}
+
+		private static int sdk_ = -1;
 
 		private static int _getSDK()
 		{
@@ -192,6 +161,8 @@ namespace kairo.unity.native
 			return release_;
 		}
 
+		private static string release_;
+
 		private static string _getRelease()
 		{
 			if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
@@ -217,6 +188,8 @@ namespace kairo.unity.native
 			return isTablet_ == 1;
 		}
 
+		private static int isTablet_ = -1;
+
 		private static bool _isTablet()
 		{
 			if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
@@ -241,6 +214,8 @@ namespace kairo.unity.native
 			}
 			return systemBarHeight_;
 		}
+
+		private static int systemBarHeight_ = int.MaxValue;
 
 		private static int _getSystemBarHeight()
 		{
@@ -268,6 +243,10 @@ namespace kairo.unity.native
 			}
 			return statusBarHeight_;
 		}
+
+		private static int statusBarHeight_ = int.MaxValue;
+
+		private static int unityVarsion_ = int.MaxValue;
 
 		private static int _getStatusBarHeight()
 		{
@@ -326,6 +305,8 @@ namespace kairo.unity.native
 			return statusBarPosition_;
 		}
 
+		private static int statusBarPosition_ = int.MaxValue;
+
 		private static int _getStatusBarPosition()
 		{
 			if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
@@ -374,6 +355,8 @@ namespace kairo.unity.native
 			return (int)app_.RunOnUiThread(() => _getWidth(), true);
 		}
 
+		private static int lastCanvasWidth_;
+
 		private static int _getWidth()
 		{
 			if (FepPanel.Current != null)
@@ -397,6 +380,8 @@ namespace kairo.unity.native
 			}
 			return (int)app_.RunOnUiThread(() => _getHeight(), true);
 		}
+
+		private static int lastCanvasHeight_;
 
 		private static int _getHeight()
 		{
@@ -429,6 +414,8 @@ namespace kairo.unity.native
 			return appWidth_;
 		}
 
+		private static int appWidth_ = -1;
+
 		private static int _getAppWidth()
 		{
 			if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
@@ -454,6 +441,8 @@ namespace kairo.unity.native
 			return appHeight_;
 		}
 
+		private static int appHeight_ = -1;
+
 		private static int _getAppHeight()
 		{
 			if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
@@ -465,12 +454,17 @@ namespace kairo.unity.native
 
 		internal static void UpdateAppSize()
 		{
-			if (appWidth_ != -1 && appHeight_ != -1 && appWidth_ < appHeight_ != Screen.width < Screen.height)
+			if (KairoPlugin.appWidth_ == -1 || KairoPlugin.appHeight_ == -1)
 			{
-				int num = appWidth_;
-				appWidth_ = appHeight_;
-				appHeight_ = num;
+				return;
 			}
+			if (KairoPlugin.appWidth_ < KairoPlugin.appHeight_ == Screen.width < Screen.height)
+			{
+				return;
+			}
+			int num = KairoPlugin.appWidth_;
+			KairoPlugin.appWidth_ = KairoPlugin.appHeight_;
+			KairoPlugin.appHeight_ = num;
 		}
 
 		public static float GetScaleRatio(int width, int height)
@@ -498,6 +492,18 @@ namespace kairo.unity.native
 			scaleRatioBase_ = (float)width * 100f / scaleRatio_;
 			return scaleRatio_;
 		}
+
+		private static float scaleRatio_;
+
+		private static int scaleRatioReqWidth_;
+
+		private static int scaleRatioReqHeight_;
+
+		private static int scaleRatioAppWidth_;
+
+		private static int scaleRatioAppHeight_;
+
+		private static float scaleRatioBase_;
 
 		private static float _getScaleRatio(int width, int height)
 		{
@@ -529,6 +535,8 @@ namespace kairo.unity.native
 			}
 			return packageName_;
 		}
+
+		private static string packageName_;
 
 		private static string _getPackageName()
 		{
@@ -569,13 +577,16 @@ namespace kairo.unity.native
 
 		public static string ImeOnBlock(string text, int displayMode, int inputMode)
 		{
-			return (string)app_.RunOnUiThread(delegate
-			{
+			return (string)KairoPlugin.app_.RunOnUiThread(() => {
 				if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
 				{
-					return Utility.CallStatic<string>("imeOnBlock", new object[3] { text, displayMode, inputMode });
+					return KairoPlugin.Utility.CallStatic<string>("imeOnBlock", new object[] { text, displayMode, inputMode });
 				}
-				return (kairo.common.cfg.Config.APPLI_TYPE == 3 && !kairo.common.cfg.Config.UNITY_EDITOR) ? text : kairo.unity.native.util.Dialog.ShowUnityDialog("ime", text)[0];
+				if (kairo.common.cfg.Config.APPLI_TYPE == 3 && !kairo.common.cfg.Config.UNITY_EDITOR)
+				{
+					return text;
+				}
+				return kairo.unity.native.util.Dialog.ShowUnityDialog(new object[] { "ime", text })[0];
 			}, true);
 		}
 
@@ -628,13 +639,16 @@ namespace kairo.unity.native
 
 		public static string[] ShowFepPanel(string title, string text, int mode, string positive, string negative, int maxLength = 0)
 		{
-			return (string[])app_.RunOnUiThread(delegate
-			{
+			return (string[])KairoPlugin.app_.RunOnUiThread(() => {
 				if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
 				{
-					return kairo.unity.native.util.StringUtil.GetStrArray(Utility.CallStatic<string>("showInputPanel", new object[6] { title, text, mode, positive, negative, maxLength }));
+					return kairo.unity.native.util.StringUtil.GetStrArray(KairoPlugin.Utility.CallStatic<string>("showInputPanel", new object[] { title, text, mode, positive, negative, maxLength }));
 				}
-				return (kairo.common.cfg.Config.APPLI_TYPE == 3 && !kairo.common.cfg.Config.UNITY_EDITOR) ? new string[2] { text, text } : kairo.unity.native.util.Dialog.ShowUnityDialog("input", title, text, positive, negative);
+				if (kairo.common.cfg.Config.APPLI_TYPE == 3 && !kairo.common.cfg.Config.UNITY_EDITOR)
+				{
+					return new string[] { text, text };
+				}
+				return kairo.unity.native.util.Dialog.ShowUnityDialog(new object[] { "input", title, text, positive, negative });
 			}, true);
 		}
 
@@ -662,7 +676,13 @@ namespace kairo.unity.native
 
 		public static string[] GetFepPanelResult()
 		{
-			return (string[])app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? kairo.unity.native.util.StringUtil.GetStrArray(Utility.CallStatic<string>("getInputPanelResult", new object[0])) : kairo.unity.native.util.Dialog.ShowUnityDialog("input", fepTitle_, fepText_, fepPositive_, fepNegative_), true);
+			return (string[])KairoPlugin.app_.RunOnUiThread(() => {
+				if (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR)
+				{
+					return kairo.unity.native.util.StringUtil.GetStrArray(KairoPlugin.Utility.CallStatic<string>("getInputPanelResult", new object[0]));
+				}
+				return kairo.unity.native.util.Dialog.ShowUnityDialog(new object[] { "input", KairoPlugin.fepTitle_, KairoPlugin.fepText_, KairoPlugin.fepPositive_, KairoPlugin.fepNegative_ });
+			}, true);
 		}
 
 		public static void PutPreference(string key, byte[] data)
@@ -866,7 +886,8 @@ namespace kairo.unity.native
 				if (!kairo.common.cfg.Config.UNITY_EDITOR && kairo.common.cfg.Config.APPLI_TYPE == 2)
 				{
 					AndroidJavaObject androidJavaObject = CreateLobiIntent(data, type, number);
-					AndroidJavaObject androidJavaObject2 = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+					AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+					AndroidJavaObject androidJavaObject2 = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity");
 					if (androidJavaObject2.Call<AndroidJavaObject>("getPackageManager", new object[0]).Call<AndroidJavaObject>("queryIntentActivities", new object[2] { androidJavaObject, 0 }).Call<bool>("isEmpty", new object[0]))
 					{
 						kairo.unity.ui.Canvas.OpenBrowser(KairoClub.SITE_URL);

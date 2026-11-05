@@ -32,7 +32,7 @@ def main():
         f'**{len(matched):,} de {len(methods):,} métodos matched ({100*len(matched)/len(methods):.2f}%).** {total_il:,} bytes de IL nos assemblies alvo.',
         f'{matched_il:,} bytes IL matched ({100*matched_il/total_il:.2f}%).',
         'Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.','',
-        'KairoLibrary compilada integralmente com dois compiladores. Assembly-CSharp ainda sem fonte recuperado.','',
+        'Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.3.2; Assembly-CSharp usa smcs 2.6.5.0.','',
         f"KairoLibrary: {verified.get('body_equal',0)} corpos correspondem com tokens resolvidos; {verified.get('equal_body_held_for_generated_group',0)} ficam retidos por dependências de membros gerados. Metadados dos tipos e identidade do assembly inteiro continuam pendentes.",'',
         '## Estados','', '| Estado | Métodos |','|---|---:|']
     lines += [f'| {state} | {states[state]} |' for state in ('todo','decompiled','equivalent','matched','external')]
@@ -66,10 +66,10 @@ def main():
     generated=sum(m['gerado_por']=='UNKNOWN' for m in methods)
     lines += ['','## Bloqueios','',
         '- Versão histórica exata dos compiladores: UNKNOWN; pacote Roslyn 1.3.2 é o melhor candidato testado para KairoLibrary.',
-        '- Assembly-CSharp: decompilação e compilação integral pendentes; quatro sondas Mono passaram.',
+        '- Assembly-CSharp: configuração stdlib default validada e chamada original de IndexOf restaurada; os corpos restantes ainda exigem recuperação.',
         '- Comparação completa de metadados por tipo, heaps e assembly ainda pendente.',
         f'- {generated} membros têm campo gerado_por UNKNOWN; propriedades e caches compartilhados podem ter vínculo comprovado no relatório sem uma origem única representável nesse campo.',
-        '- Nenhuma exceção de MVID, timestamp ou outro campo está autorizada.',
+        '- Quatro campos voláteis Kairo foram registrados com prova de repetição; nenhum normalizador de assembly foi aplicado.',
         '', 'Plano: [DECOMP_PLAN.md](DECOMP_PLAN.md). Ferramentas: [docs/toolchain.md](docs/toolchain.md).','']
     (ROOT/'PROGRESS.md').write_text('\n'.join(lines),encoding='utf-8')
     print(json.dumps({'methods':len(methods),'types':len(types),'il_bytes':total_il,'matched':len(matched),'matched_il_bytes':matched_il,'categories':dict(categories)}))

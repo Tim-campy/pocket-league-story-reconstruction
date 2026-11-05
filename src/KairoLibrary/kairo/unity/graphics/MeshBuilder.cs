@@ -1,3 +1,4 @@
+using kairo.unity.ui;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -187,14 +188,14 @@ namespace kairo.unity.graphics
 		{
 			this.meshMan = meshMan;
 			this.vertexColor = vertexColor;
-			layers[0] = new Layer(this, 0);
-			DEPTH_SCALE = ((meshMan.GetGraphics().GetDepthBits() > 16) ? 1 : 1024);
+			this.layers[0] = new MeshBuilder.Layer(this, 0);
+			this.DEPTH_SCALE = (float)((meshMan.GetGraphics().GetDepthBits() <= 16 ? 1024 : 1));
 			if (meshMan.offscreen_ == null)
 			{
-				DEPTH_SCALE = 1024f;
+				this.DEPTH_SCALE = 1024f;
 			}
-			DEPTH_STEP = 0.1f * DEPTH_SCALE;
-			Reset();
+			this.DEPTH_STEP = 0.1f * this.DEPTH_SCALE;
+			this.Reset();
 		}
 
 		public void Reset()

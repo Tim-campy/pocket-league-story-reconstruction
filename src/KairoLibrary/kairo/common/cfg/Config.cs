@@ -40,13 +40,13 @@ namespace kairo.common.cfg
 
 		public static bool USE_MEXA_UNIT1 = true;
 
-		public static bool COUNT_ENABLE = (DEBUG ? true : false);
+		public static bool COUNT_ENABLE = (!Config.DEBUG ? false : true);
 
-		public static bool PRINT = (DEBUG ? true : false);
+		public static bool PRINT = (!Config.DEBUG ? false : true);
 
-		public static bool USE_UNUSE_CHECK = DEBUG && !PTW;
+		public static bool USE_UNUSE_CHECK = (!Config.DEBUG ? false : !Config.PTW);
 
-		public static bool NUMPADCONTROL = !DEBUG;
+		public static bool NUMPADCONTROL = (!Config.DEBUG ? true : false);
 
 		public static bool FAST_BRIGHTNESS = true;
 
@@ -82,29 +82,29 @@ namespace kairo.common.cfg
 
 		public static bool ADMOB_ENABLE = false;
 
-		public static bool DEBUG_CMD = (DEBUG ? true : false);
+		public static bool DEBUG_CMD = (!Config.DEBUG ? false : true);
 
-		public static bool DEBUG_SEND_SC = !DEBUG && false;
+		public static bool DEBUG_SEND_SC = (!Config.DEBUG ? false : false);
 
-		public static bool DEBUG_CMD_DEV = (DEBUG ? true : false);
+		public static bool DEBUG_CMD_DEV = (!Config.DEBUG ? false : true);
 
-		public static bool SHOW_DEBUG = DEBUG && !PTW;
+		public static bool SHOW_DEBUG = (!Config.DEBUG ? false : !Config.PTW);
 
-		public static bool SHOW_FPS = DEBUG && !PTW;
+		public static bool SHOW_FPS = (!Config.DEBUG ? false : !Config.PTW);
 
-		public static bool SHOW_MEM = !DEBUG && false;
+		public static bool SHOW_MEM = (!Config.DEBUG ? false : false);
 
-		public static bool MUTE_SE = DEBUG && !PTW;
+		public static bool MUTE_SE = (!Config.DEBUG ? false : !Config.PTW);
 
-		public static bool FPS_UNLIMITED = !DEBUG && false;
+		public static bool FPS_UNLIMITED = (!Config.DEBUG ? false : false);
 
-		public static bool SHOW_GUIDEPOINT = DEBUG && !PTW;
+		public static bool SHOW_GUIDEPOINT = (!Config.DEBUG ? false : !Config.PTW);
 
-		public static bool DEBUG_SLOW = DEBUG && !PTW;
+		public static bool DEBUG_SLOW = (!Config.DEBUG ? false : !Config.PTW);
 
-		public static bool DEBUG_FAST = (DEBUG ? true : false);
+		public static bool DEBUG_FAST = (!Config.DEBUG ? false : true);
 
-		public static bool DEBUG_MONEYUP = DEBUG && !PTW;
+		public static bool DEBUG_MONEYUP = (!Config.DEBUG ? false : !Config.PTW);
 
 		public static int drawImageCount_;
 
@@ -170,7 +170,11 @@ namespace kairo.common.cfg
 			{
 				if (!(fieldInfo.Name == "APPLI_TYPE"))
 				{
-					typeFromHandle.GetField(fieldInfo.Name)?.SetValue(null, fieldInfo.GetValue(null));
+					FieldInfo field = typeFromHandle.GetField(fieldInfo.Name);
+					if (field != null)
+					{
+						field.SetValue(null, fieldInfo.GetValue(null));
+					}
 				}
 			}
 		}
@@ -243,23 +247,23 @@ namespace kairo.common.cfg
 			}
 			if (APPLI_TYPE == 1)
 			{
-				switch (num2)
+				if (num2 == 0)
 				{
-				case 0:
 					URL_SP = "http://kaipakaipa.fam.cx/SB/game/2Eo9mAkM/spout/gm" + PID + "/";
 					URL_SITE = "http://kaipakaipa.fam.cx/?uid=1&sid=PL91&from=gm" + PID;
 					URL_VERSIONUP = "http://kaipakaipa.fam.cx/i/f/game.php?cmd=download&" + PID_NAME + "=" + PID + "&v=1";
-					break;
-				case 1:
+				}
+				else if (num2 == 1)
+				{
 					URL_SP = "http://kaipa.jp/SB/game/2Eo9mAkM/spout/gm" + PID + "/";
 					URL_SITE = "http://kaipa.jp/?uid=1&sid=PL91&from=gm" + PID;
 					URL_VERSIONUP = "http://kaipa.jp/i/f/game.php?cmd=download&" + PID_NAME + "=" + PID + "&v=1";
-					break;
-				case 2:
+				}
+				else if (num2 == 2)
+				{
 					URL_SP = "http://kairosoft.net/appli/" + text + "/bin/SB/";
 					URL_SITE = "http://vf-dev.appget.com/download/htm/AC20389/" + APPLI_NAME + ".htm";
 					URL_VERSIONUP = "http://vf-dev.appget.com/download/htm/AC20389/" + APPLI_NAME + ".htm";
-					break;
 				}
 			}
 		}

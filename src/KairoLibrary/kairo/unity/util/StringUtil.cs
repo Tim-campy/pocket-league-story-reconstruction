@@ -163,17 +163,18 @@ namespace kairo.unity.util
 				stringBuilder.Append(text.SubstringJ(num, num2));
 				if (num2 + 1 < text.Length())
 				{
-					switch (text.CharAt(num2 + 1))
+					char c = text.CharAt(num2 + 1);
+					if (c == '\\')
 					{
-					case '\\':
 						stringBuilder.Append('\\');
-						break;
-					case 't':
+					}
+					else if (c == 't')
+					{
 						stringBuilder.Append('\t');
-						break;
-					case 'n':
+					}
+					else if (c == 'n')
+					{
 						stringBuilder.Append('\n');
-						break;
 					}
 				}
 				num = num2 + 2;

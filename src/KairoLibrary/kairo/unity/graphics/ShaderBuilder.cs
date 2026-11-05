@@ -417,93 +417,108 @@ namespace kairo.unity.graphics
 
 		private static string GetName(int nameBits)
 		{
+			int bits = nameBits;
 			string value;
-			if (nameCache_.TryGetValue(nameBits, out value))
+			if (nameCache_.TryGetValue(bits, out value))
 			{
 				return value;
 			}
 			value = "Kairo/";
-			if ((nameBits & 0xE0000) != 0)
+			if ((bits & 0xE0000) != 0)
 			{
 				value += "Clear/";
-				if ((nameBits & 0x20000) != 0)
+				if ((bits & 0x20000) != 0)
 				{
 					value += "Color";
 				}
-				if ((nameBits & 0x40000) != 0)
+				if ((bits & 0x40000) != 0)
 				{
 					value += "Depth";
 				}
-				if ((nameBits & 0x80000) != 0)
+				if ((bits & 0x80000) != 0)
 				{
 					value += "Stencil";
 				}
 			}
 			else
 			{
-				if ((nameBits & 1) != 0)
+				if ((bits & 1) != 0)
 				{
 					value += "GUI/";
 				}
-				if ((nameBits & 2) != 0)
+				if ((bits & 2) != 0)
 				{
-					value = (((nameBits & 8) == 0) ? (value + "Clip/") : (value + "Mask/"));
+					if ((bits & 8) != 0)
+					{
+						value += "Mask/";
+					}
+					else
+					{
+						value += "Clip/";
+					}
 				}
-				if ((nameBits & 0x10000) != 0)
+				if ((bits & 0x10000) != 0)
 				{
 					value += "Unc/";
 				}
-				if ((nameBits & 4) != 0)
+				if ((bits & 4) != 0)
 				{
 					value += "Clipped";
 				}
-				value = (((nameBits & 0x10) == 0) ? (value + "Shape") : (value + "Texture"));
-				if ((nameBits & 0x20) != 0)
+				if ((bits & 0x10) != 0)
+				{
+					value += "Texture";
+				}
+				else
+				{
+					value += "Shape";
+				}
+				if ((bits & 0x20) != 0)
 				{
 					value += "Blend";
 				}
-				if ((nameBits & 0x40) != 0)
+				if ((bits & 0x40) != 0)
 				{
 					value += "-Add";
 				}
-				if ((nameBits & 0x80) != 0)
+				if ((bits & 0x80) != 0)
 				{
 					value += "-Sub";
 				}
-				if ((nameBits & 0x2000) != 0)
+				if ((bits & 0x2000) != 0)
 				{
 					value += "0";
 				}
-				if ((nameBits & 0x4000) != 0)
+				if ((bits & 0x4000) != 0)
 				{
 					value += "1";
 				}
-				if ((nameBits & 0x8000) != 0)
+				if ((bits & 0x8000) != 0)
 				{
 					value += "2";
 				}
-				if ((nameBits & 0x100) != 0)
+				if ((bits & 0x100) != 0)
 				{
 					value += "-Opaque";
 				}
-				if ((nameBits & 0x200) != 0)
+				if ((bits & 0x200) != 0)
 				{
 					value += "-Trans";
 				}
-				if ((nameBits & 0x400) != 0)
+				if ((bits & 0x400) != 0)
 				{
 					value += "-Alpha";
 				}
-				if ((nameBits & 0x800) != 0)
+				if ((bits & 0x800) != 0)
 				{
 					value += "OT1";
 				}
-				if ((nameBits & 0x1000) != 0)
+				if ((bits & 0x1000) != 0)
 				{
 					value += "OT2";
 				}
 			}
-			nameCache_[nameBits] = value;
+			nameCache_[bits] = value;
 			return value;
 		}
 

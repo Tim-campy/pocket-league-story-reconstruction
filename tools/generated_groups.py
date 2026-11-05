@@ -18,7 +18,7 @@ def edges(method):
     return {(r['opcode'],r['kind'],r['id'],r['declaring_type']) for r in method.get('direct_references',[])}
 
 
-def prove_groups(original,rebuilt,generated_ids):
+def prove_groups(original,rebuilt,generated_ids,body_equal_ids=None):
     left={m['stable_id']:m for m in original['selected_methods']}
     right={m['stable_id']:m for m in rebuilt['selected_methods']}
     old_types={t['name']:t for t in original['types']}
@@ -79,6 +79,18 @@ def prove_groups(original,rebuilt,generated_ids):
             'origins':sorted(roots),'matching_member_name':key in right,
             'embedded_names_agree':embedded.issubset(root_names),'il_witnesses':witnesses}
 
+    if body_equal_ids is not None:
+        # These two helpers belong to the shared cache type, rather than one
+        # lambda. Its complete noncapturing-lambda set must correspond first.
+        for key in method_group:
+            owner=type_of(key);name=key.split('::',1)[1].split('(',1)[0]
+            if not owner.endswith('/<>c') or name not in ('.ctor','.cctor'):continue
+            lambdas={m for m in groups[method_group[key]] if '>b__' in m}
+            pending=sorted(lambdas-set(body_equal_ids))
+            proofs[key].update({'kind':'shared_cache_type','lambda_members':sorted(lambdas),
+                'pending_lambda_bodies':pending,'all_lambda_bodies_equal':bool(lambdas) and not pending})
+            proofs[key]['proved']=proofs[key]['proved'] and bool(lambdas) and not pending
+
     for group,members in groups.items():
         group_reports[group]={'proved':all(proofs[m]['proved'] for m in members),
             'origins':sorted(root_sets[group]),'member_ids':sorted(members),
@@ -105,17 +117,17 @@ def prove_groups(original,rebuilt,generated_ids):
             _,kind,ref,owner=edge
             group=method_group.get(ref) if kind=='method' else None
             if group is None and owner in groups: group=owner
-            if group:
+            if owner.startswith('<PrivateImplementationDetails>') and kind=='field':
+                valid=edge in edges(right.get(key,{})) and ref in old_fields and old_fields[ref]==new_fields.get(ref)
+                dependencies.append(ref)
+                if not valid: unproved.append(ref)
+            elif group:
                 dependencies.append(group)
                 if kind=='method' and ref in method_group:
                     valid=proofs.get(ref,{}).get('proved',False)
                 else:
                     valid=bool(root_sets[group]) and edge in edges(right.get(key,{}))
                 if not valid: unproved.append(group)
-            elif owner.startswith('<PrivateImplementationDetails>') and kind=='field':
-                valid=edge in edges(right.get(key,{})) and ref in old_fields and old_fields[ref]==new_fields.get(ref)
-                dependencies.append(ref)
-                if not valid: unproved.append(ref)
             elif ref in generated_ids:
                 valid=proofs.get(ref,{}).get('proved',False)
                 dependencies.append(ref)

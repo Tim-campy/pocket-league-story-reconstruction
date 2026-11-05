@@ -104,8 +104,6 @@ namespace kairo.unity.ui
 
 		private HeightPoint[] hintHeightMap_;
 
-		private Rectangle GetBspRect_Result = new Rectangle();
-
 		private ImageAtlas()
 		{
 		}
@@ -282,6 +280,8 @@ namespace kairo.unity.ui
 				}
 			}, true);
 		}
+
+		private Rectangle GetBspRect_Result = new Rectangle();
 
 		internal void ImageToAtlas(Image image)
 		{

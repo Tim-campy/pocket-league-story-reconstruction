@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,10 @@ namespace kairo.unity.ui
 {
 	public abstract class IApplication : MonoBehaviour
 	{
+
+	protected IApplication()
+	{
+	}
 		public delegate object UIMethod();
 
 		private class MethodTask
@@ -165,11 +170,11 @@ namespace kairo.unity.ui
 				Config.Create(config);
 				if (Config.UNITY_EDITOR)
 				{
-					dataPath_ = Application.persistentDataPath + "/" + Application.productName;
+					dataPath_ = string.Concat(Application.persistentDataPath, "/", Application.productName);
 				}
 				else if (Application.platform == RuntimePlatform.IPhonePlayer)
 				{
-					string text = Application.persistentDataPath + "/" + Application.productName;
+					string text = string.Concat(Application.persistentDataPath, "/", Application.productName);
 					string text2 = Application.temporaryCachePath.Replace("Caches", "Application Support");
 					string text3 = "";
 					if (Config.ICLOUD)
@@ -192,7 +197,7 @@ namespace kairo.unity.ui
 						}
 						catch (Exception ex)
 						{
-							Log.Info("移行に失敗しました。" + ex);
+							Log.Info(string.Concat("移行に失敗しました。", ex));
 							if (Directory.Exists(dataPath_))
 							{
 								Directory.Delete(dataPath_, true);
@@ -204,12 +209,12 @@ namespace kairo.unity.ui
 							Directory.Delete(text3, true);
 						}
 					}
-					Log.Info("[DataPath] " + dataPath_);
+					Log.Info(string.Concat("[DataPath] ", dataPath_));
 				}
 				else if (Application.platform == RuntimePlatform.WindowsPlayer)
 				{
 					dataPath_ = Application.dataPath;
-					Log.Info("DataPath[Windows] " + dataPath_);
+					Log.Info(string.Concat("DataPath[Windows] ", dataPath_));
 				}
 				else
 				{
@@ -239,9 +244,12 @@ namespace kairo.unity.ui
 					ResourceManager resourceManager = new ResourceManager();
 					resourceManager.Load(Storage.Read(3, false, "kairolib.dat"));
 					Image[] img = resourceManager.img;
-					for (int i = 0; i < img.Length; i++)
+					foreach (Image image in img)
 					{
-						img[i]?.SetExpiration(true, 40);
+						if (image != null)
+						{
+							image.SetExpiration(true, 40);
+						}
 					}
 					resource_ = resourceManager;
 				}
@@ -353,12 +361,13 @@ namespace kairo.unity.ui
 
 		private void LateUpdate()
 		{
-			if (!TerminateCheck())
+			if (this.TerminateCheck())
 			{
-				UpdateResolution();
-				ExecuteUIMethods();
-				TerminateCheck();
+				return;
 			}
+			this.UpdateResolution();
+			this.ExecuteUIMethods();
+			this.TerminateCheck();
 		}
 
 		private void OnPreRender()
@@ -405,7 +414,11 @@ namespace kairo.unity.ui
 						if (!termination_)
 						{
 							Error(e);
-							GetFormManager()?.RemoveAllForms();
+							FormManagerBase formManager = GetFormManager();
+							if (formManager != null)
+							{
+								formManager.RemoveAllForms();
+							}
 						}
 					}
 					finally
@@ -465,26 +478,29 @@ namespace kairo.unity.ui
 
 		private void OnApplicationFocus(bool focusStatus)
 		{
-			if (!Config.UNITY_EDITOR || focusStatus)
+			if (Config.UNITY_EDITOR && !focusStatus)
 			{
-				isFocus_ = focusStatus;
-				if (focusStatus)
-				{
-					OnRestart();
-					visible_ = true;
-				}
-				else
-				{
-					visible_ = false;
-					OnStop();
-					SoundPlayer.GetInstance().Suspend();
-				}
+				return;
 			}
+			this.isFocus_ = focusStatus;
+			if (focusStatus)
+			{
+				this.OnRestart();
+				this.visible_ = true;
+				return;
+			}
+			this.visible_ = false;
+			this.OnStop();
+			SoundPlayer.GetInstance().Suspend();
 		}
 
 		private void OnApplicationQuit()
 		{
-			NotifyManager.GetInstance()?.DoNotify();
+			NotifyManager instance = NotifyManager.GetInstance();
+			if (instance != null)
+			{
+				instance.DoNotify();
+			}
 			KairoPlugin.SetNotificationBackground(true);
 			FormManagerBase.ProcessEvent(AppEventType.Exit);
 			OnDestroy();
@@ -499,7 +515,11 @@ namespace kairo.unity.ui
 				Terminate();
 				if (Config.UNITY_EDITOR)
 				{
-					Type.GetType("UnityEditor.EditorApplication, UnityEditor.dll")?.GetProperty("isPlaying").SetValue(null, false, null);
+					Type type = Type.GetType("UnityEditor.EditorApplication, UnityEditor.dll");
+					if (type != null)
+					{
+						type.GetProperty("isPlaying").SetValue(null, false, null);
+					}
 				}
 				if (Canvas.lastOpenBrowserFrame_ == GetTotalFrames())
 				{
@@ -552,13 +572,18 @@ namespace kairo.unity.ui
 
 		public void Terminate()
 		{
-			if (!termination_)
+			if (this.termination_)
 			{
-				termination_ = true;
-				FormManagerBase.ProcessEvent(AppEventType.Exit);
-				KairoBase.GetInstance()?.Finish();
-				ClockTime.Destroy();
+				return;
 			}
+			this.termination_ = true;
+			FormManagerBase.ProcessEvent(AppEventType.Exit, new object[0]);
+			KairoBase instance = KairoBase.GetInstance();
+			if (instance != null)
+			{
+				instance.Finish();
+			}
+			ClockTime.Destroy();
 		}
 
 		public static string GetProperty(string key)
@@ -817,20 +842,22 @@ namespace kairo.unity.ui
 					return;
 				}
 			}
-			MethodTask methodTask = new MethodTask(start);
-			lock (lockUITask_)
 			{
-				uiMethodTasks_.Add(methodTask);
-			}
-			if (wait)
-			{
-				while (!methodTask.finished)
+				MethodTask methodTask = new MethodTask(start);
+				lock (lockUITask_)
 				{
-					Thread.Sleep(10);
+					uiMethodTasks_.Add(methodTask);
 				}
-				if (methodTask.error != null)
+				if (wait)
 				{
-					throw methodTask.error;
+					while (!methodTask.finished)
+					{
+						Thread.Sleep(10);
+					}
+					if (methodTask.error != null)
+					{
+						throw methodTask.error;
+					}
 				}
 			}
 		}
@@ -1012,24 +1039,28 @@ namespace kairo.unity.ui
 
 		public void SetResolutionScaleRatio(float scaleRatio)
 		{
-			if (!float.IsNaN(resolutionScaleMax_) && resolutionScaleMax_ < scaleRatio)
+			if (!float.IsNaN(this.resolutionScaleMax_) && this.resolutionScaleMax_ < scaleRatio)
 			{
-				scaleRatio = resolutionScaleMax_;
+				scaleRatio = this.resolutionScaleMax_;
 			}
-			if ((!changeResolution_ || scaleRatio != changeResolutionScaleRatio_) && (changeResolution_ || scaleRatio != resolutionScaleRatio_))
+			if (this.changeResolution_ && scaleRatio == this.changeResolutionScaleRatio_)
 			{
-				float num = (float)(Screen.width * 100) / resolutionScaleRatio_;
-				float num2 = (float)(Screen.height * 100) / resolutionScaleRatio_;
-				changeResolution_ = true;
-				changeResolutionWidth_ = (int)(num * scaleRatio / 100f + 0.01f);
-				changeResolutionHeight_ = (int)(num2 * scaleRatio / 100f + 0.01f);
-				changeResolutionScaleRatio_ = scaleRatio;
-				RunOnUiThread(delegate
-				{
-					Screen.SetResolution(changeResolutionWidth_, changeResolutionHeight_, Screen.fullScreen);
-					UpdateResolution();
-				}, true);
+				return;
 			}
+			if (!this.changeResolution_ && scaleRatio == this.resolutionScaleRatio_)
+			{
+				return;
+			}
+			float single = (float)(Screen.width * 100) / this.resolutionScaleRatio_;
+			float single1 = (float)(Screen.height * 100) / this.resolutionScaleRatio_;
+			this.changeResolution_ = true;
+			this.changeResolutionWidth_ = (int)(single * scaleRatio / 100f + 0.01f);
+			this.changeResolutionHeight_ = (int)(single1 * scaleRatio / 100f + 0.01f);
+			this.changeResolutionScaleRatio_ = scaleRatio;
+			this.RunOnUiThread(() => {
+				Screen.SetResolution(this.changeResolutionWidth_, this.changeResolutionHeight_, Screen.fullScreen);
+				this.UpdateResolution();
+			}, true);
 		}
 
 		public float GetResolutionScaleRatio()
@@ -1040,15 +1071,19 @@ namespace kairo.unity.ui
 		private void UpdateResolution()
 		{
 			KairoPlugin.UpdateAppSize();
-			if (changeResolution_ && Screen.width == changeResolutionWidth_ && Screen.height == changeResolutionHeight_)
+			if (!this.changeResolution_)
 			{
-				resolutionScaleRatio_ = changeResolutionScaleRatio_;
+				return;
+			}
+			if (Screen.width == this.changeResolutionWidth_ && Screen.height == this.changeResolutionHeight_)
+			{
+				this.resolutionScaleRatio_ = this.changeResolutionScaleRatio_;
 				DisplayMetrics.Update();
 				KairoPlugin.ResetResolution();
-				Camera.main.orthographicSize = Screen.height / 2;
-				Camera.main.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.transform.position.z);
-				resolutionChangedWait_ = 10;
-				changeResolution_ = false;
+				Camera.main.orthographicSize = (float)(Screen.height / 2);
+				Camera.main.transform.position = new Vector3((float)(Screen.width / 2), (float)(Screen.height / 2), Camera.main.transform.position.z);
+				this.resolutionChangedWait_ = 10;
+				this.changeResolution_ = false;
 			}
 		}
 

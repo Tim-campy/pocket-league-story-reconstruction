@@ -10,6 +10,32 @@ from generated_groups import prove_groups
 
 
 class ComparisonTests(unittest.TestCase):
+    def test_private_data_field_proof_with_generated_constructor(self):
+        owner='<PrivateImplementationDetails>'
+        root='T::Load()->System.Void';constructor=owner+'::.ctor()->System.Void'
+        field={'id':owner+'::Data','name':'Data','initial_value':'01-02','type':'bytes'}
+        doc={'selected_methods':[{'stable_id':root,'direct_references':[
+            {'offset':0,'opcode':'ldtoken','kind':'field','id':field['id'],'declaring_type':owner}]},
+            {'stable_id':constructor,'direct_references':[]}],
+            'types':[{'name':'T','fields':[],'properties':[]},{'name':owner,'fields':[field],'properties':[]}]}
+        proof,_=prove_groups(doc,copy.deepcopy(doc),{constructor})
+        self.assertTrue(proof[root]['proved'])
+        other=copy.deepcopy(doc);other['types'][1]['fields'][0]['initial_value']='01-03'
+        proof,_=prove_groups(doc,other,{constructor})
+        self.assertFalse(proof[root]['proved'])
+
+    def test_shared_cache_helpers_wait_for_every_lambda_body(self):
+        owner='T/<>c';root='T::Run()->System.Void';method=owner+'::<Run>b__0_0()->System.Void'
+        constructor=owner+'::.ctor()->System.Void'
+        doc={'selected_methods':[{'stable_id':root,'direct_references':[
+            {'offset':0,'opcode':'ldftn','kind':'method','id':method,'declaring_type':owner}]},
+            {'stable_id':method,'direct_references':[]},{'stable_id':constructor,'direct_references':[]}],
+            'types':[{'name':'T','fields':[],'properties':[]},{'name':owner,'fields':[],'properties':[]}]}
+        proof,_=prove_groups(doc,copy.deepcopy(doc),{method,constructor},{root,constructor})
+        self.assertFalse(proof[constructor]['proved'])
+        proof,_=prove_groups(doc,copy.deepcopy(doc),{method,constructor},{root,constructor,method})
+        self.assertTrue(proof[constructor]['proved'])
+
     def test_generated_ownership_requires_matching_il_edge_and_name(self):
         root='T::Run()->System.Void';generated='T/<>c::<Run>b__0_0()->System.Void'
         missing='T/<>c::<Other>b__1_0()->System.Void'

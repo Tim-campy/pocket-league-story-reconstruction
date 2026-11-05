@@ -76,17 +76,18 @@ namespace kairo.unity.m3d4.util3d
 
 		public void Normalize()
 		{
-			if (x_ == 0f && y_ == 0f && z_ == 0f)
+			if (this.x_ == 0f && this.y_ == 0f && this.z_ == 0f)
 			{
 				throw new ArithmeticException();
 			}
-			float num = FastMath.Sqrt(x_ * x_ + y_ * y_ + z_ * z_);
-			if (num != 0f)
+			float single = FastMath.Sqrt(this.x_ * this.x_ + this.y_ * this.y_ + this.z_ * this.z_);
+			if (single == 0f)
 			{
-				x_ /= num;
-				y_ /= num;
-				z_ /= num;
+				return;
 			}
+			this.x_ /= single;
+			this.y_ /= single;
+			this.z_ /= single;
 		}
 
 		public void Set(float x, float y, float z)

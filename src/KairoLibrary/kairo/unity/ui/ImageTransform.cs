@@ -1,3 +1,4 @@
+using System;
 using kairo.unity.m3d4.util3d;
 
 namespace kairo.unity.ui
@@ -129,25 +130,25 @@ namespace kairo.unity.ui
 
 		protected int[] GetTransform(bool translate)
 		{
-			if (cacheRotate != rotate)
+			if (ImageTransform.cacheRotate != this.rotate)
 			{
-				cacheRotate = rotate;
-				cacheSin = FastMath.Sin(cacheRotate);
-				cacheCos = FastMath.Cos(cacheRotate);
+				ImageTransform.cacheRotate = this.rotate;
+				ImageTransform.cacheSin = FastMath.Sin(ImageTransform.cacheRotate);
+				ImageTransform.cacheCos = FastMath.Cos(ImageTransform.cacheRotate);
 			}
-			float num = cacheCos;
-			float num2 = cacheSin;
-			int[] array = transform;
+			float single = ImageTransform.cacheCos;
+			float single1 = ImageTransform.cacheSin;
+			int[] numArray = this.transform;
 			if (!translate)
 			{
-				array[0] = (int)(num * scaleX * imageScaleX_ * 4096f);
-				array[1] = (int)((0f - num2) * scaleY * imageScaleY_ * 4096f);
-				array[3] = (int)(num2 * scaleX * imageScaleX_ * 4096f);
-				array[4] = (int)(num * scaleY * imageScaleY_ * 4096f);
+				numArray[0] = (int)(single * this.scaleX * this.imageScaleX_ * 4096f);
+				numArray[1] = (int)(-single1 * this.scaleY * this.imageScaleY_ * 4096f);
+				numArray[3] = (int)(single1 * this.scaleX * this.imageScaleX_ * 4096f);
+				numArray[4] = (int)(single * this.scaleY * this.imageScaleY_ * 4096f);
 			}
-			array[2] = (int)((num * scaleX * (float)imageTransX_ + (0f - num2) * scaleY * (float)imageTransY_ + num * scaleX * (float)localX + (0f - num2) * scaleY * (float)localY + (float)x) * 4096f);
-			array[5] = (int)((num2 * scaleX * (float)imageTransX_ + num * scaleY * (float)imageTransY_ + num2 * scaleX * (float)localX + num * scaleY * (float)localY + (float)y) * 4096f);
-			return array;
+			numArray[2] = (int)((single * this.scaleX * (float)this.imageTransX_ + -single1 * this.scaleY * (float)this.imageTransY_ + single * this.scaleX * (float)this.localX + -single1 * this.scaleY * (float)this.localY + (float)this.x) * 4096f);
+			numArray[5] = (int)((single1 * this.scaleX * (float)this.imageTransX_ + single * this.scaleY * (float)this.imageTransY_ + single1 * this.scaleX * (float)this.localX + single * this.scaleY * (float)this.localY + (float)this.y) * 4096f);
+			return numArray;
 		}
 
 		public int[] GetPoint()

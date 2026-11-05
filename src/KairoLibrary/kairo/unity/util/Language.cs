@@ -761,24 +761,26 @@ namespace kairo.unity.util
 
 		public static void SetSoftLabelTable(string[][] softlabelTable)
 		{
-			softlabelTable_ = softlabelTable;
-			if (softlabelTable_ != null)
+			Language.softlabelTable_ = softlabelTable;
+			if (Language.softlabelTable_ == null)
 			{
-				for (int i = 0; i < softlabelTable_.Length; i++)
-				{
-					softlabelTable_[i][0] = StringUtil.Replace(softlabelTable_[i][0], "\\", "¥");
-					softlabelTable_[i][1] = StringUtil.Replace(softlabelTable_[i][1], "\\", "¥");
-				}
+				return;
+			}
+			for (int i = 0; i < (int)Language.softlabelTable_.Length; i++)
+			{
+				Language.softlabelTable_[i][0] = StringUtil.Replace(Language.softlabelTable_[i][0], "\\", "¥");
+				Language.softlabelTable_[i][1] = StringUtil.Replace(Language.softlabelTable_[i][1], "\\", "¥");
 			}
 		}
 
 		public static void SetTextTable(string[][] textTable)
 		{
-			textTable_ = null;
-			if (textTable != null)
+			Language.textTable_ = null;
+			if (textTable == null)
 			{
-				textTable_ = MakeTextTable(textTable);
+				return;
 			}
+			Language.textTable_ = Language.MakeTextTable(textTable);
 		}
 
 		public static void ClearSoftLabelTable()
@@ -1444,10 +1446,9 @@ namespace kairo.unity.util
 						if (text5.Length > 0)
 						{
 							langPackRecord = new LangPackRecord(int.Parse(text5), file, text7);
-							string[] array4 = text6.Split('&');
-							for (int i = 0; i < array4.Length; i++)
+							foreach (string positionText in text6.Split('&'))
 							{
-								string[] array5 = array4[i].Split('-');
+								string[] array5 = positionText.Split('-');
 								langPackRecord.AddPosition(int.Parse(array5[0]), int.Parse(array5[1]));
 							}
 							while (langPackRecord.Id >= langPackRecords_.Length)
@@ -1460,17 +1461,21 @@ namespace kairo.unity.util
 							List<LangPackRecord> value;
 							if (!dictionary.TryGetValue(langPackRecord.File, out value))
 							{
-								value = (dictionary[langPackRecord.File] = new List<LangPackRecord>());
+								dictionary[langPackRecord.File] = (value = new List<LangPackRecord>());
 							}
 							value.Add(langPackRecord);
 						}
 						else
 						{
-							langPackRecord?.From.Add(text7);
+							if (langPackRecord != null)
+							{
+								langPackRecord.From.Add(text7);
+							}
 						}
 						num2 = num6 + 1;
 					}
 					int num7 = -1;
+					{
 					string text8 = null;
 					using (MemoryStream stream = new MemoryStream(data))
 					{
@@ -1568,9 +1573,13 @@ namespace kairo.unity.util
 						}
 						else if (text11.Length <= 0)
 						{
-							langPackRecord?.To.Add(text9 + text12 + text10);
+							if (langPackRecord != null)
+							{
+								langPackRecord.To.Add(text9 + text12 + text10);
+							}
 						}
 						num2 = num10 + 1;
+					}
 					}
 					if (num7 != Config.PID)
 					{
@@ -1691,7 +1700,7 @@ namespace kairo.unity.util
 								List<int> value4;
 								if (!dictionary2.TryGetValue(key, out value4))
 								{
-									value4 = (dictionary2[key] = new List<int>());
+									dictionary2[key] = (value4 = new List<int>());
 								}
 								value4.Add(int.Parse(text14));
 							}
@@ -1799,10 +1808,8 @@ namespace kairo.unity.util
 				jarInflater.Close();
 				jarInflater = null;
 				kairo.unity.ui.Font.SetScale(100);
-				if (langPackRecords_ == null)
+				if (langPackRecords_ != null)
 				{
-					return;
-				}
 				if (langPackScale_ == -1 && dictionary.ContainsKey("text"))
 				{
 					List<LangPackRecord> list5 = new List<LangPackRecord>();
@@ -1850,6 +1857,7 @@ namespace kairo.unity.util
 				{
 					kairo.unity.ui.Font.SetScale(langPackScale_);
 				}
+				}
 			}
 			catch (Exception ex)
 			{
@@ -1863,7 +1871,10 @@ namespace kairo.unity.util
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (jarInflater != null)
+				{
+					jarInflater.Close();
+				}
 				jarInflater = null;
 			}
 		}

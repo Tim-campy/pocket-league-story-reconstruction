@@ -1,0 +1,123 @@
+{
+  "snapshot_receipt_build_sha256": "66a6da5f9803b12c8d5d775035be2c6b99d6880f0c60508c2b34d17c6b1c23d1",
+  "applied_to_main": false,
+  "source_map": "analysis/kairo-concat-agent-source-map.json",
+  "trials": [
+    {
+      "id": "kairo.unity.graphics.ShaderBuilder::GetName(System.Int32)->System.String",
+      "label": "concat-agent-shader-1",
+      "description": "Restore copied Int32 argument local and separate assignments in two if/else arms",
+      "body_equal": true,
+      "differences": [],
+      "percent": 100.0,
+      "candidate_source": "analysis/variants/kairo-concat-agent/concat-agent-shader-1/src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs",
+      "base_source_sha256": "f96e7b7cf25299673cd06633a318b1343f4ab567d843a75f6e817357d2a6de97",
+      "candidate_sha256": "b03335aa161b20e2ec188ab7e4b70f1fe8d71e3d02ba9edec26c07de4ab3ddb9",
+      "original_il_bytes": 479,
+      "candidate_il_bytes": 479,
+      "original_locals": 2,
+      "candidate_locals": 2,
+      "previously_equal_bodies_lost": [],
+      "full_regression_check": "PASS"
+    },
+    {
+      "id": "kairo.unity.util.StreamUtil::ReadArray(java.io.InputStream,System.Array,System.Type,System.Int32)->System.Object",
+      "label": "concat-agent-stream-1",
+      "description": "Restore ordered if/else length decoding and positive serializable arm before unsupported-type throw",
+      "body_equal": true,
+      "differences": [],
+      "percent": 100.0,
+      "candidate_source": "analysis/variants/kairo-concat-agent/concat-agent-stream-1/src/KairoLibrary/kairo/unity/util/StreamUtil.cs",
+      "base_source_sha256": "e444f680f974edfb35f35380d4026536f3a18dfa7ef854f073af63f2c22a62ed",
+      "candidate_sha256": "0f91a332d5be663c7ba1b8f5a1ddf5a918304f6cb6095f3f0b86a0f544a4c12f",
+      "original_il_bytes": 1207,
+      "candidate_il_bytes": 1207,
+      "original_locals": 24,
+      "candidate_locals": 24,
+      "previously_equal_bodies_lost": [],
+      "full_regression_check": "PASS"
+    },
+    {
+      "id": "kairo.unity.util.Language::LoadLanguagePack(System.Byte[])->System.Void",
+      "label": "concat-agent-language-1",
+      "description": "Restore translation parsing lexical scope, explicit null checks and separate dictionary assignments",
+      "body_equal": false,
+      "differences": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "resolved_body_bytes"
+      ],
+      "percent": 39.4762,
+      "candidate_source": "analysis/variants/kairo-concat-agent/concat-agent-language-1/src/KairoLibrary/kairo/unity/util/Language.cs",
+      "base_source_sha256": "b7343677ca31bccd98f6ab9301cdc749e3a400ed1e1238d5126e28633889fa93",
+      "candidate_sha256": "5b4799d8dd7b66e1807c588d11794459dd3fd0e2f9b8bda8703aa229933aeec4",
+      "original_il_bytes": 3837,
+      "candidate_il_bytes": 3841,
+      "original_locals": 89,
+      "candidate_locals": 90
+    },
+    {
+      "id": "kairo.unity.util.Language::LoadLanguagePack(System.Byte[])->System.Void",
+      "label": "concat-agent-language-2",
+      "description": "Restore lexical scope, null checks, nested list assignments, array foreach and positive final guard",
+      "body_equal": true,
+      "differences": [],
+      "percent": 100.0,
+      "candidate_source": "analysis/variants/kairo-concat-agent/concat-agent-language-2/src/KairoLibrary/kairo/unity/util/Language.cs",
+      "base_source_sha256": "b7343677ca31bccd98f6ab9301cdc749e3a400ed1e1238d5126e28633889fa93",
+      "candidate_sha256": "97914e5108da12ebf3bc9af747b5af02f9e9af4c912b1ebd1e1e101853a63bab",
+      "original_il_bytes": 3837,
+      "candidate_il_bytes": 3837,
+      "original_locals": 89,
+      "candidate_locals": 89,
+      "previously_equal_bodies_lost": [],
+      "full_regression_check": "PASS"
+    }
+  ],
+  "concat_signature_diagnostics": [
+    {
+      "id": "kairo.unity.graphics.ShaderBuilder::GetName(System.Int32)->System.String",
+      "concat_signatures_and_counts_equal": true,
+      "original_concat_signatures": {
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Concat``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default": 22
+      },
+      "baseline_concat_signatures": {
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Concat``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default": 22
+      }
+    },
+    {
+      "id": "kairo.unity.util.StreamUtil::ReadArray(java.io.InputStream,System.Array,System.Type,System.Int32)->System.Object",
+      "concat_signatures_and_counts_equal": true,
+      "original_concat_signatures": {
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Concat``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default": 1
+      },
+      "baseline_concat_signatures": {
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Concat``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default": 1
+      }
+    },
+    {
+      "id": "kairo.unity.util.Language::LoadLanguagePack(System.Byte[])->System.Void",
+      "concat_signatures_and_counts_equal": true,
+      "original_concat_signatures": {
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Concat``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default": 3
+      },
+      "baseline_concat_signatures": {
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Concat``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default": 3
+      }
+    }
+  ],
+  "interpretation": "Concat overload identity already matches; source-local/control-flow differences diagnosed",
+  "combined": {
+    "label": "concat-agent-combined",
+    "full_assembly_build": "PASS",
+    "targets": {
+      "kairo.unity.graphics.ShaderBuilder::GetName(System.Int32)->System.String": true,
+      "kairo.unity.util.StreamUtil::ReadArray(java.io.InputStream,System.Array,System.Type,System.Int32)->System.Object": true,
+      "kairo.unity.util.Language::LoadLanguagePack(System.Byte[])->System.Void": true
+    },
+    "previously_equal_bodies_lost": [],
+    "validated": true
+  }
+}

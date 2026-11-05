@@ -42,27 +42,27 @@ namespace kairo.unity.m3d4.util3d
 			Vector3D vector3D = new Vector3D(look.GetX() - position.GetX(), look.GetY() - position.GetY(), look.GetZ() - position.GetZ());
 			vector3D.Normalize();
 			up.Normalize();
+			Vector3D vector3D1 = new Vector3D();
+			vector3D1.Cross(vector3D, up);
 			Vector3D vector3D2 = new Vector3D();
-			vector3D2.Cross(vector3D, up);
-			Vector3D vector3D3 = new Vector3D();
-			vector3D3.Cross(vector3D2, vector3D);
-			mtx_[0] = vector3D2.GetX();
-			mtx_[1] = vector3D2.GetY();
-			mtx_[2] = vector3D2.GetZ();
-			mtx_[3] = 0f;
-			mtx_[4] = 0f - vector3D3.GetX();
-			mtx_[5] = 0f - vector3D3.GetY();
-			mtx_[6] = 0f - vector3D3.GetZ();
-			mtx_[7] = 0f;
-			mtx_[8] = vector3D.GetX();
-			mtx_[9] = vector3D.GetY();
-			mtx_[10] = vector3D.GetZ();
-			mtx_[11] = 0f;
-			mtx_[12] = 0f;
-			mtx_[13] = 0f;
-			mtx_[14] = 0f;
-			mtx_[15] = 1f;
-			Translate(0f - position.GetX(), 0f - position.GetY(), 0f - position.GetZ());
+			vector3D2.Cross(vector3D1, vector3D);
+			this.mtx_[0] = vector3D1.GetX();
+			this.mtx_[1] = vector3D1.GetY();
+			this.mtx_[2] = vector3D1.GetZ();
+			this.mtx_[3] = 0f;
+			this.mtx_[4] = -vector3D2.GetX();
+			this.mtx_[5] = -vector3D2.GetY();
+			this.mtx_[6] = -vector3D2.GetZ();
+			this.mtx_[7] = 0f;
+			this.mtx_[8] = vector3D.GetX();
+			this.mtx_[9] = vector3D.GetY();
+			this.mtx_[10] = vector3D.GetZ();
+			this.mtx_[11] = 0f;
+			this.mtx_[12] = 0f;
+			this.mtx_[13] = 0f;
+			this.mtx_[14] = 0f;
+			this.mtx_[15] = 1f;
+			this.Translate(-position.GetX(), -position.GetY(), -position.GetZ());
 		}
 
 		public void Multiply(Transform transform)
@@ -92,7 +92,8 @@ namespace kairo.unity.m3d4.util3d
 			{
 				throw new ArgumentException();
 			}
-			new Vector3D(x, y, z).Normalize();
+			Vector3D axis = new Vector3D(x, y, z);
+			axis.Normalize();
 			float num = FastMath.Sin(angle);
 			float num2 = FastMath.Cos(angle);
 			Transform transform = new Transform();

@@ -78,9 +78,13 @@ namespace kairo.unity.system.notification.ui
 		{
 			if (!Regex.IsMatch(customField, "\\b@level\\s"))
 			{
-				customField = "@level 1 " + customField;
+				customField = string.Concat("@level 1 ", customField);
 			}
-			KairoBase.GetInstance()?.ConnectNotificationSend(friendId, "@id " + id + "@text " + text + " " + customField, (id == -1) ? null : id.ToString());
+			KairoBase instance = KairoBase.GetInstance();
+			if (instance != null)
+			{
+				instance.ConnectNotificationSend(friendId, string.Concat("@id ", id, "@text ", text, " ", customField), (id == -1) ? null : id.ToString());
+			}
 		}
 
 		public void SendPushText(string friendId, string text, string customField = "")

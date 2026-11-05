@@ -1,0 +1,276 @@
+{
+  "scope": "local-scope corrections in three lock-labelled methods; full frozen-assembly regression comparison",
+  "frozen_body_equal_count": 2954,
+  "frozen_receipt_build_sha256": "74b2de8195412f0716b78b437d46d12fd1e3c65f2593ed7823702646b7db16a9",
+  "frozen_compilation_build_sha256": "b419f405759d367e5a4af07216519b1808edab974476cd515727aab1ff039203",
+  "source_hashes_match_verified_receipt": true,
+  "results": {
+    "kairo.unity.ui.IApplication::RunOnUiThread(System.Threading.ThreadStart,System.Boolean)->System.Void": {
+      "status": "EXACT_CANDIDATE",
+      "original_locals": [
+        "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.ui.IApplication/MethodTask @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "before_locals": [
+        "class kairo.unity.ui.IApplication/MethodTask @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "after_locals": [
+        "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.ui.IApplication/MethodTask @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "before_differences": [
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ],
+      "after_differences": [],
+      "percent": 100.0,
+      "header_equal": true,
+      "exception_regions_equal": true,
+      "body_equal": true,
+      "previously_equal_body_losses": [],
+      "gained_body_ids": [
+        "kairo.unity.ui.IApplication::RunOnUiThread(System.Threading.ThreadStart,System.Boolean)->System.Void"
+      ],
+      "body_equal_total": 2955,
+      "method_before": "public void RunOnUiThread(ThreadStart start, bool wait = false)\r\n\t\t{\r\n\t\t\tif (CheckUiThread())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tstart();\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception ex)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (wait)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tthrow ex;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tMethodTask methodTask = new MethodTask(start);\r\n\t\t\tlock (lockUITask_)\r\n\t\t\t{\r\n\t\t\t\tuiMethodTasks_.Add(methodTask);\r\n\t\t\t}\r\n\t\t\tif (wait)\r\n\t\t\t{\r\n\t\t\t\twhile (!methodTask.finished)\r\n\t\t\t\t{\r\n\t\t\t\t\tThread.Sleep(10);\r\n\t\t\t\t}\r\n\t\t\t\tif (methodTask.error != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tthrow methodTask.error;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "method_after": "public void RunOnUiThread(ThreadStart start, bool wait = false)\r\n\t\t{\r\n\t\t\tif (CheckUiThread())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tstart();\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception ex)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (wait)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tthrow ex;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t{\r\n\t\t\t\tMethodTask methodTask = new MethodTask(start);\r\n\t\t\t\tlock (lockUITask_)\r\n\t\t\t\t{\r\n\t\t\t\t\tuiMethodTasks_.Add(methodTask);\r\n\t\t\t\t}\r\n\t\t\t\tif (wait)\r\n\t\t\t\t{\r\n\t\t\t\t\twhile (!methodTask.finished)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tThread.Sleep(10);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (methodTask.error != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tthrow methodTask.error;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "logical_source": "src/KairoLibrary/kairo/unity/ui/IApplication.cs",
+      "candidate_source": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\variants\\kairo-lock-experiments\\candidate-0\\src\\KairoLibrary\\kairo\\unity\\ui\\IApplication.cs",
+      "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\variants\\kairo-lock-experiments\\candidate-0-source-map.json",
+      "build_sha256": "d2116f7aa53e7c9e666d17d58f62b568106a26ba1570b58b7d9db039337383bf",
+      "compiler_sha256": "d14ba119edd71bdcb82b12659647427aa46d819caf6e72ac6d4ae86c81eb36c9",
+      "flags": [
+        "/nologo",
+        "/noconfig",
+        "/nostdlib+",
+        "/target:library",
+        "/platform:anycpu",
+        "/optimize+",
+        "/debug:pdbonly",
+        "/deterministic-",
+        "/langversion:6",
+        "/unsafe+",
+        "/checked-",
+        "/codepage:65001",
+        "/utf8output",
+        "/out:C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\KairoLibrary-lock-scope-0\\KairoLibrary.dll"
+      ],
+      "references": [
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\mscorlib.dll",
+          "sha256": "9380de48b4f19ee5d125f84ac1ce2644175e2490ad265ef12c444eba6916e047"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\System.Core.dll",
+          "sha256": "4998eda31c3d7bebf606f98cef77ad697f9e82e629efc37c06517019c2c2c271"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\original\\extracted\\assets\\bin\\Data\\Managed\\UnityEngine.dll",
+          "sha256": "7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\System.dll",
+          "sha256": "c2225d7ba58a12e22c266384d3c1e4e882ab4e42449b91b721c21b5f1fcd63be"
+        }
+      ]
+    },
+    "kairo.unity.analytics.AnalyticsTracker::Run()->System.Void": {
+      "status": "EXACT_CANDIDATE",
+      "original_locals": [
+        "class kairo.unity.analytics.AnalyticsTracker/AnalyticsData @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class kairo.unity.io.HttpObject @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "before_locals": [
+        "class kairo.unity.analytics.AnalyticsTracker/AnalyticsData @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.io.HttpObject @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "after_locals": [
+        "class kairo.unity.analytics.AnalyticsTracker/AnalyticsData @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class kairo.unity.io.HttpObject @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "before_differences": [
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ],
+      "after_differences": [],
+      "percent": 100.0,
+      "header_equal": true,
+      "exception_regions_equal": true,
+      "body_equal": true,
+      "previously_equal_body_losses": [],
+      "gained_body_ids": [
+        "kairo.unity.analytics.AnalyticsTracker::Run()->System.Void"
+      ],
+      "body_equal_total": 2955,
+      "method_before": "protected static void Run()\r\n\t\t{\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\twhile (analyticsBuffer_.Count > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tAnalyticsData analyticsData = null;\r\n\t\t\t\t\tlock (lock_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (analyticsBuffer_.Count > 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tanalyticsData = analyticsBuffer_[0];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (analyticsData != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tHttpObject httpObject = new HttpObject();\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\thttpObject.Connect(analyticsData.Url, null, false);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tanalyticsData.Retry++;\r\n\t\t\t\t\t\t\tSave();\r\n\t\t\t\t\t\t\tthrow;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tanalyticsBuffer_.Remove(analyticsData);\r\n\t\t\t\t\t\tSave();\r\n\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tthread_ = null;\r\n\t\t\t}\r\n\t\t}",
+      "method_after": "protected static void Run()\r\n\t\t{\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\twhile (analyticsBuffer_.Count > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tAnalyticsData analyticsData = null;\r\n\t\t\t\t\tHttpObject httpObject;\r\n\t\t\t\t\tlock (lock_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (analyticsBuffer_.Count > 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tanalyticsData = analyticsBuffer_[0];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (analyticsData != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttpObject = new HttpObject();\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\thttpObject.Connect(analyticsData.Url, null, false);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tanalyticsData.Retry++;\r\n\t\t\t\t\t\t\tSave();\r\n\t\t\t\t\t\t\tthrow;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tanalyticsBuffer_.Remove(analyticsData);\r\n\t\t\t\t\t\tSave();\r\n\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tthread_ = null;\r\n\t\t\t}\r\n\t\t}",
+      "logical_source": "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs",
+      "candidate_source": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\variants\\kairo-lock-experiments\\candidate-1\\src\\KairoLibrary\\kairo\\unity\\analytics\\AnalyticsTracker.cs",
+      "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\variants\\kairo-lock-experiments\\candidate-1-source-map.json",
+      "build_sha256": "d60da19012a660dcfba8272d88b1b5edc47ccd8b20281ef409b215998df86e99",
+      "compiler_sha256": "d14ba119edd71bdcb82b12659647427aa46d819caf6e72ac6d4ae86c81eb36c9",
+      "flags": [
+        "/nologo",
+        "/noconfig",
+        "/nostdlib+",
+        "/target:library",
+        "/platform:anycpu",
+        "/optimize+",
+        "/debug:pdbonly",
+        "/deterministic-",
+        "/langversion:6",
+        "/unsafe+",
+        "/checked-",
+        "/codepage:65001",
+        "/utf8output",
+        "/out:C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\KairoLibrary-lock-scope-1\\KairoLibrary.dll"
+      ],
+      "references": [
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\mscorlib.dll",
+          "sha256": "9380de48b4f19ee5d125f84ac1ce2644175e2490ad265ef12c444eba6916e047"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\System.Core.dll",
+          "sha256": "4998eda31c3d7bebf606f98cef77ad697f9e82e629efc37c06517019c2c2c271"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\original\\extracted\\assets\\bin\\Data\\Managed\\UnityEngine.dll",
+          "sha256": "7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\System.dll",
+          "sha256": "c2225d7ba58a12e22c266384d3c1e4e882ab4e42449b91b721c21b5f1fcd63be"
+        }
+      ]
+    },
+    "kairo.unity.surface.SurfaceBase::OnReceiveTouchEvent(kairo.unity.surface.SurfaceBase/MotionEventRecord)->System.Void": {
+      "status": "EXACT_CANDIDATE",
+      "original_locals": [
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.surface.SurfaceBase/MotionEventRecord @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "before_locals": [
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.surface.SurfaceBase/MotionEventRecord @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "after_locals": [
+        "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.surface.SurfaceBase/MotionEventRecord @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "before_differences": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "resolved_body_bytes"
+      ],
+      "after_differences": [],
+      "percent": 100.0,
+      "header_equal": true,
+      "exception_regions_equal": true,
+      "body_equal": true,
+      "previously_equal_body_losses": [],
+      "gained_body_ids": [
+        "kairo.unity.surface.SurfaceBase::OnReceiveTouchEvent(kairo.unity.surface.SurfaceBase/MotionEventRecord)->System.Void"
+      ],
+      "body_equal_total": 2955,
+      "method_before": "public void OnReceiveTouchEvent(MotionEventRecord evt)\r\n\t\t{\r\n\t\t\tlock (OnReceiveTouchEvent_lock2)\r\n\t\t\t{\r\n\t\t\t\tif (lock_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (delayNum_ >= delay_.Length)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tMotionEventRecord[] array = new MotionEventRecord[delay_.Length + 1];\r\n\t\t\t\t\t\tJSystem.Arraycopy(delay_, 0, array, 0, delay_.Length);\r\n\t\t\t\t\t\tarray[array.Length - 1] = new MotionEventRecord();\r\n\t\t\t\t\t\tdelay_ = array;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tdelay_[delayNum_].Copy(this, evt);\r\n\t\t\t\t\tdelayNum_++;\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tif (start_.IsEmpty())\r\n\t\t\t\t{\r\n\t\t\t\t\tstart_.Copy(this, evt);\r\n\t\t\t\t}\r\n\t\t\t\tlast_.Copy(this, evt);\r\n\t\t\t\tif (!multiTouchEnable_)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tint action = evt.GetAction();\r\n\t\t\t\tif (action == 3 || action == 4)\r\n\t\t\t\t{\r\n\t\t\t\t\tpinchPointer_[0][2] = (pinchPointer_[1][2] = -1);\r\n\t\t\t\t\tpinchDistance_ = 0;\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tint num = -1;\r\n\t\t\t\tif (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num2 = pinchPointer_[1][0] - pinchPointer_[0][0];\r\n\t\t\t\t\tint num3 = pinchPointer_[1][1] - pinchPointer_[0][1];\r\n\t\t\t\t\tnum = (int)JMath.Sqrt(num2 * num2 + num3 * num3);\r\n\t\t\t\t}\r\n\t\t\t\tpinchPointer_[0][2] = (pinchPointer_[1][2] = -1);\r\n\t\t\t\tint pointerCount = evt.GetPointerCount();\r\n\t\t\t\tfor (int i = 0; i < pointerCount; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint pointerId = evt.GetPointerId(i);\r\n\t\t\t\t\tif (pointerId < 2 && (pointerId != 0 || (action & 6) != 6) && (pointerId != 1 || (action & 0x106) != 262))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpinchPointer_[i][0] = (int)evt.GetX(i);\r\n\t\t\t\t\t\tpinchPointer_[i][1] = (int)evt.GetY(i) + ((!evt.IsMousePointer()) ? GetTouchOffset() : 0);\r\n\t\t\t\t\t\tpinchPointer_[i][2] = pointerId;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tint num4 = -1;\r\n\t\t\t\tif (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num5 = pinchPointer_[1][0] - pinchPointer_[0][0];\r\n\t\t\t\t\tint num6 = pinchPointer_[1][1] - pinchPointer_[0][1];\r\n\t\t\t\t\tnum4 = (int)JMath.Sqrt(num5 * num5 + num6 * num6);\r\n\t\t\t\t}\r\n\t\t\t\tif (num == -1 && num4 != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tpinchStartPoint_[0][0] = pinchPointer_[0][0];\r\n\t\t\t\t\tpinchStartPoint_[0][1] = pinchPointer_[0][1];\r\n\t\t\t\t\tpinchStartPoint_[1][0] = pinchPointer_[1][0];\r\n\t\t\t\t\tpinchStartPoint_[1][1] = pinchPointer_[1][1];\r\n\t\t\t\t\tpinchStart_ = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (num == -1 || num4 == -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tpinchDistance_ = 0;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tpinchDistance_ += num4 - num;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "method_after": "public void OnReceiveTouchEvent(MotionEventRecord evt)\r\n\t\t{\r\n\t\t\tlock (OnReceiveTouchEvent_lock2)\r\n\t\t\t{\r\n\t\t\t\tif (lock_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (delayNum_ >= delay_.Length)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tMotionEventRecord[] array = new MotionEventRecord[delay_.Length + 1];\r\n\t\t\t\t\t\tJSystem.Arraycopy(delay_, 0, array, 0, delay_.Length);\r\n\t\t\t\t\t\tarray[array.Length - 1] = new MotionEventRecord();\r\n\t\t\t\t\t\tdelay_ = array;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tdelay_[delayNum_].Copy(this, evt);\r\n\t\t\t\t\tdelayNum_++;\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\t{\r\n\t\t\t\t\tif (start_.IsEmpty())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstart_.Copy(this, evt);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tlast_.Copy(this, evt);\r\n\t\t\t\t\tif (multiTouchEnable_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint action = evt.GetAction();\r\n\t\t\t\t\t\tif (action == 3 || action == 4)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpinchPointer_[0][2] = (pinchPointer_[1][2] = -1);\r\n\t\t\t\t\t\t\tpinchDistance_ = 0;\r\n\t\t\t\t\t\t\treturn;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tint num = -1;\r\n\t\t\t\t\t\t\tif (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint num2 = pinchPointer_[1][0] - pinchPointer_[0][0];\r\n\t\t\t\t\t\t\t\tint num3 = pinchPointer_[1][1] - pinchPointer_[0][1];\r\n\t\t\t\t\t\t\t\tnum = (int)JMath.Sqrt(num2 * num2 + num3 * num3);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tpinchPointer_[0][2] = (pinchPointer_[1][2] = -1);\r\n\t\t\t\t\t\t\tint pointerCount = evt.GetPointerCount();\r\n\t\t\t\t\t\t\tfor (int i = 0; i < pointerCount; i++)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint pointerId = evt.GetPointerId(i);\r\n\t\t\t\t\t\t\t\tif (pointerId < 2 && (pointerId != 0 || (action & 6) != 6) && (pointerId != 1 || (action & 0x106) != 262))\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tpinchPointer_[i][0] = (int)evt.GetX(i);\r\n\t\t\t\t\t\t\t\t\tpinchPointer_[i][1] = (int)evt.GetY(i) + (evt.IsMousePointer() ? 0 : GetTouchOffset());\r\n\t\t\t\t\t\t\t\t\tpinchPointer_[i][2] = pointerId;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tint num4 = -1;\r\n\t\t\t\t\t\t\tif (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint num5 = pinchPointer_[1][0] - pinchPointer_[0][0];\r\n\t\t\t\t\t\t\t\tint num6 = pinchPointer_[1][1] - pinchPointer_[0][1];\r\n\t\t\t\t\t\t\t\tnum4 = (int)JMath.Sqrt(num5 * num5 + num6 * num6);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (num == -1 && num4 != -1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpinchStartPoint_[0][0] = pinchPointer_[0][0];\r\n\t\t\t\t\t\t\t\tpinchStartPoint_[0][1] = pinchPointer_[0][1];\r\n\t\t\t\t\t\t\t\tpinchStartPoint_[1][0] = pinchPointer_[1][0];\r\n\t\t\t\t\t\t\t\tpinchStartPoint_[1][1] = pinchPointer_[1][1];\r\n\t\t\t\t\t\t\t\tpinchStart_ = true;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (num == -1 || num4 == -1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpinchDistance_ = 0;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpinchDistance_ += num4 - num;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "logical_source": "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs",
+      "candidate_source": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\variants\\kairo-lock-experiments\\candidate-2\\src\\KairoLibrary\\kairo\\unity\\surface\\SurfaceBase.cs",
+      "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\variants\\kairo-lock-experiments\\candidate-2-source-map.json",
+      "build_sha256": "8a12cd34b01902ccdfda1e09604f9abb8e701802d394e4834d4dc1e452513cb0",
+      "compiler_sha256": "d14ba119edd71bdcb82b12659647427aa46d819caf6e72ac6d4ae86c81eb36c9",
+      "flags": [
+        "/nologo",
+        "/noconfig",
+        "/nostdlib+",
+        "/target:library",
+        "/platform:anycpu",
+        "/optimize+",
+        "/debug:pdbonly",
+        "/deterministic-",
+        "/langversion:6",
+        "/unsafe+",
+        "/checked-",
+        "/codepage:65001",
+        "/utf8output",
+        "/out:C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\KairoLibrary-lock-scope-2\\KairoLibrary.dll"
+      ],
+      "references": [
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\mscorlib.dll",
+          "sha256": "9380de48b4f19ee5d125f84ac1ce2644175e2490ad265ef12c444eba6916e047"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\System.Core.dll",
+          "sha256": "4998eda31c3d7bebf606f98cef77ad697f9e82e629efc37c06517019c2c2c271"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\original\\extracted\\assets\\bin\\Data\\Managed\\UnityEngine.dll",
+          "sha256": "7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421"
+        },
+        {
+          "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\System.dll",
+          "sha256": "c2225d7ba58a12e22c266384d3c1e4e882ab4e42449b91b721c21b5f1fcd63be"
+        }
+      ]
+    }
+  },
+  "applied_to_main": false,
+  "ledger_updated": false,
+  "normalized_assembly_fields": [],
+  "combined": {
+    "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\variants\\kairo-lock-experiments\\combined-source-map.json",
+    "body_equal_total": 2957,
+    "gained_body_ids": [
+      "kairo.unity.analytics.AnalyticsTracker::Run()->System.Void",
+      "kairo.unity.surface.SurfaceBase::OnReceiveTouchEvent(kairo.unity.surface.SurfaceBase/MotionEventRecord)->System.Void",
+      "kairo.unity.ui.IApplication::RunOnUiThread(System.Threading.ThreadStart,System.Boolean)->System.Void"
+    ],
+    "previously_equal_body_losses": [],
+    "target_equal": {
+      "kairo.unity.ui.IApplication::RunOnUiThread(System.Threading.ThreadStart,System.Boolean)->System.Void": true,
+      "kairo.unity.analytics.AnalyticsTracker::Run()->System.Void": true,
+      "kairo.unity.surface.SurfaceBase::OnReceiveTouchEvent(kairo.unity.surface.SurfaceBase/MotionEventRecord)->System.Void": true
+    },
+    "build_sha256": "544feb4527f34ec3451fc810cc00bf881b0f46834fd16bbf4ff9c31aa8a2b229"
+  }
+}

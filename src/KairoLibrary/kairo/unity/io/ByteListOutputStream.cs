@@ -65,20 +65,18 @@ namespace kairo.unity.io
 		{
 			byte[] array = new byte[count_];
 			int num = 0;
-			for (int i = 0; i < list_.Length; i++)
+			int num2 = 0;
+			while (num2 < list_.Length && num < array.Length)
 			{
-				if (num >= array.Length)
+				byte[] array2 = list_[num2];
+				int num3 = array.Length - num;
+				if (num3 > array2.Length)
 				{
-					break;
+					num3 = array2.Length;
 				}
-				byte[] array2 = list_[i];
-				int num2 = array.Length - num;
-				if (num2 > array2.Length)
-				{
-					num2 = array2.Length;
-				}
-				JSystem.Arraycopy(array2, 0, array, num, num2);
-				num += num2;
+				JSystem.Arraycopy(array2, 0, array, num, num3);
+				num += num3;
+				num2++;
 			}
 			return array;
 		}
@@ -97,21 +95,19 @@ namespace kairo.unity.io
 			int num = index / 256;
 			int num2 = index % 256;
 			int num3 = 0;
-			for (int i = num; i < list_.Length; i++)
+			int num4 = num;
+			while (num4 < list_.Length && num3 < length)
 			{
-				if (num3 >= length)
+				byte[] array = list_[num4];
+				int num5 = length - num3;
+				if (num5 > array.Length - num2)
 				{
-					break;
+					num5 = array.Length - num2;
 				}
-				byte[] array = list_[i];
-				int num4 = length - num3;
-				if (num4 > array.Length - num2)
-				{
-					num4 = array.Length - num2;
-				}
-				JSystem.Arraycopy(array, num2, dst, num3, num4);
-				num3 += num4;
+				JSystem.Arraycopy(array, num2, dst, num3, num5);
+				num3 += num5;
 				num2 = 0;
+				num4++;
 			}
 			return dst;
 		}

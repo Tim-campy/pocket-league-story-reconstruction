@@ -38,7 +38,7 @@ namespace kairo.unity.util
 
 		public static SecureString operator +(string z, SecureString w)
 		{
-			return new SecureString(z + w);
+			return new SecureString(string.Concat(z, w));
 		}
 
 		public static SecureString operator +(SecureString z, SecureString w)

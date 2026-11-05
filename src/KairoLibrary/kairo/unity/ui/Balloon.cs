@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using kairo.unity.graphics;
@@ -517,24 +518,26 @@ namespace kairo.unity.ui
 			{
 				height = sprite[5];
 			}
-			int num;
-			for (int i = 0; i < height; i += num)
+			int num = 0;
+			while (num < height)
 			{
-				num = height - i;
-				if (num > sprite[5])
+				int num2 = height - num;
+				if (num2 > sprite[5])
 				{
-					num = sprite[5];
+					num2 = sprite[5];
 				}
-				int num2;
-				for (int j = 0; j < width; j += num2)
+				int num3 = 0;
+				while (num3 < width)
 				{
-					num2 = width - j;
-					if (num2 > sprite[4])
+					int num4 = width - num3;
+					if (num4 > sprite[4])
 					{
-						num2 = sprite[4];
+						num4 = sprite[4];
 					}
-					g.DrawImage(seb.manager_.img[sprite[1]], x + (float)j, y + (float)i, sprite[2], sprite[3], num2, num);
+					g.DrawImage(seb.manager_.img[sprite[1]], x + (float)num3, y + (float)num, sprite[2], sprite[3], num4, num2);
+					num3 += num4;
 				}
+				num += num2;
 			}
 		}
 

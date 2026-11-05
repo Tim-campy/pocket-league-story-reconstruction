@@ -13,11 +13,11 @@ O alvo é recuperar fontes C# que recompilam os métodos e metadados das DLLs pr
 ## Etapas
 
 1. **Inventário e organização, preparados.** `inventory.csv` registra 2 arquivos alvo, 14 externos e 1.202 dados. `methods.csv` contém 5.245 declarações e `types.csv` 466 linhas de TypeDef, incluindo `<Module>` e tipos gerados.
-2. **Toolchain, em identificação.** Instalar a distribuição oficial do Unity 5.3.4f1, registrar hashes e versões do compilador e investigar cada DLL separadamente. Padrões de nomes gerados são pistas, não prova do compilador exato.
-3. **Referência, gerada.** `ref/` contém uma listagem por método. Tipos aninhados foram resolvidos pela tabela NestedClass. As assinaturas dos IDs resolvem TypeDef/TypeRef/TypeSpec; o comparador futuro ainda precisa resolver todos os operandos de IL e todas as assinaturas locais.
-4. **Decompilação em massa, pendente.** Recuperar cada assembly inteiro para a versão C# aceita pelo compilador validado. Nenhum fonte de jogo foi gerado nesta preparação.
-5. **Build integral e três ou quatro sondas, pendentes.** Compilar todos os tipos e comparar métodos simples de tipos diferentes. Não validar KairoLibrary com base apenas no resultado de Assembly-CSharp.
-6. **Ajustes, pendentes.** Fechar tipos com menos pendências, ajustando um método por vez e tratando membros gerados junto com o método de origem.
+2. **Toolchain, candidatos validados.** Unity 5.3.4f1 e módulo Android instalados; todas as DLLs externas identificadas por hash oficial. Roslyn pacote 1.3.2 para KairoLibrary, Mono smcs 2.6.5.0 para Assembly-CSharp. Versões históricas exatas continuam UNKNOWN.
+3. **Referência, gerada.** `ref/` contém uma listagem por método. Tipos aninhados foram resolvidos pela tabela NestedClass. O comparador Cecil resolve assinaturas de tipos/locais e todos os operandos de tokens, mantendo os demais bytes sob comparação.
+4. **Decompilação em massa, realizada.** Ambos os assemblies recuperados; ILSpy com linguagem ajustada por DLL. Variantes de ILSpy e do decompilador independente Codemerx são geradas somente em analysis/.
+5. **Build integral, realizado.** As duas DLLs compilam com seus candidatos selecionados, e todos os corpos são comparados. A configuração App stdlib default removeu a ambiguidade de IndexOf e permitiu restaurar a chamada original. As sondas não substituem as matrizes integrais.
+6. **Ajustes, em execução.** Ordem expandida dos membros restaurada por regra comprovada, com dois construtores omitidos recuperados; 19 call/callvirt resolvidos. Variantes são selecionadas por método com verificação integral e rollback. Membros gerados seguem junto à origem; caches compartilhados exigem todas as lambdas correspondentes.
 7. **Tipos e assembly, pendentes.** Conferir ordem de todos os membros, atributos, constantes, layout, tabelas, heaps, recursos e referências. Só então ajustar a ordem de arquivos no compilador.
 8. **Remontagem, pendente.** Preservar ordem, compressão e alinhamento do ZIP. Documentar explicitamente quais diferenças vêm de assinatura ou de campos cuja não determinação tenha sido comprovada.
 
@@ -25,16 +25,16 @@ O alvo é recuperar fontes C# que recompilam os métodos e metadados das DLLs pr
 
 `matched` dependerá de compilação real e verificação completa do método. Hash do IL original, listagem correta ou cópia de DLL não contam como reconstrução. Cabeçalhos, `maxstack`, locais, instruções, destinos de desvios, `switch` e cláusulas de exceção fazem parte da comparação.
 
-A equivalência dos tokens deve usar a identidade dos membros referidos, e não apenas seu número. MVID e timestamp não serão normalizados sem duas compilações consecutivas do mesmo fonte que provem a diferença. **A lista atual de exceções está vazia.** Nenhum ajuste posterior da DLL compilada é permitido.
+A equivalência dos tokens usa a identidade dos membros referidos, não apenas seu número. Quatro campos voláteis Kairo foram comprovados por duas compilações idênticas e registrados em docs/toolchain.md; nenhum normalizador foi aplicado. Nenhum ajuste posterior da DLL compilada é permitido.
 
 ## Estado atualizado da linha de base
 
-Unity 5.3.4f1 instalado e sondas compatíveis em ambas as DLLs. KairoLibrary recuperada e compilada integralmente com dois Roslyn; pacote 1.3.2 escolhido como melhor candidato experimental, sem afirmar identidade histórica. Comparador de corpos e vínculo mecânico de membros gerados implementados: 2.783 métodos matched; quatro outros corpos iguais ainda retidos. As 424 falhas de corpos foram agrupadas antes de iniciar ajustes. Detalhes em [docs/notes/kairo-baseline.md](docs/notes/kairo-baseline.md). As etapas acima registram o plano inicial; decompilação/build Kairo e comparação por método já foram executados.
+Os resultados atuais são gerados em [PROGRESS.md](PROGRESS.md), a partir do cadastro e dos recibos de compilação. As duas DLLs já têm verificação integral; a evolução de Kairo e a seleção de variantes estão registradas em [docs/notes/kairo-baseline.md](docs/notes/kairo-baseline.md), e a validação Mono em [docs/notes/assembly-csharp-baseline.md](docs/notes/assembly-csharp-baseline.md).
 
 ## Pendências para concluir a reconstrução
 
 - Validar compilador, referências, perfil de API, versão C#, flags e símbolos por DLL.
-- Recuperar e compilar Assembly-CSharp com o Mono validado pelas sondas; ILSpy já disponível.
+- Diagnosticar os corpos que sobram após a seleção de variantes e a correção de opções; manter estados e regressões sob o verificador.
 - Mapear o método de origem de 337 membros gerados; os casos ainda não comprovados ficam `UNKNOWN`.
 - Implementar comparação completa dos tipos e assemblies; o comparador de métodos já promove automaticamente com recibos e proteção contra regressões.
 - Ofuscação, criptografia e stripping: estado **UNKNOWN**. Nomes e corpos legíveis comprovam acessibilidade dos elementos observados, não ausência dessas transformações.

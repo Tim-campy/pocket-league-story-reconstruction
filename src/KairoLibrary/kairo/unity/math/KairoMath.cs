@@ -443,16 +443,16 @@ namespace kairo.unity.math
 
 		public static Vector3D GetCrossLine(float v1x, float v1y, float v2x, float v2y, float v3x, float v3y, float v4x, float v4y)
 		{
-			float num = v2y - v1y;
-			float num2 = v1x - v2x;
-			float num3 = (0f - num) * v1x - num2 * v1y;
-			float num4 = v4y - v3y;
-			float num5 = v3x - v4x;
-			float num6 = (0f - num4) * v3x - num5 * v3y;
-			float num7 = num2 * num4 - num5 * num;
-			float x = (num3 * num5 - num6 * num2) / num7;
-			float z = (num * num6 - num4 * num3) / num7;
-			return new Vector3D(x, 0f, z);
+			float single = v2y - v1y;
+			float single1 = v1x - v2x;
+			float single2 = -single * v1x - single1 * v1y;
+			float single3 = v4y - v3y;
+			float single4 = v3x - v4x;
+			float single5 = -single3 * v3x - single4 * v3y;
+			float single6 = single1 * single3 - single4 * single;
+			float single7 = (single2 * single4 - single5 * single1) / single6;
+			float single8 = (single * single5 - single3 * single2) / single6;
+			return new Vector3D(single7, 0f, single8);
 		}
 
 		public static bool IsContainPoint(Vector3D[] v, float x, float z)
@@ -727,15 +727,16 @@ namespace kairo.unity.math
 
 		private static void QuickSort(int[][] a, int i, int j, int target)
 		{
-			if (i != j)
+			if (i == j)
 			{
-				int num = Pivot(a, i, j, target);
-				if (num != -1)
-				{
-					int num2 = Partition(a, i, j, a[num][target], target);
-					QuickSort(a, i, num2 - 1, target);
-					QuickSort(a, num2, j, target);
-				}
+				return;
+			}
+			int num = KairoMath.Pivot(a, i, j, target);
+			if (num != -1)
+			{
+				int num1 = KairoMath.Partition(a, i, j, a[num][target], target);
+				KairoMath.QuickSort(a, i, num1 - 1, target);
+				KairoMath.QuickSort(a, num1, j, target);
 			}
 		}
 
@@ -898,17 +899,17 @@ namespace kairo.unity.math
 
 		public static float[] GetNormalVector2D(float x1, float y1, float x2, float y2)
 		{
-			float num = y2 - y1;
-			float num2 = 0f - (x2 - x1);
-			if (num * num + num2 * num2 != 0f)
+			float single = y2 - y1;
+			float single1 = -(x2 - x1);
+			if (single * single + single1 * single1 != 0f)
 			{
-				float num3 = FastMath.Sqrt(num * num + num2 * num2);
-				num /= num3;
-				num2 /= num3;
+				float single2 = FastMath.Sqrt(single * single + single1 * single1);
+				single /= single2;
+				single1 /= single2;
 			}
-			getNormalVector2D_tmp[0] = num;
-			getNormalVector2D_tmp[1] = num2;
-			return getNormalVector2D_tmp;
+			KairoMath.getNormalVector2D_tmp[0] = single;
+			KairoMath.getNormalVector2D_tmp[1] = single1;
+			return KairoMath.getNormalVector2D_tmp;
 		}
 
 		public static float GetArrivalAngle(float speed, float gravity, float distance)

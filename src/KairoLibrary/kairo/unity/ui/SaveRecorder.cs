@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System;
 using System.Threading;
 using java.lang;
@@ -67,8 +68,6 @@ namespace kairo.unity.ui
 
 		private JThread asThread_;
 
-		private object SaveGame_lock = new object();
-
 		protected SaveRecorder(bool existAutoSave)
 		{
 			objectInstance_ = this;
@@ -120,6 +119,8 @@ namespace kairo.unity.ui
 				}
 			}, true);
 		}
+
+		private object SaveGame_lock = new object();
 
 		public void SaveSystem()
 		{
@@ -562,53 +563,52 @@ namespace kairo.unity.ui
 			{
 				dst.ints = null;
 			}
-			else if (dst.ints == null || src.ints.Length != dst.ints.Length)
+			else if (dst.ints == null || (int)src.ints.Length != (int)dst.ints.Length)
 			{
-				dst.ints = new int[src.ints.Length];
+				dst.ints = new int[(int)src.ints.Length];
 			}
 			if (src.ints != null)
 			{
-				Array.Copy(src.ints, dst.ints, src.ints.Length);
+				Array.Copy(src.ints, dst.ints, (int)src.ints.Length);
 			}
 			if (src.lngs == null)
 			{
 				dst.lngs = null;
 			}
-			else if (dst.lngs == null || src.lngs.Length != dst.lngs.Length)
+			else if (dst.lngs == null || (int)src.lngs.Length != (int)dst.lngs.Length)
 			{
-				dst.lngs = new long[src.lngs.Length];
+				dst.lngs = new long[(int)src.lngs.Length];
 			}
 			if (src.lngs != null)
 			{
-				Array.Copy(src.lngs, dst.lngs, src.lngs.Length);
+				Array.Copy(src.lngs, dst.lngs, (int)src.lngs.Length);
 			}
 			if (src.strs == null)
 			{
 				dst.strs = null;
 			}
-			else if (dst.strs == null || src.strs.Length != dst.strs.Length)
+			else if (dst.strs == null || (int)src.strs.Length != (int)dst.strs.Length)
 			{
-				dst.strs = new string[src.strs.Length];
+				dst.strs = new string[(int)src.strs.Length];
 			}
 			if (src.strs != null)
 			{
-				Array.Copy(src.strs, dst.strs, src.strs.Length);
+				Array.Copy(src.strs, dst.strs, (int)src.strs.Length);
 			}
-			if (src.pros == null)
+			if (src.pros != null)
 			{
-				return;
-			}
-			for (int i = 0; i < src.pros.Length; i++)
-			{
-				if (src.pros[i] == null)
+				for (int i = 0; i < (int)src.pros.Length; i++)
 				{
-					dst.pros[i] = null;
+					if (src.pros[i] == null)
+					{
+						dst.pros[i] = null;
+					}
+					else if (dst.pros[i] == null)
+					{
+						dst.pros[i] = new Property();
+					}
+					this.CopyProperty(dst.pros[i], src.pros[i]);
 				}
-				else if (dst.pros[i] == null)
-				{
-					dst.pros[i] = new Property();
-				}
-				CopyProperty(dst.pros[i], src.pros[i]);
 			}
 		}
 

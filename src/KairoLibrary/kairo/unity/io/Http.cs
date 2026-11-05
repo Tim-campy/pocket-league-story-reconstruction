@@ -86,7 +86,12 @@ namespace kairo.unity.io
 
 		public static int GetErrorCode()
 		{
-			return GetHttp()?.http_.GetErrorCode() ?? 0;
+			HttpThread http = GetHttp();
+			if (http == null)
+			{
+				return 0;
+			}
+			return http.http_.GetErrorCode();
 		}
 
 		public static string GetErrorText()
@@ -121,7 +126,12 @@ namespace kairo.unity.io
 
 		public static int PopErrorCode()
 		{
-			return GetHttp()?.http_.PopErrorCode() ?? 0;
+			HttpThread http = GetHttp();
+			if (http == null)
+			{
+				return 0;
+			}
+			return http.http_.PopErrorCode();
 		}
 
 		public static string PopErrorText()

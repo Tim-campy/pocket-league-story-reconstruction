@@ -97,7 +97,10 @@ namespace kairo.unity.io
 				}
 				finally
 				{
-					recordStore?.CloseRecordStore();
+					if (recordStore != null)
+					{
+						recordStore.CloseRecordStore();
+					}
 					recordStore = null;
 				}
 			}
@@ -147,7 +150,10 @@ namespace kairo.unity.io
 				}
 				finally
 				{
-					recordStore?.CloseRecordStore();
+					if (recordStore != null)
+					{
+						recordStore.CloseRecordStore();
+					}
 					recordStore = null;
 				}
 			}
@@ -365,7 +371,10 @@ namespace kairo.unity.io
 			}
 			finally
 			{
-				recordStore?.CloseRecordStore();
+				if (recordStore != null)
+				{
+					recordStore.CloseRecordStore();
+				}
 				recordStore = null;
 			}
 		}
@@ -380,7 +389,10 @@ namespace kairo.unity.io
 			}
 			finally
 			{
-				recordStore?.CloseRecordStore();
+				if (recordStore != null)
+				{
+					recordStore.CloseRecordStore();
+				}
 				recordStore = null;
 			}
 		}

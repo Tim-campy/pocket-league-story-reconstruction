@@ -4,7 +4,7 @@ namespace kairo.unity.util
 	{
 		public const int SIZE = 8;
 
-		private static long[] crcTable_;
+		private static long[] crcTable_ = null;
 
 		private CRC64()
 		{

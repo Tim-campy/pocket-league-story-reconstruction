@@ -1,0 +1,127 @@
+{
+  "source_changes": [
+    {
+      "logical_path": "src/KairoLibrary/kairo/common/cfg/Config.cs",
+      "base_sha256": "f514883f75937e4d6babd28d2ff76d0f579aad741935d6e7b2edd5b5d8a0e03a",
+      "candidate_sha256": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+      "changed_fields": [
+        "APPLI_TYPE",
+        "BUILD_TYPE",
+        "DEBUG",
+        "PTW",
+        "POST_MARK",
+        "USE_HEAP_STORAGE",
+        "USE_MEMORY",
+        "USE_MEXA_UNIT1",
+        "COUNT_ENABLE",
+        "PRINT",
+        "USE_UNUSE_CHECK",
+        "NUMPADCONTROL",
+        "FAST_BRIGHTNESS",
+        "LANGUAGE",
+        "BASE64_PUBLIC_KEY",
+        "UNITY_EDITOR",
+        "AD_UNIT_ID",
+        "AD_SIZE",
+        "FULLSCREEN",
+        "ICLOUD",
+        "LOCALIZE_FONT_SCALE",
+        "LOWDEPTH_TEST",
+        "LANDSCAPE_GAME",
+        "TRACE_URL",
+        "DEBUG_UID",
+        "UID",
+        "REGIST_ENABLE",
+        "TRIAL_VERSION",
+        "ADMOB_ENABLE",
+        "DEBUG_CMD",
+        "DEBUG_SEND_SC",
+        "DEBUG_CMD_DEV",
+        "SHOW_DEBUG",
+        "SHOW_FPS",
+        "SHOW_MEM",
+        "MUTE_SE",
+        "FPS_UNLIMITED",
+        "SHOW_GUIDEPOINT",
+        "DEBUG_SLOW",
+        "DEBUG_FAST",
+        "DEBUG_MONEYUP",
+        "PID",
+        "PID_NAME",
+        "APPLI_NAME",
+        "OUTPUT_CSV_NAME",
+        "checkVRAM_result"
+      ],
+      "explicit_static_constructor_added": false
+    },
+    {
+      "logical_path": "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs",
+      "base_sha256": "b3530956c81283dedd5dc61c19a467b817110788feb5c0d450515061088694d1",
+      "candidate_sha256": "9623f6a7f9a57336bf404f2b07a813f20fa5f8332aaab9729235fda398aca284",
+      "changed_fields": [
+        "app_"
+      ],
+      "explicit_static_constructor_added": false
+    }
+  ],
+  "source_map": "analysis/kairo-static-initializers-source-map.json",
+  "applied_to_main": false,
+  "explicit_static_constructors_added": false,
+  "verification": {
+    "builds": [
+      {
+        "label": "static-init-baseline",
+        "exit_code": 0,
+        "sha256": "cdf28a2cf369f7aaf5423805b1029a5ffaf2b3ac00ab397674ab5a7caf409271",
+        "manifest_path": "build/KairoLibrary-static-init-baseline/build-manifest.json"
+      },
+      {
+        "label": "static-init-candidate",
+        "exit_code": 0,
+        "sha256": "2486bdb9cb4dddf7666018fc04972014b9ff3838ef8a37ab1e7308da401a9175",
+        "manifest_path": "build/KairoLibrary-static-init-candidate/build-manifest.json"
+      }
+    ],
+    "target_methods": [
+      {
+        "id": "kairo.common.cfg.Config::.cctor()->System.Void",
+        "body_equal": true,
+        "differences": [],
+        "percent": 100.0
+      },
+      {
+        "id": "kairo.unity.native.AdMobPlugin::.cctor()->System.Void",
+        "body_equal": true,
+        "differences": [],
+        "percent": 100.0
+      }
+    ],
+    "type_states": [
+      {
+        "type": "kairo.common.cfg.Config",
+        "original_attributes": 1048577,
+        "baseline_attributes": 1048577,
+        "candidate_attributes": 1048577,
+        "before_field_init_preserved": true,
+        "fields_equal_to_original": true,
+        "method_order_equal_to_original": true
+      },
+      {
+        "type": "kairo.unity.native.AdMobPlugin",
+        "original_attributes": 1048577,
+        "baseline_attributes": 1048577,
+        "candidate_attributes": 1048577,
+        "before_field_init_preserved": true,
+        "fields_equal_to_original": true,
+        "method_order_equal_to_original": true
+      }
+    ],
+    "previously_equal_bodies_lost": [],
+    "new_equal_bodies": [
+      "kairo.unity.native.AdMobPlugin::.cctor()->System.Void",
+      "kairo.common.cfg.Config::.cctor()->System.Void"
+    ],
+    "candidate_validated": true,
+    "scope": "full baseline/candidate builds from frozen C#; all oracle bodies checked; no ledger changes"
+  }
+}

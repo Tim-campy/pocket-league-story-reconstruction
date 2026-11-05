@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -90,11 +92,16 @@ namespace kairo.unity.analytics
 
 		public static void DispatchPageView()
 		{
-			if (isSetup_ && analyticsBuffer_.Count > 0 && !(thread_ != null))
+			if (!AnalyticsTracker.isSetup_)
 			{
-				thread_ = new JThread(Run);
-				thread_.Start();
+				return;
 			}
+			if (AnalyticsTracker.analyticsBuffer_.Count <= 0 || AnalyticsTracker.thread_ != null)
+			{
+				return;
+			}
+			AnalyticsTracker.thread_ = new JThread(new ThreadStart(AnalyticsTracker.Run));
+			AnalyticsTracker.thread_.Start();
 		}
 
 		protected static void Run()
@@ -104,6 +111,7 @@ namespace kairo.unity.analytics
 				while (analyticsBuffer_.Count > 0)
 				{
 					AnalyticsData analyticsData = null;
+					HttpObject httpObject;
 					lock (lock_)
 					{
 						if (analyticsBuffer_.Count > 0)
@@ -113,7 +121,7 @@ namespace kairo.unity.analytics
 					}
 					if (analyticsData != null)
 					{
-						HttpObject httpObject = new HttpObject();
+						httpObject = new HttpObject();
 						try
 						{
 							httpObject.Connect(analyticsData.Url, null, false);

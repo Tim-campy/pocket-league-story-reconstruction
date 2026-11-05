@@ -109,7 +109,11 @@ namespace kairo.unity.util
 
 		public static byte[] ToArray(SecureByteArray ary)
 		{
-			return ary?.Get();
+			if (ary == null)
+			{
+				return null;
+			}
+			return ary.Get();
 		}
 	}
 }

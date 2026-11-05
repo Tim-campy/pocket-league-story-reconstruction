@@ -55,8 +55,7 @@ def main():
         'reference_files':baseline['files_total'] if baseline else None,
         'reconstruction':'NOT_EVALUATED' if args.reference_only else 'PARTIAL',
         'matched':sum(m['estado']=='matched' for m in methods),
-        'blockers':['Assembly-CSharp whole-assembly source/build pending',
-                    'Type metadata and whole-assembly comparison pending']}
+        'blockers':['Type metadata and whole-assembly comparison pending']}
     (ROOT/'build').mkdir(exist_ok=True)
     (ROOT/'build/verification-preflight.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result),flush=True)
@@ -64,15 +63,15 @@ def main():
         validate_matched(ROOT,methods)
         return 0
     status=0
-    if args.assembly in (None,'KairoLibrary'):
-        status=subprocess.run([sys.executable,str(ROOT/'tools/verify_kairo.py')],cwd=ROOT).returncode
-        if status not in (0,1): return status
+    verifiers={'KairoLibrary':'verify_kairo.py','Assembly-CSharp':'verify_csharp.py'}
+    for assembly in verifiers:
+        if args.assembly and assembly!=args.assembly:continue
+        code=subprocess.run([sys.executable,str(ROOT/'tools'/verifiers[assembly])],cwd=ROOT).returncode
+        if code not in (0,1):return code
+        status=max(status,code)
         if args.method:
-            receipt=json.loads((ROOT/'build/verification-KairoLibrary.json').read_text(encoding='utf-8'))
+            receipt=json.loads((ROOT/f'build/verification-{assembly}.json').read_text(encoding='utf-8'))
             print(json.dumps({'method':args.method,'result':receipt['methods'][args.method]}))
-    if args.assembly in (None,'Assembly-CSharp'):
-        print(json.dumps({'assembly':'Assembly-CSharp','verification':'BLOCKED','reason':'Whole-assembly source not recovered'}))
-        return 2
     return status or 2
 
 

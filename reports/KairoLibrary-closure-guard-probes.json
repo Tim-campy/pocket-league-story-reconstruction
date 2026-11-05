@@ -1,0 +1,33 @@
+{
+  "frozen_body_equal": 2954,
+  "results": [
+    {
+      "id": "kairo.unity.ui.Image::Use()->System.Void",
+      "candidate_body_equal": true,
+      "differences": [],
+      "previously_equal_bodies_lost": [],
+      "before_source_sha256": "0051727e3e6fe3188386125324172cbb99680a5bafdaa4cb123af878083514ee",
+      "candidate_source": "analysis/variants/kairo-closure-guards/Use/Image.cs",
+      "source_needle": "if ((object)image_ != null || (src_ == null && file_ == null))",
+      "source_replacement": "if ((object)image_ != null)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tif (src_ == null && file_ == null)",
+      "candidate_sha256": "5b849ec9c2145814d572a0bb4f3a7ea42d3071ef3d2f2297d655a2ab9bc7e225",
+      "original_body_size": 51,
+      "build_artifact_sha256": "f6a0b3cccbc15e04ada189628551d6c558eb054b19269fc58a9bc7d8e08d2861",
+      "main_source_modified": false
+    },
+    {
+      "id": "kairo.unity.ui.Image::Unuse()->System.Void",
+      "candidate_body_equal": true,
+      "differences": [],
+      "previously_equal_bodies_lost": [],
+      "before_source_sha256": "0051727e3e6fe3188386125324172cbb99680a5bafdaa4cb123af878083514ee",
+      "candidate_source": "analysis/variants/kairo-closure-guards/Unuse/Image.cs",
+      "source_needle": "if ((object)image_ == null || (!isCreateImage_ && src_ == null && file_ == null))",
+      "source_replacement": "if ((object)image_ == null)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tif (!isCreateImage_ && src_ == null && file_ == null)",
+      "candidate_sha256": "61586db632fab1e3dc15e1d87075b77ef735370bcb3afc9109bc92507c45b070",
+      "original_body_size": 59,
+      "build_artifact_sha256": "02e30d4101e064d584ab5d5d86723766ca86340b14fb4c759b792a78151e7126",
+      "main_source_modified": false
+    }
+  ]
+}

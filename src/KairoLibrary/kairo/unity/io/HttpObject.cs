@@ -28,8 +28,6 @@ namespace kairo.unity.io
 
 		protected bool askRetry_;
 
-		internal bool IsRetryEnable { get; set; }
-
 		public HttpObject(bool retryEnable = false)
 		{
 			IsRetryEnable = retryEnable;
@@ -439,5 +437,7 @@ namespace kairo.unity.io
 			}
 			return "_ts=" + text + text2 + text3 + text4 + text5 + text6;
 		}
+
+		internal bool IsRetryEnable { get; set; }
 	}
 }

@@ -88,7 +88,9 @@ def main():
         if len(index)!=len(methods): raise ValueError('Ambiguous method identity')
         indices.append(index)
     oi,old,new=indices
-    counts=Counter();facet_counts=Counter();pattern_counts=Counter();rows=[]
+    counts=Counter({name:0 for name in ('both_match_original','only_1_3_2_matches_original',
+        'only_5_8_matches_original','same_outputs_but_original_differs','different_or_missing_and_neither_matches')})
+    facet_counts=Counter();pattern_counts=Counter();rows=[]
     with (ROOT/'config/methods.csv').open(encoding='utf-8',newline='') as file:
         ledger=[r for r in csv.DictReader(file) if r['assembly']=='KairoLibrary']
     by_token={r['token']:r for r in ledger}

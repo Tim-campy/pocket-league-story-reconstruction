@@ -802,12 +802,13 @@ namespace kairo.unity.ui
 
 		public void PopClip()
 		{
-			if (clipCount_ > 0)
+			if (this.clipCount_ <= 0)
 			{
-				float[] array = clipStack_[clipCount_ - 1];
-				clipCount_--;
-				_setClip(array[0], array[1], array[2], array[3]);
+				return;
 			}
+			float[] item = this.clipStack_[this.clipCount_ - 1];
+			this.clipCount_--;
+			this._setClip(item[0], item[1], item[2], item[3]);
 		}
 
 		public void SetClip(float x, float y, float w, float h)
@@ -920,21 +921,22 @@ namespace kairo.unity.ui
 
 		public void SetFigureClipEnd()
 		{
-			if (CheckClip())
+			if (!this.CheckClip())
 			{
-				if (offscreen_ != null)
-				{
-					offscreen_.Flush();
-				}
-				if (glRender_)
-				{
-					FlushGLRender(true);
-				}
-				setFigureClip_ = false;
-				useFigureClip_ = true;
-				isFigureClipMask_ = false;
-				renderCache_.Reset();
+				return;
 			}
+			if (this.offscreen_ != null)
+			{
+				this.offscreen_.Flush();
+			}
+			if (this.glRender_)
+			{
+				this.FlushGLRender(true);
+			}
+			this.setFigureClip_ = false;
+			this.useFigureClip_ = true;
+			this.isFigureClipMask_ = false;
+			this.renderCache_.Reset();
 		}
 
 		public void SetFigureClipMode(bool clip)
@@ -944,12 +946,13 @@ namespace kairo.unity.ui
 
 		public void ClearFigureClip()
 		{
-			if (CheckClip())
+			if (!this.CheckClip())
 			{
-				useFigureClip_ = false;
-				isClipRegionGL = false;
-				renderCache_.Reset();
+				return;
 			}
+			this.useFigureClip_ = false;
+			this.isClipRegionGL = false;
+			this.renderCache_.Reset();
 		}
 
 		public int[] GetClip()
@@ -971,19 +974,18 @@ namespace kairo.unity.ui
 
 		public void Dispose(bool keep = false)
 		{
-			if (keep)
+			if (!keep)
 			{
-				return;
-			}
-			for (int num = meshManList_.Length - 1; num >= 0; num--)
-			{
-				if (meshManList_[num] != null)
+				for (int i = (int)this.meshManList_.Length - 1; i >= 0; i--)
 				{
-					meshManList_[num].Clear();
+					if (this.meshManList_[i] != null)
+					{
+						this.meshManList_[i].Clear();
+					}
+					this.meshManList_[i] = null;
 				}
-				meshManList_[num] = null;
+				this.meshManList_ = new MeshManager[1];
 			}
-			meshManList_ = new MeshManager[1];
 		}
 
 		public void DrawArc(float x, float y, float width, float height, float startAngle, float arcAngle, float lineWidth = 1f)
@@ -1350,30 +1352,31 @@ namespace kairo.unity.ui
 		{
 			if (Config.PRINT && image == null)
 			{
-				Log.Info("[drawImage] image=null");
+				Log.Info("[drawImage] image=null", null);
 			}
-			if (image != null)
+			if (image == null)
 			{
-				image.GetImage().wrapMode = TextureWrapMode.Repeat;
-				float[] drawImageRepeat_Verticies = DrawImageRepeat_Verticies;
-				float[] drawImageRepeat_TexCoords = DrawImageRepeat_TexCoords;
-				int[] drawImageRepeat_Indicies = DrawImageRepeat_Indicies;
-				drawImageRepeat_Verticies[3] = width;
-				drawImageRepeat_Verticies[4] = 0f;
-				drawImageRepeat_Verticies[6] = width;
-				drawImageRepeat_Verticies[7] = height;
-				drawImageRepeat_Verticies[9] = 0f;
-				drawImageRepeat_Verticies[10] = height;
-				drawImageRepeat_TexCoords[0] = sx;
-				drawImageRepeat_TexCoords[1] = sy;
-				drawImageRepeat_TexCoords[2] = sx + width;
-				drawImageRepeat_TexCoords[3] = sy;
-				drawImageRepeat_TexCoords[4] = sx + width;
-				drawImageRepeat_TexCoords[5] = sy + height;
-				drawImageRepeat_TexCoords[6] = sx;
-				drawImageRepeat_TexCoords[7] = sy + height;
-				DrawPolygons(image, drawImageRepeat_Verticies, drawImageRepeat_TexCoords, null, drawImageRepeat_Indicies);
+				return;
 			}
+			image.GetImage().wrapMode = TextureWrapMode.Repeat;
+			float[] drawImageRepeatVerticies = kairo.unity.ui.Graphics.DrawImageRepeat_Verticies;
+			float[] drawImageRepeatTexCoords = kairo.unity.ui.Graphics.DrawImageRepeat_TexCoords;
+			int[] drawImageRepeatIndicies = kairo.unity.ui.Graphics.DrawImageRepeat_Indicies;
+			drawImageRepeatVerticies[3] = (float)width;
+			drawImageRepeatVerticies[4] = 0f;
+			drawImageRepeatVerticies[6] = (float)width;
+			drawImageRepeatVerticies[7] = (float)height;
+			drawImageRepeatVerticies[9] = 0f;
+			drawImageRepeatVerticies[10] = (float)height;
+			drawImageRepeatTexCoords[0] = (float)sx;
+			drawImageRepeatTexCoords[1] = (float)sy;
+			drawImageRepeatTexCoords[2] = (float)(sx + width);
+			drawImageRepeatTexCoords[3] = (float)sy;
+			drawImageRepeatTexCoords[4] = (float)(sx + width);
+			drawImageRepeatTexCoords[5] = (float)(sy + height);
+			drawImageRepeatTexCoords[6] = (float)sx;
+			drawImageRepeatTexCoords[7] = (float)(sy + height);
+			this.DrawPolygons(image, drawImageRepeatVerticies, drawImageRepeatTexCoords, null, drawImageRepeatIndicies);
 		}
 
 		public void DrawImage(Image image, float x, float y)
@@ -2050,19 +2053,19 @@ namespace kairo.unity.ui
 
 		protected void ImageCheckUse(Image image)
 		{
-			if (image == null || !(image.image_ == null) || (image.atlasRegion_ != null && image.atlasRegion_.IsValid()))
+			if (image != null && image.image_ == null && (image.atlasRegion_ == null || !image.atlasRegion_.IsValid()))
 			{
-				return;
-			}
-			try
-			{
-				image.Use();
-			}
-			catch (Exception t)
-			{
-				if (Config.PRINT)
+				try
 				{
-					Log.Info("imageCheckUse", t);
+					image.Use();
+				}
+				catch (Exception exception1)
+				{
+					Exception exception = exception1;
+					if (Config.PRINT)
+					{
+						Log.Info("imageCheckUse", exception);
+					}
 				}
 			}
 		}
@@ -2276,15 +2279,15 @@ namespace kairo.unity.ui
 
 		public void DrawString(string str, float x, float y, int anchor, int color)
 		{
-			int color2 = GetColor();
-			SetColor(color);
-			DrawString(null, str, x, y, anchor);
-			SetColor(color2);
+			int num = this.GetColor();
+			this.SetColor(color);
+			this.DrawString(null, str, (float)x, (float)y, anchor);
+			this.SetColor(num);
 		}
 
 		public void DrawString(string str, float x, float y, int anchor)
 		{
-			DrawString(null, str, x, y, anchor);
+			this.DrawString(null, str, (float)x, (float)y, anchor);
 		}
 
 		public void DrawString(TextFormat lf, string str, float x, float y, int anchor, int color)
@@ -2779,84 +2782,89 @@ namespace kairo.unity.ui
 				float num3 = 360f / (float)(int)((1f + (width + height) * 2f / 50f) * 8f + 8f);
 				num3 = 8f;
 				RenderPass[] renderPass = GetRenderPass(guiStyle_.normal.textColor);
-				foreach (RenderPass renderPass2 in renderPass)
+				int num4 = 0;
+				while (num4 < renderPass.Length)
 				{
+					RenderPass renderPass2 = renderPass[num4];
 					Color color = renderPass2.BeginShape()[0];
 					try
 					{
 						kairo.unity.graphics.Material material = ((renderPass2.Material != null) ? mateMan_.GetMaterial(renderPass2.Material, null) : mateMan_.GetMaterial(this, null, color.a));
-						float num4 = startAngle + arcAngle;
-						float num5 = startAngle;
+						float num5 = startAngle + arcAngle;
+						float num6 = startAngle;
 						float[][] array = fillArcPoints_;
 						GetTransPointGL(x, y, array[0]);
-						GetTransPointGL(x + FastMath.Cos(num5) * num, y - FastMath.Sin(num5) * num2, array[1]);
+						GetTransPointGL(x + FastMath.Cos(num6) * num, y - FastMath.Sin(num6) * num2, array[1]);
 						if (!IsRenderGUIMode())
 						{
 							MeshBuilder meshBuilder = meshManList_[meshId_].GetMeshBuilder(material);
 							meshBuilder.ReadyAddition();
 							meshBuilder.AddVertex(array[0][0], array[0][1], 0f, color);
 							meshBuilder.AddVertex(array[1][0], array[1][1], 0f, color);
-							int num6 = 0;
-							while (num5 < num4)
+							int num7 = 0;
+							while (num6 < num5)
 							{
-								float num7 = num5 + num3;
-								if (num6 == 0)
+								float num8 = num6 + num3;
+								if (num7 == 0)
 								{
-									num7 = (float)(int)(num7 / num3) * num3 + num3;
-									if (num7 < num5)
+									num8 = (float)(int)(num8 / num3) * num3 + num3;
+									if (num8 < num6)
 									{
-										num7 += num3;
+										num8 += num3;
 									}
 								}
-								if (num7 > num4)
+								if (num8 > num5)
 								{
-									num7 = num4;
+									num8 = num5;
 								}
-								GetTransPointGL(x + FastMath.Cos(num7) * num, y - FastMath.Sin(num7) * num2, array[2]);
+								GetTransPointGL(x + FastMath.Cos(num8) * num, y - FastMath.Sin(num8) * num2, array[2]);
 								meshBuilder.AddVertex(array[2][0], array[2][1], 0f, color);
 								int[] array2 = addIndiciesBuffer_;
 								array2[0] = 0;
-								array2[1] = num6 + 1;
-								array2[2] = num6 + 2;
+								array2[1] = num7 + 1;
+								array2[2] = num7 + 2;
 								meshBuilder.AddIndicies(array2, 3);
-								num5 = num7;
-								num6++;
+								num6 = num8;
+								num7++;
 							}
-							continue;
 						}
-						material.SetPass(0);
-						GL.Begin(4);
-						GL.Color(color);
-						int num8 = 0;
-						while (num5 < num4)
+						else
 						{
-							float num9 = num5 + num3;
-							if (num8 == 0)
+							material.SetPass(0);
+							GL.Begin(4);
+							GL.Color(color);
+							int num9 = 0;
+							while (num6 < num5)
 							{
-								num9 = (float)(int)(num9 / num3) * num3 + num3;
-								if (num9 < num5)
+								float num10 = num6 + num3;
+								if (num9 == 0)
 								{
-									num9 += num3;
+									num10 = (float)(int)(num10 / num3) * num3 + num3;
+									if (num10 < num6)
+									{
+										num10 += num3;
+									}
 								}
+								if (num10 > num5)
+								{
+									num10 = num5;
+								}
+								GetTransPointGL(x + FastMath.Cos(num10) * num, y - FastMath.Sin(num10) * num2, array[2]);
+								GL.Vertex3(array[0][0], array[0][1], 0f);
+								GL.Vertex3(array[1][0], array[1][1], 0f);
+								GL.Vertex3(array[2][0], array[2][1], 0f);
+								Array.Copy(array[2], array[1], 2);
+								num6 = num10;
+								num9++;
 							}
-							if (num9 > num4)
-							{
-								num9 = num4;
-							}
-							GetTransPointGL(x + FastMath.Cos(num9) * num, y - FastMath.Sin(num9) * num2, array[2]);
-							GL.Vertex3(array[0][0], array[0][1], 0f);
-							GL.Vertex3(array[1][0], array[1][1], 0f);
-							GL.Vertex3(array[2][0], array[2][1], 0f);
-							Array.Copy(array[2], array[1], 2);
-							num5 = num9;
-							num8++;
+							GL.End();
 						}
-						GL.End();
 					}
 					finally
 					{
 						renderPass2.End();
 					}
+					num4++;
 				}
 				if (Config.COUNT_ENABLE)
 				{
@@ -3199,12 +3207,13 @@ namespace kairo.unity.ui
 
 		public void PopFont()
 		{
-			if (fontCount_ > 0)
+			if (this.fontCount_ <= 0)
 			{
-				Font font = fontStack_[fontCount_ - 1];
-				fontCount_--;
-				SetFont(font);
+				return;
 			}
+			kairo.unity.ui.Font item = this.fontStack_[this.fontCount_ - 1];
+			this.fontCount_--;
+			this.SetFont(item);
 		}
 
 		public void SetOrigin(int x, int y)
@@ -3371,12 +3380,13 @@ namespace kairo.unity.ui
 
 		public void PopRenderMode()
 		{
-			if (renderModeCount_ > 0)
+			if (this.renderModeCount_ <= 0)
 			{
-				int[] array = renderModeStack_[renderModeCount_ - 1];
-				renderModeCount_--;
-				SetRenderMode(array[0], array[1], array[2]);
+				return;
 			}
+			int[] item = this.renderModeStack_[this.renderModeCount_ - 1];
+			this.renderModeCount_--;
+			this.SetRenderMode(item[0], item[1], item[2]);
 		}
 
 		public static bool CheckAlphaRectEnable()
@@ -3638,25 +3648,29 @@ namespace kairo.unity.ui
 
 		public void UpdateGUIGroup()
 		{
-			if (useFigureClip_ || setFigureClip_ || (isGuiGroupRect_ && guiGroupRect_.Equals(clipRegion_)))
+			if (this.useFigureClip_ || this.setFigureClip_)
 			{
 				return;
 			}
-			if (guiBeginGroup_)
+			if (kairo.unity.ui.Graphics.isGuiGroupRect_ && kairo.unity.ui.Graphics.guiGroupRect_.Equals(this.clipRegion_))
 			{
-				guiBeginGroup_ = false;
+				return;
+			}
+			if (kairo.unity.ui.Graphics.guiBeginGroup_)
+			{
+				kairo.unity.ui.Graphics.guiBeginGroup_ = false;
 				try
 				{
 					GUI.EndGroup();
 				}
-				catch (Exception)
+				catch (Exception exception)
 				{
 				}
 			}
-			guiGroupRect_.Set(clipRegion_);
-			isGuiGroupRect_ = true;
-			GUI.BeginGroup(new Rect(guiGroupRect_.left, guiGroupRect_.top, guiGroupRect_.Width(), guiGroupRect_.Height()));
-			guiBeginGroup_ = true;
+			kairo.unity.ui.Graphics.guiGroupRect_.Set(this.clipRegion_);
+			kairo.unity.ui.Graphics.isGuiGroupRect_ = true;
+			GUI.BeginGroup(new Rect((float)kairo.unity.ui.Graphics.guiGroupRect_.left, (float)kairo.unity.ui.Graphics.guiGroupRect_.top, (float)kairo.unity.ui.Graphics.guiGroupRect_.Width(), (float)kairo.unity.ui.Graphics.guiGroupRect_.Height()));
+			kairo.unity.ui.Graphics.guiBeginGroup_ = true;
 		}
 
 		internal static void InitGUIGroup()
@@ -3851,12 +3865,13 @@ namespace kairo.unity.ui
 
 		public void PopBlendMode()
 		{
-			if (blendModeCount_ > 0)
+			if (this.blendModeCount_ <= 0)
 			{
-				int[] array = blendModeStack_[blendModeCount_ - 1];
-				SetBlendMode(array[0], array[1]);
-				blendModeCount_--;
+				return;
 			}
+			int[] item = this.blendModeStack_[this.blendModeCount_ - 1];
+			this.SetBlendMode(item[0], item[1]);
+			this.blendModeCount_--;
 		}
 
 		protected void UpdateGLClip()
@@ -4190,12 +4205,13 @@ namespace kairo.unity.ui
 
 		public void PopClipEnable()
 		{
-			if (clipEnableCount_ > 0)
+			if (this.clipEnableCount_ <= 0)
 			{
-				bool clipEnable = clipEnableStack_[clipEnableCount_ - 1];
-				clipEnableCount_--;
-				SetClipEnable(clipEnable);
+				return;
 			}
+			bool item = this.clipEnableStack_[this.clipEnableCount_ - 1];
+			this.clipEnableCount_--;
+			this.SetClipEnable(item);
 		}
 
 		public bool SetClipEnable(bool enable)
@@ -4246,12 +4262,13 @@ namespace kairo.unity.ui
 
 		public void PopOrigin()
 		{
-			if (originCount_ > 0)
+			if (this.originCount_ <= 0)
 			{
-				int[] array = originStack_[originCount_ - 1];
-				originCount_--;
-				SetOrigin(array[0], array[1]);
+				return;
 			}
+			int[] item = this.originStack_[this.originCount_ - 1];
+			this.originCount_--;
+			this.SetOrigin(item[0], item[1]);
 		}
 
 		private bool BeginRenderMatrix(ref float x, ref float y)
@@ -4308,19 +4325,18 @@ namespace kairo.unity.ui
 
 		private void EndRenderMatrix()
 		{
-			if (backupWorldMatrixCount_ > 0)
+			if (this.backupWorldMatrixCount_ <= 0)
 			{
-				worldMatrix_.Set(backupWorldMatrix_[backupWorldMatrixCount_ - 1]);
-				backupWorldMatrixCount_--;
-				if (localCoordinateCount_ == 0)
-				{
-					UpdateScreenMatrix();
-				}
-				else
-				{
-					PopMatrix();
-				}
+				return;
 			}
+			this.worldMatrix_.Set(this.backupWorldMatrix_[this.backupWorldMatrixCount_ - 1]);
+			this.backupWorldMatrixCount_--;
+			if (this.localCoordinateCount_ == 0)
+			{
+				this.UpdateScreenMatrix();
+				return;
+			}
+			this.PopMatrix();
 		}
 
 		public void BeginLocalCoordination()
@@ -4454,11 +4470,12 @@ namespace kairo.unity.ui
 
 		public void PopRenderQueue()
 		{
-			if (renderQueueCount_ > 0)
+			if (this.renderQueueCount_ <= 0)
 			{
-				SetRenderQueue(renderQueueStack_[renderQueueCount_ - 1]);
-				renderQueueCount_--;
+				return;
 			}
+			this.SetRenderQueue(this.renderQueueStack_[this.renderQueueCount_ - 1]);
+			this.renderQueueCount_--;
 		}
 
 		public void SetCameraDepth(int depth)
@@ -4479,9 +4496,12 @@ namespace kairo.unity.ui
 			else
 			{
 				MeshManager[] array = meshManList_;
-				for (int i = 0; i < array.Length; i++)
+				foreach (MeshManager meshManager in array)
 				{
-					array[i]?.BeginMesh();
+					if (meshManager != null)
+					{
+						meshManager.BeginMesh();
+					}
 				}
 				glTextCount_ = 0;
 				glRender_ = true;
@@ -4494,18 +4514,19 @@ namespace kairo.unity.ui
 
 		public void EndGLRender(bool force = false)
 		{
-			if (!(offscreen_ != null) && glRender_ && isGUI_)
+			if (this.offscreen_ != null || !this.glRender_ || !this.isGUI_)
 			{
-				PopClipEnable();
-				glRenderCount_--;
-				if (glRenderCount_ <= 0 || force)
-				{
-					FlushGLRender();
-					glRenderCount_ = 0;
-					glRender_ = false;
-				}
-				renderCache_.Reset();
+				return;
 			}
+			this.PopClipEnable();
+			this.glRenderCount_--;
+			if (this.glRenderCount_ <= 0 | force)
+			{
+				this.FlushGLRender(false);
+				this.glRenderCount_ = 0;
+				this.glRender_ = false;
+			}
+			this.renderCache_.Reset();
 		}
 
 		public void FlushGLRender(bool meshOnly = false)
@@ -4553,9 +4574,12 @@ namespace kairo.unity.ui
 			}
 			GLClear(true, false, false);
 			array = meshManList_;
-			for (int i = 0; i < array.Length; i++)
+			foreach (MeshManager meshManager2 in array)
 			{
-				array[i]?.BeginMesh();
+				if (meshManager2 != null)
+				{
+					meshManager2.BeginMesh();
+				}
 			}
 		}
 
@@ -4662,12 +4686,13 @@ namespace kairo.unity.ui
 
 		public void PopImageClip()
 		{
-			if (imageClipCount_ > 0)
+			if (this.imageClipCount_ <= 0)
 			{
-				float[] array = imageClipStack_[imageClipCount_ - 1];
-				imageClipCount_--;
-				SetImageClip(array[0], array[1], array[2], array[3]);
+				return;
 			}
+			float[] item = this.imageClipStack_[this.imageClipCount_ - 1];
+			this.imageClipCount_--;
+			this.SetImageClip(item[0], item[1], item[2], item[3]);
 		}
 
 		public float[] GetImageClip()
@@ -4752,46 +4777,47 @@ namespace kairo.unity.ui
 
 		public void EndState()
 		{
-			if (stackStateCount_ > 0)
+			if (this.stackStateCount_ <= 0)
 			{
-				stackStateCount_--;
-				StackState stackState = stackState_[stackStateCount_];
-				while (stackState.Clip < clipCount_)
-				{
-					PopClip();
-				}
-				while (stackState.Font < fontCount_)
-				{
-					PopFont();
-				}
-				while (stackState.RenderMode < renderModeCount_)
-				{
-					PopRenderMode();
-				}
-				while (stackState.Matrix < localMatrixIndex_)
-				{
-					PopMatrix();
-				}
-				while (stackState.BlendMode < blendModeCount_)
-				{
-					PopBlendMode();
-				}
-				while (stackState.ClipEnable < clipEnableCount_)
-				{
-					PopClipEnable();
-				}
-				while (stackState.Origin < originCount_)
-				{
-					PopOrigin();
-				}
-				while (stackState.RenderQueue < renderQueueCount_)
-				{
-					PopRenderQueue();
-				}
-				while (stackState.ImageClip < imageClipCount_)
-				{
-					PopImageClip();
-				}
+				return;
+			}
+			this.stackStateCount_--;
+			kairo.unity.ui.Graphics.StackState item = this.stackState_[this.stackStateCount_];
+			while (item.Clip < this.clipCount_)
+			{
+				this.PopClip();
+			}
+			while (item.Font < this.fontCount_)
+			{
+				this.PopFont();
+			}
+			while (item.RenderMode < this.renderModeCount_)
+			{
+				this.PopRenderMode();
+			}
+			while (item.Matrix < this.localMatrixIndex_)
+			{
+				this.PopMatrix();
+			}
+			while (item.BlendMode < this.blendModeCount_)
+			{
+				this.PopBlendMode();
+			}
+			while (item.ClipEnable < this.clipEnableCount_)
+			{
+				this.PopClipEnable();
+			}
+			while (item.Origin < this.originCount_)
+			{
+				this.PopOrigin();
+			}
+			while (item.RenderQueue < this.renderQueueCount_)
+			{
+				this.PopRenderQueue();
+			}
+			while (item.ImageClip < this.imageClipCount_)
+			{
+				this.PopImageClip();
 			}
 		}
 
@@ -4826,13 +4852,12 @@ namespace kairo.unity.ui
 
 		public void MaskBalloon(int x, int y, int width, int height)
 		{
-			if (render_ == null)
+			if (this.render_ != null)
 			{
-				return;
-			}
-			foreach (Image.BalloonRenderTask item in render_.balloonRenderTasks_)
-			{
-				item.Balloon.AddMask(x, y, width, height);
+				foreach (Image.BalloonRenderTask balloonRenderTask in this.render_.balloonRenderTasks_)
+				{
+					balloonRenderTask.Balloon.AddMask(x, y, width, height);
+				}
 			}
 		}
 	}

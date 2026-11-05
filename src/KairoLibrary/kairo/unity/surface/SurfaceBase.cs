@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -1367,25 +1369,26 @@ namespace kairo.unity.surface
 		public void BeginWindow(kairo.unity.ui.Graphics g)
 		{
 			int[] viewport = IApplication.GetCurrentApp().GetViewport();
-			int gameWidth = GetGameWidth();
-			int gameHeight = GetGameHeight();
+			int gameWidth = this.GetGameWidth();
+			int gameHeight = this.GetGameHeight();
 			int num = gameWidth * 100 / viewport[0];
-			int num2 = gameHeight * 100 / viewport[1];
+			int num1 = gameHeight * 100 / viewport[1];
 			if (num > 100)
 			{
 				num = 100;
 			}
-			if (num2 > 100)
+			if (num1 > 100)
 			{
-				num2 = 100;
+				num1 = 100;
 			}
-			int num3 = ((num > num2) ? num2 : num);
-			if (num3 != 100)
+			int num2 = (num > num1 ? num1 : num);
+			if (num2 == 100)
 			{
-				windowsScaleGraphics_.Add(g);
-				windowsScaleBackup_.Add(g.GetScale());
-				g.Scale(GetScaleRatio() * (float)num3 / 100f);
+				return;
 			}
+			this.windowsScaleGraphics_.Add(g);
+			this.windowsScaleBackup_.Add(g.GetScale());
+			g.Scale(this.GetScaleRatio() * (float)num2 / 100f);
 		}
 
 		public void EndWindow()
@@ -1434,63 +1437,66 @@ namespace kairo.unity.surface
 					delayNum_++;
 					return;
 				}
-				if (start_.IsEmpty())
 				{
-					start_.Copy(this, evt);
-				}
-				last_.Copy(this, evt);
-				if (!multiTouchEnable_)
-				{
-					return;
-				}
-				int action = evt.GetAction();
-				if (action == 3 || action == 4)
-				{
-					pinchPointer_[0][2] = (pinchPointer_[1][2] = -1);
-					pinchDistance_ = 0;
-					return;
-				}
-				int num = -1;
-				if (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)
-				{
-					int num2 = pinchPointer_[1][0] - pinchPointer_[0][0];
-					int num3 = pinchPointer_[1][1] - pinchPointer_[0][1];
-					num = (int)JMath.Sqrt(num2 * num2 + num3 * num3);
-				}
-				pinchPointer_[0][2] = (pinchPointer_[1][2] = -1);
-				int pointerCount = evt.GetPointerCount();
-				for (int i = 0; i < pointerCount; i++)
-				{
-					int pointerId = evt.GetPointerId(i);
-					if (pointerId < 2 && (pointerId != 0 || (action & 6) != 6) && (pointerId != 1 || (action & 0x106) != 262))
+					if (start_.IsEmpty())
 					{
-						pinchPointer_[i][0] = (int)evt.GetX(i);
-						pinchPointer_[i][1] = (int)evt.GetY(i) + ((!evt.IsMousePointer()) ? GetTouchOffset() : 0);
-						pinchPointer_[i][2] = pointerId;
+						start_.Copy(this, evt);
 					}
-				}
-				int num4 = -1;
-				if (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)
-				{
-					int num5 = pinchPointer_[1][0] - pinchPointer_[0][0];
-					int num6 = pinchPointer_[1][1] - pinchPointer_[0][1];
-					num4 = (int)JMath.Sqrt(num5 * num5 + num6 * num6);
-				}
-				if (num == -1 && num4 != -1)
-				{
-					pinchStartPoint_[0][0] = pinchPointer_[0][0];
-					pinchStartPoint_[0][1] = pinchPointer_[0][1];
-					pinchStartPoint_[1][0] = pinchPointer_[1][0];
-					pinchStartPoint_[1][1] = pinchPointer_[1][1];
-					pinchStart_ = true;
-				}
-				if (num == -1 || num4 == -1)
-				{
-					pinchDistance_ = 0;
-				}
-				else
-				{
-					pinchDistance_ += num4 - num;
+					last_.Copy(this, evt);
+					if (multiTouchEnable_)
+					{
+						int action = evt.GetAction();
+						if (action == 3 || action == 4)
+						{
+							pinchPointer_[0][2] = (pinchPointer_[1][2] = -1);
+							pinchDistance_ = 0;
+							return;
+						}
+						{
+							int num = -1;
+							if (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)
+							{
+								int num2 = pinchPointer_[1][0] - pinchPointer_[0][0];
+								int num3 = pinchPointer_[1][1] - pinchPointer_[0][1];
+								num = (int)JMath.Sqrt(num2 * num2 + num3 * num3);
+							}
+							pinchPointer_[0][2] = (pinchPointer_[1][2] = -1);
+							int pointerCount = evt.GetPointerCount();
+							for (int i = 0; i < pointerCount; i++)
+							{
+								int pointerId = evt.GetPointerId(i);
+								if (pointerId < 2 && (pointerId != 0 || (action & 6) != 6) && (pointerId != 1 || (action & 0x106) != 262))
+								{
+									pinchPointer_[i][0] = (int)evt.GetX(i);
+									pinchPointer_[i][1] = (int)evt.GetY(i) + (evt.IsMousePointer() ? 0 : GetTouchOffset());
+									pinchPointer_[i][2] = pointerId;
+								}
+							}
+							int num4 = -1;
+							if (pinchPointer_[0][2] != -1 && pinchPointer_[1][2] != -1)
+							{
+								int num5 = pinchPointer_[1][0] - pinchPointer_[0][0];
+								int num6 = pinchPointer_[1][1] - pinchPointer_[0][1];
+								num4 = (int)JMath.Sqrt(num5 * num5 + num6 * num6);
+							}
+							if (num == -1 && num4 != -1)
+							{
+								pinchStartPoint_[0][0] = pinchPointer_[0][0];
+								pinchStartPoint_[0][1] = pinchPointer_[0][1];
+								pinchStartPoint_[1][0] = pinchPointer_[1][0];
+								pinchStartPoint_[1][1] = pinchPointer_[1][1];
+								pinchStart_ = true;
+							}
+							if (num == -1 || num4 == -1)
+							{
+								pinchDistance_ = 0;
+							}
+							else
+							{
+								pinchDistance_ += num4 - num;
+							}
+						}
+					}
 				}
 			}
 		}

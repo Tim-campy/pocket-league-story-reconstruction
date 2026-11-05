@@ -204,7 +204,10 @@ namespace kairo.unity.ui
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (jarInflater != null)
+				{
+					jarInflater.Close();
+				}
 				jarInflater = null;
 			}
 		}
@@ -231,7 +234,10 @@ namespace kairo.unity.ui
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (jarInflater != null)
+				{
+					jarInflater.Close();
+				}
 				jarInflater = null;
 			}
 		}
@@ -249,7 +255,10 @@ namespace kairo.unity.ui
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (jarInflater != null)
+				{
+					jarInflater.Close();
+				}
 				jarInflater = null;
 			}
 		}
@@ -264,7 +273,10 @@ namespace kairo.unity.ui
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (jarInflater != null)
+				{
+					jarInflater.Close();
+				}
 				jarInflater = null;
 			}
 		}
@@ -309,7 +321,10 @@ namespace kairo.unity.ui
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (jarInflater != null)
+				{
+					jarInflater.Close();
+				}
 				jarInflater = null;
 			}
 		}

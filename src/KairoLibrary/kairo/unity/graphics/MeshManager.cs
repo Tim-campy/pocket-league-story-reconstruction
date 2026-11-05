@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using kairo.unity.form;
 using kairo.unity.ui;
@@ -228,37 +229,36 @@ namespace kairo.unity.graphics
 
 		public void RemoveInvalidMeshes()
 		{
-			List<Material> list = null;
-			for (int num = sortedMeshList_.Count - 1; num >= 0; num--)
+			List<kairo.unity.graphics.Material> materials = null;
+			for (int i = this.sortedMeshList_.Count - 1; i >= 0; i--)
 			{
-				KeyValuePair<Material, MeshBuilder> keyValuePair = sortedMeshList_[num];
-				Image image = keyValuePair.Key.GetImage();
-				if (keyValuePair.Key.IsDisposed || (image != null && image.IsDisposed))
+				KeyValuePair<kairo.unity.graphics.Material, MeshBuilder> item = this.sortedMeshList_[i];
+				Image image = item.Key.GetImage();
+				if (item.Key.IsDisposed || image != null && image.IsDisposed)
 				{
-					keyValuePair.Value.Dispose();
-					if (list == null)
+					item.Value.Dispose();
+					if (materials == null)
 					{
-						list = new List<Material>();
+						materials = new List<kairo.unity.graphics.Material>();
 					}
-					list.Add(keyValuePair.Key);
-					for (int num2 = layerMeshesNum_ - 1; num2 >= 0; num2--)
+					materials.Add(item.Key);
+					for (int j = this.layerMeshesNum_ - 1; j >= 0; j--)
 					{
-						if (layerMeshes_[num2].Material == keyValuePair.Key)
+						if (this.layerMeshes_[j].Material == item.Key)
 						{
-							layerMeshes_.RemoveAt(num2);
-							layerMeshesNum_--;
+							this.layerMeshes_.RemoveAt(j);
+							this.layerMeshesNum_--;
 						}
 					}
-					sortedMeshList_.RemoveAt(num);
+					this.sortedMeshList_.RemoveAt(i);
 				}
 			}
-			if (list == null)
+			if (materials != null)
 			{
-				return;
-			}
-			foreach (Material item in list)
-			{
-				meshList_.Remove(item);
+				foreach (kairo.unity.graphics.Material material in materials)
+				{
+					this.meshList_.Remove(material);
+				}
 			}
 		}
 
@@ -469,15 +469,16 @@ namespace kairo.unity.graphics
 
 		private void QuickSort(List<LayerMesh> a, int i, int j)
 		{
-			if (i != j)
+			if (i == j)
 			{
-				int num = Pivot(a, i, j);
-				if (num != -1)
-				{
-					int num2 = Partition(a, i, j, a[num].Queue);
-					QuickSort(a, i, num2 - 1);
-					QuickSort(a, num2, j);
-				}
+				return;
+			}
+			int num = this.Pivot(a, i, j);
+			if (num != -1)
+			{
+				int num1 = this.Partition(a, i, j, a[num].Queue);
+				this.QuickSort(a, i, num1 - 1);
+				this.QuickSort(a, num1, j);
 			}
 		}
 

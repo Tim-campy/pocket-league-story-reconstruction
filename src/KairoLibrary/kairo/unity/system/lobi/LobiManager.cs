@@ -38,13 +38,18 @@ namespace kairo.unity.system.lobi
 			{
 				long[][] scoreList = GetScoreList();
 				StreamUtil.WriteInt(byteArrayOutputStream, scoreList.Length);
-				foreach (long[] array in scoreList)
+				int num = 0;
+				while (num < scoreList.Length)
 				{
+					long[] array = scoreList[num];
 					StreamUtil.WriteInt(byteArrayOutputStream, array.Length);
-					for (int j = 0; j < array.Length; j++)
+					int num2 = 0;
+					while (num2 < array.Length)
 					{
-						StreamUtil.WriteLong(byteArrayOutputStream, array[j]);
+						StreamUtil.WriteLong(byteArrayOutputStream, array[num2]);
+						num2++;
 					}
+					num++;
 				}
 			}
 			return byteArrayOutputStream.ToByteArray();

@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -231,10 +233,6 @@ namespace kairo.unity.ui
 
 		internal bool isAlterStaticRendering_;
 
-		private static Graphics graphicsBuffer_;
-
-		private bool updateAdMobViewRun_;
-
 		private Canvas()
 		{
 			Init();
@@ -395,6 +393,8 @@ namespace kairo.unity.ui
 				}
 			});
 		}
+
+		private static Graphics graphicsBuffer_;
 
 		public static Canvas GetInstance()
 		{
@@ -1267,26 +1267,28 @@ namespace kairo.unity.ui
 
 		public void KeyUp(int key)
 		{
-			if (key != -1)
+			if (key == -1)
 			{
-				keyStateWork_ &= ~key;
-				if (surfaceManager_ != null)
-				{
-					surfaceManager_.OnKeyUp(key);
-				}
+				return;
+			}
+			this.keyStateWork_ &= ~key;
+			if (this.surfaceManager_ != null)
+			{
+				this.surfaceManager_.OnKeyUp(key);
 			}
 		}
 
 		public void KeyClick(int key)
 		{
-			if (key != -1)
+			if (key == -1)
 			{
-				keyEventState_ |= key;
-				if (surfaceManager_ != null)
-				{
-					surfaceManager_.OnKeyDown(key);
-					surfaceManager_.OnKeyUp(key);
-				}
+				return;
+			}
+			this.keyEventState_ |= key;
+			if (this.surfaceManager_ != null)
+			{
+				this.surfaceManager_.OnKeyDown(key);
+				this.surfaceManager_.OnKeyUp(key);
 			}
 		}
 
@@ -1509,10 +1511,11 @@ namespace kairo.unity.ui
 
 		public void Fullscreen(bool enable)
 		{
-			if (!IApplication.GetCurrentApp().GetFormManager().IsCapturing())
+			if (IApplication.GetCurrentApp().GetFormManager().IsCapturing())
 			{
-				KairoPlugin.Fullscreen(enable);
+				return;
 			}
+			KairoPlugin.Fullscreen(enable);
 		}
 
 		public bool IsFullscreen()
@@ -1659,6 +1662,8 @@ namespace kairo.unity.ui
 			}
 			return false;
 		}
+
+		private bool updateAdMobViewRun_;
 
 		public AdMobView GetAdMobView()
 		{

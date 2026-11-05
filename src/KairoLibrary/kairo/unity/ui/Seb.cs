@@ -140,10 +140,12 @@ namespace kairo.unity.ui
 
 		private static WorkStaticValue GetWorkStaticValue()
 		{
-			WorkStaticValue workStaticValue = threadLocalStatic_;
+			Seb.WorkStaticValue workStaticValue = Seb.threadLocalStatic_;
 			if (workStaticValue == null)
 			{
-				workStaticValue = (threadLocalStatic_ = new WorkStaticValue());
+				Seb.WorkStaticValue workStaticValue1 = new Seb.WorkStaticValue();
+				workStaticValue = workStaticValue1;
+				Seb.threadLocalStatic_ = workStaticValue1;
 			}
 			return workStaticValue;
 		}

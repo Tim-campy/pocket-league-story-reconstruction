@@ -15,7 +15,9 @@ def validate_matched(root,methods):
         receipt_path=root/'build'/f'verification-{assembly}.json'
         if not receipt_path.is_file(): raise ValueError('Matched state without verification receipt: '+assembly)
         receipt=json.loads(receipt_path.read_text(encoding='utf-8'))
-        if receipt['verifier_sha256']!=digest(root/'tools/verify_kairo.py'):
+        verifier={'KairoLibrary':'tools/verify_kairo.py','Assembly-CSharp':'tools/verify_csharp.py'}.get(assembly)
+        if verifier is None:raise ValueError('Unsupported verification receipt assembly')
+        if receipt['verifier_sha256']!=digest(root/verifier):
             raise ValueError('Verifier changed; regenerate matched receipts')
         if receipt['inspector_source_sha256']!=digest(root/'tools/ProbeInspector.cs'):
             raise ValueError('Inspector changed; regenerate matched receipts')

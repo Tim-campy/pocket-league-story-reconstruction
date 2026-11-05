@@ -58,10 +58,11 @@ def main():
     original_document=json.loads(dump_path.read_text(encoding='utf-8-sig'))
     rebuilt_document=json.loads((folder/'rebuilt-methods.json').read_text(encoding='utf-8-sig'))
     generated_ids={m['stable_id'] for m in original if target[token_of(m)]['gerado_por']}
-    ownership,groups=prove_groups(original_document,rebuilt_document,generated_ids)
+    equal_ids={m['stable_id'] for m in original if 'raw_body_hex' in m and not differences(m,indices.get(m['stable_id']))[0]}
+    ownership,groups=prove_groups(original_document,rebuilt_document,generated_ids,equal_ids)
     original_rows={m['stable_id']:target[token_of(m)] for m in original}
     compiled_sources={s['path'] for s in manifest['sources']}
-    results={};counts=Counter();regressions=[]
+    results={};counts=Counter();regressions=[];body_regressions=[]
     for method in original:
         row=target[token_of(method)];built=indices.get(method['stable_id'])
         delta,percent=differences(method,built)
@@ -81,6 +82,7 @@ def main():
         source_available=row['fonte'] in compiled_sources
         state='matched' if body_equal and not group_pending and source_available else ('decompiled' if source_available else 'todo')
         if row['estado']=='matched' and state!='matched': regressions.append(row['id'])
+        if row['estado']=='matched' and not body_equal:body_regressions.append(row['id'])
         result={'state':state,'body_equal':body_equal,'generated_group_pending':group_pending,
             'percent':percent,'differences':delta,'body_present':has_body,
             'patterns':patterns(method,built) if delta else [],'ownership_proof':ownership_proof}
@@ -101,7 +103,7 @@ def main():
         'build_sha256':manifest['output_sha256'],'original_sha256':cache['artifact_sha256'],
         'verifier_sha256':sha(Path(__file__)),'inspector_source_sha256':source_hash,'sources':manifest['sources'],
         'helper_source_hashes':{p:sha(ROOT/p) for p in ('tools/generated_groups.py','tools/compare_kairo.py')},
-        'methods':results,'counts':dict(counts),'regressions':regressions,'type_metadata_identity':'NOT_VERIFIED',
+        'methods':results,'counts':dict(counts),'regressions':regressions,'body_regressions':body_regressions,'type_metadata_identity':'NOT_VERIFIED',
         'whole_assembly_byte_identity':False,'normalized_assembly_fields':[]}
     (ROOT/'build/verification-KairoLibrary.json').write_text(json.dumps(receipt,indent=2)+'\n',encoding='utf-8')
     with (ROOT/'config/methods.csv').open('w',encoding='utf-8',newline='') as file:

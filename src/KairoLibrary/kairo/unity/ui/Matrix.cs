@@ -148,23 +148,23 @@ namespace kairo.unity.ui
 			}
 			if (px != 0f || py != 0f)
 			{
-				PostTranslate(0f - px, 0f - py);
+				this.PostTranslate(-px, -py);
 			}
-			float num = FastMath.Sin(angle);
-			float num2 = FastMath.Cos(angle);
-			set_[0] = num2;
-			set_[1] = num;
-			set_[2] = 0f;
-			set_[3] = 0f - num;
-			set_[4] = num2;
-			set_[5] = 0f;
-			set_[6] = 0f;
-			set_[7] = 0f;
-			set_[8] = 1f;
-			PostConcat(set_);
+			float single = FastMath.Sin(angle);
+			float single1 = FastMath.Cos(angle);
+			this.set_[0] = single1;
+			this.set_[1] = single;
+			this.set_[2] = 0f;
+			this.set_[3] = -single;
+			this.set_[4] = single1;
+			this.set_[5] = 0f;
+			this.set_[6] = 0f;
+			this.set_[7] = 0f;
+			this.set_[8] = 1f;
+			this.PostConcat(this.set_);
 			if (px != 0f || py != 0f)
 			{
-				PostTranslate(px, py);
+				this.PostTranslate(px, py);
 			}
 			return this;
 		}
@@ -177,23 +177,23 @@ namespace kairo.unity.ui
 			}
 			if (px != 0f || py != 0f)
 			{
-				PreTranslate(px, py);
+				this.PreTranslate(px, py);
 			}
-			float num = FastMath.Sin(angle);
-			float num2 = FastMath.Cos(angle);
-			set_[0] = num2;
-			set_[1] = num;
-			set_[2] = 0f;
-			set_[3] = 0f - num;
-			set_[4] = num2;
-			set_[5] = 0f;
-			set_[6] = 0f;
-			set_[7] = 0f;
-			set_[8] = 1f;
-			PreConcat(set_);
+			float single = FastMath.Sin(angle);
+			float single1 = FastMath.Cos(angle);
+			this.set_[0] = single1;
+			this.set_[1] = single;
+			this.set_[2] = 0f;
+			this.set_[3] = -single;
+			this.set_[4] = single1;
+			this.set_[5] = 0f;
+			this.set_[6] = 0f;
+			this.set_[7] = 0f;
+			this.set_[8] = 1f;
+			this.PreConcat(this.set_);
 			if (px != 0f || py != 0f)
 			{
-				PreTranslate(0f - px, 0f - py);
+				this.PreTranslate(-px, -py);
 			}
 			return this;
 		}
@@ -225,17 +225,17 @@ namespace kairo.unity.ui
 			}
 			if (px != 0f || py != 0f)
 			{
-				PostTranslate(0f - px, 0f - py);
+				this.PostTranslate(-px, -py);
 			}
-			mtx_[0] *= x;
-			mtx_[1] *= y;
-			mtx_[3] *= x;
-			mtx_[4] *= y;
-			mtx_[6] *= x;
-			mtx_[7] *= y;
+			this.mtx_[0] *= x;
+			this.mtx_[1] *= y;
+			this.mtx_[3] *= x;
+			this.mtx_[4] *= y;
+			this.mtx_[6] *= x;
+			this.mtx_[7] *= y;
 			if (px != 0f || py != 0f)
 			{
-				PostTranslate(px, py);
+				this.PostTranslate(px, py);
 			}
 			return this;
 		}
@@ -248,17 +248,17 @@ namespace kairo.unity.ui
 			}
 			if (px != 0f || py != 0f)
 			{
-				PreTranslate(px, py);
+				this.PreTranslate(px, py);
 			}
-			mtx_[0] *= x;
-			mtx_[1] *= x;
-			mtx_[2] *= x;
-			mtx_[3] *= y;
-			mtx_[4] *= y;
-			mtx_[5] *= y;
+			this.mtx_[0] *= x;
+			this.mtx_[1] *= x;
+			this.mtx_[2] *= x;
+			this.mtx_[3] *= y;
+			this.mtx_[4] *= y;
+			this.mtx_[5] *= y;
 			if (px != 0f || py != 0f)
 			{
-				PreTranslate(0f - px, 0f - py);
+				this.PreTranslate(-px, -py);
 			}
 			return this;
 		}

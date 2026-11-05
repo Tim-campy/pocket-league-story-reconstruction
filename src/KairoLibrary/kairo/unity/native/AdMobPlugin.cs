@@ -7,7 +7,7 @@ namespace kairo.unity.native
 {
 	public class AdMobPlugin
 	{
-		private static IApplication app_;
+		private static IApplication app_ = null;
 
 		private static AndroidJavaClass AdMobView;
 

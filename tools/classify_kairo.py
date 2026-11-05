@@ -68,7 +68,7 @@ def main():
         fingerprints[(group,short)].append(method['stable_id'])
         rows.append({'id':cross[method['stable_id']]['id'],'stable_id':method['stable_id'],'group':group,
             'compiler_comparison':status,'difference_facets':delta,'edit_fingerprint':short,'edits':edits,'traits':traits})
-    report={'scope':'424 original method bodies differing or missing with package 1.3.2; disjoint primary groups',
+    report={'scope':str(sum(counts.values()))+' original method bodies differing or missing with package 1.3.2; disjoint primary groups',
         'counts':dict(counts),'cross_compiler_by_group':{k:dict(v) for k,v in cross_counts.items()},
         'declarations_without_body':76,'body_equal_but_generated_ownership_pending':
             json.loads((ROOT/'reports/KairoLibrary-verification.json').read_text())['counts']['equal_body_held_for_generated_group'],

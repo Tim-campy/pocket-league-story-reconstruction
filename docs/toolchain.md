@@ -62,7 +62,16 @@ O inventário de caminhos e versões consultados está em `analysis/environment.
 
 ## Exceções de comparação
 
-**Nenhum campo autorizado.** MVID, timestamp PE e qualquer outro campo permanecem sob comparação até que duas compilações seguidas do mesmo fonte demonstrem sua variação e o campo seja identificado. Não há normalização genérica nem edição do resultado compilado.
+Foram registradas quatro exceções comprovadas para o candidato KairoLibrary, pacote Roslyn 1.3.2, com `/debug:pdbonly /deterministic-`:
+
+| Campo | Localização semântica | Prova |
+|---|---|---|
+| MVID | GUID referenciado pela linha Module | 16 bytes mudaram entre builds idênticos |
+| Timestamp COFF | Cabeçalho PE/COFF TimeDateStamp | Um byte mudou nesta repetição; campo tem quatro bytes |
+| Timestamp de depuração | TimeDateStamp da entrada IMAGE_DEBUG_DIRECTORY | Um byte mudou; campo tem quatro bytes |
+| GUID do PDB | GUID do registro CodeView RSDS | 16 bytes mudaram |
+
+Evidência: [reports/KairoLibrary-repeatability.json](../reports/KairoLibrary-repeatability.json), dois builds completos dos mesmos fontes, referências, opções e caminho de saída; 34 bytes diferentes, nenhum fora desses campos. A autorização para registrá-los veio da solicitação do usuário após examinar essa prova. Exceções declaradas em `config/toolchain.json`; **nenhum normalizador de assembly foi aplicado**, nenhum campo adicional está excluído e nenhum binário foi editado. Offsets não são fixados para futuros builds: os campos terão de ser encontrados pela estrutura PE/CLI. A prova vale para esse candidato/opções; o determinismo histórico do original continua UNKNOWN.
 
 A assinatura do APK é a exclusão final prevista pelo AGENTS.md. O inventário observou `META-INF/MANIFEST.MF`, `META-INF/CERT.SF` e `META-INF/CERT.RSA`; não observou a magic do APK Signing Block imediatamente antes do diretório central. A implementação da comparação final deverá definir as exclusões e a remontagem de forma explícita.
 
@@ -78,12 +87,28 @@ Opções explícitas dos dois builds completos Kairo: `/nologo /noconfig /nostdl
 
 O pacote portátil 1.3.2, autorizado pelo usuário, fica somente em `analysis/`. SHA-256 do nupkg: `37aaedd86f96df0ccfef1ada743d6fefd36135b31b75f5305140b84da98918d7`; `csc.exe` versão interna 1.3.1.60621, SHA-256 `d14ba119edd71bdcb82b12659647427aa46d819caf6e72ac6d4ae86c81eb36c9`. Download explícito e verificado: `python tools/fetch_roslyn.py`.
 
+Também foram conferidos contra o pacote fixado os hashes de csc.exe.config, Microsoft.CodeAnalysis, Microsoft.CodeAnalysis.CSharp, System.Collections.Immutable e System.Reflection.Metadata; não basta identificar apenas o executável que chama o gerador de código. [Componentes](../reports/KairoLibrary-compiler-components.json).
+
 Ambos os builds completos compilaram sem erros. O pacote 1.3.2 corresponde em 2.787/3.211 corpos, e 5.8 em 2.736/3.211. Identificação histórica ainda UNKNOWN. Resultados, PE/debug, determinismo e limites: [linha de base Kairo](notes/kairo-baseline.md).
 
 ## Outras DLLs
 
-Todas as nove DLLs gerenciadas foram auditadas pelo REA. Das sete externas, seis coincidem por SHA-256 com a distribuição oficial instalada: Mono.Security, mscorlib, System, System.Core, UnityEngine.Networking e UnityEngine.UI. UnityEngine.dll não coincide com as variantes Editor/WebPlayer consultadas; a origem exata dessa variante Android continua UNKNOWN. Versões, hashes e evidências em [config/dll-audit.json](../config/dll-audit.json). Nenhuma biblioteca externa foi decompilada.
+Todas as nove DLLs gerenciadas foram auditadas pelo REA. **As sete externas agora coincidem por SHA-256 com arquivos oficiais**: Mono.Security, mscorlib, System, System.Core, UnityEngine.Networking e UnityEngine.UI na instalação inicial; UnityEngine.dll no módulo Android acrescentado. Versões, hashes e evidências em [config/dll-audit.json](../config/dll-audit.json). Nenhuma biblioteca externa foi decompilada.
 
-Comparação estrutural da UnityEngine.dll: APK tem 10.459 métodos, todos presentes no Editor, que tem mais 691. Dos 5.889 corpos comuns, 5.861 correspondem e 28 diferem; as 4.570 declarações sem CIL correspondem. Portanto, apenas stripping da variante Editor não explica o APK. Contra WebPlayer: 5.807/5.825 corpos correspondem, 18 diferem, nove declarações diferem, 133 métodos e oito tipos existem apenas no APK. A DLL segue **externa não verificada**; esses dados não provam modificação, pois variantes oficiais de plataforma também podem diferir. [Relatório estrutural](../reports/UnityEngine-structural-comparison.json).
+Comparação inicial da UnityEngine.dll contra Editor/WebPlayer: 28/18 corpos diferiam, respectivamente. Essa comparação estava limitada às variantes disponíveis naquele momento. [Relatório estrutural histórico](../reports/UnityEngine-structural-comparison.json).
 
-O teste de duas compilações completas do candidato 1.3.2 com debug:pdbonly identificou diferenças em MVID, timestamp COFF, timestamp do diretório de depuração e GUID PDB CodeView, sem outras diferenças. [Relatório](../reports/KairoLibrary-repeatability.json). É prova de campos variáveis neste build, não uma lista de exclusões já aplicada ao original. A conclusão de determinismo do original permanece UNKNOWN.
+O módulo Android oficial 5.3.4f1 foi instalado com autorização explícita, instalador assinado como Valid por Unity Technologies SF, SHA-256 `17ce1e474487363ddcf2b18191410f1216afba3885eb88e928310029bc1523e3`. A DLL `AndroidPlayer/Variations/mono/Managed/UnityEngine.dll` é **idêntica em todos os 970.752 bytes ao APK**, SHA-256 `7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421`. O layout compartilha essa DLL entre Release e Development; não há duas DLLs managed específicas por modo. As seis bibliotecas nativas do APK também correspondem; `libunity.so` em ARMv7 e x86 coincide exclusivamente com **Mono Release**. Os 140 arquivos existentes do editor/Mono/WebPlayer conferidos antes e depois ficaram inalterados. [Prova completa](../reports/UnityEngine-android-comparison.json), [nota](notes/unity-android.md).
+
+O teste de duas compilações completas identificou os quatro campos registrados acima. As exclusões ainda não foram aplicadas à comparação de arquivos do original.
+
+## Validação integral de Assembly-CSharp
+
+Recuperados 96 tipos superiores mais AssemblyInfo.cs, 97 C#, com ILSpy/CSharp3 e resolver do perfil Unity primeiro. A matriz inicial com `-nostdlib` distinguia smcs 2.6.5.0 (1.444/1.952 corpos), mcs 3.4.0.0 (703) e gmcs 2.6.5.0 (oito erros de extensões). A investigação integral posterior comprovou que retirar `-nostdlib`, mantendo referências e perfil Unity, sobe para **1.530 sem perder nenhum corpo**. O smcs continua melhor candidato; otimização ligada/desligada produz os mesmos corpos e gmcs continua falhando. mcs 3.4 sem `-nostdlib` troca o corlib para 4.0 e não é comparação válida de versões. Identidade histórica exata permanece UNKNOWN.
+
+Opções selecionadas: `-nologo -noconfig -target:library -platform:anycpu -optimize+ -debug- -langversion:Default -unsafe+ -checked- -codepage:65001`, com `--stdlib default`; `-noconfig` fora do response file. Referências do APK na ordem mscorlib, KairoLibrary, UnityEngine, System.Core, System. `MONO_PATH` e `MONO_CFG_DIR` definidos somente no subprocesso. O corlib implícito é o Unity 2.0.5.0, idêntico por hash ao APK; os AssemblyRefs resultantes coincidem também em ordem. A chamada original IndexOf(string,int) voltou ao fonte; o contorno foi retirado. Inicializadores default em dois campos recuperam dois `.cctor` apenas com `ret`, totalizando **1.532 corpos**, sem perder correspondências e mantendo BeforeFieldInit. [Nota e matrizes completas](notes/assembly-csharp-baseline.md).
+
+## Variantes de recuperação
+
+A numeração Roslyn depende da ordem expandida dos membros: as sondas próprias confirmam campo/método/tipo aninhado com peso um, propriedade manual get/set com peso três e automática get/set com peso quatro. A ordem recuperada combina FieldDef, MethodDef, Property e NestedType com os números dos nomes gerados. Foram restaurados dois construtores vazios omitidos pelo ILSpy. Candidatos isolados compilaram antes de qualquer adoção e preservaram todos os corpos que já correspondiam. [Sondas](../reports/KairoLibrary-member-order-probe.json), [aplicação](../reports/KairoLibrary-member-order-application.json).
+
+Além de ILSpy 9.1.0.7988 com configurações distintas, foi preparado o decompilador independente Codemerx/JustDecompileEngine, commit `35f93d8fae9f6220bc8c976d1dbf376e57d6321d`, versão de assembly 2019.1.118.0. Compilado por MSBuild existente com referências Framework 4.7.2 portáteis, sem modificar fontes upstream ou instalar SDK global. Pacotes, engine e variantes ficam em analysis/. [Proveniência](../reports/Codemerx-decompiler.json). Variantes só podem entrar por fonte C# e comparação integral; nenhuma classe gerada é escrita manualmente.

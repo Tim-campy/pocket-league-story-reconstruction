@@ -1,0 +1,68 @@
+{
+  "source_sha256": "cd18792aff15f60b206b189ac04a8c6a4ffa5c96869c5de5a2a1ad8859c03ea5",
+  "cases": [
+    {
+      "label": "default",
+      "flags": [],
+      "exit_code": 0,
+      "diagnostics": "",
+      "references": [
+        "mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "method_signatures": [
+        "class OwnProbe @ default, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default",
+        "class OwnProbe @ default, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::M``0(class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+      ]
+    },
+    {
+      "label": "default_explicit",
+      "flags": [
+        "-r:C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\unity\\mscorlib.dll"
+      ],
+      "exit_code": 0,
+      "diagnostics": "",
+      "references": [
+        "mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "method_signatures": [
+        "class OwnProbe @ default_explicit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default",
+        "class OwnProbe @ default_explicit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::M``0(class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+      ]
+    },
+    {
+      "label": "nostdlib_explicit",
+      "flags": [
+        "-nostdlib",
+        "-r:C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\unity\\mscorlib.dll"
+      ],
+      "exit_code": 1,
+      "diagnostics": "Compilation failed: 1 error(s), 0 warnings\nanalysis\\indexof-profile-probes\\OwnProbe.cs(1,66): error CS0121: The call is ambiguous between the following methods or properties: `string.IndexOf(string, int)' and `string.IndexOf(string, int)'\nC:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\unity\\mscorlib.dll (Location of the symbol related to previous error)\n"
+    },
+    {
+      "label": "default_sdk2",
+      "flags": [
+        "-sdk:2"
+      ],
+      "exit_code": 1,
+      "diagnostics": "error CS2007: Unrecognized command-line option: `-sdk:2'\n"
+    },
+    {
+      "label": "classic_explicit",
+      "flags": [
+        "-nostdlib",
+        "-r:C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\2.0\\mscorlib.dll"
+      ],
+      "exit_code": 1,
+      "diagnostics": "Compilation failed: 1 error(s), 0 warnings\nanalysis\\indexof-profile-probes\\OwnProbe.cs(1,66): error CS0121: The call is ambiguous between the following methods or properties: `string.IndexOf(string, int)' and `string.IndexOf(string, int)'\nC:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\unity\\mscorlib.dll (Location of the symbol related to previous error)\n"
+    },
+    {
+      "label": "global_alias",
+      "flags": [
+        "-nostdlib",
+        "-r:global=C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\unity\\mscorlib.dll"
+      ],
+      "exit_code": 1,
+      "diagnostics": "518: The predefined type `System.Collections.IEnumerator' is not defined or imported\nerror CS0518: The predefined type `System.Collections.IEnumerable' is not defined or imported\nerror CS0518: The predefined type `System.IDisposable' is not defined or imported\nerror CS0518: The predefined type `System.Char' is not defined or imported\nerror CS0518: The predefined type `System.String' is not defined or imported\nerror CS0518: The predefined type `System.Single' is not defined or imported\nerror CS0518: The predefined type `System.Double' is not defined or imported\nerror CS0518: The predefined type `System.Decimal' is not defined or imported\nerror CS0518: The predefined type `System.Boolean' is not defined or imported\nerror CS0518: The predefined type `System.IntPtr' is not defined or imported\nerror CS0518: The predefined type `System.UIntPtr' is not defined or imported\nerror CS0518: The predefined type `System.MulticastDelegate' is not defined or imported\nerror CS0518: The predefined type `System.Delegate' is not defined or imported\nerror CS0518: The predefined type `System.Enum' is not defined or imported\nerror CS0518: The predefined type `System.Array' is not defined or imported\nerror CS0518: The predefined type `System.Void' is not defined or imported\nerror CS0518: The predefined type `System.Type' is not defined or imported\nerror CS0518: The predefined type `System.Exception' is not defined or imported\nerror CS0518: The predefined type `System.RuntimeFieldHandle' is not defined or imported\nerror CS0518: The predefined type `System.RuntimeTypeHandle' is not defined or imported\nerror CS0518: The predefined type `System.ParamArrayAttribute' is not defined or imported\nerror CS0518: The predefined type `System.Runtime.InteropServices.OutAttribute' is not defined or imported\n"
+    }
+  ]
+}

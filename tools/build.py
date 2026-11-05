@@ -18,7 +18,8 @@ def main():
         code=subprocess.run([sys.executable,str(ROOT/'tools/build_kairo.py'),'--compiler',str(compiler),'--label','roslyn-1.3.2'],cwd=ROOT).returncode
         if code: return code
     if args.assembly in (None,'Assembly-CSharp'):
-        print(json.dumps({'assembly':'Assembly-CSharp','build':'BLOCKED','reason':'96 type source files not recovered'}));return 2
+        code=subprocess.run([sys.executable,str(ROOT/'tools/build_csharp.py')],cwd=ROOT).returncode
+        if code:return code
     return 0
 
 

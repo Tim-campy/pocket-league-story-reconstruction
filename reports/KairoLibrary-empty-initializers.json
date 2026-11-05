@@ -1,0 +1,84 @@
+{
+  "scope_version": 3,
+  "source_changes": [
+    {
+      "logical_path": "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs",
+      "base_sha256": "ab0107e722e0b517776c981848e8b30c39a76c9b1ab4e91ba4081ced88cd2eed",
+      "candidate_sha256": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+      "changed_fields": [
+        "instance_"
+      ],
+      "explicit_static_constructor_added": false
+    },
+    {
+      "logical_path": "src/KairoLibrary/kairo/unity/util/CRC64.cs",
+      "base_sha256": "9c7e63595b029da7df1dfdd8980a2d0ab074c19ff4e35a6732496d21412e0e2f",
+      "candidate_sha256": "c4bb004105647df569fd0a29e5c1271c0b0f1db7a2635583e194056acac54c9b",
+      "changed_fields": [
+        "crcTable_"
+      ],
+      "explicit_static_constructor_added": false
+    }
+  ],
+  "source_map": "analysis/kairo-empty-initializers-source-map.json",
+  "applied_to_main": false,
+  "explicit_static_constructors_added": false,
+  "rule_evidence": "reports/KairoLibrary-static-initializer-probe.json",
+  "verification": {
+    "builds": [
+      {
+        "label": "empty-static-init-baseline",
+        "exit_code": 0,
+        "sha256": "a068c18b9070f67dc3bf79172da28c4969b0d434e3b8fbbe2a9e3ecdf1bad038",
+        "manifest_path": "build/KairoLibrary-empty-static-init-baseline/build-manifest.json"
+      },
+      {
+        "label": "empty-static-init-candidate",
+        "exit_code": 0,
+        "sha256": "db6a7be10b6dd94327b6142ea5f63e98bfcd92c303199d556575bff7c71fb86f",
+        "manifest_path": "build/KairoLibrary-empty-static-init-candidate/build-manifest.json"
+      }
+    ],
+    "target_methods": [
+      {
+        "id": "kairo.unity.ui.SoundPlayer::.cctor()->System.Void",
+        "body_equal": true,
+        "differences": [],
+        "percent": 100.0
+      },
+      {
+        "id": "kairo.unity.util.CRC64::.cctor()->System.Void",
+        "body_equal": true,
+        "differences": [],
+        "percent": 100.0
+      }
+    ],
+    "type_states": [
+      {
+        "type": "kairo.unity.ui.SoundPlayer",
+        "original_attributes": 1048577,
+        "baseline_attributes": 1048577,
+        "candidate_attributes": 1048577,
+        "before_field_init_preserved": true,
+        "fields_equal_to_original": true,
+        "method_order_equal_to_original": true
+      },
+      {
+        "type": "kairo.unity.util.CRC64",
+        "original_attributes": 1048577,
+        "baseline_attributes": 1048577,
+        "candidate_attributes": 1048577,
+        "before_field_init_preserved": true,
+        "fields_equal_to_original": true,
+        "method_order_equal_to_original": true
+      }
+    ],
+    "previously_equal_bodies_lost": [],
+    "new_equal_bodies": [
+      "kairo.unity.util.CRC64::.cctor()->System.Void",
+      "kairo.unity.ui.SoundPlayer::.cctor()->System.Void"
+    ],
+    "candidate_validated": true,
+    "scope": "full baseline/candidate builds from frozen C#; all oracle bodies checked; no ledger changes"
+  }
+}
