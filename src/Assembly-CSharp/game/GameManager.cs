@@ -752,18 +752,7 @@ namespace game
 
 		public void SetBallTeam(int team_id)
 		{
-			switch (team_id)
-			{
-			case -1:
-				ChangeGameState(2);
-				break;
-			case 0:
-				ChangeGameState(0);
-				break;
-			default:
-				ChangeGameState(1);
-				break;
-			}
+			if ((team_id == -1)) { ChangeGameState(2); } else if ((team_id == 0)) { ChangeGameState(0); } else { ChangeGameState(1); }
 		}
 
 		public void SetBattleTeamId(int tId1, int tId2, int homeAway)

@@ -31,8 +31,6 @@ namespace kairo.unity.io
 
 		private static List<HttpThread> httpThreads_ = new List<HttpThread>();
 
-		internal static bool IsRetryEnable { get; set; }
-
 		protected Http()
 		{
 		}
@@ -227,5 +225,7 @@ namespace kairo.unity.io
 				return httpThreads_[0];
 			}
 		}
+
+		internal static bool IsRetryEnable { get; set; }
 	}
 }

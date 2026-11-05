@@ -233,17 +233,7 @@ namespace data
 
 		public static int GetFanDispParam(int eva, int F_ID)
 		{
-			switch (F_ID)
-			{
-			case 0:
-				return GameUtil.RateConvert(eva, 0, 10000, 0, 100000, true);
-			case 1:
-				return GameUtil.RateConvert(eva, 0, 1000, 0, 100, true);
-			case 2:
-				return GameUtil.RateConvert(eva, 0, 10000, 0, 1000, true);
-			default:
-				return 0;
-			}
+			if ((F_ID == 0)) { return GameUtil.RateConvert(eva, 0, 10000, 0, 100000, true); } else if ((F_ID == 1)) { return GameUtil.RateConvert(eva, 0, 1000, 0, 100, true); } else if ((F_ID == 2)) { return GameUtil.RateConvert(eva, 0, 10000, 0, 1000, true); } else { return 0; }
 		}
 
 		public static int GetDispParamToEva(int dispParam, int F_ID)
@@ -270,120 +260,68 @@ namespace data
 			{
 				return 0;
 			}
-			switch (F_ID)
-			{
-			case 0:
-				if (eva <= 60)
+			if ((F_ID == 0)) { if (eva <= 60)
 				{
 					return 1;
 				}
-				if (eva < 200)
+if (eva < 200)
 				{
 					return 2;
 				}
-				return 3;
-			case 1:
-				if (eva < 200)
+return 3; } else if ((F_ID == 1)) { if (eva < 200)
 				{
 					return 1;
 				}
-				if (eva < 800)
+if (eva < 800)
 				{
 					return 2;
 				}
-				return 3;
-			case 2:
-				if (eva <= 60)
+return 3; } else if ((F_ID == 2)) { if (eva <= 60)
 				{
 					return 1;
 				}
-				if (eva < 120)
+if (eva < 120)
 				{
 					return 2;
 				}
-				return 3;
-			default:
-				return 0;
-			}
+return 3; } else { return 0; }
 		}
 
 		public static int GetFanEva(int F_ID)
 		{
 			UserData instance = UserData.GetInstance();
-			switch (F_ID)
-			{
-			case 0:
-				return instance.fanParam_[0];
-			case 1:
-				return instance.fanParam_[1];
-			case 2:
-				return instance.fanParam_[2];
-			default:
-				return 0;
-			}
+			if ((F_ID == 0)) { return instance.fanParam_[0]; } else if ((F_ID == 1)) { return instance.fanParam_[1]; } else if ((F_ID == 2)) { return instance.fanParam_[2]; } else { return 0; }
 		}
 
 		public static int GetAddEvaLimitOver(int F_ID, int eva, int add_eva, int limit)
 		{
 			int num = eva + add_eva;
 			int num2 = 0;
-			switch (F_ID)
-			{
-			case 0:
-				if (num > 10000 * limit / 100)
+			if ((F_ID == 0)) { if (num > 10000 * limit / 100)
 				{
 					num2 = num - 10000 * limit / 100;
 					add_eva = AppData.ClampMin(add_eva - num2, 0);
-				}
-				break;
-			case 1:
-				if (num > 1000 * limit / 100)
+				} } else if ((F_ID == 1)) { if (num > 1000 * limit / 100)
 				{
 					num2 = num - 1000 * limit / 100;
 					add_eva = AppData.ClampMin(add_eva - num2, 0);
-				}
-				break;
-			case 2:
-				if (num > 10000 * limit / 100)
+				} } else if ((F_ID == 2)) { if (num > 10000 * limit / 100)
 				{
 					num2 = num - 10000 * limit / 100;
 					add_eva = AppData.ClampMin(add_eva - num2, 0);
-				}
-				break;
-			}
+				} }
 			return add_eva;
 		}
 
 		public static int GetFanEvaToCommonValue(int F_ID)
 		{
-			switch (F_ID)
-			{
-			case 0:
-				return GameUtil.RateConvert(udat_.fanParam_[0], 0, 10000, 0, 1000, true);
-			case 1:
-				return GameUtil.RateConvert(udat_.fanParam_[1], 0, 1000, 0, 1000, true);
-			case 2:
-				return GameUtil.RateConvert(udat_.fanParam_[2], 0, 10000, 0, 1000, true);
-			default:
-				return 0;
-			}
+			if ((F_ID == 0)) { return GameUtil.RateConvert(udat_.fanParam_[0], 0, 10000, 0, 1000, true); } else if ((F_ID == 1)) { return GameUtil.RateConvert(udat_.fanParam_[1], 0, 1000, 0, 1000, true); } else if ((F_ID == 2)) { return GameUtil.RateConvert(udat_.fanParam_[2], 0, 10000, 0, 1000, true); } else { return 0; }
 		}
 
 		public static void AddFanParam(int add_eva, int F_ID)
 		{
 			UserData instance = UserData.GetInstance();
-			switch (F_ID)
-			{
-			case 0:
-				instance.fanParam_[0] = AppData.ClampMax(instance.fanParam_[0] + add_eva, 10000);
-				break;
-			case 1:
-				instance.fanParam_[1] = AppData.ClampMax(instance.fanParam_[1] + add_eva, 1000);
-				break;
-			case 2:
-				instance.fanParam_[2] = AppData.ClampMax(instance.fanParam_[2] + add_eva, 10000);
-				break;
-			}
+			if ((F_ID == 0)) { instance.fanParam_[0] = AppData.ClampMax(instance.fanParam_[0] + add_eva, 10000); } else if ((F_ID == 1)) { instance.fanParam_[1] = AppData.ClampMax(instance.fanParam_[1] + add_eva, 1000); } else if ((F_ID == 2)) { instance.fanParam_[2] = AppData.ClampMax(instance.fanParam_[2] + add_eva, 10000); }
 		}
 
 		public static void AddRankUpParam(int add_eva, FanActData fa_data)

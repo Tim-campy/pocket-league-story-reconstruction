@@ -132,17 +132,9 @@ namespace data
 					num2++;
 				}
 			}
-			switch (num2)
-			{
-			case 1:
-				goalScoreRate_[0] = 100;
-				goalScoreRate_[1] = goalScoreRate_[0];
-				break;
-			case 2:
-				goalScoreRate_[0] = 80;
-				goalScoreRate_[1] = goalScoreRate_[0] + 20;
-				break;
-			}
+			if ((num2 == 1)) { goalScoreRate_[0] = 100;
+goalScoreRate_[1] = goalScoreRate_[0]; } else if ((num2 == 2)) { goalScoreRate_[0] = 80;
+goalScoreRate_[1] = goalScoreRate_[0] + 20; }
 		}
 
 		public void SetWarParamPhysical()

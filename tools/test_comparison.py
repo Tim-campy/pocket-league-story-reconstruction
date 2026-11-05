@@ -84,5 +84,25 @@ class ComparisonTests(unittest.TestCase):
             (root/'source.cs').write_text('changed')
             with self.assertRaises(ValueError): validate_matched(root,[row])
 
+    def test_metadata_flag_cannot_replace_body_or_missing_declaration_proof(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            for name in ('build','tools','config'):(root/name).mkdir()
+            for name in ('tools/verify_kairo.py','tools/ProbeInspector.cs','source.cs','build/test.dll'):
+                (root/name).write_text('fixture')
+            (root/'config/types.csv').write_text('assembly,tipo,ordem,metadados\n')
+            result={'state':'matched','body_equal':False,'generated_group_pending':False,
+                    'metadata_declaration_equal':True,'body_present':True,'stable_id':'T::M()->System.Void'}
+            receipt={'verifier_sha256':digest(root/'tools/verify_kairo.py'),
+                'inspector_source_sha256':digest(root/'tools/ProbeInspector.cs'),
+                'build_artifact':'build/test.dll','build_sha256':digest(root/'build/test.dll'),
+                'sources':[{'path':'source.cs','sha256':digest(root/'source.cs')}],
+                'methods':{'A::M()':result}}
+            row={'assembly':'KairoLibrary','id':'A::M()','estado':'matched','percentual':'100.0000'}
+            path=root/'build/verification-KairoLibrary.json';path.write_text(json.dumps(receipt))
+            with self.assertRaisesRegex(ValueError,'cannot replace a method body'):validate_matched(root,[row])
+            result['body_present']=False;path.write_text(json.dumps(receipt))
+            with self.assertRaisesRegex(ValueError,'lacks a current metadata proof'):validate_matched(root,[row])
+
 
 if __name__=='__main__': unittest.main()

@@ -1,0 +1,71 @@
+{
+  "scope": "own C# fixtures only; historical compiler identity not established",
+  "compiler": "Microsoft.Net.Compilers1.3.2 csc1.3.1.60621",
+  "fixtures": [
+    {
+      "label": "z-a",
+      "sources": [
+        "build\\order-namespace-fixtures\\first.cs",
+        "build\\order-namespace-fixtures\\second.cs"
+      ],
+      "type_order": [
+        "<Module>",
+        "A.Second",
+        "Z.First"
+      ]
+    },
+    {
+      "label": "a-z",
+      "sources": [
+        "build\\order-namespace-fixtures\\second.cs",
+        "build\\order-namespace-fixtures\\first.cs"
+      ],
+      "type_order": [
+        "<Module>",
+        "Z.First",
+        "A.Second"
+      ]
+    },
+    {
+      "label": "combined",
+      "sources": [
+        "build\\order-namespace-fixtures\\combined.cs"
+      ],
+      "type_order": [
+        "<Module>",
+        "A.Second",
+        "Z.First"
+      ]
+    },
+    {
+      "label": "siblings",
+      "source": "namespace Z { public class First {} public class Second {} } namespace A { public class Third {} }",
+      "type_order": [
+        "<Module>",
+        "A.Third",
+        "Z.First",
+        "Z.Second"
+      ]
+    },
+    {
+      "label": "nested",
+      "source": "namespace Z.B { public class First {} } namespace Z.A { public class Second {} }",
+      "type_order": [
+        "<Module>",
+        "Z.A.Second",
+        "Z.B.First"
+      ]
+    },
+    {
+      "label": "global",
+      "source": "namespace Z { public class First {} } public class GlobalFirst {} namespace A { public class Second {} } public class GlobalSecond {}",
+      "type_order": [
+        "<Module>",
+        "GlobalFirst",
+        "GlobalSecond",
+        "A.Second",
+        "Z.First"
+      ]
+    }
+  ]
+}

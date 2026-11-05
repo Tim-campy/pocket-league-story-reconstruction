@@ -140,9 +140,8 @@ namespace system.billing.ui
 
 		public static void DebugVerificationReceipt(string token)
 		{
-			if (Config.DEBUG)
-			{
-			}
+			if (!(Config.DEBUG)) { return; }
+
 		}
 
 		public void Save(OutputStream stream)

@@ -1646,7 +1646,7 @@ namespace system.form
 
 		public override bool Resume()
 		{
-			return base.Resume();
+			{ bool recoveredReturn = base.Resume(); return recoveredReturn; }
 		}
 
 		public override bool Finish()

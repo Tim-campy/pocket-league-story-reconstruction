@@ -8,6 +8,8 @@ namespace kairo.unity.surface
 {
 	public abstract class SurfaceManagerBase
 	{
+		protected SurfaceManagerBase() {}
+
 		protected Vector<SurfaceBase> surfaceList_ = new Vector<SurfaceBase>();
 
 		private TouchComponent[] components_ = new TouchComponent[0];

@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--stdlib',choices=['default','explicit'],default='default',
         help='explicit retains the baseline -nostdlib; default allows the compiler core library binding')
     parser.add_argument('--source-map',type=Path,help='Isolated trial: logical source path to replacement input path')
+    parser.add_argument('--compile-order',type=Path,help='Isolated trial: alternate source order, confined to the project')
     args=parser.parse_args();compiler=SMCS if args.compiler=='smcs' else GMCS
     runtime=MONO;profile=UNITY/'Editor/Data/Mono/lib/mono/unity';config=UNITY/'Editor/Data/Mono/etc'
     if args.compiler=='mcs34':
@@ -34,8 +35,11 @@ def main():
     folder=(ROOT/'build'/('Assembly-CSharp-'+args.label)).resolve()
     if not folder.is_relative_to((ROOT/'build').resolve()):raise ValueError('Output outside build/')
     folder.mkdir(parents=True,exist_ok=True)
-    sources=[p for p in (ROOT/'config/compile-order/Assembly-CSharp.txt').read_text(encoding='utf-8').splitlines() if p and not p.startswith('#')]
+    order_path=args.compile_order.resolve() if args.compile_order else ROOT/'config/compile-order/Assembly-CSharp.txt'
+    if not order_path.is_relative_to(ROOT) or order_path.is_relative_to(ROOT/'original'):raise ValueError('Trial order must stay in the project outside original/')
+    sources=[p for p in order_path.read_text(encoding='utf-8').splitlines() if p and not p.startswith('#')]
     sources.append('src/Assembly-CSharp/AssemblyInfo.cs')
+    if len(set(sources))!=len(sources):raise ValueError('Duplicate source in compile order')
     replacements=json.loads(args.source_map.read_text(encoding='utf-8-sig')) if args.source_map else {}
     if not isinstance(replacements,dict) or set(replacements)-set(sources):raise ValueError('Unknown logical source path')
     selected={p:(ROOT/Path(replacements[p])).resolve() if p in replacements else ROOT/p for p in sources}
@@ -47,7 +51,7 @@ def main():
     references=[managed/name for name in ('mscorlib.dll','KairoLibrary.dll','UnityEngine.dll','System.Core.dll','System.dll')]
     target=folder/'Assembly-CSharp.dll'
     flags=['-nologo','-noconfig']+(['-nostdlib'] if args.stdlib=='explicit' else [])+['-target:library','-platform:anycpu',
-        '-optimize'+args.optimize,'-debug'+args.debug,'-langversion:Default','-unsafe+','-checked-',
+        '-optimize'+args.optimize,'-debug'+args.debug,'-langversion:Default','-unsafe-','-checked-',
         '-codepage:65001','-out:'+str(target)]
     parameters=[f for f in flags if f!='-noconfig']+['-r:'+str(p) for p in references]+[str(selected[p]) for p in sources]
     rsp=folder/'compile.rsp';rsp.write_text('\n'.join('"'+p+'"' for p in parameters)+'\n',encoding='utf-8',newline='\n')

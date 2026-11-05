@@ -21,6 +21,26 @@ namespace kairo.unity.ui
 
 		public const int COLOR_SHADOW = -5460820;
 
+		public string Text
+		{
+			get
+			{
+				return text_;
+			}
+			set
+			{
+				text_ = Language.LT(value);
+			}
+		}
+
+		public int TextColor { get; set; }
+
+		public float Scale { get; set; }
+
+		public Seb Seb { get; set; }
+
+		public int FontSize { get; set; }
+
 		internal float scale2_;
 
 		private string text_;
@@ -60,26 +80,6 @@ namespace kairo.unity.ui
 		private RectangleF rightSpaceRect_ = new RectangleF();
 
 		private static RectangleF Draw_tmp = new RectangleF();
-
-		public string Text
-		{
-			get
-			{
-				return text_;
-			}
-			set
-			{
-				text_ = Language.LT(value);
-			}
-		}
-
-		public int TextColor { get; set; }
-
-		public float Scale { get; set; }
-
-		public Seb Seb { get; set; }
-
-		public int FontSize { get; set; }
 
 		public Balloon(Balloon balloon)
 		{

@@ -10,6 +10,8 @@ from pathlib import Path
 import subprocess
 import sys
 from build_csharp import sha
+from metadata_compare import compare_paths
+from metadata_state import apply_type_metadata
 
 ROOT=Path(__file__).resolve().parents[1]
 COMPILER_SHA256='26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0'
@@ -36,8 +38,16 @@ def main():
         if reference[row['id']]['artifact_sha256']!=sidecar['original_sha256']:raise ValueError('Original reference identity mismatch')
     original_ids={result['stable_id']:key for key,result in sidecar['methods'].items()}
     results=sidecar['methods'];regressions=[]
+    metadata=apply_type_metadata(ROOT,'Assembly-CSharp',compare_paths(
+        ROOT/'original/extracted/assets/bin/Data/Managed/Assembly-CSharp.dll',folder/'Assembly-CSharp.dll'))
+    counts=dict(sidecar['counts']);counts['declarations_metadata_matched']=0
     for key,result in results.items():
         row=targets[key]
+        proof_meta=metadata['declarations'].get(result['stable_id'],{})
+        result['metadata_declaration_equal']=not result['body_present'] and proof_meta.get('proved',False)
+        if result['metadata_declaration_equal'] and not result['generated_group_pending'] and row['fonte'] in {s['path'] for s in manifest['sources']}:
+            counts[result['state']]-=1;result['state']='matched';result['percent']=100.0
+            counts['matched']=counts.get('matched',0)+1;counts['declarations_metadata_matched']+=1
         if row['estado']=='matched' and result['state']!='matched':regressions.append(key)
         proof=result.get('ownership_proof')
         if row['gerado_por'] and proof and proof['proved'] and len(proof['origins'])==1:
@@ -48,19 +58,20 @@ def main():
         notes=['verificado por build integral Mono smcs 2.6.5.0']
         if proof and proof['proved']:notes.append('vinculo gerado comprovado por nomes e IL')
         if result['generated_group_pending']:notes.append('vinculo gerado ainda pendente')
-        if not result['body_present']:notes.append('declaracao sem CIL; metadados completos pendentes')
+        if not result['body_present']:notes.append('declaracao sem CIL; metadados e tipo comprovados' if result['metadata_declaration_equal'] else 'declaracao sem CIL; metadados pendentes')
         if result['differences']:notes.append(','.join(result['differences']))
         if result['stable_id'].startswith('main.AppData::Draw_helpMessage('):
             notes.append('IndexOf(string,int) restaurado; stdlib default; demais diferencas registradas pelo verificador')
         row['notas']='; '.join(notes)
-    helpers=('tools/build_csharp.py','tools/verify_csharp_sidecar.py','tools/compare_kairo.py','tools/generated_groups.py')
+    helpers=('tools/build_csharp.py','tools/verify_csharp_sidecar.py','tools/compare_kairo.py','tools/generated_groups.py','tools/metadata_compare.py','tools/metadata_state.py','tools/MetadataInspector.cs','tools/prepare_metadata_inspector.py')
     receipt={'schema_version':1,'assembly':'Assembly-CSharp',
         'build_artifact':'build/Assembly-CSharp-mono-smcs/Assembly-CSharp.dll',
         'build_sha256':manifest['output_sha256'],'original_sha256':sidecar['original_sha256'],
         'verifier_sha256':sha(Path(__file__)),'inspector_source_sha256':sha(ROOT/'tools/ProbeInspector.cs'),
         'helper_source_hashes':{name:sha(ROOT/name) for name in helpers},'sources':manifest['sources'],
-        'methods':results,'counts':sidecar['counts'],'regressions':regressions,
-        'type_metadata_identity':'NOT_VERIFIED','whole_assembly_byte_identity':False,
+        'methods':results,'counts':counts,'regressions':regressions,
+        'type_metadata_identity':'MATCHED' if metadata['types_equal']==metadata['types_total'] else 'PARTIAL','whole_assembly_byte_identity':False,
+        'types_equal':metadata['types_equal'],'types_total':metadata['types_total'],'type_regressions':metadata['type_state_regressions'],
         'normalized_assembly_fields':[],'historical_compiler_identity':'UNKNOWN',
         'compiler_candidate':'Unity smcs 2.6.5.0','compiler_sha256':manifest['compiler_sha256'],
         'runtime_sha256':manifest['runtime_sha256']}
@@ -70,7 +81,7 @@ def main():
     summary={key:value for key,value in receipt.items() if key not in ('methods','sources')}
     (ROOT/'reports/Assembly-CSharp-verification.json').write_text(json.dumps(summary,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'assembly':'Assembly-CSharp','counts':receipt['counts'],'regressions':len(regressions),
-        'type_metadata':'NOT_VERIFIED','whole_assembly_equal':False}))
+        'types_equal':metadata['types_equal'],'types_total':metadata['types_total'],'whole_assembly_equal':False}))
     return 1 if regressions or any(r['state']!='matched' for r in results.values()) else 0
 
 

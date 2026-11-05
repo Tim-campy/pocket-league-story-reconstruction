@@ -2039,20 +2039,9 @@ namespace game
 
 		public void League_setFightResult(int league_result, int team_id)
 		{
-			switch (league_result)
-			{
-			case 0:
-				league_data_[team_id][0] += 3;
-				league_data_[team_id][1]++;
-				break;
-			case 1:
-				league_data_[team_id][0]++;
-				league_data_[team_id][2]++;
-				break;
-			case 2:
-				league_data_[team_id][3]++;
-				break;
-			}
+			if ((league_result == 0)) { league_data_[team_id][0] += 3;
+league_data_[team_id][1]++; } else if ((league_result == 1)) { league_data_[team_id][0]++;
+league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team_id][3]++; }
 		}
 
 		public int GetTeamScore(int t1_offence, int t2_deffence)
@@ -5338,13 +5327,13 @@ namespace game
 			TeamData teamData = AppData.GetInstance().tData_[0];
 			int warPotential_ = teamData.warPotential_;
 			int fanEvaToCommonValue = FanActData.GetFanEvaToCommonValue(2);
-			return (int)((w_warP * (float)warPotential_ + w_nameValue * (float)fanEvaToCommonValue) / (w_warP + w_nameValue));
+			{ int recoveredReturn = (int)((w_warP * (float)warPotential_ + w_nameValue * (float)fanEvaToCommonValue) / (w_warP + w_nameValue)); return recoveredReturn; }
 		}
 
 		public float GetTicketPriceRate(int eva)
 		{
 			int standartTicketPrice = GetStandartTicketPrice(eva);
-			return (float)standartTicketPrice / (float)ticketPrice_;
+			{ float recoveredReturn = (float)standartTicketPrice / (float)ticketPrice_; return recoveredReturn; }
 		}
 
 		public int GetStandartTicketPrice(int eva)

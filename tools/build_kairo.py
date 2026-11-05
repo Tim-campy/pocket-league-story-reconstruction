@@ -19,6 +19,7 @@ def main():
     parser.add_argument('--compiler',type=Path,default=ROSLYN)
     parser.add_argument('--label',default='')
     parser.add_argument('--source-map',type=Path,help='Isolated trial: logical source path to replacement input path')
+    parser.add_argument('--compile-order',type=Path,help='Isolated trial: alternate source order, confined to the project')
     options=parser.parse_args()
     compiler=options.compiler.resolve()
     if not compiler.is_file(): raise SystemExit('Compiler not found: '+str(compiler))
@@ -26,9 +27,12 @@ def main():
     folder=(ROOT/'build'/name).resolve()
     if not folder.is_relative_to((ROOT/'build').resolve()): raise SystemExit('Output must stay within build/')
     folder.mkdir(parents=True,exist_ok=True)
-    order=[p for p in (ROOT/'config/compile-order/KairoLibrary.txt').read_text(encoding='utf-8').splitlines() if p and not p.startswith('#')]
+    order_path=options.compile_order.resolve() if options.compile_order else ROOT/'config/compile-order/KairoLibrary.txt'
+    if not order_path.is_relative_to(ROOT) or order_path.is_relative_to(ROOT/'original'):raise ValueError('Trial order must stay in the project outside original/')
+    order=[p for p in order_path.read_text(encoding='utf-8').splitlines() if p and not p.startswith('#')]
     attributes='src/KairoLibrary/AssemblyInfo.cs'
     if attributes not in order: order.append(attributes)
+    if len(set(order))!=len(order):raise ValueError('Duplicate source in compile order')
     replacements=json.loads(options.source_map.read_text(encoding='utf-8')) if options.source_map else {}
     if set(replacements)-set(order): raise SystemExit('Source map contains unknown logical paths')
     selected={p:Path(replacements[p]).resolve() if p in replacements else ROOT/p for p in order}
@@ -44,8 +48,10 @@ def main():
         if not path.is_file(): raise SystemExit('Missing reference: '+str(path))
     output=folder/'KairoLibrary.dll'
     flags=['/nologo','/noconfig','/nostdlib+','/target:library','/platform:anycpu','/optimize+',
-        '/debug:pdbonly','/deterministic-','/langversion:6','/unsafe+','/checked-',
+        '/debug:pdbonly','/deterministic-','/langversion:6','/unsafe-','/checked-',
         '/codepage:65001','/utf8output','/out:'+str(output)]
+    # Both original assemblies lack the unsafe-generated module/security rows.
+    # Own fixtures prove their origin; the full verifier checks this selection.
     args=[flag for flag in flags if flag!='/noconfig']+['/reference:'+str(p) for p in references]+[str(selected[p]) for p in order]
     rsp=folder/'compile.rsp';rsp.write_text('\n'.join('"'+a+'"' for a in args)+'\n',encoding='utf-8',newline='\n')
     result=subprocess.run([str(compiler),'/noconfig','@'+str(rsp)],capture_output=True,text=True,encoding='utf-8',errors='replace')

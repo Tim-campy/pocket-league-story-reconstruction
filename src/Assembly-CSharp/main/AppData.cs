@@ -3032,15 +3032,7 @@ namespace main
 			string str = CommaSeparate(in_value);
 			int num = 0;
 			num += JString.ValueOf(in_value).Length() * (8 + padding) - padding;
-			switch (anchor)
-			{
-			case 2:
-				x -= num / 2;
-				break;
-			case 4:
-				x -= num;
-				break;
-			}
+			if ((anchor == 2)) { x -= num / 2; } else if ((anchor == 4)) { x -= num; }
 			bool flag = false;
 			for (int i = 0; i < str.Length(); i++)
 			{
@@ -3829,25 +3821,11 @@ namespace main
 
 		public int[] RotatePoint(int x, int y, int dir)
 		{
-			switch (dir)
-			{
-			case 0:
-				rotatePoint_tmp[0] = x;
-				rotatePoint_tmp[1] = y;
-				break;
-			case 1:
-				rotatePoint_tmp[0] = -y;
-				rotatePoint_tmp[1] = x;
-				break;
-			case 2:
-				rotatePoint_tmp[0] = -x;
-				rotatePoint_tmp[1] = -y;
-				break;
-			default:
-				rotatePoint_tmp[0] = y;
-				rotatePoint_tmp[1] = -x;
-				break;
-			}
+			if ((dir == 0)) { rotatePoint_tmp[0] = x;
+rotatePoint_tmp[1] = y; } else if ((dir == 1)) { rotatePoint_tmp[0] = -y;
+rotatePoint_tmp[1] = x; } else if ((dir == 2)) { rotatePoint_tmp[0] = -x;
+rotatePoint_tmp[1] = -y; } else { rotatePoint_tmp[0] = y;
+rotatePoint_tmp[1] = -x; }
 			return rotatePoint_tmp;
 		}
 
@@ -4192,7 +4170,7 @@ namespace main
 
 		public int GetAllStock(int itemId)
 		{
-			return 0;
+			{ int recoveredReturn = 0; return recoveredReturn; }
 		}
 
 		public int GetStockTotal(int[] stock)

@@ -10,8 +10,6 @@ namespace java.util
 	{
 		protected List<object> list_;
 
-		public List<object> List => list_;
-
 		public static implicit operator Vector(Vector<T> list)
 		{
 			return new Vector
@@ -42,6 +40,8 @@ namespace java.util
 			}
 			return base.Equals(obj);
 		}
+
+		public List<object> List => list_;
 
 		public Vector()
 		{

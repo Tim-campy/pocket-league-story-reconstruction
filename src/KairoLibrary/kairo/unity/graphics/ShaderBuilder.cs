@@ -11,6 +11,8 @@ namespace kairo.unity.graphics
 {
 	public class ShaderBuilder
 	{
+		public ShaderBuilder() {}
+
 		private class Node
 		{
 			public Node Parent;

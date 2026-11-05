@@ -1,0 +1,85 @@
+--- src/KairoLibrary/kairo/unity/ui/ResourceManager.cs
++++ analysis/variants/round2-resource-string-if/ResourceManager.cs
+@@ -398,36 +398,44 @@
+ 									for (int n = 1; n < array7.Length; n++)
+ 									{
+ 										string text4 = array7[n].ToLower();
+-										switch (text4)
+-										{
+-										case "bin":
++										if (text4 == "bin")
++										{
+ 											flag3 = true;
+-											break;
+-										case "res":
++										}
++										else if (text4 == "res")
++										{
+ 											flag4 = true;
+-											break;
+-										case "pt":
++										}
++										else if (text4 == "pt")
++										{
+ 											filterMode = Image.Filter.Point;
+-											break;
+-										case "bi":
++										}
++										else if (text4 == "bi")
++										{
+ 											filterMode = Image.Filter.Bilinear;
+-											break;
+-										case "tri":
++										}
++										else if (text4 == "tri")
++										{
+ 											filterMode = Image.Filter.Trilinear;
+-											break;
+-										case "24":
++										}
++										else if (text4 == "24")
++										{
+ 											format = Image.Format.RGB24;
+-											break;
+-										case "565":
++										}
++										else if (text4 == "565")
++										{
+ 											format = Image.Format.RGB565;
+-											break;
+-										case "32":
++										}
++										else if (text4 == "32")
++										{
+ 											format = Image.Format.ARGB32;
+-											break;
+-										case "4444":
++										}
++										else if (text4 == "4444")
++										{
+ 											format = Image.Format.ARGB4444;
+-											break;
+-										default:
++										}
++										else
++										{
+ 											if (text4.EndsWith(".pal"))
+ 											{
+ 												text3 = array7[n];
+@@ -448,7 +456,7 @@
+ 													text4 = text4.Substring(1);
+ 													if (!Language.English())
+ 													{
+-														break;
++														continue;
+ 													}
+ 												}
+ 												string[] array8 = text4.Split('x');
+@@ -459,7 +467,6 @@
+ 											{
+ 												flag5 = true;
+ 											}
+-											break;
+ 										}
+ 									}
+ 									if (Config.PRINT && flag5)

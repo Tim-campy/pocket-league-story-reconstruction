@@ -26,14 +26,14 @@ namespace kairo.unity.graphics
 
 		internal int RenderQueueOffset
 		{
-			get
-			{
-				return renderQueueOffset_;
-			}
 			set
 			{
 				renderQueueOffset_ = value;
 				renderQueue_ = shader_.renderQueue + renderQueueOffset_;
+			}
+			get
+			{
+				return renderQueueOffset_;
 			}
 		}
 

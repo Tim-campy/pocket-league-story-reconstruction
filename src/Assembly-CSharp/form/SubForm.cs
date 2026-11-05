@@ -967,7 +967,7 @@ namespace form
 
 		public static SubForm MakeDialog(string text)
 		{
-			return MakeDialog(text, string.Empty);
+			{ global::form.SubForm recoveredReturn = MakeDialog(text, string.Empty); return recoveredReturn; }
 		}
 
 		public static SubForm MakeDialog(string text, string buttons, int defaultSelect)
@@ -11075,10 +11075,7 @@ namespace form
 		{
 			AppData instance = AppData.GetInstance();
 			int num = AppData.GetFig(cnt) * 8 + 8 + 2;
-			switch (anchor)
-			{
-			case 1:
-				if (cnt >= 0)
+			if ((anchor == 1)) { if (cnt >= 0)
 				{
 					instance.DrawNumImage(g, seb, cnt, dx + 10, dy, 0, 1);
 					instance.DrawSeb(g, dx, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 14);
@@ -11087,10 +11084,7 @@ namespace form
 				{
 					instance.DrawNumImage(g, 91, -cnt, dx + 10, dy, 0, 1);
 					instance.DrawSeb(g, dx, dy, instance.resCom2_.seb[91], instance.resCom2_.img[109], 15);
-				}
-				break;
-			case 2:
-				if (cnt >= 0)
+				} } else if ((anchor == 2)) { if (cnt >= 0)
 				{
 					instance.DrawNumImage(g, seb, cnt, dx - num / 2 + 10, dy, 0, 1);
 					instance.DrawSeb(g, dx - num / 2, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 14);
@@ -11099,10 +11093,7 @@ namespace form
 				{
 					instance.DrawNumImage(g, 91, -cnt, dx - num / 2 + 10, dy, 0, 1);
 					instance.DrawSeb(g, dx - num / 2, dy, instance.resCom2_.seb[91], instance.resCom2_.img[109], 15);
-				}
-				break;
-			case 4:
-				if (cnt >= 0)
+				} } else if ((anchor == 4)) { if (cnt >= 0)
 				{
 					instance.DrawNumImage(g, seb, cnt, dx, dy, 0, 4);
 					instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 14);
@@ -11111,9 +11102,7 @@ namespace form
 				{
 					instance.DrawNumImage(g, 91, -cnt, dx, dy, 0, 4);
 					instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[91], instance.resCom2_.img[109], 15);
-				}
-				break;
-			}
+				} }
 		}
 
 		public static void Draw_multiParam(Graphics g, int seb, int dx, int dy, int cnt)
@@ -11125,21 +11114,10 @@ namespace form
 		{
 			AppData instance = AppData.GetInstance();
 			int num = AppData.GetFig(cnt) * 8 + 8 + 5;
-			switch (anchor)
-			{
-			case 1:
-				instance.DrawNumImageComma(g, seb, cnt, dx + 8 + 5, dy, 0, 0, 1);
-				instance.DrawSeb(g, dx, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 16);
-				break;
-			case 2:
-				instance.DrawNumImageComma(g, seb, cnt, dx - num / 2 + 8 + 5, dy, 0, 0, 1);
-				instance.DrawSeb(g, dx - num / 2, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 16);
-				break;
-			case 4:
-				instance.DrawNumImageComma(g, seb, cnt, dx - num + 8 + 5, dy, 0, 0, 1);
-				instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 16);
-				break;
-			}
+			if ((anchor == 1)) { instance.DrawNumImageComma(g, seb, cnt, dx + 8 + 5, dy, 0, 0, 1);
+instance.DrawSeb(g, dx, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 16); } else if ((anchor == 2)) { instance.DrawNumImageComma(g, seb, cnt, dx - num / 2 + 8 + 5, dy, 0, 0, 1);
+instance.DrawSeb(g, dx - num / 2, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 16); } else if ((anchor == 4)) { instance.DrawNumImageComma(g, seb, cnt, dx - num + 8 + 5, dy, 0, 0, 1);
+instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 16); }
 		}
 
 		public static void Draw_up(Graphics g, int dx, int dy, int cnt, int padding)

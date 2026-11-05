@@ -712,21 +712,7 @@ namespace game
 
 		public static int GetAreaMaxNum(int trainingMode)
 		{
-			switch (trainingMode)
-			{
-			case 0:
-				return 2;
-			case 1:
-				return 2;
-			case 2:
-				return 5;
-			case 4:
-				return 100;
-			case 3:
-				return 5;
-			default:
-				return 0;
-			}
+			if ((trainingMode == 0)) { return 2; } else if ((trainingMode == 1)) { return 2; } else if ((trainingMode == 2)) { return 5; } else if ((trainingMode == 4)) { return 100; } else if ((trainingMode == 3)) { return 5; } else { return 0; }
 		}
 	}
 }

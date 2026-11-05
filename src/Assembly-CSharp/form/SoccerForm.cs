@@ -3231,7 +3231,7 @@ namespace form
 				num4 = GameUtil.RateConvert(fanEvaToCommonValue2, 0f, 1000f, 0.5f, 1f, true);
 				fanEvaToCommonValue = (int)((float)fanEvaToCommonValue * num4);
 			}
-			return (int)((0.5f * (float)fanEvaToCommonValue + 0.1f * (float)fanEvaToCommonValue3 + 0.05f * (float)num2 + 0.1f * (float)num3) / 0.75000006f);
+			{ int recoveredReturn = (int)((0.5f * (float)fanEvaToCommonValue + 0.1f * (float)fanEvaToCommonValue3 + 0.05f * (float)num2 + 0.1f * (float)num3) / 0.75000006f); return recoveredReturn; }
 		}
 
 		public int GetMatchPrice()
@@ -3289,7 +3289,7 @@ namespace form
 			}
 			TenantData tenantData = apdat_.tenantData_[TenantData.TENANT_ID_GOODS];
 			float goodsIncomeRate = tenantData.GetGoodsIncomeRate();
-			return (int)((float)customerNum[0] * goodsIncomeRate / 10000f);
+			{ int recoveredReturn = (int)((float)customerNum[0] * goodsIncomeRate / 10000f); return recoveredReturn; }
 		}
 
 		public int GetSponsorPrice()

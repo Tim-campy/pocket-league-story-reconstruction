@@ -108,7 +108,7 @@ namespace game
 			{
 				return c2min;
 			}
-			return (x - c1min) * (c2max - c2min) / (c1max - c1min) + c2min;
+			{ int recoveredReturn = (x - c1min) * (c2max - c2min) / (c1max - c1min) + c2min; return recoveredReturn; }
 		}
 
 		public static long RateConvert(long x, long c1min, long c1max, long c2min, long c2max, bool ch_limit)
@@ -128,7 +128,7 @@ namespace game
 			{
 				return c2min;
 			}
-			return (x - c1min) * (c2max - c2min) / (c1max - c1min) + c2min;
+			{ long recoveredReturn = (x - c1min) * (c2max - c2min) / (c1max - c1min) + c2min; return recoveredReturn; }
 		}
 
 		public static float RateConvert(float x, float c1min, float c1max, float c2min, float c2max, bool ch_limit)
@@ -148,7 +148,7 @@ namespace game
 			{
 				return c2min;
 			}
-			return (x - c1min) * (c2max - c2min) / (c1max - c1min) + c2min;
+			{ float recoveredReturn = (x - c1min) * (c2max - c2min) / (c1max - c1min) + c2min; return recoveredReturn; }
 		}
 
 		public static int RateConvertArea(int x, int c1min, int c1max, int c2min, int c2max, bool ch_limit)
@@ -494,7 +494,7 @@ namespace game
 
 		public static float GetA_fixV0DIS(float v0, float DIS, int TIME)
 		{
-			return 2f * (DIS - v0 * (float)TIME) / (float)(TIME * (TIME + 1));
+			{ float recoveredReturn = 2f * (DIS - v0 * (float)TIME) / (float)(TIME * (TIME + 1)); return recoveredReturn; }
 		}
 
 		public static float Sin(int angle)

@@ -55,7 +55,7 @@ def main():
         'reference_files':baseline['files_total'] if baseline else None,
         'reconstruction':'NOT_EVALUATED' if args.reference_only else 'PARTIAL',
         'matched':sum(m['estado']=='matched' for m in methods),
-        'blockers':['Type metadata and whole-assembly comparison pending']}
+        'blockers':['Remaining body/metadata differences and raw whole-assembly identity']}
     (ROOT/'build').mkdir(exist_ok=True)
     (ROOT/'build/verification-preflight.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result),flush=True)

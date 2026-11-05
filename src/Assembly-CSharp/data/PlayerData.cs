@@ -822,7 +822,7 @@ namespace data
 
 		public static int GetPositionEva(int positionId, int[] phyParam)
 		{
-			return (int)((POSIEVA_RATE[positionId][0] * (float)phyParam[0] + POSIEVA_RATE[positionId][1] * (float)phyParam[1] + POSIEVA_RATE[positionId][2] * (float)phyParam[2] + POSIEVA_RATE[positionId][3] * (float)phyParam[3] + POSIEVA_RATE[positionId][4] * (float)phyParam[4]) / (POSIEVA_RATE[positionId][0] + POSIEVA_RATE[positionId][1] + POSIEVA_RATE[positionId][2] + POSIEVA_RATE[positionId][3] + POSIEVA_RATE[positionId][4]));
+			{ int recoveredReturn = (int)((POSIEVA_RATE[positionId][0] * (float)phyParam[0] + POSIEVA_RATE[positionId][1] * (float)phyParam[1] + POSIEVA_RATE[positionId][2] * (float)phyParam[2] + POSIEVA_RATE[positionId][3] * (float)phyParam[3] + POSIEVA_RATE[positionId][4] * (float)phyParam[4]) / (POSIEVA_RATE[positionId][0] + POSIEVA_RATE[positionId][1] + POSIEVA_RATE[positionId][2] + POSIEVA_RATE[positionId][3] + POSIEVA_RATE[positionId][4])); return recoveredReturn; }
 		}
 
 		public static int GetPositionRank(int positionId, PlayerData p_data)

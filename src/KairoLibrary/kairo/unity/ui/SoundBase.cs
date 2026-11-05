@@ -21,8 +21,6 @@ namespace kairo.unity.ui
 
 		public const int PAUSED = 3;
 
-		protected static Vector soundList_ = new Vector();
-
 		protected AudioSource track_ => SoundPlayer.GetInstance().GetAudioSource(this);
 
 		protected int state_
@@ -44,6 +42,8 @@ namespace kairo.unity.ui
 				return 3;
 			}
 		}
+
+		protected static Vector soundList_ = new Vector();
 
 		internal string name_ = "";
 

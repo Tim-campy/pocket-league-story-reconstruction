@@ -1582,21 +1582,13 @@ namespace game
 			}
 			float x4 = (float)JMath.Sqrt((passer.pos_.x_ - player.temp_vec.x_) * (passer.pos_.x_ - player.temp_vec.x_) + (passer.pos_.z_ - player.temp_vec.z_) * (passer.pos_.z_ - player.temp_vec.z_));
 			int num6 = (int)GameUtil.RateConvert(x4, 900f, 0f, 0f, 100f, true);
-			return (int)((RPP_W_COATEVASUM * (float)num + num3 * (float)num2 + RPP_W_AROUNDENEMY * (float)num5 + PRP_W_DIS * (float)num6) / (RPP_W_COATEVASUM + num3 + RPP_W_AROUNDENEMY + PRP_W_DIS));
+			{ int recoveredReturn = (int)((RPP_W_COATEVASUM * (float)num + num3 * (float)num2 + RPP_W_AROUNDENEMY * (float)num5 + PRP_W_DIS * (float)num6) / (RPP_W_COATEVASUM + num3 + RPP_W_AROUNDENEMY + PRP_W_DIS)); return recoveredReturn; }
 		}
 
 		public void Cal_evaCoatMulti(int mode, int[][] data, int cx, int cy, float[] muliti_param)
 		{
 			int[][][] array = null;
-			switch (mode)
-			{
-			case 0:
-				array = PANEL_DIRECT;
-				break;
-			case 1:
-				array = PANEL_DIRECT_R;
-				break;
-			}
+			if ((mode == 0)) { array = PANEL_DIRECT; } else if ((mode == 1)) { array = PANEL_DIRECT_R; }
 			for (int i = 0; i < array.Length; i++)
 			{
 				if (muliti_param[i] == 0f)
@@ -1631,15 +1623,7 @@ namespace game
 		public void Cal_evaCoatAdd(int mode, int[][] data, int cx, int cy, int[] add_param)
 		{
 			int[][][] array = null;
-			switch (mode)
-			{
-			case 0:
-				array = PANEL_DIRECT;
-				break;
-			case 1:
-				array = PANEL_DIRECT_R;
-				break;
-			}
+			if ((mode == 0)) { array = PANEL_DIRECT; } else if ((mode == 1)) { array = PANEL_DIRECT_R; }
 			for (int i = 0; i < array.Length; i++)
 			{
 				if (add_param[i] == 0)

@@ -13,54 +13,6 @@ namespace java.io
 
 		private int markedPosition;
 
-		public InputStream InputStream => ist;
-
-		public OutputStream OutputStream => ost;
-
-		public override bool CanRead => ist != null;
-
-		public override bool CanSeek => true;
-
-		public override bool CanWrite => ost != null;
-
-		public override long Length
-		{
-			get
-			{
-				throw new NotSupportedException();
-			}
-		}
-
-		public override long Position
-		{
-			get
-			{
-				if (ist != null && ist.CanSeek())
-				{
-					return ist.Position;
-				}
-				return position;
-			}
-			set
-			{
-				if (value == position)
-				{
-					return;
-				}
-				if (value == markedPosition)
-				{
-					ist.Reset();
-					return;
-				}
-				if (ist != null && ist.CanSeek())
-				{
-					ist.Position = value;
-					return;
-				}
-				throw new NotSupportedException();
-			}
-		}
-
 		public WrappedSystemStream(InputStream ist)
 		{
 			this.ist = ist;
@@ -70,6 +22,10 @@ namespace java.io
 		{
 			this.ost = ost;
 		}
+
+		public InputStream InputStream => ist;
+
+		public OutputStream OutputStream => ost;
 
 		public override void Close()
 		{
@@ -143,10 +99,54 @@ namespace java.io
 			position++;
 		}
 
+		public override bool CanRead => ist != null;
+
+		public override bool CanSeek => true;
+
+		public override bool CanWrite => ost != null;
+
+		public override long Length
+		{
+			get
+			{
+				throw new NotSupportedException();
+			}
+		}
+
 		internal void OnMark(int nb)
 		{
 			markedPosition = position;
 			ist.Mark(nb);
+		}
+
+		public override long Position
+		{
+			get
+			{
+				if (ist != null && ist.CanSeek())
+				{
+					return ist.Position;
+				}
+				return position;
+			}
+			set
+			{
+				if (value == position)
+				{
+					return;
+				}
+				if (value == markedPosition)
+				{
+					ist.Reset();
+					return;
+				}
+				if (ist != null && ist.CanSeek())
+				{
+					ist.Position = value;
+					return;
+				}
+				throw new NotSupportedException();
+			}
 		}
 	}
 }

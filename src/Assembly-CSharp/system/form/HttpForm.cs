@@ -17,16 +17,16 @@ namespace system.form
 		{
 			private Dictionary<string, object> data_ = new Dictionary<string, object>();
 
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return data_.GetEnumerator();
+			}
+
 			public Exception Exception { get; set; }
 
 			public string Error { get; set; }
 
 			public bool Succeed { get; set; }
-
-			IEnumerator IEnumerable.GetEnumerator()
-			{
-				return data_.GetEnumerator();
-			}
 
 			public void Add(string key, object data)
 			{
@@ -73,10 +73,6 @@ namespace system.form
 
 		private Dictionary<string, object> commonData_ = new Dictionary<string, object>();
 
-		public bool ProcessError { get; set; }
-
-		public bool IsCancelable { get; set; }
-
 		public HttpForm(HttpMethod connectMethod = null, HttpMethod resultMethod = null)
 			: base(909)
 		{
@@ -89,6 +85,10 @@ namespace system.form
 		{
 			return "HttpForm";
 		}
+
+		public bool ProcessError { get; set; }
+
+		public bool IsCancelable { get; set; }
 
 		public void SetConnectMethod(HttpMethod method)
 		{

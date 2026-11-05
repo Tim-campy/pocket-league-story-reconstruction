@@ -1,6 +1,40 @@
 # Toolchain e evidências
 
-## Referência e motor
+## Configuração selecionada — rodada iniciada em 2ab24ee
+
+KairoLibrary: pacote **Microsoft.Net.Compilers 1.1.0**, executável **1.1.0.51109**. SHA-256 do pacote: `cd84fb2c71cafe03cdae0add609fa12c75f61c89ea87b1422fd108ac7e570745`; do csc.exe: `53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3`. Os seis componentes foram conferidos byte a byte contra o pacote fixado e têm hashes em [componentes](../reports/KairoLibrary-compiler-components-1.1.0.json) e `tools/kairo_candidate.py`. O verificador confere os seis antes de compilar. Aquisição portátil: `python tools/fetch_roslyn_neighbors.py`; build selecionado: `python tools/build --assembly KairoLibrary`.
+
+Opções Kairo: `/nologo /noconfig /nostdlib+ /target:library /platform:anycpu /optimize+ /debug:pdbonly /deterministic- /langversion:6 /unsafe- /checked- /codepage:65001 /utf8output`. Referências na ordem: mscorlib 2.0.0.0, System.Core 3.5.0.0, UnityEngine do APK, System 2.0.0.0. Perfil clássico Unity; nenhuma definição extra. A ordem dos 162 arquivos superiores foi ajustada para reproduzir os 337 TypeDefs; AssemblyInfo vem ao final.
+
+Assembly-CSharp: smcs **2.6.5.0** do Unity **5.3.4f1**. SHA-256: `26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0`. Opções: `-nologo -noconfig -target:library -platform:anycpu -optimize+ -debug- -langversion:Default -unsafe- -checked- -codepage:65001`. Biblioteca padrão habilitada, sem `-nostdlib`; referências do APK na ordem mscorlib, KairoLibrary, UnityEngine, System.Core, System. `MONO_PATH` e `MONO_CFG_DIR` são locais ao subprocesso. São 96 tipos superiores mais AssemblyInfo.
+
+Os dois noconfig são passados fora do arquivo de resposta. Identidades históricas exatas, comando original completo e símbolos históricos continuam **UNKNOWN**.
+
+Matriz congelada antes da última correção estrutural: Roslyn 1.0.0/1.0.0.50618 iguala 3.013 corpos (+14/-35 contra 1.3.2); 1.1.0/1.1.0.51109 iguala 3.051 (+17/-0); 1.2.0/1.2.0.60317 e 1.3.2/1.3.1.60621 igualam 3.034 e são indistinguíveis em todos os métodos inspecionados. Três métodos são exclusivos do 1.1 entre os quatro; os outros 14 ganhos também aparecem no 1.0. [Matriz](../reports/KairoLibrary-roslyn-neighbors-round2.json). A única opção omitida foi `/deterministic-` no 1.0, que a rejeita. A adoção de 1.1 foi verificada no build principal, sem perder corpos, tipos ou declarações.
+
+unsafe+ era a causa comprovada dos atributos extras: Roslyn gerava UnverifiableCodeAttribute e DeclSecurity/SkipVerification; smcs gerava UnverifiableCodeAttribute. As fixtures e os builds completos com unsafe- removeram esses registros, sem mudar correspondências de corpos ou tipos. Não houve normalização. [Prova](../reports/unsafe-metadata-fixtures.json).
+
+Estado final: Kairo 3.123 matched/3.287 métodos, incluindo 76 declarações sem CIL; 3.051 corpos idênticos; 332/337 tipos. Assembly-CSharp 1.572 matched/1.958, incluindo seis declarações sem CIL; 1.567 corpos idênticos; 128/129 tipos. Comparação estrutural completa por tipo implementada; comparação bruta das tabelas, heaps e arquivo integral ainda pendente. [Kairo](../reports/KairoLibrary-metadata.json), [App](../reports/Assembly-CSharp-metadata.json).
+
+## Exceções comprovadas para o candidato atual
+
+Dois builds completos idênticos do **1.1.0, unsafe-, debug:pdbonly, deterministic-**, com mesmos fontes/referências/ordem/opções/caminho de saída, produziram 33 bytes diferentes e zero fora destes quatro campos:
+
+| Campo | Tamanho | Bytes observados diferentes |
+|---|---:|---:|
+| Module.Mvid | 16 | 15 |
+| COFF.TimeDateStamp | 4 | 1 |
+| IMAGE_DEBUG_DIRECTORY.TimeDateStamp | 4 | 1 |
+| CodeView.RSDS.PdbGuid | 16 | 16 |
+
+[Prova atual](../reports/KairoLibrary-repeatability-1.1.0.json). MVID localizado pela linha Module e heap #GUID do parser REA. Offsets da prova não são constantes para builds futuros. Nenhuma normalização ou edição de DLL foi aplicada. Não estender automaticamente estas exceções a Assembly-CSharp. O determinismo do original continua UNKNOWN.
+
+## Histórico de preparação
+
+As seções seguintes preservam medições e configurações históricas. Elas não substituem a seleção e os resultados atuais acima.
+
+
+### Referência e motor
 
 APK: `original/app.apk`, SHA-256 `d557af6b4bc7748605a39ed3548821f6763c5773a12432a3fed6e8c413b211e8`, 28.820.227 bytes. Os hashes das 1.218 entradas estão em `config/inventory.csv`, e a ordem, compressão e alinhamento em `original/zip-layout.json`.
 
@@ -17,7 +51,7 @@ Instalado em `C:\Users\l_abn\AppData\Local\Programs\Unity\5.3.4f1`, usando `/S /
 
 O compilador padrão incluído respondeu como **Mono C# compiler 2.6.5.0**, tanto em `gmcs.exe` quanto em `smcs.exe`. O MonoBleedingEdge incluído fornece **mcs 3.4.0.0**. Uma DLL com fonte sintético de dois métodos foi compilada com sucesso pelo gmcs; esse teste demonstra que o compilador funciona, sem validar correspondência com métodos do jogo. O editor não foi ativado nem aberto interativamente.
 
-## REA e leitura de assemblies
+### REA e leitura de assemblies
 
 O REA **6.5.0** desta instalação analisa PE/CLI, metadados e CIL. Ele é a fonte principal das duas DLLs alvo. As evidências completas foram preservadas em `analysis/rea-evidence-2026-11-05.json`, com hashes e MVIDs. Essa análise não executou o jogo.
 
@@ -25,7 +59,7 @@ O REA **6.5.0** desta instalação analisa PE/CLI, metadados e CIL. Ele é a fon
 
 `rea doctor` respondeu com saída 1: Ghidra está disponível, mas há avisos sobre outros providers, skill local desatualizada e registros de clientes. O MCP ativo respondeu como REA 6.5.0. Os avisos não foram tratados como falha do parser .NET, que já produziu as evidências. Nenhuma configuração global foi reparada nesta preparação.
 
-## Compiladores por assembly
+### Compiladores por assembly
 
 | Item | Assembly-CSharp | KairoLibrary |
 |---|---|---|
@@ -41,7 +75,7 @@ O REA **6.5.0** desta instalação analisa PE/CLI, metadados e CIL. Ele é a fon
 
 As pistas vêm dos nomes originais de TypeDef, com a hierarquia NestedClass resolvida; a lista completa está em `config/compiler-hints.json`. Elas não autorizam selecionar um compilador sem testar. Instalar o editor não demonstra que KairoLibrary foi compilada por ele.
 
-## Ferramentas disponíveis e pendentes
+### Ferramentas disponíveis e pendentes
 
 | Ferramenta | Evidência local | Uso |
 |---|---|---|
@@ -60,7 +94,7 @@ As pistas vêm dos nomes originais de TypeDef, com a hierarquia NestedClass reso
 
 O inventário de caminhos e versões consultados está em `analysis/environment.json`. Ausência no PATH ou nos caminhos consultados não prova ausência em todo o computador. Ferramentas adicionais só serão instaladas com autorização.
 
-## Exceções de comparação
+### Exceções de comparação
 
 Foram registradas quatro exceções comprovadas para o candidato KairoLibrary, pacote Roslyn 1.3.2, com `/debug:pdbonly /deterministic-`:
 
@@ -75,7 +109,7 @@ Evidência: [reports/KairoLibrary-repeatability.json](../reports/KairoLibrary-re
 
 A assinatura do APK é a exclusão final prevista pelo AGENTS.md. O inventário observou `META-INF/MANIFEST.MF`, `META-INF/CERT.SF` e `META-INF/CERT.RSA`; não observou a magic do APK Signing Block imediatamente antes do diretório central. A implementação da comparação final deverá definir as exclusões e a remontagem de forma explícita.
 
-## Validação integral e perfis de referências
+### Validação integral e perfis de referências
 
 Atualização: Roslyn **5.8.0-1.26319.2** e runtime **.NET 10.0.10** foram encontrados no Visual Studio 18 Community já instalado. O runtime executou somente nosso driver ILSpy. A leitura independente usa Mono.Cecil 0.9.6.0; não carrega nem executa os assemblies do jogo no CLR. O compilador Framework 14.8.10001.0 compila o inspetor.
 
@@ -91,7 +125,7 @@ Também foram conferidos contra o pacote fixado os hashes de csc.exe.config, Mic
 
 Ambos os builds completos compilaram sem erros. O pacote 1.3.2 corresponde em 2.787/3.211 corpos, e 5.8 em 2.736/3.211. Identificação histórica ainda UNKNOWN. Resultados, PE/debug, determinismo e limites: [linha de base Kairo](notes/kairo-baseline.md).
 
-## Outras DLLs
+### Outras DLLs
 
 Todas as nove DLLs gerenciadas foram auditadas pelo REA. **As sete externas agora coincidem por SHA-256 com arquivos oficiais**: Mono.Security, mscorlib, System, System.Core, UnityEngine.Networking e UnityEngine.UI na instalação inicial; UnityEngine.dll no módulo Android acrescentado. Versões, hashes e evidências em [config/dll-audit.json](../config/dll-audit.json). Nenhuma biblioteca externa foi decompilada.
 
@@ -101,13 +135,13 @@ O módulo Android oficial 5.3.4f1 foi instalado com autorização explícita, in
 
 O teste de duas compilações completas identificou os quatro campos registrados acima. As exclusões ainda não foram aplicadas à comparação de arquivos do original.
 
-## Validação integral de Assembly-CSharp
+### Validação integral de Assembly-CSharp
 
 Recuperados 96 tipos superiores mais AssemblyInfo.cs, 97 C#, com ILSpy/CSharp3 e resolver do perfil Unity primeiro. A matriz inicial com `-nostdlib` distinguia smcs 2.6.5.0 (1.444/1.952 corpos), mcs 3.4.0.0 (703) e gmcs 2.6.5.0 (oito erros de extensões). A investigação integral posterior comprovou que retirar `-nostdlib`, mantendo referências e perfil Unity, sobe para **1.530 sem perder nenhum corpo**. O smcs continua melhor candidato; otimização ligada/desligada produz os mesmos corpos e gmcs continua falhando. mcs 3.4 sem `-nostdlib` troca o corlib para 4.0 e não é comparação válida de versões. Identidade histórica exata permanece UNKNOWN.
 
 Opções selecionadas: `-nologo -noconfig -target:library -platform:anycpu -optimize+ -debug- -langversion:Default -unsafe+ -checked- -codepage:65001`, com `--stdlib default`; `-noconfig` fora do response file. Referências do APK na ordem mscorlib, KairoLibrary, UnityEngine, System.Core, System. `MONO_PATH` e `MONO_CFG_DIR` definidos somente no subprocesso. O corlib implícito é o Unity 2.0.5.0, idêntico por hash ao APK; os AssemblyRefs resultantes coincidem também em ordem. A chamada original IndexOf(string,int) voltou ao fonte; o contorno foi retirado. Inicializadores default em dois campos recuperam dois `.cctor` apenas com `ret`, totalizando **1.532 corpos**, sem perder correspondências e mantendo BeforeFieldInit. [Nota e matrizes completas](notes/assembly-csharp-baseline.md).
 
-## Variantes de recuperação
+### Variantes de recuperação
 
 A numeração Roslyn depende da ordem expandida dos membros: as sondas próprias confirmam campo/método/tipo aninhado com peso um, propriedade manual get/set com peso três e automática get/set com peso quatro. A ordem recuperada combina FieldDef, MethodDef, Property e NestedType com os números dos nomes gerados. Foram restaurados dois construtores vazios omitidos pelo ILSpy. Candidatos isolados compilaram antes de qualquer adoção e preservaram todos os corpos que já correspondiam. [Sondas](../reports/KairoLibrary-member-order-probe.json), [aplicação](../reports/KairoLibrary-member-order-application.json).
 

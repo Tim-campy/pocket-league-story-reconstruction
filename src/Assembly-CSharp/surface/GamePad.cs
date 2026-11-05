@@ -1313,16 +1313,8 @@ namespace surface
 		public void SetLayoutMode(int mode)
 		{
 			SurfaceManager surfaceManager = (SurfaceManager)Canvas.GetInstance().GetSurfaceManager();
-			switch (mode)
-			{
-			case 0:
-				surfaceManager.SetLayoutMode(false);
-				app_.SetScaleRatio(float.NaN);
-				break;
-			case 1:
-				surfaceManager.SetLayoutMode(true);
-				break;
-			}
+			if ((mode == 0)) { surfaceManager.SetLayoutMode(false);
+app_.SetScaleRatio(float.NaN); } else if ((mode == 1)) { surfaceManager.SetLayoutMode(true); }
 		}
 
 		public int GetLayoutMode()

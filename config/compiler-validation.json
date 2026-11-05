@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "status": "BOTH_WHOLE_BUILDS_VERIFIED_PARTIAL_MATCH",
-  "matched_game_methods": 4558,
+  "status": "BOTH_WHOLE_BUILDS_AND_METADATA_VERIFIED_PARTIAL_MATCH",
+  "matched_game_methods": 4695,
   "normalized_game_fields": [],
-  "scope": "Complete builds and method body verification for both targets; type metadata and assembly identity pending",
+  "scope": "Both full builds, exact body and structural type metadata verification; raw tables/heaps and whole assembly identity pending",
   "public_repository": "https://github.com/Tim-campy/pocket-league-story-reconstruction",
   "assemblies": {
     "Assembly-CSharp": {
@@ -194,6 +194,83 @@
       },
       "stdlib_mode": "default",
       "selected_compiler": "Mono smcs 2.6.5.0"
+    }
+  },
+  "current_full_validation": {
+    "KairoLibrary": {
+      "schema_version": 1,
+      "assembly": "KairoLibrary",
+      "build_artifact": "build/KairoLibrary-roslyn-1.1.0/KairoLibrary.dll",
+      "build_sha256": "6361bb96580fa300d527d7a25924a75e6d30dccd4f5f6a2e41872ce838c17fd5",
+      "original_sha256": "bb553d341eecd9b900f772486bf4a5c289aa2f09566d9d402a3eb70268f4b3ee",
+      "verifier_sha256": "7b1b5ea0eba5b6c020a80855c153fc8359eb2cfccf2a6c02414e13eff95a4535",
+      "inspector_source_sha256": "69b087a0b27c796c341c2f004898dc06c357f31d14ef3ef00e4bda962068d7a7",
+      "helper_source_hashes": {
+        "tools/kairo_candidate.py": "2375bae66e31eae6e2788200f89b98cee1c978fdd865c8bd1994b4353d004e36",
+        "tools/build_kairo.py": "a2f620434568ba3c35b6504b42eb441d0ca01ff772a588c7a83f0455c11e9f29",
+        "tools/generated_groups.py": "f58ef656450e07a1eb9926f6702feace4ea0a509e5a6568572258f7265e1fe7e",
+        "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+        "tools/metadata_compare.py": "a6d324e46f50623c6ffb2e6d3ebf149c1796566b6e3086b9eb15214935489025",
+        "tools/metadata_state.py": "35250ab5ed5ddf7e013b8dc9257307933dd05e29b116d5cbb3dcb2eb89a33824",
+        "tools/MetadataInspector.cs": "c1caeb6ea3abc64f2277c101da63ca805918a53f97b40453575c96f981b906ea",
+        "tools/prepare_metadata_inspector.py": "89f4429697df7388a55d955e357f94227a600f703ef7a808e61f998a345ea850"
+      },
+      "counts": {
+        "matched": 3123,
+        "body_equal": 3051,
+        "declarations_without_body": 76,
+        "declarations_metadata_matched": 76,
+        "decompiled": 164,
+        "equal_body_held_for_generated_group": 4
+      },
+      "regressions": [],
+      "body_regressions": [],
+      "type_metadata_identity": "PARTIAL",
+      "types_equal": 332,
+      "types_total": 337,
+      "type_regressions": [],
+      "whole_assembly_byte_identity": false,
+      "normalized_assembly_fields": []
+    },
+    "Assembly-CSharp": {
+      "schema_version": 1,
+      "assembly": "Assembly-CSharp",
+      "build_artifact": "build/Assembly-CSharp-mono-smcs/Assembly-CSharp.dll",
+      "build_sha256": "3e4c13988f0bb2926c9970600dc7823f0ec687982c8c35eb75271e94318d0052",
+      "original_sha256": "3620ed91bd3a99cba9901cea111e6f6e489474e5c0b97b99676e5d4623817949",
+      "verifier_sha256": "b704ba445c41afa30e24abc6e066b7de428127e0e9003c8a9c391c5067d9dd89",
+      "inspector_source_sha256": "69b087a0b27c796c341c2f004898dc06c357f31d14ef3ef00e4bda962068d7a7",
+      "helper_source_hashes": {
+        "tools/build_csharp.py": "268a4978b94cf992e4d3d967bb52b15fd71628d831d87e5a7175f1401ab77e6e",
+        "tools/verify_csharp_sidecar.py": "1b269b07581743ef9100a3a228b95ee62100f9635356d41af43a76ebf40f5b20",
+        "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+        "tools/generated_groups.py": "f58ef656450e07a1eb9926f6702feace4ea0a509e5a6568572258f7265e1fe7e",
+        "tools/metadata_compare.py": "a6d324e46f50623c6ffb2e6d3ebf149c1796566b6e3086b9eb15214935489025",
+        "tools/metadata_state.py": "35250ab5ed5ddf7e013b8dc9257307933dd05e29b116d5cbb3dcb2eb89a33824",
+        "tools/MetadataInspector.cs": "c1caeb6ea3abc64f2277c101da63ca805918a53f97b40453575c96f981b906ea",
+        "tools/prepare_metadata_inspector.py": "89f4429697df7388a55d955e357f94227a600f703ef7a808e61f998a345ea850"
+      },
+      "counts": {
+        "matched": 1572,
+        "body_equal": 1567,
+        "declarations_without_body": 6,
+        "equal_body_held_for_generated_group": 1,
+        "missing_method": 0,
+        "decompiled": 385,
+        "todo": 1,
+        "declarations_metadata_matched": 6
+      },
+      "regressions": [],
+      "type_metadata_identity": "PARTIAL",
+      "whole_assembly_byte_identity": false,
+      "types_equal": 128,
+      "types_total": 129,
+      "type_regressions": [],
+      "normalized_assembly_fields": [],
+      "historical_compiler_identity": "UNKNOWN",
+      "compiler_candidate": "Unity smcs 2.6.5.0",
+      "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+      "runtime_sha256": "3d102d9a63dae72e48396998bdbae4e9b2d8952ca6a8ebbcba698d3bc4345076"
     }
   }
 }

@@ -149,13 +149,13 @@ namespace kairo.unity.graphics
 
 			private const int DEPTH_MAX = 1498976;
 
-			internal Group Current => groups[currentGroup];
-
 			internal Layer(MeshBuilder mb, int layer)
 			{
 				this.layer = layer;
 				groups.Add(new Group(mb));
 			}
+
+			internal Group Current => groups[currentGroup];
 
 			internal int GetIndexCount()
 			{

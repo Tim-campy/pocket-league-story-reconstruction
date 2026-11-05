@@ -852,7 +852,7 @@ namespace kairo.unity.ui
 
 		public Graphics GetGraphics()
 		{
-			return (Graphics)IApplication.GetCurrentApp().RunOnUiThread(() => ((object)image_ != null) ? new Graphics(this) : null, true);
+			return (Graphics)IApplication.GetCurrentApp().RunOnUiThread(() => ((object)image_ == null) ? (null) : (new Graphics(this)), true);
 		}
 
 		public int GetHeight()

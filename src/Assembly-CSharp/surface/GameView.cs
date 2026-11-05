@@ -554,27 +554,7 @@ namespace surface
 					}
 					int num18 = markComponentFrame_ / num11 % num10;
 					int num19;
-					switch (num18)
-					{
-					case 0:
-						num19 = 255;
-						break;
-					case 1:
-						num19 = 224;
-						break;
-					case 2:
-						num19 = 192;
-						break;
-					case 3:
-						num19 = 160;
-						break;
-					case 4:
-						num19 = 128;
-						break;
-					default:
-						num19 = 96;
-						break;
-					}
+					if ((num18 == 0)) { num19 = 255; } else if ((num18 == 1)) { num19 = 224; } else if ((num18 == 2)) { num19 = 192; } else if ((num18 == 3)) { num19 = 160; } else if ((num18 == 4)) { num19 = 128; } else { num19 = 96; }
 					int num20 = num14 + num12;
 					int num21 = num15 - num13;
 					int num22 = num16 - num12 * 2;
@@ -1996,10 +1976,7 @@ namespace surface
 			}
 			int color = 0;
 			int color2 = 0;
-			switch (type)
-			{
-			case 0:
-				if (touch)
+			if ((type == 0)) { if (touch)
 				{
 					color = Graphics.GetColorOfRGB(246, 129, 0);
 					color2 = Graphics.GetColorOfRGB(246, 129, 0);
@@ -2008,10 +1985,7 @@ namespace surface
 				{
 					color = Graphics.GetColorOfRGB(48, 160, 255);
 					color2 = Graphics.GetColorOfRGB(48, 160, 255);
-				}
-				break;
-			case 1:
-				if (touch)
+				} } else if ((type == 1)) { if (touch)
 				{
 					color = Graphics.GetColorOfRGB(240, 130, 0);
 					color2 = Graphics.GetColorOfRGB(240, 130, 0);
@@ -2020,9 +1994,7 @@ namespace surface
 				{
 					color = Graphics.GetColorOfRGB(243, 210, 114);
 					color2 = Graphics.GetColorOfRGB(202, 150, 66);
-				}
-				break;
-			}
+				} }
 			g.SetColor(color);
 			g.FillRect(x, num, w, num2);
 			g.SetColor(color2);

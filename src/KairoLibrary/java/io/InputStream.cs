@@ -11,27 +11,6 @@ namespace java.io
 
 		protected Stream BaseStream;
 
-		internal long Position
-		{
-			get
-			{
-				if (Wrapped != null)
-				{
-					return Wrapped.Position;
-				}
-				throw new NotSupportedException();
-			}
-			set
-			{
-				if (Wrapped != null)
-				{
-					Wrapped.Position = value;
-					return;
-				}
-				throw new NotSupportedException();
-			}
-		}
-
 		public static implicit operator InputStream(Stream s)
 		{
 			return Wrap(s);
@@ -179,6 +158,27 @@ namespace java.io
 				return Wrapped.CanSeek;
 			}
 			return false;
+		}
+
+		internal long Position
+		{
+			get
+			{
+				if (Wrapped != null)
+				{
+					return Wrapped.Position;
+				}
+				throw new NotSupportedException();
+			}
+			set
+			{
+				if (Wrapped != null)
+				{
+					Wrapped.Position = value;
+					return;
+				}
+				throw new NotSupportedException();
+			}
 		}
 
 		internal static InputStream Wrap(Stream s)

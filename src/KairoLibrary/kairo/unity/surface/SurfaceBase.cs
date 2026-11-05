@@ -389,6 +389,10 @@ namespace kairo.unity.surface
 
 		public bool registTouch
 		{
+			set
+			{
+				registTouch_ = value;
+			}
 			get
 			{
 				if (registTouch_)
@@ -400,10 +404,6 @@ namespace kairo.unity.surface
 					return true;
 				}
 				return false;
-			}
-			set
-			{
-				registTouch_ = value;
 			}
 		}
 

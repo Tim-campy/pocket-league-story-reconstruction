@@ -285,38 +285,12 @@ namespace game
 
 		public int GetAreaMaxNum(int tMode)
 		{
-			switch (tMode)
-			{
-			case 0:
-				return 6;
-			case 1:
-				return 6;
-			case 2:
-				return 10;
-			case 4:
-				return 100;
-			case 3:
-				return 5;
-			default:
-				return 0;
-			}
+			if ((tMode == 0)) { return 6; } else if ((tMode == 1)) { return 6; } else if ((tMode == 2)) { return 10; } else if ((tMode == 4)) { return 100; } else if ((tMode == 3)) { return 5; } else { return 0; }
 		}
 
 		public int GetAreaBallNum(int tMode)
 		{
-			switch (tMode)
-			{
-			case 0:
-				return 1;
-			case 1:
-				return 2;
-			case 2:
-				return 3;
-			case 3:
-				return 3;
-			default:
-				return 0;
-			}
+			if ((tMode == 0)) { return 1; } else if ((tMode == 1)) { return 2; } else if ((tMode == 2)) { return 3; } else if ((tMode == 3)) { return 3; } else { return 0; }
 		}
 
 		public void SetPlayerGatherPos()

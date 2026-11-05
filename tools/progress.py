@@ -4,6 +4,8 @@ import csv
 import json
 from pathlib import Path
 from verification_state import validate_matched
+from metadata_state import validate_type_metadata
+from kairo_candidate import PACKAGE_VERSION
 ROOT=Path(__file__).resolve().parents[1]
 
 
@@ -18,8 +20,8 @@ def main():
     allowed={'todo','decompiled','equivalent','matched','external'}
     if any(m['estado'] not in allowed for m in methods): raise ValueError('Invalid method state')
     validate_matched(ROOT,methods)
-    if any(t['metadados']=='matched' for t in types):
-        raise ValueError('Type matching requires a separate metadata receipt')
+    metadata=validate_type_metadata(ROOT,types)
+    matched_types=sum(t['metadados']=='matched' for t in types)
     states=Counter(m['estado'] for m in methods)
     total_il=sum(int(m['tamanho_il']) for m in methods)
     matched=[m for m in methods if m['estado']=='matched']
@@ -32,8 +34,8 @@ def main():
         f'**{len(matched):,} de {len(methods):,} métodos matched ({100*len(matched)/len(methods):.2f}%).** {total_il:,} bytes de IL nos assemblies alvo.',
         f'{matched_il:,} bytes IL matched ({100*matched_il/total_il:.2f}%).',
         'Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.','',
-        'Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.3.2; Assembly-CSharp usa smcs 2.6.5.0.','',
-        f"KairoLibrary: {verified.get('body_equal',0)} corpos correspondem com tokens resolvidos; {verified.get('equal_body_held_for_generated_group',0)} ficam retidos por dependências de membros gerados. Metadados dos tipos e identidade do assembly inteiro continuam pendentes.",'',
+        f'Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn {PACKAGE_VERSION}; Assembly-CSharp usa smcs 2.6.5.0.','',
+        f"KairoLibrary: {verified.get('body_equal',0)} corpos correspondem com tokens resolvidos; {verified.get('equal_body_held_for_generated_group',0)} ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.",'',
         '## Estados','', '| Estado | Métodos |','|---|---:|']
     lines += [f'| {state} | {states[state]} |' for state in ('todo','decompiled','equivalent','matched','external')]
     for label,key in (('Assemblies','assembly'),('Namespaces','namespace'),('Tipos','tipo')):
@@ -48,7 +50,7 @@ def main():
             done=[m for m in group if m['estado']=='matched']
             size=sum(int(m['tamanho_il']) for m in group); done_size=sum(int(m['tamanho_il']) for m in done)
             lines.append(f"| `{name.replace('|','&#124;')}` | {len(group)} | {size} | {len(done)} / {100*len(done)/len(group):.2f}% | {done_size} / {100*done_size/size if size else 0:.2f}% |")
-    lines += ['','## Metadados dos tipos','',f'0 de {len(types)} tipos com metadados verificados como idênticos. Inclui `<Module>` e tipos gerados.','',
+    lines += ['','## Metadados dos tipos','',f'{matched_types} de {len(types)} tipos com metadados estruturais e ordinal verificados como idênticos. Inclui `<Module>` e tipos gerados; heaps e bytes integrais são uma camada separada.','',
         '## Arquivos externos e dados','',
         f"{len(inventory)} entradas: {categories['alvo']} alvo, {categories['externo']} externas e {categories['dados']} dados.",
         'Externos e dados não entram na porcentagem de código. DEX e plugins nativos não ampliam o escopo C#.','',
@@ -65,9 +67,9 @@ def main():
         lines.append(f"| `{t['assembly']}::{t['tipo']}` | {len(group)} | `{group[0]['id']}` |")
     generated=sum(m['gerado_por']=='UNKNOWN' for m in methods)
     lines += ['','## Bloqueios','',
-        '- Versão histórica exata dos compiladores: UNKNOWN; pacote Roslyn 1.3.2 é o melhor candidato testado para KairoLibrary.',
+        f'- Versão histórica exata dos compiladores: UNKNOWN; pacote Roslyn {PACKAGE_VERSION} é o melhor candidato testado para KairoLibrary.',
         '- Assembly-CSharp: configuração stdlib default validada e chamada original de IndexOf restaurada; os corpos restantes ainda exigem recuperação.',
-        '- Comparação completa de metadados por tipo, heaps e assembly ainda pendente.',
+        '- Comparação estrutural dos tipos implementada; persistem diferenças de metadados. Comparação bruta de tabelas, heaps e assembly ainda pendente.',
         f'- {generated} membros têm campo gerado_por UNKNOWN; propriedades e caches compartilhados podem ter vínculo comprovado no relatório sem uma origem única representável nesse campo.',
         '- Quatro campos voláteis Kairo foram registrados com prova de repetição; nenhum normalizador de assembly foi aplicado.',
         '', 'Plano: [DECOMP_PLAN.md](DECOMP_PLAN.md). Ferramentas: [docs/toolchain.md](docs/toolchain.md).','']
