@@ -170,7 +170,7 @@ namespace kairo.unity.surface
 			{
 				action = evt.GetAction();
 				x = evt.GetX();
-				y = evt.GetY() + (float)((!evt.IsMousePointer()) ? surface.GetTouchOffset() : 0);
+				y = evt.GetY() + (float)((evt.IsMousePointer()) ? (0) : (surface.GetTouchOffset()));
 				deltaX = evt.GetDeltaX();
 				deltaY = evt.GetDeltaY();
 				deltaTime = evt.GetDeltaTime();

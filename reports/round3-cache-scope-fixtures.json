@@ -1,0 +1,873 @@
+{
+  "scope": "Own fixture only; no target source/assembly modified",
+  "compiler": "1.1.0.51109",
+  "source": "using System;\npublic class ScopeFixture {\n static bool Check(Func<bool> a) { return true; }\n public void Condition(int x) { while (!Check(delegate { return x>0; })) {} }\n public void BodyIf(int x) { while (true) { if (Check(delegate { return x>0; })) break; } }\n public void BodyBool(int x) { while (true) { bool done=Check(delegate { return x>0; }); if(done) break; } }\n public void BodyDummy(int x) { while (true) { int dummy=0; if(Check(delegate { return x>0; }))break; } }\n public void BodyDo(int x) { bool done; do { done=Check(delegate { return x>0; }); } while(!done); }\n public void BodyFor(int x) { for (;;) { bool done=Check(delegate { return x>0; }); if(done)break; } }\n}",
+  "closures": [
+    {
+      "name": "ScopeFixture/<>c__DisplayClass1_0",
+      "fields": [
+        {
+          "id": "ScopeFixture/<>c__DisplayClass1_0::x",
+          "name": "x",
+          "type": "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        }
+      ],
+      "methods": [
+        "ScopeFixture/<>c__DisplayClass1_0::.ctor()->System.Void",
+        "ScopeFixture/<>c__DisplayClass1_0::<Condition>b__0()->System.Boolean"
+      ]
+    },
+    {
+      "name": "ScopeFixture/<>c__DisplayClass2_0",
+      "fields": [
+        {
+          "id": "ScopeFixture/<>c__DisplayClass2_0::x",
+          "name": "x",
+          "type": "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        }
+      ],
+      "methods": [
+        "ScopeFixture/<>c__DisplayClass2_0::.ctor()->System.Void",
+        "ScopeFixture/<>c__DisplayClass2_0::<BodyIf>b__0()->System.Boolean"
+      ]
+    },
+    {
+      "name": "ScopeFixture/<>c__DisplayClass3_0",
+      "fields": [
+        {
+          "id": "ScopeFixture/<>c__DisplayClass3_0::x",
+          "name": "x",
+          "type": "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        },
+        {
+          "id": "ScopeFixture/<>c__DisplayClass3_0::<>9__0",
+          "name": "<>9__0",
+          "type": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        }
+      ],
+      "methods": [
+        "ScopeFixture/<>c__DisplayClass3_0::.ctor()->System.Void",
+        "ScopeFixture/<>c__DisplayClass3_0::<BodyBool>b__0()->System.Boolean"
+      ]
+    },
+    {
+      "name": "ScopeFixture/<>c__DisplayClass4_0",
+      "fields": [
+        {
+          "id": "ScopeFixture/<>c__DisplayClass4_0::x",
+          "name": "x",
+          "type": "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        },
+        {
+          "id": "ScopeFixture/<>c__DisplayClass4_0::<>9__0",
+          "name": "<>9__0",
+          "type": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        }
+      ],
+      "methods": [
+        "ScopeFixture/<>c__DisplayClass4_0::.ctor()->System.Void",
+        "ScopeFixture/<>c__DisplayClass4_0::<BodyDummy>b__0()->System.Boolean"
+      ]
+    },
+    {
+      "name": "ScopeFixture/<>c__DisplayClass5_0",
+      "fields": [
+        {
+          "id": "ScopeFixture/<>c__DisplayClass5_0::x",
+          "name": "x",
+          "type": "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        }
+      ],
+      "methods": [
+        "ScopeFixture/<>c__DisplayClass5_0::.ctor()->System.Void",
+        "ScopeFixture/<>c__DisplayClass5_0::<BodyDo>b__0()->System.Boolean"
+      ]
+    },
+    {
+      "name": "ScopeFixture/<>c__DisplayClass6_0",
+      "fields": [
+        {
+          "id": "ScopeFixture/<>c__DisplayClass6_0::x",
+          "name": "x",
+          "type": "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        },
+        {
+          "id": "ScopeFixture/<>c__DisplayClass6_0::<>9__0",
+          "name": "<>9__0",
+          "type": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>",
+          "attributes": 6,
+          "has_constant": false,
+          "constant": null,
+          "offset": -1,
+          "initial_value": "",
+          "custom_attributes": []
+        }
+      ],
+      "methods": [
+        "ScopeFixture/<>c__DisplayClass6_0::.ctor()->System.Void",
+        "ScopeFixture/<>c__DisplayClass6_0::<BodyFor>b__0()->System.Boolean"
+      ]
+    }
+  ],
+  "methods": [
+    {
+      "id": "ScopeFixture::Check(System.Func`1<System.Boolean>)->System.Boolean",
+      "locals": [],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "id": "ScopeFixture::Condition(System.Int32)->System.Void",
+      "locals": [
+        "class ScopeFixture/<>c__DisplayClass1_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass1_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass1_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::x:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldftn",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass1_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<Condition>b__0``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>::.ctor``0(class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.IntPtr @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 25,
+          "opcode": "call",
+          "operand": {
+            "method": "class ScopeFixture @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Check``0(class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 30,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 13
+          }
+        },
+        {
+          "offset": 32,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "id": "ScopeFixture::BodyIf(System.Int32)->System.Void",
+      "locals": [
+        "class ScopeFixture/<>c__DisplayClass2_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass2_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass2_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::x:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldftn",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass2_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<BodyIf>b__0``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>::.ctor``0(class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.IntPtr @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 25,
+          "opcode": "call",
+          "operand": {
+            "method": "class ScopeFixture @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Check``0(class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 30,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 13
+          }
+        },
+        {
+          "offset": 32,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "id": "ScopeFixture::BodyBool(System.Int32)->System.Void",
+      "locals": [
+        "class ScopeFixture/<>c__DisplayClass3_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+      ],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass3_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass3_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::x:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass3_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<>9__0:class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+          }
+        },
+        {
+          "offset": 19,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 20,
+          "opcode": "brtrue.s",
+          "operand": {
+            "branch": 44
+          }
+        },
+        {
+          "offset": 22,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 24,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 25,
+          "opcode": "ldftn",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass3_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<BodyBool>b__0``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 31,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>::.ctor``0(class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.IntPtr @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 36,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 37,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 38,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass3_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<>9__0:class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+          }
+        },
+        {
+          "offset": 43,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 44,
+          "opcode": "call",
+          "operand": {
+            "method": "class ScopeFixture @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Check``0(class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 49,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 13
+          }
+        },
+        {
+          "offset": 51,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "id": "ScopeFixture::BodyDummy(System.Int32)->System.Void",
+      "locals": [
+        "class ScopeFixture/<>c__DisplayClass4_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+      ],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass4_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass4_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::x:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass4_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<>9__0:class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+          }
+        },
+        {
+          "offset": 19,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 20,
+          "opcode": "brtrue.s",
+          "operand": {
+            "branch": 44
+          }
+        },
+        {
+          "offset": 22,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 24,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 25,
+          "opcode": "ldftn",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass4_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<BodyDummy>b__0``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 31,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>::.ctor``0(class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.IntPtr @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 36,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 37,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 38,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass4_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<>9__0:class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+          }
+        },
+        {
+          "offset": 43,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 44,
+          "opcode": "call",
+          "operand": {
+            "method": "class ScopeFixture @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Check``0(class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 49,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 13
+          }
+        },
+        {
+          "offset": 51,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "id": "ScopeFixture::BodyDo(System.Int32)->System.Void",
+      "locals": [
+        "class ScopeFixture/<>c__DisplayClass5_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass5_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass5_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::x:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldftn",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass5_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<BodyDo>b__0``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 20,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>::.ctor``0(class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.IntPtr @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 25,
+          "opcode": "call",
+          "operand": {
+            "method": "class ScopeFixture @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Check``0(class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 30,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 31,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 32,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 13
+          }
+        },
+        {
+          "offset": 34,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "id": "ScopeFixture::BodyFor(System.Int32)->System.Void",
+      "locals": [
+        "class ScopeFixture/<>c__DisplayClass6_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+      ],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass6_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass6_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::x:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        },
+        {
+          "offset": 13,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass6_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<>9__0:class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+          }
+        },
+        {
+          "offset": 19,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 20,
+          "opcode": "brtrue.s",
+          "operand": {
+            "branch": 44
+          }
+        },
+        {
+          "offset": 22,
+          "opcode": "pop",
+          "operand": null
+        },
+        {
+          "offset": 23,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 24,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 25,
+          "opcode": "ldftn",
+          "operand": {
+            "method": "class ScopeFixture/<>c__DisplayClass6_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<BodyFor>b__0``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 31,
+          "opcode": "newobj",
+          "operand": {
+            "method": "class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>::.ctor``0(class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.IntPtr @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 36,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 37,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 38,
+          "opcode": "stfld",
+          "operand": {
+            "field": "class ScopeFixture/<>c__DisplayClass6_0 @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::<>9__0:class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>"
+          }
+        },
+        {
+          "offset": 43,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 44,
+          "opcode": "call",
+          "operand": {
+            "method": "class ScopeFixture @ ScopeFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Check``0(class System.Func`1 @ System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089>)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 49,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 13
+          }
+        },
+        {
+          "offset": 51,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    },
+    {
+      "id": "ScopeFixture::.ctor()->System.Void",
+      "locals": [],
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "call",
+          "operand": {
+            "method": "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::.ctor``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 6,
+          "opcode": "ret",
+          "operand": null
+        }
+      ]
+    }
+  ],
+  "source_reference": "https://raw.githubusercontent.com/dotnet/roslyn/version-1.1.0/src/Compilers/CSharp/Portable/Lowering/LambdaRewriter/LambdaRewriter.cs#L1025",
+  "controls": [
+    {
+      "method": "Condition",
+      "expected_cache": false,
+      "observed_cache": false,
+      "passed": true
+    },
+    {
+      "method": "BodyIf",
+      "expected_cache": false,
+      "observed_cache": false,
+      "passed": true
+    },
+    {
+      "method": "BodyBool",
+      "expected_cache": true,
+      "observed_cache": true,
+      "passed": true
+    },
+    {
+      "method": "BodyDummy",
+      "expected_cache": true,
+      "observed_cache": true,
+      "passed": true
+    },
+    {
+      "method": "BodyDo",
+      "expected_cache": false,
+      "observed_cache": false,
+      "passed": true
+    },
+    {
+      "method": "BodyFor",
+      "expected_cache": true,
+      "observed_cache": true,
+      "passed": true
+    }
+  ],
+  "controls_passed": 6
+}

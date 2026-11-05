@@ -1,5 +1,25 @@
 # Toolchain e evidências
 
+## Estado atual — rodada iniciada em 8851963
+
+Seleção mantida: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para Kairo e **smcs 2.6.5.0** para App. As opções continuam /unsafe- (Kairo) e -unsafe- (App), sem defines adicionais. [Definição selecionada](../tools/kairo_candidate.py).
+
+A primeira referência Kairo agora é **Microsoft .NET Framework 2.0**, `C:/Windows/Microsoft.NET/Framework/v2.0.50727/mscorlib.dll`, SHA-256 `c4729c6fc2279933fa9638f60775ab2f7eb731d5b04f9e04c15187afbdf94558`. System.Core 3.5 e System 2.0 continuam do perfil clássico Unity, seguidos conforme a ordem já documentada; UnityEngine vem do APK. Ordem exata: mscorlib, System.Core, UnityEngine, System. A identidade assembly é a mesma da referência Mono anterior, mas a ordem das interfaces herdadas de IEnumerator<T> muda. Esse ajuste preservou todas as saídas de métodos e aprovou os dois iteradores. Hash histórico da referência original continua UNKNOWN. [Prova](../reports/round3-mscorlib-probe.json).
+
+**Todos os 466 tipos e metadados de definição têm identidade estrutural comprovada**: 337/337 Kairo e 129/129 App; os metadados globais comparados também coincidem. Métodos matched: **3.144/3.287 Kairo**, **1.611/1.958 App**, **4.755/5.245 no total**. Corpos idênticos: 3.070 e 1.606; 82 declarações sem CIL aprovadas; três auxiliares iguais retidos. A igualdade estrutural não implica igualdade bruta dos índices/heaps/PE nem identidade de todos os corpos.
+
+Revisões intermediárias: pacote1.1.1 / csc1.1.0.51202 é indistinguível do 1.1.0 em todos os métodos e metadados inspecionados; 1.2.1 / csc1.2.0.60325 e 1.2.2 / csc1.2.0.60425 perdem 18 correspondências cada, sem ganhos. Os dois da série1.2 também são indistinguíveis entre si. [Matriz completa](../reports/KairoLibrary-roslyn-revisions-round3.json). Os pacotes portáteis e seis componentes de cada versão têm hashes fixados no [registro de aquisição](../reports/round3-Roslyn-revisions-acquisition.json).
+
+Provas de campos variáveis na configuração documentada:
+- Kairo: dois builds finais dos 163 fontes com a referência Microsoft; 34 bytes diferentes, restritos a MVID(16), COFF timestamp(um byte observado em campo4), debug timestamp(um em campo4), GUID do PDB(16). [Prova](../reports/round3-Kairo-repeatability.json).
+- App: dois builds dos mesmos 97 fontes congelados de início da rodada; 17 bytes diferentes, restritos a MVID(16) e COFF timestamp(um observado em campo4). debug- não emitiu diretório de depuração/CodeView. [Prova](../reports/round3-Assembly-CSharp-repeatability.json).
+
+Esses seis campos estão registrados em config/toolchain.json. **Nenhuma normalização foi aplicada.** Determinismo das compilações originais permanece UNKNOWN.
+
+Heaps e tabelas brutas passaram de NOT_EVALUATED para medição por bytes: [Kairo](../reports/round3-final-KairoLibrary-raw-measurement.json), [App](../reports/round3-final-Assembly-CSharp-raw-measurement.json). Diferenças são posicionais dentro de regiões de mesmo nome, com caudas sem par separadas; não são contagens de erros semânticos. Nenhuma correção motivada por essa medição foi tentada. Ambos os heaps #Strings são byte a byte idênticos.
+
+As seções abaixo preservam configurações e medições históricas das rodadas anteriores; o estado atual é o desta seção.
+
 ## Configuração selecionada — rodada iniciada em 2ab24ee
 
 KairoLibrary: pacote **Microsoft.Net.Compilers 1.1.0**, executável **1.1.0.51109**. SHA-256 do pacote: `cd84fb2c71cafe03cdae0add609fa12c75f61c89ea87b1422fd108ac7e570745`; do csc.exe: `53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3`. Os seis componentes foram conferidos byte a byte contra o pacote fixado e têm hashes em [componentes](../reports/KairoLibrary-compiler-components-1.1.0.json) e `tools/kairo_candidate.py`. O verificador confere os seis antes de compilar. Aquisição portátil: `python tools/fetch_roslyn_neighbors.py`; build selecionado: `python tools/build --assembly KairoLibrary`.

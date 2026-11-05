@@ -3360,13 +3360,13 @@ namespace form
 		{
 			int[] scaleRange = GetScaleRange();
 			scale = AppData.Clamp(scale, scaleRange[0], scaleRange[1]);
-			if (scale != scale_)
-			{
-				int gameWidth = GetGameWidth();
-				int gameHeight = GetGameHeight();
-				scale_ = scale;
-				ResetOffscreen();
-			}
+			if (scale == scale_) { return; }
+{
+int gameWidth = GetGameWidth();
+int gameHeight = GetGameHeight();
+scale_ = scale;
+ResetOffscreen();
+}
 		}
 
 		public int GetGameWidth()

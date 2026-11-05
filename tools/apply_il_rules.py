@@ -10,6 +10,12 @@ from compiler_probes import ROSLYN
 from kairo_candidate import LABEL,COMPILER_PATH
 ROOT=Path(__file__).resolve().parents[1]
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def receipt_is_fresh(root,receipt):
+    # Exit1 can mean a known mismatch OR a compile failure; reject stale proof.
+    try:
+        return sha(root/receipt['build_artifact'])==receipt['build_sha256'] and all(
+            sha(root/s['path'])==s['sha256'] for s in receipt['sources'])
+    except (OSError,KeyError):return False
 def run(args,log):
     p=subprocess.run([str(x) for x in args],cwd=ROOT,capture_output=True)
     log.write_bytes(p.stdout+p.stderr)
@@ -21,7 +27,10 @@ def index_current(a):
     label=LABEL if a=='KairoLibrary' else 'mono-smcs'
     folder=ROOT/'build'/(a+'-'+label)
     return {m['stable_id']:m for m in read(folder/'original-methods.json')['selected_methods']},{m['stable_id']:m for m in read(folder/'rebuilt-methods.json')['selected_methods']},read(folder/'build-manifest.json')
-def branchops(m):return [i['opcode'].replace('.s','') for i in m.get('instructions',[]) if i['opcode'].startswith(('brtrue','brfalse'))]
+def branchops(m):
+    conditions={'brtrue','brfalse','beq','bne.un','bge','bge.un','bgt','bgt.un','ble','ble.un','blt','blt.un'}
+    ops=[i['opcode'][:-2] if i['opcode'].endswith('.s') else i['opcode'] for i in m.get('instructions',[])]
+    return [op for op in ops if op in conditions]
 def patchtext(text,patches):
     encoded=text.encode('utf-16-le')
     for p in sorted(patches,key=lambda p:p['start'],reverse=True):
@@ -35,8 +44,8 @@ def nonoverlap(patches):
         if not any(p['start']<q['end'] and p['end']>q['start'] for q in output):output.append(p)
     return output
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--rule',required=True,choices=['tail-early-return','return-local','ternary-polarity','if-polarity','switch-if']);ap.add_argument('--assembly',required=True,choices=['KairoLibrary','Assembly-CSharp']);args=ap.parse_args()
-    a=args.assembly;rule=args.rule;folder=ROOT/'build/round2'/a/rule;folder.mkdir(parents=True,exist_ok=True)
+    ap=argparse.ArgumentParser();ap.add_argument('--rule',required=True,choices=['tail-early-return','return-local','ternary-polarity','if-polarity','switch-if','guard-return','guard-return-reverse','condition-local','value-guard','value-guard-reverse']);ap.add_argument('--assembly',required=True,choices=['KairoLibrary','Assembly-CSharp']);args=ap.parse_args()
+    a=args.assembly;rule=args.rule;folder=ROOT/'build/round3'/a/rule;folder.mkdir(parents=True,exist_ok=True)
     oracle,before,manifest=index_current(a)
     equal={k for k,m in oracle.items() if 'raw_body_hex'in m and not differences(m,before.get(k))[0]}
     ledger=list(csv.DictReader((ROOT/'config/methods.csv').open(encoding='utf-8',newline='')))
@@ -66,7 +75,8 @@ def main():
         if key in equal or 'raw_body_hex' not in m:continue
         delta=differences(m,before.get(key))[0]
         facets=set(delta)-{'resolved_body_bytes'}
-        if facets not in ({'header','instructions'},{'header','locals','instructions'}) and '<GetGraphics>' not in key:continue
+        broad=rule in ('ternary-polarity','if-polarity','guard-return','guard-return-reverse','condition-local','value-guard','value-guard-reverse')
+        if not broad and facets not in ({'header','instructions'},{'header','locals','instructions'}) and '<GetGraphics>' not in key:continue
         origin=key
         if key not in members:
             origin=rows.get(key,{}).get('gerado_por','').split('::',1)[-1].replace('+','/')
@@ -77,6 +87,26 @@ def main():
         if rule=='tail-early-return' and not (len(ops)>=2 and ops[-2:]==['ret','ret']):continue
         if rule=='return-local' and not (a=='Assembly-CSharp' and len(m['locals'])==len(before[key]['locals'])+1 and len(ops)>2 and ops[-1]=='ret' and ops[-2].startswith('ldloc') and ops[-3].startswith('stloc')):continue
         if rule=='switch-if' and not (a=='Assembly-CSharp' and len(before[key]['locals'])>len(m['locals']) and 'switch' not in ops):continue
+        if rule in ('guard-return','guard-return-reverse') and a!='Assembly-CSharp':continue
+        if rule in ('value-guard','value-guard-reverse'):
+            if a!='Assembly-CSharp' or key not in before:continue
+            if ops.count('ret')<=sum(i['opcode']=='ret' for i in before[key].get('instructions',[])):continue
+        if rule=='condition-local':
+            if a!='Assembly-CSharp' or key not in before:continue
+            slots=m['locals'];oldslots=before[key]['locals'];missing=[]
+            if len(slots)!=len(oldslots)+1:continue
+            for i,slot in enumerate(slots):
+                if slots[:i]+slots[i+1:]==oldslots and slot.startswith('valuetype System.Boolean @'):missing.append(i)
+            if not missing:continue
+            def slotop(ins,op):
+                code=ins['opcode'];operand=ins.get('operand')
+                if code.startswith(op+'.') and code[len(op)+1:].isdigit():return int(code[len(op)+1:])
+                if code in (op,op+'.s') and isinstance(operand,dict):return operand.get('local')
+                return None
+            anchors=[i for i in range(len(m['instructions'])-2) if slotop(m['instructions'][i],'stloc') in missing and slotop(m['instructions'][i+1],'ldloc')==slotop(m['instructions'][i],'stloc') and m['instructions'][i+2]['opcode'].startswith(('brtrue','brfalse'))]
+            if not anchors:continue
+            patches=[p for p in patches if p.get('temp_type')=='System.Boolean']
+            if not patches:continue
         if rule in ('ternary-polarity','if-polarity') and branchops(m)==branchops(before.get(key,{})):continue
         targets.append({'id':key,'origin':origin,'path':member['path'],'patches':nonoverlap(patches)})
     # The user's Image example is outside H+I/H+L+I and is tested explicitly.
@@ -93,7 +123,7 @@ def main():
             out=dest/(str(n)+'-'+Path(p).name);out.write_text(patchtext(original_text[p],nonoverlap(patches)),encoding='utf-8',newline='')
             mapping[Path(p).relative_to(ROOT).as_posix()]=str(out)
         mp=dest/'source-map.json';mp.write_text(json.dumps(mapping))
-        blabel='il-rule-'+a.lower()+'-'+rule+'-'+label
+        blabel='round3-il-rule-'+a.lower()+'-'+rule+'-'+label
         cmd=[sys.executable,ROOT/'tools'/('build_kairo.py' if a=='KairoLibrary' else 'build_csharp.py'),'--label',blabel,'--source-map',mp]
         if a=='KairoLibrary':cmd+=['--compiler',ROOT/COMPILER_PATH]
         code=run(cmd,dest/'build.log')
@@ -114,12 +144,12 @@ def main():
                 for logical,path in fm.items():(ROOT/logical).write_bytes(Path(path).read_bytes())
                 code=run([sys.executable,ROOT/'tools/verify','--all','--assembly',a],folder/'official-verify.log')
                 receipt=read(ROOT/'build'/('verification-'+a+'.json'))
-                if code not in (0,1) or receipt['regressions']:
+                if code not in (0,1) or not receipt_is_fresh(ROOT,receipt) or receipt['regressions'] or receipt.get('type_regressions'):
                     for logical,data in snapshot.items():(ROOT/logical).write_bytes(data)
                     run([sys.executable,ROOT/'tools/verify','--all','--assembly',a],folder/'rollback-verify.log')
                     raise ValueError('Official verification regression; sources restored')
                 oldstates={r['id']:r['estado'] for r in ledger if r['assembly']==a}
                 report.update(adopted=[t['origin'] for t in adopted],adopted_new_equal=fg,selected_losses=fl,state_gains=sum(v['state']=='matched' and oldstates[k]!='matched' for k,v in receipt['methods'].items()),state_losses=sum(v['state']!='matched' and oldstates[k]=='matched' for k,v in receipt['methods'].items()))
-    out=ROOT/'reports'/(a+'-IL-rule-'+rule+'.json');out.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    out=ROOT/'reports'/('round3-'+a+'-IL-rule-'+rule+'.json');out.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in report.items() if k in ['assembly','rule','corpus','target_count','state_gains','state_losses','trial_compile_pass','trial_losses','adopted']}),flush=True)
 if __name__=='__main__':main()

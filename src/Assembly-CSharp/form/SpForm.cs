@@ -734,12 +734,12 @@ namespace form
 		private void SetSoftLabel()
 		{
 			int[] array = softLabels_[state_];
-			if (array != null)
-			{
-				int num = array[0];
-				int num2 = array[1];
-				SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
-			}
+			if (array == null) { return; }
+{
+int num = array[0];
+int num2 = array[1];
+SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
+}
 		}
 
 		internal void ShowDialog(string text, string buttons)

@@ -69,9 +69,9 @@ def main():
     lines += ['','## Bloqueios','',
         f'- Versão histórica exata dos compiladores: UNKNOWN; pacote Roslyn {PACKAGE_VERSION} é o melhor candidato testado para KairoLibrary.',
         '- Assembly-CSharp: configuração stdlib default validada e chamada original de IndexOf restaurada; os corpos restantes ainda exigem recuperação.',
-        '- Comparação estrutural dos tipos implementada; persistem diferenças de metadados. Comparação bruta de tabelas, heaps e assembly ainda pendente.',
+        ('- Todos os tipos e metadados de definição têm identidade estrutural comprovada; corpos e bytes brutos continuam divergentes.' if matched_types==len(types) else '- Comparação estrutural dos tipos implementada; persistem diferenças de metadados e bytes brutos.'),
         f'- {generated} membros têm campo gerado_por UNKNOWN; propriedades e caches compartilhados podem ter vínculo comprovado no relatório sem uma origem única representável nesse campo.',
-        '- Quatro campos voláteis Kairo foram registrados com prova de repetição; nenhum normalizador de assembly foi aplicado.',
+        '- Campos variáveis comprovados: quatro em Kairo e dois em App; nenhuma normalização de assembly foi aplicada.',
         '', 'Plano: [DECOMP_PLAN.md](DECOMP_PLAN.md). Ferramentas: [docs/toolchain.md](docs/toolchain.md).','']
     (ROOT/'PROGRESS.md').write_text('\n'.join(lines),encoding='utf-8')
     print(json.dumps({'methods':len(methods),'types':len(types),'il_bytes':total_il,'matched':len(matched),'matched_il_bytes':matched_il,'categories':dict(categories)}))

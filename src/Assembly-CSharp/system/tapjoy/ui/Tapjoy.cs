@@ -60,21 +60,22 @@ namespace system.tapjoy.ui
 
 		protected void Init()
 		{
-			if (!initialize_)
-			{
-				Print("[Tapjoy] Init");
-				initialize_ = true;
-				balance_ = PlayerPrefs.GetInt("_Tapjoy", 0);
-				Print("[Tapjoy] Init_balance:" + balance_);
-			}
+			if (initialize_) { return; }
+{
+Print("[Tapjoy] Init");
+initialize_ = true;
+balance_ = PlayerPrefs.GetInt("_Tapjoy", 0);
+Print("[Tapjoy] Init_balance:" + balance_);
+}
 		}
 
 		protected void Quit()
 		{
-			if (initialize_)
-			{
-				Print("[Tapjoy] Quit");
-			}
+			if (!(initialize_)) { return; }
+{
+
+Print("[Tapjoy] Quit");
+}
 		}
 
 		public void CallBalance()

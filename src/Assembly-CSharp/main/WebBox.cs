@@ -13,10 +13,12 @@ namespace main
 
 		public static WebBox Create()
 		{
-			if (!WebBoxPlugin.Create())
+			{ bool recoveredCondition_200 = WebBoxPlugin.Create();
+if (!recoveredCondition_200)
 			{
 				return null;
 			}
+}
 			return new WebBox();
 		}
 

@@ -1,0 +1,37 @@
+{
+  "assembly": "KairoLibrary",
+  "candidate": "HttpScope",
+  "logical": "src/KairoLibrary/kairo/unity/io/HttpObject.cs",
+  "baseline_source_sha256": "949e9d16aeb9998872d69e0679a5a3d9763dccb068d32612213cbc5832809616",
+  "candidate_source_sha256": "4b65ed7d15358b399388a461e3ebc86bc755c8992d578acfa30b7a06d64d9e88",
+  "candidate_source": "analysis\\variants\\round3-meta-HttpScope\\HttpScope.cs",
+  "source_map": "analysis\\variants\\round3-meta-HttpScope\\source-map.json",
+  "patches": [
+    [
+      "while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true))\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}",
+      "while (true)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true);\r\n\t\t\t\t\tif (completed)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}"
+    ]
+  ],
+  "compile_exit_code": 0,
+  "main_sources_modified": false,
+  "ledger_modified": false,
+  "body_equal_before": 3051,
+  "body_equal_after": 3051,
+  "body_gains": [],
+  "body_losses": [],
+  "type_equal_before": 332,
+  "type_equal_after": 333,
+  "type_gains": [
+    "kairo.unity.io.HttpObject/<>c__DisplayClass10_1"
+  ],
+  "type_losses": [],
+  "original_methods_missing": [],
+  "extra_method_ids": [],
+  "candidate_sha256": "e492f6e16a460ef04230fb889aa57f7accda4dcfc3a5f59b2589e24bf8cda4ce",
+  "declarations_proved": 76,
+  "remaining_type_differences": {
+    "fields_inventory": 2,
+    "fields_order": 2,
+    "interfaces": 2
+  }
+}

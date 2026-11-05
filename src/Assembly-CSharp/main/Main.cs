@@ -132,7 +132,7 @@ namespace main
 				if (instance.save_ == null)
 				{
 					Dialog dialog2 = new Dialog(0, "ｴﾗｰ");
-					dialog2.SetText("エラーが発生しました。" + ((!Config.DEBUG) ? string.Empty : ("\n" + ex2)));
+					dialog2.SetText("エラーが発生しました。" + ((Config.DEBUG) ? (("\n" + ex2)) : (string.Empty)));
 					dialog2.Show();
 					if ((instance2.GetKeypadState() & 0x800) != 0)
 					{
@@ -159,7 +159,7 @@ namespace main
 					{
 					}
 					Dialog dialog3 = new Dialog(0, "ｴﾗｰ");
-					dialog3.SetText("エラーが発生しました。" + ((!Config.DEBUG) ? string.Empty : ("\n" + ex2)));
+					dialog3.SetText("エラーが発生しました。" + ((Config.DEBUG) ? (("\n" + ex2)) : (string.Empty)));
 					dialog3.Show();
 					if ((instance2.GetKeypadState() & 0x800) != 0)
 					{

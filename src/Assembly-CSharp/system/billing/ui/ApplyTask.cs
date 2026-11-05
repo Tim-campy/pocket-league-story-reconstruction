@@ -165,8 +165,8 @@ namespace system.billing.ui
 
 		public void Serialize(OutputStream os)
 		{
-			StreamUtil.WriteInt(os, (item_ == null) ? (-1) : item_.id_);
-			StreamUtil.WriteString(os, (gift_ == null) ? string.Empty : gift_.Get());
+			StreamUtil.WriteInt(os, (item_ != null) ? (item_.id_) : ((-1)));
+			StreamUtil.WriteString(os, (gift_ != null) ? (gift_.Get()) : (string.Empty));
 			StreamUtil.WriteByte(os, (byte)type_);
 			StreamUtil.WriteBoolean(os, notice_);
 		}

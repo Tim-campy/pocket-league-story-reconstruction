@@ -1049,10 +1049,12 @@ namespace surface
 		{
 			GameView instance = GameView.GetInstance();
 			float num = (float)(instance.GetGameWidth() - 164) / 240f;
-			if (GetMode() == 2 && num < 0.9f)
+			{ bool recoveredCondition_26283 = GetMode() == 2 && num < 0.9f;
+if (recoveredCondition_26283)
 			{
 				return num;
 			}
+}
 			return 0f;
 		}
 

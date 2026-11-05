@@ -37,10 +37,12 @@ namespace surface
 		{
 			for (int num = effects.Size() - 1; num >= 0; num--)
 			{
-				if (effects.ElementAt(num).Frame())
+				{ bool recoveredCondition_793 = effects.ElementAt(num).Frame();
+if (recoveredCondition_793)
 				{
 					effects.RemoveElementAt(num);
 				}
+}
 			}
 		}
 

@@ -2646,7 +2646,7 @@ namespace game
 			{
 				1,
 				wait,
-				(!flg_disp) ? 1 : 0
+				(flg_disp) ? (0) : (1)
 			});
 		}
 

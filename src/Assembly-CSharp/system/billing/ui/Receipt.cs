@@ -75,10 +75,11 @@ namespace system.billing.ui
 
 		public void Consume()
 		{
-			if (productType_ == ProductType.Consumable)
-			{
-				state_ = 1;
-			}
+			if (productType_ != ProductType.Consumable) { return; }
+{
+
+state_ = 1;
+}
 		}
 
 		public bool IsConsume()
@@ -173,7 +174,7 @@ namespace system.billing.ui
 
 		public static string GetItemType(ProductType type)
 		{
-			return (type != ProductType.Subscription) ? "inapp" : "subs";
+			return (type == ProductType.Subscription) ? ("subs") : ("inapp");
 		}
 
 		public static string PasswordEncode(byte[] src)

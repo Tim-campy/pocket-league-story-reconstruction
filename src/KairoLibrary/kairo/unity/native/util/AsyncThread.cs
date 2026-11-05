@@ -8,7 +8,7 @@ namespace kairo.unity.native.util
 	{
 		public static string CallStatic(AndroidJavaClass javaClass, string methodName, params object[] args)
 		{
-			AndroidJavaObject asyncThread = (AndroidJavaObject)IApplication.GetCurrentApp().RunOnUiThread(() => (Config.APPLI_TYPE == 2 && !Config.UNITY_EDITOR) ? javaClass.CallStatic<AndroidJavaObject>(methodName, args) : null, true);
+			AndroidJavaObject asyncThread = (AndroidJavaObject)IApplication.GetCurrentApp().RunOnUiThread(() => ((Config.APPLI_TYPE != 2) || (Config.UNITY_EDITOR)) ? (null) : (javaClass.CallStatic<AndroidJavaObject>(methodName, args)), true);
 			if (asyncThread == null)
 			{
 				return null;

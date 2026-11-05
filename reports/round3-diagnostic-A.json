@@ -1,0 +1,146 @@
+{
+  "method": "Assembly-CSharp::system.billing.ui.Receipt::GetItemType(UnityEngine.Purchasing.ProductType)->System.String",
+  "baseline_differences": [
+    "instructions",
+    "resolved_body_bytes"
+  ],
+  "old_scope_filter_excludes_pure_instruction_group": true,
+  "old_branch_filter_original": [],
+  "old_branch_filter_rebuilt": [],
+  "old_Negate_already_rewrites_not_equals_to_equals": true,
+  "hypothesis": {
+    "before": "return (type != ProductType.Subscription) ? \"inapp\" : \"subs\";",
+    "after": "return (type == ProductType.Subscription) ? \"subs\" : \"inapp\";"
+  },
+  "candidate_body_equal": true,
+  "candidate_differences": [],
+  "previous_equal_bodies_lost": [],
+  "baseline_equal_bodies": 1567,
+  "source_sha256": "4c2fab02177537aa28b18524865d23a0615d50b6210fe0091dde37d73a05d72d",
+  "candidate_source_sha256": "cac30329a72c4ad6eda0f067ee79dde44dec1f726eb3dd5cb41ba0b3410b17b7",
+  "original_instructions": [
+    {
+      "offset": 0,
+      "opcode": "ldarg.0",
+      "operand": null
+    },
+    {
+      "offset": 1,
+      "opcode": "ldc.i4.2",
+      "operand": null
+    },
+    {
+      "offset": 2,
+      "opcode": "bne.un",
+      "operand": {
+        "branch": 17
+      }
+    },
+    {
+      "offset": 7,
+      "opcode": "ldstr",
+      "operand": "subs"
+    },
+    {
+      "offset": 12,
+      "opcode": "br",
+      "operand": {
+        "branch": 22
+      }
+    },
+    {
+      "offset": 17,
+      "opcode": "ldstr",
+      "operand": "inapp"
+    },
+    {
+      "offset": 22,
+      "opcode": "ret",
+      "operand": null
+    }
+  ],
+  "baseline_instructions": [
+    {
+      "offset": 0,
+      "opcode": "ldarg.0",
+      "operand": null
+    },
+    {
+      "offset": 1,
+      "opcode": "ldc.i4.2",
+      "operand": null
+    },
+    {
+      "offset": 2,
+      "opcode": "beq",
+      "operand": {
+        "branch": 17
+      }
+    },
+    {
+      "offset": 7,
+      "opcode": "ldstr",
+      "operand": "inapp"
+    },
+    {
+      "offset": 12,
+      "opcode": "br",
+      "operand": {
+        "branch": 22
+      }
+    },
+    {
+      "offset": 17,
+      "opcode": "ldstr",
+      "operand": "subs"
+    },
+    {
+      "offset": 22,
+      "opcode": "ret",
+      "operand": null
+    }
+  ],
+  "candidate_instructions": [
+    {
+      "offset": 0,
+      "opcode": "ldarg.0",
+      "operand": null
+    },
+    {
+      "offset": 1,
+      "opcode": "ldc.i4.2",
+      "operand": null
+    },
+    {
+      "offset": 2,
+      "opcode": "bne.un",
+      "operand": {
+        "branch": 17
+      }
+    },
+    {
+      "offset": 7,
+      "opcode": "ldstr",
+      "operand": "subs"
+    },
+    {
+      "offset": 12,
+      "opcode": "br",
+      "operand": {
+        "branch": 22
+      }
+    },
+    {
+      "offset": 17,
+      "opcode": "ldstr",
+      "operand": "inapp"
+    },
+    {
+      "offset": 22,
+      "opcode": "ret",
+      "operand": null
+    }
+  ],
+  "main_sources_modified": false,
+  "ledger_modified": false
+}

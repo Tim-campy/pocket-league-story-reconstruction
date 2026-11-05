@@ -510,48 +510,48 @@ namespace form
 			if (Language.GetLanguageCode() != "ja-JP" && Language.GetLanguageCode() != "en-US" && !Language.GetLanguageCode().StartsWith("*"))
 			{
 				value *= 10;
-				return ((!comma) ? (string.Empty + value) : Comma(value)) + "G";
+				return ((comma) ? (Comma(value)) : ((string.Empty + value))) + "G";
 			}
 			bool flag = AppData.GetInstance().sysSave_.ints[14] == 1;
 			if (text.Equals("万円") || text.Equals("万"))
 			{
 				if (flag)
 				{
-					return "$" + ((!comma) ? (string.Empty + value / 10) : Comma(value / 10)) + "." + JMath.Abs(value) % 10 + "K";
+					return "$" + ((comma) ? (Comma(value / 10)) : ((string.Empty + value / 10))) + "." + JMath.Abs(value) % 10 + "K";
 				}
 				if (!Jp())
 				{
-					return "¥" + ((!comma) ? (string.Empty + value * 10) : Comma(value * 10)) + "K";
+					return "¥" + ((comma) ? (Comma(value * 10)) : ((string.Empty + value * 10))) + "K";
 				}
 			}
 			else if (text.Equals("円"))
 			{
 				if (flag)
 				{
-					return "$" + ((!comma) ? (string.Empty + value / 100) : Comma(value / 100));
+					return "$" + ((comma) ? (Comma(value / 100)) : ((string.Empty + value / 100)));
 				}
 				if (!Jp())
 				{
-					return "¥" + ((!comma) ? (string.Empty + value) : Comma(value));
+					return "¥" + ((comma) ? (Comma(value)) : ((string.Empty + value)));
 				}
 			}
 			else if (text.Equals("\\"))
 			{
 				if (flag)
 				{
-					return "$" + ((!comma) ? (string.Empty + value / 100) : Comma(value / 100));
+					return "$" + ((comma) ? (Comma(value / 100)) : ((string.Empty + value / 100)));
 				}
 				if (!Jp())
 				{
-					return "¥" + ((!comma) ? (string.Empty + value) : Comma(value));
+					return "¥" + ((comma) ? (Comma(value)) : ((string.Empty + value)));
 				}
-				return "\\" + ((!comma) ? (string.Empty + value) : Comma(value));
+				return "\\" + ((comma) ? (Comma(value)) : ((string.Empty + value)));
 			}
 			if (flag)
 			{
-				return ((!comma) ? (string.Empty + value / 100) : Comma(value / 100)) + text;
+				return ((comma) ? (Comma(value / 100)) : ((string.Empty + value / 100))) + text;
 			}
-			return ((!comma) ? (string.Empty + value) : Comma(value)) + text;
+			return ((comma) ? (Comma(value)) : ((string.Empty + value))) + text;
 		}
 
 		public static string UNI(string text, long value)
@@ -564,13 +564,13 @@ namespace form
 			string text2 = "K";
 			if (Jp())
 			{
-				return JString.ValueOf((!comma) ? (string.Empty + value) : Comma(value)) + text;
+				return JString.ValueOf((comma) ? (Comma(value)) : ((string.Empty + value))) + text;
 			}
 			if (text.Contains("万"))
 			{
-				return ((!comma) ? (string.Empty + value * 10) : Comma(value * 10)) + "k";
+				return ((comma) ? (Comma(value * 10)) : ((string.Empty + value * 10))) + "k";
 			}
-			return JString.ValueOf((!comma) ? (string.Empty + value) : Comma(value));
+			return JString.ValueOf((comma) ? (Comma(value)) : ((string.Empty + value)));
 		}
 
 		public static void PushFontSize(Graphics g, int size)

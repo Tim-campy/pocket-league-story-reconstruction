@@ -269,10 +269,11 @@ namespace data
 
 		public void LvUp()
 		{
-			if (lv_ != 5)
-			{
-				SetLv(lv_ + 1);
-			}
+			if (lv_ == 5) { return; }
+{
+
+SetLv(lv_ + 1);
+}
 		}
 
 		public void SetLv(int lv)

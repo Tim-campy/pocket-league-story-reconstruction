@@ -3,12 +3,14 @@
 The selected main output and its verification receipt are protected by hashes.
 MVID location comes from REA Module row 1/#GUID, not a GUID byte search.
 """
+import argparse
 import json
 from pathlib import Path
 import subprocess
 import sys
 import time
 import uuid
+import re
 from check_kairo_repeatability import volatile_ranges
 from compare_kairo import sha
 from fetch_roslyn_neighbors import PINNED
@@ -30,6 +32,17 @@ def observe(target, rea_root):
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--label',default='repeatability-1.1.0')
+    parser.add_argument('--report',type=Path)
+    args=parser.parse_args()
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*',args.label):
+        raise ValueError('Expected isolated filename label')
+    report=(ROOT/args.report).resolve() if args.report else ROOT/'reports/KairoLibrary-repeatability-1.1.0.json'
+    if not report.is_relative_to((ROOT/'reports').resolve()):
+        raise ValueError('Proof report must stay in reports/')
+    if args.report and report.exists():
+        raise ValueError('Requested proof report already exists; preserve it under a new name')
     compiler = ROOT / 'analysis/tools/roslyn-1.1.0/tools/csc.exe'
     if sha(compiler) != PINNED['1.1.0'][1]:
         raise ValueError('Compiler identity mismatch')
@@ -41,7 +54,7 @@ def main():
         protected[str(ROOT / name)] = sha(ROOT / name)
     config = json.loads((ROOT / 'config/toolchain.json').read_text(encoding='utf-8'))
     rea_root = Path(config['rea_package_root'])
-    label = 'repeatability-1.1.0'
+    label = args.label
     target = ROOT / ('build/KairoLibrary-' + label + '/KairoLibrary.dll')
     command = [sys.executable, str(ROOT / 'tools/build_kairo.py'), '--compiler', str(compiler), '--label', label]
     subprocess.run(command, cwd=ROOT, check=True, capture_output=True)
@@ -84,7 +97,7 @@ def main():
               'protected_main_and_state_hashes': protected, 'protected_main_and_state_unchanged': protected_unchanged,
               'comparison_exceptions_applied': False, 'post_compile_binary_edits': False,
               'original_build_determinism': 'UNKNOWN'}
-    report = ROOT / 'reports/KairoLibrary-repeatability-1.1.0.json'
+    report.parent.mkdir(parents=True,exist_ok=True)
     report.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({key: result[key] for key in ('source_count', 'output_length', 'changed_byte_count',
           'identified_ranges', 'unexplained_changed_offsets', 'all_identified_fields_observed_changing',

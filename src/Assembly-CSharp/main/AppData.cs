@@ -1938,7 +1938,7 @@ namespace main
 
 		public byte[][] PhpDlFile(string dir, string file)
 		{
-			string url = Config.URL_DATA + ((dir != null) ? (dir + "/") : string.Empty) + file + ".dat";
+			string url = Config.URL_DATA + ((dir == null) ? (string.Empty) : ((dir + "/"))) + file + ".dat";
 			return Http.Connect(url, null, false, true);
 		}
 
@@ -2399,11 +2399,11 @@ namespace main
 				byteArrayOutputStream.Close();
 				saveLine_ = 21;
 				recordStore = RecordStore.OpenRecordStore(0);
-				recordStore.WriteRecord(((!auto) ? 1 : 3) + currentSaveSlot_, save_.ToByteArray());
+				recordStore.WriteRecord(((auto) ? (3) : (1)) + currentSaveSlot_, save_.ToByteArray());
 				saveLine_ = 31;
-				sysSave_.ints[((!auto) ? 6 : 11) + currentSaveSlot_] = save_.ints[1] * 100 * 100 + save_.ints[2] * 100 + save_.ints[3];
-				sysSave_.strs[((!auto) ? 4 : 8) + currentSaveSlot_] = JString.ValueOf(save_.lngs[0]);
-				sysSave_.strs[((!auto) ? 2 : 6) + currentSaveSlot_] = save_.strs[0];
+				sysSave_.ints[((auto) ? (11) : (6)) + currentSaveSlot_] = save_.ints[1] * 100 * 100 + save_.ints[2] * 100 + save_.ints[3];
+				sysSave_.strs[((auto) ? (8) : (4)) + currentSaveSlot_] = JString.ValueOf(save_.lngs[0]);
+				sysSave_.strs[((auto) ? (6) : (2)) + currentSaveSlot_] = save_.strs[0];
 				saveLine_ = 32;
 				SaveSystem();
 				if (Config.PRINT)
@@ -2598,13 +2598,13 @@ namespace main
 				g.DrawImage(resCom2_.img[28], num5, (num3 + num2) / 2 - GHeight / 2 + GTop, 0, 0, width, GHeight);
 			}
 			g.DrawImage(resCom2_.img[29], 120 - GWidth / 2 + 1, (num3 + num2) / 2 - GHeight / 2 + GTop, 120 - GWidth / 2 + 1, 0, GWidth - 2, 17);
-			if (T_S != null)
-			{
-				g.SetColor(SubForm.SC_WINDOW_TITLE2);
-				g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight / 2 - 1 + GTop + 3 + 1);
-				g.SetColor(SubForm.SC_WINDOW_TITLE);
-				g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight / 2 - 1 + GTop + 3);
-			}
+			if (T_S == null) { return; }
+{
+g.SetColor(SubForm.SC_WINDOW_TITLE2);
+g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight / 2 - 1 + GTop + 3 + 1);
+g.SetColor(SubForm.SC_WINDOW_TITLE);
+g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight / 2 - 1 + GTop + 3);
+}
 		}
 
 		public void DrawWindow2(Graphics g, int GWidth, int GHeight, int GTop, int oy)
@@ -3707,11 +3707,11 @@ namespace main
 
 		public void PlaySe(int se)
 		{
-			if (!GetInstance().platform_.StartsWith("ap"))
-			{
-				SoundPlayer instance = SoundPlayer.GetInstance();
-				instance.Play(resSound_.sound[se]);
-			}
+			if (GetInstance().platform_.StartsWith("ap")) { return; }
+{
+SoundPlayer instance = SoundPlayer.GetInstance();
+instance.Play(resSound_.sound[se]);
+}
 		}
 
 		public void PlayJingle(int jingle)
@@ -4317,12 +4317,12 @@ rotatePoint_tmp[1] = -x; }
 					{
 						if (flag)
 						{
-							num += ((!flag2) ? 1 : (-1));
+							num += ((flag2) ? ((-1)) : (1));
 						}
 					}
 					else if (x <= array[0] + (array2[0] - array[0]) * (y - array[1]) / (array2[1] - array[1]))
 					{
-						num += ((!flag2) ? 1 : (-1));
+						num += ((flag2) ? ((-1)) : (1));
 					}
 				}
 				array = array2;
@@ -5403,12 +5403,12 @@ rotatePoint_tmp[1] = -x; }
 		public void AddPopupMessage(int id, string args)
 		{
 			int existPopupNum = GetExistPopupNum(id);
-			if (existPopupNum < 2)
-			{
-				string value = MyFormBase.LT(UserData.POPUP_MEM[id]);
-				value = StringUtil.Replace(value, args);
-				AddPopupMessage(id, value, -1, 60);
-			}
+			if (existPopupNum >= 2) { return; }
+{
+string value = MyFormBase.LT(UserData.POPUP_MEM[id]);
+value = StringUtil.Replace(value, args);
+AddPopupMessage(id, value, -1, 60);
+}
 		}
 
 		public void AddPopupMessage(int id, string msg, int wait, int time)
@@ -6139,10 +6139,11 @@ rotatePoint_tmp[1] = -x; }
 				g.DrawString(PlayerData.POSITION_NAME[index], x, y + (MyFormBase.En() ? 2 : 0));
 			}
 			SubForm.ResetFontSize(g);
-			if (rank >= 0)
-			{
-				DrawSeb(g, x + num, y + 11, resCom2_.seb[65], resCom2_.img[75], rank);
-			}
+			if (rank < 0) { return; }
+{
+
+DrawSeb(g, x + num, y + 11, resCom2_.seb[65], resCom2_.img[75], rank);
+}
 		}
 
 		public static bool IsSC_LangCode()

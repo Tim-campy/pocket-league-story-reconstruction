@@ -10276,9 +10276,9 @@ namespace form
 
 		private void ScrollControl(int num, int showMax)
 		{
-			if (num > 0)
-			{
-				if (canvas_.CheckKeyRepeat(131072))
+			if (num <= 0) { return; }
+{
+if (canvas_.CheckKeyRepeat(131072))
 				{
 					select_ = (select_ - 1 + num) % num;
 				}
@@ -10286,8 +10286,8 @@ namespace form
 				{
 					select_ = (select_ + 1) % num;
 				}
-				ScrollUpdate(num, showMax);
-			}
+ScrollUpdate(num, showMax);
+}
 		}
 
 		public void ScrollUpdate(int num, int showMax)
@@ -12061,23 +12061,23 @@ instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.i
 
 		public static void SetFontSize(Graphics g, int size)
 		{
-			if (En())
-			{
-				Font font = g.GetFont(null);
-				fontSize = font.GetSize();
-				font.SetSize(size);
-				g.SetFont(font);
-			}
+			if (!(En())) { return; }
+{
+Font font = g.GetFont(null);
+fontSize = font.GetSize();
+font.SetSize(size);
+g.SetFont(font);
+}
 		}
 
 		public static void ResetFontSize(Graphics g)
 		{
-			if (En())
-			{
-				Font font = g.GetFont(null);
-				font.SetSize(fontSize);
-				g.SetFont(font);
-			}
+			if (!(En())) { return; }
+{
+Font font = g.GetFont(null);
+font.SetSize(fontSize);
+g.SetFont(font);
+}
 		}
 
 		internal new static bool En()

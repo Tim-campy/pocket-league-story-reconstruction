@@ -1,0 +1,176 @@
+{
+  "steps": [
+    {
+      "name": "LanguageForm",
+      "assembly": "Assembly-CSharp",
+      "source": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+      "before_sha256": "d7b95b085ab52e8b4430ddfee477238f90ba8220814610de4ebb816149e1b459",
+      "after_sha256": "5becdaecda90ea7dbb2f55e682cc1fd6f98174ea11bf192dee4f90a629831947",
+      "patches": [
+        [
+          "HttpForm form = new HttpForm(delegate",
+          "HttpForm languageForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)"
+        ],
+        [
+          "Push(form);",
+          "Push(languageForm);"
+        ],
+        [
+          "}, delegate\r\n",
+          "}, delegate(HttpForm form, HttpForm.ResultData data)\r\n"
+        ],
+        [
+          "new HttpForm(delegate\r\n",
+          "new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)\r\n"
+        ],
+        [
+          "delegate(HttpForm httpForm2, HttpForm.ResultData resultData)",
+          "delegate(HttpForm form, HttpForm.ResultData data)"
+        ],
+        [
+          "resultData.Succeed",
+          "data.Succeed"
+        ],
+        [
+          "resultData.Error",
+          "data.Error"
+        ]
+      ],
+      "state_gains": [],
+      "state_losses": [],
+      "type_gains": [
+        "system.form.LanguageForm"
+      ],
+      "type_losses": [],
+      "counts_before": {
+        "matched": 1611,
+        "body_equal": 1606,
+        "declarations_without_body": 6,
+        "equal_body_held_for_generated_group": 1,
+        "missing_method": 0,
+        "decompiled": 346,
+        "todo": 1,
+        "declarations_metadata_matched": 6
+      },
+      "counts_after": {
+        "matched": 1611,
+        "body_equal": 1606,
+        "declarations_without_body": 6,
+        "equal_body_held_for_generated_group": 1,
+        "missing_method": 0,
+        "decompiled": 346,
+        "todo": 1,
+        "declarations_metadata_matched": 6
+      }
+    },
+    {
+      "name": "ResourceScope",
+      "assembly": "KairoLibrary",
+      "source": "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs",
+      "before_sha256": "d47e544034a3e6f713d8bc5d1a69a1293ae998e97718f958892ad15aa1841352",
+      "after_sha256": "65094bba2bf817b37f6850e719f60a7d475971edb8c95c652615c0bb723068a8",
+      "patches": [
+        [
+          "\t\t\tbool flag;\r\n\t\t\tdo\r\n\t\t\t{\r\n\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tlong num17 = JSystem.CurrentTimeMillis();\r\n\t\t\t\t\tfor (int k = 0; k < loadTask.Length; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num18 = loadTask[k][0];\r\n\t\t\t\t\t\tfor (int l = loadTask[k][1]; l < list_[num18].Length; l++, loadTask[k][1]++, loadCnt_++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (CheckFileEffective(list_[num18][l]))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint num19 = 0;\r\n\t\t\t\t\t\t\t\tswitch (num18)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstring fileName2 = GetFileName(list_[0][l]);\r\n\t\t\t\t\t\t\t\t\tstring[] array7 = StringUtil.Split(fileName2, \",\");\r\n\t\t\t\t\t\t\t\t\tfileName2 = array7[0];\r\n\t\t\t\t\t\t\t\t\tbool flag3 = false;\r\n\t\t\t\t\t\t\t\t\tbool flag4 = false;\r\n\t\t\t\t\t\t\t\t\tstring text3 = null;\r\n\t\t\t\t\t\t\t\t\tImage.Filter filterMode = Image.Filter.Default;\r\n\t\t\t\t\t\t\t\t\tImage.Format format = Image.Format.Default;\r\n\t\t\t\t\t\t\t\t\tint renderQueue_ = 0;\r\n\t\t\t\t\t\t\t\t\tint imageAtlasId_ = -1;\r\n\t\t\t\t\t\t\t\t\tint width = 0;\r\n\t\t\t\t\t\t\t\t\tint height = 0;\r\n\t\t\t\t\t\t\t\t\tbool flag5 = false;\r\n\t\t\t\t\t\t\t\t\tfor (int n = 1; n < array7.Length; n++)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tstring text4 = array7[n].ToLower();\r\n\t\t\t\t\t\t\t\t\t\tif (text4 == \"bin\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tflag3 = true;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"res\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tflag4 = true;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"pt\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tfilterMode = Image.Filter.Point;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"bi\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tfilterMode = Image.Filter.Bilinear;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"tri\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tfilterMode = Image.Filter.Trilinear;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"24\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.RGB24;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"565\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.RGB565;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"32\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.ARGB32;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"4444\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.ARGB4444;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (text4.EndsWith(\".pal\"))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\ttext3 = array7[n];\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse if (text4.StartsWith(\"q+\") || text4.StartsWith(\"q-\"))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\ttext4 = ((text4[1] != '+') ? text4.Substring(1) : text4.Substring(2));\r\n\t\t\t\t\t\t\t\t\t\t\t\trenderQueue_ = int.Parse(text4);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse if (text4.StartsWith(\"@\"))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\timageAtlasId_ = ((text4.Length != 1) ? int.Parse(text4.Substring(1)) : 0);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse if (text4.Contains('x'))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tif (text4[0] == 'e' || text4[0] == 'E')\r\n\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\ttext4 = text4.Substring(1);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tif (!Language.English())\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\tstring[] array8 = text4.Split('x');\r\n\t\t\t\t\t\t\t\t\t\t\t\twidth = int.Parse(array8[0]);\r\n\t\t\t\t\t\t\t\t\t\t\t\theight = int.Parse(array8[1]);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tflag5 = true;\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (Config.PRINT && flag5)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Info(\"\uff72\uff92\uff70\uff7c\uff9e\u306e\uff75\uff8c\uff9f\uff7c\uff6e\uff9d\u304c[bin][res][pt][bi][tri][24][32][565][4444][*.pal][q][@]\u306e\u3069\u308c\u306b\u3082\u5f53\u3066\u306f\u307e\u308a\u307e\u305b\u3093:\" + list_[0][l]);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (rsId_ != -1)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l] = new Image(rsId_, rcId_, fileName2, text3, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (flag3)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (!loaded_ || jar.Exist(fileName2))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tbyte[] src = Image.OverwritePaletteData(jar.GetData(fileName2), (text3 != null) ? jar.GetData(text3) : null);\r\n\t\t\t\t\t\t\t\t\t\t\t\timg[l] = new Image(src, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (flag4)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l] = new Image(jar.GetDirectory() + fileName2, text3, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (!loaded_ || jar.Exist(fileName2))\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tbyte[] src2 = Image.OverwritePaletteData(jar.GetData(fileName2), (text3 != null) ? jar.GetData(text3) : null);\r\n\t\t\t\t\t\t\t\t\t\t\timg[l] = LoadImage(src2, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timg[l].SetStandardResolution(width, height);\r\n\t\t\t\t\t\t\t\t\t\tif (flag3 && img[l] != null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l].useBin_ = true;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tif (img[l] != null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l].imageAtlasId_ = imageAtlasId_;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timg[l].renderQueue_ = renderQueue_;\r\n\t\t\t\t\t\t\t\t\t\tif ((recordNameBits_ & 1) != 0 && img[l] != null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l].SetName(fileName2);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tnum19++;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception t2)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Error(\"loadImage\u306b\u5931\u6557:\" + fileName2, t2);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tcase 1:\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstring fileName3 = GetFileName(list_[1][l]);\r\n\t\t\t\t\t\t\t\t\tstring[] array9 = StringUtil.Split(fileName3, \",\");\r\n\t\t\t\t\t\t\t\t\tbool u = false;\r\n\t\t\t\t\t\t\t\t\tbool v = false;\r\n\t\t\t\t\t\t\t\t\tint num21 = 0;\r\n\t\t\t\t\t\t\t\t\tfor (int num22 = 1; num22 < array9.Length; num22++)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tswitch (array9[num22].CharAt(0))\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tcase 'u':\r\n\t\t\t\t\t\t\t\t\t\t\tu = true;\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\tcase 'v':\r\n\t\t\t\t\t\t\t\t\t\t\tv = true;\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\tcase 'c':\r\n\t\t\t\t\t\t\t\t\t\t\tnum21 = JInteger.ParseInt(array9[num22].Substring(1));\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tfileName3 = array9[0];\r\n\t\t\t\t\t\t\t\t\tsebFileName[l] = fileName3;\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tSeb seb = null;\r\n\t\t\t\t\t\t\t\t\t\tfor (int num23 = 0; num23 < l; num23++)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (fileName3.Equals(sebFileName[num23]))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tseb = this.seb[num23];\r\n\t\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tif (seb == null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l] = LoadSeb(jar.GetData(fileName3));\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l] = new Seb(seb);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tif ((recordNameBits_ & 2) != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l].SetName(fileName3);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tthis.seb[l].manager_ = this;\r\n\t\t\t\t\t\t\t\t\t\tthis.seb[l].Reverse(u, v);\r\n\t\t\t\t\t\t\t\t\t\tif (num21 > 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l].SetCacheSize(num21);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tnum19++;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception t3)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Error(\"loadSeb\u306b\u5931\u6557:\" + fileName3, t3);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tcase 2:\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstring text = Config.ConvertExtension(list_[2][l].ToLowerCase());\r\n\t\t\t\t\t\t\t\t\tint num20 = -1;\r\n\t\t\t\t\t\t\t\t\tfor (int m = 0; m < SOUND_EXT.Length; m++)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (text.EndsWith(SOUND_EXT[m]))\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tnum20 = m;\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (num20 == -1)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tstring text2 = ((directory_ == null) ? \"\" : directory_);\r\n\t\t\t\t\t\t\t\t\t\tsound[l] = LoadSound(text2 + text, num20);\r\n\t\t\t\t\t\t\t\t\t\tif ((recordNameBits_ & 4) != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tsound[l].SetName(text);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tnum19++;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Error(\"loadSound\u306b\u5931\u6557:\" + text, t);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num19 > 0 && JSystem.CurrentTimeMillis() - num17 >= YieldTime)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\treturn;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}, true);\r\n\t\t\t\tflag = true;\r\n\t\t\t\tfor (int num = 0; num < loadTask.Length; num++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (loadTask[num][1] < list_[loadTask[num][0]].Length)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag = false;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\twhile (!flag);",
+          "\t\t\twhile (true)\r\n\t\t\t{\r\n\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tlong num17 = JSystem.CurrentTimeMillis();\r\n\t\t\t\t\tfor (int k = 0; k < loadTask.Length; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num18 = loadTask[k][0];\r\n\t\t\t\t\t\tfor (int l = loadTask[k][1]; l < list_[num18].Length; l++, loadTask[k][1]++, loadCnt_++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (CheckFileEffective(list_[num18][l]))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint num19 = 0;\r\n\t\t\t\t\t\t\t\tswitch (num18)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstring fileName2 = GetFileName(list_[0][l]);\r\n\t\t\t\t\t\t\t\t\tstring[] array7 = StringUtil.Split(fileName2, \",\");\r\n\t\t\t\t\t\t\t\t\tfileName2 = array7[0];\r\n\t\t\t\t\t\t\t\t\tbool flag3 = false;\r\n\t\t\t\t\t\t\t\t\tbool flag4 = false;\r\n\t\t\t\t\t\t\t\t\tstring text3 = null;\r\n\t\t\t\t\t\t\t\t\tImage.Filter filterMode = Image.Filter.Default;\r\n\t\t\t\t\t\t\t\t\tImage.Format format = Image.Format.Default;\r\n\t\t\t\t\t\t\t\t\tint renderQueue_ = 0;\r\n\t\t\t\t\t\t\t\t\tint imageAtlasId_ = -1;\r\n\t\t\t\t\t\t\t\t\tint width = 0;\r\n\t\t\t\t\t\t\t\t\tint height = 0;\r\n\t\t\t\t\t\t\t\t\tbool flag5 = false;\r\n\t\t\t\t\t\t\t\t\tfor (int n = 1; n < array7.Length; n++)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tstring text4 = array7[n].ToLower();\r\n\t\t\t\t\t\t\t\t\t\tif (text4 == \"bin\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tflag3 = true;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"res\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tflag4 = true;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"pt\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tfilterMode = Image.Filter.Point;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"bi\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tfilterMode = Image.Filter.Bilinear;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"tri\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tfilterMode = Image.Filter.Trilinear;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"24\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.RGB24;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"565\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.RGB565;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"32\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.ARGB32;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (text4 == \"4444\")\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tformat = Image.Format.ARGB4444;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (text4.EndsWith(\".pal\"))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\ttext3 = array7[n];\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse if (text4.StartsWith(\"q+\") || text4.StartsWith(\"q-\"))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\ttext4 = ((text4[1] != '+') ? text4.Substring(1) : text4.Substring(2));\r\n\t\t\t\t\t\t\t\t\t\t\t\trenderQueue_ = int.Parse(text4);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse if (text4.StartsWith(\"@\"))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\timageAtlasId_ = ((text4.Length != 1) ? int.Parse(text4.Substring(1)) : 0);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse if (text4.Contains('x'))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tif (text4[0] == 'e' || text4[0] == 'E')\r\n\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\ttext4 = text4.Substring(1);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tif (!Language.English())\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\tstring[] array8 = text4.Split('x');\r\n\t\t\t\t\t\t\t\t\t\t\t\twidth = int.Parse(array8[0]);\r\n\t\t\t\t\t\t\t\t\t\t\t\theight = int.Parse(array8[1]);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tflag5 = true;\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (Config.PRINT && flag5)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Info(\"\uff72\uff92\uff70\uff7c\uff9e\u306e\uff75\uff8c\uff9f\uff7c\uff6e\uff9d\u304c[bin][res][pt][bi][tri][24][32][565][4444][*.pal][q][@]\u306e\u3069\u308c\u306b\u3082\u5f53\u3066\u306f\u307e\u308a\u307e\u305b\u3093:\" + list_[0][l]);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (rsId_ != -1)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l] = new Image(rsId_, rcId_, fileName2, text3, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (flag3)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (!loaded_ || jar.Exist(fileName2))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tbyte[] src = Image.OverwritePaletteData(jar.GetData(fileName2), (text3 != null) ? jar.GetData(text3) : null);\r\n\t\t\t\t\t\t\t\t\t\t\t\timg[l] = new Image(src, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (flag4)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l] = new Image(jar.GetDirectory() + fileName2, text3, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse if (!loaded_ || jar.Exist(fileName2))\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tbyte[] src2 = Image.OverwritePaletteData(jar.GetData(fileName2), (text3 != null) ? jar.GetData(text3) : null);\r\n\t\t\t\t\t\t\t\t\t\t\timg[l] = LoadImage(src2, format, filterMode);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timg[l].SetStandardResolution(width, height);\r\n\t\t\t\t\t\t\t\t\t\tif (flag3 && img[l] != null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l].useBin_ = true;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tif (img[l] != null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l].imageAtlasId_ = imageAtlasId_;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timg[l].renderQueue_ = renderQueue_;\r\n\t\t\t\t\t\t\t\t\t\tif ((recordNameBits_ & 1) != 0 && img[l] != null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\timg[l].SetName(fileName2);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tnum19++;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception t2)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Error(\"loadImage\u306b\u5931\u6557:\" + fileName2, t2);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tcase 1:\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstring fileName3 = GetFileName(list_[1][l]);\r\n\t\t\t\t\t\t\t\t\tstring[] array9 = StringUtil.Split(fileName3, \",\");\r\n\t\t\t\t\t\t\t\t\tbool u = false;\r\n\t\t\t\t\t\t\t\t\tbool v = false;\r\n\t\t\t\t\t\t\t\t\tint num21 = 0;\r\n\t\t\t\t\t\t\t\t\tfor (int num22 = 1; num22 < array9.Length; num22++)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tswitch (array9[num22].CharAt(0))\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tcase 'u':\r\n\t\t\t\t\t\t\t\t\t\t\tu = true;\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\tcase 'v':\r\n\t\t\t\t\t\t\t\t\t\t\tv = true;\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\tcase 'c':\r\n\t\t\t\t\t\t\t\t\t\t\tnum21 = JInteger.ParseInt(array9[num22].Substring(1));\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tfileName3 = array9[0];\r\n\t\t\t\t\t\t\t\t\tsebFileName[l] = fileName3;\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tSeb seb = null;\r\n\t\t\t\t\t\t\t\t\t\tfor (int num23 = 0; num23 < l; num23++)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (fileName3.Equals(sebFileName[num23]))\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tseb = this.seb[num23];\r\n\t\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tif (seb == null)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l] = LoadSeb(jar.GetData(fileName3));\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l] = new Seb(seb);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tif ((recordNameBits_ & 2) != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l].SetName(fileName3);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tthis.seb[l].manager_ = this;\r\n\t\t\t\t\t\t\t\t\t\tthis.seb[l].Reverse(u, v);\r\n\t\t\t\t\t\t\t\t\t\tif (num21 > 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tthis.seb[l].SetCacheSize(num21);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tnum19++;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception t3)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Error(\"loadSeb\u306b\u5931\u6557:\" + fileName3, t3);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tcase 2:\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tstring text = Config.ConvertExtension(list_[2][l].ToLowerCase());\r\n\t\t\t\t\t\t\t\t\tint num20 = -1;\r\n\t\t\t\t\t\t\t\t\tfor (int m = 0; m < SOUND_EXT.Length; m++)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (text.EndsWith(SOUND_EXT[m]))\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tnum20 = m;\r\n\t\t\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (num20 == -1)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tstring text2 = ((directory_ == null) ? \"\" : directory_);\r\n\t\t\t\t\t\t\t\t\t\tsound[l] = LoadSound(text2 + text, num20);\r\n\t\t\t\t\t\t\t\t\t\tif ((recordNameBits_ & 4) != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tsound[l].SetName(text);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tnum19++;\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Error(\"loadSound\u306b\u5931\u6557:\" + text, t);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num19 > 0 && JSystem.CurrentTimeMillis() - num17 >= YieldTime)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\treturn;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}, true);\r\n\t\t\t\tbool flag = true;\r\n\t\t\t\tfor (int num = 0; num < loadTask.Length; num++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (loadTask[num][1] < list_[loadTask[num][0]].Length)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag = false;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}"
+        ]
+      ],
+      "state_gains": [],
+      "state_losses": [],
+      "type_gains": [
+        "kairo.unity.ui.ResourceManager/<>c__DisplayClass51_0"
+      ],
+      "type_losses": [],
+      "counts_before": {
+        "matched": 3144,
+        "body_equal": 3070,
+        "declarations_without_body": 76,
+        "declarations_metadata_matched": 76,
+        "decompiled": 143,
+        "equal_body_held_for_generated_group": 2
+      },
+      "counts_after": {
+        "matched": 3144,
+        "body_equal": 3070,
+        "declarations_without_body": 76,
+        "declarations_metadata_matched": 76,
+        "decompiled": 143,
+        "equal_body_held_for_generated_group": 2
+      }
+    },
+    {
+      "name": "HttpScope",
+      "assembly": "KairoLibrary",
+      "source": "src/KairoLibrary/kairo/unity/io/HttpObject.cs",
+      "before_sha256": "c1686c6944ede752be14ba409b8896fa4476ad16cc37cb58a7a1138ef699519a",
+      "after_sha256": "ba9403dc4bd7c880320d90b478213c2e0904e70ae1e743624b2ed0f9057d5042",
+      "patches": [
+        [
+          "while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true))\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}",
+          "while (true)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true);\r\n\t\t\t\t\tif (completed)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}"
+        ]
+      ],
+      "state_gains": [],
+      "state_losses": [],
+      "type_gains": [
+        "kairo.unity.io.HttpObject/<>c__DisplayClass10_1"
+      ],
+      "type_losses": [],
+      "counts_before": {
+        "matched": 3144,
+        "body_equal": 3070,
+        "declarations_without_body": 76,
+        "declarations_metadata_matched": 76,
+        "decompiled": 143,
+        "equal_body_held_for_generated_group": 2
+      },
+      "counts_after": {
+        "matched": 3144,
+        "body_equal": 3070,
+        "declarations_without_body": 76,
+        "declarations_metadata_matched": 76,
+        "decompiled": 143,
+        "equal_body_held_for_generated_group": 2
+      }
+    },
+    {
+      "name": "FormScope",
+      "assembly": "KairoLibrary",
+      "source": "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs",
+      "before_sha256": "e859d685c4ae11234d47705920c6ec036a4760ce6febf184e40761d3c634fdb2",
+      "after_sha256": "11a11b7428c9e4380948f78ab93d0115f36a7cf88d46e23d956391a209e8f6ff",
+      "patches": [
+        [
+          "while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}",
+          "while (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}"
+        ],
+        [
+          "while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}",
+          "while (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}"
+        ]
+      ],
+      "state_gains": [],
+      "state_losses": [],
+      "type_gains": [
+        "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_1"
+      ],
+      "type_losses": [],
+      "counts_before": {
+        "matched": 3144,
+        "body_equal": 3070,
+        "declarations_without_body": 76,
+        "declarations_metadata_matched": 76,
+        "decompiled": 143,
+        "equal_body_held_for_generated_group": 2
+      },
+      "counts_after": {
+        "matched": 3144,
+        "body_equal": 3070,
+        "declarations_without_body": 76,
+        "declarations_metadata_matched": 76,
+        "decompiled": 143,
+        "equal_body_held_for_generated_group": 2
+      }
+    }
+  ]
+}

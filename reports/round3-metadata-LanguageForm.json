@@ -1,0 +1,97 @@
+{
+  "assembly": "Assembly-CSharp",
+  "candidate": "LanguageForm",
+  "source_changes": [
+    {
+      "logical": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+      "baseline_source_sha256": "d7b95b085ab52e8b4430ddfee477238f90ba8220814610de4ebb816149e1b459",
+      "candidate_source_sha256": "5becdaecda90ea7dbb2f55e682cc1fd6f98174ea11bf192dee4f90a629831947",
+      "candidate_source": "analysis\\variants\\round3-meta-LanguageForm\\LanguageForm.cs",
+      "patches": [
+        [
+          "HttpForm form = new HttpForm(delegate",
+          "HttpForm languageForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)"
+        ],
+        [
+          "Push(form);",
+          "Push(languageForm);"
+        ],
+        [
+          "}, delegate\r\n",
+          "}, delegate(HttpForm form, HttpForm.ResultData data)\r\n"
+        ],
+        [
+          "new HttpForm(delegate\r\n",
+          "new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)\r\n"
+        ],
+        [
+          "delegate(HttpForm httpForm2, HttpForm.ResultData resultData)",
+          "delegate(HttpForm form, HttpForm.ResultData data)"
+        ],
+        [
+          "resultData.Succeed",
+          "data.Succeed"
+        ],
+        [
+          "resultData.Error",
+          "data.Error"
+        ]
+      ]
+    }
+  ],
+  "source_map": "analysis\\variants\\round3-meta-LanguageForm\\source-map.json",
+  "compile_exit_code": 0,
+  "main_sources_modified": false,
+  "ledger_modified": false,
+  "baseline_artifact_sha256": "2308028df48d8e3f66df906dfcd24d69f784f3f7e6e613ac07422c9219e4be42",
+  "baseline_metadata_source": "hash-bound inspector cache for frozen baseline manifest; never live production",
+  "logical": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+  "baseline_source_sha256": "d7b95b085ab52e8b4430ddfee477238f90ba8220814610de4ebb816149e1b459",
+  "candidate_source_sha256": "5becdaecda90ea7dbb2f55e682cc1fd6f98174ea11bf192dee4f90a629831947",
+  "candidate_source": "analysis\\variants\\round3-meta-LanguageForm\\LanguageForm.cs",
+  "patches": [
+    [
+      "HttpForm form = new HttpForm(delegate",
+      "HttpForm languageForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)"
+    ],
+    [
+      "Push(form);",
+      "Push(languageForm);"
+    ],
+    [
+      "}, delegate\r\n",
+      "}, delegate(HttpForm form, HttpForm.ResultData data)\r\n"
+    ],
+    [
+      "new HttpForm(delegate\r\n",
+      "new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)\r\n"
+    ],
+    [
+      "delegate(HttpForm httpForm2, HttpForm.ResultData resultData)",
+      "delegate(HttpForm form, HttpForm.ResultData data)"
+    ],
+    [
+      "resultData.Succeed",
+      "data.Succeed"
+    ],
+    [
+      "resultData.Error",
+      "data.Error"
+    ]
+  ],
+  "body_equal_before": 1567,
+  "body_equal_after": 1567,
+  "body_gains": [],
+  "body_losses": [],
+  "type_equal_before": 128,
+  "type_equal_after": 129,
+  "type_gains": [
+    "system.form.LanguageForm"
+  ],
+  "type_losses": [],
+  "original_methods_missing": [],
+  "extra_method_ids": [],
+  "candidate_sha256": "327379d435aea948a373ef704e1c310eda7b018cd912829b276b6a93a8c9c926",
+  "declarations_proved": 6,
+  "remaining_type_differences": {}
+}

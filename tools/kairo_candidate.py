@@ -6,6 +6,8 @@ PACKAGE_SHA256='cd84fb2c71cafe03cdae0add609fa12c75f61c89ea87b1422fd108ac7e570745
 LABEL='roslyn-'+PACKAGE_VERSION
 BUILD_FOLDER='build/KairoLibrary-'+LABEL
 COMPILER_PATH='analysis/tools/'+LABEL+'/tools/csc.exe'
+CORELIB_PATH='C:/Windows/Microsoft.NET/Framework/v2.0.50727/mscorlib.dll'
+CORELIB_SHA256='c4729c6fc2279933fa9638f60775ab2f7eb731d5b04f9e04c15187afbdf94558'
 COMPONENT_SHA256={
     'csc.exe':COMPILER_SHA256,
     'csc.exe.config':'0501cae075d0ab6002dbb47eeb92e61935b5e85fb40d9a7c3bf6e6f36ab53bfa',

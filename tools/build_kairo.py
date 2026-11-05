@@ -10,6 +10,7 @@ import re
 from pathlib import Path
 import subprocess
 from compiler_probes import UNITY, ROSLYN
+from kairo_candidate import CORELIB_PATH,CORELIB_SHA256
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -42,7 +43,10 @@ def main():
     profile=UNITY/'Editor/Data/Mono/lib/mono/2.0'
     # The original KairoLibrary references the classic .NET 2.0/3.5 profile,
     # whereas Assembly-CSharp uses Unity's 2.0.5.0 profile. Preserve that split.
-    references=[profile/'mscorlib.dll',profile/'System.Core.dll',
+    corelib=Path(CORELIB_PATH)
+    if not corelib.is_file() or hashlib.sha256(corelib.read_bytes()).hexdigest()!=CORELIB_SHA256:
+        raise ValueError('Pinned Microsoft mscorlib2.0 reference missing or changed')
+    references=[corelib,profile/'System.Core.dll',
         ROOT/'original/extracted/assets/bin/Data/Managed/UnityEngine.dll',profile/'System.dll']
     for path in references:
         if not path.is_file(): raise SystemExit('Missing reference: '+str(path))

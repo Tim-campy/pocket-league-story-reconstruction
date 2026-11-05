@@ -1312,22 +1312,22 @@ namespace game
 
 		public void Draw_svisor(Graphics g)
 		{
-			if (!BitUtil.Check(flag_, 1))
-			{
-				Camera.ConvertGlobalToCamera(pos_, camera_pos);
-				shadowPos_.x_ = pos_.x_;
-				shadowPos_.z_ = pos_.z_;
-				Camera.ConvertGlobalToCamera(shadowPos_, camera_pos_shadow);
-				if (GameUtil.ChRectHitRect(camera_pos[0] - 7, camera_pos[1] - 20, 14, 20, GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))
-				{
-					int depth = camera_pos_shadow[1] + 1;
-					bool dark = false;
-					int num = 1;
-					Player.apdat_.InsertGameObject(8, 0, depth, 2, 0, 4, camera_pos_shadow[0], camera_pos_shadow[1] + num, dark, 0);
-					int layer = SetDrawParam(faceImg_, bodyImg_, seb_, -1);
-					Player.apdat_.InsertGameObject(3, trainingId_[0], depth, 0, 0, 0, camera_pos[0], camera_pos[1], dark, layer);
-				}
-			}
+			if (BitUtil.Check(flag_, 1)) { return; }
+{
+Camera.ConvertGlobalToCamera(pos_, camera_pos);
+shadowPos_.x_ = pos_.x_;
+shadowPos_.z_ = pos_.z_;
+Camera.ConvertGlobalToCamera(shadowPos_, camera_pos_shadow);
+if (!(GameUtil.ChRectHitRect(camera_pos[0] - 7, camera_pos[1] - 20, 14, 20, GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { return; }
+{
+int depth = camera_pos_shadow[1] + 1;
+bool dark = false;
+int num = 1;
+Player.apdat_.InsertGameObject(8, 0, depth, 2, 0, 4, camera_pos_shadow[0], camera_pos_shadow[1] + num, dark, 0);
+int layer = SetDrawParam(faceImg_, bodyImg_, seb_, -1);
+Player.apdat_.InsertGameObject(3, trainingId_[0], depth, 0, 0, 0, camera_pos[0], camera_pos[1], dark, layer);
+}
+}
 		}
 
 		public void CollisionSaving(TBall tball)

@@ -756,9 +756,9 @@ namespace system.form
 
 		private void ScrollControl(int num, int showMax)
 		{
-			if (num > 0)
-			{
-				if (canvas_.CheckKeyRepeat(131072))
+			if (num <= 0) { return; }
+{
+if (canvas_.CheckKeyRepeat(131072))
 				{
 					select_ = (select_ - 1 + num) % num;
 				}
@@ -766,8 +766,8 @@ namespace system.form
 				{
 					select_ = (select_ + 1) % num;
 				}
-				ScrollUpdate(num, showMax);
-			}
+ScrollUpdate(num, showMax);
+}
 		}
 
 		public void ScrollUpdate(int num, int showMax)
@@ -777,21 +777,21 @@ namespace system.form
 
 		public void ScrollUpdate(int num, int showMax, int value)
 		{
-			if (num > 0)
-			{
-				if (value >= scrollValue_ + showMax)
+			if (num <= 0) { return; }
+{
+if (value >= scrollValue_ + showMax)
 				{
 					scrollValue_ = value - (showMax - 1);
 				}
-				if (value < scrollValue_)
+if (value < scrollValue_)
 				{
 					scrollValue_ = value;
 				}
-				while (scrollValue_ > 0 && num < scrollValue_ + showMax)
+while (scrollValue_ > 0 && num < scrollValue_ + showMax)
 				{
 					scrollValue_--;
 				}
-			}
+}
 		}
 
 		public int[] DrawCommand(Graphics g, string str, int x, int y, bool active, bool cursor)

@@ -867,19 +867,19 @@ namespace game
 
 		public void ReleaseBall(Player player)
 		{
-			if (BitUtil.Check(flag_, 4))
-			{
-				player.flag_ = BitUtil.Off(player.flag_, 4);
-				player.ballHaveTime_ = 0;
-				flag_ = BitUtil.Off(flag_, 4);
-				lastOwner_ = owner_;
-				owner_ = null;
-				receive_wait = RECEIVE_WAIT_MIN;
-				flag_ = BitUtil.Off(flag_, 8);
-				boundNum_ = 0;
-				udat_.teams_[player.team_id_].lastKickeer_ = player.p_id_;
-				udat_.gm_.SetBallTeam(-1);
-			}
+			if (!(BitUtil.Check(flag_, 4))) { return; }
+{
+player.flag_ = BitUtil.Off(player.flag_, 4);
+player.ballHaveTime_ = 0;
+flag_ = BitUtil.Off(flag_, 4);
+lastOwner_ = owner_;
+owner_ = null;
+receive_wait = RECEIVE_WAIT_MIN;
+flag_ = BitUtil.Off(flag_, 8);
+boundNum_ = 0;
+udat_.teams_[player.team_id_].lastKickeer_ = player.p_id_;
+udat_.gm_.SetBallTeam(-1);
+}
 		}
 
 		public void SetPassData(Player player, int pass_mode, int data1, int data2, bool jamp)

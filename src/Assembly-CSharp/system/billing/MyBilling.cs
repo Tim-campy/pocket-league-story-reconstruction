@@ -43,7 +43,7 @@ namespace system.billing
 					"00",
 					"0000",
 					"ad_off_case0",
-					(!flag) ? "Remove ads" : "広告OFF+横回転",
+					(flag) ? ("広告OFF+横回転") : ("Remove ads"),
 					string.Empty,
 					"0",
 					string.Empty
@@ -53,7 +53,7 @@ namespace system.billing
 					"10",
 					"1100",
 					"ticket_1_case0",
-					(!flag) ? "Ticket||Ticket" : "ﾁｹｯﾄ|枚|枚",
+					(flag) ? ("ﾁｹｯﾄ|枚|枚") : ("Ticket||Ticket"),
 					string.Empty,
 					"0",
 					string.Empty
@@ -63,7 +63,7 @@ namespace system.billing
 					"20",
 					"0100",
 					"ticket_10_case0_00",
-					(!flag) ? "Tickets||Tickets" : "ﾁｹｯﾄ|枚|枚ｾｯﾄ",
+					(flag) ? ("ﾁｹｯﾄ|枚|枚ｾｯﾄ") : ("Tickets||Tickets"),
 					string.Empty,
 					"0",
 					string.Empty
@@ -73,7 +73,7 @@ namespace system.billing
 					"21",
 					"0100",
 					"ticket_10_case0_01",
-					(!flag) ? "Tickets||Tickets" : "ﾁｹｯﾄ|枚|枚ｾｯﾄ",
+					(flag) ? ("ﾁｹｯﾄ|枚|枚ｾｯﾄ") : ("Tickets||Tickets"),
 					string.Empty,
 					"0",
 					string.Empty

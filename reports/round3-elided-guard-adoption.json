@@ -1,0 +1,30 @@
+{
+  "methods": [
+    {
+      "id": "kairo.unity.native.KairoPlugin::GetStatusBarHeight()->System.Int32",
+      "source_before": "if (statusBarHeight_ != int.MaxValue)\r\n\t\t\t{\r\n\t\t\t\tint statusBarHeight_2 = statusBarHeight_;\r\n\t\t\t\tint num = 0;\r\n\t\t\t}",
+      "source_after": "if (statusBarHeight_ != int.MaxValue && statusBarHeight_ > 0) { }",
+      "candidate_equal": true,
+      "body_gains": [
+        "kairo.unity.native.KairoPlugin::GetStatusBarHeight()->System.Int32"
+      ],
+      "body_losses": [],
+      "adopted": true,
+      "state_gains": 1,
+      "state_losses": 0,
+      "operator_historical": "UNKNOWN"
+    },
+    {
+      "id": "kairo.unity.native.KairoPlugin/<>c__DisplayClass82_0::<SaveToTmpCaptureDirectory>b__0()->System.Object",
+      "source_before": "int aPPLI_TYPE = kairo.common.cfg.Config.APPLI_TYPE;\r\n\t\t\t\t\tint num = 2;",
+      "source_after": "if (kairo.common.cfg.Config.APPLI_TYPE == 2) { }",
+      "candidate_equal": false,
+      "body_gains": [],
+      "body_losses": [],
+      "adopted": false,
+      "state_gains": 0,
+      "state_losses": 0,
+      "operator_historical": "UNKNOWN"
+    }
+  ]
+}

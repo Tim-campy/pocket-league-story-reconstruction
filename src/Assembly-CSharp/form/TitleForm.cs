@@ -389,7 +389,7 @@ namespace form
 					}
 					else if (dialog_.result_ == 2)
 					{
-						apdat_.sysSave_.ints[((selectSaveType_ != 0) ? 6 : 11) + selectSave_] = -1;
+						apdat_.sysSave_.ints[((selectSaveType_ == 0) ? (11) : (6)) + selectSave_] = -1;
 						try
 						{
 							apdat_.SaveSystem();
@@ -403,7 +403,7 @@ namespace form
 				}
 				if (canvas_.CheckKeyPulse(1048576))
 				{
-					if (apdat_.sysSave_.ints[((selectSaveType_ != 0) ? 6 : 11) + selectSave_] != -1)
+					if (apdat_.sysSave_.ints[((selectSaveType_ == 0) ? (11) : (6)) + selectSave_] != -1)
 					{
 						if (selectSaveType_ == 0)
 						{

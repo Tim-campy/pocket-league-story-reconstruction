@@ -125,7 +125,7 @@ namespace system.form
 					{
 						langPackJapanese_ = true;
 					}
-					HttpForm form = new HttpForm(delegate
+					HttpForm languageForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)
 					{
 						KairoBase instance = KairoBase.GetInstance();
 						string data2;
@@ -135,24 +135,24 @@ namespace system.form
 						{
 							instance.ConnectLangPackSet(langPackFile_, 202, hashCode, data2);
 						}
-					}, delegate
+					}, delegate(HttpForm form, HttpForm.ResultData data)
 					{
 						KairoBase instance = KairoBase.GetInstance();
 						instance.ConnectLangPackWeb(langPackFile_);
 					});
-					Push(form);
+					Push(languageForm);
 					break;
 				}
 				case -1:
 				{
 					langDownloadUrl_ = languagePanelResult[1];
 					langDownloadData_ = null;
-					HttpForm httpForm = new HttpForm(delegate
+					HttpForm httpForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)
 					{
 						langDownloadData_ = Http.Connect(langDownloadUrl_, null, false);
-					}, delegate(HttpForm httpForm2, HttpForm.ResultData resultData)
+					}, delegate(HttpForm form, HttpForm.ResultData data)
 					{
-						if (resultData.Succeed)
+						if (data.Succeed)
 						{
 							if (Language.SetLanguagePack(langDownloadUrl_, langDownloadData_) && callback_ != null)
 							{
@@ -166,7 +166,7 @@ namespace system.form
 							{
 								mode_ = 1
 							});
-							instance.Push(SubForm.MakeDialog(resultData.Error));
+							instance.Push(SubForm.MakeDialog(data.Error));
 						}
 					});
 					Push(httpForm);

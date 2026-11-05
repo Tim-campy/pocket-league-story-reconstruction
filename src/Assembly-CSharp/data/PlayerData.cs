@@ -904,11 +904,11 @@ namespace data
 
 		public void LvUp()
 		{
-			if (lv_ != 30)
-			{
-				lv_ = AppData.ClampMax(lv_ + 1, 30);
-				UpdatePhysicalParam();
-			}
+			if (lv_ == 30) { return; }
+{
+lv_ = AppData.ClampMax(lv_ + 1, 30);
+UpdatePhysicalParam();
+}
 		}
 
 		public void AddExp(int add_exp, bool addLvUpPopUp)

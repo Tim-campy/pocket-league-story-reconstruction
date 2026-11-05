@@ -364,8 +364,7 @@ namespace kairo.unity.ui
 				new int[2] { 2, 0 }
 			};
 			string[] sebFileName = new string[list_[1].Length];
-			bool flag;
-			do
+			while (true)
 			{
 				IApplication.GetCurrentApp().RunOnUiThread(delegate
 				{
@@ -620,7 +619,7 @@ namespace kairo.unity.ui
 						}
 					}
 				}, true);
-				flag = true;
+				bool flag = true;
 				for (int num = 0; num < loadTask.Length; num++)
 				{
 					if (loadTask[num][1] < list_[loadTask[num][0]].Length)
@@ -628,8 +627,11 @@ namespace kairo.unity.ui
 						flag = false;
 					}
 				}
+				if (flag)
+				{
+					break;
+				}
 			}
-			while (!flag);
 			if (!loaded_)
 			{
 				for (int num2 = 0; num2 < array.Length; num2++)

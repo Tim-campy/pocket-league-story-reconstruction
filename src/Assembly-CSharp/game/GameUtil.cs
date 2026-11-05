@@ -650,13 +650,13 @@ namespace game
 		{
 			if (p2[0] == p1[0])
 			{
-				int num = ((p1[1] <= p2[1]) ? p2[1] : p1[1]);
+				int num = ((p1[1] > p2[1]) ? (p1[1]) : (p2[1]));
 				num += h / 2;
 				if (target_pos[1] > num)
 				{
 					return false;
 				}
-				int num2 = ((p1[1] >= p2[1]) ? p2[1] : p1[1]);
+				int num2 = ((p1[1] < p2[1]) ? (p1[1]) : (p2[1]));
 				num2 -= h / 2;
 				if (target_pos[1] < num2)
 				{
@@ -668,22 +668,22 @@ namespace game
 				}
 				return true;
 			}
-			int num3 = ((p1[0] >= p2[0]) ? p2[0] : p1[0]);
+			int num3 = ((p1[0] < p2[0]) ? (p1[0]) : (p2[0]));
 			if (target_pos[0] < num3 - h / 2)
 			{
 				return false;
 			}
-			int num4 = ((p1[0] <= p2[0]) ? p2[0] : p1[0]);
+			int num4 = ((p1[0] > p2[0]) ? (p1[0]) : (p2[0]));
 			if (target_pos[0] > num4 + h / 2)
 			{
 				return false;
 			}
-			int num5 = ((p1[1] <= p2[1]) ? p2[1] : p1[1]);
+			int num5 = ((p1[1] > p2[1]) ? (p1[1]) : (p2[1]));
 			if (target_pos[1] > num5 + h / 2)
 			{
 				return false;
 			}
-			int num6 = ((p1[1] >= p2[1]) ? p2[1] : p1[1]);
+			int num6 = ((p1[1] < p2[1]) ? (p1[1]) : (p2[1]));
 			if (target_pos[1] < num6 - h / 2)
 			{
 				return false;

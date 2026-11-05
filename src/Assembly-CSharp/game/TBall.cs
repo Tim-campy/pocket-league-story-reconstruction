@@ -365,17 +365,17 @@ namespace game
 
 		public void ReleaseBall(TPlayer player)
 		{
-			if (BitUtil.Check(flag_, 4))
-			{
-				player.flag_ = BitUtil.Off(player.flag_, 4);
-				player.ballHaveTime_ = 0;
-				flag_ = BitUtil.Off(flag_, 4);
-				t_lastOwner_ = t_owner_;
-				t_owner_ = null;
-				receive_wait = Ball.RECEIVE_WAIT_MIN;
-				flag_ = BitUtil.Off(flag_, 8);
-				boundNum_ = 0;
-			}
+			if (!(BitUtil.Check(flag_, 4))) { return; }
+{
+player.flag_ = BitUtil.Off(player.flag_, 4);
+player.ballHaveTime_ = 0;
+flag_ = BitUtil.Off(flag_, 4);
+t_lastOwner_ = t_owner_;
+t_owner_ = null;
+receive_wait = Ball.RECEIVE_WAIT_MIN;
+flag_ = BitUtil.Off(flag_, 8);
+boundNum_ = 0;
+}
 		}
 
 		public void SetPassDataTraining(TPlayer player, int pass_mode, bool jamp)

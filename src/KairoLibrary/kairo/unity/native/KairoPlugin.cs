@@ -71,7 +71,7 @@ namespace kairo.unity.native
 
 		public static int LicenseCheck()
 		{
-			return (int)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((object)Utility.CallStatic<int>("licenseCheck", new object[0])) : ((object)0), true);
+			return (int)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (((object)0)) : (((object)Utility.CallStatic<int>("licenseCheck", new object[0]))), true);
 		}
 
 		public static string GetSignature()
@@ -228,11 +228,7 @@ namespace kairo.unity.native
 
 		public static int GetStatusBarHeight()
 		{
-			if (statusBarHeight_ != int.MaxValue)
-			{
-				int statusBarHeight_2 = statusBarHeight_;
-				int num = 0;
-			}
+			if (statusBarHeight_ != int.MaxValue && statusBarHeight_ > 0) { }
 			if (app_.CheckUiThread())
 			{
 				statusBarHeight_ = _getStatusBarHeight();
@@ -671,7 +667,7 @@ namespace kairo.unity.native
 
 		public static bool IsFepPanelFinish()
 		{
-			return (bool)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((object)Utility.CallStatic<bool>("isInputPanelFinish", new object[0])) : ((object)true), true);
+			return (bool)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (((object)true)) : (((object)Utility.CallStatic<bool>("isInputPanelFinish", new object[0]))), true);
 		}
 
 		public static string[] GetFepPanelResult()
@@ -714,7 +710,7 @@ namespace kairo.unity.native
 
 		public static string[] GetPreferenceKeys()
 		{
-			return (string[])app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? kairo.unity.native.util.StringUtil.GetStrArray(Utility.CallStatic<string>("getPreferenceKeys", new object[0])) : new string[0], true);
+			return (string[])app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (new string[0]) : (kairo.unity.native.util.StringUtil.GetStrArray(Utility.CallStatic<string>("getPreferenceKeys", new object[0]))), true);
 		}
 
 		public static void ShowToast(string text, int duration = 0)
@@ -826,7 +822,7 @@ namespace kairo.unity.native
 				{
 					return true;
 				}
-				return (kairo.common.cfg.Config.APPLI_TYPE == 2) ? ((object)Utility.CallStatic<bool>("closeKairoClub", new object[0])) : ((object)false);
+				return (kairo.common.cfg.Config.APPLI_TYPE != 2) ? (((object)false)) : (((object)Utility.CallStatic<bool>("closeKairoClub", new object[0])));
 			}, true);
 		}
 
@@ -870,7 +866,7 @@ namespace kairo.unity.native
 				{
 					return false;
 				}
-				return (kairo.common.cfg.Config.APPLI_TYPE == 2) ? ((object)Utility.CallStatic<bool>("isInstalledApplication", new object[1] { packageName })) : ((object)false);
+				return (kairo.common.cfg.Config.APPLI_TYPE != 2) ? (((object)false)) : (((object)Utility.CallStatic<bool>("isInstalledApplication", new object[1] { packageName })));
 			}, true);
 		}
 
@@ -1013,17 +1009,17 @@ namespace kairo.unity.native
 
 		internal static string GetGCMRegistrationId()
 		{
-			return (string)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? Utility.CallStatic<string>("getGCMRegistrationId", new object[0]) : null, true);
+			return (string)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (null) : (Utility.CallStatic<string>("getGCMRegistrationId", new object[0])), true);
 		}
 
 		internal static bool CheckPlayServices()
 		{
-			return (bool)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((object)Utility.CallStatic<bool>("checkPlayServices", new object[0])) : ((object)false), true);
+			return (bool)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (((object)false)) : (((object)Utility.CallStatic<bool>("checkPlayServices", new object[0]))), true);
 		}
 
 		internal static string[] GetNotificationData()
 		{
-			return (string[])app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? Utility.CallStatic<string[]>("getNotificationData", new object[0]) : new string[0], true);
+			return (string[])app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (new string[0]) : (Utility.CallStatic<string[]>("getNotificationData", new object[0])), true);
 		}
 
 		public static void RemoveNotificationData()
@@ -1050,7 +1046,7 @@ namespace kairo.unity.native
 
 		internal static int GetNotificationFilter()
 		{
-			return (int)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((object)Utility.CallStatic<int>("getNotificationFilter", null)) : ((object)0), true);
+			return (int)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (((object)0)) : (((object)Utility.CallStatic<int>("getNotificationFilter", null))), true);
 		}
 
 		internal static void SetNotificationBackground(bool enable)
@@ -1097,7 +1093,7 @@ namespace kairo.unity.native
 			{
 				return false;
 			}
-			return (bool)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((object)Utility.CallStatic<bool>("checkPermissionConfirmAfter", new object[1] { permissionName })) : ((object)false), true);
+			return (bool)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (((object)false)) : (((object)Utility.CallStatic<bool>("checkPermissionConfirmAfter", new object[1] { permissionName }))), true);
 		}
 
 		public static void LaunchSetting()
@@ -1124,17 +1120,17 @@ namespace kairo.unity.native
 
 		public static bool IsLanguagePanelFinish()
 		{
-			return (bool)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((object)Utility.CallStatic<bool>("isLanguagePanelFinish", new object[0])) : ((object)true), true);
+			return (bool)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (((object)true)) : (((object)Utility.CallStatic<bool>("isLanguagePanelFinish", new object[0]))), true);
 		}
 
 		public static string[] GetLanguagePanelResult()
 		{
-			return (string[])app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? kairo.unity.native.util.StringUtil.GetStrArray(Utility.CallStatic<string>("getLanguagePanelResult", new object[0])) : new string[2], true);
+			return (string[])app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (new string[2]) : (kairo.unity.native.util.StringUtil.GetStrArray(Utility.CallStatic<string>("getLanguagePanelResult", new object[0]))), true);
 		}
 
 		public static bool FileExists(string path)
 		{
-			return (bool)app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((object)Utility.CallStatic<bool>("fileExists", new object[1] { path })) : ((object)File.Exists(path)), true);
+			return (bool)app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (((object)File.Exists(path))) : (((object)Utility.CallStatic<bool>("fileExists", new object[1] { path }))), true);
 		}
 
 		public static byte[] ReadFile(string path)
@@ -1145,7 +1141,7 @@ namespace kairo.unity.native
 				{
 					return (object)null;
 				}
-				return (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? Utility.CallStatic<byte[]>("readFile", new object[1] { path }) : File.ReadAllBytes(path);
+				return ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (File.ReadAllBytes(path)) : (Utility.CallStatic<byte[]>("readFile", new object[1] { path }));
 			}, true);
 		}
 

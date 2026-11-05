@@ -37,7 +37,7 @@ namespace kairo.unity.native
 			return (AndroidJavaObject)app_.RunOnUiThread(delegate
 			{
 				AdSize = adSize;
-				return (Config.APPLI_TYPE == 2 && !Config.UNITY_EDITOR) ? AdMobView.CallStatic<AndroidJavaObject>("createAdMobView", new object[2] { adSize, adUnitId }) : null;
+				return ((Config.APPLI_TYPE != 2) || (Config.UNITY_EDITOR)) ? (null) : (AdMobView.CallStatic<AndroidJavaObject>("createAdMobView", new object[2] { adSize, adUnitId }));
 			}, true);
 		}
 

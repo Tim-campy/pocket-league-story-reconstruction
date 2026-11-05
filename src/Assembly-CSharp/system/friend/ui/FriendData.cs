@@ -231,7 +231,7 @@ namespace system.friend.ui
 		public void CgiRegistFriend(string name, long minute)
 		{
 			string text = KairoBase.MakeQuery("name", name);
-			string text2 = KairoBase.MakeQuery("m", (minute != -1) ? JString.ValueOf(minute) : string.Empty);
+			string text2 = KairoBase.MakeQuery("m", (minute == -1) ? (string.Empty) : (JString.ValueOf(minute)));
 			KairoBase.Connect("friend/regist_friend.php" + text + text2);
 		}
 

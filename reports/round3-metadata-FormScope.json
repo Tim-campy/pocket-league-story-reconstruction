@@ -1,0 +1,41 @@
+{
+  "assembly": "KairoLibrary",
+  "candidate": "FormScope",
+  "logical": "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs",
+  "baseline_source_sha256": "e859d685c4ae11234d47705920c6ec036a4760ce6febf184e40761d3c634fdb2",
+  "candidate_source_sha256": "11a11b7428c9e4380948f78ab93d0115f36a7cf88d46e23d956391a209e8f6ff",
+  "candidate_source": "analysis\\variants\\round3-meta-FormScope\\FormScope.cs",
+  "source_map": "analysis\\variants\\round3-meta-FormScope\\source-map.json",
+  "patches": [
+    [
+      "while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}",
+      "while (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}"
+    ],
+    [
+      "while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}",
+      "while (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}"
+    ]
+  ],
+  "compile_exit_code": 0,
+  "main_sources_modified": false,
+  "ledger_modified": false,
+  "body_equal_before": 3051,
+  "body_equal_after": 3051,
+  "body_gains": [],
+  "body_losses": [],
+  "type_equal_before": 332,
+  "type_equal_after": 333,
+  "type_gains": [
+    "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_1"
+  ],
+  "type_losses": [],
+  "original_methods_missing": [],
+  "extra_method_ids": [],
+  "candidate_sha256": "8331f57602061aa0a030afb39dad9665497714717910e9c5f5b1753d4c34be92",
+  "declarations_proved": 76,
+  "remaining_type_differences": {
+    "fields_inventory": 2,
+    "fields_order": 2,
+    "interfaces": 2
+  }
+}

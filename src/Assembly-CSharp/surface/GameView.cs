@@ -1185,11 +1185,11 @@ namespace surface
 
 		public static void ClearMarker()
 		{
-			if (instance_ != null)
-			{
-				instance_.markComponentKey_ = -1L;
-				instance_.markComponentFrame_ = 0;
-			}
+			if (instance_ == null) { return; }
+{
+instance_.markComponentKey_ = -1L;
+instance_.markComponentFrame_ = 0;
+}
 		}
 
 		public override void OnKeyDown(int key)

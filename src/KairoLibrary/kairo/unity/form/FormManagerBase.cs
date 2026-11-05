@@ -1128,7 +1128,9 @@ namespace kairo.unity.form
 							width = int.Parse(array[0]);
 							height = int.Parse(array[1]);
 						}
-						while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
+						while (true)
+						{
+							bool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
 						{
 							if (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)
 							{
@@ -1140,10 +1142,15 @@ namespace kairo.unity.form
 								canvas.SetAspectRatio(width, height);
 							}
 							return true;
-						}, true))
-						{
+						}, true);
+							if (completed)
+							{
+								break;
+							}
 						}
-						while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
+						while (true)
+						{
+							bool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
 						{
 							if (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)
 							{
@@ -1152,8 +1159,11 @@ namespace kairo.unity.form
 							stopFrame = IApplication.GetCurrentApp().GetTotalFrames();
 							Application.CaptureScreenshot(path);
 							return true;
-						}, true))
-						{
+						}, true);
+							if (completed)
+							{
+								break;
+							}
 						}
 						if (!Config.UNITY_EDITOR)
 						{

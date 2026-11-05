@@ -336,10 +336,11 @@ return 3; } else { return 0; }
 
 		public static void RankUp(FanActData fa_data)
 		{
-			if (fa_data.rank_ < 6)
-			{
-				fa_data.rank_++;
-			}
+			if (fa_data.rank_ >= 6) { return; }
+{
+
+fa_data.rank_++;
+}
 		}
 
 		public static int ChangeAssistAddEva(int add_eva)

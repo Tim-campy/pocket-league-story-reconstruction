@@ -162,8 +162,10 @@ namespace kairo.unity.io
 			{
 				int timeout = 60000;
 				long begin = JSystem.CurrentTimeMillis();
-				http_ = (WWW)IApplication.GetCurrentApp().RunOnUiThread(() => (send == null) ? new WWW(url) : new WWW(url, send), true);
-				while (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
+				http_ = (WWW)IApplication.GetCurrentApp().RunOnUiThread(() => (send != null) ? (new WWW(url, send)) : (new WWW(url)), true);
+				while (true)
+				{
+					bool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
 				{
 					if (http_.isDone)
 					{
@@ -176,8 +178,11 @@ namespace kairo.unity.io
 						return true;
 					}
 					return false;
-				}, true))
-				{
+				}, true);
+					if (completed)
+					{
+						break;
+					}
 					JThread.Sleep(10L);
 				}
 				IApplication.GetCurrentApp().RunOnUiThread(delegate
