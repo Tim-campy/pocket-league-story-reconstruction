@@ -1,0 +1,31 @@
+{
+  "baseline_commit": "25b8108711a4a8920a2600cf9ffea5b710b3a481",
+  "maximum_cycles": 40,
+  "consecutive_zero_stop": 3,
+  "incomplete_candidate_variants_per_method_per_cycle": 24,
+  "complete_wrong_signature_rejected": true,
+  "incomplete_prediction_does_not_reject": true,
+  "require_original_signature_after_compilation": true,
+  "kairo_cycle_quota": "at least one KairoLibrary cycle in every consecutive block of five cycles",
+  "raw_measurement_threshold": 10,
+  "models": {
+    "Assembly-CSharp": {
+      "module": "round7_slot_model",
+      "source": "tools/Round7SlotModel.cs",
+      "client": "tools/round7_slot_model.py",
+      "solver": "tools/round7_slot_solver.py",
+      "validation": "reports/round8-slot-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/Assembly-CSharp"
+    },
+    "KairoLibrary": {
+      "module": "round7_roslyn_model",
+      "source": "tools/Round7RoslynModel.cs",
+      "client": "tools/round7_roslyn_model.py",
+      "solver": "tools/round7_roslyn_solver.py",
+      "validation": "reports/round8-roslyn-base-validation.json",
+      "corpus_baseline": "build/round8/baseline/KairoLibrary"
+    }
+  },
+  "incomplete_candidate_variants_per_method_per_pass": 12,
+  "incomplete_passes": "at most one isolated probe for a method plus one full assembly pass"
+}

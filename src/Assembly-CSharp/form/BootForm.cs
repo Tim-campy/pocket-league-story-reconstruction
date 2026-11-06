@@ -905,20 +905,22 @@ byte[] bytes = apdat_.CgiGetScore("0,1");
 				dataInputStream = new DataInputStream(new ByteArrayInputStream(array2));
 				num = array2.Length;
 				Vector vector = new Vector();
-				byte[] array3;
+
+int chunkLength;
+byte[] array3;
 				for (; i < num; i += array3.Length)
 				{
-					int num2 = num - i;
+					chunkLength = num - i;
 					if (flag)
 					{
-						num2 = dataInputStream.ReadInt();
+						chunkLength = dataInputStream.ReadInt();
 						i += 4;
 					}
-					array3 = new byte[num2];
+					array3 = new byte[chunkLength];
 					dataInputStream.Read(array3);
 					vector.AddElement(array3);
 				}
-				array = ((vector.Size() != 0) ? new byte[vector.Size()][] : JTool.MakeArray<byte[][]>(new int[2] { 1, 0 }));
+				if (vector.Size() == 0) { array = JTool.MakeArray<byte[][]>(new int[2] { 1, 0 }); } else { array = new byte[vector.Size()][]; }
 				for (int j = 0; j < vector.Size(); j++)
 				{
 					array[j] = (byte[])vector.ElementAt(j);

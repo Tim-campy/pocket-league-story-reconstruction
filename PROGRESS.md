@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**4,996 de 5,245 métodos matched (95.25%).** 871,497 bytes de IL nos assemblies alvo.
-565,226 bytes IL matched (64.86%).
+**4,997 de 5,245 métodos matched (95.27%).** 871,497 bytes de IL nos assemblies alvo.
+565,487 bytes IL matched (64.89%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3133 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 248 |
+| decompiled | 247 |
 | equivalent | 0 |
-| matched | 4996 |
+| matched | 4997 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1789 / 91.37% | 352326 / 58.56% |
+| `Assembly-CSharp` | 1958 | 601603 | 1790 / 91.42% | 352587 / 58.61% |
 | `KairoLibrary` | 3287 | 269894 | 3207 / 97.57% | 212900 / 78.88% |
 
 ## Namespaces
@@ -37,7 +37,7 @@ KairoLibrary: 3133 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 249 / 97.65% | 22292 / 84.59% |
-| `form` | 371 | 250649 | 326 / 87.87% | 148058 / 59.07% |
+| `form` | 371 | 250649 | 327 / 88.14% | 148319 / 59.17% |
 | `game` | 441 | 202949 | 379 / 85.94% | 106889 / 52.67% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
@@ -114,7 +114,7 @@ KairoLibrary: 3133 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::data.TenantData` | 26 | 2743 | 25 / 96.15% | 2641 / 96.28% |
 | `Assembly-CSharp::data.TradeData` | 13 | 757 | 13 / 100.00% | 757 / 100.00% |
 | `Assembly-CSharp::data.TrainingData` | 14 | 762 | 14 / 100.00% | 762 / 100.00% |
-| `Assembly-CSharp::form.BootForm` | 21 | 7712 | 17 / 80.95% | 3446 / 44.68% |
+| `Assembly-CSharp::form.BootForm` | 21 | 7712 | 18 / 85.71% | 3707 / 48.07% |
 | `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 19 / 90.48% | 42432 / 93.26% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
 | `Assembly-CSharp::form.GameForm` | 51 | 16474 | 45 / 88.24% | 8291 / 50.33% |

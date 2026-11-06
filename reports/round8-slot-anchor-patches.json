@@ -1,0 +1,898 @@
+{
+  "operation": "source-only-unique-store-anchors-local-lca",
+  "family": "calculated-store-anchored-local-lca",
+  "candidate_game_compilations": 0,
+  "fixture": {
+    "fixture_game_compilations": 0,
+    "fixture_assembly_compilations": 1,
+    "cases": {
+      "Boot": {
+        "complete_body_exact": true,
+        "il_bytes": 39,
+        "local_count": 3
+      },
+      "Ball": {
+        "complete_body_exact": true,
+        "il_bytes": 135,
+        "local_count": 7
+      }
+    },
+    "capture_rejected": true,
+    "interleaved_lifetimes_rejected": true,
+    "safe_lifetimes": [
+      [
+        20,
+        30
+      ],
+      [
+        60,
+        87
+      ]
+    ],
+    "model_complete": true,
+    "fixture_source_sha256": "3cefd35e083c0ee35c71e402a4ef614126daa1774a944e5d3d443fa576a89873",
+    "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0"
+  },
+  "frozen_baseline": "build\\round8\\baseline\\Assembly-CSharp",
+  "patches": [
+    {
+      "start": 7423,
+      "end": 16327,
+      "before": "public bool Update()\r\n\t\t{\r\n\t\t\tframe_ = (frame_ + 1) % int.MaxValue;\r\n\t\t\tsavePosFrame_ = (savePosFrame_ + 1) % int.MaxValue;\r\n\t\t\tbool flag = BitUtil.Check(flag_, 64);\r\n\t\t\told_pos.Set(pos_);\r\n\t\t\tif (SoccerForm.DEBUG_BALLTEST_MODE == 1)\r\n\t\t\t{\r\n\t\t\t\tbool flag2 = canvas_.CheckKeyState(131072);\r\n\t\t\t\tbool flag3 = canvas_.CheckKeyState(524288);\r\n\t\t\t\tbool flag4 = canvas_.CheckKeyState(65536);\r\n\t\t\t\tbool flag5 = canvas_.CheckKeyState(262144);\r\n\t\t\t\tbool flag6 = canvas_.CheckKeyState(128);\r\n\t\t\t\tbool flag7 = canvas_.CheckKeyState(256);\r\n\t\t\t\tif (flag2)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.z_ += 10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag3)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.z_ += -10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag4)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.x_ += -10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag5)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.x_ += 10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag6)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.y_ += 3f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag7)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.y_ += -3f;\r\n\t\t\t\t}\r\n\t\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\t}\r\n\t\t\tif (owner_ != null)\r\n\t\t\t{\r\n\t\t\t\tpos_.Set(owner_.pos_);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tif (a_.y_ == 0f || v_.y_ == 0f || pos_.y_ <= 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat num = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\tfloat num2 = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\tv_.x_ *= num;\r\n\t\t\t\t\tv_.z_ *= num2;\r\n\t\t\t\t}\r\n\t\t\t\telse if (!flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat num;\r\n\t\t\t\t\tfloat num2;\r\n\t\t\t\t\tif (a_.y_ == -0.25f || a_.y_ == -0.35f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);\r\n\t\t\t\t\t\tnum2 = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);\r\n\t\t\t\t\t\tnum2 = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tv_.x_ *= num;\r\n\t\t\t\t\tv_.y_ *= 0.995f;\r\n\t\t\t\t\tv_.z_ *= num2;\r\n\t\t\t\t}\r\n\t\t\t\tv_.Add(a_);\r\n\t\t\t\tpos_.Add(v_);\r\n\t\t\t\tv_len_ = (float)JMath.Sqrt(v_.x_ * v_.x_ + v_.z_ * v_.z_);\r\n\t\t\t}\r\n\t\t\tif (receive_wait >= 0)\r\n\t\t\t{\r\n\t\t\t\treceive_wait--;\r\n\t\t\t\tif (receive_wait <= 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag_ = BitUtil.On(flag_, 8);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (pos_.y_ < 0f)\r\n\t\t\t{\r\n\t\t\t\tboundNum_++;\r\n\t\t\t\tpos_.y_ *= -1f;\r\n\t\t\t\tv_.y_ = (0f - v_.y_) / 2f;\r\n\t\t\t\tv_.x_ *= 0.9f;\r\n\t\t\t\tv_.z_ *= 0.9f;\r\n\t\t\t\ta_.x_ = 0f;\r\n\t\t\t\ta_.z_ = 0f;\r\n\t\t\t\tif (v_.y_ < 0.3f)\r\n\t\t\t\t{\r\n\t\t\t\t\tSetStop();\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\t\t}\r\n\t\t\t\ttargetPId = -1;\r\n\t\t\t\tif (pos_.x_ < -530f || pos_.x_ > 530f || pos_.z_ > 980f || pos_.z_ < -980f)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag_ = BitUtil.On(flag_, 1);\r\n\t\t\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!BitUtil.Check(flag_, 16) && (pos_.x_ < -530f || pos_.x_ > 530f || pos_.z_ > 980f || pos_.z_ < -980f))\r\n\t\t\t{\r\n\t\t\t\tflag_ = BitUtil.On(flag_, 1);\r\n\t\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\t}\r\n\t\t\tbool flag8 = false;\r\n\t\t\tbool flag9 = false;\r\n\t\t\tchInGoal_ = 2;\r\n\t\t\tif (pos_.z_ > 900f || pos_.z_ < -900f)\r\n\t\t\t{\r\n\t\t\t\tbool flag10 = false;\r\n\t\t\t\tbool flag11 = false;\r\n\t\t\t\tbool flag12 = false;\r\n\t\t\t\tif (pos_.y_ < 26f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[0].x_ + 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[0].x_ + 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ < Map.GOAL1_GLOBAL_POS[0].x_ + 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ + 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ + 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[2].x_ - 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[2].x_ - 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ > Map.GOAL1_GLOBAL_POS[2].x_ - 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ - 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ - 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.x_ >= Map.GOAL1_GLOBAL_POS[0].x_ + 11f && pos_.x_ <= Map.GOAL1_GLOBAL_POS[2].x_ - 11f)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag10 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag10)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (pos_.y_ < 26f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif ((Map.GOAL2_GLOBAL_POS[2].z_ - 11f - old_pos.z_) * (Map.GOAL2_GLOBAL_POS[2].z_ - 11f - pos_.z_) <= 0f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.z_ = Map.GOAL2_GLOBAL_POS[2].z_ - 11f - 1f;\r\n\t\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[2].z_ + 11f - old_pos.z_) * (Map.GOAL1_GLOBAL_POS[2].z_ + 11f - pos_.z_) <= 0f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.z_ = Map.GOAL1_GLOBAL_POS[2].z_ + 11f + 1f;\r\n\t\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (pos_.z_ >= 900f && pos_.z_ <= Map.GOAL2_GLOBAL_POS[2].z_ - 11f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag12 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (pos_.z_ <= -900f && pos_.z_ >= Map.GOAL1_GLOBAL_POS[2].z_ + 11f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag12 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag12)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif ((21f - old_pos.y_) * (21f - pos_.y_) <= 0f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (old_pos.y_ > 21f)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpos_.y_ = 22f;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpos_.y_ = 20f;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (pos_.y_ < 21f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (pos_.z_ < 0f)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tchInGoal_ = 0;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tchInGoal_ = 1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (udat_.gm_.state_ == 0 && pos_.y_ < 21f && SoccerForm.DEBUG_BALLTEST_MODE == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tudat_.gm_.ChangeState(8);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.y_ < 21f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[0].x_ - 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[0].x_ - 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ < Map.GOAL1_GLOBAL_POS[0].x_ - 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ - 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ - 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[2].x_ + 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[2].x_ + 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ > Map.GOAL1_GLOBAL_POS[2].x_ + 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ + 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ + 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.x_ <= Map.GOAL1_GLOBAL_POS[0].x_ - 11f || pos_.x_ >= Map.GOAL1_GLOBAL_POS[2].x_ + 11f)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag11 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif ((old_pos.z_ <= 900f || old_pos.z_ >= -900f) && ((!flag10 && !flag11 && pos_.y_ < 21f) || (flag10 && pos_.y_ >= 21f && pos_.y_ < 32f)) && udat_.gm_.state_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag8 = true;\r\n\t\t\t\t\tif (pos_.z_ > 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = 900f + (900f - pos_.z_);\r\n\t\t\t\t\t\tpos_.z_ = AppData.ClampMax((int)pos_.z_, 899);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = -900f + (-900f - pos_.z_);\r\n\t\t\t\t\t\tpos_.z_ = AppData.ClampMin((int)pos_.z_, -899);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tv_.x_ = v_.x_ * 25f / 100f;\r\n\t\t\t\t\tv_.z_ = (0f - v_.z_) * 25f / 100f;\r\n\t\t\t\t\tChGravity();\r\n\t\t\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\t\t\ttargetPId = -1;\r\n\t\t\t\t\tflag_ = BitUtil.Off(flag_, 96);\r\n\t\t\t\t\tapdat_.PlaySe(6);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (flag9)\r\n\t\t\t{\r\n\t\t\t\tv_.y_ *= 0.9f;\r\n\t\t\t\ta_.y_ *= 0.9f;\r\n\t\t\t\tif (a_.y_ > -0.1f)\r\n\t\t\t\t{\r\n\t\t\t\t\ta_.y_ = -0.1f;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbool flag13 = false;\r\n\t\t\tif (udat_.gm_.state_ == 0 && SoccerForm.DEBUG_BALLTEST_MODE == 0)\r\n\t\t\t{\r\n\t\t\t\tif (pos_.x_ < -450f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.x_ = -450f + (-450f - pos_.x_);\r\n\t\t\t\t\t\tv_.x_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.x_ > 450f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.x_ = 450f + (450f - pos_.x_);\r\n\t\t\t\t\t\tv_.x_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.z_ > 900f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = 900f + (900f - pos_.z_);\r\n\t\t\t\t\t\tv_.z_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.z_ < -900f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = -900f + (-900f - pos_.z_);\r\n\t\t\t\t\t\tv_.z_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag13 && !flag8 && SoccerForm.DEBUG_BALLTEST_MODE != 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChGravity();\r\n\t\t\t\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\t\t\t\ttargetPId = -1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (lineOutPos_.z_ < -900f || lineOutPos_.z_ > 900f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num3 = -1;\r\n\t\t\t\t\t\tif (lineOutPos_.z_ > 900f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum3 = 1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint num4 = -1;\r\n\t\t\t\t\t\tif (lastOwner_ != null && lastOwner_.team_id_ == 1)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = 1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (num3 * num4 == -1)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tudat_.gm_.ChangeState(4);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tudat_.gm_.ChangeState(5);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.gm_.ChangeState(3);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tCamera.ConvertGlobalToAddress(pos_, address_);\r\n\t\t\tCamera.ConvertGlobalToScreen(pos_, screen_pos_);\r\n\t\t\tshadowPos_.x_ = pos_.x_;\r\n\t\t\tshadowPos_.z_ = pos_.z_;\r\n\t\t\tCamera.ConvertGlobalToScreen(shadowPos_, screen_shadowPos_);\r\n\t\t\treturn false;\r\n\t\t}",
+      "after": "public bool Update()\r\n\t\t{\r\n\t\t\tframe_ = (frame_ + 1) % int.MaxValue;\r\n\t\t\tsavePosFrame_ = (savePosFrame_ + 1) % int.MaxValue;\r\n\t\t\tbool flag = BitUtil.Check(flag_, 64);\r\n\t\t\told_pos.Set(pos_);\r\n\t\t\tif (SoccerForm.DEBUG_BALLTEST_MODE == 1)\r\n\t\t\t{\r\n\t\t\t\tbool flag2 = canvas_.CheckKeyState(131072);\r\n\t\t\t\tbool flag3 = canvas_.CheckKeyState(524288);\r\n\t\t\t\tbool flag4 = canvas_.CheckKeyState(65536);\r\n\t\t\t\tbool flag5 = canvas_.CheckKeyState(262144);\r\n\t\t\t\tbool flag6 = canvas_.CheckKeyState(128);\r\n\t\t\t\tbool flag7 = canvas_.CheckKeyState(256);\r\n\t\t\t\tif (flag2)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.z_ += 10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag3)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.z_ += -10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag4)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.x_ += -10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag5)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.x_ += 10f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag6)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.y_ += 3f;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag7)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos_.y_ += -3f;\r\n\t\t\t\t}\r\n\t\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\t}\r\n\t\t\tif (owner_ != null)\r\n\t\t\t{\r\n\t\t\t\tpos_.Set(owner_.pos_);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\nfloat unusedOriginalSlot7;\r\nfloat dragX;\r\nfloat dragZ;\r\n\r\n\r\n\t\t\t\tif (a_.y_ == 0f || v_.y_ == 0f || pos_.y_ <= 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tdragX = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\tdragZ = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\tv_.x_ *= dragX;\r\n\t\t\t\t\tv_.z_ *= dragZ;\r\n\t\t\t\t}\r\n\t\t\t\telse if (!flag)\r\n\t\t\t\t{\r\n\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\tif (a_.y_ == -0.25f || a_.y_ == -0.35f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tdragX = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);\r\n\t\t\t\t\t\tdragZ = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tdragX = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);\r\n\t\t\t\t\t\tdragZ = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tv_.x_ *= dragX;\r\n\t\t\t\t\tv_.y_ *= 0.995f;\r\n\t\t\t\t\tv_.z_ *= dragZ;\r\n\t\t\t\t}\r\n\t\t\t\tv_.Add(a_);\r\n\t\t\t\tpos_.Add(v_);\r\n\t\t\t\tv_len_ = (float)JMath.Sqrt(v_.x_ * v_.x_ + v_.z_ * v_.z_);\r\n\t\t\t}\r\n\t\t\tif (receive_wait >= 0)\r\n\t\t\t{\r\n\t\t\t\treceive_wait--;\r\n\t\t\t\tif (receive_wait <= 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag_ = BitUtil.On(flag_, 8);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (pos_.y_ < 0f)\r\n\t\t\t{\r\n\t\t\t\tboundNum_++;\r\n\t\t\t\tpos_.y_ *= -1f;\r\n\t\t\t\tv_.y_ = (0f - v_.y_) / 2f;\r\n\t\t\t\tv_.x_ *= 0.9f;\r\n\t\t\t\tv_.z_ *= 0.9f;\r\n\t\t\t\ta_.x_ = 0f;\r\n\t\t\t\ta_.z_ = 0f;\r\n\t\t\t\tif (v_.y_ < 0.3f)\r\n\t\t\t\t{\r\n\t\t\t\t\tSetStop();\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\t\t}\r\n\t\t\t\ttargetPId = -1;\r\n\t\t\t\tif (pos_.x_ < -530f || pos_.x_ > 530f || pos_.z_ > 980f || pos_.z_ < -980f)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag_ = BitUtil.On(flag_, 1);\r\n\t\t\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!BitUtil.Check(flag_, 16) && (pos_.x_ < -530f || pos_.x_ > 530f || pos_.z_ > 980f || pos_.z_ < -980f))\r\n\t\t\t{\r\n\t\t\t\tflag_ = BitUtil.On(flag_, 1);\r\n\t\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\t}\r\n\t\t\tbool flag8 = false;\r\n\t\t\tbool flag9 = false;\r\nfloat unusedOriginalSlot12;\r\n\t\t\tchInGoal_ = 2;\r\n\t\t\tif (pos_.z_ > 900f || pos_.z_ < -900f)\r\n\t\t\t{\r\n\t\t\t\tbool flag10 = false;\r\n\t\t\t\tbool flag11 = false;\r\n\t\t\t\tbool flag12 = false;\r\n\t\t\t\tif (pos_.y_ < 26f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[0].x_ + 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[0].x_ + 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ < Map.GOAL1_GLOBAL_POS[0].x_ + 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ + 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ + 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[2].x_ - 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[2].x_ - 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ > Map.GOAL1_GLOBAL_POS[2].x_ - 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ - 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ - 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.x_ >= Map.GOAL1_GLOBAL_POS[0].x_ + 11f && pos_.x_ <= Map.GOAL1_GLOBAL_POS[2].x_ - 11f)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag10 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag10)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (pos_.y_ < 26f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif ((Map.GOAL2_GLOBAL_POS[2].z_ - 11f - old_pos.z_) * (Map.GOAL2_GLOBAL_POS[2].z_ - 11f - pos_.z_) <= 0f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.z_ = Map.GOAL2_GLOBAL_POS[2].z_ - 11f - 1f;\r\n\t\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[2].z_ + 11f - old_pos.z_) * (Map.GOAL1_GLOBAL_POS[2].z_ + 11f - pos_.z_) <= 0f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.z_ = Map.GOAL1_GLOBAL_POS[2].z_ + 11f + 1f;\r\n\t\t\t\t\t\t\tflag9 = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (pos_.z_ >= 900f && pos_.z_ <= Map.GOAL2_GLOBAL_POS[2].z_ - 11f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag12 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (pos_.z_ <= -900f && pos_.z_ >= Map.GOAL1_GLOBAL_POS[2].z_ + 11f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag12 = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag12)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif ((21f - old_pos.y_) * (21f - pos_.y_) <= 0f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (old_pos.y_ > 21f)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpos_.y_ = 22f;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpos_.y_ = 20f;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (pos_.y_ < 21f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (pos_.z_ < 0f)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tchInGoal_ = 0;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tchInGoal_ = 1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (udat_.gm_.state_ == 0 && pos_.y_ < 21f && SoccerForm.DEBUG_BALLTEST_MODE == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tudat_.gm_.ChangeState(8);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.y_ < 21f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[0].x_ - 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[0].x_ - 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ < Map.GOAL1_GLOBAL_POS[0].x_ - 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ - 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[0].x_ - 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif ((Map.GOAL1_GLOBAL_POS[2].x_ + 11f - old_pos.x_) * (Map.GOAL1_GLOBAL_POS[2].x_ + 11f - pos_.x_) <= 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (old_pos.x_ > Map.GOAL1_GLOBAL_POS[2].x_ + 11f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ + 11f + 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpos_.x_ = Map.GOAL1_GLOBAL_POS[2].x_ + 11f - 1f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.x_ <= Map.GOAL1_GLOBAL_POS[0].x_ - 11f || pos_.x_ >= Map.GOAL1_GLOBAL_POS[2].x_ + 11f)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag11 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif ((old_pos.z_ <= 900f || old_pos.z_ >= -900f) && ((!flag10 && !flag11 && pos_.y_ < 21f) || (flag10 && pos_.y_ >= 21f && pos_.y_ < 32f)) && udat_.gm_.state_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tflag8 = true;\r\n\t\t\t\t\tif (pos_.z_ > 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = 900f + (900f - pos_.z_);\r\n\t\t\t\t\t\tpos_.z_ = AppData.ClampMax((int)pos_.z_, 899);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = -900f + (-900f - pos_.z_);\r\n\t\t\t\t\t\tpos_.z_ = AppData.ClampMin((int)pos_.z_, -899);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tv_.x_ = v_.x_ * 25f / 100f;\r\n\t\t\t\t\tv_.z_ = (0f - v_.z_) * 25f / 100f;\r\n\t\t\t\t\tChGravity();\r\n\t\t\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\t\t\ttargetPId = -1;\r\n\t\t\t\t\tflag_ = BitUtil.Off(flag_, 96);\r\n\t\t\t\t\tapdat_.PlaySe(6);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (flag9)\r\n\t\t\t{\r\n\t\t\t\tv_.y_ *= 0.9f;\r\n\t\t\t\ta_.y_ *= 0.9f;\r\n\t\t\t\tif (a_.y_ > -0.1f)\r\n\t\t\t\t{\r\n\t\t\t\t\ta_.y_ = -0.1f;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbool flag13 = false;\r\n\t\t\tif (udat_.gm_.state_ == 0 && SoccerForm.DEBUG_BALLTEST_MODE == 0)\r\n\t\t\t{\r\n\t\t\t\tif (pos_.x_ < -450f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.x_ = -450f + (-450f - pos_.x_);\r\n\t\t\t\t\t\tv_.x_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.x_ > 450f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.x_ = 450f + (450f - pos_.x_);\r\n\t\t\t\t\t\tv_.x_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.z_ > 900f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = 900f + (900f - pos_.z_);\r\n\t\t\t\t\t\tv_.z_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (pos_.z_ < -900f)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpos_.z_ = -900f + (-900f - pos_.z_);\r\n\t\t\t\t\t\tv_.z_ *= -1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlineOutPos_.Set(pos_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tflag13 = true;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag13 && !flag8 && SoccerForm.DEBUG_BALLTEST_MODE != 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (SoccerForm.DEBUG_WALLREFRECT == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChGravity();\r\n\t\t\t\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\t\t\t\ttargetPId = -1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (lineOutPos_.z_ < -900f || lineOutPos_.z_ > 900f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num3 = -1;\r\n\t\t\t\t\t\tif (lineOutPos_.z_ > 900f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum3 = 1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint num4 = -1;\r\n\t\t\t\t\t\tif (lastOwner_ != null && lastOwner_.team_id_ == 1)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = 1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (num3 * num4 == -1)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tudat_.gm_.ChangeState(4);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tudat_.gm_.ChangeState(5);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.gm_.ChangeState(3);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tCamera.ConvertGlobalToAddress(pos_, address_);\r\n\t\t\tCamera.ConvertGlobalToScreen(pos_, screen_pos_);\r\n\t\t\tshadowPos_.x_ = pos_.x_;\r\n\t\t\tshadowPos_.z_ = pos_.z_;\r\n\t\t\tCamera.ConvertGlobalToScreen(shadowPos_, screen_shadowPos_);\r\n\t\t\treturn false;\r\n\t\t}",
+      "rule": "calculated-store-anchored-local-lca",
+      "distance": 0,
+      "method_id": "game.Ball::Update()->System.Boolean",
+      "logical_path": "src/Assembly-CSharp/game/Ball.cs",
+      "baseline_source_sha256": "0b805435901af6ca057d5bd5be1fe078d9b6b9a8803c64375c07dda7735c5bcc",
+      "source_only": true,
+      "candidate_compilations": 0,
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "predicted_types": [
+        "System.Boolean",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Single",
+        "System.Single",
+        "System.Single",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Single",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Boolean",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "complete": true,
+      "stages": [
+        {
+          "operation": "merge same-identity locals at explicit least common block; all initializer positions retained",
+          "original_slot": 8,
+          "rebuilt_slots": [
+            7,
+            9
+          ],
+          "disjoint_rebuilt_lifetimes": [
+            [
+              550,
+              599
+            ],
+            [
+              721,
+              869
+            ]
+          ],
+          "common_block": {
+            "id": 15,
+            "kind": "explicit",
+            "start": 8396,
+            "end": 9398,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        },
+        {
+          "operation": "merge same-identity locals at explicit least common block; all initializer positions retained",
+          "original_slot": 9,
+          "rebuilt_slots": [
+            8,
+            10
+          ],
+          "disjoint_rebuilt_lifetimes": [
+            [
+              585,
+              619
+            ],
+            [
+              764,
+              912
+            ]
+          ],
+          "common_block": {
+            "id": 15,
+            "kind": "explicit",
+            "start": 8396,
+            "end": 9436,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "unusedOriginalSlot7",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 8405,
+                "end": 8424,
+                "slot": 7,
+                "block": 15,
+                "type_source": "float",
+                "statement_start": 8399,
+                "statement_end": 8425,
+                "lexical_scope_start": 8396,
+                "lexical_scope_end": 9436,
+                "initializer": null
+              },
+              {
+                "name": "dragX",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 8433,
+                "end": 8438,
+                "slot": 8,
+                "block": 15,
+                "type_source": "float",
+                "statement_start": 8427,
+                "statement_end": 8439,
+                "lexical_scope_start": 8396,
+                "lexical_scope_end": 9436,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          }
+        },
+        {
+          "operation": "reserve proven unused original slots without initializer",
+          "original_slots": [
+            7,
+            12
+          ],
+          "type": "System.Single",
+          "all_original_local_accesses_scanned": true
+        }
+      ],
+      "anchors": [
+        {
+          "rebuilt_slot": 7,
+          "original_slot": 8,
+          "rebuilt_offset": 550,
+          "original_offset": 550,
+          "before_count": 3,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 539,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 544,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 545,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 550,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 552,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 553,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::savePosFrame_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 539,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 544,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 545,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 550,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 552,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 553,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::savePosFrame_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 8,
+          "original_slot": 9,
+          "rebuilt_offset": 585,
+          "original_offset": 585,
+          "before_count": 3,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 574,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 579,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 580,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 585,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 587,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 588,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 574,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 579,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 580,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 585,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 587,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 588,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 9,
+          "original_slot": 8,
+          "rebuilt_offset": 721,
+          "original_offset": 731,
+          "before_count": 3,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 720,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "8F-C2-75-3F"
+              }
+            },
+            {
+              "offset": 725,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 726,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 731,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 733,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 710,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "8F-C2-75-3F"
+              }
+            },
+            {
+              "offset": 715,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 716,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 721,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 723,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 10,
+          "original_slot": 9,
+          "rebuilt_offset": 764,
+          "original_offset": 774,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 774,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 776,
+              "opcode": "br",
+              "operand": {
+                "branch": 867
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 764,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 10
+              }
+            },
+            {
+              "offset": 766,
+              "opcode": "br",
+              "operand": {
+                "branch": 857
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 9,
+          "original_slot": 8,
+          "rebuilt_offset": 812,
+          "original_offset": 822,
+          "before_count": 3,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 811,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 816,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 817,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 822,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 824,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 825,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::savePosFrame_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 801,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 806,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 807,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 812,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 814,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 815,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::savePosFrame_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 10,
+          "original_slot": 9,
+          "rebuilt_offset": 855,
+          "original_offset": 865,
+          "before_count": 3,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 854,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 859,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 860,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 865,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 867,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 868,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 844,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 849,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 850,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 855,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 10
+              }
+            },
+            {
+              "offset": 857,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 858,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        }
+      ],
+      "special_variables": {
+        "unusedOriginalSlot7": 7,
+        "dragX": 8,
+        "dragZ": 9,
+        "unusedOriginalSlot12": 12
+      },
+      "current_unique_rebase_verified": true,
+      "calculator_sha256": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+      "syntax_source_sha256": "9adc3609a652bbe4ea4113c9fb154298f51908237edf1d4c9d7ac030c3b17986",
+      "dependency_sha256": {
+        "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+        "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+        "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+        "tools\\round7_store_anchor_calculate.py": "6c84685cfdd7f3a1eb53021c35c29c8ab5e548692193d7ed35c55581b8d18637"
+      }
+    },
+    {
+      "start": 22916,
+      "end": 24080,
+      "before": "public byte[][] DivServerData(string url)\r\n\t\t{\r\n\t\t\tbyte[][] array = null;\r\n\t\t\tint num = 0;\r\n\t\t\tint i = 0;\r\n\t\t\tbool flag = true;\r\n\t\t\tDataInputStream dataInputStream = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tbyte[] array2 = Storage.Read(3, false, url);\r\n\t\t\t\tdataInputStream = new DataInputStream(new ByteArrayInputStream(array2));\r\n\t\t\t\tnum = array2.Length;\r\n\t\t\t\tVector vector = new Vector();\r\n\t\t\t\tbyte[] array3;\r\n\t\t\t\tfor (; i < num; i += array3.Length)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num2 = num - i;\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = dataInputStream.ReadInt();\r\n\t\t\t\t\t\ti += 4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tarray3 = new byte[num2];\r\n\t\t\t\t\tdataInputStream.Read(array3);\r\n\t\t\t\t\tvector.AddElement(array3);\r\n\t\t\t\t}\r\n\t\t\t\tarray = ((vector.Size() != 0) ? new byte[vector.Size()][] : JTool.MakeArray<byte[][]>(new int[2] { 1, 0 }));\r\n\t\t\t\tfor (int j = 0; j < vector.Size(); j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tarray[j] = (byte[])vector.ElementAt(j);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (dataInputStream != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tdataInputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tdataInputStream = null;\r\n\t\t\t}\r\n\t\t\treturn array;\r\n\t\t}",
+      "after": "public byte[][] DivServerData(string url)\r\n\t\t{\r\n\t\t\tbyte[][] array = null;\r\n\t\t\tint num = 0;\r\n\t\t\tint i = 0;\r\n\t\t\tbool flag = true;\r\n\t\t\tDataInputStream dataInputStream = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tbyte[] array2 = Storage.Read(3, false, url);\r\n\t\t\t\tdataInputStream = new DataInputStream(new ByteArrayInputStream(array2));\r\n\t\t\t\tnum = array2.Length;\r\n\t\t\t\tVector vector = new Vector();\r\n\t\t\t\t\r\nint chunkLength;\r\nbyte[] array3;\r\n\t\t\t\tfor (; i < num; i += array3.Length)\r\n\t\t\t\t{\r\n\t\t\t\t\tchunkLength = num - i;\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tchunkLength = dataInputStream.ReadInt();\r\n\t\t\t\t\t\ti += 4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tarray3 = new byte[chunkLength];\r\n\t\t\t\t\tdataInputStream.Read(array3);\r\n\t\t\t\t\tvector.AddElement(array3);\r\n\t\t\t\t}\r\n\t\t\t\tarray = ((vector.Size() != 0) ? new byte[vector.Size()][] : JTool.MakeArray<byte[][]>(new int[2] { 1, 0 }));\r\n\t\t\t\tfor (int j = 0; j < vector.Size(); j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tarray[j] = (byte[])vector.ElementAt(j);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (dataInputStream != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tdataInputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tdataInputStream = null;\r\n\t\t\t}\r\n\t\t\treturn array;\r\n\t\t}",
+      "rule": "calculated-store-anchored-local-lca",
+      "distance": 0,
+      "method_id": "form.BootForm::DivServerData(System.String)->System.Byte[][]",
+      "logical_path": "src/Assembly-CSharp/form/BootForm.cs",
+      "baseline_source_sha256": "6e59c22f12682dd689bb41da4b1b7c913fd201add106eb12041055c1134f07a6",
+      "source_only": true,
+      "candidate_compilations": 0,
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "predicted_types": [
+        "System.Byte[][]",
+        "System.Int32",
+        "System.Int32",
+        "System.Boolean",
+        "java.io.DataInputStream",
+        "System.Byte[]",
+        "java.util.Vector",
+        "System.Int32",
+        "System.Byte[]",
+        "System.Int32",
+        "System.Exception"
+      ],
+      "complete": true,
+      "stages": [
+        {
+          "operation": "hoist declaration before outer array declaration; preserve initializer inside for",
+          "desired_original_slot": 7
+        }
+      ],
+      "anchors": [
+        {
+          "rebuilt_slot": 8,
+          "original_slot": 7,
+          "rebuilt_offset": 55,
+          "original_offset": 55,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 55,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 57,
+              "opcode": "ldloc.3",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 55,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 57,
+              "opcode": "ldloc.3",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 8,
+          "original_slot": 7,
+          "rebuilt_offset": 70,
+          "original_offset": 70,
+          "before_count": 1,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 65,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class java.io.DataInputStream @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ReadInt``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 70,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 65,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class java.io.DataInputStream @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ReadInt``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 70,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 7,
+          "original_slot": 8,
+          "rebuilt_offset": 83,
+          "original_offset": 83,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 83,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 85,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 4
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 83,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 85,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 4
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        }
+      ],
+      "special_variables": {
+        "chunkLength": 7,
+        "array3": 8
+      },
+      "current_unique_rebase_verified": true,
+      "calculator_sha256": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+      "syntax_source_sha256": "9adc3609a652bbe4ea4113c9fb154298f51908237edf1d4c9d7ac030c3b17986",
+      "dependency_sha256": {
+        "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+        "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+        "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+        "tools\\round7_store_anchor_calculate.py": "6c84685cfdd7f3a1eb53021c35c29c8ab5e548692193d7ed35c55581b8d18637"
+      }
+    }
+  ],
+  "methods": [
+    {
+      "method_id": "game.Ball::Update()->System.Boolean",
+      "original_il_bytes": 4629,
+      "model_complete": true,
+      "signature_exact": true,
+      "local_count": 19,
+      "special_variables": {
+        "unusedOriginalSlot7": 7,
+        "dragX": 8,
+        "dragZ": 9,
+        "unusedOriginalSlot12": 12
+      },
+      "game_body_match": "UNKNOWN: no target compiled",
+      "current_unique_rebase_verified": true
+    },
+    {
+      "method_id": "form.BootForm::DivServerData(System.String)->System.Byte[][]",
+      "original_il_bytes": 261,
+      "model_complete": true,
+      "signature_exact": true,
+      "local_count": 11,
+      "special_variables": {
+        "chunkLength": 7,
+        "array3": 8
+      },
+      "game_body_match": "UNKNOWN: no target compiled",
+      "current_unique_rebase_verified": true
+    }
+  ],
+  "potential_il_bytes": 4890,
+  "calculator_sha256": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+  "syntax_source_sha256": "9adc3609a652bbe4ea4113c9fb154298f51908237edf1d4c9d7ac030c3b17986",
+  "dependency_sha256": {
+    "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+    "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+    "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+    "tools\\round7_store_anchor_calculate.py": "6c84685cfdd7f3a1eb53021c35c29c8ab5e548692193d7ed35c55581b8d18637"
+  },
+  "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+  "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+  "baseline_descriptor_sha256": {
+    "original-methods.json": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+    "rebuilt-methods.json": "133c8a40910a993bea4973ccd7b4bbef1f0e8ca0308fa1eb0ef48644badfc625",
+    "plain-local-types.json": "c843fefcb27f82f5ffeae3bbf070efc1af5c7a03c5eb6f56ee90e3d49cb156d0"
+  },
+  "slot_anchor_evidence_sha256": "59495093705e4ce7baee1a07b6ed13328bff685eed2d59f4c338fdab9effa743",
+  "prefix_after_compilation": "UNKNOWN"
+}

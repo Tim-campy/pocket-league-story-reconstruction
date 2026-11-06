@@ -1,0 +1,37 @@
+// Independent source-only declaration movement; no Emit and no target compilation.
+    static object CoalesceResponse(JsonElement input) {
+        string path=Path.GetFullPath(input.GetProperty("path").GetString()),text=input.GetProperty("source").GetString();
+        var tree=CSharpSyntaxTree.ParseText(text,path:path);var compilation=Compilation.ReplaceSyntaxTree(Trees[path],tree);
+        var sem=compilation.GetSemanticModel(tree);var root=tree.GetRoot();
+        int bodyStart=input.GetProperty("body_start").GetInt32();var body=root.DescendantNodes().OfType<BlockSyntax>().Single(n=>n.SpanStart==bodyStart);
+        string nl=text.Contains("\r\n")?"\r\n":"\n";
+        var edits=new List<(int start,int end,string after)>();
+        var starts=new HashSet<int>(input.GetProperty("group_starts").EnumerateArray().Select(v=>v.GetInt32()));
+        var variables=body.DescendantNodes().OfType<VariableDeclaratorSyntax>().Where(v=>starts.Contains(v.SpanStart)).ToArray();
+        if(variables.Length!=starts.Count||variables.Length==0)throw new Exception("group_not_unique");
+        var symbols=variables.Select(v=>sem.GetDeclaredSymbol(v) as ILocalSymbol).ToArray();
+        if(symbols.Any(s=>s==null||s.IsConst)||symbols.Any(s=>!SymbolEqualityComparer.Default.Equals(s.Type,symbols[0].Type)))throw new Exception("group_types_or_const");
+        var uses=body.DescendantNodes().OfType<IdentifierNameSyntax>().Where(n=>symbols.Any(s=>SymbolEqualityComparer.Default.Equals(s,sem.GetSymbolInfo(n).Symbol))).ToArray();
+        if(uses.Any(u=>u.Ancestors().TakeWhile(a=>a!=body).Any(a=>a is AnonymousFunctionExpressionSyntax)))throw new Exception("captured_group_rejected");
+        var statements=variables.Select(v=>v.Parent?.Parent as LocalDeclarationStatementSyntax).ToArray();
+        if(statements.Any(s=>s==null||s.Declaration.Variables.Count!=1))throw new Exception("group_requires_single_declarations");
+        var common=variables[0].Ancestors().OfType<BlockSyntax>().First(b=>variables.All(v=>b.Span.Contains(v.Span))&&b.Span.Contains(input.GetProperty("insert_at").GetInt32()));
+        int insertion=input.GetProperty("insert_at").GetInt32();
+        if(!common.Span.Contains(insertion)||variables.Any(v=>v.SpanStart<insertion))throw new Exception("hoist_not_before_declarations_in_common_block");
+        if(insertion!=common.OpenBraceToken.Span.End&&!common.Statements.Any(s=>s.SpanStart==insertion||s.Span.End==insertion))throw new Exception("insert_not_common_block_boundary");
+        string name=input.GetProperty("name").GetString();
+        if(body.DescendantTokens().Any(t=>t.IsKind(SyntaxKind.IdentifierToken)&&t.ValueText==name))throw new Exception("name_not_fresh");
+        string Apply(string source,int offset,IEnumerable<(int start,int end,string after)> changes){foreach(var change in changes.OrderByDescending(e=>e.start))source=source.Substring(0,change.start-offset)+change.after+source.Substring(change.end-offset);return source;}
+        foreach(var use in uses)if(!statements.Any(s=>s.Span.Contains(use.Span)))edits.Add((use.SpanStart,use.Span.End,name));
+        foreach(var variable in variables){
+            var statement=(LocalDeclarationStatementSyntax)variable.Parent.Parent;string after="";
+            if(variable.Initializer!=null){var value=variable.Initializer.Value;var inner=uses.Where(u=>value.Span.Contains(u.Span)).Select(u=>(u.SpanStart,u.Span.End,name));after=name+" = "+Apply(value.ToString(),value.SpanStart,inner)+";";}
+            edits.Add((statement.SpanStart,statement.Span.End,after));
+        }
+        string prefix=input.TryGetProperty("prefix_declarations",out var pref)?pref.GetString():"";
+        string type=symbols[0].Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+        edits.Add((insertion,insertion,nl+prefix+type+" "+name+";"+nl));
+        var ordered=edits.OrderBy(e=>e.start).ThenBy(e=>e.end).ToArray();
+        for(int i=1;i<ordered.Length;i++)if(ordered[i].start<ordered[i-1].end)throw new Exception("overlapping_semantic_edits");
+        return new {source=Apply(text,0,edits),source_only=true,candidate_compiled=false,edits=edits.Count};
+    }

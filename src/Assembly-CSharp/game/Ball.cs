@@ -388,30 +388,35 @@ namespace game
 			}
 			else
 			{
+float unusedOriginalSlot7;
+float dragX;
+float dragZ;
+
+
 				if (a_.y_ == 0f || v_.y_ == 0f || pos_.y_ <= 0f)
 				{
-					float num = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
-					float num2 = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
-					v_.x_ *= num;
-					v_.z_ *= num2;
+					dragX = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
+					dragZ = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
+					v_.x_ *= dragX;
+					v_.z_ *= dragZ;
 				}
 				else if (!flag)
 				{
-					float num;
-					float num2;
+
+
 					if (a_.y_ == -0.25f || a_.y_ == -0.35f)
 					{
-						num = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);
-						num2 = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);
+						dragX = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);
+						dragZ = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);
 					}
 					else
 					{
-						num = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
-						num2 = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
+						dragX = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
+						dragZ = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
 					}
-					v_.x_ *= num;
+					v_.x_ *= dragX;
 					v_.y_ *= 0.995f;
-					v_.z_ *= num2;
+					v_.z_ *= dragZ;
 				}
 				v_.Add(a_);
 				pos_.Add(v_);
@@ -458,6 +463,7 @@ namespace game
 			}
 			bool flag8 = false;
 			bool flag9 = false;
+float unusedOriginalSlot12;
 			chInGoal_ = 2;
 			if (pos_.z_ > 900f || pos_.z_ < -900f)
 			{
