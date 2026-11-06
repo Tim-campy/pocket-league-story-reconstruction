@@ -1,0 +1,1034 @@
+{
+  "operation": "source-only-cycle-roslyn-diagnosis",
+  "baseline_commit": "cdd0f7f3b8dda09f296a7cfa16cd00236a3346ae",
+  "candidate_game_compilations": 0,
+  "groups": [
+    {
+      "pair": "brtrue.s => switch",
+      "methods": 3,
+      "original_il_bytes": 4720,
+      "method_ids": [
+        "kairo.unity.ui.ResourceManager::LoadStart(kairo.unity.util.JarInflater,System.Int32)->System.Void",
+        "kairo.unity.ui.TextFormat::Init(System.String)->System.Void",
+        "kairo.unity.ui.TextLayout::_makeTextBlocks()->System.Void"
+      ],
+      "examples": [
+        {
+          "method_id": "kairo.unity.ui.ResourceManager::LoadStart(kairo.unity.util.JarInflater,System.Int32)->System.Void",
+          "original_il_bytes": 1345,
+          "original_offset": 659,
+          "rebuilt_offset": 659,
+          "original_il": [
+            {
+              "offset": 656,
+              "opcode": "stelem.ref",
+              "operand": null
+            },
+            {
+              "offset": 657,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 659,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 725
+              }
+            },
+            {
+              "offset": 661,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 663,
+              "opcode": "newarr",
+              "operand": {
+                "type": "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 668,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 670,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 671,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 18
+              }
+            },
+            {
+              "offset": 673,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 700
+              }
+            },
+            {
+              "offset": 675,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 677,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 678,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 8
+              }
+            }
+          ],
+          "rebuilt_il": [
+            {
+              "offset": 656,
+              "opcode": "stelem.ref",
+              "operand": null
+            },
+            {
+              "offset": 657,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 659,
+              "opcode": "switch",
+              "operand": {
+                "switch": [
+                  681,
+                  742,
+                  803
+                ]
+              }
+            },
+            {
+              "offset": 676,
+              "opcode": "br",
+              "operand": {
+                "branch": 862
+              }
+            },
+            {
+              "offset": 681,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 683,
+              "opcode": "newarr",
+              "operand": {
+                "type": "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 688,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 690,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 691,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 18
+              }
+            },
+            {
+              "offset": 693,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 720
+              }
+            },
+            {
+              "offset": 695,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 697,
+              "opcode": "ldloc.1",
+              "operand": null
+            }
+          ],
+          "source_model_complete": false,
+          "source_model_unsupported_reasons": [
+            "anonymous_function_or_capture",
+            "stack_scheduler_multiple_use:array2",
+            "switch_lowering"
+          ]
+        },
+        {
+          "method_id": "kairo.unity.ui.TextFormat::Init(System.String)->System.Void",
+          "original_il_bytes": 278,
+          "original_offset": 74,
+          "rebuilt_offset": 74,
+          "original_il": [
+            {
+              "offset": 68,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 264
+              }
+            },
+            {
+              "offset": 73,
+              "opcode": "ldloc.2",
+              "operand": null
+            },
+            {
+              "offset": 74,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 93
+              }
+            },
+            {
+              "offset": 76,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 77,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 78,
+              "opcode": "call",
+              "operand": {
+                "method": "class java.lang.JInteger @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ParseInt``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 83,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.ui.TextFormat @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::font_:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              }
+            },
+            {
+              "offset": 88,
+              "opcode": "br",
+              "operand": {
+                "branch": 264
+              }
+            },
+            {
+              "offset": 93,
+              "opcode": "ldloc.2",
+              "operand": null
+            },
+            {
+              "offset": 94,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 95,
+              "opcode": "beq.s",
+              "operand": {
+                "branch": 104
+              }
+            },
+            {
+              "offset": 97,
+              "opcode": "ldloc.2",
+              "operand": null
+            }
+          ],
+          "rebuilt_il": [
+            {
+              "offset": 68,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 285
+              }
+            },
+            {
+              "offset": 73,
+              "opcode": "ldloc.2",
+              "operand": null
+            },
+            {
+              "offset": 74,
+              "opcode": "switch",
+              "operand": {
+                "switch": [
+                  100,
+                  117,
+                  117,
+                  273
+                ]
+              }
+            },
+            {
+              "offset": 95,
+              "opcode": "br",
+              "operand": {
+                "branch": 285
+              }
+            },
+            {
+              "offset": 100,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 101,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 102,
+              "opcode": "call",
+              "operand": {
+                "method": "class java.lang.JInteger @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ParseInt``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 107,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.ui.TextFormat @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::font_:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              }
+            },
+            {
+              "offset": 112,
+              "opcode": "br",
+              "operand": {
+                "branch": 285
+              }
+            },
+            {
+              "offset": 117,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 118,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 119,
+              "opcode": "call",
+              "operand": {
+                "method": "class java.lang.StringEx @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::CharAt``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Char @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+              }
+            }
+          ],
+          "source_model_complete": false,
+          "source_model_unsupported_reasons": [
+            "stack_scheduler_multiple_use:c",
+            "stack_scheduler_multiple_use:array2",
+            "switch_lowering"
+          ]
+        },
+        {
+          "method_id": "kairo.unity.ui.TextLayout::_makeTextBlocks()->System.Void",
+          "original_il_bytes": 3097,
+          "original_offset": 719,
+          "rebuilt_offset": 719,
+          "original_il": [
+            {
+              "offset": 715,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 30
+              }
+            },
+            {
+              "offset": 717,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 26
+              }
+            },
+            {
+              "offset": 719,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 762
+              }
+            },
+            {
+              "offset": 721,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 30
+              }
+            },
+            {
+              "offset": 723,
+              "opcode": "ldc.i4.s",
+              "operand": 16
+            },
+            {
+              "offset": 725,
+              "opcode": "shr",
+              "operand": null
+            },
+            {
+              "offset": 726,
+              "opcode": "ldc.i4",
+              "operand": 255
+            },
+            {
+              "offset": 731,
+              "opcode": "and",
+              "operand": null
+            },
+            {
+              "offset": 732,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 30
+              }
+            },
+            {
+              "offset": 734,
+              "opcode": "ldc.i4.8",
+              "operand": null
+            },
+            {
+              "offset": 735,
+              "opcode": "shr",
+              "operand": null
+            },
+            {
+              "offset": 736,
+              "opcode": "ldc.i4",
+              "operand": 255
+            }
+          ],
+          "rebuilt_il": [
+            {
+              "offset": 715,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 30
+              }
+            },
+            {
+              "offset": 717,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 26
+              }
+            },
+            {
+              "offset": 719,
+              "opcode": "switch",
+              "operand": {
+                "switch": [
+                  769,
+                  810,
+                  823,
+                  861,
+                  908,
+                  922,
+                  945,
+                  953,
+                  960,
+                  1072
+                ]
+              }
+            },
+            {
+              "offset": 764,
+              "opcode": "br",
+              "operand": {
+                "branch": 1390
+              }
+            },
+            {
+              "offset": 769,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 30
+              }
+            },
+            {
+              "offset": 771,
+              "opcode": "ldc.i4.s",
+              "operand": 16
+            },
+            {
+              "offset": 773,
+              "opcode": "shr",
+              "operand": null
+            },
+            {
+              "offset": 774,
+              "opcode": "ldc.i4",
+              "operand": 255
+            },
+            {
+              "offset": 779,
+              "opcode": "and",
+              "operand": null
+            },
+            {
+              "offset": 780,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 30
+              }
+            },
+            {
+              "offset": 782,
+              "opcode": "ldc.i4.8",
+              "operand": null
+            },
+            {
+              "offset": 783,
+              "opcode": "shr",
+              "operand": null
+            }
+          ],
+          "source_model_complete": false,
+          "source_model_unsupported_reasons": [
+            "string_concat_value_temporary",
+            "stack_scheduler_multiple_use:flag2",
+            "stack_scheduler_multiple_use:c",
+            "stack_scheduler_multiple_use:array2",
+            "stack_scheduler_multiple_use:pictograph",
+            "stack_scheduler_multiple_use:boundingRect",
+            "stack_scheduler_multiple_use:boundingRect2",
+            "stack_scheduler_multiple_use:c2",
+            "stack_scheduler_multiple_use:num18",
+            "stack_scheduler_multiple_use:textBlock2",
+            "stack_scheduler_multiple_use:textBlock3",
+            "exception_lowering",
+            "switch_lowering"
+          ]
+        }
+      ]
+    },
+    {
+      "pair": "brfalse.s => brtrue.s",
+      "methods": 8,
+      "original_il_bytes": 4676,
+      "method_ids": [
+        "kairo.unity.util.StreamUtil::WriteArray(java.io.OutputStream,System.Array,System.Int32)->System.Void",
+        "kairo.unity.ui.Canvas::OnInputUpdate()->System.Void",
+        "kairo.unity.ui.Graphics::GetTransRectGL(System.Single,System.Single,System.Single,System.Single,UnityEngine.Vector3[],System.Boolean)->UnityEngine.Vector3[]",
+        "kairo.unity.ui.Graphics::GetTransPointGL(System.Single,System.Single,System.Single[])->System.Single[]",
+        "kairo.unity.ui.Graphics::GetTransPointGL(UnityEngine.Vector3[])->System.Void",
+        "kairo.unity.ui.SaveRecorder::Unlock(System.Boolean)->System.Void",
+        "kairo.unity.native.KairoPlugin/<>c__DisplayClass82_0::<SaveToTmpCaptureDirectory>b__0()->System.Object",
+        "kairo.unity.graphics.Offscreen::LateUpdate()->System.Void"
+      ],
+      "examples": [
+        {
+          "method_id": "kairo.unity.util.StreamUtil::WriteArray(java.io.OutputStream,System.Array,System.Int32)->System.Void",
+          "original_il_bytes": 1686,
+          "original_offset": 1,
+          "rebuilt_offset": 1,
+          "original_il": [
+            {
+              "offset": 0,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 1,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 12
+              }
+            },
+            {
+              "offset": 3,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 4,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 5,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 10,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 13
+              }
+            },
+            {
+              "offset": 12,
+              "opcode": "ldc.i4.m1",
+              "operand": null
+            },
+            {
+              "offset": 13,
+              "opcode": "conv.i8",
+              "operand": null
+            },
+            {
+              "offset": 14,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 15,
+              "opcode": "ldc.i4",
+              "operand": 2147483647
+            },
+            {
+              "offset": 20,
+              "opcode": "conv.i8",
+              "operand": null
+            }
+          ],
+          "rebuilt_il": [
+            {
+              "offset": 0,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 1,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 6
+              }
+            },
+            {
+              "offset": 3,
+              "opcode": "ldc.i4.m1",
+              "operand": null
+            },
+            {
+              "offset": 4,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 13
+              }
+            },
+            {
+              "offset": 6,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 7,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 8,
+              "opcode": "call",
+              "operand": {
+                "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 13,
+              "opcode": "conv.i8",
+              "operand": null
+            },
+            {
+              "offset": 14,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 15,
+              "opcode": "ldc.i4",
+              "operand": 2147483647
+            },
+            {
+              "offset": 20,
+              "opcode": "conv.i8",
+              "operand": null
+            }
+          ],
+          "source_model_complete": false,
+          "source_model_unsupported_reasons": [
+            "conditional_access_temporary",
+            "string_concat_value_temporary",
+            "foreach_runtime_dispose",
+            "stack_scheduler_multiple_use:elementType",
+            "switch_lowering",
+            "foreach_iteration_stack_scheduler"
+          ]
+        },
+        {
+          "method_id": "kairo.unity.ui.SaveRecorder::Unlock(System.Boolean)->System.Void",
+          "original_il_bytes": 117,
+          "original_offset": 45,
+          "rebuilt_offset": 45,
+          "original_il": [
+            {
+              "offset": 39,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.ui.SaveRecorder @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::lockThread_:class java.lang.JThread @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 44,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 45,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 116
+              }
+            },
+            {
+              "offset": 47,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 48,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 49,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 105
+              }
+            },
+            {
+              "offset": 51,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 52,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.ui.SaveRecorder @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::saveReserve_:valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]"
+              }
+            },
+            {
+              "offset": 57,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 58,
+              "opcode": "ldelem.u1",
+              "operand": null
+            },
+            {
+              "offset": 59,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 101
+              }
+            },
+            {
+              "offset": 61,
+              "opcode": "nop",
+              "operand": null
+            }
+          ],
+          "rebuilt_il": [
+            {
+              "offset": 39,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.ui.SaveRecorder @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::lockThread_:class java.lang.JThread @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 44,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 45,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 48
+              }
+            },
+            {
+              "offset": 47,
+              "opcode": "ret",
+              "operand": null
+            },
+            {
+              "offset": 48,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 49,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 50,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 106
+              }
+            },
+            {
+              "offset": 52,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 53,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.ui.SaveRecorder @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::saveReserve_:valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]"
+              }
+            },
+            {
+              "offset": 58,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 59,
+              "opcode": "ldelem.u1",
+              "operand": null
+            },
+            {
+              "offset": 60,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 102
+              }
+            }
+          ],
+          "source_model_complete": false,
+          "source_model_unsupported_reasons": [
+            "exception_lowering"
+          ]
+        },
+        {
+          "method_id": "kairo.unity.graphics.Offscreen::LateUpdate()->System.Void",
+          "original_il_bytes": 58,
+          "original_offset": 14,
+          "rebuilt_offset": 14,
+          "original_il": [
+            {
+              "offset": 8,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 9,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.graphics.Offscreen @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::dispose_:valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 17
+              }
+            },
+            {
+              "offset": 16,
+              "opcode": "ret",
+              "operand": null
+            },
+            {
+              "offset": 17,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 18,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.graphics.Offscreen @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::GetLayout:class kairo.unity.graphics.Offscreen/GetLayoutMethod @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 23,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 26
+              }
+            },
+            {
+              "offset": 25,
+              "opcode": "ret",
+              "operand": null
+            },
+            {
+              "offset": 26,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 27,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.graphics.Offscreen @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::GetLayout:class kairo.unity.graphics.Offscreen/GetLayoutMethod @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 32,
+              "opcode": "ldloca.s",
+              "operand": {
+                "local": 0
+              }
+            },
+            {
+              "offset": 34,
+              "opcode": "ldloca.s",
+              "operand": {
+                "local": 1
+              }
+            }
+          ],
+          "rebuilt_il": [
+            {
+              "offset": 8,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 9,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.graphics.Offscreen @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::dispose_:valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 55
+              }
+            },
+            {
+              "offset": 16,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 17,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.graphics.Offscreen @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::GetLayout:class kairo.unity.graphics.Offscreen/GetLayoutMethod @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 22,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 55
+              }
+            },
+            {
+              "offset": 24,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 25,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.graphics.Offscreen @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::GetLayout:class kairo.unity.graphics.Offscreen/GetLayoutMethod @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 30,
+              "opcode": "ldloca.s",
+              "operand": {
+                "local": 0
+              }
+            },
+            {
+              "offset": 32,
+              "opcode": "ldloca.s",
+              "operand": {
+                "local": 1
+              }
+            },
+            {
+              "offset": 34,
+              "opcode": "ldloca.s",
+              "operand": {
+                "local": 2
+              }
+            },
+            {
+              "offset": 36,
+              "opcode": "ldloca.s",
+              "operand": {
+                "local": 3
+              }
+            }
+          ],
+          "source_model_complete": true,
+          "source_model_unsupported_reasons": []
+        }
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "rule": "switch-owned-break-if-chain",
+      "status": "FIXTURE_CONFIRMED_GAME_UNKNOWN",
+      "evidence": "four independent whole bodies equal handwritten if-chain controls; existing rule loses case-block break ownership, rejects nested-owned breaks and excludes >8 sections"
+    },
+    {
+      "rule": "nullable-conditional-coalesce-explicit",
+      "status": "FIXTURE_CONFIRMED_GAME_UNKNOWN",
+      "evidence": "three independent whole bodies equal handwritten positive-null ternary controls; member returning Nullable<T>, impure receiver/fallback and reference result rejected"
+    },
+    {
+      "rule": "one-universal-rule-for-brfalse-versus-brtrue",
+      "status": "REFUTED_AS_DIAGNOSTIC_GROUP",
+      "evidence": "WriteArray nullable coalesce, SaveRecorder forced guard tail and Offscreen fused &&/early-return are distinct source constructs"
+    }
+  ]
+}

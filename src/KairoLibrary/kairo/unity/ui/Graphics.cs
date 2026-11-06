@@ -3757,7 +3757,7 @@ renderCache_.Reset();
 			output[3].x = x;
 			output[3].y = y + height;
 			float num;
-if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))); }
+if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { if ((render_ != null)) { num = ((float)render_.GetHeight()); } else { if ((camera_ != null)) { num = ((float)camera_.pixelHeight); } else { num = ((float)UnityEngine.Screen.height); } } }
 			for (int i = 0; i < output.Length; i++)
 			{
 				output[i].z = 0f;
@@ -3794,7 +3794,7 @@ if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ !
 		{
 			output = GetTransPoint(x, y, output);
 			float num;
-if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))); }
+if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { if ((render_ != null)) { num = ((float)render_.GetHeight()); } else { if ((camera_ != null)) { num = ((float)camera_.pixelHeight); } else { num = ((float)UnityEngine.Screen.height); } } }
 			output[1] = num - output[1];
 			return output;
 		}
@@ -3802,7 +3802,7 @@ if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ !
 		internal void GetTransPointGL(Vector3[] vertices)
 		{
 			float num;
-if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))); }
+if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { if ((render_ != null)) { num = ((float)render_.GetHeight()); } else { if ((camera_ != null)) { num = ((float)camera_.pixelHeight); } else { num = ((float)UnityEngine.Screen.height); } } }
 			for (int i = 0; i < vertices.Length; i++)
 			{
 				screenMatrix_.MapPoints(ref vertices[i].x, ref vertices[i].y);
@@ -3927,7 +3927,7 @@ if (IsRenderGUIMode())
 
 		public static Color ArgbToColor(int argb)
 		{
-			Color result = default(Color);
+			Color result ;
 			result.a = (float)((argb >> 24) & 0xFF) / 255f;
 			result.r = (float)((argb >> 16) & 0xFF) / 255f;
 			result.g = (float)((argb >> 8) & 0xFF) / 255f;
@@ -3937,7 +3937,7 @@ if (IsRenderGUIMode())
 
 		public static Color RgbToColor(int rgb)
 		{
-			Color result = default(Color);
+			Color result ;
 			result.a = 1f;
 			result.r = (float)((rgb >> 16) & 0xFF) / 255f;
 			result.g = (float)((rgb >> 8) & 0xFF) / 255f;

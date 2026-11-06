@@ -77,10 +77,8 @@ namespace system.billing.ui
 			seriesName_ = null;
 			seriesNumber_ = new SecureInt(-1);
 			productId_ = GetPlatformProductID(productId_);
-			if (productId == null)
-			{
-				return;
-			}
+			if (productId != null) {
+
 			string[] array = StringUtil.Split(productId, "_");
 			int num = array.Length;
 			for (int i = 0; i < array.Length; i++)
@@ -127,6 +125,7 @@ namespace system.billing.ui
 				seriesName_ = SecureString.ValueOf(array[0] + "_" + array[1] + "_" + array[2]);
 				seriesNumber_ = new SecureInt(JInteger.ParseInt(array[3]));
 			}
+}
 		}
 
 		public int GetId()

@@ -1530,7 +1530,8 @@ apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 		public void SetBattleData()
 		{
 			LeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];
-			if (udat_.GetMatchInfoJoin() == 0)
+			int testedValue = udat_.GetMatchInfoJoin();
+if (testedValue == 0)
 			{
 				int[] nextBattleLeagueIndex = udat_.GetNextBattleLeagueIndex(udat_.league_setu_);
 				udat_.gm_.SetBattleTeamId(0, leagueData.matchEnemy_[nextBattleLeagueIndex[0]], nextBattleLeagueIndex[1]);

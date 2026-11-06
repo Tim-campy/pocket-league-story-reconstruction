@@ -378,10 +378,8 @@ text += json[i];
 
 		public void Load(InputStream stream)
 		{
-			if (0 >= stream.Available())
-			{
-				return;
-			}
+			if (0 < stream.Available()) {
+
 			int num = StreamUtil.ReadInt(stream);
 			if (num == 100 && GetRestoreRequest() == -1)
 			{
@@ -401,6 +399,7 @@ text += json[i];
 					SetRestoreRequest((num3 == 1) ? 1 : 0);
 				}
 			}
+}
 		}
 
 		protected static int GetRestoreRequest()
@@ -425,14 +424,15 @@ text += json[i];
 			{
 				KairoService instance = KairoService.GetInstance();
 				BillingManager instance2 = BillingManager.GetInstance();
-				if (instance2.Restore() != RestoreResult.Complete)
+				global::system.billing.ui.StoreBase.RestoreResult testedValue = instance2.Restore();
+if (testedValue != RestoreResult.Complete)
 				{
-					message = ((!Language.Japanese()) ? "Error" : "復元エラー");
+					message = ((Language.Japanese()) ? ("復元エラー") : ("Error"));
 					return false;
 				}
 				instance2.UpdateBillingItems(false);
 				instance2.UpdateApplyTask(false);
-				message = ((!Language.Japanese()) ? "Purchase info restored." : "課金情報の復元が完了しました。");
+				message = ((Language.Japanese()) ? ("課金情報の復元が完了しました。") : ("Purchase info restored."));
 				return true;
 			}
 			catch (Exception t)

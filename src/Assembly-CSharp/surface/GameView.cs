@@ -1484,13 +1484,12 @@ break; }
 		internal void OnTouchDlgSel(int type, int v, TouchEvent e)
 		{
 			TouchComponent component = e.component;
-			int typeAlias = type;
-if (typeAlias != 1 && typeAlias != 2)
-			{
-				return;
-			}
+			switch (type) {
+case 1:
+case 2:
+
 			Set(v, e.component);
-			if (typeAlias == 1)
+			if (type == 1)
 			{
 				if (component.Check(16) && markComponentKey_ != component.GetKey())
 				{
@@ -1501,6 +1500,8 @@ if (typeAlias != 1 && typeAlias != 2)
 					canvas_.KeyClick(GetKey(e.component, 1048576));
 				}
 			}
+break;
+}
 		}
 
 		internal void OnTouchKeyClick(int type, int v, TouchEvent e)
@@ -1510,8 +1511,9 @@ if (typeAlias != 1 && typeAlias != 2)
 				v = 20;
 			}
 			bool flag = BitUtil.Split(v)[0] == 0;
-			int typeAlias = type;
-if (typeAlias != 5) { return; }
+			switch (type) {
+case 5:
+
 if (flag)
 				{
 					canvas_.KeyClick(GetKey(e.component, 1 << v));
@@ -1520,6 +1522,8 @@ if (flag)
 				{
 					Set(v, e.component);
 				}
+break;
+}
 		}
 
 		internal void OnTouchKeyPress(int type, int v, TouchEvent e)
@@ -1558,8 +1562,9 @@ if (flag)
 				v = 20;
 			}
 			bool flag = BitUtil.Split(v)[0] == 0;
-			int typeAlias = type;
-if (typeAlias != 0) { return; }
+			switch (type) {
+case 0:
+
 if (flag)
 				{
 					canvas_.KeyDown(GetKey(e.component, 1 << v));
@@ -1568,6 +1573,8 @@ if (flag)
 				{
 					Set(v, e.component);
 				}
+break;
+}
 		}
 
 		internal void OnTouchKeyUp(int type, int v, TouchEvent e)
@@ -1577,8 +1584,9 @@ if (flag)
 				v = 20;
 			}
 			bool flag = BitUtil.Split(v)[0] == 0;
-			int typeAlias = type;
-if (typeAlias != 1) { return; }
+			switch (type) {
+case 1:
+
 if (flag)
 				{
 					canvas_.KeyDown(GetKey(e.component, 1 << v));
@@ -1587,6 +1595,8 @@ if (flag)
 				{
 					Set(v, e.component);
 				}
+break;
+}
 		}
 
 		internal void OnTouchMainMenu(int type, int v, TouchEvent e)
@@ -1601,15 +1611,14 @@ if (flag)
 					break;
 				}
 			}
-			int typeAlias = type;
-if (typeAlias != 1 && typeAlias != 2)
-			{
-				return;
-			}
+			switch (type) {
+case 1:
+case 2:
+
 			if (GetComponentId(9) == null)
 			{
 				Set(v, e.component);
-				if (typeAlias == 1)
+				if (type == 1)
 				{
 					canvas_.KeyClick(1048576);
 				}
@@ -1619,6 +1628,8 @@ if (typeAlias != 1 && typeAlias != 2)
 				formMan_.Pop(formMan_.GetTopForm());
 				Set(va, v, e.component);
 			}
+break;
+}
 		}
 
 		internal void OnTouchSubMenu(int type, int v, TouchEvent e)
@@ -1638,13 +1649,12 @@ break; }
 		internal void OnTouchList(int type, int v, TouchEvent e)
 		{
 			TouchComponent component = e.component;
-			int typeAlias = type;
-if (typeAlias != 1 && typeAlias != 2)
-			{
-				return;
-			}
+			switch (type) {
+case 1:
+case 2:
+
 			Set(v, e.component);
-			if (typeAlias == 1)
+			if (type == 1)
 			{
 				if (component.Check(16) && markComponentKey_ != component.GetKey())
 				{
@@ -1655,18 +1665,19 @@ if (typeAlias != 1 && typeAlias != 2)
 					canvas_.KeyClick(GetKey(e.component, 1048576));
 				}
 			}
+break;
+}
 		}
 
 		internal void OnTouchScrollList(int type, int v, TouchEvent e)
 		{
 			TouchComponent component = e.component;
-			int typeAlias = type;
-if (typeAlias != 1 && typeAlias != 2)
-			{
-				return;
-			}
+			switch (type) {
+case 1:
+case 2:
+
 			Set(v, e.component);
-			if (typeAlias == 1)
+			if (type == 1)
 			{
 				if (component.Check(16) && markComponentKey_ != component.GetKey())
 				{
@@ -1677,6 +1688,8 @@ if (typeAlias != 1 && typeAlias != 2)
 					canvas_.KeyClick(GetKey(e.component, 1048576));
 				}
 			}
+break;
+}
 		}
 
 		internal void OnTouchVScrollBar(int type, int v, TouchEvent e)
@@ -1847,10 +1860,8 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 		internal void OnTouchTrackBar(int type, int v, TouchEvent e)
 		{
 			int typeAlias = type;
-if (typeAlias != 0 && typeAlias == 9)
-			{
-				Set(v, e.dx, e.component);
-			}
+if ((typeAlias == 0) || (typeAlias != 9)) { return; }
+Set(v, e.dx, e.component);
 		}
 
 		protected void OnTouchRect(int type, int v, TouchEvent e)

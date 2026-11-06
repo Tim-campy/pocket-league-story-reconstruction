@@ -215,9 +215,7 @@ namespace kairo.unity.surface
 			float num2 = float.MaxValue;
 			float num3 = float.MinValue;
 			float num4 = float.MinValue;
-			for (int i = 0; i < points.Length; i++)
-			{
-				Vector2 vector = points[i];
+			foreach (Vector2 vector in points) {
 				if (vector.x < num)
 				{
 					num = vector.x;

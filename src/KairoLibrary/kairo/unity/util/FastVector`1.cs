@@ -368,8 +368,7 @@ bufSize_ = elementCount;
 
 		public IEnumerator GetEnumerator()
 		{
-			T[] array = elementData;
-			foreach (T val in array)
+			foreach (T val in elementData)
 			{
 				yield return val;
 			}

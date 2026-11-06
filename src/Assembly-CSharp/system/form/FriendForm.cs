@@ -683,10 +683,9 @@ namespace system.form
 							try
 							{
 								Friend friend2 = friendData_.CgiSearchFriend(text2_);
-								Push(new FriendForm(4)
-								{
-									friend_ = friend2
-								});
+								global::system.form.FriendForm createdValue = new FriendForm(4);
+createdValue.friend_ = friend2;
+Push(createdValue);
 							}
 							catch (Exception t2)
 							{
@@ -730,10 +729,9 @@ namespace system.form
 							try
 							{
 								friendData_.CgiApplyFriend(SecureString.ToString(friend_.friendId_));
-								Push(new FriendForm(5)
-								{
-									friend_ = friend_
-								});
+								global::system.form.FriendForm createdValue = new FriendForm(5);
+createdValue.friend_ = friend_;
+Push(createdValue);
 								Pop();
 							}
 							catch (Exception t2)
@@ -1973,23 +1971,24 @@ while (num < num3)
 			int num = 150;
 			int num2 = 53;
 			int num3 = center - num / 2;
-			g.SetRenderMode(1, 200, 55);
-			DrawGradation(g, num3 + 1, top + 1, 0, 0, num - 2, num2 - 2, 99, 84, 149, 159, 128, 186);
+			int topAlias = top;
+g.SetRenderMode(1, 200, 55);
+			DrawGradation(g, num3 + 1, topAlias + 1, 0, 0, num - 2, num2 - 2, 99, 84, 149, 159, 128, 186);
 			g.SetRenderMode(0, 255, 0);
 			g.SetColor(92, 50, 104);
-			g.DrawRect(num3, top, num - 2, num2 - 2);
+			g.DrawRect(num3, topAlias, num - 2, num2 - 2);
 			g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
 			string str = KairoText.LT("<0>さん", SecureString.ToString(randomFriend.name_));
-			g.DrawString(str, center, top + 4, 2);
+			g.DrawString(str, center, topAlias + 4, 2);
 			string str2 = KairoText.LT("ﾌﾟﾚｲ <0>時間<1>分", randomFriend.minute_.Get() / 60 + "\t" + randomFriend.minute_.Get() % 60);
-			g.DrawString(str2, center, top + 20, 2);
+			g.DrawString(str2, center, topAlias + 20, 2);
 			g.SetColor(Graphics.GetColorOfRGB(85, 50, 16));
-			g.DrawStringBold(KairoText.LT("申請してみる"), center, top + 37, Graphics.GetColorOfRGB(255, 246, 222), 2);
-			resFriend_.seb[1].DrawFrame(g, num3 + 4, top + 50, resFriend_.img, 2);
-			resFriend_.seb[1].DrawFrame(g, num3 + 129, top + 50, resFriend_.img, 1);
-			resFriend_.seb[0].DrawFrame(g, num3 + 42, top - 11, resFriend_.img, 0);
+			g.DrawStringBold(KairoText.LT("申請してみる"), center, topAlias + 37, Graphics.GetColorOfRGB(255, 246, 222), 2);
+			resFriend_.seb[1].DrawFrame(g, num3 + 4, topAlias + 50, resFriend_.img, 2);
+			resFriend_.seb[1].DrawFrame(g, num3 + 129, topAlias + 50, resFriend_.img, 1);
+			resFriend_.seb[0].DrawFrame(g, num3 + 42, topAlias - 11, resFriend_.img, 0);
 			drawRandomFriend_result[0] = num3;
-			drawRandomFriend_result[1] = top;
+			drawRandomFriend_result[1] = topAlias;
 			drawRandomFriend_result[2] = num;
 			drawRandomFriend_result[3] = num2;
 			return drawRandomFriend_result;

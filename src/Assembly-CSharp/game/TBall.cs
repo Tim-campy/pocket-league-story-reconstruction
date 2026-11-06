@@ -302,13 +302,8 @@ int num9 = 0;
 			int num10 = 0;
 			if (t_owner_ != null)
 			{
-				if (t_owner_.seb_ != 14)
-				{
-					num = ((t_owner_.direct_ != 0 && t_owner_.direct_ != 3) ? (num + 1) : (num - 1));
-				}
-				else
-				{
-					num = ((t_owner_.team_id_ != 0) ? (num + 1) : (num + -1));
+				if (t_owner_.seb_ == 14) {
+					if (t_owner_.team_id_ == 0) { num = (num + -1); } else { num = (num + 1); }
 					int num11 = 0;
 					if (t_owner_.team_id_ == 0)
 					{
@@ -339,6 +334,8 @@ int num9 = 0;
 					}
 					num9 = Ball.SAVING_OFF[t_owner_.team_id_][num11][0];
 					num10 = Ball.SAVING_OFF[t_owner_.team_id_][num11][1];
+				} else {
+					if (((t_owner_.direct_ == 0) || (t_owner_.direct_ == 3))) { num = ((num - 1)); } else { num = ((num + 1)); }
 				}
 			}
 			if (t_owner_ == null)

@@ -222,7 +222,8 @@ if (Language.Japanese()) { url = ("http://kairopark.jp/android/policy/app_gm" + 
 			}
 			else if (type_ == 1)
 			{
-				string text = ((Config.APPLI_TYPE != 0) ? KairoText.LT("通信を許可し電波を確認して再起動してください。\n通信OFFの場合は一部の機能がご利用頂けない場合がございます。") : "通信を許可し電波を確認して再起動してください。\nおまかせロック等をご利用の方は解除をご確認ください。\nｷｯｽﾞiﾓｰﾄﾞﾌｨﾙﾀ設定中は一部機能がご利用頂けません。");
+				string text;
+if (Config.APPLI_TYPE == 0) { text = "通信を許可し電波を確認して再起動してください。\nおまかせロック等をご利用の方は解除をご確認ください。\nｷｯｽﾞiﾓｰﾄﾞﾌｨﾙﾀ設定中は一部機能がご利用頂けません。"; } else { text = KairoText.LT("通信を許可し電波を確認して再起動してください。\n通信OFFの場合は一部の機能がご利用頂けない場合がございます。"); }
 				textLay_ = new TextLayout();
 				textLay_.SetSize(166f, 124f);
 				textLay_.SetLineSpace(6);

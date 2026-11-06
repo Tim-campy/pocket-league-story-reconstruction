@@ -1,0 +1,74 @@
+{
+  "hypotheses": [
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Local para valor testado de qualquer tipo",
+      "evidence": "data.LeagueData::IsVictoryLeague()->System.Boolean: corpo integral igual; regras tested-value-local"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Resultado local com retorno unico",
+      "evidence": "data.PlayerData::GetPhyParamBarW(System.Int32,System.Int32)->System.Int32: corpo integral igual; regras common-exit-remove-fallthrough-goto"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Switch no parametro e saida comum void",
+      "evidence": "surface.GameView::OnTouchDlgSel(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void: corpo integral igual; regras void-common-exit-switch-parameter"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Objeto em local antes das atribuicoes e de Push",
+      "evidence": "system.form.FriendForm::<_update>m__17()->System.Void: corpo integral igual; regras new-object-argument-local"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Foreach sobre array com copia e indice sinteticos",
+      "evidence": "kairo.unity.surface.SurfaceManagerBase::GetPaintRect(UnityEngine.Vector2[])->System.Int32[]: corpo integral igual; regras array-index-loop-foreach"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Struct sem inicializador antes das atribuicoes de campos",
+      "evidence": "kairo.unity.ui.Graphics::ArgbToColor(System.Int32)->UnityEngine.Color: corpo integral igual; regras struct-fieldwise-no-initializer"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Escopo do indice explica slots em Canvas",
+      "evidence": "kairo.unity.ui.Canvas::EndAlterStaticRender(kairo.unity.ui.Graphics,System.Int32)->System.Void: corpo integral igual; regras roslyn-solver-hoist-for-index"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Escopo do indice explica slots em MeshBuilder",
+      "evidence": "kairo.unity.graphics.MeshBuilder::AddQuad(UnityEngine.Vector3[],System.Single,System.Single,System.Single,System.Single,UnityEngine.Color)->System.Void: corpo integral igual; regras roslyn-solver-delay-index-scope"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Array do foreach icado em <>7__wrap1, sem copia explicita redundante",
+      "evidence": "kairo.unity.util.FastVector`1/<GetEnumerator>d__42::MoveNext()->System.Boolean: corpo integral igual; regras roslyn-iterator-foreach-direct-array"
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A cadeia de zeros isolada basta para SubForm._draw2",
+      "evidence": "Modelo passou de 59 para 56 slots, mas original tem 55; dois switches recompilados compartilham um temporario Int32 ausente no original."
+    },
+    {
+      "status": "INCONCLUSIVA",
+      "hypothesis": "Cadeia de quatro zeros mais switches convertidos em if resolve SubForm._draw2 inteiro",
+      "evidence": "Assinatura original de 55 slots prevista exatamente e prefixo bruto avancou de 2 a 2218, mas o corpo continua divergente; reports/round7-smcs-zerochain-diagnosis.json."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Todo elemento foreach cujo primeiro uso ocorre com pilha ocupada precisa de slot Roslyn",
+      "evidence": "Ampliacao produziu oito previsoes completas incorretas nos matched; retirada. A regra adotada exige prova mais estreita por uso do endereco da struct."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "O modelo smcs recupera os 43 casos mapeados incompletos anteriores",
+      "evidence": "43/43 completos e exatos, incluindo sete storeys; validacao integral 1617/1617 previsoes completas corretas nos 1697 corpos matched."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Ordem textual dos tipos basta para numerar todos os metodos anonimos smcs",
+      "evidence": "BillingManager era previsto como m__E em vez de m__10; codigo class.cs e RootContext confirmam emissao topologica de classes base antes das derivadas."
+    }
+  ]
+}

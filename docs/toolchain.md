@@ -268,3 +268,32 @@ Opções selecionadas: `-nologo -noconfig -target:library -platform:anycpu -opti
 A numeração Roslyn depende da ordem expandida dos membros: as sondas próprias confirmam campo/método/tipo aninhado com peso um, propriedade manual get/set com peso três e automática get/set com peso quatro. A ordem recuperada combina FieldDef, MethodDef, Property e NestedType com os números dos nomes gerados. Foram restaurados dois construtores vazios omitidos pelo ILSpy. Candidatos isolados compilaram antes de qualquer adoção e preservaram todos os corpos que já correspondiam. [Sondas](../reports/KairoLibrary-member-order-probe.json), [aplicação](../reports/KairoLibrary-member-order-application.json).
 
 Além de ILSpy 9.1.0.7988 com configurações distintas, foi preparado o decompilador independente Codemerx/JustDecompileEngine, commit `35f93d8fae9f6220bc8c976d1dbf376e57d6321d`, versão de assembly 2019.1.118.0. Compilado por MSBuild existente com referências Framework 4.7.2 portáteis, sem modificar fontes upstream ou instalar SDK global. Pacotes, engine e variantes ficam em analysis/. [Proveniência](../reports/Codemerx-decompiler.json). Variantes só podem entrar por fonte C# e comparação integral; nenhuma classe gerada é escrita manualmente.
+
+
+### Rodada 7 - modelos independentes e ciclo autonomo
+
+Os emissores de producao permanecem Roslyn NuGet 1.1.0 (csc.exe
+1.1.0.51109) para KairoLibrary e smcs 2.6.5.0 do Unity 5.3.4f1 para
+Assembly-CSharp. Versoes, hashes, flags, ordem de fontes e referencias de cada
+compilacao sao preservados nos manifestos e recibos. O Roslyn 5.8 dos
+auxiliares apenas analisa sintaxe e tipos; nao emite os assemblies alvos.
+
+O motor tools/round7_engine.py exige previsao independente completa e
+assinatura original exata antes de compilar cada candidato. Uma previsao
+incompleta continua UNKNOWN. A assinatura emitida e conferida novamente e a
+adocao exige todos os corpos conhecidos e todos os metadados de tipos, seguida
+do verificador oficial integral. O alinhamento com rotulos serve somente ao
+diagnostico; nao muda o criterio de igualdade. Nos ciclos, o repertorio antigo
+so volta a ser explorado apos avanco da familia nova, evitando repetir buscas
+ja esgotadas sobre o mesmo fonte.
+
+Nomes de locais introduzidos ou reordenados sao escolhas da reconstrucao para
+reproduzir slots, nao alegacoes de nomes historicos. Nenhuma classe gerada e
+escrita a mao, nenhum IL original e inserido no resultado e nenhum campo do
+assembly e normalizado.
+
+Evidencias do alocador smcs, capturas, ordem de emissao dos tipos e limites:
+[modelo smcs](notes/round7-slot-model.md). Regras, fixtures historicas e
+resultados negativos: [regras smcs](notes/round7-smcs-rules.md). Modelo Roslyn,
+escalonamento de pilha e icamento do array do iterador:
+[modelo Roslyn](notes/round7-roslyn-model.md).

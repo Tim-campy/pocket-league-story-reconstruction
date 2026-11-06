@@ -1805,10 +1805,8 @@ for (int j = 0; j < league_fightCombi_.Length; j++)
 		public void League_finish()
 		{
 			LeagueData leagueData = apdat_.leagueData_[selectLeagueId_];
-			if (league_setu_ != league_teamNum_ - 1)
-			{
-				return;
-			}
+			if (league_setu_ == league_teamNum_ - 1) {
+
 			League_resetScore();
 			int[] leagueData2 = GetLeagueData(0);
 			if (leagueData2[7] == 1)
@@ -1886,6 +1884,7 @@ for (int j = 0; j < league_fightCombi_.Length; j++)
 				leagueData.matchEnemyNext_[num2 - 1] = num;
 			}
 			SetMatchInfoJoin(2);
+}
 		}
 
 		public void Qm_update()
@@ -2108,7 +2107,7 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 			int num = teamData.warPotential_ - teamData2.warPotential_;
 			int warPotential_ = teamData.warPotential_;
 			int num2 = 0;
-			num2 = (flag ? ((num < 0) ? (num2 + GameUtil.RateConvert(num, 0, -50, 5, 30, true)) : (num2 + GameUtil.RateConvert(num, 0, 50, 5, 1, true))) : ((!flag2) ? (num2 + GameUtil.RateConvert(num, -50, 50, 0, -6, true)) : (num2 + GameUtil.RateConvert(num, -50, 50, 6, -3, true))));
+			num2 = (flag ? ((num >= 0) ? ((num2 + GameUtil.RateConvert(num, 0, 50, 5, 1, true))) : ((num2 + GameUtil.RateConvert(num, 0, -50, 5, 30, true)))) : ((!flag2) ? (num2 + GameUtil.RateConvert(num, -50, 50, 0, -6, true)) : (num2 + GameUtil.RateConvert(num, -50, 50, 6, -3, true))));
 			teamData.AddTeamEva(num2);
 			game_matchEva_ = GameUtil.RateConvert(teamData.warPotential_ - warPotential_, -20, 20, 0, 1000, true);
 			if (flag)
@@ -2423,13 +2422,17 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 							editTest_temp.InsertElementAt(editTest_df.ElementAt(num7), 0);
 							editTest_df.RemoveElementAt(num7);
 						}
-						if (editTest_temp.Size() == 5 || editTest_df.Size() == 1)
-						{
+						if (editTest_temp.Size() == 5) {
+							break;
+						}
+if (editTest_df.Size() == 1) {
 							break;
 						}
 					}
-					if (editTest_temp.Size() == 5 || (editTest_temp.Size() > 0 && editTest_df.Size() <= 5))
-					{
+					if (editTest_temp.Size() == 5) {
+						break;
+					}
+if ((editTest_temp.Size() > 0 && editTest_df.Size() <= 5)) {
 						break;
 					}
 				}
@@ -2458,13 +2461,17 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 							editTest_temp.InsertElementAt(editTest_mf.ElementAt(num8), 0);
 							editTest_mf.RemoveElementAt(num8);
 						}
-						if (editTest_temp.Size() == 5 || editTest_mf.Size() == 1)
-						{
+						if (editTest_temp.Size() == 5) {
+							break;
+						}
+if (editTest_mf.Size() == 1) {
 							break;
 						}
 					}
-					if (editTest_temp.Size() == 5 || (editTest_temp.Size() > 0 && editTest_mf.Size() <= 5))
-					{
+					if (editTest_temp.Size() == 5) {
+						break;
+					}
+if ((editTest_temp.Size() > 0 && editTest_mf.Size() <= 5)) {
 						break;
 					}
 				}
@@ -2493,13 +2500,17 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 							editTest_temp.InsertElementAt(editTest_fw.ElementAt(num10), 0);
 							editTest_fw.RemoveElementAt(num10);
 						}
-						if (editTest_temp.Size() == 5 || editTest_fw.Size() == 1)
-						{
+						if (editTest_temp.Size() == 5) {
+							break;
+						}
+if (editTest_fw.Size() == 1) {
 							break;
 						}
 					}
-					if (editTest_temp.Size() == 5 || (editTest_temp.Size() > 0 && editTest_fw.Size() <= 5))
-					{
+					if (editTest_temp.Size() == 5) {
+						break;
+					}
+if ((editTest_temp.Size() > 0 && editTest_fw.Size() <= 5)) {
 						break;
 					}
 				}
@@ -5112,10 +5123,8 @@ tenantList.AddElement(tenants_[j]);
 
 		public void Update_bus()
 		{
-			if (busState_ != 0)
-			{
-				return;
-			}
+			if (busState_ == 0) {
+
 			busCnt = (busCnt + 1) % int.MaxValue;
 			int[] collisionData = GetCollisionData(0, 5);
 			int[] collisionData2 = GetCollisionData(1, 5);
@@ -5158,6 +5167,7 @@ tenantList.AddElement(tenants_[j]);
 			{
 				busDirect_ = 2;
 			}
+}
 		}
 
 		public void Draw_bus(Graphics g)
@@ -5339,68 +5349,47 @@ tenantList.AddElement(tenants_[j]);
 
 		public int GetStandartTicketPrice(int eva)
 		{
+
 			int num = 0;
-			if (eva < 700)
-			{
-				return GameUtil.RateConvert(eva, 0, 700, 1000, 3000, true);
-			}
-			return GameUtil.RateConvert(eva, 700, 1000, 3000, 6000, true);
-		}
+			if (eva < 700) { num = GameUtil.RateConvert(eva, 0, 700, 1000, 3000, true); } else { num = GameUtil.RateConvert(eva, 700, 1000, 3000, 6000, true); }
+return num;
+}
 
 		public float GetTicketPriceFanBonusRate(int eva)
 		{
+
 			int standartTicketPrice = GetStandartTicketPrice(eva);
 			float num = (float)standartTicketPrice / (float)ticketPrice_;
 			float num2 = 1f;
-			if (num >= 1f)
-			{
-				return GameUtil.RateConvert(num, 1f, 3f, 1f, 1.5f, true);
-			}
-			return GameUtil.RateConvert(num, 1f, 1f / 3f, 1f, 0.2f, true);
-		}
+			if (num >= 1f) { num2 = GameUtil.RateConvert(num, 1f, 3f, 1f, 1.5f, true); } else { num2 = GameUtil.RateConvert(num, 1f, 1f / 3f, 1f, 0.2f, true); }
+return num2;
+}
 
 		public int GetIdealSalse(int eva)
 		{
+
 			int num = 0;
-			if (eva < 700)
-			{
-				return GameUtil.RateConvert(eva, 0, 700, 65, 12000, true);
-			}
-			return GameUtil.RateConvert(eva, 700, 1000, 12000, 50000, true);
-		}
+			if (eva < 700) { num = GameUtil.RateConvert(eva, 0, 700, 65, 12000, true); } else { num = GameUtil.RateConvert(eva, 700, 1000, 12000, 50000, true); }
+return num;
+}
 
 		public float GetTicketSalseRate(int eva)
 		{
+
 			int standartTicketPrice = GetStandartTicketPrice(eva);
 			float num = (float)standartTicketPrice / (float)ticketPrice_;
 			float num2 = 1f;
-			if (num >= 1f)
-			{
-				return GameUtil.RateConvert(num, 1f, 3f, 1f, 0.8f, true);
-			}
-			return GameUtil.RateConvert(num, 1f, 1f / 3f, 1f, 0.6f, true);
-		}
+			if (num >= 1f) { num2 = GameUtil.RateConvert(num, 1f, 3f, 1f, 0.8f, true); } else { num2 = GameUtil.RateConvert(num, 1f, 1f / 3f, 1f, 0.6f, true); }
+return num2;
+}
 
 		public void RotateTestPlayParam()
 		{
 			for (int i = 0; i < 9; i++)
 			{
-				switch (i)
-				{
-				case 0:
-					AddTestPlayerParam(i, (int)apdat_.save_.lngs[0]);
-					continue;
-				case 4:
-				case 5:
-				case 6:
-				case 7:
-					AddTestPlayerParam(i, researchPoint_[i - 4]);
-					continue;
-				case 1:
-				case 2:
-				case 3:
-					continue;
-				}
+				if ((i == 0)) { AddTestPlayerParam(i, (int)apdat_.save_.lngs[0]);
+continue; } else if ((i == 4) || (i == 5) || (i == 6) || (i == 7)) { AddTestPlayerParam(i, researchPoint_[i - 4]);
+continue; } else if ((i == 1) || (i == 2) || (i == 3)) { continue; }
 				if (i == 8)
 				{
 					TeamData teamData = apdat_.tData_[0];
@@ -5502,24 +5491,27 @@ tenantList.AddElement(tenants_[j]);
 
 		public static int GetFeelPtEf(int frame, int TIME)
 		{
+
 			int num = TIME * WAIT_TIME[0] / 100 + 4;
 			int num2 = TIME * WAIT_TIME[1] / 100 + 4;
 			int num3 = TIME * WAIT_TIME[2] / 100 + 4;
 			int num4 = 0;
 			if (frame < num + 12)
 			{
-				return GameUtil.RateConvert(frame, num, num + 12, NEGOTIATE_RESULT_DISPVALUE[0], NEGOTIATE_RESULT_DISPVALUE[1], true);
+				{ num4 = GameUtil.RateConvert(frame, num, num + 12, NEGOTIATE_RESULT_DISPVALUE[0], NEGOTIATE_RESULT_DISPVALUE[1], true); goto resultExit; }
 			}
 			if (frame < num2 + 12)
 			{
-				return GameUtil.RateConvert(frame, num2, num2 + 12, NEGOTIATE_RESULT_DISPVALUE[1], NEGOTIATE_RESULT_DISPVALUE[2], true);
+				{ num4 = GameUtil.RateConvert(frame, num2, num2 + 12, NEGOTIATE_RESULT_DISPVALUE[1], NEGOTIATE_RESULT_DISPVALUE[2], true); goto resultExit; }
 			}
 			if (frame < num3 + 12)
 			{
-				return GameUtil.RateConvert(frame, num3, num3 + 12, NEGOTIATE_RESULT_DISPVALUE[2], NEGOTIATE_RESULT_DISPVALUE[3], true);
+				{ num4 = GameUtil.RateConvert(frame, num3, num3 + 12, NEGOTIATE_RESULT_DISPVALUE[2], NEGOTIATE_RESULT_DISPVALUE[3], true); goto resultExit; }
 			}
-			return NEGOTIATE_RESULT_DISPVALUE[3];
-		}
+			{ num4 = NEGOTIATE_RESULT_DISPVALUE[3];  }
+
+resultExit: return num4;
+}
 
 		public static int[] GetAddFeelPtEf(int frame, int TIME)
 		{
@@ -5770,11 +5762,11 @@ num3++;
 						continue;
 					}
 					int num = 0;
-					num = ((playerData.lv_ <= array[k]) ? array[k] : playerData.lv_);
+					if ((playerData.lv_ > array[k])) { num = (playerData.lv_); } else { num = (array[k]); }
 					StreamUtil.WriteInt(byteArrayOutputStream, num);
 					for (int m = 0; m < playerData.trainingPoint_.Length; m++)
 					{
-						num = ((playerData.trainingPoint_[m] <= array2[k][m]) ? array2[k][m] : playerData.trainingPoint_[m]);
+						if ((playerData.trainingPoint_[m] > array2[k][m])) { num = (playerData.trainingPoint_[m]); } else { num = (array2[k][m]); }
 						StreamUtil.WriteInt(byteArrayOutputStream, num);
 					}
 				}
@@ -5890,7 +5882,7 @@ num3++;
 						continue;
 					}
 					int num5 = 0;
-					num5 = ((tenantData.lv_ <= array4[num4]) ? array4[num4] : tenantData.lv_);
+					if ((tenantData.lv_ > array4[num4])) { num5 = (tenantData.lv_); } else { num5 = (array4[num4]); }
 					StreamUtil.WriteInt(byteArrayOutputStream3, num5);
 				}
 				apdat_.sysSave_.bins[2] = byteArrayOutputStream3.ToByteArray();
@@ -5939,7 +5931,7 @@ num3++;
 						continue;
 					}
 					int num8 = 0;
-					num8 = ((supervisorData.lv_ <= array5[num7]) ? array5[num7] : supervisorData.lv_);
+					if ((supervisorData.lv_ > array5[num7])) { num8 = (supervisorData.lv_); } else { num8 = (array5[num7]); }
 					StreamUtil.WriteInt(byteArrayOutputStream4, num8);
 				}
 				apdat_.sysSave_.bins[3] = byteArrayOutputStream4.ToByteArray();

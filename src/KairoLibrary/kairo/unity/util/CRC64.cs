@@ -19,7 +19,7 @@ for (int i = 0; i < 256; i++)
 				num = i;
 				for (int j = 0; j < 8; j++)
 				{
-					num = (((num & 1) != 0L) ? (num >> 1) : (0xEDB88320u ^ (num >> 1)));
+					if ((num & 1) == 0L) { num = (0xEDB88320u ^ (num >> 1)); } else { num = (num >> 1); }
 				}
 				crcTable_[i] = num;
 			}

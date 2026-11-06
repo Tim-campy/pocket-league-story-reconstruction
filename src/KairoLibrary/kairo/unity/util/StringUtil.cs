@@ -52,10 +52,16 @@ namespace kairo.unity.util
 			{
 				return new string[0];
 			}
-			FastVector fastVector = new FastVector();
-			int num = 0;
-			string text2 = "";
-			int num2;
+
+FastVector fastVector;
+int num;
+string text2;
+string[] array;
+int num2;
+fastVector = new FastVector();
+			num = 0;
+			text2 = "";
+
 			do
 			{
 				IL_0020:
@@ -109,7 +115,7 @@ namespace kairo.unity.util
 				text2 = "";
 			}
 			while (num2 != -1);
-			string[] array = new string[fastVector.Size()];
+			array = new string[fastVector.Size()];
 			for (int j = 0; j < array.Length; j++)
 			{
 				array[j] = (string)fastVector.ElementAt(j);

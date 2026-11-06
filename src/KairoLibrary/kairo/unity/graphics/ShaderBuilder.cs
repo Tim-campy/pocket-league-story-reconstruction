@@ -578,12 +578,12 @@ if (recoveredCondition_7106)
 				if (renderOperator == 1)
 				{
 					num |= 0x40;
-					num = ((renderSrcAlpha + renderDstAlpha == 255) ? (num | 0x2000) : ((renderDstAlpha != 255) ? (num | 0x8000) : (num | 0x4000)));
+					if (renderSrcAlpha + renderDstAlpha == 255) { num = ((num | 0x2000)); } else { if (renderDstAlpha == 255) { num = (num | 0x4000); } else { num = (num | 0x8000); } }
 				}
 				else if (renderOperator == 2)
 				{
 					num |= 0x80;
-					num = ((renderSrcAlpha + renderDstAlpha == 255) ? (num | 0x2000) : ((renderSrcAlpha <= 0) ? (num | 0x8000) : (num | 0x4000)));
+					if (renderSrcAlpha + renderDstAlpha == 255) { num = ((num | 0x2000)); } else { if (renderSrcAlpha > 0) { num = (num | 0x4000); } else { num = (num | 0x8000); } }
 				}
 				else if (alphaType == 0)
 				{

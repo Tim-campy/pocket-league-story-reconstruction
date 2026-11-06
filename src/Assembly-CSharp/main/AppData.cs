@@ -5169,7 +5169,8 @@ int num2 = termsAlias[1];
 		public void DrawZSortObjects(Graphics g, bool offscreen, int typeBits)
 		{
 			Player player = null;
-			int num = 0;
+			int num3, num;
+num3 = num = 0;
 			MeshManager meshManager = g.GetMeshManager();
 			for (int i = zsortObjectStart_; i <= zsortObjectLast_; i++)
 			{
@@ -5255,7 +5256,7 @@ int num2 = termsAlias[1];
 						{
 							TPlayer tPlayer = udat_.tPlayers_[array[1]];
 							PlayerData playerData = pData_[tPlayer.pData_id_];
-							int num3 = array[6] - 25;
+							num3 = array[6] - 25;
 							num = array[7] - 18;
 							g.DrawImage(resCom2_.img[136], num3, num, 0, 0, 51, 18);
 							g.ClipRect(num3 + 1, num + 2, 16f, 13f);
@@ -5364,22 +5365,20 @@ AddPopupMessage(id, value, -1, 60);
 			{
 				object[] array = (object[])popupMessages_.ElementAt(i);
 				int[] array2 = (int[])array[1];
-				if (array2[1] >= 0)
-				{
-					int num3 = array2[1];
-					int num4 = 19;
-					if (i == 0)
+				if (array2[1] < 0) { return; }
+int num3 = array2[1];
+int num4 = 19;
+if (i == 0)
 					{
 						num4 = 21;
 					}
-					int num5 = 0;
-					num5 = ((num3 <= num) ? (num4 * num3 / num) : ((num3 < array2[2] + num) ? num4 : (num4 - num4 * (num3 - (array2[2] + num)) / num)));
-					drawPopupMessage_heights[i] = num5;
-					if (num5 > 0)
+int num5 = 0;
+num5 = ((num3 <= num) ? (num4 * num3 / num) : ((num3 < array2[2] + num) ? num4 : (num4 - num4 * (num3 - (array2[2] + num)) / num)));
+drawPopupMessage_heights[i] = num5;
+if (num5 > 0)
 					{
 						num2 -= num5;
 					}
-				}
 			}
 			int num6 = ClampMin(instance.GetGameWidth(), 240 + instance.GetSideSoftWidth() * 2);
 			int num7 = bottom - num2 + 20;

@@ -156,7 +156,8 @@ if (recoveredCondition_3348)
 					{
 						if (data.Succeed)
 						{
-							if (Language.SetLanguagePack(langDownloadUrl_, langDownloadData_) && callback_ != null)
+							bool testedValue = Language.SetLanguagePack(langDownloadUrl_, langDownloadData_);
+if (testedValue && callback_ != null)
 							{
 								callback_();
 							}

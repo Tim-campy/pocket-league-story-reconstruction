@@ -2779,15 +2779,16 @@ int num3;
 
 		private void _draw2(Graphics g)
 		{
-			int num3;
-			int num2;
-			int num = (num2 = (num3 = 0));
+			int num4, num, num2, num3;
+
+
+			num4 = num = num2 = num3 = 0;
 			Font font = g.GetFont(null);
 			if (type_ == 30)
 			{
 				apdat_.DrawWindow(g, 228, 176, 0, "選手情報");
 				apdat_.DrawBox(g, 12, 69, 227, 190);
-				int num4 = 20;
+				num4 = 20;
 				num = 63;
 				PlayerData playerData = playerData_;
 				num3 = num + 2;
@@ -2918,24 +2919,7 @@ int num3;
 					g.SetColor(Graphics.GetColorOfRGB(57, 57, 70));
 					g.FillRect(num4 + 31 + 1, num3 + 1 + 1, 50f, 9f);
 					int phyParamBarW = PlayerData.GetPhyParamBarW(playerData.paramPhysical_[j], 50);
-					switch (j)
-					{
-					case 0:
-						g.SetColor(Graphics.GetColorOfRGB(252, 54, 0));
-						break;
-					case 1:
-						g.SetColor(Graphics.GetColorOfRGB(84, 188, 255));
-						break;
-					case 2:
-						g.SetColor(Graphics.GetColorOfRGB(103, 255, 121));
-						break;
-					case 3:
-						g.SetColor(Graphics.GetColorOfRGB(248, 248, 248));
-						break;
-					case 4:
-						g.SetColor(Graphics.GetColorOfRGB(255, 251, 0));
-						break;
-					}
+					if ((j == 0)) { g.SetColor(Graphics.GetColorOfRGB(252, 54, 0)); } else if ((j == 1)) { g.SetColor(Graphics.GetColorOfRGB(84, 188, 255)); } else if ((j == 2)) { g.SetColor(Graphics.GetColorOfRGB(103, 255, 121)); } else if ((j == 3)) { g.SetColor(Graphics.GetColorOfRGB(248, 248, 248)); } else if ((j == 4)) { g.SetColor(Graphics.GetColorOfRGB(255, 251, 0)); }
 					g.FillRect(num4 + 32, num3 + 2, phyParamBarW, 9f);
 				}
 				num = 204;
@@ -2949,7 +2933,7 @@ int num3;
 				apdat_.DrawBox(g, 12, 69, 227, 190);
 				GameView.AddTouch(g, 1, 44 - frame_ % 20 / 5, 51, apdat_.resCom2_.seb[24], 0, 16);
 				GameView.AddTouch(g, 1, 193 + frame_ % 20 / 5, 51, apdat_.resCom2_.seb[24], 1, 18);
-				int num4 = 20;
+				num4 = 20;
 				num = 63;
 				num = 64;
 				g.SetColor(SC_WINDOW_BLACK);
@@ -3040,7 +3024,7 @@ int num3;
 				apdat_.DrawBox(g, 15, 55, 225, 201);
 				GameView.AddTouch(g, 1, 44 - frame_ % 20 / 5, 37, apdat_.resCom2_.seb[24], 0, 16);
 				GameView.AddTouch(g, 1, 193 + frame_ % 20 / 5, 37, apdat_.resCom2_.seb[24], 1, 18);
-				int num4 = 20;
+				num4 = 20;
 				num = 63;
 				num3 = num - 12;
 				if (page_ == 0)
@@ -3405,7 +3389,7 @@ int num3;
 					GameView.AddTouch(g, 1, 44 - frame_ % 20 / 5, 37, apdat_.resCom2_.seb[24], 0, 16);
 					GameView.AddTouch(g, 1, 193 + frame_ % 20 / 5, 37, apdat_.resCom2_.seb[24], 1, 18);
 				}
-				int num4 = 20;
+				num4 = 20;
 				num = 63;
 				LeagueData leagueData3 = (LeagueData)ary1.ElementAt(page_);
 				if (scrollValue_ == 0)
@@ -3476,26 +3460,17 @@ int num3;
 							g.DrawString(array4[num18], num2 + 8, num3 + 5);
 						}
 						ResetFontSize(g);
-						switch (num18)
-						{
-						case 0:
-							if (En())
+						if ((num18 == 0)) { if (En())
 							{
 								apdat_.DrawSeb(g, num2 + 72 + 3, num3 + 17, apdat_.resCom2_.seb[65], apdat_.resCom2_.img[75], leagueData3.rank_);
 							}
 							else
 							{
 								apdat_.DrawSeb(g, num2 + 62, num3 + 17, apdat_.resCom2_.seb[65], apdat_.resCom2_.img[75], leagueData3.rank_);
-							}
-							break;
-						case 1:
-							g.SetColor(SC_WINDOW_BLACK);
-							g.DrawString(MyFormBase.YEN("万", leagueData3.joinCost_), num2 + 93, num3 + 5, 4);
-							break;
-						case 2:
-							SetFontSize(g, 6);
-							g.SetColor(SC_WINDOW_BLACK);
-							if (En())
+							} } else if ((num18 == 1)) { g.SetColor(SC_WINDOW_BLACK);
+g.DrawString(MyFormBase.YEN("万", leagueData3.joinCost_), num2 + 93, num3 + 5, 4); } else if ((num18 == 2)) { SetFontSize(g, 6);
+g.SetColor(SC_WINDOW_BLACK);
+if (En())
 							{
 								g.DrawString("全", num2 + 38 - 5, num3 + 4 + 6);
 							}
@@ -3504,20 +3479,17 @@ int num3;
 								g.DrawString("全", num2 + 38, num3 + 4);
 								g.DrawString("試合", num2 + 66, num3 + 4);
 							}
-							ResetFontSize(g);
-							if (En())
+ResetFontSize(g);
+if (En())
 							{
 								apdat_.DrawNumImage(g, 35, leagueData3.matchEnemy_.Length - 1, num2 + 64 - 5 + 28, num3 + 5, 0, 4);
 							}
 							else
 							{
 								apdat_.DrawNumImage(g, 35, leagueData3.matchEnemy_.Length - 1, num2 + 64, num3 + 5, 0, 4);
-							}
-							break;
-						case 3:
-							SetFontSize(g, 10);
-							g.SetColor(SC_WINDOW_BLACK);
-							if (En())
+							} } else if ((num18 == 3)) { SetFontSize(g, 10);
+g.SetColor(SC_WINDOW_BLACK);
+if (En())
 							{
 								g.DrawString("週後", num2 + 68 - 12 - 6, num3 + 5 + 6 - 4);
 								apdat_.DrawNumImage(g, 35, leagueData3.schedule_, num2 + 66 + 6, num3 + 6, 0, 4);
@@ -3527,9 +3499,7 @@ int num3;
 								g.DrawString("週後", num2 + 68, num3 + 5);
 								apdat_.DrawNumImage(g, 35, leagueData3.schedule_, num2 + 66, num3 + 6, 0, 4);
 							}
-							ResetFontSize(g);
-							break;
-						}
+ResetFontSize(g); }
 					}
 					if (En())
 					{
@@ -3579,13 +3549,11 @@ int num3;
 							}
 							num19++;
 						}
-						if (teamData4 != null)
-						{
-							g.SetColor(SC_WINDOW_BLACK);
-							string str2 = MyFormBase.LT(teamData4.name2_);
-							g.DrawString(str2, num2 + 8, num3 + 3);
-							apdat_.DrawNumImage(g, 35, udat_.GetRankIndex(teamData4.warPotential_) + 1, num2 + 89, num3 + 4, 0, 2);
-						}
+						if (teamData4 == null) { return; }
+g.SetColor(SC_WINDOW_BLACK);
+string str2 = MyFormBase.LT(teamData4.name2_);
+g.DrawString(str2, num2 + 8, num3 + 3);
+apdat_.DrawNumImage(g, 35, udat_.GetRankIndex(teamData4.warPotential_) + 1, num2 + 89, num3 + 4, 0, 2);
 					}
 					g.DrawImage(apdat_.resCom2_.img[57], 100f, 65f);
 					g.DrawImage(apdat_.resCom2_.img[57], 201f, 65f);
@@ -11440,10 +11408,8 @@ if (pageMax != -1)
 					}
 				}
 			}
-			if (clearPoint_cnt < CLEARPOINT_ANIMETIME[clearPoint_mode])
-			{
-				return;
-			}
+			if (clearPoint_cnt >= CLEARPOINT_ANIMETIME[clearPoint_mode]) {
+
 			if (clearPoint_mode == 0)
 			{
 				if (canvas_.CheckKeyPulse(1048576))
@@ -11540,6 +11506,7 @@ if (pageMax != -1)
 					Log.Info(t);
 				}
 			}
+}
 		}
 
 		public void Draw_clearPoint(Graphics g)

@@ -308,7 +308,8 @@ obj.change = true;
 			Group current = (currentLayer = GetLayer()).Current;
 			CheckAndExpand(4);
 			current.head = current.vertexCount;
-			int num = 0;
+			{
+int num = 0;
 			while (num < vertices.Length)
 			{
 				current.verticies[current.vertexCount].x = vertices[num].x;
@@ -332,6 +333,8 @@ obj.change = true;
 				num++;
 				current.vertexCount++;
 			}
+}
+
 			if (current.indicies.Length < current.indexCount + 6)
 			{
 				int[] array = new int[current.indexCount + 6 + 6 + current.indexCount / 2];
@@ -454,13 +457,16 @@ obj.change = true;
 			{
 				meshMan.meshRecord_.Add(current, current.indexCount, tris.Length);
 			}
-			int num = 0;
+			{
+int num = 0;
 			while (num < tris.Length)
 			{
 				current.indicies[current.indexCount] = current.head + tris[num];
 				num++;
 				current.indexCount++;
 			}
+}
+
 		}
 
 		public void AddIndicies(int[] tris, int count)
@@ -476,13 +482,16 @@ obj.change = true;
 			{
 				meshMan.meshRecord_.Add(current, current.indexCount, count);
 			}
-			int num = 0;
+			{
+int num = 0;
 			while (num < count)
 			{
 				current.indicies[current.indexCount] = current.head + tris[num];
 				num++;
 				current.indexCount++;
 			}
+}
+
 		}
 
 		public void AddTriangleIndicies()

@@ -173,7 +173,8 @@ namespace data
 		{
 			UserData instance = UserData.GetInstance();
 			LeagueData leagueData = AppData.GetInstance().leagueData_[instance.selectLeagueId_];
-			if (instance.GetMatchInfoJoin() != 0)
+			int testedValue = instance.GetMatchInfoJoin();
+if (testedValue != 0)
 			{
 				return false;
 			}
@@ -186,7 +187,8 @@ namespace data
 
 		public static bool IsVictoryLeague()
 		{
-			if (udat_.GetMatchInfoJoin() != 0)
+			int testedValue = udat_.GetMatchInfoJoin();
+if (testedValue != 0)
 			{
 				return false;
 			}
@@ -214,7 +216,8 @@ namespace data
 
 		public static bool IsVictoryMatch()
 		{
-			if (udat_.GetMatchInfoJoin() != 0)
+			int testedValue = udat_.GetMatchInfoJoin();
+if (testedValue != 0)
 			{
 				return false;
 			}

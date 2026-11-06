@@ -668,10 +668,8 @@ bool flag2 = false;
 					}
 				}
 			}
-			if (udat_.tAreaRootNum_ != 1)
-			{
-				return;
-			}
+			if (udat_.tAreaRootNum_ == 1) {
+
 			for (int l = 5; l <= 15; l++)
 			{
 				for (int m = 4; m <= 13; m++)
@@ -679,6 +677,7 @@ bool flag2 = false;
 					MAPCHIP_IMG[l][m] = mapchip_tree.id_;
 				}
 			}
+}
 		}
 
 		public void Draw_tenantAround(Graphics g)

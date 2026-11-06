@@ -585,7 +585,7 @@ namespace game
 					{
 						SetSortGroundBallNear();
 						Player player = null;
-						player = ((udat_.ball_.lastOwner_ == null || udat_.ball_.lastOwner_.team_id_ != team_id_ || udat_.ball_.targetPId == -1) ? ((Player)ballNearPlayer_.FirstElement()) : players_[udat_.ball_.targetPId]);
+						if ((((udat_.ball_.lastOwner_ != null) && (udat_.ball_.lastOwner_.team_id_ == team_id_)) && (udat_.ball_.targetPId != -1))) { player = (players_[udat_.ball_.targetPId]); } else { player = (((Player)ballNearPlayer_.FirstElement())); }
 						for (int num = receiverPIdBox_.Length - 1; num >= 1; num--)
 						{
 							receiverPIdBox_[num] = receiverPIdBox_[num - 1];
@@ -757,15 +757,13 @@ namespace game
 				num = 100 - player.formation_[1];
 				for (int j = 0; j < players_.Length; j++)
 				{
-					if (j != i)
-					{
-						Player player2 = players_[j];
-						int num7 = player2.formation_[1] - player.formation_[1];
-						if (num > num7 && num7 > num5)
+					if (j == i) { return; }
+Player player2 = players_[j];
+int num7 = player2.formation_[1] - player.formation_[1];
+if (num > num7 && num7 > num5)
 						{
 							num = num7;
 						}
-					}
 				}
 				if (num != 100 - player.formation_[1])
 				{
@@ -862,15 +860,13 @@ namespace game
 			ball_.temp_pos.z_ = (ball_.pos_.z_ * 0.5f + (ball_.pos_.z_ + ball_.v_.z_ * 5f) * 0.5f) / 1f;
 			for (int i = 0; i < players_.Length; i++)
 			{
-				if (players_[i].role_ != 0)
-				{
-					Player player = players_[i];
-					if (player.seb_ != 12)
+				if (players_[i].role_ == 0) { return; }
+Player player = players_[i];
+if (player.seb_ != 12)
 					{
 						player.temp_len = (float)JMath.Sqrt((ball_.temp_pos.x_ - player.pos_.x_) * (ball_.temp_pos.x_ - player.pos_.x_) + (ball_.temp_pos.z_ - player.pos_.z_) * (ball_.temp_pos.z_ - player.pos_.z_));
 						ballNearPlayer_.AddElement(player);
 					}
-				}
 			}
 			for (int j = 0; j < ballNearPlayer_.Size() - 1; j++)
 			{
@@ -1124,9 +1120,12 @@ if (recoveredCondition_27548)
 			}
 			if (ch_ceva[7] == 1)
 			{
-				Player passer = udat_.teams_[1 - team_id_].GetPasser();
-				int cx;
-				int cy;
+
+int cx, cy;
+Player passer;
+passer = udat_.teams_[1 - team_id_].GetPasser();
+
+
 				if (passer != null)
 				{
 					cx = passer.address_[0];
@@ -1137,10 +1136,8 @@ if (recoveredCondition_27548)
 					cx = udat_.ball_.address_[0];
 					cy = udat_.ball_.address_[1];
 				}
-				if (udat_.gm_.state_ != 5)
-				{
-					Cal_evaCoatMulti9block(coatEva_new_deffence, cx, cy, CEVA_PASSER_MP2_DIV);
-				}
+				if (udat_.gm_.state_ == 5) { return; }
+Cal_evaCoatMulti9block(coatEva_new_deffence, cx, cy, CEVA_PASSER_MP2_DIV);
 			}
 			if (ch_ceva[8] == 1)
 			{
@@ -2031,10 +2028,8 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 			Camera.ConvertGlobalToScreen(udat_.ball_.pos_, udat_.ball_.screen_pos_);
 			Camera.pos.x_ = udat_.ball_.screen_pos_[0];
 			Camera.pos.y_ = udat_.ball_.screen_pos_[1];
-			if (udat_.gm_.gameState_ != team_id_)
-			{
-				return;
-			}
+			if (udat_.gm_.gameState_ == team_id_) {
+
 			if (team_id_ == 0)
 			{
 				players_[players_.Length - 1].pos_.Set(FORMATION_KICKOFF[0].x_, 0f, FORMATION_KICKOFF[0].z_);
@@ -2044,40 +2039,39 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 				}
 				else
 				{
-					players_[players_.Length - 2].pos_.Set(0f - FORMATION_KICKOFF[1].x_, 0f, FORMATION_KICKOFF[1].z_);
+					players_[players_.Length - 2].pos_.Set(-(FORMATION_KICKOFF[1].x_), 0f, FORMATION_KICKOFF[1].z_);
 				}
 			}
 			else
 			{
-				players_[players_.Length - 1].pos_.Set(FORMATION_KICKOFF[0].x_, 0f, 0f - FORMATION_KICKOFF[0].z_);
+				players_[players_.Length - 1].pos_.Set(FORMATION_KICKOFF[0].x_, 0f, -(FORMATION_KICKOFF[0].z_));
 				if (players_[players_.Length - 2].formation_[0] <= 50)
 				{
-					players_[players_.Length - 2].pos_.Set(FORMATION_KICKOFF[1].x_, 0f, 0f - FORMATION_KICKOFF[1].z_);
+					players_[players_.Length - 2].pos_.Set(FORMATION_KICKOFF[1].x_, 0f, -(FORMATION_KICKOFF[1].z_));
 				}
 				else
 				{
-					players_[players_.Length - 2].pos_.Set(0f - FORMATION_KICKOFF[1].x_, 0f, 0f - FORMATION_KICKOFF[1].z_);
+					players_[players_.Length - 2].pos_.Set(-(FORMATION_KICKOFF[1].x_), 0f, 0f - FORMATION_KICKOFF[1].z_);
 				}
 			}
 			udat_.ball_.ReceiveBall(players_[players_.Length - 1]);
+}
 		}
 
 		public void SetPositionThrowIn()
 		{
-			if (udat_.gm_.gameState_ != team_id_)
-			{
-				return;
-			}
+			if (udat_.gm_.gameState_ == team_id_) {
+
 			int num;
 			int num2;
 			if (team_id_ == 0)
 			{
-				num = ((!(udat_.ball_.lineOutPos_.x_ < 0f)) ? 100 : 0);
+				if (((udat_.ball_.lineOutPos_.x_ < 0f))) { num = (0); } else { num = (100); }
 				num2 = (int)GameUtil.RateConvert(udat_.ball_.lineOutPos_.z_, -900f, 900f, 0f, 100f, true);
 			}
 			else
 			{
-				num = ((!(udat_.ball_.lineOutPos_.x_ > 0f)) ? 100 : 0);
+				if (((udat_.ball_.lineOutPos_.x_ > 0f))) { num = (0); } else { num = (100); }
 				num2 = (int)GameUtil.RateConvert(udat_.ball_.lineOutPos_.z_, 900f, -900f, 0f, 100f, true);
 			}
 			int num3 = int.MaxValue;
@@ -2112,6 +2106,7 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 			}
 			udat_.ball_.ReceiveBall(players_[num4], true);
 			udat_.ball_.SetStop();
+}
 		}
 
 		public void SetPositionGoalKick()
@@ -2150,10 +2145,8 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 
 		public void SetPositionConnerKick()
 		{
-			if (udat_.gm_.gameState_ != team_id_)
-			{
-				return;
-			}
+			if (udat_.gm_.gameState_ == team_id_) {
+
 			int num = 8;
 			players_[num].flag_ = BitUtil.On(players_[num].flag_, 1024);
 			if (team_id_ == 0)
@@ -2216,6 +2209,7 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 			}
 			udat_.ball_.flag_ = BitUtil.Off(udat_.ball_.flag_, 1);
 			Amefto_start();
+}
 		}
 
 		public void SetGoalState()

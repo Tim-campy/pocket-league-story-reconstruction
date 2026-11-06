@@ -812,13 +812,11 @@ namespace data
 
 		public static int GetPhyParamBarW(int param, int BAR_W_MAX)
 		{
+
 			int num = 0;
-			if (param < 500)
-			{
-				return GameUtil.RateConvert(param, 0, 500, BAR_W_MAX * 2 / 100, BAR_W_MAX * 70 / 100, true);
-			}
-			return GameUtil.RateConvert(param, 500, 1000, BAR_W_MAX * 70 / 100, BAR_W_MAX * 100 / 100, true);
-		}
+			if (param < 500) { num = GameUtil.RateConvert(param, 0, 500, BAR_W_MAX * 2 / 100, BAR_W_MAX * 70 / 100, true); } else { num = GameUtil.RateConvert(param, 500, 1000, BAR_W_MAX * 70 / 100, BAR_W_MAX * 100 / 100, true); }
+return num;
+}
 
 		public static int GetPositionEva(int positionId, int[] phyParam)
 		{

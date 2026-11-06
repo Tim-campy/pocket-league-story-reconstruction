@@ -435,10 +435,8 @@ namespace game
 			{
 				flag2 = false;
 			}
-			if (state_ != 0 || !flag2)
-			{
-				return;
-			}
+			if ((state_ == 0) && (flag2)) {
+
 			if (SoccerForm.DEBUG_GAMETIMESTOP == 0)
 			{
 				float num = gameTime_;
@@ -458,6 +456,7 @@ namespace game
 				gameTime_ = HALFTIME;
 				ChangeState(9);
 			}
+}
 		}
 
 		public void ChangeState(int next_state)
@@ -1208,8 +1207,8 @@ if (recoveredCondition_20510)
 				int num4 = GameUtil.Random(180) - 90;
 				int num5 = GameUtil.Random(40) + 10;
 				ball.v_.y_ = ball.v_.y_ * (float)num3 / 100f;
-				float num6 = 0f - ball.v_.x_;
-				float num7 = 0f - ball.v_.z_;
+				float num6 = -(ball.v_.x_);
+				float num7 = -(ball.v_.z_);
 				ball.v_.x_ = (float)((double)num6 * JMath.Cos(num4) - (double)num7 * JMath.Sin(num4));
 				ball.v_.z_ = (float)((double)num6 * JMath.Sin(num4) + (double)num7 * JMath.Cos(num4));
 				ball.v_.x_ = ball.v_.x_ * (float)num5 / 100f;

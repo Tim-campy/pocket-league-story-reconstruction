@@ -188,10 +188,8 @@ namespace game
 		public void Draw(Graphics g)
 		{
 			Draw_tenantEffect(g);
-			if (useTPlayers_.Size() <= 0)
-			{
-				return;
-			}
+			if (useTPlayers_.Size() > 0) {
+
 			TPlayer tPlayer = (TPlayer)useTPlayers_.ElementAt(0);
 			Camera.ConvertScreenToCamera(MapMain.MAPCHIP_SPOS[address_[1]][address_[0]], camera_pos);
 			camera_pos[0] += 30;
@@ -223,6 +221,7 @@ namespace game
 					break;
 				}
 			}
+}
 		}
 
 		public void Draw_tenantEffect(Graphics g)
@@ -253,10 +252,8 @@ apdat_.InsertGameObject(8, 0, camera_pos[1] + 1, 155 + val, 85 + val, 0, camera_
 					for (int l = 0; l < 2; l++)
 					{
 						Camera.ConvertScreenToCamera(MapMain.MAPCHIP_SPOS[address_[1] - k][address_[0] + l], camera_pos);
-						if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image2.GetHeight(), 60, image2.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))
-						{
-							apdat_.InsertGameObject(8, 0, camera_pos[1], 158, 88, val2, camera_pos[0], camera_pos[1], false, 0);
-						}
+						if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image2.GetHeight(), 60, image2.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { return; }
+apdat_.InsertGameObject(8, 0, camera_pos[1], 158, 88, val2, camera_pos[0], camera_pos[1], false, 0);
 					}
 				}
 			}

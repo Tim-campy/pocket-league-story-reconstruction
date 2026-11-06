@@ -1534,14 +1534,12 @@ return false;
 			{
 				GameUtil.Sub(passer.pos_, pos_, temp_vec);
 				float num = (float)JMath.Sqrt(temp_vec.x_ * temp_vec.x_ + temp_vec.z_ * temp_vec.z_);
-				if (!(num < 0.1f))
-				{
-					seb_startPos.Set(pos_);
-					seb_v.x_ = PlayerData.SLIDING_SPEED * temp_vec.x_ / num;
-					seb_v.z_ = PlayerData.SLIDING_SPEED * temp_vec.z_ / num;
-					Proc_sliding(passer);
-					apdat_.PlaySe(11);
-				}
+				if ((num < 0.1f)) { return; }
+seb_startPos.Set(pos_);
+seb_v.x_ = PlayerData.SLIDING_SPEED * temp_vec.x_ / num;
+seb_v.z_ = PlayerData.SLIDING_SPEED * temp_vec.z_ / num;
+Proc_sliding(passer);
+apdat_.PlaySe(11);
 			}
 			else
 			{
@@ -1611,15 +1609,13 @@ return false;
 							continue;
 						}
 						Player player = udat_.teams_[team_id_].players_[i];
-						if (!(player.pos_.x_ * pos_.x_ > 0f))
-						{
-							float num4 = 0f;
-							num4 = ((team_id_ != 0) ? ((float)JMath.Sqrt((player.pos_.z_ - -900f) * (player.pos_.z_ - -900f))) : ((float)JMath.Sqrt((player.pos_.z_ - 900f) * (player.pos_.z_ - 900f))));
-							if (num4 < 400f)
+						if ((player.pos_.x_ * pos_.x_ > 0f)) { return; }
+float num4 = 0f;
+num4 = ((team_id_ != 0) ? ((float)JMath.Sqrt((player.pos_.z_ - -900f) * (player.pos_.z_ - -900f))) : ((float)JMath.Sqrt((player.pos_.z_ - 900f) * (player.pos_.z_ - 900f))));
+if (num4 < 400f)
 							{
 								num3++;
 							}
-						}
 					}
 					if (num3 > 0)
 					{
@@ -2131,14 +2127,12 @@ break;
 
 		public int[][] GetCoatEva()
 		{
+
 			Team team = udat_.teams_[team_id_];
 			int[][] array = null;
-			if (team.ChWhichChargeTern())
-			{
-				return team.coatEva_new_offence;
-			}
-			return team.coatEva_new_deffence;
-		}
+			if (team.ChWhichChargeTern()) { array = team.coatEva_new_offence; } else { array = team.coatEva_new_deffence; }
+return array;
+}
 
 		public void Collision()
 		{
@@ -2375,14 +2369,12 @@ if (recoveredCondition_54620)
 			hitList.AddElement(this);
 			for (int i = 1; i < udat_.teams_[team_id_].players_.Length; i++)
 			{
-				if (i != p_id_)
-				{
-					Player player = udat_.teams_[team_id_].players_[i];
-					if (player.address_[0] - ball_.address_[0] >= -2 && player.address_[0] - ball_.address_[0] <= 2 && player.address_[1] - ball_.address_[1] >= -2 && player.address_[1] - ball_.address_[1] <= 2 && player.ChTrapOrHeading())
+				if (i == p_id_) { return; }
+Player player = udat_.teams_[team_id_].players_[i];
+if (player.address_[0] - ball_.address_[0] >= -2 && player.address_[0] - ball_.address_[0] <= 2 && player.address_[1] - ball_.address_[1] >= -2 && player.address_[1] - ball_.address_[1] <= 2 && player.ChTrapOrHeading())
 					{
 						hitList.AddElement(player);
 					}
-				}
 			}
 			for (int j = 1; j < udat_.teams_[1 - team_id_].players_.Length; j++)
 			{

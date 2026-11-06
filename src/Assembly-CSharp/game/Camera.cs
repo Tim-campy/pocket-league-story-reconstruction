@@ -847,10 +847,8 @@ if (cursor_pos.y_ > (float)(CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.V
 			ConvertGlobalToAddressMain(CAMERA_ADS_GPOS, temp_address);
 			FormManager formManager = FormManager.GetInstance();
 			FormBase currentForm = formManager.GetCurrentForm();
-			if (currentForm.GetId() != 9)
-			{
-				return;
-			}
+			if (currentForm.GetId() == 9) {
+
 			bool flag = false;
 			for (int i = 0; i < udat_.tAreas_.Length; i++)
 			{
@@ -899,6 +897,7 @@ if (cursor_pos.y_ > (float)(CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.V
 					subTenant_ = tenant;
 				}
 			}
+}
 		}
 	}
 }

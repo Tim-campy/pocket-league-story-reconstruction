@@ -495,9 +495,10 @@ namespace form
 			GameView instance = GameView.GetInstance();
 			SmartBeginPaint(g);
 			g.DrawImage(resTitle_.img[0], 0f, instance.GetGameHeight() - resTitle_.img[0].GetHeight());
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num20, num, num2, num3;
+
+
+			num20 = num = num2 = num3 = 0;
 			Draw_titleAnime(g);
 			apdat_.Draw_trophy(g, titleFrame_);
 			if (titleFrame_ >= title_anime[0])
@@ -563,13 +564,13 @@ namespace form
 			if (state_ == 0)
 			{
 				string[] array = null;
-				array = (Config.TRIAL_VERSION ? new string[2] { "スタート", "正式版へ" } : new string[2] { "スタート", "ハイスコア" });
+				if (!(Config.TRIAL_VERSION)) { array = new string[2] { "スタート", "ハイスコア" }; } else { array = new string[2] { "スタート", "正式版へ" }; }
 				if (state_ == 0)
 				{
 					int num17 = instance.GetGameHeight() - 70;
 					int num18 = num17 - 14 + 2;
 					int num19 = 22;
-					int num20 = 67;
+					num20 = 67;
 					g.DrawImage(resTitle_.img[1], num20, num18 - 7, 0, 0, 106, 31);
 					g.DrawImage(resTitle_.img[1], num20, num18 + 24, 0, 36, 106, 25);
 					int num21 = 94;
@@ -581,11 +582,9 @@ namespace form
 						{
 							g.SetColor(Graphics.GetColorOfRGB(44, 138, 255));
 							g.FillRect(num23 - num21 / 2, num18 + num19 * i + 4, num21, 16f);
-							if (!Config.TRIAL_VERSION || !Language.English())
-							{
-								apdat_.DrawSeb(g, 79 - num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 0);
-								apdat_.DrawSeb(g, 160 + num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 0);
-							}
+							if ((Config.TRIAL_VERSION) && (Language.English())) { return; }
+apdat_.DrawSeb(g, 79 - num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 0);
+apdat_.DrawSeb(g, 160 + num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 0);
 						}
 						if (i == selMenu_)
 						{
@@ -764,10 +763,8 @@ if (ta_data[i][2] < -10 || ta_data[i][2] > 250)
 					}
 			}
 			apeear_cnt++;
-			if (apeear_cnt < APPEAR_TIME)
-			{
-				return;
-			}
+			if (apeear_cnt >= APPEAR_TIME) {
+
 			apeear_cnt = 0;
 			SetAppearCnt();
 			int num = -1;
@@ -795,6 +792,7 @@ if (ta_data[i][2] < -10 || ta_data[i][2] > 250)
 					ta_data[num][3] = GameUtil.RateConvert(GameUtil.Random(100), 0, 99, 228, 238, true);
 				}
 			}
+}
 		}
 
 		private void SetAppearCnt()

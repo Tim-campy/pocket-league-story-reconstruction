@@ -461,7 +461,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 				coatW_ = tArea_.coatW_;
 				coatH_ = tArea_.coatH_ / (float)num2;
 				centerPos_.x_ = tArea_.centerPos_.x_;
-				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (0f - coatH_) / 2f - coatH_ * (float)id_;
+				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (-(coatH_)) / 2f - coatH_ * (float)id_;
 			}
 			else if (tArea_.tMode_ == 2)
 			{
@@ -469,7 +469,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 				coatW_ = tArea_.coatW_;
 				coatH_ = tArea_.coatH_ / (float)num3;
 				centerPos_.x_ = tArea_.centerPos_.x_;
-				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (0f - coatH_) / 2f - coatH_ * (float)id_;
+				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (-(coatH_)) / 2f - coatH_ * (float)id_;
 			}
 			else if (tArea_.tMode_ == 4)
 			{
@@ -477,14 +477,14 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 				coatW_ = tArea_.coatW_;
 				coatH_ = tArea_.coatH_ / (float)num4;
 				centerPos_.x_ = tArea_.centerPos_.x_;
-				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (0f - coatH_) / 2f - coatH_ * (float)id_;
+				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (-(coatH_)) / 2f - coatH_ * (float)id_;
 			}
 			else if (tArea_.tMode_ == 3)
 			{
 				int num5 = 1;
 				coatW_ = tArea_.coatW_ / (float)num5;
 				coatH_ = tArea_.coatH_;
-				centerPos_.x_ = tArea_.centerPos_.x_ + tArea_.coatW_ / 2f + (0f - coatW_) / 2f - coatW_ * (float)id_;
+				centerPos_.x_ = tArea_.centerPos_.x_ + tArea_.coatW_ / 2f + (-(coatW_)) / 2f - coatW_ * (float)id_;
 				centerPos_.z_ = tArea_.centerPos_.z_;
 			}
 		}

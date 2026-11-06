@@ -562,6 +562,8 @@ namespace kairo.unity.ui
 		{
 			if (!g.IsRenderGUIMode())
 			{
+int i;
+
 				if (meshId != -1)
 				{
 					if (g.meshManList_[meshId] != null)
@@ -571,7 +573,7 @@ namespace kairo.unity.ui
 				}
 				else
 				{
-					for (int i = 0; i < g.meshManList_.Length; i++)
+					for (i = 0; i < g.meshManList_.Length; i++)
 					{
 						if (g.meshManList_[i] != null)
 						{

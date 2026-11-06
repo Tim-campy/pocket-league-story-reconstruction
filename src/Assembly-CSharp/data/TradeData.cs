@@ -113,6 +113,7 @@ if (BitUtil.Check(flag_, 1))
 
 		public int GetSuccessRate()
 		{
+
 			TeamData teamData = AppData.GetInstance().tData_[0];
 			int warPotential_ = teamData.warPotential_;
 			int fanEvaToCommonValue = FanActData.GetFanEvaToCommonValue(2);
@@ -121,14 +122,16 @@ if (BitUtil.Check(flag_, 1))
 			int num3 = 0;
 			if (num2 >= 0)
 			{
-				return GameUtil.RateConvert(num2, 0, 20, 50, 95, true);
+				{ num3 = GameUtil.RateConvert(num2, 0, 20, 50, 95, true); goto resultExit; }
 			}
 			if (num2 >= -20)
 			{
-				return GameUtil.RateConvert(num2, -20, 0, 5, 50, true);
+				{ num3 = GameUtil.RateConvert(num2, -20, 0, 5, 50, true); goto resultExit; }
 			}
-			return 5;
-		}
+			{ num3 = 5;  }
+
+resultExit: return num3;
+}
 
 		public static bool IsExistNew()
 		{
