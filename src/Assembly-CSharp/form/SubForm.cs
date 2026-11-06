@@ -3869,15 +3869,15 @@ coalescedSwitchExit114919: ;
 				g.FillRect(0f, 0f, gameWidth, gameHeight);
 				int num15 = 2;
 				int num16 = 0;
-				int num22;
+				int r;
 int num17;
 int num18;
 
-				num22 = num17 = num18 = 0;
+				r = num17 = num18 = 0;
 				int num19 = 0;
 				while (num16 < gameHeight - 100)
 				{
-					int r = GameUtil.RateConvert(num16, 0, 140, 23, 75, true);
+					r = GameUtil.RateConvert(num16, 0, 140, 23, 75, true);
 					num17 = GameUtil.RateConvert(num16, 0, 140, 32, 123, true);
 					num18 = GameUtil.RateConvert(num16, 0, 140, 58, 168, true);
 					g.SetColor(Graphics.GetColorOfRGB(r, num17, num18));
@@ -3899,7 +3899,7 @@ int num18;
 				g.DrawImage(apdat_.resCom2_.img[191], gameWidth / 2 - 96, gameHeight - 31 + num14);
 				int num20 = gameWidth / 2 - 120;
 				int num21 = gameHeight - 240;
-				num22 = 14;
+				int num22 = 14;
 				int num23 = 10;
 				int num24 = 0;
 				int num25 = 0;
@@ -3926,7 +3926,7 @@ int num18;
 							{
 								num24 = num;
 							}
-							num25 = ((num24 < num) ? 1 : 0);
+							if ((num24 < num)) { num25 = 1; } else { num25 = 0; }
 						}
 					}
 					apdat_.DrawSeb(g, coalescedValue, num, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 4);
@@ -3972,14 +3972,12 @@ int num18;
 					g.SetRenderMode(1, 255, 255);
 					for (int num35 = 0; num35 < fw_zsort.Length; num35++)
 					{
-						if (fw_zsort[num35][1] != 0)
-						{
-							int num36 = fw_zsort[num35][0];
-							int num37 = FW_ANIME[3] - fw_cnt[num36];
-							int num38 = 0;
-							num38 = ((num37 >= FW_ANIME[0]) ? ((num37 < FW_ANIME[1]) ? 1 : ((num37 >= FW_ANIME[2]) ? 3 : 2)) : 0);
-							apdat_.DrawSeb(g, fw_pos[num36][0] + num34, fw_pos[num36][1] + num14, apdat_.resCom2_.seb[69], apdat_.resCom2_.img[82], num38);
-						}
+						if (fw_zsort[num35][1] == 0) { continue; }
+int num36 = fw_zsort[num35][0];
+int num37 = FW_ANIME[3] - fw_cnt[num36];
+int num38 = 0;
+if ((num37 < FW_ANIME[0])) { num38 = (0); } else { if ((num37 < FW_ANIME[1])) { num38 = 1; } else { if ((num37 < FW_ANIME[2])) { num38 = (2); } else { num38 = (3); } } }
+apdat_.DrawSeb(g, fw_pos[num36][0] + num34, fw_pos[num36][1] + num14, apdat_.resCom2_.seb[69], apdat_.resCom2_.img[82], num38);
 					}
 					g.SetRenderMode(0, 255, 0);
 				}
@@ -4084,8 +4082,7 @@ coalescedSwitchExit121148: ;
 					{
 						apdat_.DrawSeb(g, num2 + 114 + 2, num3 + 14, apdat_.resCom2_.seb[65], apdat_.resCom2_.img[75], fanActData.rank_);
 					}
-					if (fanActData.state_ != 2)
-					{
+					if (fanActData.state_ == 2) { } else {
 						int num43 = GameUtil.RateConvert(fanActData.rank_, 0, 6, fanActData.cost_[0], fanActData.cost_[1], true);
 						apdat_.DrawSeb(g, num2 + 150, num3 + 1, apdat_.resCom2_.seb[83], apdat_.resCom2_.img[94], fanActData.costType_);
 						if (udat_.ChResearchPoin(fanActData.costType_, num43))
