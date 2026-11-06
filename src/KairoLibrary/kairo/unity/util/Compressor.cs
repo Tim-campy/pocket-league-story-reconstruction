@@ -176,7 +176,14 @@ for (int i = 0; i < weights_.Length; i++)
 					Node node2 = node;
 					while (node2.left_ != null)
 					{
-						node2 = ((_readBit() != 0) ? node2.right_ : node2.left_);
+						if (!((_readBit() != 0)))
+						{
+							node2 = node2.left_;
+						}
+						else
+						{
+							node2 = node2.right_;
+						}
 					}
 					byteArrayOutputStream.Write((byte)node2.value_);
 				}

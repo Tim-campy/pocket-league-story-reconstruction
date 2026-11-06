@@ -676,7 +676,14 @@ recoveredSwitchExit_11784: ; }
 						}
 						if (num == 4)
 						{
-							num3 = ((width_ != -1f) ? (width_ - num5) : (num3 - num5));
+							if (!((width_ != -1f)))
+							{
+								num3 = (num3 - num5);
+							}
+							else
+							{
+								num3 = (width_ - num5);
+							}
 						}
 						for (int m = num6; m < fastVector.Size(); m++)
 						{
@@ -727,11 +734,25 @@ recoveredSwitchExit_11784: ; }
 				{
 					if (num == 2)
 					{
-						num3 = ((width_ != -1f) ? (num3 + (width_ - num3) / 2f - num5 / 2f) : (num3 - num5 / 2f));
+						if (!((width_ != -1f)))
+						{
+							num3 = (num3 - num5 / 2f);
+						}
+						else
+						{
+							num3 = (num3 + (width_ - num3) / 2f - num5 / 2f);
+						}
 					}
 					if (num == 4)
 					{
-						num3 = ((width_ != -1f) ? (width_ - num5) : (num3 - num5));
+						if (!((width_ != -1f)))
+						{
+							num3 = (num3 - num5);
+						}
+						else
+						{
+							num3 = (width_ - num5);
+						}
 					}
 					for (int n = num6; n < fastVector.Size(); n++)
 					{
@@ -742,18 +763,10 @@ recoveredSwitchExit_11784: ; }
 					}
 					num4 += (float)height;
 				}
-				switch (num2)
-				{
-				case 32:
-					num4 = ((height_ != -1f) ? ((height_ - num4) / 2f) : ((0f - num4) / 2f));
-					break;
-				case 64:
-					num4 = ((height_ != -1f) ? (height_ - num4) : (0f - num4));
-					break;
-				default:
-					num4 = 0f;
-					break;
-				}
+				if ((num2 == 32)) { num4 = ((height_ != -1f) ? ((height_ - num4) / 2f) : ((-(num4)) / 2f));
+					 } else if ((num2 == 64)) { num4 = ((height_ != -1f) ? (height_ - num4) : (0f - num4));
+					 } else { num4 = 0f;
+					 }
 				if (height_ != -1f && num4 < 0f)
 				{
 					num4 = 0f;
