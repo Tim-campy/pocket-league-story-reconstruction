@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**4,995 de 5,245 métodos matched (95.23%).** 871,497 bytes de IL nos assemblies alvo.
-562,976 bytes IL matched (64.60%).
+**4,996 de 5,245 métodos matched (95.25%).** 871,497 bytes de IL nos assemblies alvo.
+565,226 bytes IL matched (64.86%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3133 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 249 |
+| decompiled | 248 |
 | equivalent | 0 |
-| matched | 4995 |
+| matched | 4996 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1788 / 91.32% | 350076 / 58.19% |
+| `Assembly-CSharp` | 1958 | 601603 | 1789 / 91.37% | 352326 / 58.56% |
 | `KairoLibrary` | 3287 | 269894 | 3207 / 97.57% | 212900 / 78.88% |
 
 ## Namespaces
@@ -72,7 +72,7 @@ KairoLibrary: 3133 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `main` | 223 | 35448 | 210 / 94.17% | 23225 / 65.52% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `surface` | 122 | 26518 | 107 / 87.70% | 14246 / 53.72% |
+| `surface` | 122 | 26518 | 108 / 88.52% | 16496 / 62.21% |
 | `system` | 20 | 1636 | 19 / 95.00% | 1036 / 63.33% |
 | `system.billing` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
 | `system.billing.ui` | 153 | 13782 | 145 / 94.77% | 10122 / 73.44% |
@@ -154,7 +154,7 @@ KairoLibrary: 3133 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::native.WebBoxPlugin+<SetViewRect>c__AnonStorey4` | 2 | 85 | 2 / 100.00% | 85 / 100.00% |
 | `Assembly-CSharp::native.WebBoxPlugin+<SetVisible>c__AnonStorey6` | 2 | 43 | 2 / 100.00% | 43 / 100.00% |
 | `Assembly-CSharp::panel.MainPanel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 25 / 86.21% | 4219 / 43.56% |
+| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 26 / 89.66% | 6469 / 66.79% |
 | `Assembly-CSharp::surface.GameView` | 66 | 13578 | 56 / 84.85% | 7122 / 52.45% |
 | `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 8 / 100.00% | 1729 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffect` | 5 | 821 | 4 / 80.00% | 472 / 57.49% |

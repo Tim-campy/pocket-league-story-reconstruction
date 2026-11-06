@@ -966,10 +966,8 @@ if (recoveredCondition_12162)
 				}
 				else
 				{
-					if (mode_ != 2)
-					{
-						return;
-					}
+					if (mode_ == 2) {
+
 					int num12 = 0;
 					int num13 = num3 - 85;
 					int num14 = num4 - 46;
@@ -1028,6 +1026,7 @@ if (recoveredCondition_12162)
 						DrawWatch(g, num3 + num17, num14 + num18);
 						DrawBattery(g, num3 + 2 - 28, num14 - 20);
 					}
+}
 				}
 			}
 			catch (Exception)
