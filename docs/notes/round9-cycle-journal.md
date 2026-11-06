@@ -11,3 +11,4 @@
 | 7 | Assembly-CSharp / bne.un + br / beq | Braco verdadeiro vazio e else preservam o join comum; return direto e controle negativo | INCONCLUSIVA: nenhum candidato autorizado pelo modelo/mapeamento; 0 tentativas da regra, 0 avancos | 0 | 0 |
 | 8 | Assembly-CSharp / br / ret | Substituir uma guarda de retorno por braco vazio e else para cair no join do if | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 999 |
 | 9 | KairoLibrary / brfalse / brtrue.s + ret | Corpo sob teste positivo de render com ramo GUI em else preserva saida final | Avanco parcial; nenhum novo matched; 1 tentativas da regra, 1 avancos | 0 | 0 |
+| 10 | KairoLibrary / ldc.i4.0 + ceq / brtrue.s | Materializar condicao como valor bool antes do if preserva negacao ceq | Nenhum candidato compilado avancou; 1 tentativas da regra, 0 avancos | 0 | 0 |
