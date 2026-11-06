@@ -198,10 +198,8 @@ namespace game
 			}
 			else
 			{
-				if (state_ != 12)
-				{
-					return;
-				}
+				if (state_ == 12) {
+
 				if (tArea_.tMode_ == 2 && trainingWait_ > 0)
 				{
 					trainingWait_--;
@@ -221,6 +219,7 @@ namespace game
 						playerData.StockExp(trainigGetExp);
 					}
 				}
+}
 			}
 		}
 
@@ -237,14 +236,13 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 			}
 			else
 			{
-				if (tArea_.tMode_ != 3 || state_ != 12)
-				{
-					return;
-				}
-				int num2;
-				int num3;
-				int num4;
-				int num = (num2 = (num3 = (num4 = 0)));
+				if ((tArea_.tMode_ == 3) && (state_ == 12)) {
+
+				int num, num2, num3, num4;
+
+
+
+				num = num2 = num3 = num4 = 0;
 				int num5 = 0;
 				if (tArea_.pId_ == 3)
 				{
@@ -268,6 +266,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 					num5 = camera_pos[1] + MapMain.GOAL2_PARTS_POS[k][1] + num2 + MapMain.GOAL2_PARTS_GRA[k][2];
 					apdat_.InsertGameObject(8, 0, num5, MapMain.GOAL2_PARTS_GRA[k][0], MapMain.GOAL2_PARTS_GRA[k][1], 0, num3, num4, false, 0);
 				}
+}
 			}
 		}
 
@@ -328,10 +327,8 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 				}
 				else
 				{
-					if (tArea_.tMode_ != 3)
-					{
-						return;
-					}
+					if (tArea_.tMode_ == 3) {
+
 					for (int m = 0; m < tPlayerList_.Size(); m++)
 					{
 						TPlayer tPlayer5 = (TPlayer)tPlayerList_.ElementAt(m);
@@ -344,6 +341,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 						tPlayer5.AddCommandShootOlderRegist();
 						tPlayer5.AddCommandShootOlder();
 					}
+}
 				}
 			}
 			else if (state_ == 12)
@@ -688,10 +686,8 @@ return tBall3;
 			}
 			else
 			{
-				if (tArea_.tMode_ != 3)
-				{
-					return;
-				}
+				if (tArea_.tMode_ == 3) {
+
 				for (int m = 0; m < tPlayerList_.Size(); m++)
 				{
 					TPlayer tPlayer5 = (TPlayer)tPlayerList_.ElementAt(m);
@@ -703,6 +699,7 @@ return tBall3;
 					tPlayer5.AddCommandShootOlderRegist();
 					tPlayer5.AddCommandShootOlder();
 				}
+}
 			}
 		}
 

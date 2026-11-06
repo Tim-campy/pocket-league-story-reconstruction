@@ -72,7 +72,8 @@ def local_slot(instruction, prefix_op):
 def syntax_identity():
     return hashlib.sha256(b''.join((ROOT / 'tools' / name).read_bytes() for name in (
         'Round7TransformSyntax.cs', 'Round7NewRules.cs', 'Round7AliasRules.cs',
-        'Round7SmcsRules.cs', 'Round7RoslynRules.cs'))).hexdigest()
+        'Round7SmcsRules.cs', 'Round7RoslynRules.cs',
+        'round7_smcs_cycle_rules.cs', 'Round7RoslynCycleRules.cs'))).hexdigest()
 
 
 def model_approval(prediction, expected_types):

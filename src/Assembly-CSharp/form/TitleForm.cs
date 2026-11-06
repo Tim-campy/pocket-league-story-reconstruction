@@ -916,10 +916,8 @@ udat_.DrawDispPlayer(g, ta_data[num4][2], ta_data[num4][3] + num3);
 				return;
 			}
 			kairoAdClickNum_ = 0;
-			if (apdat_.sysSave_.bins[5].Length <= 0)
-			{
-				return;
-			}
+			if (apdat_.sysSave_.bins[5].Length > 0) {
+
 			ByteArrayInputStream byteArrayInputStream = null;
 			try
 			{
@@ -934,6 +932,7 @@ udat_.DrawDispPlayer(g, ta_data[num4][2], ta_data[num4][3] + num3);
 				}
 				byteArrayInputStream = null;
 			}
+}
 		}
 
 		public void UpdateKairoAdClickNum()

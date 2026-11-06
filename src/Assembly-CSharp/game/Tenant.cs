@@ -135,10 +135,8 @@ namespace game
 				return;
 			}
 			TenantData tenantData = null;
-			if (tenantDataId_ == -1)
-			{
-				return;
-			}
+			if (tenantDataId_ != -1) {
+
 			tenantData = apdat_.tenantData_[tenantDataId_];
 			if (state_ == 2)
 			{
@@ -183,6 +181,7 @@ namespace game
 					udat_.SetTenantIn(tPlayer);
 				}
 			}
+}
 		}
 
 		public void Draw(Graphics g)
@@ -198,10 +197,8 @@ namespace game
 			{
 				apdat_.InsertGameObject(10, tPlayer.trainingId_[0], camera_pos[1] + 60, 0, 0, 0, camera_pos[0], camera_pos[1], false, 0);
 			}
-			if (useTPlayers_.Size() <= 1 || apdat_.save_.ints[12] != 1)
-			{
-				return;
-			}
+			if ((useTPlayers_.Size() > 1) && (apdat_.save_.ints[12] == 1)) {
+
 			camera_pos[1] += 40;
 			int num = 0;
 			draw_cnt = 0;
@@ -221,6 +218,7 @@ namespace game
 					break;
 				}
 			}
+}
 }
 		}
 

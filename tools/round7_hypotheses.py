@@ -32,6 +32,8 @@ def main():
         {'status':'REFUTADA','hypothesis':'Todo elemento foreach cujo primeiro uso ocorre com pilha ocupada precisa de slot Roslyn','evidence':'Ampliacao produziu oito previsoes completas incorretas nos matched; retirada. A regra adotada exige prova mais estreita por uso do endereco da struct.'},
         {'status':'CONFIRMADA','hypothesis':'O modelo smcs recupera os 43 casos mapeados incompletos anteriores','evidence':'43/43 completos e exatos, incluindo sete storeys; validacao integral 1617/1617 previsoes completas corretas nos 1697 corpos matched.'},
         {'status':'REFUTADA','hypothesis':'Ordem textual dos tipos basta para numerar todos os metodos anonimos smcs','evidence':'BillingManager era previsto como m__E em vez de m__10; codigo class.cs e RootContext confirmam emissao topologica de classes base antes das derivadas.'}])
+    hypotheses.append({'status':'REFUTADA','hypothesis':'Ultimo comando de um bloco lexical implica fim do metodo e autoriza tail-early-return',
+        'evidence':'Em SubForm._draw2 o br original 9268 vai a 9358 (incremento do slot47); em Player.Act_dribble o br638 vai a776 (incremento do slot6). A regra antiga inseriu ret em corpos ainda divergentes; nenhum matched foi perdido. A nova regra exige fim comprovado do metodo; retorno em laco e diagnosticado separadamente.'})
     output=ROOT/'reports/round7-hypotheses.json'
     output.write_text(json.dumps({'hypotheses':hypotheses},indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
 

@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**4,946 de 5,245 métodos matched (94.30%).** 871,497 bytes de IL nos assemblies alvo.
-453,934 bytes IL matched (52.09%).
+**4,953 de 5,245 métodos matched (94.43%).** 871,497 bytes de IL nos assemblies alvo.
+468,836 bytes IL matched (53.80%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3132 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 298 |
+| decompiled | 291 |
 | equivalent | 0 |
-| matched | 4946 |
+| matched | 4953 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1740 / 88.87% | 242897 / 40.37% |
+| `Assembly-CSharp` | 1958 | 601603 | 1747 / 89.22% | 257799 / 42.85% |
 | `KairoLibrary` | 3287 | 269894 | 3206 / 97.54% | 211037 / 78.19% |
 
 ## Namespaces
@@ -37,8 +37,8 @@ KairoLibrary: 3132 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 246 / 96.47% | 21668 / 82.22% |
-| `form` | 371 | 250649 | 306 / 82.48% | 65297 / 26.05% |
-| `game` | 441 | 202949 | 365 / 82.77% | 88225 / 43.47% |
+| `form` | 371 | 250649 | 311 / 83.83% | 79089 / 31.55% |
+| `game` | 441 | 202949 | 367 / 83.22% | 89335 / 44.02% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
@@ -115,16 +115,16 @@ KairoLibrary: 3132 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::data.TradeData` | 13 | 757 | 12 / 92.31% | 708 / 93.53% |
 | `Assembly-CSharp::data.TrainingData` | 14 | 762 | 14 / 100.00% | 762 / 100.00% |
 | `Assembly-CSharp::form.BootForm` | 21 | 7712 | 17 / 80.95% | 3446 / 44.68% |
-| `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 15 / 71.43% | 15850 / 34.84% |
+| `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 18 / 85.71% | 28519 / 62.68% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
 | `Assembly-CSharp::form.GameForm` | 51 | 16474 | 43 / 84.31% | 7569 / 45.95% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 46 / 95.83% | 2178 / 55.76% |
 | `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
 | `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 48 / 77.42% | 11879 / 35.31% |
 | `Assembly-CSharp::form.SpForm` | 19 | 7256 | 13 / 68.42% | 4053 / 55.86% |
-| `Assembly-CSharp::form.SubForm` | 95 | 125345 | 75 / 78.95% | 13888 / 11.08% |
+| `Assembly-CSharp::form.SubForm` | 95 | 125345 | 76 / 80.00% | 14898 / 11.89% |
 | `Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0` | 3 | 227 | 2 / 66.67% | 31 / 13.66% |
-| `Assembly-CSharp::form.TitleForm` | 24 | 8500 | 20 / 83.33% | 4310 / 50.71% |
+| `Assembly-CSharp::form.TitleForm` | 24 | 8500 | 21 / 87.50% | 4423 / 52.04% |
 | `Assembly-CSharp::game.Ball` | 18 | 15652 | 13 / 72.22% | 4018 / 25.67% |
 | `Assembly-CSharp::game.Camera` | 31 | 7399 | 27 / 87.10% | 3295 / 44.53% |
 | `Assembly-CSharp::game.DelayEvent` | 4 | 456 | 3 / 75.00% | 286 / 62.72% |
@@ -136,7 +136,7 @@ KairoLibrary: 3132 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.Player` | 63 | 32346 | 50 / 79.37% | 12124 / 37.48% |
 | `Assembly-CSharp::game.TArea` | 14 | 4070 | 11 / 78.57% | 1166 / 28.65% |
 | `Assembly-CSharp::game.TBall` | 14 | 5087 | 13 / 92.86% | 3298 / 64.83% |
-| `Assembly-CSharp::game.TGroupArea` | 14 | 7524 | 8 / 57.14% | 1838 / 24.43% |
+| `Assembly-CSharp::game.TGroupArea` | 14 | 7524 | 10 / 71.43% | 2948 / 39.18% |
 | `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 32 / 94.12% | 3701 / 27.03% |
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 33 / 78.57% | 14921 / 67.06% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 11 / 78.57% | 792 / 29.42% |

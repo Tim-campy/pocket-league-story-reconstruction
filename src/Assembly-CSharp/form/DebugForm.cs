@@ -3484,10 +3484,8 @@ PlayerData.Employ(l);
 			}
 			else
 			{
-				if (state_ != 11)
-				{
-					return;
-				}
+				if (state_ == 11) {
+
 				string[][] array15 = new string[2][]
 				{
 					new string[2]
@@ -3507,6 +3505,7 @@ PlayerData.Employ(l);
 						g.DrawString("○", 5f, 10 + num8 * 14);
 					}
 				}
+}
 			}
 		}
 
@@ -4040,10 +4039,8 @@ PlayerData.Employ(l);
 			}
 			else
 			{
-				if (state_ != 6)
-				{
-					return;
-				}
+				if (state_ == 6) {
+
 				string[][] array11 = new string[3][]
 				{
 					new string[2]
@@ -4072,6 +4069,7 @@ PlayerData.Employ(l);
 						g.DrawString("○", 5f, 10 + num5 * 14);
 					}
 				}
+}
 			}
 		}
 
@@ -4307,10 +4305,8 @@ PlayerData.Employ(l);
 			}
 			else
 			{
-				if (state_ != 5)
-				{
-					return;
-				}
+				if (state_ == 5) {
+
 				string[][] array8 = new string[1][] { new string[2]
 				{
 					"<< 次のページへ" + state_ + " >> ",
@@ -4333,6 +4329,7 @@ PlayerData.Employ(l);
 				{
 					g.DrawString(array9[num8], 20f, 10 + num8 * 14 + 14);
 				}
+}
 			}
 		}
 

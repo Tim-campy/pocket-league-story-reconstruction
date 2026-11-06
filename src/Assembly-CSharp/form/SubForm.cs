@@ -11462,10 +11462,8 @@ if (pageMax != -1)
 			}
 			else
 			{
-				if (clearPoint_mode != 6)
-				{
-					return;
-				}
+				if (clearPoint_mode == 6) {
+
 				formMan_.Pop();
 				apdat_.PlayBgm(0);
 				apdat_.ExecEvent(6, null, null);
@@ -11505,6 +11503,7 @@ if (pageMax != -1)
 				{
 					Log.Info(t);
 				}
+}
 			}
 }
 		}

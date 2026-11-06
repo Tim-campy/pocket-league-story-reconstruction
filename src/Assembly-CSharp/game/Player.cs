@@ -1911,10 +1911,8 @@ if (num4 < 400f)
 				}
 				else
 				{
-					if ((team_id_ != 0 || !(pos_.z_ < Map.COAT_GOAL1_IN_GLOBALPOS[1].z_)) && (team_id_ != 1 || !(pos_.z_ > Map.COAT_GOAL2_IN_GLOBALPOS[1].z_)))
-					{
-						return;
-					}
+					if (((team_id_ == 0) && ((pos_.z_ < Map.COAT_GOAL1_IN_GLOBALPOS[1].z_))) || ((team_id_ == 1) && ((pos_.z_ > Map.COAT_GOAL2_IN_GLOBALPOS[1].z_)))) {
+
 					goalPos_.x_ = pos_.x_;
 					if (team_id_ == 0)
 					{
@@ -1945,6 +1943,7 @@ if (num4 < 400f)
 						notMoveCnt_ = 0;
 						Move(goalPos_, 4);
 					}
+}
 				}
 			}
 			else

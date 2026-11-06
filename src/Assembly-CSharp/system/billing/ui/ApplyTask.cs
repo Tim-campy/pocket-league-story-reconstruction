@@ -71,10 +71,8 @@ namespace system.billing.ui
 			}
 			else
 			{
-				if (gift_.Length() <= 0)
-				{
-					return;
-				}
+				if (gift_.Length() > 0) {
+
 				if (gift_.IndexOf(9) != -1)
 				{
 					string[] array = StringUtil.Split(gift_.ToString(), "\t");
@@ -160,6 +158,7 @@ namespace system.billing.ui
 						name_ = new SecureString(billingItem3.GetName());
 					}
 				}
+}
 			}
 		}
 

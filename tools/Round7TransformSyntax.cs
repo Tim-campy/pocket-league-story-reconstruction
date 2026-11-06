@@ -139,6 +139,19 @@ public static partial class Round7TransformSyntax {
         AddRound7CalculatedParameterAlias(input,text,mapped,methodBody,model,point,patches,seen);
         AddRound7SmcsRules(input,text,mapped,methodBody,model,point,patches,seen);
         AddRound7RoslynRules(input,text,mapped,methodBody,model,point,patches,seen);
+        var cycleRules=new List<string>();
+        if(input.TryGetProperty("round7_cycle_rules",out var learned)&&learned.ValueKind==JsonValueKind.Array)
+            cycleRules.AddRange(learned.EnumerateArray().Where(v=>v.ValueKind==JsonValueKind.String).Select(v=>v.GetString()));
+        if(input.TryGetProperty("round7_cycle_rule",out var selectedCycle)&&selectedCycle.ValueKind==JsonValueKind.String)
+            cycleRules.Add(selectedCycle.GetString());
+        foreach(string cycleRule in cycleRules.Where(r=>!string.IsNullOrEmpty(r)).Distinct()) {
+            var properties=input.EnumerateObject().ToDictionary(p=>p.Name,p=>p.Value.Clone());
+            properties["round7_cycle_rule"]=JsonSerializer.SerializeToElement(cycleRule);
+            using(var cycleRequest=JsonDocument.Parse(JsonSerializer.Serialize(properties))) {
+                AddRound7SmcsCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7RoslynCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+            }
+        }
         var nodes=mapped.DescendantNodesAndSelf().Where(n=>!n.Ancestors().TakeWhile(a=>a!=mapped).OfType<AnonymousFunctionExpressionSyntax>().Any(a=>!a.FullSpan.Contains(point))).ToArray();
         // Local-table order is a source declaration-order hypothesis. Initializers
         // remain at their old command positions; only declarations are hoisted.
@@ -253,7 +266,7 @@ public static partial class Round7TransformSyntax {
                 if(Terminates(branch.Else.Statement))add("guard-"+JumpKind(branch.Else.Statement)+"-reverse",branch,"if ("+Negate(branch.Condition,model)+") "+branch.Else.Statement+"\n"+BodyText(branch.Statement));
             }
             bool tailInBlock=branch.Parent is BlockSyntax parentBlock && parentBlock.Statements.Last()==branch;
-            if(branch.Else==null&&tailInBlock&&symbol!=null&&symbol.ReturnsVoid) {
+            if(branch.Else==null&&tailInBlock&&symbol!=null&&symbol.ReturnsVoid&&Round7TailToMethod(branch,methodBody)) {
                 add("tail-early-return",branch,"if ("+Negate(branch.Condition,model)+") { return; }\n"+BodyText(branch.Statement));
             }
             ExpressionSyntax condition=Unwrap(branch.Condition);bool negative=false;
