@@ -320,3 +320,42 @@ stop condition. Each rolling block of five cycles includes KairoLibrary. REA
 managed evidence at session start is retained in reports/round8-rea-start.json.
 No original artifact, generated class, assembly byte or nondeterministic field
 is copied or normalized by these source transformations.
+
+## Round 9: control reconstruction and compiler-confirmed source changes
+
+The production compilers, options and references remain unchanged from round 8.
+REA managed artifact evidence is retained in `reports/round9-rea-start.json` and
+`reports/round9-control-il-REA-identity.json`. The original artifacts stay read-only.
+
+The smcs control extractor reads IL independently of the source AST reader.
+`tools/round9_control_il.py` records every instruction, branch width, polarity,
+join and EH boundary. Unsupported or ambiguous lexical ownership is incomplete.
+`tools/Round9ControlAst.cs` reads source only; Roslyn 5.8 and the already installed
+.NET 10.0.10 runtime are analysis dependencies, never production compilers here.
+The desktop assembly identity comparer is necessary for analysis-only unification
+of Microsoft mscorlib 2.0.0 references and the Unity 2.0.5 consumer profile; its
+separate historical-compiler fixture is `reports/round9-control-ast-identity-fixture.json`.
+No production reference was changed to resolve the modern analysis diagnostic.
+
+The frozen pre-C matched corpus contains 1,788 smcs bodies: 1,253 independently
+complete tree pairs agree, and all 1,422 complete source emission plans agree.
+The unique source-leaf association also passes all 1,253 complete matched pairs.
+Source text and UTF-16 leaf spans are authenticated against the own-compilation
+receipt. The original skeleton guides C# control only; no original CIL is emitted
+or inserted into the reconstruction. Full method/header/locals/EH verification
+remains the only acceptance oracle. See `docs/notes/round9-control-rewrite.md`
+and `reports/round9-control-results.json` for the actual Part-C result.
+
+Recovered unused local names such as `recoveredUnusedSlot4` are synthetic. Their
+types and order follow the original signature and zero recorded IL accesses;
+the names are not claimed to be historical. A smcs fixture confirms that these
+uninitialized declarations can restore the signature without adding instructions.
+
+Round 9 separates the required A-C steps from at most 40 autonomous D cycles.
+The stop counter is five consecutive D cycles without a new matched method and
+starts only after the prepared queue is empty. A pending prepared patch is not
+silently discarded to start the counter. The KairoLibrary rolling five-cycle
+quota and the two-consecutive-primary-method limit remain active. Incomplete
+slot predictions retain the 12-variant/pass, 24-variant/method/cycle budget.
+Complete incompatible predictions still refuse compilation. Every commit
+requires fresh full verification and compilation of the Git index sources.

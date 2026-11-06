@@ -33,7 +33,19 @@ def atomic_json(path,data):
  path=Path(path);path.parent.mkdir(parents=True,exist_ok=True);tmp=path.with_name(path.name+'.planner-tmp-'+str(os.getpid()))
  if tmp.exists():raise GuardError('Temporary output already exists: '+str(tmp))
  tmp.write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n');os.replace(tmp,path)
-def qualified(assembly,mid):return assembly+'::'+mid
+def official_method_index(receipt):
+ """Use the verifier's stable identity mapping, never rewrite a signature.
+
+ Ledger keys may render nested types with '+' while DTO stable_id uses '/'.
+ The receipt binds those representations to one verified method explicitly.
+ """
+ result={}
+ for ledger_key,proof in receipt['methods'].items():
+  stable_id=proof.get('stable_id')
+  if not isinstance(stable_id,str) or not stable_id:raise GuardError('Official receipt method lacks stable_id: '+str(ledger_key))
+  if stable_id in result:raise GuardError('Ambiguous official stable_id: '+stable_id)
+  result[stable_id]=(ledger_key,proof)
+ return result
 
 def stop_reason(cfg,journal):
  cycles=[c for c in journal.get('cycles',[]) if c.get('phase')=='D']
@@ -130,7 +142,7 @@ def load_state(*,check_integration=True):
   dump={}
   for label in ('original','rebuilt'):
    path=folder/(label+'-methods.json');relative=path.relative_to(ROOT).as_posix();data=tracked(relative);dump[label]={m['stable_id']:m for m in data['selected_methods']}
-  assemblies[assembly]={'receipt':receipt,**dump}
+  assemblies[assembly]={'receipt':receipt,'receipt_by_stable_id':official_method_index(receipt),**dump}
  families=[]
  for specification in REGISTRY:
   family=dict(specification);ready=tracked(family['ready']);bundle=tracked(family['bundle']);tracked_doc=ROOT/family['doc'];inputs[family['doc']]=sha(tracked_doc)
@@ -145,7 +157,9 @@ def load_state(*,check_integration=True):
   if not ids:raise GuardError('READY bundle has no reviewed family method IDs: '+family['id'])
   data=assemblies[family['assembly']];eligible=[];equal=[]
   for mid in ids:
-   qid=qualified(family['assembly'],mid);entry=ledger.get(qid);original=data['original'].get(mid);candidate=data['rebuilt'].get(mid);status=data['receipt']['methods'].get(qid)
+   official=data['receipt_by_stable_id'].get(mid)
+   if official is None:raise GuardError('Canonical method absent from official receipt: '+family['assembly']+' / '+mid)
+   qid,status=official;entry=ledger.get(qid);original=data['original'].get(mid);candidate=data['rebuilt'].get(mid)
    if entry is None or original is None or candidate is None or status is None:raise GuardError('Current method identity missing: '+qid)
    if not original.get('instructions'):raise GuardError('Prepared body target has no original body: '+qid)
    size=original['header']['code_size']
@@ -153,7 +167,7 @@ def load_state(*,check_integration=True):
    body_equal=not differences(original,candidate)[0]
    if status.get('body_equal') is not body_equal:raise GuardError('Current receipt/body dump disagree: '+qid)
    if entry['estado']=='matched' and not body_equal:raise GuardError('Matched method currently differs: '+qid)
-   item={'id':mid,'il_bytes':size,'ledger_state':entry['estado'],'body_equal':body_equal}
+   item={'id':mid,'ledger_key':qid,'il_bytes':size,'ledger_state':entry['estado'],'body_equal':body_equal}
    if body_equal:equal.append(item);continue
    from round6_alignment import align_methods
    alignment=align_methods(original,candidate);item['pair']=alignment['opcode_pair'];item['first_aligned_original_offset']=alignment['original_offset'];item['first_aligned_rebuilt_offset']=alignment['rebuilt_offset'];eligible.append(item)

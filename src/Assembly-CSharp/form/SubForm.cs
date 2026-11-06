@@ -1158,8 +1158,7 @@ namespace form
 					AddMenu(9, 1);
 				}
 			}
-			else if (type_ != 6)
-			{
+			else if (type_ == 6) { } else {
 				if (type_ == 7)
 				{
 					if (udat_.ChEventFlg(16))
@@ -1216,16 +1215,14 @@ namespace form
 				{
 					InitDialog("ゲームセーブ中", string.Empty);
 				}
-				else if (type_ != 17)
-				{
+				else if (type_ == 17) { } else {
 					if (type_ == 19)
 					{
 						apdat_.PlayBgm(4);
 						clearPoint_highScore = apdat_.GetHighScore();
 						udat_.SetClearPoint();
 					}
-					else if (type_ != 13)
-					{
+					else if (type_ == 13) { } else {
 						if (type_ == 14)
 						{
 							value1_ = apdat_.save_.ints[12];
@@ -1236,8 +1233,7 @@ namespace form
 							AddMenu(27, 1);
 							AddMenu(28, 1);
 						}
-						else if (type_ != 23 && type_ != 24 && type_ != 25)
-						{
+						else if (type_ == 23) { } else if ((type_ == 24) || (type_ == 25)) { } else {
 							if (type_ == 26)
 							{
 								if (udat_.editTest_formation.Size() > 0)
@@ -1278,10 +1274,8 @@ namespace form
 									for (int k = 0; k < 11; k++)
 									{
 										PlayerData playerData = (PlayerData)udat_.memberPDataist_.ElementAt(k);
-										if (playerData.id_ != num4)
-										{
-											ary1.RemoveElement(playerData);
-										}
+										if (playerData.id_ == num4) { continue; }
+ary1.RemoveElement(playerData);
 									}
 									if (ary1.Size() == 0)
 									{
@@ -1290,19 +1284,20 @@ namespace form
 									}
 								}
 							}
-							else if (type_ != 30 && type_ != 32)
-							{
+							else if (type_ == 30) { } else if (type_ == 32) { } else {
 								if (type_ == 33)
 								{
-									switch (udat_.GetMatchInfoJoin())
+									int testedMatchInfoJoin1 = udat_.GetMatchInfoJoin();
+									if (testedMatchInfoJoin1 == 1)
 									{
-									case 1:
-									{
+										{
 										QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 										apdat_.ExecEvent(19, questMatchData.name_, null);
 										return Pop();
 									}
-									case 2:
+									}
+									else if (testedMatchInfoJoin1 == 2)
+									{
 										formMan_.Push(new SubForm(34));
 										return Pop();
 									}
@@ -1365,33 +1360,34 @@ namespace form
 									textLay_ = new TextLayout(false);
 									leagueData4.SetLeagueInfoExplain(textLay_);
 								}
-								else if (type_ != 35)
-								{
+								else if (type_ == 35) { } else {
 									if (type_ == 36)
 									{
-										switch (udat_.GetMatchInfoJoin())
+										int testedMatchInfoJoin2 = udat_.GetMatchInfoJoin();
+										if (testedMatchInfoJoin2 == 0)
 										{
-										case 0:
-										{
-											LeagueData leagueData5 = apdat_.leagueData_[udat_.selectLeagueId_];
-											if (udat_.league_setu_ != leagueData5.matchEnemy_.Length - 1)
 											{
+											LeagueData leagueData5 = apdat_.leagueData_[udat_.selectLeagueId_];
+											if (udat_.league_setu_ == leagueData5.matchEnemy_.Length - 1) { } else {
 												apdat_.frmGame_.state_ = 2;
 												apdat_.frmGame_.SetBattleData();
 											}
 											return Pop();
 										}
-										case 1:
+										}
+										else if (testedMatchInfoJoin2 == 1)
+										{
 											apdat_.frmGame_.state_ = 2;
 											apdat_.frmGame_.SetBattleData();
 											return Pop();
-										default:
+										}
+										else
+										{
 											formMan_.Push(MakeDialog("種目を決定してください"));
 											return Pop();
 										}
 									}
-									if (type_ != 37)
-									{
+									if (type_ == 37) { } else {
 										if (type_ == 38)
 										{
 											int num6 = 40;
@@ -1517,8 +1513,7 @@ namespace form
 											{
 												PlayerData obj2 = (PlayerData)ary1.ElementAt(num25);
 												int num26 = GameUtil.Random(ary1.Size());
-												if (num26 != num25)
-												{
+												if (num26 == num25) { } else {
 													ary1.SetElementAt(ary1.ElementAt(num26), num25);
 													ary1.SetElementAt(obj2, num26);
 												}
@@ -1530,16 +1525,14 @@ namespace form
 											for (int num27 = 0; num27 < apdat_.sponsorData_.Length; num27++)
 											{
 												SponsorData sponsorData = apdat_.sponsorData_[num27];
-												if (sponsorData.state_ != 0 && sponsorData.state_ == 1)
-												{
+												if (sponsorData.state_ == 0) { } else if ((sponsorData.state_ == 1)) {
 													ary1.AddElement(apdat_.sponsorData_[num27]);
 												}
 											}
 											for (int num28 = 0; num28 < apdat_.sponsorData_.Length; num28++)
 											{
 												SponsorData sponsorData2 = apdat_.sponsorData_[num28];
-												if (sponsorData2.state_ != 0 && sponsorData2.state_ == 2)
-												{
+												if (sponsorData2.state_ == 0) { } else if ((sponsorData2.state_ == 2)) {
 													ary1.AddElement(apdat_.sponsorData_[num28]);
 												}
 											}

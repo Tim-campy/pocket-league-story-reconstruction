@@ -690,9 +690,11 @@ if ((_update(i))) { break; }
 				}
 				for (int i = 0; i < apdat_.eventData_.Length; i++)
 				{
-					if (((apdat_.eventData_[i] == null) || (apdat_.CheckAlreadyEvent(apdat_.eventData_[i].id_))) || (!(apdat_.CheckTermScript(apdat_.eventData_[i].termsScript_)))) { continue; }
+					if (((apdat_.eventData_[i] == null) || (apdat_.CheckAlreadyEvent(apdat_.eventData_[i].id_)))) { continue; }
+if ((apdat_.CheckTermScript(apdat_.eventData_[i].termsScript_))) {
 apdat_.ExecEvent(apdat_.eventData_[i].id_, null, null);
 return false;
+}
 				}
 				for (int j = 0; j < apdat_.delayEvents_.Size(); j++)
 				{
@@ -807,7 +809,8 @@ return false;
 					if (busgather_ph_cnt >= udat_.memberPDataist_.Size() * 12 + 20 || canvas_.CheckKeyPulse(1048576))
 					{
 						SetBattleData();
-						if (udat_.GetMatchInfoJoin() == 0 && !apdat_.CheckAlreadyEvent(176))
+						int testedMatchInfoJoin = udat_.GetMatchInfoJoin();
+						if (testedMatchInfoJoin == 0 && !apdat_.CheckAlreadyEvent(176))
 						{
 							apdat_.ExecEvent(176, null, null);
 						}
