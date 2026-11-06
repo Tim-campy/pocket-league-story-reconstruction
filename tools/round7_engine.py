@@ -672,6 +672,30 @@ def main():
                     except ValueError as error:
                         row.setdefault('store_anchor_rebase_rejections',[]).append(str(error));continue
                     patches.insert(0,rebased)
+            if is_smcs and args.cycle_rule=='calculated-named-switch-selector-coalescence':
+                proposal_path=ROOT/'reports/round7-draw6-calculated-patches.json'
+                proposal_doc=read(proposal_path)
+                from round7_draw6_slots_calculate import rebase_unique_patch
+                if (proposal_doc['calculator_sha256']!=sha(ROOT/'tools/round7_draw6_slots_calculate.py')
+                        or proposal_doc['syntax_source_sha256']!=sha(ROOT/'tools/round7_draw6_slot_syntax.cs.txt')):
+                    raise ValueError('Named-selector calculator proof changed')
+                for dependency,expected_hash in proposal_doc.get('dependency_sha256',{}).items():
+                    dependency_path=(ROOT/dependency).resolve()
+                    if not dependency_path.is_relative_to(ROOT/'tools') or sha(dependency_path)!=expected_hash:
+                        raise ValueError('Named-selector dependency proof changed: '+dependency)
+                report['calculated_named_switch_selector_coalescence']={
+                    'proposals_sha256':sha(proposal_path),'fresh_model_before_compilation':True,
+                    'exact_unique_declaration_rebase':True,'dependencies_checked':proposal_doc.get('dependency_sha256',{})}
+                for proposal in proposal_doc['patches']:
+                    if proposal['method_id']!=key or proposal['logical_path'].replace('\\','/')!=logical.replace('\\','/'):
+                        continue
+                    if (proposal['model_source_sha256']!=report['slot_model_identity']['source_sha256']
+                            or proposal['client_sha256']!=report['slot_model_identity']['client_sha256']):
+                        raise ValueError('Named-selector proposal uses another model')
+                    try:rebased=rebase_unique_patch(text,proposal)
+                    except ValueError as error:
+                        row.setdefault('named_selector_rebase_rejections',[]).append(str(error));continue
+                    patches.insert(0,rebased)
             # A new autonomous cycle cannot repeat exhausted legacy hypotheses
             # before the selected family has itself advanced this method.
             before_cycle_filter=len(patches)

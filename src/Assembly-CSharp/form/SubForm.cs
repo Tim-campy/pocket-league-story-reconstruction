@@ -6496,7 +6496,7 @@ int num3;
 					num2 = num4 + i / 2 * 30 - i % 2 * 30;
 					num3 = num + i / 2 * 15 + i % 2 * 15;
 					MapchipMain mapchipMain = null;
-					mapchipMain = ((tenantData == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + i] : apdat_.mapchipMain_[tenantData.img_[i]]);
+					if (tenantData != null) { mapchipMain = apdat_.mapchipMain_[tenantData.img_[i]]; } else { mapchipMain = apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + i]; }
 					apdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain.seb_], apdat_.resMapChipMain_.img[mapchipMain.img_], 0);
 				}
 				g.PopClip();
@@ -6536,12 +6536,11 @@ int num3;
 						num3 = num + 16 * j;
 						num10 = j * 6;
 						num11 = frame_ - TLUP_ANIME_TIME[2] - num10;
-						if (num11 >= 0)
-						{
+						if (num11 < 0) { } else {
 							num11 = AppData.ClampMax(num11, 12);
 							SetWinCharaJamp(num11, 0, -6, 12);
 							int num12 = 0;
-							num12 = ((j != 0) ? array2[6] : array[6]);
+							if (j == 0) { num12 = array[6]; } else { num12 = array2[6]; }
 							Draw_upParam(g, 35, num2 + num7, num3 + WIN_CHA[1], num12);
 						}
 					}
@@ -6571,8 +6570,7 @@ int num3;
 						num3 += 3;
 						num13 = k * 6;
 						num14 = frame_ - TLUP_ANIME_TIME2[0] - num13;
-						if (num14 >= 0)
-						{
+						if (num14 < 0) { } else {
 							num14 = AppData.ClampMax(num14, 12);
 							SetWinCharaJamp(num14, 0, -6, 12);
 							int cnt = array3[6];
@@ -6667,7 +6665,7 @@ int num3;
 					num2 = num4 + l / 2 * 30 - l % 2 * 30;
 					num3 = num + l / 2 * 15 + l % 2 * 15;
 					MapchipMain mapchipMain2 = null;
-					mapchipMain2 = ((tenantData2 == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + l] : apdat_.mapchipMain_[tenantData2.img_[l]]);
+					if (tenantData2 != null) { mapchipMain2 = apdat_.mapchipMain_[tenantData2.img_[l]]; } else { mapchipMain2 = apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + l]; }
 					apdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain2.seb_], apdat_.resMapChipMain_.img[mapchipMain2.img_], 0);
 				}
 				g.PopClip();
@@ -6712,7 +6710,7 @@ int num3;
 					apdat_.DrawNumImage(g, 78, tenantData2.paramResearch_[m], num2 + 26, num3 + 3, 0, 2);
 				}
 				num4 = array4[7] + 5;
-				num = ((!En()) ? 208 : 203);
+				if (En()) { num = 203; } else { num = 208; }
 				g.SetColor(SC_WINDOW_BLACK);
 				if (tenantData2 != null)
 				{
@@ -6777,7 +6775,7 @@ int num3;
 					num2 = num4 + n / 2 * 30 - n % 2 * 30;
 					num3 = num + n / 2 * 15 + n % 2 * 15;
 					MapchipMain mapchipMain3 = null;
-					mapchipMain3 = ((tenantData3 == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + n] : apdat_.mapchipMain_[tenantData3.img_[n]]);
+					if (tenantData3 != null) { mapchipMain3 = apdat_.mapchipMain_[tenantData3.img_[n]]; } else { mapchipMain3 = apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + n]; }
 					apdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain3.seb_], apdat_.resMapChipMain_.img[mapchipMain3.img_], 0);
 				}
 				g.PopClip();
@@ -6888,39 +6886,31 @@ int num3;
 					int fanEva = FanActData.GetFanEva(num18);
 					int fanDispParam = FanActData.GetFanDispParam(fanEva, num18);
 					num2 = 112;
-					switch (num18)
-					{
-					case 0:
-						apdat_.DrawNumImageComma(g, 35, fanDispParam, num2 - 14, num3 + 2, 0, 0, 4);
-						g.SetColor(SC_WINDOW_BLACK);
-						if (MyFormBase.Jp())
+					if (num18 == 0) {
+apdat_.DrawNumImageComma(g, 35, fanDispParam, num2 - 14, num3 + 2, 0, 0, 4);
+g.SetColor(SC_WINDOW_BLACK);
+if (MyFormBase.Jp())
 						{
 							g.DrawString("人", num2, num3 - 2 + 4, 4);
 						}
-						break;
-					case 1:
-					{
-						int num19 = 46;
-						int num20 = 0;
-						num20 = GameUtil.RateConvert(fanDispParam, 0, 100, 0, num19 - 2, true);
-						g.DrawImage(apdat_.resCom2_.img[129], num2 - 52, num3 + 1, 0, 0, 52, 10);
-						g.DrawImage(apdat_.resCom2_.img[129], num2 - 52 + 1, num3 + 2, 1, 10, num20, 8);
-						break;
-					}
-					case 2:
-						apdat_.DrawNumImage(g, 35, fanDispParam, num2 - 14, num3 + 1, 0, 4);
-						break;
-					}
+} else if (num18 == 1) {
+int num19 = 46;
+int num20 = 0;
+num20 = GameUtil.RateConvert(fanDispParam, 0, 100, 0, num19 - 2, true);
+g.DrawImage(apdat_.resCom2_.img[129], num2 - 52, num3 + 1, 0, 0, 52, 10);
+g.DrawImage(apdat_.resCom2_.img[129], num2 - 52 + 1, num3 + 2, 1, 10, num20, 8);
+} else if (num18 == 2) {
+apdat_.DrawNumImage(g, 35, fanDispParam, num2 - 14, num3 + 1, 0, 4);
+}
+coalescedSwitchExit221580: ;
 				}
-				switch (udat_.GetMatchInfoJoin())
-				{
-				case 0:
-				{
-					LeagueData leagueData2 = apdat_.leagueData_[udat_.selectLeagueId_];
-					num2 = 120;
-					num3 = 79;
-					g.SetColor(SC_WINDOW_BLUE);
-					if (MyFormBase.Jp())
+				int switchValue = udat_.GetMatchInfoJoin();
+if (switchValue == 0) {
+LeagueData leagueData2 = apdat_.leagueData_[udat_.selectLeagueId_];
+num2 = 120;
+num3 = 79;
+g.SetColor(SC_WINDOW_BLUE);
+if (MyFormBase.Jp())
 					{
 						g.DrawString("所属", num2 + 3, num3 + 5);
 						g.DrawString("リーグ", num2 + 3, num3 + 5 + 19);
@@ -6930,9 +6920,9 @@ int num3;
 						g.DrawString("所属", num2 + 3 - 3, num3 + 5);
 						g.DrawString("リーグ", num2 + 3 - 3, num3 + 5 + 19);
 					}
-					g.SetColor(SC_WINDOW_BLACK);
-					SetFontSize(g, 10);
-					if (MyFormBase.Jp())
+g.SetColor(SC_WINDOW_BLACK);
+SetFontSize(g, 10);
+if (MyFormBase.Jp())
 					{
 						g.DrawString(leagueData2.name_, num2 + 73, num3 + 5, 2);
 					}
@@ -6940,8 +6930,8 @@ int num3;
 					{
 						g.DrawString(leagueData2.name_, num2 + 73 - 6, num3 + 5 + 1, 2);
 					}
-					ResetFontSize(g);
-					if (MyFormBase.Jp())
+ResetFontSize(g);
+if (MyFormBase.Jp())
 					{
 						int num21 = 14 + AppData.GetFig(leagueData[7]) * 8;
 						apdat_.DrawNumImageComma(g, 35, leagueData[7], num2 + 73 + num21 / 2 - 14, num3 + 1 + 5 + 19, 0, 0, 4);
@@ -6956,15 +6946,12 @@ int num3;
 						g.DrawString("位", num2 + num22, num3 + 5 + 19);
 						apdat_.DrawNumImageComma(g, 35, leagueData[7], num2 + num22 + num23, num3 + 1 + 5 + 19, 0, 0, 4);
 					}
-					break;
-				}
-				case 1:
-				{
-					QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
-					num2 = 171;
-					num3 = 79;
-					g.SetColor(SC_WINDOW_BLUE);
-					if (MyFormBase.Jp())
+} else if (switchValue == 1) {
+QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
+num2 = 171;
+num3 = 79;
+g.SetColor(SC_WINDOW_BLUE);
+if (MyFormBase.Jp())
 					{
 						g.SetColor(SC_WINDOW_BLACK);
 						g.DrawString("回戦", num2 - 7, num3 + 5 + 19);
@@ -6976,8 +6963,8 @@ int num3;
 						g.DrawString("回戦", num2 - 7 - 23, num3 + 5 + 19);
 						apdat_.DrawNumImageComma(g, 35, udat_.battleQmIndex_ + 1, num2 - 9 + 41, num3 + 1 + 5 + 19, 0, 0, 4);
 					}
-					SetFontSize(g, 10);
-					if (MyFormBase.Jp())
+SetFontSize(g, 10);
+if (MyFormBase.Jp())
 					{
 						g.DrawString(questMatchData.name_, num2, num3 + 5, 2);
 					}
@@ -6985,10 +6972,9 @@ int num3;
 					{
 						g.DrawString(questMatchData.name_, num2, num3 + 5 + 1, 2);
 					}
-					ResetFontSize(g);
-					break;
-				}
-				}
+ResetFontSize(g);
+}
+coalescedSwitchExit222308: ;
 				num2 = 119;
 				num3 = 125;
 				g.SetColor(Graphics.GetColorOfRGB(255, 251, 207));
@@ -7099,7 +7085,8 @@ int num3;
 			}
 			else if (type_ == 69)
 			{
-				int num28 = 0;
+				int coalescedWidth, num28;
+coalescedWidth = num28 = 0;
 				GameView instance = GameView.GetInstance();
 				int gameWidth = instance.GetGameWidth();
 				int gameHeight = instance.GetGameHeight();
@@ -7108,7 +7095,7 @@ int num3;
 				g.SetOrigin(0, 0);
 				if (value1_ == 0)
 				{
-					int width2 = gameWidth / SCENE_IMG_DIV_X[0];
+					coalescedWidth = gameWidth / SCENE_IMG_DIV_X[0];
 					for (int num29 = 0; num29 < SCENE_IMG_DIV_Y[0]; num29++)
 					{
 						num = 0 + gameHeight * num29 / SCENE_IMG_DIV_Y[0];
@@ -7116,7 +7103,7 @@ int num3;
 						for (int num30 = 0; num30 < SCENE_IMG_DIV_X[0]; num30++)
 						{
 							num4 = 0 + gameWidth * num30 / SCENE_IMG_DIV_X[0];
-							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, width2, num28);
+							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, coalescedWidth, num28);
 						}
 					}
 				}
@@ -7131,24 +7118,24 @@ int num3;
 						for (int num33 = 0; num33 < SCENE_IMG_DIV_X[1]; num33++)
 						{
 							num4 = 0 + gameWidth * num33 / SCENE_IMG_DIV_X[1];
-							int width2 = GameUtil.RateConvert(frame_ - num33 * SCENE_CHANGE_WAIT[1], 0, SCENE_CHANGE_ONE[1], 0, gameWidth / SCENE_IMG_DIV_X[1], true);
-							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, width2, height);
+							coalescedWidth = GameUtil.RateConvert(frame_ - num33 * SCENE_CHANGE_WAIT[1], 0, SCENE_CHANGE_ONE[1], 0, gameWidth / SCENE_IMG_DIV_X[1], true);
+							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, coalescedWidth, height);
 						}
 					}
 				}
 				if (value1_ == 2)
 				{
-					int width2 = 20;
+					coalescedWidth = 20;
 					num28 = 20;
-					int num34 = instance.GetGameWidth() / width2 + 1;
+					int num34 = instance.GetGameWidth() / coalescedWidth + 1;
 					int num35 = instance.GetGameHeight() / num28 + 1;
 					for (int num36 = 0; num36 < num35; num36++)
 					{
 						num = num28 * num36;
 						for (int num37 = 0; num37 < num34; num37++)
 						{
-							num4 = width2 * num37;
-							int width3 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, width2, true);
+							num4 = coalescedWidth * num37;
+							int width3 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, coalescedWidth, true);
 							int height2 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, num28, true);
 							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, num % 40, width3, height2);
 						}
@@ -7445,7 +7432,7 @@ int num3;
 					{
 						g.DrawImage(apdat_.resCom2_.img[178], num2 + 2, num3 + 1);
 						string empty2 = string.Empty;
-						empty2 = ((!MyFormBase.Jp()) ? (MyFormBase.LT("年") + (fanBonusData.achiveDay_[0] + 1) + "/" + (fanBonusData.achiveDay_[1] + 1) + "/" + (fanBonusData.achiveDay_[2] + 1)) : (fanBonusData.achiveDay_[0] + 1 + MyFormBase.LT("年") + (fanBonusData.achiveDay_[1] + 1) + "/" + (fanBonusData.achiveDay_[2] + 1)));
+						if (MyFormBase.Jp()) { empty2 = (fanBonusData.achiveDay_[0] + 1 + MyFormBase.LT("年") + (fanBonusData.achiveDay_[1] + 1) + "/" + (fanBonusData.achiveDay_[2] + 1)); } else { empty2 = (MyFormBase.LT("年") + (fanBonusData.achiveDay_[0] + 1) + "/" + (fanBonusData.achiveDay_[1] + 1) + "/" + (fanBonusData.achiveDay_[2] + 1)); }
 						g.SetColor(SC_WINDOW_BLUE);
 						g.DrawString(empty2, num2 + 71, num3 + 3, 4);
 						g.SetColor(SC_WINDOW_BLACK);
@@ -7471,8 +7458,7 @@ int num3;
 						g.DrawString("--年--/-", num2 + 71, num3 + 3, 4);
 						g.DrawString("？？？？", num2 + 84, num3 + 3);
 						SetFontSize(g, 10);
-						if (!En())
-						{
+						if (En()) { } else {
 							g.DrawString("未達成", num2 + 190 - 2, num3 + 3, 2);
 						}
 						ResetFontSize(g);

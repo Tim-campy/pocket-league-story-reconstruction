@@ -1,0 +1,727 @@
+{
+  "operation": "source-only-draw6-named-selector-width-calculus",
+  "candidate_game_compilations": 0,
+  "method_id": "form.SubForm::_draw6(kairo.unity.ui.Graphics)->System.Void",
+  "original_il_bytes": 13213,
+  "conclusion": "MODEL_APPROVED",
+  "stages": [
+    {
+      "stage": "merge-three-widths-and-zerochain",
+      "complete": true,
+      "count": 105,
+      "signature_equal": false
+    },
+    {
+      "stage": "named-selector49-two-switches-to-if",
+      "complete": true,
+      "count": 105,
+      "signature_equal": true
+    },
+    {
+      "stage": "existing-assignment-ternary-if-reverse",
+      "complete": true,
+      "count": 105,
+      "signature_equal": true
+    }
+  ],
+  "special_variables": {
+    "mapchipMain": 7,
+    "switchValue": 49,
+    "coalescedWidth": 61,
+    "num28": 62
+  },
+  "first_ternary_choices": [
+    {
+      "rule": "assignment-ternary-if",
+      "complete": true,
+      "signature_equal": true,
+      "after": "if ((tenantData == null)) { mapchipMain = apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + i]; } else { mapchipMain = apdat_.mapchipMain_[tenantData.img_[i]]; }"
+    },
+    {
+      "rule": "assignment-ternary-if-reverse",
+      "complete": true,
+      "signature_equal": true,
+      "after": "if (tenantData != null) { mapchipMain = apdat_.mapchipMain_[tenantData.img_[i]]; } else { mapchipMain = apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + i]; }"
+    }
+  ],
+  "width_lifetimes": [
+    [
+      7647,
+      7770
+    ],
+    [
+      7937,
+      7968
+    ],
+    [
+      8026,
+      8125
+    ]
+  ],
+  "width_source_declarations": [
+    {
+      "name": "width2",
+      "type": "System.Int32",
+      "kind": "declared",
+      "start": 228586,
+      "end": 228625,
+      "slot": 66,
+      "block": 134,
+      "type_source": "int",
+      "statement_start": 228582,
+      "statement_end": 228626,
+      "lexical_scope_start": 228574,
+      "lexical_scope_end": 229140,
+      "initializer": "gameWidth / SCENE_IMG_DIV_X[0]"
+    },
+    {
+      "name": "width2",
+      "type": "System.Int32",
+      "kind": "declared",
+      "start": 229524,
+      "end": 229657,
+      "slot": 73,
+      "block": 146,
+      "type_source": "int",
+      "statement_start": 229520,
+      "statement_end": 229658,
+      "lexical_scope_start": 229451,
+      "lexical_scope_end": 229755,
+      "initializer": "GameUtil.RateConvert(frame_ - num33 * SCENE_CHANGE_WAIT[1], 0, SCENE_CHANGE_ONE[1], 0, gameWidth / SCENE_IMG_DIV_X[1], true)"
+    },
+    {
+      "name": "width2",
+      "type": "System.Int32",
+      "kind": "declared",
+      "start": 229811,
+      "end": 229822,
+      "slot": 74,
+      "block": 147,
+      "type_source": "int",
+      "statement_start": 229807,
+      "statement_end": 229823,
+      "lexical_scope_start": 229799,
+      "lexical_scope_end": 230562,
+      "initializer": "20"
+    }
+  ],
+  "height_source_declaration": {
+    "name": "num28",
+    "type": "System.Int32",
+    "kind": "declared",
+    "start": 228298,
+    "end": 228307,
+    "slot": 60,
+    "block": 128,
+    "type_source": "int",
+    "statement_start": 228294,
+    "statement_end": 228308,
+    "lexical_scope_start": 228287,
+    "lexical_scope_end": 230604,
+    "initializer": "0"
+  },
+  "original_key_lifetimes": [
+    {
+      "slot": 7,
+      "first_use": 285,
+      "last_use": 399,
+      "loads": 2,
+      "stores": 3
+    },
+    {
+      "slot": 49,
+      "first_use": 5367,
+      "last_use": 5834,
+      "loads": 2,
+      "stores": 1
+    },
+    {
+      "slot": 61,
+      "first_use": 7577,
+      "last_use": 8127,
+      "loads": 5,
+      "stores": 4
+    },
+    {
+      "slot": 62,
+      "first_use": 7575,
+      "last_use": 8174,
+      "loads": 7,
+      "stores": 4
+    }
+  ],
+  "original_selector_anchor": [
+    {
+      "offset": 5362,
+      "opcode": "callvirt",
+      "operand": {
+        "method": "class game.UserData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetMatchInfoJoin``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+      }
+    },
+    {
+      "offset": 5367,
+      "opcode": "stloc.s",
+      "operand": {
+        "local": 49
+      }
+    },
+    {
+      "offset": 5369,
+      "opcode": "ldloc.s",
+      "operand": {
+        "local": 49
+      }
+    },
+    {
+      "offset": 5371,
+      "opcode": "brtrue",
+      "operand": {
+        "branch": 5834
+      }
+    }
+  ],
+  "original_zerochain_anchor": [
+    {
+      "offset": 7573,
+      "opcode": "ldc.i4.0",
+      "operand": null
+    },
+    {
+      "offset": 7574,
+      "opcode": "dup",
+      "operand": null
+    },
+    {
+      "offset": 7575,
+      "opcode": "stloc.s",
+      "operand": {
+        "local": 62
+      }
+    },
+    {
+      "offset": 7577,
+      "opcode": "stloc.s",
+      "operand": {
+        "local": 61
+      }
+    }
+  ],
+  "original_first_ternary_anchor": [
+    {
+      "offset": 287,
+      "opcode": "ldloc.s",
+      "operand": {
+        "local": 5
+      }
+    },
+    {
+      "offset": 289,
+      "opcode": "brfalse",
+      "operand": {
+        "branch": 323
+      }
+    },
+    {
+      "offset": 294,
+      "opcode": "ldarg.0",
+      "operand": null
+    },
+    {
+      "offset": 295,
+      "opcode": "ldfld",
+      "operand": {
+        "field": "class form.MyFormBase @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::apdat_:class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      }
+    },
+    {
+      "offset": 300,
+      "opcode": "ldfld",
+      "operand": {
+        "field": "class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::mapchipMain_:class data.MapchipMain @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null[]"
+      }
+    },
+    {
+      "offset": 305,
+      "opcode": "ldloc.s",
+      "operand": {
+        "local": 5
+      }
+    },
+    {
+      "offset": 307,
+      "opcode": "ldfld",
+      "operand": {
+        "field": "class data.TenantData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::img_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]"
+      }
+    },
+    {
+      "offset": 312,
+      "opcode": "ldloc.s",
+      "operand": {
+        "local": 6
+      }
+    },
+    {
+      "offset": 314,
+      "opcode": "ldelem.i4",
+      "operand": null
+    },
+    {
+      "offset": 315,
+      "opcode": "ldelem.ref",
+      "operand": null
+    },
+    {
+      "offset": 316,
+      "opcode": "stloc.s",
+      "operand": {
+        "local": 7
+      }
+    },
+    {
+      "offset": 318,
+      "opcode": "br",
+      "operand": {
+        "branch": 350
+      }
+    },
+    {
+      "offset": 323,
+      "opcode": "ldarg.0",
+      "operand": null
+    },
+    {
+      "offset": 324,
+      "opcode": "ldfld",
+      "operand": {
+        "field": "class form.MyFormBase @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::apdat_:class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      }
+    },
+    {
+      "offset": 329,
+      "opcode": "ldfld",
+      "operand": {
+        "field": "class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::mapchipMain_:class data.MapchipMain @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null[]"
+      }
+    },
+    {
+      "offset": 334,
+      "opcode": "ldsfld",
+      "operand": {
+        "field": "class game.MapMain @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::mapchip_vacant:class data.MapchipMain @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      }
+    },
+    {
+      "offset": 339,
+      "opcode": "ldfld",
+      "operand": {
+        "field": "class data.BaseData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      }
+    },
+    {
+      "offset": 344,
+      "opcode": "ldloc.s",
+      "operand": {
+        "local": 6
+      }
+    },
+    {
+      "offset": 346,
+      "opcode": "add",
+      "operand": null
+    },
+    {
+      "offset": 347,
+      "opcode": "ldelem.ref",
+      "operand": null
+    },
+    {
+      "offset": 348,
+      "opcode": "stloc.s",
+      "operand": {
+        "local": 7
+      }
+    },
+    {
+      "offset": 350,
+      "opcode": "ldarg.0",
+      "operand": null
+    }
+  ],
+  "original_switch_opcodes": 0,
+  "rebuilt_switch_opcodes": 1,
+  "calculator_sha256": "9c52247b4ebc6f36bacb30b476b925433eca89e6e5903d52b04232d698cfc336",
+  "syntax_source_sha256": "e7821a77569ebbcc4a25ef37154ab2bf38c61a379a329c15f7d39bc60ad3b30e",
+  "dependency_sha256": {
+    "tools/round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+    "tools/round7_draw6_slots_diagnose.py": "8b6d14ebe67dc96546d125525b66c754fa9677e975c240b8b24dbd4b4670174d"
+  },
+  "original_unused_slots": [],
+  "signature_equal": true,
+  "patches": [
+    {
+      "start": 207833,
+      "end": 242117,
+      "before": "private void _draw6(Graphics g)\r\n\t\t{\r\n\t\t\tint num4;\nint num;\nint num2;\nint num3;\n\r\n\r\n\t\t\tnum4 = num = num2 = num3 = 0;\r\n\t\t\tFont font = g.GetFont(null);\r\n\t\t\tif (type_ == 64)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, \"\u65bd\u8a2d\u306eLVUP\");\r\n\t\t\t\tapdat_.DrawBox(g, 12, 136, 227, 205);\r\n\t\t\t\tTenantData tenantData = apdat_.tenantData_[tenantDataId_];\r\n\t\t\t\tnum4 = 60;\r\n\t\t\t\tnum = 66;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(181, 219, 166));\r\n\t\t\t\tg.DrawRect(num4, num, 121f, 75f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(219, 249, 207));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 120f, 74f);\r\n\t\t\t\tg.ClipRect(num4, num, 122f, 76f);\r\n\t\t\t\tnum4 += 31;\r\n\t\t\t\tnum += 16;\r\n\t\t\t\tfor (int i = 0; i < 4; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + i / 2 * 30 - i % 2 * 30;\r\n\t\t\t\t\tnum3 = num + i / 2 * 15 + i % 2 * 15;\r\n\t\t\t\t\tMapchipMain mapchipMain = null;\r\n\t\t\t\t\tmapchipMain = ((tenantData == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + i] : apdat_.mapchipMain_[tenantData.img_[i]]);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain.seb_], apdat_.resMapChipMain_.img[mapchipMain.img_], 0);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tif (page_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 156;\r\n\t\t\t\t\tint num5 = GameUtil.RateConvert(frame_, TLUP_ANIME_TIME[0], TLUP_ANIME_TIME[1], 0, 12, true);\r\n\t\t\t\t\tg.ClipRect(0f, num, 240f, num5);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u306e\u30ec\u30d9\u30eb\u304c<1>\u306b\u306a\u3063\u305f!\", tenantData.name_ + \"\\t\" + (tenantData.lv_ + 1)), 120f, num, 2);\r\n\t\t\t\t\tg.PopClip();\r\n\t\t\t\t\tint num6 = 0;\r\n\t\t\t\t\tint num7 = 0;\r\n\t\t\t\t\tif (En())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum6 = -10;\r\n\t\t\t\t\t\tnum7 = 10;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tnum4 = 53;\r\n\t\t\t\t\tnum = 178;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tg.DrawString(\"\u5546\u54c1\u4fa1\u683c\", num4 + num6, num);\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb/\u6708\", num4 + num6, num + 16);\r\n\t\t\t\t\tint[] array = GetMeterParam(0);\r\n\t\t\t\t\tint[] array2 = GetMeterParam(1);\r\n\t\t\t\t\tint num8 = array[1];\r\n\t\t\t\t\tint num9 = array2[1];\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num8), num4 + 105, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num9), num4 + 105, num + 16, 4);\r\n\t\t\t\t\tnum = 178;\r\n\t\t\t\t\tint num10 = 0;\r\n\t\t\t\t\tint num11 = 0;\r\n\t\t\t\t\tfor (int j = 0; j < 2; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = 188;\r\n\t\t\t\t\t\tnum3 = num + 16 * j;\r\n\t\t\t\t\t\tnum10 = j * 6;\r\n\t\t\t\t\t\tnum11 = frame_ - TLUP_ANIME_TIME[2] - num10;\r\n\t\t\t\t\t\tif (num11 >= 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum11 = AppData.ClampMax(num11, 12);\r\n\t\t\t\t\t\t\tSetWinCharaJamp(num11, 0, -6, 12);\r\n\t\t\t\t\t\t\tint num12 = 0;\r\n\t\t\t\t\t\t\tnum12 = ((j != 0) ? array2[6] : array[6]);\r\n\t\t\t\t\t\t\tDraw_upParam(g, 35, num2 + num7, num3 + WIN_CHA[1], num12);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (frame_ >= TLUP_ANIME_TIME[5] && frame_ % 40 > 20)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.DrawSeb(g, 215, 207, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 156;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u5165\u624b\u53ef\u80fd\uff8e\uff9f\uff72\uff9d\uff84\", 120f, num, 2);\r\n\t\t\t\t\tnum4 = 45;\r\n\t\t\t\t\tnum = 175;\r\n\t\t\t\t\tint num13 = 0;\r\n\t\t\t\t\tint num14 = 0;\r\n\t\t\t\t\tfor (int k = 0; k < 4; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = num4 + 91 * (k / 2);\r\n\t\t\t\t\t\tnum3 = num + 18 * (k % 2);\r\n\t\t\t\t\t\tint[] array3 = GetMeterParam(k + 2);\r\n\t\t\t\t\t\tint num15 = array3[1];\r\n\t\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resCom2_.seb[83], apdat_.resCom2_.img[94], k);\r\n\t\t\t\t\t\tapdat_.DrawNumImage(g, 78, num15, num2 + 26, num3 + 3, 0, 2);\r\n\t\t\t\t\t\tnum2 += 58;\r\n\t\t\t\t\t\tnum3 += 3;\r\n\t\t\t\t\t\tnum13 = k * 6;\r\n\t\t\t\t\t\tnum14 = frame_ - TLUP_ANIME_TIME2[0] - num13;\r\n\t\t\t\t\t\tif (num14 >= 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum14 = AppData.ClampMax(num14, 12);\r\n\t\t\t\t\t\t\tSetWinCharaJamp(num14, 0, -6, 12);\r\n\t\t\t\t\t\t\tint cnt = array3[6];\r\n\t\t\t\t\t\t\tDraw_upParam(g, 35, num2, num3 + WIN_CHA[1], cnt);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (frame_ >= TLUP_ANIME_TIME2[3] && frame_ % 40 > 20)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.DrawSeb(g, 215, 207, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 65)\r\n\t\t\t{\r\n\t\t\t\tint[] array4 = DrawWindow2(g, 228, 176, \"\u65bd\u8a2d\u60c5\u5831\", 5, 20, 20, 0, 4, 12);\r\n\t\t\t\tTenantData tenantData2 = null;\r\n\t\t\t\tif (tenantDataId_ != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\ttenantData2 = apdat_.tenantData_[tenantDataId_];\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 66;\r\n\t\t\t\tnum3 = 64;\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[126], num2, num3 + 2);\r\n\t\t\t\tapdat_.DrawNumImage(g, 79, tenantData2.lv_, num2 + 20, num3, 0, 1);\r\n\t\t\t\tnum2 = 121;\r\n\t\t\t\tnum3 = 64;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (tenantData2 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(tenantData2.name_, num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7a7a\u304d\u5730\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 21;\r\n\t\t\t\tnum3 = 164;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u5546\u54c1\u4fa1\u683c\", num2, num3 + 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u5546\u54c1\u4fa1\u683c\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramUsePrice_), num2 + 106 + 3, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramUsePrice_), num2 + 106, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 21;\r\n\t\t\t\tnum3 = 180;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb/\u6708\", num2, num3 + 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb/\u6708\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramKeepCost_), num2 + 106 + 3, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramKeepCost_), num2 + 106, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 14;\r\n\t\t\t\tnum = 83;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(181, 219, 166));\r\n\t\t\t\tg.DrawRect(num4, num, 121f, 75f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(219, 249, 207));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 120f, 74f);\r\n\t\t\t\tg.ClipRect(num4, num, 122f, 76f);\r\n\t\t\t\tnum4 = 45;\r\n\t\t\t\tnum = 99;\r\n\t\t\t\tfor (int l = 0; l < 4; l++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + l / 2 * 30 - l % 2 * 30;\r\n\t\t\t\t\tnum3 = num + l / 2 * 15 + l % 2 * 15;\r\n\t\t\t\t\tMapchipMain mapchipMain2 = null;\r\n\t\t\t\t\tmapchipMain2 = ((tenantData2 == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + l] : apdat_.mapchipMain_[tenantData2.img_[l]]);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain2.seb_], apdat_.resMapChipMain_.img[mapchipMain2.img_], 0);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tnum4 = 138;\r\n\t\t\t\tnum = 83;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 229, 149));\r\n\t\t\t\tg.DrawRect(num4, num, 86f, 47f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(253, 252, 202));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 85f, 46f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u9078\u624b\u3078\u306e\u5f71\u97ff\", num4 + 2 + 42, num + 5 + 1, 2);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u9078\u624b\u3078\u306e\u5f71\u97ff\", num4 + 2 + 42, num + 5, 2);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tint fanToEf = TenantData.GetFanToEf(tenantData2.paramEfToFan_);\r\n\t\t\t\tg.DrawString(TenantData.EFTOFAN_STR[fanToEf], num4 + 45, num + 20, 2);\r\n\t\t\t\tint width = GameUtil.RateConvert(tenantData2.paramEfToFan_, 0, 10, 0, 80, true);\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[132], num4 + 3, num + 35, 0, 0, 82, 10);\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[132], num4 + 3 + 1, num + 35 + 1, 1, 10, width, 8);\r\n\t\t\t\tnum4 = 138;\r\n\t\t\t\tnum = 132;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 229, 149));\r\n\t\t\t\tg.DrawRect(num4, num, 86f, 61f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(253, 252, 202));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 85f, 60f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u5165\u624b\u53ef\u80fd\uff8e\uff9f\uff72\uff9d\uff84\", num4 + 4, num + 6);\r\n\t\t\t\tnum4 = 145;\r\n\t\t\t\tnum = 156;\r\n\t\t\t\tfor (int m = 0; m < 4; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + 37 * (m / 2);\r\n\t\t\t\t\tnum3 = num + 18 * (m % 2);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resCom2_.seb[83], apdat_.resCom2_.img[94], m);\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 78, tenantData2.paramResearch_[m], num2 + 26, num3 + 3, 0, 2);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = array4[7] + 5;\r\n\t\t\t\tnum = ((!En()) ? 208 : 203);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (tenantData2 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(tenantData2.explain_, 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7a7a\u304d\u5730\u3067\u3059\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (type_ == 66)\r\n\t\t\t{\r\n\t\t\t\tint[] array5 = DrawWindow2(g, 228, 176, \"\u65bd\u8a2d\u60c5\u5831\", 5, 20, 20, 0, 4, 12);\r\n\t\t\t\tTenantData tenantData3 = null;\r\n\t\t\t\tif (tenantDataId_ != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\ttenantData3 = apdat_.tenantData_[tenantDataId_];\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 17;\r\n\t\t\t\tnum3 = 64;\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[126], num2, num3 + 2);\r\n\t\t\t\tapdat_.DrawNumImage(g, 79, tenantData3.lv_, num2 + 19, num3, 0, 1);\r\n\t\t\t\tnum2 = 52;\r\n\t\t\t\tnum3 = 65;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (tenantData3 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(tenantData3.name_, num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7a7a\u304d\u5730\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 149;\r\n\t\t\t\tnum3 = 65;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb\", num2, num3 + 1);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData3.paramKeepCost_), num2 + 76, num3 + 1, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb\", num2, num3);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData3.paramKeepCost_), num2 + 76, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tnum4 = 59;\r\n\t\t\t\tnum = 83;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(181, 219, 166));\r\n\t\t\t\tg.DrawRect(num4, num, 121f, 75f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(219, 249, 207));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 120f, 74f);\r\n\t\t\t\tg.ClipRect(num4, num, 122f, 76f);\r\n\t\t\t\tnum4 = 90;\r\n\t\t\t\tnum = 99;\r\n\t\t\t\tfor (int n = 0; n < 4; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + n / 2 * 30 - n % 2 * 30;\r\n\t\t\t\t\tnum3 = num + n / 2 * 15 + n % 2 * 15;\r\n\t\t\t\t\tMapchipMain mapchipMain3 = null;\r\n\t\t\t\t\tmapchipMain3 = ((tenantData3 == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + n] : apdat_.mapchipMain_[tenantData3.img_[n]]);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain3.seb_], apdat_.resMapChipMain_.img[mapchipMain3.img_], 0);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u3092\u64a4\u53bb\u3057\u307e\u3059\u304b\", tenantData3.name_), 120f, 172f, 2);\r\n\t\t\t\tnum3 = 202;\r\n\t\t\t\tnum = 200;\r\n\t\t\t\tint num16 = 40;\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u64a4\u53bb\u3059\u308b\", 120 - num16, num, true, true);\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u3084\u3081\u3066\u304a\u304f\", 120 + num16, num, false, false);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u64a4\u53bb\u3059\u308b\", 120 - num16, num, false, false);\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u3084\u3081\u3066\u304a\u304f\", 120 + num16, num, true, true);\r\n\t\t\t\t}\r\n\t\t\t\tnum16 = 58;\r\n\t\t\t\tGameView.AddTouch(g, 2, 75 - num16 / 2, num3 - 2, 68, 16, 131072);\r\n\t\t\t\tGameView.AddTouch(g, 2, 75 - num16 / 2 + 90, num3 - 2, 68, 16, 131073);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 67)\r\n\t\t\t{\r\n\t\t\t\tTeamData teamData = apdat_.tData_[0];\r\n\t\t\t\tapdat_.DrawWindow(g, 231, 185, 0, teamData.name_);\r\n\t\t\t\tapdat_.DrawBox(g, 12, 64, 230, 192);\r\n\t\t\t\tint[] leagueData = udat_.GetLeagueData(0);\r\n\t\t\t\tnum2 = 31;\r\n\t\t\t\tnum3 = 60;\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[57], num2, num3);\r\n\t\t\t\tint rankIndex = udat_.GetRankIndex();\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 35, rankIndex + 1, num2 + 16, num3, 0, 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 35, rankIndex + 1, num2 + 16 + 3, num3, 0, 1);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(UserData.RANK_NAME[rankIndex], 120f, num3, 2);\r\n\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u5e74\u76ee\", apdat_.save_.ints[1] + 1), 210f, num3, 4);\r\n\t\t\t\tSupervisorData supervisorData = apdat_.svisorData_[udat_.selectSupervisorId_];\r\n\t\t\t\tnum2 = 12;\r\n\t\t\t\tnum3 = 79;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 251, 207));\r\n\t\t\t\tg.FillRect(16f, 79f, 99f, 42f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(228, 255, 207));\r\n\t\t\t\tg.FillRect(16f, 151f, 99f, 47f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tg.DrawString(\"\u76e3\u7763\", num2 + 7, num3 + 5);\r\n\t\t\t\tg.DrawString(\"\u9078\u624b\u6570\", num2 + 7, num3 + 5 + 19);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0><1>\", supervisorData.name_ + \"\\t\" + supervisorData.name2_), num2 + 100 + 3, num3 + 5, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\tempty += MyFormBase.LT(supervisorData.name_);\r\n\t\t\t\t\tempty += \" \";\r\n\t\t\t\t\tempty += MyFormBase.LT(supervisorData.name2_);\r\n\t\t\t\t\tg.DrawString(empty, num2 + 100 + 3 - 7, num3 + 5, 4);\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.DrawNumImage(g, 35, udat_.memberPDataist_.Size(), num2 + 100 - 12 - 2, num3 + 5 + 21, 0, 4);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u4eba\", num2 + 100, num3 + 5 + 21, 4);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\uff7d\uff8e\uff9f\uff9d\uff7b\uff70\", num2 + 8, num3 + 44);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u793e\", sponsor_num_), num2 + 53, num3 + 44);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u793e\", sponsor_num_), num2 + 53 + 46, num3 + 44, 4);\r\n\t\t\t\t}\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, sponsor_income_, num2 + 59, num3 + 59, 0, 0, 4);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2 + 60, num3 + 59, apdat_.resCom2_.seb[35], apdat_.resCom2_.img[103], 17);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawMoney(g, 35, sponsor_income_, num2 + 59, num3 + 59, 0, 0, 4);\r\n\t\t\t\t}\r\n\t\t\t\tg.DrawString(\"/\u8a66\u5408\", num2 + 70, num3 + 58);\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tnum4 = 17;\r\n\t\t\t\tnum = 153;\r\n\t\t\t\tint[] array6 = new int[3] { 2, 0, 1 };\r\n\t\t\t\tfor (int num17 = 0; num17 < 3; num17++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num18 = array6[num17];\r\n\t\t\t\t\tnum3 = num + 16 * num17;\r\n\t\t\t\t\tnum2 = num4;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\tg.DrawString(FanActData.element_name[num18], num2 - 2 + 4, num3);\r\n\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\tint fanEva = FanActData.GetFanEva(num18);\r\n\t\t\t\t\tint fanDispParam = FanActData.GetFanDispParam(fanEva, num18);\r\n\t\t\t\t\tnum2 = 112;\r\n\t\t\t\t\tswitch (num18)\r\n\t\t\t\t\t{\r\n\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, fanDispParam, num2 - 14, num3 + 2, 0, 0, 4);\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(\"\u4eba\", num2, num3 - 2 + 4, 4);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 1:\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num19 = 46;\r\n\t\t\t\t\t\tint num20 = 0;\r\n\t\t\t\t\t\tnum20 = GameUtil.RateConvert(fanDispParam, 0, 100, 0, num19 - 2, true);\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[129], num2 - 52, num3 + 1, 0, 0, 52, 10);\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[129], num2 - 52 + 1, num3 + 2, 1, 10, num20, 8);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcase 2:\r\n\t\t\t\t\t\tapdat_.DrawNumImage(g, 35, fanDispParam, num2 - 14, num3 + 1, 0, 4);\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tswitch (udat_.GetMatchInfoJoin())\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t{\r\n\t\t\t\t\tLeagueData leagueData2 = apdat_.leagueData_[udat_.selectLeagueId_];\r\n\t\t\t\t\tnum2 = 120;\r\n\t\t\t\t\tnum3 = 79;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(\"\u6240\u5c5e\", num2 + 3, num3 + 5);\r\n\t\t\t\t\t\tg.DrawString(\"\u30ea\u30fc\u30b0\", num2 + 3, num3 + 5 + 19);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(\"\u6240\u5c5e\", num2 + 3 - 3, num3 + 5);\r\n\t\t\t\t\t\tg.DrawString(\"\u30ea\u30fc\u30b0\", num2 + 3 - 3, num3 + 5 + 19);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(leagueData2.name_, num2 + 73, num3 + 5, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(leagueData2.name_, num2 + 73 - 6, num3 + 5 + 1, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num21 = 14 + AppData.GetFig(leagueData[7]) * 8;\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, leagueData[7], num2 + 73 + num21 / 2 - 14, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u4f4d\", num2 + 73 + num21 / 2 - 12, num3 + 5 + 19);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num22 = 52;\r\n\t\t\t\t\t\tint num23 = AppData.GetFig(leagueData[7]) * 8 + 4 + font.StringWidth(\"\u4f4d\");\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u4f4d\", num2 + num22, num3 + 5 + 19);\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, leagueData[7], num2 + num22 + num23, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 1:\r\n\t\t\t\t{\r\n\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\tnum2 = 171;\r\n\t\t\t\t\tnum3 = 79;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u56de\u6226\", num2 - 7, num3 + 5 + 19);\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, udat_.battleQmIndex_ + 1, num2 - 9, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u56de\u6226\", num2 - 7 - 23, num3 + 5 + 19);\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, udat_.battleQmIndex_ + 1, num2 - 9 + 41, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(questMatchData.name_, num2, num3 + 5, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(questMatchData.name_, num2, num3 + 5 + 1, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 119;\r\n\t\t\t\tnum3 = 125;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 251, 207));\r\n\t\t\t\tg.FillRect(num2, num3, 107f, 54f);\r\n\t\t\t\tnum2 = 174;\r\n\t\t\t\tnum3 = 154;\r\n\t\t\t\tudat_.DrawGraph_menuElement(g, num2, num3, udat_.playerParam1, udat_.playerParam2, 100);\r\n\t\t\t\tfor (int num24 = 0; num24 < UserData.GRAPH_POS.Length; num24++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2 + UserData.GRAPH_POS[num24][0], num3 + UserData.GRAPH_POS[num24][1], apdat_.resCom2_.seb[75], apdat_.resCom2_.img[122], num24);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 119;\r\n\t\t\t\tnum3 = 181;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 251, 207));\r\n\t\t\t\tg.FillRect(num2, num3, 107f, 20f);\r\n\t\t\t\tnum2 = 133;\r\n\t\t\t\tnum3 = 185;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\uff81\uff70\uff91\u8a55\u4fa1\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\uff81\uff70\uff91\u8a55\u4fa1\", num2 - 4, num3 + 1);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 30, teamData.warPotential_, num2 + 79, num3, 0, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 30, teamData.warPotential_, num2 + 79 + 2, num3, 0, 4);\r\n\t\t\t\t}\r\n\t\t\t\tnum = 208;\r\n\t\t\t\tint num25 = udat_.matchResult_[0] + udat_.matchResult_[1] + udat_.matchResult_[2];\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6226\", num25), 76f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u52dd\", udat_.matchResult_[0]), 123f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6557\", udat_.matchResult_[2]), 174f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u5206\", udat_.matchResult_[1]), 217f, num, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6226\", num25), 91f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u52dd\", udat_.matchResult_[0]), 123f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6557\", udat_.matchResult_[2]), 155f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u5206\", udat_.matchResult_[1]), 187f, num, 4);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 68)\r\n\t\t\t{\r\n\t\t\t\tint[] array7 = DrawWindow(g, 188, 110, \"\uff81\uff79\uff6f\uff84\u4ee3\u306e\u5909\u66f4\", 5, 5, 20, 0, 4);\r\n\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum4 = 123;\r\n\t\t\t\t\tnum = 103;\r\n\t\t\t\t\tapdat_.DrawMoney(g, 35, udat_.ticketPrice_ / 100, 120, num, 0, 0, 2, false);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum4 = 145;\r\n\t\t\t\t\tnum = 101;\r\n\t\t\t\t\tapdat_.DrawNumImageComma(g, 31, udat_.ticketPrice_, num4, num, 4, 0, 4);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num4 + 2, num + 2, apdat_.resCom2_.seb[35], apdat_.resCom2_.img[103], 12);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 120;\r\n\t\t\t\tnum = 101;\r\n\t\t\t\tint num26 = 1000;\r\n\t\t\t\tint val = udat_.teamEvaRank_ * 2000 + 3000;\r\n\t\t\t\tval = AppData.ClampMax(val, 20000);\r\n\t\t\t\tval -= val % 1000;\r\n\t\t\t\tif (udat_.ticketPrice_ < val)\r\n\t\t\t\t{\r\n\t\t\t\t\tGameView.AddTouch(g, 18, num4 - 40 - 5, num + 6, apdat_.resCom2_.seb[24], 0, 16, TouchOption.Create().Margin(60, 5, 30, 30));\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.ticketPrice_ > num26)\r\n\t\t\t\t{\r\n\t\t\t\t\tGameView.AddTouch(g, 18, num4 + 40 + 7, num + 6, apdat_.resCom2_.seb[24], 1, 18, TouchOption.Create().Margin(5, 60, 30, 30));\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 37;\r\n\t\t\t\tnum = 128;\r\n\t\t\t\tapdat_.DrawBox(g, num4, num - 11, num4 + 167, num - 11 + 22);\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[172], num4, num, 0, 0, 16, 21);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(ticketPriceMessage, num4 + 23, num + 6 + 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(ticketPriceMessage, num4 + 23, num + 6);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tnum = 157;\r\n\t\t\t\tDraw_btmMsg(g, \"\u6c7a\u5b9a\", num);\r\n\t\t\t\tint num27 = 50;\r\n\t\t\t\tGameView.AddTouch(g, 2, 120 - num27 / 2, num - 2, num27, 16, 131072);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 69)\r\n\t\t\t{\r\n\t\t\t\tint num28 = 0;\r\n\t\t\t\tGameView instance = GameView.GetInstance();\r\n\t\t\t\tint gameWidth = instance.GetGameWidth();\r\n\t\t\t\tint gameHeight = instance.GetGameHeight();\r\n\t\t\t\tint originX = g.GetOriginX();\r\n\t\t\t\tint originY = g.GetOriginY();\r\n\t\t\t\tg.SetOrigin(0, 0);\r\n\t\t\t\tif (value1_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tint width2 = gameWidth / SCENE_IMG_DIV_X[0];\r\n\t\t\t\t\tfor (int num29 = 0; num29 < SCENE_IMG_DIV_Y[0]; num29++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = 0 + gameHeight * num29 / SCENE_IMG_DIV_Y[0];\r\n\t\t\t\t\t\tnum28 = GameUtil.RateConvert(frame_ - num29 * SCENE_CHANGE_WAIT[0], 0, SCENE_CHANGE_ONE[0], 0, gameHeight / SCENE_IMG_DIV_Y[0], true);\r\n\t\t\t\t\t\tfor (int num30 = 0; num30 < SCENE_IMG_DIV_X[0]; num30++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = 0 + gameWidth * num30 / SCENE_IMG_DIV_X[0];\r\n\t\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, width2, num28);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (value1_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum28 = 40;\r\n\t\t\t\t\tint num31 = gameHeight / num28 + 1;\r\n\t\t\t\t\tfor (int num32 = 0; num32 < num31; num32++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = num28 * num32;\r\n\t\t\t\t\t\tint height = AppData.ClampMax(num28, gameHeight - num);\r\n\t\t\t\t\t\tfor (int num33 = 0; num33 < SCENE_IMG_DIV_X[1]; num33++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = 0 + gameWidth * num33 / SCENE_IMG_DIV_X[1];\r\n\t\t\t\t\t\t\tint width2 = GameUtil.RateConvert(frame_ - num33 * SCENE_CHANGE_WAIT[1], 0, SCENE_CHANGE_ONE[1], 0, gameWidth / SCENE_IMG_DIV_X[1], true);\r\n\t\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, width2, height);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (value1_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tint width2 = 20;\r\n\t\t\t\t\tnum28 = 20;\r\n\t\t\t\t\tint num34 = instance.GetGameWidth() / width2 + 1;\r\n\t\t\t\t\tint num35 = instance.GetGameHeight() / num28 + 1;\r\n\t\t\t\t\tfor (int num36 = 0; num36 < num35; num36++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = num28 * num36;\r\n\t\t\t\t\t\tfor (int num37 = 0; num37 < num34; num37++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = width2 * num37;\r\n\t\t\t\t\t\t\tint width3 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, width2, true);\r\n\t\t\t\t\t\t\tint height2 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, num28, true);\r\n\t\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, num % 40, width3, height2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.SetOrigin(originX, originY);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 71)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, \"\u65b0\u30c1\u30fc\u30e0\u60c5\u5831\u767b\u9332\");\r\n\t\t\t\tapdat_.DrawBox(g, 12, 52, 227, 185);\r\n\t\t\t\tTeamData teamData2 = apdat_.tData_[0];\r\n\t\t\t\tint num38 = 76;\r\n\t\t\t\tint num39 = 16;\r\n\t\t\t\tnum4 = 22;\r\n\t\t\t\tnum = 73;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u30c1\u30fc\u30e0\u306e\u540d\u524d\", num4, num);\r\n\t\t\t\tg.DrawString(\"\u77ed\u7e2e\u540d(4\u6587\u5b57)\", num4, num + 20);\r\n\t\t\t\tg.DrawString(\"\uff95\uff86\uff8c\uff6b\uff70\uff91\uff76\uff97\uff70\", num4, num + 40);\r\n\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\tint num40 = g.GetFont(null).StringWidth(teamData2.name_);\r\n\t\t\t\tint num41 = g.GetFont(null).StringWidth(teamData2.name2_);\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.FillRect(169 - num40 / 2 - 1, 72 + 20 * select_, num40 + 1, num39);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.FillRect(169 - num41 / 2 - 1, 72 + 20 * select_, num41 + 1, num39);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.FillRect(135f, 72 + 20 * select_, num38, num39);\r\n\t\t\t\t}\r\n\t\t\t\tGameView.AddTouch(g, 11, 125, 72, num38 + 20, num39, 131072);\r\n\t\t\t\tGameView.AddTouch(g, 11, 125, 92, num38 + 20, num39, 131073);\r\n\t\t\t\tGameView.AddTouch(g, 11, 125, 112, num38 + 20, num39, 131074);\r\n\t\t\t\tnum4 = 169;\r\n\t\t\t\tGameView.AddTouch(g, 18, num4 - 40 - 5, num + 46, apdat_.resCom2_.seb[24], 0, 16, TouchOption.Create().Margin(30, 5, 20, 20));\r\n\t\t\t\tGameView.AddTouch(g, 18, num4 + 40 + 7, num + 46, apdat_.resCom2_.seb[24], 1, 18, TouchOption.Create().Margin(5, 20, 20, 20));\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 169 - num40 / 2 - 1 - 8, num + 9 + 20 * select_, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 169 - num41 / 2 - 1 - 8, num + 9 + 20 * select_, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 131f, num + 9 + 20 * select_, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tnum4 = 169;\r\n\t\t\t\tg.DrawString(teamData2.name_, num4, num, 2);\r\n\t\t\t\tg.DrawString(teamData2.name2_, num4, num + 20, 2);\r\n\t\t\t\tint num42 = 15 + g.GetFont(null).StringWidth(UNIFORM_NAME[udat_.selectUniform_]);\r\n\t\t\t\tapdat_.DrawSeb(g, num4 - num42 / 2, num + 40 + 1, apdat_.resCom2_.seb[28], apdat_.resCom2_.img[33], udat_.selectUniform_);\r\n\t\t\t\tg.DrawString(UNIFORM_NAME[udat_.selectUniform_], num4 - num42 / 2 + 15, num + 40);\r\n\t\t\t\tnum = 134;\r\n\t\t\t\tg.ClipRect(14f, num, 211f, 60f);\r\n\t\t\t\tapdat_.DrawSeb(g, 0, num, apdat_.resCom2_.seb[32], apdat_.resCom2_.img[34], 0);\r\n\t\t\t\tapdat_.DrawSeb(g, 120, num, apdat_.resCom2_.seb[32], apdat_.resCom2_.img[34], 0);\r\n\t\t\t\tapdat_.DrawSeb(g, 0, num + 27, apdat_.resCom2_.seb[33], apdat_.resCom2_.img[35], 0);\r\n\t\t\t\tapdat_.DrawSeb(g, 120, num + 27, apdat_.resCom2_.seb[33], apdat_.resCom2_.img[35], 0);\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tnum2 = 14;\r\n\t\t\t\tnum3 = 134;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(213, 232, 220));\r\n\t\t\t\tg.DrawRect(num2, num3, 210f, 59f);\r\n\t\t\t\tg.DrawRect(num2 + 1, num3 + 1, 208f, 57f);\r\n\t\t\t\tnum3 = 184;\r\n\t\t\t\tfor (int num43 = 0; num43 < 5; num43++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = 82 + 19 * num43;\r\n\t\t\t\t\tPlayerData playerData = apdat_.pData_[num43 + 22];\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2 - 1, num3 + 1, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 4);\r\n\t\t\t\t\tif (num43 == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.SetDispPlayerData(0, udat_.selectUniform_, playerData.faceImg_, frame_ % 20 / 5, 1, 0, -1);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.SetDispPlayerData(0, udat_.selectUniform_, playerData.faceImg_, frame_ % 20 / 5, 1);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.DrawDispPlayer(g, num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tnum = 200;\r\n\t\t\t\tif (select_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\tg.FillRect(78f, num, 84f, 16f);\r\n\t\t\t\t}\r\n\t\t\t\tGameView.AddTouch(g, 11, 68, num, 104, 16, 131075);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u52a0\u76df\u7533\u8acb\u3059\u308b\", 120f, num + 2, 2);\r\n\t\t\t\tif (select_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 74f, num + 9, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\tg.ClipRect(0f, 198f, 240f, 20f);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 26, 226);\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 212, 226);\r\n\t\t\t\tg.PopClip();\r\n\t\t\t}\r\n\t\t\telse if (type_ == 72)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 210, 110, 0, \"\u9078\u624b\u306e\u89e3\u96c7\");\r\n\t\t\t\tapdat_.DrawBox(g, 26, 90, 213, 148);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tnum = 116;\r\n\t\t\t\tg.DrawString(\"\u9078\u624b\u3092\u89e3\u96c7\u3057\u307e\u3059\u304b\", 120f, num, 2);\r\n\t\t\t\tnum = 132;\r\n\t\t\t\tg.DrawString(MyFormBase.LT(\"\u73fe\u5728  <0> /30\u540d\", udat_.memberPDataist_.Size()), 120f, num, 2);\r\n\t\t\t\tnum3 = 164;\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\tg.FillRect(54f, num3 - 2, 58f, 16f);\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 50f, num3 + 7, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\tg.FillRect(127f, num3 - 2, 58f, 16f);\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 123f, num3 + 7, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u306f\u3044\", 71f, num3);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u3044\u3044\u3048\", 138f, num3);\r\n\t\t\t\tint num44 = 58;\r\n\t\t\t\tint num45 = 100;\r\n\t\t\t\tint num46 = 160;\r\n\t\t\t\tGameView.AddTouch(g, 3, 75 - num44 / 2 - num45 / 2, num3 - 2 - num46 / 2, 68 + num45, 16 + num46, 131072);\r\n\t\t\t\tGameView.AddTouch(g, 3, 75 - num44 / 2 + 90 - num45 / 2, num3 - 2 - num46 / 2, 68 + num45, 16 + num46, 131073);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 74)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, MyFormBase.LT(\"\u53ce\u652f\u60c5\u5831 <0>/2\", page_ + 1));\r\n\t\t\t\tapdat_.DrawBox(g, 12, 69, 227, 190);\r\n\t\t\t\tGameView.AddTouch(g, 1, 44 - frame_ % 20 / 5, 51, apdat_.resCom2_.seb[24], 0, 16);\r\n\t\t\t\tGameView.AddTouch(g, 1, 193 + frame_ % 20 / 5, 51, apdat_.resCom2_.seb[24], 1, 18);\r\n\t\t\t\tnum = 65;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (page_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u6708\u9593\", 28f, num);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u5e74\u9593\", 28f, num);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_GRAY);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u53ce\u5165\", 102f, num);\r\n\t\t\t\t\tg.DrawString(\"\u652f\u51fa\", 168f, num);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u53ce\u5165\", 121f, num);\r\n\t\t\t\t\tg.DrawString(\"\u652f\u51fa\", 194f, num);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 22;\r\n\t\t\t\tnum = 90;\r\n\t\t\t\tint num47 = 0;\r\n\t\t\t\tint num48 = 0;\r\n\t\t\t\tint num49 = 0;\r\n\t\t\t\tfor (int num50 = 0; num50 < UserData.RECORD_NAME.Length; num50++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 = num + 18 * num50;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(UserData.RECORD_NAME[num50], num4, num3);\r\n\t\t\t\t\tif (num50 != 4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(199, 223, 148));\r\n\t\t\t\t\t\tg.DrawLine(num4, num3 + 12 + 2, num4 + 210 - 12, num3 + 12 + 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tif (page_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum48 = udat_.records_[apdat_.save_.ints[2]][num50][0];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum48 = 0;\r\n\t\t\t\t\t\tfor (int num51 = 0; num51 < 12; num51++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum48 += udat_.records_[num51][num50][0];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num48), num4 + 121, num3, 4);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_RED);\r\n\t\t\t\t\tif (page_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum49 = udat_.records_[apdat_.save_.ints[2]][num50][1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum49 = 0;\r\n\t\t\t\t\t\tfor (int num52 = 0; num52 < 12; num52++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum49 += udat_.records_[num52][num50][1];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num49), num4 + 194, num3, 4);\r\n\t\t\t\t\tnum47 += num48 - num49;\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(146, 184, 247));\r\n\t\t\t\tg.DrawLine(22f, 180f, 220f, 180f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u5229\u76ca\", num4, 184f);\r\n\t\t\t\tif (num47 >= 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_RED);\r\n\t\t\t\t}\r\n\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num47), num4 + 194, 184f, 4);\r\n\t\t\t\tnum = 201;\r\n\t\t\t\tg.ClipRect(0f, num, 240f, 17f);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 30, num + 28);\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 209, num + 28);\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tnum = 204;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u89b3\u5ba2\u6570\", 55f, 204f);\r\n\t\t\t\tint num53 = 0;\r\n\t\t\t\tif (page_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum53 = udat_.customer_month_[apdat_.save_.ints[2]];\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum53 = 0;\r\n\t\t\t\t\tfor (int num54 = 0; num54 < udat_.customer_month_.Length; num54++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum53 += udat_.customer_month_[num54];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.DrawNumImageComma(g, 78, num53, 179, num + 1, 0, 0, 4);\r\n\t\t\t\tapdat_.DrawSeb(g, 181, num + 2, apdat_.resCom2_.seb[78], apdat_.resCom2_.img[105], 18);\r\n\t\t\t\tGameView.AddTouch(2, TouchOption.Create(2));\r\n\t\t\t}\r\n\t\t\telse if (type_ == 75 || type_ == 76)\r\n\t\t\t{\r\n\t\t\t\tint num55 = 0;\r\n\t\t\t\tif (type_ == 75)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum55 = GameUtil.RateConvert(frame_, 0, FADE_TIME_V, 0, 255, true);\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 76)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum55 = GameUtil.RateConvert(frame_, 0, FADE_TIME_V, 255, 0, true);\r\n\t\t\t\t}\r\n\t\t\t\tif (num55 > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tGameView instance2 = GameView.GetInstance();\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0, num55));\r\n\t\t\t\t\tg.FillRect(0f, 0f, instance2.GetGameWidth(), instance2.GetGameHeight());\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (type_ == 77)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, \"\u30af\u30e9\u30d6\u306e\u6b74\u53f2\");\r\n\t\t\t\tapdat_.DrawBox(g, 12, 51, 227, 205);\r\n\t\t\t\tnum4 = 14;\r\n\t\t\t\tnum = 67;\r\n\t\t\t\tfor (int num56 = scrollValue_; num56 < ary1.Size(); num56++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num57 = num56 - scrollValue_;\r\n\t\t\t\t\tif (num57 >= 9)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tnum2 = num4;\r\n\t\t\t\t\tnum3 = num + 16 * num57;\r\n\t\t\t\t\tFanBonusData fanBonusData = (FanBonusData)ary1.ElementAt(num56);\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(222, 234, 225));\r\n\t\t\t\t\tg.DrawLine(num2, num3, num2 + 211 - 1, num3);\r\n\t\t\t\t\tg.DrawLine(num2, num3 + 16, num2 + 211 - 1, num3 + 16);\r\n\t\t\t\t\tif (num56 == select_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\t\tg.FillRect(num2 + 1, num3 + 1, 209f, 15f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tGameView.AddTouch(g, 11, num2, num3, 209, 15, 0x20000 | num56, TouchOption.Create(16).Margin(30, 0, 0, 0));\r\n\t\t\t\t\tif (fanBonusData.state_ == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[178], num2 + 2, num3 + 1);\r\n\t\t\t\t\t\tstring empty2 = string.Empty;\r\n\t\t\t\t\t\tempty2 = ((!MyFormBase.Jp()) ? (MyFormBase.LT(\"\u5e74\") + (fanBonusData.achiveDay_[0] + 1) + \"/\" + (fanBonusData.achiveDay_[1] + 1) + \"/\" + (fanBonusData.achiveDay_[2] + 1)) : (fanBonusData.achiveDay_[0] + 1 + MyFormBase.LT(\"\u5e74\") + (fanBonusData.achiveDay_[1] + 1) + \"/\" + (fanBonusData.achiveDay_[2] + 1)));\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\t\tg.DrawString(empty2, num2 + 71, num3 + 3, 4);\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\t\tif (En())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(fanBonusData.info_name_, num2 + 84 - 4, num3 + 3 + 1);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(fanBonusData.info_name_, num2 + 84 - 4, num3 + 3);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\t\t\tg.DrawString(\"\u9054\u6210\", num2 + 190, num3 + 3, 2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_GRAY);\r\n\t\t\t\t\t\tg.DrawString(\"--\u5e74--/-\", num2 + 71, num3 + 3, 4);\r\n\t\t\t\t\t\tg.DrawString(\"\uff1f\uff1f\uff1f\uff1f\", num2 + 84, num3 + 3);\r\n\t\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\t\tif (!En())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(\"\u672a\u9054\u6210\", num2 + 190 - 2, num3 + 3, 2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num56 == select_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, num2 - 4 + 5, num3 + 9, apdat_.resCom2_.img);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(222, 234, 225));\r\n\t\t\t\tg.DrawLine(90f, 68f, 90f, 210f);\r\n\t\t\t\tapdat_.DrawVerticalScroll2(g, num4 + 214, num - 5, 3, 154, scrollValue_, ary1.Size() - 1, 9);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 78)\r\n\t\t\t{\r\n\t\t\t\tDraw_moveToBus(g, frame_);\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 79)\r\n\t\t\t{\r\n\t\t\t\tDraw_battlePic(g, frame_);\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t}",
+      "after": "private void _draw6(Graphics g)\r\n\t\t{\r\n\t\t\tint num4;\nint num;\nint num2;\nint num3;\n\r\n\r\n\t\t\tnum4 = num = num2 = num3 = 0;\r\n\t\t\tFont font = g.GetFont(null);\r\n\t\t\tif (type_ == 64)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, \"\u65bd\u8a2d\u306eLVUP\");\r\n\t\t\t\tapdat_.DrawBox(g, 12, 136, 227, 205);\r\n\t\t\t\tTenantData tenantData = apdat_.tenantData_[tenantDataId_];\r\n\t\t\t\tnum4 = 60;\r\n\t\t\t\tnum = 66;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(181, 219, 166));\r\n\t\t\t\tg.DrawRect(num4, num, 121f, 75f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(219, 249, 207));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 120f, 74f);\r\n\t\t\t\tg.ClipRect(num4, num, 122f, 76f);\r\n\t\t\t\tnum4 += 31;\r\n\t\t\t\tnum += 16;\r\n\t\t\t\tfor (int i = 0; i < 4; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + i / 2 * 30 - i % 2 * 30;\r\n\t\t\t\t\tnum3 = num + i / 2 * 15 + i % 2 * 15;\r\n\t\t\t\t\tMapchipMain mapchipMain = null;\r\n\t\t\t\t\tif (tenantData != null) { mapchipMain = apdat_.mapchipMain_[tenantData.img_[i]]; } else { mapchipMain = apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + i]; }\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain.seb_], apdat_.resMapChipMain_.img[mapchipMain.img_], 0);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tif (page_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 156;\r\n\t\t\t\t\tint num5 = GameUtil.RateConvert(frame_, TLUP_ANIME_TIME[0], TLUP_ANIME_TIME[1], 0, 12, true);\r\n\t\t\t\t\tg.ClipRect(0f, num, 240f, num5);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u306e\u30ec\u30d9\u30eb\u304c<1>\u306b\u306a\u3063\u305f!\", tenantData.name_ + \"\\t\" + (tenantData.lv_ + 1)), 120f, num, 2);\r\n\t\t\t\t\tg.PopClip();\r\n\t\t\t\t\tint num6 = 0;\r\n\t\t\t\t\tint num7 = 0;\r\n\t\t\t\t\tif (En())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum6 = -10;\r\n\t\t\t\t\t\tnum7 = 10;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tnum4 = 53;\r\n\t\t\t\t\tnum = 178;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tg.DrawString(\"\u5546\u54c1\u4fa1\u683c\", num4 + num6, num);\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb/\u6708\", num4 + num6, num + 16);\r\n\t\t\t\t\tint[] array = GetMeterParam(0);\r\n\t\t\t\t\tint[] array2 = GetMeterParam(1);\r\n\t\t\t\t\tint num8 = array[1];\r\n\t\t\t\t\tint num9 = array2[1];\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num8), num4 + 105, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num9), num4 + 105, num + 16, 4);\r\n\t\t\t\t\tnum = 178;\r\n\t\t\t\t\tint num10 = 0;\r\n\t\t\t\t\tint num11 = 0;\r\n\t\t\t\t\tfor (int j = 0; j < 2; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = 188;\r\n\t\t\t\t\t\tnum3 = num + 16 * j;\r\n\t\t\t\t\t\tnum10 = j * 6;\r\n\t\t\t\t\t\tnum11 = frame_ - TLUP_ANIME_TIME[2] - num10;\r\n\t\t\t\t\t\tif (num11 >= 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum11 = AppData.ClampMax(num11, 12);\r\n\t\t\t\t\t\t\tSetWinCharaJamp(num11, 0, -6, 12);\r\n\t\t\t\t\t\t\tint num12 = 0;\r\n\t\t\t\t\t\t\tnum12 = ((j != 0) ? array2[6] : array[6]);\r\n\t\t\t\t\t\t\tDraw_upParam(g, 35, num2 + num7, num3 + WIN_CHA[1], num12);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (frame_ >= TLUP_ANIME_TIME[5] && frame_ % 40 > 20)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.DrawSeb(g, 215, 207, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 156;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u5165\u624b\u53ef\u80fd\uff8e\uff9f\uff72\uff9d\uff84\", 120f, num, 2);\r\n\t\t\t\t\tnum4 = 45;\r\n\t\t\t\t\tnum = 175;\r\n\t\t\t\t\tint num13 = 0;\r\n\t\t\t\t\tint num14 = 0;\r\n\t\t\t\t\tfor (int k = 0; k < 4; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = num4 + 91 * (k / 2);\r\n\t\t\t\t\t\tnum3 = num + 18 * (k % 2);\r\n\t\t\t\t\t\tint[] array3 = GetMeterParam(k + 2);\r\n\t\t\t\t\t\tint num15 = array3[1];\r\n\t\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resCom2_.seb[83], apdat_.resCom2_.img[94], k);\r\n\t\t\t\t\t\tapdat_.DrawNumImage(g, 78, num15, num2 + 26, num3 + 3, 0, 2);\r\n\t\t\t\t\t\tnum2 += 58;\r\n\t\t\t\t\t\tnum3 += 3;\r\n\t\t\t\t\t\tnum13 = k * 6;\r\n\t\t\t\t\t\tnum14 = frame_ - TLUP_ANIME_TIME2[0] - num13;\r\n\t\t\t\t\t\tif (num14 >= 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum14 = AppData.ClampMax(num14, 12);\r\n\t\t\t\t\t\t\tSetWinCharaJamp(num14, 0, -6, 12);\r\n\t\t\t\t\t\t\tint cnt = array3[6];\r\n\t\t\t\t\t\t\tDraw_upParam(g, 35, num2, num3 + WIN_CHA[1], cnt);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (frame_ >= TLUP_ANIME_TIME2[3] && frame_ % 40 > 20)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.DrawSeb(g, 215, 207, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 65)\r\n\t\t\t{\r\n\t\t\t\tint[] array4 = DrawWindow2(g, 228, 176, \"\u65bd\u8a2d\u60c5\u5831\", 5, 20, 20, 0, 4, 12);\r\n\t\t\t\tTenantData tenantData2 = null;\r\n\t\t\t\tif (tenantDataId_ != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\ttenantData2 = apdat_.tenantData_[tenantDataId_];\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 66;\r\n\t\t\t\tnum3 = 64;\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[126], num2, num3 + 2);\r\n\t\t\t\tapdat_.DrawNumImage(g, 79, tenantData2.lv_, num2 + 20, num3, 0, 1);\r\n\t\t\t\tnum2 = 121;\r\n\t\t\t\tnum3 = 64;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (tenantData2 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(tenantData2.name_, num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7a7a\u304d\u5730\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 21;\r\n\t\t\t\tnum3 = 164;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u5546\u54c1\u4fa1\u683c\", num2, num3 + 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u5546\u54c1\u4fa1\u683c\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramUsePrice_), num2 + 106 + 3, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramUsePrice_), num2 + 106, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 21;\r\n\t\t\t\tnum3 = 180;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb/\u6708\", num2, num3 + 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb/\u6708\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramKeepCost_), num2 + 106 + 3, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData2.paramKeepCost_), num2 + 106, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 14;\r\n\t\t\t\tnum = 83;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(181, 219, 166));\r\n\t\t\t\tg.DrawRect(num4, num, 121f, 75f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(219, 249, 207));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 120f, 74f);\r\n\t\t\t\tg.ClipRect(num4, num, 122f, 76f);\r\n\t\t\t\tnum4 = 45;\r\n\t\t\t\tnum = 99;\r\n\t\t\t\tfor (int l = 0; l < 4; l++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + l / 2 * 30 - l % 2 * 30;\r\n\t\t\t\t\tnum3 = num + l / 2 * 15 + l % 2 * 15;\r\n\t\t\t\t\tMapchipMain mapchipMain2 = null;\r\n\t\t\t\t\tmapchipMain2 = ((tenantData2 == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + l] : apdat_.mapchipMain_[tenantData2.img_[l]]);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain2.seb_], apdat_.resMapChipMain_.img[mapchipMain2.img_], 0);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tnum4 = 138;\r\n\t\t\t\tnum = 83;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 229, 149));\r\n\t\t\t\tg.DrawRect(num4, num, 86f, 47f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(253, 252, 202));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 85f, 46f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u9078\u624b\u3078\u306e\u5f71\u97ff\", num4 + 2 + 42, num + 5 + 1, 2);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u9078\u624b\u3078\u306e\u5f71\u97ff\", num4 + 2 + 42, num + 5, 2);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tint fanToEf = TenantData.GetFanToEf(tenantData2.paramEfToFan_);\r\n\t\t\t\tg.DrawString(TenantData.EFTOFAN_STR[fanToEf], num4 + 45, num + 20, 2);\r\n\t\t\t\tint width = GameUtil.RateConvert(tenantData2.paramEfToFan_, 0, 10, 0, 80, true);\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[132], num4 + 3, num + 35, 0, 0, 82, 10);\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[132], num4 + 3 + 1, num + 35 + 1, 1, 10, width, 8);\r\n\t\t\t\tnum4 = 138;\r\n\t\t\t\tnum = 132;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 229, 149));\r\n\t\t\t\tg.DrawRect(num4, num, 86f, 61f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(253, 252, 202));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 85f, 60f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u5165\u624b\u53ef\u80fd\uff8e\uff9f\uff72\uff9d\uff84\", num4 + 4, num + 6);\r\n\t\t\t\tnum4 = 145;\r\n\t\t\t\tnum = 156;\r\n\t\t\t\tfor (int m = 0; m < 4; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + 37 * (m / 2);\r\n\t\t\t\t\tnum3 = num + 18 * (m % 2);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resCom2_.seb[83], apdat_.resCom2_.img[94], m);\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 78, tenantData2.paramResearch_[m], num2 + 26, num3 + 3, 0, 2);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = array4[7] + 5;\r\n\t\t\t\tnum = ((!En()) ? 208 : 203);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (tenantData2 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(tenantData2.explain_, 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7a7a\u304d\u5730\u3067\u3059\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (type_ == 66)\r\n\t\t\t{\r\n\t\t\t\tint[] array5 = DrawWindow2(g, 228, 176, \"\u65bd\u8a2d\u60c5\u5831\", 5, 20, 20, 0, 4, 12);\r\n\t\t\t\tTenantData tenantData3 = null;\r\n\t\t\t\tif (tenantDataId_ != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\ttenantData3 = apdat_.tenantData_[tenantDataId_];\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 17;\r\n\t\t\t\tnum3 = 64;\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[126], num2, num3 + 2);\r\n\t\t\t\tapdat_.DrawNumImage(g, 79, tenantData3.lv_, num2 + 19, num3, 0, 1);\r\n\t\t\t\tnum2 = 52;\r\n\t\t\t\tnum3 = 65;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (tenantData3 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(tenantData3.name_, num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7a7a\u304d\u5730\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 149;\r\n\t\t\t\tnum3 = 65;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb\", num2, num3 + 1);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData3.paramKeepCost_), num2 + 76, num3 + 1, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u7dad\u6301\u8cbb\", num2, num3);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", tenantData3.paramKeepCost_), num2 + 76, num3, 4);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tnum4 = 59;\r\n\t\t\t\tnum = 83;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(181, 219, 166));\r\n\t\t\t\tg.DrawRect(num4, num, 121f, 75f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(219, 249, 207));\r\n\t\t\t\tg.FillRect(num4 + 1, num + 1, 120f, 74f);\r\n\t\t\t\tg.ClipRect(num4, num, 122f, 76f);\r\n\t\t\t\tnum4 = 90;\r\n\t\t\t\tnum = 99;\r\n\t\t\t\tfor (int n = 0; n < 4; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = num4 + n / 2 * 30 - n % 2 * 30;\r\n\t\t\t\t\tnum3 = num + n / 2 * 15 + n % 2 * 15;\r\n\t\t\t\t\tMapchipMain mapchipMain3 = null;\r\n\t\t\t\t\tmapchipMain3 = ((tenantData3 == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + n] : apdat_.mapchipMain_[tenantData3.img_[n]]);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain3.seb_], apdat_.resMapChipMain_.img[mapchipMain3.img_], 0);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u3092\u64a4\u53bb\u3057\u307e\u3059\u304b\", tenantData3.name_), 120f, 172f, 2);\r\n\t\t\t\tnum3 = 202;\r\n\t\t\t\tnum = 200;\r\n\t\t\t\tint num16 = 40;\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u64a4\u53bb\u3059\u308b\", 120 - num16, num, true, true);\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u3084\u3081\u3066\u304a\u304f\", 120 + num16, num, false, false);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u64a4\u53bb\u3059\u308b\", 120 - num16, num, false, false);\r\n\t\t\t\t\tDraw_btmMsg(g, \"\u3084\u3081\u3066\u304a\u304f\", 120 + num16, num, true, true);\r\n\t\t\t\t}\r\n\t\t\t\tnum16 = 58;\r\n\t\t\t\tGameView.AddTouch(g, 2, 75 - num16 / 2, num3 - 2, 68, 16, 131072);\r\n\t\t\t\tGameView.AddTouch(g, 2, 75 - num16 / 2 + 90, num3 - 2, 68, 16, 131073);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 67)\r\n\t\t\t{\r\n\t\t\t\tTeamData teamData = apdat_.tData_[0];\r\n\t\t\t\tapdat_.DrawWindow(g, 231, 185, 0, teamData.name_);\r\n\t\t\t\tapdat_.DrawBox(g, 12, 64, 230, 192);\r\n\t\t\t\tint[] leagueData = udat_.GetLeagueData(0);\r\n\t\t\t\tnum2 = 31;\r\n\t\t\t\tnum3 = 60;\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[57], num2, num3);\r\n\t\t\t\tint rankIndex = udat_.GetRankIndex();\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 35, rankIndex + 1, num2 + 16, num3, 0, 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 35, rankIndex + 1, num2 + 16 + 3, num3, 0, 1);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(UserData.RANK_NAME[rankIndex], 120f, num3, 2);\r\n\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u5e74\u76ee\", apdat_.save_.ints[1] + 1), 210f, num3, 4);\r\n\t\t\t\tSupervisorData supervisorData = apdat_.svisorData_[udat_.selectSupervisorId_];\r\n\t\t\t\tnum2 = 12;\r\n\t\t\t\tnum3 = 79;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 251, 207));\r\n\t\t\t\tg.FillRect(16f, 79f, 99f, 42f);\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(228, 255, 207));\r\n\t\t\t\tg.FillRect(16f, 151f, 99f, 47f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tg.DrawString(\"\u76e3\u7763\", num2 + 7, num3 + 5);\r\n\t\t\t\tg.DrawString(\"\u9078\u624b\u6570\", num2 + 7, num3 + 5 + 19);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0><1>\", supervisorData.name_ + \"\\t\" + supervisorData.name2_), num2 + 100 + 3, num3 + 5, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\tempty += MyFormBase.LT(supervisorData.name_);\r\n\t\t\t\t\tempty += \" \";\r\n\t\t\t\t\tempty += MyFormBase.LT(supervisorData.name2_);\r\n\t\t\t\t\tg.DrawString(empty, num2 + 100 + 3 - 7, num3 + 5, 4);\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.DrawNumImage(g, 35, udat_.memberPDataist_.Size(), num2 + 100 - 12 - 2, num3 + 5 + 21, 0, 4);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u4eba\", num2 + 100, num3 + 5 + 21, 4);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\uff7d\uff8e\uff9f\uff9d\uff7b\uff70\", num2 + 8, num3 + 44);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u793e\", sponsor_num_), num2 + 53, num3 + 44);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u793e\", sponsor_num_), num2 + 53 + 46, num3 + 44, 4);\r\n\t\t\t\t}\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, sponsor_income_, num2 + 59, num3 + 59, 0, 0, 4);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2 + 60, num3 + 59, apdat_.resCom2_.seb[35], apdat_.resCom2_.img[103], 17);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawMoney(g, 35, sponsor_income_, num2 + 59, num3 + 59, 0, 0, 4);\r\n\t\t\t\t}\r\n\t\t\t\tg.DrawString(\"/\u8a66\u5408\", num2 + 70, num3 + 58);\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tnum4 = 17;\r\n\t\t\t\tnum = 153;\r\n\t\t\t\tint[] array6 = new int[3] { 2, 0, 1 };\r\n\t\t\t\tfor (int num17 = 0; num17 < 3; num17++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num18 = array6[num17];\r\n\t\t\t\t\tnum3 = num + 16 * num17;\r\n\t\t\t\t\tnum2 = num4;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\tg.DrawString(FanActData.element_name[num18], num2 - 2 + 4, num3);\r\n\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\tint fanEva = FanActData.GetFanEva(num18);\r\n\t\t\t\t\tint fanDispParam = FanActData.GetFanDispParam(fanEva, num18);\r\n\t\t\t\t\tnum2 = 112;\r\n\t\t\t\t\tif (num18 == 0) {\r\napdat_.DrawNumImageComma(g, 35, fanDispParam, num2 - 14, num3 + 2, 0, 0, 4);\r\ng.SetColor(SC_WINDOW_BLACK);\r\nif (MyFormBase.Jp())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(\"\u4eba\", num2, num3 - 2 + 4, 4);\r\n\t\t\t\t\t\t}\r\n} else if (num18 == 1) {\r\nint num19 = 46;\r\nint num20 = 0;\r\nnum20 = GameUtil.RateConvert(fanDispParam, 0, 100, 0, num19 - 2, true);\r\ng.DrawImage(apdat_.resCom2_.img[129], num2 - 52, num3 + 1, 0, 0, 52, 10);\r\ng.DrawImage(apdat_.resCom2_.img[129], num2 - 52 + 1, num3 + 2, 1, 10, num20, 8);\r\n} else if (num18 == 2) {\r\napdat_.DrawNumImage(g, 35, fanDispParam, num2 - 14, num3 + 1, 0, 4);\r\n}\r\ncoalescedSwitchExit221580: ;\r\n\t\t\t\t}\r\n\t\t\t\tint switchValue = udat_.GetMatchInfoJoin();\r\nif (switchValue == 0) {\r\nLeagueData leagueData2 = apdat_.leagueData_[udat_.selectLeagueId_];\r\nnum2 = 120;\r\nnum3 = 79;\r\ng.SetColor(SC_WINDOW_BLUE);\r\nif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(\"\u6240\u5c5e\", num2 + 3, num3 + 5);\r\n\t\t\t\t\t\tg.DrawString(\"\u30ea\u30fc\u30b0\", num2 + 3, num3 + 5 + 19);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(\"\u6240\u5c5e\", num2 + 3 - 3, num3 + 5);\r\n\t\t\t\t\t\tg.DrawString(\"\u30ea\u30fc\u30b0\", num2 + 3 - 3, num3 + 5 + 19);\r\n\t\t\t\t\t}\r\ng.SetColor(SC_WINDOW_BLACK);\r\nSetFontSize(g, 10);\r\nif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(leagueData2.name_, num2 + 73, num3 + 5, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(leagueData2.name_, num2 + 73 - 6, num3 + 5 + 1, 2);\r\n\t\t\t\t\t}\r\nResetFontSize(g);\r\nif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num21 = 14 + AppData.GetFig(leagueData[7]) * 8;\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, leagueData[7], num2 + 73 + num21 / 2 - 14, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u4f4d\", num2 + 73 + num21 / 2 - 12, num3 + 5 + 19);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num22 = 52;\r\n\t\t\t\t\t\tint num23 = AppData.GetFig(leagueData[7]) * 8 + 4 + font.StringWidth(\"\u4f4d\");\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u4f4d\", num2 + num22, num3 + 5 + 19);\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, leagueData[7], num2 + num22 + num23, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t}\r\n} else if (switchValue == 1) {\r\nQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\nnum2 = 171;\r\nnum3 = 79;\r\ng.SetColor(SC_WINDOW_BLUE);\r\nif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u56de\u6226\", num2 - 7, num3 + 5 + 19);\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, udat_.battleQmIndex_ + 1, num2 - 9, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tg.DrawString(\"\u56de\u6226\", num2 - 7 - 23, num3 + 5 + 19);\r\n\t\t\t\t\t\tapdat_.DrawNumImageComma(g, 35, udat_.battleQmIndex_ + 1, num2 - 9 + 41, num3 + 1 + 5 + 19, 0, 0, 4);\r\n\t\t\t\t\t}\r\nSetFontSize(g, 10);\r\nif (MyFormBase.Jp())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(questMatchData.name_, num2, num3 + 5, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(questMatchData.name_, num2, num3 + 5 + 1, 2);\r\n\t\t\t\t\t}\r\nResetFontSize(g);\r\n}\r\ncoalescedSwitchExit222308: ;\r\n\t\t\t\tnum2 = 119;\r\n\t\t\t\tnum3 = 125;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 251, 207));\r\n\t\t\t\tg.FillRect(num2, num3, 107f, 54f);\r\n\t\t\t\tnum2 = 174;\r\n\t\t\t\tnum3 = 154;\r\n\t\t\t\tudat_.DrawGraph_menuElement(g, num2, num3, udat_.playerParam1, udat_.playerParam2, 100);\r\n\t\t\t\tfor (int num24 = 0; num24 < UserData.GRAPH_POS.Length; num24++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2 + UserData.GRAPH_POS[num24][0], num3 + UserData.GRAPH_POS[num24][1], apdat_.resCom2_.seb[75], apdat_.resCom2_.img[122], num24);\r\n\t\t\t\t}\r\n\t\t\t\tnum2 = 119;\r\n\t\t\t\tnum3 = 181;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 251, 207));\r\n\t\t\t\tg.FillRect(num2, num3, 107f, 20f);\r\n\t\t\t\tnum2 = 133;\r\n\t\t\t\tnum3 = 185;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\uff81\uff70\uff91\u8a55\u4fa1\", num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\uff81\uff70\uff91\u8a55\u4fa1\", num2 - 4, num3 + 1);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 30, teamData.warPotential_, num2 + 79, num3, 0, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawNumImage(g, 30, teamData.warPotential_, num2 + 79 + 2, num3, 0, 4);\r\n\t\t\t\t}\r\n\t\t\t\tnum = 208;\r\n\t\t\t\tint num25 = udat_.matchResult_[0] + udat_.matchResult_[1] + udat_.matchResult_[2];\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6226\", num25), 76f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u52dd\", udat_.matchResult_[0]), 123f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6557\", udat_.matchResult_[2]), 174f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u5206\", udat_.matchResult_[1]), 217f, num, 4);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6226\", num25), 91f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u52dd\", udat_.matchResult_[0]), 123f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u6557\", udat_.matchResult_[2]), 155f, num, 4);\r\n\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u5206\", udat_.matchResult_[1]), 187f, num, 4);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 68)\r\n\t\t\t{\r\n\t\t\t\tint[] array7 = DrawWindow(g, 188, 110, \"\uff81\uff79\uff6f\uff84\u4ee3\u306e\u5909\u66f4\", 5, 5, 20, 0, 4);\r\n\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum4 = 123;\r\n\t\t\t\t\tnum = 103;\r\n\t\t\t\t\tapdat_.DrawMoney(g, 35, udat_.ticketPrice_ / 100, 120, num, 0, 0, 2, false);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum4 = 145;\r\n\t\t\t\t\tnum = 101;\r\n\t\t\t\t\tapdat_.DrawNumImageComma(g, 31, udat_.ticketPrice_, num4, num, 4, 0, 4);\r\n\t\t\t\t\tapdat_.DrawSeb(g, num4 + 2, num + 2, apdat_.resCom2_.seb[35], apdat_.resCom2_.img[103], 12);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 120;\r\n\t\t\t\tnum = 101;\r\n\t\t\t\tint num26 = 1000;\r\n\t\t\t\tint val = udat_.teamEvaRank_ * 2000 + 3000;\r\n\t\t\t\tval = AppData.ClampMax(val, 20000);\r\n\t\t\t\tval -= val % 1000;\r\n\t\t\t\tif (udat_.ticketPrice_ < val)\r\n\t\t\t\t{\r\n\t\t\t\t\tGameView.AddTouch(g, 18, num4 - 40 - 5, num + 6, apdat_.resCom2_.seb[24], 0, 16, TouchOption.Create().Margin(60, 5, 30, 30));\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.ticketPrice_ > num26)\r\n\t\t\t\t{\r\n\t\t\t\t\tGameView.AddTouch(g, 18, num4 + 40 + 7, num + 6, apdat_.resCom2_.seb[24], 1, 18, TouchOption.Create().Margin(5, 60, 30, 30));\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 37;\r\n\t\t\t\tnum = 128;\r\n\t\t\t\tapdat_.DrawBox(g, num4, num - 11, num4 + 167, num - 11 + 22);\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[172], num4, num, 0, 0, 16, 21);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(ticketPriceMessage, num4 + 23, num + 6 + 1);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(ticketPriceMessage, num4 + 23, num + 6);\r\n\t\t\t\t}\r\n\t\t\t\tResetFontSize(g);\r\n\t\t\t\tnum = 157;\r\n\t\t\t\tDraw_btmMsg(g, \"\u6c7a\u5b9a\", num);\r\n\t\t\t\tint num27 = 50;\r\n\t\t\t\tGameView.AddTouch(g, 2, 120 - num27 / 2, num - 2, num27, 16, 131072);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 69)\r\n\t\t\t{\r\n\t\t\t\tint coalescedWidth, num28;\r\ncoalescedWidth = num28 = 0;\r\n\t\t\t\tGameView instance = GameView.GetInstance();\r\n\t\t\t\tint gameWidth = instance.GetGameWidth();\r\n\t\t\t\tint gameHeight = instance.GetGameHeight();\r\n\t\t\t\tint originX = g.GetOriginX();\r\n\t\t\t\tint originY = g.GetOriginY();\r\n\t\t\t\tg.SetOrigin(0, 0);\r\n\t\t\t\tif (value1_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tcoalescedWidth = gameWidth / SCENE_IMG_DIV_X[0];\r\n\t\t\t\t\tfor (int num29 = 0; num29 < SCENE_IMG_DIV_Y[0]; num29++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = 0 + gameHeight * num29 / SCENE_IMG_DIV_Y[0];\r\n\t\t\t\t\t\tnum28 = GameUtil.RateConvert(frame_ - num29 * SCENE_CHANGE_WAIT[0], 0, SCENE_CHANGE_ONE[0], 0, gameHeight / SCENE_IMG_DIV_Y[0], true);\r\n\t\t\t\t\t\tfor (int num30 = 0; num30 < SCENE_IMG_DIV_X[0]; num30++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = 0 + gameWidth * num30 / SCENE_IMG_DIV_X[0];\r\n\t\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, coalescedWidth, num28);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (value1_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum28 = 40;\r\n\t\t\t\t\tint num31 = gameHeight / num28 + 1;\r\n\t\t\t\t\tfor (int num32 = 0; num32 < num31; num32++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = num28 * num32;\r\n\t\t\t\t\t\tint height = AppData.ClampMax(num28, gameHeight - num);\r\n\t\t\t\t\t\tfor (int num33 = 0; num33 < SCENE_IMG_DIV_X[1]; num33++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = 0 + gameWidth * num33 / SCENE_IMG_DIV_X[1];\r\n\t\t\t\t\t\t\tcoalescedWidth = GameUtil.RateConvert(frame_ - num33 * SCENE_CHANGE_WAIT[1], 0, SCENE_CHANGE_ONE[1], 0, gameWidth / SCENE_IMG_DIV_X[1], true);\r\n\t\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, coalescedWidth, height);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (value1_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tcoalescedWidth = 20;\r\n\t\t\t\t\tnum28 = 20;\r\n\t\t\t\t\tint num34 = instance.GetGameWidth() / coalescedWidth + 1;\r\n\t\t\t\t\tint num35 = instance.GetGameHeight() / num28 + 1;\r\n\t\t\t\t\tfor (int num36 = 0; num36 < num35; num36++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = num28 * num36;\r\n\t\t\t\t\t\tfor (int num37 = 0; num37 < num34; num37++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 = coalescedWidth * num37;\r\n\t\t\t\t\t\t\tint width3 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, coalescedWidth, true);\r\n\t\t\t\t\t\t\tint height2 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, num28, true);\r\n\t\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, num % 40, width3, height2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.SetOrigin(originX, originY);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 71)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, \"\u65b0\u30c1\u30fc\u30e0\u60c5\u5831\u767b\u9332\");\r\n\t\t\t\tapdat_.DrawBox(g, 12, 52, 227, 185);\r\n\t\t\t\tTeamData teamData2 = apdat_.tData_[0];\r\n\t\t\t\tint num38 = 76;\r\n\t\t\t\tint num39 = 16;\r\n\t\t\t\tnum4 = 22;\r\n\t\t\t\tnum = 73;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u30c1\u30fc\u30e0\u306e\u540d\u524d\", num4, num);\r\n\t\t\t\tg.DrawString(\"\u77ed\u7e2e\u540d(4\u6587\u5b57)\", num4, num + 20);\r\n\t\t\t\tg.DrawString(\"\uff95\uff86\uff8c\uff6b\uff70\uff91\uff76\uff97\uff70\", num4, num + 40);\r\n\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\tint num40 = g.GetFont(null).StringWidth(teamData2.name_);\r\n\t\t\t\tint num41 = g.GetFont(null).StringWidth(teamData2.name2_);\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.FillRect(169 - num40 / 2 - 1, 72 + 20 * select_, num40 + 1, num39);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.FillRect(169 - num41 / 2 - 1, 72 + 20 * select_, num41 + 1, num39);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.FillRect(135f, 72 + 20 * select_, num38, num39);\r\n\t\t\t\t}\r\n\t\t\t\tGameView.AddTouch(g, 11, 125, 72, num38 + 20, num39, 131072);\r\n\t\t\t\tGameView.AddTouch(g, 11, 125, 92, num38 + 20, num39, 131073);\r\n\t\t\t\tGameView.AddTouch(g, 11, 125, 112, num38 + 20, num39, 131074);\r\n\t\t\t\tnum4 = 169;\r\n\t\t\t\tGameView.AddTouch(g, 18, num4 - 40 - 5, num + 46, apdat_.resCom2_.seb[24], 0, 16, TouchOption.Create().Margin(30, 5, 20, 20));\r\n\t\t\t\tGameView.AddTouch(g, 18, num4 + 40 + 7, num + 46, apdat_.resCom2_.seb[24], 1, 18, TouchOption.Create().Margin(5, 20, 20, 20));\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 169 - num40 / 2 - 1 - 8, num + 9 + 20 * select_, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 169 - num41 / 2 - 1 - 8, num + 9 + 20 * select_, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\telse if (select_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 131f, num + 9 + 20 * select_, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tnum4 = 169;\r\n\t\t\t\tg.DrawString(teamData2.name_, num4, num, 2);\r\n\t\t\t\tg.DrawString(teamData2.name2_, num4, num + 20, 2);\r\n\t\t\t\tint num42 = 15 + g.GetFont(null).StringWidth(UNIFORM_NAME[udat_.selectUniform_]);\r\n\t\t\t\tapdat_.DrawSeb(g, num4 - num42 / 2, num + 40 + 1, apdat_.resCom2_.seb[28], apdat_.resCom2_.img[33], udat_.selectUniform_);\r\n\t\t\t\tg.DrawString(UNIFORM_NAME[udat_.selectUniform_], num4 - num42 / 2 + 15, num + 40);\r\n\t\t\t\tnum = 134;\r\n\t\t\t\tg.ClipRect(14f, num, 211f, 60f);\r\n\t\t\t\tapdat_.DrawSeb(g, 0, num, apdat_.resCom2_.seb[32], apdat_.resCom2_.img[34], 0);\r\n\t\t\t\tapdat_.DrawSeb(g, 120, num, apdat_.resCom2_.seb[32], apdat_.resCom2_.img[34], 0);\r\n\t\t\t\tapdat_.DrawSeb(g, 0, num + 27, apdat_.resCom2_.seb[33], apdat_.resCom2_.img[35], 0);\r\n\t\t\t\tapdat_.DrawSeb(g, 120, num + 27, apdat_.resCom2_.seb[33], apdat_.resCom2_.img[35], 0);\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tnum2 = 14;\r\n\t\t\t\tnum3 = 134;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(213, 232, 220));\r\n\t\t\t\tg.DrawRect(num2, num3, 210f, 59f);\r\n\t\t\t\tg.DrawRect(num2 + 1, num3 + 1, 208f, 57f);\r\n\t\t\t\tnum3 = 184;\r\n\t\t\t\tfor (int num43 = 0; num43 < 5; num43++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = 82 + 19 * num43;\r\n\t\t\t\t\tPlayerData playerData = apdat_.pData_[num43 + 22];\r\n\t\t\t\t\tapdat_.DrawSeb(g, num2 - 1, num3 + 1, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 4);\r\n\t\t\t\t\tif (num43 == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.SetDispPlayerData(0, udat_.selectUniform_, playerData.faceImg_, frame_ % 20 / 5, 1, 0, -1);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.SetDispPlayerData(0, udat_.selectUniform_, playerData.faceImg_, frame_ % 20 / 5, 1);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.DrawDispPlayer(g, num2, num3);\r\n\t\t\t\t}\r\n\t\t\t\tnum = 200;\r\n\t\t\t\tif (select_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\tg.FillRect(78f, num, 84f, 16f);\r\n\t\t\t\t}\r\n\t\t\t\tGameView.AddTouch(g, 11, 68, num, 104, 16, 131075);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u52a0\u76df\u7533\u8acb\u3059\u308b\", 120f, num + 2, 2);\r\n\t\t\t\tif (select_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 74f, num + 9, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\tg.ClipRect(0f, 198f, 240f, 20f);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 26, 226);\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 212, 226);\r\n\t\t\t\tg.PopClip();\r\n\t\t\t}\r\n\t\t\telse if (type_ == 72)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 210, 110, 0, \"\u9078\u624b\u306e\u89e3\u96c7\");\r\n\t\t\t\tapdat_.DrawBox(g, 26, 90, 213, 148);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tnum = 116;\r\n\t\t\t\tg.DrawString(\"\u9078\u624b\u3092\u89e3\u96c7\u3057\u307e\u3059\u304b\", 120f, num, 2);\r\n\t\t\t\tnum = 132;\r\n\t\t\t\tg.DrawString(MyFormBase.LT(\"\u73fe\u5728  <0> /30\u540d\", udat_.memberPDataist_.Size()), 120f, num, 2);\r\n\t\t\t\tnum3 = 164;\r\n\t\t\t\tif (select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\tg.FillRect(54f, num3 - 2, 58f, 16f);\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 50f, num3 + 7, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\tg.FillRect(127f, num3 - 2, 58f, 16f);\r\n\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, 123f, num3 + 7, apdat_.resCom2_.img);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u306f\u3044\", 71f, num3);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u3044\u3044\u3048\", 138f, num3);\r\n\t\t\t\tint num44 = 58;\r\n\t\t\t\tint num45 = 100;\r\n\t\t\t\tint num46 = 160;\r\n\t\t\t\tGameView.AddTouch(g, 3, 75 - num44 / 2 - num45 / 2, num3 - 2 - num46 / 2, 68 + num45, 16 + num46, 131072);\r\n\t\t\t\tGameView.AddTouch(g, 3, 75 - num44 / 2 + 90 - num45 / 2, num3 - 2 - num46 / 2, 68 + num45, 16 + num46, 131073);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 74)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, MyFormBase.LT(\"\u53ce\u652f\u60c5\u5831 <0>/2\", page_ + 1));\r\n\t\t\t\tapdat_.DrawBox(g, 12, 69, 227, 190);\r\n\t\t\t\tGameView.AddTouch(g, 1, 44 - frame_ % 20 / 5, 51, apdat_.resCom2_.seb[24], 0, 16);\r\n\t\t\t\tGameView.AddTouch(g, 1, 193 + frame_ % 20 / 5, 51, apdat_.resCom2_.seb[24], 1, 18);\r\n\t\t\t\tnum = 65;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tif (page_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u6708\u9593\", 28f, num);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u5e74\u9593\", 28f, num);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(SC_WINDOW_GRAY);\r\n\t\t\t\tif (En())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u53ce\u5165\", 102f, num);\r\n\t\t\t\t\tg.DrawString(\"\u652f\u51fa\", 168f, num);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(\"\u53ce\u5165\", 121f, num);\r\n\t\t\t\t\tg.DrawString(\"\u652f\u51fa\", 194f, num);\r\n\t\t\t\t}\r\n\t\t\t\tnum4 = 22;\r\n\t\t\t\tnum = 90;\r\n\t\t\t\tint num47 = 0;\r\n\t\t\t\tint num48 = 0;\r\n\t\t\t\tint num49 = 0;\r\n\t\t\t\tfor (int num50 = 0; num50 < UserData.RECORD_NAME.Length; num50++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 = num + 18 * num50;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(UserData.RECORD_NAME[num50], num4, num3);\r\n\t\t\t\t\tif (num50 != 4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(199, 223, 148));\r\n\t\t\t\t\t\tg.DrawLine(num4, num3 + 12 + 2, num4 + 210 - 12, num3 + 12 + 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tif (page_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum48 = udat_.records_[apdat_.save_.ints[2]][num50][0];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum48 = 0;\r\n\t\t\t\t\t\tfor (int num51 = 0; num51 < 12; num51++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum48 += udat_.records_[num51][num50][0];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num48), num4 + 121, num3, 4);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_RED);\r\n\t\t\t\t\tif (page_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum49 = udat_.records_[apdat_.save_.ints[2]][num50][1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum49 = 0;\r\n\t\t\t\t\t\tfor (int num52 = 0; num52 < 12; num52++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum49 += udat_.records_[num52][num50][1];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num49), num4 + 194, num3, 4);\r\n\t\t\t\t\tnum47 += num48 - num49;\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(146, 184, 247));\r\n\t\t\t\tg.DrawLine(22f, 180f, 220f, 180f);\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\tg.DrawString(\"\u5229\u76ca\", num4, 184f);\r\n\t\t\t\tif (num47 >= 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_RED);\r\n\t\t\t\t}\r\n\t\t\t\tg.DrawString(MyFormBase.YEN(\"\u4e07\", num47), num4 + 194, 184f, 4);\r\n\t\t\t\tnum = 201;\r\n\t\t\t\tg.ClipRect(0f, num, 240f, 17f);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 30, num + 28);\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 209, num + 28);\r\n\t\t\t\tg.PopClip();\r\n\t\t\t\tnum = 204;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u89b3\u5ba2\u6570\", 55f, 204f);\r\n\t\t\t\tint num53 = 0;\r\n\t\t\t\tif (page_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum53 = udat_.customer_month_[apdat_.save_.ints[2]];\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum53 = 0;\r\n\t\t\t\t\tfor (int num54 = 0; num54 < udat_.customer_month_.Length; num54++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum53 += udat_.customer_month_[num54];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.DrawNumImageComma(g, 78, num53, 179, num + 1, 0, 0, 4);\r\n\t\t\t\tapdat_.DrawSeb(g, 181, num + 2, apdat_.resCom2_.seb[78], apdat_.resCom2_.img[105], 18);\r\n\t\t\t\tGameView.AddTouch(2, TouchOption.Create(2));\r\n\t\t\t}\r\n\t\t\telse if (type_ == 75 || type_ == 76)\r\n\t\t\t{\r\n\t\t\t\tint num55 = 0;\r\n\t\t\t\tif (type_ == 75)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum55 = GameUtil.RateConvert(frame_, 0, FADE_TIME_V, 0, 255, true);\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 76)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum55 = GameUtil.RateConvert(frame_, 0, FADE_TIME_V, 255, 0, true);\r\n\t\t\t\t}\r\n\t\t\t\tif (num55 > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tGameView instance2 = GameView.GetInstance();\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0, num55));\r\n\t\t\t\t\tg.FillRect(0f, 0f, instance2.GetGameWidth(), instance2.GetGameHeight());\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (type_ == 77)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, \"\u30af\u30e9\u30d6\u306e\u6b74\u53f2\");\r\n\t\t\t\tapdat_.DrawBox(g, 12, 51, 227, 205);\r\n\t\t\t\tnum4 = 14;\r\n\t\t\t\tnum = 67;\r\n\t\t\t\tfor (int num56 = scrollValue_; num56 < ary1.Size(); num56++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num57 = num56 - scrollValue_;\r\n\t\t\t\t\tif (num57 >= 9)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tnum2 = num4;\r\n\t\t\t\t\tnum3 = num + 16 * num57;\r\n\t\t\t\t\tFanBonusData fanBonusData = (FanBonusData)ary1.ElementAt(num56);\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(222, 234, 225));\r\n\t\t\t\t\tg.DrawLine(num2, num3, num2 + 211 - 1, num3);\r\n\t\t\t\t\tg.DrawLine(num2, num3 + 16, num2 + 211 - 1, num3 + 16);\r\n\t\t\t\t\tif (num56 == select_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_SELECT);\r\n\t\t\t\t\t\tg.FillRect(num2 + 1, num3 + 1, 209f, 15f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tGameView.AddTouch(g, 11, num2, num3, 209, 15, 0x20000 | num56, TouchOption.Create(16).Margin(30, 0, 0, 0));\r\n\t\t\t\t\tif (fanBonusData.state_ == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[178], num2 + 2, num3 + 1);\r\n\t\t\t\t\t\tstring empty2 = string.Empty;\r\n\t\t\t\t\t\tempty2 = ((!MyFormBase.Jp()) ? (MyFormBase.LT(\"\u5e74\") + (fanBonusData.achiveDay_[0] + 1) + \"/\" + (fanBonusData.achiveDay_[1] + 1) + \"/\" + (fanBonusData.achiveDay_[2] + 1)) : (fanBonusData.achiveDay_[0] + 1 + MyFormBase.LT(\"\u5e74\") + (fanBonusData.achiveDay_[1] + 1) + \"/\" + (fanBonusData.achiveDay_[2] + 1)));\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\t\tg.DrawString(empty2, num2 + 71, num3 + 3, 4);\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\t\tif (En())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(fanBonusData.info_name_, num2 + 84 - 4, num3 + 3 + 1);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(fanBonusData.info_name_, num2 + 84 - 4, num3 + 3);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\t\t\tg.DrawString(\"\u9054\u6210\", num2 + 190, num3 + 3, 2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(SC_WINDOW_GRAY);\r\n\t\t\t\t\t\tg.DrawString(\"--\u5e74--/-\", num2 + 71, num3 + 3, 4);\r\n\t\t\t\t\t\tg.DrawString(\"\uff1f\uff1f\uff1f\uff1f\", num2 + 84, num3 + 3);\r\n\t\t\t\t\t\tSetFontSize(g, 10);\r\n\t\t\t\t\t\tif (!En())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(\"\u672a\u9054\u6210\", num2 + 190 - 2, num3 + 3, 2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tResetFontSize(g);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num56 == select_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, num2 - 4 + 5, num3 + 9, apdat_.resCom2_.img);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(222, 234, 225));\r\n\t\t\t\tg.DrawLine(90f, 68f, 90f, 210f);\r\n\t\t\t\tapdat_.DrawVerticalScroll2(g, num4 + 214, num - 5, 3, 154, scrollValue_, ary1.Size() - 1, 9);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 78)\r\n\t\t\t{\r\n\t\t\t\tDraw_moveToBus(g, frame_);\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t\telse if (type_ == 79)\r\n\t\t\t{\r\n\t\t\t\tDraw_battlePic(g, frame_);\r\n\t\t\t\tGameView.AddTouch(2);\r\n\t\t\t}\r\n\t\t}",
+      "rule": "calculated-named-switch-selector-coalescence",
+      "distance": 0,
+      "method_id": "form.SubForm::_draw6(kairo.unity.ui.Graphics)->System.Void",
+      "logical_path": "src/Assembly-CSharp/form/SubForm.cs",
+      "source_only": true,
+      "candidate_compilations": 0,
+      "complete": true,
+      "predicted_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "kairo.unity.ui.Font",
+        "data.TenantData",
+        "System.Int32",
+        "data.MapchipMain",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32[]",
+        "System.Int32[]",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32[]",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32[]",
+        "data.TenantData",
+        "System.Int32",
+        "data.MapchipMain",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32[]",
+        "data.TenantData",
+        "System.Int32",
+        "data.MapchipMain",
+        "System.Int32",
+        "data.TeamData",
+        "System.Int32[]",
+        "System.Int32",
+        "data.SupervisorData",
+        "System.String",
+        "System.Int32[]",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.LeagueData",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.QuestMatchData",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32[]",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "surface.GameView",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.TeamData",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.PlayerData",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "surface.GameView",
+        "System.Int32",
+        "System.Int32",
+        "data.FanBonusData",
+        "System.String"
+      ],
+      "baseline_source_sha256": "ec485f954c929882ebf48d149c484cf8df9c51d52ef0a80ad9b71222f18ff31e",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "stages": [
+        {
+          "stage": "merge-three-widths-and-zerochain",
+          "complete": true,
+          "count": 105,
+          "signature_equal": false
+        },
+        {
+          "stage": "named-selector49-two-switches-to-if",
+          "complete": true,
+          "count": 105,
+          "signature_equal": true
+        },
+        {
+          "stage": "existing-assignment-ternary-if-reverse",
+          "complete": true,
+          "count": 105,
+          "signature_equal": true
+        }
+      ],
+      "special_variables": {
+        "mapchipMain": 7,
+        "switchValue": 49,
+        "coalescedWidth": 61,
+        "num28": 62
+      }
+    }
+  ],
+  "predicted_types": [
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "kairo.unity.ui.Font",
+    "data.TenantData",
+    "System.Int32",
+    "data.MapchipMain",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "data.TenantData",
+    "System.Int32",
+    "data.MapchipMain",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "data.TenantData",
+    "System.Int32",
+    "data.MapchipMain",
+    "System.Int32",
+    "data.TeamData",
+    "System.Int32[]",
+    "System.Int32",
+    "data.SupervisorData",
+    "System.String",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.LeagueData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.QuestMatchData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "surface.GameView",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.TeamData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.PlayerData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "surface.GameView",
+    "System.Int32",
+    "System.Int32",
+    "data.FanBonusData",
+    "System.String"
+  ],
+  "expected_types": [
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "kairo.unity.ui.Font",
+    "data.TenantData",
+    "System.Int32",
+    "data.MapchipMain",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "data.TenantData",
+    "System.Int32",
+    "data.MapchipMain",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "data.TenantData",
+    "System.Int32",
+    "data.MapchipMain",
+    "System.Int32",
+    "data.TeamData",
+    "System.Int32[]",
+    "System.Int32",
+    "data.SupervisorData",
+    "System.String",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.LeagueData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.QuestMatchData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32[]",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "surface.GameView",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.TeamData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "data.PlayerData",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "System.Int32",
+    "surface.GameView",
+    "System.Int32",
+    "System.Int32",
+    "data.FanBonusData",
+    "System.String"
+  ]
+}
