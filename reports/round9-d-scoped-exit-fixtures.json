@@ -1,0 +1,197 @@
+{
+  "operation": "isolated-smcs-scoped-exit-toy-fixtures",
+  "game_compilations": 0,
+  "source_sha256": "aae241ed023d7e68927b4621feab5f13bb3056db7dee30e408884e2dbbecff45",
+  "positive_body_exact": 10,
+  "negative_rejections": 10,
+  "positives": [
+    {
+      "name": "Flat",
+      "family": "terminal-if-arm-return-flatten-else",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "terminal-if-arm-return-flatten-else",
+        "start": 413,
+        "end": 484,
+        "before": "if(guard){for(int i=0;i<n;i++){if(i==2)break;Field+=i;}}else{Field+=7;}",
+        "after": "if (guard) {for(int i=0;i<n;i++){if(i==2)break;Field+=i;}\nreturn;\n}\n{Field+=7;}",
+        "distance": 0,
+        "evidence": "Original ret proves method exit. Current terminal if/else has a falling true arm; add ret and retain lexical else block as following statement.",
+        "declaration_start": 378,
+        "declaration_end": 485
+      }
+    },
+    {
+      "name": "Empty",
+      "family": "terminal-if-arm-return-flatten-else",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "terminal-if-arm-return-flatten-else",
+        "start": 588,
+        "end": 614,
+        "before": "if(guard){}else{Field+=7;}",
+        "after": "if (guard) {\nreturn;\n}\n{Field+=7;}",
+        "distance": 0,
+        "evidence": "Original ret proves method exit. Current terminal if/else has a falling true arm; add ret and retain lexical else block as following statement.",
+        "declaration_start": 558,
+        "declaration_end": 615
+      }
+    },
+    {
+      "name": "Custom",
+      "family": "terminal-if-arm-return-flatten-else",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "terminal-if-arm-return-flatten-else",
+        "start": 728,
+        "end": 762,
+        "before": "if(guard){Field++;}else{Field+=7;}",
+        "after": "if (guard) {Field++;\nreturn;\n}\n{Field+=7;}",
+        "distance": 0,
+        "evidence": "Original ret proves method exit. Current terminal if/else has a falling true arm; add ret and retain lexical else block as following statement.",
+        "declaration_start": 697,
+        "declaration_end": 763
+      }
+    },
+    {
+      "name": "Float",
+      "family": "terminal-if-arm-return-flatten-else",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "terminal-if-arm-return-flatten-else",
+        "start": 879,
+        "end": 916,
+        "before": "if(guard<0f){Field++;}else{Field+=7;}",
+        "after": "if (guard<0f) {Field++;\nreturn;\n}\n{Field+=7;}",
+        "distance": 0,
+        "evidence": "Original ret proves method exit. Current terminal if/else has a falling true arm; add ret and retain lexical else block as following statement.",
+        "declaration_start": 848,
+        "declaration_end": 917
+      }
+    },
+    {
+      "name": "Embedded",
+      "family": "terminal-if-arm-return-flatten-else",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "terminal-if-arm-return-flatten-else",
+        "start": 1107,
+        "end": 1141,
+        "before": "if(guard){Field++;}else{Field+=7;}",
+        "after": "{\nif (guard) {Field++;\nreturn;\n}\n{Field+=7;}\n}",
+        "distance": 0,
+        "evidence": "Original ret proves method exit. Current terminal if/else has a falling true arm; add ret and retain lexical else block as following statement.",
+        "declaration_start": 1038,
+        "declaration_end": 1142
+      }
+    },
+    {
+      "name": "Eh",
+      "family": "terminal-if-arm-return-flatten-else",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "terminal-if-arm-return-flatten-else",
+        "start": 1279,
+        "end": 1345,
+        "before": "if(guard){try{Field++;}catch(Exception){Field+=2;}}else{Field+=7;}",
+        "after": "if (guard) {try{Field++;}catch(Exception){Field+=2;}\nreturn;\n}\n{Field+=7;}",
+        "distance": 0,
+        "evidence": "Original ret proves method exit. Current terminal if/else has a falling true arm; add ret and retain lexical else block as following statement.",
+        "declaration_start": 1252,
+        "declaration_end": 1346
+      }
+    },
+    {
+      "name": "Scope",
+      "family": "scoped-terminal-arm-common-join",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "scoped-terminal-arm-common-join",
+        "start": 1548,
+        "end": 1612,
+        "before": "if(guard)return;for(int i=0;i<n;i++){if(i==2)continue;Field+=i;}",
+        "after": "if (guard) {\n} else {for(int i=0;i<n;i++){if(i==2)continue;Field+=i;}\n}",
+        "distance": 0,
+        "evidence": "Original br target is a proved method ret or next statement after enclosing if; preserve condition and arm actions, replace only terminal return with explicit join.",
+        "declaration_start": 1491,
+        "declaration_end": 1623
+      }
+    },
+    {
+      "name": "Nested",
+      "family": "scoped-terminal-arm-common-join",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "scoped-terminal-arm-common-join",
+        "start": 1762,
+        "end": 1815,
+        "before": "if(guard){Field++;if(n>0){Field+=n;}return;}Field+=7;",
+        "after": "if (guard) {Field++;if(n>0){Field+=n;}\n} else {Field+=7;\n}",
+        "distance": 0,
+        "evidence": "Original br target is a proved method ret or next statement after enclosing if; preserve condition and arm actions, replace only terminal return with explicit join.",
+        "declaration_start": 1725,
+        "declaration_end": 1816
+      }
+    },
+    {
+      "name": "Loop",
+      "family": "scoped-terminal-arm-common-join",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "scoped-terminal-arm-common-join",
+        "start": 1992,
+        "end": 2086,
+        "before": "if(guard){for(int i=0;i<n;i++){if(i==2)break;Field+=i;}return;}for(int j=0;j<n;j++){Field-=j;}",
+        "after": "if (guard) {for(int i=0;i<n;i++){if(i==2)break;Field+=i;}\n} else {for(int j=0;j<n;j++){Field-=j;}\n}",
+        "distance": 0,
+        "evidence": "Original br target is a proved method ret or next statement after enclosing if; preserve condition and arm actions, replace only terminal return with explicit join.",
+        "declaration_start": 1957,
+        "declaration_end": 2087
+      }
+    },
+    {
+      "name": "ScopedFloat",
+      "family": "scoped-terminal-arm-common-join",
+      "body_exact": true,
+      "locals_equal": true,
+      "source_patch": {
+        "rule": "scoped-terminal-arm-common-join",
+        "start": 2254,
+        "end": 2281,
+        "before": "if(guard<0f)return;Field++;",
+        "after": "if (guard<0f) {\n} else {Field++;\n}",
+        "distance": 0,
+        "evidence": "Original br target is a proved method ret or next statement after enclosing if; preserve condition and arm actions, replace only terminal return with explicit join.",
+        "declaration_start": 2196,
+        "declaration_end": 2292
+      }
+    }
+  ],
+  "negatives": [
+    "RejectFollowing",
+    "RejectValue",
+    "RejectLabel",
+    "RejectCapture",
+    "Empty",
+    "Scope-method-ret-wrong-target",
+    "Scope-next-wrong-source-boundary",
+    "leave-is-not-br",
+    "OldCoveredEmpty-already-v7-repertoire",
+    "OldCoveredSimple-already-v7-repertoire"
+  ],
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "initial_harness_failures": [
+    "Unity profile has no System.Action; replaced toy negative with System.Threading.ThreadStart",
+    "Negative-method locator assumed void and missed int method; locator fixed before final assertions"
+  ],
+  "limitations": "No game candidate has been compiled; all adoption still needs complete original-signature model gate and full body oracle."
+}

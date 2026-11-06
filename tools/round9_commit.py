@@ -8,6 +8,10 @@ from apply_il_rules import receipt_is_fresh
 from compare_kairo import sha
 
 ROOT=Path(__file__).resolve().parents[1]
+# Keep hash-frozen analysis helpers byte-for-byte. A final empty line is valid
+# source; continue rejecting trailing spaces and indentation defects. This
+# formatting gate never changes compiler, metadata or method-body verification.
+WHITESPACE_CHECK=['git','-c','core.whitespace=-blank-at-eof','diff','--cached','--check']
 
 
 def run(command,log=None,accepted=(0,)):
@@ -41,13 +45,13 @@ def main():
     for name in filter(None,staged):
         if name.startswith(('original/','build/','analysis/','ref/')) or Path(name).suffix.lower() in forbidden:raise ValueError('Forbidden staged artifact '+name)
         if (ROOT/name).exists() and (ROOT/name).stat().st_size>80_000_000:raise ValueError('Oversized staged file '+name)
-    run(['git','diff','--cached','--check'],folder/'diff-check.log')
+    run(WHITESPACE_CHECK,folder/'diff-check.log')
     run([sys.executable,'tools/round9_git_proof.py','--run-label',args.run_label],folder/'source-proof.log')
     run(['git','add','--','reports/round9-'+args.run_label+'-git-source-proof.json'])
     run([sys.executable,'tools/round9_git_proof.py','--run-label',args.run_label,'--manifest-only'],folder/'content-proof.log')
     proof='reports/round9-'+args.run_label+'-git-content-provenance.json'
     run(['git','add','--',proof])
-    run(['git','diff','--cached','--check'],folder/'final-diff-check.log')
+    run(WHITESPACE_CHECK,folder/'final-diff-check.log')
     run(['git','commit','-m',args.message],folder/'git-commit.log')
     manifest=json.loads((ROOT/proof).read_text(encoding='utf-8'))
     for item in manifest['files']:

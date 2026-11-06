@@ -909,36 +909,36 @@ UpdatePhysicalParam();
 
 		public void AddExp(int add_exp, bool addLvUpPopUp)
 		{
-			exp_ += add_exp;
-			int num = 0;
-			do
-			{
-				int nextLvUpExp = GetNextLvUpExp(lv_);
-				if (exp_ >= nextLvUpExp) { } else {
-					break;
-				}
-				exp_ -= nextLvUpExp;
-				LvUp();
-				if (addLvUpPopUp)
-				{
-					string empty = string.Empty;
-					empty += MyFormBase.LT(name_);
-					if (Language.English())
-					{
-						empty += " ";
-					}
-					empty += MyFormBase.LT(name2_);
-					empty = empty + "\t" + lv_;
-					apdat_.AddPopupMessage(28, empty);
-				}
-				if (lv_ == 30)
-				{
-					break;
-				}
-				num++;
-			}
-			while (num < 10);
-		}
+exp_ += add_exp;
+int num = 0;
+while (true) {
+int nextLvUpExp = GetNextLvUpExp(lv_);
+if (exp_ >= nextLvUpExp) {
+exp_ -= nextLvUpExp;
+LvUp();
+if (addLvUpPopUp) {
+string empty = string.Empty;
+empty += MyFormBase.LT(name_);
+if (Language.English()) {
+empty += " ";
+}
+empty += MyFormBase.LT(name2_);
+empty = empty + "\t" + lv_;
+apdat_.AddPopupMessage(28, empty);
+}
+if (lv_ == 30) {
+break;
+}
+} else {
+break;
+}
+num++;
+if (!(num < 10)) {
+break;
+}
+}
+return;
+}
 
 		public void StockExp(int addStockExp)
 		{

@@ -5126,52 +5126,44 @@ tenantList.AddElement(tenants_[j]);
 
 		public void Update_bus()
 		{
-			if (busState_ == 0) {
-
-			busCnt = (busCnt + 1) % int.MaxValue;
-			int[] collisionData = GetCollisionData(0, 5);
-			int[] collisionData2 = GetCollisionData(1, 5);
-			busGoalPos_.Set((Vector3D)busMovePoint_.FirstElement());
-			if (GameUtil.ChRectHitRect(busPos_.x_ + (float)collisionData[0], busPos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], busGoalPos_.x_ + (float)collisionData2[0], busGoalPos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true))
-			{
-				busMovePoint_.RemoveElementAt(0);
-				if (busMovePoint_.Size() == 0)
-				{
-					busState_ = 1;
-					SetTrainingData3();
-				}
-				return;
-			}
-			float num = 10f;
-			float num2 = (float)JMath.Sqrt((busGoalPos_.x_ - busPos_.x_) * (busGoalPos_.x_ - busPos_.x_) + (busGoalPos_.z_ - busPos_.z_) * (busGoalPos_.z_ - busPos_.z_));
-			busV_.x_ = (busGoalPos_.x_ - busPos_.x_) * num / num2;
-			busV_.z_ = (busGoalPos_.z_ - busPos_.z_) * num / num2;
-			busPos_.x_ += busV_.x_;
-			busPos_.z_ += busV_.z_;
-			Camera.ConvertGlobalToScreen(busV_, busSDirect);
-			busSDirect[0] -= Camera.MAP_SCREEN_BASE_POS[0];
-			busSDirect[1] -= Camera.MAP_SCREEN_BASE_POS[1];
-			if (busSDirect[0] > 0)
-			{
-				if (busSDirect[1] > 0)
-				{
-					busDirect_ = 0;
-				}
-				else
-				{
-					busDirect_ = 1;
-				}
-			}
-			else if (busSDirect[1] > 0)
-			{
-				busDirect_ = 3;
-			}
-			else
-			{
-				busDirect_ = 2;
-			}
+if (busState_ == 0) {
+busCnt = (busCnt + 1) % int.MaxValue;
+int[] collisionData = GetCollisionData(0, 5);
+int[] collisionData2 = GetCollisionData(1, 5);
+busGoalPos_.Set((Vector3D)busMovePoint_.FirstElement());
+if (GameUtil.ChRectHitRect(busPos_.x_ + (float)collisionData[0], busPos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], busGoalPos_.x_ + (float)collisionData2[0], busGoalPos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true)) {
+busMovePoint_.RemoveElementAt(0);
+if (busMovePoint_.Size() == 0) {
+busState_ = 1;
+SetTrainingData3();
 }
-		}
+} else {
+float num = 10f;
+float num2 = (float)JMath.Sqrt((busGoalPos_.x_ - busPos_.x_) * (busGoalPos_.x_ - busPos_.x_) + (busGoalPos_.z_ - busPos_.z_) * (busGoalPos_.z_ - busPos_.z_));
+busV_.x_ = (busGoalPos_.x_ - busPos_.x_) * num / num2;
+busV_.z_ = (busGoalPos_.z_ - busPos_.z_) * num / num2;
+busPos_.x_ += busV_.x_;
+busPos_.z_ += busV_.z_;
+Camera.ConvertGlobalToScreen(busV_, busSDirect);
+busSDirect[0] -= Camera.MAP_SCREEN_BASE_POS[0];
+busSDirect[1] -= Camera.MAP_SCREEN_BASE_POS[1];
+if (busSDirect[0] > 0) {
+if (busSDirect[1] > 0) {
+busDirect_ = 0;
+} else {
+busDirect_ = 1;
+}
+} else {
+if (busSDirect[1] > 0) {
+busDirect_ = 3;
+} else {
+busDirect_ = 2;
+}
+}
+}
+}
+return;
+}
 
 		public void Draw_bus(Graphics g)
 		{

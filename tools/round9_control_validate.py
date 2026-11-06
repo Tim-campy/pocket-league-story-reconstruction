@@ -46,17 +46,21 @@ def summarize(rows):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--snapshot', default='build/round9/cycles/a05/after')
-    parser.add_argument('--il-module-dir', default='build/round9/control-il')
-    parser.add_argument('--ast-module-dir', default='build/round9/control-ast')
+    parser.add_argument('--il-module-dir', default='tools')
+    parser.add_argument('--ast-module-dir', default='tools')
     parser.add_argument('--label', default='prototype')
     args = parser.parse_args()
     base = ROOT / args.snapshot
     il_dir, ast_dir = ROOT / args.il_module_dir, ROOT / args.ast_module_dir
     sys.path[:0] = [str(il_dir), str(ast_dir)]
-    cil = importlib.import_module('smcs_control_il')
-    ast = importlib.import_module('control_ast')
-    inputs = [il_dir / name for name in ('smcs_control_il.py', 'cfg_core.py', 'opcodes.json')]
-    inputs += [ast_dir / name for name in ('control_ast.py', 'Round9ControlAst.cs')]
+    public_il=(il_dir/'round9_control_il.py').exists()
+    public_ast=(ast_dir/'round9_control_ast.py').exists()
+    cil = importlib.import_module('round9_control_il' if public_il else 'smcs_control_il')
+    ast = importlib.import_module('round9_control_ast' if public_ast else 'control_ast')
+    inputs = [il_dir / name for name in (('round9_control_il.py','round9_control_cfg.py','round9_control_opcodes.json')
+              if public_il else ('smcs_control_il.py', 'cfg_core.py', 'opcodes.json'))]
+    inputs += [ast_dir / name for name in (('round9_control_ast.py', 'Round9ControlAst.cs')
+               if public_ast else ('control_ast.py', 'Round9ControlAst.cs'))]
     inputs += [Path(__file__)]
     input_hashes = {str(p.relative_to(ROOT)): sha(p) for p in inputs}
     folder = ROOT / 'build/round9/control-validation' / args.label
@@ -139,7 +143,10 @@ def main():
               'all_bodies': summarize(rows), 'methods': rows}
     target = ROOT / 'reports' / ('round9-control-validation-' + args.label + '.json')
     target.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({k: report[k] for k in ('valid_frozen_input_measurement', 'matched', 'pending')}))
+    summary={}
+    for group in ('matched','pending'):
+        summary[group]={k:v for k,v in report[group].items() if k not in ('plan_mismatch_groups','il_incomplete_reasons','source_incomplete_reasons')}
+    print(json.dumps(dict(summary,valid_frozen_input_measurement=report['valid_frozen_input_measurement'])))
 
 
 if __name__ == '__main__':

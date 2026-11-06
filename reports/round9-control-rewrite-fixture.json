@@ -1,0 +1,130 @@
+{
+  "operation": "independent-source-control-renderer-and-slot-calculus-fixtures",
+  "game_compilations": 0,
+  "toy_assembly_compilations": 17,
+  "cases": [
+    {
+      "case": "IfPolarity",
+      "whole_body_exact": true,
+      "il_bytes": 25,
+      "local_count": 0,
+      "binding_complete": true,
+      "source_AST_captured_before_inspecting_IL": true,
+      "slot_composition": {
+        "kind": "no-slot-edits"
+      },
+      "conditions": [
+        {
+          "condition_source_span": [
+            113,
+            117
+          ],
+          "source_opcode": "bgt",
+          "target_opcode": "ble",
+          "floating": false,
+          "orientation": "explicit-logical-negation"
+        }
+      ]
+    },
+    {
+      "case": "FloatPolarity",
+      "whole_body_exact": true,
+      "il_bytes": 11,
+      "local_count": 0,
+      "binding_complete": true,
+      "source_AST_captured_before_inspecting_IL": true,
+      "slot_composition": {
+        "kind": "no-slot-edits"
+      },
+      "conditions": [
+        {
+          "condition_source_span": [
+            122,
+            128
+          ],
+          "source_opcode": "bgt",
+          "target_opcode": "ble.un",
+          "floating": true,
+          "orientation": "explicit-logical-negation"
+        }
+      ]
+    },
+    {
+      "case": "LoopForm",
+      "whole_body_exact": true,
+      "il_bytes": 26,
+      "local_count": 1,
+      "binding_complete": true,
+      "source_AST_captured_before_inspecting_IL": true,
+      "slot_composition": {
+        "kind": "no-slot-edits"
+      },
+      "conditions": [
+        {
+          "condition_source_span": [
+            138,
+            141
+          ],
+          "source_opcode": "blt",
+          "target_opcode": "blt",
+          "floating": false,
+          "orientation": "unchanged-expression"
+        }
+      ]
+    },
+    {
+      "case": "ForIteratorOrder",
+      "whole_body_exact": true,
+      "il_bytes": 25,
+      "local_count": 1,
+      "binding_complete": true,
+      "source_AST_captured_before_inspecting_IL": true,
+      "slot_composition": {
+        "kind": "no-slot-edits"
+      },
+      "conditions": [
+        {
+          "condition_source_span": [
+            122,
+            125
+          ],
+          "source_opcode": "blt",
+          "target_opcode": "blt",
+          "floating": false,
+          "orientation": "unchanged-expression"
+        }
+      ]
+    },
+    {
+      "case": "NamedSlotComposition",
+      "whole_body_exact": true,
+      "local_count": 2,
+      "real_own_DTO_used_for_name_map": true,
+      "candidate_DTO_fabricated": false,
+      "name_map": [
+        {
+          "name": "i",
+          "type": "System.Int32",
+          "real_own_slot": 0,
+          "new_source_predicted_slot": 0,
+          "desired_original_slot": 1
+        },
+        {
+          "name": "f",
+          "type": "System.Single",
+          "real_own_slot": 1,
+          "new_source_predicted_slot": 1,
+          "desired_original_slot": 0
+        }
+      ]
+    }
+  ],
+  "negative_cases": {
+    "source_payload_authentication": "rejected",
+    "unanchored_zero_IL_declarations": "rejected"
+  },
+  "all_exact": true,
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "fixture_driver": "tools/test_round9_control_rewrite.py",
+  "negative_scope": "Unanchored zero-IL declarations are refused, not moved; foreach/EH/generated controls remain incomplete."
+}

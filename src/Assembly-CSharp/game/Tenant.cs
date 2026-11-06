@@ -124,65 +124,63 @@ namespace game
 
 		public void Update()
 		{
-			stateCnt_ = (stateCnt_ + 1) % int.MaxValue;
-			if (state_ == 3)
-			{
-				if (stateCnt_ >= 12)
-				{
-					ChangeState(0);
-					apdat_.mapMain_.UpdateTenantMapcip();
-				}
-				return;
-			}
-			TenantData tenantData = null;
-			if (tenantDataId_ != -1) {
-
-			tenantData = apdat_.tenantData_[tenantDataId_];
-			if (state_ == 2)
-			{
-				if (stateCnt_ >= tenantData.buildTime_)
-				{
-					ChangeState(1);
-					apdat_.mapMain_.UpdateTenantMapcip();
-					if (tenantDataId_ == TenantData.TENANT_ID_GOODS && !apdat_.CheckAlreadyEvent(171))
-					{
-						apdat_.ExecEvent(171, null, null);
-					}
-				}
-			}
-			else if (state_ == 4 && stateCnt_ >= 200)
-			{
-				ChangeState(1);
-				apdat_.mapMain_.UpdateTenantMapcip();
-			}
-			if (useTPlayers_.Size() > 0)
-			{
-				TPlayer tPlayer = (TPlayer)useTPlayers_.ElementAt(0);
-				tPlayer.useTenantCnt_++;
-				if (tPlayer.useTenantCnt_ == 1)
-				{
-					int userPrice = tenantData.GetUserPrice();
-					int[] array = MapMain.MAPCHIP_SPOS[address_[1]][address_[0]];
-					apdat_.AddEffectMoneyUp(array[0], array[1], userPrice);
-					apdat_.AddMoney(userPrice, 1);
-				}
-				else if (tPlayer.useTenantCnt_ == USETENANT_TIME[0])
-				{
-					int[] tenantUseResearchPoint = tenantData.GetTenantUseResearchPoint();
-					int[] array2 = MapMain.MAPCHIP_SPOS[address_[1]][address_[0]];
-					apdat_.AddEffectRpUp(array2[0], array2[1], tenantUseResearchPoint[0], tenantUseResearchPoint[1]);
-					udat_.AddResearchPoint(tenantUseResearchPoint[0], tenantUseResearchPoint[1]);
-					PlayerData playerData = apdat_.pData_[tPlayer.pData_id_];
-					playerData.AddAuraPoint(tenantData.paramEfToFan_, false);
-				}
-				if (tPlayer.useTenantCnt_ >= USETENANT_TIME[1])
-				{
-					useTPlayers_.RemoveElementAt(0);
-					udat_.SetTenantIn(tPlayer);
-				}
-			}
+stateCnt_ = (stateCnt_ + 1) % int.MaxValue;
+if (state_ == 3) {
+if (stateCnt_ >= 12) {
+ChangeState(0);
+apdat_.mapMain_.UpdateTenantMapcip();
 }
-		}
+return;
+}
+TenantData tenantData = null;
+if (tenantDataId_ != -1) {
+tenantData = apdat_.tenantData_[tenantDataId_];
+} else {
+return;
+}
+if (state_ == 2) {
+if (stateCnt_ >= tenantData.buildTime_) {
+ChangeState(1);
+apdat_.mapMain_.UpdateTenantMapcip();
+if (tenantDataId_ == TenantData.TENANT_ID_GOODS) {
+if (!apdat_.CheckAlreadyEvent(171)) {
+apdat_.ExecEvent(171, null, null);
+}
+}
+}
+} else {
+if (state_ == 4) {
+if (stateCnt_ >= 200) {
+ChangeState(1);
+apdat_.mapMain_.UpdateTenantMapcip();
+}
+}
+}
+if (useTPlayers_.Size() > 0) {
+TPlayer tPlayer = (TPlayer)useTPlayers_.ElementAt(0);
+tPlayer.useTenantCnt_++;
+if (tPlayer.useTenantCnt_ == 1) {
+int userPrice = tenantData.GetUserPrice();
+int[] array = MapMain.MAPCHIP_SPOS[address_[1]][address_[0]];
+apdat_.AddEffectMoneyUp(array[0], array[1], userPrice);
+apdat_.AddMoney(userPrice, 1);
+} else {
+if (tPlayer.useTenantCnt_ == USETENANT_TIME[0]) {
+int[] tenantUseResearchPoint = tenantData.GetTenantUseResearchPoint();
+int[] array2 = MapMain.MAPCHIP_SPOS[address_[1]][address_[0]];
+apdat_.AddEffectRpUp(array2[0], array2[1], tenantUseResearchPoint[0], tenantUseResearchPoint[1]);
+udat_.AddResearchPoint(tenantUseResearchPoint[0], tenantUseResearchPoint[1]);
+PlayerData playerData = apdat_.pData_[tPlayer.pData_id_];
+playerData.AddAuraPoint(tenantData.paramEfToFan_, false);
+}
+}
+if (tPlayer.useTenantCnt_ >= USETENANT_TIME[1]) {
+useTPlayers_.RemoveElementAt(0);
+udat_.SetTenantIn(tPlayer);
+}
+}
+return;
+}
 
 		public void Draw(Graphics g)
 		{

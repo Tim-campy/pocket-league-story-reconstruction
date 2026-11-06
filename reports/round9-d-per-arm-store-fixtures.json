@@ -1,0 +1,1272 @@
+{
+  "operation": "historical-csc-per-arm-local-store-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "helper_sha256": "c29ab2777751e2125426bdd07028dab4e9b22a700451116e309c80952257aba9",
+  "hints_sha256": "3ea3c25ded7c935421f5d51d0b4e42469b331608e187e328cdc16a75924d05d5",
+  "fixture_driver_sha256": "30c8b645e1a0d0d5a7b16cabf6a003bf2ee3ccc4b9e99a083791d84a0ca1d48b",
+  "historical_fixture_compilations": 3,
+  "game_compilations": 0,
+  "full_body_controls_equal": 2,
+  "fixtures": [
+    {
+      "method": "Expand",
+      "control": "ExpectedExpand",
+      "hints": {
+        "round9_original_same_slot_arm_stores": true,
+        "round9_per_arm_store_slot": 1,
+        "evidence": {
+          "condition_branch": {
+            "offset": 14,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 25
+            }
+          },
+          "first_value": [
+            {
+              "offset": 16,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 17,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "first_store": {
+            "offset": 22,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          "first_arm_join_jump": {
+            "offset": 23,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 32
+            }
+          },
+          "second_value": [
+            {
+              "offset": 25,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 26,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::right_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "second_store": {
+            "offset": 31,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          "join": {
+            "offset": 32,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          "same_slot": true,
+          "straight_line_arm_values": true,
+          "source_orientation_not_inferred": true
+        },
+        "round9_per_arm_store_order": "false-first",
+        "round9_per_arm_store_rebuilt_evidence": {
+          "first_value": [
+            {
+              "offset": 16,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 17,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "second_value": [
+            {
+              "offset": 24,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 25,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::right_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "common_store": {
+            "offset": 30,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          "condition_branch": {
+            "offset": 14,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 24
+            }
+          },
+          "common_store_slot": 1,
+          "original_arm_values_identical_to_current_ternary": true,
+          "orientation_basis": "Roslyn EmitConditionalOperator emits Alternative first; unchanged value anchors"
+        }
+      },
+      "patch": {
+        "rule": "d9-calculated-per-arm-local-stores",
+        "start": 272,
+        "end": 315,
+        "before": "node=(ReadBit()!=0)?node.right_:node.left_;",
+        "after": "if (!((ReadBit()!=0)))\r\n{\r\n\tnode = node.left_;\r\n}\r\nelse\r\n{\r\n\tnode = node.right_;\r\n}",
+        "distance": 65
+      },
+      "body_differences": [],
+      "actual": {
+        "key": "Fixture::Expand(Fixture/Node,System.Int32)",
+        "stable_id": "Fixture::Expand(Fixture/Node,System.Int32)->System.Void",
+        "token": "[Method:0x0003]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Expand``0(class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [
+          {
+            "offset": 9,
+            "opcode": "call",
+            "kind": "method",
+            "id": "Fixture::ReadBit()->System.Int32",
+            "declaring_type": "Fixture"
+          },
+          {
+            "offset": 17,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::left_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::right_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 33,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::left_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 42,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::value_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 47,
+            "opcode": "call",
+            "kind": "method",
+            "id": "Fixture::Consume(System.Int32)->System.Void",
+            "declaring_type": "Fixture"
+          }
+        ],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 2,
+          "initlocals": true,
+          "code_size": 61
+        },
+        "locals": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 56
+            }
+          },
+          {
+            "offset": 4,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 32
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "call",
+            "operand": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ReadBit``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 25
+            }
+          },
+          {
+            "offset": 16,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 17,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 22,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 23,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 32
+            }
+          },
+          {
+            "offset": 25,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::right_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 31,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 32,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 33,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 38,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 8
+            }
+          },
+          {
+            "offset": 40,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 41,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 42,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::value_:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "offset": 47,
+            "opcode": "call",
+            "operand": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Consume``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 52,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 53,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          },
+          {
+            "offset": 54,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 55,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 56,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 57,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 58,
+            "opcode": "blt.s",
+            "operand": {
+              "branch": 4
+            }
+          },
+          {
+            "offset": 60,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 22,
+            "width": 4,
+            "identity": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ReadBit``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "body_offset": 30,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "body_offset": 39,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::right_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "body_offset": 46,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "body_offset": 55,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::value_:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "body_offset": 60,
+            "width": 4,
+            "identity": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Consume``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-02-00-3D-00-00-00-01-00-00-11-16-0A-2B-34-03-0B-2B-18-02-28-01-00-00-06-2D-09-07-7B-02-00-00-04-0B-2B-07-07-7B-03-00-00-04-0B-07-7B-02-00-00-04-2D-E0-02-07-7B-04-00-00-04-28-02-00-00-06-06-17-58-0A-06-04-32-C8-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      },
+      "expected": {
+        "key": "Fixture::ExpectedExpand(Fixture/Node,System.Int32)",
+        "stable_id": "Fixture::ExpectedExpand(Fixture/Node,System.Int32)->System.Void",
+        "token": "[Method:0x0004]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ExpectedExpand``0(class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [
+          {
+            "offset": 9,
+            "opcode": "call",
+            "kind": "method",
+            "id": "Fixture::ReadBit()->System.Int32",
+            "declaring_type": "Fixture"
+          },
+          {
+            "offset": 17,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::left_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::right_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 33,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::left_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 42,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture/Node::value_",
+            "declaring_type": "Fixture/Node"
+          },
+          {
+            "offset": 47,
+            "opcode": "call",
+            "kind": "method",
+            "id": "Fixture::Consume(System.Int32)->System.Void",
+            "declaring_type": "Fixture"
+          }
+        ],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 2,
+          "initlocals": true,
+          "code_size": 61
+        },
+        "locals": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+          "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 56
+            }
+          },
+          {
+            "offset": 4,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 32
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "call",
+            "operand": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ReadBit``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 25
+            }
+          },
+          {
+            "offset": 16,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 17,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 22,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 23,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 32
+            }
+          },
+          {
+            "offset": 25,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::right_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 31,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 32,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 33,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 38,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 8
+            }
+          },
+          {
+            "offset": 40,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 41,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 42,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::value_:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "offset": 47,
+            "opcode": "call",
+            "operand": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Consume``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 52,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 53,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          },
+          {
+            "offset": 54,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 55,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 56,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 57,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 58,
+            "opcode": "blt.s",
+            "operand": {
+              "branch": 4
+            }
+          },
+          {
+            "offset": 60,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 22,
+            "width": 4,
+            "identity": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ReadBit``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "body_offset": 30,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "body_offset": 39,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::right_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "body_offset": 46,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::left_:class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "body_offset": 55,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::value_:valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "body_offset": 60,
+            "width": 4,
+            "identity": {
+              "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Consume``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "class Fixture/Node @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-02-00-3D-00-00-00-01-00-00-11-16-0A-2B-34-03-0B-2B-18-02-28-01-00-00-06-2D-09-07-7B-02-00-00-04-0B-2B-07-07-7B-03-00-00-04-0B-07-7B-02-00-00-04-2D-E0-02-07-7B-04-00-00-04-28-02-00-00-06-06-17-58-0A-06-04-32-C8-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      }
+    },
+    {
+      "method": "AlignLocal",
+      "control": "ExpectedAlignLocal",
+      "hints": {
+        "round9_original_same_slot_arm_stores": true,
+        "round9_per_arm_store_slot": 0,
+        "evidence": {
+          "condition_branch": {
+            "offset": 17,
+            "opcode": "bne.un.s",
+            "operand": {
+              "branch": 25
+            }
+          },
+          "first_value": [
+            {
+              "offset": 19,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 20,
+              "opcode": "ldarg.2",
+              "operand": null
+            },
+            {
+              "offset": 21,
+              "opcode": "sub",
+              "operand": null
+            }
+          ],
+          "first_store": {
+            "offset": 22,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          "first_arm_join_jump": {
+            "offset": 23,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 34
+            }
+          },
+          "second_value": [
+            {
+              "offset": 25,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 26,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              }
+            },
+            {
+              "offset": 31,
+              "opcode": "ldarg.2",
+              "operand": null
+            },
+            {
+              "offset": 32,
+              "opcode": "sub",
+              "operand": null
+            }
+          ],
+          "second_store": {
+            "offset": 33,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          "join": {
+            "offset": 34,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          "same_slot": true,
+          "straight_line_arm_values": true,
+          "source_orientation_not_inferred": true
+        },
+        "round9_per_arm_store_order": "false-first",
+        "round9_per_arm_store_rebuilt_evidence": {
+          "first_value": [
+            {
+              "offset": 19,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 20,
+              "opcode": "ldarg.2",
+              "operand": null
+            },
+            {
+              "offset": 21,
+              "opcode": "sub",
+              "operand": null
+            }
+          ],
+          "second_value": [
+            {
+              "offset": 24,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 25,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              }
+            },
+            {
+              "offset": 30,
+              "opcode": "ldarg.2",
+              "operand": null
+            },
+            {
+              "offset": 31,
+              "opcode": "sub",
+              "operand": null
+            }
+          ],
+          "common_store": {
+            "offset": 32,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          "condition_branch": {
+            "offset": 17,
+            "opcode": "bne.un.s",
+            "operand": {
+              "branch": 24
+            }
+          },
+          "common_store_slot": 0,
+          "original_arm_values_identical_to_current_ternary": true,
+          "orientation_basis": "Roslyn EmitConditionalOperator emits Alternative first; unchanged value anchors"
+        }
+      },
+      "patch": {
+        "rule": "d9-calculated-per-arm-local-stores",
+        "start": 1003,
+        "end": 1048,
+        "before": "x=((width_!=-1f)?(width_-extent):(x-extent));",
+        "after": "if (!((width_!=-1f)))\r\n{\r\n\tx = (x-extent);\r\n}\r\nelse\r\n{\r\n\tx = (width_-extent);\r\n}",
+        "distance": 30
+      },
+      "body_differences": [],
+      "actual": {
+        "key": "Fixture::AlignLocal(System.Single,System.Single,System.Int32)",
+        "stable_id": "Fixture::AlignLocal(System.Single,System.Single,System.Int32)->System.Single",
+        "token": "[Method:0x0007]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::AlignLocal``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [
+          {
+            "offset": 7,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture::width_",
+            "declaring_type": "Fixture"
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture::width_",
+            "declaring_type": "Fixture"
+          }
+        ],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 2,
+          "initlocals": true,
+          "code_size": 36
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 3,
+            "opcode": "ldc.i4.4",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "bne.un.s",
+            "operand": {
+              "branch": 34
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 7,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "offset": 12,
+            "opcode": "ldc.r4",
+            "operand": {
+              "float_bits": "00-00-80-BF"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "bne.un.s",
+            "operand": {
+              "branch": 25
+            }
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "sub",
+            "operand": null
+          },
+          {
+            "offset": 22,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 23,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 34
+            }
+          },
+          {
+            "offset": 25,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "offset": 31,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 32,
+            "opcode": "sub",
+            "operand": null
+          },
+          {
+            "offset": 33,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 34,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 35,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 20,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "body_offset": 39,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-02-00-24-00-00-00-02-00-00-11-03-0A-05-1A-33-1C-02-7B-01-00-00-04-22-00-00-80-BF-33-06-06-04-59-0A-2B-09-02-7B-01-00-00-04-04-59-0A-06-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      },
+      "expected": {
+        "key": "Fixture::ExpectedAlignLocal(System.Single,System.Single,System.Int32)",
+        "stable_id": "Fixture::ExpectedAlignLocal(System.Single,System.Single,System.Int32)->System.Single",
+        "token": "[Method:0x0008]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ExpectedAlignLocal``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [
+          {
+            "offset": 7,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture::width_",
+            "declaring_type": "Fixture"
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "kind": "field",
+            "id": "Fixture::width_",
+            "declaring_type": "Fixture"
+          }
+        ],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 2,
+          "initlocals": true,
+          "code_size": 36
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 3,
+            "opcode": "ldc.i4.4",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "bne.un.s",
+            "operand": {
+              "branch": 34
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 7,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "offset": 12,
+            "opcode": "ldc.r4",
+            "operand": {
+              "float_bits": "00-00-80-BF"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "bne.un.s",
+            "operand": {
+              "branch": 25
+            }
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "sub",
+            "operand": null
+          },
+          {
+            "offset": 22,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 23,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 34
+            }
+          },
+          {
+            "offset": 25,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 26,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "offset": 31,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 32,
+            "opcode": "sub",
+            "operand": null
+          },
+          {
+            "offset": 33,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 34,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 35,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 20,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "body_offset": 39,
+            "width": 4,
+            "identity": {
+              "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::width_:valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          },
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-02-00-24-00-00-00-02-00-00-11-03-0A-05-1A-33-1C-02-7B-01-00-00-04-22-00-00-80-BF-33-06-06-04-59-0A-2B-09-02-7B-01-00-00-04-04-59-0A-06-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      }
+    }
+  ],
+  "negatives": [
+    "parameter target",
+    "field target",
+    "indexed target with side effect",
+    "no ternary",
+    "missing/invalid original evidence"
+  ],
+  "preserves_condition_expression_and_unordered_float_branches": true
+}

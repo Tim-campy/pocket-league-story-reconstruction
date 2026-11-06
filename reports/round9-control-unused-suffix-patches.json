@@ -1,0 +1,70 @@
+{
+  "operation": "calculated-unused-local-signature-suffix-source-proposals",
+  "snapshot": "build/round9/cycles/b10/after",
+  "game_compilations": 0,
+  "adopted": false,
+  "calculator_sha256": "7716873948e69560a99edaa1b65bb4a6eefa44730b22d2c555080e6aec873c7c",
+  "dependency_sha256": {
+    "tools\\round9_unused_suffix_calculate.py": "7716873948e69560a99edaa1b65bb4a6eefa44730b22d2c555080e6aec873c7c",
+    "tools\\round7_slot_model.py": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+    "tools\\Round7SlotModel.cs": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "audit": [
+    {
+      "eligible": true,
+      "reasons": [],
+      "names_are_historical": false,
+      "missing_slots": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "unused_declarations": [
+        "global::kairo.unity.ui.Font recoveredUnusedSlot4;",
+        "global::System.Int32 recoveredUnusedSlot5;",
+        "global::System.Int32 recoveredUnusedSlot6;",
+        "global::System.Int32 recoveredUnusedSlot7;"
+      ],
+      "original_missing_slot_accesses": 0,
+      "id": "main.AppData::DrawWindow2(kairo.unity.ui.Graphics,System.Int32,System.Int32,System.Int32,System.Int32)->System.Void",
+      "candidate_prediction_complete": true,
+      "candidate_signature_exact": true,
+      "candidate_predicted_types": [
+        "System.Int32",
+        "System.Int32",
+        "surface.GameView",
+        "kairo.unity.ui.Image",
+        "kairo.unity.ui.Font",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "original_types": [
+        "System.Int32",
+        "System.Int32",
+        "surface.GameView",
+        "kairo.unity.ui.Image",
+        "kairo.unity.ui.Font",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ]
+    }
+  ],
+  "patches": [
+    {
+      "start": 66337,
+      "end": 66782,
+      "before": "public void DrawWindow2(Graphics g, int GWidth, int GHeight, int GTop, int oy)\r\n\t\t{\r\n\t\t\toy--;\r\n\t\t\tint originX = g.GetOriginX();\r\n\t\t\tint originY = g.GetOriginY();\r\n\t\t\tg.SetOrigin(0, 0);\r\n\t\t\tGameView instance = GameView.GetInstance();\r\n\t\t\tImage image = resCom2_.img[28];\r\n\t\t\tg.DrawScaledImage(image, 0f, oy, instance.GetGameWidth(), instance.GetGameHeight() - oy, 0, 0, image.GetWidth(), image.GetHeight());\r\n\t\t\tg.SetOrigin(originX, originY);\r\n\t\t}",
+      "after": "public void DrawWindow2(Graphics g, int GWidth, int GHeight, int GTop, int oy)\r\n\t\t{\r\n\t\t\toy--;\r\n\t\t\tint originX = g.GetOriginX();\r\n\t\t\tint originY = g.GetOriginY();\r\n\t\t\tg.SetOrigin(0, 0);\r\n\t\t\tGameView instance = GameView.GetInstance();\r\n\t\t\tImage image = resCom2_.img[28];\r\n\t\t\tglobal::kairo.unity.ui.Font recoveredUnusedSlot4;\r\n\t\t\tglobal::System.Int32 recoveredUnusedSlot5;\r\n\t\t\tglobal::System.Int32 recoveredUnusedSlot6;\r\n\t\t\tglobal::System.Int32 recoveredUnusedSlot7;\r\n\t\t\tg.DrawScaledImage(image, 0f, oy, instance.GetGameWidth(), instance.GetGameHeight() - oy, 0, 0, image.GetWidth(), image.GetHeight());\r\n\t\t\tg.SetOrigin(originX, originY);\r\n\t\t}",
+      "distance": 0,
+      "rule": "c9-control-skeleton-calculated-unused-local-suffix",
+      "method_id": "main.AppData::DrawWindow2(kairo.unity.ui.Graphics,System.Int32,System.Int32,System.Int32,System.Int32)->System.Void",
+      "logical_path": "src/Assembly-CSharp/main/AppData.cs",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a"
+    }
+  ]
+}

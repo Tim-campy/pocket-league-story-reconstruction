@@ -1,0 +1,838 @@
+{
+  "operation": "historical-csc-Single-identity-cast-occurrence-fixtures",
+  "helper_sha256": "1cdbd1d7c0f73ed82ce75b073dba15d22e1acdfc4dedd6ab1433c409a4b31a8a",
+  "hints_sha256": "5795c097f0827dc8b78d4e6a8153c6291424e384b79d0f0badd4aee1db1632c9",
+  "fixture_driver_sha256": "b211258616acb861b35f8940fe64279b7a8428e42dfd500e922a7da4491cfdb2",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "historical_fixture_compilations": 4,
+  "game_compilations": 0,
+  "full_body_controls_equal": 3,
+  "fixtures": [
+    {
+      "method": "StaticFirst",
+      "control": "ExpectedStatic",
+      "hints": {
+        "round9_identity_conversion_opcode": "conv.r4",
+        "round9_identity_parameter_ordinal": 3,
+        "round9_identity_conversion_evidence": {
+          "original_load": {
+            "offset": 16,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          "original_conversion": {
+            "offset": 17,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          "rebuilt_at_frontier": {
+            "offset": 17,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          "original_parameter_type": "System.Single",
+          "diagnostic_only": true
+        }
+      },
+      "patch": {
+        "rule": "d9-explicit-float-identity-parameter",
+        "start": 196,
+        "end": 201,
+        "before": "frame",
+        "after": "(float)(frame)",
+        "distance": 0
+      },
+      "body_differences": [],
+      "actual": {
+        "key": "Fixture::StaticFirst(System.Single,System.Single,System.Single,System.Single,System.Single)",
+        "stable_id": "Fixture::StaticFirst(System.Single,System.Single,System.Single,System.Single,System.Single)->System.Single",
+        "token": "[Method:0x0001]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::StaticFirst``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default",
+        "direct_references": [],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 3,
+          "initlocals": true,
+          "code_size": 29
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "ldc.r4",
+            "operand": {
+              "float_bits": "00-00-00-00"
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": "bge.un.s",
+            "operand": {
+              "branch": 10
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "ret",
+            "operand": null
+          },
+          {
+            "offset": 10,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 11,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "blt.un.s",
+            "operand": {
+              "branch": 16
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 15,
+            "opcode": "ret",
+            "operand": null
+          },
+          {
+            "offset": 16,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 17,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 22,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 23,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 24,
+            "opcode": "sub",
+            "operand": null
+          },
+          {
+            "offset": 25,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 26,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 27,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 28,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-03-00-1D-00-00-00-01-00-00-11-05-22-00-00-00-00-34-02-02-2A-05-04-37-02-03-2A-05-6B-04-5B-0A-02-03-02-59-06-5A-58-2A",
+        "method_attributes": 150,
+        "impl_attributes": 0,
+        "sequence_points": []
+      },
+      "expected": {
+        "key": "Fixture::ExpectedStatic(System.Single,System.Single,System.Single,System.Single,System.Single)",
+        "stable_id": "Fixture::ExpectedStatic(System.Single,System.Single,System.Single,System.Single,System.Single)->System.Single",
+        "token": "[Method:0x0002]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ExpectedStatic``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default",
+        "direct_references": [],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 3,
+          "initlocals": true,
+          "code_size": 29
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "ldc.r4",
+            "operand": {
+              "float_bits": "00-00-00-00"
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": "bge.un.s",
+            "operand": {
+              "branch": 10
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "ret",
+            "operand": null
+          },
+          {
+            "offset": 10,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 11,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "blt.un.s",
+            "operand": {
+              "branch": 16
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 15,
+            "opcode": "ret",
+            "operand": null
+          },
+          {
+            "offset": 16,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 17,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 22,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 23,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 24,
+            "opcode": "sub",
+            "operand": null
+          },
+          {
+            "offset": 25,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 26,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 27,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 28,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-03-00-1D-00-00-00-01-00-00-11-05-22-00-00-00-00-34-02-02-2A-05-04-37-02-03-2A-05-6B-04-5B-0A-02-03-02-59-06-5A-58-2A",
+        "method_attributes": 150,
+        "impl_attributes": 0,
+        "sequence_points": []
+      }
+    },
+    {
+      "method": "Instance",
+      "control": "ExpectedWidth",
+      "hints": {
+        "round9_identity_conversion_opcode": "conv.r4",
+        "round9_identity_parameter_ordinal": 0,
+        "round9_identity_conversion_evidence": {
+          "original_load": {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          "original_conversion": {
+            "offset": 1,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          "rebuilt_at_frontier": {
+            "offset": 1,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          "original_parameter_type": "System.Single",
+          "diagnostic_only": true
+        }
+      },
+      "patch": {
+        "rule": "d9-explicit-float-identity-parameter",
+        "start": 528,
+        "end": 533,
+        "before": "width",
+        "after": "(float)(width)",
+        "distance": 0
+      },
+      "body_differences": [],
+      "actual": {
+        "key": "Fixture::Instance(System.Single,System.Single,System.Single,System.Single)",
+        "stable_id": "Fixture::Instance(System.Single,System.Single,System.Single,System.Single)->System.Single",
+        "token": "[Method:0x0003]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Instance``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 3,
+          "initlocals": true,
+          "code_size": 12
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 3,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "ldarg.s",
+            "operand": {
+              "parameter": 3
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 8,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 10,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 11,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-03-00-0C-00-00-00-01-00-00-11-03-6B-04-5B-05-0E-04-5B-0A-06-58-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      },
+      "expected": {
+        "key": "Fixture::ExpectedWidth(System.Single,System.Single,System.Single,System.Single)",
+        "stable_id": "Fixture::ExpectedWidth(System.Single,System.Single,System.Single,System.Single)->System.Single",
+        "token": "[Method:0x0004]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ExpectedWidth``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 3,
+          "initlocals": true,
+          "code_size": 12
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 3,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "ldarg.s",
+            "operand": {
+              "parameter": 3
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 8,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 10,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 11,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-03-00-0C-00-00-00-01-00-00-11-03-6B-04-5B-05-0E-04-5B-0A-06-58-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      }
+    },
+    {
+      "method": "Instance",
+      "control": "ExpectedBoth",
+      "hints": {
+        "round9_identity_conversion_opcode": "conv.r4",
+        "round9_identity_parameter_ordinal": 2,
+        "round9_identity_conversion_evidence": {
+          "original_load": {
+            "offset": 4,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          "original_conversion": {
+            "offset": 5,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          "rebuilt_at_frontier": {
+            "offset": 5,
+            "opcode": "ldarg.s",
+            "operand": {
+              "parameter": 3
+            }
+          },
+          "original_parameter_type": "System.Single",
+          "diagnostic_only": true
+        }
+      },
+      "patch": {
+        "rule": "d9-explicit-float-identity-parameter",
+        "start": 558,
+        "end": 564,
+        "before": "height",
+        "after": "(float)(height)",
+        "distance": 0
+      },
+      "body_differences": [],
+      "actual": {
+        "key": "Fixture::Instance(System.Single,System.Single,System.Single,System.Single)",
+        "stable_id": "Fixture::Instance(System.Single,System.Single,System.Single,System.Single)->System.Single",
+        "token": "[Method:0x0003]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Instance``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 3,
+          "initlocals": true,
+          "code_size": 13
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 3,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "ldarg.s",
+            "operand": {
+              "parameter": 3
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 10,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 11,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-03-00-0D-00-00-00-01-00-00-11-03-6B-04-5B-05-6B-0E-04-5B-0A-06-58-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      },
+      "expected": {
+        "key": "Fixture::ExpectedBoth(System.Single,System.Single,System.Single,System.Single)",
+        "stable_id": "Fixture::ExpectedBoth(System.Single,System.Single,System.Single,System.Single)->System.Single",
+        "token": "[Method:0x0005]",
+        "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ExpectedBoth``0(valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default",
+        "direct_references": [],
+        "header": {
+          "format": "fat",
+          "size": 12,
+          "flags": 19,
+          "maxstack": 3,
+          "initlocals": true,
+          "code_size": 13
+        },
+        "locals": [
+          "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ],
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "ldarg.2",
+            "operand": null
+          },
+          {
+            "offset": 3,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "conv.r4",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "ldarg.s",
+            "operand": {
+              "parameter": 3
+            }
+          },
+          {
+            "offset": 8,
+            "opcode": "div",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 10,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 11,
+            "opcode": "add",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "exception_regions": [],
+        "extra_sections": [],
+        "metadata_operands": [
+          {
+            "body_offset": 8,
+            "width": 4,
+            "identity": {
+              "locals_signature_present": true,
+              "variables": [
+                "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+              ]
+            }
+          }
+        ],
+        "raw_body_hex": "13-30-03-00-0D-00-00-00-01-00-00-11-03-6B-04-5B-05-6B-0E-04-5B-0A-06-58-2A",
+        "method_attributes": 134,
+        "impl_attributes": 0,
+        "sequence_points": []
+      }
+    }
+  ],
+  "negatives": [
+    "no original-conversion evidence",
+    "existing Single cast",
+    "Double parameter",
+    "constant expression",
+    "Int32 numeric conversion"
+  ],
+  "original_unordered_float_branch_opcodes_preserved": true
+}

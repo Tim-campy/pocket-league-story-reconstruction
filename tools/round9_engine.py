@@ -430,13 +430,21 @@ def main():
             dependency=(ROOT/relative).resolve()
             if not dependency.is_relative_to(ROOT/'tools') or sha(dependency)!=expected:
                 raise ValueError('External proposal dependency changed: '+relative)
+        evidence=dict(proposal_doc.get('evidence_sha256',{}))
+        for proposal in proposal_doc['patches']:
+            evidence.update(proposal.get('evidence_sha256',{}))
+        for relative,expected in evidence.items():
+            path=(ROOT/relative).resolve()
+            if not path.is_relative_to((ROOT/'reports').resolve()) or path.suffix.lower()!='.json' or sha(path)!=expected:
+                raise ValueError('External read-only evidence changed: '+relative)
         for field in ('calculator','syntax_source'):
             expected=proposal_doc.get(field+'_sha256')
             if expected and not any(sha(p)==expected for p in (ROOT/'tools').glob('*') if p.is_file()):
                 raise ValueError('External proposal producer missing: '+field)
         external=proposal_doc['patches']
         report['external_proposals']={'path':str(args.external_proposals),'sha256':sha(args.external_proposals),
-            'dependencies_checked':dependencies,'fresh_model_required':True,'exact_unique_rebase':True}
+            'dependencies_checked':dependencies,'read_only_evidence_checked':evidence,
+            'fresh_model_required':True,'exact_unique_rebase':True}
     baseline_variants = {}
     if args.calculated_alternatives:
         if not is_smcs:
@@ -624,6 +632,13 @@ def main():
                 nullable_hints=null_polarity_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
                 hints.update(nullable_hints)
                 row.setdefault('null_polarity_evidence',[]).append(nullable_hints)
+                from round9_float_identity_hints import float_identity_conversion_hints
+                from round9_per_arm_store_hints import per_arm_local_store_hints
+                calculated_float=float_identity_conversion_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
+                calculated_stores=per_arm_local_store_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
+                hints.update(calculated_float)
+                hints.update(calculated_stores)
+                row.setdefault('round9_calculated_emission_evidence',[]).append({'float_identity':calculated_float,'per_arm_stores':calculated_stores})
             response = syntax.request(path=str(c.paths[logical]), source=text, line=point['start_line'], column=max(1, point['start_column']), method_id=key, max_candidates=512, compiler='smcs' if is_smcs else 'roslyn', round7_cycle_rule=args.cycle_rule or '', round7_cycle_rules=learned_rules, round8_expand_compound_fields=is_smcs, **hints)
             row['transform_helper_sha256'] = syntax_hash
             row['stop_point'] = {'offset': old_prefix, 'source': logical, 'point': point,

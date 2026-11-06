@@ -660,15 +660,20 @@ namespace game
 
 		public void DrawCursor(Graphics g)
 		{
-			if (!(flg_disp)) { } else if ((cursorCnt_ < 80)) {
-				GameView gameView = GameView.GetInstance();
-				int scale_ = apdat_.frmGame_.scale_;
-				temp_cursorSPos[0] = (int)(pos.x_ + (cursor_pos.x_ - pos.x_) * (float)scale_ / 100f);
-				temp_cursorSPos[1] = (int)(pos.y_ + (cursor_pos.y_ - pos.y_) * (float)scale_ / 100f);
-				ConvertScreenToCamera(temp_cursorSPos, temp_cpos);
-				g.DrawImage(apdat_.resCom2_.img[80], temp_cpos[0], temp_cpos[1]);
-			}
-		}
+if (!(flg_disp)) {
+return;
+}
+if (!(cursorCnt_ < 80)) {
+return;
+}
+GameView gameView = GameView.GetInstance();
+int scale_ = apdat_.frmGame_.scale_;
+temp_cursorSPos[0] = (int)(pos.x_ + (cursor_pos.x_ - pos.x_) * (float)scale_ / 100f);
+temp_cursorSPos[1] = (int)(pos.y_ + (cursor_pos.y_ - pos.y_) * (float)scale_ / 100f);
+ConvertScreenToCamera(temp_cursorSPos, temp_cpos);
+g.DrawImage(apdat_.resCom2_.img[80], temp_cpos[0], temp_cpos[1]);
+return;
+}
 
 		public void SetCameraRect()
 		{

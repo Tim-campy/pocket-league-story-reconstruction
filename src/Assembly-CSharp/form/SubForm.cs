@@ -11049,25 +11049,26 @@ instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.i
 
 		public static void Draw_up(Graphics g, int dx, int dy, int cnt, int padding)
 		{
-			if (cnt == 0)
-			{
-				return;
-			}
-			AppData instance = AppData.GetInstance();
-			if (cnt >= 0)
-			{
-				for (int i = 0; i < cnt; i++)
-				{
-					instance.DrawSeb(g, dx + i * (8 + padding), dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 14);
-				}
-				return;
-			}
-			cnt = -cnt;
-			for (int j = 0; j < cnt; j++)
-			{
-				instance.DrawSeb(g, dx + j * (8 + padding), dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 15);
-			}
-		}
+if (cnt == 0) {
+return;
+}
+AppData instance = AppData.GetInstance();
+if (cnt >= 0) {
+int i = 0;
+while (i < cnt) {
+instance.DrawSeb(g, dx + i * (8 + padding), dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 14);
+i++;
+}
+} else {
+cnt = -cnt;
+int j = 0;
+while (j < cnt) {
+instance.DrawSeb(g, dx + j * (8 + padding), dy, instance.resCom2_.seb[35], instance.resCom2_.img[103], 15);
+j++;
+}
+}
+return;
+}
 
 		private int[] DrawWindow2(Graphics g, int width, int height, string title, int sideSpace, int topSpace, int bottomSpace, int barArwSpace, int flag)
 		{

@@ -2616,6 +2616,10 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			g.SetOrigin(0, 0);
 			GameView instance = GameView.GetInstance();
 			Image image = resCom2_.img[28];
+			global::kairo.unity.ui.Font recoveredUnusedSlot4;
+			global::System.Int32 recoveredUnusedSlot5;
+			global::System.Int32 recoveredUnusedSlot6;
+			global::System.Int32 recoveredUnusedSlot7;
 			g.DrawScaledImage(image, 0f, oy, instance.GetGameWidth(), instance.GetGameHeight() - oy, 0, 0, image.GetWidth(), image.GetHeight());
 			g.SetOrigin(originX, originY);
 		}
@@ -4149,21 +4153,22 @@ graphics.DrawImage(img, j * lineWidth, i * lineWidth, u, v, w, h);
 
 		public void DrawCommand(Graphics g, string str, int x, int y, int w, int anchor, bool active, bool cursor, FormBase form, int frame)
 		{
-			Font font = g.GetFont(null);
-			int height = font.GetHeight();
-			int width = font.StringWidth(str);
-			int[] anchorPosition = Graphics.GetAnchorPosition(x, y, width, height, anchor);
-			int color = g.GetColor();
-			if (active)
-			{
-				g.SetColor(Graphics.GetColorOfRGB(205, 235, 111));
-				g.FillRect(x - w / 2, anchorPosition[1] - 1, w, height + 2);
-			}
-			g.SetColor(color);
-			g.DrawString(str, anchorPosition[0], anchorPosition[1]);
-			if (cursor) { return; }
+Font font = g.GetFont(null);
+int height = font.GetHeight();
+int width = font.StringWidth(str);
+int[] anchorPosition = Graphics.GetAnchorPosition(x, y, width, height, anchor);
+int color = g.GetColor();
+if (active) {
+g.SetColor(Graphics.GetColorOfRGB(205, 235, 111));
+g.FillRect(x - w / 2, anchorPosition[1] - 1, w, height + 2);
+}
+g.SetColor(color);
+g.DrawString(str, anchorPosition[0], anchorPosition[1]);
+if (cursor) {
 
-		}
+}
+return;
+}
 
 		public int GetMainBGM()
 		{

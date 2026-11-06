@@ -1512,28 +1512,27 @@ return false;
 
 		public void Act_charge()
 		{
-			Player passer = udat_.teams_[1 - team_id_].GetPasser();
-			old_pos.Set(pos_);
-			if (passer == null)
-			{
-				return;
-			}
-			if (ChSlidingTackleEva(passer))
-			{
-				GameUtil.Sub(passer.pos_, pos_, temp_vec);
-				float num = (float)JMath.Sqrt(temp_vec.x_ * temp_vec.x_ + temp_vec.z_ * temp_vec.z_);
-				if ((num < 0.1f)) { return; }
+Player passer = udat_.teams_[1 - team_id_].GetPasser();
+old_pos.Set(pos_);
+if (passer == null) {
+return;
+}
+if (ChSlidingTackleEva(passer)) {
+GameUtil.Sub(passer.pos_, pos_, temp_vec);
+float num = (float)JMath.Sqrt(temp_vec.x_ * temp_vec.x_ + temp_vec.z_ * temp_vec.z_);
+if (num < 0.1f) {
+return;
+}
 seb_startPos.Set(pos_);
 seb_v.x_ = PlayerData.SLIDING_SPEED * temp_vec.x_ / num;
 seb_v.z_ = PlayerData.SLIDING_SPEED * temp_vec.z_ / num;
 Proc_sliding(passer);
 apdat_.PlaySe(11);
-			}
-			else
-			{
-				Move(udat_.ball_.pos_, 2);
-			}
-		}
+return;
+}
+Move(udat_.ball_.pos_, 2);
+return;
+}
 
 		public void Act_dribble()
 		{

@@ -1,0 +1,87 @@
+{
+  "schema": "smcs-control-tree-v1",
+  "extractor_api": "smcs_control_il.extract_il(methodDTO) -> dict",
+  "canonical_api": "canonical_plan(ir_or_events) -> list[dict]; canonical_tree(ir) -> dict or None",
+  "side": "il",
+  "required_envelope": [
+    "schema",
+    "side",
+    "complete",
+    "reasons",
+    "tree",
+    "leaves",
+    "branch_roles",
+    "coverage",
+    "emission_plan",
+    "emission_equivalences",
+    "tree_complete",
+    "emission_plan_complete",
+    "canonical_tree",
+    "extra_section_validation"
+  ],
+  "node": {
+    "id": "string",
+    "kind": "sequence|if|loop|switch|try|using|lock|return|break|continue|ternary|logical|leaf|unknown",
+    "complete": "bool",
+    "reasons": "list[reason]",
+    "span": {
+      "start": "inclusive IL offset",
+      "end": "exclusive IL offset"
+    },
+    "children": "list[node]",
+    "data": "kind-specific evidence; no guessed original syntax"
+  },
+  "reason": {
+    "code": "string",
+    "node_id": "string or null",
+    "detail": "string"
+  },
+  "event_kinds": [
+    "label",
+    "leaf",
+    "branch",
+    "return",
+    "throw",
+    "terminal",
+    "eh_begin",
+    "eh_try_end",
+    "eh_handler",
+    "eh_end"
+  ],
+  "canonical_plan_policy": [
+    "rename labels by ascending physical IL position",
+    "strip IDs and coordinate spans only",
+    "retain edge opcode, target order/aliasing and branch-to-next",
+    "retain ret/throw/rethrow/endfinally and leave",
+    "retain EH boundary kind/type and ordering",
+    "condense only contiguous non-control instruction runs into leaf events; raw instruction arrays remain in leaves",
+    "never use this representation as the byte-equality oracle"
+  ],
+  "completeness": "emission_plan_complete means lossless event/instruction coverage only; tree_complete additionally requires region/template ownership without unresolved cases; complete requires both. Raw event coverage NEVER turns unknown structure complete.",
+  "identity": "Caller binds the read-only method DTO to artifact SHA/MVID; original primary REA identity is in rea-artifact-identity.json. No mutation of methodDTO.",
+  "event_branch": {
+    "kind": "branch",
+    "opcode": "exact CIL opcode including .s/.un",
+    "il_offset": "integer IL offset",
+    "target_label": "label string (one target)",
+    "target_labels": "ordered label string array (switch only)",
+    "role": "mechanically derived CFG role; not part of comparison",
+    "predicate": "typed consumed stack values and exact branch relation; .un preserved"
+  },
+  "event_label": {
+    "kind": "label",
+    "label": "arbitrary string unique per emitted position or alias"
+  },
+  "event_leaf": {
+    "kind": "leaf",
+    "leaf_id": "link to raw IL ranges in leaves; source uses source_node"
+  },
+  "canonical_tree_policy": [
+    "Does not read emission_plan",
+    "None if tree_complete is false",
+    "Flatten sequence wrappers and contiguous leaves only",
+    "Preserve condition opcodes, explicit joins, pre/post loop form and entry/tail branches",
+    "Preserve transfer target_role and lexical loop depth",
+    "Only fixture-proved syntactic emission equivalence classes may share a structural representation; no assembly normalization"
+  ]
+}
