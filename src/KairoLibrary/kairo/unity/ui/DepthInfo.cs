@@ -34,7 +34,7 @@ namespace kairo.unity.ui
 		internal void CreateDepthLines(int[] sp, int scale)
 		{
 			int num = 0;
-			num = (((sp[2] == 0 && sp[3] == 0) || (sp[4] == 0 && sp[5] == 0)) ? 4 : 8);
+			if (((sp[2] != 0) || (sp[3] != 0)) && ((sp[4] != 0) || (sp[5] != 0))) { num = 8; } else { num = 4; }
 			if (depthLines == null || depthLines.Length != num)
 			{
 				depthLines = new int[num];

@@ -136,9 +136,11 @@ namespace kairo.unity.util
 			int num = StreamUtil.ReadInt(stream);
 			for (int i = 0; i < num; i++)
 			{
-				byte[] ids = null;
-				int type = StreamUtil.ReadInt(stream);
-				int size = StreamUtil.ReadInt(stream);
+				int type;
+int size;
+byte[] ids = null;
+				type = StreamUtil.ReadInt(stream);
+				size = StreamUtil.ReadInt(stream);
 				Read(stream, type, size, ids);
 			}
 		}

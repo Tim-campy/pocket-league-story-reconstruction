@@ -291,7 +291,8 @@ namespace kairo.unity.graphics
 				text = text.Replace("<colorMask>", newValue);
 				text = text.Replace("<stencil>", newValue2);
 			}
-			else if ((nameId & 2) != 0)
+			else { bool recoveredCondition_7106 = (nameId & 2) != 0;
+if (recoveredCondition_7106)
 			{
 				string newValue3 = "1";
 				if ((nameId & 8) != 0)
@@ -398,6 +399,7 @@ namespace kairo.unity.graphics
 				}
 				text = "\r\n                Shader '<name>' {\r\n\t\t\t        Properties {\r\n\t\t\t            _MainTex ('Base (RGB)', 2D)  = 'white' {}\r\n                        <prop_color>\r\n                        <prop_blend>\r\n\t\t\t        }\r\n\t\t\t        SubShader {\r\n\t\t\t            Tags {'Queue'='<tag_queue>' 'IgnoreProjector'='True' 'RenderType'='<tag_render>'}\r\n                        Pass {\r\n                            Lighting Off <depth> Cull Off\r\n                            <alpha>\r\n                            <blend>\r\n                            <clip>\r\n                            <bind>\r\n                            <tex>\r\n                        }\r\n\t\t\t        }\r\n\t\t\t    }";
 			}
+}
 			text = text.Replace("<name>", name.TrimStart('\r', '\n'));
 			text = text.Replace("<prop_blend>", text10.TrimStart('\r', '\n'));
 			text = text.Replace("<prop_color>", text11.TrimStart('\r', '\n'));

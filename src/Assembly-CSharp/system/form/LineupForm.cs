@@ -216,13 +216,10 @@ namespace system.form
 		{
 			type = (int)(type & 0xFFFF0000u);
 			int num = type;
-			if (num == 131072)
-			{
-				select_ = value;
-			}
-			else
-			{
+			if (num != 131072) {
 				base.SetTouchValue(type, value);
+			} else {
+				select_ = value;
 			}
 		}
 

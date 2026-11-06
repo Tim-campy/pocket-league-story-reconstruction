@@ -878,8 +878,10 @@ namespace kairo.unity.ui
 		public void SetAlpha(int alpha)
 		{
 			Texture2D texture2D = GetTexture2D();
-			if (texture2D == null || alpha_ != alpha)
-			{
+			if (texture2D == null) {
+				return;
+			}
+if (alpha_ != alpha) {
 				return;
 			}
 			alpha_ = alpha;
@@ -1158,7 +1160,8 @@ namespace kairo.unity.ui
 		public static int[] GetAreaSize(byte[] data)
 		{
 			int[] array = getAreaSize_result;
-			array[0] = (array[1] = 0);
+			int num;
+array[0] = (array[1] = 0);
 			switch (GetFileFormat(data))
 			{
 			case "gif":
@@ -1171,7 +1174,7 @@ namespace kairo.unity.ui
 				break;
 			case "jpg":
 			{
-				int num = 2;
+				num = 2;
 				while (true)
 				{
 					int num2 = (data[num + 0] << 8) | data[num + 1];
@@ -1606,10 +1609,9 @@ namespace kairo.unity.ui
 			IApplication.GetCurrentApp().RunOnUiThread(delegate
 			{
 				Texture2D texture2D = GetTexture2D();
-				if (!(texture2D == null))
-				{
-					Color[] array = new Color[height * width];
-					for (int i = 0; i < height; i++)
+				if ((texture2D == null)) { return; }
+Color[] array = new Color[height * width];
+for (int i = 0; i < height; i++)
 					{
 						for (int j = 0; j < width; j++)
 						{
@@ -1618,19 +1620,18 @@ namespace kairo.unity.ui
 							array[i * width + j] = texture2D.GetPixelBilinear(u, v);
 						}
 					}
-					sourceImagePixels_ = sourceImagePixels_ - texture2D.width * texture2D.height + width * height;
-					if (Config.COUNT_ENABLE)
+sourceImagePixels_ = sourceImagePixels_ - texture2D.width * texture2D.height + width * height;
+if (Config.COUNT_ENABLE)
 					{
 						Config.createImageArea_ = Config.createImageArea_ - texture2D.width * texture2D.height + width * height;
 					}
-					Texture2D texture2D2 = new Texture2D(width, height, texture2D.format, false);
-					texture2D2.filterMode = texture2D.filterMode;
-					texture2D2.SetPixels(array);
-					texture2D2.Apply();
-					image_ = texture2D2;
-					width_ = width;
-					height_ = height;
-				}
+Texture2D texture2D2 = new Texture2D(width, height, texture2D.format, false);
+texture2D2.filterMode = texture2D.filterMode;
+texture2D2.SetPixels(array);
+texture2D2.Apply();
+image_ = texture2D2;
+width_ = width;
+height_ = height;
 			}, true);
 		}
 
@@ -1722,15 +1723,13 @@ namespace kairo.unity.ui
 
 		public void SetImageAtlasId(int id)
 		{
-			if (atlasMan_.enable_)
-			{
-				atlasMan_.AtlasToImage(this);
-				imageAtlasId_ = id;
-				if (id != -1 && (object)image_ != null)
+			if (!(atlasMan_.enable_)) { return; }
+atlasMan_.AtlasToImage(this);
+imageAtlasId_ = id;
+if (id != -1 && (object)image_ != null)
 				{
 					atlasMan_.ImageToAtlas(id, this);
 				}
-			}
 		}
 
 		public void SetExpiration(bool yes, int validateFrames = -1)

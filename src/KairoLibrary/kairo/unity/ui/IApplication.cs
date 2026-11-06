@@ -267,20 +267,18 @@ namespace kairo.unity.ui
 
 		private static void CopyDirectory(string src, string dst)
 		{
-			if (Directory.Exists(src))
-			{
-				Directory.CreateDirectory(dst);
-				string[] files = Directory.GetFiles(src);
-				foreach (string text in files)
+			if (!(Directory.Exists(src))) { return; }
+Directory.CreateDirectory(dst);
+string[] files = Directory.GetFiles(src);
+foreach (string text in files)
 				{
 					File.Copy(text, dst + "/" + Path.GetFileName(text));
 				}
-				files = Directory.GetDirectories(src);
-				foreach (string text2 in files)
+files = Directory.GetDirectories(src);
+foreach (string text2 in files)
 				{
 					CopyDirectory(text2, dst + "/" + Path.GetFileName(text2));
 				}
-			}
 		}
 
 		private void Start()

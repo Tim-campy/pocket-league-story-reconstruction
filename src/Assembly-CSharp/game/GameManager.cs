@@ -556,8 +556,10 @@ namespace game
 					g.FillRect(0f, 0f, gameView.GetGameWidth(), gameView.GetGameHeight());
 					g.SetColor(Graphics.GetColorOfRGB(0, 0, 0, 255));
 				}
-				if (num2 <= 6 || num2 > 36)
-				{
+				if (num2 <= 6) {
+					return;
+				}
+if (num2 > 36) {
 					return;
 				}
 				int num4 = 0;
@@ -775,17 +777,19 @@ namespace game
 			for (int k = 0; k < 2; k++)
 			{
 				int num2 = 0;
-				num2 = ((k != 0) ? (1 - num) : num);
+				num2 = ((k == 0) ? (num) : ((1 - num)));
 				for (int l = 0; l < udat_.teams_[num2].players_.Length; l++)
 				{
 					Player p = udat_.teams_[num2].players_[l];
 					for (int m = 0; m < udat_.teams_[0].players_.Length; m++)
 					{
-						if (num2 != 0 || l != m)
+						{ bool recoveredCondition_20510 = num2 != 0 || l != m;
+if (recoveredCondition_20510)
 						{
 							Player p2 = udat_.teams_[0].players_[m];
 							Collision_proc(p, p2);
 						}
+}
 					}
 					for (int n = 0; n < udat_.teams_[1].players_.Length; n++)
 					{

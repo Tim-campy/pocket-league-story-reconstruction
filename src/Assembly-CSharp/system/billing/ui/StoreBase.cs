@@ -147,10 +147,9 @@ namespace system.billing.ui
 			List<Receipt> list = new List<Receipt>();
 			foreach (Receipt item in receipts_)
 			{
-				if (!item.paymentComplete_ && item.IsTicketProduct())
-				{
-					list.Add(item);
-				}
+				if (item.paymentComplete_) { continue; }
+if (!(item.IsTicketProduct())) { continue; }
+list.Add(item);
 			}
 			return list;
 		}
@@ -163,8 +162,10 @@ namespace system.billing.ui
 			}
 			foreach (Receipt item in receipts_)
 			{
-				if (item.paymentComplete_ || !item.IsTicketProduct())
-				{
+				if (item.paymentComplete_) {
+					continue;
+				}
+if (!item.IsTicketProduct()) {
 					continue;
 				}
 				return true;
@@ -204,8 +205,10 @@ namespace system.billing.ui
 			}
 			foreach (Receipt item in receipts_)
 			{
-				if (item.GetOrderId() != purchase.GetOrderId() || !item.IsTicketProduct())
-				{
+				if (item.GetOrderId() != purchase.GetOrderId()) {
+					continue;
+				}
+if (!item.IsTicketProduct()) {
 					continue;
 				}
 				return item.paymentComplete_;
@@ -301,10 +304,8 @@ namespace system.billing.ui
 				{
 					break;
 				}
-				if (flag)
-				{
-					text += json[i];
-				}
+				if (!(flag)) { continue; }
+text += json[i];
 			}
 			List<string> list = new List<string>();
 			flag = false;

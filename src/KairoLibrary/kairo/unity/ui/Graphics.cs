@@ -883,20 +883,19 @@ namespace kairo.unity.ui
 
 		public void SetFigureClipBegin(bool clear = true)
 		{
-			if (CheckClip())
-			{
-				if (offscreen_ != null)
+			if (!(CheckClip())) { return; }
+if (offscreen_ != null)
 				{
 					offscreen_.Flush();
 				}
-				if (glRender_)
+if (glRender_)
 				{
 					FlushGLRender(true);
 				}
-				setFigureClip_ = true;
-				isFigureClipMask_ = false;
-				GLClear(true, false, true);
-				if (!clear)
+setFigureClip_ = true;
+isFigureClipMask_ = false;
+GLClear(true, false, true);
+if (!clear)
 				{
 					MaterialManager.GetInstance().GetMaterial(this, null, 1f, true).SetPass(0);
 					GL.PushMatrix();
@@ -915,8 +914,7 @@ namespace kairo.unity.ui
 					GL.End();
 					GL.PopMatrix();
 				}
-				renderCache_.Reset();
-			}
+renderCache_.Reset();
 		}
 
 		public void SetFigureClipEnd()
@@ -1533,8 +1531,8 @@ namespace kairo.unity.ui
 				}
 				else
 				{
-					float x = (((flipmode_ & 1) == 0) ? 1 : (-1));
-					float y = (((flipmode_ & 2) == 0) ? 1 : (-1));
+					float x = (((flipmode_ & 1) != 0) ? ((-1)) : (1));
+					float y = (((flipmode_ & 2) != 0) ? ((-1)) : (1));
 					PushMatrix(Matrix.ScaleTemporary(x, y, swidth / 2f, sheight / 2f));
 				}
 			}
@@ -2087,7 +2085,7 @@ namespace kairo.unity.ui
 				UpdateGLClip();
 				Vector3[] drawLine_Vertices = DrawLine_Vertices;
 				Vector2 vector = default(Vector2);
-				vector.Set(y2 - y1, 0f - (x2 - x1));
+				vector.Set(y2 - y1, -((x2 - x1)));
 				vector.Normalize();
 				float num3 = (int)(lineWidth * 0.5f);
 				float num4 = lineWidth - num3;
@@ -3761,7 +3759,8 @@ namespace kairo.unity.ui
 			output[2].y = y + height;
 			output[3].x = x;
 			output[3].y = y + height;
-			float num = ((!meshManList_[meshId_].IsDynamic()) ? 0f : ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))));
+			float num;
+if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))); }
 			for (int i = 0; i < output.Length; i++)
 			{
 				output[i].z = 0f;
@@ -3797,14 +3796,16 @@ namespace kairo.unity.ui
 		internal float[] GetTransPointGL(float x, float y, float[] output = null)
 		{
 			output = GetTransPoint(x, y, output);
-			float num = ((!meshManList_[meshId_].IsDynamic()) ? 0f : ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))));
+			float num;
+if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))); }
 			output[1] = num - output[1];
 			return output;
 		}
 
 		internal void GetTransPointGL(Vector3[] vertices)
 		{
-			float num = ((!meshManList_[meshId_].IsDynamic()) ? 0f : ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))));
+			float num;
+if ((!meshManList_[meshId_].IsDynamic())) { num = 0f; } else { num = ((render_ != null) ? ((float)render_.GetHeight()) : ((!(camera_ != null)) ? ((float)UnityEngine.Screen.height) : ((float)camera_.pixelHeight))); }
 			for (int i = 0; i < vertices.Length; i++)
 			{
 				screenMatrix_.MapPoints(ref vertices[i].x, ref vertices[i].y);
@@ -3876,15 +3877,16 @@ namespace kairo.unity.ui
 
 		protected void UpdateGLClip()
 		{
-			if (useFigureClip_ || setFigureClip_ || (isClipRegionGL && clipRegionGL_.Equals(clipRegion_)))
-			{
+			if (useFigureClip_ || setFigureClip_) {
+				return;
+			}
+if ((isClipRegionGL && clipRegionGL_.Equals(clipRegion_))) {
 				return;
 			}
 			clipRegionGL_.Set(clipRegion_);
 			isClipRegionGL = true;
-			if (clipEnable_)
-			{
-				if (IsRenderGUIMode())
+			if (!(clipEnable_)) { return; }
+if (IsRenderGUIMode())
 				{
 					GLClear(true, false, true);
 					MaterialManager.GetInstance().GetMaterial(this, null, 1f, true).SetPass(0);
@@ -3924,7 +3926,6 @@ namespace kairo.unity.ui
 					setFigureClip_ = false;
 					FlushGLRender(true);
 				}
-			}
 		}
 
 		public static Color ArgbToColor(int argb)
@@ -4348,10 +4349,9 @@ namespace kairo.unity.ui
 
 		public void BeginLocalCoordination(ref float x, ref float y)
 		{
-			if (CheckLocalMatrix())
-			{
-				localCoordinateCount_++;
-				if (localCoordinateCount_ == 1)
+			if (!(CheckLocalMatrix())) { return; }
+localCoordinateCount_++;
+if (localCoordinateCount_ == 1)
 				{
 					localCoordinateMatrix_.Set(Matrix.TranslateTemporary(x, y));
 					UpdateScreenMatrix();
@@ -4360,17 +4360,15 @@ namespace kairo.unity.ui
 				{
 					PushMatrix(Matrix.TranslateTemporary(x, y));
 				}
-				x = (y = 0f);
-			}
+x = (y = 0f);
 		}
 
 		public void BeginLocalCoordination(ref int x, ref int y)
 		{
-			if (CheckLocalMatrix())
-			{
-				UpdateGLClip();
-				localCoordinateCount_++;
-				if (localCoordinateCount_ == 1)
+			if (!(CheckLocalMatrix())) { return; }
+UpdateGLClip();
+localCoordinateCount_++;
+if (localCoordinateCount_ == 1)
 				{
 					localCoordinateMatrix_.Set(Matrix.TranslateTemporary(x, y));
 				}
@@ -4378,8 +4376,7 @@ namespace kairo.unity.ui
 				{
 					PushMatrix(Matrix.TranslateTemporary(x, y));
 				}
-				x = (y = 0);
-			}
+x = (y = 0);
 		}
 
 		public void EndLocalCoordination()

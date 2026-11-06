@@ -15,7 +15,7 @@ namespace kairo.unity.m3d4.util3d
 			{
 				return a;
 			}
-			return 0f - a;
+			return -(a);
 		}
 
 		public static float Acos(float a)

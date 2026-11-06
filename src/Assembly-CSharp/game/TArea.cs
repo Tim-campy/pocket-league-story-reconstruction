@@ -413,9 +413,9 @@ namespace game
 
 		public Vector3D GetStartTrainingGatherPos(TGroupArea tGroupArea, TPlayer tPlayer)
 		{
-			st_gatherPos.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (0f - tGroupArea.coatW_) / 5f, tGroupArea.coatW_ / 5f, true) + tGroupArea.centerPos_.x_;
+			st_gatherPos.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (-(tGroupArea.coatW_)) / 5f, tGroupArea.coatW_ / 5f, true) + tGroupArea.centerPos_.x_;
 			st_gatherPos.y_ = 0f;
-			st_gatherPos.z_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (0f - tGroupArea.coatH_) / 5f, tGroupArea.coatH_ / 5f, true) + tGroupArea.centerPos_.z_;
+			st_gatherPos.z_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (-(tGroupArea.coatH_)) / 5f, tGroupArea.coatH_ / 5f, true) + tGroupArea.centerPos_.z_;
 			return st_gatherPos;
 		}
 	}

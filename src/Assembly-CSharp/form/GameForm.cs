@@ -692,11 +692,9 @@ namespace form
 				}
 				for (int i = 0; i < apdat_.eventData_.Length; i++)
 				{
-					if (apdat_.eventData_[i] != null && !apdat_.CheckAlreadyEvent(apdat_.eventData_[i].id_) && apdat_.CheckTermScript(apdat_.eventData_[i].termsScript_))
-					{
-						apdat_.ExecEvent(apdat_.eventData_[i].id_, null, null);
-						return false;
-					}
+					if (((apdat_.eventData_[i] == null) || (apdat_.CheckAlreadyEvent(apdat_.eventData_[i].id_))) || (!(apdat_.CheckTermScript(apdat_.eventData_[i].termsScript_)))) { continue; }
+apdat_.ExecEvent(apdat_.eventData_[i].id_, null, null);
+return false;
 				}
 				for (int j = 0; j < apdat_.delayEvents_.Size(); j++)
 				{
@@ -1393,12 +1391,11 @@ namespace form
 				for (int j = 0; j < udat_.tenants_.Length; j++)
 				{
 					Tenant tenant = udat_.tenants_[j];
-					if ((tenant.state_ == 1 || tenant.state_ == 4) && tenant.tenantDataId_ != -1)
-					{
-						TenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];
-						num7 += tenantData.paramKeepCost_;
-						apdat_.SubMoney(tenantData.paramKeepCost_, 1);
-					}
+					if ((tenant.state_ != 1) && (tenant.state_ != 4)) { continue; }
+if (tenant.tenantDataId_ == -1) { continue; }
+TenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];
+num7 += tenantData.paramKeepCost_;
+apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 				}
 			}
 			if (num4 != apdat_.save_.ints[3])
@@ -1573,7 +1570,7 @@ namespace form
 			TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 			TeamData teamData2 = apdat_.tData_[udat_.gm_.teamId_[1]];
 			string empty = string.Empty;
-			empty = ((udat_.gm_.homeAway_ != 0) ? teamData2.GetHomeStadiumName() : teamData.GetHomeStadiumName());
+			if (udat_.gm_.homeAway_ == 0) { empty = teamData.GetHomeStadiumName(); } else { empty = teamData2.GetHomeStadiumName(); }
 			int num = g.GetFont(null).StringWidth(GameManager.GAME_HOMEAWAY_STR[udat_.gm_.homeAway_]);
 			int num2 = g.GetFont(null).StringWidth(empty);
 			int num3 = 26 + num + 10 + num2;
@@ -1845,7 +1842,7 @@ ResetOffscreen();
 			}
 			if (apdat_.camera.subSvisor_ != null)
 			{
-				return new SubForm(50);
+				{ global::form.SubForm recoveredReturn_48915 = new SubForm(50); return recoveredReturn_48915; }
 			}
 			if (apdat_.camera.subTenant_ != null)
 			{

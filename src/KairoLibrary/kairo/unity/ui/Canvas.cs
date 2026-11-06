@@ -1246,11 +1246,10 @@ namespace kairo.unity.ui
 
 		public void KeyDown(int key, bool pulse = true)
 		{
-			if (key != -1)
-			{
-				keyEventState_ |= key;
-				keyStateWork_ |= key;
-				if (pulse)
+			if (key == -1) { return; }
+keyEventState_ |= key;
+keyStateWork_ |= key;
+if (pulse)
 				{
 					keyPulseInvalid_ &= ~key;
 				}
@@ -1258,11 +1257,10 @@ namespace kairo.unity.ui
 				{
 					keyPulseInvalid_ |= key;
 				}
-				if (surfaceManager_ != null)
+if (surfaceManager_ != null)
 				{
 					surfaceManager_.OnKeyDown(key);
 				}
-			}
 		}
 
 		public void KeyUp(int key)
@@ -1441,7 +1439,7 @@ namespace kairo.unity.ui
 					FormManagerBase.ProcessEvent(AppEventType.Browser, url);
 					lastOpenBrowserFrame_ = IApplication.GetCurrentApp().GetTotalFrames();
 					string text = "_lh=" + Language.GetLanguageCode();
-					text = ((!url.Contains("?")) ? ("?" + text) : ("&" + text));
+					if (url.Contains("?")) { text = ("&" + text); } else { text = ("?" + text); }
 					int num3 = url.LastIndexOf('#');
 					if (num3 != -1)
 					{
@@ -1635,7 +1633,7 @@ namespace kairo.unity.ui
 					string text = Config.AD_UNIT_ID;
 					if (text.Contains('@'))
 					{
-						text = ((!Language.Japanese()) ? Regex.Match(text, "@en\\s+([^\\s@]+)").Groups[1].Value : Regex.Match(text, "@ja\\s+([^\\s@]+)").Groups[1].Value);
+						if (Language.Japanese()) { text = Regex.Match(text, "@ja\\s+([^\\s@]+)").Groups[1].Value; } else { text = Regex.Match(text, "@en\\s+([^\\s@]+)").Groups[1].Value; }
 					}
 					AndroidJavaObject androidJavaObject = AdMobPlugin.CreateAdMobView(Config.AD_SIZE, text);
 					if (androidJavaObject != null)

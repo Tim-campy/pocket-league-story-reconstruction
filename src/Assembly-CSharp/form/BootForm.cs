@@ -271,9 +271,10 @@ namespace form
 		{
 			g.DrawImage(resLoad_.img[0], 43f, 90f);
 			resLoad_.seb[0].DrawFrame(g, 120f, 236f, resLoad_.img, 5);
-			int num2 = 91;
+			int num3;
+int num2 = 91;
 			anime_cnt = (anime_cnt + 1) % int.MaxValue;
-			int num3 = anime_cnt % 40;
+			num3 = anime_cnt % 40;
 			if (num3 % 20 == 0 && anime_cnt != 0)
 			{
 				anime_mode = GameUtil.Random(2);
@@ -532,10 +533,11 @@ namespace form
 				apdat_.resCom2_.Dispose();
 			}
 			loadCnt_++;
-			JarInflater jarInflater = null;
+			global::kairo.unity.io.RecordStore recordStore;
+JarInflater jarInflater = null;
 			try
 			{
-				RecordStore recordStore = RecordStore.OpenRecordStore(1);
+				recordStore = RecordStore.OpenRecordStore(1);
 				byte[] data = recordStore.ReadRecord(6);
 				recordStore.CloseRecordStore();
 				jarInflater = new JarInflater(data);
@@ -836,8 +838,9 @@ namespace form
 
 		public void UpdateScoreFromNetwork()
 		{
-			byte[] bytes = apdat_.CgiGetScore("0,1");
-			string text = StringUtil.Split(JString.New(bytes), "\n")[1];
+			string text;
+byte[] bytes = apdat_.CgiGetScore("0,1");
+			text = StringUtil.Split(JString.New(bytes), "\n")[1];
 			if (text.StartsWith(","))
 			{
 				text = "0" + text;

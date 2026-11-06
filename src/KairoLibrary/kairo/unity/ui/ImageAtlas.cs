@@ -307,18 +307,16 @@ namespace kairo.unity.ui
 
 		internal void AtlasToImage(Image image)
 		{
-			if (image != null)
-			{
-				AtlasRegion value = null;
-				if (!image.IsDisposed && regions_.TryGetValue(image, out value) && value.IsValid() && (object)image.image_ == null)
+			if (image == null) { return; }
+AtlasRegion value = null;
+if (!image.IsDisposed && regions_.TryGetValue(image, out value) && value.IsValid() && (object)image.image_ == null)
 				{
 					Color[] nativePixels = imgAtlas_.GetNativePixels(value.X, value.Y, value.Width, value.Height);
 					image.image_ = new Texture2D(value.Width, value.Height);
 					image.SetNativePixels(0, 0, value.Width, value.Height, nativePixels);
 					image.Apply();
 				}
-				RemoveAtlas(image);
-			}
+RemoveAtlas(image);
 		}
 
 		internal void RemoveAtlas(Image image)

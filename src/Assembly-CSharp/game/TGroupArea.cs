@@ -231,10 +231,8 @@ namespace game
 				for (int i = 0; i < traPos_.Length; i++)
 				{
 					Camera.ConvertGlobalToCamera(traPos_[i], camera_pos);
-					if (GameUtil.ChRectHitRect(camera_pos[0] - 3, camera_pos[1] - 4, 6, 4, GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))
-					{
-						apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_pos[1], false, 0);
-					}
+					if (!(GameUtil.ChRectHitRect(camera_pos[0] - 3, camera_pos[1] - 4, 6, 4, GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { continue; }
+apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_pos[1], false, 0);
 				}
 			}
 			else
@@ -455,7 +453,7 @@ namespace game
 				coatW_ = tArea_.coatW_;
 				coatH_ = tArea_.coatH_ / (float)num;
 				centerPos_.x_ = tArea_.centerPos_.x_;
-				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (0f - coatH_) / 2f - coatH_ * (float)id_;
+				centerPos_.z_ = tArea_.centerPos_.z_ + tArea_.coatH_ / 2f + (-(coatH_)) / 2f - coatH_ * (float)id_;
 			}
 			else if (tArea_.tMode_ == 1)
 			{

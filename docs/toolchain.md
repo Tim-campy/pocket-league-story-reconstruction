@@ -1,6 +1,54 @@
 # Toolchain e evidências
 
-## Estado atual — rodada iniciada em 8851963
+## Estado atual — rodada iniciada em 1047b1f
+
+Seleção de produção preservada: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para KairoLibrary e **smcs 2.6.5.0 / Unity 5.3.4f1** para Assembly-CSharp. Flags, defines, referências e sua ordem permanecem os da rodada anterior. Nenhum compilador alternativo, referência Microsoft adicional ou exceção não determinística foi adotado.
+
+Os auxiliares de análise sintática usam Roslyn **5.8.0-1.26319.2**, commit `375c93f06396eff88a355bc473d1586bf71befb5`, e runtime **.NET 10.0.10**. Eles geram hipóteses de edição do C#; os assemblies do jogo são emitidos pelos compiladores de produção registrados acima.
+
+| Assembly | Métodos matched anterior → atual | Corpos integralmente iguais | Bytes IL matched anterior → atual / total | Tipos estruturais iguais |
+| --- | --- | --- | --- | --- |
+| KairoLibrary | 3144 → 3187 / 3287 | 3113 | 192911 → 204103 / 269894 | 337/337 |
+| Assembly-CSharp | 1611 → 1676 / 1958 | 1671 | 170582 → 196453 / 601603 | 129/129 |
+
+**4863/5245 métodos matched; 400556/871497 bytes IL matched; 466/466 tipos com identidade estrutural comprovada.** As 82 declarações sem corpo têm prova de metadados; 3 auxiliares com corpo igual continuam retidos pela regra de vínculo. Zero regressões adotadas. Igualdade estrutural não significa igualdade de todos os corpos, heaps, tabelas ou do arquivo inteiro.
+
+Os números vieram da [adoção após verificação oficial](../reports/round4-adoption.json), [medição final](../reports/round4-final-measurement.json) e recibos oficiais atuais. O [relatório autossuficiente](notes/round-04-report.md) inclui o histograma completo antes/depois, exemplos e negativos. [Medição inicial](../reports/round4-baseline-measurement.json).
+
+**Mapeamento e motor.** Roslyn usa pontos de sequência do PDB nativo emitido com `/debug:pdbonly`. No smcs, `-debug+` preservou os 1952 corpos do controle congelado, inclusive bytes literais, e seis declarações sem corpo; o MDB fornece os mesmos offsets. Cada método atual do motor repete a prova debug+/debug- antes de usar seu MDB. Cobertura inicial: 140/141 Kairo e 343/345 App com primeira diferença de IL. [Prova](../reports/round4-symbol-mapping.json).
+
+O motor aplica transformações ao comando mapeado, conserva todos os bytes do prefixo já correto, exige avanço estrito ou corpo integralmente igual e rejeita regressões de corpos/metadados. Limites medidos por assembly:
+
+| Assembly | Iterações por método | Candidatos por iteração | Limites de iteração atingidos | Corpos novos iguais | Bytes IL novos iguais |
+| --- | --- | --- | --- | --- | --- |
+| KairoLibrary | 8 | 24 | 0 | 43 | 11192 |
+| Assembly-CSharp | 8 | 24 | 0 | 65 | 25871 |
+
+[Motor Kairo](../reports/round4-KairoLibrary-engine.json); [motor App](../reports/round4-Assembly-CSharp-engine.json). Ganho parcial de prefixo continua fora de matched até o verificador conferir corpo, locais e exceções completos.
+
+**Referências Kairo.** System 2.0 e System.Core 3.5 da Microsoft foram testados separadamente e juntos contra os equivalentes Unity, nos mesmos fontes congelados do commit `1047b1f`: zero corpos alterados, zero ganhos/perdas e 337/337 tipos em todas as combinações. A configuração selecionada continua Microsoft mscorlib 2.0, Unity System.Core 3.5, UnityEngine do APK, Unity System 2.0, nessa ordem. [Matriz com hashes](../reports/round4-reference-probes.json).
+
+As três diferenças brutas AssemblyRef dos controles congelados estão em `PublicKeyOrToken`, linhas 1/mscorlib, 2/System.Core e 4/System: índice #Blob **11271 → 11351**, bytes `07 2c → 57 2c`. Os três apontam para o mesmo token `b77a5c561934e089`; os valores numéricos são do baseline, não uma afirmação sobre os offsets/índices finais. Nenhuma referência foi corrigida por esses três bytes.
+
+**Opções de ensaio.** Roslyn `/shared` foi usado somente nos ensaios do motor e em sondas de transporte; na CLI preservou os 3287 métodos e metadados estruturais. No RSP foi rejeitado com CS2007, registrado como resultado negativo. `-debug+` smcs foi usado somente para o MDB. Os candidatos foram recompilados com as flags anteriores de produção e comparados integralmente antes da adoção. [Sondas com metadados](../reports/round4-shared-compiler-probe.json); [sonda independente](../reports/round4-compiler-server-probe.json).
+
+**Triagem opcional por fonte.** A triagem usa corpos C# provisórios nos outros arquivos apenas para acelerar tentativas descartáveis. Um controle deve provar a igualdade completa do corpo alvo contra o build real antes de habilitá-la por método. Todo candidato que pareça avançar passa novamente por build real completo, preservação do prefixo e prova de zero regressões antes de qualquer adoção. A DLL de produção não contém os corpos provisórios. Contraexemplos registrados impedem tratar essa otimização como uma equivalência universal. [Controles](../reports/round4-screen-validation.json).
+
+| Assembly | Controles do alvo | Habilitados | Recusados | Positivos conferidos no build real | Avanços falsos rejeitados |
+| --- | --- | --- | --- | --- | --- |
+| Assembly-CSharp | 392 | 380 | 12 | 151 | 0 |
+
+**Conteúdo Git.** Os C# extraídos do índice Git e normalizados conforme `.gitattributes` foram recompilados com os comandos de produção: zero corpos alterados e 466/466 tipos iguais. [Prova](../reports/round4-git-source-proof.json). Os hashes de evidência identificam os bytes medidos no workspace; o [manifesto de conteúdo](../reports/round4-git-content-provenance.json) também registra os hashes dos bytes commitados quando há conversão CRLF→LF. Essa conversão não altera DLLs/IL.
+
+**Bytes brutos: somente medição.** As [contagens finais de linhas](../reports/round4-final-raw-row-counts.json) dizem quais tabelas diferem em bytes e se têm a mesma quantidade de linhas. [Kairo](../reports/round4-final-KairoLibrary-raw-measurement.json); [App](../reports/round4-final-Assembly-CSharp-raw-measurement.json). Essas diferenças não foram usadas para editar bytes, heaps, tabelas ou estados.
+
+Tabelas com quantidades de linhas diferentes: KairoLibrary: StandAloneSig 534/536; Assembly-CSharp: StandAloneSig 514/512.
+
+**Limites históricos.** O executável histórico exato, o comando e as referências históricas completas e o determinismo dos originais continuam **UNKNOWN**. A lista de seis campos não determinísticos comprovados em duas compilações permanece inalterada em `config/toolchain.json`; nenhuma normalização foi aplicada. DEX/Java continua fora do escopo.
+
+As seções abaixo preservam o histórico de outras rodadas. Seus números, referências ou rótulos de configuração valem para os snapshots nelas descritos; o estado atual é o desta seção.
+
+## Histórico — rodada iniciada em 8851963
 
 Seleção mantida: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para Kairo e **smcs 2.6.5.0** para App. As opções continuam /unsafe- (Kairo) e -unsafe- (App), sem defines adicionais. [Definição selecionada](../tools/kairo_candidate.py).
 

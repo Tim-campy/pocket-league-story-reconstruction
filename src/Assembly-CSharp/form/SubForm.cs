@@ -1068,7 +1068,7 @@ namespace form
 
 		public static SubForm MakeEvent(string var_event, string arg, int eventMsgId)
 		{
-			var_event = ((eventMsgId != 49 && eventMsgId != 50 && eventMsgId != 51 && eventMsgId != 52) ? StringUtil.Replace(var_event, arg) : StringUtil.Replace(var_event, MyFormBase.YEN("万円", SP_MONEY[eventMsgId - 49])));
+			if ((((eventMsgId == 49) || (eventMsgId == 50)) || (eventMsgId == 51)) || (eventMsgId == 52)) { var_event = StringUtil.Replace(var_event, MyFormBase.YEN("万円", SP_MONEY[eventMsgId - 49])); } else { var_event = StringUtil.Replace(var_event, arg); }
 			string[] array = StringUtil.Split(var_event, "\t");
 			SubForm subForm = new SubForm();
 			subForm.eventIds_ = new int[array.Length];
@@ -1626,11 +1626,9 @@ namespace form
 					for (int j = 0; j < udat_.memberPDataist_.Size(); j++)
 					{
 						PlayerData playerData = (PlayerData)udat_.memberPDataist_.ElementAt(j);
-						if (TrainingData.TRA_PLAYER[i] == playerData.id_)
-						{
-							flag = true;
-							break;
-						}
+						if (TrainingData.TRA_PLAYER[i] != playerData.id_) { continue; }
+flag = true;
+break;
 					}
 					if (!flag)
 					{
@@ -8919,10 +8917,12 @@ namespace form
 			if (type_ == 42)
 			{
 				int num = ary1.Size();
-				if (canvas_.CheckKeyRepeat(131072))
+				{ bool recoveredCondition_273013 = canvas_.CheckKeyRepeat(131072);
+if (recoveredCondition_273013)
 				{
 					select_ = (select_ - 1 + num) % num;
 				}
+}
 				if (canvas_.CheckKeyRepeat(524288))
 				{
 					select_ = (select_ + 1) % num;
@@ -10297,17 +10297,15 @@ ScrollUpdate(num, showMax);
 
 		public void ScrollUpdate(int num, int showMax, int value)
 		{
-			if (num > 0)
-			{
-				if (value >= scrollValue_ + showMax)
+			if (num <= 0) { return; }
+if (value >= scrollValue_ + showMax)
 				{
 					scrollValue_ = value - (showMax - 1);
 				}
-				if (value < scrollValue_)
+if (value < scrollValue_)
 				{
 					scrollValue_ = value;
 				}
-			}
 		}
 
 		private void AddMenu(int menuId, int state)
@@ -10827,7 +10825,7 @@ ScrollUpdate(num, showMax);
 					g.FillRect(num3, y + 4 + num4 - num5, 1f, num5);
 				}
 				num2 -= num;
-				num3 = ((!rev) ? (num3 + 2) : (num3 - 2));
+				if (rev) { num3 = (num3 - 2); } else { num3 = (num3 + 2); }
 			}
 		}
 
@@ -11153,7 +11151,8 @@ instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.i
 			{
 				drawWindow_tmp = new int[8];
 			}
-			if (pageMax != -1)
+			int num;
+if (pageMax != -1)
 			{
 				string text = title;
 				title = text + " " + (page + 1) + "/" + pageMax;
@@ -11178,7 +11177,7 @@ instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.i
 			{
 				apdat_.DrawBox(g, drawWindow_tmp[7], drawWindow_tmp[4], drawWindow_tmp[5], drawWindow_tmp[6]);
 			}
-			int num = GameForm.VIEW_Y / 2;
+			num = GameForm.VIEW_Y / 2;
 			drawWindow_tmp[0] += num;
 			drawWindow_tmp[2] += num;
 			drawWindow_tmp[4] += num;
@@ -11538,15 +11537,17 @@ instance.DrawSeb(g, dx - num, dy, instance.resCom2_.seb[35], instance.resCom2_.i
 			Font font = g.GetFont(null);
 			apdat_.DrawWindow(g, 222, 155, 0, "ｸﾘｱﾎﾟｲﾝﾄ発表");
 			apdat_.DrawBox(g, 17, 81, 224, 177);
-			int num = 105;
-			int num2 = 30;
+			int num2;
+int num3;
+int num = 105;
+			num2 = 30;
 			num = 105;
 			g.DrawImage(apdat_.resEvent_.img[11], num2, num);
 			apdat_.DrawBox(g, 21, 85, 218, 137);
 			num = 181;
 			if (clearPoint_mode == 4)
 			{
-				int num3 = 0;
+				num3 = 0;
 				if (frame_ % 6 * 2 < 6)
 				{
 					num3 = 1;
@@ -12139,7 +12140,7 @@ g.SetFont(font);
 			int num = 0;
 			for (int i = 0; i < s.Length(); i++)
 			{
-				num = ((!IsSimpleChara(s.CharAt(i))) ? (num + 2) : (num + 1));
+				if (IsSimpleChara(s.CharAt(i))) { num = (num + 1); } else { num = (num + 2); }
 			}
 			return num;
 		}

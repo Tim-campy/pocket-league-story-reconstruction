@@ -132,16 +132,21 @@ namespace kairo.unity.math
 			{
 				return false;
 			}
-			Vector3D vector3D = new Vector3D(pos1.GetX() - pos2.GetX(), 0f, pos1.GetZ() - pos2.GetZ());
-			float num = vec1.GetX() * vec1.GetX() + vec1.GetZ() * vec1.GetZ();
-			float num2 = 2f * (vector3D.GetX() * vec1.GetX() + vector3D.GetZ() * vec1.GetZ());
-			float num3 = vector3D.GetX() * vector3D.GetX() + vector3D.GetZ() * vector3D.GetZ() - r * r;
-			float num4 = num2 * num2 - 4f * num * num3;
+			float num;
+float num2;
+float num3;
+float num4;
+float num5;
+Vector3D vector3D = new Vector3D(pos1.GetX() - pos2.GetX(), 0f, pos1.GetZ() - pos2.GetZ());
+			num = vec1.GetX() * vec1.GetX() + vec1.GetZ() * vec1.GetZ();
+			num2 = 2f * (vector3D.GetX() * vec1.GetX() + vector3D.GetZ() * vec1.GetZ());
+			num3 = vector3D.GetX() * vector3D.GetX() + vector3D.GetZ() * vector3D.GetZ() - r * r;
+			num4 = num2 * num2 - 4f * num * num3;
 			if (num4 < 0f || FastMath.FloatToInnerInt(num4) < 0)
 			{
 				return false;
 			}
-			float num5 = (0f - num2 - FastMath.Sqrt(num4)) / (2f * num);
+			num5 = (-(num2) - FastMath.Sqrt(num4)) / (2f * num);
 			if (num5 < 0f || 1f < num5)
 			{
 				return false;
@@ -636,8 +641,9 @@ namespace kairo.unity.math
 		{
 			double num = 1E-11;
 			double num2 = c;
-			double num3 = 1.0;
 			double num4;
+double num3 = 1.0;
+
 			do
 			{
 				num4 = num3;
@@ -879,7 +885,7 @@ namespace kairo.unity.math
 			float num = JMath.Abs(angle2 - angle1);
 			if (num > 180f)
 			{
-				angle1 = ((!(angle2 < angle1)) ? (angle1 + 360f) : (angle1 - 360f));
+				if ((angle2 < angle1)) { angle1 = (angle1 - 360f); } else { angle1 = (angle1 + 360f); }
 				num = JMath.Abs(angle2 - angle1);
 			}
 			return num;

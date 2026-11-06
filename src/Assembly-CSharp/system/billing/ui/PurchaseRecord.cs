@@ -140,21 +140,19 @@ namespace system.billing.ui
 
 		public void ChangeState(int state, Purchase purchase)
 		{
-			if (state_ != state)
-			{
-				long num = ClockTime.GetTime();
-				if (state == 0 && purchase != null)
+			if (state_ == state) { return; }
+long num = ClockTime.GetTime();
+if (state == 0 && purchase != null)
 				{
 					num = purchase.GetPurchaseTime();
 				}
-				int num2 = (int)(num / 1000);
-				state_ = state;
-				if (num2 != timestamp_[state])
+int num2 = (int)(num / 1000);
+state_ = state;
+if (num2 != timestamp_[state])
 				{
 					send_ = true;
 					timestamp_[state] = num2;
 				}
-			}
 		}
 
 		public void Serialize(OutputStream os)

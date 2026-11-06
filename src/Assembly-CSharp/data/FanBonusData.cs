@@ -355,10 +355,8 @@ namespace data
 			for (int i = 0; i < apdat_.fanBonus_.Length; i++)
 			{
 				FanBonusData fanBonusData = apdat_.fanBonus_[i];
-				if (fanBonusData.termMode_ == term_mode)
-				{
-					fb_list.AddElement(fanBonusData);
-				}
+				if (fanBonusData.termMode_ != term_mode) { continue; }
+fb_list.AddElement(fanBonusData);
 			}
 			return fb_list;
 		}

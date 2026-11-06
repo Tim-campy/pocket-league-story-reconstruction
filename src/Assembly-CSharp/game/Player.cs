@@ -1305,16 +1305,15 @@ namespace game
 			{
 				return true;
 			}
-			int[] array = null;
-			array = ((!BitUtil.Check(flag_, 4) && role_ != 0 && act_id != 1 && act_id != 2) ? direct_dis_free : direct_dis_passer);
+			int num2;
+int num3;
+int[] array = null;
+			if ((((BitUtil.Check(flag_, 4)) || (role_ == 0)) || (act_id == 1)) || (act_id == 2)) { array = direct_dis_passer; } else { array = direct_dis_free; }
 			for (int i = 0; i < moveDirectBox.Length; i++)
 			{
 				num++;
-				if (moveDirectBox[i] != -1 && ch_direct != moveDirectBox[i])
-				{
-					int num2;
-					int num3;
-					if (ch_direct > moveDirectBox[i])
+				if ((moveDirectBox[i] == -1) || (ch_direct == moveDirectBox[i])) { continue; }
+if (ch_direct > moveDirectBox[i])
 					{
 						num2 = JMath.Abs(ch_direct - moveDirectBox[i]);
 						num3 = JMath.Abs(ch_direct - (moveDirectBox[i] + 8));
@@ -1324,16 +1323,15 @@ namespace game
 						num2 = JMath.Abs(moveDirectBox[i] - ch_direct);
 						num3 = JMath.Abs(moveDirectBox[i] - (ch_direct + 8));
 					}
-					if (num2 > num3)
+if (num2 > num3)
 					{
 						num2 = num3;
 					}
-					if (array[num2] <= num)
+if (array[num2] <= num)
 					{
 						return true;
 					}
-					return false;
-				}
+return false;
 			}
 			return true;
 		}
@@ -1355,7 +1353,7 @@ namespace game
 			float num4 = (go_pos.x_ - pos_.x_) * (go_pos.x_ - pos_.x_);
 			float num5 = num4 / (num2 * num3);
 			int num6 = 0;
-			num6 = ((!(num5 >= GameUtil.Cos(22))) ? ((num5 >= GameUtil.Cos(67)) ? ((go_pos.z_ > pos_.z_) ? 1 : 7) : ((num5 >= GameUtil.Cos(112)) ? ((!(go_pos.z_ > pos_.z_)) ? 6 : 2) : ((!(num5 >= GameUtil.Cos(157))) ? 4 : ((!(go_pos.z_ > pos_.z_)) ? 5 : 3)))) : 0);
+			if ((num5 >= GameUtil.Cos(22))) { num6 = 0; } else { num6 = ((num5 >= GameUtil.Cos(67)) ? ((go_pos.z_ > pos_.z_) ? 1 : 7) : ((num5 >= GameUtil.Cos(112)) ? ((!(go_pos.z_ > pos_.z_)) ? 6 : 2) : ((!(num5 >= GameUtil.Cos(157))) ? 4 : ((!(go_pos.z_ > pos_.z_)) ? 5 : 3)))); }
 			if (!ChMoveDirect(num6, act_id))
 			{
 				SetMoveDirectBox(-1);
@@ -2090,11 +2088,9 @@ namespace game
 				for (int j = 0; j < udat_.teams_[1 - team_id_].players_.Length; j++)
 				{
 					Player player2 = udat_.teams_[1 - team_id_].players_[j];
-					if ((address_[0] != player2.address_[0] || address_[1] != player2.address_[1]) && GameUtil.ChOnLine(screen_pos_, player.screen_pos_, 6, player2.screen_pos_))
-					{
-						flag = true;
-						break;
-					}
+					if (((address_[0] == player2.address_[0]) && (address_[1] == player2.address_[1])) || (!(GameUtil.ChOnLine(screen_pos_, player.screen_pos_, 6, player2.screen_pos_)))) { continue; }
+flag = true;
+break;
 				}
 				if (flag && eva_pass_info[i][0] == 1)
 				{
@@ -2157,7 +2153,8 @@ namespace game
 			{
 				flag2 = true;
 			}
-			if (udat_.gm_.state_ == 0 && flag)
+			{ bool recoveredCondition_54620 = udat_.gm_.state_ == 0 && flag;
+if (recoveredCondition_54620)
 			{
 				for (int i = 0; i < 2; i++)
 				{
@@ -2242,6 +2239,7 @@ namespace game
 					}
 				}
 			}
+}
 			if (udat_.gm_.state_ != 0 || udat_.gm_.gameState_ != 2 || !BitUtil.Check(udat_.ball_.flag_, 8))
 			{
 				return;
@@ -3440,12 +3438,12 @@ namespace game
 			float num3 = (float)JMath.Sqrt(vec1.x_ * vec1.x_ + vec1.z_ * vec1.z_);
 			float num4 = (float)JMath.Sqrt(vec2.x_ * vec2.x_ + vec2.z_ * vec2.z_);
 			float num5 = 0f;
-			num5 = ((num3 * num4 != 0f) ? ((vec1.x_ * vec2.x_ + vec1.z_ * vec2.z_) / (num3 * num4)) : 0f);
+			if (num3 * num4 == 0f) { num5 = 0f; } else { num5 = ((vec1.x_ * vec2.x_ + vec1.z_ * vec2.z_) / (num3 * num4)); }
 			int num6 = (int)GameUtil.RateConvert(num5, 1f, 0.5f, 0f, 100f, true);
 			int num7 = GameUtil.RateConvert(ballHaveTime_, 0, 10, 0, 100, true);
 			int physicalHpMax = PlayerData.GetPhysicalHpMax(this);
 			int num8 = GameUtil.RateConvert(physical_hp_, 0, physicalHpMax, 0, 100, true);
-			return (int)((1f * (float)num2 + 1f * (float)num6 + 0.3f * (float)num7 + 0.3f * (float)num8) / 2.6f);
+			{ int recoveredReturn_89626 = (int)((1f * (float)num2 + 1f * (float)num6 + 0.3f * (float)num7 + 0.3f * (float)num8) / 2.6f); return recoveredReturn_89626; }
 		}
 
 		private bool ChSlidingTackleEva(Player target_player)

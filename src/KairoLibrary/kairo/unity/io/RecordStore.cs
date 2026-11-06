@@ -201,17 +201,16 @@ namespace kairo.unity.io
 
 		public void WriteRecord(int rcId, byte[][] data)
 		{
-			if (rsId_ != 1 || resourceFiles_ == null)
-			{
-				string fileName = GetFileName(rsId_, rcId);
-				byte[] array = data[0];
-				data[0] = null;
-				data = null;
-				byte[] array2 = new byte[array.Length + 8];
-				JSystem.Arraycopy(EncodeUtil.LongToByteAry(CRC64.GetValue(array), true), 0, array2, 0, 8);
-				JSystem.Arraycopy(array, 0, array2, 8, array.Length);
-				Encrypter.Encode(array2);
-				if (!usePreference_)
+			if ((rsId_ == 1) && (resourceFiles_ != null)) { return; }
+string fileName = GetFileName(rsId_, rcId);
+byte[] array = data[0];
+data[0] = null;
+data = null;
+byte[] array2 = new byte[array.Length + 8];
+JSystem.Arraycopy(EncodeUtil.LongToByteAry(CRC64.GetValue(array), true), 0, array2, 0, 8);
+JSystem.Arraycopy(array, 0, array2, 8, array.Length);
+Encrypter.Encode(array2);
+if (!usePreference_)
 				{
 					storage_.Write(fileName, array2);
 				}
@@ -219,7 +218,6 @@ namespace kairo.unity.io
 				{
 					KairoPlugin.PutPreference(fileName, array2);
 				}
-			}
 		}
 
 		public bool ExistRecord(int rcId)
@@ -246,7 +244,7 @@ namespace kairo.unity.io
 			IApplication.GetCurrentApp();
 			string fileName = GetFileName(rsId_, rcId);
 			byte[] array = null;
-			array = (usePreference_ ? KairoPlugin.GetPreference(fileName) : storage_.Read(fileName));
+			if (!(usePreference_)) { array = storage_.Read(fileName); } else { array = KairoPlugin.GetPreference(fileName); }
 			if (array == null)
 			{
 				array = new byte[0];
@@ -274,10 +272,9 @@ namespace kairo.unity.io
 				return;
 			}
 			int numRecords = GetNumRecords();
-			if (numRecords != 0)
-			{
-				string fileName = GetFileName(rsId_, numRecords - 1);
-				if (!usePreference_)
+			if (numRecords == 0) { return; }
+string fileName = GetFileName(rsId_, numRecords - 1);
+if (!usePreference_)
 				{
 					storage_.Delete(fileName);
 				}
@@ -285,7 +282,6 @@ namespace kairo.unity.io
 				{
 					KairoPlugin.RemovePreference(fileName);
 				}
-			}
 		}
 
 		public void RemoveAllRecord()
@@ -340,7 +336,7 @@ namespace kairo.unity.io
 			IApplication.GetCurrentApp();
 			int num = 0;
 			string[] array = null;
-			array = (usePreference_ ? KairoPlugin.GetPreferenceKeys() : storage_.GetFiles());
+			if (!(usePreference_)) { array = storage_.GetFiles(); } else { array = KairoPlugin.GetPreferenceKeys(); }
 			string[] array2 = array;
 			foreach (string text in array2)
 			{

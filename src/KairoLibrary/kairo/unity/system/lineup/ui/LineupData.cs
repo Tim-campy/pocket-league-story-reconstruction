@@ -90,7 +90,8 @@ namespace kairo.unity.system.lineup.ui
 			}
 			KairoBase instance = KairoBase.GetInstance();
 			bool flag = false;
-			GameAppli[] appList = instance.GetAppList();
+			int num;
+GameAppli[] appList = instance.GetAppList();
 			for (int i = 0; i < appList.Length; i++)
 			{
 				if (appList[i].Pid == gameId_)
@@ -109,7 +110,7 @@ namespace kairo.unity.system.lineup.ui
 					return ratio_[j][1];
 				}
 			}
-			int num = ratio_[0][1];
+			num = ratio_[0][1];
 			if (num < 0)
 			{
 				num = 0;

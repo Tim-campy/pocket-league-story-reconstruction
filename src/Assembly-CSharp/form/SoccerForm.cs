@@ -482,7 +482,7 @@ namespace form
 			try
 			{
 				TeamData teamData = null;
-				teamData = ((udat_.gm_.homeAway_ != 0) ? apdat_.tData_[udat_.gm_.teamId_[1]] : apdat_.tData_[udat_.gm_.teamId_[0]]);
+				if (udat_.gm_.homeAway_ == 0) { teamData = apdat_.tData_[udat_.gm_.teamId_[0]]; } else { teamData = apdat_.tData_[udat_.gm_.teamId_[1]]; }
 				stadiumId_ = teamData.stadium_;
 				Map.CreateMap(stadiumId_, apdat_.stadiumData_[stadiumId_].fileName_);
 				SetAllDraw();
@@ -1620,11 +1620,15 @@ namespace form
 				apdat_.offScore1_ = -1;
 				apdat_.offScore2_ = -1;
 			}
-			TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
-			TeamData teamData2 = apdat_.tData_[udat_.gm_.teamId_[1]];
-			GameView instance = GameView.GetInstance();
-			int topBarOffN = GetTopBarOffN();
-			int num = AppData.ClampMin((instance.GetGameWidth() - (240 + topBarOffN * 2)) / 2, 0);
+			global::data.TeamData teamData2;
+global::surface.GameView instance;
+int topBarOffN;
+int num;
+TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
+			teamData2 = apdat_.tData_[udat_.gm_.teamId_[1]];
+			instance = GameView.GetInstance();
+			topBarOffN = GetTopBarOffN();
+			num = AppData.ClampMin((instance.GetGameWidth() - (240 + topBarOffN * 2)) / 2, 0);
 			if (num > 0)
 			{
 				Draw_topBarParts(g, 6, 0, num);
@@ -2046,9 +2050,8 @@ namespace form
 					apdat_.DrawNumImage(g, 23, string.Empty, draw_time, string.Empty, 5, 55, 0);
 				}
 			}
-			if (Config.DEBUG_CMD && SHOW_DRAWNUM != 1)
-			{
-			}
+			if ((!(Config.DEBUG_CMD)) || (SHOW_DRAWNUM == 1)) { return; }
+
 		}
 
 		public void SetStatusPlayer()
@@ -3187,7 +3190,7 @@ namespace form
 			customerNum[0] = customerNum[0] - customerNum[0] * 10 / 100 + customerNum[0] * GameUtil.Random(20) / 100;
 			customerNum[1] = customerNum[1] - customerNum[1] * 10 / 100 + customerNum[1] * GameUtil.Random(20) / 100;
 			int num3 = 0;
-			num3 = ((stadiumId_ == 0) ? 40000 : ((stadiumId_ != 1) ? int.MaxValue : 20000));
+			if ((stadiumId_ == 0)) { num3 = 40000; } else { if (stadiumId_ == 1) { num3 = 20000; } else { num3 = int.MaxValue; } }
 			customerNum[0] = AppData.ClampMax(customerNum[0], num3);
 			customerNum[1] = AppData.ClampMax(customerNum[1], num3);
 			customerNum[0] -= customerNum[0] % 10;
@@ -3238,10 +3241,7 @@ namespace form
 		{
 			int matchInfoJoin = udat_.GetMatchInfoJoin();
 			int num = 0;
-			switch (matchInfoJoin)
-			{
-			case 0:
-			{
+			if ((matchInfoJoin == 0)) { {
 				LeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];
 				if (udat_.gm_.score_[0] > udat_.gm_.score_[1])
 				{
@@ -3252,9 +3252,7 @@ namespace form
 					num += leagueData.victoryPrize_;
 				}
 				return num;
-			}
-			case 1:
-			{
+			} } else if ((matchInfoJoin == 1)) { {
 				QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 				if (udat_.gm_.score_[0] > udat_.gm_.score_[1])
 				{
@@ -3265,10 +3263,7 @@ namespace form
 					num += questMatchData.victoryPrize_;
 				}
 				return num;
-			}
-			default:
-				return 0;
-			}
+			} } else { return 0; }
 		}
 
 		public int GetGoodsPrice()

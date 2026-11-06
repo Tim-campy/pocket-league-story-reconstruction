@@ -150,7 +150,7 @@ namespace kairo.unity.util
 			if (t != null)
 			{
 				string throwableName = GetThrowableName(t);
-				text = ((text != null) ? (throwableName + ":" + text) : throwableName);
+				if (text == null) { text = throwableName; } else { text = (throwableName + ":" + text); }
 			}
 			return text;
 		}

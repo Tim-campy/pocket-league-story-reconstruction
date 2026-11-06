@@ -4387,7 +4387,9 @@ namespace form
 			int num = 10;
 			int num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;
 			int num3 = 60;
-			int num4 = 0;
+			global::game.Player passer;
+int num10;
+int num4 = 0;
 			for (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)
 			{
 				for (int i = 0; i < Map.MAPCHIP_COAT_WNUM; i++)
@@ -4432,7 +4434,7 @@ namespace form
 					}
 				}
 			}
-			Player passer = team.GetPasser();
+			passer = team.GetPasser();
 			if (passer == null)
 			{
 				passer = team2.GetPasser();
@@ -4444,7 +4446,7 @@ namespace form
 				int num8 = num3 + (Map.MAPCHIP_COAT_HNUM - 1 - passer.address_[1]) * num;
 				g.DrawRect(num7, num8, num, num);
 			}
-			int num10 = -1;
+			num10 = -1;
 			if (udat_.ball_.owner_ != null)
 			{
 				num10 = udat_.ball_.owner_.team_id_;
@@ -4536,7 +4538,9 @@ namespace form
 			int num = 10;
 			int num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;
 			int num3 = 60;
-			int num4 = 0;
+			global::game.Player player;
+global::game.Player player2;
+int num4 = 0;
 			g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
 			for (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)
 			{
@@ -4564,7 +4568,7 @@ namespace form
 			g.FillRect(formationRect_camera_pos[0][0], formationRect_camera_pos[0][1], formationRect_camera_pos[1][0] - formationRect_camera_pos[0][0], formationRect_camera_pos[2][1] - formationRect_camera_pos[0][1]);
 			for (int k = 0; k < team.players_.Length; k++)
 			{
-				Player player = team.players_[k];
+				player = team.players_[k];
 				if (k != p_id)
 				{
 					continue;
@@ -4585,7 +4589,7 @@ namespace form
 			int num10 = 6;
 			for (int m = 0; m < team.players_.Length; m++)
 			{
-				Player player2 = team.players_[m];
+				player2 = team.players_[m];
 				int num6 = (int)GameUtil.RateConvert(player2.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);
 				int num7 = (int)GameUtil.RateConvert(player2.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);
 				if (BitUtil.Check(player2.flag_, 4))
@@ -4621,7 +4625,7 @@ namespace form
 			temp_player.team_id_ = PLAYER_TEAM;
 			temp_player.role_ = 3;
 			int num2 = 0;
-			num2 = ((PLAYER_ANIME != 1) ? temp_player.SetDrawParam(head_id, num, pLAYER_SEB, PLAYER_FRAME) : temp_player.SetDrawParam(head_id, num, pLAYER_SEB, -1));
+			if (PLAYER_ANIME == 1) { num2 = temp_player.SetDrawParam(head_id, num, pLAYER_SEB, -1); } else { num2 = temp_player.SetDrawParam(head_id, num, pLAYER_SEB, PLAYER_FRAME); }
 			int num3 = 194;
 			int num4 = 58;
 			int num5 = 50;

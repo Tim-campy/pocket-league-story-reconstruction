@@ -1680,7 +1680,8 @@ instance_.markComponentFrame_ = 0;
 			int[] args = e.component.option.args;
 			int num = args[0];
 			int num2 = args[1];
-			int num3 = ((2 >= args.Length) ? (-1) : args[2]);
+			int num3;
+if (2 < args.Length) { num3 = args[2]; } else { num3 = (-1); }
 			int num4 = int.MaxValue;
 			switch (type)
 			{
@@ -1742,7 +1743,8 @@ instance_.markComponentFrame_ = 0;
 			TouchOption option = e.component.option;
 			int num = option.args[0];
 			int num2 = option.args[1];
-			int num3 = ((2 >= option.args.Length) ? (-1) : option.args[2]);
+			int num3;
+if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 			if (num3 == -1)
 			{
 				return;
@@ -2011,7 +2013,7 @@ instance_.markComponentFrame_ = 0;
 		{
 			if (imgId == -1)
 			{
-				return effMan_.AddEffect(this, id, x, y, c, null);
+				{ global::surface.TouchEffect recoveredReturn_49580 = effMan_.AddEffect(this, id, x, y, c, null); return recoveredReturn_49580; }
 			}
 			int[] array = TEXTURES[imgId];
 			Image image = images_[array[0]];
@@ -2030,7 +2032,7 @@ instance_.markComponentFrame_ = 0;
 					(float)array[6] * num
 				}
 			};
-			return effMan_.AddEffect(this, id, (float)x + (float)array[1] * num2, (float)y + (float)array[2] * num2, c, arg);
+			{ global::surface.TouchEffect recoveredReturn_50165 = effMan_.AddEffect(this, id, (float)x + (float)array[1] * num2, (float)y + (float)array[2] * num2, c, arg); return recoveredReturn_50165; }
 		}
 
 		public override void RotateClear()

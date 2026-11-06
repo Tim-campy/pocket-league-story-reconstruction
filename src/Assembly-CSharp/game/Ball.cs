@@ -773,8 +773,9 @@ namespace game
 				camera_pos_[1] += THROWIN_OFF[owner_.direct_][1];
 				num += 3;
 			}
-			int num10 = 0;
-			int num11 = 0;
+			int num11;
+int num10 = 0;
+			num11 = 0;
 			if (owner_ != null)
 			{
 				if (owner_.seb_ != 14)
@@ -1158,7 +1159,7 @@ udat_.gm_.SetBallTeam(-1);
 			v_.Set(0f, 0f, 0f);
 			a_.Set(0f, 0f, 0f);
 			Vector3D[] array = null;
-			array = ((player.team_id_ != 0) ? Map.GOAL1_GLOBAL_POS : Map.GOAL2_GLOBAL_POS);
+			if (player.team_id_ == 0) { array = Map.GOAL2_GLOBAL_POS; } else { array = Map.GOAL1_GLOBAL_POS; }
 			GameUtil.Sub(array[0], pos_, vec1);
 			GameUtil.Sub(array[1], pos_, vec2);
 			vec3.x_ = pos_.x_;
@@ -1265,7 +1266,7 @@ udat_.gm_.SetBallTeam(-1);
 		public void SetHeadingData(Player player)
 		{
 			float num = 0f;
-			num = ((player.team_id_ != 0) ? ((float)JMath.Sqrt(player.pos_.x_ * player.pos_.x_ + (player.pos_.z_ - -900f) * (player.pos_.z_ - -900f))) : ((float)JMath.Sqrt(player.pos_.x_ * player.pos_.x_ + (player.pos_.z_ - 900f) * (player.pos_.z_ - 900f))));
+			if (player.team_id_ == 0) { num = ((float)JMath.Sqrt(player.pos_.x_ * player.pos_.x_ + (player.pos_.z_ - 900f) * (player.pos_.z_ - 900f))); } else { num = ((float)JMath.Sqrt(player.pos_.x_ * player.pos_.x_ + (player.pos_.z_ - -900f) * (player.pos_.z_ - -900f))); }
 			if (num < 360f)
 			{
 				SetShoot(player, 1);
@@ -1365,7 +1366,7 @@ udat_.gm_.SetBallTeam(-1);
 				}
 			}
 			int num5 = 0;
-			num5 = ((!(num2 >= 300f)) ? num4 : JMath.Abs((int)(init_v.y_ / init_a.y_) * 2));
+			if ((num2 >= 300f)) { num5 = JMath.Abs((int)(init_v.y_ / init_a.y_) * 2); } else { num5 = num4; }
 			int num6 = num5 * 100 / 100;
 			int num7 = num5 * 100 / 100;
 			bool flag = BitUtil.Check(flag_, 64);

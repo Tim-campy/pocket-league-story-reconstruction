@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "scope": "isolated baseline compiler transport/performance probe; production flags unchanged",
+  "compiler": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\analysis\\tools\\roslyn-1.1.0\\tools\\csc.exe",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "baseline_manifest_sha256": "37a473036247c99b06917d93d1c643c1b6a4067bd21facd083a47ef3b49b7515",
+  "source_map": "build/round4/baseline/KairoLibrary/source-map.json",
+  "results": [
+    {
+      "label": "fresh",
+      "seconds": 2.6869999999180436,
+      "exit_code": 0,
+      "output_tail": "25): warning CS0649: Field 'Config.CGI_COMMON_QUERY' is never assigned to, and will always have its default value null\r\nbuild\\round4\\baseline\\KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\licensing\\LicenseChecker.cs(15,18): warning CS0649: Field 'LicenseChecker.msErrorCode' is never assigned to, and will always have its default value null\r\nbuild\\round4\\baseline\\KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\ui\\SoundPlayer.cs(45,23): warning CS0169: The field 'SoundPlayer.suspendSoundList_' is never used\r\nbuild\\round4\\baseline\\KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\ui\\Image.cs(110,19): warning CS0649: Field 'Image.filter_' is never assigned to, and will always have its default value \r\nbuild\\round4\\baseline\\KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\io\\RecordStore.cs(27,32): warning CS0169: The field 'RecordStore.recordStores_' is never used\r\nbuild\\round4\\baseline\\KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\ui\\SoundPlayer.cs(43,16): warning CS0169: The field 'SoundPlayer.suspend_' is never used\r\n",
+      "methods_compared": 3287,
+      "body_differences": 0
+    },
+    {
+      "label": "shared-first",
+      "seconds": 0.5620000000344589,
+      "exit_code": 1,
+      "output_tail": "error CS2007: Unrecognized option: '/shared'\r\n"
+    },
+    {
+      "label": "shared-warm",
+      "seconds": 0.39000000001396984,
+      "exit_code": 1,
+      "output_tail": "error CS2007: Unrecognized option: '/shared'\r\n"
+    },
+    {
+      "label": "shared-cli-first",
+      "seconds": 2.905999999959022,
+      "exit_code": 0,
+      "output_tail": "\\SoundPlayer.cs(43,16): warning CS0169: The field 'SoundPlayer.suspend_' is never used\r\nbuild\\round4\\baseline\\KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\ui\\SoundPlayer.cs(51,16): warning CS0649: Field 'SoundPlayer.isOtherAudioPlay_' is never assigned to, and will always have its default value false\r\n",
+      "methods_compared": 3287,
+      "body_differences": 0
+    },
+    {
+      "label": "shared-cli-warm",
+      "seconds": 0.4529999999795109,
+      "exit_code": 0,
+      "output_tail": "KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\ui\\SoundPlayer.cs(45,23): warning CS0169: The field 'SoundPlayer.suspendSoundList_' is never used\r\nbuild\\round4\\baseline\\KairoLibrary\\src\\KairoLibrary\\kairo\\unity\\ui\\Graphics.cs(632,26): warning CS0169: The field 'Graphics._drawBitmap_colros' is never used\r\n",
+      "methods_compared": 3287,
+      "body_differences": 0
+    }
+  ],
+  "finding": "Roslyn 1.1 client /shared is recognized on direct command line before @response-file, not inside the response file. All 3287 methods in each successful shared build have identical canonical bodies to the successful ordinary build.",
+  "production_option_changed": false
+}

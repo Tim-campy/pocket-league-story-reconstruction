@@ -1028,12 +1028,10 @@ UpdatePhysicalParam();
 				playerData.onceMember_ = 1;
 			}
 			int num = playerData.id_ - 22;
-			if (num >= 0 && num < apdat_.tradeData_.Length)
-			{
-				TradeData tradeData = apdat_.tradeData_[num];
-				tradeData.ChangeState(2);
-				tradeData.feelPt_ /= 2;
-			}
+			if ((num < 0) || (num >= apdat_.tradeData_.Length)) { return; }
+TradeData tradeData = apdat_.tradeData_[num];
+tradeData.ChangeState(2);
+tradeData.feelPt_ /= 2;
 		}
 
 		public static void Dismissal(int pDataId)
@@ -1047,15 +1045,13 @@ UpdatePhysicalParam();
 			}
 			instance.memberPDataist_.RemoveElementAt(num);
 			int num2 = playerData.id_ - 22;
-			if (num2 >= 0 && num2 < apdat_.tradeData_.Length)
-			{
-				TradeData tradeData = apdat_.tradeData_[num2];
-				tradeData.ChangeState(1);
-				if (num < 11)
+			if ((num2 < 0) || (num2 >= apdat_.tradeData_.Length)) { return; }
+TradeData tradeData = apdat_.tradeData_[num2];
+tradeData.ChangeState(1);
+if (num < 11)
 				{
 					FormationData.UpdateStamemRole();
 				}
-			}
 		}
 
 		public static bool IsExistNew()

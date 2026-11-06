@@ -596,7 +596,7 @@ namespace kairo.unity.surface
 						TouchEvent touchEvent = taskBuffer_.ElementAt(i);
 						if (touchEvent.component.GetKey() == touchPoint.key)
 						{
-							num6 = ((!touchEvent.IsPositive()) ? (i + 1) : (-1));
+							if (touchEvent.IsPositive()) { num6 = (-1); } else { num6 = (i + 1); }
 						}
 					}
 					if (num6 != -1)

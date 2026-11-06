@@ -31,7 +31,7 @@ namespace kairo.unity.ad
 		{
 			if (adUnitId.Contains('@'))
 			{
-				adUnitId = ((!Language.Japanese()) ? Regex.Match(adUnitId, "@en\\s+([^\\s@]+)").Groups[1].Value : Regex.Match(adUnitId, "@ja\\s+([^\\s@]+)").Groups[1].Value);
+				if (Language.Japanese()) { adUnitId = Regex.Match(adUnitId, "@ja\\s+([^\\s@]+)").Groups[1].Value; } else { adUnitId = Regex.Match(adUnitId, "@en\\s+([^\\s@]+)").Groups[1].Value; }
 			}
 			adUnitId_ = adUnitId;
 		}
@@ -63,15 +63,13 @@ namespace kairo.unity.ad
 				}
 				showLoading_ = false;
 			}
-			if (object_ != null)
-			{
-				AdMobPlugin.ShowInterstitialAd(object_);
-				while (GetState() == State.Show)
+			if (object_ == null) { return; }
+AdMobPlugin.ShowInterstitialAd(object_);
+while (GetState() == State.Show)
 				{
 					Thread.Sleep(10);
 				}
-				Dispose();
-			}
+Dispose();
 		}
 
 		public State GetState()

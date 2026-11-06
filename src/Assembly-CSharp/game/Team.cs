@@ -897,20 +897,24 @@ namespace game
 			ball_.temp_pos.Set(ball_.fallPos_);
 			w_disBoal = GameUtil.RateConvert(ball_.savePosFrame_ * 100 / ball_.fallTime_, 0f, 100f, 0.7f, 1f, true);
 			w_formation = 1f - w_disBoal;
-			for (int i = 0; i < players_.Length; i++)
+			float num;
+float num2;
+for (int i = 0; i < players_.Length; i++)
 			{
-				if (players_[i].role_ != 0)
+				{ bool recoveredCondition_24616 = players_[i].role_ != 0;
+if (recoveredCondition_24616)
 				{
 					Player player = players_[i];
 					if (player.seb_ != 12)
 					{
-						float num = (float)JMath.Sqrt((ball_.temp_pos.x_ - player.pos_.x_) * (ball_.temp_pos.x_ - player.pos_.x_) + (ball_.temp_pos.z_ - player.pos_.z_) * (ball_.temp_pos.z_ - player.pos_.z_));
-						float num2 = (float)JMath.Sqrt((player.formationGo_.x_ - player.pos_.x_) * (player.formationGo_.x_ - player.pos_.x_) + (player.formationGo_.z_ - player.pos_.z_) * (player.formationGo_.z_ - player.pos_.z_));
+						num = (float)JMath.Sqrt((ball_.temp_pos.x_ - player.pos_.x_) * (ball_.temp_pos.x_ - player.pos_.x_) + (ball_.temp_pos.z_ - player.pos_.z_) * (ball_.temp_pos.z_ - player.pos_.z_));
+						num2 = (float)JMath.Sqrt((player.formationGo_.x_ - player.pos_.x_) * (player.formationGo_.x_ - player.pos_.x_) + (player.formationGo_.z_ - player.pos_.z_) * (player.formationGo_.z_ - player.pos_.z_));
 						player.temp_len = (w_disBoal * num + w_formation * num2) / (w_disBoal + w_formation);
 						player.temp_len = GameUtil.RateConvert(player.temp_len, 225f, 0f, 0f, 100f, true);
 						ballNearPlayer_.AddElement(player);
 					}
 				}
+}
 			}
 			for (int j = 0; j < ballNearPlayer_.Size() - 1; j++)
 			{
@@ -1000,7 +1004,8 @@ namespace game
 			}
 			if (ch_ceva[0] == 1)
 			{
-				if (team_id_ == 0)
+				{ bool recoveredCondition_27548 = team_id_ == 0;
+if (recoveredCondition_27548)
 				{
 					for (int k = 0; k < Map.MAPCHIP_COAT_HNUM; k++)
 					{
@@ -1046,6 +1051,7 @@ namespace game
 						}
 					}
 				}
+}
 			}
 			if (ch_ceva[2] == 1)
 			{
@@ -1399,15 +1405,17 @@ namespace game
 		public int GetSum(int[][] data, int cx, int cy, bool div)
 		{
 			int num = 0;
-			for (int i = 0; i < CEVA_PASSER_MP2.Length; i++)
+			int num3;
+int num4;
+for (int i = 0; i < CEVA_PASSER_MP2.Length; i++)
 			{
 				float num2 = 1f;
 				if (!div)
 				{
 					num2 = CEVA_PASSER_MP2[i];
 				}
-				int num3 = cx + PANEL_DIRECT_R_9BLOCK[i][0];
-				int num4 = cy + PANEL_DIRECT_R_9BLOCK[i][1];
+				num3 = cx + PANEL_DIRECT_R_9BLOCK[i][0];
+				num4 = cy + PANEL_DIRECT_R_9BLOCK[i][1];
 				if (num3 >= 0 && num3 < Map.MAPCHIP_COAT_WNUM && num4 >= 0 && num4 < Map.MAPCHIP_COAT_HNUM)
 				{
 					num += (int)((float)data[num4][num3] / num2);
@@ -1528,8 +1536,8 @@ namespace game
 			int num = GameUtil.RateConvert(sum, 0, 700, 0, 100, true);
 			Vector3D posFromAddress = Camera.GetPosFromAddress(xi, yi);
 			int num2 = 0;
-			num2 = ((team_id_ != 0) ? ((int)GameUtil.RateConvert(posFromAddress.z_, 900f, -900f, 0f, 100f, true)) : ((int)GameUtil.RateConvert(posFromAddress.z_, -900f, 900f, 0f, 100f, true)));
-			return (int)((0.7f * (float)num + 0.3f * (float)num2) / 1f);
+			if (team_id_ == 0) { num2 = ((int)GameUtil.RateConvert(posFromAddress.z_, -900f, 900f, 0f, 100f, true)); } else { num2 = ((int)GameUtil.RateConvert(posFromAddress.z_, 900f, -900f, 0f, 100f, true)); }
+			{ int recoveredReturn_42482 = (int)((0.7f * (float)num + 0.3f * (float)num2) / 1f); return recoveredReturn_42482; }
 		}
 
 		public int Get_playerReceivePosEva(Player player, int xi, int yi)
@@ -1609,10 +1617,12 @@ namespace game
 
 		public void Cal_evaCoatMulti9block(int[][] data, int cx, int cy, float[] muliti_param)
 		{
-			for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
+			int num;
+int num2;
+for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 			{
-				int num = cx + PANEL_DIRECT_R_9BLOCK[i][0];
-				int num2 = cy + PANEL_DIRECT_R_9BLOCK[i][1];
+				num = cx + PANEL_DIRECT_R_9BLOCK[i][0];
+				num2 = cy + PANEL_DIRECT_R_9BLOCK[i][1];
 				if (num >= 0 && num < Map.MAPCHIP_COAT_WNUM && num2 >= 0 && num2 < Map.MAPCHIP_COAT_HNUM)
 				{
 					data[num2][num] = (int)((float)data[num2][num] * muliti_param[i]);
@@ -1644,10 +1654,12 @@ namespace game
 
 		public void Cal_evaCoatAdd9block(int[][] data, int cx, int cy, int[] add_param)
 		{
-			for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
+			int num;
+int num2;
+for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 			{
-				int num = cx + PANEL_DIRECT_R_9BLOCK[i][0];
-				int num2 = cy + PANEL_DIRECT_R_9BLOCK[i][1];
+				num = cx + PANEL_DIRECT_R_9BLOCK[i][0];
+				num2 = cy + PANEL_DIRECT_R_9BLOCK[i][1];
 				if (num >= 0 && num < Map.MAPCHIP_COAT_WNUM && num2 >= 0 && num2 < Map.MAPCHIP_COAT_HNUM)
 				{
 					data[num2][num] = data[num2][num] + add_param[i];
@@ -1981,7 +1993,7 @@ namespace game
 			{
 				num16 = JMath.Abs(Map.COAT_GOAL1_GLOBALPOS[1].x_ - Map.COAT_GOAL1_GLOBALPOS[0].x_) * 120f / 100f;
 			}
-			num15 = ((!(num14 < 50f)) ? GameUtil.RateConvert(num14, 70f, 95f, 900f, num16, true) : GameUtil.RateConvert(num14, 5f, 30f, num16, 900f, true));
+			if ((num14 < 50f)) { num15 = GameUtil.RateConvert(num14, 5f, 30f, num16, 900f, true); } else { num15 = GameUtil.RateConvert(num14, 70f, 95f, 900f, num16, true); }
 			fPos_[0] = 0f;
 			fPos_[2] = num15;
 			for (int j = 0; j < players_.Length; j++)
@@ -2289,7 +2301,7 @@ namespace game
 			}
 			if (udat_.gm_.state_ == 4)
 			{
-				result = ((udat_.gm_.gameState_ == team_id_) ? true : false);
+				if ((udat_.gm_.gameState_ == team_id_)) { result = true; } else { result = false; }
 			}
 			return result;
 		}

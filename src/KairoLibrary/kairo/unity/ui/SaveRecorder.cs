@@ -236,7 +236,8 @@ namespace kairo.unity.ui
 				do
 				{
 					asRedo_ = false;
-					long num = JSystem.CurrentTimeMillis();
+					long num2;
+long num = JSystem.CurrentTimeMillis();
 					if (asPreSaveMethod_ != null)
 					{
 						asPreSaveMethod_();
@@ -249,7 +250,7 @@ namespace kairo.unity.ui
 					{
 						continue;
 					}
-					long num2 = JSystem.CurrentTimeMillis();
+					num2 = JSystem.CurrentTimeMillis();
 					AutoSaveLogData log;
 					Property property = MakeSaveData(asProperty_, out log);
 					long num3 = JSystem.CurrentTimeMillis() - num2;

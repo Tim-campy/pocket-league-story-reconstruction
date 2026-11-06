@@ -99,9 +99,9 @@
       ],
       "historical_compiler_version": "UNKNOWN",
       "candidate_compatible": true,
-      "validation_scope": "complete build; 1606 bodies equal; 1611 matched; 129/129 structural type metadata equal; historical compiler UNKNOWN",
+      "validation_scope": "complete source build; 1671/1952 bodies equal; 1676/1958 matched; 196453/601603 original IL bytes matched; 129/129 structural type metadata equal; whole assembly byte identity remains false; historical compiler UNKNOWN",
       "optimization_tested": true,
-      "debug_tested": false,
+      "debug_tested": true,
       "compiler_fingerprints": {
         "mono.exe": "3d102d9a63dae72e48396998bdbae4e9b2d8952ca6a8ebbcba698d3bc4345076",
         "smcs.exe": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0"
@@ -168,7 +168,7 @@
       ],
       "historical_compiler_version": "UNKNOWN",
       "candidate_compatible": true,
-      "validation_scope": "complete build; 3070 bodies equal; 3144 matched; 337/337 structural type metadata equal; historical compiler UNKNOWN",
+      "validation_scope": "complete source build; 3113/3211 bodies equal; 3187/3287 matched; 204103/269894 original IL bytes matched; 337/337 structural type metadata equal; whole assembly byte identity remains false; historical compiler UNKNOWN",
       "optimization_tested": true,
       "debug_tested": true,
       "compiler_fingerprints": {
@@ -217,5 +217,130 @@
   "compiler_availability_smoke": "PASS",
   "compiler_selection_state": "ROSLYN_1_1_0_MS_CORELIB_AND_SMCS_2_6_5_ALL_TYPE_METADATA_EQUAL",
   "android_module_installed": true,
-  "player_variant": "Android Mono Release (native hashes proven)"
+  "player_variant": "Android Mono Release (native hashes proven)",
+  "round4_first_divergence_validation": {
+    "baseline_commit": "1047b1fce99f8407ef3f1f38fd19ded6823d09c2",
+    "operation": "official full production verification after first-divergence source reconstruction",
+    "production_configuration_unchanged": true,
+    "new_non_deterministic_exceptions": [],
+    "normalization_applied": false,
+    "evidence_files": [
+      {
+        "path": "reports/round4-adoption.json",
+        "sha256": "31b16722dbecb721ffe920c6f4bdf8a2df7b7d7911db80a862f80e36f7b66b3d"
+      },
+      {
+        "path": "reports/round4-baseline-measurement.json",
+        "sha256": "677cab0b75139680974b7f47fcf2bf85cdecdb4a6c5f98c2f601297617325214"
+      },
+      {
+        "path": "reports/round4-final-measurement.json",
+        "sha256": "15e144521796cd1881348563f9ee6cf8c6ea95f6fa0841d32b72506434f9fbe1"
+      },
+      {
+        "path": "reports/round4-symbol-mapping.json",
+        "sha256": "a38bcab58a606fe1af1d213da97d72731bab54e444a4ba45e2d7582d0ffe4db3"
+      },
+      {
+        "path": "reports/round4-reference-probes.json",
+        "sha256": "9ff0e1a6cc5e47d0481fef88b313ff16c6bcd850c4994749a854e5182b36bbb4"
+      },
+      {
+        "path": "reports/round4-shared-compiler-probe.json",
+        "sha256": "537b16bf70b7ea5b331ca10ab5c0b5c3d81a40bbc68167fa423ff7cff04e8f6e"
+      },
+      {
+        "path": "reports/round4-compiler-server-probe.json",
+        "sha256": "22cc5cd06e468170ca984213ec2b786217eeacb6dfe0f35a554ca1fdbe535b74"
+      },
+      {
+        "path": "reports/round4-final-raw-row-counts.json",
+        "sha256": "119cdcf4e5be61d85124e8379da60d676c7579301d3ab13e0c34777a34741a9e"
+      },
+      {
+        "path": "tools/round4_engine.py",
+        "sha256": "76116b56e6148521565d90c369f1184085ba893529be0bd259c96fc77cb9db27"
+      },
+      {
+        "path": "tools/Round4TransformSyntax.cs",
+        "sha256": "a87f7175fede817ae9fe7d336b559f4a7feac76434b2966a3a321630eb113770"
+      },
+      {
+        "path": "tools/round4_update_toolchain.py",
+        "sha256": "49a7488d16557d6333ca5698546a658208a337663ad478a08c02cfc230dd8d52"
+      },
+      {
+        "path": "reports/round4-screen-validation.json",
+        "sha256": "b7a69a7560d75e3b5af856b7be70af8696e13ef2134461a271c25bb8c0b4585d"
+      },
+      {
+        "path": "reports/round4-git-source-proof.json",
+        "sha256": "6225b5c7b763b673a4a5735e7d49503afa5146f474f6d1c1104de99834f8feed"
+      },
+      {
+        "path": "reports/round4-KairoLibrary-engine.json",
+        "sha256": "8e7d8b6c1936f0db70a55a15f3bbc15003d406f9269f6d6bd8d1740640a8ae98"
+      },
+      {
+        "path": "build/verification-KairoLibrary.json",
+        "sha256": "7958f7b28feb3857fd0214da0c9ba79c863ed4a2231c17740db9950a39a7aac5"
+      },
+      {
+        "path": "reports/round4-final-KairoLibrary-raw-measurement.json",
+        "sha256": "4b170d637de076d0987afa33e30eeb3b348f565896dce7503659f28665a400ae"
+      },
+      {
+        "path": "reports/round4-Assembly-CSharp-engine.json",
+        "sha256": "904e4d0fbf4797185505fda639288c5a67badc6142d4c7a84ef4002e44c36402"
+      },
+      {
+        "path": "build/verification-Assembly-CSharp.json",
+        "sha256": "d47dbc8895dfc8b82fe535bbe506ef40cd60048d6beb87c3dbd9fb9f46be3920"
+      },
+      {
+        "path": "reports/round4-final-Assembly-CSharp-raw-measurement.json",
+        "sha256": "9b31b9700061382374467fbc32ff4868d0f4b7474faf3bd34613050ba61b665f"
+      }
+    ],
+    "assemblies": {
+      "KairoLibrary": {
+        "matched": 3187,
+        "total_methods": 3287,
+        "matched_original_il_bytes": 204103,
+        "original_total_il_bytes": 269894,
+        "body_equal": 3113,
+        "types_equal": 337,
+        "types_total": 337,
+        "official_build_sha256": "133a9190d83fdd90e129b64e5125d782f4e526ac07414764e069df6ea2ac5e5d",
+        "whole_assembly_byte_identity": false,
+        "limit_iterations": 8,
+        "max_candidates_per_iteration": 24,
+        "iteration_limit_hits": 0,
+        "body_losses": [],
+        "mapping": "native PDB sequence points",
+        "trial_only_flags": [
+          "/shared (direct compiler client command line)"
+        ]
+      },
+      "Assembly-CSharp": {
+        "matched": 1676,
+        "total_methods": 1958,
+        "matched_original_il_bytes": 196453,
+        "original_total_il_bytes": 601603,
+        "body_equal": 1671,
+        "types_equal": 129,
+        "types_total": 129,
+        "official_build_sha256": "da9f1f729c1a05770793caef63dfe11b3a967f2dd42f269ffbed5cec1d48a4aa",
+        "whole_assembly_byte_identity": false,
+        "limit_iterations": 8,
+        "max_candidates_per_iteration": 24,
+        "iteration_limit_hits": 0,
+        "body_losses": [],
+        "mapping": "MDB sequence points after per-method debug-body equality proof",
+        "trial_only_flags": [
+          "-debug+ (MDB mapping only)"
+        ]
+      }
+    }
+  }
 }

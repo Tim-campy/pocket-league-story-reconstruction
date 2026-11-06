@@ -2442,14 +2442,15 @@ namespace main
 			try
 			{
 				recordStore = RecordStore.OpenRecordStore(0);
-				byte[] data = RecordStore.ReadRecord(0, ((!auto) ? 1 : 3) + currentSaveSlot_);
+				int num;
+byte[] data = RecordStore.ReadRecord(0, ((auto) ? (3) : (1)) + currentSaveSlot_);
 				save_ = new Property(defSaveP_, defSaveI_, defSaveL_, defSaveS_, defSaveB_);
 				save_.Load(data);
 				eventNum_ = new int[eventData_.Length];
 				JSystem.Arraycopy(save_.pros[0].ints, 0, eventNum_, 0, save_.pros[0].ints.Length);
 				delayEvents_ = new Vector();
 				byteArrayInputStream = new ByteArrayInputStream(save_.bins[16]);
-				int num = StreamUtil.ReadInt(byteArrayInputStream);
+				num = StreamUtil.ReadInt(byteArrayInputStream);
 				for (int i = 0; i < num; i++)
 				{
 					DelayEvent delayEvent = new DelayEvent();
@@ -3057,29 +3058,15 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			string str = CommaSeparate_en(in_value);
 			int num = 0;
 			num += JString.ValueOf(in_value).Length() * (8 + padding) - padding;
-			switch (anchor)
-			{
-			case 2:
-				x -= num / 2;
-				break;
-			case 4:
-				x -= num;
-				break;
-			}
+			if ((anchor == 2)) { x -= num / 2; } else if ((anchor == 4)) { x -= num; }
 			bool flag = false;
 			bool flag2 = false;
 			for (int i = 0; i < str.Length(); i++)
 			{
 				char c = str.CharAt(i);
-				switch (c)
-				{
-				case ',':
-					flag = true;
-					continue;
-				case '.':
-					flag2 = true;
-					continue;
-				}
+				if ((c == ',')) { flag = true;
+continue; } else if ((c == '.')) { flag2 = true;
+continue; }
 				resCom2_.seb[seb].DrawFrame(g, x, y, resCom2_.img, c - 48);
 				if (flag)
 				{
@@ -3121,7 +3108,7 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			}
 			if (flag)
 			{
-				str = CommaSeparate((!kmark) ? (in_value / 100) : in_value);
+				str = CommaSeparate((kmark) ? (in_value) : ((in_value / 100)));
 				kmark = false;
 			}
 			int num = 0;
@@ -3134,15 +3121,7 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			{
 				num -= 7;
 			}
-			switch (anchor)
-			{
-			case 2:
-				x -= num / 2;
-				break;
-			case 4:
-				x -= num;
-				break;
-			}
+			if ((anchor == 2)) { x -= num / 2; } else if ((anchor == 4)) { x -= num; }
 			if (!flag)
 			{
 				if (flag2)
@@ -3160,15 +3139,9 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			for (int i = 0; i < str.Length(); i++)
 			{
 				char c = str.CharAt(i);
-				switch (c)
-				{
-				case ',':
-					flag3 = true;
-					continue;
-				case '.':
-					flag4 = true;
-					continue;
-				}
+				if ((c == ',')) { flag3 = true;
+continue; } else if ((c == '.')) { flag4 = true;
+continue; }
 				if (flag3)
 				{
 					x += comma_padding;
@@ -3216,29 +3189,15 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			}
 			int num = 0;
 			num += JString.ValueOf(in_value).Length() * (8 + padding) - padding + 7;
-			switch (anchor)
-			{
-			case 2:
-				x -= num / 2;
-				break;
-			case 4:
-				x -= num;
-				break;
-			}
+			if ((anchor == 2)) { x -= num / 2; } else if ((anchor == 4)) { x -= num; }
 			bool flag2 = false;
 			bool flag3 = false;
 			for (int i = 0; i < str.Length(); i++)
 			{
 				char c = str.CharAt(i);
-				switch (c)
-				{
-				case ',':
-					flag2 = true;
-					continue;
-				case '.':
-					flag3 = true;
-					continue;
-				}
+				if ((c == ',')) { flag2 = true;
+continue; } else if ((c == '.')) { flag3 = true;
+continue; }
 				if (flag2)
 				{
 					x += comma_padding;
@@ -3260,10 +3219,8 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 				}
 				x += 8 + padding;
 			}
-			if (!flag)
-			{
-				resCom2_.seb[seb].DrawFrame(g, x, y, resCom2_.img, 12);
-			}
+			if (flag) { return; }
+resCom2_.seb[seb].DrawFrame(g, x, y, resCom2_.img, 12);
 		}
 
 		public void DrawMoney3(Graphics g, int seb, long in_value, int x, int y, int padding, int comma_padding, int anchor)
@@ -3276,29 +3233,15 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			{
 				num += 8;
 			}
-			switch (anchor)
-			{
-			case 2:
-				x -= num / 2;
-				break;
-			case 4:
-				x -= num;
-				break;
-			}
+			if ((anchor == 2)) { x -= num / 2; } else if ((anchor == 4)) { x -= num; }
 			bool flag2 = false;
 			bool flag3 = false;
 			for (int i = 0; i < str.Length(); i++)
 			{
 				char c = str.CharAt(i);
-				switch (c)
-				{
-				case ',':
-					flag2 = true;
-					continue;
-				case '.':
-					flag3 = true;
-					continue;
-				}
+				if ((c == ',')) { flag2 = true;
+continue; } else if ((c == '.')) { flag3 = true;
+continue; }
 				if (flag2)
 				{
 					x += comma_padding;
@@ -3328,29 +3271,15 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 			string str = CommaSeparate_en(in_value);
 			int num = 0;
 			num += JString.ValueOf(in_value).Length() * (8 + padding) - padding;
-			switch (anchor)
-			{
-			case 2:
-				x -= num / 2;
-				break;
-			case 4:
-				x -= num;
-				break;
-			}
+			if ((anchor == 2)) { x -= num / 2; } else if ((anchor == 4)) { x -= num; }
 			bool flag = false;
 			bool flag2 = false;
 			for (int i = 0; i < str.Length(); i++)
 			{
 				char c = str.CharAt(i);
-				switch (c)
-				{
-				case ',':
-					flag = true;
-					continue;
-				case '.':
-					flag2 = true;
-					continue;
-				}
+				if ((c == ',')) { flag = true;
+continue; } else if ((c == '.')) { flag2 = true;
+continue; }
 				if (flag)
 				{
 					x += comma_padding;
@@ -3538,8 +3467,10 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 				}
 				else
 				{
-					if (array[0] != 6 || array[1] < 0)
-					{
+					if (array[0] != 6) {
+						continue;
+					}
+if (array[1] < 0) {
 						continue;
 					}
 					Camera.ConvertScreenToCamera(array[2], array[3], ef_cpos);
@@ -3690,8 +3621,10 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 
 		public void PlayBgm(int bgm)
 		{
-			if (GetInstance().platform_.StartsWith("ap") || resSound_.sound[bgm].GetState() == 2)
-			{
+			if (GetInstance().platform_.StartsWith("ap")) {
+				return;
+			}
+if (resSound_.sound[bgm].GetState() == 2) {
 				return;
 			}
 			for (int i = 0; i < BGM.Length; i++)
@@ -3840,14 +3773,12 @@ rotatePoint_tmp[1] = -x; }
 			for (int num = formsNum - 1; num >= 0; num--)
 			{
 				FormBase form = instance.GetForm(num);
-				if (form.GetId() == 4)
-				{
-					SubForm subForm = (SubForm)form;
-					if (subForm.IsMenu())
+				if (form.GetId() != 4) { continue; }
+SubForm subForm = (SubForm)form;
+if (subForm.IsMenu())
 					{
 						instance.Pop(subForm);
 					}
-				}
 			}
 			return true;
 		}
@@ -3865,20 +3796,18 @@ rotatePoint_tmp[1] = -x; }
 			{
 				int num2 = x + DIRECT1[i][0];
 				int num3 = y + DIRECT1[i][1];
-				if (num3 >= 0 && nodeMap.Length > num3 && num2 >= 0 && nodeMap[0].Length > num2)
-				{
-					int[] array = nodeMap[num3][num2];
-					if (priority != null && array == priority)
+				if ((((num3 < 0) || (nodeMap.Length <= num3)) || (num2 < 0)) || (nodeMap[0].Length <= num2)) { continue; }
+int[] array = nodeMap[num3][num2];
+if (priority != null && array == priority)
 					{
 						return priority;
 					}
-					int num4 = array[0];
-					if (num4 < num)
+int num4 = array[0];
+if (num4 < num)
 					{
 						num = num4;
 						result = array;
 					}
-				}
 			}
 			return result;
 		}
@@ -3890,14 +3819,12 @@ rotatePoint_tmp[1] = -x; }
 			{
 				int num = x + DIRECT1[i][0];
 				int num2 = y + DIRECT1[i][1];
-				if (num2 >= 0 && nodeMap.Length > num2 && num >= 0 && nodeMap[0].Length > num)
-				{
-					int[] array = nodeMap[num2][num];
-					if (array[0] < int.MaxValue)
+				if ((((num2 < 0) || (nodeMap.Length <= num2)) || (num < 0)) || (nodeMap[0].Length <= num)) { continue; }
+int[] array = nodeMap[num2][num];
+if (array[0] < int.MaxValue)
 					{
 						vector.AddElement(array);
 					}
-				}
 			}
 			int[][] array2 = new int[vector.Size()][];
 			for (int j = 0; j < vector.Size(); j++)
@@ -4046,10 +3973,8 @@ rotatePoint_tmp[1] = -x; }
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					if (i != 1 || j != 1)
-					{
-						seb.DrawFrame(graOutline1_, j * lineWidth - boundingRect[0], i * lineWidth - boundingRect[1], images, frame);
-					}
+					if ((i == 1) && (j == 1)) { continue; }
+seb.DrawFrame(graOutline1_, j * lineWidth - boundingRect[0], i * lineWidth - boundingRect[1], images, frame);
 				}
 			}
 			graOutline1_.SetRenderMode(0, 255, 0);
@@ -4068,8 +3993,9 @@ rotatePoint_tmp[1] = -x; }
 		public void DrawOutline(Graphics g, int x, int y, Image img, int u, int v, int w, int h, int lineWidth, int color)
 		{
 			Image image = Image.CreateImage(w + lineWidth * 2, h + lineWidth * 2);
-			Graphics graphics = image.GetGraphics();
-			Image image2 = Image.CreateImage(image.GetWidth(), image.GetHeight());
+			global::kairo.unity.ui.Image image2;
+Graphics graphics = image.GetGraphics();
+			image2 = Image.CreateImage(image.GetWidth(), image.GetHeight());
 			Graphics graphics2 = image2.GetGraphics();
 			graphics.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
 			graphics.FillRect(0f, 0f, image.GetWidth(), image.GetHeight());
@@ -4078,10 +4004,8 @@ rotatePoint_tmp[1] = -x; }
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					if (i != 1 || j != 1)
-					{
-						graphics.DrawImage(img, j * lineWidth, i * lineWidth, u, v, w, h);
-					}
+					if ((i == 1) && (j == 1)) { continue; }
+graphics.DrawImage(img, j * lineWidth, i * lineWidth, u, v, w, h);
 				}
 			}
 			graphics.SetRenderMode(0, 255, 0);
@@ -4241,9 +4165,8 @@ rotatePoint_tmp[1] = -x; }
 			}
 			g.SetColor(color);
 			g.DrawString(str, anchorPosition[0], anchorPosition[1]);
-			if (!cursor)
-			{
-			}
+			if (cursor) { return; }
+
 		}
 
 		public int GetMainBGM()
@@ -4566,11 +4489,10 @@ rotatePoint_tmp[1] = -x; }
 					return subForm;
 				}
 				subForm = ExecuteScript(array, popup, args, argi, script);
-				if (talkCharaIndex != -1 && subForm != null && subForm.humanCharaIndex_ == -1)
-				{
-					subForm.humanCharaType_ = talkCharaType;
-					subForm.humanCharaIndex_ = talkCharaIndex;
-				}
+				if ((talkCharaIndex == -1) || (subForm == null)) { continue; }
+if (subForm.humanCharaIndex_ != -1) { continue; }
+subForm.humanCharaType_ = talkCharaType;
+subForm.humanCharaIndex_ = talkCharaIndex;
 			}
 			return subForm;
 		}
@@ -5524,8 +5446,10 @@ AddPopupMessage(id, value, -1, 60);
 				g.DrawImage(resCom2_.img[77], num5, y, 32, 0, num6, 22);
 				num5 += num6;
 				num7 -= num6;
-				if (num5 >= num4 || num7 == 0)
-				{
+				if (num5 >= num4) {
+					break;
+				}
+if (num7 == 0) {
 					break;
 				}
 				num++;
@@ -5542,20 +5466,18 @@ AddPopupMessage(id, value, -1, 60);
 			{
 				object[] array = (object[])popupMessages_.ElementAt(num);
 				int[] array2 = (int[])array[1];
-				if (++array2[1] >= 0)
-				{
-					int num2 = array2[1];
-					if (num2 == 1)
+				if (++array2[1] < 0) { continue; }
+int num2 = array2[1];
+if (num2 == 1)
 					{
 						PlaySe(24);
 					}
-					int num3 = 8;
-					int num4 = num3 * 2 + array2[2];
-					if (num2 > num4)
+int num3 = 8;
+int num4 = num3 * 2 + array2[2];
+if (num2 > num4)
 					{
 						popupMessages_.RemoveElementAt(num);
 					}
-				}
 			}
 		}
 
@@ -5941,8 +5863,9 @@ AddPopupMessage(id, value, -1, 60);
 
 		private void Draw(string err, bool copy)
 		{
-			Canvas instance = Canvas.GetInstance();
-			Graphics graphics = instance.BeginPaint();
+			global::kairo.unity.ui.Graphics graphics;
+Canvas instance = Canvas.GetInstance();
+			graphics = instance.BeginPaint();
 			Font font = graphics.GetFont(null);
 			graphics.SetColor(Graphics.GetColorOfRGB(0, 0, 64));
 			graphics.FillRect(0f, 0f, 240f, 240f);

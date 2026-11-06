@@ -58,7 +58,9 @@ namespace kairo.unity.util
 				return data;
 			}
 			long num = JSystem.CurrentTimeMillis();
-			for (int i = 0; i < weights_.Length; i++)
+			global::kairo.unity.util.FastVector fastVector;
+global::kairo.unity.util.Compressor.Node node;
+for (int i = 0; i < weights_.Length; i++)
 			{
 				weights_[i] = 0;
 			}
@@ -71,12 +73,12 @@ namespace kairo.unity.util
 			{
 				weights_[data[k] & 0xFF]++;
 			}
-			FastVector fastVector = new FastVector();
+			fastVector = new FastVector();
 			for (int l = 0; l < weights_.Length; l++)
 			{
 				if (weights_[l] > 0)
 				{
-					Node node = new Node(null, null, null, weights_[l], l);
+					node = new Node(null, null, null, weights_[l], l);
 					fastVector.AddElement(node);
 					nodeTbl_[l] = node;
 				}

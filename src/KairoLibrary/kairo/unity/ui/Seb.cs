@@ -155,7 +155,7 @@ namespace kairo.unity.ui
 			WorkValue workValue = threadLocal_;
 			if (workValue == null)
 			{
-				workValue = (threadLocal_ = new WorkValue());
+				threadLocal_ = (workValue = new WorkValue());
 			}
 			return workValue;
 		}
@@ -238,7 +238,8 @@ namespace kairo.unity.ui
 			{
 				dataInputStream = new DataInputStream(stream);
 				int num = 0;
-				int num2 = dataInputStream.ReadByte();
+				short[][] array;
+int num2 = dataInputStream.ReadByte();
 				int num3;
 				if (num2 < 0)
 				{
@@ -251,7 +252,7 @@ namespace kairo.unity.ui
 					num3 = (short)(((num2 & 0xFF) << 8) | (num4 & 0xFF));
 				}
 				maxFrame_ = dataInputStream.ReadShort();
-				short[][] array = new short[num3][];
+				array = new short[num3][];
 				sbyte[][] array2 = new sbyte[num3][];
 				int[] array3 = new int[12];
 				Vector vector = null;
@@ -966,13 +967,11 @@ namespace kairo.unity.ui
 			if (lineNo == -1)
 			{
 				int[][] spritesLocal = GetSpritesLocal(frame);
-				if (spritesLocal != null)
-				{
-					for (int i = 0; i < layerHeads_.Length; i++)
+				if (spritesLocal == null) { return; }
+for (int i = 0; i < layerHeads_.Length; i++)
 					{
 						Draw(g, x, y, img, spritesLocal[i]);
 					}
-				}
 			}
 			else
 			{

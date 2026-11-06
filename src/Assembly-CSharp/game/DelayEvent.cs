@@ -53,7 +53,7 @@ namespace game
 			StreamUtil.WriteInt(os, wait_);
 			StreamUtil.WriteInt(os, hour_);
 			StreamUtil.WriteInt(os, rideChara_);
-			StreamUtil.WriteString(os, (args_ != null) ? args_ : string.Empty);
+			StreamUtil.WriteString(os, (args_ == null) ? (string.Empty) : (args_));
 			if (argi_ == null)
 			{
 				StreamUtil.WriteInt(os, 0);

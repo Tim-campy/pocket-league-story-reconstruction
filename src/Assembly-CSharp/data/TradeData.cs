@@ -80,14 +80,12 @@ namespace data
 
 		public void NewGame()
 		{
-			if (state_ != 2)
-			{
-				state_ = 0;
-				if (BitUtil.Check(flag_, 1))
+			if (state_ == 2) { return; }
+state_ = 0;
+if (BitUtil.Check(flag_, 1))
 				{
 					state_ = 1;
 				}
-			}
 		}
 
 		public void Serialize(OutputStream os)

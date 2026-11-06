@@ -191,14 +191,12 @@ namespace data
 			for (int i = 0; i < apdat_.sponsorData_.Length; i++)
 			{
 				SponsorData sponsorData = apdat_.sponsorData_[i];
-				if (sponsorData.state_ == 2)
-				{
-					int x3 = sponsorData.satisfactDifficult_;
-					int c2min = GameUtil.RateConvert(x3, 0, 1000, 5, 1, true);
-					int c2max = GameUtil.RateConvert(x3, 0, 1000, 20, 3, true);
-					int num = GameUtil.RateConvert(x2, 0, 1000, c2min, c2max, true);
-					sponsorData.satisfactPoint_ = AppData.Clamp(sponsorData.satisfactPoint_ + num, 0, 100);
-				}
+				if (sponsorData.state_ != 2) { continue; }
+int x3 = sponsorData.satisfactDifficult_;
+int c2min = GameUtil.RateConvert(x3, 0, 1000, 5, 1, true);
+int c2max = GameUtil.RateConvert(x3, 0, 1000, 20, 3, true);
+int num = GameUtil.RateConvert(x2, 0, 1000, c2min, c2max, true);
+sponsorData.satisfactPoint_ = AppData.Clamp(sponsorData.satisfactPoint_ + num, 0, 100);
 			}
 		}
 

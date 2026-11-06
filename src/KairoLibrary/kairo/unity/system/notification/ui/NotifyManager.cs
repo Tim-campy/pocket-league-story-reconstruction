@@ -179,17 +179,15 @@ namespace kairo.unity.system.notification.ui
 			try
 			{
 				string[] notificationData = KairoPlugin.GetNotificationData();
-				if (notificationData.Length != 0)
-				{
-					string[] array = notificationData;
-					foreach (string item in array)
+				if (notificationData.Length == 0) { return; }
+string[] array = notificationData;
+foreach (string item in array)
 					{
 						values_.Add(item);
 					}
-					SaveValues();
-					KairoPlugin.RemoveNotificationData();
-					OnReceiveValue();
-				}
+SaveValues();
+KairoPlugin.RemoveNotificationData();
+OnReceiveValue();
 			}
 			catch (Exception t)
 			{

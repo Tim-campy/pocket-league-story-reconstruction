@@ -100,7 +100,7 @@ namespace surface
 			int num2 = currentApp.GetHeight();
 			int width = instance2.GetWidth2();
 			int num3 = instance2.GetHeight2();
-			if ((!wide_ && (currentApp.IsSide() ? (num < num2) : (num > num2))) || (wide_ && (currentApp.IsSide() ? (num > num2) : (num < num2))))
+			if ((!wide_ && ((!(currentApp.IsSide())) ? ((num > num2)) : ((num < num2)))) || (wide_ && ((!(currentApp.IsSide())) ? ((num < num2)) : ((num > num2)))))
 			{
 				int num4 = num;
 				num = num2;
@@ -132,22 +132,14 @@ namespace surface
 			int num9 = (int)((float)GamePad.SIZE_PLAIN_MIN * scaleRatio3 / 100f + 0.01f);
 			int num10 = num2 - view_.GetHeight();
 			int mode = gpad_.GetMode();
-			mode = ((num10 < num9) ? 2 : ((num10 < num7) ? 1 : ((instance.sysSave_ == null || instance.sysSave_.ints == null) ? 1 : instance.sysSave_.ints[15])));
+			if ((num10 < num9)) { mode = 2; } else { if ((num10 < num7)) { mode = 1; } else { mode = (((instance.sysSave_ != null) && (instance.sysSave_.ints != null)) ? (instance.sysSave_.ints[15]) : (1)); } }
 			if (mode != gpad_.GetMode())
 			{
 				gpad_.SetMode(mode);
 			}
 			int num11 = 0;
-			switch (mode)
-			{
-			case 0:
-				num11 = num7;
-				break;
-			case 1:
-				num10 -= instance2.GetStatusBarHeight();
-				num11 = ((num10 >= num8) ? num8 : num10);
-				break;
-			}
+			if ((mode == 0)) { num11 = num7; } else if ((mode == 1)) { num10 -= instance2.GetStatusBarHeight();
+num11 = ((num10 < num8) ? (num10) : (num8)); }
 			gpad_.SetHeight(num11);
 			bool flag2 = false;
 			if (mode == 2)

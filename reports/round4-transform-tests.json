@@ -1,0 +1,288 @@
+{
+  "actual_source_checks": [
+    {
+      "assembly": "KairoLibrary",
+      "path": "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs",
+      "rule": "unary-negation",
+      "mapped": {
+        "start": 208,
+        "end": 222,
+        "line": 18,
+        "column": 4,
+        "text": "return 0f - a;",
+        "kind": "ReturnStatement",
+        "method_id": "kairo.unity.m3d4.util3d.FastMath::Abs(System.Single)->System.Single",
+        "point": 208
+      },
+      "patches": [
+        {
+          "rule": "unary-negation",
+          "start": 215,
+          "end": 221,
+          "before": "0f - a",
+          "after": "-(a)",
+          "distance": 7
+        }
+      ],
+      "result": "SYNTAX_GENERATED_NOT_IL_VERIFIED"
+    },
+    {
+      "assembly": "KairoLibrary",
+      "path": "src/KairoLibrary/kairo/unity/ui/Seb.cs",
+      "rule": "assignment-chain-order",
+      "mapped": {
+        "start": 3014,
+        "end": 3059,
+        "line": 158,
+        "column": 5,
+        "text": "workValue = (threadLocal_ = new WorkValue());",
+        "kind": "ExpressionStatement",
+        "method_id": "kairo.unity.ui.Seb::GetWorkValue()->kairo.unity.ui.Seb/WorkValue",
+        "point": 3014
+      },
+      "patches": [
+        {
+          "rule": "assignment-chain-order",
+          "start": 3014,
+          "end": 3058,
+          "before": "workValue = (threadLocal_ = new WorkValue())",
+          "after": "threadLocal_ = (workValue = new WorkValue())",
+          "distance": 0
+        }
+      ],
+      "result": "SYNTAX_GENERATED_NOT_IL_VERIFIED"
+    },
+    {
+      "assembly": "Assembly-CSharp",
+      "path": "src/Assembly-CSharp/system/billing/ui/StoreBase.cs",
+      "rule": "loop-continue-guards",
+      "mapped": {
+        "start": 3070,
+        "end": 3156,
+        "line": 150,
+        "column": 5,
+        "text": "if (!item.paymentComplete_ && item.IsTicketProduct())\n\t\t\t\t{\n\t\t\t\t\tlist.Add(item);\n\t\t\t\t}",
+        "kind": "IfStatement",
+        "method_id": "system.billing.ui.StoreBase::GetIncompletePayments()->System.Collections.Generic.List`1<system.billing.ui.Receipt>",
+        "point": 3070
+      },
+      "patches": [
+        {
+          "rule": "loop-continue-guards",
+          "start": 3070,
+          "end": 3156,
+          "before": "if (!item.paymentComplete_ && item.IsTicketProduct())\n\t\t\t\t{\n\t\t\t\t\tlist.Add(item);\n\t\t\t\t}",
+          "after": "if (item.paymentComplete_) { continue; }\nif (!(item.IsTicketProduct())) { continue; }\nlist.Add(item);",
+          "distance": 0
+        }
+      ],
+      "result": "SYNTAX_GENERATED_NOT_IL_VERIFIED"
+    }
+  ],
+  "main_sources_modified": false,
+  "IL_acceptance": "NOT_TESTED_BY_THIS_HELPER",
+  "fixture_checks": [
+    {
+      "rule": "ternary-polarity",
+      "needle": "return x == 2 ? 7 : 8;",
+      "result": "PASS",
+      "after": "(x != 2) ? (8) : (7)"
+    },
+    {
+      "rule": "if-polarity",
+      "needle": "if (x < 0f)",
+      "result": "PASS",
+      "after": "if (!(x < 0f)) { return 2; } else { return 1; }"
+    },
+    {
+      "rule": "if-polarity",
+      "needle": "if (x < 0)",
+      "result": "PASS",
+      "after": "if (x >= 0) { return 2; } else { return 1; }"
+    },
+    {
+      "rule": "if-polarity",
+      "needle": "if (x == 0 && x < 3)",
+      "result": "PASS",
+      "after": "if ((x != 0) || (x >= 3)) { return 2; } else { return 1; }"
+    },
+    {
+      "rule": "loop-continue-guards",
+      "needle": "if (x > 2 && Check())",
+      "result": "PASS",
+      "after": "if (x <= 2) { continue; }\nif (!(Check())) { continue; }\nfield++;"
+    },
+    {
+      "rule": "guard-break",
+      "needle": "if (x > 0) { break;",
+      "result": "PASS",
+      "after": "if (x > 0) { break; }\nfield++;"
+    },
+    {
+      "rule": "condition-split-or-guards",
+      "needle": "if (x == 0 || Check())",
+      "result": "PASS",
+      "after": "if (x == 0) { continue; }\nif (Check()) { continue; }"
+    },
+    {
+      "rule": "condition-merge-or-guards",
+      "needle": "if (x == 0) { continue; } if",
+      "result": "PASS",
+      "after": "if ((x == 0) || (Check())) { continue; }"
+    },
+    {
+      "rule": "condition-merge-and",
+      "needle": "if (x > 0) { if",
+      "result": "PASS",
+      "after": "if ((x > 0) && (Check())) { field++; }"
+    },
+    {
+      "rule": "assignment-chain-order",
+      "needle": "local = (field = 7)",
+      "result": "PASS",
+      "after": "field = (local = 7)"
+    },
+    {
+      "rule": "unary-negation",
+      "needle": "return 0f - x;",
+      "result": "PASS",
+      "after": "-(x)"
+    },
+    {
+      "rule": "condition-local",
+      "needle": "if (!Check())",
+      "result": "PASS",
+      "after": "{ bool recoveredCondition_927 = Check();\nif (!recoveredCondition_927) { field++; }\n}"
+    },
+    {
+      "rule": "tail-early-return",
+      "needle": "if (x) { field++; }",
+      "result": "PASS",
+      "after": "if (!(x)) { return; }\nfield++;"
+    },
+    {
+      "rule": "switch-if",
+      "needle": "switch(x)",
+      "result": "PASS",
+      "after": "if ((x == 0)) { return 1; } else { return 2; }"
+    },
+    {
+      "rule": "loop-cache-scope",
+      "needle": "while (x > 0)",
+      "result": "PASS",
+      "after": "while (true) { bool completed_420 = x > 0; if (!completed_420) { break; }\nif (x > 2 && Check()) { field++; }\n}"
+    },
+    {
+      "rule": "return-local",
+      "needle": "return x == 2 ? 7 : 8;",
+      "result": "PASS",
+      "after": "{ int recoveredReturn_154 = x == 2 ? 7 : 8; return recoveredReturn_154; }"
+    },
+    {
+      "rule": "local-declaration-order-earlier",
+      "needle": "int b = 2;",
+      "result": "PASS",
+      "after": "int b;\nint a = 1; b = 2;"
+    },
+    {
+      "rule": "local-declaration-order-later",
+      "needle": "int a = 1;",
+      "result": "PASS",
+      "after": "int b;\nint a = 1; b = 2;"
+    },
+    {
+      "rule": "local-declaration-scope-hoist",
+      "needle": "for (int j = 0;",
+      "result": "PASS",
+      "after": "float f;\nfor (int j = 0; j < 3; j++) { f = 1f;"
+    },
+    {
+      "rule": "assignment-ternary-if",
+      "needle": "result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "if (x) { result = 1; } else { result = 2; }"
+    },
+    {
+      "rule": "assignment-ternary-if-reverse",
+      "needle": "result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "if (!(x)) { result = 2; } else { result = 1; }"
+    },
+    {
+      "rule": "declaration-ternary-if",
+      "needle": "int result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "int result;\nif (x) { result = 1; } else { result = 2; }"
+    },
+    {
+      "rule": "declaration-ternary-if-reverse",
+      "needle": "int result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "int result;\nif (!(x)) { result = 2; } else { result = 1; }"
+    },
+    {
+      "rule": "target-screen-stateless",
+      "result": "PASS",
+      "checks": [
+        "UTF-16 declaration position",
+        "target body preserved",
+        "other method stubbed",
+        "semantic tree unchanged"
+      ]
+    }
+  ],
+  "fixture_pass_count": 24,
+  "checks_scope": "Syntax selection, safe negation, rule generation and UTF-16 spans only; IL matching is measured by the engine.",
+  "smcs_slot_case_checks": [
+    {
+      "path": "src/Assembly-CSharp/game/Team.cs",
+      "method": "public int GetSum(",
+      "mapped": {
+        "start": 37030,
+        "end": 37424,
+        "line": 1402,
+        "column": 4,
+        "text": "for (int i = 0; i < CEVA_PASSER_MP2.Length; i++)\n\t\t\t{\n\t\t\t\tfloat num2 = 1f;\n\t\t\t\tif (!div)\n\t\t\t\t{\n\t\t\t\t\tnum2 = CEVA_PASSER_MP2[i];\n\t\t\t\t}\n\t\t\t\tint num3 = cx + PANEL_DIRECT_R_9BLOCK[i][0];\n\t\t\t\tint num4 = cy + PANEL_DIRECT_R_9BLOCK[i][1];\n\t\t\t\tif (num3 >= 0 && num3 < Map.MAPCHIP_COAT_WNUM && num4 >= 0 && num4 < Map.MAPCHIP_COAT_HNUM)\n\t\t\t\t{\n\t\t\t\t\tnum += (int)((float)data[num4][num3] / num2);\n\t\t\t\t}\n\t\t\t}",
+        "kind": "ForStatement",
+        "method_id": "game.Team::GetSum(System.Int32[][],System.Int32,System.Int32,System.Boolean)->System.Int32",
+        "point": 37030
+      },
+      "patches": [
+        {
+          "rule": "local-declaration-scope-hoist",
+          "start": 37030,
+          "end": 37260,
+          "before": "for (int i = 0; i < CEVA_PASSER_MP2.Length; i++)\n\t\t\t{\n\t\t\t\tfloat num2 = 1f;\n\t\t\t\tif (!div)\n\t\t\t\t{\n\t\t\t\t\tnum2 = CEVA_PASSER_MP2[i];\n\t\t\t\t}\n\t\t\t\tint num3 = cx + PANEL_DIRECT_R_9BLOCK[i][0];\n\t\t\t\tint num4 = cy + PANEL_DIRECT_R_9BLOCK[i][1];",
+          "after": "int num3;\nint num4;\nfor (int i = 0; i < CEVA_PASSER_MP2.Length; i++)\n\t\t\t{\n\t\t\t\tfloat num2 = 1f;\n\t\t\t\tif (!div)\n\t\t\t\t{\n\t\t\t\t\tnum2 = CEVA_PASSER_MP2[i];\n\t\t\t\t}\n\t\t\t\tnum3 = cx + PANEL_DIRECT_R_9BLOCK[i][0];\n\t\t\t\tnum4 = cy + PANEL_DIRECT_R_9BLOCK[i][1];",
+          "distance": 0
+        }
+      ],
+      "result": "SYNTAX_GENERATED_NOT_IL_VERIFIED"
+    },
+    {
+      "path": "src/Assembly-CSharp/game/Player.cs",
+      "method": "public bool ChMoveDirect(",
+      "mapped": {
+        "start": 26609,
+        "end": 26628,
+        "line": 1308,
+        "column": 4,
+        "text": "int[] array = null;",
+        "kind": "LocalDeclarationStatement",
+        "method_id": "game.Player::ChMoveDirect(System.Int32,System.Int32)->System.Boolean",
+        "point": 26609
+      },
+      "patches": [
+        {
+          "rule": "local-declaration-scope-hoist",
+          "start": 26609,
+          "end": 26918,
+          "before": "int[] array = null;\n\t\t\tarray = ((!BitUtil.Check(flag_, 4) && role_ != 0 && act_id != 1 && act_id != 2) ? direct_dis_free : direct_dis_passer);\n\t\t\tfor (int i = 0; i < moveDirectBox.Length; i++)\n\t\t\t{\n\t\t\t\tnum++;\n\t\t\t\tif (moveDirectBox[i] != -1 && ch_direct != moveDirectBox[i])\n\t\t\t\t{\n\t\t\t\t\tint num2;\n\t\t\t\t\tint num3;",
+          "after": "int num2;\nint num3;\nint[] array = null;\n\t\t\tarray = ((!BitUtil.Check(flag_, 4) && role_ != 0 && act_id != 1 && act_id != 2) ? direct_dis_free : direct_dis_passer);\n\t\t\tfor (int i = 0; i < moveDirectBox.Length; i++)\n\t\t\t{\n\t\t\t\tnum++;\n\t\t\t\tif (moveDirectBox[i] != -1 && ch_direct != moveDirectBox[i])\n\t\t\t\t{\n\t\t\t\t\t\n\t\t\t\t\t",
+          "distance": 0
+        }
+      ],
+      "result": "SYNTAX_GENERATED_NOT_IL_VERIFIED"
+    }
+  ]
+}

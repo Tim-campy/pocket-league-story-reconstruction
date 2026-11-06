@@ -390,7 +390,7 @@ namespace kairo.unity.system
 					{
 						Data data = (Data)dataSet_.ElementAt(i);
 						text += "\n" + (data.toset_ ? "set" : "get") + ":" + data.name_ + ":";
-						text = ((data.value_ != null) ? (text + Encoding.UTF8.GetString(data.value_.ToArray())) : (text + "null"));
+						if (data.value_ == null) { text = (text + "null"); } else { text = (text + Encoding.UTF8.GetString(data.value_.ToArray())); }
 					}
 				}
 			}

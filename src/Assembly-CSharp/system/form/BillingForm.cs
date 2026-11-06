@@ -205,7 +205,8 @@ namespace system.form
 			{
 				if (Config.APPLI_TYPE == 2)
 				{
-					string url = ((!Language.Japanese()) ? ("http://kairopark.jp/android/policy/en/app_gm" + Config.PID + "_kiyaku.html") : ("http://kairopark.jp/android/policy/app_gm" + Config.PID + "_kiyaku.html"));
+					string url;
+if (Language.Japanese()) { url = ("http://kairopark.jp/android/policy/app_gm" + Config.PID + "_kiyaku.html"); } else { url = ("http://kairopark.jp/android/policy/en/app_gm" + Config.PID + "_kiyaku.html"); }
 					if (!Canvas.OpenBrowser(url))
 					{
 						Push(SubForm.MakeDialog(KairoText.LT("通信に失敗しました")));
@@ -914,20 +915,18 @@ while (scrollValue_ > 0 && num < scrollValue_ + showMax)
 				int num3 = int.MinValue;
 				for (int m = 0; m < array.Length; m++)
 				{
-					if (array[m] == l)
-					{
-						BillingItem billingItem4 = sales[m];
-						if (billingItem4.GetState() == 0 && billingItem4.GetSeriesNumber() < num2)
+					if (array[m] != l) { continue; }
+BillingItem billingItem4 = sales[m];
+if (billingItem4.GetState() == 0 && billingItem4.GetSeriesNumber() < num2)
 						{
 							num2 = billingItem4.GetSeriesNumber();
 							billingItem2 = billingItem4;
 						}
-						if (billingItem4.GetState() != 0 && billingItem4.GetSeriesNumber() > num3)
+if (billingItem4.GetState() != 0 && billingItem4.GetSeriesNumber() > num3)
 						{
 							num3 = billingItem4.GetSeriesNumber();
 							billingItem3 = billingItem4;
 						}
-					}
 				}
 				if (billingItem2 != null)
 				{
@@ -1090,18 +1089,17 @@ while (scrollValue_ > 0 && num < scrollValue_ + showMax)
 
 		public static void DrawGradation(Graphics g, int dx, int dy, int sx, int sy, int w, int h, int sr, int sg, int sb, int dr, int dg, int db)
 		{
-			if (w > 0 && h > 0)
-			{
-				int num = dy;
-				int num2 = dx + w;
-				int num3 = dy + h;
-				double num4 = (double)(dr - sr) / (double)(h / 4 + 1);
-				double num5 = (double)(dg - sg) / (double)(h / 4 + 1);
-				double num6 = (double)(db - sb) / (double)(h / 4 + 1);
-				double num7 = (double)sr + (double)(sy / 4) * num4;
-				double num8 = (double)sg + (double)(sy / 4) * num5;
-				double num9 = (double)sb + (double)(sy / 4) * num6;
-				while (num < num3)
+			if ((w <= 0) || (h <= 0)) { return; }
+int num = dy;
+int num2 = dx + w;
+int num3 = dy + h;
+double num4 = (double)(dr - sr) / (double)(h / 4 + 1);
+double num5 = (double)(dg - sg) / (double)(h / 4 + 1);
+double num6 = (double)(db - sb) / (double)(h / 4 + 1);
+double num7 = (double)sr + (double)(sy / 4) * num4;
+double num8 = (double)sg + (double)(sy / 4) * num5;
+double num9 = (double)sb + (double)(sy / 4) * num6;
+while (num < num3)
 				{
 					num7 = ((!(num7 > 255.0)) ? num7 : 255.0);
 					num7 = ((!(num7 < 0.0)) ? num7 : 0.0);
@@ -1118,7 +1116,6 @@ while (scrollValue_ > 0 && num < scrollValue_ + showMax)
 					num8 += num5;
 					num9 += num6;
 				}
-			}
 		}
 
 		public new static string Comma(long value)

@@ -232,10 +232,12 @@ namespace kairo.unity.io
 										{
 											errorCode_ = JInteger.ParseInt(array[0]);
 										}
-										if (1 < array.Length)
+										{ bool recoveredCondition_5948 = 1 < array.Length;
+if (recoveredCondition_5948)
 										{
 											errorText_ = array[1].Replace('|', '\n');
 										}
+}
 									}
 									catch (Exception)
 									{

@@ -379,12 +379,13 @@ namespace game
 			Team.DEAFULT_FORMATION_EVA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });
 			Team.DEAFULT_FORMATION_EVA_PENALTYAREA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });
 			float num = 100f;
-			float num2 = 1000f;
+			int num5;
+float num2 = 1000f;
 			for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 			{
 				float num3 = num;
 				float num4 = num2;
-				int num5 = COAT_GOAL2_ADDRESS[1][1] - i;
+				num5 = COAT_GOAL2_ADDRESS[1][1] - i;
 				if (num5 > 0)
 				{
 					for (int j = 0; j < num5; j++)
@@ -691,9 +692,11 @@ namespace game
 		{
 			bool flag = false;
 			int num = 0;
-			bool flag2 = false;
-			MapchipMatch mapchipMatch = mapchipGrounds[MAP_GROUND];
-			int num2 = 0;
+			global::data.MapchipMatch mapchipMatch;
+int num2;
+bool flag2 = false;
+			mapchipMatch = mapchipGrounds[MAP_GROUND];
+			num2 = 0;
 			int num3 = 0;
 			for (int num4 = MAPCHIP_FIELD_HNUM - 1; num4 >= 0; num4--)
 			{
@@ -928,7 +931,9 @@ namespace game
 			g.DrawImage(apdat_.resCom2_.img[92], num3, num4);
 			int num7;
 			int num8;
-			for (int num6 = udat_.teams_.Length - 1; num6 >= 0; num6--)
+			int num9;
+int num10;
+for (int num6 = udat_.teams_.Length - 1; num6 >= 0; num6--)
 			{
 				for (int i = 0; i < udat_.teams_[num6].players_.Length; i++)
 				{
@@ -952,8 +957,8 @@ namespace game
 					}
 					num7 = (int)GameUtil.RateConvert(udat_.teams_[j].fPos_[1], 900f, -900f, num3 + num, num3, false);
 					num8 = (int)GameUtil.RateConvert(udat_.teams_[j].fPos_[0], -450f, 450f, num4, num4 + num2, false);
-					int num9 = (int)GameUtil.RateConvert(udat_.teams_[j].fPos_[2], 0f, 900f, 0f, num2, false);
-					int num10 = (int)GameUtil.RateConvert(udat_.teams_[j].fPos_[3], 0f, 1800f, 0f, num, false);
+					num9 = (int)GameUtil.RateConvert(udat_.teams_[j].fPos_[2], 0f, 900f, 0f, num2, false);
+					num10 = (int)GameUtil.RateConvert(udat_.teams_[j].fPos_[3], 0f, 1800f, 0f, num, false);
 					g.DrawRect(num7 - num10 / 2, num8 - num9 / 2, num10, num9);
 				}
 			}
@@ -1015,24 +1020,17 @@ namespace game
 			{
 				Camera.ConvertScreenToCamera(mapObjects_[i].spos_, camera_pos);
 				Image image = apdat_.resMapObject_.img[mapObjects_[i].img_];
-				if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1], image.GetWidth(), image.GetHeight(), SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))
-				{
-					apdat_.InsertGameObject(7, 0, camera_pos[1] + image.GetHeight(), mapObjects_[i].img_, 0, 0, camera_pos[0], camera_pos[1], false, 0);
-				}
+				if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1], image.GetWidth(), image.GetHeight(), SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))) { continue; }
+apdat_.InsertGameObject(7, 0, camera_pos[1] + image.GetHeight(), mapObjects_[i].img_, 0, 0, camera_pos[0], camera_pos[1], false, 0);
 			}
 		}
 
 		public int GetGoalPartsDepth(int parts_id)
 		{
-			switch (parts_id)
-			{
-			case 3:
-				if (udat_.ball_.pos_.z_ < GOAL1_GLOBAL_POS[2].z_)
+			if ((parts_id == 3)) { if (udat_.ball_.pos_.z_ < GOAL1_GLOBAL_POS[2].z_)
 				{
 					return udat_.ball_.camera_pos_[1] - 1;
-				}
-				break;
-			}
+				} }
 			return 0;
 		}
 	}

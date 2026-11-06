@@ -584,7 +584,7 @@ namespace game
 			float num5 = (float)(-MAP_SCREEN_H1) / -1800f;
 			float num6 = (float)(-MAP_SCREEN_H2) / 900f;
 			float num7 = 1f / (num3 * num5 - num4 * num6);
-			float num8 = (0f - num6) * num7 * (float)screen_pos[0] + num3 * num7 * (float)screen_pos[1];
+			float num8 = (-(num6)) * num7 * (float)screen_pos[0] + num3 * num7 * (float)screen_pos[1];
 			float num9 = (float)screen_pos[0] / num3 - num4 * num8 / num3;
 			var_out.z_ = num8 + 900f;
 			var_out.x_ = num9 + -450f;
@@ -673,60 +673,58 @@ namespace game
 
 		public void SetCameraRect()
 		{
-			if (CAMERA_LIMIT)
-			{
-				if (pos.x_ < (float)(CAMERA_RECT[0][0] + 120))
+			if (!(CAMERA_LIMIT)) { return; }
+if (pos.x_ < (float)(CAMERA_RECT[0][0] + 120))
 				{
 					pos.x_ = CAMERA_RECT[0][0] + 120;
 				}
-				if (pos.x_ > (float)(CAMERA_RECT[1][0] - 120))
+if (pos.x_ > (float)(CAMERA_RECT[1][0] - 120))
 				{
 					pos.x_ = CAMERA_RECT[1][0] - 120;
 				}
-				if (pos.y_ < (float)(CAMERA_RECT[1][1] + 120))
+if (pos.y_ < (float)(CAMERA_RECT[1][1] + 120))
 				{
 					pos.y_ = CAMERA_RECT[1][1] + 120;
 				}
-				if (pos.y_ > (float)(CAMERA_RECT[0][1] - 120))
+if (pos.y_ > (float)(CAMERA_RECT[0][1] - 120))
 				{
 					pos.y_ = CAMERA_RECT[0][1] - 120;
 				}
-				GameView gameView = GameView.GetInstance();
-				int gameWidth = gameView.GetGameWidth();
-				int gameHeight = gameView.GetGameHeight();
-				if (cursor_pos.x_ < pos.x_ - (float)(gameWidth / 2))
+GameView gameView = GameView.GetInstance();
+int gameWidth = gameView.GetGameWidth();
+int gameHeight = gameView.GetGameHeight();
+if (cursor_pos.x_ < pos.x_ - (float)(gameWidth / 2))
 				{
 					cursor_pos.x_ = pos.x_ - (float)(gameWidth / 2);
 				}
-				if (cursor_pos.x_ > pos.x_ + (float)(gameWidth / 2))
+if (cursor_pos.x_ > pos.x_ + (float)(gameWidth / 2))
 				{
 					cursor_pos.x_ = pos.x_ + (float)(gameWidth / 2);
 				}
-				if (cursor_pos.y_ < pos.y_ - (float)(gameHeight / 2))
+if (cursor_pos.y_ < pos.y_ - (float)(gameHeight / 2))
 				{
 					cursor_pos.y_ = pos.y_ - (float)(gameHeight / 2);
 				}
-				if (cursor_pos.y_ > pos.y_ + (float)(gameHeight / 2 - GameForm.VIEW_Y))
+if (cursor_pos.y_ > pos.y_ + (float)(gameHeight / 2 - GameForm.VIEW_Y))
 				{
 					cursor_pos.y_ = pos.y_ + (float)(gameHeight / 2 - GameForm.VIEW_Y);
 				}
-				if (cursor_pos.x_ < (float)(CAMERA_RECT[0][0] + CURSOR_LIMIT_OFF[2]))
+if (cursor_pos.x_ < (float)(CAMERA_RECT[0][0] + CURSOR_LIMIT_OFF[2]))
 				{
 					cursor_pos.x_ = CAMERA_RECT[0][0] + CURSOR_LIMIT_OFF[2];
 				}
-				if (cursor_pos.x_ > (float)(CAMERA_RECT[1][0] + CURSOR_LIMIT_OFF[3]))
+if (cursor_pos.x_ > (float)(CAMERA_RECT[1][0] + CURSOR_LIMIT_OFF[3]))
 				{
 					cursor_pos.x_ = CAMERA_RECT[1][0] + CURSOR_LIMIT_OFF[3];
 				}
-				if (cursor_pos.y_ < (float)(CAMERA_RECT[1][1] + CURSOR_LIMIT_OFF[1]))
+if (cursor_pos.y_ < (float)(CAMERA_RECT[1][1] + CURSOR_LIMIT_OFF[1]))
 				{
 					cursor_pos.y_ = CAMERA_RECT[1][1] + CURSOR_LIMIT_OFF[1];
 				}
-				if (cursor_pos.y_ > (float)(CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.VIEW_Y))
+if (cursor_pos.y_ > (float)(CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.VIEW_Y))
 				{
 					cursor_pos.y_ = CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.VIEW_Y;
 				}
-			}
 		}
 
 		public void Update_normal()

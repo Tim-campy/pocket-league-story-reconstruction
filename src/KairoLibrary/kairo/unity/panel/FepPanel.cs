@@ -157,7 +157,7 @@ namespace kairo.unity.panel
 			int num = 0;
 			for (int i = 0; i < s.Length(); i++)
 			{
-				num = ((!IsSimpleChara(s.CharAt(i))) ? (num + 2) : (num + 1));
+				if (IsSimpleChara(s.CharAt(i))) { num = (num + 1); } else { num = (num + 2); }
 			}
 			return num;
 		}

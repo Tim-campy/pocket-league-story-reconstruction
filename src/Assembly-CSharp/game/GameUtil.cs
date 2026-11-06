@@ -77,9 +77,8 @@ namespace game
 			MAX_ANGLEDATA_COS2 = Cos(MAX_ANGLE2);
 			MAX_ANGLEDATA_SIN3 = SIN[MAX_ANGLE3];
 			MAX_ANGLEDATA_COS3 = Cos(MAX_ANGLE3);
-			if (!Config.DEBUG_CMD)
-			{
-			}
+			if (Config.DEBUG_CMD) { return; }
+
 		}
 
 		public static int ConvertGameEva(int param)
@@ -471,7 +470,7 @@ namespace game
 			{
 				return 0f;
 			}
-			float num = (0f - 8f * DIS) / (float)(TIME * TIME);
+			float num = (-(8f * DIS)) / (float)(TIME * TIME);
 			float num2 = 2f * DIS / (float)TIME - num * (float)(TIME + 2) / 4f;
 			return num2 * time + time * (time + 1f) * num / 2f;
 		}
@@ -514,9 +513,9 @@ namespace game
 			}
 			if (angle <= 270)
 			{
-				return 0f - SIN[angle - 180];
+				return -(SIN[angle - 180]);
 			}
-			return 0f - SIN[360 - angle];
+			return -(SIN[360 - angle]);
 		}
 
 		public static float Cos(int angle)
@@ -532,11 +531,11 @@ namespace game
 			}
 			if (angle <= 180)
 			{
-				return 0f - SIN[angle - 90];
+				return -(SIN[angle - 90]);
 			}
 			if (angle <= 270)
 			{
-				return 0f - SIN[270 - angle];
+				return -(SIN[270 - angle]);
 			}
 			return SIN[angle - 270];
 		}

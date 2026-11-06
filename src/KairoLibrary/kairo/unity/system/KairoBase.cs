@@ -728,7 +728,7 @@ namespace kairo.unity.system
 			}
 			if (accountType_ == -1)
 			{
-				accountType_ = ((!Config.DEBUG) ? 1 : 0);
+				accountType_ = ((Config.DEBUG) ? (0) : (1));
 			}
 			Save();
 			if (Config.PRINT && IsCheater())
@@ -953,18 +953,7 @@ namespace kairo.unity.system
 					{
 						text += ",";
 					}
-					switch (n)
-					{
-					case 0:
-						text += "set";
-						break;
-					case 1:
-						text += "upd";
-						break;
-					case 2:
-						text += "get";
-						break;
-					}
+					if ((n == 0)) { text += "set"; } else if ((n == 1)) { text += "upd"; } else if ((n == 2)) { text += "get"; }
 				}
 			}
 			text = MakeQuery("mode", text);
@@ -1076,7 +1065,7 @@ namespace kairo.unity.system
 			string param3 = null;
 			if (column != null)
 			{
-				param = ((value != long.MinValue) ? (column + "," + value) : column);
+				if (value == long.MinValue) { param = column; } else { param = (column + "," + value); }
 				param2 = JString.ValueOf(low);
 				param3 = JString.ValueOf(high);
 			}
@@ -1150,7 +1139,8 @@ namespace kairo.unity.system
 			get = CorrectGetGameData(get);
 			where = CorrectWhereGameData(where);
 			string[] array = StringUtil.Split(get, ",");
-			string param = "rank";
+			string text;
+string param = "rank";
 			tbname = MakeQuery("tbname", tbname);
 			param = MakeQuery("mode", param);
 			friendId = MakeQuery("friendid", friendId);
@@ -1158,7 +1148,7 @@ namespace kairo.unity.system
 			where = MakeQuery("where", where);
 			column = MakeQuery("column", column);
 			top = MakeQuery("top", top);
-			string text = MakeQuery("self", self ? "1" : "0");
+			text = MakeQuery("self", self ? "1" : "0");
 			order = MakeQuery("order", order);
 			byte[][] array2 = Connect("gamedata.php" + tbname + param + friendId + get + where + column + top + text + order, true);
 			GameDataRecord[][] array3 = new GameDataRecord[2][];
@@ -1500,8 +1490,9 @@ namespace kairo.unity.system
 
 		public string MakeUrl(string cgi, byte[] send)
 		{
-			string text = null;
 			int num;
+string text = null;
+
 			if (cgi.StartsWith("http://") || cgi.StartsWith("https://"))
 			{
 				num = cgi.LastIndexOf('/');
@@ -1562,8 +1553,9 @@ namespace kairo.unity.system
 			{
 				cgi = cgi + "?" + text3.Substring(1);
 			}
-			bool flag = cgi.Contains("virtual_currency.php");
 			string text4;
+bool flag = cgi.Contains("virtual_currency.php");
+
 			if (text != null && text.Contains(GetCommonServer()))
 			{
 				text4 = text + cgi;
@@ -2220,7 +2212,7 @@ namespace kairo.unity.system
 					{
 						text += "\t";
 					}
-					text = ((mode != 3 || Application.platform != RuntimePlatform.IPhonePlayer) ? (text + mode + "," + paymentDataRecord.orderId_ + "," + paymentDataRecord.productId_ + "," + IApplication.GetCurrentApp().GetPackageName() + "," + paymentDataRecord.amount_ + "," + paymentDataRecord.actCode_ + "," + paymentDataRecord.timestamp_ + "," + paymentDataRecord.purchaseToken_) : (text + mode + "," + paymentDataRecord.orderId_ + "_" + GetUserId() + "," + paymentDataRecord.productId_ + "," + IApplication.GetCurrentApp().GetPackageName() + "," + paymentDataRecord.amount_ + "," + paymentDataRecord.actCode_ + "," + paymentDataRecord.timestamp_ + "," + paymentDataRecord.purchaseToken_));
+					if ((mode == 3) && (Application.platform == RuntimePlatform.IPhonePlayer)) { text = (text + mode + "," + paymentDataRecord.orderId_ + "_" + GetUserId() + "," + paymentDataRecord.productId_ + "," + IApplication.GetCurrentApp().GetPackageName() + "," + paymentDataRecord.amount_ + "," + paymentDataRecord.actCode_ + "," + paymentDataRecord.timestamp_ + "," + paymentDataRecord.purchaseToken_); } else { text = (text + mode + "," + paymentDataRecord.orderId_ + "," + paymentDataRecord.productId_ + "," + IApplication.GetCurrentApp().GetPackageName() + "," + paymentDataRecord.amount_ + "," + paymentDataRecord.actCode_ + "," + paymentDataRecord.timestamp_ + "," + paymentDataRecord.purchaseToken_); }
 					if (mode == 2)
 					{
 						text += ",1";
@@ -2469,7 +2461,8 @@ namespace kairo.unity.system
 					}
 					continue;
 				}
-				GameAppli item = default(GameAppli);
+				long num;
+GameAppli item = default(GameAppli);
 				if (array[0] != -1)
 				{
 					item.Pid = int.Parse(array3[array[0]]);
@@ -2482,7 +2475,7 @@ namespace kairo.unity.system
 				{
 					item.Name = array3[array[2]];
 				}
-				long num = -1L;
+				num = -1L;
 				if (array[10] != -1)
 				{
 					item.AndPkg = array3[array[10]];

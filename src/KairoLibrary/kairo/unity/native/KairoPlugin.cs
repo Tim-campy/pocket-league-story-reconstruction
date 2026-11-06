@@ -694,7 +694,7 @@ namespace kairo.unity.native
 
 		public static byte[] GetPreference(string key)
 		{
-			return (byte[])app_.RunOnUiThread(() => (kairo.common.cfg.Config.APPLI_TYPE == 2 && !kairo.common.cfg.Config.UNITY_EDITOR) ? ((!Utility.CallStatic<bool>("existPreference", new object[1] { key })) ? null : Utility.CallStatic<byte[]>("getPreference", new object[1] { key })) : null, true);
+			return (byte[])app_.RunOnUiThread(() => ((kairo.common.cfg.Config.APPLI_TYPE != 2) || (kairo.common.cfg.Config.UNITY_EDITOR)) ? (null) : (((Utility.CallStatic<bool>("existPreference", new object[1] { key })) ? (Utility.CallStatic<byte[]>("getPreference", new object[1] { key })) : (null))), true);
 		}
 
 		public static void RemovePreference(string key)

@@ -52,7 +52,7 @@ namespace system.billing.ui
 		private void Init(BillingItem item, string gift, int type, bool notice)
 		{
 			item_ = item;
-			gift_ = new SecureString((gift == null) ? string.Empty : gift);
+			gift_ = new SecureString((gift != null) ? (gift) : (string.Empty));
 			type_ = type;
 			notice_ = notice;
 			lock_ = false;

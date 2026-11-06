@@ -295,10 +295,8 @@ goalScoreRate_[1] = goalScoreRate_[0] + 20; }
 				for (num3 = 0; num3 < out_ary2.Size(); num3++)
 				{
 					int[] array3 = (int[])out_ary2.ElementAt(num3);
-					if (playerData.game_goalInLeague_ >= array3[0])
-					{
-						break;
-					}
+					if (playerData.game_goalInLeague_ < array3[0]) { return; }
+break;
 				}
 				if (num3 >= 0 && num3 <= out_ary1.Size() && num3 <= out_ary2.Size())
 				{

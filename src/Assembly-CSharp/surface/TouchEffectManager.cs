@@ -140,11 +140,9 @@ if (recoveredCondition_793)
 			for (int i = 0; i < effectsBuffer_.Size(); i++)
 			{
 				TouchEffect touchEffect2 = effectsBuffer_.ElementAt(i);
-				if (!effects.Contains(touchEffect2))
-				{
-					touchEffect = touchEffect2;
-					break;
-				}
+				if (effects.Contains(touchEffect2)) { continue; }
+touchEffect = touchEffect2;
+break;
 			}
 			if (touchEffect == null)
 			{

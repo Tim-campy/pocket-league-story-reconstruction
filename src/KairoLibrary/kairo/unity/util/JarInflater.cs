@@ -230,7 +230,8 @@ namespace kairo.unity.util
 		public byte[] GetData(string name)
 		{
 			name = ConvertExtension(name);
-			if (directory_ != null)
+			int len;
+if (directory_ != null)
 			{
 				byte[] array = Storage.Read(3, false, directory_ + name);
 				if (array != null)
@@ -256,7 +257,7 @@ namespace kairo.unity.util
 			byte[] array3 = new byte[1024];
 			try
 			{
-				int len;
+
 				while ((len = inputStream.Read(array3)) >= 0)
 				{
 					byteArrayOutputStream.Write(array3, 0, len);

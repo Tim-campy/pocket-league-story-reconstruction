@@ -131,10 +131,12 @@ namespace system.form
 						string data2;
 						Language.MakeLangPackTemplate(langPackJapanese_, 202, out langPackFile_, out data2);
 						int hashCode = data2.GetHashCode();
-						if (instance.ConnectLangPackCheck(langPackFile_, 202, hashCode))
+						{ bool recoveredCondition_3348 = instance.ConnectLangPackCheck(langPackFile_, 202, hashCode);
+if (recoveredCondition_3348)
 						{
 							instance.ConnectLangPackSet(langPackFile_, 202, hashCode, data2);
 						}
+}
 					}, delegate(HttpForm form, HttpForm.ResultData data)
 					{
 						KairoBase instance = KairoBase.GetInstance();
@@ -206,8 +208,9 @@ namespace system.form
 		{
 			GameView instance = GameView.GetInstance();
 			g.PushOrigin(0, 0);
-			int x = 20;
-			int y = 20;
+			int y;
+int x = 20;
+			y = 20;
 			if (BitUtil.Check(anchor, 2))
 			{
 				x = instance.GetGameWidth() / 2;

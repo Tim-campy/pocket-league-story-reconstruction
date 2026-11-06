@@ -1080,22 +1080,7 @@ if (recoveredCondition_26283)
 			int[] array2 = TEXTURES[array[4]];
 			int imgId = array[4];
 			string text = null;
-			switch (id)
-			{
-			case 0:
-			case 5:
-				text = canvas_.GetSoftLabelL();
-				break;
-			case 1:
-				text = canvas_.GetSoftLabelR();
-				break;
-			case 2:
-				text = canvas_.GetSoftLabel(2);
-				break;
-			case 3:
-				text = canvas_.GetSoftLabel(3);
-				break;
-			}
+			if ((id == 0) || (id == 5)) { text = canvas_.GetSoftLabelL(); } else if ((id == 1)) { text = canvas_.GetSoftLabelR(); } else if ((id == 2)) { text = canvas_.GetSoftLabel(2); } else if ((id == 3)) { text = canvas_.GetSoftLabel(3); }
 			if (text == null)
 			{
 				return false;
@@ -1144,7 +1129,7 @@ if (recoveredCondition_26283)
 			{
 				bool linearFilterEnable = canvas_.IsLinearFilterEnable();
 				canvas_.SetLinearFilterEnable(true);
-				DrawSoftLabelImage(g, num7 - 27f * sideViewRatio, num8 - 10f * sideViewRatio, (JSystem.CurrentTimeMillis() % 800 >= 400) ? 16 : 15);
+				DrawSoftLabelImage(g, num7 - 27f * sideViewRatio, num8 - 10f * sideViewRatio, (JSystem.CurrentTimeMillis() % 800 < 400) ? (15) : (16));
 				canvas_.SetLinearFilterEnable(linearFilterEnable);
 				num7 += 12f * sideViewRatio;
 			}

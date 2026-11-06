@@ -1,0 +1,921 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1606,
+  "limit_iterations": 8,
+  "max_candidates_per_step": 24,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "cfg.MyConfig::.cctor()->System.Void",
+      "number": 1,
+      "initial_offset": 23,
+      "steps": [],
+      "trials": [],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "source_mapping_UNKNOWN",
+      "mapping_detail": null,
+      "final_offset": 23,
+      "body_equal": false,
+      "body_gains": [],
+      "body_losses": []
+    },
+    {
+      "id": "data.FanActData::Update()->System.Void",
+      "number": 2,
+      "initial_offset": 7,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "tail-early-return",
+          "start": 4731,
+          "end": 4943,
+          "before": "if (state_ == 2)\r\n\t\t\t{\r\n\t\t\t\tstateCnt_++;\r\n\t\t\t\tif (stateCnt_ >= 200)\r\n\t\t\t\t{\r\n\t\t\t\t\tSubForm subForm = new SubForm(41);\r\n\t\t\t\t\tsubForm.fanActData_ = this;\r\n\t\t\t\t\tapdat_.Push(subForm);\r\n\t\t\t\t\tChangeState(1);\r\n\t\t\t\t}\r\n\t\t\t}",
+          "after": "if (state_ != 2) { return; }\nstateCnt_++;\nif (stateCnt_ >= 200)\r\n\t\t\t\t{\r\n\t\t\t\t\tSubForm subForm = new SubForm(41);\r\n\t\t\t\t\tsubForm.fanActData_ = this;\r\n\t\t\t\t\tapdat_.Push(subForm);\r\n\t\t\t\t\tChangeState(1);\r\n\t\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 7,
+          "accepted": true,
+          "new_prefix": 78,
+          "body_equal": true,
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "data.FanActData::Update()->System.Void"
+          ],
+          "matched_IL_gain": 78
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "tail-early-return",
+          "start": 4731,
+          "end": 4943,
+          "before": "if (state_ == 2)\r\n\t\t\t{\r\n\t\t\t\tstateCnt_++;\r\n\t\t\t\tif (stateCnt_ >= 200)\r\n\t\t\t\t{\r\n\t\t\t\t\tSubForm subForm = new SubForm(41);\r\n\t\t\t\t\tsubForm.fanActData_ = this;\r\n\t\t\t\t\tapdat_.Push(subForm);\r\n\t\t\t\t\tChangeState(1);\r\n\t\t\t\t}\r\n\t\t\t}",
+          "after": "if (state_ != 2) { return; }\nstateCnt_++;\nif (stateCnt_ >= 200)\r\n\t\t\t\t{\r\n\t\t\t\t\tSubForm subForm = new SubForm(41);\r\n\t\t\t\t\tsubForm.fanActData_ = this;\r\n\t\t\t\t\tapdat_.Push(subForm);\r\n\t\t\t\t\tChangeState(1);\r\n\t\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 7,
+          "accepted": true,
+          "new_prefix": 78,
+          "body_equal": true,
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "data.FanActData::Update()->System.Void"
+          ],
+          "matched_IL_gain": 78
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "stop_point": {
+        "offset": 7,
+        "source": "src/Assembly-CSharp/data/FanActData.cs",
+        "point": {
+          "offset": 0,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\FanActData.cs",
+          "start_line": 221,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 7,
+          "line": 221,
+          "column": -1
+        },
+        "statement": {
+          "start": 4731,
+          "end": 4943,
+          "line": 221,
+          "column": 4,
+          "text": "if (state_ == 2)\r\n\t\t\t{\r\n\t\t\t\tstateCnt_++;\r\n\t\t\t\tif (stateCnt_ >= 200)\r\n\t\t\t\t{\r\n\t\t\t\t\tSubForm subForm = new SubForm(41);\r\n\t\t\t\t\tsubForm.fanActData_ = this;\r\n\t\t\t\t\tapdat_.Push(subForm);\r\n\t\t\t\t\tChangeState(1);\r\n\t\t\t\t}\r\n\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "data.FanActData::Update()->System.Void",
+          "point": 4728
+        }
+      },
+      "final_offset": 78,
+      "body_equal": true,
+      "body_gains": [
+        "data.FanActData::Update()->System.Void"
+      ],
+      "body_losses": []
+    },
+    {
+      "id": "data.FanActData::GetDispParamToEva(System.Int32,System.Int32)->System.Int32",
+      "number": 3,
+      "initial_offset": 1,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "switch-if",
+          "start": 5355,
+          "end": 5741,
+          "before": "switch (F_ID)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t{\r\n\t\t\t\tint num = GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t}\r\n\t\t\tcase 1:\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100, 0, 1000, true);\r\n\t\t\tcase 2:\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 1000, 0, 10000, true);\r\n\t\t\tdefault:\r\n\t\t\t\treturn 0;\r\n\t\t\t}",
+          "after": "if ((F_ID == 0)) { {\r\n\t\t\t\tint num = GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t} } else if ((F_ID == 1)) { return GameUtil.RateConvert(dispParam, 0, 100, 0, 1000, true); } else if ((F_ID == 2)) { return GameUtil.RateConvert(dispParam, 0, 1000, 0, 10000, true); } else { return 0; }",
+          "compile_pass": true,
+          "old_prefix": 1,
+          "accepted": true,
+          "new_prefix": 99,
+          "body_equal": true,
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "data.FanActData::GetDispParamToEva(System.Int32,System.Int32)->System.Int32"
+          ],
+          "matched_IL_gain": 99
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "switch-if",
+          "start": 5355,
+          "end": 5741,
+          "before": "switch (F_ID)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t{\r\n\t\t\t\tint num = GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t}\r\n\t\t\tcase 1:\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100, 0, 1000, true);\r\n\t\t\tcase 2:\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 1000, 0, 10000, true);\r\n\t\t\tdefault:\r\n\t\t\t\treturn 0;\r\n\t\t\t}",
+          "after": "if ((F_ID == 0)) { {\r\n\t\t\t\tint num = GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t} } else if ((F_ID == 1)) { return GameUtil.RateConvert(dispParam, 0, 100, 0, 1000, true); } else if ((F_ID == 2)) { return GameUtil.RateConvert(dispParam, 0, 1000, 0, 10000, true); } else { return 0; }",
+          "compile_pass": true,
+          "old_prefix": 1,
+          "accepted": true,
+          "new_prefix": 99,
+          "body_equal": true,
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "data.FanActData::GetDispParamToEva(System.Int32,System.Int32)->System.Int32"
+          ],
+          "matched_IL_gain": 99
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "stop_point": {
+        "offset": 1,
+        "source": "src/Assembly-CSharp/data/FanActData.cs",
+        "point": {
+          "offset": 0,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\FanActData.cs",
+          "start_line": 239,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 1,
+          "line": 239,
+          "column": -1
+        },
+        "statement": {
+          "start": 5355,
+          "end": 5741,
+          "line": 239,
+          "column": 4,
+          "text": "switch (F_ID)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t{\r\n\t\t\t\tint num = GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);\r\n\t\t\t}\r\n\t\t\tcase 1:\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 100, 0, 1000, true);\r\n\t\t\tcase 2:\r\n\t\t\t\treturn GameUtil.RateConvert(dispParam, 0, 1000, 0, 10000, true);\r\n\t\t\tdefault:\r\n\t\t\t\treturn 0;\r\n\t\t\t}",
+          "kind": "SwitchStatement",
+          "method_id": "data.FanActData::GetDispParamToEva(System.Int32,System.Int32)->System.Int32",
+          "point": 5352
+        }
+      },
+      "final_offset": 99,
+      "body_equal": true,
+      "body_gains": [
+        "data.FanActData::GetDispParamToEva(System.Int32,System.Int32)->System.Int32"
+      ],
+      "body_losses": []
+    },
+    {
+      "id": "data.FanBonusData::SetBPFData(data.FanBonusData,System.String,System.Int32[],System.Int32)->System.Void",
+      "number": 4,
+      "initial_offset": 101,
+      "steps": [],
+      "trials": [],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "no_transformation_advances",
+      "stop_point": {
+        "offset": 101,
+        "source": "src/Assembly-CSharp/data/FanBonusData.cs",
+        "point": {
+          "offset": 95,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\FanBonusData.cs",
+          "start_line": 292,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 101,
+          "line": 292,
+          "column": -1
+        },
+        "statement": {
+          "start": 6522,
+          "end": 6557,
+          "line": 292,
+          "column": 5,
+          "text": "array = new int[1] { charaDataId };",
+          "kind": "ExpressionStatement",
+          "method_id": "data.FanBonusData::SetBPFData(data.FanBonusData,System.String,System.Int32[],System.Int32)->System.Void",
+          "point": 6518
+        }
+      },
+      "candidate_count": 0,
+      "final_offset": 101,
+      "body_equal": false,
+      "body_gains": [],
+      "body_losses": []
+    },
+    {
+      "id": "data.FanBonusData::GetFanBonusDataList(System.Int32)->java.util.Vector",
+      "number": 5,
+      "initial_offset": 29,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 8293,
+          "end": 8387,
+          "before": "if (fanBonusData.termMode_ == term_mode)\r\n\t\t\t\t{\r\n\t\t\t\t\tfb_list.AddElement(fanBonusData);\r\n\t\t\t\t}",
+          "after": "if (fanBonusData.termMode_ != term_mode) { continue; }\nfb_list.AddElement(fanBonusData);",
+          "compile_pass": true,
+          "old_prefix": 29,
+          "accepted": true,
+          "new_prefix": 102,
+          "body_equal": true,
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "data.FanBonusData::GetFanBonusDataList(System.Int32)->java.util.Vector"
+          ],
+          "matched_IL_gain": 102
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 8293,
+          "end": 8387,
+          "before": "if (fanBonusData.termMode_ == term_mode)\r\n\t\t\t\t{\r\n\t\t\t\t\tfb_list.AddElement(fanBonusData);\r\n\t\t\t\t}",
+          "after": "if (fanBonusData.termMode_ != term_mode) { continue; }\nfb_list.AddElement(fanBonusData);",
+          "compile_pass": true,
+          "old_prefix": 29,
+          "accepted": true,
+          "new_prefix": 102,
+          "body_equal": true,
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "data.FanBonusData::GetFanBonusDataList(System.Int32)->java.util.Vector"
+          ],
+          "matched_IL_gain": 102
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "stop_point": {
+        "offset": 29,
+        "source": "src/Assembly-CSharp/data/FanBonusData.cs",
+        "point": {
+          "offset": 28,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\FanBonusData.cs",
+          "start_line": 355,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 29,
+          "line": 355,
+          "column": -1
+        },
+        "statement": {
+          "start": 8178,
+          "end": 8393,
+          "line": 355,
+          "column": 4,
+          "text": "for (int i = 0; i < apdat_.fanBonus_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tFanBonusData fanBonusData = apdat_.fanBonus_[i];\r\n\t\t\t\tif (fanBonusData.termMode_ == term_mode)\r\n\t\t\t\t{\r\n\t\t\t\t\tfb_list.AddElement(fanBonusData);\r\n\t\t\t\t}\r\n\t\t\t}",
+          "kind": "ForStatement",
+          "method_id": "data.FanBonusData::GetFanBonusDataList(System.Int32)->java.util.Vector",
+          "point": 8175
+        }
+      },
+      "final_offset": 102,
+      "body_equal": true,
+      "body_gains": [
+        "data.FanBonusData::GetFanBonusDataList(System.Int32)->java.util.Vector"
+      ],
+      "body_losses": []
+    },
+    {
+      "id": "data.FanBonusData::ChBonusEvent()->System.Void",
+      "number": 6,
+      "initial_offset": 67,
+      "steps": [],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 11354,
+          "end": 11534,
+          "before": "if (instance2.game_winConsecutive_ == fanBonusData7.termModeValue_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData7, fanBonusData7.message_, fanBonusData7.param);\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}",
+          "after": "if (instance2.game_winConsecutive_ != fanBonusData7.termModeValue_) { continue; }\nSetBPFData(fanBonusData7, fanBonusData7.message_, fanBonusData7.param);\nbreak;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 8939,
+          "end": 9660,
+          "before": "if (instance2.gm_.score_[0] > instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num12 = warPotential_6 - warPotential_5;\r\n\t\t\t\t\t\tif (num12 < 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}",
+          "after": "{ bool recoveredCondition_8939 = instance2.gm_.score_[0] > instance2.gm_.score_[1];\nif (recoveredCondition_8939)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num12 = warPotential_6 - warPotential_5;\r\n\t\t\t\t\t\tif (num12 < 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-later",
+          "start": 9009,
+          "end": 9106,
+          "before": "int warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_6 = teamData2.warPotential_;",
+          "after": "int warPotential_6;\nint warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\twarPotential_6 = teamData2.warPotential_;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-earlier",
+          "start": 9009,
+          "end": 9158,
+          "before": "int warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num12 = warPotential_6 - warPotential_5;",
+          "after": "int num12;\nint warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tnum12 = warPotential_6 - warPotential_5;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "if-polarity",
+          "start": 9166,
+          "end": 9652,
+          "before": "if (num12 < 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "after": "if (num12 >= 100) if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t} else {\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "tail-early-return",
+          "start": 11354,
+          "end": 11534,
+          "before": "if (instance2.game_winConsecutive_ == fanBonusData7.termModeValue_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData7, fanBonusData7.message_, fanBonusData7.param);\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}",
+          "after": "if (instance2.game_winConsecutive_ != fanBonusData7.termModeValue_) { return; }\nSetBPFData(fanBonusData7, fanBonusData7.message_, fanBonusData7.param);\nbreak;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "condition-split-and",
+          "start": 11871,
+          "end": 12261,
+          "before": "if (instance2.battleQmIndex_ == questMatchData.matchEnemy_.Length - 1 && ((questMatchData.matchForm_ == 2 && num == 15) || (questMatchData.matchForm_ == 1 && num == 16)) && questMatchData.rank_ >= 0 && questMatchData.rank_ <= 6)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, questMatchData.rank_);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "after": "if (instance2.battleQmIndex_ == questMatchData.matchEnemy_.Length - 1 && ((questMatchData.matchForm_ == 2 && num == 15) || (questMatchData.matchForm_ == 1 && num == 16)) && questMatchData.rank_ >= 0) { if (questMatchData.rank_ <= 6) {\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, questMatchData.rank_);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t} }",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 13976,
+          "end": 14078,
+          "before": "if (array2[0] == num8)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t\t\t\tarray2[1]++;\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}",
+          "after": "if (array2[0] != num8) { continue; }\nflag = true;\narray2[1]++;\nbreak;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 14095,
+          "end": 14175,
+          "before": "if (!flag)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tvector2.AddElement(new int[2] { num8, 1 });\r\n\t\t\t\t\t\t}",
+          "after": "if (flag) { continue; }\nvector2.AddElement(new int[2] { num8, 1 });",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 14313,
+          "end": 14592,
+          "before": "if (array3[1] >= 3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData5 = instance.pData_[array3[0]];\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, StringUtil.Replace(fanBonusData.message_, playerData5.name_), fanBonusData.param, playerData5.id_);\r\n\t\t\t\t\t\t}",
+          "after": "if (array3[1] < 3) { continue; }\nPlayerData playerData5 = instance.pData_[array3[0]];\nfanBonusData = GetFanBonusData(num, 0);\nSetBPFData(fanBonusData, StringUtil.Replace(fanBonusData.message_, playerData5.name_), fanBonusData.param, playerData5.id_);",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 15009,
+          "end": 15298,
+          "before": "if (playerData4.matchNum_ == fanBonusData9.termModeValue_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tstring topMessage4 = StringUtil.Replace(fanBonusData9.message_, playerData4.name_ + \"\\t\" + playerData4.matchNum_);\r\n\t\t\t\t\t\t\t\tSetBPFData(fanBonusData9, topMessage4, fanBonusData9.param, playerData4.id_);\r\n\t\t\t\t\t\t\t}",
+          "after": "if (playerData4.matchNum_ != fanBonusData9.termModeValue_) { continue; }\nstring topMessage4 = StringUtil.Replace(fanBonusData9.message_, playerData4.name_ + \"\\t\" + playerData4.matchNum_);\nSetBPFData(fanBonusData9, topMessage4, fanBonusData9.param, playerData4.id_);",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "loop-continue-guard",
+          "start": 15724,
+          "end": 16037,
+          "before": "if (playerData2.game_goalConsecutive_ == fanBonusData8.termModeValue_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tstring topMessage3 = StringUtil.Replace(fanBonusData8.message_, playerData2.name_ + \"\\t\" + playerData2.game_goalConsecutive_);\r\n\t\t\t\t\t\t\t\tSetBPFData(fanBonusData8, topMessage3, fanBonusData8.param, playerData2.id_);\r\n\t\t\t\t\t\t\t}",
+          "after": "if (playerData2.game_goalConsecutive_ != fanBonusData8.termModeValue_) { continue; }\nstring topMessage3 = StringUtil.Replace(fanBonusData8.message_, playerData2.name_ + \"\\t\" + playerData2.game_goalConsecutive_);\nSetBPFData(fanBonusData8, topMessage3, fanBonusData8.param, playerData2.id_);",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-later",
+          "start": 9009,
+          "end": 9158,
+          "before": "int warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num12 = warPotential_6 - warPotential_5;",
+          "after": "int warPotential_6;\nint num12;\nint warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\twarPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tnum12 = warPotential_6 - warPotential_5;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-later",
+          "start": 9061,
+          "end": 9158,
+          "before": "int warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num12 = warPotential_6 - warPotential_5;",
+          "after": "int num12;\nint warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tnum12 = warPotential_6 - warPotential_5;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 9166,
+          "end": 9652,
+          "before": "if (num12 < 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "after": "{ bool recoveredCondition_9166 = num12 < 100;\nif (recoveredCondition_9166)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "if-polarity",
+          "start": 9338,
+          "end": 9652,
+          "before": "if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "after": "if (num12 >= 200) {\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t} else {\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 9338,
+          "end": 9652,
+          "before": "if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "after": "{ bool recoveredCondition_9338 = num12 < 200;\nif (recoveredCondition_9338)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 9694,
+          "end": 10257,
+          "before": "if (instance2.gm_.score_[0] == instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num2 = warPotential_2 - warPotential_;\r\n\t\t\t\t\t\tif (num2 > 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num2 < -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}",
+          "after": "{ bool recoveredCondition_9694 = instance2.gm_.score_[0] == instance2.gm_.score_[1];\nif (recoveredCondition_9694)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num2 = warPotential_2 - warPotential_;\r\n\t\t\t\t\t\tif (num2 > 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num2 < -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-later",
+          "start": 9765,
+          "end": 9861,
+          "before": "int warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_2 = teamData2.warPotential_;",
+          "after": "int warPotential_2;\nint warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\twarPotential_2 = teamData2.warPotential_;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-later",
+          "start": 9765,
+          "end": 9911,
+          "before": "int warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num2 = warPotential_2 - warPotential_;",
+          "after": "int warPotential_2;\nint num2;\nint warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\twarPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tnum2 = warPotential_2 - warPotential_;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-later",
+          "start": 9816,
+          "end": 9911,
+          "before": "int warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num2 = warPotential_2 - warPotential_;",
+          "after": "int num2;\nint warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tnum2 = warPotential_2 - warPotential_;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "local-declaration-order-earlier",
+          "start": 9765,
+          "end": 9911,
+          "before": "int warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num2 = warPotential_2 - warPotential_;",
+          "after": "int num2;\nint warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tnum2 = warPotential_2 - warPotential_;",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "if-polarity",
+          "start": 9919,
+          "end": 10249,
+          "before": "if (num2 > 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num2 < -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "after": "if (num2 <= 100) if (num2 < -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t} else {\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 9919,
+          "end": 10249,
+          "before": "if (num2 > 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num2 < -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}",
+          "after": "{ bool recoveredCondition_9919 = num2 > 100;\nif (recoveredCondition_9919)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num2 < -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 67,
+          "accepted": false,
+          "new_prefix": 67,
+          "body_equal": false
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "candidate_limit",
+      "stop_point": {
+        "offset": 67,
+        "source": "src/Assembly-CSharp/data/FanBonusData.cs",
+        "point": {
+          "offset": 66,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\FanBonusData.cs",
+          "start_line": 373,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 67,
+          "line": 373,
+          "column": -1
+        },
+        "statement": {
+          "start": 8807,
+          "end": 18108,
+          "line": 373,
+          "column": 4,
+          "text": "for (int i = 0; i < TERA_MODE_LIST.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tint num = TERA_MODE_LIST[i];\r\n\t\t\t\tswitch (num)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tif (instance2.gm_.score_[0] > instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint warPotential_5 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_6 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num12 = warPotential_6 - warPotential_5;\r\n\t\t\t\t\t\tif (num12 < 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num12 < 200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 13:\r\n\t\t\t\t\tif (instance2.gm_.score_[0] == instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint warPotential_ = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_2 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num2 = warPotential_2 - warPotential_;\r\n\t\t\t\t\t\tif (num2 > 100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num2 < -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tif (instance2.gm_.score_[0] < instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint warPotential_3 = teamData.warPotential_;\r\n\t\t\t\t\t\tint warPotential_4 = teamData2.warPotential_;\r\n\t\t\t\t\t\tint num11 = warPotential_4 - warPotential_3;\r\n\t\t\t\t\t\tif (num11 >= -100)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse if (num11 >= -200)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 1);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 2);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 2:\r\n\t\t\t\t{\r\n\t\t\t\t\tif (instance2.gm_.score_[0] <= instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tVector fanBonusDataList4 = GetFanBonusDataList(num);\r\n\t\t\t\t\tfor (int n = 0; n < fanBonusDataList4.Size(); n++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFanBonusData fanBonusData7 = (FanBonusData)fanBonusDataList4.ElementAt(n);\r\n\t\t\t\t\t\tif (instance2.game_winConsecutive_ == fanBonusData7.termModeValue_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData7, fanBonusData7.message_, fanBonusData7.param);\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 15:\r\n\t\t\t\tcase 16:\r\n\t\t\t\t{\r\n\t\t\t\t\tif (instance2.gm_.score_[0] <= instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tint matchInfoJoin = instance2.GetMatchInfoJoin();\r\n\t\t\t\t\tif (matchInfoJoin == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tQuestMatchData questMatchData = instance.qmData_[instance2.selectQmId_];\r\n\t\t\t\t\t\tif (instance2.battleQmIndex_ == questMatchData.matchEnemy_.Length - 1 && ((questMatchData.matchForm_ == 2 && num == 15) || (questMatchData.matchForm_ == 1 && num == 16)) && questMatchData.rank_ >= 0 && questMatchData.rank_ <= 6)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, questMatchData.rank_);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 3:\r\n\t\t\t\t\tif (instance2.GetMatchInfoJoin() == 0 && LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLeagueData leagueData = instance.leagueData_[instance2.selectLeagueId_];\r\n\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, leagueData.id_);\r\n\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 14:\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!LeagueData.IsLastMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tLeagueData league_data = instance.leagueData_[instance2.selectLeagueId_];\r\n\t\t\t\t\tVector out_ary = new Vector();\r\n\t\t\t\t\tVector vector = new Vector();\r\n\t\t\t\t\tTeamData.SetScoreRanking(league_data, out_ary, vector);\r\n\t\t\t\t\tif (vector.Size() > 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint[] array = (int[])vector.ElementAt(0);\r\n\t\t\t\t\t\tif (array[1] == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData3 = instance.pData_[array[2]];\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, StringUtil.Replace(fanBonusData.message_, playerData3.name_), fanBonusData.param, playerData3.id_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 4:\r\n\t\t\t\t\tif (instance2.gm_.score_[0] >= 3 && instance2.gm_.score_[1] >= 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\tSetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 5:\r\n\t\t\t\t{\r\n\t\t\t\t\tVector vector2 = new Vector();\r\n\t\t\t\t\tbool flag = false;\r\n\t\t\t\t\tfor (int num7 = 0; num7 < instance2.gm_.scorerListUserTeam.Size(); num7++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num8 = ((JInteger)instance2.gm_.scorerListUserTeam.ElementAt(num7)).IntValue();\r\n\t\t\t\t\t\tflag = false;\r\n\t\t\t\t\t\tfor (int num9 = 0; num9 < vector2.Size(); num9++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tint[] array2 = (int[])vector2.ElementAt(num9);\r\n\t\t\t\t\t\t\tif (array2[0] == num8)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t\t\t\tarray2[1]++;\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tvector2.AddElement(new int[2] { num8, 1 });\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tfor (int num10 = 0; num10 < vector2.Size(); num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint[] array3 = (int[])vector2.ElementAt(num10);\r\n\t\t\t\t\t\tif (array3[1] >= 3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData5 = instance.pData_[array3[0]];\r\n\t\t\t\t\t\t\tfanBonusData = GetFanBonusData(num, 0);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData, StringUtil.Replace(fanBonusData.message_, playerData5.name_), fanBonusData.param, playerData5.id_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 6:\r\n\t\t\t\t{\r\n\t\t\t\t\tVector fanBonusDataList6 = GetFanBonusDataList(num);\r\n\t\t\t\t\tfor (int num5 = 0; num5 < fanBonusDataList6.Size(); num5++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFanBonusData fanBonusData9 = (FanBonusData)fanBonusDataList6.ElementAt(num5);\r\n\t\t\t\t\t\tfor (int num6 = 0; num6 < 11; num6++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData4 = (PlayerData)instance2.memberPDataist_.ElementAt(num6);\r\n\t\t\t\t\t\t\tif (playerData4.matchNum_ == fanBonusData9.termModeValue_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tstring topMessage4 = StringUtil.Replace(fanBonusData9.message_, playerData4.name_ + \"\\t\" + playerData4.matchNum_);\r\n\t\t\t\t\t\t\t\tSetBPFData(fanBonusData9, topMessage4, fanBonusData9.param, playerData4.id_);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 7:\r\n\t\t\t\t{\r\n\t\t\t\t\tVector fanBonusDataList5 = GetFanBonusDataList(num);\r\n\t\t\t\t\tfor (int num3 = 0; num3 < fanBonusDataList5.Size(); num3++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFanBonusData fanBonusData8 = (FanBonusData)fanBonusDataList5.ElementAt(num3);\r\n\t\t\t\t\t\tfor (int num4 = 0; num4 < 11; num4++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData2 = (PlayerData)instance2.memberPDataist_.ElementAt(num4);\r\n\t\t\t\t\t\t\tif (playerData2.game_goalConsecutive_ == fanBonusData8.termModeValue_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tstring topMessage3 = StringUtil.Replace(fanBonusData8.message_, playerData2.name_ + \"\\t\" + playerData2.game_goalConsecutive_);\r\n\t\t\t\t\t\t\t\tSetBPFData(fanBonusData8, topMessage3, fanBonusData8.param, playerData2.id_);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 8:\r\n\t\t\t\t{\r\n\t\t\t\t\tVector fanBonusDataList3 = GetFanBonusDataList(num);\r\n\t\t\t\t\tfor (int l = 0; l < fanBonusDataList3.Size(); l++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFanBonusData fanBonusData6 = (FanBonusData)fanBonusDataList3.ElementAt(l);\r\n\t\t\t\t\t\tfor (int m = 0; m < instance2.memberPDataist_.Size(); m++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData = (PlayerData)instance2.memberPDataist_.ElementAt(m);\r\n\t\t\t\t\t\t\tif (playerData.game_goalTotal_ >= fanBonusData6.termModeValue_ && playerData.pri_game_goalTotal_ < fanBonusData6.termModeValue_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tstring topMessage2 = StringUtil.Replace(fanBonusData6.message_, playerData.name_ + \"\\t\" + playerData.game_goalTotal_);\r\n\t\t\t\t\t\t\t\tSetBPFData(fanBonusData6, topMessage2, fanBonusData6.param, playerData.id_);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 11:\r\n\t\t\t\t{\r\n\t\t\t\t\tif (instance2.gm_.score_[0] <= instance2.gm_.score_[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tSupervisorData supervisorData = instance.svisorData_[instance2.selectSupervisorId_];\r\n\t\t\t\t\tVector fanBonusDataList2 = GetFanBonusDataList(num);\r\n\t\t\t\t\tfor (int k = 0; k < fanBonusDataList2.Size(); k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFanBonusData fanBonusData5 = (FanBonusData)fanBonusDataList2.ElementAt(k);\r\n\t\t\t\t\t\tif (supervisorData.winTotal_ == fanBonusData5.termModeValue_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstring topMessage = StringUtil.Replace(fanBonusData5.message_, supervisorData.name_ + \"\\t\" + supervisorData.winTotal_);\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData5, topMessage, fanBonusData5.param, supervisorData.id_);\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tcase 12:\r\n\t\t\t\t{\r\n\t\t\t\t\tVector fanBonusDataList = GetFanBonusDataList(num);\r\n\t\t\t\t\tfor (int j = 0; j < fanBonusDataList.Size(); j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFanBonusData fanBonusData4 = (FanBonusData)fanBonusDataList.ElementAt(j);\r\n\t\t\t\t\t\tif (fanBonusData4.state_ != 1 && instance2.customer_total_ >= fanBonusData4.termModeValue_ * 10000)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tSetBPFData(fanBonusData4, fanBonusData4.message_, fanBonusData4.param);\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}",
+          "kind": "ForStatement",
+          "method_id": "data.FanBonusData::ChBonusEvent()->System.Void",
+          "point": 8804
+        }
+      },
+      "candidate_count": 64,
+      "final_offset": 67,
+      "body_equal": false,
+      "body_gains": [],
+      "body_losses": []
+    },
+    {
+      "id": "data.LeagueData::IsLastMatch()->System.Boolean",
+      "number": 7,
+      "initial_offset": 30,
+      "steps": [],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 3906,
+          "end": 3974,
+          "before": "if (instance.GetMatchInfoJoin() != 0)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "after": "{ bool recoveredCondition_3906 = instance.GetMatchInfoJoin() != 0;\nif (recoveredCondition_3906)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 30,
+          "accepted": false,
+          "new_prefix": 30,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "return-local",
+          "start": 3955,
+          "end": 3968,
+          "before": "return false;",
+          "after": "{ bool recoveredReturn_3955 = false; return recoveredReturn_3955; }",
+          "compile_pass": true,
+          "old_prefix": 30,
+          "accepted": false,
+          "new_prefix": 30,
+          "body_equal": false
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "no_transformation_advances",
+      "stop_point": {
+        "offset": 30,
+        "source": "src/Assembly-CSharp/data/LeagueData.cs",
+        "point": {
+          "offset": 24,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\LeagueData.cs",
+          "start_line": 176,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 30,
+          "line": 176,
+          "column": -1
+        },
+        "statement": {
+          "start": 3906,
+          "end": 3974,
+          "line": 176,
+          "column": 4,
+          "text": "if (instance.GetMatchInfoJoin() != 0)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "data.LeagueData::IsLastMatch()->System.Boolean",
+          "point": 3903
+        }
+      },
+      "candidate_count": 2,
+      "final_offset": 30,
+      "body_equal": false,
+      "body_gains": [],
+      "body_losses": []
+    },
+    {
+      "id": "data.LeagueData::IsVictoryLeague()->System.Boolean",
+      "number": 8,
+      "initial_offset": 10,
+      "steps": [],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 4147,
+          "end": 4212,
+          "before": "if (udat_.GetMatchInfoJoin() != 0)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "after": "{ bool recoveredCondition_4147 = udat_.GetMatchInfoJoin() != 0;\nif (recoveredCondition_4147)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 10,
+          "accepted": false,
+          "new_prefix": 10,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "return-local",
+          "start": 4193,
+          "end": 4206,
+          "before": "return false;",
+          "after": "{ bool recoveredReturn_4193 = false; return recoveredReturn_4193; }",
+          "compile_pass": true,
+          "old_prefix": 10,
+          "accepted": false,
+          "new_prefix": 10,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "condition-merge-or-guards",
+          "start": 4147,
+          "end": 4280,
+          "before": "if (udat_.GetMatchInfoJoin() != 0)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tif (udat_.matchFlgVictory_ == 1)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "after": "if ((udat_.GetMatchInfoJoin() != 0) || (udat_.matchFlgVictory_ == 1)) {\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 10,
+          "accepted": false,
+          "new_prefix": 10,
+          "body_equal": false
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "no_transformation_advances",
+      "stop_point": {
+        "offset": 10,
+        "source": "src/Assembly-CSharp/data/LeagueData.cs",
+        "point": {
+          "offset": 0,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\LeagueData.cs",
+          "start_line": 189,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 10,
+          "line": 189,
+          "column": -1
+        },
+        "statement": {
+          "start": 4147,
+          "end": 4212,
+          "line": 189,
+          "column": 4,
+          "text": "if (udat_.GetMatchInfoJoin() != 0)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "data.LeagueData::IsVictoryLeague()->System.Boolean",
+          "point": 4144
+        }
+      },
+      "candidate_count": 3,
+      "final_offset": 10,
+      "body_equal": false,
+      "body_gains": [],
+      "body_losses": []
+    },
+    {
+      "id": "data.LeagueData::IsVictoryMatch()->System.Boolean",
+      "number": 9,
+      "initial_offset": 10,
+      "steps": [],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "condition-local",
+          "start": 4925,
+          "end": 4990,
+          "before": "if (udat_.GetMatchInfoJoin() != 0)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "after": "{ bool recoveredCondition_4925 = udat_.GetMatchInfoJoin() != 0;\nif (recoveredCondition_4925)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\n}",
+          "compile_pass": true,
+          "old_prefix": 10,
+          "accepted": false,
+          "new_prefix": 10,
+          "body_equal": false
+        },
+        {
+          "iteration": 1,
+          "rule": "return-local",
+          "start": 4971,
+          "end": 4984,
+          "before": "return false;",
+          "after": "{ bool recoveredReturn_4971 = false; return recoveredReturn_4971; }",
+          "compile_pass": true,
+          "old_prefix": 10,
+          "accepted": false,
+          "new_prefix": 10,
+          "body_equal": false
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "no_transformation_advances",
+      "stop_point": {
+        "offset": 10,
+        "source": "src/Assembly-CSharp/data/LeagueData.cs",
+        "point": {
+          "offset": 0,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round4\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\data\\LeagueData.cs",
+          "start_line": 217,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 10,
+          "line": 217,
+          "column": -1
+        },
+        "statement": {
+          "start": 4925,
+          "end": 4990,
+          "line": 217,
+          "column": 4,
+          "text": "if (udat_.GetMatchInfoJoin() != 0)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "data.LeagueData::IsVictoryMatch()->System.Boolean",
+          "point": 4922
+        }
+      },
+      "candidate_count": 2,
+      "final_offset": 10,
+      "body_equal": false,
+      "body_gains": [],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "tail-early-return:attempts": 2,
+    "tail-early-return:accepted_steps": 1,
+    "tail-early-return:body_gains": 1,
+    "tail-early-return:IL_gains": 78,
+    "switch-if:attempts": 1,
+    "switch-if:accepted_steps": 1,
+    "switch-if:body_gains": 1,
+    "switch-if:IL_gains": 99,
+    "loop-continue-guard:attempts": 7,
+    "loop-continue-guard:accepted_steps": 1,
+    "loop-continue-guard:body_gains": 1,
+    "loop-continue-guard:IL_gains": 102,
+    "condition-local:attempts": 8,
+    "local-declaration-order-later:attempts": 6,
+    "local-declaration-order-earlier:attempts": 2,
+    "if-polarity:attempts": 3,
+    "condition-split-and:attempts": 1,
+    "return-local:attempts": 3,
+    "condition-merge-or-guards:attempts": 1
+  },
+  "completed": false,
+  "body_equal": 1609,
+  "body_gains": [
+    "data.FanActData::GetDispParamToEva(System.Int32,System.Int32)->System.Int32",
+    "data.FanActData::Update()->System.Void",
+    "data.FanBonusData::GetFanBonusDataList(System.Int32)->java.util.Vector"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 279,
+  "builds": 53,
+  "build_seconds": 79.71999999973923,
+  "iteration_limit_hits": 0
+}

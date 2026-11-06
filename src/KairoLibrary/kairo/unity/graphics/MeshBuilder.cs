@@ -223,16 +223,14 @@ namespace kairo.unity.graphics
 		protected void CheckAndExpandGroup()
 		{
 			Layer layer = GetLayer();
-			if (layer.Current != null)
-			{
-				Group obj = layer.Current;
-				if (obj.vertexCount >= 60000 || obj.indexCount >= 55000)
+			if (layer.Current == null) { return; }
+Group obj = layer.Current;
+if (obj.vertexCount >= 60000 || obj.indexCount >= 55000)
 				{
 					layer.groups.Add(obj = new Group(this));
 					layer.currentGroup++;
 				}
-				obj.change = true;
-			}
+obj.change = true;
 		}
 
 		protected void CheckAndExpand(int add)

@@ -441,7 +441,7 @@ namespace form
 
 		private void ContinueGame()
 		{
-			if (apdat_.sysSave_.ints[((selectSaveType_ != 0) ? 6 : 11) + selectSave_] != -1)
+			if (apdat_.sysSave_.ints[((selectSaveType_ == 0) ? (11) : (6)) + selectSave_] != -1)
 			{
 				try
 				{
@@ -755,15 +755,13 @@ namespace form
 		{
 			for (int i = 0; i < ta_data.Length; i++)
 			{
-				if (ta_data[i][0] != 0)
-				{
-					ta_data[i][5] = (ta_data[i][5] + 1) % int.MaxValue;
-					ta_data[i][2] += -1 + 2 * ta_data[i][4];
-					if (ta_data[i][2] < -10 || ta_data[i][2] > 250)
+				if (ta_data[i][0] == 0) { continue; }
+ta_data[i][5] = (ta_data[i][5] + 1) % int.MaxValue;
+ta_data[i][2] += -1 + 2 * ta_data[i][4];
+if (ta_data[i][2] < -10 || ta_data[i][2] > 250)
 					{
 						ResetHobjExist(i);
 					}
-				}
 			}
 			apeear_cnt++;
 			if (apeear_cnt < APPEAR_TIME)
@@ -835,20 +833,18 @@ namespace form
 			for (int k = 0; k < zsort_mhobj.Length; k++)
 			{
 				int num4 = zsort_mhobj[k][0];
-				if (ta_data[num4][0] != 0)
-				{
-					int seb = 0;
-					int frame = ta_data[num4][5] % 20 / 5;
-					int direct = 2;
-					if (ta_data[num4][4] == 1)
+				if (ta_data[num4][0] == 0) { continue; }
+int seb = 0;
+int frame = ta_data[num4][5] % 20 / 5;
+int direct = 2;
+if (ta_data[num4][4] == 1)
 					{
 						direct = 1;
 					}
-					PlayerData playerData = apdat_.pData_[ta_data[num4][1]];
-					apdat_.DrawSeb(g, ta_data[num4][2] - 1, ta_data[num4][3] + 1 + num3, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 4);
-					udat_.SetDispPlayerData(seb, udat_.selectUniform_, playerData.faceImg_, frame, direct);
-					udat_.DrawDispPlayer(g, ta_data[num4][2], ta_data[num4][3] + num3);
-				}
+PlayerData playerData = apdat_.pData_[ta_data[num4][1]];
+apdat_.DrawSeb(g, ta_data[num4][2] - 1, ta_data[num4][3] + 1 + num3, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 4);
+udat_.SetDispPlayerData(seb, udat_.selectUniform_, playerData.faceImg_, frame, direct);
+udat_.DrawDispPlayer(g, ta_data[num4][2], ta_data[num4][3] + num3);
 			}
 		}
 

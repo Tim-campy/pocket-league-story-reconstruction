@@ -69,8 +69,8 @@ namespace system.billing.ui
 			productId_ = SecureString.ValueOf(productId);
 			name_ = name;
 			type_ = type;
-			price_ = ((price != null) ? price : string.Empty);
-			explain_ = ((explain != null) ? explain : string.Empty);
+			price_ = ((price == null) ? (string.Empty) : (price));
+			explain_ = ((explain == null) ? (string.Empty) : (explain));
 			state_ = new SecureInt(0);
 			provision_ = false;
 			consuming_ = false;

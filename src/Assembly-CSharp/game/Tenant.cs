@@ -238,10 +238,8 @@ namespace game
 					for (int j = 0; j < 2; j++)
 					{
 						Camera.ConvertScreenToCamera(MapMain.MAPCHIP_SPOS[address_[1] - i][address_[0] + j], camera_pos);
-						if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image.GetHeight(), 60, image.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))
-						{
-							apdat_.InsertGameObject(8, 0, camera_pos[1] + 1, 155 + val, 85 + val, 0, camera_pos[0], camera_pos[1], false, 0);
-						}
+						if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image.GetHeight(), 60, image.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { continue; }
+apdat_.InsertGameObject(8, 0, camera_pos[1] + 1, 155 + val, 85 + val, 0, camera_pos[0], camera_pos[1], false, 0);
 					}
 				}
 			}

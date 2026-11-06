@@ -12,7 +12,7 @@ namespace java.lang
 		{
 			if (!(a >= 0.0))
 			{
-				return 0.0 - a;
+				return -(a);
 			}
 			return a;
 		}
@@ -21,7 +21,7 @@ namespace java.lang
 		{
 			if (!(a >= 0f))
 			{
-				return 0f - a;
+				return -(a);
 			}
 			return a;
 		}

@@ -296,8 +296,9 @@ namespace game
 					num = camera_pos_[1];
 				}
 			}
-			int num9 = 0;
-			int num10 = 0;
+			int num10;
+int num9 = 0;
+			num10 = 0;
 			if (t_owner_ != null)
 			{
 				if (t_owner_.seb_ != 14)

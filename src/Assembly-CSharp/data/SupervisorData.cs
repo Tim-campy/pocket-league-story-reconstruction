@@ -215,7 +215,7 @@ namespace data
 		public void SetResearchData(int gameResultEva, PlayerData p_data)
 		{
 			int num = 0;
-			num = ((udat_.gm_.score_[0] > udat_.gm_.score_[1]) ? 10 : ((udat_.gm_.score_[0] != udat_.gm_.score_[1]) ? 50 : 30));
+			if ((udat_.gm_.score_[0] > udat_.gm_.score_[1])) { num = 10; } else { if (udat_.gm_.score_[0] == udat_.gm_.score_[1]) { num = 30; } else { num = 50; } }
 			if (GameUtil.Random(100) < num)
 			{
 				p_data.bonus_research[0] = -1;

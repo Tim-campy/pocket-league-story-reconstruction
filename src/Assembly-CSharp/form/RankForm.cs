@@ -66,11 +66,9 @@ namespace form
 			{
 				PlayerData obj = (PlayerData)vector.ElementAt(j);
 				int num = GameUtil.Random(vector.Size());
-				if (num != j)
-				{
-					vector.SetElementAt(vector.ElementAt(num), j);
-					vector.SetElementAt(obj, num);
-				}
+				if (num == j) { continue; }
+vector.SetElementAt(vector.ElementAt(num), j);
+vector.SetElementAt(obj, num);
 			}
 			for (int k = 0; k < 5; k++)
 			{

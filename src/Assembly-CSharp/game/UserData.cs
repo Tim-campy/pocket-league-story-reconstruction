@@ -1451,16 +1451,14 @@ namespace game
 			apdat_.tData_[0].uniform_ = selectUniform_;
 			for (int j = 0; j < apdat_.tData_.Length; j++)
 			{
-				if (j != 0)
-				{
-					TeamData teamData2 = apdat_.tData_[j];
-					if (teamData2.uniform_ == selectUniform_)
+				if (j == 0) { continue; }
+TeamData teamData2 = apdat_.tData_[j];
+if (teamData2.uniform_ == selectUniform_)
 					{
 						teamData2.bodyImg_ = 8;
 						teamData2.keeperImg_ = UNIFORM_KEEPER[8];
 						teamData2.uniform_ = 8;
 					}
-				}
 			}
 			matchInfoJoin_ = 2;
 			selectLeagueId_ = 0;
@@ -1701,9 +1699,10 @@ namespace game
 				league_fightCombi_[i][0] = i;
 				league_fightCombi_[i][1] = league_teamNum_ - 1 - i;
 			}
-			for (int j = 0; j < league_fightCombi_.Length; j++)
+			int num;
+for (int j = 0; j < league_fightCombi_.Length; j++)
 			{
-				int num;
+
 				if (j != 0)
 				{
 					num = league_fightCombi_[j][0] - setu;
@@ -1942,10 +1941,12 @@ namespace game
 		{
 			LeagueData leagueData = apdat_.leagueData_[selectLeagueId_];
 			SetFightCombi(league_setu_);
-			for (int i = 0; i < league_fightCombi_.Length; i++)
+			int num;
+int num2;
+for (int i = 0; i < league_fightCombi_.Length; i++)
 			{
-				int num = league_fightCombi_[i][0];
-				int num2 = league_fightCombi_[i][1];
+				num = league_fightCombi_[i][0];
+				num2 = league_fightCombi_[i][1];
 				int num3 = leagueData.matchEnemy_[num];
 				int num4 = leagueData.matchEnemy_[num2];
 				TeamData teamData = apdat_.tData_[num3];
@@ -4715,15 +4716,9 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 			{
 				for (int m = 0; m < tModeList_[l].Length; m++)
 				{
-					switch (m)
-					{
-					case 1:
-						tModeList_[l][m] = 4;
-						continue;
-					case 0:
-						tModeList_[l][m] = 5;
-						continue;
-					}
+					if ((m == 1)) { tModeList_[l][m] = 4;
+continue; } else if ((m == 0)) { tModeList_[l][m] = 5;
+continue; }
 					int num4 = num2;
 					if (l == 1)
 					{
@@ -4995,19 +4990,16 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 			}
 			for (int i = 0; i < tenants_.Length; i++)
 			{
-				if (tenants_[i].state_ == 1 && tenants_[i].useTPlayers_.Size() <= 3)
-				{
-					tenantList.AddElement(tenants_[i]);
-				}
+				if (tenants_[i].state_ != 1) { continue; }
+if (tenants_[i].useTPlayers_.Size() > 3) { continue; }
+tenantList.AddElement(tenants_[i]);
 			}
 			if (tenantList.Size() == 0)
 			{
 				for (int j = 0; j < tenants_.Length; j++)
 				{
-					if (tenants_[j].state_ == 1)
-					{
-						tenantList.AddElement(tenants_[j]);
-					}
+					if (tenants_[j].state_ != 1) { continue; }
+tenantList.AddElement(tenants_[j]);
 				}
 				if (tenantList.Size() == 0)
 				{
@@ -5455,7 +5447,7 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 			int evaWarPNameValue = GetEvaWarPNameValue(0.2f, 0.8f);
 			int num = evaWarPNameValue / 10 - difficult;
 			int num2 = 0;
-			num2 = ((num < 0) ? GameUtil.RateConvert(num, -20, 0, 11, 60, true) : GameUtil.RateConvert(num, 0, 20, 60, 90, true));
+			if (num >= 0) { num2 = GameUtil.RateConvert(num, 0, 20, 60, 90, true); } else { num2 = GameUtil.RateConvert(num, -20, 0, 11, 60, true); }
 			int num3 = GameUtil.RateConvert(num, -20, 20, 30, 45, true);
 			int num4 = GameUtil.RateConvert(num, -20, 20, 10, 20, true);
 			int num5 = 0;
@@ -5690,10 +5682,8 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 			for (int i = 0; i < apdat_.pData_.Length; i++)
 			{
 				PlayerData playerData = apdat_.pData_[i];
-				if (playerData.onceMember_ != 0)
-				{
-					num += playerData.lv_;
-				}
+				if (playerData.onceMember_ == 0) { continue; }
+num += playerData.lv_;
 			}
 			clear_point[2][0] = num;
 			clear_point[2][1] = (long)((float)clear_point[2][0] * 15f);
@@ -5705,20 +5695,16 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 			int num2 = 0;
 			for (int j = 0; j < apdat_.sponsorData_.Length; j++)
 			{
-				if (apdat_.sponsorData_[j].state_ == 2)
-				{
-					num2 += apdat_.sponsorData_[j].satisfactPoint_;
-				}
+				if (apdat_.sponsorData_[j].state_ != 2) { continue; }
+num2 += apdat_.sponsorData_[j].satisfactPoint_;
 			}
 			clear_point[5][0] = num2;
 			clear_point[5][1] = (long)((float)clear_point[5][0] * 5f);
 			int num3 = 0;
 			for (int k = 0; k < apdat_.formationData_.Length; k++)
 			{
-				if (apdat_.formationData_[k].state_ != 0)
-				{
-					num3++;
-				}
+				if (apdat_.formationData_[k].state_ == 0) { continue; }
+num3++;
 			}
 			clear_point[6][0] = num3;
 			clear_point[6][1] = (long)((float)clear_point[6][0] * 100f);
@@ -6058,11 +6044,13 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 					for (int k = 0; k < apdat_.formationData_.Length; k++)
 					{
 						FormationData formationData = apdat_.formationData_[k];
-						if (StreamUtil.ReadBoolean(byteArrayInputStream2))
+						{ bool recoveredCondition_173183 = StreamUtil.ReadBoolean(byteArrayInputStream2);
+if (recoveredCondition_173183)
 						{
 							formationData.ChangeState(1);
 							formationData.new_ = false;
 						}
+}
 					}
 				}
 				finally

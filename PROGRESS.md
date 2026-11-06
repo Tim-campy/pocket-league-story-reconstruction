@@ -2,30 +2,30 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**4,755 de 5,245 métodos matched (90.66%).** 871,497 bytes de IL nos assemblies alvo.
-363,493 bytes IL matched (41.71%).
+**4,863 de 5,245 métodos matched (92.72%).** 871,497 bytes de IL nos assemblies alvo.
+400,556 bytes IL matched (45.96%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3113 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 489 |
+| decompiled | 381 |
 | equivalent | 0 |
-| matched | 4755 |
+| matched | 4863 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1611 / 82.28% | 170582 / 28.35% |
-| `KairoLibrary` | 3287 | 269894 | 3144 / 95.65% | 192911 / 71.48% |
+| `Assembly-CSharp` | 1958 | 601603 | 1676 / 85.60% | 196453 / 32.65% |
+| `KairoLibrary` | 3287 | 269894 | 3187 / 96.96% | 204103 / 75.62% |
 
 ## Namespaces
 
@@ -36,48 +36,48 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `UnityEngine.Purchasing` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
-| `data` | 255 | 26353 | 234 / 91.76% | 19709 / 74.79% |
-| `form` | 371 | 250649 | 280 / 75.47% | 38237 / 15.26% |
-| `game` | 441 | 202949 | 326 / 73.92% | 60079 / 29.60% |
+| `data` | 255 | 26353 | 241 / 94.51% | 21039 / 79.84% |
+| `form` | 371 | 250649 | 294 / 79.25% | 44499 / 17.75% |
+| `game` | 441 | 202949 | 345 / 78.23% | 68968 / 33.98% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
-| `java.lang` | 171 | 4928 | 169 / 98.83% | 4898 / 99.39% |
+| `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
 | `java.net` | 5 | 502 | 5 / 100.00% | 502 / 100.00% |
 | `java.util` | 107 | 3643 | 107 / 100.00% | 3643 / 100.00% |
 | `kairo.common.cfg` | 7 | 2180 | 7 / 100.00% | 2180 / 100.00% |
-| `kairo.unity.ad` | 15 | 837 | 13 / 86.67% | 641 / 76.58% |
+| `kairo.unity.ad` | 15 | 837 | 15 / 100.00% | 837 / 100.00% |
 | `kairo.unity.analytics` | 15 | 1284 | 15 / 100.00% | 1284 / 100.00% |
 | `kairo.unity.form` | 88 | 6284 | 86 / 97.73% | 4512 / 71.80% |
 | `kairo.unity.graph` | 7 | 680 | 6 / 85.71% | 583 / 85.74% |
-| `kairo.unity.graphics` | 195 | 21048 | 181 / 92.82% | 14426 / 68.54% |
+| `kairo.unity.graphics` | 195 | 21048 | 182 / 93.33% | 14516 / 68.97% |
 | `kairo.unity.iOSsupport` | 4 | 18 | 4 / 100.00% | 18 / 100.00% |
-| `kairo.unity.io` | 149 | 9866 | 138 / 92.62% | 6705 / 67.96% |
+| `kairo.unity.io` | 149 | 9866 | 142 / 95.30% | 7211 / 73.09% |
 | `kairo.unity.licensing` | 7 | 101 | 7 / 100.00% | 101 / 100.00% |
-| `kairo.unity.m3d4.util3d` | 67 | 2810 | 64 / 95.52% | 2533 / 90.14% |
-| `kairo.unity.math` | 57 | 5195 | 53 / 92.98% | 4742 / 91.28% |
-| `kairo.unity.native` | 212 | 10404 | 208 / 98.11% | 9594 / 92.21% |
+| `kairo.unity.m3d4.util3d` | 67 | 2810 | 65 / 97.01% | 2546 / 90.60% |
+| `kairo.unity.math` | 57 | 5195 | 55 / 96.49% | 4861 / 93.57% |
+| `kairo.unity.native` | 212 | 10404 | 209 / 98.58% | 9676 / 93.00% |
 | `kairo.unity.native.util` | 16 | 1601 | 16 / 100.00% | 1601 / 100.00% |
-| `kairo.unity.panel` | 37 | 765 | 36 / 97.30% | 719 / 93.99% |
-| `kairo.unity.surface` | 187 | 14973 | 182 / 97.33% | 9820 / 65.58% |
-| `kairo.unity.system` | 193 | 16116 | 182 / 94.30% | 10643 / 66.04% |
+| `kairo.unity.panel` | 37 | 765 | 37 / 100.00% | 765 / 100.00% |
+| `kairo.unity.surface` | 187 | 14973 | 183 / 97.86% | 11139 / 74.39% |
+| `kairo.unity.system` | 193 | 16116 | 188 / 97.41% | 14163 / 87.88% |
 | `kairo.unity.system.appli` | 2 | 26 | 2 / 100.00% | 26 / 100.00% |
 | `kairo.unity.system.lineup.ui` | 23 | 2607 | 21 / 91.30% | 1356 / 52.01% |
 | `kairo.unity.system.lobi` | 7 | 249 | 7 / 100.00% | 249 / 100.00% |
-| `kairo.unity.system.notification.ui` | 24 | 911 | 23 / 95.83% | 818 / 89.79% |
+| `kairo.unity.system.notification.ui` | 24 | 911 | 24 / 100.00% | 911 / 100.00% |
 | `kairo.unity.system.payment` | 14 | 752 | 14 / 100.00% | 752 / 100.00% |
 | `kairo.unity.system.tapjoy.ui` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
-| `kairo.unity.ui` | 1021 | 100597 | 962 / 94.22% | 60303 / 59.95% |
-| `kairo.unity.util` | 518 | 43955 | 499 / 96.33% | 33577 / 76.39% |
+| `kairo.unity.ui` | 1021 | 100597 | 978 / 95.79% | 63493 / 63.12% |
+| `kairo.unity.util` | 518 | 43955 | 504 / 97.30% | 35565 / 80.91% |
 | `kfw.panel` | 15 | 1718 | 14 / 93.33% | 981 / 57.10% |
-| `main` | 223 | 35448 | 189 / 84.75% | 15714 / 44.33% |
+| `main` | 223 | 35448 | 202 / 90.58% | 21176 / 59.74% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `surface` | 122 | 26518 | 92 / 75.41% | 10558 / 39.81% |
+| `surface` | 122 | 26518 | 96 / 78.69% | 13062 / 49.26% |
 | `system` | 20 | 1636 | 19 / 95.00% | 1036 / 63.33% |
 | `system.billing` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
-| `system.billing.ui` | 153 | 13782 | 132 / 86.27% | 6870 / 49.85% |
+| `system.billing.ui` | 153 | 13782 | 138 / 90.20% | 7658 / 55.57% |
 | `system.billing.util` | 45 | 1788 | 43 / 95.56% | 1328 / 74.27% |
-| `system.form` | 192 | 33269 | 168 / 87.50% | 10365 / 31.16% |
+| `system.form` | 192 | 33269 | 170 / 88.54% | 11001 / 33.07% |
 | `system.friend` | 4 | 570 | 3 / 75.00% | 284 / 49.82% |
 | `system.friend.ui` | 47 | 4407 | 45 / 95.74% | 3175 / 72.04% |
 | `system.lineup` | 3 | 46 | 3 / 100.00% | 46 / 100.00% |
@@ -99,49 +99,49 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::cfg.MyConfig` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `Assembly-CSharp::data.BaseData` | 2 | 22 | 2 / 100.00% | 22 / 100.00% |
 | `Assembly-CSharp::data.EventData` | 7 | 342 | 7 / 100.00% | 342 / 100.00% |
-| `Assembly-CSharp::data.FanActData` | 23 | 2141 | 21 / 91.30% | 1964 / 91.73% |
-| `Assembly-CSharp::data.FanBonusData` | 15 | 4141 | 12 / 80.00% | 969 / 23.40% |
+| `Assembly-CSharp::data.FanActData` | 23 | 2141 | 23 / 100.00% | 2141 / 100.00% |
+| `Assembly-CSharp::data.FanBonusData` | 15 | 4141 | 13 / 86.67% | 1071 / 25.86% |
 | `Assembly-CSharp::data.FormationData` | 12 | 796 | 12 / 100.00% | 796 / 100.00% |
 | `Assembly-CSharp::data.LeagueData` | 17 | 1388 | 14 / 82.35% | 972 / 70.03% |
 | `Assembly-CSharp::data.MapchipMain` | 3 | 179 | 3 / 100.00% | 179 / 100.00% |
 | `Assembly-CSharp::data.MapchipMatch` | 3 | 161 | 3 / 100.00% | 161 / 100.00% |
-| `Assembly-CSharp::data.PlayerData` | 55 | 6370 | 50 / 90.91% | 5356 / 84.08% |
+| `Assembly-CSharp::data.PlayerData` | 55 | 6370 | 51 / 92.73% | 5480 / 86.03% |
 | `Assembly-CSharp::data.QuestMatchData` | 16 | 1254 | 16 / 100.00% | 1254 / 100.00% |
-| `Assembly-CSharp::data.SponsorData` | 16 | 1288 | 15 / 93.75% | 883 / 68.56% |
+| `Assembly-CSharp::data.SponsorData` | 16 | 1288 | 16 / 100.00% | 1288 / 100.00% |
 | `Assembly-CSharp::data.StadiumData` | 6 | 177 | 6 / 100.00% | 177 / 100.00% |
-| `Assembly-CSharp::data.SupervisorData` | 15 | 1869 | 14 / 93.33% | 1430 / 76.51% |
+| `Assembly-CSharp::data.SupervisorData` | 15 | 1869 | 15 / 100.00% | 1869 / 100.00% |
 | `Assembly-CSharp::data.TeamData` | 12 | 1963 | 10 / 83.33% | 1310 / 66.73% |
-| `Assembly-CSharp::data.TenantData` | 26 | 2743 | 24 / 92.31% | 2558 / 93.26% |
+| `Assembly-CSharp::data.TenantData` | 26 | 2743 | 25 / 96.15% | 2641 / 96.28% |
 | `Assembly-CSharp::data.TradeData` | 13 | 757 | 11 / 84.62% | 574 / 75.83% |
 | `Assembly-CSharp::data.TrainingData` | 14 | 762 | 14 / 100.00% | 762 / 100.00% |
 | `Assembly-CSharp::form.BootForm` | 21 | 7712 | 16 / 76.19% | 2628 / 34.08% |
-| `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 11 / 52.38% | 5156 / 11.33% |
+| `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 12 / 57.14% | 6252 / 13.74% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
-| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 40 / 78.43% | 6437 / 39.07% |
+| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 42 / 82.35% | 7408 / 44.97% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 46 / 95.83% | 2178 / 55.76% |
-| `Assembly-CSharp::form.RankForm` | 14 | 1516 | 13 / 92.86% | 1269 / 83.71% |
-| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 42 / 67.74% | 5508 / 16.37% |
-| `Assembly-CSharp::form.SpForm` | 19 | 7256 | 11 / 57.89% | 1599 / 22.04% |
-| `Assembly-CSharp::form.SubForm` | 95 | 125345 | 68 / 71.58% | 9489 / 7.57% |
+| `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
+| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 45 / 72.58% | 7104 / 21.12% |
+| `Assembly-CSharp::form.SpForm` | 19 | 7256 | 12 / 63.16% | 2387 / 32.90% |
+| `Assembly-CSharp::form.SubForm` | 95 | 125345 | 73 / 76.84% | 10532 / 8.40% |
 | `Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0` | 3 | 227 | 2 / 66.67% | 31 / 13.66% |
-| `Assembly-CSharp::form.TitleForm` | 24 | 8500 | 18 / 75.00% | 3365 / 39.59% |
-| `Assembly-CSharp::game.Ball` | 18 | 15652 | 11 / 61.11% | 1954 / 12.48% |
-| `Assembly-CSharp::game.Camera` | 31 | 7399 | 26 / 83.87% | 3132 / 42.33% |
+| `Assembly-CSharp::form.TitleForm` | 24 | 8500 | 19 / 79.17% | 3886 / 45.72% |
+| `Assembly-CSharp::game.Ball` | 18 | 15652 | 12 / 66.67% | 2579 / 16.48% |
+| `Assembly-CSharp::game.Camera` | 31 | 7399 | 27 / 87.10% | 3295 / 44.53% |
 | `Assembly-CSharp::game.DelayEvent` | 4 | 456 | 3 / 75.00% | 286 / 62.72% |
 | `Assembly-CSharp::game.GameManager` | 20 | 11549 | 14 / 70.00% | 3181 / 27.54% |
-| `Assembly-CSharp::game.GameUtil` | 47 | 3570 | 43 / 91.49% | 3099 / 86.81% |
-| `Assembly-CSharp::game.Map` | 18 | 13729 | 9 / 50.00% | 3335 / 24.29% |
-| `Assembly-CSharp::game.MapMain` | 14 | 7415 | 8 / 57.14% | 1866 / 25.17% |
+| `Assembly-CSharp::game.GameUtil` | 47 | 3570 | 46 / 97.87% | 3404 / 95.35% |
+| `Assembly-CSharp::game.Map` | 18 | 13729 | 10 / 55.56% | 3541 / 25.79% |
+| `Assembly-CSharp::game.MapMain` | 14 | 7415 | 9 / 64.29% | 2420 / 32.64% |
 | `Assembly-CSharp::game.MapObject` | 2 | 46 | 2 / 100.00% | 46 / 100.00% |
-| `Assembly-CSharp::game.Player` | 63 | 32346 | 48 / 76.19% | 11483 / 35.50% |
-| `Assembly-CSharp::game.TArea` | 14 | 4070 | 10 / 71.43% | 1003 / 24.64% |
+| `Assembly-CSharp::game.Player` | 63 | 32346 | 49 / 77.78% | 12072 / 37.32% |
+| `Assembly-CSharp::game.TArea` | 14 | 4070 | 11 / 78.57% | 1166 / 28.65% |
 | `Assembly-CSharp::game.TBall` | 14 | 5087 | 12 / 85.71% | 1988 / 39.08% |
 | `Assembly-CSharp::game.TGroupArea` | 14 | 7524 | 7 / 50.00% | 1031 / 13.70% |
 | `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 32 / 94.12% | 3701 / 27.03% |
-| `Assembly-CSharp::game.Team` | 42 | 22251 | 25 / 59.52% | 9984 / 44.87% |
+| `Assembly-CSharp::game.Team` | 42 | 22251 | 31 / 73.81% | 13551 / 60.90% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 11 / 78.57% | 792 / 29.42% |
-| `Assembly-CSharp::game.UserData` | 92 | 55470 | 65 / 70.65% | 13198 / 23.79% |
-| `Assembly-CSharp::main.AppData` | 201 | 33806 | 167 / 83.08% | 14072 / 41.63% |
+| `Assembly-CSharp::game.UserData` | 92 | 55470 | 69 / 75.00% | 15915 / 28.69% |
+| `Assembly-CSharp::main.AppData` | 201 | 33806 | 180 / 89.55% | 19534 / 57.78% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::main.Main` | 11 | 1287 | 11 / 100.00% | 1287 / 100.00% |
@@ -154,34 +154,34 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::native.WebBoxPlugin+<SetViewRect>c__AnonStorey4` | 2 | 85 | 2 / 100.00% | 85 / 100.00% |
 | `Assembly-CSharp::native.WebBoxPlugin+<SetVisible>c__AnonStorey6` | 2 | 43 | 2 / 100.00% | 43 / 100.00% |
 | `Assembly-CSharp::panel.MainPanel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 23 / 79.31% | 3271 / 33.77% |
-| `Assembly-CSharp::surface.GameView` | 66 | 13578 | 45 / 68.18% | 5801 / 42.72% |
-| `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 7 / 87.50% | 430 / 24.87% |
+| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 24 / 82.76% | 4153 / 42.88% |
+| `Assembly-CSharp::surface.GameView` | 66 | 13578 | 46 / 69.70% | 6004 / 44.22% |
+| `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 8 / 100.00% | 1729 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffect` | 5 | 821 | 4 / 80.00% | 472 / 57.49% |
-| `Assembly-CSharp::surface.TouchEffectManager` | 14 | 704 | 13 / 92.86% | 584 / 82.95% |
+| `Assembly-CSharp::surface.TouchEffectManager` | 14 | 704 | 14 / 100.00% | 704 / 100.00% |
 | `Assembly-CSharp::system.KairoService` | 15 | 1353 | 14 / 93.33% | 753 / 55.65% |
 | `Assembly-CSharp::system.KairoText` | 5 | 283 | 5 / 100.00% | 283 / 100.00% |
 | `Assembly-CSharp::system.billing.MyBilling` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
 | `Assembly-CSharp::system.billing.ui.ApplyTask` | 12 | 1507 | 11 / 91.67% | 603 / 40.01% |
 | `Assembly-CSharp::system.billing.ui.BillingItem` | 26 | 1007 | 25 / 96.15% | 468 / 46.47% |
-| `Assembly-CSharp::system.billing.ui.BillingManager` | 44 | 6863 | 36 / 81.82% | 3024 / 44.06% |
+| `Assembly-CSharp::system.billing.ui.BillingManager` | 44 | 6863 | 38 / 86.36% | 3394 / 49.45% |
 | `Assembly-CSharp::system.billing.ui.PurchaseLogView` | 3 | 130 | 3 / 100.00% | 130 / 100.00% |
-| `Assembly-CSharp::system.billing.ui.PurchaseRecord` | 12 | 1155 | 11 / 91.67% | 1069 / 92.55% |
+| `Assembly-CSharp::system.billing.ui.PurchaseRecord` | 12 | 1155 | 12 / 100.00% | 1155 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.Receipt` | 26 | 932 | 26 / 100.00% | 932 / 100.00% |
-| `Assembly-CSharp::system.billing.ui.StoreBase` | 28 | 2159 | 18 / 64.29% | 615 / 28.49% |
+| `Assembly-CSharp::system.billing.ui.StoreBase` | 28 | 2159 | 21 / 75.00% | 947 / 43.86% |
 | `Assembly-CSharp::system.billing.ui.StoreBase+<SetRestoreRequest>c__AnonStorey7` | 2 | 29 | 2 / 100.00% | 29 / 100.00% |
 | `Assembly-CSharp::system.billing.util.IabHelper` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::system.billing.util.Inventory` | 11 | 288 | 11 / 100.00% | 288 / 100.00% |
 | `Assembly-CSharp::system.billing.util.Json` | 7 | 672 | 5 / 71.43% | 212 / 31.55% |
 | `Assembly-CSharp::system.billing.util.Purchase` | 15 | 527 | 15 / 100.00% | 527 / 100.00% |
 | `Assembly-CSharp::system.billing.util.SkuDetails` | 11 | 294 | 11 / 100.00% | 294 / 100.00% |
-| `Assembly-CSharp::system.form.BillingForm` | 42 | 7424 | 36 / 85.71% | 2145 / 28.89% |
+| `Assembly-CSharp::system.form.BillingForm` | 42 | 7424 | 37 / 88.10% | 2699 / 36.36% |
 | `Assembly-CSharp::system.form.ConnectForm` | 11 | 400 | 11 / 100.00% | 400 / 100.00% |
 | `Assembly-CSharp::system.form.FriendForm` | 53 | 17764 | 46 / 86.79% | 3528 / 19.86% |
 | `Assembly-CSharp::system.form.HttpForm` | 16 | 894 | 16 / 100.00% | 894 / 100.00% |
 | `Assembly-CSharp::system.form.HttpForm+HttpMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
 | `Assembly-CSharp::system.form.HttpForm+ResultData` | 11 | 132 | 11 / 100.00% | 132 / 100.00% |
-| `Assembly-CSharp::system.form.LanguageForm` | 13 | 1452 | 8 / 61.54% | 362 / 24.93% |
+| `Assembly-CSharp::system.form.LanguageForm` | 13 | 1452 | 9 / 69.23% | 444 / 30.58% |
 | `Assembly-CSharp::system.form.LineupForm` | 15 | 1711 | 12 / 80.00% | 1387 / 81.06% |
 | `Assembly-CSharp::system.form.MatchForm` | 19 | 3263 | 16 / 84.21% | 1288 / 39.47% |
 | `Assembly-CSharp::system.form.MatchForm+UserRecord` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
@@ -211,7 +211,7 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::java.lang.JFloat` | 15 | 172 | 15 / 100.00% | 172 / 100.00% |
 | `KairoLibrary::java.lang.JInteger` | 16 | 228 | 16 / 100.00% | 228 / 100.00% |
 | `KairoLibrary::java.lang.JLong` | 11 | 179 | 11 / 100.00% | 179 / 100.00% |
-| `KairoLibrary::java.lang.JMath` | 20 | 199 | 18 / 90.00% | 169 / 84.92% |
+| `KairoLibrary::java.lang.JMath` | 20 | 199 | 20 / 100.00% | 199 / 100.00% |
 | `KairoLibrary::java.lang.JRunnable` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::java.lang.JRuntime` | 6 | 56 | 6 / 100.00% | 56 / 100.00% |
 | `KairoLibrary::java.lang.JShort` | 9 | 123 | 9 / 100.00% | 123 / 100.00% |
@@ -243,7 +243,7 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::java.util.Vector`1+<GetEnumerator>d__40` | 7 | 238 | 7 / 100.00% | 238 / 100.00% |
 | `KairoLibrary::kairo.common.cfg.Config` | 7 | 2180 | 7 / 100.00% | 2180 / 100.00% |
 | `KairoLibrary::kairo.unity.ad.AdMobView` | 7 | 179 | 7 / 100.00% | 179 / 100.00% |
-| `KairoLibrary::kairo.unity.ad.InterstitialAd` | 8 | 658 | 6 / 75.00% | 462 / 70.21% |
+| `KairoLibrary::kairo.unity.ad.InterstitialAd` | 8 | 658 | 8 / 100.00% | 658 / 100.00% |
 | `KairoLibrary::kairo.unity.analytics.AnalyticsTracker` | 10 | 1045 | 10 / 100.00% | 1045 / 100.00% |
 | `KairoLibrary::kairo.unity.analytics.AnalyticsTracker+<>c` | 3 | 200 | 3 / 100.00% | 200 / 100.00% |
 | `KairoLibrary::kairo.unity.analytics.AnalyticsTracker+AnalyticsData` | 2 | 39 | 2 / 100.00% | 39 / 100.00% |
@@ -256,7 +256,7 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.graph.Graph` | 7 | 680 | 6 / 85.71% | 583 / 85.74% |
 | `KairoLibrary::kairo.unity.graphics.Material` | 13 | 322 | 13 / 100.00% | 322 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.MaterialManager` | 11 | 1735 | 7 / 63.64% | 337 / 19.42% |
-| `KairoLibrary::kairo.unity.graphics.MeshBuilder` | 31 | 4626 | 27 / 87.10% | 3520 / 76.09% |
+| `KairoLibrary::kairo.unity.graphics.MeshBuilder` | 31 | 4626 | 28 / 90.32% | 3610 / 78.04% |
 | `KairoLibrary::kairo.unity.graphics.MeshBuilder+Group` | 3 | 910 | 3 / 100.00% | 910 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.MeshBuilder+Layer` | 3 | 106 | 3 / 100.00% | 106 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.MeshManager` | 24 | 3389 | 23 / 95.83% | 3248 / 95.84% |
@@ -291,15 +291,15 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.io.HttpObject` | 17 | 1728 | 15 / 88.24% | 499 / 28.88% |
 | `KairoLibrary::kairo.unity.io.HttpObject+<>c__DisplayClass10_0` | 3 | 989 | 2 / 66.67% | 45 / 4.55% |
 | `KairoLibrary::kairo.unity.io.HttpObject+<>c__DisplayClass10_1` | 2 | 110 | 2 / 100.00% | 110 / 100.00% |
-| `KairoLibrary::kairo.unity.io.RecordStore` | 28 | 1592 | 23 / 82.14% | 992 / 62.31% |
+| `KairoLibrary::kairo.unity.io.RecordStore` | 28 | 1592 | 27 / 96.43% | 1498 / 94.10% |
 | `KairoLibrary::kairo.unity.io.RecordStoreListener` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.io.ScratchPad` | 11 | 25 | 11 / 100.00% | 25 / 100.00% |
 | `KairoLibrary::kairo.unity.io.Storage` | 18 | 1744 | 16 / 88.89% | 1389 / 79.64% |
 | `KairoLibrary::kairo.unity.licensing.LicenseChecker` | 7 | 101 | 7 / 100.00% | 101 / 100.00% |
-| `KairoLibrary::kairo.unity.m3d4.util3d.FastMath` | 16 | 325 | 15 / 93.75% | 312 / 96.00% |
+| `KairoLibrary::kairo.unity.m3d4.util3d.FastMath` | 16 | 325 | 16 / 100.00% | 325 / 100.00% |
 | `KairoLibrary::kairo.unity.m3d4.util3d.Transform` | 27 | 1710 | 25 / 92.59% | 1446 / 84.56% |
 | `KairoLibrary::kairo.unity.m3d4.util3d.Vector3D` | 24 | 775 | 24 / 100.00% | 775 / 100.00% |
-| `KairoLibrary::kairo.unity.math.KairoMath` | 57 | 5195 | 53 / 92.98% | 4742 / 91.28% |
+| `KairoLibrary::kairo.unity.math.KairoMath` | 57 | 5195 | 55 / 96.49% | 4861 / 93.57% |
 | `KairoLibrary::kairo.unity.native.AdMobPlugin` | 14 | 566 | 14 / 100.00% | 566 / 100.00% |
 | `KairoLibrary::kairo.unity.native.AdMobPlugin+<>c__DisplayClass10_0` | 2 | 24 | 2 / 100.00% | 24 / 100.00% |
 | `KairoLibrary::kairo.unity.native.AdMobPlugin+<>c__DisplayClass12_0` | 2 | 24 | 2 / 100.00% | 24 / 100.00% |
@@ -327,7 +327,7 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass71_0` | 2 | 209 | 2 / 100.00% | 209 / 100.00% |
 | `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass72_0` | 2 | 108 | 2 / 100.00% | 108 / 100.00% |
 | `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass75_0` | 2 | 62 | 2 / 100.00% | 62 / 100.00% |
-| `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass76_0` | 2 | 89 | 1 / 50.00% | 7 / 7.87% |
+| `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass76_0` | 2 | 89 | 2 / 100.00% | 89 / 100.00% |
 | `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass77_0` | 2 | 53 | 2 / 100.00% | 53 / 100.00% |
 | `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass79_0` | 2 | 79 | 2 / 100.00% | 79 / 100.00% |
 | `KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass81_0` | 2 | 352 | 2 / 100.00% | 352 / 100.00% |
@@ -347,12 +347,12 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.native.util.StringUtil` | 9 | 745 | 9 / 100.00% | 745 / 100.00% |
 | `KairoLibrary::kairo.unity.panel.Button` | 5 | 33 | 5 / 100.00% | 33 / 100.00% |
 | `KairoLibrary::kairo.unity.panel.Component` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
-| `KairoLibrary::kairo.unity.panel.FepPanel` | 15 | 591 | 14 / 93.33% | 545 / 92.22% |
+| `KairoLibrary::kairo.unity.panel.FepPanel` | 15 | 591 | 15 / 100.00% | 591 / 100.00% |
 | `KairoLibrary::kairo.unity.panel.FepPanel+Display` | 3 | 9 | 3 / 100.00% | 9 / 100.00% |
 | `KairoLibrary::kairo.unity.panel.Label` | 6 | 49 | 6 / 100.00% | 49 / 100.00% |
 | `KairoLibrary::kairo.unity.panel.TextBox` | 7 | 76 | 7 / 100.00% | 76 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.MotionEvent` | 15 | 268 | 15 / 100.00% | 268 / 100.00% |
-| `KairoLibrary::kairo.unity.surface.SurfaceBase` | 76 | 7799 | 74 / 97.37% | 4175 / 53.53% |
+| `KairoLibrary::kairo.unity.surface.SurfaceBase` | 76 | 7799 | 75 / 98.68% | 5494 / 70.44% |
 | `KairoLibrary::kairo.unity.surface.SurfaceBase+MotionEventRecord` | 19 | 882 | 19 / 100.00% | 882 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.SurfaceBase+MotionEventRecord+MultiTouch` | 9 | 170 | 9 / 100.00% | 170 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.SurfaceBase+TouchPoint` | 2 | 76 | 2 / 100.00% | 76 / 100.00% |
@@ -362,9 +362,9 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.surface.TouchOption` | 21 | 851 | 21 / 100.00% | 851 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.TouchValueAccessor` | 2 | 0 | 2 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.system.ErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
-| `KairoLibrary::kairo.unity.system.GameDataRecord` | 32 | 2430 | 31 / 96.88% | 2141 / 88.11% |
+| `KairoLibrary::kairo.unity.system.GameDataRecord` | 32 | 2430 | 32 / 100.00% | 2430 / 100.00% |
 | `KairoLibrary::kairo.unity.system.GameDataRecord+Data` | 5 | 287 | 5 / 100.00% | 287 / 100.00% |
-| `KairoLibrary::kairo.unity.system.KairoBase` | 134 | 12704 | 127 / 94.78% | 7720 / 60.77% |
+| `KairoLibrary::kairo.unity.system.KairoBase` | 134 | 12704 | 132 / 98.51% | 10951 / 86.20% |
 | `KairoLibrary::kairo.unity.system.KairoBase+<>c` | 4 | 216 | 1 / 25.00% | 16 / 7.41% |
 | `KairoLibrary::kairo.unity.system.KairoBase+AccessCount` | 4 | 80 | 4 / 100.00% | 80 / 100.00% |
 | `KairoLibrary::kairo.unity.system.KairoBase+ConnectObject` | 2 | 69 | 2 / 100.00% | 69 / 100.00% |
@@ -375,22 +375,22 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.system.lineup.ui.LineupData` | 9 | 492 | 8 / 88.89% | 300 / 60.98% |
 | `KairoLibrary::kairo.unity.system.lineup.ui.LineupManager` | 14 | 2115 | 13 / 92.86% | 1056 / 49.93% |
 | `KairoLibrary::kairo.unity.system.lobi.LobiManager` | 7 | 249 | 7 / 100.00% | 249 / 100.00% |
-| `KairoLibrary::kairo.unity.system.notification.ui.NotifyManager` | 24 | 911 | 23 / 95.83% | 818 / 89.79% |
+| `KairoLibrary::kairo.unity.system.notification.ui.NotifyManager` | 24 | 911 | 24 / 100.00% | 911 / 100.00% |
 | `KairoLibrary::kairo.unity.system.payment.IllegalPurchaseException` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `KairoLibrary::kairo.unity.system.payment.PaymentDataRecord` | 13 | 745 | 13 / 100.00% | 745 / 100.00% |
 | `KairoLibrary::kairo.unity.system.tapjoy.ui.ITapjoy` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.ui.AppEvent` | 1 | 41 | 1 / 100.00% | 41 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Balloon` | 27 | 4072 | 26 / 96.30% | 1060 / 26.03% |
 | `KairoLibrary::kairo.unity.ui.Balloon+BalloonRender` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
-| `KairoLibrary::kairo.unity.ui.Canvas` | 82 | 8325 | 76 / 92.68% | 5139 / 61.73% |
+| `KairoLibrary::kairo.unity.ui.Canvas` | 82 | 8325 | 78 / 95.12% | 5343 / 64.18% |
 | `KairoLibrary::kairo.unity.ui.Canvas+<>c` | 3 | 398 | 3 / 100.00% | 398 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Canvas+<>c__DisplayClass107_0` | 2 | 75 | 2 / 100.00% | 75 / 100.00% |
-| `KairoLibrary::kairo.unity.ui.Canvas+<>c__DisplayClass152_0` | 2 | 172 | 1 / 50.00% | 7 / 4.07% |
-| `KairoLibrary::kairo.unity.ui.DepthInfo` | 5 | 523 | 4 / 80.00% | 277 / 52.96% |
+| `KairoLibrary::kairo.unity.ui.Canvas+<>c__DisplayClass152_0` | 2 | 172 | 2 / 100.00% | 172 / 100.00% |
+| `KairoLibrary::kairo.unity.ui.DepthInfo` | 5 | 523 | 5 / 100.00% | 523 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Dialog` | 7 | 287 | 7 / 100.00% | 287 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Font` | 45 | 1964 | 45 / 100.00% | 1964 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Font+<>c` | 3 | 24 | 3 / 100.00% | 24 / 100.00% |
-| `KairoLibrary::kairo.unity.ui.Graphics` | 227 | 29937 | 209 / 92.07% | 16756 / 55.97% |
+| `KairoLibrary::kairo.unity.ui.Graphics` | 227 | 29937 | 214 / 94.27% | 18417 / 61.52% |
 | `KairoLibrary::kairo.unity.ui.Graphics+GLText` | 2 | 173 | 2 / 100.00% | 173 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Graphics+GrayscaleImage` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Graphics+RenderCache` | 2 | 69 | 2 / 100.00% | 69 / 100.00% |
@@ -399,11 +399,11 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.Handler` | 5 | 443 | 5 / 100.00% | 443 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Handler+<>c__DisplayClass3_0` | 2 | 19 | 2 / 100.00% | 19 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Handler+PostData` | 1 | 55 | 1 / 100.00% | 55 / 100.00% |
-| `KairoLibrary::kairo.unity.ui.IApplication` | 77 | 4239 | 75 / 97.40% | 3927 / 92.64% |
+| `KairoLibrary::kairo.unity.ui.IApplication` | 77 | 4239 | 76 / 98.70% | 4040 / 95.31% |
 | `KairoLibrary::kairo.unity.ui.IApplication+MethodTask` | 2 | 28 | 2 / 100.00% | 28 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.IApplication+UIMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
-| `KairoLibrary::kairo.unity.ui.Image` | 92 | 8726 | 86 / 93.48% | 5411 / 62.01% |
-| `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass155_0` | 2 | 380 | 1 / 50.00% | 7 / 1.84% |
+| `KairoLibrary::kairo.unity.ui.Image` | 92 | 8726 | 88 / 95.65% | 5598 / 64.15% |
+| `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass155_0` | 2 | 380 | 2 / 100.00% | 380 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass156_0` | 2 | 42 | 2 / 100.00% | 42 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass157_0` | 2 | 48 | 2 / 100.00% | 48 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass82_0` | 2 | 111 | 2 / 100.00% | 111 / 100.00% |
@@ -411,7 +411,7 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.Image+BalloonRenderTask` | 1 | 35 | 1 / 100.00% | 35 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+TextRenderTask` | 1 | 46 | 1 / 100.00% | 46 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+TouchTask` | 1 | 161 | 1 / 100.00% | 161 / 100.00% |
-| `KairoLibrary::kairo.unity.ui.ImageAtlas` | 21 | 5410 | 20 / 95.24% | 5270 / 97.41% |
+| `KairoLibrary::kairo.unity.ui.ImageAtlas` | 21 | 5410 | 21 / 100.00% | 5410 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.ImageAtlas+<>c__DisplayClass15_0` | 2 | 56 | 2 / 100.00% | 56 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.ImageAtlas+AtlasRegion` | 4 | 77 | 4 / 100.00% | 77 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.ImageAtlas+HeightPoint` | 3 | 38 | 3 / 100.00% | 38 / 100.00% |
@@ -435,7 +435,7 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.SaveRecorder+PostSaveMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.ui.SaveRecorder+PrePackMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.ui.SaveRecorder+PreSaveMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
-| `KairoLibrary::kairo.unity.ui.Seb` | 40 | 7805 | 34 / 85.00% | 2748 / 35.21% |
+| `KairoLibrary::kairo.unity.ui.Seb` | 40 | 7805 | 36 / 90.00% | 2849 / 36.50% |
 | `KairoLibrary::kairo.unity.ui.Seb+WorkStaticValue` | 1 | 90 | 1 / 100.00% | 90 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Seb+WorkValue` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.SoundBase` | 20 | 331 | 20 / 100.00% | 331 / 100.00% |
@@ -459,7 +459,7 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.util.EncodeUtil` | 25 | 719 | 25 / 100.00% | 719 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Encrypter` | 10 | 169 | 10 / 100.00% | 169 / 100.00% |
 | `KairoLibrary::kairo.unity.util.FastVector` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
-| `KairoLibrary::kairo.unity.util.FastVector`1` | 39 | 1666 | 38 / 97.44% | 1585 / 95.14% |
+| `KairoLibrary::kairo.unity.util.FastVector`1` | 39 | 1666 | 39 / 100.00% | 1666 / 100.00% |
 | `KairoLibrary::kairo.unity.util.FastVector`1+<GetEnumerator>d__42` | 6 | 169 | 5 / 83.33% | 35 / 20.71% |
 | `KairoLibrary::kairo.unity.util.ISerializable` | 2 | 0 | 2 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.util.IllegalFileException` | 2 | 15 | 2 / 100.00% | 15 / 100.00% |
@@ -468,24 +468,24 @@ KairoLibrary: 3070 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.util.JarInflater` | 15 | 1433 | 14 / 93.33% | 1244 / 86.81% |
 | `KairoLibrary::kairo.unity.util.JarInflater+FileInfo` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `KairoLibrary::kairo.unity.util.KairoException` | 2 | 23 | 2 / 100.00% | 23 / 100.00% |
-| `KairoLibrary::kairo.unity.util.Language` | 33 | 22129 | 27 / 81.82% | 16805 / 75.94% |
+| `KairoLibrary::kairo.unity.util.Language` | 33 | 22129 | 28 / 84.85% | 18582 / 83.97% |
 | `KairoLibrary::kairo.unity.util.Language+LangPackFormat` | 1 | 44 | 1 / 100.00% | 44 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Language+LangPackRecord` | 2 | 85 | 2 / 100.00% | 85 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Language+LanguagePackInfo` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Language+Position` | 1 | 15 | 1 / 100.00% | 15 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Language+RecordPosition` | 1 | 22 | 1 / 100.00% | 22 / 100.00% |
-| `KairoLibrary::kairo.unity.util.Log` | 11 | 428 | 10 / 90.91% | 394 / 92.06% |
+| `KairoLibrary::kairo.unity.util.Log` | 11 | 428 | 11 / 100.00% | 428 / 100.00% |
 | `KairoLibrary::kairo.unity.util.LogListener` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.util.MD5` | 2 | 90 | 2 / 100.00% | 90 / 100.00% |
 | `KairoLibrary::kairo.unity.util.NotPermitException` | 4 | 133 | 4 / 100.00% | 133 / 100.00% |
-| `KairoLibrary::kairo.unity.util.Property` | 18 | 1436 | 17 / 94.44% | 1388 / 96.66% |
+| `KairoLibrary::kairo.unity.util.Property` | 18 | 1436 | 18 / 100.00% | 1436 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureByte` | 15 | 307 | 15 / 100.00% | 307 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureByteArray` | 14 | 439 | 14 / 100.00% | 439 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureChar` | 13 | 277 | 13 / 100.00% | 277 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureInt` | 19 | 343 | 19 / 100.00% | 343 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureLong` | 21 | 367 | 21 / 100.00% | 367 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureNumber` | 12 | 215 | 12 / 100.00% | 215 / 100.00% |
-| `KairoLibrary::kairo.unity.util.SecureProperty` | 22 | 1685 | 21 / 95.45% | 1637 / 97.15% |
+| `KairoLibrary::kairo.unity.util.SecureProperty` | 22 | 1685 | 22 / 100.00% | 1685 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureShort` | 17 | 326 | 17 / 100.00% | 326 / 100.00% |
 | `KairoLibrary::kairo.unity.util.SecureString` | 65 | 1365 | 65 / 100.00% | 1365 / 100.00% |
 | `KairoLibrary::kairo.unity.util.StreamUtil` | 47 | 4196 | 46 / 97.87% | 2510 / 59.82% |
@@ -509,15 +509,15 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | Tipo | Pendentes | Primeiro método |
 |---|---:|---|
 | `Assembly-CSharp::cfg.MyConfig` | 1 | `Assembly-CSharp::cfg.MyConfig::.cctor()->System.Void` |
-| `Assembly-CSharp::data.SponsorData` | 1 | `Assembly-CSharp::data.SponsorData::UpdateSatisFactPoint()->System.Void` |
-| `Assembly-CSharp::data.SupervisorData` | 1 | `Assembly-CSharp::data.SupervisorData::SetResearchData(System.Int32,data.PlayerData)->System.Void` |
-| `Assembly-CSharp::form.RankForm` | 1 | `Assembly-CSharp::form.RankForm::Init()->System.Boolean` |
+| `Assembly-CSharp::data.TenantData` | 1 | `Assembly-CSharp::data.TenantData::StrengthTenant()->System.Void` |
 | `Assembly-CSharp::game.DelayEvent` | 1 | `Assembly-CSharp::game.DelayEvent::Serialize(java.io.OutputStream)->System.Void` |
-| `Assembly-CSharp::surface.SurfaceManager` | 1 | `Assembly-CSharp::surface.SurfaceManager::AdjustSurfaceLayout()->System.Void` |
+| `Assembly-CSharp::game.GameUtil` | 1 | `Assembly-CSharp::game.GameUtil::.ctor()->System.Void` |
 | `Assembly-CSharp::surface.TouchEffect` | 1 | `Assembly-CSharp::surface.TouchEffect::Draw(kairo.unity.ui.Graphics)->System.Void` |
-| `Assembly-CSharp::surface.TouchEffectManager` | 1 | `Assembly-CSharp::surface.TouchEffectManager::AddEffect(kairo.unity.surface.SurfaceBase,System.Int32,System.Single,System.Single,kairo.unity.surface.TouchComponent,System.Object)->surface.TouchEffect` |
 | `Assembly-CSharp::system.KairoService` | 1 | `Assembly-CSharp::system.KairoService::OnStart()->System.Void` |
 | `Assembly-CSharp::system.billing.ui.ApplyTask` | 1 | `Assembly-CSharp::system.billing.ui.ApplyTask::Init(system.billing.ui.BillingItem,System.String,System.Int32,System.Boolean)->System.Void` |
+| `Assembly-CSharp::system.billing.ui.BillingItem` | 1 | `Assembly-CSharp::system.billing.ui.BillingItem::Init(System.Int32,System.Int32,System.String,System.String,System.String,System.Int32,System.String)->System.Void` |
+| `Assembly-CSharp::system.friend.MyFriend` | 1 | `Assembly-CSharp::system.friend.MyFriend::CgiGetFriendList()->java.util.Vector` |
+| `Assembly-CSharp::system.surface.GameBanner` | 1 | `Assembly-CSharp::system.surface.GameBanner::Load()->System.Void` |
 
 ## Bloqueios
 

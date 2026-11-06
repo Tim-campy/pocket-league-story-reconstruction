@@ -1329,12 +1329,7 @@ namespace kairo.unity.ui
 				wait = 1;
 			}
 			Pictograph pictograph = GetPictograph(key);
-			if (pictograph == null)
-			{
-				pictograph = (pictographList_[key] = new Pictograph(key, seb, frame, wait, x, y, margin));
-			}
-			else
-			{
+			if (pictograph != null) {
 				pictograph.Seb = seb;
 				pictograph.Frame = frame;
 				pictograph.Wait = wait;
@@ -1342,6 +1337,8 @@ namespace kairo.unity.ui
 				pictograph.Y = y;
 				pictograph.Margin = margin;
 				pictograph.Transform = new Matrix();
+			} else {
+				pictograph = (pictographList_[key] = new Pictograph(key, seb, frame, wait, x, y, margin));
 			}
 			return pictograph;
 		}

@@ -218,17 +218,15 @@ namespace data
 
 		public void Update()
 		{
-			if (state_ == 2)
-			{
-				stateCnt_++;
-				if (stateCnt_ >= 200)
+			if (state_ != 2) { return; }
+stateCnt_++;
+if (stateCnt_ >= 200)
 				{
 					SubForm subForm = new SubForm(41);
 					subForm.fanActData_ = this;
 					apdat_.Push(subForm);
 					ChangeState(1);
 				}
-			}
 		}
 
 		public static int GetFanDispParam(int eva, int F_ID)
@@ -238,20 +236,10 @@ namespace data
 
 		public static int GetDispParamToEva(int dispParam, int F_ID)
 		{
-			switch (F_ID)
-			{
-			case 0:
-			{
+			if ((F_ID == 0)) { {
 				int num = GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);
 				return GameUtil.RateConvert(dispParam, 0, 100000, 0, 10000, true);
-			}
-			case 1:
-				return GameUtil.RateConvert(dispParam, 0, 100, 0, 1000, true);
-			case 2:
-				return GameUtil.RateConvert(dispParam, 0, 1000, 0, 10000, true);
-			default:
-				return 0;
-			}
+			} } else if ((F_ID == 1)) { return GameUtil.RateConvert(dispParam, 0, 100, 0, 1000, true); } else if ((F_ID == 2)) { return GameUtil.RateConvert(dispParam, 0, 1000, 0, 10000, true); } else { return 0; }
 		}
 
 		public static int GetFanAddParamNum(int eva, int F_ID)

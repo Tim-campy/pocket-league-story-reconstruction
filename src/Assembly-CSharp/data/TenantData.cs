@@ -345,27 +345,23 @@ SetLv(lv_ + 1);
 			for (int i = 0; i < udat_.tenants_.Length; i++)
 			{
 				Tenant tenant = udat_.tenants_[i];
-				if (tenant.state_ != 0 && tenant.tenantDataId_ == id_)
-				{
-					tenant.StrenghTenant();
-				}
+				if ((tenant.state_ == 0) || (tenant.tenantDataId_ != id_)) { continue; }
+tenant.StrenghTenant();
 			}
 			ChangeState(2);
 		}
 
 		public void Update()
 		{
-			if (state_ == 2)
-			{
-				stateCnt_++;
-				if (stateCnt_ >= 200)
+			if (state_ != 2) { return; }
+stateCnt_++;
+if (stateCnt_ >= 200)
 				{
 					SubForm subForm = new SubForm(64);
 					subForm.tenantDataId_ = id_;
 					apdat_.Push(subForm);
 					ChangeState(1);
 				}
-			}
 		}
 
 		public int[] GetLvUpAddParam()

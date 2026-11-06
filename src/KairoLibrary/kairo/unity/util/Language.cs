@@ -884,7 +884,7 @@ namespace kairo.unity.util
 							stringBuilder3.Append(src.Substring(0, match3.Index));
 						}
 						string text4 = "";
-						text4 = ((!flag) ? $"{int.Parse(match3.Groups[1].Value.Trim()):X2}{int.Parse(match3.Groups[2].Value.Trim()):X2}{int.Parse(match3.Groups[3].Value.Trim()):X2}" : (int.Parse(match3.Groups[1].Value.Substring(0, 2), NumberStyles.HexNumber) + "," + int.Parse(match3.Groups[1].Value.Substring(2, 2), NumberStyles.HexNumber) + "," + int.Parse(match3.Groups[1].Value.Substring(4, 2), NumberStyles.HexNumber)));
+						if (flag) { text4 = (int.Parse(match3.Groups[1].Value.Substring(0, 2), NumberStyles.HexNumber) + "," + int.Parse(match3.Groups[1].Value.Substring(2, 2), NumberStyles.HexNumber) + "," + int.Parse(match3.Groups[1].Value.Substring(4, 2), NumberStyles.HexNumber)); } else { text4 = $"{int.Parse(match3.Groups[1].Value.Trim()):X2}{int.Parse(match3.Groups[2].Value.Trim()):X2}{int.Parse(match3.Groups[3].Value.Trim()):X2}"; }
 						stringBuilder3.Append("<co=" + text4 + ">");
 						int num4 = src.Length;
 						if (m + 1 < matchCollection2.Count)

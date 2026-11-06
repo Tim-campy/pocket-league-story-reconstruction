@@ -1,0 +1,118 @@
+{
+  "scope": "two isolated source-only candidates against frozen round-4 baseline",
+  "official_states_adopted": false,
+  "cases": [
+    {
+      "name": "GetSum",
+      "method_id": "game.Team::GetSum(System.Int32[][],System.Int32,System.Int32,System.Boolean)->System.Int32",
+      "rule": "local-declaration-scope-hoist",
+      "compile_exit_code": 0,
+      "patch": {
+        "rule": "local-declaration-scope-hoist",
+        "start": 38431,
+        "end": 38669,
+        "before": "for (int i = 0; i < CEVA_PASSER_MP2.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tfloat num2 = 1f;\r\n\t\t\t\tif (!div)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = CEVA_PASSER_MP2[i];\r\n\t\t\t\t}\r\n\t\t\t\tint num3 = cx + PANEL_DIRECT_R_9BLOCK[i][0];\r\n\t\t\t\tint num4 = cy + PANEL_DIRECT_R_9BLOCK[i][1];",
+        "after": "int num3;\nint num4;\nfor (int i = 0; i < CEVA_PASSER_MP2.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tfloat num2 = 1f;\r\n\t\t\t\tif (!div)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = CEVA_PASSER_MP2[i];\r\n\t\t\t\t}\r\n\t\t\t\tnum3 = cx + PANEL_DIRECT_R_9BLOCK[i][0];\r\n\t\t\t\tnum4 = cy + PANEL_DIRECT_R_9BLOCK[i][1];",
+        "distance": 0
+      },
+      "main_sources_modified": false,
+      "ledgers_modified": false,
+      "baseline_matched_bodies": 1606,
+      "baseline_artifact_sha256": "83b82d3f5f3d393bb3201e741eae779743a083334566592a339e64a7e2b401a7",
+      "candidate_artifact_sha256": "8e1f52ca47bded88a49cdb34392f75e4d3b501005820e81021369a1c79003259",
+      "methods_gained": [
+        "game.Team::GetSum(System.Int32[][],System.Int32,System.Int32,System.Boolean)->System.Int32"
+      ],
+      "methods_lost": [],
+      "body_equal_total": 1607,
+      "target_body_equal": true,
+      "target_facets": [],
+      "original_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "baseline_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "candidate_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "original_code_bytes": 126,
+      "old_first_offset": 3,
+      "new_first_offset": 126,
+      "prefix_preserved": true,
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "metadata_global_differences": []
+    },
+    {
+      "name": "ChMoveDirect",
+      "method_id": "game.Player::ChMoveDirect(System.Int32,System.Int32)->System.Boolean",
+      "rule": "local-declaration-scope-hoist",
+      "compile_exit_code": 0,
+      "patch": {
+        "rule": "local-declaration-scope-hoist",
+        "start": 27916,
+        "end": 28233,
+        "before": "int[] array = null;\r\n\t\t\tarray = ((!BitUtil.Check(flag_, 4) && role_ != 0 && act_id != 1 && act_id != 2) ? direct_dis_free : direct_dis_passer);\r\n\t\t\tfor (int i = 0; i < moveDirectBox.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tnum++;\r\n\t\t\t\tif (moveDirectBox[i] != -1 && ch_direct != moveDirectBox[i])\r\n\t\t\t\t{\r\n\t\t\t\t\tint num2;\r\n\t\t\t\t\tint num3;",
+        "after": "int num2;\nint num3;\nint[] array = null;\r\n\t\t\tarray = ((!BitUtil.Check(flag_, 4) && role_ != 0 && act_id != 1 && act_id != 2) ? direct_dis_free : direct_dis_passer);\r\n\t\t\tfor (int i = 0; i < moveDirectBox.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tnum++;\r\n\t\t\t\tif (moveDirectBox[i] != -1 && ch_direct != moveDirectBox[i])\r\n\t\t\t\t{\r\n\t\t\t\t\t\r\n\t\t\t\t\t",
+        "distance": 0
+      },
+      "main_sources_modified": false,
+      "ledgers_modified": false,
+      "baseline_matched_bodies": 1606,
+      "baseline_artifact_sha256": "83b82d3f5f3d393bb3201e741eae779743a083334566592a339e64a7e2b401a7",
+      "candidate_artifact_sha256": "21d1bfd08c09f3d7147d469a08eac64410918079d6c00af4106b2c810a87abd5",
+      "methods_gained": [],
+      "methods_lost": [],
+      "body_equal_total": 1606,
+      "target_body_equal": false,
+      "target_facets": [
+        "header",
+        "instructions",
+        "resolved_body_bytes"
+      ],
+      "original_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "baseline_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "candidate_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "original_code_bytes": 258,
+      "old_first_offset": 12,
+      "new_first_offset": 26,
+      "prefix_preserved": true,
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "metadata_global_differences": []
+    }
+  ]
+}

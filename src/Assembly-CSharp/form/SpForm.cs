@@ -583,7 +583,7 @@ namespace form
 			{
 				string[] array = (string[])commands_.ElementAt(i);
 				int num2 = JInteger.ParseInt(array[0]);
-				num = ((num2 < 0) ? (num + 19) : (num + 35));
+				if (num2 >= 0) { num = (num + 35); } else { num = (num + 19); }
 			}
 			int[] array2 = null;
 			try
@@ -852,18 +852,7 @@ SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
 			string[] array = (string[])commands_.ElementAt(send_);
 			int num = JInteger.ParseInt(array[0]);
 			string text = "dev=" + apdat_.platform_ + "\nver" + 202 + "\nerr=" + apdat_.sysSave_.strs[10] + "\n";
-			switch (num)
-			{
-			case -1:
-				text += "system";
-				break;
-			case -2:
-				text += "all";
-				break;
-			default:
-				text = ((num / 10 != 1) ? (text + "save" + (num % 10 + 1)) : (text + "auto" + (num % 10 + 1)));
-				break;
-			}
+			if ((num == -1)) { text += "system"; } else if ((num == -2)) { text += "all"; } else { if (num / 10 == 1) { text = (text + "auto" + (num % 10 + 1)); } else { text = (text + "save" + (num % 10 + 1)); } }
 			ByteListOutputStream byteListOutputStream = new ByteListOutputStream();
 			StreamUtil.WriteByte(byteListOutputStream, 115);
 			StreamUtil.WriteByte(byteListOutputStream, 97);
@@ -877,7 +866,7 @@ SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
 				int num2 = num % 10;
 				try
 				{
-					byte[] data = RecordStore.ReadRecord(0, ((!flag) ? 1 : 3) + num2);
+					byte[] data = RecordStore.ReadRecord(0, ((flag) ? (3) : (1)) + num2);
 					StreamUtil.WriteByte(byteListOutputStream, (sbyte)num);
 					StreamUtil.Write(byteListOutputStream, data, true);
 				}
@@ -971,13 +960,10 @@ SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
 		{
 			type = (int)(type & 0xFFFF0000u);
 			int num = type;
-			if (num == 131072)
-			{
-				select_ = value;
-			}
-			else
-			{
+			if (num != 131072) {
 				base.SetTouchValue(type, value);
+			} else {
+				select_ = value;
 			}
 		}
 

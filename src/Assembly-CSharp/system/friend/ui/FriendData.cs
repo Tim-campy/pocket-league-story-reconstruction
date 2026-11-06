@@ -493,18 +493,17 @@ namespace system.friend.ui
 
 		private static void DrawGradation(Graphics g, int dx, int dy, int sx, int sy, int w, int h, int sr, int sg, int sb, int dr, int dg, int db)
 		{
-			if (w > 0 && h > 0)
-			{
-				int num = dy;
-				int num2 = dx + w;
-				int num3 = dy + h;
-				double num4 = (double)(dr - sr) / (double)(h / 4 + 1);
-				double num5 = (double)(dg - sg) / (double)(h / 4 + 1);
-				double num6 = (double)(db - sb) / (double)(h / 4 + 1);
-				double num7 = (double)sr + (double)(sy / 4) * num4;
-				double num8 = (double)sg + (double)(sy / 4) * num5;
-				double num9 = (double)sb + (double)(sy / 4) * num6;
-				while (num < num3)
+			if ((w <= 0) || (h <= 0)) { return; }
+int num = dy;
+int num2 = dx + w;
+int num3 = dy + h;
+double num4 = (double)(dr - sr) / (double)(h / 4 + 1);
+double num5 = (double)(dg - sg) / (double)(h / 4 + 1);
+double num6 = (double)(db - sb) / (double)(h / 4 + 1);
+double num7 = (double)sr + (double)(sy / 4) * num4;
+double num8 = (double)sg + (double)(sy / 4) * num5;
+double num9 = (double)sb + (double)(sy / 4) * num6;
+while (num < num3)
 				{
 					num7 = ((!(num7 > 255.0)) ? num7 : 255.0);
 					num7 = ((!(num7 < 0.0)) ? num7 : 0.0);
@@ -521,7 +520,6 @@ namespace system.friend.ui
 					num8 += num5;
 					num9 += num6;
 				}
-			}
 		}
 
 		public static void ActionSendMail(string subject, string text)

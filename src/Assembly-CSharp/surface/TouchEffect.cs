@@ -97,18 +97,16 @@ namespace surface
 				Image image = (Image)array[0];
 				float[] array2 = (float[])array[1];
 				int num3 = 160 - 18 * num2;
-				if (num3 > 0)
-				{
-					float num4 = 2.5f * (float)num2 * num;
-					float num5 = 2.5f * (float)num2 * num;
-					float dx = (float)surface_.GetX() + x_ * num - num4 / 2f;
-					float dy = (float)surface_.GetY() + y_ * num - num5 / 2f;
-					float num6 = array2[0] * num;
-					float num7 = array2[1] * num;
-					g.SetRenderMode(1, num3, 255 - num3);
-					g.DrawScaledImage(image, dx, dy, num6 + num4, num7 + num5, (int)(array2[2] + 0.5f), (int)(array2[3] + 0.5f), (int)(array2[4] + 0.5f), (int)(array2[5] + 0.5f));
-					g.SetRenderMode(0, 255, 0);
-				}
+				if (num3 <= 0) { return; }
+float num4 = 2.5f * (float)num2 * num;
+float num5 = 2.5f * (float)num2 * num;
+float dx = (float)surface_.GetX() + x_ * num - num4 / 2f;
+float dy = (float)surface_.GetY() + y_ * num - num5 / 2f;
+float num6 = array2[0] * num;
+float num7 = array2[1] * num;
+g.SetRenderMode(1, num3, 255 - num3);
+g.DrawScaledImage(image, dx, dy, num6 + num4, num7 + num5, (int)(array2[2] + 0.5f), (int)(array2[3] + 0.5f), (int)(array2[4] + 0.5f), (int)(array2[5] + 0.5f));
+g.SetRenderMode(0, 255, 0);
 			}
 			else if (id_ != 1 && id_ != 2 && id_ != 3)
 			{

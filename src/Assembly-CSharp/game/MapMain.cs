@@ -445,12 +445,13 @@ namespace game
 		public void Draw_coat(Graphics g, bool offscreen)
 		{
 			MapchipMain mapchipMain = null;
-			mapchipMain = ((MAP_GROUND != 0) ? mapchipGrounds[MAP_GROUND - 1] : null);
-			for (int num = MAPCHIP_FIELD_HNUM - 1; num >= 0; num--)
+			if (MAP_GROUND == 0) { mapchipMain = null; } else { mapchipMain = mapchipGrounds[MAP_GROUND - 1]; }
+			int num2;
+for (int num = MAPCHIP_FIELD_HNUM - 1; num >= 0; num--)
 			{
 				for (int i = 0; i < MAPCHIP_FIELD_WNUM; i++)
 				{
-					int num2 = -1;
+					num2 = -1;
 					Camera.ConvertScreenToCamera(MAPCHIP_SPOS[num][i], camera_pos);
 					MapchipMain mapchipMain2 = null;
 					if (MAPCHIP_IMG[num][i] == -1)
@@ -514,10 +515,12 @@ namespace game
 		{
 			bool flag = false;
 			int num = 0;
-			bool flag2 = false;
-			MapchipMain mapchipMain = null;
+			global::data.MapchipMain mapchipMain;
+int num2;
+bool flag2 = false;
+			mapchipMain = null;
 			mapchipMain = ((MAP_GROUND != 0) ? mapchipGrounds[MAP_GROUND - 1] : null);
-			int num2 = 0;
+			num2 = 0;
 			int num3 = 0;
 			for (int num4 = MAPCHIP_FIELD_HNUM - 1; num4 >= 0; num4--)
 			{
@@ -702,9 +705,8 @@ namespace game
 				{
 					image = apdat_.resCom2_.img[142];
 				}
-				if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1], 110, 56, GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))
-				{
-					if (flag)
+				if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1], 110, 56, GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { continue; }
+if (flag)
 					{
 						int frame = apdat_.frmGame_.stateCnt_ % 16 / 8;
 						apdat_.DrawSeb(g, camera_pos[0], camera_pos[1], apdat_.resCom2_.seb[77], apdat_.resCom2_.img[140], frame);
@@ -713,7 +715,6 @@ namespace game
 					{
 						apdat_.DrawSeb(g, camera_pos[0], camera_pos[1], apdat_.resCom2_.seb[80], apdat_.resCom2_.img[142], 0);
 					}
-				}
 			}
 		}
 

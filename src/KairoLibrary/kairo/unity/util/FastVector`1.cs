@@ -342,9 +342,8 @@ namespace kairo.unity.util
 
 		public void TrimToSize()
 		{
-			if (elementCount != bufSize_)
-			{
-				if (elementCount == 0)
+			if (elementCount == bufSize_) { return; }
+if (elementCount == 0)
 				{
 					elementData = null;
 				}
@@ -354,8 +353,7 @@ namespace kairo.unity.util
 					JSystem.Arraycopy(elementData, 0, array, 0, array.Length);
 					elementData = array;
 				}
-				bufSize_ = elementCount;
-			}
+bufSize_ = elementCount;
 		}
 
 		public override int GetHashCode()

@@ -265,14 +265,12 @@ namespace system.billing.ui
 				for (int i = 0; i < itemList_.Size(); i++)
 				{
 					BillingItem billingItem = (BillingItem)itemList_.ElementAt(i);
-					if (billingItem.Check(2))
-					{
-						billingItem.provision_ = false;
-						if (billingItem.state_.Get() == 1 && take)
+					if (!(billingItem.Check(2))) { continue; }
+billingItem.provision_ = false;
+if (billingItem.state_.Get() == 1 && take)
 						{
 							billingItem.provision_ = true;
 						}
-					}
 				}
 				UpdateApplyTask(false);
 			}
@@ -423,15 +421,13 @@ namespace system.billing.ui
 					string[][] array2 = array;
 					foreach (string[] array3 in array2)
 					{
-						if (!(array3[0] != productId))
-						{
-							Purchase purchase2 = new Purchase();
-							purchase2.mOrderId = array3[1];
-							billingItem2.recovery_ = true;
-							billingItem2.SetPurchase(purchase2);
-							billingItem2.ChangeState(1);
-							flag = true;
-						}
+						if ((array3[0] != productId)) { return; }
+Purchase purchase2 = new Purchase();
+purchase2.mOrderId = array3[1];
+billingItem2.recovery_ = true;
+billingItem2.SetPurchase(purchase2);
+billingItem2.ChangeState(1);
+flag = true;
 					}
 				}
 				if (billingItem2.GetState() == 1 && !billingItem2.recovery_)
@@ -863,19 +859,18 @@ namespace system.billing.ui
 				for (int i = 0; i < applyTaskList_.Size(); i++)
 				{
 					ApplyTask applyTask = (ApplyTask)applyTaskList_.ElementAt(i);
-					if (!applyTask.lock_ && (!applyTask.IsGameApply() || flag))
-					{
-						applyTask.lock_ = true;
-						bool flag2 = ExecuteApplyTask(applyTask);
-						if (!flag2)
+					if (applyTask.lock_) { continue; }
+if ((applyTask.IsGameApply()) && (!(flag))) { continue; }
+applyTask.lock_ = true;
+bool flag2 = ExecuteApplyTask(applyTask);
+if (!flag2)
 						{
 							applyTask.lock_ = false;
 						}
-						if (flag2)
+if (flag2)
 						{
 							i = -1;
 						}
-					}
 				}
 			}
 		}
@@ -979,11 +974,9 @@ namespace system.billing.ui
 			for (int num = purchaseLog_.Size() - 1; num >= 0; num--)
 			{
 				PurchaseRecord purchaseRecord2 = (PurchaseRecord)purchaseLog_.ElementAt(num);
-				if (purchaseRecord2.productId_.Equals(productId) && (text == null || purchaseRecord2.orderId_.Equals(text)))
-				{
-					purchaseRecord = purchaseRecord2;
-					break;
-				}
+				if ((!(purchaseRecord2.productId_.Equals(productId))) || ((text != null) && (!(purchaseRecord2.orderId_.Equals(text))))) { continue; }
+purchaseRecord = purchaseRecord2;
+break;
 			}
 			if (purchaseRecord == null && text != null)
 			{
@@ -1007,19 +1000,17 @@ namespace system.billing.ui
 			for (int i = 0; i < purchaseLog_.Size(); i++)
 			{
 				PurchaseRecord purchaseRecord = (PurchaseRecord)purchaseLog_.ElementAt(i);
-				if (purchaseRecord.send_)
-				{
-					if (text.Length() > 0)
+				if (!(purchaseRecord.send_)) { continue; }
+if (text.Length() > 0)
 					{
 						text += "\t";
 					}
-					string text2 = text;
-					text = text2 + purchaseRecord.productId_ + "," + purchaseRecord.orderId_ + "," + purchaseRecord.state_;
-					for (int j = 0; j < purchaseRecord.timestamp_.Length; j++)
+string text2 = text;
+text = text2 + purchaseRecord.productId_ + "," + purchaseRecord.orderId_ + "," + purchaseRecord.state_;
+for (int j = 0; j < purchaseRecord.timestamp_.Length; j++)
 					{
 						text = text + "," + purchaseRecord.timestamp_[j];
 					}
-				}
 			}
 			if (text.Length() == 0)
 			{
