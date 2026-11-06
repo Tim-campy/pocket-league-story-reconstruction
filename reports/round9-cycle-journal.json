@@ -29,6 +29,35 @@
       "before_sha256": "837d508d76a042f2cc30cd4901d974ee6e0b26e713c04fedd8874f76ccc2a11b",
       "after_measurement": "reports\\round9-a01-after-measurement.json",
       "after_sha256": "5a3156985fa95abe784952d5a42dcc644053053dc0ed2ba12b7b124a1f8a792b"
+    },
+    {
+      "cycle": 2,
+      "label": "a02",
+      "phase": "A",
+      "primary_target": "kairo.unity.ui.Graphics::DrawArc(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)->",
+      "queue_empty": false,
+      "rule": "roslyn-store-use-lifetime-scope-while-counter-scope",
+      "assembly": "KairoLibrary",
+      "pair": "stloc.s=>stloc.s",
+      "hypothesis": "FilaA: contador no escopo do laco e inline do alias de array em DrawArc; modelo incompleto pode compilar sob orcamento e assinatura real decide.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 1188
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 1188,
+      "before_measurement": "reports\\round9-a02-before-measurement.json",
+      "before_sha256": "7165efabf83fef7c40eceb4103532c85f21947a03d578a0b651cba3d50cce488",
+      "after_measurement": "reports\\round9-a02-after-measurement.json",
+      "after_sha256": "eca54ec52803f866817755995f5cb0ba33948130a41d5bb93461a2f2b3dd99c6"
     }
   ],
   "consecutive_zero_cycles": 0

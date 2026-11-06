@@ -1017,8 +1017,7 @@ renderCache_.Reset();
 				x += width / 2f;
 				y += height / 2f;
 				float num5 = 360f / (float)(int)((1f + (width + height) * 2f / 50f) * 8f + 8f);
-				RenderPass[] renderPass = GetRenderPass(guiStyle_.normal.textColor);
-				foreach (RenderPass renderPass2 in renderPass)
+				foreach (RenderPass renderPass2 in GetRenderPass(guiStyle_.normal.textColor))
 				{
 					Color color = renderPass2.BeginShape()[0];
 					try
@@ -1083,8 +1082,7 @@ renderCache_.Reset();
 							GL.Begin(7);
 						}
 						GL.Color(color);
-						int num15 = 0;
-						while (num7 < num6)
+						for (int num15 = 0; num7 < num6; )
 						{
 							float num16 = num7 + num5;
 							if (num15 == 0)
