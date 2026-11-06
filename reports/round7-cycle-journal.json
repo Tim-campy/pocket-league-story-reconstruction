@@ -390,6 +390,32 @@
       "before_sha256": "a6e1106416bd31ac8a5c403b4c4fc3b23c260724c9000f70185efa1ef51165e0",
       "after_measurement": "reports\\round7-cycle15-after-measurement.json",
       "after_sha256": "9bd576cab17d1a7c7008829854210a5c88c68d62c2a4770056f26c311aff39c1"
+    },
+    {
+      "cycle": 16,
+      "label": "cycle16",
+      "rule": "roslyn-for-declaration-immediately-before",
+      "assembly": "KairoLibrary",
+      "pair": "stloc.s=>stloc.s",
+      "hypothesis": "Declarar o índice imediatamente antes do for em vez de movê-lo ao topo do bloco reproduz a ordem original dos locais nomeados do Roslyn sem mudar a inicialização.",
+      "result": "Novos corpos aprovados; 3 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 1863
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 1,
+      "il_bytes_gained": 1863,
+      "before_measurement": "reports\\round7-cycle16-before-measurement.json",
+      "before_sha256": "ef08dc6e916debf467d7725c53655b3242e7484e53bcfe0883dd28d3318febd5",
+      "after_measurement": "reports\\round7-cycle16-after-measurement.json",
+      "after_sha256": "2edea6f5b4f2fe792885ee53e27dd57efb434ffaaa5b6095349b20fa475480ec"
     }
   ],
   "consecutive_zero_cycles": 0

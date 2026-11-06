@@ -42,6 +42,11 @@ def passes(engine):
 def main():
     baseline=read('reports/round7-baseline-measurement.json')
     final=read('reports/round7-final-measurement.json')
+    inventory=list(csv.DictReader((ROOT/'config/inventory.csv').open(encoding='utf-8-sig',newline='')))
+    apk_hashes={r['apk_sha256'] for r in inventory if r.get('apk_sha256')}
+    if len(apk_hashes)!=1:raise ValueError('Ambiguous original APK identity')
+    original_targets={Path(r['caminho']).name:r['sha256'] for r in inventory
+        if r['categoria']=='alvo' and r['caminho'].endswith('.dll')}
     if final['ledger_sha256']!=sha(ROOT/'config/methods.csv'):raise ValueError('Stale final measurement')
     baseline_ledger=list(csv.DictReader((ROOT/'build/round7/baseline/methods.csv').open(encoding='utf-8-sig',newline='')))
     current_ledger=list(csv.DictReader((ROOT/'config/methods.csv').open(encoding='utf-8-sig',newline='')))
@@ -49,6 +54,9 @@ def main():
     body_losses={}
     for a in ASSEMBLIES:
         receipt=read('build/verification-'+a+'.json')
+        metadata=read('reports/'+a+'-metadata.json')
+        if metadata['original_sha256']!=original_targets[a+'.dll'] or not metadata['whole_structural_metadata_equal']:
+            raise ValueError('Original identity/global metadata mismatch: '+a)
         if not receipt_is_fresh(ROOT,receipt) or any(receipt.get(k) for k in ('regressions','body_regressions','type_regressions')):raise ValueError('Stale/regressive official receipt '+a)
         provenance=final['assemblies'][a]['provenance']
         for path_key,hash_key in [('original_dump','original_dump_sha256'),('rebuilt_dump','rebuilt_dump_sha256'),('receipt','receipt_sha256')]:
@@ -71,6 +79,9 @@ def main():
     adopted={read(p).get('run_label',p.name.removeprefix('round7-').removesuffix('-adoption.json')) for p in (ROOT/'reports').glob('round7-*-adoption.json') if read(p).get('official_verified')}
     out=['## 1. PROGRESSO','',
         'APK: `net.kairosoft.android.soccer_en_2.0.2-APK_Award.apk`; reconstrução gerenciada Unity 5.3.4f1/Mono. Linha anterior: commit `cdd0f7f3b8dda09f296a7cfa16cd00236a3346ae`. `matched` exige cabeçalho, maxstack, locais, IL e regiões de exceção iguais; somente identidades de tokens são resolvidas. Declarações sem corpo entram em métodos, não em bytes de IL.','']
+    out += [table(['Artefato original','SHA-256'],[
+        ('APK',inline(next(iter(apk_hashes)))),
+        *[(a+'.dll',inline(original_targets[a+'.dll'])) for a in ASSEMBLIES]]),'']
     rows=[]
     for a in ASSEMBLIES:
         b=baseline['assemblies'][a];f=final['assemblies'][a]
@@ -152,7 +163,7 @@ def main():
         out += ['**'+a+' — todos os pares restantes**','',table(['Par alinhado','Métodos','Peso em bytes'],[(g['pair'],g['methods'],g['original_il_bytes']) for g in groups]),'']
         exact_groups=d['alignment']['exact_histogram']
         out += ['Os cinco pares com operandos exatos mais pesados são apresentados também; os endereços de saltos tornam esse agrupamento mais fragmentado que o de opcodes.','',
-            table(['Par exato','Métodos','Peso em bytes'],[(g['pair'],g['methods'],g['original_il_bytes']) for g in exact_groups[:5]]),'']
+            table(['Par exato','Métodos','Peso em bytes'],[(inline(g['pair']),g['methods'],g['original_il_bytes']) for g in exact_groups[:5]]),'']
         examples=[('opcodes',n,g) for n,g in enumerate(groups[:5],1)]
         examples += [('operandos exatos',n,g) for n,g in enumerate(exact_groups[:5],1)]
         for grouping,n,g in examples:

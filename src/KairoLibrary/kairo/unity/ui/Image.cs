@@ -465,7 +465,8 @@ namespace kairo.unity.ui
 				for (int n = 0; n < array.Length; n++)
 				{
 					short[] array3 = array[n];
-					for (int num3 = 0; num3 < optimizePass_; num3++)
+					int num3;
+for ( num3 = 0; num3 < optimizePass_; num3++)
 					{
 						optimizeAccessL_[n * optimizePass_ + num3] = -1;
 					}
@@ -538,7 +539,8 @@ namespace kairo.unity.ui
 					for (int num14 = 0; num14 < array5[num13].Length; num14++)
 					{
 						short[] array7 = array5[num13][num14];
-						for (int num15 = 0; num15 < optimizePass_; num15++)
+						int num15;
+for ( num15 = 0; num15 < optimizePass_; num15++)
 						{
 							optimizeAccessL_[(num13 * optimizeWidthNum_ + num14) * optimizePass_ + num15] = -1;
 						}

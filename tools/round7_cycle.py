@@ -8,6 +8,8 @@ import json
 from pathlib import Path
 import subprocess
 import sys
+from compare_kairo import sha
+from apply_il_rules import receipt_is_fresh
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -27,6 +29,7 @@ def main():
     p.add_argument('--hypothesis',required=True)
     p.add_argument('--probe-substring',required=True,action='append')
     p.add_argument('--push',action='store_true')
+    p.add_argument('--use-prepared-baseline',action='store_true',help='Resume preparation only with unchanged HEAD, ledgers, sources and fresh receipts')
     args=p.parse_args()
     journal_path=ROOT/'reports/round7-cycle-journal.json'
     journal=json.loads(journal_path.read_text(encoding='utf-8')) if journal_path.exists() else {'cycles':[],'consecutive_zero_cycles':0}
@@ -34,7 +37,25 @@ def main():
     if args.number!=len(journal['cycles'])+1:raise ValueError('Cycle number is not next')
     label='cycle%02d'%args.number
     baseline=Path('build/round7/cycles')/label/'baseline'
-    run(['tools/round7_freeze.py','--destination',baseline])
+    if args.use_prepared_baseline:
+        snapshot=json.loads((ROOT/baseline/'snapshot.json').read_text(encoding='utf-8'))
+        head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT).decode().strip()
+        if snapshot['commit']!=head or snapshot['ledger_sha256']!=sha(ROOT/'config/methods.csv'):
+            raise ValueError('Prepared baseline no longer describes HEAD/ledger')
+        for name in ('methods.csv','types.csv','toolchain.json'):
+            if sha(ROOT/baseline/name)!=sha(ROOT/'config'/name):
+                raise ValueError('Prepared configuration changed: '+name)
+        for assembly in ('KairoLibrary','Assembly-CSharp'):
+            receipt=json.loads((ROOT/('build/verification-'+assembly+'.json')).read_text(encoding='utf-8-sig'))
+            if not receipt_is_fresh(ROOT,receipt) or any(receipt.get(k) for k in ('regressions','body_regressions','type_regressions')):
+                raise ValueError('Prepared receipt is stale/regressive: '+assembly)
+            manifest=json.loads((ROOT/baseline/assembly/'build-manifest.json').read_text(encoding='utf-8-sig'))
+            for source in manifest['sources']:
+                if sha(ROOT/baseline/assembly/source['path'])!=sha(ROOT/source['path']):
+                    raise ValueError('Prepared source changed: '+source['path'])
+        print(json.dumps({'prepared_baseline_reused':str(baseline),'immutable_snapshot_preserved':True}),flush=True)
+    else:
+        run(['tools/round7_freeze.py','--destination',baseline])
     run(['tools/round7_measure.py','--snapshot',baseline,'--label',label+'-before'])
     original=json.loads((ROOT/baseline/args.assembly/'original-methods.json').read_text(encoding='utf-8-sig'))['selected_methods']
     common=['--assembly',args.assembly,'--baseline-dir',baseline,'--cycle-rule',args.rule,
