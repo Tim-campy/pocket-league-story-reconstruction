@@ -6,5 +6,6 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 public static partial class Round7TransformSyntax {
     static void AddRound8Rules(JsonElement input,string text,StatementSyntax mapped,BlockSyntax methodBody,
         SemanticModel model,int point,List<Patch> patches,HashSet<string> seen) {
+        AddRound8CompoundRules(input,text,mapped,methodBody,model,point,patches,seen);
     }
 }

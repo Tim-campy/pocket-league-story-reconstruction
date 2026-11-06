@@ -9,7 +9,7 @@ LEGACY=('Round7TransformSyntax.cs','Round7NewRules.cs','Round7AliasRules.cs','Ro
  'Round7RoslynDeclarationRules.cs','Round7TerminalArmRules.cs','Round7BalancedBranchRules.cs','Round7InfiniteTailGuardRules.cs')
 
 def source_inputs():
-    paths=[ROOT/'tools'/name for name in LEGACY]+[ROOT/'tools/Round8Rules.cs']
+    paths=[ROOT/'tools'/name for name in LEGACY]+[ROOT/'tools/Round8Rules.cs',ROOT/'tools/Round8CompoundRules.cs']
     anchor='AddRound7InfiniteTailGuardRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);'
     main=paths[0].read_text(encoding='utf-8-sig')
     if main.count(anchor)!=1:raise ValueError('Unrecognized retained dispatcher')

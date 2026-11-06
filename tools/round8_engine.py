@@ -618,7 +618,7 @@ def main():
                 calculated = calculated_alias_hints(original[key], method, debug_method)
                 hints.update(calculated)
                 row.setdefault('calculated_alias_evidence', []).append(calculated)
-            response = syntax.request(path=str(c.paths[logical]), source=text, line=point['start_line'], column=max(1, point['start_column']), method_id=key, max_candidates=512, compiler='smcs' if is_smcs else 'roslyn', round7_cycle_rule=args.cycle_rule or '', round7_cycle_rules=learned_rules, **hints)
+            response = syntax.request(path=str(c.paths[logical]), source=text, line=point['start_line'], column=max(1, point['start_column']), method_id=key, max_candidates=512, compiler='smcs' if is_smcs else 'roslyn', round7_cycle_rule=args.cycle_rule or '', round7_cycle_rules=learned_rules, round8_expand_compound_fields=is_smcs, **hints)
             row['transform_helper_sha256'] = syntax_hash
             row['stop_point'] = {'offset': old_prefix, 'source': logical, 'point': point,
                                  'alignment': alignment, 'statement': response.get('mapped')}
