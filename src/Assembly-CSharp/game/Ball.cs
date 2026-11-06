@@ -397,8 +397,8 @@ float dragZ;
 				{
 					dragX = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
 					dragZ = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
-					v_.x_ *= dragX;
-					v_.z_ *= dragZ;
+					v_.x_ = (v_.x_) * (dragX);
+					v_.z_ = (v_.z_) * (dragZ);
 				}
 				else if (!flag)
 				{
@@ -414,9 +414,9 @@ float dragZ;
 						dragX = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
 						dragZ = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
 					}
-					v_.x_ *= dragX;
-					v_.y_ *= 0.995f;
-					v_.z_ *= dragZ;
+					v_.x_ = (v_.x_) * (dragX);
+					v_.y_ = (v_.y_) * (0.995f);
+					v_.z_ = (v_.z_) * (dragZ);
 				}
 				v_.Add(a_);
 				pos_.Add(v_);
@@ -434,9 +434,9 @@ float dragZ;
 			{
 				boundNum_++;
 				pos_.y_ *= -1f;
-				v_.y_ = (0f - v_.y_) / 2f;
-				v_.x_ *= 0.9f;
-				v_.z_ *= 0.9f;
+				v_.y_ = (-(v_.y_)) / 2f;
+				v_.x_ = (v_.x_) * (0.9f);
+				v_.z_ = (v_.z_) * (0.9f);
 				a_.x_ = 0f;
 				a_.z_ = 0f;
 				if (v_.y_ < 0.3f)
@@ -597,7 +597,7 @@ float unusedOriginalSlot12;
 						pos_.z_ = AppData.ClampMin((int)pos_.z_, -899);
 					}
 					v_.x_ = v_.x_ * 25f / 100f;
-					v_.z_ = (0f - v_.z_) * 25f / 100f;
+					v_.z_ = (-(v_.z_)) * 25f / 100f;
 					ChGravity();
 					SetSavePos(pos_, v_, a_);
 					targetPId = -1;
@@ -607,16 +607,15 @@ float unusedOriginalSlot12;
 			}
 			if (flag9)
 			{
-				v_.y_ *= 0.9f;
-				a_.y_ *= 0.9f;
+				v_.y_ = (v_.y_) * (0.9f);
+				a_.y_ = (a_.y_) * (0.9f);
 				if (a_.y_ > -0.1f)
 				{
 					a_.y_ = -0.1f;
 				}
 			}
 			bool flag13 = false;
-			if (udat_.gm_.state_ == 0 && SoccerForm.DEBUG_BALLTEST_MODE == 0)
-			{
+			if ((udat_.gm_.state_ == 0)) { if (SoccerForm.DEBUG_BALLTEST_MODE == 0) {
 				if (pos_.x_ < -450f)
 				{
 					if (SoccerForm.DEBUG_WALLREFRECT == 1)
@@ -677,11 +676,11 @@ float unusedOriginalSlot12;
 						SetSavePos(pos_, v_, a_);
 						targetPId = -1;
 					}
-					else if (lineOutPos_.z_ < -900f || lineOutPos_.z_ > 900f)
-					{
+					else if ((!(lineOutPos_.z_ < -900f)) && (!(lineOutPos_.z_ > 900f))) {
+						udat_.gm_.ChangeState(3);
+					} else {
 						int num3 = -1;
-						if (lineOutPos_.z_ > 900f)
-						{
+						if (!(lineOutPos_.z_ > 900f)) { } else {
 							num3 = 1;
 						}
 						int num4 = -1;
@@ -698,12 +697,8 @@ float unusedOriginalSlot12;
 							udat_.gm_.ChangeState(5);
 						}
 					}
-					else
-					{
-						udat_.gm_.ChangeState(3);
-					}
 				}
-			}
+			}  }
 			Camera.ConvertGlobalToAddress(pos_, address_);
 			Camera.ConvertGlobalToScreen(pos_, screen_pos_);
 			shadowPos_.x_ = pos_.x_;
