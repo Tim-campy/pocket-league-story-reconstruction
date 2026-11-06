@@ -1860,8 +1860,10 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 		internal void OnTouchTrackBar(int type, int v, TouchEvent e)
 		{
 			int typeAlias = type;
-if ((typeAlias == 0) || (typeAlias != 9)) { return; }
+if ((typeAlias == 0) || (typeAlias != 9)) { } else {
+
 Set(v, e.dx, e.component);
+}
 		}
 
 		protected void OnTouchRect(int type, int v, TouchEvent e)

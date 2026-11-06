@@ -50,7 +50,9 @@ def main():
     run(['tools/round7_clean_added_whitespace.py','--report',cleanup])
     if json.loads((ROOT/cleanup).read_text(encoding='utf-8'))['blank_lines']:
         run(['tools/round7_adopt.py','--run-label',label,'--baseline-dir',baseline,'--assemblies',args.assembly,'--refresh-official-proof'])
-    run(['tools/round7_measure.py','--label',label+'-after'])
+    after_snapshot=baseline.parent/'after'
+    run(['tools/round7_freeze.py','--destination',after_snapshot])
+    run(['tools/round7_measure.py','--snapshot',after_snapshot,'--label',label+'-after'])
     engine=json.loads((ROOT/('reports/round7-'+label+'-'+args.assembly+'-engine.json')).read_text(encoding='utf-8'))
     new_steps=sum(s['rule'].startswith(args.rule) for m in engine['methods'] for s in m['steps'])
     new_trials=sum(t['rule'].startswith(args.rule) for m in engine['methods'] for t in m['trials'])

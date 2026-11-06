@@ -3,3 +3,4 @@
 | Ciclo | Assembly / par | Hipotese | Resultado | Metodos ganhos | Bytes de IL ganhos |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Assembly-CSharp / bne.un => beq | Guarda terminal recuperada como retorno deve ser um if positivo envolvendo o restante do bloco final | Novos corpos aprovados; 18 tentativas da regra, 13 avancos | 7 | 14902 |
+| 2 | Assembly-CSharp / br => ret | Quando o br original termina no ret comum, if com ramo verdadeiro vazio e else preserva o desvio explicito | Novos corpos aprovados; 8 tentativas da regra, 8 avancos | 6 | 2669 |

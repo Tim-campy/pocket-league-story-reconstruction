@@ -81,10 +81,8 @@ namespace system.billing.ui
 				}
 				else
 				{
-					if (gift_.StartsWith("@"))
-					{
-						return;
-					}
+					if (gift_.StartsWith("@")) { } else {
+
 					string[] array2 = StringUtil.Split(gift_.ToString(), ",");
 					productId_ = new SecureString(array2[0]);
 					if (1 < array2.Length)
@@ -118,10 +116,8 @@ namespace system.billing.ui
 					catch (Exception)
 					{
 					}
-					if (name_.Length() != 0)
-					{
-						return;
-					}
+					if (name_.Length() == 0) {
+
 					BillingManager instance = BillingManager.GetInstance();
 					BillingItem[] items = instance.GetItems();
 					BillingItem billingItem = null;
@@ -129,9 +125,9 @@ namespace system.billing.ui
 					BillingItem billingItem3 = null;
 					for (int i = 0; i < items.Length; i++)
 					{
-						if (items[i] != null && items[i].GetProvisionType().Equals(SecureString.ToString(provisionType_)))
-						{
-							if (items[i].GetProvisionValueText().Equals(SecureString.ToString(provisionValueS_)))
+						if (items[i] == null) { continue; }
+if (!(items[i].GetProvisionType().Equals(SecureString.ToString(provisionType_)))) { continue; }
+if (items[i].GetProvisionValueText().Equals(SecureString.ToString(provisionValueS_)))
 							{
 								billingItem = items[i];
 							}
@@ -143,7 +139,6 @@ namespace system.billing.ui
 							{
 								billingItem3 = items[i];
 							}
-						}
 					}
 					if (billingItem != null)
 					{
@@ -157,6 +152,8 @@ namespace system.billing.ui
 					{
 						name_ = new SecureString(billingItem3.GetName());
 					}
+}
+}
 				}
 }
 			}

@@ -23,12 +23,17 @@ def main():
     parser.add_argument('--run-label',required=True)
     parser.add_argument('--message',required=True)
     parser.add_argument('--push',action='store_true')
+    parser.add_argument('--final-report',action='store_true')
     args=parser.parse_args()
     folder=ROOT/'build/round7/runs'/args.run_label/'commit';folder.mkdir(parents=True,exist_ok=True)
     run([sys.executable,'tools/verify','--all'],folder/'full-verification.log',accepted=(0,1))
     for a in ('KairoLibrary','Assembly-CSharp'):
         receipt=json.loads((ROOT/('build/verification-'+a+'.json')).read_text(encoding='utf-8-sig'))
         if not receipt_is_fresh(ROOT,receipt) or any(receipt.get(k) for k in ('regressions','body_regressions','type_regressions')):raise ValueError('Fresh verification failed '+a)
+    if args.final_report:
+        run([sys.executable,'tools/round7_measure.py','--label','final'],folder/'final-measurement.log')
+        run([sys.executable,'tools/round7_hypotheses.py'],folder/'hypotheses.log')
+        run([sys.executable,'tools/round7_report.py'],folder/'final-report.log')
     run([sys.executable,'tools/progress'],folder/'progress.log')
     run(['git','add','--','tools','reports','src','docs','config','PROGRESS.md','README.md'])
     staged=run(['git','diff','--cached','--name-only','-z']).stdout.decode('utf-8').split('\0')

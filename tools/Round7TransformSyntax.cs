@@ -149,6 +149,7 @@ public static partial class Round7TransformSyntax {
             properties["round7_cycle_rule"]=JsonSerializer.SerializeToElement(cycleRule);
             using(var cycleRequest=JsonDocument.Parse(JsonSerializer.Serialize(properties))) {
                 AddRound7SmcsCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7SmcsExitRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7RoslynCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
             }
         }

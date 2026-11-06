@@ -578,10 +578,8 @@ namespace form
 			}
 			state_ = state;
 			stateCnt_ = 0;
-			if (state_ == 0)
-			{
-				return;
-			}
+			if (state_ == 0) { } else {
+
 			if (state_ == 1)
 			{
 				SetBuildBtmMessage("設置場所を選択して下さい。", 0);
@@ -597,6 +595,7 @@ namespace form
 					apdat_.camera.subSvisor_ = null;
 				}
 			}
+}
 		}
 
 		public override bool Update()

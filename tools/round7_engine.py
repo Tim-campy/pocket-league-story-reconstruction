@@ -73,7 +73,7 @@ def syntax_identity():
     return hashlib.sha256(b''.join((ROOT / 'tools' / name).read_bytes() for name in (
         'Round7TransformSyntax.cs', 'Round7NewRules.cs', 'Round7AliasRules.cs',
         'Round7SmcsRules.cs', 'Round7RoslynRules.cs',
-        'round7_smcs_cycle_rules.cs', 'Round7RoslynCycleRules.cs'))).hexdigest()
+        'round7_smcs_cycle_rules.cs', 'Round7RoslynCycleRules.cs', 'Round7SmcsExitRules.cs'))).hexdigest()
 
 
 def model_approval(prediction, expected_types):
@@ -574,6 +574,8 @@ def main():
                 current_types=[type_lookup.get(t,'UNKNOWN') for t in method.get('locals',[])]
                 hints.update(rule_hints(original[key],method,alignment['original_offset'],
                     plain_local_types.get(key,[]),current_types,model=current_prediction))
+                from round7_smcs_branch_exit_diagnose import branch_exit_hints
+                hints.update(branch_exit_hints(original[key],alignment['original_offset']))
             if args.calculated_parameter_aliases:
                 from round6_alias_calculus import calculated_alias_hints
                 calculated = calculated_alias_hints(original[key], method, debug_method)

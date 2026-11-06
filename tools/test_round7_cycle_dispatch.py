@@ -8,6 +8,7 @@ SOURCE='''class Fixture {
  static int count;
  static void Tail(bool flag) {if(flag) {count++;}}
  static void Loop(bool flag) {for(int i=0;i<3;i++) {if(flag) {count++;}}}
+ static void LoopGuard(bool flag) {for(int i=0;i<3;i++) {if(flag) {return;} count++;}}
  static void Guard(bool flag) {if(flag) {return;} count++;}
  static void Empty(bool flag) {if(!flag) {} count++;}
 }'''
@@ -32,6 +33,13 @@ def main():
         assert 'terminal-guard-positive-tail' in rules('Guard',round7_cycle_rule='terminal-guard-positive-tail');checks.append('selected rule dispatch')
         assert 'empty-if-terminal-polarity' in rules('Empty',round7_cycle_rule='terminal-guard-positive-tail',
             round7_cycle_rules=['empty-if-terminal-polarity','terminal-guard-positive-tail']);checks.append('learned family remains in repertoire')
+        assert 'void-empty-then-common-exit' in rules('Guard',round7_cycle_rule='void-empty-then-common-exit',
+            original_exit_target_kind='method-ret');checks.append('common method exit dispatch')
+        assert 'void-empty-then-common-exit' not in rules('Guard',round7_cycle_rule='void-empty-then-common-exit');checks.append('method exit requires original branch evidence')
+        assert 'loop-guard-return-to-continue' in rules('LoopGuard',round7_cycle_rule='loop-guard-return-to-continue',
+            original_exit_target_kind='loop-increment');checks.append('original loop increment dispatch')
+        assert 'loop-guard-return-to-continue' not in rules('LoopGuard',round7_cycle_rule='loop-guard-return-to-continue',
+            original_exit_target_kind='UNKNOWN');checks.append('unknown branch destination rejected')
     (ROOT/'reports/round7-cycle-dispatch-tests.json').write_text(json.dumps({'passed':len(checks),'checks':checks,
         'game_candidate_compilations':0},indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'passed':len(checks)}))

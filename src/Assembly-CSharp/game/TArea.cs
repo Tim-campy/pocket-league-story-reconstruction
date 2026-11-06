@@ -215,10 +215,8 @@ namespace game
 		{
 			state_ = next_state;
 			stateCnt_ = 0;
-			if (state_ == 10)
-			{
-				return;
-			}
+			if (state_ == 10) { } else {
+
 			if (state_ == 11)
 			{
 				for (int i = 0; i < tGroupAreas_.Length; i++)
@@ -281,6 +279,7 @@ namespace game
 					tGroupAreas_[n].ChangeState(14);
 				}
 			}
+}
 		}
 
 		public int GetAreaMaxNum(int tMode)

@@ -43,6 +43,10 @@ def main():
     for a in ASSEMBLIES:
         receipt=read('build/verification-'+a+'.json')
         if not receipt_is_fresh(ROOT,receipt) or any(receipt.get(k) for k in ('regressions','body_regressions','type_regressions')):raise ValueError('Stale/regressive official receipt '+a)
+        provenance=final['assemblies'][a]['provenance']
+        for path_key,hash_key in [('original_dump','original_dump_sha256'),('rebuilt_dump','rebuilt_dump_sha256'),('receipt','receipt_sha256')]:
+            if sha(ROOT/provenance[path_key])!=provenance[hash_key]:raise ValueError('Stale final input '+a+' '+path_key)
+        if receipt['build_sha256']!=provenance['build_sha256']:raise ValueError('Final measurement describes another build')
     journal=read('reports/round7-cycle-journal.json') if (ROOT/'reports/round7-cycle-journal.json').exists() else {'cycles':[]}
     stop=read('reports/round7-stop.json')
     engines=[]

@@ -673,7 +673,8 @@ namespace game
 
 		public void SetCameraRect()
 		{
-			if (!(CAMERA_LIMIT)) { return; }
+			if (!(CAMERA_LIMIT)) { } else {
+
 if (pos.x_ < (float)(CAMERA_RECT[0][0] + 120))
 				{
 					pos.x_ = CAMERA_RECT[0][0] + 120;
@@ -725,6 +726,7 @@ if (cursor_pos.y_ > (float)(CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.V
 				{
 					cursor_pos.y_ = CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.VIEW_Y;
 				}
+}
 		}
 
 		public void Update_normal()

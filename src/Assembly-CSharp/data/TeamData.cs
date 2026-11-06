@@ -154,10 +154,8 @@ goalScoreRate_[1] = goalScoreRate_[0] + 20; }
 		public void SetScore(int getScore, bool isUserTeam)
 		{
 			UserData instance = UserData.GetInstance();
-			if (isUserTeam)
-			{
-				return;
-			}
+			if (isUserTeam) { } else {
+
 			for (int i = 0; i < getScore; i++)
 			{
 				int num = 0;
@@ -172,6 +170,7 @@ goalScoreRate_[1] = goalScoreRate_[0] + 20; }
 				}
 				goalScore_[num]++;
 			}
+}
 		}
 
 		public void NewGame()

@@ -1948,10 +1948,8 @@ if (num4 < 400f)
 			}
 			else
 			{
-				if (BitUtil.Check(flag_, 8))
-				{
-					return;
-				}
+				if (BitUtil.Check(flag_, 8)) { } else {
+
 				bool flag = ball_.ChBallDirectHere(this);
 				int toGoalLineTime = ball_.GetToGoalLineTime(this);
 				bool flag2 = false;
@@ -2055,6 +2053,7 @@ if (num4 < 400f)
 						passer.physical_hp_ = PlayerData.GetPhysicalHpMax(passer);
 					}
 				}
+}
 			}
 		}
 

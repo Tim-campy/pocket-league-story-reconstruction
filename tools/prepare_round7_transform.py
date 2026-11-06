@@ -16,6 +16,7 @@ def ensure_helper():
     sources = [ROOT / ('tools/Round7' + stem + '.cs') for stem in
                ('TransformSyntax', 'NewRules', 'AliasRules', 'SmcsRules', 'RoslynRules')]
     sources += [ROOT/'tools/round7_smcs_cycle_rules.cs',ROOT/'tools/Round7RoslynCycleRules.cs']
+    sources += [ROOT/'tools/Round7SmcsExitRules.cs']
     identity = hashlib.sha256(b''.join(p.read_bytes() for p in sources) + str(ROSLYN).encode()).hexdigest()
     # Immutable hash folders let an older engine process keep its helper loaded.
     folder = ROOT / 'build/round7-transform' / identity[:16]
