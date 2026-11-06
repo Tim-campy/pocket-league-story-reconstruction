@@ -757,7 +757,7 @@ namespace game
 				num = 100 - player.formation_[1];
 				for (int j = 0; j < players_.Length; j++)
 				{
-					if (j == i) { return; }
+					if (j == i) { continue; }
 Player player2 = players_[j];
 int num7 = player2.formation_[1] - player.formation_[1];
 if (num > num7 && num7 > num5)
@@ -772,15 +772,13 @@ if (num > num7 && num7 > num5)
 				num2 = 0 + player.formation_[1];
 				for (int k = 0; k < players_.Length; k++)
 				{
-					if (k != i)
-					{
-						Player player3 = players_[k];
-						int num8 = player.formation_[1] - player3.formation_[1];
-						if (num2 > num8 && num8 > num5)
+					if (k == i) { continue; }
+Player player3 = players_[k];
+int num8 = player.formation_[1] - player3.formation_[1];
+if (num2 > num8 && num8 > num5)
 						{
 							num2 = num8;
 						}
-					}
 				}
 				if (num2 != 0 + player.formation_[1])
 				{
@@ -789,15 +787,13 @@ if (num > num7 && num7 > num5)
 				num3 = 0 + player.formation_[0];
 				for (int l = 0; l < players_.Length; l++)
 				{
-					if (l != i)
-					{
-						Player player4 = players_[l];
-						int num9 = player.formation_[0] - player4.formation_[0];
-						if (num3 > num9 && num9 > num5 && JMath.Abs(player.formation_[1] - player4.formation_[1]) < num6)
+					if (l == i) { continue; }
+Player player4 = players_[l];
+int num9 = player.formation_[0] - player4.formation_[0];
+if (num3 > num9 && num9 > num5 && JMath.Abs(player.formation_[1] - player4.formation_[1]) < num6)
 						{
 							num3 = num9;
 						}
-					}
 				}
 				if (num3 != 0 + player.formation_[0])
 				{
@@ -806,15 +802,13 @@ if (num > num7 && num7 > num5)
 				num4 = 100 - player.formation_[0];
 				for (int m = 0; m < players_.Length; m++)
 				{
-					if (m != i)
-					{
-						Player player5 = players_[m];
-						int num10 = player5.formation_[0] - player.formation_[0];
-						if (num4 > num10 && num10 > num5 && JMath.Abs(player.formation_[1] - player5.formation_[1]) < num6)
+					if (m == i) { continue; }
+Player player5 = players_[m];
+int num10 = player5.formation_[0] - player.formation_[0];
+if (num4 > num10 && num10 > num5 && JMath.Abs(player.formation_[1] - player5.formation_[1]) < num6)
 						{
 							num4 = num10;
 						}
-					}
 				}
 				if (num4 != 100 - player.formation_[0])
 				{
@@ -860,13 +854,11 @@ if (num > num7 && num7 > num5)
 			ball_.temp_pos.z_ = (ball_.pos_.z_ * 0.5f + (ball_.pos_.z_ + ball_.v_.z_ * 5f) * 0.5f) / 1f;
 			for (int i = 0; i < players_.Length; i++)
 			{
-				if (players_[i].role_ == 0) { return; }
+				if (players_[i].role_ == 0) { continue; }
 Player player = players_[i];
-if (player.seb_ != 12)
-					{
-						player.temp_len = (float)JMath.Sqrt((ball_.temp_pos.x_ - player.pos_.x_) * (ball_.temp_pos.x_ - player.pos_.x_) + (ball_.temp_pos.z_ - player.pos_.z_) * (ball_.temp_pos.z_ - player.pos_.z_));
-						ballNearPlayer_.AddElement(player);
-					}
+if (player.seb_ == 12) { continue; }
+player.temp_len = (float)JMath.Sqrt((ball_.temp_pos.x_ - player.pos_.x_) * (ball_.temp_pos.x_ - player.pos_.x_) + (ball_.temp_pos.z_ - player.pos_.z_) * (ball_.temp_pos.z_ - player.pos_.z_));
+ballNearPlayer_.AddElement(player);
 			}
 			for (int j = 0; j < ballNearPlayer_.Size() - 1; j++)
 			{

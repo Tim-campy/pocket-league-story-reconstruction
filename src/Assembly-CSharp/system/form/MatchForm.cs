@@ -397,7 +397,7 @@ namespace system.form
 					for (int i = 0; i < array.Length; i++)
 					{
 						int friendId = array[i].GetFriendId();
-						if (friendId == num) { return; }
+						if (friendId == num) { continue; }
 array2[i] = 100;
 					}
 					Vector vector = new Vector();

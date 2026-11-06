@@ -5365,7 +5365,7 @@ AddPopupMessage(id, value, -1, 60);
 			{
 				object[] array = (object[])popupMessages_.ElementAt(i);
 				int[] array2 = (int[])array[1];
-				if (array2[1] < 0) { return; }
+				if (array2[1] < 0) { continue; }
 int num3 = array2[1];
 int num4 = 19;
 if (i == 0)
@@ -5373,12 +5373,10 @@ if (i == 0)
 						num4 = 21;
 					}
 int num5 = 0;
-num5 = ((num3 <= num) ? (num4 * num3 / num) : ((num3 < array2[2] + num) ? num4 : (num4 - num4 * (num3 - (array2[2] + num)) / num)));
+if ((num3 <= num)) { num5 = (num4 * num3 / num); } else { if ((num3 >= array2[2] + num)) { num5 = ((num4 - num4 * (num3 - (array2[2] + num)) / num)); } else { num5 = (num4); } }
 drawPopupMessage_heights[i] = num5;
-if (num5 > 0)
-					{
-						num2 -= num5;
-					}
+if (num5 <= 0) { continue; }
+num2 -= num5;
 			}
 			int num6 = ClampMin(instance.GetGameWidth(), 240 + instance.GetSideSoftWidth() * 2);
 			int num7 = bottom - num2 + 20;
@@ -5399,15 +5397,11 @@ if (num5 > 0)
 			{
 				object[] array3 = (object[])popupMessages_.ElementAt(num12);
 				int[] array4 = (int[])array3[1];
-				if (array4[1] >= 0)
-				{
-					TextLayout textLayout = (TextLayout)array3[0];
-					if (drawPopupMessage_heights[num12] > 0)
-					{
-						Draw_helpMessage(g, textLayout.GetText(), num8, num2);
-						num2 += drawPopupMessage_heights[num12];
-					}
-				}
+				if (array4[1] < 0) { continue; }
+TextLayout textLayout = (TextLayout)array3[0];
+if (drawPopupMessage_heights[num12] <= 0) { continue; }
+Draw_helpMessage(g, textLayout.GetText(), num8, num2);
+num2 += drawPopupMessage_heights[num12];
 			}
 			g.PopClip();
 		}

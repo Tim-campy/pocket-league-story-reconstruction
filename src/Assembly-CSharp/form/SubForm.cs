@@ -3549,7 +3549,7 @@ ResetFontSize(g); }
 							}
 							num19++;
 						}
-						if (teamData4 == null) { return; }
+						if (teamData4 == null) { continue; }
 g.SetColor(SC_WINDOW_BLACK);
 string str2 = MyFormBase.LT(teamData4.name2_);
 g.DrawString(str2, num2 + 8, num3 + 3);

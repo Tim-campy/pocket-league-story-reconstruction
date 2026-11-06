@@ -1609,9 +1609,9 @@ apdat_.PlaySe(11);
 							continue;
 						}
 						Player player = udat_.teams_[team_id_].players_[i];
-						if ((player.pos_.x_ * pos_.x_ > 0f)) { return; }
+						if ((player.pos_.x_ * pos_.x_ > 0f)) { continue; }
 float num4 = 0f;
-num4 = ((team_id_ != 0) ? ((float)JMath.Sqrt((player.pos_.z_ - -900f) * (player.pos_.z_ - -900f))) : ((float)JMath.Sqrt((player.pos_.z_ - 900f) * (player.pos_.z_ - 900f))));
+if (team_id_ == 0) { num4 = ((float)JMath.Sqrt((player.pos_.z_ - 900f) * (player.pos_.z_ - 900f))); } else { num4 = ((float)JMath.Sqrt((player.pos_.z_ - -900f) * (player.pos_.z_ - -900f))); }
 if (num4 < 400f)
 							{
 								num3++;
@@ -1666,12 +1666,11 @@ if (num4 < 400f)
 				for (int l = 0; l < udat_.teams_[1 - team_id_].players_.Length; l++)
 				{
 					Player player3 = udat_.teams_[1 - team_id_].players_[l];
-					if ((address_[0] != player3.address_[0] || address_[1] != player3.address_[1]) && GameUtil.ChOnLine(screen_pos_, player2.screen_pos_, 12, player3.screen_pos_))
-					{
-						flag2 = true;
-						eva_pass_info_onEnemy[k][0] = 1;
-						break;
-					}
+					if ((address_[0] == player3.address_[0]) && (address_[1] == player3.address_[1])) { continue; }
+if (!(GameUtil.ChOnLine(screen_pos_, player2.screen_pos_, 12, player3.screen_pos_))) { continue; }
+flag2 = true;
+eva_pass_info_onEnemy[k][0] = 1;
+break;
 				}
 				if (flag2 && eva_pass_info[k][0] != 1)
 				{
@@ -2367,12 +2366,11 @@ if (recoveredCondition_54620)
 			hitList.AddElement(this);
 			for (int i = 1; i < udat_.teams_[team_id_].players_.Length; i++)
 			{
-				if (i == p_id_) { return; }
+				if (i == p_id_) { continue; }
 Player player = udat_.teams_[team_id_].players_[i];
-if (player.address_[0] - ball_.address_[0] >= -2 && player.address_[0] - ball_.address_[0] <= 2 && player.address_[1] - ball_.address_[1] >= -2 && player.address_[1] - ball_.address_[1] <= 2 && player.ChTrapOrHeading())
-					{
-						hitList.AddElement(player);
-					}
+if ((((player.address_[0] - ball_.address_[0] < -2) || (player.address_[0] - ball_.address_[0] > 2)) || (player.address_[1] - ball_.address_[1] < -2)) || (player.address_[1] - ball_.address_[1] > 2)) { continue; }
+if (!(player.ChTrapOrHeading())) { continue; }
+hitList.AddElement(player);
 			}
 			for (int j = 1; j < udat_.teams_[1 - team_id_].players_.Length; j++)
 			{

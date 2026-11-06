@@ -250,17 +250,15 @@ apdat_.InsertGameObject(8, 0, camera_pos[1] + 1, 155 + val, 85 + val, 0, camera_
 					for (int l = 0; l < 2; l++)
 					{
 						Camera.ConvertScreenToCamera(MapMain.MAPCHIP_SPOS[address_[1] - k][address_[0] + l], camera_pos);
-						if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image2.GetHeight(), 60, image2.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { return; }
+						if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image2.GetHeight(), 60, image2.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { continue; }
 apdat_.InsertGameObject(8, 0, camera_pos[1], 158, 88, val2, camera_pos[0], camera_pos[1], false, 0);
 					}
 				}
 			}
 			else
 			{
-				if (state_ != 4)
-				{
-					return;
-				}
+				if (state_ == 4) {
+
 				int val3 = GameUtil.RateConvert(stateCnt_, 0, 200, 0, 3, true);
 				val3 = AppData.ClampMax(val3, 2);
 				Image image3 = apdat_.resCom2_.img[155 + val3];
@@ -269,12 +267,11 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 158, 88, val2, camera_pos[0], camer
 					for (int n = 0; n < 2; n++)
 					{
 						Camera.ConvertScreenToCamera(MapMain.MAPCHIP_SPOS[address_[1] - m][address_[0] + n], camera_pos);
-						if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image3.GetHeight(), 60, image3.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))
-						{
-							apdat_.InsertGameObject(8, 0, camera_pos[1] + 1, 155 + val3, 85 + val3, 0, camera_pos[0], camera_pos[1], false, 0);
-						}
+						if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image3.GetHeight(), 60, image3.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) { continue; }
+apdat_.InsertGameObject(8, 0, camera_pos[1] + 1, 155 + val3, 85 + val3, 0, camera_pos[0], camera_pos[1], false, 0);
 					}
 				}
+}
 			}
 		}
 
