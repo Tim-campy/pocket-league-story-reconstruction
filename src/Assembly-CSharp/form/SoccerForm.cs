@@ -3051,7 +3051,7 @@ int num3;
 				}
 				if (select_ == 0)
 				{
-					if (stateCnt_ < PBONUS_NP_LV_POPULAR[0]) { return; }
+					if (stateCnt_ < PBONUS_NP_LV_POPULAR[0]) { } else {
 if (stateCnt_ >= PBONUS_NP_LV_POPULAR[0] && stateCnt_ < PBONUS_NP_LV_POPULAR[2])
 						{
 							int num5 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_POPULAR[0], PBONUS_NP_LV_POPULAR[1], -12, 0, true);
@@ -3064,6 +3064,7 @@ if (stateCnt_ >= PBONUS_NP_LV_POPULAR[0] && stateCnt_ < PBONUS_NP_LV_POPULAR[2])
 							int num6 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_POPULAR[2], PBONUS_NP_LV_POPULAR[3], playerData.popularP_, playerData.popularP_ + PBONUS_NP_LV_GETPOPULAR, true);
 							apdat_.DrawNumImage(g, 35, string.Empty, num6, string.Empty, num2 + 89, num3 + 7, 0, 4);
 						}
+}
 				}
 				else
 				{
