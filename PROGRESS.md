@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,022 de 5,245 métodos matched (95.75%).** 871,497 bytes de IL nos assemblies alvo.
-585,548 bytes IL matched (67.19%).
+**5,023 de 5,245 métodos matched (95.77%).** 871,497 bytes de IL nos assemblies alvo.
+587,615 bytes IL matched (67.43%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3141 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 222 |
+| decompiled | 221 |
 | equivalent | 0 |
-| matched | 5022 |
+| matched | 5023 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1807 / 92.29% | 365924 / 60.82% |
+| `Assembly-CSharp` | 1958 | 601603 | 1808 / 92.34% | 367991 / 61.17% |
 | `KairoLibrary` | 3287 | 269894 | 3215 / 97.81% | 219624 / 81.37% |
 
 ## Namespaces
@@ -37,7 +37,7 @@ KairoLibrary: 3141 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 250 / 98.04% | 22509 / 85.41% |
-| `form` | 371 | 250649 | 332 / 89.49% | 154228 / 61.53% |
+| `form` | 371 | 250649 | 333 / 89.76% | 156295 / 62.36% |
 | `game` | 441 | 202949 | 387 / 87.76% | 113675 / 56.01% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
@@ -122,7 +122,7 @@ KairoLibrary: 3141 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
 | `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 52 / 83.87% | 17883 / 53.16% |
 | `Assembly-CSharp::form.SpForm` | 19 | 7256 | 15 / 78.95% | 4229 / 58.28% |
-| `Assembly-CSharp::form.SubForm` | 95 | 125345 | 84 / 88.42% | 64209 / 51.23% |
+| `Assembly-CSharp::form.SubForm` | 95 | 125345 | 85 / 89.47% | 66276 / 52.87% |
 | `Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0` | 3 | 227 | 2 / 66.67% | 31 / 13.66% |
 | `Assembly-CSharp::form.TitleForm` | 24 | 8500 | 21 / 87.50% | 4423 / 52.04% |
 | `Assembly-CSharp::game.Ball` | 18 | 15652 | 14 / 77.78% | 5269 / 33.66% |

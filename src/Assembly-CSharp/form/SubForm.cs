@@ -10410,83 +10410,70 @@ if (value < scrollValue_)
 				}
 				if (type_ == 3)
 				{
-					switch (array2[0])
-					{
-					case 0:
-						if (LeagueData.IsExistNew() || QuestMatchData.IsExistNew())
+					int recoveredSelector1 = array2[0];
+if (recoveredSelector1 == 0) {
+if (LeagueData.IsExistNew() || QuestMatchData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 18, num16 - 5, frame2_);
 						}
-						break;
-					case 1:
-						if (TrainingData.IsExistNew())
+} else if (recoveredSelector1 == 1) {
+if (TrainingData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 18, num16 - 5, frame2_);
 						}
-						break;
-					case 2:
-						if (TradeData.IsExistNew() || FanActData.IsExistNew() || TenantData.IsExistNew() || SponsorData.IsExistNew())
+} else if (recoveredSelector1 == 2) {
+if (TradeData.IsExistNew() || FanActData.IsExistNew() || TenantData.IsExistNew() || SponsorData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 18, num16 - 5, frame2_);
 						}
-						break;
-					case 3:
-						if (FormationData.IsExistNew() || PlayerData.IsExistNew())
+} else if (recoveredSelector1 == 3) {
+if (FormationData.IsExistNew() || PlayerData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 18, num16 - 5, frame2_);
 						}
-						break;
-					}
+}
 				}
 				else if (type_ == 5)
 				{
 					int num21 = -12;
-					switch (array2[0])
-					{
-					case 6:
-						if (LeagueData.IsExistNew())
+					int recoveredSelector2 = array2[0];
+if (recoveredSelector2 == 6) {
+if (LeagueData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 7 + num21, num16 - 5, frame2_);
 						}
-						break;
-					case 8:
-						if (QuestMatchData.IsExistNew())
+} else if (recoveredSelector2 == 8) {
+if (QuestMatchData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 7 + num21, num16 - 5, frame2_);
 						}
-						break;
-					}
+}
 				}
 				else if (type_ == 7)
 				{
 					int num22 = -12;
-					switch (array2[0])
-					{
-					case 12:
-						if (TradeData.IsExistNew())
+					int recoveredSelector3 = array2[0];
+if (recoveredSelector3 == 12) {
+if (TradeData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);
 						}
-						break;
-					case 14:
-						if (FanActData.IsExistNew())
+} else if (recoveredSelector3 == 14) {
+if (FanActData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);
 						}
-						break;
-					case 15:
-						if (TenantData.IsExistNew())
+} else if (recoveredSelector3 == 15) {
+if (TenantData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);
 						}
-						break;
-					case 16:
-						if (SponsorData.IsExistNew())
+} else if (recoveredSelector3 == 16) {
+if (SponsorData.IsExistNew())
 						{
 							Draw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);
 						}
-						break;
-					}
+}
 				}
 				if (k == select_ && apdat_.IsTopForm(this))
 				{
