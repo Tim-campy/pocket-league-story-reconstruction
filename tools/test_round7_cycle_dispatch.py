@@ -15,6 +15,8 @@ SOURCE='''class Fixture {
  static void EmptyAnd(int x,int y) {if(x!=3 && y!=7) {count++;}}
  static string Concat(string a,string b) {return a+"\\t"+" "+b;}
  static void LoopCondition(bool a,bool b) {while(a && b) {count++;}}
+ static void SwitchOwned(int x) {switch(x) {case 0: {count++;break;} case 1: count--;break;}}
+ static void ForDeclaration() {int sum=0;for(int i=0;i<3;i++) {sum+=i;}count=sum;}
 }'''
 
 
@@ -59,6 +61,16 @@ def main():
             round7_cycle_rule='smcs-loop-condition-body-guard')
         assert any(p['rule']=='smcs-loop-condition-body-guard' for p in loop_condition['patches'])
         checks.append('loop condition split dispatch')
+        point=SOURCE.index('switch(',SOURCE.index('void SwitchOwned('))
+        switch_owned=client.request(path,source=SOURCE,offset=point,compiler='smcs',max_candidates=2048,
+            round7_cycle_rule='smcs-owned-switch-if')
+        assert any(p['rule']=='smcs-owned-switch-if' for p in switch_owned['patches'])
+        checks.append('switch break ownership dispatch')
+        point=SOURCE.index('for(',SOURCE.index('void ForDeclaration('))
+        for_decl=client.request(path,source=SOURCE,offset=point,compiler='roslyn',max_candidates=2048,
+            round7_cycle_rule='roslyn-for-declaration-immediately-before')
+        assert any(p['rule']=='roslyn-for-declaration-immediately-before' for p in for_decl['patches'])
+        checks.append('Roslyn immediate for declaration dispatch')
     (ROOT/'reports/round7-cycle-dispatch-tests.json').write_text(json.dumps({'passed':len(checks),'checks':checks,
         'game_candidate_compilations':0},indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'passed':len(checks)}))

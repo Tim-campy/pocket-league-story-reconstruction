@@ -102,6 +102,10 @@ def main():
     out += [table(['Ciclo','Compilador / par ponderado','Hipótese','Resultado','Métodos','Bytes'],[
         (c['cycle'],c['assembly']+' / '+c['pair'],c['hypothesis'],c['result'],c['methods_gained'],c['il_bytes_gained']) for c in journal['cycles']]),'',
         '## 3. HIPÓTESES','']
+    publication=ROOT/'reports/round7-publication-events.json'
+    if publication.exists():
+        events=read(publication)['events']
+        out[-2:-2]=['Publicação: '+ '; '.join('ciclo '+str(e['cycle'])+' — '+e['first_push']+'; repetição: '+e['retry_push'] for e in events)+'. Nenhuma alteração de fonte foi necessária para repetir o envio.','']
     hypothesis=read('reports/round7-hypotheses.json') if (ROOT/'reports/round7-hypotheses.json').exists() else {'hypotheses':[]}
     out += [table(['Estado','Hipótese','Evidência'],[(h['status'],h['hypothesis'],h['evidence']) for h in hypothesis['hypotheses']]),'',
         'FastVector: o original grava `<>7__wrap1:!0[]` com `stfld` no offset 35; `<>7__wrap2:Int32` é o índice sintético. O campo é a cópia da coleção do `foreach`, cujo escopo atravessa os `yield return` e precisa sobreviver às retomadas do iterador. Ele existe nos dois lados porque os dois fontes possuem esse foreach. A reconstrução acrescentava antes dele `T[] array = elementData;`: esse alias só era usado para iniciar o foreach, não precisava sobreviver ao yield e ficava em um slot local adicional. Usar diretamente `foreach (T val in elementData)` removeu o slot redundante e preservou os campos; o corpo MoveNext completo bateu. A declaração histórica literal permanece UNKNOWN; não foi necessário escrever um campo ou classe gerada.','',

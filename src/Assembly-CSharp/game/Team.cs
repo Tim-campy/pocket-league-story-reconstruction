@@ -2228,25 +2228,23 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 					if (i == lastKickeer_)
 					{
 						player.flag_ = BitUtil.On(player.flag_, 2048);
-						switch (num)
-						{
-						case 1:
-							player.goalStatePos_.x_ = -450f;
+						if (num == 0) { } else if ((num == 1)) {
+player.goalStatePos_.x_ = -450f;
 							player.goalStatePos_.z_ = player.pos_.z_;
-							break;
-						case 2:
-							player.goalStatePos_.x_ = 450f;
+
+} else if ((num == 2)) {
+player.goalStatePos_.x_ = 450f;
 							player.goalStatePos_.z_ = player.pos_.z_;
-							break;
-						case 3:
-							player.goalStatePos_.x_ = -450f;
+
+} else if ((num == 3)) {
+player.goalStatePos_.x_ = -450f;
 							player.goalStatePos_.z_ = 900f - 1800f * (float)team_id_;
-							break;
-						case 4:
-							player.goalStatePos_.x_ = 450f;
+
+} else if ((num == 4)) {
+player.goalStatePos_.x_ = 450f;
 							player.goalStatePos_.z_ = 900f - 1800f * (float)team_id_;
-							break;
-						}
+
+}
 					}
 					else
 					{

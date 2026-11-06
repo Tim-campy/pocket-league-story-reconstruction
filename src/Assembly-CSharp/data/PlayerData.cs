@@ -582,57 +582,55 @@ namespace data
 					num += PARAM_RATE[i][j];
 				}
 				num2 = (int)((PARAM_RATE[i][0] * (float)paramPhysical[0] + PARAM_RATE[i][1] * (float)paramPhysical[1] + PARAM_RATE[i][2] * (float)paramPhysical[2] + PARAM_RATE[i][3] * (float)paramPhysical[3] + PARAM_RATE[i][4] * (float)paramPhysical[4]) / num);
-				switch (i)
-				{
-				case 0:
-					param_speed = num2;
-					break;
-				case 1:
-					param_pass = num2;
-					break;
-				case 2:
-					param_throuhPass = num2;
-					break;
-				case 3:
-					param_longPass = num2;
-					break;
-				case 4:
-					param_shoot = num2;
-					break;
-				case 5:
-					param_v0y = num2;
-					break;
-				case 6:
-					param_hShootURR = num2;
-					break;
-				case 7:
-					param_charge_body = num2;
-					break;
-				case 8:
-					param_charge_sliding = num2;
-					break;
-				case 9:
-					param_physical = num2;
-					break;
-				case 10:
-					param_catch = num2;
-					break;
-				case 11:
-					param_keeperJamp = num2;
-					break;
-				case 12:
-					param_slidingRate = num2;
-					break;
-				case 13:
-					param_jampdis = num2;
-					break;
-				case 14:
-					param_jampdistop = num2;
-					break;
-				case 15:
-					param_shootTrap = num2;
-					break;
-				}
+				if ((i == 0)) {
+param_speed = num2;
+
+} else if ((i == 1)) {
+param_pass = num2;
+
+} else if ((i == 2)) {
+param_throuhPass = num2;
+
+} else if ((i == 3)) {
+param_longPass = num2;
+
+} else if ((i == 4)) {
+param_shoot = num2;
+
+} else if ((i == 5)) {
+param_v0y = num2;
+
+} else if ((i == 6)) {
+param_hShootURR = num2;
+
+} else if ((i == 7)) {
+param_charge_body = num2;
+
+} else if ((i == 8)) {
+param_charge_sliding = num2;
+
+} else if ((i == 9)) {
+param_physical = num2;
+
+} else if ((i == 10)) {
+param_catch = num2;
+
+} else if ((i == 11)) {
+param_keeperJamp = num2;
+
+} else if ((i == 12)) {
+param_slidingRate = num2;
+
+} else if ((i == 13)) {
+param_jampdis = num2;
+
+} else if ((i == 14)) {
+param_jampdistop = num2;
+
+} else if ((i == 15)) {
+param_shootTrap = num2;
+
+}
 			}
 		}
 

@@ -874,23 +874,19 @@ namespace form
 				SetAllDraw();
 				int matchInfoJoin = udat_.GetMatchInfoJoin();
 				int bgm = 3;
-				switch (matchInfoJoin)
-				{
-				case 0:
-					if (LeagueData.IsVictoryMatch())
+				if ((matchInfoJoin == 0)) {
+if (LeagueData.IsVictoryMatch())
 					{
 						bgm = 2;
 					}
-					break;
-				case 1:
-				{
+
+} else if ((matchInfoJoin == 1)) {
 					QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 					if (BitUtil.Check(questMatchData.flag_, 2) && QuestMatchData.IsVictoryQuestMatch())
 					{
 						bgm = 2;
 					}
-					break;
-				}
+
 				}
 				apdat_.PlayBgm(bgm);
 				drawTopBar = false;

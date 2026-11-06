@@ -11298,20 +11298,16 @@ if (pageMax != -1)
 		public static void Draw_chara(Graphics g, int charaImg, int charaSeb, int direct, int cnt, int dx, int dy)
 		{
 			int frame = 0;
-			switch (charaSeb)
-			{
-			case 0:
-				frame = 0 + direct;
-				break;
-			case 1:
-				frame = 2 + direct;
-				break;
-			case 2:
-			{
+			if ((charaSeb == 0)) {
+frame = 0 + direct;
+
+} else if ((charaSeb == 1)) {
+frame = 2 + direct;
+
+} else if ((charaSeb == 2)) {
 				int num = cnt % 12 / 6;
 				frame = num * 2 + 4 + direct;
-				break;
-			}
+
 			}
 			AppData instance = AppData.GetInstance();
 			instance.DrawSeb(g, dx, dy, instance.resCom2_.seb[96], instance.resCom2_.img[charaImg], frame);

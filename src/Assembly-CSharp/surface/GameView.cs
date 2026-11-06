@@ -729,10 +729,9 @@ namespace surface
 			}
 			if (g != null)
 			{
-				switch (id)
 				{
-				case 21:
-					if (CheckTouch(id, value))
+if ((id == 21)) {
+if (CheckTouch(id, value))
 					{
 						DrawImage(g, x + w - 15, y + h / 2, 6);
 					}
@@ -740,9 +739,9 @@ namespace surface
 					{
 						DrawImage(g, x + w - 15, y + h / 2, 4);
 					}
-					break;
-				case 20:
-					if (CheckTouch(id, value))
+
+} else if ((id == 20)) {
+if (CheckTouch(id, value))
 					{
 						DrawImage(g, x + 15, y + h / 2, 7);
 					}
@@ -750,9 +749,8 @@ namespace surface
 					{
 						DrawImage(g, x + 15, y + h / 2, 5);
 					}
-					break;
-				case 19:
-				{
+
+} else if ((id == 19)) {
 					int num12 = y + (h - 4) / 2;
 					g.SetColor(30, 30, 30);
 					g.FillRect(x + 1, num12, w - 2, 4f);
@@ -761,12 +759,8 @@ namespace surface
 					DrawImage(g, x + Get(value) * num13, num12 + 2, 11);
 					x = x + Get(value) * num13 - 15;
 					w = 32;
-					break;
-				}
-				case 12:
-				case 14:
-				case 15:
-				{
+
+				} else if ((id == 12) || (id == 14) || (id == 15)) {
 					int num = opt.args[0];
 					int num2 = opt.args[1];
 					bool flag = CheckFirstTouch(id, value);
@@ -782,11 +776,11 @@ namespace surface
 					addScrollMargin_ = opt != null && (opt.flag & 0x200) != 0;
 					if (id == 12 || id == 14)
 					{
-						array = DrawVerticalScroll(g, x, y, w, h, Get(value), num - 1, num2, flag, (id != 12) ? 1 : 0);
+						array = DrawVerticalScroll(g, x, y, w, h, Get(value), num - 1, num2, flag, (id == 12) ? (0) : (1));
 					}
 					if (array == null)
 					{
-						break;
+						goto dispatchExit;
 					}
 					if (flag && num - num2 > 0)
 					{
@@ -861,9 +855,10 @@ namespace surface
 						w = 5;
 						h = array[1];
 					}
-					break;
+
 				}
-				}
+dispatchExit: ;
+}
 			}
 			if (formMan_.GetCurrentForm() != formMan_.GetTopForm())
 			{

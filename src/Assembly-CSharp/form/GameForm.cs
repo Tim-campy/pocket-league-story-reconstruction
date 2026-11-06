@@ -380,20 +380,18 @@ namespace form
 
 		public void Draw_topBarParts(Graphics g, int type, int dx, int w)
 		{
-			switch (type)
 			{
-			case 0:
-				g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 0, 0, w, 24);
-				break;
-			case 1:
-				g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 2, 0, w, 24);
-				break;
-			case 2:
-			{
+if ((type == 0)) {
+g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 0, 0, w, 24);
+
+} else if ((type == 1)) {
+g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 2, 0, w, 24);
+
+} else if ((type == 2)) {
 				if (w <= TBAR_W[type])
 				{
 					g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 22, 0, w, 24);
-					break;
+					goto dispatchExit;
 				}
 				int num4 = w;
 				int num5 = 0;
@@ -404,17 +402,15 @@ namespace form
 					num4 -= num6;
 					num5 += num6;
 				}
-				break;
-			}
-			case 3:
-				g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 113, 0, w, 24);
-				break;
-			case 4:
-			{
+
+			} else if ((type == 3)) {
+g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 113, 0, w, 24);
+
+} else if ((type == 4)) {
 				if (w <= TBAR_W[type])
 				{
 					g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 118, 0, w, 24);
-					break;
+					goto dispatchExit;
 				}
 				int num = w;
 				int num2 = 0;
@@ -425,12 +421,13 @@ namespace form
 					num -= num3;
 					num2 += num3;
 				}
-				break;
-			}
-			case 5:
-				g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 238, 0, w, 24);
-				break;
-			}
+
+			} else if ((type == 5)) {
+g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 238, 0, w, 24);
+
+}
+dispatchExit: ;
+}
 		}
 
 		public int GetTopBarOffT()
@@ -1405,10 +1402,7 @@ apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 				if (matchInfoJoin != 2)
 				{
 					udat_.matchInfoWeek_++;
-					switch (matchInfoJoin)
-					{
-					case 0:
-					{
+					if ((matchInfoJoin == 0)) {
 						LeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];
 						if (udat_.matchInfoWeek_ >= leagueData.schedule_)
 						{
@@ -1436,10 +1430,8 @@ apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 						{
 							LEAGUE_SCHEDULE_UPDATECNT = 12;
 						}
-						break;
-					}
-					case 1:
-					{
+
+					} else if ((matchInfoJoin == 1)) {
 						QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 						if (udat_.matchInfoWeek_ >= questMatchData.schedule_)
 						{
@@ -1463,8 +1455,7 @@ apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 						{
 							LEAGUE_SCHEDULE_UPDATECNT = 12;
 						}
-						break;
-					}
+
 					}
 				}
 				if (apdat_.save_.ints[3] == 2 && apdat_.save_.ints[2] == 11)
@@ -1514,8 +1505,7 @@ apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 					}
 				}
 			}
-			if (num5 == num13)
-			{
+			if (num5 != num13) { } else {
 				return;
 			}
 			SupervisorData supervisorData2 = apdat_.svisorData_[udat_.selectSupervisorId_];

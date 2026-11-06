@@ -153,6 +153,8 @@ public static partial class Round7TransformSyntax {
                 AddRound7SmcsGuardRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7StringConcatRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7LoopConditionRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7SmcsSwitchRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7RoslynDeclarationRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7RoslynCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
             }
         }

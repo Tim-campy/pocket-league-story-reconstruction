@@ -1148,31 +1148,28 @@ namespace game
 				ballHaveTime_++;
 				ballDribbleTime_++;
 			}
-			switch (act_id)
-			{
-			case 0:
-				Act_freeRun();
-				break;
-			case 1:
-				Act_receive();
-				break;
-			case 2:
-				Act_charge();
-				break;
-			case 3:
-				Act_dribble();
-				break;
-			case 4:
-				Act_gk();
-				break;
-			case 7:
-				udat_.ball_.SetPassData(this, 0, p_id_ - 1, 0, false);
+			if ((act_id == 0)) {
+Act_freeRun();
+
+} else if ((act_id == 1)) {
+Act_receive();
+
+} else if ((act_id == 2)) {
+Act_charge();
+
+} else if ((act_id == 3)) {
+Act_dribble();
+
+} else if ((act_id == 4)) {
+Act_gk();
+
+} else if ((act_id == 7)) {
+udat_.ball_.SetPassData(this, 0, p_id_ - 1, 0, false);
 				Proc_kick();
 				udat_.ball_.receive_wait = 0;
 				udat_.gm_.ChangeState(0);
-				break;
-			case 8:
-			{
+
+} else if ((act_id == 8)) {
 				int toThrowInPID = GetToThrowInPID();
 				udat_.ball_.SetPassData(this, 5, toThrowInPID, 0, true);
 				Proc_throwIn();
@@ -1188,10 +1185,8 @@ namespace game
 				udat_.ball_.pos_.z_ = udat_.ball_.lineOutPos_.z_;
 				udat_.ball_.receive_wait = 0;
 				udat_.gm_.ChangeState(0);
-				break;
-			}
-			case 9:
-			{
+
+			} else if ((act_id == 9)) {
 				int[] collisionData5 = udat_.GetCollisionData(0, 0);
 				int[] collisionData6 = udat_.GetCollisionData(1, 1);
 				if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData5[0], pos_.z_ + (float)collisionData5[1], collisionData5[2], collisionData5[3], udat_.ball_.pos_.x_ + (float)collisionData6[0], udat_.ball_.pos_.z_ + (float)collisionData6[1], collisionData6[2], collisionData6[3], true))
@@ -1206,10 +1201,8 @@ namespace game
 				{
 					Move(udat_.ball_.pos_, act_id);
 				}
-				break;
-			}
-			case 10:
-			{
+
+			} else if ((act_id == 10)) {
 				int[] collisionData3 = udat_.GetCollisionData(0, 0);
 				int[] collisionData4 = udat_.GetCollisionData(1, 1);
 				if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData3[0], pos_.z_ + (float)collisionData3[1], collisionData3[2], collisionData3[3], udat_.ball_.pos_.x_ + (float)collisionData4[0], udat_.ball_.pos_.z_ + (float)collisionData4[1], collisionData4[2], collisionData4[3], true))
@@ -1224,16 +1217,14 @@ namespace game
 				{
 					Move(udat_.ball_.pos_, act_id);
 				}
-				break;
-			}
-			case 6:
-				if (seb_ == 1)
+
+			} else if ((act_id == 6)) {
+if (seb_ == 1)
 				{
 					return false;
 				}
-				break;
-			case 11:
-			{
+
+} else if ((act_id == 11)) {
 				int[] collisionData7 = udat_.GetCollisionData(0, 0);
 				int[] collisionData8 = udat_.GetCollisionData(1, 0);
 				if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData7[0], pos_.z_ + (float)collisionData7[1], collisionData7[2], collisionData7[3], goalStatePos_.x_ + (float)collisionData8[0], goalStatePos_.z_ + (float)collisionData8[1], collisionData8[2], collisionData8[3], true))
@@ -1245,10 +1236,8 @@ namespace game
 				{
 					Move(goalStatePos_, act_id);
 				}
-				break;
-			}
-			case 12:
-			{
+
+			} else if ((act_id == 12)) {
 				Player lastKicker = udat_.teams_[team_id_].GetLastKicker();
 				if (lastKicker == null)
 				{
@@ -1277,15 +1266,14 @@ namespace game
 				{
 					Move(temp_vec, act_id);
 				}
-				break;
-			}
-			case 13:
-				if (seb_ != 11)
+
+			} else if ((act_id == 13)) {
+if (seb_ != 11)
 				{
 					AddCommandChangeSeb(11);
 				}
-				break;
-			}
+
+}
 			return true;
 		}
 
@@ -2784,10 +2772,8 @@ hitList.AddElement(player);
 			{
 				flag2 = false;
 			}
-			switch (seb)
-			{
-			case 0:
-				num = body_off[seb][0];
+			if ((seb == 0)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 52 + direct_;
@@ -2810,9 +2796,9 @@ hitList.AddElement(player);
 					num7 = num2 + head_off[4][direct_][num5][1];
 					flag2 = false;
 				}
-				break;
-			case 1:
-				num = body_off[seb][0];
+
+} else if ((seb == 1)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 24 + direct_;
@@ -2840,9 +2826,9 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 14:
-				num = body_off[seb][0];
+
+} else if ((seb == 14)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 56 + direct_;
@@ -2855,18 +2841,17 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				if (direct_ != 0 && direct_ != 2)
-				{
-					num10 = ((direct_ != 1) ? (11 - team_id_) : (8 + team_id_));
+				if ((direct_ == 0) || (direct_ == 2)) { } else {
+					if ((direct_ == 1)) { num10 = ((8 + team_id_)); } else { num10 = ((11 - team_id_)); }
 					flag2 = false;
 				}
 				if (num10 == 2)
 				{
 					flag2 = false;
 				}
-				break;
-			case 5:
-				num = body_off[seb][0];
+
+} else if ((seb == 5)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 32 + direct_;
@@ -2886,9 +2871,9 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 2:
-				num = body_off[seb][0];
+
+} else if ((seb == 2)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 20 + direct_;
@@ -2912,9 +2897,9 @@ hitList.AddElement(player);
 				{
 					num10 += 12;
 				}
-				break;
-			case 4:
-				num = body_off[seb][0];
+
+} else if ((seb == 4)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 36 + direct_;
@@ -2938,9 +2923,9 @@ hitList.AddElement(player);
 				{
 					flag2 = false;
 				}
-				break;
-			case 3:
-				num = body_off[seb][0];
+
+} else if ((seb == 3)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 4 + direct_;
@@ -2961,16 +2946,16 @@ hitList.AddElement(player);
 					num5 = frame;
 				}
 				num8 = 0;
-				num10 = ((num5 != 0) ? direct_ : (direct_ + 4));
+				if (num5 == 0) { num10 = (direct_ + 4); } else { num10 = direct_; }
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
 				if (num5 == 0 && (direct_ == 0 || direct_ == 3))
 				{
 					flag2 = false;
 				}
-				break;
-			case 11:
-				num = body_off[seb][0];
+
+} else if ((seb == 11)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 16 + direct_;
@@ -2987,9 +2972,9 @@ hitList.AddElement(player);
 				num10 = direct_ + 16;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 12:
-				num = body_off[seb][0];
+
+} else if ((seb == 12)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 0 + direct_;
@@ -3006,9 +2991,9 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 6:
-				num = body_off[seb][0];
+
+} else if ((seb == 6)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 40 + direct_;
@@ -3028,9 +3013,9 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 7:
-				num = body_off[seb][0];
+
+} else if ((seb == 7)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 44 + direct_;
@@ -3050,9 +3035,9 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 8:
-				num = body_off[seb][0];
+
+} else if ((seb == 8)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 8 + direct_;
@@ -3066,9 +3051,9 @@ hitList.AddElement(player);
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
 				flag2 = false;
-				break;
-			case 9:
-				num = body_off[seb][0];
+
+} else if ((seb == 9)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 12 + direct_;
@@ -3096,9 +3081,9 @@ hitList.AddElement(player);
 				num10 = direct_ + 4;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 10:
-				num = body_off[seb][0];
+
+} else if ((seb == 10)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 28 + direct_;
@@ -3119,9 +3104,9 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 13:
-				num = body_off[seb][0];
+
+} else if ((seb == 13)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 48 + direct_;
@@ -3134,9 +3119,9 @@ hitList.AddElement(player);
 				num10 = direct_;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 15:
-				num = body_off[seb][0];
+
+} else if ((seb == 15)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 80;
@@ -3149,9 +3134,9 @@ hitList.AddElement(player);
 				num10 = 20;
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
-				break;
-			case 16:
-				num = body_off[seb][0];
+
+} else if ((seb == 16)) {
+num = body_off[seb][0];
 				num2 = body_off[seb][1];
 				num4 = body_id;
 				num3 = 81 + direct_;
@@ -3168,15 +3153,15 @@ hitList.AddElement(player);
 					num5 = frame;
 				}
 				num8 = 0;
-				num10 = ((num5 != 0) ? direct_ : (direct_ + 4));
+				if (num5 == 0) { num10 = (direct_ + 4); } else { num10 = direct_; }
 				num6 = num + head_off[seb][direct_][num5][0];
 				num7 = num2 + head_off[seb][direct_][num5][1];
 				if (num5 == 0 && (direct_ == 0 || direct_ == 3))
 				{
 					flag2 = false;
 				}
-				break;
-			}
+
+}
 			draw_param[0] = num6;
 			draw_param[1] = num7;
 			draw_param[2] = num8;
