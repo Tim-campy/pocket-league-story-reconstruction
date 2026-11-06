@@ -1,0 +1,69 @@
+{
+  "operation": "tail-source-mapping-real-MDB-fixture",
+  "target_compilations": 0,
+  "toy_compilations": 3,
+  "debug_plus_minus_full_body_equal": true,
+  "complete_reference_body_equal": true,
+  "old_selected_second_do": true,
+  "corrected_selected_first_do": true,
+  "oracle_changed": false,
+  "old_mapping": {
+    "offset": 19,
+    "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\infinite-tail-guard-experiment\\mapping\\Fixture.cs",
+    "start_line": 9,
+    "start_column": -1,
+    "end_line": -1,
+    "end_column": -1,
+    "hidden": false,
+    "mapping": "compiler_sequence_point",
+    "il_offset": 19,
+    "line": 9,
+    "column": -1
+  },
+  "corrected_mapping": {
+    "old_offset": 19,
+    "new_offset": 14,
+    "overridden": true,
+    "reason": "proved-rebuilt-tail-conditional",
+    "oracle_changed": false,
+    "original_conditional_offset": 14,
+    "source_offset": 8,
+    "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\infinite-tail-guard-experiment\\mapping\\Fixture.cs",
+    "line": 6,
+    "column": -1
+  },
+  "negative_controls": [
+    "missing-evidence",
+    "false-evidence",
+    "future-offset",
+    "negative-offset",
+    "bool-offset",
+    "roslyn"
+  ],
+  "evidence": {
+    "original_infinite_tail_guard": true,
+    "infinite_tail_original_offset": 14,
+    "infinite_tail_original_loop_start": 8,
+    "infinite_tail_original_exit": 29,
+    "infinite_tail_rebuilt_offset": 14
+  },
+  "wrong_patch": {
+    "rule": "smcs-do-infinite-tail-break",
+    "start": 161,
+    "end": 198,
+    "before": "do {\n    n+=2;\n   } while(n<limit+1);",
+    "after": "while (true) {\n{\n    n+=2;\n   }\nif (n >= limit+1) { break; }\n}",
+    "distance": 18
+  },
+  "correct_patch": {
+    "rule": "smcs-do-infinite-tail-break",
+    "start": 104,
+    "end": 138,
+    "before": "do {\n    n++;\n   } while(n<limit);",
+    "after": "while (true) {\n{\n    n++;\n   }\nif (n >= limit) { break; }\n}",
+    "distance": 0
+  },
+  "smcs_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "fixture_driver_sha256": "4972454561b66167f69c59d03159fd03f935dec92eb4d23c8b90dadb7be695b8",
+  "mapping_module_sha256": "1f5bb1d0c0802b2948460e634f5f4c3a2190b9fb8d817af615796aeecbcecf56"
+}

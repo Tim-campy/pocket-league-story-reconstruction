@@ -146,6 +146,11 @@
       "evidence": "cycle14: 0 novos matched, 0 bytes; Nenhum candidato compilado avancou; 1 tentativas da regra, 0 avancos"
     },
     {
+      "status": "CONFIRMADA",
+      "hypothesis": "smcs-do-infinite-tail-break: Usar o offset comprovado da condição antes de consultar o MDB corrige a fronteira que no ciclo14 selecionava o próximo do, permitindo testar a mesma forma de while(true) no comando certo.",
+      "evidence": "cycle15: 2 novos matched, 14297 bytes; Novos corpos aprovados; 5 tentativas da regra, 5 avancos"
+    },
+    {
       "status": "REFUTADA",
       "hypothesis": "Uma assinatura com tipos iguais basta para posicionar os slots Int32 sem uso",
       "evidence": "Em UserData.Draw_edit2 o primeiro candidato posicionava as reservas em 10/40, apesar dos mesmos tipos; foi rejeitado. O modelo da proposta final confirmou exatamente os slots 8/38 e o verificador fechou o corpo de 6626 bytes."
@@ -169,6 +174,11 @@
       "status": "REFUTADA",
       "hypothesis": "A primeira fixture de sombreamento com campo sem qualificação this era um controle positivo compilável no smcs",
       "evidence": "O smcs recusou essa tentativa com CS0135; ela foi registrada como tentativa negativa. A fixture corrigida com this.value e o bloco original preservado passou na comparação completa e de trace. Nenhum fonte do jogo foi alterado por essa tentativa."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "O offset de uma instrução ausente depois da condição de um do sempre seleciona o comando fonte do próprio laço no MDB",
+      "evidence": "Ciclo14: em DebugForm.Update_gameParam, selecionar11628 apontou a linha2364, o próximo if, e transformou o segundo do; a primeira divergência11628 permaneceu. O ponto anterior à condição11623 está em11574/linha2359, dentro do primeiro do. Uma tentativa compilada, zero avanços e zero perdas; os MDBs foram aceitos somente após prova de corpo idêntico a debug-."
     }
   ]
 }

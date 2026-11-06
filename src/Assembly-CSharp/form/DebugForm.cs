@@ -2351,54 +2351,58 @@ playerData3.AddPhysicalParam(array);
 				{
 					if (canvas_.CheckKeyRepeat(65536))
 					{
-						do
-						{
+						while (true) {
+{
 							PLAYER_FACE--;
 							if (PLAYER_FACE < 300)
 							{
 								PLAYER_FACE = apdat_.resHumanHead_.img.Length - 1;
 							}
 						}
-						while (apdat_.resHumanHead_.img[PLAYER_FACE] == null);
+if (apdat_.resHumanHead_.img[PLAYER_FACE] != null) { break; }
+}
 					}
 					if (canvas_.CheckKeyRepeat(262144))
 					{
-						do
-						{
+						while (true) {
+{
 							PLAYER_FACE++;
 							if (PLAYER_FACE >= apdat_.resHumanHead_.img.Length - 1)
 							{
 								PLAYER_FACE = 300;
 							}
 						}
-						while (apdat_.resHumanHead_.img[PLAYER_FACE] == null);
+if (apdat_.resHumanHead_.img[PLAYER_FACE] != null) { break; }
+}
 					}
 				}
 				if (select_ == 2)
 				{
 					if (canvas_.CheckKeyRepeat(65536))
 					{
-						do
-						{
+						while (true) {
+{
 							PLAYER_BODY--;
 							if (PLAYER_BODY < 0)
 							{
 								PLAYER_BODY = 99;
 							}
 						}
-						while (apdat_.resHuman2_.img[PLAYER_BODY + 100] == null);
+if (apdat_.resHuman2_.img[PLAYER_BODY + 100] != null) { break; }
+}
 					}
 					if (canvas_.CheckKeyRepeat(262144))
 					{
-						do
-						{
+						while (true) {
+{
 							PLAYER_BODY++;
 							if (PLAYER_BODY >= 100)
 							{
 								PLAYER_BODY = 0;
 							}
 						}
-						while (apdat_.resHuman2_.img[PLAYER_BODY + 100] == null);
+if (apdat_.resHuman2_.img[PLAYER_BODY + 100] != null) { break; }
+}
 					}
 				}
 				if (select_ == 3)

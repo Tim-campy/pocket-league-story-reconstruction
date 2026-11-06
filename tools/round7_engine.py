@@ -524,6 +524,15 @@ def main():
                 break
             alignment = align_methods(original[key], method)
             mapped_offset = alignment['rebuilt_offset']
+            tail_mapping=None
+            if is_smcs:
+                from round7_infinite_tail_guard_hints import infinite_tail_guard_hints
+                from round7_tail_source_mapping import tail_source_mapping_offset,tail_source_mapping_record
+                source_tail_hints=infinite_tail_guard_hints(original[key],method,
+                    alignment['original_offset'],alignment['rebuilt_offset'])
+                if source_tail_hints.get('original_infinite_tail_guard'):
+                    tail_mapping=tail_source_mapping_offset(mapped_offset,source_tail_hints,compiler='smcs')
+                    mapped_offset=tail_mapping['new_offset']
             if mapped_offset >= method['header']['code_size']:
                 mapped_offset = max(0, method['header']['code_size'] - 1)
             # Optional cache holds an immutable dump of the accepted generation;
@@ -554,6 +563,9 @@ def main():
                     point = None
                     mapping_kind = 'MDB-debug-body-differed-UNKNOWN'
             row['mapping'] = mapping_kind
+            if tail_mapping is not None:
+                row.setdefault('tail_source_mapping',[]).append(tail_source_mapping_record(tail_mapping,point))
+                report['tail_source_mapping_module_sha256']=sha(ROOT/'tools/round7_tail_source_mapping.py')
             if not point or not point.get('document'):
                 row['stop_reason'] = 'source_mapping_UNKNOWN'
                 row['mapping_detail'] = point

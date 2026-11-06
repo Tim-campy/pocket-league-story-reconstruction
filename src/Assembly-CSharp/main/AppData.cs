@@ -5424,8 +5424,8 @@ num2 += drawPopupMessage_heights[num12];
 			int num6 = 0;
 			int num7 = num2;
 			num = 0;
-			do
-			{
+			while (true) {
+{
 				num6 = ClampMax(108, num7);
 				if (num5 + num6 > num4)
 				{
@@ -5442,7 +5442,8 @@ if (num7 == 0) {
 				}
 				num++;
 			}
-			while (num < 5);
+if (num >= 5) { break; }
+}
 			g.SetColor(Graphics.GetColorOfRGB(30, 30, 30));
 			g.DrawString2(text, x + 32, y + 6);
 			g.DrawImage(resCom2_.img[77], num5 - 16, y, 160, 0, 16, 22);
