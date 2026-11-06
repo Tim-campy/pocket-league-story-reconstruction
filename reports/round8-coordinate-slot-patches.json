@@ -1,0 +1,2311 @@
+{
+  "operation": "source-only-coordinate-identity-coalescence-and-first-assignment-sink",
+  "family": "calculated-coordinate-local-coalescence",
+  "candidate_game_compilations": 0,
+  "frozen_baseline": "build\\round8\\baseline\\Assembly-CSharp",
+  "patches": [
+    {
+      "start": 110936,
+      "end": 116635,
+      "before": "public void Draw_coatEva(Graphics g)\r\n\t\t{\r\n\t\t\tint[][] array = null;\r\n\t\t\tTeam team = udat_.teams_[COATEVA_TEAM_ID];\r\n\t\t\tTeam team2 = udat_.teams_[1 - COATEVA_TEAM_ID];\r\n\t\t\tif (COATEVA_ROOT_INDEX == 0)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_new_offence;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 1)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_new_deffence;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 2)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_new_offence_passer;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 3)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_passer2;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 4)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_freeRun2;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 5)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_defence;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 6)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_looseBall;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 7)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_passer;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 8)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_freeRun;\r\n\t\t\t}\r\n\t\t\tint num = 10;\r\n\t\t\tint num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;\r\n\t\t\tint num3 = 60;\r\n\t\t\tglobal::game.Player passer;\nint num10;\nint num4 = 0;\r\n\t\t\tfor (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < Map.MAPCHIP_COAT_WNUM; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num6 = array[num5][i];\r\n\t\t\t\t\tif (num6 < 20)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 255));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (num6 < 40)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 255, 255));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (num6 < 60)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 255, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (num6 < 80)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tint num7 = num2 + i * num;\r\n\t\t\t\t\tint num8 = num3 + num4 * num;\r\n\t\t\t\t\tg.FillRect(num7, num8, num, num);\r\n\t\t\t\t}\r\n\t\t\t\tnum4++;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_WAKU == 0)\r\n\t\t\t{\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(128, 128, 128));\r\n\t\t\t\tfor (int num9 = Map.MAPCHIP_COAT_HNUM - 1; num9 >= 0; num9--)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int j = 0; j < Map.MAPCHIP_COAT_WNUM; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num7 = num2 + j * num;\r\n\t\t\t\t\t\tint num8 = num3 + num9 * num;\r\n\t\t\t\t\t\tg.DrawRect(num7, num8, num, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tpasser = team.GetPasser();\r\n\t\t\tif (passer == null)\r\n\t\t\t{\r\n\t\t\t\tpasser = team2.GetPasser();\r\n\t\t\t}\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0));\r\n\t\t\tif (passer != null)\r\n\t\t\t{\r\n\t\t\t\tint num7 = num2 + passer.address_[0] * num;\r\n\t\t\t\tint num8 = num3 + (Map.MAPCHIP_COAT_HNUM - 1 - passer.address_[1]) * num;\r\n\t\t\t\tg.DrawRect(num7, num8, num, num);\r\n\t\t\t}\r\n\t\t\tnum10 = -1;\r\n\t\t\tif (udat_.ball_.owner_ != null)\r\n\t\t\t{\r\n\t\t\t\tnum10 = udat_.ball_.owner_.team_id_;\r\n\t\t\t}\r\n\t\t\telse if (udat_.ball_.lastOwner_ != null)\r\n\t\t\t{\r\n\t\t\t\tnum10 = udat_.ball_.lastOwner_.team_id_;\r\n\t\t\t}\r\n\t\t\tif (num10 == -1)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tTeam team3 = udat_.teams_[0];\r\n\t\t\tTeam team4 = udat_.teams_[1];\r\n\t\t\tint num11 = num2;\r\n\t\t\tint num12 = num2 + Map.MAPCHIP_COAT_WNUM * num;\r\n\t\t\tint num13 = (int)GameUtil.RateConvert(team4.fPos_[1] + team4.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tint num14 = (int)GameUtil.RateConvert(team4.fPos_[1] - team4.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tnum11 -= 2;\r\n\t\t\tnum12 += 2;\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 168, 255));\r\n\t\t\tg.DrawRect(num11, num13, num12 - num11, num14 - num13);\r\n\t\t\tg.DrawRect(num11 + 1, num13 + 1, num12 - num11 - 2, num14 - num13 - 2);\r\n\t\t\tnum11 = num2;\r\n\t\t\tnum12 = num2 + Map.MAPCHIP_COAT_WNUM * num;\r\n\t\t\tnum13 = (int)GameUtil.RateConvert(team3.fPos_[1] + team3.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tnum14 = (int)GameUtil.RateConvert(team3.fPos_[1] - team3.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 206, 16));\r\n\t\t\tg.DrawRect(num11, num13, num12 - num11, num14 - num13);\r\n\t\t\tg.DrawRect(num11 + 1, num13 + 1, num12 - num11 - 2, num14 - num13 - 2);\r\n\t\t\tint num15 = num2;\r\n\t\t\tint num16 = num2 + Map.MAPCHIP_COAT_WNUM * num;\r\n\t\t\tint num17 = (int)GameUtil.RateConvert(team.amefto_goalPos_[0].z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tif (frame_ % 4 < 2)\r\n\t\t\t{\r\n\t\t\t\tif (team.team_id_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 0));\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 255));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (team.team_id_ == 0)\r\n\t\t\t{\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(200, 255, 100));\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(100, 100, 255));\r\n\t\t\t}\r\n\t\t\tif (num10 != -1)\r\n\t\t\t{\r\n\t\t\t\tg.DrawLine(num15, num17, num16, num17);\r\n\t\t\t\tg.DrawLine(num15, num17 + 1, num16, num17 + 1);\r\n\t\t\t}\r\n\t\t\tint num18 = 6;\r\n\t\t\tfor (int num19 = udat_.teams_.Length - 1; num19 >= 0; num19--)\r\n\t\t\t{\r\n\t\t\t\tfor (int k = 0; k < udat_.teams_[num19].players_.Length; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayer player = udat_.teams_[num19].players_[k];\r\n\t\t\t\t\tint num7 = (int)GameUtil.RateConvert(player.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);\r\n\t\t\t\t\tint num8 = (int)GameUtil.RateConvert(player.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\t\t\tif (num19 == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 128, 128));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 122, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.FillArc(num7, num8, num18, num18, 0f, 359f);\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0));\r\n\t\t\t\t\tg.DrawArc(num7, num8, num18 - 1, num18 - 1, 0f, 359f);\r\n\t\t\t\t\tif (BitUtil.Check(player.flag_, 4))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 255));\r\n\t\t\t\t\t\tg.FillArc(num7 - 2, num8 - 2, num18 + 4, num18 + 4, 0f, 359f);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "after": "public void Draw_coatEva(Graphics g)\r\n\t\t{\r\n\t\t\tint[][] array = null;\r\n\t\t\tTeam team = udat_.teams_[COATEVA_TEAM_ID];\r\n\t\t\tTeam team2 = udat_.teams_[1 - COATEVA_TEAM_ID];\r\n\t\t\tif (COATEVA_ROOT_INDEX == 0)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_new_offence;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 1)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_new_deffence;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 2)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_new_offence_passer;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 3)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_passer2;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 4)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_freeRun2;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 5)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_defence;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 6)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_looseBall;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 7)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_passer;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_ROOT_INDEX == 8)\r\n\t\t\t{\r\n\t\t\t\tarray = team.coatEva_freeRun;\r\n\t\t\t}\r\n\t\t\tint num = 10;\r\n\t\t\tint num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;\r\n\t\t\tint num3 = 60;\r\n\t\t\t\n\n\r\nint coordinateX;\r\nint coordinateY;\r\n\r\nint num4 = 0;\r\n\t\t\tfor (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < Map.MAPCHIP_COAT_WNUM; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num6 = array[num5][i];\r\n\t\t\t\t\tif (num6 < 20)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 255));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (num6 < 40)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 255, 255));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (num6 < 60)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 255, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (num6 < 80)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcoordinateX = num2 + i * num;\r\n\t\t\t\t\tcoordinateY = num3 + num4 * num;\r\n\t\t\t\t\tg.FillRect(coordinateX, coordinateY, num, num);\r\n\t\t\t\t}\r\n\t\t\t\tnum4++;\r\n\t\t\t}\r\n\t\t\tif (COATEVA_WAKU == 0)\r\n\t\t\t{\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(128, 128, 128));\r\n\t\t\t\tfor (int num9 = Map.MAPCHIP_COAT_HNUM - 1; num9 >= 0; num9--)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int j = 0; j < Map.MAPCHIP_COAT_WNUM; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcoordinateX = num2 + j * num;\r\n\t\t\t\t\t\tcoordinateY = num3 + num9 * num;\r\n\t\t\t\t\t\tg.DrawRect(coordinateX, coordinateY, num, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tglobal::game.Player passer = team.GetPasser();\r\n\t\t\tif (passer == null)\r\n\t\t\t{\r\n\t\t\t\tpasser = team2.GetPasser();\r\n\t\t\t}\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0));\r\n\t\t\tif (passer != null)\r\n\t\t\t{\r\n\t\t\t\tcoordinateX = num2 + passer.address_[0] * num;\r\n\t\t\t\tcoordinateY = num3 + (Map.MAPCHIP_COAT_HNUM - 1 - passer.address_[1]) * num;\r\n\t\t\t\tg.DrawRect(coordinateX, coordinateY, num, num);\r\n\t\t\t}\r\n\t\t\tint num10 = -1;\r\n\t\t\tif (udat_.ball_.owner_ != null)\r\n\t\t\t{\r\n\t\t\t\tnum10 = udat_.ball_.owner_.team_id_;\r\n\t\t\t}\r\n\t\t\telse if (udat_.ball_.lastOwner_ != null)\r\n\t\t\t{\r\n\t\t\t\tnum10 = udat_.ball_.lastOwner_.team_id_;\r\n\t\t\t}\r\n\t\t\tif (num10 == -1)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tTeam team3 = udat_.teams_[0];\r\n\t\t\tTeam team4 = udat_.teams_[1];\r\n\t\t\tint num11 = num2;\r\n\t\t\tint num12 = num2 + Map.MAPCHIP_COAT_WNUM * num;\r\n\t\t\tint num13 = (int)GameUtil.RateConvert(team4.fPos_[1] + team4.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tint num14 = (int)GameUtil.RateConvert(team4.fPos_[1] - team4.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tnum11 -= 2;\r\n\t\t\tnum12 += 2;\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 168, 255));\r\n\t\t\tg.DrawRect(num11, num13, num12 - num11, num14 - num13);\r\n\t\t\tg.DrawRect(num11 + 1, num13 + 1, num12 - num11 - 2, num14 - num13 - 2);\r\n\t\t\tnum11 = num2;\r\n\t\t\tnum12 = num2 + Map.MAPCHIP_COAT_WNUM * num;\r\n\t\t\tnum13 = (int)GameUtil.RateConvert(team3.fPos_[1] + team3.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tnum14 = (int)GameUtil.RateConvert(team3.fPos_[1] - team3.fPos_[3] / 2f, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 206, 16));\r\n\t\t\tg.DrawRect(num11, num13, num12 - num11, num14 - num13);\r\n\t\t\tg.DrawRect(num11 + 1, num13 + 1, num12 - num11 - 2, num14 - num13 - 2);\r\n\t\t\tint num15 = num2;\r\n\t\t\tint num16 = num2 + Map.MAPCHIP_COAT_WNUM * num;\r\n\t\t\tint num17 = (int)GameUtil.RateConvert(team.amefto_goalPos_[0].z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\tif (frame_ % 4 < 2)\r\n\t\t\t{\r\n\t\t\t\tif (team.team_id_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 0));\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 255));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (team.team_id_ == 0)\r\n\t\t\t{\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(200, 255, 100));\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(100, 100, 255));\r\n\t\t\t}\r\n\t\t\tif (num10 != -1)\r\n\t\t\t{\r\n\t\t\t\tg.DrawLine(num15, num17, num16, num17);\r\n\t\t\t\tg.DrawLine(num15, num17 + 1, num16, num17 + 1);\r\n\t\t\t}\r\n\t\t\tint num18 = 6;\r\n\t\t\tfor (int num19 = udat_.teams_.Length - 1; num19 >= 0; num19--)\r\n\t\t\t{\r\n\t\t\t\tfor (int k = 0; k < udat_.teams_[num19].players_.Length; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayer player = udat_.teams_[num19].players_[k];\r\n\t\t\t\t\tcoordinateX = (int)GameUtil.RateConvert(player.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);\r\n\t\t\t\t\tcoordinateY = (int)GameUtil.RateConvert(player.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\t\t\tif (num19 == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 128, 128));\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 122, 0));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.FillArc(coordinateX, coordinateY, num18, num18, 0f, 359f);\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 0, 0));\r\n\t\t\t\t\tg.DrawArc(coordinateX, coordinateY, num18 - 1, num18 - 1, 0f, 359f);\r\n\t\t\t\t\tif (BitUtil.Check(player.flag_, 4))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 255));\r\n\t\t\t\t\t\tg.FillArc(coordinateX - 2, coordinateY - 2, num18 + 4, num18 + 4, 0f, 359f);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "rule": "calculated-coordinate-local-coalescence",
+      "distance": 0,
+      "method_id": "form.DebugForm::Draw_coatEva(kairo.unity.ui.Graphics)->System.Void",
+      "logical_path": "src/Assembly-CSharp/form/DebugForm.cs",
+      "complete": true,
+      "predicted_types": [
+        "System.Int32[][]",
+        "game.Team",
+        "game.Team",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "game.Player",
+        "System.Int32",
+        "game.Team",
+        "game.Team",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "game.Player"
+      ],
+      "proofs": [
+        {
+          "operation": "sink-uninitialized-declaration-to-first-simple-assignment",
+          "name": "passer",
+          "original_slot": 14,
+          "rebuilt_slot": 6,
+          "capture_rejected": true,
+          "rhs_self_reference_rejected": true,
+          "all_uses_in_target_block_required": true
+        },
+        {
+          "operation": "sink-uninitialized-declaration-to-first-simple-assignment",
+          "name": "num10",
+          "original_slot": 15,
+          "rebuilt_slot": 7,
+          "capture_rejected": true,
+          "rhs_self_reference_rejected": true,
+          "all_uses_in_target_block_required": true
+        },
+        {
+          "operation": "coalesce-disjoint-same-identity-local-declarations-before-parent-control-flow",
+          "merged_name": "num7",
+          "lifetimes": [
+            [
+              417,
+              429
+            ],
+            [
+              547,
+              559
+            ],
+            [
+              664,
+              691
+            ],
+            [
+              1632,
+              1853
+            ]
+          ],
+          "original_slot": 6,
+          "rebuilt_slots": [
+            12,
+            16,
+            18,
+            33
+          ]
+        },
+        {
+          "operation": "coalesce-disjoint-same-identity-local-declarations-before-parent-control-flow",
+          "merged_name": "num8",
+          "lifetimes": [
+            [
+              426,
+              432
+            ],
+            [
+              556,
+              562
+            ],
+            [
+              688,
+              694
+            ],
+            [
+              1677,
+              1858
+            ]
+          ],
+          "original_slot": 7,
+          "rebuilt_slots": [
+            13,
+            17,
+            19,
+            34
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "rebuilt_slot": 12,
+          "original_slot": 6,
+          "rebuilt_offset": 417,
+          "original_offset": 417,
+          "before_count": 6,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 405,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::SetColor``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 410,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 412,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 10
+              }
+            },
+            {
+              "offset": 414,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 415,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 416,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 417,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 6
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 405,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::SetColor``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 410,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 412,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 10
+              }
+            },
+            {
+              "offset": 414,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 415,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 416,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 417,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 12
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 13,
+          "original_slot": 7,
+          "rebuilt_offset": 426,
+          "original_offset": 426,
+          "before_count": 0,
+          "after_count": 10,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 426,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 428,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 429,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 431,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 432,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 434,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 435,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 436,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 437,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 438,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 439,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::FillRect``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 426,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 13
+              }
+            },
+            {
+              "offset": 428,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 429,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 12
+              }
+            },
+            {
+              "offset": 431,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 432,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 13
+              }
+            },
+            {
+              "offset": 434,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 435,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 436,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 437,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 438,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 439,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::FillRect``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 16,
+          "original_slot": 6,
+          "rebuilt_offset": 547,
+          "original_offset": 547,
+          "before_count": 6,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 535,
+              "opcode": "br",
+              "operand": {
+                "branch": 580
+              }
+            },
+            {
+              "offset": 540,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 542,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 13
+              }
+            },
+            {
+              "offset": 544,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 545,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 546,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 547,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 6
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 535,
+              "opcode": "br",
+              "operand": {
+                "branch": 580
+              }
+            },
+            {
+              "offset": 540,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 542,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 15
+              }
+            },
+            {
+              "offset": 544,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 545,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 546,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 547,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 16
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 17,
+          "original_slot": 7,
+          "rebuilt_offset": 556,
+          "original_offset": 556,
+          "before_count": 0,
+          "after_count": 11,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 556,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 558,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 559,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 561,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 562,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 564,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 565,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 566,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 567,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 568,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 569,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::DrawRect``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 574,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 13
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 556,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 558,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 559,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 16
+              }
+            },
+            {
+              "offset": 561,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 562,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 564,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 565,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 566,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 567,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 568,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 569,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::DrawRect``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 574,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 15
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 6,
+          "original_slot": 14,
+          "rebuilt_offset": 612,
+          "original_offset": 612,
+          "before_count": 1,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 607,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class game.Team @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetPasser``0()->class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 612,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 14
+              }
+            },
+            {
+              "offset": 614,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 14
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 607,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class game.Team @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetPasser``0()->class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 612,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 614,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 6
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 6,
+          "original_slot": 14,
+          "rebuilt_offset": 627,
+          "original_offset": 627,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 627,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 14
+              }
+            },
+            {
+              "offset": 629,
+              "opcode": "ldarg.1",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 627,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 629,
+              "opcode": "ldarg.1",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 18,
+          "original_slot": 6,
+          "rebuilt_offset": 664,
+          "original_offset": 664,
+          "before_count": 0,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 664,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 666,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 668,
+              "opcode": "ldsfld",
+              "operand": {
+                "field": "class game.Map @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::MAPCHIP_COAT_HNUM:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 664,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 18
+              }
+            },
+            {
+              "offset": 666,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 668,
+              "opcode": "ldsfld",
+              "operand": {
+                "field": "class game.Map @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::MAPCHIP_COAT_HNUM:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 19,
+          "original_slot": 7,
+          "rebuilt_offset": 688,
+          "original_offset": 688,
+          "before_count": 4,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 684,
+              "opcode": "sub",
+              "operand": null
+            },
+            {
+              "offset": 685,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 686,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 687,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 688,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 684,
+              "opcode": "sub",
+              "operand": null
+            },
+            {
+              "offset": 685,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 686,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 687,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 688,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 19
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 7,
+          "original_slot": 15,
+          "rebuilt_offset": 707,
+          "original_offset": 707,
+          "before_count": 1,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 706,
+              "opcode": "ldc.i4.m1",
+              "operand": null
+            },
+            {
+              "offset": 707,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 15
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 706,
+              "opcode": "ldc.i4.m1",
+              "operand": null
+            },
+            {
+              "offset": 707,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 7,
+          "original_slot": 15,
+          "rebuilt_offset": 751,
+          "original_offset": 751,
+          "before_count": 1,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 746,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::team_id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 751,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 15
+              }
+            },
+            {
+              "offset": 753,
+              "opcode": "br",
+              "operand": {
+                "branch": 802
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 746,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::team_id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 751,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 753,
+              "opcode": "br",
+              "operand": {
+                "branch": 802
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 7,
+          "original_slot": 15,
+          "rebuilt_offset": 800,
+          "original_offset": 800,
+          "before_count": 1,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 795,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::team_id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 800,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 15
+              }
+            },
+            {
+              "offset": 802,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 15
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 795,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::team_id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 800,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 802,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 33,
+          "original_slot": 6,
+          "rebuilt_offset": 1632,
+          "original_offset": 1632,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 1632,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 1634,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 28
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1632,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 33
+              }
+            },
+            {
+              "offset": 1634,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 32
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 34,
+          "original_slot": 7,
+          "rebuilt_offset": 1677,
+          "original_offset": 1677,
+          "before_count": 1,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 1676,
+              "opcode": "conv.i4",
+              "operand": null
+            },
+            {
+              "offset": 1677,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 1679,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 26
+              }
+            },
+            {
+              "offset": 1681,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1676,
+              "opcode": "conv.i4",
+              "operand": null
+            },
+            {
+              "offset": 1677,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 34
+              }
+            },
+            {
+              "offset": 1679,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 30
+              }
+            },
+            {
+              "offset": 1681,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        }
+      ],
+      "special_variables": {
+        "coordinateX": 6,
+        "coordinateY": 7,
+        "passer": 14,
+        "num10": 15
+      },
+      "source_only": true,
+      "candidate_compilations": 0,
+      "baseline_source_sha256": "9b568d6de4515e14096ec4b0ce1610e4b717dc1a4a9482a86afa1c429e348fc6",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "current_unique_rebase_verified": true,
+      "calculator_sha256": "f9817f99cda27821020cb666b3d580eb04b034a2869feb5be94d884221254279",
+      "syntax_source_sha256": "f0018dae7a13fa14cf31aeae6551cad617f1011c757249a0f5179dcd64566077",
+      "dependency_sha256": {
+        "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+        "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+        "tools\\round8_slot_anchor_calculate.py": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+        "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91"
+      }
+    },
+    {
+      "start": 35363,
+      "end": 38012,
+      "before": "public void SetSavePos(Vector3D init_pos, Vector3D init_v, Vector3D init_a)\r\n\t\t{\r\n\t\t\tint num = 0;\r\n\t\t\tsavePos_[0].Set(init_pos);\r\n\t\t\tsaveV_.Set(init_v);\r\n\t\t\tsaveA_.y_ = init_a.y_;\r\n\t\t\tfloat num2 = init_pos.y_;\r\n\t\t\tfloat num3 = init_v.y_;\r\n\t\t\tfloat y_ = init_a.y_;\r\n\t\t\tint num4 = 0;\r\n\t\t\tif (init_a.y_ == 0f || saveV_.y_ == 0f)\r\n\t\t\t{\r\n\t\t\t\tnum4 = 100;\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\twhile (num4 < 300)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum4++;\r\n\t\t\t\t\tnum3 += y_;\r\n\t\t\t\t\tnum2 += num3;\r\n\t\t\t\t\tif (num2 < 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint num5 = 0;\r\n\t\t\tif ((num2 >= 300f)) { num5 = JMath.Abs((int)(init_v.y_ / init_a.y_) * 2); } else { num5 = num4; }\r\n\t\t\tint num6 = num5 * 100 / 100;\r\n\t\t\tint num7 = num5 * 100 / 100;\r\n\t\t\tbool flag = BitUtil.Check(flag_, 64);\r\n\t\t\tfor (int i = 1; i < savePos_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tsaveV_.x_ += init_a.x_;\r\n\t\t\t\t\tsaveV_.y_ += init_a.y_;\r\n\t\t\t\t\tsaveV_.z_ += init_a.z_;\r\n\t\t\t\t\tsavePos_[i].x_ = savePos_[i - 1].x_ + saveV_.x_;\r\n\t\t\t\t\tsavePos_[i].y_ = savePos_[i - 1].y_ + saveV_.y_;\r\n\t\t\t\t\tsavePos_[i].z_ = savePos_[i - 1].z_ + saveV_.z_;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (init_a.y_ == 0f || saveV_.y_ == 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfloat num8 = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\t\tfloat num9 = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\t\tsaveV_.x_ *= num8;\r\n\t\t\t\t\t\tsaveV_.z_ *= num9;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfloat num8;\r\n\t\t\t\t\t\tfloat num9;\r\n\t\t\t\t\t\tif (init_a.y_ == -0.25f || init_a.y_ == -0.35f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum8 = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);\r\n\t\t\t\t\t\t\tnum9 = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum8 = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);\r\n\t\t\t\t\t\t\tnum9 = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tsaveV_.x_ *= num8;\r\n\t\t\t\t\t\tsaveV_.y_ *= 0.995f;\r\n\t\t\t\t\t\tsaveV_.z_ *= num9;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tsaveV_.y_ += saveA_.y_;\r\n\t\t\t\t\tsavePos_[i].x_ = savePos_[i - 1].x_ + saveV_.x_;\r\n\t\t\t\t\tsavePos_[i].y_ = savePos_[i - 1].y_ + saveV_.y_;\r\n\t\t\t\t\tsavePos_[i].z_ = savePos_[i - 1].z_ + saveV_.z_;\r\n\t\t\t\t}\r\n\t\t\t\tnum++;\r\n\t\t\t\tif (savePos_[i].y_ <= 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tfallPos_.Set(savePos_[i]);\r\n\t\t\t\t\tfallTime_ = i;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treceiverPos_.x_ = fallPos_.x_;\r\n\t\t\treceiverPos_.z_ = fallPos_.z_;\r\n\t\t\tint num10 = -1;\r\n\t\t\tfor (int num11 = fallTime_ - 1; num11 >= fallTime_ / 2; num11--)\r\n\t\t\t{\r\n\t\t\t\tif (savePos_[num11].y_ <= 40f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum10 = num11;\r\n\t\t\t\t}\r\n\t\t\t\telse if (num10 != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (num10 != -1)\r\n\t\t\t{\r\n\t\t\t\treceiverPos_.Set(savePos_[num10]);\r\n\t\t\t}\r\n\t\t\tframeNum_ = num;\r\n\t\t\tsavePosFrame_ = 0;\r\n\t\t}",
+      "after": "public void SetSavePos(Vector3D init_pos, Vector3D init_v, Vector3D init_a)\r\n\t\t{\r\n\t\t\tint num = 0;\r\n\t\t\tsavePos_[0].Set(init_pos);\r\n\t\t\tsaveV_.Set(init_v);\r\n\t\t\tsaveA_.y_ = init_a.y_;\r\n\t\t\tfloat num2 = init_pos.y_;\r\n\t\t\tfloat num3 = init_v.y_;\r\n\t\t\tfloat y_ = init_a.y_;\r\n\t\t\tint num4 = 0;\r\n\t\t\tif (init_a.y_ == 0f || saveV_.y_ == 0f)\r\n\t\t\t{\r\n\t\t\t\tnum4 = 100;\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\twhile (num4 < 300)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum4++;\r\n\t\t\t\t\tnum3 += y_;\r\n\t\t\t\t\tnum2 += num3;\r\n\t\t\t\t\tif (num2 < 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint num5 = 0;\r\n\t\t\tif ((num2 >= 300f)) { num5 = JMath.Abs((int)(init_v.y_ / init_a.y_) * 2); } else { num5 = num4; }\r\n\t\t\tint num6 = num5 * 100 / 100;\r\n\t\t\tint num7 = num5 * 100 / 100;\r\n\t\t\t\r\nfloat coordinateX;\r\nfloat coordinateY;\r\n\r\nbool flag = BitUtil.Check(flag_, 64);\r\n\t\t\tfor (int i = 1; i < savePos_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tsaveV_.x_ += init_a.x_;\r\n\t\t\t\t\tsaveV_.y_ += init_a.y_;\r\n\t\t\t\t\tsaveV_.z_ += init_a.z_;\r\n\t\t\t\t\tsavePos_[i].x_ = savePos_[i - 1].x_ + saveV_.x_;\r\n\t\t\t\t\tsavePos_[i].y_ = savePos_[i - 1].y_ + saveV_.y_;\r\n\t\t\t\t\tsavePos_[i].z_ = savePos_[i - 1].z_ + saveV_.z_;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (init_a.y_ == 0f || saveV_.y_ == 0f)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcoordinateX = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\t\tcoordinateY = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);\r\n\t\t\t\t\t\tsaveV_.x_ *= coordinateX;\r\n\t\t\t\t\t\tsaveV_.z_ *= coordinateY;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\tif (init_a.y_ == -0.25f || init_a.y_ == -0.35f)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcoordinateX = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);\r\n\t\t\t\t\t\t\tcoordinateY = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcoordinateX = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);\r\n\t\t\t\t\t\t\tcoordinateY = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tsaveV_.x_ *= coordinateX;\r\n\t\t\t\t\t\tsaveV_.y_ *= 0.995f;\r\n\t\t\t\t\t\tsaveV_.z_ *= coordinateY;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tsaveV_.y_ += saveA_.y_;\r\n\t\t\t\t\tsavePos_[i].x_ = savePos_[i - 1].x_ + saveV_.x_;\r\n\t\t\t\t\tsavePos_[i].y_ = savePos_[i - 1].y_ + saveV_.y_;\r\n\t\t\t\t\tsavePos_[i].z_ = savePos_[i - 1].z_ + saveV_.z_;\r\n\t\t\t\t}\r\n\t\t\t\tnum++;\r\n\t\t\t\tif (savePos_[i].y_ <= 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tfallPos_.Set(savePos_[i]);\r\n\t\t\t\t\tfallTime_ = i;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treceiverPos_.x_ = fallPos_.x_;\r\n\t\t\treceiverPos_.z_ = fallPos_.z_;\r\n\t\t\tint num10 = -1;\r\n\t\t\tfor (int num11 = fallTime_ - 1; num11 >= fallTime_ / 2; num11--)\r\n\t\t\t{\r\n\t\t\t\tif (savePos_[num11].y_ <= 40f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum10 = num11;\r\n\t\t\t\t}\r\n\t\t\t\telse if (num10 != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (num10 != -1)\r\n\t\t\t{\r\n\t\t\t\treceiverPos_.Set(savePos_[num10]);\r\n\t\t\t}\r\n\t\t\tframeNum_ = num;\r\n\t\t\tsavePosFrame_ = 0;\r\n\t\t}",
+      "rule": "calculated-coordinate-local-coalescence",
+      "distance": 0,
+      "method_id": "game.Ball::SetSavePos(kairo.unity.m3d4.util3d.Vector3D,kairo.unity.m3d4.util3d.Vector3D,kairo.unity.m3d4.util3d.Vector3D)->System.Void",
+      "logical_path": "src/Assembly-CSharp/game/Ball.cs",
+      "complete": true,
+      "predicted_types": [
+        "System.Int32",
+        "System.Single",
+        "System.Single",
+        "System.Single",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Single",
+        "System.Single",
+        "System.Boolean",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "proofs": [
+        {
+          "operation": "coalesce-disjoint-same-identity-local-declarations-before-parent-control-flow",
+          "merged_name": "num8",
+          "lifetimes": [
+            [
+              527,
+              572
+            ],
+            [
+              663,
+              766
+            ]
+          ],
+          "original_slot": 8,
+          "rebuilt_slots": [
+            10,
+            12
+          ]
+        },
+        {
+          "operation": "coalesce-disjoint-same-identity-local-declarations-before-parent-control-flow",
+          "merged_name": "num9",
+          "lifetimes": [
+            [
+              558,
+              592
+            ],
+            [
+              691,
+              809
+            ]
+          ],
+          "original_slot": 9,
+          "rebuilt_slots": [
+            11,
+            13
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "rebuilt_slot": 10,
+          "original_slot": 8,
+          "rebuilt_offset": 527,
+          "original_offset": 527,
+          "before_count": 3,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 516,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 521,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 522,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 527,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 529,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 11
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 516,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 521,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 522,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 527,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 10
+              }
+            },
+            {
+              "offset": 529,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 9
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 11,
+          "original_slot": 9,
+          "rebuilt_offset": 558,
+          "original_offset": 558,
+          "before_count": 3,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 547,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 552,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 553,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 558,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 560,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 547,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "7B-14-6E-3F"
+              }
+            },
+            {
+              "offset": 552,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 553,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 558,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 560,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 12,
+          "original_slot": 8,
+          "rebuilt_offset": 663,
+          "original_offset": 673,
+          "before_count": 3,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 662,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "8F-C2-75-3F"
+              }
+            },
+            {
+              "offset": 667,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 668,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 673,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 675,
+              "opcode": "ldloc.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 652,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "8F-C2-75-3F"
+              }
+            },
+            {
+              "offset": 657,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 658,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 663,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 12
+              }
+            },
+            {
+              "offset": 665,
+              "opcode": "ldloc.0",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 13,
+          "original_slot": 9,
+          "rebuilt_offset": 691,
+          "original_offset": 701,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 701,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 703,
+              "opcode": "br",
+              "operand": {
+                "branch": 764
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 691,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 13
+              }
+            },
+            {
+              "offset": 693,
+              "opcode": "br",
+              "operand": {
+                "branch": 754
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 12,
+          "original_slot": 8,
+          "rebuilt_offset": 724,
+          "original_offset": 734,
+          "before_count": 3,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 723,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 728,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 729,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 734,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 736,
+              "opcode": "ldloc.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 713,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 718,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 719,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 724,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 12
+              }
+            },
+            {
+              "offset": 726,
+              "opcode": "ldloc.0",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 13,
+          "original_slot": 9,
+          "rebuilt_offset": 752,
+          "original_offset": 762,
+          "before_count": 3,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 751,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 756,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 757,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 762,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 764,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 741,
+              "opcode": "ldc.r4",
+              "operand": {
+                "float_bits": "EC-51-78-3F"
+              }
+            },
+            {
+              "offset": 746,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 747,
+              "opcode": "call",
+              "operand": {
+                "method": "class game.GameUtil @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::RateConvert``0(valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 752,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 13
+              }
+            },
+            {
+              "offset": 754,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        }
+      ],
+      "special_variables": {
+        "coordinateX": 8,
+        "coordinateY": 9
+      },
+      "source_only": true,
+      "candidate_compilations": 0,
+      "baseline_source_sha256": "0b805435901af6ca057d5bd5be1fe078d9b6b9a8803c64375c07dda7735c5bcc",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "current_unique_rebase_verified": true,
+      "calculator_sha256": "f9817f99cda27821020cb666b3d580eb04b034a2869feb5be94d884221254279",
+      "syntax_source_sha256": "f0018dae7a13fa14cf31aeae6551cad617f1011c757249a0f5179dcd64566077",
+      "dependency_sha256": {
+        "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+        "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+        "tools\\round8_slot_anchor_calculate.py": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+        "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91"
+      }
+    },
+    {
+      "start": 116641,
+      "end": 119713,
+      "before": "public void Draw_moveArea(Graphics g, int team_id, int p_id)\r\n\t\t{\r\n\t\t\tTeam team = udat_.teams_[team_id];\r\n\t\t\tint num = 10;\r\n\t\t\tint num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;\r\n\t\t\tint num3 = 60;\r\n\t\t\tglobal::game.Player player;\nglobal::game.Player player2;\nint num4 = 0;\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 255));\r\n\t\t\tfor (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < Map.MAPCHIP_COAT_WNUM; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num6 = num2 + i * num;\r\n\t\t\t\t\tint num7 = num3 + num5 * num;\r\n\t\t\t\t\tg.DrawRect(num6, num7, num, num);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tformationRect_global_pos[0].x_ = team.fPos_[0] - team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[0].z_ = team.fPos_[1] + team.fPos_[3] / 2f;\r\n\t\t\tformationRect_global_pos[1].x_ = team.fPos_[0] + team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[1].z_ = team.fPos_[1] + team.fPos_[3] / 2f;\r\n\t\t\tformationRect_global_pos[2].x_ = team.fPos_[0] + team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[2].z_ = team.fPos_[1] - team.fPos_[3] / 2f;\r\n\t\t\tformationRect_global_pos[3].x_ = team.fPos_[0] - team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[3].z_ = team.fPos_[1] - team.fPos_[3] / 2f;\r\n\t\t\tfor (int j = 0; j < formationRect_global_pos.Length; j++)\r\n\t\t\t{\r\n\t\t\t\tformationRect_camera_pos[j][0] = (int)GameUtil.RateConvert(formationRect_global_pos[j].x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);\r\n\t\t\t\tformationRect_camera_pos[j][1] = (int)GameUtil.RateConvert(formationRect_global_pos[j].z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\t}\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 0, 128));\r\n\t\t\tg.FillRect(formationRect_camera_pos[0][0], formationRect_camera_pos[0][1], formationRect_camera_pos[1][0] - formationRect_camera_pos[0][0], formationRect_camera_pos[2][1] - formationRect_camera_pos[0][1]);\r\n\t\t\tfor (int k = 0; k < team.players_.Length; k++)\r\n\t\t\t{\r\n\t\t\t\tplayer = team.players_[k];\r\n\t\t\t\tif (k != p_id)\r\n\t\t\t\t{\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tint num8 = 0;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 255, 0, 220));\r\n\t\t\t\tfor (int num9 = player.formation_address_[0][1]; num9 >= player.formation_address_[3][1]; num9--)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int l = player.formation_address_[0][0]; l <= player.formation_address_[1][0]; l++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint num6 = num2 + l * num;\r\n\t\t\t\t\t\tint num7 = num3 + (Map.MAPCHIP_COAT_HNUM - num9 - 1) * num;\r\n\t\t\t\t\t\tg.FillRect(num6, num7, num, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tnum8++;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint num10 = 6;\r\n\t\t\tfor (int m = 0; m < team.players_.Length; m++)\r\n\t\t\t{\r\n\t\t\t\tplayer2 = team.players_[m];\r\n\t\t\t\tint num6 = (int)GameUtil.RateConvert(player2.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);\r\n\t\t\t\tint num7 = (int)GameUtil.RateConvert(player2.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\t\tif (BitUtil.Check(player2.flag_, 4))\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 255));\r\n\t\t\t\t\tg.FillArc(num6 - 2, num7 - 2, num10 + 4, num10 + 4, 0f, 359f);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 0));\r\n\t\t\t\tg.FillArc(num6, num7, num10, num10, 0f, 359f);\r\n\t\t\t}\r\n\t\t}",
+      "after": "public void Draw_moveArea(Graphics g, int team_id, int p_id)\r\n\t\t{\r\n\t\t\tTeam team = udat_.teams_[team_id];\r\n\t\t\tint num = 10;\r\n\t\t\tint num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;\r\n\t\t\tint num3 = 60;\r\n\t\t\t\n\n\r\nint coordinateX;\r\nint coordinateY;\r\n\r\nint num4 = 0;\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 255));\r\n\t\t\tfor (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < Map.MAPCHIP_COAT_WNUM; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tcoordinateX = num2 + i * num;\r\n\t\t\t\t\tcoordinateY = num3 + num5 * num;\r\n\t\t\t\t\tg.DrawRect(coordinateX, coordinateY, num, num);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tformationRect_global_pos[0].x_ = team.fPos_[0] - team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[0].z_ = team.fPos_[1] + team.fPos_[3] / 2f;\r\n\t\t\tformationRect_global_pos[1].x_ = team.fPos_[0] + team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[1].z_ = team.fPos_[1] + team.fPos_[3] / 2f;\r\n\t\t\tformationRect_global_pos[2].x_ = team.fPos_[0] + team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[2].z_ = team.fPos_[1] - team.fPos_[3] / 2f;\r\n\t\t\tformationRect_global_pos[3].x_ = team.fPos_[0] - team.fPos_[2] / 2f;\r\n\t\t\tformationRect_global_pos[3].z_ = team.fPos_[1] - team.fPos_[3] / 2f;\r\n\t\t\tfor (int j = 0; j < formationRect_global_pos.Length; j++)\r\n\t\t\t{\r\n\t\t\t\tformationRect_camera_pos[j][0] = (int)GameUtil.RateConvert(formationRect_global_pos[j].x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);\r\n\t\t\t\tformationRect_camera_pos[j][1] = (int)GameUtil.RateConvert(formationRect_global_pos[j].z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\t}\r\n\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 0, 128));\r\n\t\t\tg.FillRect(formationRect_camera_pos[0][0], formationRect_camera_pos[0][1], formationRect_camera_pos[1][0] - formationRect_camera_pos[0][0], formationRect_camera_pos[2][1] - formationRect_camera_pos[0][1]);\r\n\t\t\tfor (int k = 0; k < team.players_.Length; k++)\r\n\t\t\t{\r\n\t\t\t\tglobal::game.Player player = team.players_[k];\r\n\t\t\t\tif (k != p_id)\r\n\t\t\t\t{\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tint num8 = 0;\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(0, 255, 0, 220));\r\n\t\t\t\tfor (int num9 = player.formation_address_[0][1]; num9 >= player.formation_address_[3][1]; num9--)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int l = player.formation_address_[0][0]; l <= player.formation_address_[1][0]; l++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcoordinateX = num2 + l * num;\r\n\t\t\t\t\t\tcoordinateY = num3 + (Map.MAPCHIP_COAT_HNUM - num9 - 1) * num;\r\n\t\t\t\t\t\tg.FillRect(coordinateX, coordinateY, num, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tnum8++;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint num10 = 6;\r\n\t\t\tfor (int m = 0; m < team.players_.Length; m++)\r\n\t\t\t{\r\n\t\t\t\tglobal::game.Player player2 = team.players_[m];\r\n\t\t\t\tcoordinateX = (int)GameUtil.RateConvert(player2.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);\r\n\t\t\t\tcoordinateY = (int)GameUtil.RateConvert(player2.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);\r\n\t\t\t\tif (BitUtil.Check(player2.flag_, 4))\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 0, 255));\r\n\t\t\t\t\tg.FillArc(coordinateX - 2, coordinateY - 2, num10 + 4, num10 + 4, 0f, 359f);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(Graphics.GetColorOfRGB(255, 255, 0));\r\n\t\t\t\tg.FillArc(coordinateX, coordinateY, num10, num10, 0f, 359f);\r\n\t\t\t}\r\n\t\t}",
+      "rule": "calculated-coordinate-local-coalescence",
+      "distance": 0,
+      "method_id": "form.DebugForm::Draw_moveArea(kairo.unity.ui.Graphics,System.Int32,System.Int32)->System.Void",
+      "logical_path": "src/Assembly-CSharp/form/DebugForm.cs",
+      "complete": true,
+      "predicted_types": [
+        "game.Team",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "game.Player",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "game.Player"
+      ],
+      "proofs": [
+        {
+          "operation": "sink-uninitialized-declaration-to-first-simple-assignment",
+          "name": "player",
+          "original_slot": 11,
+          "rebuilt_slot": 4,
+          "capture_rejected": true,
+          "rhs_self_reference_rejected": true,
+          "all_uses_in_target_block_required": true
+        },
+        {
+          "operation": "sink-uninitialized-declaration-to-first-simple-assignment",
+          "name": "player2",
+          "original_slot": 17,
+          "rebuilt_slot": 5,
+          "capture_rejected": true,
+          "rhs_self_reference_rejected": true,
+          "all_uses_in_target_block_required": true
+        },
+        {
+          "operation": "coalesce-disjoint-same-identity-local-declarations-before-parent-control-flow",
+          "merged_name": "num6",
+          "lifetimes": [
+            [
+              90,
+              101
+            ],
+            [
+              768,
+              787
+            ],
+            [
+              940,
+              1084
+            ]
+          ],
+          "original_slot": 4,
+          "rebuilt_slots": [
+            9,
+            16,
+            20
+          ]
+        },
+        {
+          "operation": "coalesce-disjoint-same-identity-local-declarations-before-parent-control-flow",
+          "merged_name": "num7",
+          "lifetimes": [
+            [
+              98,
+              104
+            ],
+            [
+              784,
+              790
+            ],
+            [
+              983,
+              1087
+            ]
+          ],
+          "original_slot": 5,
+          "rebuilt_slots": [
+            10,
+            17,
+            21
+          ]
+        }
+      ],
+      "anchors": [
+        {
+          "rebuilt_slot": 9,
+          "original_slot": 4,
+          "rebuilt_offset": 90,
+          "original_offset": 90,
+          "before_count": 0,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 90,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 92,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 93,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 90,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 92,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 93,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 10,
+          "original_slot": 5,
+          "rebuilt_offset": 98,
+          "original_offset": 98,
+          "before_count": 4,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 93,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 95,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 96,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 97,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 98,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 100,
+              "opcode": "ldarg.1",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 93,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 95,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 96,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 97,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 98,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 10
+              }
+            },
+            {
+              "offset": 100,
+              "opcode": "ldarg.1",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 4,
+          "original_slot": 11,
+          "rebuilt_offset": 685,
+          "original_offset": 685,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 685,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 687,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 10
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 685,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 687,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 12
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 16,
+          "original_slot": 4,
+          "rebuilt_offset": 768,
+          "original_offset": 763,
+          "before_count": 0,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 763,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 765,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 766,
+              "opcode": "ldsfld",
+              "operand": {
+                "field": "class game.Map @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::MAPCHIP_COAT_HNUM:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 768,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 16
+              }
+            },
+            {
+              "offset": 770,
+              "opcode": "ldloc.3",
+              "operand": null
+            },
+            {
+              "offset": 771,
+              "opcode": "ldsfld",
+              "operand": {
+                "field": "class game.Map @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::MAPCHIP_COAT_HNUM:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 17,
+          "original_slot": 5,
+          "rebuilt_offset": 784,
+          "original_offset": 779,
+          "before_count": 4,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 775,
+              "opcode": "sub",
+              "operand": null
+            },
+            {
+              "offset": 776,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 777,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 778,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 779,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 5
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 780,
+              "opcode": "sub",
+              "operand": null
+            },
+            {
+              "offset": 781,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 782,
+              "opcode": "mul",
+              "operand": null
+            },
+            {
+              "offset": 783,
+              "opcode": "add",
+              "operand": null
+            },
+            {
+              "offset": 784,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 17
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 5,
+          "original_slot": 17,
+          "rebuilt_offset": 897,
+          "original_offset": 892,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 892,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 894,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 17
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 897,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 899,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 5
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 20,
+          "original_slot": 4,
+          "rebuilt_offset": 940,
+          "original_offset": 935,
+          "before_count": 0,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 935,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 937,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 939,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::pos_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 940,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 20
+              }
+            },
+            {
+              "offset": 942,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 944,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::pos_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 21,
+          "original_slot": 5,
+          "rebuilt_offset": 983,
+          "original_offset": 978,
+          "before_count": 0,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 978,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 980,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 982,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::flag_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 983,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 21
+              }
+            },
+            {
+              "offset": 985,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 987,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::flag_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        }
+      ],
+      "special_variables": {
+        "coordinateX": 4,
+        "coordinateY": 5,
+        "player": 11,
+        "player2": 17
+      },
+      "source_only": true,
+      "candidate_compilations": 0,
+      "baseline_source_sha256": "9b568d6de4515e14096ec4b0ce1610e4b717dc1a4a9482a86afa1c429e348fc6",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "current_unique_rebase_verified": true,
+      "calculator_sha256": "f9817f99cda27821020cb666b3d580eb04b034a2869feb5be94d884221254279",
+      "syntax_source_sha256": "f0018dae7a13fa14cf31aeae6551cad617f1011c757249a0f5179dcd64566077",
+      "dependency_sha256": {
+        "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+        "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+        "tools\\round8_slot_anchor_calculate.py": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+        "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91"
+      }
+    }
+  ],
+  "methods": [
+    {
+      "method_id": "form.DebugForm::Draw_coatEva(kairo.unity.ui.Graphics)->System.Void",
+      "original_il_bytes": 1937,
+      "model_complete": true,
+      "signature_exact": true,
+      "local_count": 29,
+      "special_variables": {
+        "coordinateX": 6,
+        "coordinateY": 7,
+        "passer": 14,
+        "num10": 15
+      },
+      "game_body_match": "UNKNOWN",
+      "current_unique_rebase_verified": true
+    },
+    {
+      "method_id": "game.Ball::SetSavePos(kairo.unity.m3d4.util3d.Vector3D,kairo.unity.m3d4.util3d.Vector3D,kairo.unity.m3d4.util3d.Vector3D)->System.Void",
+      "original_il_bytes": 1251,
+      "model_complete": true,
+      "signature_exact": true,
+      "local_count": 14,
+      "special_variables": {
+        "coordinateX": 8,
+        "coordinateY": 9
+      },
+      "game_body_match": "UNKNOWN",
+      "current_unique_rebase_verified": true
+    },
+    {
+      "method_id": "form.DebugForm::Draw_moveArea(kairo.unity.ui.Graphics,System.Int32,System.Int32)->System.Void",
+      "original_il_bytes": 1128,
+      "model_complete": true,
+      "signature_exact": true,
+      "local_count": 18,
+      "special_variables": {
+        "coordinateX": 4,
+        "coordinateY": 5,
+        "player": 11,
+        "player2": 17
+      },
+      "game_body_match": "UNKNOWN",
+      "current_unique_rebase_verified": true
+    }
+  ],
+  "potential_il_bytes": 4316,
+  "fixture": {
+    "candidate_game_compilations": 0,
+    "fixture_assembly_compilations": 1,
+    "cases": {
+      "Coordinates": {
+        "complete_body_exact": true,
+        "il_bytes": 143,
+        "locals": 8
+      },
+      "Ball": {
+        "complete_body_exact": true,
+        "il_bytes": 138,
+        "locals": 5
+      }
+    },
+    "sink_nested_assignment_rejected": true,
+    "captured_local_rejected": true,
+    "interleaving_rejected": true,
+    "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+    "fixture_source_sha256": "5a47ad69832842daf9f3f2f36405d70d52b70423b0540ab158fc5bf3436c9f61"
+  },
+  "calculator_sha256": "f9817f99cda27821020cb666b3d580eb04b034a2869feb5be94d884221254279",
+  "syntax_source_sha256": "f0018dae7a13fa14cf31aeae6551cad617f1011c757249a0f5179dcd64566077",
+  "dependency_sha256": {
+    "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+    "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+    "tools\\round8_slot_anchor_calculate.py": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+    "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91"
+  },
+  "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+  "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+  "slot_anchor_evidence_sha256": "91ad29c1ebe2c2327075eb74a67a4524a78e7ed54cb503293a523305c9b43293",
+  "baseline_descriptor_sha256": {
+    "original-methods.json": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+    "rebuilt-methods.json": "133c8a40910a993bea4973ccd7b4bbef1f0e8ca0308fa1eb0ef48644badfc625",
+    "plain-local-types.json": "c843fefcb27f82f5ffeae3bbf070efc1af5c7a03c5eb6f56ee90e3d49cb156d0"
+  },
+  "prefix_after_compilation": "UNKNOWN"
+}

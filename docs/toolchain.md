@@ -297,3 +297,26 @@ Evidencias do alocador smcs, capturas, ordem de emissao dos tipos e limites:
 resultados negativos: [regras smcs](notes/round7-smcs-rules.md). Modelo Roslyn,
 escalonamento de pilha e icamento do array do iterador:
 [modelo Roslyn](notes/round7-roslyn-model.md).
+
+### Round 8: bounded incomplete predictions
+
+Production compilers, options and references remain unchanged. A complete
+slot-model prediction which disagrees with the original signature rejects the
+candidate before compilation. An incomplete prediction is diagnostic only and
+does not reject compilation. The actual compiled local signature, the strict
+IL-prefix progression gate, all bodies and all structural metadata are checked
+before a source step can be adopted; only the official verifier promotes states.
+
+The budget is 12 compiled incomplete-prediction variants per method per pass,
+cumulative across its 24 search iterations. A cycle admits at most one isolated
+probe per method plus one full assembly pass: at most 24 variants per method per
+cycle. A positive source-screen result requires another real full compilation,
+so at most 48 candidate compiler invocations are possible under this budget.
+Actual variant and compiler-invocation counts are retained in each engine report.
+Complete predictions remain subject to the separate 64-candidate step limit.
+
+The cycle limit is 40, with three consecutive zero-new-matched cycles still a
+stop condition. Each rolling block of five cycles includes KairoLibrary. REA
+managed evidence at session start is retained in reports/round8-rea-start.json.
+No original artifact, generated class, assembly byte or nondeterministic field
+is copied or normalized by these source transformations.

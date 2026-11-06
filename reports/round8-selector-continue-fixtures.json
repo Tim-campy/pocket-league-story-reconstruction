@@ -1,0 +1,88 @@
+{
+  "operation": "known-family-composition-fixtures",
+  "syntax_controls": 8,
+  "checks": [
+    "Pair:positive",
+    "Float:positive",
+    "Volatile:reject",
+    "Capture:reject",
+    "CrossCase:reject",
+    "CaseBreak:reject",
+    "no-opt-in:reject",
+    "no-evidence:reject"
+  ],
+  "toy_library_compilations": 3,
+  "toy_executable_compilations": 3,
+  "runtime_runs": 3,
+  "proofs": [
+    {
+      "method": "Pair",
+      "original_il_bytes": 218,
+      "full_body_equal": true,
+      "before_local_types": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class Box @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class Other @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "original_local_types": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class Box @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class Other @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "candidate_local_types": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class Box @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class Other @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "runtime_scenarios": 64,
+      "runtime_traces_equal": true,
+      "float_un_present": null
+    },
+    {
+      "method": "Float",
+      "original_il_bytes": 222,
+      "full_body_equal": true,
+      "before_local_types": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class Box @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class Other @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "original_local_types": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class Box @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class Other @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "candidate_local_types": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class Box @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class Other @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "runtime_scenarios": 64,
+      "runtime_traces_equal": true,
+      "float_un_present": true
+    }
+  ],
+  "game_compilations": 0,
+  "earlier_fixture_failure": "Initial runtime harness constructed jagged arrays and failed before comparisons with ArrayTypeMismatchException in Program.Main. Harness changed to one-dimensional array arguments; cause of runtime jagged-array failure UNKNOWN; not a transformation result.",
+  "rule_sha256": "32ce8b477ffee4e3ac3a43d94ebd2dc55c6ddb009b7e8ee015f713f436eb1007",
+  "driver_sha256": "6ead393f300eef5264c291ae9e4b080af6eddbfc327f95f0d4b3c0c1750afa9a",
+  "smcs_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0"
+}
