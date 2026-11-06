@@ -363,39 +363,21 @@ namespace kairo.unity.util
 
 		public static void WriteArray(OutputStream os, Array array, int arrayLengthBytes = 4)
 		{
-			long num = array?.GetLength(0) ?? (-1);
+			long num = (((object)(array) == null) ? ((-1)) : array.GetLength(0));
 			long num2 = 2147483647L;
-			switch (arrayLengthBytes)
-			{
-			case 1:
-				num2 = 127L;
-				break;
-			case 2:
-				num2 = 32767L;
-				break;
-			case 8:
-				num2 = long.MaxValue;
-				break;
-			}
+			if ((arrayLengthBytes == 1)) { num2 = 127L;
+				 } else if ((arrayLengthBytes == 2)) { num2 = 32767L;
+				 } else if ((arrayLengthBytes == 8)) { num2 = long.MaxValue;
+				 }
 			if (num2 <= num)
 			{
 				throw new ArgumentException("StreamUtil.WriteArray : out of range " + num + " >= " + num2);
 			}
-			switch (arrayLengthBytes)
-			{
-			case 1:
-				WriteByte(os, (sbyte)num);
-				break;
-			case 2:
-				WriteShort(os, (short)num);
-				break;
-			case 8:
-				WriteLong(os, num);
-				break;
-			default:
-				WriteInt(os, (int)num);
-				break;
-			}
+			if ((arrayLengthBytes == 1)) { WriteByte(os, (sbyte)num);
+				 } else if ((arrayLengthBytes == 2)) { WriteShort(os, (short)num);
+				 } else if ((arrayLengthBytes == 8)) { WriteLong(os, num);
+				 } else { WriteInt(os, (int)num);
+				 }
 			if (num == -1)
 			{
 				return;
