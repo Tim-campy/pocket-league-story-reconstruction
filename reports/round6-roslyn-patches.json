@@ -1,0 +1,349 @@
+{
+  "operation": "uncompiled-source-proposals",
+  "baseline_commit": "66eea9ddeb8e02a9f357f97f8e7c9dc60f54d6e9",
+  "patches": [
+    {
+      "method_id": "kairo.unity.ui.Canvas::EndPaint(kairo.unity.ui.Graphics,System.Int32)->System.Void",
+      "logical_path": "src/KairoLibrary/kairo/unity/ui/Canvas.cs",
+      "path": "src/KairoLibrary/kairo/unity/ui/Canvas.cs",
+      "rule": "roslyn-declaration-slot-layout",
+      "start": 11459,
+      "end": 12451,
+      "before": "internal void EndPaint(Graphics g, int meshId = -1)\r\n\t\t{\r\n\t\t\tif (!g.IsRenderGUIMode())\r\n\t\t\t{\r\n\t\t\t\tif (meshId != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (g.meshManList_[meshId] != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.meshManList_[meshId].EndMesh();\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int i = 0; i < g.meshManList_.Length; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (g.meshManList_[i] != null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.meshManList_[i].EndMesh();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tMeshManager[] meshManList_ = g.meshManList_;\r\n\t\t\t\tfor (int j = 0; j < meshManList_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tforeach (MeshBuilder value in meshManList_[j].meshList_.Values)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tforeach (MeshBuilder.Layer value2 in value.layers.Values)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tforeach (MeshBuilder.Group group in value2.groups)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tgroup.change = false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tg.EndGLRender(true);\r\n\t\t\tif (g == graphics_ && graphics_ != null)\r\n\t\t\t{\r\n\t\t\t\tgraphics_.Dispose(true);\r\n\t\t\t\tgraphics_ = null;\r\n\t\t\t}\r\n\t\t\tisAlterStaticRendering_ = false;\r\n\t\t}",
+      "after": "internal void EndPaint(Graphics g, int meshId = -1)\r\n\t\t{\r\n\t\t\tif (!g.IsRenderGUIMode())\r\n\t\t\t{\r\n\t\t\t\tint i;\r\n\t\t\t\tif (meshId != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (g.meshManList_[meshId] != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.meshManList_[meshId].EndMesh();\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (i = 0; i < g.meshManList_.Length; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (g.meshManList_[i] != null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.meshManList_[i].EndMesh();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tMeshManager[] meshManList_ = g.meshManList_;\r\n\t\t\t\tfor (int j = 0; j < meshManList_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tforeach (MeshBuilder value in meshManList_[j].meshList_.Values)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tforeach (MeshBuilder.Layer value2 in value.layers.Values)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tforeach (MeshBuilder.Group group in value2.groups)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tgroup.change = false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tg.EndGLRender(true);\r\n\t\t\tif (g == graphics_ && graphics_ != null)\r\n\t\t\t{\r\n\t\t\t\tgraphics_.Dispose(true);\r\n\t\t\t\tgraphics_ = null;\r\n\t\t\t}\r\n\t\t\tisAlterStaticRendering_ = false;\r\n\t\t}",
+      "expected_local_signature": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.graphics.MeshManager @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Collections.Generic.Dictionary`2/ValueCollection/Enumerator @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<class kairo.unity.graphics.Material @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,class kairo.unity.graphics.MeshBuilder @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null>",
+        "valuetype System.Collections.Generic.Dictionary`2/ValueCollection/Enumerator @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class kairo.unity.graphics.MeshBuilder/Layer @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null>",
+        "valuetype System.Collections.Generic.List`1/Enumerator @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<class kairo.unity.graphics.MeshBuilder/Group @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null>"
+      ],
+      "expected_slot_map": [
+        {
+          "original_slot": 0,
+          "rebuilt_slot": 1,
+          "aligned_accesses": 6
+        },
+        {
+          "original_slot": 1,
+          "rebuilt_slot": 0,
+          "aligned_accesses": 3
+        },
+        {
+          "original_slot": 2,
+          "rebuilt_slot": 2,
+          "aligned_accesses": 5
+        },
+        {
+          "original_slot": 3,
+          "rebuilt_slot": 3,
+          "aligned_accesses": 4
+        },
+        {
+          "original_slot": 4,
+          "rebuilt_slot": 4,
+          "aligned_accesses": 4
+        },
+        {
+          "original_slot": 5,
+          "rebuilt_slot": 5,
+          "aligned_accesses": 4
+        }
+      ],
+      "status": "UNCOMPILED_SOURCE_HYPOTHESIS"
+    },
+    {
+      "method_id": "kairo.unity.surface.SurfaceManagerBase::Draw(kairo.unity.ui.Graphics)->System.Void",
+      "logical_path": "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs",
+      "path": "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs",
+      "rule": "roslyn-declaration-slot-layout",
+      "start": 7864,
+      "end": 10761,
+      "before": "public virtual void Draw(kairo.unity.ui.Graphics g)\r\n\t\t{\r\n\t\t\tbool flag = IsAutoGLRender();\r\n\t\t\tfor (int i = 0; i < surfaceList_.Size(); i++)\r\n\t\t\t{\r\n\t\t\t\tg.ResetRender();\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.BeginGLRender(autoGLRenderClipEnable_);\r\n\t\t\t\t}\r\n\t\t\t\tsurfaceList_.ElementAt(i).OnDraw(g);\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.EndGLRender();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!Config.DEBUG || surfaceList_.Size() <= 0 || paintRects_.Count <= 0)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tSurfaceBase surfaceBase = surfaceList_.FirstElement();\r\n\t\t\tg.SetRenderRect(surfaceBase.GetX(), surfaceBase.GetY(), surfaceBase.GetWidth(), surfaceBase.GetHeight());\r\n\t\t\tg.Scale(surfaceBase.GetScaleRatio());\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tfloat x = (Input.mousePosition.x - (float)surfaceBase.GetX()) * 100f / surfaceBase.GetScaleRatio();\r\n\t\t\t\tfloat y = ((float)Screen.height - Input.mousePosition.y - (float)surfaceBase.GetY()) * 100f / surfaceBase.GetScaleRatio();\r\n\t\t\t\tint rectIndex;\r\n\t\t\t\tint handleIndex;\r\n\t\t\t\tGetSelectPaintPoint(x, y, out rectIndex, out handleIndex);\r\n\t\t\t\tfor (int j = 0; j < paintRects_.Count; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint[] paintRect = GetPaintRect(paintRects_[j]);\r\n\t\t\t\t\tg.SetColor(255, 0, 0);\r\n\t\t\t\t\tg.DrawRect2(paintRect[0] - 1, paintRect[1] - 1, paintRect[2] + 2, paintRect[3] + 2);\r\n\t\t\t\t\tif (currentPaintRect_ != j && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tVector2[] paintHandlePoint = GetPaintHandlePoint(paintRects_[j]);\r\n\t\t\t\t\t\tfor (int k = 0; k < paintHandlePoint.Length; k++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.SetColor(255, 150, 255);\r\n\t\t\t\t\t\t\tif (currentPaintRect_ == -1 && rectIndex == j && handleIndex == k)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tg.SetColor(255, 255, 255);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tg.FillRect(paintHandlePoint[k].x - 0.5f, paintHandlePoint[k].y - 0.5f, 2f, 2f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.PushFont(6);\r\n\t\t\t\t\tint height = g.GetFont().GetHeight();\r\n\t\t\t\t\tstring text = paintRect[0] + \",\" + paintRect[1];\r\n\t\t\t\t\tint num = paintRect[0];\r\n\t\t\t\t\tint num2 = paintRect[1] - 1 - height;\r\n\t\t\t\t\tif (num2 < 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.SetColor(0, 0, 0, 150);\r\n\t\t\t\t\tg.FillRect((float)num - 0.5f, (float)num2 - 0.5f, g.StringWidth(text) + 1, height + 1);\r\n\t\t\t\t\tg.SetColor(255, 255, 255);\r\n\t\t\t\t\tg.DrawString(text, num, num2);\r\n\t\t\t\t\ttext = paintRect[2] + \"x\" + paintRect[3];\r\n\t\t\t\t\tnum = paintRect[0] + paintRect[2] - g.StringWidth(text);\r\n\t\t\t\t\tnum2 = paintRect[1] + paintRect[3] + 1;\r\n\t\t\t\t\tif ((float)(num2 + height) > (float)(surfaceBase.GetHeight() * 100) / surfaceBase.GetScaleRatio())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = (int)((float)(surfaceBase.GetHeight() * 100) / surfaceBase.GetScaleRatio() - (float)height);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.SetColor(0, 0, 0, 150);\r\n\t\t\t\t\tg.FillRect((float)num - 0.5f, (float)num2 - 0.5f, g.StringWidth(text) + 1, height + 1);\r\n\t\t\t\t\tg.SetColor(255, 255, 255);\r\n\t\t\t\t\tg.DrawString(text, num, num2);\r\n\t\t\t\t\tg.PopFont();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tg.Scale(100f);\r\n\t\t\t\tg.ClearRenderRect();\r\n\t\t\t}\r\n\t\t}",
+      "after": "public virtual void Draw(kairo.unity.ui.Graphics g)\r\n\t\t{\r\n\t\t\tbool flag = IsAutoGLRender();\r\n\t\t\tint i;\r\n\t\t\tfor (i = 0; i < surfaceList_.Size(); i++)\r\n\t\t\t{\r\n\t\t\t\tg.ResetRender();\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.BeginGLRender(autoGLRenderClipEnable_);\r\n\t\t\t\t}\r\n\t\t\t\tsurfaceList_.ElementAt(i).OnDraw(g);\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.EndGLRender();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!Config.DEBUG || surfaceList_.Size() <= 0 || paintRects_.Count <= 0)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tSurfaceBase surfaceBase = surfaceList_.FirstElement();\r\n\t\t\tg.SetRenderRect(surfaceBase.GetX(), surfaceBase.GetY(), surfaceBase.GetWidth(), surfaceBase.GetHeight());\r\n\t\t\tg.Scale(surfaceBase.GetScaleRatio());\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tfloat x = (Input.mousePosition.x - (float)surfaceBase.GetX()) * 100f / surfaceBase.GetScaleRatio();\r\n\t\t\t\tfloat y = ((float)Screen.height - Input.mousePosition.y - (float)surfaceBase.GetY()) * 100f / surfaceBase.GetScaleRatio();\r\n\t\t\t\tint rectIndex;\r\n\t\t\t\tint handleIndex;\r\n\t\t\t\tGetSelectPaintPoint(x, y, out rectIndex, out handleIndex);\r\n\t\t\t\tfor (int j = 0; j < paintRects_.Count; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tint[] paintRect = GetPaintRect(paintRects_[j]);\r\n\t\t\t\t\tg.SetColor(255, 0, 0);\r\n\t\t\t\t\tg.DrawRect2(paintRect[0] - 1, paintRect[1] - 1, paintRect[2] + 2, paintRect[3] + 2);\r\n\t\t\t\t\tif (currentPaintRect_ != j && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tVector2[] paintHandlePoint = GetPaintHandlePoint(paintRects_[j]);\r\n\t\t\t\t\t\tfor (int k = 0; k < paintHandlePoint.Length; k++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.SetColor(255, 150, 255);\r\n\t\t\t\t\t\t\tif (currentPaintRect_ == -1 && rectIndex == j && handleIndex == k)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tg.SetColor(255, 255, 255);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tg.FillRect(paintHandlePoint[k].x - 0.5f, paintHandlePoint[k].y - 0.5f, 2f, 2f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.PushFont(6);\r\n\t\t\t\t\tstring text;\r\n\t\t\t\t\tint height = g.GetFont().GetHeight();\r\n\t\t\t\t\ttext = paintRect[0] + \",\" + paintRect[1];\r\n\t\t\t\t\tint num = paintRect[0];\r\n\t\t\t\t\tint num2 = paintRect[1] - 1 - height;\r\n\t\t\t\t\tif (num2 < 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.SetColor(0, 0, 0, 150);\r\n\t\t\t\t\tg.FillRect((float)num - 0.5f, (float)num2 - 0.5f, g.StringWidth(text) + 1, height + 1);\r\n\t\t\t\t\tg.SetColor(255, 255, 255);\r\n\t\t\t\t\tg.DrawString(text, num, num2);\r\n\t\t\t\t\ttext = paintRect[2] + \"x\" + paintRect[3];\r\n\t\t\t\t\tnum = paintRect[0] + paintRect[2] - g.StringWidth(text);\r\n\t\t\t\t\tnum2 = paintRect[1] + paintRect[3] + 1;\r\n\t\t\t\t\tif ((float)(num2 + height) > (float)(surfaceBase.GetHeight() * 100) / surfaceBase.GetScaleRatio())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum2 = (int)((float)(surfaceBase.GetHeight() * 100) / surfaceBase.GetScaleRatio() - (float)height);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tg.SetColor(0, 0, 0, 150);\r\n\t\t\t\t\tg.FillRect((float)num - 0.5f, (float)num2 - 0.5f, g.StringWidth(text) + 1, height + 1);\r\n\t\t\t\t\tg.SetColor(255, 255, 255);\r\n\t\t\t\t\tg.DrawString(text, num, num2);\r\n\t\t\t\t\tg.PopFont();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tg.Scale(100f);\r\n\t\t\t\tg.ClearRenderRect();\r\n\t\t\t}\r\n\t\t}",
+      "expected_local_signature": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.surface.SurfaceBase @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype UnityEngine.Vector2 @ UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "expected_slot_map": [
+        {
+          "original_slot": 0,
+          "rebuilt_slot": 0,
+          "aligned_accesses": 3
+        },
+        {
+          "original_slot": 1,
+          "rebuilt_slot": 2,
+          "aligned_accesses": 5
+        },
+        {
+          "original_slot": 2,
+          "rebuilt_slot": 1,
+          "aligned_accesses": 14
+        },
+        {
+          "original_slot": 3,
+          "rebuilt_slot": 3,
+          "aligned_accesses": 2
+        },
+        {
+          "original_slot": 4,
+          "rebuilt_slot": 4,
+          "aligned_accesses": 2
+        },
+        {
+          "original_slot": 5,
+          "rebuilt_slot": 5,
+          "aligned_accesses": 2
+        },
+        {
+          "original_slot": 6,
+          "rebuilt_slot": 6,
+          "aligned_accesses": 2
+        },
+        {
+          "original_slot": 7,
+          "rebuilt_slot": 7,
+          "aligned_accesses": 8
+        },
+        {
+          "original_slot": 8,
+          "rebuilt_slot": 8,
+          "aligned_accesses": 15
+        },
+        {
+          "original_slot": 9,
+          "rebuilt_slot": 10,
+          "aligned_accesses": 7
+        },
+        {
+          "original_slot": 10,
+          "rebuilt_slot": 9,
+          "aligned_accesses": 6
+        },
+        {
+          "original_slot": 11,
+          "rebuilt_slot": 11,
+          "aligned_accesses": 6
+        },
+        {
+          "original_slot": 12,
+          "rebuilt_slot": 12,
+          "aligned_accesses": 10
+        },
+        {
+          "original_slot": 13,
+          "rebuilt_slot": 13,
+          "aligned_accesses": 4
+        },
+        {
+          "original_slot": 14,
+          "rebuilt_slot": 14,
+          "aligned_accesses": 7
+        }
+      ],
+      "status": "UNCOMPILED_SOURCE_HYPOTHESIS"
+    },
+    {
+      "method_id": "kairo.unity.ui.Matrix::PostConcat(System.Single[])->kairo.unity.ui.Matrix",
+      "logical_path": "src/KairoLibrary/kairo/unity/ui/Matrix.cs",
+      "path": "src/KairoLibrary/kairo/unity/ui/Matrix.cs",
+      "rule": "roslyn-declaration-slot-layout",
+      "start": 1358,
+      "end": 1837,
+      "before": "public Matrix PostConcat(float[] transform)\r\n\t\t{\r\n\t\t\tif (transform == null)\r\n\t\t\t{\r\n\t\t\t\tthrow new NullReferenceException();\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < mul_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tmul_[i] = 0f;\r\n\t\t\t}\r\n\t\t\tfor (int j = 0; j < 3; j++)\r\n\t\t\t{\r\n\t\t\t\tfor (int k = 0; k < 3; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tmul_[j * 3 + k] = 0f;\r\n\t\t\t\t\tfor (int l = 0; l < 3; l++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tmul_[j * 3 + k] += mtx_[j * 3 + l] * transform[l * 3 + k];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tSetValues(mul_);\r\n\t\t\treturn this;\r\n\t\t}",
+      "after": "public Matrix PostConcat(float[] transform)\r\n\t\t{\r\n\t\t\tif (transform == null)\r\n\t\t\t{\r\n\t\t\t\tthrow new NullReferenceException();\r\n\t\t\t}\r\n\t\t\tint j, k, l;\r\n\t\t\tfor (int i = 0; i < mul_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tmul_[i] = 0f;\r\n\t\t\t}\r\n\t\t\tfor (j = 0; j < 3; j++)\r\n\t\t\t{\r\n\t\t\t\tfor (k = 0; k < 3; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tmul_[j * 3 + k] = 0f;\r\n\t\t\t\t\tfor (l = 0; l < 3; l++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tmul_[j * 3 + k] += mtx_[j * 3 + l] * transform[l * 3 + k];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tSetValues(mul_);\r\n\t\t\treturn this;\r\n\t\t}",
+      "expected_local_signature": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "expected_slot_map": [
+        {
+          "original_slot": 0,
+          "rebuilt_slot": 1,
+          "aligned_accesses": 7
+        },
+        {
+          "original_slot": 1,
+          "rebuilt_slot": 2,
+          "aligned_accesses": 7
+        },
+        {
+          "original_slot": 2,
+          "rebuilt_slot": 3,
+          "aligned_accesses": 6
+        },
+        {
+          "original_slot": 3,
+          "rebuilt_slot": 0,
+          "aligned_accesses": 5
+        }
+      ],
+      "status": "UNCOMPILED_SOURCE_HYPOTHESIS"
+    },
+    {
+      "method_id": "kairo.unity.ui.Graphics::DrawString(kairo.unity.ui.TextFormat,System.String,System.Single,System.Single,System.Int32)->System.Void",
+      "logical_path": "src/KairoLibrary/kairo/unity/ui/Graphics.cs",
+      "path": "src/KairoLibrary/kairo/unity/ui/Graphics.cs",
+      "rule": "roslyn-declaration-slot-layout",
+      "start": 68244,
+      "end": 72582,
+      "before": "public void DrawString(TextFormat lf, string str, float x, float y, int anchor)\r\n\t\t{\r\n\t\t\tstr = Language.TranslateText(str);\r\n\t\t\tif ((PeekAutoTextLayout() && str.IndexOf('<') != -1) || (lineSpacing_ != 0 && str.IndexOf('\\n') != -1))\r\n\t\t\t{\r\n\t\t\t\tDrawString2(str, x, y, anchor);\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num = -1;\r\n\t\t\tif (!Language.Japanese() && lf != null)\r\n\t\t\t{\r\n\t\t\t\tif (lf.GetFont() != -1 && lf.GetFont() != font_.GetSize())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font_.GetSize();\r\n\t\t\t\t\tfont_.SetSize(lf.GetFont());\r\n\t\t\t\t}\r\n\t\t\t\tx = lf.GetX(x);\r\n\t\t\t\ty = lf.GetY(y);\r\n\t\t\t\tanchor = lf.GetAnchor(anchor);\r\n\t\t\t}\r\n\t\t\tbool flag = (lf == null || lf.GetFont() == -1) && font_.IsNeedLocalizeScale();\r\n\t\t\tif (flag)\r\n\t\t\t{\r\n\t\t\t\tnum = font_.GetSize();\r\n\t\t\t\tint height = font_.GetHeight();\r\n\t\t\t\tfont_.SetSize(font_.GetLocalizeScale());\r\n\t\t\t\tif ((anchor & 0x60) == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ty += (float)(height - font_.GetHeight()) / 2f;\r\n\t\t\t\t}\r\n\t\t\t\tFont.LockLocalizeSetting();\r\n\t\t\t}\r\n\t\t\tBeginRenderMatrix(ref x, ref y);\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tfloat num2;\r\n\t\t\t\tfloat num3;\r\n\t\t\t\tfloat num4;\r\n\t\t\t\tif (!isGUI_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (render_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFont font = new Font(GetFont());\r\n\t\t\t\t\t\tRectangleF transRectGUI = GetTransRectGUI(0f, 0f, font.GetWidth(), font.GetHeight(), DrawString_tmp);\r\n\t\t\t\t\t\tnum2 = transRectGUI.Width() / font.GetWidth();\r\n\t\t\t\t\t\tnum3 = transRectGUI.Height() / (float)font.GetHeight();\r\n\t\t\t\t\t\tnum4 = ((num2 < num3) ? num2 : num3);\r\n\t\t\t\t\t\tfont.SetSize((int)((float)font.GetHeight() * num4), false);\r\n\t\t\t\t\t\ty += ((float)font.GetHeight() - (float)font.GetHeight() * num4 / num3) / 2f;\r\n\t\t\t\t\t\trender_.textRenderTasks_.Add(new Image.TextRenderTask(str, x, y, anchor, color_, font));\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tif ((anchor & 2) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tx -= font_.StringWidthF(str) / 2f;\r\n\t\t\t\t}\r\n\t\t\t\telse if ((anchor & 4) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tx -= font_.StringWidthF(str);\r\n\t\t\t\t}\r\n\t\t\t\tif ((anchor & 0x20) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ty -= (float)font_.GetHeight() / 2f;\r\n\t\t\t\t}\r\n\t\t\t\telse if ((anchor & 0x40) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ty -= (float)font_.GetHeight();\r\n\t\t\t\t}\r\n\t\t\t\telse if (fontScaleOffsetEnable_)\r\n\t\t\t\t{\r\n\t\t\t\t\tint height2 = font_.GetHeight();\r\n\t\t\t\t\ty += (float)((height2 * 100 / font_.fontScale_ - height2) / 2);\r\n\t\t\t\t}\r\n\t\t\t\tfont_.GetHeight();\r\n\t\t\t\tfont_.GetWidth();\r\n\t\t\t\tRectangleF transRectGUI2 = GetTransRectGUI(0f, 0f, font_.GetWidth(), font_.GetHeight(), DrawString_tmp);\r\n\t\t\t\tnum2 = transRectGUI2.Width() / font_.GetWidth();\r\n\t\t\t\tnum3 = transRectGUI2.Height() / (float)font_.GetHeight();\r\n\t\t\t\tnum4 = ((num2 < num3) ? num2 : num3);\r\n\t\t\t\tguiStyle_.font = font_.GetFont();\r\n\t\t\t\tguiStyle_.fontSize = (int)((float)font_.GetHeight() * num4);\r\n\t\t\t\tguiStyle_.fontStyle = font_.GetFontStyle();\r\n\t\t\t\ty += ((float)font_.GetHeight() - (float)font_.GetHeight() * num4 / num3) / 2f;\r\n\t\t\t\tif (GUI.skin.font != guiStyle_.font)\r\n\t\t\t\t{\r\n\t\t\t\t\tGUI.skin.font = guiStyle_.font;\r\n\t\t\t\t}\r\n\t\t\t\tfloat[] transPointGUI = GetTransPointGUI(x, y, DrawString_tmp2);\r\n\t\t\t\tColor textColor = guiStyle_.normal.textColor;\r\n\t\t\t\tif (renderOperator_ == 0 && renderSrcRatio_ < 255)\r\n\t\t\t\t{\r\n\t\t\t\t\tColor textColor2 = guiStyle_.normal.textColor;\r\n\t\t\t\t\ttextColor2.r = textColor2.r * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\ttextColor2.g = textColor2.g * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\ttextColor2.b = textColor2.b * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\tguiStyle_.normal.textColor = textColor2;\r\n\t\t\t\t}\r\n\t\t\t\telse if (renderOperator_ == 1 && renderSrcRatio_ < 255)\r\n\t\t\t\t{\r\n\t\t\t\t\tColor textColor3 = guiStyle_.normal.textColor;\r\n\t\t\t\t\ttextColor3.a = textColor3.a * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\tguiStyle_.normal.textColor = textColor3;\r\n\t\t\t\t}\r\n\t\t\t\tif (glRender_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (glTextCount_ >= glTextList_.Count)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tglTextList_.Add(new GLText());\r\n\t\t\t\t\t}\r\n\t\t\t\t\tglTextList_[glTextCount_].Init(new Rect(transPointGUI[0], transPointGUI[1], 1f, transRectGUI2.Height() * 2f), str, guiStyle_, clipRegion_);\r\n\t\t\t\t\tglTextCount_++;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tUpdateGUIGroup();\r\n\t\t\t\t\tGUI.Label(new Rect(transPointGUI[0], transPointGUI[1], 1f, transRectGUI2.Height() * 2f), str, guiStyle_);\r\n\t\t\t\t}\r\n\t\t\t\tguiStyle_.normal.textColor = textColor;\r\n\t\t\t\tif (Config.COUNT_ENABLE)\r\n\t\t\t\t{\r\n\t\t\t\t\tConfig.drawStringCount_++;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tEndRenderMatrix();\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tFont.UnlockLocalizeSetting();\r\n\t\t\t\t}\r\n\t\t\t\tif (num != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tfont_.SetSize(num);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "after": "public void DrawString(TextFormat lf, string str, float x, float y, int anchor)\r\n\t\t{\r\n\t\t\tstr = Language.TranslateText(str);\r\n\t\t\tif ((PeekAutoTextLayout() && str.IndexOf('<') != -1) || (lineSpacing_ != 0 && str.IndexOf('\\n') != -1))\r\n\t\t\t{\r\n\t\t\t\tDrawString2(str, x, y, anchor);\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num = -1;\r\n\t\t\tif (!Language.Japanese() && lf != null)\r\n\t\t\t{\r\n\t\t\t\tif (lf.GetFont() != -1 && lf.GetFont() != font_.GetSize())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font_.GetSize();\r\n\t\t\t\t\tfont_.SetSize(lf.GetFont());\r\n\t\t\t\t}\r\n\t\t\t\tx = lf.GetX(x);\r\n\t\t\t\ty = lf.GetY(y);\r\n\t\t\t\tanchor = lf.GetAnchor(anchor);\r\n\t\t\t}\r\n\t\t\tbool flag = (lf == null || lf.GetFont() == -1) && font_.IsNeedLocalizeScale();\r\n\t\t\tif (flag)\r\n\t\t\t{\r\n\t\t\t\tnum = font_.GetSize();\r\n\t\t\t\tint height = font_.GetHeight();\r\n\t\t\t\tfont_.SetSize(font_.GetLocalizeScale());\r\n\t\t\t\tif ((anchor & 0x60) == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ty += (float)(height - font_.GetHeight()) / 2f;\r\n\t\t\t\t}\r\n\t\t\t\tFont.LockLocalizeSetting();\r\n\t\t\t}\r\n\t\t\tBeginRenderMatrix(ref x, ref y);\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tfloat num4;\r\n\t\t\t\tfloat num2;\r\n\t\t\t\tfloat num3;\r\n\t\t\t\tif (!isGUI_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (render_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tFont font = new Font(GetFont());\r\n\t\t\t\t\t\tRectangleF transRectGUI = GetTransRectGUI(0f, 0f, font.GetWidth(), font.GetHeight(), DrawString_tmp);\r\n\t\t\t\t\t\tnum2 = transRectGUI.Width() / font.GetWidth();\r\n\t\t\t\t\t\tnum3 = transRectGUI.Height() / (float)font.GetHeight();\r\n\t\t\t\t\t\tnum4 = ((num2 < num3) ? num2 : num3);\r\n\t\t\t\t\t\tfont.SetSize((int)((float)font.GetHeight() * num4), false);\r\n\t\t\t\t\t\ty += ((float)font.GetHeight() - (float)font.GetHeight() * num4 / num3) / 2f;\r\n\t\t\t\t\t\trender_.textRenderTasks_.Add(new Image.TextRenderTask(str, x, y, anchor, color_, font));\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tif ((anchor & 2) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tx -= font_.StringWidthF(str) / 2f;\r\n\t\t\t\t}\r\n\t\t\t\telse if ((anchor & 4) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tx -= font_.StringWidthF(str);\r\n\t\t\t\t}\r\n\t\t\t\tif ((anchor & 0x20) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ty -= (float)font_.GetHeight() / 2f;\r\n\t\t\t\t}\r\n\t\t\t\telse if ((anchor & 0x40) != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ty -= (float)font_.GetHeight();\r\n\t\t\t\t}\r\n\t\t\t\telse if (fontScaleOffsetEnable_)\r\n\t\t\t\t{\r\n\t\t\t\t\tint height2 = font_.GetHeight();\r\n\t\t\t\t\ty += (float)((height2 * 100 / font_.fontScale_ - height2) / 2);\r\n\t\t\t\t}\r\n\t\t\t\tfont_.GetHeight();\r\n\t\t\t\tfont_.GetWidth();\r\n\t\t\t\tRectangleF transRectGUI2 = GetTransRectGUI(0f, 0f, font_.GetWidth(), font_.GetHeight(), DrawString_tmp);\r\n\t\t\t\tnum2 = transRectGUI2.Width() / font_.GetWidth();\r\n\t\t\t\tnum3 = transRectGUI2.Height() / (float)font_.GetHeight();\r\n\t\t\t\tnum4 = ((num2 < num3) ? num2 : num3);\r\n\t\t\t\tguiStyle_.font = font_.GetFont();\r\n\t\t\t\tguiStyle_.fontSize = (int)((float)font_.GetHeight() * num4);\r\n\t\t\t\tguiStyle_.fontStyle = font_.GetFontStyle();\r\n\t\t\t\ty += ((float)font_.GetHeight() - (float)font_.GetHeight() * num4 / num3) / 2f;\r\n\t\t\t\tif (GUI.skin.font != guiStyle_.font)\r\n\t\t\t\t{\r\n\t\t\t\t\tGUI.skin.font = guiStyle_.font;\r\n\t\t\t\t}\r\n\t\t\t\tfloat[] transPointGUI = GetTransPointGUI(x, y, DrawString_tmp2);\r\n\t\t\t\tColor textColor = guiStyle_.normal.textColor;\r\n\t\t\t\tif (renderOperator_ == 0 && renderSrcRatio_ < 255)\r\n\t\t\t\t{\r\n\t\t\t\t\tColor textColor2 = guiStyle_.normal.textColor;\r\n\t\t\t\t\ttextColor2.r = textColor2.r * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\ttextColor2.g = textColor2.g * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\ttextColor2.b = textColor2.b * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\tguiStyle_.normal.textColor = textColor2;\r\n\t\t\t\t}\r\n\t\t\t\telse if (renderOperator_ == 1 && renderSrcRatio_ < 255)\r\n\t\t\t\t{\r\n\t\t\t\t\tColor textColor3 = guiStyle_.normal.textColor;\r\n\t\t\t\t\ttextColor3.a = textColor3.a * (float)renderSrcRatio_ / 255f;\r\n\t\t\t\t\tguiStyle_.normal.textColor = textColor3;\r\n\t\t\t\t}\r\n\t\t\t\tif (glRender_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (glTextCount_ >= glTextList_.Count)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tglTextList_.Add(new GLText());\r\n\t\t\t\t\t}\r\n\t\t\t\t\tglTextList_[glTextCount_].Init(new Rect(transPointGUI[0], transPointGUI[1], 1f, transRectGUI2.Height() * 2f), str, guiStyle_, clipRegion_);\r\n\t\t\t\t\tglTextCount_++;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tUpdateGUIGroup();\r\n\t\t\t\t\tGUI.Label(new Rect(transPointGUI[0], transPointGUI[1], 1f, transRectGUI2.Height() * 2f), str, guiStyle_);\r\n\t\t\t\t}\r\n\t\t\t\tguiStyle_.normal.textColor = textColor;\r\n\t\t\t\tif (Config.COUNT_ENABLE)\r\n\t\t\t\t{\r\n\t\t\t\t\tConfig.drawStringCount_++;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tEndRenderMatrix();\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tFont.UnlockLocalizeSetting();\r\n\t\t\t\t}\r\n\t\t\t\tif (num != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tfont_.SetSize(num);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "expected_local_signature": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.graphics.RectangleF @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Single @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "valuetype UnityEngine.Color @ UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class kairo.unity.ui.Font @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype UnityEngine.Color @ UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype UnityEngine.Color @ UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "expected_slot_map": [
+        {
+          "original_slot": 0,
+          "rebuilt_slot": 0,
+          "aligned_accesses": 5
+        },
+        {
+          "original_slot": 1,
+          "rebuilt_slot": 1,
+          "aligned_accesses": 3
+        },
+        {
+          "original_slot": 2,
+          "rebuilt_slot": 2,
+          "aligned_accesses": 2
+        },
+        {
+          "original_slot": 3,
+          "rebuilt_slot": 5,
+          "aligned_accesses": 6
+        },
+        {
+          "original_slot": 4,
+          "rebuilt_slot": 3,
+          "aligned_accesses": 6
+        },
+        {
+          "original_slot": 5,
+          "rebuilt_slot": 4,
+          "aligned_accesses": 8
+        },
+        {
+          "original_slot": 6,
+          "rebuilt_slot": 6,
+          "aligned_accesses": 5
+        },
+        {
+          "original_slot": 7,
+          "rebuilt_slot": 7,
+          "aligned_accesses": 5
+        },
+        {
+          "original_slot": 8,
+          "rebuilt_slot": 8,
+          "aligned_accesses": 2
+        },
+        {
+          "original_slot": 9,
+          "rebuilt_slot": 9,
+          "aligned_accesses": 10
+        },
+        {
+          "original_slot": 10,
+          "rebuilt_slot": 10,
+          "aligned_accesses": 3
+        },
+        {
+          "original_slot": 11,
+          "rebuilt_slot": 11,
+          "aligned_accesses": 8
+        },
+        {
+          "original_slot": 12,
+          "rebuilt_slot": 12,
+          "aligned_accesses": 4
+        }
+      ],
+      "status": "UNCOMPILED_SOURCE_HYPOTHESIS"
+    },
+    {
+      "method_id": "kairo.unity.util.Language::Init()->System.Void",
+      "logical_path": "src/KairoLibrary/kairo/unity/util/Language.cs",
+      "path": "src/KairoLibrary/kairo/unity/util/Language.cs",
+      "rule": "roslyn-conditional-access-explicit-null-guard",
+      "start": 26208,
+      "end": 30022,
+      "before": "public static void Init()\r\n\t\t{\r\n\t\t\tif (systemLangPackFiles_ == null)\r\n\t\t\t{\r\n\t\t\t\tstring filename = \"language.dat\";\r\n\t\t\t\tList<string[]> list = new List<string[]>();\r\n\t\t\t\tif (Config.LANGUAGE == -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (English())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"English\", \"\", \"en-US\" });\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"日本語\", KAIRO_JAPANESE, \"\" });\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"日本語\", \"\", \"ja-JP\" });\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"English\", KAIRO_ENGLISH, \"\" });\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tlist.Add(new string[3] { \"English\", \"\", \"en-US\" });\r\n\t\t\t\t}\r\n\t\t\t\tJarInflater jarInflater = null;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Storage.Exists(3, filename))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tjarInflater = new JarInflater(Storage.Read(3, false, filename));\r\n\t\t\t\t\t\tstring[] files = jarInflater.GetFiles();\r\n\t\t\t\t\t\tforeach (string text in files)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tLanguagePackInfo languagePackInfo = GetLanguagePackInfo(jarInflater.GetData(text));\r\n\t\t\t\t\t\t\t\tlist.Add(new string[3] { languagePackInfo.Title, text, languagePackInfo.Code });\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tcatch\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tjarInflater?.Close();\r\n\t\t\t\t\tjarInflater = null;\r\n\t\t\t\t}\r\n\t\t\t\tsystemLangPackFiles_ = list.ToArray();\r\n\t\t\t}\r\n\t\t\tif (forceResetType_ != 0 && PlayerPrefs.HasKey(\"_language_pack\"))\r\n\t\t\t{\r\n\t\t\t\tPlayerPrefs.DeleteKey(\"_language_pack\");\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"PlayerPrefs.DeleteKey(PREF_LANG_PACK)\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!PlayerPrefs.HasKey(\"_language_pack\") && Config.LANGUAGE != 0)\r\n\t\t\t{\r\n\t\t\t\tJLocale jLocale = JLocale.GetDefault();\r\n\t\t\t\tstring text2 = jLocale.GetLanguage().ToLower();\r\n\t\t\t\tstring text3 = jLocale.GetCountry().ToLower();\r\n\t\t\t\tif (text2 == \"zh\")\r\n\t\t\t\t{\r\n\t\t\t\t\tif (text3 == \"sg\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext3 = \"ch\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (text3 == \"hk\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext3 = \"tw\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (text3 == \"mo\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext3 = \"tw\";\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring[] array = null;\r\n\t\t\t\tstring[] array2 = null;\r\n\t\t\t\tstring[][] array3 = systemLangPackFiles_;\r\n\t\t\t\tforeach (string[] array4 in array3)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring text4 = array4[2].ToLower();\r\n\t\t\t\t\tif (text2 + \"-\" + text3 == text4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray = array4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (text2 == text4.Split('-')[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray2 = array4;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (forceResetType_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (array == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"bestLangPack == null\");\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"bestLangPack[1]\" + array[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (array2 == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"matchLangPack == null\");\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"matchLangPack[1]\" + array2[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif ((array == null || array[1].Equals(\"\")) && (array2 == null || array2[1].Equals(\"\")))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray = new string[3] { \"日本語\", KAIRO_JAPANESE, \"\" };\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (array != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", array[1]);\r\n\t\t\t\t}\r\n\t\t\t\telse if (array2 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", array2[1]);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbyte[] array5 = Storage.Read(3, false, \"language_pack_format.txt\");\r\n\t\t\tif (array5 != null)\r\n\t\t\t{\r\n\t\t\t\tstring text5 = StringUtil.GetString(array5);\r\n\t\t\t\tlangPackFormats_ = new Dictionary<string, LangPackFormat>();\r\n\t\t\t\tstring[] files = text5.Split('\\n');\r\n\t\t\t\tfor (int i = 0; i < files.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array6 = files[i].Split(',');\r\n\t\t\t\t\tLangPackFormat langPackFormat = new LangPackFormat(array6[0], (char)int.Parse(array6[1]), (char)int.Parse(array6[2]));\r\n\t\t\t\t\tlangPackFormats_[langPackFormat.File.ToLower()] = langPackFormat;\r\n\t\t\t\t}\r\n\t\t\t\tif (!SetLanguagePack(PlayerPrefs.GetString(\"_language_pack\", null), null, false))\r\n\t\t\t\t{\r\n\t\t\t\t\tSetLanguagePack(null);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "after": "public static void Init()\r\n\t\t{\r\n\t\t\tif (systemLangPackFiles_ == null)\r\n\t\t\t{\r\n\t\t\t\tstring filename = \"language.dat\";\r\n\t\t\t\tList<string[]> list = new List<string[]>();\r\n\t\t\t\tif (Config.LANGUAGE == -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (English())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"English\", \"\", \"en-US\" });\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"日本語\", KAIRO_JAPANESE, \"\" });\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"日本語\", \"\", \"ja-JP\" });\r\n\t\t\t\t\t\tlist.Add(new string[3] { \"English\", KAIRO_ENGLISH, \"\" });\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tlist.Add(new string[3] { \"English\", \"\", \"en-US\" });\r\n\t\t\t\t}\r\n\t\t\t\tJarInflater jarInflater = null;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Storage.Exists(3, filename))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tjarInflater = new JarInflater(Storage.Read(3, false, filename));\r\n\t\t\t\t\t\tstring[] files = jarInflater.GetFiles();\r\n\t\t\t\t\t\tforeach (string text in files)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tLanguagePackInfo languagePackInfo = GetLanguagePackInfo(jarInflater.GetData(text));\r\n\t\t\t\t\t\t\t\tlist.Add(new string[3] { languagePackInfo.Title, text, languagePackInfo.Code });\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tcatch\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (jarInflater != null)\n\t\t\t\t{\n\t\t\t\t\tjarInflater.Close();\n\t\t\t\t}\r\n\t\t\t\t\tjarInflater = null;\r\n\t\t\t\t}\r\n\t\t\t\tsystemLangPackFiles_ = list.ToArray();\r\n\t\t\t}\r\n\t\t\tif (forceResetType_ != 0 && PlayerPrefs.HasKey(\"_language_pack\"))\r\n\t\t\t{\r\n\t\t\t\tPlayerPrefs.DeleteKey(\"_language_pack\");\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"PlayerPrefs.DeleteKey(PREF_LANG_PACK)\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!PlayerPrefs.HasKey(\"_language_pack\") && Config.LANGUAGE != 0)\r\n\t\t\t{\r\n\t\t\t\tJLocale jLocale = JLocale.GetDefault();\r\n\t\t\t\tstring text2 = jLocale.GetLanguage().ToLower();\r\n\t\t\t\tstring text3 = jLocale.GetCountry().ToLower();\r\n\t\t\t\tif (text2 == \"zh\")\r\n\t\t\t\t{\r\n\t\t\t\t\tif (text3 == \"sg\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext3 = \"ch\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (text3 == \"hk\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext3 = \"tw\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (text3 == \"mo\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext3 = \"tw\";\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring[] array = null;\r\n\t\t\t\tstring[] array2 = null;\r\n\t\t\t\tstring[][] array3 = systemLangPackFiles_;\r\n\t\t\t\tforeach (string[] array4 in array3)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring text4 = array4[2].ToLower();\r\n\t\t\t\t\tif (text2 + \"-\" + text3 == text4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray = array4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (text2 == text4.Split('-')[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray2 = array4;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (forceResetType_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (array == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"bestLangPack == null\");\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"bestLangPack[1]\" + array[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (array2 == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"matchLangPack == null\");\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(\"matchLangPack[1]\" + array2[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif ((array == null || array[1].Equals(\"\")) && (array2 == null || array2[1].Equals(\"\")))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray = new string[3] { \"日本語\", KAIRO_JAPANESE, \"\" };\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (array != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", array[1]);\r\n\t\t\t\t}\r\n\t\t\t\telse if (array2 != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", array2[1]);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbyte[] array5 = Storage.Read(3, false, \"language_pack_format.txt\");\r\n\t\t\tif (array5 != null)\r\n\t\t\t{\r\n\t\t\t\tstring text5 = StringUtil.GetString(array5);\r\n\t\t\t\tlangPackFormats_ = new Dictionary<string, LangPackFormat>();\r\n\t\t\t\tstring[] files = text5.Split('\\n');\r\n\t\t\t\tfor (int i = 0; i < files.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array6 = files[i].Split(',');\r\n\t\t\t\t\tLangPackFormat langPackFormat = new LangPackFormat(array6[0], (char)int.Parse(array6[1]), (char)int.Parse(array6[2]));\r\n\t\t\t\t\tlangPackFormats_[langPackFormat.File.ToLower()] = langPackFormat;\r\n\t\t\t\t}\r\n\t\t\t\tif (!SetLanguagePack(PlayerPrefs.GetString(\"_language_pack\", null), null, false))\r\n\t\t\t\t{\r\n\t\t\t\t\tSetLanguagePack(null);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "expected_local_signature": [
+        "valuetype System.Byte @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.Collections.Generic.List`1 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089<class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]>",
+        "class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.util.Language/LanguagePackInfo @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[][]",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]",
+        "class kairo.unity.util.Language/LangPackFormat @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "status": "UNCOMPILED_SOURCE_HYPOTHESIS",
+      "single_evaluation_evidence": "Receiver is uncaptured non-volatile local jarInflater; plain repeated local loads preserve receiver."
+    },
+    {
+      "method_id": "kairo.unity.util.Language::SetLanguagePack(System.String,System.Byte[],System.Boolean)->System.Boolean",
+      "logical_path": "src/KairoLibrary/kairo/unity/util/Language.cs",
+      "path": "src/KairoLibrary/kairo/unity/util/Language.cs",
+      "rule": "roslyn-conditional-access-explicit-null-guard",
+      "start": 43706,
+      "end": 47622,
+      "before": "public static bool SetLanguagePack(string file, byte[] data = null, bool save = true)\r\n\t\t{\r\n\t\t\tif (Config.DEBUG)\r\n\t\t\t{\r\n\t\t\t\tif (file == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[(null)]\");\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[\" + file + \"]\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (file != null)\r\n\t\t\t{\r\n\t\t\t\tpriorityLanguage_ = -1;\r\n\t\t\t\tif (English())\r\n\t\t\t\t{\r\n\t\t\t\t\tif (file.Equals(KAIRO_JAPANESE))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpriorityLanguage_ = 0;\r\n\t\t\t\t\t\tClearSoftLabelTable();\r\n\t\t\t\t\t\tClearTextTable();\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (Japanese())\r\n\t\t\t\t{\r\n\t\t\t\t\tif (file.Equals(\"\") || file.Equals(KAIRO_JAPANESE))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tClearSoftLabelTable();\r\n\t\t\t\t\t\tClearTextTable();\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpriorityLanguage_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (file != null && (file.Equals(KAIRO_JAPANESE) || file.Equals(KAIRO_ENGLISH)))\r\n\t\t\t{\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", file);\r\n\t\t\t\t\tPlayerPrefs.Save();\r\n\t\t\t\t}\r\n\t\t\t\tlangPackFile_ = file;\r\n\t\t\t\tstring id = \"UA-35228877-18\";\r\n\t\t\t\tAnalyticsTracker.TrackPageView(true, id, file);\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(\"DispatchPageView[SetLanguagePack    MultiType]\");\r\n\t\t\t\t\t}\r\n\t\t\t\t\tAnalyticsTracker.DispatchPageView();\r\n\t\t\t\t}\r\n\t\t\t\treturn true;\r\n\t\t\t}\r\n\t\t\tbool flag = file != null && file.Length > 0 && !Regex.IsMatch(file, \"^[a-zA-Z0-9_\\\\-]+\\\\.csv$\");\r\n\t\t\tif (Config.PRINT)\r\n\t\t\t{\r\n\t\t\t\tif (file == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[(null)]    custom(\" + flag + \")\");\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[\" + file + \"]    custom(\" + flag + \")\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tJarInflater jarInflater = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tif (file != null && file.Length > 0 && data == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tjarInflater = new JarInflater(Storage.Read(3, false, \"language.dat\"));\r\n\t\t\t\t\t\tdata = jarInflater.GetData(file);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!Storage.Exists(1, \"_custom_lang_pack.csv\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tdata = Storage.Read(1, false, \"_custom_lang_pack.csv\");\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tLoadLanguagePack(data);\r\n\t\t\t\tif (!flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring title = GetTitle(langPackCode_);\r\n\t\t\t\t\tif (title != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlangPackTitle_ = title;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tlangPackAuthor_ = \"Kairosoft\";\r\n\t\t\t\t}\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (PlayerPrefs.GetString(\"_language_pack_location\", \"\") != file)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDialog dialog = new Dialog(3, \"Message\");\r\n\t\t\t\t\t\t\tdialog.SetText(\"Data downloaded.\\nUpload language pack and creator's name to Kairosoft for sharing?\\nNo personal data will be sent.\");\r\n\t\t\t\t\t\t\tint num = dialog.Show();\r\n\t\t\t\t\t\t\tPlayerPrefs.SetInt(\"_language_pack_send\", (num == 4) ? 1 : 0);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack_location\", file);\r\n\t\t\t\t\t\tStorage.Write(1, false, \"_custom_lang_pack.csv\", data);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", file);\r\n\t\t\t\t\tPlayerPrefs.Save();\r\n\t\t\t\t}\r\n\t\t\t\tbool num2 = flag && PlayerPrefs.GetInt(\"_language_pack_send\", 0) == 1;\r\n\t\t\t\tstring id2 = \"UA-35228877-18\";\r\n\t\t\t\tif (num2)\r\n\t\t\t\t{\r\n\t\t\t\t\tAnalyticsTracker.TrackPageView(true, id2, langPackCode_, langPackAuthor_, URLEncoder.Encode(file));\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tAnalyticsTracker.TrackPageView(true, id2, langPackCode_);\r\n\t\t\t\t}\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(\"DispatchPageView[SetLanguagePack]\");\r\n\t\t\t\t\t}\r\n\t\t\t\t\tAnalyticsTracker.DispatchPageView();\r\n\t\t\t\t}\r\n\t\t\t\tlangPackFile_ = file;\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(ex);\r\n\t\t\t\t}\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring text = ex.Message.Trim();\r\n\t\t\t\t\tif (text.Length <= 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext = \"An error has occurred.\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\tDialog dialog2 = new Dialog(0, \"Error\");\r\n\t\t\t\t\tdialog2.SetText(text);\r\n\t\t\t\t\tdialog2.Show();\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tjarInflater?.Close();\r\n\t\t\t\tjarInflater = null;\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+      "after": "public static bool SetLanguagePack(string file, byte[] data = null, bool save = true)\r\n\t\t{\r\n\t\t\tif (Config.DEBUG)\r\n\t\t\t{\r\n\t\t\t\tif (file == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[(null)]\");\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[\" + file + \"]\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (file != null)\r\n\t\t\t{\r\n\t\t\t\tpriorityLanguage_ = -1;\r\n\t\t\t\tif (English())\r\n\t\t\t\t{\r\n\t\t\t\t\tif (file.Equals(KAIRO_JAPANESE))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpriorityLanguage_ = 0;\r\n\t\t\t\t\t\tClearSoftLabelTable();\r\n\t\t\t\t\t\tClearTextTable();\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (Japanese())\r\n\t\t\t\t{\r\n\t\t\t\t\tif (file.Equals(\"\") || file.Equals(KAIRO_JAPANESE))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tClearSoftLabelTable();\r\n\t\t\t\t\t\tClearTextTable();\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpriorityLanguage_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (file != null && (file.Equals(KAIRO_JAPANESE) || file.Equals(KAIRO_ENGLISH)))\r\n\t\t\t{\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", file);\r\n\t\t\t\t\tPlayerPrefs.Save();\r\n\t\t\t\t}\r\n\t\t\t\tlangPackFile_ = file;\r\n\t\t\t\tstring id = \"UA-35228877-18\";\r\n\t\t\t\tAnalyticsTracker.TrackPageView(true, id, file);\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(\"DispatchPageView[SetLanguagePack    MultiType]\");\r\n\t\t\t\t\t}\r\n\t\t\t\t\tAnalyticsTracker.DispatchPageView();\r\n\t\t\t\t}\r\n\t\t\t\treturn true;\r\n\t\t\t}\r\n\t\t\tbool flag = file != null && file.Length > 0 && !Regex.IsMatch(file, \"^[a-zA-Z0-9_\\\\-]+\\\\.csv$\");\r\n\t\t\tif (Config.PRINT)\r\n\t\t\t{\r\n\t\t\t\tif (file == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[(null)]    custom(\" + flag + \")\");\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"SetLanguagePack[\" + file + \"]    custom(\" + flag + \")\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tJarInflater jarInflater = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tif (file != null && file.Length > 0 && data == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tjarInflater = new JarInflater(Storage.Read(3, false, \"language.dat\"));\r\n\t\t\t\t\t\tdata = jarInflater.GetData(file);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!Storage.Exists(1, \"_custom_lang_pack.csv\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tdata = Storage.Read(1, false, \"_custom_lang_pack.csv\");\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tLoadLanguagePack(data);\r\n\t\t\t\tif (!flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring title = GetTitle(langPackCode_);\r\n\t\t\t\t\tif (title != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlangPackTitle_ = title;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tlangPackAuthor_ = \"Kairosoft\";\r\n\t\t\t\t}\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (PlayerPrefs.GetString(\"_language_pack_location\", \"\") != file)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDialog dialog = new Dialog(3, \"Message\");\r\n\t\t\t\t\t\t\tdialog.SetText(\"Data downloaded.\\nUpload language pack and creator's name to Kairosoft for sharing?\\nNo personal data will be sent.\");\r\n\t\t\t\t\t\t\tint num = dialog.Show();\r\n\t\t\t\t\t\t\tPlayerPrefs.SetInt(\"_language_pack_send\", (num == 4) ? 1 : 0);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack_location\", file);\r\n\t\t\t\t\t\tStorage.Write(1, false, \"_custom_lang_pack.csv\", data);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tPlayerPrefs.SetString(\"_language_pack\", file);\r\n\t\t\t\t\tPlayerPrefs.Save();\r\n\t\t\t\t}\r\n\t\t\t\tbool num2 = flag && PlayerPrefs.GetInt(\"_language_pack_send\", 0) == 1;\r\n\t\t\t\tstring id2 = \"UA-35228877-18\";\r\n\t\t\t\tif (num2)\r\n\t\t\t\t{\r\n\t\t\t\t\tAnalyticsTracker.TrackPageView(true, id2, langPackCode_, langPackAuthor_, URLEncoder.Encode(file));\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tAnalyticsTracker.TrackPageView(true, id2, langPackCode_);\r\n\t\t\t\t}\r\n\t\t\t\tif (save)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(\"DispatchPageView[SetLanguagePack]\");\r\n\t\t\t\t\t}\r\n\t\t\t\t\tAnalyticsTracker.DispatchPageView();\r\n\t\t\t\t}\r\n\t\t\t\tlangPackFile_ = file;\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(ex);\r\n\t\t\t\t}\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring text = ex.Message.Trim();\r\n\t\t\t\t\tif (text.Length <= 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext = \"An error has occurred.\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\tDialog dialog2 = new Dialog(0, \"Error\");\r\n\t\t\t\t\tdialog2.SetText(text);\r\n\t\t\t\t\tdialog2.Show();\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (jarInflater != null)\n\t\t\t\t{\n\t\t\t\t\tjarInflater.Close();\n\t\t\t\t}\r\n\t\t\t\tjarInflater = null;\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+      "expected_local_signature": [
+        "valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "status": "UNCOMPILED_SOURCE_HYPOTHESIS",
+      "single_evaluation_evidence": "Receiver is uncaptured non-volatile local jarInflater; plain repeated local loads preserve receiver."
+    }
+  ],
+  "states_promoted": false
+}

@@ -689,15 +689,14 @@ if (Language.Japanese()) { url = ("http://kairopark.jp/android/policy/app_gm" + 
 						int num5 = 0;
 						for (int j = 0; j < items.Length; j++)
 						{
-							if (items[j] != null && items[j].GetState() == 1 && items[j].GetPurchase() != null)
-							{
-								if (text2.Length() > 0)
+							if ((items[j] == null) || (items[j].GetState() != 1)) { continue; }
+if (items[j].GetPurchase() == null) { continue; }
+if (text2.Length() > 0)
 								{
 									text2 += "\n\n";
 								}
-								text2 = text2 + items[j].GetProductId() + "\n" + items[j].GetPurchase().GetOrderId();
-								num5++;
-							}
+text2 = text2 + items[j].GetProductId() + "\n" + items[j].GetPurchase().GetOrderId();
+num5++;
 						}
 						PurchaseLogView purchaseLogView2 = new PurchaseLogView("現在の購入状態");
 						purchaseLogView2.SetLog(num5, text2, false);
@@ -1090,6 +1089,7 @@ if (billingItem4.GetState() != 0 && billingItem4.GetSeriesNumber() > num3)
 		public static void DrawGradation(Graphics g, int dx, int dy, int sx, int sy, int w, int h, int sr, int sg, int sb, int dr, int dg, int db)
 		{
 			if ((w <= 0) || (h <= 0)) { return; }
+int dxAlias = dx;
 int num = dy;
 int num2 = dx + w;
 int num3 = dy + h;
@@ -1101,16 +1101,16 @@ double num8 = (double)sg + (double)(sy / 4) * num5;
 double num9 = (double)sb + (double)(sy / 4) * num6;
 while (num < num3)
 				{
-					num7 = ((!(num7 > 255.0)) ? num7 : 255.0);
-					num7 = ((!(num7 < 0.0)) ? num7 : 0.0);
-					num8 = ((!(num8 > 255.0)) ? num8 : 255.0);
-					num8 = ((!(num8 < 0.0)) ? num8 : 0.0);
-					num9 = ((!(num9 > 255.0)) ? num9 : 255.0);
-					num9 = ((!(num9 < 0.0)) ? num9 : 0.0);
+					num7 = (((num7 > 255.0)) ? (255.0) : (num7));
+					num7 = (((num7 < 0.0)) ? (0.0) : (num7));
+					num8 = (((num8 > 255.0)) ? (255.0) : (num8));
+					num8 = (((num8 < 0.0)) ? (0.0) : (num8));
+					num9 = (((num9 > 255.0)) ? (255.0) : (num9));
+					num9 = (((num9 < 0.0)) ? (0.0) : (num9));
 					g.SetColor(Graphics.GetColorOfRGB((int)num7, (int)num8, (int)num9));
 					int num10 = 0;
-					num10 = ((num == dy && sy % 4 != 0) ? (sy % 4) : ((num + 4 <= num3) ? 4 : (num3 - num)));
-					g.FillRect(dx, num, w, num10);
+					if ((num == dy && sy % 4 != 0)) { num10 = (sy % 4); } else { if ((num + 4 > num3)) { num10 = ((num3 - num)); } else { num10 = (4); } }
+					g.FillRect(dxAlias, num, w, num10);
 					num += num10;
 					num7 += num4;
 					num8 += num5;

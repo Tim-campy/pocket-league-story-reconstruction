@@ -924,17 +924,19 @@ bool flag2 = false;
 
 		public void Draw_miniMap(Graphics g)
 		{
-			int sideSoftWidth = GameView.GetInstance().GetSideSoftWidth();
-			int num = 80;
-			int num2 = 40;
-			int num3 = SoccerForm.VIEW_X + SoccerForm.VIEW_W - 6 - num - sideSoftWidth;
-			int num4 = SoccerForm.VIEW_Y + SoccerForm.VIEW_H - 6 - num2;
-			int num5 = 4;
+
+int sideSoftWidth, num, num2, num3, num4, num5, num7, num8, num10, num9;
+sideSoftWidth = GameView.GetInstance().GetSideSoftWidth();
+			num = 80;
+			num2 = 40;
+			num3 = SoccerForm.VIEW_X + SoccerForm.VIEW_W - 6 - num - sideSoftWidth;
+			num4 = SoccerForm.VIEW_Y + SoccerForm.VIEW_H - 6 - num2;
+			num5 = 4;
 			g.DrawImage(apdat_.resCom2_.img[92], num3, num4);
-			int num7;
-			int num8;
-			int num9;
-int num10;
+
+
+
+
 for (int num6 = udat_.teams_.Length - 1; num6 >= 0; num6--)
 			{
 				for (int i = 0; i < udat_.teams_[num6].players_.Length; i++)

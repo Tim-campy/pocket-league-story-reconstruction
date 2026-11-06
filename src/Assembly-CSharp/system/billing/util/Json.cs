@@ -127,17 +127,15 @@ namespace system.billing.util
 					string.Empty
 				}
 			};
-			foreach (string[] array2 in array)
-			{
-				array2[1] = ReadJSon(json, array2[0]);
-			}
+			for (int spriteIndex = 0; spriteIndex < array.Length; spriteIndex++) {
+string[] array2 = array[spriteIndex];
+array2[1] = ReadJSon(json, array2[0]);
+}
 			List<string> list = new List<string>();
 			for (int j = 0; j < array.Length; j++)
 			{
-				if (array[j][1] != null && array[j][1].Length > 0)
-				{
-					list.Add(Record(array[j][0], array[j][1]));
-				}
+				if ((array[j][1] == null) || (array[j][1].Length <= 0)) { continue; }
+list.Add(Record(array[j][0], array[j][1]));
 			}
 			return MakeJson(list.ToArray());
 		}

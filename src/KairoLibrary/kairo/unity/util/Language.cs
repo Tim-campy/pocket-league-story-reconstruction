@@ -603,7 +603,7 @@ namespace kairo.unity.util
 				}
 				finally
 				{
-					jarInflater?.Close();
+					if (((object)(jarInflater) != null)) { (jarInflater).Close(); }
 					jarInflater = null;
 				}
 				systemLangPackFiles_ = list.ToArray();
@@ -1375,7 +1375,7 @@ namespace kairo.unity.util
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if (((object)(jarInflater) != null)) { (jarInflater).Close(); }
 				jarInflater = null;
 			}
 			return true;

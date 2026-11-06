@@ -2131,16 +2131,20 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 
 		public void Draw_stadiumCamera(Graphics g)
 		{
-			GameView instance = GameView.GetInstance();
-			int num3;
-			int num2;
-			int num = (num2 = (num3 = 0));
-			int num4 = instance.GetGameWidth() / 2 - 87;
+
+GameView instance;
+int num4, num, num2, num3;
+TeamData teamData, teamData2;
+instance = GameView.GetInstance();
+
+
+			num4 = num = num2 = num3 = 0;
+			num4 = instance.GetGameWidth() / 2 - 87;
 			num = instance.GetGameHeight() - 78;
 			g.SetColor(Graphics.GetColorOfRGB(46, 168, 59));
 			g.FillRect(num4, num, 174f, 72f);
-			TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
-			TeamData teamData2 = apdat_.tData_[udat_.gm_.teamId_[1]];
+			teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
+			teamData2 = apdat_.tData_[udat_.gm_.teamId_[1]];
 			num3 = 39;
 			apdat_.frmGame_.Draw_stadiumName(g, num3, instance.GetGameWidth() / 2);
 			g.DrawImage(apdat_.resCom2_.img[159], num4 + 5 - 1, num + 3 - 1, 0, 0, 166, 12);
@@ -2713,27 +2717,28 @@ int num3;
 			int num = 4;
 			int drawTBAROff = GetDrawTBAROff(2);
 			int drawTBAROff2 = GetDrawTBAROff(4);
-			if (state_ == 0 || state_ == 1 || state_ == 7 || state_ == 8)
+			global::kairo.unity.ui.Graphics gAlias = g;
+if (state_ == 0 || state_ == 1 || state_ == 7 || state_ == 8)
 			{
-				g.SetColor(Graphics.GetColorOfRGB(214, 241, 255));
-				g.DrawString(teamData.name_, drawTBAROff, num, 2);
-				g.DrawString(teamData2.name_, drawTBAROff2, num, 2);
+				gAlias.SetColor(Graphics.GetColorOfRGB(214, 241, 255));
+				gAlias.DrawString(teamData.name_, drawTBAROff, num, 2);
+				gAlias.DrawString(teamData2.name_, drawTBAROff2, num, 2);
 			}
 			else if (udat_.phase_ == 14 || udat_.phase_ == 15)
 			{
-				g.SetColor(Graphics.GetColorOfRGB(128, 128, 128));
-				g.DrawString(teamData.name_, drawTBAROff, num, 2);
-				g.SetColor(Graphics.GetColorOfRGB(214, 241, 255));
-				g.DrawString(teamData2.name_, drawTBAROff2, num, 2);
+				gAlias.SetColor(Graphics.GetColorOfRGB(128, 128, 128));
+				gAlias.DrawString(teamData.name_, drawTBAROff, num, 2);
+				gAlias.SetColor(Graphics.GetColorOfRGB(214, 241, 255));
+				gAlias.DrawString(teamData2.name_, drawTBAROff2, num, 2);
 			}
 			else
 			{
-				g.SetColor(Graphics.GetColorOfRGB(214, 241, 255));
-				g.DrawString(teamData.name_, drawTBAROff, num, 2);
-				g.SetColor(Graphics.GetColorOfRGB(128, 128, 128));
-				g.DrawString(teamData2.name_, drawTBAROff2, num, 2);
+				gAlias.SetColor(Graphics.GetColorOfRGB(214, 241, 255));
+				gAlias.DrawString(teamData.name_, drawTBAROff, num, 2);
+				gAlias.SetColor(Graphics.GetColorOfRGB(128, 128, 128));
+				gAlias.DrawString(teamData2.name_, drawTBAROff2, num, 2);
 			}
-			UpdateOffscreenTopBar(g, false);
+			UpdateOffscreenTopBar(gAlias, false);
 		}
 
 		public void Draw_matchElse(Graphics g)
@@ -2851,16 +2856,18 @@ int num3;
 		{
 			apdat_.DrawWindow(g, 228, 204, 0, "ボーナス");
 			apdat_.DrawBox(g, 15, 55, 225, 201);
-			int num3;
-			int num2;
-			int num = (num2 = (num3 = 0));
+
+int num5, num, num2, num3, num4;
+
+
+			num5 = num = num2 = num3 = 0;
 			num = 51;
 			g.SetColor(SubForm.SC_WINDOW_BLACK);
 			apdat_.DrawExp(g, 81, num + 2);
 			g.DrawString("獲得", 140f, num);
-			int num4 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_TIME[0], PBONUS_NP_LV_TIME[1], 0, PBONUS_NP_LV_ADDEXP, true);
+			num4 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_TIME[0], PBONUS_NP_LV_TIME[1], 0, PBONUS_NP_LV_ADDEXP, true);
 			apdat_.DrawNumImage(g, 35, string.Empty, num4, string.Empty, 120, num + 1, 0, 2);
-			int num5 = 19;
+			num5 = 19;
 			num = 70;
 			for (int i = 0; i < 11; i++)
 			{

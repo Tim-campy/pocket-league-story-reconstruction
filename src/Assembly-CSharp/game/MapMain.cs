@@ -295,7 +295,8 @@ namespace game
 				MOVE_POINT[8].z_ += 1800f;
 				MOVE_POINT[9].z_ += 1800f;
 				TRAIN_COAT_GPOS = new Vector3D[4];
-				for (int m = 0; m < TRAIN_COAT_GPOS.Length; m++)
+				global::System.Single originalUnusedSlot7;
+for (int m = 0; m < TRAIN_COAT_GPOS.Length; m++)
 				{
 					TRAIN_COAT_GPOS[m] = new Vector3D();
 				}

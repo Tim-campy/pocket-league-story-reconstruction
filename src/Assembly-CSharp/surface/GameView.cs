@@ -1469,14 +1469,16 @@ instance_.markComponentFrame_ = 0;
 
 		internal void OnTouchDlgCmd(int type, int v, TouchEvent e)
 		{
-			if (type == 1 || type == 2)
-			{
-				Set(v, e.component);
-				if (type == 1)
+			switch (type) {
+case 1:
+case 2:
+{ Set(v, e.component);
+if (type == 1)
 				{
 					canvas_.KeyClick(GetKey(e.component, 1048576));
 				}
-			}
+break; }
+}
 		}
 
 		internal void OnTouchDlgSel(int type, int v, TouchEvent e)
@@ -1508,9 +1510,9 @@ if (typeAlias != 1 && typeAlias != 2)
 				v = 20;
 			}
 			bool flag = BitUtil.Split(v)[0] == 0;
-			if (type == 5)
-			{
-				if (flag)
+			int typeAlias = type;
+if (typeAlias != 5) { return; }
+if (flag)
 				{
 					canvas_.KeyClick(GetKey(e.component, 1 << v));
 				}
@@ -1518,7 +1520,6 @@ if (typeAlias != 1 && typeAlias != 2)
 				{
 					Set(v, e.component);
 				}
-			}
 		}
 
 		internal void OnTouchKeyPress(int type, int v, TouchEvent e)
@@ -1557,9 +1558,9 @@ if (typeAlias != 1 && typeAlias != 2)
 				v = 20;
 			}
 			bool flag = BitUtil.Split(v)[0] == 0;
-			if (type == 0)
-			{
-				if (flag)
+			int typeAlias = type;
+if (typeAlias != 0) { return; }
+if (flag)
 				{
 					canvas_.KeyDown(GetKey(e.component, 1 << v));
 				}
@@ -1567,7 +1568,6 @@ if (typeAlias != 1 && typeAlias != 2)
 				{
 					Set(v, e.component);
 				}
-			}
 		}
 
 		internal void OnTouchKeyUp(int type, int v, TouchEvent e)
@@ -1601,14 +1601,15 @@ if (flag)
 					break;
 				}
 			}
-			if (type != 1 && type != 2)
+			int typeAlias = type;
+if (typeAlias != 1 && typeAlias != 2)
 			{
 				return;
 			}
 			if (GetComponentId(9) == null)
 			{
 				Set(v, e.component);
-				if (type == 1)
+				if (typeAlias == 1)
 				{
 					canvas_.KeyClick(1048576);
 				}
@@ -1622,14 +1623,16 @@ if (flag)
 
 		internal void OnTouchSubMenu(int type, int v, TouchEvent e)
 		{
-			if (type == 1 || type == 2)
-			{
-				Set(v, e.component);
-				if (type == 1)
+			switch (type) {
+case 1:
+case 2:
+{ Set(v, e.component);
+if (type == 1)
 				{
 					canvas_.KeyClick(GetKey(e.component, 1048576));
 				}
-			}
+break; }
+}
 		}
 
 		internal void OnTouchList(int type, int v, TouchEvent e)
@@ -1843,7 +1846,8 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 
 		internal void OnTouchTrackBar(int type, int v, TouchEvent e)
 		{
-			if (type != 0 && type == 9)
+			int typeAlias = type;
+if (typeAlias != 0 && typeAlias == 9)
 			{
 				Set(v, e.dx, e.component);
 			}
@@ -1851,14 +1855,16 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 
 		protected void OnTouchRect(int type, int v, TouchEvent e)
 		{
-			if (type == 1 || type == 2)
-			{
-				Set(v, e.component);
-				if (type == 1)
+			switch (type) {
+case 1:
+case 2:
+{ Set(v, e.component);
+if (type == 1)
 				{
 					canvas_.KeyClick(1048576);
 				}
-			}
+break; }
+}
 		}
 
 		public override void Draw(Graphics g)

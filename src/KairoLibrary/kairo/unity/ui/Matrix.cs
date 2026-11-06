@@ -71,16 +71,17 @@ namespace kairo.unity.ui
 			{
 				throw new NullReferenceException();
 			}
+			int j, k, l;
 			for (int i = 0; i < mul_.Length; i++)
 			{
 				mul_[i] = 0f;
 			}
-			for (int j = 0; j < 3; j++)
+			for (j = 0; j < 3; j++)
 			{
-				for (int k = 0; k < 3; k++)
+				for (k = 0; k < 3; k++)
 				{
 					mul_[j * 3 + k] = 0f;
-					for (int l = 0; l < 3; l++)
+					for (l = 0; l < 3; l++)
 					{
 						mul_[j * 3 + k] += mtx_[j * 3 + l] * transform[l * 3 + k];
 					}

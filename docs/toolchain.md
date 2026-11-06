@@ -1,6 +1,31 @@
 # Toolchain e evidências
 
-## Estado atual — rodada iniciada em 7d9fbc8
+## Estado atual — rodada iniciada em 66eea9d
+
+Produção preservada: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para KairoLibrary; **Unity 5.3.4f1 / smcs 2.6.5.0** para Assembly-CSharp. Compiladores, defines, flags, perfis, referências e sua ordem não mudaram. Nenhuma nova exceção não determinística.
+
+| Assembly | Matched anterior → atual / total | Bytes IL matched anterior → atual / total | Corpos iguais | Tipos estruturais iguais |
+| --- | --- | --- | --- | --- |
+| KairoLibrary | 3187 → 3193 / 3287 | 204103 → 208123 / 269894 | 3119 | 337/337 |
+| Assembly-CSharp | 1688 → 1703 / 1958 | 203891 → 225924 / 601603 | 1698 | 129/129 |
+
+**4896/5245 métodos matched; 434047/871497 bytes IL matched.** Zero regressões adotadas de corpos, estados e tipos. Os 466 tipos e 82 declarações sem corpo passaram novamente. 3 corpos iguais permanecem retidos pelo vínculo de auxiliares. Igualdade estrutural não implica igualdade bruta dos heaps, tabelas e arquivos.
+
+Provas: [adoção oficial](../reports/round6-adoption.json), [medição inicial](../reports/round6-baseline-measurement.json), [medição final](../reports/round6-final-measurement.json), [relatório completo](notes/round-06-report.md). Estados são escritos exclusivamente pelo verificador.
+
+**Modelo smcs calculado a partir do fonte, sem emitir candidatos.** A regra recuperada usa inserção de variáveis, temporários registrados, blocos filhos/implícitos e temporários de emissão com reutilização por tipo. Validação: 1575/1682 assinaturas exatas em todos os corpos matched anteriores; 1539/1539 nas previsões declaradas completas. 100 corpos gerados ou não mapeados não contam como acerto por uma lista vazia. O gate exige previsão completa e assinatura prevista igual à original antes de compilar; discrepâncias observadas na assinatura compilada são rejeitadas. A cobertura incompleta está classificada em [round6-slot-model-validation.json](../reports/round6-slot-model-validation.json); não se declara modelo universal.
+
+Nas tentativas compiladas, 144 métodos distintos tiveram candidato com assinatura igual à original. No fonte efetivamente adotado, 15 dos pendentes iniciais passaram a ter assinatura igual e 9 desses fecharam o corpo. Tentativa confirmada não promove matched.
+
+**Busca por localização alinhada.** Destinos de desvio são reconciliados por rótulos e a primeira inserção, remoção ou substituição orienta o comando de fonte. A busca parcial exige avanço bruto por padrão. Na última retomada dos três gradientes, o prefixo de instruções alinhadas pôde avançar estritamente enquanto todos os bytes do prefixo bruto já igual permaneceram preservados. Cabeçalho, locais, EH, larguras e operandos continuam no comparador exato; nenhum estado matched usa o critério parcial. O motor percorreu os 269 pendentes smcs iniciais e 18 controles Roslyn. Os dois assemblies foram integralmente compilados e verificados. Limites e paradas por método constam nos relatórios dos motores. Destino recompilado em trecho inserido pode permanecer classificado como branch_retarget; alinhamentos repetidos podem ser ambíguos.
+
+**Roslyn 1.1.** Nos quatro controles pedidos da linha de base 66eea9d, não havia local extra nem ausente: eram permutações de slots. EmitBlock define locais antes dos comandos; locais nomeados não são liberados, temporários reutilizáveis usam pilhas por assinatura, e o otimizador pode manter valores na pilha. Fonte oficial fixada e casos: [nota Roslyn](notes/round6-roslyn-source-evidence.md). Não foi construído modelo Roslyn completo. Nomes originais de locais sem símbolos e revisão histórica exata de fabricação continuam UNKNOWN; aliases/nomes reservados introduzidos são escolhas legíveis da reconstrução.
+
+**Limites mantidos.** Externos permanecem verificados contra Unity oficial. As seis exceções não determinísticas conservam a prova anterior de dois builds idênticos, sem acréscimos ou normalização de DLL/IL. DEX/Java e correções baseadas em bytes brutos ficaram fora do escopo. Os fontes exatos do índice Git são recompilados na prova adicional registrada em reports/round6-git-source-proof.json; reports/round6-git-content-provenance.json distingue hashes medidos dos publicados quando há conversão textual CRLF/LF.
+
+As seções abaixo preservam o histórico; números e diferenças brutas nelas descritos pertencem aos respectivos snapshots.
+
+## Histórico — rodada iniciada em 7d9fbc8
 
 Produção preservada: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para KairoLibrary; **Unity 5.3.4f1 / smcs 2.6.5.0** para Assembly-CSharp. Compiladores, defines, flags, perfis, referências e sua ordem não mudaram. Não foram acrescentadas exceções não determinísticas.
 

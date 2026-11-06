@@ -76,11 +76,11 @@ namespace system.billing.ui
 			purchaseLog_ = new Vector();
 			items_ = new BillingItem[1000];
 			itemList_ = new Vector();
-			foreach (string[] array in data)
-			{
-				int id = JInteger.ParseInt(array[0]);
-				int num = 0;
-				for (int j = 0; j < array[1].Length(); j++)
+			for (int spriteIndex = 0; spriteIndex < data.Length; spriteIndex++) {
+string[] array = data[spriteIndex];
+int id = JInteger.ParseInt(array[0]);
+int num = 0;
+for (int j = 0; j < array[1].Length(); j++)
 				{
 					char c = array[1].CharAt(j);
 					if (c == '1')
@@ -88,11 +88,11 @@ namespace system.billing.ui
 						num |= 1 << (j & 0x1F);
 					}
 				}
-				BillingItem billingItem = new T();
-				billingItem.Init(id, num, array[2], array[3], array[4], JInteger.ParseInt(array[5]), array[6]);
-				items_[billingItem.GetId()] = billingItem;
-				itemList_.AddElement(billingItem);
-			}
+BillingItem billingItem = new T();
+billingItem.Init(id, num, array[2], array[3], array[4], JInteger.ParseInt(array[5]), array[6]);
+items_[billingItem.GetId()] = billingItem;
+itemList_.AddElement(billingItem);
+}
 			Vector vector = new Vector();
 			bool[] array2 = new bool[itemList_.Size()];
 			for (int k = 0; k < itemList_.Size(); k++)

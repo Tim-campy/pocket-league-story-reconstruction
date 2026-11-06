@@ -983,14 +983,14 @@ namespace kairo.unity.system
 					int num8 = StreamUtil.ReadInt(byteArrayInputStream);
 					int num9 = StreamUtil.ReadInt(byteArrayInputStream);
 					GameDataRecord gameDataRecord4 = null;
-					foreach (GameDataRecord gameDataRecord5 in array4)
-					{
-						if ((gameDataRecord5.userId_.Get() == num7 || gameDataRecord5.friendId_.Get() == num8) && gameDataRecord5.number_.Get() == num9)
+					for (int spriteIndex = 0; spriteIndex < array4.Length; spriteIndex++) {
+global::kairo.unity.system.GameDataRecord gameDataRecord5 = array4[spriteIndex];
+if ((gameDataRecord5.userId_.Get() == num7 || gameDataRecord5.friendId_.Get() == num8) && gameDataRecord5.number_.Get() == num9)
 						{
 							gameDataRecord4 = gameDataRecord5;
 							break;
 						}
-					}
+}
 					gameDataRecord4.exist_ = true;
 					int num11 = StreamUtil.ReadInt(byteArrayInputStream);
 					for (int num12 = 0; num12 < num11; num12++)

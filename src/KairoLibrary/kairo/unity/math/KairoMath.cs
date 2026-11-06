@@ -151,7 +151,7 @@ Vector3D vector3D = new Vector3D(pos1.GetX() - pos2.GetX(), 0f, pos1.GetZ() - po
 			{
 				return false;
 			}
-			cross?.Set(pos1.GetX() + vec1.GetX() * num5, 0f, pos1.GetZ() + vec1.GetZ() * num5);
+			if (((object)(cross) != null)) { (cross).Set(pos1.GetX() + vec1.GetX() * num5, 0f, pos1.GetZ() + vec1.GetZ() * num5); }
 			return true;
 		}
 

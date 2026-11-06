@@ -281,7 +281,8 @@ namespace kairo.unity.surface
 		public virtual void Draw(kairo.unity.ui.Graphics g)
 		{
 			bool flag = IsAutoGLRender();
-			for (int i = 0; i < surfaceList_.Size(); i++)
+			int i;
+			for (i = 0; i < surfaceList_.Size(); i++)
 			{
 				g.ResetRender();
 				if (flag)
@@ -327,8 +328,9 @@ namespace kairo.unity.surface
 						}
 					}
 					g.PushFont(6);
+					string text;
 					int height = g.GetFont().GetHeight();
-					string text = paintRect[0] + "," + paintRect[1];
+					text = paintRect[0] + "," + paintRect[1];
 					int num = paintRect[0];
 					int num2 = paintRect[1] - 1 - height;
 					if (num2 < 0)

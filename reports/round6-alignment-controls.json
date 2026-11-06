@@ -1,0 +1,1389 @@
+{
+  "operation": "read-only-raw-vs-aligned-controls",
+  "baseline_commit": "66eea9ddeb8e02a9f357f97f8e7c9dc60f54d6e9",
+  "candidate_compilations": 0,
+  "game_sources_modified": false,
+  "ledger_modified": false,
+  "limitations": [
+    "Sequence alignment is a source-location diagnostic, not a semantic-equivalence or byte-acceptance test.",
+    "Ambiguous repeated instruction sequences may admit more than one valid alignment.",
+    "An original target in an unmatched sequence range is explicitly deferred. A rebuilt target in a newly inserted range, when the original target has a matched correspondence, remains a conservative branch_retarget diagnosis and can select an earlier command.",
+    "EH regions, instruction widths, header and local signatures remain under the independent strict body oracle."
+  ],
+  "inputs": [
+    {
+      "path": "build/round6/baseline/Assembly-CSharp/original-methods.json",
+      "sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c"
+    },
+    {
+      "path": "build/round6/baseline/Assembly-CSharp/rebuilt-methods.json",
+      "sha256": "a1500f213d3ba07e453a427c4f1fae78e5d0cf62417ed49183448062dad12cb4"
+    },
+    {
+      "path": "build/round6/baseline/KairoLibrary/original-methods.json",
+      "sha256": "d3340a2a774d1c4a604c750ca0e7b36b5fbb15da96a4d0dabc60033066dc844a"
+    },
+    {
+      "path": "build/round6/baseline/KairoLibrary/rebuilt-methods.json",
+      "sha256": "f144f7b6dcc8219d5d92fea29544c9eb146eacd8ed39832532f35f15b4f8c3a4"
+    }
+  ],
+  "controls": [
+    {
+      "assembly": "Assembly-CSharp",
+      "method_id": "surface.GameView::OnTouchDlgSel(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+      "raw_first_il_difference_offset": 12,
+      "alignment": {
+        "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+        "diagnostic_only": true,
+        "kind": "replace",
+        "original_offset": 23,
+        "rebuilt_offset": 23,
+        "original_index": 11,
+        "rebuilt_index": 11,
+        "original_instruction": {
+          "offset": 23,
+          "opcode": "br",
+          "operand": {
+            "branch": 133
+          }
+        },
+        "rebuilt_instruction": {
+          "offset": 23,
+          "opcode": "ret",
+          "operand": null
+        },
+        "pair": "{\"opcode\":\"br\",\"operand\":{\"branch\":133}} => {\"opcode\":\"ret\",\"operand\":null}",
+        "opcode_pair": "br => ret",
+        "original_context": [
+          {
+            "offset": 17,
+            "opcode": "ldc.i4.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "beq",
+            "operand": {
+              "labels": [
+                "L0"
+              ]
+            }
+          },
+          {
+            "offset": 23,
+            "opcode": "br",
+            "operand": {
+              "labels": [
+                "L2"
+              ]
+            }
+          },
+          {
+            "offset": 28,
+            "opcode": "ldarg.0",
+            "operand": null,
+            "label": "L0"
+          },
+          {
+            "offset": 29,
+            "opcode": "ldarg.2",
+            "operand": null
+          }
+        ],
+        "rebuilt_context": [
+          {
+            "offset": 17,
+            "opcode": "ldc.i4.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "beq",
+            "operand": {
+              "labels": [
+                "L0"
+              ]
+            }
+          },
+          {
+            "offset": 23,
+            "opcode": "ret",
+            "operand": null
+          },
+          {
+            "offset": 24,
+            "opcode": "ldarg.0",
+            "operand": null,
+            "label": "L0"
+          },
+          {
+            "offset": 25,
+            "opcode": "ldarg.2",
+            "operand": null
+          }
+        ],
+        "original_labels": {
+          "28": "L0",
+          "100": "L1",
+          "133": "L2",
+          "128": "O128"
+        },
+        "rebuilt_labels": {
+          "24": "L0",
+          "96": "L1",
+          "124": "L2"
+        },
+        "sequence_edits": [
+          {
+            "kind": "replace",
+            "original_start": 11,
+            "original_stop": 12,
+            "rebuilt_start": 11,
+            "rebuilt_stop": 12
+          },
+          {
+            "kind": "replace",
+            "original_start": 17,
+            "original_stop": 18,
+            "rebuilt_start": 17,
+            "rebuilt_stop": 18
+          },
+          {
+            "kind": "delete",
+            "original_start": 43,
+            "original_stop": 44,
+            "rebuilt_start": 43,
+            "rebuilt_stop": 43
+          }
+        ],
+        "branch_retarget_differences": [],
+        "deferred_branch_targets": [
+          {
+            "original_offset": 43,
+            "rebuilt_offset": 39,
+            "target_ordinal": 0,
+            "original_target": 128,
+            "rebuilt_target": 124,
+            "status": "target_in_unmatched_sequence_range"
+          },
+          {
+            "original_offset": 95,
+            "rebuilt_offset": 91,
+            "target_ordinal": 0,
+            "original_target": 128,
+            "rebuilt_target": 124,
+            "status": "target_in_unmatched_sequence_range"
+          }
+        ],
+        "branch_width_differences": [],
+        "original_exception_regions": [],
+        "rebuilt_exception_regions": []
+      }
+    },
+    {
+      "assembly": "Assembly-CSharp",
+      "method_id": "surface.GameView::OnTouchDlgCmd(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+      "raw_first_il_difference_offset": 1,
+      "alignment": {
+        "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+        "diagnostic_only": true,
+        "kind": "delete",
+        "original_offset": 1,
+        "rebuilt_offset": 1,
+        "original_index": 1,
+        "rebuilt_index": 1,
+        "original_instruction": {
+          "offset": 1,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        "rebuilt_instruction": {
+          "opcode": "DELETION_POINT",
+          "operand": null
+        },
+        "pair": "{\"opcode\":\"stloc.0\",\"operand\":null} => {\"opcode\":\"DELETION_POINT\",\"operand\":null}",
+        "opcode_pair": "stloc.0 => DELETION_POINT",
+        "original_context": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 3,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "beq",
+            "operand": {
+              "labels": [
+                "L0"
+              ]
+            }
+          }
+        ],
+        "rebuilt_context": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          },
+          {
+            "offset": 2,
+            "opcode": "beq",
+            "operand": {
+              "labels": [
+                "L0"
+              ]
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": "ldarg.1",
+            "operand": null
+          }
+        ],
+        "original_labels": {
+          "21": "L0",
+          "74": "L1",
+          "69": "O69"
+        },
+        "rebuilt_labels": {
+          "14": "L0",
+          "62": "L1"
+        },
+        "sequence_edits": [
+          {
+            "kind": "delete",
+            "original_start": 1,
+            "original_stop": 3,
+            "rebuilt_start": 1,
+            "rebuilt_stop": 1
+          },
+          {
+            "kind": "replace",
+            "original_start": 5,
+            "original_stop": 6,
+            "rebuilt_start": 3,
+            "rebuilt_stop": 4
+          },
+          {
+            "kind": "replace",
+            "original_start": 7,
+            "original_stop": 9,
+            "rebuilt_start": 5,
+            "rebuilt_stop": 6
+          },
+          {
+            "kind": "delete",
+            "original_start": 25,
+            "original_stop": 26,
+            "rebuilt_start": 22,
+            "rebuilt_stop": 22
+          }
+        ],
+        "branch_retarget_differences": [],
+        "deferred_branch_targets": [
+          {
+            "original_offset": 36,
+            "rebuilt_offset": 29,
+            "target_ordinal": 0,
+            "original_target": 69,
+            "rebuilt_target": 62,
+            "status": "target_in_unmatched_sequence_range"
+          }
+        ],
+        "branch_width_differences": [],
+        "original_exception_regions": [],
+        "rebuilt_exception_regions": []
+      }
+    },
+    {
+      "assembly": "Assembly-CSharp",
+      "method_id": "form.BootForm::Load()->System.Void",
+      "raw_first_il_difference_offset": 75,
+      "alignment": {
+        "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+        "diagnostic_only": true,
+        "kind": "replace",
+        "original_offset": 75,
+        "rebuilt_offset": 75,
+        "original_index": 26,
+        "rebuilt_index": 26,
+        "original_instruction": {
+          "offset": 75,
+          "opcode": "stloc.2",
+          "operand": null
+        },
+        "rebuilt_instruction": {
+          "offset": 75,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        "pair": "{\"opcode\":\"stloc.2\",\"operand\":null} => {\"opcode\":\"stloc.0\",\"operand\":null}",
+        "opcode_pair": "stloc.2 => stloc.0",
+        "original_context": [
+          {
+            "offset": 69,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          },
+          {
+            "offset": 70,
+            "opcode": "call",
+            "operand": {
+              "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::OpenRecordStore``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 75,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 76,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 77,
+            "opcode": "ldc.i4.6",
+            "operand": null
+          },
+          {
+            "offset": 78,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ReadRecord``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=True;explicit=False;cc=Default"
+            }
+          }
+        ],
+        "rebuilt_context": [
+          {
+            "offset": 69,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          },
+          {
+            "offset": 70,
+            "opcode": "call",
+            "operand": {
+              "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::OpenRecordStore``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 75,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 76,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 77,
+            "opcode": "ldc.i4.6",
+            "operand": null
+          },
+          {
+            "offset": 78,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ReadRecord``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=True;explicit=False;cc=Default"
+            }
+          }
+        ],
+        "original_labels": {
+          "53": "L0",
+          "136": "L1",
+          "165": "L2",
+          "238": "L3",
+          "267": "L4",
+          "340": "L5",
+          "369": "L6",
+          "442": "L7",
+          "471": "L8",
+          "544": "L9",
+          "573": "L10",
+          "646": "L11",
+          "675": "L12",
+          "748": "L13",
+          "777": "L14",
+          "850": "L15",
+          "879": "L16",
+          "952": "L17",
+          "981": "L18",
+          "1054": "L19",
+          "1083": "L20",
+          "1156": "L21",
+          "1185": "L22",
+          "1258": "L23",
+          "1287": "L24",
+          "1360": "L25",
+          "1389": "L26",
+          "1462": "L27",
+          "1491": "L28",
+          "1564": "L29",
+          "1593": "L30",
+          "1699": "L31",
+          "1703": "L32",
+          "1780": "L33",
+          "1784": "L34",
+          "1907": "L35",
+          "1989": "L36",
+          "2019": "L37",
+          "2023": "L38",
+          "2106": "L39",
+          "2110": "L40",
+          "2163": "L41",
+          "2192": "L42",
+          "2359": "L43",
+          "2434": "L44",
+          "2464": "L45",
+          "2468": "L46",
+          "2535": "L47",
+          "2557": "L48",
+          "2574": "L49",
+          "2577": "L50",
+          "2609": "L51",
+          "2702": "L52",
+          "2796": "L53",
+          "2890": "L54",
+          "3009": "L55",
+          "3077": "L56",
+          "3099": "L57",
+          "3136": "L58",
+          "3187": "L59",
+          "3192": "L60",
+          "3230": "L61"
+        },
+        "rebuilt_labels": {
+          "53": "L0",
+          "136": "L1",
+          "165": "L2",
+          "238": "L3",
+          "267": "L4",
+          "340": "L5",
+          "369": "L6",
+          "442": "L7",
+          "471": "L8",
+          "544": "L9",
+          "573": "L10",
+          "646": "L11",
+          "675": "L12",
+          "748": "L13",
+          "777": "L14",
+          "850": "L15",
+          "879": "L16",
+          "952": "L17",
+          "981": "L18",
+          "1054": "L19",
+          "1083": "L20",
+          "1156": "L21",
+          "1185": "L22",
+          "1258": "L23",
+          "1287": "L24",
+          "1360": "L25",
+          "1389": "L26",
+          "1462": "L27",
+          "1491": "L28",
+          "1564": "L29",
+          "1593": "L30",
+          "1699": "L31",
+          "1703": "L32",
+          "1780": "L33",
+          "1784": "L34",
+          "1907": "L35",
+          "1989": "L36",
+          "2019": "L37",
+          "2023": "L38",
+          "2106": "L39",
+          "2110": "L40",
+          "2163": "L41",
+          "2192": "L42",
+          "2359": "L43",
+          "2434": "L44",
+          "2464": "L45",
+          "2468": "L46",
+          "2535": "L47",
+          "2557": "L48",
+          "2574": "L49",
+          "2577": "L50",
+          "2609": "L51",
+          "2702": "L52",
+          "2796": "L53",
+          "2890": "L54",
+          "3009": "L55",
+          "3077": "L56",
+          "3099": "L57",
+          "3136": "L58",
+          "3187": "L59",
+          "3192": "L60",
+          "3230": "L61"
+        },
+        "sequence_edits": [
+          {
+            "kind": "replace",
+            "original_start": 26,
+            "original_stop": 28,
+            "rebuilt_start": 26,
+            "rebuilt_stop": 28
+          },
+          {
+            "kind": "replace",
+            "original_start": 30,
+            "original_stop": 31,
+            "rebuilt_start": 30,
+            "rebuilt_stop": 33
+          },
+          {
+            "kind": "delete",
+            "original_start": 32,
+            "original_stop": 34,
+            "rebuilt_start": 34,
+            "rebuilt_stop": 34
+          },
+          {
+            "kind": "replace",
+            "original_start": 39,
+            "original_stop": 40,
+            "rebuilt_start": 39,
+            "rebuilt_stop": 40
+          },
+          {
+            "kind": "replace",
+            "original_start": 42,
+            "original_stop": 43,
+            "rebuilt_start": 42,
+            "rebuilt_stop": 43
+          },
+          {
+            "kind": "replace",
+            "original_start": 54,
+            "original_stop": 55,
+            "rebuilt_start": 54,
+            "rebuilt_stop": 55
+          },
+          {
+            "kind": "replace",
+            "original_start": 79,
+            "original_stop": 80,
+            "rebuilt_start": 79,
+            "rebuilt_stop": 80
+          },
+          {
+            "kind": "replace",
+            "original_start": 82,
+            "original_stop": 83,
+            "rebuilt_start": 82,
+            "rebuilt_stop": 83
+          },
+          {
+            "kind": "replace",
+            "original_start": 94,
+            "original_stop": 95,
+            "rebuilt_start": 94,
+            "rebuilt_stop": 95
+          },
+          {
+            "kind": "replace",
+            "original_start": 119,
+            "original_stop": 120,
+            "rebuilt_start": 119,
+            "rebuilt_stop": 120
+          },
+          {
+            "kind": "replace",
+            "original_start": 122,
+            "original_stop": 123,
+            "rebuilt_start": 122,
+            "rebuilt_stop": 123
+          },
+          {
+            "kind": "replace",
+            "original_start": 134,
+            "original_stop": 135,
+            "rebuilt_start": 134,
+            "rebuilt_stop": 135
+          },
+          {
+            "kind": "replace",
+            "original_start": 159,
+            "original_stop": 160,
+            "rebuilt_start": 159,
+            "rebuilt_stop": 160
+          },
+          {
+            "kind": "replace",
+            "original_start": 162,
+            "original_stop": 163,
+            "rebuilt_start": 162,
+            "rebuilt_stop": 163
+          },
+          {
+            "kind": "replace",
+            "original_start": 174,
+            "original_stop": 175,
+            "rebuilt_start": 174,
+            "rebuilt_stop": 175
+          },
+          {
+            "kind": "replace",
+            "original_start": 199,
+            "original_stop": 200,
+            "rebuilt_start": 199,
+            "rebuilt_stop": 200
+          },
+          {
+            "kind": "replace",
+            "original_start": 202,
+            "original_stop": 203,
+            "rebuilt_start": 202,
+            "rebuilt_stop": 203
+          },
+          {
+            "kind": "replace",
+            "original_start": 214,
+            "original_stop": 215,
+            "rebuilt_start": 214,
+            "rebuilt_stop": 215
+          },
+          {
+            "kind": "replace",
+            "original_start": 239,
+            "original_stop": 240,
+            "rebuilt_start": 239,
+            "rebuilt_stop": 240
+          },
+          {
+            "kind": "replace",
+            "original_start": 242,
+            "original_stop": 243,
+            "rebuilt_start": 242,
+            "rebuilt_stop": 243
+          },
+          {
+            "kind": "replace",
+            "original_start": 254,
+            "original_stop": 255,
+            "rebuilt_start": 254,
+            "rebuilt_stop": 255
+          },
+          {
+            "kind": "replace",
+            "original_start": 279,
+            "original_stop": 280,
+            "rebuilt_start": 279,
+            "rebuilt_stop": 280
+          },
+          {
+            "kind": "replace",
+            "original_start": 282,
+            "original_stop": 283,
+            "rebuilt_start": 282,
+            "rebuilt_stop": 283
+          },
+          {
+            "kind": "replace",
+            "original_start": 294,
+            "original_stop": 295,
+            "rebuilt_start": 294,
+            "rebuilt_stop": 295
+          },
+          {
+            "kind": "replace",
+            "original_start": 319,
+            "original_stop": 320,
+            "rebuilt_start": 319,
+            "rebuilt_stop": 320
+          },
+          {
+            "kind": "replace",
+            "original_start": 322,
+            "original_stop": 323,
+            "rebuilt_start": 322,
+            "rebuilt_stop": 323
+          },
+          {
+            "kind": "replace",
+            "original_start": 334,
+            "original_stop": 335,
+            "rebuilt_start": 334,
+            "rebuilt_stop": 335
+          },
+          {
+            "kind": "replace",
+            "original_start": 359,
+            "original_stop": 360,
+            "rebuilt_start": 359,
+            "rebuilt_stop": 360
+          },
+          {
+            "kind": "replace",
+            "original_start": 362,
+            "original_stop": 363,
+            "rebuilt_start": 362,
+            "rebuilt_stop": 363
+          },
+          {
+            "kind": "replace",
+            "original_start": 374,
+            "original_stop": 375,
+            "rebuilt_start": 374,
+            "rebuilt_stop": 375
+          },
+          {
+            "kind": "replace",
+            "original_start": 399,
+            "original_stop": 400,
+            "rebuilt_start": 399,
+            "rebuilt_stop": 400
+          },
+          {
+            "kind": "replace",
+            "original_start": 402,
+            "original_stop": 403,
+            "rebuilt_start": 402,
+            "rebuilt_stop": 403
+          },
+          {
+            "kind": "replace",
+            "original_start": 414,
+            "original_stop": 415,
+            "rebuilt_start": 414,
+            "rebuilt_stop": 415
+          },
+          {
+            "kind": "replace",
+            "original_start": 439,
+            "original_stop": 440,
+            "rebuilt_start": 439,
+            "rebuilt_stop": 440
+          },
+          {
+            "kind": "replace",
+            "original_start": 442,
+            "original_stop": 443,
+            "rebuilt_start": 442,
+            "rebuilt_stop": 443
+          },
+          {
+            "kind": "replace",
+            "original_start": 454,
+            "original_stop": 455,
+            "rebuilt_start": 454,
+            "rebuilt_stop": 455
+          },
+          {
+            "kind": "replace",
+            "original_start": 479,
+            "original_stop": 480,
+            "rebuilt_start": 479,
+            "rebuilt_stop": 480
+          },
+          {
+            "kind": "replace",
+            "original_start": 482,
+            "original_stop": 483,
+            "rebuilt_start": 482,
+            "rebuilt_stop": 483
+          },
+          {
+            "kind": "replace",
+            "original_start": 494,
+            "original_stop": 495,
+            "rebuilt_start": 494,
+            "rebuilt_stop": 495
+          },
+          {
+            "kind": "replace",
+            "original_start": 519,
+            "original_stop": 520,
+            "rebuilt_start": 519,
+            "rebuilt_stop": 520
+          },
+          {
+            "kind": "replace",
+            "original_start": 522,
+            "original_stop": 523,
+            "rebuilt_start": 522,
+            "rebuilt_stop": 523
+          },
+          {
+            "kind": "replace",
+            "original_start": 534,
+            "original_stop": 535,
+            "rebuilt_start": 534,
+            "rebuilt_stop": 535
+          },
+          {
+            "kind": "replace",
+            "original_start": 559,
+            "original_stop": 560,
+            "rebuilt_start": 559,
+            "rebuilt_stop": 560
+          },
+          {
+            "kind": "replace",
+            "original_start": 562,
+            "original_stop": 563,
+            "rebuilt_start": 562,
+            "rebuilt_stop": 563
+          },
+          {
+            "kind": "replace",
+            "original_start": 574,
+            "original_stop": 575,
+            "rebuilt_start": 574,
+            "rebuilt_stop": 575
+          },
+          {
+            "kind": "replace",
+            "original_start": 599,
+            "original_stop": 600,
+            "rebuilt_start": 599,
+            "rebuilt_stop": 600
+          },
+          {
+            "kind": "replace",
+            "original_start": 602,
+            "original_stop": 603,
+            "rebuilt_start": 602,
+            "rebuilt_stop": 603
+          },
+          {
+            "kind": "replace",
+            "original_start": 614,
+            "original_stop": 615,
+            "rebuilt_start": 614,
+            "rebuilt_stop": 615
+          },
+          {
+            "kind": "replace",
+            "original_start": 813,
+            "original_stop": 814,
+            "rebuilt_start": 813,
+            "rebuilt_stop": 814
+          },
+          {
+            "kind": "replace",
+            "original_start": 816,
+            "original_stop": 817,
+            "rebuilt_start": 816,
+            "rebuilt_stop": 817
+          },
+          {
+            "kind": "replace",
+            "original_start": 828,
+            "original_stop": 829,
+            "rebuilt_start": 828,
+            "rebuilt_stop": 829
+          },
+          {
+            "kind": "replace",
+            "original_start": 838,
+            "original_stop": 839,
+            "rebuilt_start": 838,
+            "rebuilt_stop": 839
+          }
+        ],
+        "branch_retarget_differences": [],
+        "deferred_branch_targets": [],
+        "branch_width_differences": [],
+        "original_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 2577,
+            "try_end": 3155,
+            "handler_start": 3155,
+            "handler_end": 3192,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          {
+            "kind": "Finally",
+            "try_start": 2255,
+            "try_end": 2450,
+            "handler_start": 2450,
+            "handler_end": 2468,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 2037,
+            "try_end": 2092,
+            "handler_start": 2092,
+            "handler_end": 2110,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 1798,
+            "try_end": 2005,
+            "handler_start": 2005,
+            "handler_end": 2023,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 1717,
+            "try_end": 1766,
+            "handler_start": 1766,
+            "handler_end": 1784,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 1630,
+            "try_end": 1685,
+            "handler_start": 1685,
+            "handler_end": 1703,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Catch",
+            "try_start": 69,
+            "try_end": 2487,
+            "handler_start": 2487,
+            "handler_end": 2562,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          {
+            "kind": "Finally",
+            "try_start": 69,
+            "try_end": 2562,
+            "handler_start": 2562,
+            "handler_end": 2577,
+            "filter_start": -1,
+            "catch_type": null
+          }
+        ],
+        "rebuilt_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 2577,
+            "try_end": 3155,
+            "handler_start": 3155,
+            "handler_end": 3192,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          {
+            "kind": "Finally",
+            "try_start": 2255,
+            "try_end": 2450,
+            "handler_start": 2450,
+            "handler_end": 2468,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 2037,
+            "try_end": 2092,
+            "handler_start": 2092,
+            "handler_end": 2110,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 1798,
+            "try_end": 2005,
+            "handler_start": 2005,
+            "handler_end": 2023,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 1717,
+            "try_end": 1766,
+            "handler_start": 1766,
+            "handler_end": 1784,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Finally",
+            "try_start": 1630,
+            "try_end": 1685,
+            "handler_start": 1685,
+            "handler_end": 1703,
+            "filter_start": -1,
+            "catch_type": null
+          },
+          {
+            "kind": "Catch",
+            "try_start": 69,
+            "try_end": 2487,
+            "handler_start": 2487,
+            "handler_end": 2562,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          {
+            "kind": "Finally",
+            "try_start": 69,
+            "try_end": 2562,
+            "handler_start": 2562,
+            "handler_end": 2577,
+            "filter_start": -1,
+            "catch_type": null
+          }
+        ]
+      }
+    },
+    {
+      "assembly": "KairoLibrary",
+      "method_id": "kairo.unity.util.Language::Init()->System.Void",
+      "raw_first_il_difference_offset": 349,
+      "alignment": {
+        "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+        "diagnostic_only": true,
+        "kind": "replace",
+        "original_offset": 349,
+        "rebuilt_offset": 349,
+        "original_index": 156,
+        "rebuilt_index": 156,
+        "original_instruction": {
+          "offset": 349,
+          "opcode": "callvirt",
+          "operand": {
+            "method": "class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Close``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        "rebuilt_instruction": {
+          "offset": 349,
+          "opcode": "call",
+          "operand": {
+            "method": "class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Close``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        "pair": "{\"opcode\":\"callvirt\",\"operand\":{\"method\":\"class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Close``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"call\",\"operand\":{\"method\":\"class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Close``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default\"}}",
+        "opcode_pair": "callvirt => call",
+        "original_context": [
+          {
+            "offset": 346,
+            "opcode": "brfalse.s",
+            "operand": {
+              "labels": [
+                "L7"
+              ]
+            }
+          },
+          {
+            "offset": 348,
+            "opcode": "ldloc.3",
+            "operand": null
+          },
+          {
+            "offset": 349,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Close``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 354,
+            "opcode": "ldnull",
+            "operand": null,
+            "label": "L7"
+          },
+          {
+            "offset": 355,
+            "opcode": "stloc.3",
+            "operand": null
+          }
+        ],
+        "rebuilt_context": [
+          {
+            "offset": 346,
+            "opcode": "brfalse.s",
+            "operand": {
+              "labels": [
+                "L7"
+              ]
+            }
+          },
+          {
+            "offset": 348,
+            "opcode": "ldloc.3",
+            "operand": null
+          },
+          {
+            "offset": 349,
+            "opcode": "call",
+            "operand": {
+              "method": "class kairo.unity.util.JarInflater @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Close``0()->class System.Void @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 354,
+            "opcode": "ldnull",
+            "operand": null,
+            "label": "L7"
+          },
+          {
+            "offset": 355,
+            "opcode": "stloc.3",
+            "operand": null
+          }
+        ],
+        "original_labels": {
+          "114": "L0",
+          "188": "L1",
+          "224": "L2",
+          "262": "L3",
+          "326": "L4",
+          "332": "L5",
+          "340": "L6",
+          "354": "L7",
+          "357": "L8",
+          "368": "L9",
+          "416": "L10",
+          "506": "L11",
+          "527": "L12",
+          "548": "L13",
+          "566": "L14",
+          "611": "L15",
+          "644": "L16",
+          "650": "L17",
+          "694": "L18",
+          "715": "L19",
+          "733": "L20",
+          "754": "L21",
+          "774": "L22",
+          "794": "L23",
+          "826": "L24",
+          "846": "L25",
+          "864": "L26",
+          "1043": "L27",
+          "922": "O922",
+          "1006": "O1006"
+        },
+        "rebuilt_labels": {
+          "114": "L0",
+          "188": "L1",
+          "224": "L2",
+          "262": "L3",
+          "326": "L4",
+          "332": "L5",
+          "340": "L6",
+          "354": "L7",
+          "357": "L8",
+          "368": "L9",
+          "416": "L10",
+          "506": "L11",
+          "527": "L12",
+          "548": "L13",
+          "566": "L14",
+          "611": "L15",
+          "644": "L16",
+          "650": "L17",
+          "694": "L18",
+          "715": "L19",
+          "733": "L20",
+          "754": "L21",
+          "774": "L22",
+          "794": "L23",
+          "826": "L24",
+          "846": "L25",
+          "864": "L26",
+          "1043": "L27",
+          "922": "R922",
+          "1006": "R1006"
+        },
+        "sequence_edits": [
+          {
+            "kind": "replace",
+            "original_start": 156,
+            "original_stop": 157,
+            "rebuilt_start": 156,
+            "rebuilt_stop": 157
+          },
+          {
+            "kind": "replace",
+            "original_start": 361,
+            "original_stop": 362,
+            "rebuilt_start": 361,
+            "rebuilt_stop": 362
+          },
+          {
+            "kind": "replace",
+            "original_start": 363,
+            "original_stop": 364,
+            "rebuilt_start": 363,
+            "rebuilt_stop": 364
+          },
+          {
+            "kind": "replace",
+            "original_start": 365,
+            "original_stop": 367,
+            "rebuilt_start": 365,
+            "rebuilt_stop": 367
+          },
+          {
+            "kind": "replace",
+            "original_start": 375,
+            "original_stop": 377,
+            "rebuilt_start": 375,
+            "rebuilt_stop": 377
+          },
+          {
+            "kind": "replace",
+            "original_start": 379,
+            "original_stop": 380,
+            "rebuilt_start": 379,
+            "rebuilt_stop": 380
+          },
+          {
+            "kind": "replace",
+            "original_start": 384,
+            "original_stop": 385,
+            "rebuilt_start": 384,
+            "rebuilt_stop": 385
+          },
+          {
+            "kind": "replace",
+            "original_start": 390,
+            "original_stop": 391,
+            "rebuilt_start": 390,
+            "rebuilt_stop": 391
+          },
+          {
+            "kind": "replace",
+            "original_start": 392,
+            "original_stop": 393,
+            "rebuilt_start": 392,
+            "rebuilt_stop": 393
+          },
+          {
+            "kind": "insert",
+            "original_start": 395,
+            "original_stop": 395,
+            "rebuilt_start": 395,
+            "rebuilt_stop": 397
+          },
+          {
+            "kind": "delete",
+            "original_start": 396,
+            "original_stop": 398,
+            "rebuilt_start": 398,
+            "rebuilt_stop": 398
+          },
+          {
+            "kind": "replace",
+            "original_start": 400,
+            "original_stop": 403,
+            "rebuilt_start": 400,
+            "rebuilt_stop": 403
+          }
+        ],
+        "branch_retarget_differences": [],
+        "deferred_branch_targets": [
+          {
+            "original_offset": 920,
+            "rebuilt_offset": 920,
+            "target_ordinal": 0,
+            "original_target": 1006,
+            "rebuilt_target": 1006,
+            "status": "target_in_unmatched_sequence_range"
+          },
+          {
+            "original_offset": 1012,
+            "rebuilt_offset": 1012,
+            "target_ordinal": 0,
+            "original_target": 922,
+            "rebuilt_target": 922,
+            "status": "target_in_unmatched_sequence_range"
+          }
+        ],
+        "branch_width_differences": [],
+        "original_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 269,
+            "try_end": 323,
+            "handler_start": 323,
+            "handler_end": 326,
+            "filter_start": -1,
+            "catch_type": "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Catch",
+            "try_start": 226,
+            "try_end": 342,
+            "handler_start": 342,
+            "handler_end": 345,
+            "filter_start": -1,
+            "catch_type": "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Finally",
+            "try_start": 226,
+            "try_end": 345,
+            "handler_start": 345,
+            "handler_end": 357,
+            "filter_start": -1,
+            "catch_type": null
+          }
+        ],
+        "rebuilt_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 269,
+            "try_end": 323,
+            "handler_start": 323,
+            "handler_end": 326,
+            "filter_start": -1,
+            "catch_type": "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Catch",
+            "try_start": 226,
+            "try_end": 342,
+            "handler_start": 342,
+            "handler_end": 345,
+            "filter_start": -1,
+            "catch_type": "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Finally",
+            "try_start": 226,
+            "try_end": 345,
+            "handler_start": 345,
+            "handler_end": 357,
+            "filter_start": -1,
+            "catch_type": null
+          }
+        ]
+      }
+    }
+  ]
+}

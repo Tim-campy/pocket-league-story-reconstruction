@@ -4347,28 +4347,33 @@ if (recoveredCondition_68130)
 		public void SetEditForPos(bool isSoccerForm)
 		{
 			isSoccerForm_ = isSoccerForm;
-			TeamData teamData = apdat_.tData_[gm_.teamId_[0]];
-			TeamData teamData2 = apdat_.tData_[gm_.teamId_[1]];
-			int[][] array = null;
-			int[][] array2 = null;
-			FormationData formationData = (FormationData)editTest_formation.ElementAt(et_cur[1]);
+
+TeamData teamData, teamData2;
+int[][] array, array2;
+FormationData formationData, formationData2;
+int num6, num, num2, num3, num4, num5;
+teamData = apdat_.tData_[gm_.teamId_[0]];
+			teamData2 = apdat_.tData_[gm_.teamId_[1]];
+			array = null;
+			array2 = null;
+			formationData = (FormationData)editTest_formation.ElementAt(et_cur[1]);
 			array = formationData.formation_;
-			FormationData formationData2 = apdat_.formationData_[teamData2.formation_];
+			formationData2 = apdat_.formationData_[teamData2.formation_];
 			array2 = formationData2.formation_;
 			if (phase_ == 11 || phase_ == 12)
 			{
 				array = apdat_.formationData_[selectFormationId_].formation_;
 			}
-			int num4;
-			int num5;
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = (num4 = (num5 = 0))));
+
+
+
+
+			num6 = num = num2 = num3 = num4 = num5 = 0;
 			if (phase_ == 14 || phase_ == 15 || phase_ == 16)
 			{
 				SetPlayerParam(teamData2.warP_paramPhysical_, teamData2.warP_paramPhysical_);
 			}
-			int num6;
+
 			if (!isSoccerForm)
 			{
 				num6 = EDIT_POS_FOR_F[0][0];
@@ -4545,10 +4550,12 @@ if (recoveredCondition_68130)
 						num14 = k;
 					}
 				}
-				int num16;
-				int num17;
-				int num15 = (num16 = (num17 = 0));
-				int num18;
+
+int num18, num15, num16, num17;
+
+
+				num18 = num15 = num16 = num17 = 0;
+
 				if (num13 != -1)
 				{
 					num18 = editForPos[num13][0];

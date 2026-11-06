@@ -422,7 +422,7 @@ namespace game
 				if ((!halfTime && score_[1] == 0) || (halfTime && score_[0] == 0))
 				{
 					Player player = null;
-					player = (halfTime ? udat_.teams_[1].players_[1] : udat_.teams_[0].players_[0]);
+					if (!(halfTime)) { player = udat_.teams_[0].players_[0]; } else { player = udat_.teams_[1].players_[1]; }
 					apdat_.pData_[player.pData_id_].SetActScore(16);
 				}
 				if (!flag)

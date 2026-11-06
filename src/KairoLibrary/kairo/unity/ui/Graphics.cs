@@ -1911,24 +1911,7 @@ renderCache_.Reset();
 					UpdateGUIGroup();
 					GUI.DrawTextureWithTexCoords(GetTransRectGUI(drawBitmap_rc4, drawBitmap_rc4).ToRect(), image_, new Rect(sourceRect.left, sourceRect.top, sourceRect.Width(), sourceRect.Height()), image.GetAlphaType() != 0);
 				}
-				else if (!flag && flag2)
-				{
-					Vector3[] transRectGL = GetTransRectGL(drawBitmap_rc4, _drawBitmap_vertices);
-					for (int l = 0; l < renderCache_.Count; l++)
-					{
-						MeshBuilder meshBuilder = renderCache_.Meshes[l];
-						if (meshBuilder.vertexColor)
-						{
-							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top, renderCache_.Colors[l]);
-						}
-						else
-						{
-							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top);
-						}
-					}
-				}
-				else
-				{
+				else if ((flag) || (!(flag2))) {
 					UpdateGLClip();
 					Vector3[] transRectGL2 = GetTransRectGL(drawBitmap_rc4, _drawBitmap_vertices);
 					RenderPass[] renderPass = GetRenderPass(image2);
@@ -1969,6 +1952,20 @@ renderCache_.Reset();
 					}
 					renderCache_.Image = image;
 					renderCache_.Empty = false;
+				} else {
+					Vector3[] transRectGL = GetTransRectGL(drawBitmap_rc4, _drawBitmap_vertices);
+					for (int l = 0; l < renderCache_.Count; l++)
+					{
+						MeshBuilder meshBuilder = renderCache_.Meshes[l];
+						if (meshBuilder.vertexColor)
+						{
+							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top, renderCache_.Colors[l]);
+						}
+						else
+						{
+							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top);
+						}
+					}
 				}
 				if (isGUI_ && image.textRenderTasks_.Count > 0)
 				{
@@ -2469,9 +2466,9 @@ renderCache_.Reset();
 			BeginRenderMatrix(ref x, ref y);
 			try
 			{
+				float num4;
 				float num2;
 				float num3;
-				float num4;
 				if (!isGUI_)
 				{
 					if (render_ != null)

@@ -960,10 +960,8 @@ namespace form
 								break;
 							}
 							PlayerData playerData = apdat_.pData_[l];
-							if (!BitUtil.Check(playerData.flag_, 12))
-							{
-								PlayerData.Employ(l);
-							}
+							if (BitUtil.Check(playerData.flag_, 12)) { continue; }
+PlayerData.Employ(l);
 						}
 						for (int m = 0; m < udat_.researchPoint_.Length; m++)
 						{

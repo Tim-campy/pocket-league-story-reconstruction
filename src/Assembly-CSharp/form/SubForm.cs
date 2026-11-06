@@ -11852,7 +11852,7 @@ int num = 105;
 						int num10;
 						if (num6 == CONFIG_ORIENTATION)
 						{
-							num10 = ((i != 0) ? app_.GetOrientation() : (-1));
+							if (i == 0) { num10 = (-1); } else { num10 = app_.GetOrientation(); }
 						}
 						else
 						{
@@ -12004,7 +12004,7 @@ int num = 105;
 						int num10;
 						if (num6 == CONFIG_EN_ORIENTATION)
 						{
-							num10 = ((i != 0) ? app_.GetOrientation() : (-1));
+							if (i == 0) { num10 = (-1); } else { num10 = app_.GetOrientation(); }
 						}
 						else
 						{

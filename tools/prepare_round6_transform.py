@@ -1,0 +1,48 @@
+"""Build the round-6 persistent syntax helper with already installed Roslyn."""
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import subprocess
+from compiler_probes import ROSLYN
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def ensure_helper():
+    vs = next(p for p in ROSLYN.parents if (p / 'dotnet').is_dir())
+    runtime = vs / 'dotnet/net10.0/runtime'
+    framework = runtime / 'shared/Microsoft.NETCore.App/10.0.10'
+    source = ROOT / 'tools/Round6TransformSyntax.cs'
+    extra = ROOT / 'tools/Round6NewRules.cs'
+    aliases = ROOT / 'tools/Round6AliasRules.cs'
+    identity = hashlib.sha256(source.read_bytes() + extra.read_bytes() + aliases.read_bytes() + str(ROSLYN).encode()).hexdigest()
+    # Immutable hash folders let an older engine process keep its helper loaded.
+    folder = ROOT / 'build/round6-transform' / identity[:16]
+    folder.mkdir(parents=True, exist_ok=True)
+    output = folder / 'Round6TransformSyntax.dll'
+    libraries = ['System.Private.CoreLib', 'System.Runtime', 'System.Console',
+                 'System.Linq', 'System.Collections', 'System.Text.Json',
+                 'System.Reflection.Metadata', 'System.Collections.Immutable',
+                 'System.Memory', 'netstandard']
+    refs = [framework / (name + '.dll') for name in libraries]
+    refs += [ROSLYN.parent / (name + '.dll') for name in
+             ['Microsoft.CodeAnalysis', 'Microsoft.CodeAnalysis.CSharp']]
+    stamp = folder / 'source.sha256'
+    if not output.exists() or not stamp.exists() or stamp.read_text() != identity:
+        args = ['/nologo', '/nostdlib+', '/target:exe', '/out:' + str(output)]
+        args += ['/r:' + str(path) for path in refs] + [str(source), str(extra), str(aliases)]
+        rsp = folder / 'compile.rsp'
+        rsp.write_text('\n'.join('"' + arg + '"' for arg in args) + '\n', encoding='utf-8')
+        subprocess.run([str(ROSLYN), '/noconfig', '@' + str(rsp)], check=True)
+        for reference in refs[-2:]:
+            shutil.copy2(reference, folder / reference.name)
+        (folder / 'Round6TransformSyntax.runtimeconfig.json').write_text(json.dumps({
+            'runtimeOptions': {'tfm': 'net10.0', 'framework': {
+                'name': 'Microsoft.NETCore.App', 'version': '10.0.10'}}}) + '\n')
+        stamp.write_text(identity)
+    return [str(runtime / 'dotnet.exe'), str(output)]
+
+
+if __name__ == '__main__':
+    print(json.dumps({'command': ensure_helper()}))

@@ -271,8 +271,10 @@ namespace form
 		{
 			g.DrawImage(resLoad_.img[0], 43f, 90f);
 			resLoad_.seb[0].DrawFrame(g, 120f, 236f, resLoad_.img, 5);
-			int num3;
-int num2 = 91;
+
+int num9, num2, num3, num4, num5;
+
+num2 = 91;
 			anime_cnt = (anime_cnt + 1) % int.MaxValue;
 			num3 = anime_cnt % 40;
 			if (num3 % 20 == 0 && anime_cnt != 0)
@@ -296,8 +298,8 @@ int num2 = 91;
 			{
 				resLoad_.seb[0].DrawFrame(g, 182f, num2, resLoad_.img, 2);
 			}
-			int num4 = GameUtil.RateConvert(JMath.Abs(num3 - 20), 20, 0, 66, 174, true);
-			int num5 = num2;
+			num4 = GameUtil.RateConvert(JMath.Abs(num3 - 20), 20, 0, 66, 174, true);
+			num5 = num2;
 			if (anime_mode == 1)
 			{
 				float num6 = GameUtil.SetVStop(anime_ballY, 10);
@@ -310,7 +312,7 @@ int num2 = 91;
 				}
 			}
 			resLoad_.seb[0].DrawFrame(g, num4, num5, resLoad_.img, 4);
-			int num9;
+
 			if (num > 0)
 			{
 				num9 = 85;
