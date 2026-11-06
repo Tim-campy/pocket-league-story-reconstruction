@@ -145,6 +145,36 @@
       "before_sha256": "fd14c3b2d73dd97ea58f96b970653d5f0ad6ba70a3ff4400286c4fa51af0e540",
       "after_measurement": "reports\\round9-a05-after-measurement.json",
       "after_sha256": "4b0848bab21f9cecc94dc982edc3288fb412d7f8ad389bbca6edb9d10f4613fe"
+    },
+    {
+      "cycle": 6,
+      "label": "b06",
+      "phase": "B",
+      "primary_target": "form.GameForm::_update(System.Int32)->System.Boolean",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "b9-event-loop-split-guard",
+      "assembly": "Assembly-CSharp",
+      "pair": "brfalse + br / brtrue",
+      "hypothesis": "Separar uma guarda protegida no for preserva o salto ao incremento, sem inferir break pelo rotulo",
+      "result": "INCONCLUSIVA: nenhum candidato autorizado pelo modelo/mapeamento; 0 tentativas da regra, 0 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 0,
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round9-b06-before-measurement.json",
+      "before_sha256": "f25ba12ed9a05bd0a3b4e2d474fbcefbf0f529ae9701eaeddb611310446770df",
+      "after_measurement": "reports\\round9-b06-after-measurement.json",
+      "after_sha256": "c47beb0f21d840f1680819b216ca275a72dd2d8e053318935996a7eed19ce557"
     }
   ],
   "consecutive_zero_cycles": 0

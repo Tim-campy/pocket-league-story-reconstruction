@@ -12,6 +12,7 @@ def main():
     parser.add_argument('--label',required=True)
     parser.add_argument('--phase',choices=list('ABCD'),required=True)
     parser.add_argument('--primary-target',required=True)
+    parser.add_argument('--queue-empty-before',choices=['true','false'],required=True)
     parser.add_argument('--rule',required=True)
     parser.add_argument('--rule-steps',type=int,default=0)
     parser.add_argument('--pair',required=True)
@@ -31,7 +32,7 @@ def main():
     if any(v['methods_gained']<0 or v['il_bytes_gained']<0 for v in changes.values()):raise ValueError('Negative cycle gain')
     queue=read_queue=json.loads((ROOT/'config/round9-protocol.json').read_text(encoding='utf-8'))['prepared_queue']
     queue_empty=not any(r['status']=='pending' for r in queue)
-    journal['cycles'].append({'cycle':len(journal['cycles'])+1,'label':args.label,'phase':args.phase,'primary_target':args.primary_target,'queue_empty':queue_empty,'rule':args.rule,'assembly':args.assembly,'pair':args.pair,
+    journal['cycles'].append({'cycle':len(journal['cycles'])+1,'label':args.label,'phase':args.phase,'primary_target':args.primary_target,'queue_empty_before':args.queue_empty_before=='true','queue_empty':queue_empty,'rule':args.rule,'assembly':args.assembly,'pair':args.pair,
         'hypothesis':args.hypothesis,'result':args.result,'gains':changes,'rule_accepted_steps':args.rule_steps,
         'methods_gained':sum(v['methods_gained'] for v in changes.values()),
         'il_bytes_gained':sum(v['il_bytes_gained'] for v in changes.values()),
@@ -40,7 +41,7 @@ def main():
     journal['consecutive_zero_cycles']=0
     for row in reversed(journal['cycles']):
         if row.get('phase')!='D':continue
-        if not row.get('queue_empty'):break
+        if not row.get('queue_empty') or not row.get('queue_empty_before'):break
         if row['methods_gained']:break
         journal['consecutive_zero_cycles']+=1
     path.write_text(json.dumps(journal,indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')

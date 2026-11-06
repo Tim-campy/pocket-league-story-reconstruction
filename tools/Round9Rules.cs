@@ -8,5 +8,6 @@ public static partial class Round7TransformSyntax {
         SemanticModel model,int point,List<Patch> patches,HashSet<string> seen) {
         AddRound8CompoundRules(input,text,mapped,methodBody,model,point,patches,seen);
         AddRound8NullConditionalPolarityRules(input,text,mapped,methodBody,model,point,patches,seen);
+        AddRound9PartBRules(input,text,mapped,methodBody,model,point,patches,seen);
     }
 }

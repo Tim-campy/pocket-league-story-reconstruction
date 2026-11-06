@@ -42,12 +42,12 @@ def main():
     autonomous=[r for r in journal['cycles'] if r.get('phase')=='D']
     cfg=json.loads((ROOT/'config/round9-protocol.json').read_text(encoding='utf-8'))
     queue_empty=not any(r['status']=='pending' for r in cfg['prepared_queue'])
-    if args.phase=='D' and (not queue_empty or journal['consecutive_zero_cycles']>=5 or len(autonomous)>=40):raise ValueError('Prepared queue or user stop condition prevents autonomous cycle')
+    if args.phase=='D' and any(cfg.get('required_parts',{}).get(part)!='complete' for part in 'ABC'):
+        raise ValueError('Parts A, B and C must finish before autonomous work')
+    if args.phase=='D' and ((queue_empty and journal['consecutive_zero_cycles']>=5) or len(autonomous)>=40):raise ValueError('A user stop condition prevents autonomous cycle')
     if args.number!=len(journal['cycles'])+1:raise ValueError('Cycle number is not next')
     if args.phase=='D' and len(autonomous)>=4 and args.assembly!='KairoLibrary' and not any(r['assembly']=='KairoLibrary' for r in autonomous[-4:]):
         raise ValueError('The fifth cycle in a rolling block must examine KairoLibrary')
-    if args.phase=='D' and len(autonomous)>=2 and args.probe_substring[0]==autonomous[-1].get('primary_target')==autonomous[-2].get('primary_target'):
-        raise ValueError('Same primary target cannot head three consecutive autonomous cycles')
     label='cycle%02d'%(len(autonomous)+1) if args.phase=='D' else args.phase.lower()+'%02d'%args.number
     baseline=Path('build/round9/cycles')/label/'baseline'
     if args.use_prepared_baseline:
@@ -71,6 +71,11 @@ def main():
         run(['tools/round9_freeze.py','--destination',baseline])
     run(['tools/round9_measure.py','--snapshot',baseline,'--label',label+'-before'])
     original=json.loads((ROOT/baseline/args.assembly/'original-methods.json').read_text(encoding='utf-8-sig'))['selected_methods']
+    primary_ids=[m['stable_id'] for m in original if args.probe_substring[0] in m['stable_id']]
+    if len(primary_ids)!=1:raise ValueError('Primary target is ambiguous')
+    primary=primary_ids[0]
+    if args.phase=='D' and len(autonomous)>=2 and primary==autonomous[-1].get('primary_target')==autonomous[-2].get('primary_target'):
+        raise ValueError('Same primary target cannot head three consecutive autonomous cycles')
     common=['--assembly',args.assembly,'--baseline-dir',baseline,'--cycle-rule',args.rule,
         '--cache-symbol-mapping','--aligned-search-progress','--fast-screen',
         '--limit-iterations','24','--max-candidates','64','--max-model-candidates','192']
@@ -127,7 +132,7 @@ def main():
         if item['id'] in args.queue_id:item.update(status='tested',report='reports/round9-'+label+'-'+args.assembly+'-engine.json')
     (ROOT/'config/round9-protocol.json').write_text(json.dumps(cfg,indent=2)+'\n',encoding='utf-8',newline='\n')
     run(['tools/round9_journal.py','--label',label,'--rule',args.rule,'--rule-steps',new_steps,'--assembly',args.assembly,
-        '--phase',args.phase,'--primary-target',args.probe_substring[0],
+        '--phase',args.phase,'--primary-target',primary,'--queue-empty-before',str(queue_empty).lower(),
         '--pair',args.pair,'--hypothesis',args.hypothesis,'--result',result,
         '--before','reports/round9-'+label+'-before-measurement.json',
         '--after','reports/round9-'+label+'-after-measurement.json'])

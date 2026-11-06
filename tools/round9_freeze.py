@@ -1,4 +1,4 @@
-"""Freeze the verified cdd0f7f inputs, without touching original artifacts."""
+"""Freeze verified round-nine inputs, without touching original artifacts."""
 import argparse
 import csv
 import json
@@ -22,7 +22,7 @@ def main():
     destination = args.destination.resolve() if args.destination else BASE
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip()
     if not args.destination and head != BASE_COMMIT:
-        raise ValueError('The round-7 baseline requires commit cdd0f7f')
+        raise ValueError('The round-nine baseline requires commit c51d204')
     if destination.exists():
         raise FileExistsError('Never replace a frozen baseline')
     receipts = {}

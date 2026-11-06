@@ -1,4 +1,4 @@
-"""Build an immutable round-8 helper from retained rules plus opt-in extensions."""
+"""Build an immutable round-9 helper from retained rules plus opt-in extensions."""
 import hashlib,json,shutil,subprocess
 from pathlib import Path
 from compiler_probes import ROSLYN
@@ -9,7 +9,7 @@ LEGACY=('Round7TransformSyntax.cs','Round7NewRules.cs','Round7AliasRules.cs','Ro
  'Round7RoslynDeclarationRules.cs','Round7TerminalArmRules.cs','Round7BalancedBranchRules.cs','Round7InfiniteTailGuardRules.cs')
 
 def source_inputs():
-    paths=[ROOT/'tools'/name for name in LEGACY]+[ROOT/'tools/Round9Rules.cs',ROOT/'tools/Round8CompoundRules.cs',ROOT/'tools/Round8NullConditionalPolarityRules.cs']
+    paths=[ROOT/'tools'/name for name in LEGACY]+[ROOT/'tools/Round9Rules.cs',ROOT/'tools/Round8CompoundRules.cs',ROOT/'tools/Round8NullConditionalPolarityRules.cs',ROOT/'tools/Round9PartBRules.cs']
     anchor='AddRound7InfiniteTailGuardRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);'
     main=paths[0].read_text(encoding='utf-8-sig')
     if main.count(anchor)!=1:raise ValueError('Unrecognized retained dispatcher')
