@@ -1,0 +1,75 @@
+{
+  "operation": "balanced-source-branch-fixtures",
+  "syntax_safety_checks": 11,
+  "toy_library_compiles": 7,
+  "exact_reference_body_matches": 2,
+  "runtime_runs": 3,
+  "target_compilations": 0,
+  "checks": [
+    "Pair:paired-proposal",
+    "Float:paired-proposal",
+    "NoAncestor:reject",
+    "NonemptyElse:reject",
+    "ReturningDonor:reject",
+    "LambdaBoundary:reject",
+    "Custom:reject",
+    "Pair:reject-incomplete-IL-evidence",
+    "Pair:reject-incomplete-IL-evidence",
+    "Pair:reject-incomplete-IL-evidence",
+    "Pair:reject-no-opt-in"
+  ],
+  "proofs": [
+    {
+      "method": "Pair",
+      "baseline_prefix": 26,
+      "paired_prefix": 80,
+      "original_il_size": 80,
+      "paired_size_delta": 0,
+      "complete_body_equal": true,
+      "singles": [
+        {
+          "edit": "recipient-only",
+          "size_delta": 5,
+          "raw_prefix": 19,
+          "prefix_regressed": true
+        },
+        {
+          "edit": "donor-only",
+          "size_delta": -5,
+          "raw_prefix": 19,
+          "prefix_regressed": true
+        }
+      ],
+      "runtime_scenarios": 16,
+      "runtime_trace_equal": true
+    },
+    {
+      "method": "Float",
+      "baseline_prefix": 26,
+      "paired_prefix": 79,
+      "original_il_size": 79,
+      "paired_size_delta": 0,
+      "complete_body_equal": true,
+      "singles": [
+        {
+          "edit": "recipient-only",
+          "size_delta": 5,
+          "raw_prefix": 19,
+          "prefix_regressed": true
+        },
+        {
+          "edit": "donor-only",
+          "size_delta": -5,
+          "raw_prefix": 19,
+          "prefix_regressed": true
+        }
+      ],
+      "runtime_scenarios": 16,
+      "runtime_trace_equal": true
+    }
+  ],
+  "rule_sha256": "5a455141cff925cd0b4ddb6e2cb5781a1b4a7e6118d8c9740f20cf0e0ed98f4a",
+  "hint_sha256": "96a015736f34c47a4de883aa98987cbe9e3906125b3c2db99ff5f6b05e0941d6",
+  "driver_sha256": "7625514e056660c97a59804f93c71622aa58529ac9735c45e49b014f0c2bd28a",
+  "smcs_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0"
+}

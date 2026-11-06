@@ -148,7 +148,12 @@ def main():
     for a in ASSEMBLIES:
         d=final['assemblies'][a];groups=d['alignment']['opcode_histogram']
         out += ['**'+a+' — todos os pares restantes**','',table(['Par alinhado','Métodos','Peso em bytes'],[(g['pair'],g['methods'],g['original_il_bytes']) for g in groups]),'']
-        for n,g in enumerate(groups[:5],1):
+        exact_groups=d['alignment']['exact_histogram']
+        out += ['Os cinco pares com operandos exatos mais pesados são apresentados também; os endereços de saltos tornam esse agrupamento mais fragmentado que o de opcodes.','',
+            table(['Par exato','Métodos','Peso em bytes'],[(g['pair'],g['methods'],g['original_il_bytes']) for g in exact_groups[:5]]),'']
+        examples=[('opcodes',n,g) for n,g in enumerate(groups[:5],1)]
+        examples += [('operandos exatos',n,g) for n,g in enumerate(exact_groups[:5],1)]
+        for grouping,n,g in examples:
             example=g['example'];identity=example['stable_id'];left=example['original_context'][:15];right=example['rebuilt_context'][:15]
             attempts=Counter()
             reasons=Counter()
@@ -161,7 +166,8 @@ def main():
                         reasons[row['stop_reason']]+=1
                         for rejection in row.get('model_rejections',[]):model_rejections.update(rejection)
                         exhausted_candidates+=sum(f.get('removed_legacy_candidates',0) for f in row.get('cycle_repertoire_filters',[]))
-            out += [f"**{a}, par {n}: `{g['pair']}`; {g['methods']} métodos / {g['original_il_bytes']} bytes.** Exemplo: "+inline(identity)+'.','',
+            pair_label=g['pair'] if grouping=='opcodes' else example['opcode_pair']
+            out += [f"**{a}, par {n} ({grouping}): "+inline(pair_label)+f"; {g['methods']} métodos / {g['original_il_bytes']} bytes.** Exemplo: "+inline(identity)+'.','',
                 'Já compilado no grupo: '+(', '.join(f'{rule}: {count}' for rule,count in attempts.items()) or 'nenhum candidato chegou à compilação')+'. Recusas e limites antes de compilar: '+str(dict(model_rejections))+'. Candidatos antigos descartados por busca já esgotada: '+str(exhausted_candidates)+'. Nomes individuais das regras recusadas pelo modelo: UNKNOWN (não foram registrados por candidato). Paradas: '+str(dict(reasons))+'.','',
                 table(['IL original','IL recompilado'],[(inline(il(left[i])) if i<len(left) else '',inline(il(right[i])) if i<len(right) else '') for i in range(max(len(left),len(right)))]),'']
             if example.get('original_exception_regions') or example.get('rebuilt_exception_regions'):
@@ -178,8 +184,8 @@ def main():
             out += ['Runtime Mono: '+inline(manifest['runtime'])+'; SHA-256 '+inline(manifest['runtime_sha256'])+'. Ligação da biblioteca padrão: '+inline(manifest['stdlib_binding'])+'. O mscorlib implícito é o perfil Unity 2.0.5.0, conferido contra o APK. Ambiente somente do subprocesso: '+inline(json.dumps(manifest['scoped_environment'],ensure_ascii=False))+'.','']
     out += ['O Roslyn moderno é usado apenas para análise sintática/semântica dos auxiliares. Não emite os assemblies alvos. PDB Roslyn e MDB smcs auxiliam o mapeamento; a comparação integral continua independente dos símbolos. Nenhum nome escolhido para local é apresentado como nome original.','',
         '## 6. COMPONENTES EXTERNOS E METADADOS','',
-        'Os 466 tipos continuam com metadados estruturais iguais (KairoLibrary 337/337; Assembly-CSharp 129/129): ordem de tipos e membros, parâmetros, atributos, layout, constantes e recursos. As 82 declarações sem corpo continuam aprovadas. Igualdade das tabelas/heaps brutos e hash integral dos arquivos: não alcançada; nenhuma normalização ou correção baseada em bytes brutos foi feita.','',
-        'UnityEngine.dll corresponde em todos os 970.752 bytes à variante oficial Android/Mono do Unity 5.3.4f1 (SHA-256 `7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421`). As outras seis DLLs gerenciadas externas e seis bibliotecas nativas verificadas permanecem sem alteração. DEX/Java permanece fora do escopo.','',
+        'Os 466 tipos continuam com metadados estruturais iguais (KairoLibrary 337/337; Assembly-CSharp 129/129): ordem de tipos e membros, parâmetros, atributos, layout, constantes e recursos. A comparação estrutural global também passa, incluindo referências de assemblies e módulos, atributos e recursos. As 82 declarações sem corpo continuam aprovadas. Tabelas/heaps/PE brutos: NOT_EVALUATED nesta rodada; a distribuição atual das diferenças brutas é UNKNOWN. Os hashes integrais dos arquivos diferem. Nenhuma normalização ou correção baseada em bytes brutos foi feita.','',
+        'UnityEngine.dll corresponde em todos os 970.752 bytes à variante oficial Android/Mono do Unity 5.3.4f1 (SHA-256 `7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421`). As outras seis DLLs externas verificadas são Mono.Security, System.Core, System, UnityEngine.Networking, UnityEngine.UI e mscorlib. Os seis externos nativos são libmain.so, libmono.so e libunity.so, nas arquiteturas armeabi-v7a e x86; permanecem conferidos contra a distribuição oficial. DEX/Java permanece fora do escopo.','',
         'Exceções não determinísticas, comprovadas anteriormente por duas compilações do mesmo fonte: KairoLibrary — Module.Mvid, COFF.TimeDateStamp, IMAGE_DEBUG_DIRECTORY.TimeDateStamp e CodeView.RSDS.PdbGuid; Assembly-CSharp — Module.Mvid e COFF.TimeDateStamp. São seis campos; nenhum outro é normalizado.','',
         '## 7. BLOQUEIOS','',stop.get('blockers','Nenhuma instalação, arquivo adicional ou decisão do usuário foi necessária. O limite técnico atual é a cobertura dos modelos e das transformações: UNKNOWN não autoriza candidato.'),'',
         '## 8. SUA RECOMENDAÇÃO','']

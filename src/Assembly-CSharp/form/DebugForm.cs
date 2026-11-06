@@ -1436,8 +1436,7 @@ playerData3.AddPhysicalParam(array);
 								break;
 							}
 							PlayerData playerData4 = apdat_.pData_[num10];
-							if (!BitUtil.Check(playerData4.flag_, 12))
-							{
+							if (BitUtil.Check(playerData4.flag_, 12)) { } else {
 								PlayerData.Employ(num10);
 							}
 						}
@@ -1451,7 +1450,7 @@ playerData3.AddPhysicalParam(array);
 						apdat_.mapMain_.UpdateTrainingCoatNum();
 						udat_.tAreaLv_ = AppData.ClampMax(udat_.tAreaLv_ + 1, 2);
 						apdat_.frmGame_.SetAllDraw();
-					} else { }
+					}
 				}
 				if (select_ == 14 && (canvas_.CheckKeyRepeat(65536) || canvas_.CheckKeyRepeat(262144) || canvas_.CheckKeyRepeat(1048576)))
 				{
