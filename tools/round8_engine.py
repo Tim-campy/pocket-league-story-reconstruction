@@ -639,9 +639,14 @@ def main():
             # Calculated declarations may affect a wider block than the aligned
             # command. The solver produces source patches, never IL or states.
             if slot_model and hasattr(slot_model, 'solve'):
-                solved = slot_model.solve(path=str(c.paths[logical]), source=text, method_id=key,
-                                          original_method=original[key], rebuilt_method=method,
-                                          expected_types=plain_local_types.get(key, []))
+                # Retained v7 client.solve discarded incomplete proposals.
+                # Use its source-only calculator directly; every proposed edit
+                # now reaches the shared round8 complete/incomplete policy gate.
+                calculator=importlib.import_module(Path(model_config['solver']).stem)
+                source_prediction=slot_model.predict(path=str(c.paths[logical]),source=text,method_id=key)
+                solved=calculator.proposals(text,source_prediction,original[key],method,
+                    plain_local_types.get(key,[]),source_prediction.get('predicted_types',[]))
+                solved['shared_round8_model_policy']=True
                 patches = solved.get('patches', []) + patches
                 row.setdefault('solver', []).append({k: v for k, v in solved.items() if k != 'patches'})
             if slot_model and key in baseline_variants:
@@ -1033,6 +1038,10 @@ def main():
     report.update(completed=True, builds=c.builds, build_seconds=c.build_seconds, final_binary=str(final), final_sha256=sha(final), source_map=str(c.folder / 'source-map.json'),
                   metadata_types_equal=metadata['types_equal'], metadata_types_total=metadata['types_total'],
                   metadata_whole_structural_equal=metadata['whole_structural_metadata_equal'])
+    report['incomplete_budget_summary']={'variants_compiled':sum(m.get('incomplete_variants_compiled',0) for m in report['methods']),
+        'candidate_compiler_invocations':sum(m.get('incomplete_compiler_invocations',0) for m in report['methods']),
+        'methods_with_variants':sum(m.get('incomplete_variants_compiled',0)>0 for m in report['methods']),
+        'methods_at_limit':sum(m.get('incomplete_budget_limit_reached',False) for m in report['methods'])}
     report['adoption_eligible'] = not report.get('body_losses') and metadata['whole_structural_metadata_equal']
     report['baseline_manifest_sha256'] = sha(c.base / 'build-manifest.json')
     report['source_hashes'] = {p: sha(path) for p, path in c.paths.items()}

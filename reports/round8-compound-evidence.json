@@ -1,0 +1,390 @@
+{
+  "operation": "real-game-source-only-compound-evidence",
+  "examples": [
+    {
+      "method_id": "game.Ball::Update()->System.Boolean",
+      "source_probe": "v_.x_ *= dragX",
+      "source_patch": {
+        "rule": "expand-compound-field-multiply",
+        "start": 8685,
+        "end": 8699,
+        "before": "v_.x_ *= dragX",
+        "after": "v_.x_ = (v_.x_) * (dragX)",
+        "distance": 0
+      },
+      "contexts": {
+        "original": [
+          {
+            "offset": 587,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 588,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 593,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 594,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 599,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          {
+            "offset": 604,
+            "opcode": "ldloc.s",
+            "operand": {
+              "local": 8
+            }
+          },
+          {
+            "offset": 606,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 607,
+            "opcode": "stfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          }
+        ],
+        "rebuilt": [
+          {
+            "offset": 585,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 9
+            }
+          },
+          {
+            "offset": 587,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 588,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 593,
+            "opcode": "dup",
+            "operand": null
+          },
+          {
+            "offset": 594,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          {
+            "offset": 599,
+            "opcode": "ldloc.s",
+            "operand": {
+              "local": 8
+            }
+          },
+          {
+            "offset": 601,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 602,
+            "opcode": "stfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          }
+        ]
+      },
+      "hypothesis": "simple assignment re-evaluates stable receiver instead of using dup; original matches explicit form",
+      "game_candidate_compilations": 0,
+      "game_body_after_transformation": "UNKNOWN",
+      "source_only_model": {
+        "complete": true,
+        "unchanged_signature": true,
+        "signature_exact_to_original": true,
+        "predicted_local_count": 19
+      }
+    },
+    {
+      "method_id": "game.Ball::Update()->System.Boolean",
+      "source_probe": "v_.z_ *= dragZ",
+      "source_patch": {
+        "rule": "expand-compound-field-multiply",
+        "start": 8707,
+        "end": 8721,
+        "before": "v_.z_ *= dragZ",
+        "after": "v_.z_ = (v_.z_) * (dragZ)",
+        "distance": 0
+      },
+      "contexts": {
+        "original": [
+          {
+            "offset": 612,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 613,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 618,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 619,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 624,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::z_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          {
+            "offset": 629,
+            "opcode": "ldloc.s",
+            "operand": {
+              "local": 9
+            }
+          },
+          {
+            "offset": 631,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 632,
+            "opcode": "stfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::z_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          }
+        ],
+        "rebuilt": [
+          {
+            "offset": 602,
+            "opcode": "stfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          {
+            "offset": 607,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 608,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::v_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 613,
+            "opcode": "dup",
+            "operand": null
+          },
+          {
+            "offset": 614,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::z_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          {
+            "offset": 619,
+            "opcode": "ldloc.s",
+            "operand": {
+              "local": 9
+            }
+          },
+          {
+            "offset": 621,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 622,
+            "opcode": "stfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::z_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          }
+        ]
+      },
+      "hypothesis": "simple assignment re-evaluates stable receiver instead of using dup; original matches explicit form",
+      "game_candidate_compilations": 0,
+      "game_body_after_transformation": "UNKNOWN",
+      "source_only_model": {
+        "complete": true,
+        "unchanged_signature": true,
+        "signature_exact_to_original": true,
+        "predicted_local_count": 19
+      }
+    },
+    {
+      "method_id": "game.Ball::SetSavePos(kairo.unity.m3d4.util3d.Vector3D,kairo.unity.m3d4.util3d.Vector3D,kairo.unity.m3d4.util3d.Vector3D)->System.Void",
+      "source_probe": "saveV_.x_ *= num8",
+      "source_patch": {
+        "rule": "expand-compound-field-multiply",
+        "start": 36731,
+        "end": 36748,
+        "before": "saveV_.x_ *= num8",
+        "after": "saveV_.x_ = (saveV_.x_) * (num8)",
+        "distance": 0
+      },
+      "contexts": {
+        "original": [
+          {
+            "offset": 560,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 561,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::saveV_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 566,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 567,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::saveV_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 572,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          {
+            "offset": 577,
+            "opcode": "ldloc.s",
+            "operand": {
+              "local": 8
+            }
+          },
+          {
+            "offset": 579,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 580,
+            "opcode": "stfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          }
+        ],
+        "rebuilt": [
+          {
+            "offset": 558,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 11
+            }
+          },
+          {
+            "offset": 560,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          {
+            "offset": 561,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class game.Ball @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::saveV_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          },
+          {
+            "offset": 566,
+            "opcode": "dup",
+            "operand": null
+          },
+          {
+            "offset": 567,
+            "opcode": "ldfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          {
+            "offset": 572,
+            "opcode": "ldloc.s",
+            "operand": {
+              "local": 10
+            }
+          },
+          {
+            "offset": 574,
+            "opcode": "mul",
+            "operand": null
+          },
+          {
+            "offset": 575,
+            "opcode": "stfld",
+            "operand": {
+              "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::x_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          }
+        ]
+      },
+      "hypothesis": "simple assignment re-evaluates stable receiver instead of using dup; original matches explicit form",
+      "game_candidate_compilations": 0,
+      "game_body_after_transformation": "UNKNOWN",
+      "source_only_model": {
+        "complete": true,
+        "unchanged_signature": true,
+        "signature_exact_to_original": false,
+        "predicted_local_count": 16
+      }
+    }
+  ],
+  "current_Ball_source_sha256": "e106fb8a6f92f7dc90669e3f88d4d73f6cc77d65a966c7be7b9e01a8d42e678c",
+  "current_rebuilt_descriptor_sha256": "ca6a01a231b3d8099d5de5e5729f1e2ff5d09a382276ea83c146dbf0077bf7cd",
+  "original_descriptor_sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+  "game_compilations": 0
+}

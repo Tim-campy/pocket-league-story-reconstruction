@@ -1,0 +1,62 @@
+{
+  "candidate_game_compilations": 0,
+  "fixture_assembly_compilations": 1,
+  "exact_cases": {
+    "Field": {
+      "body_exact": true,
+      "il_bytes": 23,
+      "local_count": 0
+    },
+    "Chain": {
+      "body_exact": true,
+      "il_bytes": 35,
+      "local_count": 0
+    },
+    "Double": {
+      "body_exact": true,
+      "il_bytes": 23,
+      "local_count": 0
+    },
+    "Local": {
+      "body_exact": true,
+      "il_bytes": 21,
+      "local_count": 1
+    }
+  },
+  "negative_cases": {
+    "RejectPropertyReceiver": true,
+    "RejectCallReceiver": true,
+    "RejectIndexerReceiver": true,
+    "RejectVolatileReceiver": true,
+    "RejectVolatileField": true,
+    "RejectPropertyTarget": true,
+    "RejectConversion": true
+  },
+  "opt_in_disabled_rejected": true,
+  "roslyn_rejected": true,
+  "proposals": [
+    {
+      "method": "Recovered",
+      "before": "v.x *= rate",
+      "after": "v.x = (v.x) * (rate)"
+    },
+    {
+      "method": "RecoveredChain",
+      "before": "node.vector.x *= a+b",
+      "after": "node.vector.x = (node.vector.x) * (a+b)"
+    },
+    {
+      "method": "RecoveredDouble",
+      "before": "v.d *= rate",
+      "after": "v.d = (v.d) * (rate)"
+    },
+    {
+      "method": "RecoveredLocal",
+      "before": "local.x *= rate",
+      "after": "local.x = (local.x) * (rate)"
+    }
+  ],
+  "rule_sha256": "62afd5fb4deb2c062faa34aa867eebd686e8f9a81a7ce71ec0f52003d15905b6",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "fixture_source_sha256": "29e73ce3927a52218587a74dc2cb9e1c2474d7bac4066490a710a7edfb34f4ac"
+}

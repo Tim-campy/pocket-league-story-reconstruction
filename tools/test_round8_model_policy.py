@@ -12,5 +12,5 @@ def main():
     row={}
     assert all(reserve_incomplete_variant(row,12) for _ in range(12))
     assert not reserve_incomplete_variant(row,12)
-    print(json.dumps({'policy_checks':6,'passed':True,'row':row}))
+    print(json.dumps({'policy_checks':7,'passed':True,'row':row}))
 if __name__=='__main__':main()

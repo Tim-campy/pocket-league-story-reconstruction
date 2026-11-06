@@ -1209,9 +1209,7 @@ renderCache_.Reset();
 				}
 				Vector3[] drawPolygon_VertexBuffer = DrawPolygon_VertexBuffer;
 				float[] drawPolygon_Pt = DrawPolygon_Pt;
-				int num8 = 0;
-				int num9 = 0;
-				while (num8 < num3)
+				for (int num8 = 0, num9 = 0; num8 < num3; )
 				{
 					GetTransPointGL(verticies[num9 + 0], verticies[num9 + 1], drawPolygon_Pt);
 					drawPolygon_VertexBuffer[num8].x = drawPolygon_Pt[0];
@@ -1250,8 +1248,9 @@ renderCache_.Reset();
 				}
 				UpdateGLClip();
 				RenderPass[] renderPass = GetRenderPass(image, drawPolygon_ColorBuffer);
-				foreach (RenderPass renderPass2 in renderPass)
+				for (int recoveredPassIndex = 0; recoveredPassIndex < renderPass.Length; recoveredPassIndex++)
 				{
+RenderPass renderPass2 = renderPass[recoveredPassIndex];
 					Color[] array = ((image != null) ? renderPass2.Begin() : renderPass2.BeginShape());
 					try
 					{
@@ -1281,16 +1280,18 @@ renderCache_.Reset();
 						GL.Begin(4);
 						if (texCoords == null)
 						{
-							foreach (int num12 in indicies)
+							for (int recoveredIndexA = 0; recoveredIndexA < indicies.Length; recoveredIndexA++)
 							{
+int num12 = indicies[recoveredIndexA];
 								GL.Color(array[num12]);
 								GL.Vertex3(drawPolygon_VertexBuffer[num12].x, drawPolygon_VertexBuffer[num12].y, drawPolygon_VertexBuffer[num12].z);
 							}
 						}
 						else
 						{
-							foreach (int num14 in indicies)
+							for (int recoveredIndexB = 0; recoveredIndexB < indicies.Length; recoveredIndexB++)
 							{
+int num14 = indicies[recoveredIndexB];
 								GL.Color(array[num14]);
 								GL.TexCoord2(drawPolygon_TexCoordBuffer[num14].x, drawPolygon_TexCoordBuffer[num14].y);
 								GL.Vertex3(drawPolygon_VertexBuffer[num14].x, drawPolygon_VertexBuffer[num14].y, drawPolygon_VertexBuffer[num14].z);
