@@ -54,14 +54,14 @@ public static partial class Round7TransformSyntax {
                 var parts=new List<ExpressionSyntax>();Round7GuardAndParts(branch.Condition,parts);
                 if(parts.Count>1) {
                     string rest=string.Join(" && ",parts.Skip(1).Select(e=>"("+e+")"));
-                    add("smcs-empty-arm-first-and",branch.SpanStart,branch.Span.End,
+                    add("smcs-empty-arm-restore-first-and",branch.SpanStart,branch.Span.End,
                         "if ("+Negate(parts[0],model)+") { } else if ("+rest+") "+branch.Statement);
                     // Preserve an already matching leading conjunction while
                     // restoring an empty case inside its guarded suffix.
                     for(int split=1;split<parts.Count;split++) {
                         string prefix=string.Join(" && ",parts.Take(split).Select(e=>"("+e+")"));
                         string negatedSuffix=string.Join(" || ",parts.Skip(split).Select(e=>"("+Negate(e,model)+")"));
-                        add("smcs-empty-arm-and-suffix",branch.SpanStart,branch.Span.End,
+                        add("smcs-empty-arm-restore-and-suffix",branch.SpanStart,branch.Span.End,
                             "if ("+prefix+") { if ("+negatedSuffix+") { } else "+branch.Statement+" }");
                     }
                 }

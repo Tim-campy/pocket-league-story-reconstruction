@@ -374,8 +374,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 						tPlayer7.AddCommandLifting(0);
 					}
 				}
-				else if (tArea_.tMode_ != 2 && tArea_.tMode_ != 4 && tArea_.tMode_ != 3)
-				{
+				else if (tArea_.tMode_ == 2) { } else if (tArea_.tMode_ == 4) { } else if ((tArea_.tMode_ != 3)) {
 				}
 			}
 			else if (state_ == 13)

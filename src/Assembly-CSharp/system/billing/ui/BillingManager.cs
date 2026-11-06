@@ -585,8 +585,7 @@ flag = true;
 			for (int i = 0; i < itemList_.Size(); i++)
 			{
 				BillingItem billingItem = (BillingItem)itemList_.ElementAt(i);
-				if (!billingItem.Check(4) && (!billingItem.Check(2) || flag) && (!billingItem.CheckTestProduct() || Config.DEBUG))
-				{
+				if (billingItem.Check(4)) { } else if ((billingItem.Check(2)) && (!(flag))) { } else if ((billingItem.CheckTestProduct()) && (!(Config.DEBUG))) { } else {
 					vector.Add(billingItem);
 				}
 			}

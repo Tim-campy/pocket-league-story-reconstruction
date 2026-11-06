@@ -217,8 +217,7 @@ namespace form
 		{
 			base.Draw(g);
 			SmartBeginPaint(g);
-			if (state_ != 0)
-			{
+			if (state_ == 0) { } else {
 				if (state_ == 1)
 				{
 					string text = MyFormBase.LT("ｱﾌﾟﾘ起動中");

@@ -29,7 +29,10 @@ def operand(value):
         value=next(iter(value.values())) if len(value)==1 else json.dumps(value,ensure_ascii=False)
     result=str(value)
     return re.sub(r' @ [^,<>]+, Version=[^,]+, Culture=[^,]+, PublicKeyToken=[a-zA-Z0-9]+','',result)
-def il(row):return f"IL_{row['offset']:04x}: "+row['opcode']+' '+operand(row.get('operand'))
+def il(row):
+    value=row.get('operand')
+    rendered=json.dumps(value,ensure_ascii=False) if row['opcode']=='ldstr' else operand(value)
+    return f"IL_{row['offset']:04x}: "+row['opcode']+' '+rendered
 def passes(engine):
     for rows in engine.get('previous_passes',{}).values():
         yield from rows
@@ -64,7 +67,7 @@ def main():
     out += [table(['Assembly','Anterior','Atual','Métodos ganhos','Bytes ganhos','Regressões'],rows),'',
             'Total atual: '+str(sum(final['assemblies'][a]['matched_methods'] for a in ASSEMBLIES))+'/5245 métodos; '+str(sum(final['assemblies'][a]['matched_original_il_bytes'] for a in ASSEMBLIES))+'/871497 bytes de IL.', '',
             '**Motivo da parada:** '+stop['reason']+'.','', '## 2. O QUE FOI FEITO NESTA RODADA','',
-            'As linhas abaixo distinguem sondas e execuções adotadas. Ganho do motor significa corpo completo aprovado; avanços de prefixo não contam como método concluído. Métodos auxiliares liberados pelo verificador são incluídos no progresso oficial.','']
+            'As linhas abaixo distinguem sondas e execuções adotadas. Ganho do motor significa corpo completo aprovado; avanços de prefixo não contam como método concluído. O corpo ganho é atribuído à última transformação que o fechou; uma operação preparatória pode ter zero nessa coluna e ainda ter permitido o resultado. Métodos auxiliares liberados pelo verificador são incluídos no progresso oficial.','']
     rows=[]
     for name,d in engines:
         rules=sorted({key.rsplit(':',1)[0] for key in d.get('transformations',{})})

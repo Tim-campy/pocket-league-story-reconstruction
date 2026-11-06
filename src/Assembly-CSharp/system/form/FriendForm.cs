@@ -266,8 +266,7 @@ namespace system.form
 			{
 				text_ = string.Empty;
 			}
-			else if (type_ != 4 && type_ != 5 && type_ != 6 && type_ != 7 && type_ != 8 && type_ != 9 && type_ != 10)
-			{
+			else if (type_ == 4) { } else if (type_ == 5) { } else if (type_ == 6) { } else if (type_ == 7) { } else if (type_ == 8) { } else if (type_ == 9) { } else if (type_ == 10) { } else {
 				if (type_ == 11)
 				{
 					string value = KairoText.LT("全国に散らばるユーザーを<br>フレンドとして最大<0>人まで<br>登録できます。<br>フレンドの合計ﾌﾟﾚｲ時間に<br>よって起動時にボーナスが<br>入ります。IDを聞いて友達<br>に申請してみましょう。");
@@ -279,8 +278,7 @@ namespace system.form
 					textLay_.SetText(StringUtil.Replace(value, JString.ValueOf(friendData_.FRIEND_MAX)));
 					textLay_.Flush();
 				}
-				else if (type_ != 12 && type_ != 13 && type_ != 15)
-				{
+				else if (type_ == 12) { } else if ((type_ == 13) || (type_ == 15)) { } else {
 				}
 			}
 			if (th_ != null)
@@ -770,8 +768,7 @@ Push(createdValue);
 				}
 				if (canvas_.CheckKeyPulse(1048576))
 				{
-					if (select_ != 0)
-					{
+					if (select_ == 0) { } else {
 						return Pop();
 					}
 					FriendData.ActionSendMail(friendData_.INTRODUCTION_APPLY_SUBJECT, friendData_.INTRODUCTION_APPLY_TEXT);

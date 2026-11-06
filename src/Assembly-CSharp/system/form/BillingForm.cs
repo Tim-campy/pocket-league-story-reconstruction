@@ -231,8 +231,7 @@ if (Config.APPLI_TYPE == 0) { text = "通信を許可し電波を確認して再
 				textLay_.SetText(text);
 				textLay_.Flush();
 			}
-			else if (type_ != 2)
-			{
+			else if (type_ == 2) { } else {
 				if (type_ == 3)
 				{
 					KairoService instance = KairoService.GetInstance();
@@ -847,8 +846,7 @@ while (scrollValue_ > 0 && num < scrollValue_ + showMax)
 			if (type_ == 2 && component.id == 4)
 			{
 				int type = e.type;
-				if (type == 1 || type == 2)
-				{
+				if ((type != 1) && (type != 2)) { } else {
 					select2_ = component.value;
 					if (e.type == 1)
 					{

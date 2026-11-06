@@ -182,14 +182,13 @@ namespace system.form
 				{
 					select_ = (select_ + 1 + num) % num;
 				}
-				if (canvas_.CheckKeyPulse(1048576))
-				{
+				if ((canvas_.CheckKeyPulse(1048576))) {
 					if (select_ >= linups_.Length)
 					{
 						return Pop();
 					}
 					Canvas.OpenBrowser(linups_[select_].GetURL());
-				}
+				} else { }
 			}
 			formMan_.DrawAllForms();
 			SetSoftlabel();
@@ -205,8 +204,7 @@ namespace system.form
 		{
 			type = (int)(type & 0xFFFF0000u);
 			int num = type;
-			if (num == 131072)
-			{
+			if (num != 131072) { } else {
 				return select_;
 			}
 			return base.GetTouchValue(type, index);

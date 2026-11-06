@@ -125,8 +125,7 @@ namespace system.form
 		public override bool Init()
 		{
 			base.Init();
-			if (type_ != 0 && type_ == 1)
-			{
+			if (type_ == 0) { } else if ((type_ == 1)) {
 				ThreadStart(1);
 			}
 			SetSoftlabel();
@@ -202,8 +201,7 @@ namespace system.form
 				return;
 			}
 			draw_ = true;
-			if (type_ != 0 && type_ != 1)
-			{
+			if (type_ == 0) { } else if ((type_ != 1)) {
 			}
 		}
 

@@ -323,16 +323,14 @@ text += json[i];
 					list.Add(text2);
 					text2 = string.Empty;
 				}
-				else if (flag && (text2.Length != 0 || text[j] != ','))
-				{
+				else if ((!(flag)) || ((text2.Length == 0) && (text[j] == ','))) { } else {
 					text2 += text[j];
 				}
 			}
 			for (int k = 0; k < list.Count; k++)
 			{
 				string text3 = Json.ReadJSon(list[k], "transaction_id");
-				if (!(text3 != orderId))
-				{
+				if ((text3 != orderId)) { } else {
 					return Json.ReadJSon(list[k], "purchase_date_ms");
 				}
 			}

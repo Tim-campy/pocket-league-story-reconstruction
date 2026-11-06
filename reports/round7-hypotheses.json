@@ -51,9 +51,9 @@
       "evidence": "Modelo passou de 59 para 56 slots, mas original tem 55; dois switches recompilados compartilham um temporario Int32 ausente no original."
     },
     {
-      "status": "INCONCLUSIVA",
-      "hypothesis": "Cadeia de quatro zeros mais switches convertidos em if resolve SubForm._draw2 inteiro",
-      "evidence": "Assinatura original de 55 slots prevista exatamente e prefixo bruto avancou de 2 a 2218, mas o corpo continua divergente; reports/round7-smcs-zerochain-diagnosis.json."
+      "status": "REFUTADA",
+      "hypothesis": "Cadeia de quatro zeros mais switches convertidos em if basta para resolver SubForm._draw2 inteiro",
+      "evidence": "Na Parte A a assinatura de 55 slots ficou exata e o prefixo bruto avancou de 2 a 2218, mas o corpo nao fechou. Os outros desvios exigiram transformacoes adicionais; reports/round7-smcs-zerochain-diagnosis.json."
     },
     {
       "status": "REFUTADA",
@@ -74,6 +74,41 @@
       "status": "REFUTADA",
       "hypothesis": "Ultimo comando de um bloco lexical implica fim do metodo e autoriza tail-early-return",
       "evidence": "Em SubForm._draw2 o br original 9268 vai a 9358 (incremento do slot47); em Player.Act_dribble o br638 vai a776 (incremento do slot6). A regra antiga inseriu ret em corpos ainda divergentes; nenhum matched foi perdido. A nova regra exige fim comprovado do metodo; retorno em laco e diagnosticado separadamente."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "terminal-guard-positive-tail: Guarda terminal recuperada como retorno deve ser um if positivo envolvendo o restante do bloco final",
+      "evidence": "cycle01: 7 novos matched, 14902 bytes; Novos corpos aprovados; 18 tentativas da regra, 13 avancos"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "void-empty-then-common-exit: Quando o br original termina no ret comum, if com ramo verdadeiro vazio e else preserva o desvio explicito",
+      "evidence": "cycle02: 6 novos matched, 2669 bytes; Novos corpos aprovados; 8 tentativas da regra, 8 avancos"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "loop-guard-return-to-continue: O desvio original para incremento do for exige continue na guarda recuperada com return",
+      "evidence": "cycle03: 5 novos matched, 4608 bytes; Novos corpos aprovados; 8 tentativas da regra, 8 avancos"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "empty-if-terminal-polarity: Em if vazio, inverter apenas o ultimo operando booleano preserva chamadas e reproduz a polaridade original",
+      "evidence": "cycle04: 2 novos matched, 658 bytes; Novos corpos aprovados; 4 tentativas da regra, 3 avancos"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "calculated-original-local-coalescence: Variaveis locais separadas pelo decompilador devem compartilhar declaracao e slot original, junto das construcoes que explicam os temporarios",
+      "evidence": "cycle05: 1 novos matched, 6626 bytes; Novos corpos aprovados; 3 tentativas da regra, 3 avancos"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "smcs-empty-arm-restore: O smcs preserva br sobre o else mesmo com then vazio; restaurar esse braco explica a condicao invertida e o desvio extra",
+      "evidence": "cycle06: 9 novos matched, 14874 bytes; Novos corpos aprovados; 195 tentativas da regra, 42 avancos"
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Uma assinatura com tipos iguais basta para posicionar os slots Int32 sem uso",
+      "evidence": "Em UserData.Draw_edit2 o primeiro candidato posicionava as reservas em 10/40, apesar dos mesmos tipos; foi rejeitado. O modelo da proposta final confirmou exatamente os slots 8/38 e o verificador fechou o corpo de 6626 bytes."
     }
   ]
 }

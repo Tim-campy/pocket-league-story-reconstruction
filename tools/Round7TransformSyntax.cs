@@ -150,6 +150,8 @@ public static partial class Round7TransformSyntax {
             using(var cycleRequest=JsonDocument.Parse(JsonSerializer.Serialize(properties))) {
                 AddRound7SmcsCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7SmcsExitRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7SmcsGuardRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7StringConcatRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7RoslynCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
             }
         }

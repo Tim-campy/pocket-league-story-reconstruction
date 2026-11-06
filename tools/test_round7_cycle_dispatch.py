@@ -11,6 +11,9 @@ SOURCE='''class Fixture {
  static void LoopGuard(bool flag) {for(int i=0;i<3;i++) {if(flag) {return;} count++;}}
  static void Guard(bool flag) {if(flag) {return;} count++;}
  static void Empty(bool flag) {if(!flag) {} count++;}
+ static void EmptyBranch(int x) {if(x!=3) {count++;}}
+ static void EmptyAnd(int x,int y) {if(x!=3 && y!=7) {count++;}}
+ static string Concat(string a,string b) {return a+"\\t"+" "+b;}
 }'''
 
 
@@ -40,6 +43,16 @@ def main():
             original_exit_target_kind='loop-increment');checks.append('original loop increment dispatch')
         assert 'loop-guard-return-to-continue' not in rules('LoopGuard',round7_cycle_rule='loop-guard-return-to-continue',
             original_exit_target_kind='UNKNOWN');checks.append('unknown branch destination rejected')
+        assert 'smcs-empty-arm-restore' in rules('EmptyBranch',round7_cycle_rule='smcs-empty-arm-restore');checks.append('empty arm dispatch')
+        variants=rules('EmptyAnd',round7_cycle_rule='smcs-empty-arm-restore')
+        assert 'smcs-empty-arm-restore-first-and' in variants and 'smcs-empty-arm-restore-and-suffix' in variants
+        assert all(v.startswith('smcs-empty-arm-restore') for v in variants if v.startswith('smcs-empty-arm'))
+        checks.append('all empty-arm variants survive selected-family filter')
+        point=SOURCE.index('return a+',SOURCE.index('static string Concat('))
+        concat=client.request(path,source=SOURCE,offset=point,compiler='smcs',max_candidates=2048,
+            round7_cycle_rule='explicit-string-concat-preserve-literals',original_string_concat_arity=4)
+        assert any(p['rule']=='explicit-string-concat-preserve-literals' for p in concat['patches'])
+        checks.append('explicit Concat4 with original arity dispatch')
     (ROOT/'reports/round7-cycle-dispatch-tests.json').write_text(json.dumps({'passed':len(checks),'checks':checks,
         'game_candidate_compilations':0},indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'passed':len(checks)}))

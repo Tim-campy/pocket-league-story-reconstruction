@@ -73,7 +73,8 @@ def syntax_identity():
     return hashlib.sha256(b''.join((ROOT / 'tools' / name).read_bytes() for name in (
         'Round7TransformSyntax.cs', 'Round7NewRules.cs', 'Round7AliasRules.cs',
         'Round7SmcsRules.cs', 'Round7RoslynRules.cs',
-        'round7_smcs_cycle_rules.cs', 'Round7RoslynCycleRules.cs', 'Round7SmcsExitRules.cs'))).hexdigest()
+        'round7_smcs_cycle_rules.cs', 'Round7RoslynCycleRules.cs', 'Round7SmcsExitRules.cs',
+        'Round7SmcsGuardRules.cs','Round7StringConcatRules.cs'))).hexdigest()
 
 
 def model_approval(prediction, expected_types):
@@ -576,6 +577,8 @@ def main():
                     plain_local_types.get(key,[]),current_types,model=current_prediction))
                 from round7_smcs_branch_exit_diagnose import branch_exit_hints
                 hints.update(branch_exit_hints(original[key],alignment['original_offset']))
+                from round7_concat_hints import original_concat_hints
+                hints.update(original_concat_hints(original[key],alignment['original_offset']))
             if args.calculated_parameter_aliases:
                 from round6_alias_calculus import calculated_alias_hints
                 calculated = calculated_alias_hints(original[key], method, debug_method)
@@ -643,6 +646,24 @@ def main():
                     try:rebased=rebase_unique_patch(text,proposal)
                     except ValueError as error:
                         row.setdefault('coalescence_rebase_rejections',[]).append(str(error));continue
+                    patches.insert(0,rebased)
+            if is_smcs and args.cycle_rule=='calculated-store-anchored-declarations':
+                proposal_path=ROOT/'reports/round7-store-anchor-patches.json'
+                proposal_doc=read(proposal_path)
+                from round7_store_anchor_calculate import rebase_unique_patch
+                if proposal_doc['calculator_sha256']!=sha(ROOT/'tools/round7_store_anchor_calculate.py'):
+                    raise ValueError('Store-anchor calculator proof changed')
+                report['calculated_store_anchors']={'proposals_sha256':sha(proposal_path),
+                    'fresh_model_before_compilation':True,'exact_unique_declaration_rebase':True}
+                for proposal in proposal_doc['patches']:
+                    if proposal['method_id']!=key or proposal['logical_path'].replace('\\','/')!=logical.replace('\\','/'):
+                        continue
+                    if (proposal['model_source_sha256']!=report['slot_model_identity']['source_sha256']
+                            or proposal['client_sha256']!=report['slot_model_identity']['client_sha256']):
+                        raise ValueError('Store-anchor proposal uses another model')
+                    try:rebased=rebase_unique_patch(text,proposal)
+                    except ValueError as error:
+                        row.setdefault('store_anchor_rebase_rejections',[]).append(str(error));continue
                     patches.insert(0,rebased)
             # A new autonomous cycle cannot repeat exhausted legacy hypotheses
             # before the selected family has itself advanced this method.

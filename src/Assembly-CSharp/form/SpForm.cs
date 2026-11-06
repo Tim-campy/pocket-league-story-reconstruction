@@ -949,8 +949,7 @@ SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
 		{
 			type = (int)(type & 0xFFFF0000u);
 			int num = type;
-			if (num == 131072)
-			{
+			if (num != 131072) { } else {
 				return select_;
 			}
 			return base.GetTouchValue(type, index);

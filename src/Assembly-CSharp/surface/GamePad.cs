@@ -1181,8 +1181,7 @@ if (recoveredCondition_26283)
 
 		public void DrawVersion(Graphics g)
 		{
-			if ((!Config.DEBUG || !FormManager.GetInstance().IsCapturing()) && versionVisible_)
-			{
+			if ((Config.DEBUG) && (FormManager.GetInstance().IsCapturing())) { } else if ((versionVisible_)) {
 				int num = 7;
 				int originX = g.GetOriginX();
 				int originY = g.GetOriginY();

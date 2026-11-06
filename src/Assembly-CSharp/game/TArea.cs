@@ -336,8 +336,7 @@ namespace game
 				coatW_ = JMath.Abs(MapMain.TRAIN_COAT_BLOCK[num][0].x_ - MapMain.TRAIN_COAT_BLOCK[num][1].x_) + 100f;
 				coatH_ = JMath.Abs(MapMain.TRAIN_COAT_BLOCK[num][0].z_ - MapMain.TRAIN_COAT_BLOCK[num + 1][1].z_) + 100f;
 			}
-			else if (tMode_ != 5)
-			{
+			else if (tMode_ == 5) { } else {
 				centerPos_.x_ = (MapMain.TRAIN_COAT_BLOCK[num][0].x_ + MapMain.TRAIN_COAT_BLOCK[num][1].x_) / 2f;
 				centerPos_.y_ = 0f;
 				centerPos_.z_ = (MapMain.TRAIN_COAT_BLOCK[num][0].z_ + MapMain.TRAIN_COAT_BLOCK[num][1].z_) / 2f;

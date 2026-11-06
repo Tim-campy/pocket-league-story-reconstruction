@@ -1960,8 +1960,7 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 			{
 				Draw_matchElse(g);
 			}
-			else if (state_ != 13)
-			{
+			else if (state_ == 13) { } else {
 				if (state_ == 14)
 				{
 					Draw_newPlayerLv(g);

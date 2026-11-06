@@ -5126,8 +5126,7 @@ int num2 = termsAlias[1];
 				{
 					return;
 				}
-				if (zsortObjectCount_[num] < 30)
-				{
+				if (zsortObjectCount_[num] >= 30) { } else {
 					break;
 				}
 				depth++;
@@ -5186,8 +5185,7 @@ num3 = num = 0;
 					switch (num2)
 					{
 					case 1:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!(BitUtil.Check(typeBits, 1 << num2))) { } else {
 							player = udat_.GetPlayer(array[1] / 100, array[1] % 100);
 							player.Draw(g, array[6], array[7], array[9], true);
 						}

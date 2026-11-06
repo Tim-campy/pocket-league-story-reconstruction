@@ -660,8 +660,7 @@ namespace game
 
 		public void DrawCursor(Graphics g)
 		{
-			if (flg_disp && cursorCnt_ < 80)
-			{
+			if (!(flg_disp)) { } else if ((cursorCnt_ < 80)) {
 				GameView gameView = GameView.GetInstance();
 				int scale_ = apdat_.frmGame_.scale_;
 				temp_cursorSPos[0] = (int)(pos.x_ + (cursor_pos.x_ - pos.x_) * (float)scale_ / 100f);

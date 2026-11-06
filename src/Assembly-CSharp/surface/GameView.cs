@@ -1811,8 +1811,7 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 				ClearMarker();
 				break;
 			case 7:
-				if (markComponentKey_ != -1)
-				{
+				if (markComponentKey_ == -1) { } else {
 					touchEvent = GetTouchEventKey(markComponentKey_, 7);
 					if (touchEvent == null)
 					{

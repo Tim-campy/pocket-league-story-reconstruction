@@ -916,8 +916,7 @@ UpdatePhysicalParam();
 			do
 			{
 				int nextLvUpExp = GetNextLvUpExp(lv_);
-				if (exp_ < nextLvUpExp)
-				{
+				if (exp_ >= nextLvUpExp) { } else {
 					break;
 				}
 				exp_ -= nextLvUpExp;

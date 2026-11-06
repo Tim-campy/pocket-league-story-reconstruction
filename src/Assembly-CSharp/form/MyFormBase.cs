@@ -321,8 +321,7 @@ namespace form
 				apdat_.save_.ints[13] = value;
 				break;
 			case 524288:
-				if (apdat_.sysSave_.ints[3] != value)
-				{
+				if (apdat_.sysSave_.ints[3] == value) { } else {
 					apdat_.sysSave_.ints[3] = value;
 					instance.SetVolume(0, apdat_.sysSave_.ints[3] * 51);
 					instance.SetMute(0, apdat_.sysSave_.ints[3] == 0);

@@ -77,8 +77,8 @@ def main():
         checks.append(method+':reject-'+rule)
     try:
         has('void Empty(','if(x!=','smcs-empty-arm-restore','smcs-empty-arm-restore','ExpectedEmpty')
-        has('void EmptyAnd(','if(a!=','smcs-empty-arm-restore','smcs-empty-arm-first-and','ExpectedEmptyAnd')
-        has('void EmptySuffix(','if(flag','smcs-empty-arm-restore','smcs-empty-arm-and-suffix','ExpectedEmptySuffix')
+        has('void EmptyAnd(','if(a!=','smcs-empty-arm-restore','smcs-empty-arm-restore-first-and','ExpectedEmptyAnd')
+        has('void EmptySuffix(','if(flag','smcs-empty-arm-restore','smcs-empty-arm-restore-and-suffix','ExpectedEmptySuffix')
         has('void ContinueLoop(','if(x!=','smcs-continue-positive-tail','smcs-continue-positive-tail','ExpectedContinueLoop')
         has('void ContinueFloat(','if(x>','smcs-continue-positive-tail','smcs-continue-positive-tail','ExpectedContinueFloat')
         has('void ContinueForeach(','if(value','smcs-continue-positive-tail','smcs-continue-positive-tail','ExpectedContinueForeach')

@@ -2017,8 +2017,7 @@ break;
 			{
 				FormBase form = formMan_.GetForm(0);
 				int id = form.GetId();
-				if ((id != 9 || !IsMenu()) && (id != 2 || !IsMenu()))
-				{
+				if ((id == 9) && (IsMenu())) { } else if ((id == 2) && (IsMenu())) { } else {
 					num += (view_.GetGameWidth() - 240) / 2;
 					num2 += (view_.GetGameHeight() - 240) / 2;
 				}
@@ -3604,8 +3603,7 @@ apdat_.DrawNumImage(g, 35, udat_.GetRankIndex(teamData4.warPotential_) + 1, num2
 					GameView.AddTouch(g, 3, num2 + DLGSEL_TRECT[num23][0], num3 - 2 + DLGSEL_TRECT[num23][1], num22 + DLGSEL_TRECT[num23][2], 16 + DLGSEL_TRECT[num23][3], 0x20000 | num23);
 				}
 			}
-			else if (type_ != 36)
-			{
+			else if (type_ == 36) { } else {
 				_draw3(g);
 			}
 		}
