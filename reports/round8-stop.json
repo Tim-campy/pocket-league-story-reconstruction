@@ -1,0 +1,16 @@
+{
+  "reason": "três ciclos válidos consecutivos sem novo método em matched (5, 6 e 7)",
+  "new_reconstruction_work_stopped": true,
+  "cycles_completed": 7,
+  "blockers": "Nenhuma instalação, arquivo ou decisão do usuário é necessária. A rodada parou pela condição experimental de três ciclos sem ganho; hipóteses e fontes preparadas não foram compiladas depois da parada.",
+  "preparation_notes": [
+    "C3: o patch DrawPolygons havia sido exportado com LF para uma baseline CRLF. O rebase exato o recusou; a tentativa inicial foi preservada. O transporte corrigiu somente o patch, sem editar o fonte-base; o retry verificou o corpo completo de 1563 bytes.",
+    "C4/C5 iniciais foram experimentos INVÁLIDOS: nove triagens rotuladas como candidatos (sete das varreduras e duas sondas) compilavam o arquivo-base desatualizado. Não houve avanço, adoção, promoção ou perda. A função de escrita foi corrigida e testada em cinco compilações toy; os dois experimentos foram arquivados por ferramenta auditável e repetidos como ciclos válidos 4 e 5. Git e os hashes dos ledgers foram preservados; não houve edição manual de estados. O diário científico tem sete ciclos concluídos, além desses dois experimentos inválidos.",
+    "Foram removidos apenas 53 arquivos de cache de metadados regenerável (369180435 bytes lógicos), preservando os 16 mais recentes. Compressão NTFS sem perdas liberou espaço nos artefatos de build; não alterou bytes dos assemblies. Fontes, originais e provas congeladas foram preservados."
+  ],
+  "recommendations": [
+    "Testar os patches de lifetime/escopo Roslyn já preparados para StringUtil.GetCode e Graphics.DrawArc: dois alvos, 2514 bytes de IL, potencial máximo de dois métodos; ganho efetivo UNKNOWN. GetCode prevê 31 slots completos, DrawArc tem variante de 28 tipos ainda incompleta e pode ser compilada pelo protocolo vigente.",
+    "Testar a composição de acesso nulo com ternário negativo em StreamUtil.WriteArray: um alvo, 1686 bytes, potencial máximo de um método; os 14 bytes iniciais foram reproduzidos em fixture histórica, corpo completo do jogo UNKNOWN. A regra não está integrada e só um dos cinco membros do grupo é elegível.",
+    "Aplicar os três patches calculados de coalescência de coordenadas nos métodos Draw_coatEva, SetSavePos e Draw_moveArea: três alvos, 4316 bytes, potencial máximo de três métodos; previsões completas/exatas e fixtures aprovadas, ganhos do jogo UNKNOWN. Para SpForm.Update, o ponto de retomada medido é o operando do br em IL_04fe, primeira diferença no byte1279; sua assinatura de24 locais já está correta."
+  ]
+}

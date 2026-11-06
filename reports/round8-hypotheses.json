@@ -34,6 +34,41 @@
       "status": "INCONCLUSIVA",
       "hypothesis": "calculated-shared-payload-switch-guard: SpForm.Update compartilha quatro byte arrays no slot11, reserva Dialog13 comprovadamente sem uso, remove temporario de switch e restaura guarda positiva apenas depois de obter24slots.",
       "evidence": "cycle07: 0 matched, 0 IL bytes; Avanco parcial; nenhum novo matched; 1 tentativas da regra, 1 avancos"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Modelo Roslyn estreito para void try/finally pode preservar o local vivo no handler",
+      "evidence": "DrawPolygons tem 35 slots e corpo completo de1563 bytes aprovado em C3; baseline-modelo passou de2228 para2236 completos/exatos no mesmo corpus3131, sem retirar cobertura nem criar erro completo."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Candidatos incompletos precisam ser compilados a partir do arquivo alternativo atualizado",
+      "evidence": "Auditoria preservou nove triagens inválidas; fixture compartilhada de cinco compilações distinguiu baseline, candidato e reset. C4 válido ganhou três métodos/2360 IL após a correção, sem regressão."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A ordem textual de toda construção C# determina a ordem dos blocos no IL",
+      "evidence": "Roslyn1.1 EmitExpression.cs:2646-2647 emite Alternative primeiro;2689-2690 emite Consequence depois. Fonte pinned4cb203dab89e1542cdf7d88cb6d32767bc0e5460, SHA4beb87ae114cd851204eed776ed12f9cc8d533b86299d8683bf455c212876f09. Fixture negativa reproduziu14 bytes iniciais do StreamUtil, não o corpo do jogo."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Basta expandir null-conditional/coalesce para um ternário positivo para corrigir WriteArray",
+      "evidence": "C5 válido compilou uma variante por passagem com assinatura original, mas manteve a diferença no byte1. O emissor põe o braço alternativo primeiro; a composição negativa foi provada apenas em fixture e não testada no jogo."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A composição atual do seletor e guarda de Init2 preserva o prefixo necessário",
+      "evidence": "C6 confirmou os68 slots originais emitidos, porém o screen real reduziu o prefixo bruto43 para9; candidato recusado e nenhuma fonte adotada."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Convergência dos payloads permite corrigir a assinatura e avançar a guarda de SpForm.Update",
+      "evidence": "C7 confirmou24 locais e preservou todos os matched; composição mais duas regras herdadas avançaram o prefixo295→717→1244→1279. Corpo2052 continua divergente; não houve ganho de métodos/IL matched."
+    },
+    {
+      "status": "INCONCLUSIVA",
+      "hypothesis": "Novos bundles de coordenadas, lifetime Roslyn e polaridade nula fecham seus métodos do jogo",
+      "evidence": "Foram preparados e validados em fontes/fixtures antes da parada; não houve compilação dos candidatos do jogo dessas famílias. Não entram em matched."
     }
   ]
 }

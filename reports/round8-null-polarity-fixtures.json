@@ -1,0 +1,588 @@
+{
+  "operation": "Roslyn1.1-null-conditional-negative-ternary-fixtures",
+  "forms": {
+    "operation": "Roslyn1.1-null-conditional-ternary-orientation",
+    "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+    "toy_library_compilations": 1,
+    "toy_executable_compilations": 1,
+    "runtime_scenarios": 4,
+    "game_compilations": 0,
+    "game_expression_prefix_identical_bytes": 14,
+    "forms": [
+      {
+        "form": "Native",
+        "first_conditional": {
+          "offset": 1,
+          "opcode": "brtrue.s",
+          "operand": {
+            "branch": 6
+          }
+        },
+        "original_call_first_body_equal": false,
+        "native_default_first_body_equal": true,
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 6
+            }
+          },
+          {
+            "offset": 3,
+            "opcode": "ldc.i4.m1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 13
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 7,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 8,
+            "opcode": "call",
+            "operand": {
+              "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 13,
+            "opcode": "conv.i8",
+            "operand": null
+          },
+          {
+            "offset": 14,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "locals": []
+      },
+      {
+        "form": "Positive",
+        "first_conditional": {
+          "offset": 1,
+          "opcode": "brtrue.s",
+          "operand": {
+            "branch": 6
+          }
+        },
+        "original_call_first_body_equal": false,
+        "native_default_first_body_equal": false,
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 6
+            }
+          },
+          {
+            "offset": 3,
+            "opcode": "ldc.i4.m1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 13
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 7,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 8,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 13,
+            "opcode": "conv.i8",
+            "operand": null
+          },
+          {
+            "offset": 14,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "locals": []
+      },
+      {
+        "form": "Negative",
+        "first_conditional": {
+          "offset": 1,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 12
+          }
+        },
+        "original_call_first_body_equal": true,
+        "native_default_first_body_equal": false,
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "brfalse.s",
+            "operand": {
+              "branch": 12
+            }
+          },
+          {
+            "offset": 3,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 13
+            }
+          },
+          {
+            "offset": 12,
+            "opcode": "ldc.i4.m1",
+            "operand": null
+          },
+          {
+            "offset": 13,
+            "opcode": "conv.i8",
+            "operand": null
+          },
+          {
+            "offset": 14,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "locals": []
+      },
+      {
+        "form": "NotWrappedPositive",
+        "first_conditional": {
+          "offset": 1,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 12
+          }
+        },
+        "original_call_first_body_equal": true,
+        "native_default_first_body_equal": false,
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "brfalse.s",
+            "operand": {
+              "branch": 12
+            }
+          },
+          {
+            "offset": 3,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 13
+            }
+          },
+          {
+            "offset": 12,
+            "opcode": "ldc.i4.m1",
+            "operand": null
+          },
+          {
+            "offset": 13,
+            "opcode": "conv.i8",
+            "operand": null
+          },
+          {
+            "offset": 14,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "locals": []
+      },
+      {
+        "form": "NotWrappedNegative",
+        "first_conditional": {
+          "offset": 1,
+          "opcode": "brtrue.s",
+          "operand": {
+            "branch": 6
+          }
+        },
+        "original_call_first_body_equal": false,
+        "native_default_first_body_equal": false,
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 6
+            }
+          },
+          {
+            "offset": 3,
+            "opcode": "ldc.i4.m1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 13
+            }
+          },
+          {
+            "offset": 6,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 7,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 8,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 13,
+            "opcode": "conv.i8",
+            "operand": null
+          },
+          {
+            "offset": 14,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "locals": []
+      },
+      {
+        "form": "IfPositive",
+        "first_conditional": {
+          "offset": 1,
+          "opcode": "brfalse.s",
+          "operand": {
+            "branch": 13
+          }
+        },
+        "original_call_first_body_equal": false,
+        "native_default_first_body_equal": false,
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "brfalse.s",
+            "operand": {
+              "branch": 13
+            }
+          },
+          {
+            "offset": 3,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 10,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 11,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 15
+            }
+          },
+          {
+            "offset": 13,
+            "opcode": "ldc.i4.m1",
+            "operand": null
+          },
+          {
+            "offset": 14,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 15,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 16,
+            "opcode": "conv.i8",
+            "operand": null
+          },
+          {
+            "offset": 17,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "locals": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ]
+      },
+      {
+        "form": "IfNegative",
+        "first_conditional": {
+          "offset": 1,
+          "opcode": "brtrue.s",
+          "operand": {
+            "branch": 7
+          }
+        },
+        "original_call_first_body_equal": false,
+        "native_default_first_body_equal": false,
+        "instructions": [
+          {
+            "offset": 0,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 1,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 7
+            }
+          },
+          {
+            "offset": 3,
+            "opcode": "ldc.i4.m1",
+            "operand": null
+          },
+          {
+            "offset": 4,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 5,
+            "opcode": "br.s",
+            "operand": {
+              "branch": 15
+            }
+          },
+          {
+            "offset": 7,
+            "opcode": "ldarg.1",
+            "operand": null
+          },
+          {
+            "offset": 8,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 9,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 14,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 15,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 16,
+            "opcode": "conv.i8",
+            "operand": null
+          },
+          {
+            "offset": 17,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "locals": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+        ]
+      }
+    ],
+    "runtime_results": [
+      "-1",
+      "0",
+      "3",
+      "2"
+    ],
+    "conclusion": "negative-equality ternary puts member call first; positive inequality ternary puts fallback first",
+    "native_vs_positive_difference": [
+      {
+        "original": {
+          "offset": 8,
+          "opcode": "call",
+          "operand": {
+            "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        },
+        "explicit": {
+          "offset": 8,
+          "opcode": "callvirt",
+          "operand": {
+            "method": "class System.Array @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::GetLength``0(valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+          }
+        }
+      }
+    ],
+    "earlier_assertion_failure": "Initial expectation that Native and Positive whole bodies match was refuted: Native uses call, Positive callvirt. Branch orientation remains the same, and the full difference is preserved.",
+    "fixture_source_sha256": "b60c790ac1fa5bd88ffd0cf29074ae7f4c7aa466339bef2f0956b44e641e71ce"
+  },
+  "rule": {
+    "operation": "null-conditional-negative-ternary-composition",
+    "syntax_controls": 12,
+    "checks": [
+      "Array:positive",
+      "Member:positive",
+      "Index:positive",
+      "NullableMember:reject",
+      "ReferenceMember:reject",
+      "Unstable:reject",
+      "Volatile:reject",
+      "NonconstantFallback:reject",
+      "no-opt-in:reject",
+      "no-IL-evidence:reject",
+      "smcs:reject",
+      "learned-family:positive"
+    ],
+    "toy_library_compilations": 4,
+    "toy_executable_compilations": 4,
+    "runtime_runs": 4,
+    "game_compilations": 0,
+    "proofs": [
+      {
+        "method": "Array",
+        "body_equal": true,
+        "il_size": 15,
+        "runtime_equal": true,
+        "runtime_scenarios": 4
+      },
+      {
+        "method": "Member",
+        "body_equal": true,
+        "il_size": 12,
+        "runtime_equal": true,
+        "runtime_scenarios": 4
+      },
+      {
+        "method": "Index",
+        "body_equal": true,
+        "il_size": 13,
+        "runtime_equal": true,
+        "runtime_scenarios": 4
+      }
+    ],
+    "object_equality_overload_calls": 0,
+    "rule_sha256": "86f2b9d8127a02c8979936ed94792d4201c56ad21a239c514ab9386562cd5888"
+  },
+  "game_compilations": 0,
+  "driver_sha256": "6550248ecb6c04595d0ea3d0c82f96c23e0e2b23828ee31f3c624142a9bedc39",
+  "rule_sha256": "86f2b9d8127a02c8979936ed94792d4201c56ad21a239c514ab9386562cd5888",
+  "hint_sha256": "1336c96608f152ab0be1b7ee57e59f316d9fd982eed74eec26ed6835aa1e8da7"
+}

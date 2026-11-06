@@ -154,12 +154,13 @@ def load_context():
         raise ValueError('Final ledger is outside the journal')
     models={}
     for assembly,model in cfg['models'].items():
-        proof=read(model['validation']);models[assembly]=proof
+        measurement=cfg.get('final_model_measurements',{}).get(assembly,model)
+        proof=read(measurement['validation']);models[assembly]=proof
         check_hash(model['source'],proof['source_sha256'],'Stale model source proof')
         check_hash(model['client'],proof['client_sha256'],'Stale model client proof')
-        check_hash(Path(model['corpus_baseline'])/'verification.json',proof['baseline_receipt_sha256'],'Stale model corpus receipt')
+        check_hash(Path(measurement['corpus_baseline'])/'verification.json',proof['baseline_receipt_sha256'],'Stale model corpus receipt')
         if proof['matched_model_complete']!=proof['matched_complete_exact'] or proof.get('matched_complete_mismatches',0):raise ValueError('Model has incorrect complete predictions')
-        corpus=read(Path(model['corpus_baseline'])/'verification.json')
+        corpus=read(Path(measurement['corpus_baseline'])/'verification.json')
         if proof['matched_bodies']!=sum(v['state']=='matched' and v.get('body_present',False) for v in corpus['methods'].values()):
             raise ValueError('Model validation does not cover the declared matched corpus')
     engines=[]
@@ -294,6 +295,11 @@ def render(ctx,short=False):
     preparation=stop.get('preparation_notes',[])
     if isinstance(preparation,str):preparation=[preparation]
     for note in preparation:add(str(note))
+    if exists('reports/round8-prepared-only.json'):
+        prepared=read('reports/round8-prepared-only.json')['rows']
+        add('Frentes preparadas antes da parada, sem teste dos respectivos candidatos no jogo; ganhos e perdas adotados: zero.',
+            table(['Frente','Preparado / prova','Compilações de candidatos do jogo','Métodos ganhos / perdidos'],[
+                (r['front'],str(r.get('target_methods',r.get('eligible_methods','UNKNOWN')))+' alvos; '+str(r.get('original_il_bytes',r.get('eligible_il_bytes','UNKNOWN')))+' bytes; '+str(r['fixture_complete_equal'])+' corpos de fixture exatos',r['game_candidate_compilations'],'0 / 0') for r in prepared]))
     if not short:
         rule_rows=[];negative_rows=[]
         for name,engine in ctx['engines']:
@@ -343,7 +349,7 @@ def render(ctx,short=False):
             for reason,count in d['matched_incomplete_classifications'].items():groups[reason.split(':',1)[0]]+=count
             reasons.extend((assembly,reason,count) for reason,count in groups.most_common())
         add('Limitações dos modelos; motivos não exclusivos, sem crédito por previsões vazias:',table(['Assembly','Motivo agrupado','Ocorrências'],reasons))
-        add(table(['Modelo em uso','Fonte','Client','Solver','Validação','Corpus'],[(a,ctx['cfg']['models'][a]['source'],ctx['cfg']['models'][a]['client'],ctx['cfg']['models'][a]['solver'],ctx['cfg']['models'][a]['validation'],ctx['cfg']['models'][a]['corpus_baseline']) for a in ASSEMBLIES]))
+        add(table(['Modelo em uso','Fonte','Client','Solver','Validação final','Corpus final'],[(a,ctx['cfg']['models'][a]['source'],ctx['cfg']['models'][a]['client'],ctx['cfg']['models'][a]['solver'],ctx['cfg'].get('final_model_measurements',{}).get(a,ctx['cfg']['models'][a])['validation'],ctx['cfg'].get('final_model_measurements',{}).get(a,ctx['cfg']['models'][a])['corpus_baseline']) for a in ASSEMBLIES]))
     section(4)
     distribution=[(a,size,row['methods'],row['original_il_bytes']) for a in ASSEMBLIES for size,row in final[a]['size_distribution'].items()]
     add(table(['Assembly','Faixa de IL original','Corpos pendentes','Bytes de IL'],distribution))
