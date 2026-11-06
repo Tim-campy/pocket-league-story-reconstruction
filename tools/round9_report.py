@@ -179,7 +179,8 @@ def load_context():
     for cycle in cycles:
         if cycle['label'] not in adoptions:raise ValueError('Journal cycle lacks official adoption proof: '+cycle['label'])
     historical=[]
-    for path in sorted((ROOT/'reports').glob('round7-*-engine.json')):
+    historical_paths=sorted((ROOT/'reports').glob('round7-*-engine.json'))+sorted((ROOT/'reports').glob('round8-*-engine.json'))
+    for path in historical_paths:
         document=read(path)
         if document.get('completed'):historical.append((path.name,document))
     return dict(cfg=cfg,stop=stop,baseline=baseline,final=final,journal=journal,models=models,engines=engines,
@@ -227,9 +228,9 @@ def attempts_text(summary,short=False):
     text+='.'
     if not summary['attempts']:
         if summary['history']:
-            text+=' Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): '+compact_counter(summary['history'])+'.'
+            text+=' Histórico 7/8 compatível (mesmo original e hash do arquivo fonte atual): '+compact_counter(summary['history'])+'.'
             if not short:text+=' Recibos: '+', '.join(summary['history_runs'])+'.'
-        else:text+=' Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte.'
+        else:text+=' Histórico 7/8 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte.'
     if summary['rejections'] or summary['budget_skipped'] or summary['legacy_removed']:
         text+=' Antes de compilar: '+compact_counter(summary['rejections'])+f"; orçamento recusou {summary['budget_skipped']}; repertório anterior filtrou {summary['legacy_removed']}."
     if not short:text+=' Paradas: '+compact_counter(summary['stops'])+'.'
@@ -289,13 +290,25 @@ def render(ctx,short=False):
     add('Motivo da parada: '+stop['reason']+'.')
     if not short:add(table(['Original','SHA-256'],[('APK',inline(ctx['apk_hash'])),*[(a+'.dll',inline(ctx['targets'][a+'.dll'])) for a in ASSEMBLIES]]))
     section(2)
+    part_a=read('reports/round9-part-a-results.json')
+    add('**Parte A — fila preparada concluída.** '+str(part_a['methods_newly_matched'])+' métodos e '+str(part_a['il_bytes_newly_matched'])+' bytes de IL ganhos; '+str(part_a['regressions'])+' perdas. O resultado de cada alvo:',
+        table(['Alvo preparado','Estado final da Parte A','Prefixo IL antes → depois','Regras efetivamente aceitas'],[
+            (inline(r['method_id']),r['official_state'],str(r['initial_prefix'])+' → '+str(r['final_prefix']),', '.join(r['accepted_rules']) or 'nenhuma') for r in part_a['rows']]))
+    if exists('reports/round9-part-b-results.json'):
+        part_b=read('reports/round9-part-b-results.json')
+        add('**Parte B — testes isolados.** Cada sonda usou uma família e uma ocorrência; recusa por assinatura prevista não refuta a hipótese de controle.',
+            table(['Alvo','Resultado','Variantes compiladas','Prefixo antes → depois'],[
+                (inline(r['id']),r['status'],r['candidate_variants_compiled'],str(r['initial_prefix'])+' → '+str(r['final_prefix'])) for r in part_b['rows']]))
+    if exists('reports/round9-control-results.json'):
+        control=read('reports/round9-control-results.json')
+        add('**Parte C — extração e aplicação do esqueleto smcs.** '+control['summary'])
     add('Ganhos oficiais vêm do diário após adoção e verificação completa, incluindo auxiliares liberados pelo verificador. Sondas e avanços parciais são registrados separadamente; não se somam aos ganhos oficiais. Transformações herdadas da rodada 7 só aparecem abaixo quando foram efetivamente tentadas nesta rodada.')
     if short:
         add(table(['Ciclo','Assembly / regra','Matched ganhos','Bytes ganhos'],[
-            (c['cycle'],c['assembly']+' / '+c['rule'],c['methods_gained'],c['il_bytes_gained']) for c in cycles]))
+            (c['label'],c['assembly']+' / '+c['rule'],c['methods_gained'],c['il_bytes_gained']) for c in cycles]))
     else:
         add(table(['Ciclo','Compilador / par','Hipótese','Resultado','Matched ganhos','Bytes ganhos'],[
-            (c['cycle'],c['assembly']+' / '+c['pair'],c['hypothesis'],c['result'],c['methods_gained'],c['il_bytes_gained']) for c in cycles]))
+            (c['label'],c['assembly']+' / '+c['pair'],c['hypothesis'],c['result'],c['methods_gained'],c['il_bytes_gained']) for c in cycles]))
     preparation=stop.get('preparation_notes',[])
     if isinstance(preparation,str):preparation=[preparation]
     for note in preparation:add(str(note))
@@ -401,7 +414,7 @@ def render(ctx,short=False):
     blockers=stop.get('blockers','Dependências de instalação/arquivo/decisão do usuário: UNKNOWN (não registradas no recibo de parada).')
     if isinstance(blockers,list):blockers='; '.join(map(str,blockers)) or 'Nenhum bloqueio de instalação, arquivo ou decisão do usuário registrado.'
     add(blockers,
-        'Parada após '+str(len(cycles))+' ciclos; sequência final sem novo matched: '+str(ctx['journal'].get('consecutive_zero_cycles','UNKNOWN'))+'. Limites configurados: '+str(ctx['cfg']['maximum_cycles'])+' ciclos, '+str(ctx['cfg']['consecutive_zero_stop'])+' sem ganho consecutivos; cota Kairo: '+ctx['cfg']['kairo_cycle_quota']+'.')
+        'Parada após '+str(sum(c.get('phase')=='D' for c in cycles))+' ciclos autônomos D e '+str(sum(c.get('phase')!='D' for c in cycles))+' etapas A-C; sequência autônoma final sem novo matched: '+str(ctx['journal'].get('consecutive_zero_cycles','UNKNOWN'))+'. Limites configurados: '+str(ctx['cfg']['maximum_cycles'])+' ciclos autônomos, '+str(ctx['cfg']['consecutive_zero_stop'])+' sem ganho consecutivos com fila vazia; cota Kairo: '+ctx['cfg']['kairo_cycle_quota']+'.')
     if ctx['unfinished']:add('Recibos de execução incompletos preservados, excluídos das somas de execuções concluídas: '+', '.join(ctx['unfinished'])+'. Motivo detalhado: UNKNOWN se não houver nota de recuperação correspondente.')
     section(8)
     recommendations=stop.get('recommendations',[])

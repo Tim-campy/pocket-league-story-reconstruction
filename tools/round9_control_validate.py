@@ -29,7 +29,7 @@ def summarize(rows):
     for key in ('source_mapped', 'il_plan_complete', 'source_plan_complete',
                 'paired_plan_complete', 'plans_equal', 'il_tree_complete',
                 'source_tree_complete', 'paired_tree_complete', 'trees_equal',
-                'exact_instruction_coverage'):
+                'tree_comparison_available', 'exact_instruction_coverage'):
         stats[key] = sum(bool(row.get(key)) for row in rows)
     for side in ('il', 'source'):
         reasons = Counter()
@@ -55,8 +55,9 @@ def main():
     sys.path[:0] = [str(il_dir), str(ast_dir)]
     cil = importlib.import_module('smcs_control_il')
     ast = importlib.import_module('control_ast')
-    inputs = [p for folder in (il_dir, ast_dir) for p in folder.glob('*')
-              if p.suffix in ('.cs', '.py', '.json')]
+    inputs = [il_dir / name for name in ('smcs_control_il.py', 'cfg_core.py', 'opcodes.json')]
+    inputs += [ast_dir / name for name in ('control_ast.py', 'Round9ControlAst.cs')]
+    inputs += [Path(__file__)]
     input_hashes = {str(p.relative_to(ROOT)): sha(p) for p in inputs}
     folder = ROOT / 'build/round9/control-validation' / args.label
     folder.mkdir(parents=True, exist_ok=True)
@@ -113,7 +114,13 @@ def main():
             if not hasattr(cil, 'canonical_tree'):
                 row['tree_comparison'] = 'UNKNOWN: shared structured-tree signature unavailable'
             else:
-                row['trees_equal'] = cil.canonical_tree(left) == cil.canonical_tree(right)
+                lt, rt = cil.canonical_tree(left), cil.canonical_tree(right)
+                row['tree_comparison_available'] = lt is not None and rt is not None
+                row['trees_equal'] = row['tree_comparison_available'] and lt == rt
+                if not row['tree_comparison_available']:
+                    row['tree_comparison'] = 'UNKNOWN: complete-tree claim has unsupported canonical projection'
+                elif lt != rt:
+                    row['tree_comparison'] = 'different'
         rows.append(row)
         details[key] = {'original_il_ir': left, 'source_ast_ir': right}
     details_path = folder / 'method-irs.json'
