@@ -1253,13 +1253,13 @@ if (recoveredCondition_26283)
 		internal void DrawBattery(Graphics g, float x, float y)
 		{
 			int num = 13;
-			if (app_.IsBatteryCharging())
-			{
+			if (app_.IsBatteryCharging()) {
 				DrawImage(g, x, y, 50);
-				return;
-			}
+
+} else {
 			int num2 = app_.GetBattery() * num / 100;
 			DrawImage(g, x, y, 36 + num2);
+}
 		}
 
 		private void DrawImage(Graphics g, float x, float y, int imgId)

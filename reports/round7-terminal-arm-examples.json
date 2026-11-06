@@ -1,0 +1,151 @@
+{
+  "operation": "source-only-terminal-actions-real-examples",
+  "candidate_game_compilations": 0,
+  "rule": "smcs-terminal-actions-common-exit",
+  "rule_source_sha256": "36e632883c5a3727ddf0bc41dc25dc04f051eca0ea5053834073058d072fd501",
+  "cycle08_br_to_ret_methods": 14,
+  "cycle08_br_to_ret_il_bytes": 37050,
+  "cycle09_br_to_ret_methods": 15,
+  "cycle09_br_to_ret_il_bytes": 49112,
+  "source_examples": "Current Main snapshots; historical IL offsets are explicitly labeled",
+  "methods": [
+    {
+      "method_id": "form.SoccerForm::Draw_newPlayerLv(kairo.unity.ui.Graphics)->System.Void",
+      "source": "src/Assembly-CSharp/form/SoccerForm.cs",
+      "source_snapshot": "src\\Assembly-CSharp\\form\\SoccerForm.cs",
+      "source_sha256": "d85c022030a86e4eb23d7e0520729072b33345b229dd5bf79b11807560e87963",
+      "source_line": 2999,
+      "hypothesis_count": 1,
+      "patch_checks": [
+        {
+          "rule": "smcs-terminal-actions-common-exit",
+          "complete": true,
+          "predicted_count": 13,
+          "original_signature_equal": true,
+          "unsupported_reasons": [],
+          "before": "if (stateCnt_ < PBONUS_NP_LV_TIME[3])\n\t\t\t{\n\t\t\t\tGameView.AddTouch(2);\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tint num8 = 50;\n\t\t\tfor (int j = 0; j < 2; j++)\n\t\t\t{\n\t\t\t\tnum2 = 80 - num8 / 2 + 80 * j;\n\t\t\t\tGameView.AddTouch(g, 3, num2 + SubForm.DLGSEL_TRECT[j][0], num + SubForm.DLGSEL_TRECT[j][1], num8 + SubForm.DLGSEL_TRECT[j][2], 16 + SubForm.DLGSEL_TRECT[j][3], 0x20000 | j);\n\t\t\t}\n\t\t\tGameView.AddTouch(2, TouchOption.Create(2));",
+          "after": "if (stateCnt_ < PBONUS_NP_LV_TIME[3]) {\n\t\t\t\tGameView.AddTouch(2);\n\t\t\t\t\r\n} else {\n\t\t\tint num8 = 50;\n\t\t\tfor (int j = 0; j < 2; j++)\n\t\t\t{\n\t\t\t\tnum2 = 80 - num8 / 2 + 80 * j;\n\t\t\t\tGameView.AddTouch(g, 3, num2 + SubForm.DLGSEL_TRECT[j][0], num + SubForm.DLGSEL_TRECT[j][1], num8 + SubForm.DLGSEL_TRECT[j][2], 16 + SubForm.DLGSEL_TRECT[j][3], 0x20000 | j);\n\t\t\t}\n\t\t\tGameView.AddTouch(2, TouchOption.Create(2));\r\n}"
+        }
+      ],
+      "terminal_parent_path": [
+        "Block@80539:method-body"
+      ],
+      "terminal_path_contains_no_loop_or_EH": true,
+      "original_branch_chain": [
+        {
+          "offset": 1914,
+          "opcode": "br",
+          "operand": {
+            "branch": 2038
+          }
+        },
+        {
+          "offset": 2038,
+          "opcode": "ret",
+          "operand": null
+        }
+      ],
+      "original_offset_cycle08": 1914,
+      "original_pair_cycle08": "{\"opcode\":\"br\",\"operand\":{\"branch\":2038}} => {\"opcode\":\"ret\",\"operand\":null}"
+    },
+    {
+      "method_id": "game.DelayEvent::Serialize(java.io.OutputStream)->System.Void",
+      "source": "src/Assembly-CSharp/game/DelayEvent.cs",
+      "source_snapshot": "src\\Assembly-CSharp\\game\\DelayEvent.cs",
+      "source_sha256": "b3c419ff5a0d48dff1d6419bcfef0633b73bd0d761a42bad4d7db8c58082e365",
+      "source_line": 57,
+      "hypothesis_count": 1,
+      "patch_checks": [
+        {
+          "rule": "smcs-terminal-actions-common-exit",
+          "complete": true,
+          "predicted_count": 1,
+          "original_signature_equal": true,
+          "unsupported_reasons": [],
+          "before": "if (argi_ == null)\r\n\t\t\t{\r\n\t\t\t\tStreamUtil.WriteInt(os, 0);\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tStreamUtil.WriteInt(os, argi_.Length);\r\n\t\t\tfor (int i = 0; i < argi_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tStreamUtil.WriteInt(os, argi_[i]);\r\n\t\t\t}",
+          "after": "if (argi_ == null) {\r\n\t\t\t\tStreamUtil.WriteInt(os, 0);\r\n\t\t\t\t\r\n} else {\r\n\t\t\tStreamUtil.WriteInt(os, argi_.Length);\r\n\t\t\tfor (int i = 0; i < argi_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tStreamUtil.WriteInt(os, argi_[i]);\r\n\t\t\t}\r\n}"
+        }
+      ],
+      "terminal_parent_path": [
+        "Block@859:method-body"
+      ],
+      "terminal_path_contains_no_loop_or_EH": true,
+      "original_branch_chain": [
+        {
+          "offset": 111,
+          "opcode": "br",
+          "operand": {
+            "branch": 169
+          }
+        },
+        {
+          "offset": 169,
+          "opcode": "ret",
+          "operand": null
+        }
+      ],
+      "original_offset_cycle08": 111,
+      "original_pair_cycle08": "{\"opcode\":\"br\",\"operand\":{\"branch\":169}} => {\"opcode\":\"ret\",\"operand\":null}"
+    },
+    {
+      "method_id": "form.SubForm::_draw5(kairo.unity.ui.Graphics)->System.Void",
+      "source": "src/Assembly-CSharp/form/SubForm.cs",
+      "source_snapshot": "src\\Assembly-CSharp\\form\\SubForm.cs",
+      "source_sha256": "ec485f954c929882ebf48d149c484cf8df9c51d52ef0a80ad9b71222f18ff31e",
+      "source_line": 6291,
+      "hypothesis_count": 1,
+      "patch_checks": [
+        {
+          "rule": "smcs-terminal-actions-common-exit",
+          "complete": true,
+          "predicted_count": 79,
+          "original_signature_equal": true,
+          "unsupported_reasons": [],
+          "before": "if (udArrowCnt == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tGameView.AddTouch(g, 2, coalescedValue - 25 - 5, num - 50, 70, 30, 1376456, TouchOption.Create(2));\r\n\t\t\t\t\tGameView.AddTouch(g, 2, coalescedValue - 25 - 5, num + 114, 70, 30, 1376456, TouchOption.Create(2));\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tTouchOption touchOption = TouchOption.Create(2);\r\n\t\t\t\tTouchOption touchOption2 = TouchOption.Create(2);\r\n\t\t\t\tGameView.AddTouch(g, 24, coalescedValue, num - 13, apdat_.resCom2_.seb[24], 0, 17, touchOption.Margin(40, 40, 45, 0));\r\n\t\t\t\tGameView.AddTouch(g, 24, coalescedValue, num + 78 + 13, apdat_.resCom2_.seb[24], 1, 19, touchOption2.Margin(40, 40, -15, 60));",
+          "after": "if (udArrowCnt == 0) {\r\n\t\t\t\t\tGameView.AddTouch(g, 2, coalescedValue - 25 - 5, num - 50, 70, 30, 1376456, TouchOption.Create(2));\r\n\t\t\t\t\tGameView.AddTouch(g, 2, coalescedValue - 25 - 5, num + 114, 70, 30, 1376456, TouchOption.Create(2));\r\n\t\t\t\t\t\r\n} else {\r\n\t\t\t\tTouchOption touchOption = TouchOption.Create(2);\r\n\t\t\t\tTouchOption touchOption2 = TouchOption.Create(2);\r\n\t\t\t\tGameView.AddTouch(g, 24, coalescedValue, num - 13, apdat_.resCom2_.seb[24], 0, 17, touchOption.Margin(40, 40, 45, 0));\r\n\t\t\t\tGameView.AddTouch(g, 24, coalescedValue, num + 78 + 13, apdat_.resCom2_.seb[24], 1, 19, touchOption2.Margin(40, 40, -15, 60));\r\n}"
+        }
+      ],
+      "terminal_parent_path": [
+        "Block@194610",
+        "IfStatement@194574",
+        "ElseClause@194569",
+        "IfStatement@188217",
+        "ElseClause@188212",
+        "IfStatement@185438",
+        "ElseClause@185433",
+        "IfStatement@184878",
+        "ElseClause@184873",
+        "IfStatement@183725",
+        "ElseClause@183720",
+        "IfStatement@180017",
+        "ElseClause@180012",
+        "IfStatement@175309",
+        "Block@175183:method-body"
+      ],
+      "terminal_path_contains_no_loop_or_EH": true,
+      "original_branch_chain": [
+        {
+          "offset": 9734,
+          "opcode": "br",
+          "operand": {
+            "branch": 9859
+          }
+        },
+        {
+          "offset": 9859,
+          "opcode": "br",
+          "operand": {
+            "branch": 12061
+          }
+        },
+        {
+          "offset": 12061,
+          "opcode": "ret",
+          "operand": null
+        }
+      ],
+      "original_offset_cycle08": 1391,
+      "original_pair_cycle08": "{\"opcode\":\"ldstr\",\"operand\":\"\\t\"} => {\"opcode\":\"ldstr\",\"operand\":\"\\t \"}"
+    }
+  ]
+}

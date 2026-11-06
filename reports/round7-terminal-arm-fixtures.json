@@ -1,0 +1,118 @@
+{
+  "operation": "isolated-opt-in-terminal-actions-fixtures",
+  "candidate_game_compilations": 0,
+  "fixture_assembly_compilations": 1,
+  "rule": "smcs-terminal-actions-common-exit",
+  "rule_source_sha256": "36e632883c5a3727ddf0bc41dc25dc04f051eca0ea5053834073058d072fd501",
+  "isolated_helper_identity": "e69945414a1949c3181513a5e5682f2c7bd53221f803c6c29af7702b1bb2755f",
+  "source_hashes": {
+    "tools\\Round7TransformSyntax.cs": "eae04517ad70a421e7d3bcc3192788c9a6fc95b15fd6edf01d434a79beae07d3",
+    "tools\\Round7NewRules.cs": "9afa0452b5188cf0d29f6adc2dd911b40eb73316db5cc9e42a1953283871b9cd",
+    "tools\\Round7AliasRules.cs": "e48be73c2aeda959f54b1cb2875782ceaa26dd0ef7178985ecd9f7a5617d9653",
+    "tools\\Round7SmcsRules.cs": "14148bb0f00a76176d3ed2b3f9458fa510a904ac84d4928b74991a83448961c8",
+    "tools\\Round7RoslynRules.cs": "a8cf41f7823ce44723002e655fa499b16cd0284ae08783ce5f75b0444d0b4775",
+    "tools\\Round7RoslynCycleRules.cs": "fa8f6622a4d6a45f19a889ee48f490906750ce7d8e28962063b82b72a874cfbb",
+    "tools\\Round7SmcsExitRules.cs": "f0aef871c21b078d5e19206776ebde2b4eb593d6f06edec3e0c3e5d04c47f642",
+    "tools\\Round7SmcsGuardRules.cs": "22569da9cb233eab4b25477f77eef7b3e74a8cc0ac3204f3c66704e0178fc863",
+    "tools\\Round7StringConcatRules.cs": "6d07715abc01006c6103e58777ae507fb4d37629f956171ff7c7198f3f0581a4",
+    "tools\\Round7LoopConditionRules.cs": "4879bd96a61974ee0201a92ad2f31671e3280bf561638b6be938e0a25d24950a",
+    "tools\\Round7SmcsSwitchRules.cs": "88fedef3e86ff97236a08e96b592b53a0ae90d641af4668cff32f4ad4bc59299",
+    "tools\\Round7RoslynDeclarationRules.cs": "1f3d23110a8402eae76ad53d8248ca30067214dc4d8115a4d5dbaf5eef8152ce",
+    "tools\\round7_smcs_cycle_rules.cs": "a186781d928eba91c0da0d9ceb8733bf7d5cd94d0feb64cc26e06ec06817b7b4",
+    "tools\\Round7TerminalArmRules.cs": "36e632883c5a3727ddf0bc41dc25dc04f051eca0ea5053834073058d072fd501"
+  },
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "checks": [
+    {
+      "case": "Recovered",
+      "status": "PASS",
+      "proposals": 1
+    },
+    {
+      "case": "RecoveredNested",
+      "status": "PASS",
+      "proposals": 1
+    },
+    {
+      "case": "RecoveredTailLoop",
+      "status": "PASS",
+      "proposals": 1
+    },
+    {
+      "case": "RecoveredThenLocal",
+      "status": "PASS",
+      "proposals": 1
+    },
+    {
+      "case": "reject-NoActions",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-Nonterminal",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-LoopAncestor",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-Protected",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-TailEH",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-NestedReturn",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-Captured",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-LambdaBody",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-ValueReturn",
+      "status": "PASS"
+    },
+    {
+      "case": "reject-ExistingElse",
+      "status": "PASS"
+    },
+    {
+      "case": "opt-in-{'round7_cycle_rule': ''}",
+      "status": "PASS"
+    },
+    {
+      "case": "opt-in-{'compiler': 'roslyn'}",
+      "status": "PASS"
+    },
+    {
+      "case": "Original=Recovered",
+      "status": "PASS",
+      "complete_body_equal": true
+    },
+    {
+      "case": "OriginalNested=RecoveredNested",
+      "status": "PASS",
+      "complete_body_equal": true
+    },
+    {
+      "case": "OriginalTailLoop=RecoveredTailLoop",
+      "status": "PASS",
+      "complete_body_equal": true
+    },
+    {
+      "case": "OriginalThenLocal=RecoveredThenLocal",
+      "status": "PASS",
+      "complete_body_equal": true
+    }
+  ],
+  "passed": 20,
+  "failed": 0,
+  "fixture_identity_note": "Examples have different method names; equality compares complete canonical body cells, local signature and EH, without changing any game state."
+}

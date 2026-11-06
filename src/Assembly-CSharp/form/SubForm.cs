@@ -4156,16 +4156,16 @@ coalescedSwitchExit125387: ;
 				}
 				coalescedValue = 120;
 				num = 70;
-				if (udArrowCnt == 0)
-				{
+				if (udArrowCnt == 0) {
 					GameView.AddTouch(g, 2, coalescedValue - 25 - 5, num - 50, 70, 30, 1376456, TouchOption.Create(2));
 					GameView.AddTouch(g, 2, coalescedValue - 25 - 5, num + 97, 70, 30, 1376456, TouchOption.Create(2));
-					return;
-				}
+
+} else {
 				TouchOption touchOption = TouchOption.Create(2);
 				TouchOption touchOption2 = TouchOption.Create(2);
 				GameView.AddTouch(g, 24, coalescedValue, num - 13, apdat_.resCom2_.seb[24], 0, 17, touchOption.Margin(40, 40, 45, 0));
 				GameView.AddTouch(g, 24, coalescedValue, num + 61 + 13, apdat_.resCom2_.seb[24], 1, 19, touchOption2.Margin(40, 40, -15, 60));
+}
 			}
 			else if (type_ == 40)
 			{
@@ -4344,8 +4344,7 @@ coalescedSwitchExit131982: ;
 						int[] array2 = GetMeterParam(num60);
 						num58 = num60 * 6;
 						num59 = frame_ - FA2_ANIME_TIME[4] - num58;
-						if (num59 >= 0)
-						{
+						if (num59 < 0) { } else {
 							num59 = AppData.ClampMax(num59, 12);
 							SetWinCharaJamp(num59, 0, -6, 12);
 							int cnt = array2[9];
@@ -4509,16 +4508,16 @@ coalescedSwitchExit131982: ;
 				}
 				coalescedValue = 120;
 				num = 80;
-				if (udArrowCnt == 0)
-				{
+				if (udArrowCnt == 0) {
 					GameView.AddTouch(g, 2, coalescedValue - 25 - 5, num - 51, 70, 30, 1376456, TouchOption.Create(2));
 					GameView.AddTouch(g, 2, coalescedValue - 25 - 5, num + 113, 70, 30, 1376456, TouchOption.Create(2));
-					return;
-				}
+
+} else {
 				TouchOption touchOption3 = TouchOption.Create(2);
 				TouchOption touchOption4 = TouchOption.Create(2);
 				GameView.AddTouch(g, 24, coalescedValue, num - 13 - 1, apdat_.resCom2_.seb[24], 0, 17, touchOption3.Margin(40, 40, 45, 0));
 				GameView.AddTouch(g, 24, coalescedValue, num + 77 + 13, apdat_.resCom2_.seb[24], 1, 19, touchOption4.Margin(40, 40, -15, 60));
+}
 			}
 			else if (type_ == 43)
 			{
@@ -4563,7 +4562,7 @@ coalescedSwitchExit131982: ;
 				g.SetColor(SC_WINDOW_BLACK);
 				string[] array3 = new string[3] { "簡単", "普通", "難しい" };
 				string empty = string.Empty;
-				empty = ((sponsorData3.difficult_ < 50) ? array3[0] : ((sponsorData3.difficult_ >= 100) ? array3[2] : array3[1]));
+				if ((sponsorData3.difficult_ < 50)) { empty = array3[0]; } else { if ((sponsorData3.difficult_ < 100)) { empty = (array3[1]); } else { empty = (array3[2]); } }
 				string arg = MyFormBase.LT(empty);
 				g.DrawString2(MyFormBase.LT("<co=4B8FFF>難度</co>  <0>", arg), 170f, 177f, 2);
 				int num63 = 3;
@@ -6288,16 +6287,16 @@ coalescedSwitchExit190333: ;
 				}
 				coalescedValue = 120;
 				num = 70;
-				if (udArrowCnt == 0)
-				{
+				if (udArrowCnt == 0) {
 					GameView.AddTouch(g, 2, coalescedValue - 25 - 5, num - 50, 70, 30, 1376456, TouchOption.Create(2));
 					GameView.AddTouch(g, 2, coalescedValue - 25 - 5, num + 114, 70, 30, 1376456, TouchOption.Create(2));
-					return;
-				}
+
+} else {
 				TouchOption touchOption = TouchOption.Create(2);
 				TouchOption touchOption2 = TouchOption.Create(2);
 				GameView.AddTouch(g, 24, coalescedValue, num - 13, apdat_.resCom2_.seb[24], 0, 17, touchOption.Margin(40, 40, 45, 0));
 				GameView.AddTouch(g, 24, coalescedValue, num + 78 + 13, apdat_.resCom2_.seb[24], 1, 19, touchOption2.Margin(40, 40, -15, 60));
+}
 			}
 			else if (type_ == 62 || type_ == 63)
 			{
@@ -6344,7 +6343,7 @@ coalescedSwitchExit190333: ;
 						num2 = coalescedValue + num31 / 2 * 30 - num31 % 2 * 30;
 						num3 = num + num31 / 2 * 15 + num31 % 2 * 15;
 						MapchipMain mapchipMain = null;
-						mapchipMain = ((tenantData3 == null) ? apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + num31] : apdat_.mapchipMain_[tenantData3.img_[num31]]);
+						if (tenantData3 != null) { mapchipMain = apdat_.mapchipMain_[tenantData3.img_[num31]]; } else { mapchipMain = apdat_.mapchipMain_[MapMain.mapchip_vacant.id_ + num31]; }
 						apdat_.DrawSeb(g, num2, num3, apdat_.resMapChipMain_.seb[mapchipMain.seb_], apdat_.resMapChipMain_.img[mapchipMain.img_], 0);
 					}
 				}
@@ -6354,7 +6353,7 @@ coalescedSwitchExit190333: ;
 					num3 = 140;
 					int num32 = 0;
 					TeamData teamData2 = apdat_.tData_[0];
-					num32 = ((teamData2.stadium_ != 1) ? ((teamData2.stadium_ != 0) ? 2 : 2) : 0);
+					if ((teamData2.stadium_ == 1)) { num32 = (0); } else { if (teamData2.stadium_ == 0) { num32 = 2; } else { num32 = 2; } }
 					apdat_.DrawSeb(g, num2, num3, apdat_.resCom2_.seb[101 + num32], apdat_.resCom2_.img[185 + num32], 0);
 				}
 				else if (tenantData3.id_ == TenantData.TENANT_ID_TRAININGAREA || tenantData3.id_ == TenantData.TENANT_ID_TRAININGAREA_SPRED)
@@ -6431,7 +6430,7 @@ coalescedSwitchExit190333: ;
 				if (!tenantData3.IsMaxLv())
 				{
 					string empty = string.Empty;
-					empty = ((type_ != 62) ? "投資する" : "建設する");
+					if ((type_ == 62)) { empty = ("建設する"); } else { empty = ("投資する"); }
 					num = 201;
 					int num35 = 40;
 					if (select_ == 0)

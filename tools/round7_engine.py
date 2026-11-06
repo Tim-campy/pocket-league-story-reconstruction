@@ -75,7 +75,7 @@ def syntax_identity():
         'Round7SmcsRules.cs', 'Round7RoslynRules.cs',
         'round7_smcs_cycle_rules.cs', 'Round7RoslynCycleRules.cs', 'Round7SmcsExitRules.cs',
         'Round7SmcsGuardRules.cs','Round7StringConcatRules.cs','Round7LoopConditionRules.cs',
-        'Round7SmcsSwitchRules.cs','Round7RoslynDeclarationRules.cs'))).hexdigest()
+        'Round7SmcsSwitchRules.cs','Round7RoslynDeclarationRules.cs','Round7TerminalArmRules.cs'))).hexdigest()
 
 
 def model_approval(prediction, expected_types):

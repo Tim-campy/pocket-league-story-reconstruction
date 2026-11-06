@@ -744,11 +744,10 @@ SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
 
 		internal void ShowDialog(string text, string buttons)
 		{
-			if (apdat_.resCom2_ != null)
-			{
+			if (apdat_.resCom2_ != null) {
 				Push(text, buttons);
-				return;
-			}
+
+} else {
 			int num = 0;
 			if (buttons.IndexOf('\t') != -1)
 			{
@@ -769,6 +768,7 @@ SetSoftLabel(AppData.softLabels_[num], AppData.softLabels_[num2]);
 					dialog_.result_ = 1;
 				}
 			}
+}
 		}
 
 		public void Run()

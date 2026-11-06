@@ -17,6 +17,7 @@ SOURCE='''class Fixture {
  static void LoopCondition(bool a,bool b) {while(a && b) {count++;}}
  static void SwitchOwned(int x) {switch(x) {case 0: {count++;break;} case 1: count--;break;}}
  static void ForDeclaration() {int sum=0;for(int i=0;i<3;i++) {sum+=i;}count=sum;}
+ static void TerminalActions(bool flag) {if(flag) {count++;return;}count--;}
 }'''
 
 
@@ -71,6 +72,9 @@ def main():
             round7_cycle_rule='roslyn-for-declaration-immediately-before')
         assert any(p['rule']=='roslyn-for-declaration-immediately-before' for p in for_decl['patches'])
         checks.append('Roslyn immediate for declaration dispatch')
+        assert 'smcs-terminal-actions-common-exit' in rules('TerminalActions',
+            round7_cycle_rule='smcs-terminal-actions-common-exit')
+        checks.append('terminal actions common exit dispatch')
     (ROOT/'reports/round7-cycle-dispatch-tests.json').write_text(json.dumps({'passed':len(checks),'checks':checks,
         'game_candidate_compilations':0},indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'passed':len(checks)}))

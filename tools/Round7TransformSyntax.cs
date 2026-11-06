@@ -155,6 +155,7 @@ public static partial class Round7TransformSyntax {
                 AddRound7LoopConditionRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7SmcsSwitchRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7RoslynDeclarationRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7TerminalArmRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7RoslynCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
             }
         }

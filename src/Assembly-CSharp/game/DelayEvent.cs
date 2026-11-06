@@ -54,16 +54,16 @@ namespace game
 			StreamUtil.WriteInt(os, hour_);
 			StreamUtil.WriteInt(os, rideChara_);
 			StreamUtil.WriteString(os, (args_ == null) ? (string.Empty) : (args_));
-			if (argi_ == null)
-			{
+			if (argi_ == null) {
 				StreamUtil.WriteInt(os, 0);
-				return;
-			}
+
+} else {
 			StreamUtil.WriteInt(os, argi_.Length);
 			for (int i = 0; i < argi_.Length; i++)
 			{
 				StreamUtil.WriteInt(os, argi_[i]);
 			}
+}
 		}
 
 		public void Deserialize(InputStream stream)

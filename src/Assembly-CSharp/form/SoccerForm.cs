@@ -936,11 +936,10 @@ if (LeagueData.IsVictoryMatch())
 				bonus_f_cnt = 0;
 				bonus_f_index = 0;
 				FanBonusData.ChBonusEvent();
-				if (FanBonusData.bonus_f_data1.Size() == 0)
-				{
+				if (FanBonusData.bonus_f_data1.Size() == 0) {
 					ChangeState(14);
-					return;
-				}
+
+} else {
 				temp_fan = FanActData.GetFanEva(0);
 				temp_assist = FanActData.GetFanEva(1);
 				temp_nameValue = FanActData.GetFanEva(2);
@@ -949,6 +948,7 @@ if (LeagueData.IsVictoryMatch())
 				temp_addFan = array3[0];
 				temp_addAssist = array3[1];
 				temp_addNameValue = array3[2];
+}
 			}
 			else if (state_ == 10)
 			{
@@ -969,10 +969,8 @@ if (LeagueData.IsVictoryMatch())
 			}
 			else
 			{
-				if (state_ == 2)
-				{
-					return;
-				}
+				if (state_ == 2) { } else {
+
 				if (state_ == 14)
 				{
 					for (int k = 0; k < udat_.memberPDataist_.Size(); k++)
@@ -1038,6 +1036,7 @@ if (LeagueData.IsVictoryMatch())
 						supervisorData.SetResearchData(udat_.game_matchEva_, p_data);
 					}
 				}
+}
 			}
 		}
 
@@ -2996,11 +2995,10 @@ int num5, num, num2, num3, num4;
 			{
 				apdat_.resCom2_.seb[60].Draw(g, num5 - 20 - 4, num + 9, apdat_.resCom2_.img);
 			}
-			if (stateCnt_ < PBONUS_NP_LV_TIME[3])
-			{
+			if (stateCnt_ < PBONUS_NP_LV_TIME[3]) {
 				GameView.AddTouch(2);
-				return;
-			}
+
+} else {
 			int num8 = 50;
 			for (int j = 0; j < 2; j++)
 			{
@@ -3008,6 +3006,7 @@ int num5, num, num2, num3, num4;
 				GameView.AddTouch(g, 3, num2 + SubForm.DLGSEL_TRECT[j][0], num + SubForm.DLGSEL_TRECT[j][1], num8 + SubForm.DLGSEL_TRECT[j][2], 16 + SubForm.DLGSEL_TRECT[j][3], 0x20000 | j);
 			}
 			GameView.AddTouch(2, TouchOption.Create(2));
+}
 		}
 
 		public void Draw_newPlayerPopular(Graphics g)
