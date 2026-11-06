@@ -326,13 +326,14 @@ long num = JSystem.CurrentTimeMillis();
 			byte[][][] array = JTool.MakeArray<byte[][][]>(new int[3] { 2, num, 0 });
 			int[] array2 = new int[num];
 			int[] array3 = new int[num];
-			for (int i = 0; i < array2.Length; i++)
+			int num2, i;
+			for (i = 0; i < array2.Length; i++)
 			{
 				array2[i] = i;
 			}
 			log.DataIds = array2;
 			log.DataMis = array3;
-			int num2 = 0;
+			num2 = 0;
 			bool flag;
 			do
 			{
@@ -349,11 +350,9 @@ long num = JSystem.CurrentTimeMillis();
 						array3[j]++;
 					}
 				}
-				switch (num2)
-				{
-				case 0:
-				{
-					for (int n = 0; n < array.Length; n++)
+				if (num2 == 0)
+{
+for (int n = 0; n < array.Length; n++)
 					{
 						formManager.WaitLateUpdate();
 						long updateStartTime = formManager.GetUpdateStartTime();
@@ -407,11 +406,10 @@ long num = JSystem.CurrentTimeMillis();
 						}
 					}
 					num2 = 1;
-					break;
-				}
-				case 1:
-				{
-					int num3 = 0;
+					}
+else if (num2 == 1)
+{
+int num3 = 0;
 					for (int k = 0; k < array3.Length; k++)
 					{
 						if (array3[k] > 0)
@@ -488,9 +486,7 @@ long num = JSystem.CurrentTimeMillis();
 					{
 						return null;
 					}
-					break;
-				}
-				}
+					}
 				if (IsBreak())
 				{
 					return null;
