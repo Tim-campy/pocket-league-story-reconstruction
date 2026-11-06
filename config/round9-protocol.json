@@ -1,0 +1,66 @@
+{
+  "baseline_commit": "c51d204f57a17d5fa025d3b4ed629dfc8ab7ac64",
+  "maximum_cycles": 40,
+  "consecutive_zero_stop": 5,
+  "incomplete_candidate_variants_per_method_per_cycle": 24,
+  "complete_wrong_signature_rejected": true,
+  "incomplete_prediction_does_not_reject": true,
+  "require_original_signature_after_compilation": true,
+  "kairo_cycle_quota": "at least one KairoLibrary cycle in every consecutive block of five cycles",
+  "raw_measurement_threshold": 10,
+  "models": {
+    "Assembly-CSharp": {
+      "module": "round7_slot_model",
+      "source": "tools/Round7SlotModel.cs",
+      "client": "tools/round7_slot_model.py",
+      "solver": "tools/round7_slot_solver.py",
+      "validation": "reports/round8-slot-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/Assembly-CSharp"
+    },
+    "KairoLibrary": {
+      "module": "round8_roslyn_model",
+      "source": "tools/Round8RoslynModel.cs",
+      "client": "tools/round8_roslyn_model.py",
+      "solver": "tools/round7_roslyn_solver.py",
+      "validation": "reports/round8-roslyn-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/KairoLibrary"
+    }
+  },
+  "incomplete_candidate_variants_per_method_per_pass": 12,
+  "incomplete_passes": "at most one isolated probe for a method plus one full assembly pass",
+  "phase": "A",
+  "autonomous_started": false,
+  "maximum_consecutive_primary_same_method": 2,
+  "stop_counter_requires_empty_prepared_queue": true,
+  "prepared_queue": [
+    {
+      "id": "lifetime-GetCode",
+      "status": "tested",
+      "report": "reports/round9-a01-KairoLibrary-engine.json"
+    },
+    {
+      "id": "lifetime-DrawArc",
+      "status": "pending"
+    },
+    {
+      "id": "null-negative-WriteArray",
+      "status": "pending"
+    },
+    {
+      "id": "coordinates-Draw_coatEva",
+      "status": "pending"
+    },
+    {
+      "id": "coordinates-SetSavePos",
+      "status": "pending"
+    },
+    {
+      "id": "coordinates-Draw_moveArea",
+      "status": "pending"
+    },
+    {
+      "id": "compound-field-multiply",
+      "status": "pending"
+    }
+  ]
+}

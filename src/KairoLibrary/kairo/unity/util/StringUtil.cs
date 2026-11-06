@@ -319,10 +319,11 @@ fastVector = new FastVector();
 				}
 			}
 			int num = bytes.Length;
+			int num2, num3, num4, num5;
 			bool flag2 = false;
 			for (int k = 0; k < num; k++)
 			{
-				int num2 = bytes[k] & 0xFF;
+				num2 = bytes[k] & 0xFF;
 				if (num2 <= 6 || num2 == 127 || num2 == 255)
 				{
 					flag2 = true;
@@ -339,7 +340,7 @@ fastVector = new FastVector();
 			bool flag3 = true;
 			for (int l = 0; l < num; l++)
 			{
-				int num2 = bytes[l] & 0xFF;
+				num2 = bytes[l] & 0xFF;
 				if (num2 == 27 || 128 <= num2)
 				{
 					flag3 = false;
@@ -352,9 +353,9 @@ fastVector = new FastVector();
 			}
 			for (int m = 0; m < num - 2; m++)
 			{
-				int num2 = bytes[m] & 0xFF;
-				int num3 = bytes[m + 1] & 0xFF;
-				int num4 = bytes[m + 2] & 0xFF;
+				num2 = bytes[m] & 0xFF;
+				num3 = bytes[m + 1] & 0xFF;
+				num4 = bytes[m + 2] & 0xFF;
 				if (num2 != 27)
 				{
 					continue;
@@ -377,7 +378,7 @@ fastVector = new FastVector();
 				}
 				if (m < num - 3)
 				{
-					int num5 = bytes[m + 3] & 0xFF;
+					num5 = bytes[m + 3] & 0xFF;
 					if (num3 == 36 && num4 == 40 && num5 == 68)
 					{
 						return "JIS";
@@ -393,8 +394,8 @@ fastVector = new FastVector();
 			int num8 = 0;
 			for (int n = 0; n < num - 1; n++)
 			{
-				int num2 = bytes[n] & 0xFF;
-				int num3 = bytes[n + 1] & 0xFF;
+				num2 = bytes[n] & 0xFF;
+				num3 = bytes[n + 1] & 0xFF;
 				if (((129 <= num2 && num2 <= 159) || (224 <= num2 && num2 <= 252)) && ((64 <= num3 && num3 <= 126) || (128 <= num3 && num3 <= 252)))
 				{
 					num6 += 2;
@@ -403,8 +404,8 @@ fastVector = new FastVector();
 			}
 			for (int num9 = 0; num9 < num - 1; num9++)
 			{
-				int num2 = bytes[num9] & 0xFF;
-				int num3 = bytes[num9 + 1] & 0xFF;
+				num2 = bytes[num9] & 0xFF;
+				num3 = bytes[num9 + 1] & 0xFF;
 				if ((161 <= num2 && num2 <= 254 && 161 <= num3 && num3 <= 254) || (num2 == 142 && 161 <= num3 && num3 <= 223))
 				{
 					num7 += 2;
@@ -412,7 +413,7 @@ fastVector = new FastVector();
 				}
 				else if (num9 < num - 2)
 				{
-					int num4 = bytes[num9 + 2] & 0xFF;
+					num4 = bytes[num9 + 2] & 0xFF;
 					if (num2 == 143 && 161 <= num3 && num3 <= 254 && 161 <= num4 && num4 <= 254)
 					{
 						num7 += 3;
@@ -422,8 +423,8 @@ fastVector = new FastVector();
 			}
 			for (int num10 = 0; num10 < num - 1; num10++)
 			{
-				int num2 = bytes[num10] & 0xFF;
-				int num3 = bytes[num10 + 1] & 0xFF;
+				num2 = bytes[num10] & 0xFF;
+				num3 = bytes[num10 + 1] & 0xFF;
 				if (192 <= num2 && num2 <= 223 && 128 <= num3 && num3 <= 191)
 				{
 					num8 += 2;
@@ -431,7 +432,7 @@ fastVector = new FastVector();
 				}
 				else if (num10 < num - 2)
 				{
-					int num4 = bytes[num10 + 2] & 0xFF;
+					num4 = bytes[num10 + 2] & 0xFF;
 					if (224 <= num2 && num2 <= 239 && 128 <= num3 && num3 <= 191 && 128 <= num4 && num4 <= 191)
 					{
 						num8 += 3;
