@@ -1944,8 +1944,7 @@ break;
 				{
 					flag2 = true;
 				}
-				if (flag && toGoalLineTime > 0 && toGoalLineTime < SEB_H_SAVING_ANIME[0] * 5 / 10 && flag2)
-				{
+				if (flag && toGoalLineTime > 0 && toGoalLineTime < SEB_H_SAVING_ANIME[0] * 5 / 10 && flag2) {
 					Proc_saving();
 					seb_startPos.Set(pos_);
 					seb_v.y_ = GameUtil.SetVStop(10f, SEB_H_SAVING_ANIME[0] / 2);
@@ -1971,8 +1970,8 @@ break;
 					{
 						direct_ = 1;
 					}
-					return;
-				}
+
+} else {
 				float num2 = 0f;
 				num2 = (float)JMath.Sqrt((ball_.pos_.x_ - pos_.x_) * (ball_.pos_.x_ - pos_.x_) + (ball_.pos_.z_ - pos_.z_) * (ball_.pos_.z_ - pos_.z_));
 				if (num2 < 180f)
@@ -2040,6 +2039,7 @@ break;
 						passer.physical_hp_ = PlayerData.GetPhysicalHpMax(passer);
 					}
 				}
+}
 }
 			}
 		}

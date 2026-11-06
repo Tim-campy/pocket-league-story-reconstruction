@@ -244,8 +244,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 
 				num = num2 = num3 = num4 = 0;
 				int num5 = 0;
-				if (tArea_.pId_ == 3)
-				{
+				if (tArea_.pId_ == 3) {
 					Camera.ConvertGlobalToCamera(traPos_[2], camera_pos);
 					for (int j = 0; j < MapMain.GOAL1_PARTS_POS.Length; j++)
 					{
@@ -254,8 +253,8 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 						num5 = camera_pos[1] + MapMain.GOAL1_PARTS_POS[j][1] + num2 + MapMain.GOAL1_PARTS_GRA[j][2];
 						apdat_.InsertGameObject(8, 0, num5, MapMain.GOAL1_PARTS_GRA[j][0], MapMain.GOAL1_PARTS_GRA[j][1], 0, num3, num4, false, 0);
 					}
-					return;
-				}
+
+} else {
 				num = 0;
 				num2 = 0;
 				Camera.ConvertGlobalToCamera(traPos_[2], camera_pos);
@@ -266,6 +265,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 					num5 = camera_pos[1] + MapMain.GOAL2_PARTS_POS[k][1] + num2 + MapMain.GOAL2_PARTS_GRA[k][2];
 					apdat_.InsertGameObject(8, 0, num5, MapMain.GOAL2_PARTS_GRA[k][0], MapMain.GOAL2_PARTS_GRA[k][1], 0, num3, num4, false, 0);
 				}
+}
 }
 			}
 		}
