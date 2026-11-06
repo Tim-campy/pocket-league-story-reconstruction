@@ -468,7 +468,33 @@
       "before_sha256": "775e2f989ebfbeced097c26bb99aaae53aabe79c4a9b4e00cf26a955408f3231",
       "after_measurement": "reports\\round7-cycle18-after-measurement.json",
       "after_sha256": "f6e9a11f847b48fc925a6898faa16082128c10e746c697d2bb506859e57289dc"
+    },
+    {
+      "cycle": 19,
+      "label": "cycle19",
+      "rule": "nullable-conditional-coalesce-explicit",
+      "assembly": "KairoLibrary",
+      "pair": "brfalse.s=>brtrue.s",
+      "hypothesis": "Acesso condicional com fallback constante foi recuperado como nullable-coalesce, mas o IL original testa nulo explicitamente e chama o membro com callvirt antes de escolher o fallback.",
+      "result": "INCONCLUSIVA: nenhum candidato autorizado pelo modelo/mapeamento; 0 tentativas da regra, 0 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 0,
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round7-cycle19-before-measurement.json",
+      "before_sha256": "c731fafc1fd04b77dc9423669a5f1451d9e53bff6ca33266f3ceb65f8be13f94",
+      "after_measurement": "reports\\round7-cycle19-after-measurement.json",
+      "after_sha256": "94d5ac8d37fb68554664c1f24793c1a0fe2851542d586451a014008f3f5e0b6c"
     }
   ],
-  "consecutive_zero_cycles": 1
+  "consecutive_zero_cycles": 2
 }
