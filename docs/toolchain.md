@@ -1,6 +1,35 @@
 # Toolchain e evidências
 
-## Estado atual — rodada iniciada em 1047b1f
+## Estado atual — rodada iniciada em 7d9fbc8
+
+Produção preservada: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para KairoLibrary; **Unity 5.3.4f1 / smcs 2.6.5.0** para Assembly-CSharp. Compiladores, defines, flags, perfis, referências e sua ordem não mudaram. Não foram acrescentadas exceções não determinísticas.
+
+| Assembly | Matched anterior → atual / total | Bytes IL matched anterior → atual / total | Corpos iguais | Tipos estruturais iguais |
+| --- | --- | --- | --- | --- |
+| KairoLibrary | 3187 → 3187 / 3287 | 204103 → 204103 / 269894 | 3113 | 337/337 |
+| Assembly-CSharp | 1676 → 1688 / 1958 | 196453 → 203891 / 601603 | 1683 | 129/129 |
+
+**4875/5245 métodos matched; 407994/871497 bytes IL matched.** Zero regressões adotadas. Os 466 tipos e as 82 declarações sem corpo têm prova estrutural atual. 3 corpos iguais permanecem retidos pelo vínculo de auxiliares. Igualdade estrutural não significa igualdade de todos os corpos, heaps, tabelas ou do arquivo inteiro.
+
+Provas atuais: [adoção e verificação oficial integral](../reports/round5-adoption.json), [medição inicial](../reports/round5-baseline-measurement.json), [medição final](../reports/round5-final-measurement.json), [relatório autossuficiente](notes/round-05-report.md). Os estados foram escritos exclusivamente pelo verificador.
+
+**Hipótese de nomes REFUTADA nos caminhos testados.** Oito compilações da fixture pelo smcs instalado mostraram que trocar apenas nomes conserva corpos e locais; reordenar declarações altera os slots. A fonte oficial Unity usa ListDictionary em blocos ordinários; a Hashtable encontrada é usada em clonagem de sondagem. O parser cria blocos implícitos após comandos, além das chaves lexicais. A árvore interna de blocos, a posição das declarações e os temporários registrados ou alocados na emissão explicam a regra observada. Busca por nomes não foi adotada. [Fixture](../reports/round5-slot-fixture.json); [fonte e binário inspecionados](../reports/round5-smcs-source.json); [nota com referências fixadas e limites](notes/round5-smcs-source-evidence.md).
+
+A fonte consultada pertence ao repositório oficial Unity-Technologies/mono, snapshot `b6587926c0f146c8b12985744f33a13b39a22d57` de 2016-03-11. A revisão exata de fabricação do executável instalado continua UNKNOWN; as operações relevantes foram confirmadas na inspeção do próprio smcs instalado. Os nomes originais de locais sem símbolos também continuam UNKNOWN. Os aliases e locais reservados introduzidos usam nomes legíveis escolhidos para a reconstrução; não são nomes originais recuperados.
+
+**Motor desta rodada: somente Assembly-CSharp.** Foram selecionados 119 métodos / 201923 bytes IL, por avanço parcial anterior, limite anterior ou padrões pedidos, em ordem decrescente de tamanho. Foi feita uma passagem inicial pelos selecionados e mais 4 retomadas direcionadas de 4 métodos. 162 corpos pendentes iniciais não tiveram nova busca nesta fase; todos os métodos continuaram na verificação integral e na proteção de regressões. KairoLibrary foi medido e recompilado sem correções de fonte; o relatório fornece seu histograma Roslyn exclusivo. O motor smcs conserva todo o prefixo correto, exige avanço estrito ou igualdade completa e rejeita regressões de corpos/metadados. Mapeamento MDB só é usado após comparação debug+/debug- do corpo atual. Os builds finais usam as flags de produção (-debug-), sem fontes provisórias.
+
+| Iterações máximas por método | Candidatos por comando/iteração | Limites de iteração atingidos | Corpos ganhos | Bytes IL ganhos |
+| --- | --- | --- | --- | --- |
+| 16 | 96 | 0 | 12 | 7438 |
+
+[Motor App e paradas por método](../reports/round5-Assembly-CSharp-engine.json). [Diagnósticos de slots e controles alias/DrawSeb](../reports/round5-local-cases.json). Prefixo parcial não promove matched. As produções integrais dos dois assemblies foram comparadas aos corpos esperados antes da adoção dos C#; nova verificação oficial completa confirmou o resultado depois da cópia.
+
+**Componentes e limites preservados.** Externos permanecem verificados contra o Unity oficial. As seis exceções não determinísticas já demonstradas por pares de builds idênticos permanecem as mesmas; nenhuma normalização de DLL/IL foi aplicada. A versão histórica exata dos compiladores, o comando completo e as referências históricas continuam UNKNOWN. DEX/Java permaneceu fora do escopo. Não foram feitas correções baseadas em bytes brutos.
+
+As seções abaixo preservam o histórico. Contagens e valores brutos nelas descritos pertencem aos respectivos snapshots, não ao build final desta rodada.
+
+## Histórico — rodada iniciada em 1047b1f
 
 Seleção de produção preservada: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para KairoLibrary e **smcs 2.6.5.0 / Unity 5.3.4f1** para Assembly-CSharp. Flags, defines, referências e sua ordem permanecem os da rodada anterior. Nenhum compilador alternativo, referência Microsoft adicional ou exceção não determinística foi adotado.
 

@@ -2715,36 +2715,36 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 				return num;
 			}
 			int[][] sprites = seb.GetSprites(frame);
-			foreach (int[] array in sprites)
-			{
-				int num2 = maxWidth;
-				int num3 = maxHeight;
-				if (num2 == -1)
+			for (int spriteIndex = 0; spriteIndex < sprites.Length; spriteIndex++) {
+int[] array = sprites[spriteIndex];
+int num2 = maxWidth;
+int num3 = maxHeight;
+if (num2 == -1)
 				{
 					num2 = array[4];
 				}
-				if (num3 == -1)
+if (num3 == -1)
 				{
 					num3 = array[5];
 				}
-				Image image = imgs[array[1]];
-				g.DrawImage(image, x + array[6], y + array[6], array[2], array[3], num2 * w1000 / 1000, num3 * h1000 / 1000);
-				int num4 = x + array[6] + num2 * w1000 / 1000;
-				if (num < num4)
+Image image = imgs[array[1]];
+g.DrawImage(image, x + array[6], y + array[6], array[2], array[3], num2 * w1000 / 1000, num3 * h1000 / 1000);
+int num4 = x + array[6] + num2 * w1000 / 1000;
+if (num < num4)
 				{
 					num = num4;
 				}
-			}
+}
 			return num;
 		}
 
 		public void DrawSeb(Graphics g, int x, int y, Seb seb, Image[] imgs, int frame, int ucnt)
 		{
 			int[][] sprites = seb.GetSprites(frame);
-			foreach (int[] array in sprites)
-			{
-				Image image = imgs[array[1]];
-				if (array[2] + ucnt * array[4] + array[4] < image.GetWidth())
+			for (int spriteIndex = 0; spriteIndex < sprites.Length; spriteIndex++) {
+int[] array = sprites[spriteIndex];
+Image image = imgs[array[1]];
+if (array[2] + ucnt * array[4] + array[4] < image.GetWidth())
 				{
 					g.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);
 				}
@@ -2752,16 +2752,16 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 				{
 					g.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);
 				}
-			}
+}
 		}
 
 		public void DrawSebV(Graphics g, int x, int y, Seb seb, Image[] imgs, int frame, int vcnt)
 		{
 			int[][] sprites = seb.GetSprites(frame);
-			foreach (int[] array in sprites)
-			{
-				Image image = imgs[array[1]];
-				if (array[3] + vcnt * array[5] + array[5] < image.GetHeight())
+			for (int spriteIndex = 0; spriteIndex < sprites.Length; spriteIndex++) {
+int[] array = sprites[spriteIndex];
+Image image = imgs[array[1]];
+if (array[3] + vcnt * array[5] + array[5] < image.GetHeight())
 				{
 					g.DrawImage(image, x + array[6], y + array[7], array[2], array[3] + vcnt * array[5], array[4], array[5]);
 				}
@@ -2769,31 +2769,27 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 				{
 					g.DrawImage(image, x + array[6], y + array[7], array[2], array[3] + vcnt * array[5], array[4], array[5]);
 				}
-			}
+}
 		}
 
 		public void DrawSeb(Graphics g, int x, int y, Seb seb, Image img, int frame)
 		{
 			int[][] sprites = seb.GetSprites(frame);
-			foreach (int[] array in sprites)
-			{
-				if (array[1] >= 0)
-				{
-					g.DrawImage(img, x + array[6], y + array[7], array[2], array[3], array[4], array[5]);
-				}
-			}
+			for (int spriteIndex = 0; spriteIndex < sprites.Length; spriteIndex++) {
+int[] array = sprites[spriteIndex];
+if (array[1] < 0) { continue; }
+g.DrawImage(img, x + array[6], y + array[7], array[2], array[3], array[4], array[5]);
+}
 		}
 
 		public void DrawSebReverse(Graphics g, int x, int y, Seb seb, int frame, Image[] imgs)
 		{
 			int[][] sprites = seb.GetSprites(frame);
-			foreach (int[] array in sprites)
-			{
-				if (array[1] >= 0)
-				{
-					g.DrawImage(imgs[array[1]], x - array[6] - array[4], y + array[7], array[2], array[3], array[4], array[5]);
-				}
-			}
+			for (int spriteIndex = 0; spriteIndex < sprites.Length; spriteIndex++) {
+int[] array = sprites[spriteIndex];
+if (array[1] < 0) { continue; }
+g.DrawImage(imgs[array[1]], x - array[6] - array[4], y + array[7], array[2], array[3], array[4], array[5]);
+}
 		}
 
 		public static bool ColRect(int x, int y, int left, int top, int right, int bottom)
@@ -4951,7 +4947,8 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 		{
 			long num = 0L;
 			num = 0L;
-			int num2 = terms[1];
+			int[] termsAlias = terms;
+int num2 = termsAlias[1];
 			int num3 = 2;
 			bool flag = true;
 			switch (num2)
@@ -4963,7 +4960,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 				num = save_.lngs[0];
 				break;
 			case 2:
-				flag = CheckAlreadyEvent(terms[num3++]);
+				flag = CheckAlreadyEvent(termsAlias[num3++]);
 				break;
 			case 3:
 				num = save_.ints[1] + 1;
@@ -4975,7 +4972,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 				num = save_.ints[3] + 1;
 				break;
 			case 6:
-				if (frmSoccer_.game_sec / 6 == terms[2])
+				if (frmSoccer_.game_sec / 6 == termsAlias[2])
 				{
 					return true;
 				}
@@ -4983,7 +4980,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			case 7:
 			{
 				int rankIndex = udat_.GetRankIndex();
-				if (rankIndex + 1 >= terms[2])
+				if (rankIndex + 1 >= termsAlias[2])
 				{
 					return true;
 				}
@@ -4992,7 +4989,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			case 8:
 			{
 				int num7 = udat_.matchResult_[0] + udat_.matchResult_[1] + udat_.matchResult_[2];
-				if (num7 >= terms[2])
+				if (num7 >= termsAlias[2])
 				{
 					return true;
 				}
@@ -5001,7 +4998,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			case 9:
 			{
 				int num6 = udat_.matchResult_[0];
-				if (num6 >= terms[2])
+				if (num6 >= termsAlias[2])
 				{
 					return true;
 				}
@@ -5010,7 +5007,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			case 10:
 			{
 				int num5 = udat_.matchResult_[1];
-				if (num5 >= terms[2])
+				if (num5 >= termsAlias[2])
 				{
 					return true;
 				}
@@ -5019,7 +5016,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			case 11:
 			{
 				int num4 = udat_.matchResult_[2];
-				if (num4 >= terms[2])
+				if (num4 >= termsAlias[2])
 				{
 					return true;
 				}
@@ -5028,18 +5025,18 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			case 12:
 			{
 				int fanDispParam = FanActData.GetFanDispParam(FanActData.GetFanEva(0), 0);
-				if (fanDispParam >= terms[2])
+				if (fanDispParam >= termsAlias[2])
 				{
 					return true;
 				}
 				return false;
 			}
 			}
-			if (flag && num3 < terms.Length)
+			if (flag && num3 < termsAlias.Length)
 			{
-				flag = terms[num3] <= num && (terms.Length <= num3 + 1 || num <= terms[num3 + 1]);
+				flag = termsAlias[num3] <= num && (termsAlias.Length <= num3 + 1 || num <= termsAlias[num3 + 1]);
 			}
-			if (terms[0] == 1)
+			if (termsAlias[0] == 1)
 			{
 				flag = !flag;
 			}

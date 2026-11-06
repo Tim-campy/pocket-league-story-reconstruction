@@ -646,9 +646,9 @@ namespace form
 					if (num6 >= 0)
 					{
 						int num10 = 0;
-						num10 = ((!MyFormBase.En()) ? (num7 + 20 + 60) : (num7 + 22 + 60));
+						if (MyFormBase.En()) { num10 = (num7 + 22 + 60); } else { num10 = (num7 + 20 + 60); }
 						int num11 = array2[MyFormBase.WNDRET_BOX_RIGHT] - 10 - 24;
-						g.DrawString((!flag) ? string.Empty : array3[3], num10 + (num11 - num10) / 2, num4, 2);
+						g.DrawString((flag) ? (array3[3]) : (string.Empty), num10 + (num11 - num10) / 2, num4, 2);
 					}
 					int num12 = num4 - 2;
 					if (num6 >= 0)
@@ -685,7 +685,7 @@ namespace form
 				int num13 = 0;
 				if (taskMax_ != 0)
 				{
-					num13 = (taskMax_ - ((!(task_ == null)) ? task_.Size() : 0)) * 100 / taskMax_;
+					num13 = (taskMax_ - (((task_ == null)) ? (0) : (task_.Size()))) * 100 / taskMax_;
 				}
 				g.DrawString(text + text2, 105f - font.StringWidthF(text) / 2f, num4);
 				g.DrawString(num13 + "%", 105f + font.StringWidthF(text) / 2f + 19f, num4);
@@ -706,7 +706,7 @@ namespace form
 				int num14 = 0;
 				if (taskMax_ != 0)
 				{
-					num14 = (taskMax_ - ((!(task_ == null)) ? task_.Size() : 0)) * 100 / taskMax_;
+					num14 = (taskMax_ - (((task_ == null)) ? (0) : (task_.Size()))) * 100 / taskMax_;
 				}
 				g.DrawString(text3 + text4, 105 - font2.StringWidth(text3) / 2, num4);
 				g.DrawString(num14 + "%", 105 + font2.StringWidth(text3) / 2 + 19, num4);

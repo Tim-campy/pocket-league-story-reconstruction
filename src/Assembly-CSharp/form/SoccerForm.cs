@@ -2537,9 +2537,13 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 		{
 			apdat_.DrawWindow(g, 228, 204, 0, "収支情報");
 			apdat_.DrawBox(g, 15, 55, 225, 201);
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num5;
+int num;
+int num2;
+int num3;
+
+
+			num5 = num = num2 = num3 = 0;
 			Font font = g.GetFont(null);
 			string text = "観客数";
 			int num4 = font.StringWidth(text) + 10 + AppData.GetFig(customerNum[0]) * 8 + 10 + 8;
@@ -2554,7 +2558,7 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 			num3 = num;
 			apdat_.DrawNumImageComma(g, 78, customerNum[0], 120 - num4 / 2 + (font.StringWidth(text) + 10), num3 + 1, 0, 0, 1);
 			apdat_.DrawSeb(g, 120 - num4 / 2 + 46 + (AppData.GetFig(customerNum[0]) * 8 + 10), num3 + 2, apdat_.resCom2_.seb[78], apdat_.resCom2_.img[105], 18);
-			int num5 = 20;
+			num5 = 20;
 			num = 72;
 			g.SetColor(SubForm.SC_WINDOW_BLUE);
 			g.DrawString("項目一覧", 42f, num);
@@ -2736,9 +2740,13 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 		{
 			apdat_.DrawWindow(g, 228, 204, 0, "試合結果");
 			apdat_.DrawBox(g, 15, 55, 225, 201);
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num8;
+int num;
+int num2;
+int num3;
+
+
+			num8 = num = num2 = num3 = 0;
 			int[] nextBattleLeagueIndex = udat_.GetNextBattleLeagueIndex(udat_.league_setu_);
 			if (nextBattleLeagueIndex == null)
 			{
@@ -2823,7 +2831,7 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 				}
 				apdat_.DrawSeb(g, 116, num3 + 2, apdat_.resCom2_.seb[78], apdat_.resCom2_.img[103], 15);
 			}
-			int num8 = 120;
+			num8 = 120;
 			num = 214;
 			if (select_ == 0)
 			{
@@ -3002,13 +3010,17 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 		{
 			apdat_.DrawWindow(g, 228, 204, 0, "ボーナス");
 			apdat_.DrawBox(g, 15, 55, 225, 201);
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num4;
+int num;
+int num2;
+int num3;
+
+
+			num4 = num = num2 = num3 = 0;
 			num = 51;
 			g.SetColor(SubForm.SC_WINDOW_BLACK);
 			g.DrawString("人気UP", 120f, num, 2);
-			int num4 = 19;
+			num4 = 19;
 			num = 70;
 			for (int i = 0; i < 11; i++)
 			{
@@ -3078,13 +3090,17 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 		{
 			apdat_.DrawWindow(g, 228, 204, 0, "ボーナス");
 			apdat_.DrawBox(g, 15, 55, 225, 201);
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num4;
+int num;
+int num2;
+int num3;
+
+
+			num4 = num = num2 = num3 = 0;
 			num = 51;
 			g.SetColor(SubForm.SC_WINDOW_BLACK);
 			g.DrawString("研究ﾎﾟｲﾝﾄの獲得", 120f, num, 2);
-			int num4 = 19;
+			num4 = 19;
 			num = 70;
 			for (int i = 0; i < 11; i++)
 			{

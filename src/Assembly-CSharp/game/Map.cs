@@ -381,7 +381,8 @@ namespace game
 			float num = 100f;
 			int num5;
 float num2 = 1000f;
-			for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
+			global::System.Single originalUnusedSlot1;
+for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 			{
 				float num3 = num;
 				float num4 = num2;
@@ -692,10 +693,11 @@ float num2 = 1000f;
 		{
 			bool flag = false;
 			int num = 0;
-			global::data.MapchipMatch mapchipMatch;
+			global::System.Int32 originalUnusedSlot2;
+
 int num2;
 bool flag2 = false;
-			mapchipMatch = mapchipGrounds[MAP_GROUND];
+			global::data.MapchipMatch mapchipMatch = mapchipGrounds[MAP_GROUND];
 			num2 = 0;
 			int num3 = 0;
 			for (int num4 = MAPCHIP_FIELD_HNUM - 1; num4 >= 0; num4--)

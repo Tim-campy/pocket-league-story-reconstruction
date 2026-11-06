@@ -2049,9 +2049,13 @@ break;
 			{
 				return;
 			}
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num24;
+int num;
+int num2;
+int num3;
+
+
+			num24 = num = num2 = num3 = 0;
 			Font font = g.GetFont(null);
 			bool flag = false;
 			FormBase topForm = formMan_.GetTopForm();
@@ -2391,7 +2395,7 @@ break;
 							g.DrawString(MyFormBase.LT("サッカークラブ物語") + "Lite", 120f, 166f, 2);
 						}
 						g.DrawString("for カイロパーク", 120f, 182f, 2);
-						int num24 = 43;
+						num24 = 43;
 						num = 101;
 						int num25 = 154;
 						int num26 = 56;
@@ -2504,7 +2508,7 @@ break;
 							{
 								num36 = 59;
 							}
-							int num24 = 4;
+							num24 = 4;
 							num = 120 - num36 / 2;
 							num24 = 120 - num35 / 2;
 							g.SetColor(Graphics.GetColorOfRGB(43, 37, 32));
@@ -2575,7 +2579,7 @@ break;
 								apdat_.DrawWindow(g, 230, 200, 0, "選手情報");
 							}
 							bool flag3 = false;
-							int num24 = 11;
+							num24 = 11;
 							num = 67;
 							int num39 = 63;
 							int num40 = 18;
@@ -4650,16 +4654,20 @@ break;
 
 		private void _draw4(Graphics g)
 		{
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num4;
+int num;
+int num2;
+int num3;
+
+
+			num4 = num = num2 = num3 = 0;
 			Font font = g.GetFont(null);
 			if (type_ == 44)
 			{
 				apdat_.DrawWindow(g, 228, 176, 0, "スポンサー交渉");
 				apdat_.DrawBox(g, 12, 136, 227, 205);
 				SponsorData sponsorData = sponsorData_;
-				int num4 = 30;
+				num4 = 30;
 				num = 64;
 				g.DrawImage(apdat_.resEvent_.img[7], num4, num);
 				num4 = 16;
@@ -4737,10 +4745,8 @@ break;
 					int frame = UserData.NEGOTIATE_RESULT_TH[i];
 					int num12 = (SP_ANIME_TIME[1] - SP_ANIME_TIME[0]) * UserData.WAIT_TIME[i] / 100 + SP_ANIME_TIME[0] - 5;
 					num11 = GameUtil.RateConvert(frame_ - num12, 0, 10, -20, 0, true);
-					if (num11 > -20)
-					{
-						apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.img[175], frame);
-					}
+					if (num11 <= -20) { continue; }
+apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.img[175], frame);
 				}
 				g.PopClip();
 				GameView.AddTouch(2);
@@ -4749,7 +4755,7 @@ break;
 			{
 				apdat_.DrawWindow(g, 228, 191, 0, "特別な練習");
 				apdat_.DrawBox(g, 12, 129, 227, 213);
-				int num4 = 30;
+				num4 = 30;
 				num = 57;
 				g.DrawImage(apdat_.resEvent_.img[11], num4, num);
 				num3 = 126;
@@ -4944,7 +4950,7 @@ break;
 						apdat_.resCom2_.seb[60].Draw(g, num2 - 6, num3 + 9, apdat_.resCom2_.img);
 					}
 				}
-				int num4 = 33;
+				num4 = 33;
 				num = 159;
 				apdat_.DrawBox(g, 14, num, 222, num + 45);
 				TrainingData trainingData3 = (TrainingData)ary1.ElementAt(select_ + page_ * 5);
@@ -4975,7 +4981,7 @@ break;
 					apdat_.DrawBox(g, 12, 136, 227, 205);
 					TrainingData trainingData4 = apdat_.trainingData_[TrainingData.TRA_SELECT_TRA];
 					int[] array = new int[5] { 8, 11, 13, 9, 11 };
-					int num4 = 30;
+					num4 = 30;
 					num = 64;
 					g.DrawImage(apdat_.resEvent_.img[11], num4, num);
 					int num15 = 0;
@@ -5151,7 +5157,7 @@ break;
 					{
 						supervisorData = (SupervisorData)ary1.ElementAt(select_);
 					}
-					int num4 = 23;
+					num4 = 23;
 					num = 62;
 					g.DrawImage(apdat_.resCom2_.img[125], num4, num);
 					int frame3 = frame_ % 16 / 4;
@@ -5315,7 +5321,7 @@ break;
 					apdat_.DrawBox(g, 12, 53, 227, 134);
 					apdat_.DrawBox(g, 12, 136, 227, 205);
 					SupervisorData supervisorData2 = apdat_.svisorData_[udat_.selectSupervisorId_];
-					int num4 = 25;
+					num4 = 25;
 					num = 77;
 					g.DrawImage(apdat_.resCom2_.img[125], num4, num);
 					int frame4 = frame_ % 16 / 4;
@@ -5459,7 +5465,7 @@ break;
 						}
 					}
 					apdat_.DrawVerticalScroll2(g, 225, 64, 3, 96, scrollValue_, ary1.Size() - 1, 5);
-					int num4 = 29;
+					num4 = 29;
 					num = 168;
 					apdat_.DrawBox(g, 16, num - 16, 223, num - 16 + 66);
 					TradeData tradeData2 = (TradeData)ary1.ElementAt(select_);
@@ -6530,16 +6536,20 @@ break;
 
 		private void _draw6(Graphics g)
 		{
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num4;
+int num;
+int num2;
+int num3;
+
+
+			num4 = num = num2 = num3 = 0;
 			Font font = g.GetFont(null);
 			if (type_ == 64)
 			{
 				apdat_.DrawWindow(g, 228, 176, 0, "施設のLVUP");
 				apdat_.DrawBox(g, 12, 136, 227, 205);
 				TenantData tenantData = apdat_.tenantData_[tenantDataId_];
-				int num4 = 60;
+				num4 = 60;
 				num = 66;
 				g.SetColor(Graphics.GetColorOfRGB(181, 219, 166));
 				g.DrawRect(num4, num, 121f, 75f);
@@ -6710,7 +6720,7 @@ break;
 				{
 					g.DrawString(MyFormBase.YEN("万", tenantData2.paramKeepCost_), num2 + 106, num3, 4);
 				}
-				int num4 = 14;
+				num4 = 14;
 				num = 83;
 				g.SetColor(Graphics.GetColorOfRGB(181, 219, 166));
 				g.DrawRect(num4, num, 121f, 75f);
@@ -6820,7 +6830,7 @@ break;
 					g.DrawString(MyFormBase.YEN("万", tenantData3.paramKeepCost_), num2 + 76, num3, 4);
 				}
 				ResetFontSize(g);
-				int num4 = 59;
+				num4 = 59;
 				num = 83;
 				g.SetColor(Graphics.GetColorOfRGB(181, 219, 166));
 				g.DrawRect(num4, num, 121f, 75f);
@@ -6930,7 +6940,7 @@ break;
 				}
 				g.DrawString("/試合", num2 + 70, num3 + 58);
 				ResetFontSize(g);
-				int num4 = 17;
+				num4 = 17;
 				num = 153;
 				int[] array6 = new int[3] { 2, 0, 1 };
 				for (int num17 = 0; num17 < 3; num17++)
@@ -7106,7 +7116,7 @@ break;
 			else if (type_ == 68)
 			{
 				int[] array7 = DrawWindow(g, 188, 110, "ﾁｹｯﾄ代の変更", 5, 5, 20, 0, 4);
-				int num4;
+
 				if (En())
 				{
 					num4 = 123;
@@ -7172,7 +7182,7 @@ break;
 						num28 = GameUtil.RateConvert(frame_ - num29 * SCENE_CHANGE_WAIT[0], 0, SCENE_CHANGE_ONE[0], 0, gameHeight / SCENE_IMG_DIV_Y[0], true);
 						for (int num30 = 0; num30 < SCENE_IMG_DIV_X[0]; num30++)
 						{
-							int num4 = 0 + gameWidth * num30 / SCENE_IMG_DIV_X[0];
+							num4 = 0 + gameWidth * num30 / SCENE_IMG_DIV_X[0];
 							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, width2, num28);
 						}
 					}
@@ -7187,7 +7197,7 @@ break;
 						int height = AppData.ClampMax(num28, gameHeight - num);
 						for (int num33 = 0; num33 < SCENE_IMG_DIV_X[1]; num33++)
 						{
-							int num4 = 0 + gameWidth * num33 / SCENE_IMG_DIV_X[1];
+							num4 = 0 + gameWidth * num33 / SCENE_IMG_DIV_X[1];
 							int width2 = GameUtil.RateConvert(frame_ - num33 * SCENE_CHANGE_WAIT[1], 0, SCENE_CHANGE_ONE[1], 0, gameWidth / SCENE_IMG_DIV_X[1], true);
 							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, 0, width2, height);
 						}
@@ -7204,7 +7214,7 @@ break;
 						num = num28 * num36;
 						for (int num37 = 0; num37 < num34; num37++)
 						{
-							int num4 = width2 * num37;
+							num4 = width2 * num37;
 							int width3 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, width2, true);
 							int height2 = GameUtil.RateConvert(frame_ - (num36 * SCENE_CHANGE_WAIT[2] + num37 * SCENE_CHANGE_WAIT[2]), 0, SCENE_CHANGE_ONE[2], 0, num28, true);
 							g.DrawImage(apdat_.resCom2_.img[89], num4, num, num4 % 120, num % 40, width3, height2);
@@ -7220,7 +7230,7 @@ break;
 				TeamData teamData2 = apdat_.tData_[0];
 				int num38 = 76;
 				int num39 = 16;
-				int num4 = 22;
+				num4 = 22;
 				num = 73;
 				g.SetColor(SC_WINDOW_BLUE);
 				g.DrawString("チームの名前", num4, num);
@@ -7371,7 +7381,7 @@ break;
 					g.DrawString("収入", 121f, num);
 					g.DrawString("支出", 194f, num);
 				}
-				int num4 = 22;
+				num4 = 22;
 				num = 90;
 				int num47 = 0;
 				int num48 = 0;
@@ -7477,7 +7487,7 @@ break;
 			{
 				apdat_.DrawWindow(g, 228, 176, 0, "クラブの歴史");
 				apdat_.DrawBox(g, 12, 51, 227, 205);
-				int num4 = 14;
+				num4 = 14;
 				num = 67;
 				for (int num56 = scrollValue_; num56 < ary1.Size(); num56++)
 				{

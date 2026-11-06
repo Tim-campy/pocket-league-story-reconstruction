@@ -1,0 +1,290 @@
+{
+  "scope": "frozen baseline source-only pattern probes",
+  "cases": [
+    {
+      "label": "alias-one",
+      "method_id": "main.AppData::CheckTermScript(System.Int32[])->System.Boolean",
+      "rule": "alias-parameter-occurrence",
+      "compile_pass": true,
+      "patch": {
+        "rule": "alias-parameter-occurrence",
+        "start": 128070,
+        "end": 128090,
+        "before": "int num2 = terms[1];",
+        "after": "int[] termsAlias = terms;\nint num2 = termsAlias[1];",
+        "distance": 0
+      },
+      "game_sources_modified": false,
+      "states_promoted": false,
+      "body_equal": false,
+      "old_prefix": 7,
+      "new_prefix": 112,
+      "prefix_preserved": true,
+      "body_gains": [],
+      "body_losses": [],
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "facets": [
+        "instructions",
+        "resolved_body_bytes"
+      ],
+      "original_locals": [
+        "valuetype System.Int64 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "candidate_locals": [
+        "valuetype System.Int64 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ]
+    },
+    {
+      "label": "alias-tail",
+      "method_id": "main.AppData::CheckTermScript(System.Int32[])->System.Boolean",
+      "rule": "alias-parameter-block-tail",
+      "compile_pass": true,
+      "patch": {
+        "rule": "alias-parameter-block-tail",
+        "start": 128070,
+        "end": 129818,
+        "before": "int num2 = terms[1];\r\n\t\t\tint num3 = 2;\r\n\t\t\tbool flag = true;\r\n\t\t\tswitch (num2)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t\tflag = false;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 1:\r\n\t\t\t\tnum = save_.lngs[0];\r\n\t\t\t\tbreak;\r\n\t\t\tcase 2:\r\n\t\t\t\tflag = CheckAlreadyEvent(terms[num3++]);\r\n\t\t\t\tbreak;\r\n\t\t\tcase 3:\r\n\t\t\t\tnum = save_.ints[1] + 1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 4:\r\n\t\t\t\tnum = save_.ints[2] + 1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 5:\r\n\t\t\t\tnum = save_.ints[3] + 1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 6:\r\n\t\t\t\tif (frmSoccer_.game_sec / 6 == terms[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\tcase 7:\r\n\t\t\t{\r\n\t\t\t\tint rankIndex = udat_.GetRankIndex();\r\n\t\t\t\tif (rankIndex + 1 >= terms[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 8:\r\n\t\t\t{\r\n\t\t\t\tint num7 = udat_.matchResult_[0] + udat_.matchResult_[1] + udat_.matchResult_[2];\r\n\t\t\t\tif (num7 >= terms[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 9:\r\n\t\t\t{\r\n\t\t\t\tint num6 = udat_.matchResult_[0];\r\n\t\t\t\tif (num6 >= terms[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 10:\r\n\t\t\t{\r\n\t\t\t\tint num5 = udat_.matchResult_[1];\r\n\t\t\t\tif (num5 >= terms[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 11:\r\n\t\t\t{\r\n\t\t\t\tint num4 = udat_.matchResult_[2];\r\n\t\t\t\tif (num4 >= terms[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 12:\r\n\t\t\t{\r\n\t\t\t\tint fanDispParam = FanActData.GetFanDispParam(FanActData.GetFanEva(0), 0);\r\n\t\t\t\tif (fanDispParam >= terms[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (flag && num3 < terms.Length)\r\n\t\t\t{\r\n\t\t\t\tflag = terms[num3] <= num && (terms.Length <= num3 + 1 || num <= terms[num3 + 1]);\r\n\t\t\t}\r\n\t\t\tif (terms[0] == 1)\r\n\t\t\t{\r\n\t\t\t\tflag = !flag;\r\n\t\t\t}\r\n\t\t\tif (!flag)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t",
+        "after": "int[] termsAlias = terms;\nint num2 = termsAlias[1];\r\n\t\t\tint num3 = 2;\r\n\t\t\tbool flag = true;\r\n\t\t\tswitch (num2)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t\tflag = false;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 1:\r\n\t\t\t\tnum = save_.lngs[0];\r\n\t\t\t\tbreak;\r\n\t\t\tcase 2:\r\n\t\t\t\tflag = CheckAlreadyEvent(termsAlias[num3++]);\r\n\t\t\t\tbreak;\r\n\t\t\tcase 3:\r\n\t\t\t\tnum = save_.ints[1] + 1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 4:\r\n\t\t\t\tnum = save_.ints[2] + 1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 5:\r\n\t\t\t\tnum = save_.ints[3] + 1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 6:\r\n\t\t\t\tif (frmSoccer_.game_sec / 6 == termsAlias[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\tcase 7:\r\n\t\t\t{\r\n\t\t\t\tint rankIndex = udat_.GetRankIndex();\r\n\t\t\t\tif (rankIndex + 1 >= termsAlias[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 8:\r\n\t\t\t{\r\n\t\t\t\tint num7 = udat_.matchResult_[0] + udat_.matchResult_[1] + udat_.matchResult_[2];\r\n\t\t\t\tif (num7 >= termsAlias[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 9:\r\n\t\t\t{\r\n\t\t\t\tint num6 = udat_.matchResult_[0];\r\n\t\t\t\tif (num6 >= termsAlias[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 10:\r\n\t\t\t{\r\n\t\t\t\tint num5 = udat_.matchResult_[1];\r\n\t\t\t\tif (num5 >= termsAlias[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 11:\r\n\t\t\t{\r\n\t\t\t\tint num4 = udat_.matchResult_[2];\r\n\t\t\t\tif (num4 >= termsAlias[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcase 12:\r\n\t\t\t{\r\n\t\t\t\tint fanDispParam = FanActData.GetFanDispParam(FanActData.GetFanEva(0), 0);\r\n\t\t\t\tif (fanDispParam >= termsAlias[2])\r\n\t\t\t\t{\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (flag && num3 < termsAlias.Length)\r\n\t\t\t{\r\n\t\t\t\tflag = termsAlias[num3] <= num && (termsAlias.Length <= num3 + 1 || num <= termsAlias[num3 + 1]);\r\n\t\t\t}\r\n\t\t\tif (termsAlias[0] == 1)\r\n\t\t\t{\r\n\t\t\t\tflag = !flag;\r\n\t\t\t}\r\n\t\t\tif (!flag)\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t",
+        "distance": 0
+      },
+      "game_sources_modified": false,
+      "states_promoted": false,
+      "body_equal": true,
+      "old_prefix": 7,
+      "new_prefix": 500,
+      "prefix_preserved": true,
+      "body_gains": [
+        "main.AppData::CheckTermScript(System.Int32[])->System.Boolean"
+      ],
+      "body_losses": [],
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "facets": [],
+      "original_locals": [
+        "valuetype System.Int64 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "candidate_locals": [
+        "valuetype System.Int64 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ]
+    },
+    {
+      "label": "draw-for",
+      "method_id": "main.AppData::DrawSeb(kairo.unity.ui.Graphics,System.Int32,System.Int32,kairo.unity.ui.Seb,kairo.unity.ui.Image[],System.Int32,System.Int32)->System.Void",
+      "rule": "foreach-array-indexed-for",
+      "compile_pass": true,
+      "patch": {
+        "rule": "foreach-array-indexed-for",
+        "start": 71299,
+        "end": 71707,
+        "before": "foreach (int[] array in sprites)\r\n\t\t\t{\r\n\t\t\t\tImage image = imgs[array[1]];\r\n\t\t\t\tif (array[2] + ucnt * array[4] + array[4] < image.GetWidth())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\r\n\t\t\t}",
+        "after": "for (int spriteIndex = 0; spriteIndex < sprites.Length; spriteIndex++) {\nint[] array = sprites[spriteIndex];\nImage image = imgs[array[1]];\nif (array[2] + ucnt * array[4] + array[4] < image.GetWidth())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\n}",
+        "distance": 0
+      },
+      "game_sources_modified": false,
+      "states_promoted": false,
+      "body_equal": true,
+      "old_prefix": 10,
+      "new_prefix": 148,
+      "prefix_preserved": true,
+      "body_gains": [
+        "main.AppData::DrawSeb(kairo.unity.ui.Graphics,System.Int32,System.Int32,kairo.unity.ui.Seb,kairo.unity.ui.Image[],System.Int32,System.Int32)->System.Void"
+      ],
+      "body_losses": [],
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "facets": [],
+      "original_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[][]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "candidate_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[][]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ]
+    },
+    {
+      "label": "draw-foreach-direct",
+      "method_id": "main.AppData::DrawSeb(kairo.unity.ui.Graphics,System.Int32,System.Int32,kairo.unity.ui.Seb,kairo.unity.ui.Image[],System.Int32,System.Int32)->System.Void",
+      "rule": "foreach-direct-array-expression",
+      "compile_pass": true,
+      "patch": {
+        "rule": "foreach-direct-array-expression",
+        "start": 71254,
+        "end": 71707,
+        "before": "int[][] sprites = seb.GetSprites(frame);\r\n\t\t\tforeach (int[] array in sprites)\r\n\t\t\t{\r\n\t\t\t\tImage image = imgs[array[1]];\r\n\t\t\t\tif (array[2] + ucnt * array[4] + array[4] < image.GetWidth())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\r\n\t\t\t}",
+        "after": "foreach (int[] array in seb.GetSprites(frame))\r\n\t\t\t{\r\n\t\t\t\tImage image = imgs[array[1]];\r\n\t\t\t\tif (array[2] + ucnt * array[4] + array[4] < image.GetWidth())\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawImage(image, x + array[6], y + array[7], array[2] + ucnt * array[4], array[3], array[4], array[5]);\r\n\t\t\t\t}\r\n\t\t\t}",
+        "distance": 0
+      },
+      "game_sources_modified": false,
+      "states_promoted": false,
+      "body_equal": false,
+      "old_prefix": 10,
+      "new_prefix": 9,
+      "prefix_preserved": false,
+      "body_gains": [],
+      "body_losses": [],
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "facets": [
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ],
+      "original_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[][]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "candidate_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[][]",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ]
+    },
+    {
+      "label": "goal",
+      "method_id": "form.DebugForm::Draw_goal(kairo.unity.ui.Graphics)->System.Void",
+      "rule": "restore-zero-chain-local",
+      "compile_pass": true,
+      "patch": {
+        "rule": "restore-zero-chain-local",
+        "start": 122933,
+        "end": 123029,
+        "before": "int num2;\r\n\t\t\tint num3;\r\n\t\t\tint num = (num2 = (num3 = 0));\r\n\t\t\tint num4 = 0;\r\n\t\t\tint num5 = -13;",
+        "after": "int num5;\nint num;\nint num2;\nint num3;\n\r\n\t\t\t\r\n\t\t\tnum5 = num = num2 = num3 = 0;\r\n\t\t\tint num4 = 0;\r\n\t\t\tnum5 = -13;",
+        "distance": 0
+      },
+      "game_sources_modified": false,
+      "states_promoted": false,
+      "body_equal": true,
+      "old_prefix": 13,
+      "new_prefix": 601,
+      "prefix_preserved": true,
+      "body_gains": [
+        "form.DebugForm::Draw_goal(kairo.unity.ui.Graphics)->System.Void"
+      ],
+      "body_losses": [],
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "facets": [],
+      "original_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "candidate_locals": [
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ]
+    },
+    {
+      "label": "button",
+      "method_id": "system.form.LanguageForm::DrawButton(kairo.unity.ui.Graphics,System.Threading.ThreadStart,System.Int32)->System.Void",
+      "rule": "reserve-unused-slot-and-defer-local",
+      "compile_pass": true,
+      "patch": {
+        "rule": "reserve-unused-slot-and-defer-local",
+        "start": 5280,
+        "end": 5310,
+        "before": "int y;\nint x = 20;\r\n\t\t\ty = 20;",
+        "after": "global::System.Int32 originalUnusedSlot1;\n\nint x = 20;\r\n\t\t\tint y = 20;",
+        "distance": 0
+      },
+      "game_sources_modified": false,
+      "states_promoted": false,
+      "body_equal": true,
+      "old_prefix": 20,
+      "new_prefix": 135,
+      "prefix_preserved": true,
+      "body_gains": [
+        "system.form.LanguageForm::DrawButton(kairo.unity.ui.Graphics,System.Threading.ThreadStart,System.Int32)->System.Void"
+      ],
+      "body_losses": [],
+      "types_equal": 129,
+      "types_total": 129,
+      "whole_structural_metadata_equal": true,
+      "facets": [],
+      "original_locals": [
+        "class surface.GameView @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ],
+      "candidate_locals": [
+        "class surface.GameView @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      ]
+    }
+  ]
+}

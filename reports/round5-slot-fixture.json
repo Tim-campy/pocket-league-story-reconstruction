@@ -1,0 +1,2237 @@
+{
+  "operation": "installed-smcs-name-vs-declaration-order-probe",
+  "compiler": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\unity\\smcs.exe",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "runtime": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\bin\\mono.exe",
+  "runtime_sha256": "3d102d9a63dae72e48396998bdbae4e9b2d8952ca6a8ebbcba698d3bc4345076",
+  "game_sources_modified": false,
+  "ledger_states_modified": false,
+  "variants": [
+    {
+      "label": "0-OID",
+      "names": [
+        "zebra",
+        "alpha",
+        "middle"
+      ],
+      "declaration_order": "OID",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){object zebra = Obj(); int alpha = Int(); double middle = Real(); return Sink(zebra,alpha,middle);}\n public static int DeclaredGroup(){object zebra;int alpha;double middle;zebra=Obj();{middle=Real();}alpha=Int();return Sink(zebra,alpha,middle);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object zebra=Obj(); {double middle=Real(); Sink(null,0,middle);} int alpha=Int(); return Sink(zebra,alpha,0);}\n public static int Lambda(){Func<int> f=delegate {object zebra = Obj(); int alpha = Int(); double middle = Real(); return Sink(zebra,alpha,middle);}; return f();}\n public static int Overloaded(){return Run(delegate {object zebra = Obj(); int alpha = Int(); double middle = Real(); return Sink(zebra,alpha,middle);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "5a28dfccdcf858bdc58e053dc151778700d1ef4ca46fe5757ed221ea303e94dc",
+      "binary_sha256": "8fa6140028fb0eb554d2b796a8deb0aba429cbb6938b38c251e97c8ff6e2e924"
+    },
+    {
+      "label": "0-DIO",
+      "names": [
+        "zebra",
+        "alpha",
+        "middle"
+      ],
+      "declaration_order": "DIO",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){double middle = Real(); int alpha = Int(); object zebra = Obj(); return Sink(zebra,alpha,middle);}\n public static int DeclaredGroup(){object zebra;int alpha;double middle;zebra=Obj();{middle=Real();}alpha=Int();return Sink(zebra,alpha,middle);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object zebra=Obj(); {double middle=Real(); Sink(null,0,middle);} int alpha=Int(); return Sink(zebra,alpha,0);}\n public static int Lambda(){Func<int> f=delegate {double middle = Real(); int alpha = Int(); object zebra = Obj(); return Sink(zebra,alpha,middle);}; return f();}\n public static int Overloaded(){return Run(delegate {double middle = Real(); int alpha = Int(); object zebra = Obj(); return Sink(zebra,alpha,middle);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "23588dd913fa62044371bdc4f7b30755b6369acdfbd80b7abdd61b50fbcd35dc",
+      "binary_sha256": "629737a3d753e2cc47610ed0830735b47bbf7b9197210b9f7deed2eb14f4786b"
+    },
+    {
+      "label": "1-OID",
+      "names": [
+        "alpha",
+        "middle",
+        "zebra"
+      ],
+      "declaration_order": "OID",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){object alpha = Obj(); int middle = Int(); double zebra = Real(); return Sink(alpha,middle,zebra);}\n public static int DeclaredGroup(){object alpha;int middle;double zebra;alpha=Obj();{zebra=Real();}middle=Int();return Sink(alpha,middle,zebra);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object alpha=Obj(); {double zebra=Real(); Sink(null,0,zebra);} int middle=Int(); return Sink(alpha,middle,0);}\n public static int Lambda(){Func<int> f=delegate {object alpha = Obj(); int middle = Int(); double zebra = Real(); return Sink(alpha,middle,zebra);}; return f();}\n public static int Overloaded(){return Run(delegate {object alpha = Obj(); int middle = Int(); double zebra = Real(); return Sink(alpha,middle,zebra);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "1180ef989c03c5af606f3fd3ec915686af1f7071fae7db494a94bbb5254f1e6a",
+      "binary_sha256": "ca8ece4bd6ca7aed6afbb2f9bc4d53ae92adb4fe89358d765928d94b48bb9747"
+    },
+    {
+      "label": "1-DIO",
+      "names": [
+        "alpha",
+        "middle",
+        "zebra"
+      ],
+      "declaration_order": "DIO",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){double zebra = Real(); int middle = Int(); object alpha = Obj(); return Sink(alpha,middle,zebra);}\n public static int DeclaredGroup(){object alpha;int middle;double zebra;alpha=Obj();{zebra=Real();}middle=Int();return Sink(alpha,middle,zebra);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object alpha=Obj(); {double zebra=Real(); Sink(null,0,zebra);} int middle=Int(); return Sink(alpha,middle,0);}\n public static int Lambda(){Func<int> f=delegate {double zebra = Real(); int middle = Int(); object alpha = Obj(); return Sink(alpha,middle,zebra);}; return f();}\n public static int Overloaded(){return Run(delegate {double zebra = Real(); int middle = Int(); object alpha = Obj(); return Sink(alpha,middle,zebra);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "791233daa9cff73d0fc5a603047582758e38f486b0b2a0d28b307d92c2ade4df",
+      "binary_sha256": "d75802e9d88d6fea6046eb3cc209a926ac945051523bcc4a303f2ff95843bf2b"
+    },
+    {
+      "label": "2-OID",
+      "names": [
+        "num",
+        "num2",
+        "num3"
+      ],
+      "declaration_order": "OID",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){object num = Obj(); int num2 = Int(); double num3 = Real(); return Sink(num,num2,num3);}\n public static int DeclaredGroup(){object num;int num2;double num3;num=Obj();{num3=Real();}num2=Int();return Sink(num,num2,num3);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object num=Obj(); {double num3=Real(); Sink(null,0,num3);} int num2=Int(); return Sink(num,num2,0);}\n public static int Lambda(){Func<int> f=delegate {object num = Obj(); int num2 = Int(); double num3 = Real(); return Sink(num,num2,num3);}; return f();}\n public static int Overloaded(){return Run(delegate {object num = Obj(); int num2 = Int(); double num3 = Real(); return Sink(num,num2,num3);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "47e592fa12085b58cbfa68ba5764c1e6f20d92ef6a00fad8eb77bf5f33059eb0",
+      "binary_sha256": "7bd72f3f2b6ccfb4c2f644ea919e028798ba4f7256b3b7fdb3f90c43c0ee9f11"
+    },
+    {
+      "label": "2-DIO",
+      "names": [
+        "num",
+        "num2",
+        "num3"
+      ],
+      "declaration_order": "DIO",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){double num3 = Real(); int num2 = Int(); object num = Obj(); return Sink(num,num2,num3);}\n public static int DeclaredGroup(){object num;int num2;double num3;num=Obj();{num3=Real();}num2=Int();return Sink(num,num2,num3);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object num=Obj(); {double num3=Real(); Sink(null,0,num3);} int num2=Int(); return Sink(num,num2,0);}\n public static int Lambda(){Func<int> f=delegate {double num3 = Real(); int num2 = Int(); object num = Obj(); return Sink(num,num2,num3);}; return f();}\n public static int Overloaded(){return Run(delegate {double num3 = Real(); int num2 = Int(); object num = Obj(); return Sink(num,num2,num3);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "2104653ec059f51100577ea4ce4634cbc82ab5e989a0558b357847a5f214e150",
+      "binary_sha256": "418bf8abe4bcc03204137581bf097cdb970b3e34a7a62af2afa41b5666c1f858"
+    },
+    {
+      "label": "3-OID",
+      "names": [
+        "aardvark",
+        "zzzz",
+        "recoveredValue"
+      ],
+      "declaration_order": "OID",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){object aardvark = Obj(); int zzzz = Int(); double recoveredValue = Real(); return Sink(aardvark,zzzz,recoveredValue);}\n public static int DeclaredGroup(){object aardvark;int zzzz;double recoveredValue;aardvark=Obj();{recoveredValue=Real();}zzzz=Int();return Sink(aardvark,zzzz,recoveredValue);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object aardvark=Obj(); {double recoveredValue=Real(); Sink(null,0,recoveredValue);} int zzzz=Int(); return Sink(aardvark,zzzz,0);}\n public static int Lambda(){Func<int> f=delegate {object aardvark = Obj(); int zzzz = Int(); double recoveredValue = Real(); return Sink(aardvark,zzzz,recoveredValue);}; return f();}\n public static int Overloaded(){return Run(delegate {object aardvark = Obj(); int zzzz = Int(); double recoveredValue = Real(); return Sink(aardvark,zzzz,recoveredValue);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "754d8b1dfe023212d9c419abb636dd6c653dba4410fb03461632d57313e84a32",
+      "binary_sha256": "0b8a9a2ead6db47ca9e6623fea98cc565e6c63d730362542f4e478613b96b561"
+    },
+    {
+      "label": "3-DIO",
+      "names": [
+        "aardvark",
+        "zzzz",
+        "recoveredValue"
+      ],
+      "declaration_order": "DIO",
+      "source": "using System; using System.Collections;\npublic class SlotFixture {\n static object Obj(){return new object();} static int Int(){return 7;} static double Real(){return 3.25;}\n static int Sink(object o,int i,double d){return o.GetHashCode()+i+(int)d;}\n static int Run(Func<int> f){return f();} static int Run(Func<string> f){return f().Length;}\n public static int Ordinary(){double recoveredValue = Real(); int zzzz = Int(); object aardvark = Obj(); return Sink(aardvark,zzzz,recoveredValue);}\n public static int DeclaredGroup(){object aardvark;int zzzz;double recoveredValue;aardvark=Obj();{recoveredValue=Real();}zzzz=Int();return Sink(aardvark,zzzz,recoveredValue);}\n public static int UnusedSlot(){int originalUnusedSlot; int used=Int();return used;}\n public static int Nested(){object aardvark=Obj(); {double recoveredValue=Real(); Sink(null,0,recoveredValue);} int zzzz=Int(); return Sink(aardvark,zzzz,0);}\n public static int Lambda(){Func<int> f=delegate {double recoveredValue = Real(); int zzzz = Int(); object aardvark = Obj(); return Sink(aardvark,zzzz,recoveredValue);}; return f();}\n public static int Overloaded(){return Run(delegate {double recoveredValue = Real(); int zzzz = Int(); object aardvark = Obj(); return Sink(aardvark,zzzz,recoveredValue);});}\n sealed class R:IDisposable {public void Dispose(){}}\n public static int Temps(IEnumerable items,object gate){int count=0;\n foreach(object entry in items){short nested=3; Sink(entry,nested,0);count++;}\n using(R resource=new R()){byte nested=2;Sink(resource,nested,0);}\n lock(gate){float nested=1;Sink(gate,0,nested);}\n switch(count){case 0: double nested=Real();Sink(null,0,nested);break;default:break;}\n return count;}\n}",
+      "source_sha256": "734df3c01e7d5371f3d96521b58698706c2d5bbb2da795bb7b4c5d889ba1bdd2",
+      "binary_sha256": "64103df876e56f82f6aa93eaf8dbec99b58b9d5e7c314c58462e0299605c1099"
+    }
+  ],
+  "comparisons": [
+    {
+      "label": "0-OID",
+      "names": [
+        "zebra",
+        "alpha",
+        "middle"
+      ],
+      "declaration_order": "OID",
+      "changed_methods": [],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "0-DIO",
+      "names": [
+        "zebra",
+        "alpha",
+        "middle"
+      ],
+      "declaration_order": "DIO",
+      "changed_methods": [
+        "SlotFixture::Ordinary()->System.Int32",
+        "SlotFixture::<Lambda>m__0()->System.Int32",
+        "SlotFixture::<Overloaded>m__1()->System.Int32"
+      ],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "1-OID",
+      "names": [
+        "alpha",
+        "middle",
+        "zebra"
+      ],
+      "declaration_order": "OID",
+      "changed_methods": [],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "1-DIO",
+      "names": [
+        "alpha",
+        "middle",
+        "zebra"
+      ],
+      "declaration_order": "DIO",
+      "changed_methods": [
+        "SlotFixture::Ordinary()->System.Int32",
+        "SlotFixture::<Lambda>m__0()->System.Int32",
+        "SlotFixture::<Overloaded>m__1()->System.Int32"
+      ],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "2-OID",
+      "names": [
+        "num",
+        "num2",
+        "num3"
+      ],
+      "declaration_order": "OID",
+      "changed_methods": [],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "2-DIO",
+      "names": [
+        "num",
+        "num2",
+        "num3"
+      ],
+      "declaration_order": "DIO",
+      "changed_methods": [
+        "SlotFixture::Ordinary()->System.Int32",
+        "SlotFixture::<Lambda>m__0()->System.Int32",
+        "SlotFixture::<Overloaded>m__1()->System.Int32"
+      ],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "3-OID",
+      "names": [
+        "aardvark",
+        "zzzz",
+        "recoveredValue"
+      ],
+      "declaration_order": "OID",
+      "changed_methods": [],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    },
+    {
+      "label": "3-DIO",
+      "names": [
+        "aardvark",
+        "zzzz",
+        "recoveredValue"
+      ],
+      "declaration_order": "DIO",
+      "changed_methods": [
+        "SlotFixture::Ordinary()->System.Int32",
+        "SlotFixture::<Lambda>m__0()->System.Int32",
+        "SlotFixture::<Overloaded>m__1()->System.Int32"
+      ],
+      "locals": {
+        "SlotFixture::.ctor()->System.Void": [],
+        "SlotFixture::Obj()->System.Object": [],
+        "SlotFixture::Int()->System.Int32": [],
+        "SlotFixture::Real()->System.Double": [],
+        "SlotFixture::Sink(System.Object,System.Int32,System.Double)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.Int32>)->System.Int32": [],
+        "SlotFixture::Run(System.Func`1<System.String>)->System.Int32": [],
+        "SlotFixture::Ordinary()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::DeclaredGroup()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::UnusedSlot()->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Nested()->System.Int32": [
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::Lambda()->System.Int32": [
+          "class System.Func`1 @ System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e<valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e>"
+        ],
+        "SlotFixture::Overloaded()->System.Int32": [],
+        "SlotFixture::Temps(System.Collections.IEnumerable,System.Object)->System.Int32": [
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Collections.IEnumerator @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int16 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class SlotFixture/R @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+          "valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.IDisposable @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          "valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        ],
+        "SlotFixture/R::.ctor()->System.Void": [],
+        "SlotFixture/R::Dispose()->System.Void": []
+      },
+      "instructions": {
+        "SlotFixture::Ordinary()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Lambda>m__0()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ],
+        "SlotFixture::<Overloaded>m__1()->System.Int32": [
+          {
+            "offset": 0,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Real``0()->valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 5,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          {
+            "offset": 6,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Int``0()->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 11,
+            "opcode": "stloc.1",
+            "operand": null
+          },
+          {
+            "offset": 12,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Obj``0()->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 17,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          {
+            "offset": 18,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 19,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 20,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 21,
+            "opcode": "call",
+            "operand": {
+              "method": "class SlotFixture @ SlotFixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Sink``0(class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e,valuetype System.Double @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 26,
+            "opcode": "ret",
+            "operand": null
+          }
+        ]
+      }
+    }
+  ]
+}

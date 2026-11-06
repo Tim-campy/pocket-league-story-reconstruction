@@ -4708,11 +4708,15 @@ int num4 = 0;
 		public void Draw_goal(Graphics g)
 		{
 			apdat_.ClearZSortObjects();
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num5;
+int num;
+int num2;
+int num3;
+
+
+			num5 = num = num2 = num3 = 0;
 			int num4 = 0;
-			int num5 = -13;
+			num5 = -13;
 			num = 17;
 			camera_pos[0] = 120;
 			camera_pos[1] = 160;
@@ -4756,11 +4760,15 @@ int num4 = 0;
 		public void Draw_goalMini(Graphics g)
 		{
 			apdat_.ClearZSortObjects();
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num5;
+int num;
+int num2;
+int num3;
+
+
+			num5 = num = num2 = num3 = 0;
 			int num4 = 0;
-			int num5 = -13;
+			num5 = -13;
 			num = 17;
 			camera_pos[0] = 120;
 			camera_pos[1] = 160;

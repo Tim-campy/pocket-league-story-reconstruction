@@ -2527,7 +2527,8 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 				{
 					if (canvas_.CheckKeyRepeat(65536))
 					{
-						if (et_cur[0] % 3 == 0)
+						{ bool recoveredCondition_68130 = et_cur[0] % 3 == 0;
+if (recoveredCondition_68130)
 						{
 							et_cur[0] += 2;
 						}
@@ -2535,6 +2536,7 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 						{
 							et_cur[0] = (et_cur[0] - 1 + MENU_STR.Length) % MENU_STR.Length;
 						}
+}
 					}
 					if (canvas_.CheckKeyRepeat(262144))
 					{

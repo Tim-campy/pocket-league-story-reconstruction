@@ -503,10 +503,12 @@ namespace surface
 								break;
 							case 4:
 								text = canvas_.GetSoftLabel(2);
-								if (text == null)
+								{ bool recoveredCondition_12162 = text == null;
+if (recoveredCondition_12162)
 								{
 									text = canvas_.GetSoftLabel(3);
 								}
+}
 								break;
 							}
 							switch (id)

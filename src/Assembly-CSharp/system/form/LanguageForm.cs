@@ -58,10 +58,10 @@ namespace system.form
 				start_ = true;
 				List<string[]> list = new List<string[]>();
 				string[][] systemLanguagePackFiles = Language.GetSystemLanguagePackFiles();
-				foreach (string[] item in systemLanguagePackFiles)
-				{
-					list.Add(item);
-				}
+				for (int spriteIndex = 0; spriteIndex < systemLanguagePackFiles.Length; spriteIndex++) {
+string[] item = systemLanguagePackFiles[spriteIndex];
+list.Add(item);
+}
 				string customLanguagePackLocation = Language.GetCustomLanguagePackLocation();
 				if (customLanguagePackLocation != null)
 				{
@@ -208,9 +208,10 @@ if (recoveredCondition_3348)
 		{
 			GameView instance = GameView.GetInstance();
 			g.PushOrigin(0, 0);
-			int y;
+			global::System.Int32 originalUnusedSlot1;
+
 int x = 20;
-			y = 20;
+			int y = 20;
 			if (BitUtil.Check(anchor, 2))
 			{
 				x = instance.GetGameWidth() / 2;

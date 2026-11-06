@@ -1,0 +1,154 @@
+{
+  "fixture_checks": [
+    {
+      "rule": "ternary-polarity",
+      "needle": "return x == 2 ? 7 : 8;",
+      "result": "PASS",
+      "after": "(x != 2) ? (8) : (7)"
+    },
+    {
+      "rule": "if-polarity",
+      "needle": "if (x < 0f)",
+      "result": "PASS",
+      "after": "if (!(x < 0f)) { return 2; } else { return 1; }"
+    },
+    {
+      "rule": "if-polarity",
+      "needle": "if (x < 0)",
+      "result": "PASS",
+      "after": "if (x >= 0) { return 2; } else { return 1; }"
+    },
+    {
+      "rule": "if-polarity",
+      "needle": "if (x == 0 && x < 3)",
+      "result": "PASS",
+      "after": "if ((x != 0) || (x >= 3)) { return 2; } else { return 1; }"
+    },
+    {
+      "rule": "loop-continue-guards",
+      "needle": "if (x > 2 && Check())",
+      "result": "PASS",
+      "after": "if (x <= 2) { continue; }\nif (!(Check())) { continue; }\nfield++;"
+    },
+    {
+      "rule": "guard-break",
+      "needle": "if (x > 0) { break;",
+      "result": "PASS",
+      "after": "if (x > 0) { break; }\nfield++;"
+    },
+    {
+      "rule": "condition-split-or-guards",
+      "needle": "if (x == 0 || Check())",
+      "result": "PASS",
+      "after": "if (x == 0) { continue; }\nif (Check()) { continue; }"
+    },
+    {
+      "rule": "condition-merge-or-guards",
+      "needle": "if (x == 0) { continue; } if",
+      "result": "PASS",
+      "after": "if ((x == 0) || (Check())) { continue; }"
+    },
+    {
+      "rule": "condition-merge-and",
+      "needle": "if (x > 0) { if",
+      "result": "PASS",
+      "after": "if ((x > 0) && (Check())) { field++; }"
+    },
+    {
+      "rule": "assignment-chain-order",
+      "needle": "local = (field = 7)",
+      "result": "PASS",
+      "after": "field = (local = 7)"
+    },
+    {
+      "rule": "unary-negation",
+      "needle": "return 0f - x;",
+      "result": "PASS",
+      "after": "-(x)"
+    },
+    {
+      "rule": "condition-local",
+      "needle": "if (!Check())",
+      "result": "PASS",
+      "after": "{ bool recoveredCondition_927 = Check();\nif (!recoveredCondition_927) { field++; }\n}"
+    },
+    {
+      "rule": "tail-early-return",
+      "needle": "if (x) { field++; }",
+      "result": "PASS",
+      "after": "if (!(x)) { return; }\nfield++;"
+    },
+    {
+      "rule": "switch-if",
+      "needle": "switch(x)",
+      "result": "PASS",
+      "after": "if ((x == 0)) { return 1; } else { return 2; }"
+    },
+    {
+      "rule": "loop-cache-scope",
+      "needle": "while (x > 0)",
+      "result": "PASS",
+      "after": "while (true) { bool completed_420 = x > 0; if (!completed_420) { break; }\nif (x > 2 && Check()) { field++; }\n}"
+    },
+    {
+      "rule": "return-local",
+      "needle": "return x == 2 ? 7 : 8;",
+      "result": "PASS",
+      "after": "{ int recoveredReturn_154 = x == 2 ? 7 : 8; return recoveredReturn_154; }"
+    },
+    {
+      "rule": "local-declaration-order-earlier",
+      "needle": "int b = 2;",
+      "result": "PASS",
+      "after": "int b;\nint a = 1; b = 2;"
+    },
+    {
+      "rule": "local-declaration-order-later",
+      "needle": "int a = 1;",
+      "result": "PASS",
+      "after": "int b;\nint a = 1; b = 2;"
+    },
+    {
+      "rule": "local-declaration-scope-hoist",
+      "needle": "for (int j = 0;",
+      "result": "PASS",
+      "after": "float f;\nfor (int j = 0; j < 3; j++) { f = 1f;"
+    },
+    {
+      "rule": "assignment-ternary-if",
+      "needle": "result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "if (x) { result = 1; } else { result = 2; }"
+    },
+    {
+      "rule": "assignment-ternary-if-reverse",
+      "needle": "result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "if (!(x)) { result = 2; } else { result = 1; }"
+    },
+    {
+      "rule": "declaration-ternary-if",
+      "needle": "int result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "int result;\nif (x) { result = 1; } else { result = 2; }"
+    },
+    {
+      "rule": "declaration-ternary-if-reverse",
+      "needle": "int result = x ? 1 : 2;",
+      "result": "PASS",
+      "after": "int result;\nif (!(x)) { result = 2; } else { result = 1; }"
+    },
+    {
+      "rule": "target-screen-stateless",
+      "result": "PASS",
+      "checks": [
+        "UTF-16 declaration position",
+        "target body preserved",
+        "other method stubbed",
+        "semantic tree unchanged"
+      ]
+    }
+  ],
+  "fixture_pass_count": 24,
+  "checks_scope": "Syntax selection, safe negation, rule generation and UTF-16 spans only; IL matching is measured by the engine."
+}

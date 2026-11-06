@@ -773,9 +773,10 @@ namespace game
 				camera_pos_[1] += THROWIN_OFF[owner_.direct_][1];
 				num += 3;
 			}
-			int num11;
+			global::System.Single originalUnusedSlot16;
+
 int num10 = 0;
-			num11 = 0;
+			int num11 = 0;
 			if (owner_ != null)
 			{
 				if (owner_.seb_ != 14)

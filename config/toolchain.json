@@ -99,7 +99,7 @@
       ],
       "historical_compiler_version": "UNKNOWN",
       "candidate_compatible": true,
-      "validation_scope": "complete source build; 1671/1952 bodies equal; 1676/1958 matched; 196453/601603 original IL bytes matched; 129/129 structural type metadata equal; whole assembly byte identity remains false; historical compiler UNKNOWN",
+      "validation_scope": "complete source build; 1683/1952 bodies equal; 1688/1958 matched; 203891/601603 original IL bytes matched; 129/129 structural type metadata equal; whole assembly byte identity remains false; historical compiler UNKNOWN",
       "optimization_tested": true,
       "debug_tested": true,
       "compiler_fingerprints": {
@@ -340,6 +340,106 @@
         "trial_only_flags": [
           "-debug+ (MDB mapping only)"
         ]
+      }
+    }
+  },
+  "round5_slot_order_validation": {
+    "baseline_commit": "7d9fbc86b9117deae51562204d800b9f6f4e2f9c",
+    "operation": "official complete production verification after smcs slot-order diagnosis and source reconstruction",
+    "production_configuration_unchanged": true,
+    "new_non_deterministic_exceptions": [],
+    "normalization_applied": false,
+    "slot_name_hash_hypothesis": "REFUTADA in tested paths",
+    "historical_smcs_build_source_commit": "UNKNOWN",
+    "engine_selection": {
+      "methods": 119,
+      "original_il_bytes": 201923,
+      "baseline_pending_not_searched": 162,
+      "targeted_retry_passes": 4,
+      "targeted_retry_methods": 4
+    },
+    "evidence_files": [
+      {
+        "path": "reports/round5-adoption.json",
+        "sha256": "53eb92d2a1f70e9683148be53067be52c3dcd203cb966d5cdbb1667a9fecf339"
+      },
+      {
+        "path": "reports/round5-baseline-measurement.json",
+        "sha256": "195387c73c83b072464b694cef44da0b52b57c8b460bd88b4f3c39368acd2f31"
+      },
+      {
+        "path": "reports/round5-final-measurement.json",
+        "sha256": "2da6e1eeef868c53d82bdee96c2e06cb6078248291ec6cc33fb6e56396192dfa"
+      },
+      {
+        "path": "reports/round5-slot-fixture.json",
+        "sha256": "ed936dbf01d915e0352391e05b62af08479e2159a87d219bd48b17e9d7c1f529"
+      },
+      {
+        "path": "reports/round5-smcs-source.json",
+        "sha256": "2ee0d6cf13f0b19e9dc996ed9010e1bcf878ea2b29347335c7a58d2bc35cd1a2"
+      },
+      {
+        "path": "reports/round5-local-cases.json",
+        "sha256": "fafdddab95daf623cd97697341a03d781d9741498702e8010a08f7eae042f368"
+      },
+      {
+        "path": "reports/round5-Assembly-CSharp-engine.json",
+        "sha256": "7fb861dd6fad1bd179bbe4cd4d04f0b41263f4a858f112b31ae0837469cb8651"
+      },
+      {
+        "path": "reports/round5-engine-selection.json",
+        "sha256": "eea5162e0c780fe7b731f18d02b6e9f31420d302c3155eaa1c8d1c14b8aef143"
+      },
+      {
+        "path": "build/round5/engine-method-ids.json",
+        "sha256": "57509758bf69963c1de3a9c0b0a7c7e880adfaea5e49d57321c09de5019183ae"
+      },
+      {
+        "path": "tools/round5_adopt.py",
+        "sha256": "bfb0491fb51d51a59b11f5ff40717a51a20bb4c1d3fe58236b9807e89c6fdb1b"
+      },
+      {
+        "path": "tools/round5_report.py",
+        "sha256": "d449ecae6d3dbb7b25ef5117ed1a4002f83bea513e540c6c90e2d7817018d327"
+      },
+      {
+        "path": "tools/round5_update_toolchain.py",
+        "sha256": "e24ef41f9265d41a2a5b1c8b3c407b3377563ca1d58c6077f97a29769acb3421"
+      },
+      {
+        "path": "build/verification-KairoLibrary.json",
+        "sha256": "a179ad12b518d2edf95febf713750a5949a59c272199e838a447c1957f3902e8"
+      },
+      {
+        "path": "build/verification-Assembly-CSharp.json",
+        "sha256": "baeb78f9dce058548250fc9f8b0d36ed8f2cfe0ea2f5633a33f0383c06050025"
+      }
+    ],
+    "assemblies": {
+      "KairoLibrary": {
+        "matched": 3187,
+        "total_methods": 3287,
+        "matched_original_il_bytes": 204103,
+        "original_total_il_bytes": 269894,
+        "body_equal": 3113,
+        "types_equal": 337,
+        "types_total": 337,
+        "official_build_sha256": "e6a071d98e92c9369a632d80cf061aac6944261cacf8760badb2e226d877c390",
+        "engine_executed": false,
+        "whole_assembly_byte_identity": false
+      },
+      "Assembly-CSharp": {
+        "matched": 1688,
+        "total_methods": 1958,
+        "matched_original_il_bytes": 203891,
+        "original_total_il_bytes": 601603,
+        "body_equal": 1683,
+        "types_equal": 129,
+        "types_total": 129,
+        "official_build_sha256": "94e3443680d006f925c2d680dfca5689f7be5d436a5a50a22438091123c846cc",
+        "engine_executed": true,
+        "whole_assembly_byte_identity": false
       }
     }
   }

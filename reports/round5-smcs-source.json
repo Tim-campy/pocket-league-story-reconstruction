@@ -1,0 +1,488 @@
+{
+  "operation": "round5-smcs-source-slot-order-investigation",
+  "game_sources_modified": false,
+  "ledger_states_modified": false,
+  "hypothesis": {
+    "text": "Local variable names determine ordinary smcs slot order through hash iteration",
+    "status": "REFUTADA",
+    "scope": "Ordinary method, noncaptured locals in lambda, and overloaded-delegate lambda paths exercised by fixture",
+    "fixture_variants": 8,
+    "fixture_report": "reports/round5-slot-fixture.json",
+    "comparisons": [
+      {
+        "label": "0-OID",
+        "names": [
+          "zebra",
+          "alpha",
+          "middle"
+        ],
+        "declaration_order": "OID",
+        "changed_methods": []
+      },
+      {
+        "label": "0-DIO",
+        "names": [
+          "zebra",
+          "alpha",
+          "middle"
+        ],
+        "declaration_order": "DIO",
+        "changed_methods": [
+          "SlotFixture::Ordinary()->System.Int32",
+          "SlotFixture::<Lambda>m__0()->System.Int32",
+          "SlotFixture::<Overloaded>m__1()->System.Int32"
+        ]
+      },
+      {
+        "label": "1-OID",
+        "names": [
+          "alpha",
+          "middle",
+          "zebra"
+        ],
+        "declaration_order": "OID",
+        "changed_methods": []
+      },
+      {
+        "label": "1-DIO",
+        "names": [
+          "alpha",
+          "middle",
+          "zebra"
+        ],
+        "declaration_order": "DIO",
+        "changed_methods": [
+          "SlotFixture::Ordinary()->System.Int32",
+          "SlotFixture::<Lambda>m__0()->System.Int32",
+          "SlotFixture::<Overloaded>m__1()->System.Int32"
+        ]
+      },
+      {
+        "label": "2-OID",
+        "names": [
+          "num",
+          "num2",
+          "num3"
+        ],
+        "declaration_order": "OID",
+        "changed_methods": []
+      },
+      {
+        "label": "2-DIO",
+        "names": [
+          "num",
+          "num2",
+          "num3"
+        ],
+        "declaration_order": "DIO",
+        "changed_methods": [
+          "SlotFixture::Ordinary()->System.Int32",
+          "SlotFixture::<Lambda>m__0()->System.Int32",
+          "SlotFixture::<Overloaded>m__1()->System.Int32"
+        ]
+      },
+      {
+        "label": "3-OID",
+        "names": [
+          "aardvark",
+          "zzzz",
+          "recoveredValue"
+        ],
+        "declaration_order": "OID",
+        "changed_methods": []
+      },
+      {
+        "label": "3-DIO",
+        "names": [
+          "aardvark",
+          "zzzz",
+          "recoveredValue"
+        ],
+        "declaration_order": "DIO",
+        "changed_methods": [
+          "SlotFixture::Ordinary()->System.Int32",
+          "SlotFixture::<Lambda>m__0()->System.Int32",
+          "SlotFixture::<Overloaded>m__1()->System.Int32"
+        ]
+      }
+    ]
+  },
+  "compiler": {
+    "path": "C:\\Users\\l_abn\\AppData\\Local\\Programs\\Unity\\5.3.4f1\\Editor\\Data\\Mono\\lib\\mono\\unity\\smcs.exe",
+    "sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+    "assembly_version": "2.6.5.0",
+    "mvid": "84cfc78d-08c1-491e-b417-ec6e1422345a"
+  },
+  "source": {
+    "repository": "https://github.com/Unity-Technologies/mono",
+    "branch": "unity-5.3",
+    "snapshot_commit": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "snapshot_committer_date": "2016-03-11T13:19:18Z",
+    "branch_tip_at_lookup": "12ac9d2d802867d06c066b5b330e50df94bf1f13",
+    "branch_tip_committer_date": "2016-11-19T02:17:46Z",
+    "exact_installed_build_commit": "UNKNOWN",
+    "bounded_negative_lookup": [
+      "unity-5.3.4f1 branch not found",
+      "unity-5.3-mbe branch not found"
+    ],
+    "files": [
+      {
+        "path": "mcs/mcs/statement.cs",
+        "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+        "bytes": 151900,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs",
+        "identical_between_2016_03_11_snapshot_and_2016_11_19_tip": true
+      },
+      {
+        "path": "mcs/mcs/codegen.cs",
+        "sha256": "622e8f428875d92653218e3aa45e54e42b5f942f2b78bc8a55256b78d4832ac1",
+        "bytes": 29228,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/codegen.cs",
+        "identical_between_2016_03_11_snapshot_and_2016_11_19_tip": true
+      },
+      {
+        "path": "mcs/mcs/cs-parser.jay",
+        "sha256": "0c8785dfca97fc269d25f120387209228d091d8c96442baafb1d1612c3567c45",
+        "bytes": 164972,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/cs-parser.jay",
+        "identical_between_2016_03_11_snapshot_and_2016_11_19_tip": true
+      },
+      {
+        "path": "mcs/mcs/expression.cs",
+        "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+        "bytes": 274489,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/expression.cs",
+        "identical_between_2016_03_11_snapshot_and_2016_11_19_tip": true
+      },
+      {
+        "path": "mcs/mcs/anonymous.cs",
+        "sha256": "a9fe88d41c4b06aac9cc39f64dfff134f95e381f54402c3d1f3ffa89e5bf97bd",
+        "bytes": 57641,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/anonymous.cs"
+      },
+      {
+        "path": "mcs/mcs/ecore.cs",
+        "sha256": "398a9923cdc632815283aa26454eb534d638486cc494e999b9ae65bb4c9792d0",
+        "bytes": 182652,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/ecore.cs"
+      },
+      {
+        "path": "mcs/mcs/assign.cs",
+        "sha256": "00dafa1b0447a9215a619803a8e672f4f775c5412a1c7cc8e919bc29c2ec053c",
+        "bytes": 19294,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/assign.cs"
+      },
+      {
+        "path": "mcs/class/System/System.Collections.Specialized/ListDictionary.cs",
+        "sha256": "df5f564d63e092522f166b6cf63a819570857d9c923d7aad602327366227ce4d",
+        "bytes": 9027,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/class/System/System.Collections.Specialized/ListDictionary.cs"
+      },
+      {
+        "path": "configure.in",
+        "sha256": "a78c85955ea4880a3969a06a467aa629fd98b4dfb09e5bdf922f0aba779c24eb",
+        "bytes": 89021,
+        "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/configure.in",
+        "identical_between_2016_03_11_snapshot_and_2016_11_19_tip": true
+      }
+    ]
+  },
+  "source_locations": {
+    "declared_collection": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 1550,
+      "last_line": 1555,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L1550-L1555"
+    },
+    "add_variable": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 1791,
+      "last_line": 1794,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L1791-L1794"
+    },
+    "declared_order_and_child_recursion": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 2032,
+      "last_line": 2047,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L2032-L2047"
+    },
+    "declare_local": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 1225,
+      "last_line": 1239,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L1225-L1239"
+    },
+    "add_temporary": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 1839,
+      "last_line": 1852,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L1839-L1852"
+    },
+    "block_used": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 1899,
+      "last_line": 1907,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L1899-L1907"
+    },
+    "cloned_collection": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 2299,
+      "last_line": 2317,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L2299-L2317"
+    },
+    "implicit_block": {
+      "file": "mcs/mcs/cs-parser.jay",
+      "first_line": 6062,
+      "last_line": 6105,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/cs-parser.jay#L6062-L6105"
+    },
+    "install_implicit_block": {
+      "file": "mcs/mcs/cs-parser.jay",
+      "first_line": 4431,
+      "last_line": 4437,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/cs-parser.jay#L4431-L4437"
+    },
+    "clone_only_when_probing": {
+      "file": "mcs/mcs/anonymous.cs",
+      "first_line": 1168,
+      "last_line": 1185,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/anonymous.cs#L1168-L1185"
+    },
+    "do_not_cache_probe": {
+      "file": "mcs/mcs/anonymous.cs",
+      "first_line": 1024,
+      "last_line": 1063,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/anonymous.cs#L1024-L1063"
+    },
+    "ordered_dictionary_add": {
+      "file": "mcs/class/System/System.Collections.Specialized/ListDictionary.cs",
+      "first_line": 73,
+      "last_line": 110,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/class/System/System.Collections.Specialized/ListDictionary.cs#L73-L110"
+    },
+    "ordered_dictionary_enumeration": {
+      "file": "mcs/class/System/System.Collections.Specialized/ListDictionary.cs",
+      "first_line": 260,
+      "last_line": 265,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/class/System/System.Collections.Specialized/ListDictionary.cs#L260-L265"
+    },
+    "register_temporary": {
+      "file": "mcs/mcs/ecore.cs",
+      "first_line": 5933,
+      "last_line": 5957,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/ecore.cs#L5933-L5957"
+    },
+    "temporary_lazy_store": {
+      "file": "mcs/mcs/assign.cs",
+      "first_line": 271,
+      "last_line": 283,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/assign.cs#L271-L283"
+    },
+    "temporary_reuse_by_type": {
+      "file": "mcs/mcs/codegen.cs",
+      "first_line": 357,
+      "last_line": 390,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/codegen.cs#L357-L390"
+    },
+    "temporary_return": {
+      "file": "mcs/mcs/codegen.cs",
+      "first_line": 412,
+      "last_line": 434,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/codegen.cs#L412-L434"
+    },
+    "foreach_array": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 5187,
+      "last_line": 5203,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L5187-L5203"
+    },
+    "foreach_collection": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 5674,
+      "last_line": 5675,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L5674-L5675"
+    },
+    "foreach_dispose": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 5790,
+      "last_line": 5815,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L5790-L5815"
+    },
+    "using_expression": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 4899,
+      "last_line": 4936,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L4899-L4936"
+    },
+    "using_declared": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 5040,
+      "last_line": 5113,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L5040-L5113"
+    },
+    "lock": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 4111,
+      "last_line": 4137,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L4111-L4137"
+    },
+    "switch": {
+      "file": "mcs/mcs/statement.cs",
+      "first_line": 3823,
+      "last_line": 3866,
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/statement.cs#L3823-L3866"
+    }
+  },
+  "measured_binary_evidence": [
+    {
+      "id": "Mono.CSharp.EmitContext::GetTemporaryLocal(System.Type)->System.Reflection.Emit.LocalBuilder",
+      "token": "[Method:0x0447]",
+      "references": [
+        {
+          "offset": 18,
+          "opcode": "callvirt",
+          "id": "System.Collections.Hashtable::get_Item(System.Object)->System.Object"
+        },
+        {
+          "offset": 84,
+          "opcode": "callvirt",
+          "id": "System.Collections.Hashtable::Remove(System.Object)->System.Void"
+        },
+        {
+          "offset": 109,
+          "opcode": "callvirt",
+          "id": "System.Reflection.Emit.ILGenerator::DeclareLocal(System.Type)->System.Reflection.Emit.LocalBuilder"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.LocalInfo::ResolveVariable(Mono.CSharp.EmitContext)->System.Void",
+      "token": "[Method:0x0f91]",
+      "references": [
+        {
+          "offset": 47,
+          "opcode": "call",
+          "id": "Mono.CSharp.TypeManager::DeclareLocalPinned(System.Reflection.Emit.ILGenerator,System.Type)->System.Reflection.Emit.LocalBuilder"
+        },
+        {
+          "offset": 80,
+          "opcode": "callvirt",
+          "id": "System.Reflection.Emit.ILGenerator::DeclareLocal(System.Type)->System.Reflection.Emit.LocalBuilder"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.Block::get_Variables()->System.Collections.IDictionary",
+      "token": "[Method:0x0fb6]",
+      "references": [
+        {
+          "offset": 12,
+          "opcode": "newobj",
+          "id": "System.Collections.Specialized.ListDictionary::.ctor()->System.Void"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.Block::EmitMeta(Mono.CSharp.EmitContext)->System.Void",
+      "token": "[Method:0x0fd3]",
+      "references": [
+        {
+          "offset": 47,
+          "opcode": "callvirt",
+          "id": "Mono.CSharp.LocalInfo::ResolveVariable(Mono.CSharp.EmitContext)->System.Void"
+        },
+        {
+          "offset": 125,
+          "opcode": "callvirt",
+          "id": "Mono.CSharp.LocalInfo::ResolveVariable(Mono.CSharp.EmitContext)->System.Void"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.Block::CloneTo(Mono.CSharp.CloneContext,Mono.CSharp.Statement)->System.Void",
+      "token": "[Method:0x0fdf]",
+      "references": [
+        {
+          "offset": 79,
+          "opcode": "newobj",
+          "id": "System.Collections.Hashtable::.ctor()->System.Void"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.CSharpParser::declare_local_variables(Mono.CSharp.Expression,System.Collections.ArrayList,Mono.CSharp.Location)->Mono.CSharp.Block",
+      "token": "[Method:0x0013]",
+      "references": [
+        {
+          "offset": 403,
+          "opcode": "callvirt",
+          "id": "Mono.CSharp.Block::get_Used()->System.Boolean"
+        },
+        {
+          "offset": 431,
+          "opcode": "newobj",
+          "id": "Mono.CSharp.Block::.ctor(Mono.CSharp.Block,Mono.CSharp.Location,Mono.CSharp.Location)->System.Void"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.AnonymousMethodExpression::CompatibleMethod(Mono.CSharp.ResolveContext,Mono.CSharp.TypeInferenceContext,System.Type,System.Type)->Mono.CSharp.AnonymousMethodBody",
+      "token": "[Method:0x00a2]",
+      "references": [
+        {
+          "offset": 20,
+          "opcode": "callvirt",
+          "id": "Mono.CSharp.ResolveContext::get_IsInProbingMode()->System.Boolean"
+        },
+        {
+          "offset": 36,
+          "opcode": "callvirt",
+          "id": "Mono.CSharp.Statement::PerformClone()->Mono.CSharp.Statement"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.LocalTemporary::Store(Mono.CSharp.EmitContext)->System.Void",
+      "token": "[Method:0x00f7]",
+      "references": [
+        {
+          "offset": 53,
+          "opcode": "callvirt",
+          "id": "Mono.CSharp.EmitContext::GetTemporaryLocal(System.Type)->System.Reflection.Emit.LocalBuilder"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.TemporaryVariable::DoResolve(Mono.CSharp.ResolveContext)->Mono.CSharp.Expression",
+      "token": "[Method:0x081e]",
+      "references": [
+        {
+          "offset": 45,
+          "opcode": "callvirt",
+          "id": "Mono.CSharp.Block::AddTemporaryVariable(Mono.CSharp.TypeExpr,Mono.CSharp.Location)->Mono.CSharp.LocalInfo"
+        }
+      ]
+    },
+    {
+      "id": "Mono.CSharp.Block::AddStatement(Mono.CSharp.Statement)->System.Void",
+      "token": "[Method:0x0fca]",
+      "references": []
+    }
+  ],
+  "derived_algorithm": {
+    "normal_block": [
+      "Declared locals: insertion order",
+      "Registered temporaries: registration order",
+      "Child blocks: insertion order, recursive"
+    ],
+    "implicit_block": "A declaration following an added statement creates a new internal child block, even without additional C# braces",
+    "late_temporaries": "LocalTemporary allocates at emission; freed slots are reused by type",
+    "cloning": "Hashtable exists in cloned blocks; anonymous-method compatibility clones only while probing and does not cache probing results"
+  },
+  "limitations": [
+    "Exact compiler-build source commit UNKNOWN",
+    "No proof about every compiler-internal path",
+    "Rules must be checked by compilation and verifier before game adoption"
+  ],
+  "note": "docs/notes/round5-smcs-source-evidence.md"
+}

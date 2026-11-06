@@ -838,9 +838,10 @@ JarInflater jarInflater = null;
 
 		public void UpdateScoreFromNetwork()
 		{
-			string text;
+			global::System.String originalUnusedSlot0;
+
 byte[] bytes = apdat_.CgiGetScore("0,1");
-			text = StringUtil.Split(JString.New(bytes), "\n")[1];
+			string text = StringUtil.Split(JString.New(bytes), "\n")[1];
 			if (text.StartsWith(","))
 			{
 				text = "0" + text;

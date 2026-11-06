@@ -1,0 +1,141 @@
+{
+  "scope": "Read-only review of frozen baseline bodies and live round5 engine trial report; no source, binary, ledger or acceptance changes. Diagnostic ignoring of branch destinations was used only to locate candidate shapes, never as acceptance.",
+  "measurement_report_source": "reports\\round5-Assembly-CSharp-engine.json",
+  "methods_completed_in_source_report_at_review": 54,
+  "helper_evidence": {
+    "alias_hint": "tools/round5_engine.py::alias_hints scans current plus next2 original instructions",
+    "alias_insertion": "tools/Round5NewRules.cs::AddRound5Rules prepends alias declaration before mapped whole statement",
+    "switch_filter": "tools/Round5TransformSyntax.cs lines295-309 requires local/parameter/field input and at most8sections",
+    "zerochain_filter": "tools/Round5NewRules.cs direct block.Statements.OfType<LocalDeclarationStatementSyntax> excludes nested coordinate declarations"
+  },
+  "cases": [
+    {
+      "id": "form.DebugForm::Update_gameParam()->System.Boolean",
+      "initial_offset": 9,
+      "final_offset": 9,
+      "candidate_count": 512,
+      "trial_count": 96,
+      "trial_rules": {
+        "alias-field-command": 50,
+        "local-declaration-scope-hoist": 14,
+        "alias-field-occurrence": 24,
+        "if-polarity": 1,
+        "condition-local": 1,
+        "condition-split-and": 1,
+        "loop-cache-scope": 1,
+        "loop-continue-guard": 1,
+        "local-declaration-order-later": 1,
+        "local-declaration-order-earlier": 1,
+        "return-local": 1
+      },
+      "classification": [
+        "forward-branch-operand barrier",
+        "irrelevant alias candidates outrank actual changes"
+      ],
+      "evidence": "Original first brtrue target2962; rebuilt2937. expected_alias_types contains System.Int32 because next-three-instruction scan sees a later store, although differing instruction itself is a branch. 74 field-alias candidates insert before enclosing If and destroy equal prefix.",
+      "compound": "Within state0 only, descending while -> for with top if(Size>=30)break; rewrite four BitUtil !condition action wrappers as positive continue guards. Original offset1177 blt1187;1182br1243 plus guard continue branches1216/1381/1608/2338 account for 5+4*5=25 bytes.",
+      "status": "HYPOTHESIS; exact IL-derived source candidate not compiled by this reviewer",
+      "alias_screen_prefix_counts": {
+        "8": 5,
+        "4": 39,
+        "2": 28,
+        "NO_SCREEN": 2
+      }
+    },
+    {
+      "id": "form.SubForm::_draw6(kairo.unity.ui.Graphics)->System.Void",
+      "initial_offset": 2,
+      "final_offset": 2,
+      "candidate_count": 14,
+      "trial_count": 14,
+      "trial_rules": {
+        "local-declaration-order-earlier": 2,
+        "local-declaration-order-later": 1,
+        "local-declaration-scope-hoist": 11
+      },
+      "classification": [
+        "missing compound zero initialization and scope restoration"
+      ],
+      "evidence": "Original initial zero chain stores slots3,2,1,0; rebuilt1,0,2. Original root slot0 aligns nested num4 definitions. Candidate scan looks only at direct sibling declarations, while num4 declarations occur deeper; unused-slot rule is additionally excluded when original total locals < rebuilt.",
+      "compound": "Declare num4,num,num2,num3 at method root in that order; initialize num4=num=num2=num3=0; replace proven corresponding nested num4 declarations with assignments preserving RHS execution.",
+      "status": "HYPOTHESIS; requires oracle verification and careful exclusion of unrelated shadowing"
+    },
+    {
+      "id": "form.SubForm::_draw4(kairo.unity.ui.Graphics)->System.Void",
+      "initial_offset": 2,
+      "final_offset": 2,
+      "candidate_count": 15,
+      "trial_count": 15,
+      "trial_rules": {
+        "local-declaration-order-earlier": 2,
+        "local-declaration-order-later": 1,
+        "local-declaration-scope-hoist": 12
+      },
+      "classification": [
+        "missing compound zero initialization and scope restoration"
+      ],
+      "evidence": "Same initial zero-chain and nested num4 pattern as _draw6; no restore-zero-chain-local candidate generated.",
+      "compound": "Same root shared-coordinate candidate, restricted by semantic identity/diagnostic IL alignment.",
+      "status": "HYPOTHESIS"
+    },
+    {
+      "id": "game.TPlayer::Script()->System.Boolean",
+      "initial_offset": 1,
+      "final_offset": 1,
+      "candidate_count": 289,
+      "trial_count": 96,
+      "trial_rules": {
+        "reserve-unused-original-slot": 2,
+        "loop-continue-guard": 2,
+        "loop-continue-guards": 1,
+        "local-declaration-scope-hoist": 18,
+        "loop-cache-scope": 1,
+        "condition-local": 18,
+        "if-polarity": 2,
+        "local-declaration-order-later": 33,
+        "local-declaration-order-earlier": 10,
+        "condition-split-and": 2,
+        "switch-if": 1,
+        "unary-negation": 1,
+        "return-local": 1,
+        "condition-split-or-guards": 1,
+        "assignment-ternary-if": 1,
+        "assignment-ternary-if-reverse": 1,
+        "ternary-polarity": 1
+      },
+      "classification": [
+        "missing large expression-switch transform",
+        "forward-branch-operand barrier"
+      ],
+      "evidence": "Original first br target9386; rebuilt9321. Original22stloc1/23ldloc1/25bne.un100, rebuilt22stloc.s86/24ldloc.s86/28switch. Current helper requires input symbol local/parameter/field and <=8sections; actual switch(firstScript[0]) fails both. Only switch-if trial targets unrelated nested switch(num9).",
+      "compound": "Introduce int scriptType=firstScript[0] immediately after firstScript declaration; lower original-ordered large switch to if/else chain on scriptType. Preserve continue destinations and convert only breaks belonging to this switch into a structured join.",
+      "status": "HYPOTHESIS; overall branch-distance barrier remains until compound body size aligns"
+    },
+    {
+      "id": "form.SubForm::Update2()->System.Boolean",
+      "initial_offset": 41,
+      "final_offset": 41,
+      "candidate_count": 501,
+      "trial_count": 96,
+      "trial_rules": {
+        "local-declaration-scope-hoist": 17,
+        "if-polarity": 19,
+        "condition-local": 43,
+        "local-declaration-order-later": 3,
+        "return-local": 5,
+        "condition-split-and": 3,
+        "loop-continue-guards": 2,
+        "loop-continue-guard": 2,
+        "local-declaration-order-earlier": 1,
+        "condition-merge-or-guards": 1
+      },
+      "classification": [
+        "greedy-prefix trap from existing temporary",
+        "compound declaration-and-control-flow correction"
+      ],
+      "evidence": "At41 original brfalse; rebuilt stloc1/ldloc1/brfalse after recoveredCondition_273013. Removing temp alone shrinks previously matching parent branch target383->381. Original sponsor state==2 event branch precedes return Push branch; rebuilt reverses them.",
+      "compound": "Remove recoveredCondition_273013 and use direct CheckKeyRepeat. Replace sponsor guard state!=2 return Push followed by ExecEvent with if(state==2){ExecEvent}else{subForm=new43;return Push}. This removes2bytes temp, narrows three local4 accesses by3bytes, adds5byte explicit-else branch: net0 preserves target383.",
+      "status": "HYPOTHESIS; exact compound not compiled by reviewer"
+    }
+  ]
+}

@@ -515,10 +515,11 @@ for (int num = MAPCHIP_FIELD_HNUM - 1; num >= 0; num--)
 		{
 			bool flag = false;
 			int num = 0;
-			global::data.MapchipMain mapchipMain;
+			global::System.Int32 originalUnusedSlot2;
+
 int num2;
 bool flag2 = false;
-			mapchipMain = null;
+			global::data.MapchipMain mapchipMain = null;
 			mapchipMain = ((MAP_GROUND != 0) ? mapchipGrounds[MAP_GROUND - 1] : null);
 			num2 = 0;
 			int num3 = 0;
