@@ -218,7 +218,7 @@ def attempt_summary(ctx,assembly,group):
 
 
 def attempts_text(summary,short=False):
-    text='Tentativas compiladas na rodada 8: '+compact_counter(summary['attempts'])
+    text='Tentativas compiladas no grupo na rodada 8: '+compact_counter(summary['attempts'])
     if summary['incomplete_trials']:text+=f"; {summary['incomplete_trials']} com previsão incompleta"
     text+='.'
     if not summary['attempts']:
@@ -363,7 +363,7 @@ def render(ctx,short=False):
         if not short:add(table([assembly+' — par','Métodos','Peso IL'],[(inline(g['pair']),g['methods'],g['original_il_bytes']) for g in groups]))
         for number,group in enumerate(groups[:5],1):
             example=group['example']
-            add(f"**{assembly} #{number}: "+inline(group['pair'])+f" — {group['methods']} métodos, {group['original_il_bytes']} bytes. Exemplo: "+inline(example['stable_id'])+'.',
+            add(f"**{assembly} #{number}: "+inline(group['pair'])+f" — {group['methods']} métodos, {group['original_il_bytes']} bytes.** Exemplo: "+inline(example['stable_id'])+'.',
                 attempts_text(attempt_summary(ctx,assembly,group),short),table(['IL original','IL recompilado'],context_rows(example,short)))
             if not short and (example.get('original_exception_regions') or example.get('rebuilt_exception_regions')):
                 add('EH original: '+inline(json.dumps(example['original_exception_regions'],ensure_ascii=False))+'; recompilado: '+inline(json.dumps(example['rebuilt_exception_regions'],ensure_ascii=False))+'.')

@@ -279,9 +279,9 @@ Peso de um par = soma do tamanho integral dos métodos nele; não representa qua
 | `ldloc.0 => DELETION_POINT` | 1 | 67 |
 | `stloc.2 => stloc.0` | 1 | 46 |
 
-**KairoLibrary #1: `stloc.s => stloc.s` — 10 métodos, 10498 bytes. Exemplo: `kairo.unity.util.JarInflater::GetData(System.String)->System.Byte[]`.
+**KairoLibrary #1: `stloc.s => stloc.s` — 10 métodos, 10498 bytes.** Exemplo: `kairo.unity.util.JarInflater::GetData(System.String)->System.Byte[]`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 432. Paradas: no_model_approved_candidate: 40.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 432. Paradas: no_model_approved_candidate: 40.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -294,9 +294,9 @@ Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; n�
 
 EH original: `[{"kind": "Catch", "try_start": 157, "try_end": 165, "handler_start": 165, "handler_end": 168, "filter_start": -1, "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"}, {"kind": "Catch", "try_start": 173, "try_end": 181, "handler_start": 181, "handler_end": 184, "filter_start": -1, "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"}, {"kind": "Finally", "try_start": 120, "try_end": 154, "handler_start": 154, "handler_end": 187, "filter_start": -1, "catch_type": null}]`; recompilado: `[{"kind": "Catch", "try_start": 154, "try_end": 162, "handler_start": 162, "handler_end": 165, "filter_start": -1, "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"}, {"kind": "Catch", "try_start": 170, "try_end": 178, "handler_start": 178, "handler_end": 181, "filter_start": -1, "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"}, {"kind": "Finally", "try_start": 118, "try_end": 151, "handler_start": 151, "handler_end": 184, "filter_start": -1, "catch_type": null}]`.
 
-**KairoLibrary #2: `stloc.s => DELETION_POINT` — 3 métodos, 5215 bytes. Exemplo: `kairo.unity.util.Compressor::Expand(System.Byte[])->System.Byte[]`.
+**KairoLibrary #2: `stloc.s => DELETION_POINT` — 3 métodos, 5215 bytes.** Exemplo: `kairo.unity.util.Compressor::Expand(System.Byte[])->System.Byte[]`.
 
-Tentativas compiladas na rodada 8: alias-field-command: 2, alias-field-occurrence: 3, assignment-ternary-if: 5, assignment-ternary-if-reverse: 4, if-polarity: 1, local-declaration-scope-hoist: 6, switch-owned-break-if-chain: 2, ternary-polarity: 1; 24 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 12; repertório anterior filtrou 724. Paradas: incomplete_candidate_budget: 2, no_model_approved_candidate: 10.
+Tentativas compiladas no grupo na rodada 8: alias-field-command: 2, alias-field-occurrence: 3, assignment-ternary-if: 5, assignment-ternary-if-reverse: 4, if-polarity: 1, local-declaration-scope-hoist: 6, switch-owned-break-if-chain: 2, ternary-polarity: 1; 24 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 12; repertório anterior filtrou 724. Paradas: incomplete_candidate_budget: 2, no_model_approved_candidate: 10.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -308,9 +308,9 @@ Tentativas compiladas na rodada 8: alias-field-command: 2, alias-field-occurrenc
 
 EH original: `[{"kind": "Catch", "try_start": 173, "try_end": 181, "handler_start": 181, "handler_end": 184, "filter_start": -1, "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"}, {"kind": "Finally", "try_start": 53, "try_end": 170, "handler_start": 170, "handler_end": 187, "filter_start": -1, "catch_type": null}]`; recompilado: `[{"kind": "Catch", "try_start": 171, "try_end": 179, "handler_start": 179, "handler_end": 182, "filter_start": -1, "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"}, {"kind": "Finally", "try_start": 53, "try_end": 168, "handler_start": 168, "handler_end": 185, "filter_start": -1, "catch_type": null}]`.
 
-**KairoLibrary #3: `brfalse.s => brtrue.s` — 5 métodos, 4079 bytes. Exemplo: `kairo.unity.util.StreamUtil::WriteArray(java.io.OutputStream,System.Array,System.Int32)->System.Void`.
+**KairoLibrary #3: `brfalse.s => brtrue.s` — 5 métodos, 4079 bytes.** Exemplo: `kairo.unity.util.StreamUtil::WriteArray(java.io.OutputStream,System.Array,System.Int32)->System.Void`.
 
-Tentativas compiladas na rodada 8: nullable-conditional-coalesce-explicit: 2; 2 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 147. Paradas: no_model_approved_candidate: 19, no_transformation_advances: 2.
+Tentativas compiladas no grupo na rodada 8: nullable-conditional-coalesce-explicit: 2; 2 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 147. Paradas: no_model_approved_candidate: 19, no_transformation_advances: 2.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -323,9 +323,9 @@ Tentativas compiladas na rodada 8: nullable-conditional-coalesce-explicit: 2; 2 
 
 EH original: `[{"kind": "Finally", "try_start": 196, "try_end": 233, "handler_start": 233, "handler_end": 253, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 273, "try_end": 309, "handler_start": 309, "handler_end": 329, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 349, "try_end": 385, "handler_start": 385, "handler_end": 405, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 425, "try_end": 461, "handler_start": 461, "handler_end": 481, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 501, "try_end": 537, "handler_start": 537, "handler_end": 557, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 577, "try_end": 613, "handler_start": 613, "handler_end": 633, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 653, "try_end": 689, "handler_start": 689, "handler_end": 709, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 729, "try_end": 765, "handler_start": 765, "handler_end": 785, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 805, "try_end": 841, "handler_start": 841, "handler_end": 861, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 881, "try_end": 917, "handler_start": 917, "handler_end": 937, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 957, "try_end": 993, "handler_start": 993, "handler_end": 1013, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1033, "try_end": 1069, "handler_start": 1069, "handler_end": 1089, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1109, "try_end": 1145, "handler_start": 1145, "handler_end": 1165, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1185, "try_end": 1226, "handler_start": 1226, "handler_end": 1246, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1266, "try_end": 1307, "handler_start": 1307, "handler_end": 1327, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1347, "try_end": 1388, "handler_start": 1388, "handler_end": 1408, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1428, "try_end": 1469, "handler_start": 1469, "handler_end": 1489, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1509, "try_end": 1545, "handler_start": 1545, "handler_end": 1565, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1595, "try_end": 1643, "handler_start": 1643, "handler_end": 1663, "filter_start": -1, "catch_type": null}]`; recompilado: `[{"kind": "Finally", "try_start": 200, "try_end": 234, "handler_start": 234, "handler_end": 254, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 275, "try_end": 308, "handler_start": 308, "handler_end": 328, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 349, "try_end": 382, "handler_start": 382, "handler_end": 402, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 423, "try_end": 456, "handler_start": 456, "handler_end": 476, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 497, "try_end": 530, "handler_start": 530, "handler_end": 550, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 571, "try_end": 604, "handler_start": 604, "handler_end": 624, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 645, "try_end": 678, "handler_start": 678, "handler_end": 698, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 719, "try_end": 752, "handler_start": 752, "handler_end": 772, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 793, "try_end": 826, "handler_start": 826, "handler_end": 846, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 867, "try_end": 900, "handler_start": 900, "handler_end": 920, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 941, "try_end": 974, "handler_start": 974, "handler_end": 994, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1015, "try_end": 1048, "handler_start": 1048, "handler_end": 1068, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1089, "try_end": 1122, "handler_start": 1122, "handler_end": 1142, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1163, "try_end": 1201, "handler_start": 1201, "handler_end": 1221, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1242, "try_end": 1280, "handler_start": 1280, "handler_end": 1300, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1321, "try_end": 1359, "handler_start": 1359, "handler_end": 1379, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1400, "try_end": 1438, "handler_start": 1438, "handler_end": 1458, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1479, "try_end": 1512, "handler_start": 1512, "handler_end": 1532, "filter_start": -1, "catch_type": null}, {"kind": "Finally", "try_start": 1563, "try_end": 1611, "handler_start": 1611, "handler_end": 1631, "filter_start": -1, "catch_type": null}]`.
 
-**KairoLibrary #4: `brfalse => brtrue.s` — 2 métodos, 4071 bytes. Exemplo: `kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void`.
+**KairoLibrary #4: `brfalse => brtrue.s` — 2 métodos, 4071 bytes.** Exemplo: `kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144. Paradas: no_model_approved_candidate: 8.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144. Paradas: no_model_approved_candidate: 8.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -338,9 +338,9 @@ Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; n�
 
 EH original: `[{"kind": "Finally", "try_start": 1096, "try_end": 1874, "handler_start": 1874, "handler_end": 1888, "filter_start": -1, "catch_type": null}]`; recompilado: `[{"kind": "Finally", "try_start": 1091, "try_end": 1865, "handler_start": 1865, "handler_end": 1879, "filter_start": -1, "catch_type": null}]`.
 
-**KairoLibrary #5: `ldc.i4.0 => brtrue.s` — 1 métodos, 3513 bytes. Exemplo: `kairo.unity.ui.Graphics::_drawBitmap(kairo.unity.ui.Image,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)->System.Void`.
+**KairoLibrary #5: `ldc.i4.0 => brtrue.s` — 1 métodos, 3513 bytes.** Exemplo: `kairo.unity.ui.Graphics::_drawBitmap(kairo.unity.ui.Image,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144. Paradas: no_model_approved_candidate: 4.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144. Paradas: no_model_approved_candidate: 4.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -427,9 +427,9 @@ EH original: `[{"kind": "Finally", "try_start": 2796, "try_end": 3028, "handler_
 | `stloc.0 => stloc.s` | 1 | 99 |
 | `brtrue => stloc.0` | 1 | 38 |
 
-**Assembly-CSharp #1: `brfalse => brtrue` — 11 métodos, 31885 bytes. Exemplo: `form.GameForm::_update(System.Int32)->System.Boolean`.
+**Assembly-CSharp #1: `brfalse => brtrue` — 11 métodos, 31885 bytes.** Exemplo: `form.GameForm::_update(System.Int32)->System.Boolean`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): if-polarity: 2, local-declaration-scope-hoist: 2, smcs-continue-positive-tail: 1, smcs-empty-arm-restore: 3, solver-group-all-calculated-blocks: 1, solver-group-block-declarations: 3. Recibos: round7-cycle06-Assembly-CSharp-engine.json, round7-cycle17-Assembly-CSharp-engine.json, round7-part-a-Assembly-CSharp-engine.json. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 788. Paradas: no_model_approved_candidate: 44.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): if-polarity: 2, local-declaration-scope-hoist: 2, smcs-continue-positive-tail: 1, smcs-empty-arm-restore: 3, solver-group-all-calculated-blocks: 1, solver-group-block-declarations: 3. Recibos: round7-cycle06-Assembly-CSharp-engine.json, round7-cycle17-Assembly-CSharp-engine.json, round7-part-a-Assembly-CSharp-engine.json. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 788. Paradas: no_model_approved_candidate: 44.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -440,9 +440,9 @@ Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível (mesmo origi
 | `IL_00ec: ldarg.0` | `IL_00e8: ldfld class form.MyFormBase::apdat_:class main.AppData` |
 | `IL_00ed: ldfld class form.MyFormBase::apdat_:class main.AppData` |  |
 
-**Assembly-CSharp #2: `br => ret` — 9 métodos, 21529 bytes. Exemplo: `form.SoccerForm::Draw_newPlayerPopular(kairo.unity.ui.Graphics)->System.Void`.
+**Assembly-CSharp #2: `br => ret` — 9 métodos, 21529 bytes.** Exemplo: `form.SoccerForm::Draw_newPlayerPopular(kairo.unity.ui.Graphics)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): smcs-empty-arm-restore: 8, smcs-empty-arm-restore-and-suffix: 2, smcs-empty-arm-restore-first-and: 2. Recibos: round7-cycle06-Assembly-CSharp-engine.json. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 350. Paradas: no_model_approved_candidate: 36.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): smcs-empty-arm-restore: 8, smcs-empty-arm-restore-and-suffix: 2, smcs-empty-arm-restore-first-and: 2. Recibos: round7-cycle06-Assembly-CSharp-engine.json. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 350. Paradas: no_model_approved_candidate: 36.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -452,9 +452,9 @@ Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível (mesmo origi
 | `IL_0215: ldarg.0` | `IL_0211: ldarg.0` |
 | `IL_0216: ldfld class form.SoccerForm::stateCnt_:valuetype System.Int32` | `IL_0212: ldfld class form.SoccerForm::stateCnt_:valuetype System.Int32` |
 
-**Assembly-CSharp #3: `bne.un => beq` — 14 métodos, 19612 bytes. Exemplo: `form.SubForm::Init()->System.Boolean`.
+**Assembly-CSharp #3: `bne.un => beq` — 14 métodos, 19612 bytes.** Exemplo: `form.SubForm::Init()->System.Boolean`.
 
-Tentativas compiladas na rodada 8: calculated-selector-continue-composition: 2, smcs-value-return-guard-reverse: 1. Antes de compilar: wrong_signature: 6; orçamento recusou 0; repertório anterior filtrou 2293. Paradas: no_model_approved_candidate: 54, no_transformation_advances: 3.
+Tentativas compiladas no grupo na rodada 8: calculated-selector-continue-composition: 2, smcs-value-return-guard-reverse: 1. Antes de compilar: wrong_signature: 6; orçamento recusou 0; repertório anterior filtrou 2293. Paradas: no_model_approved_candidate: 54, no_transformation_advances: 3.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -465,9 +465,9 @@ Tentativas compiladas na rodada 8: calculated-selector-continue-composition: 2, 
 | `IL_0154: ldarg.0` | `IL_0150: ldfld class form.SubForm::type_:valuetype System.Int32` |
 | `IL_0155: ldfld class form.SubForm::type_:valuetype System.Int32` |  |
 
-**Assembly-CSharp #4: `stloc.s => stloc.s` — 11 métodos, 16559 bytes. Exemplo: `form.DebugForm::Draw_coatEva(kairo.unity.ui.Graphics)->System.Void`.
+**Assembly-CSharp #4: `stloc.s => stloc.s` — 11 métodos, 16559 bytes.** Exemplo: `form.DebugForm::Draw_coatEva(kairo.unity.ui.Graphics)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 1058. Paradas: no_model_approved_candidate: 44.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 1058. Paradas: no_model_approved_candidate: 44.
 
 | IL original | IL recompilado |
 | --- | --- |
@@ -477,9 +477,9 @@ Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; n�
 | `IL_01a3: ldloc.s 5` | `IL_01a3: ldloc.s 5` |
 | `IL_01a5: ldloc.s 8` | `IL_01a5: ldloc.s 8` |
 
-**Assembly-CSharp #5: `INSERTION_POINT => stloc.1` — 2 métodos, 12768 bytes. Exemplo: `form.SubForm::Update2()->System.Boolean`.
+**Assembly-CSharp #5: `INSERTION_POINT => stloc.1` — 2 métodos, 12768 bytes.** Exemplo: `form.SubForm::Update2()->System.Boolean`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: wrong_signature: 26; orçamento recusou 0; repertório anterior filtrou 2145. Paradas: no_model_approved_candidate: 8.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: wrong_signature: 26; orçamento recusou 0; repertório anterior filtrou 2145. Paradas: no_model_approved_candidate: 8.
 
 | IL original | IL recompilado |
 | --- | --- |

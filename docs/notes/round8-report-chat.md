@@ -79,90 +79,90 @@ Corpos já iguais, retidos por vínculo/metadados gerados: 3; 25 bytes. Esses co
 
 Peso de um par = soma do tamanho integral dos métodos nele; não representa quantidade de bytes diferentes. Alinhamento e rótulos servem ao diagnóstico, sem normalizar o verificador. Seguem os cinco pares de opcodes mais pesados de cada compilador, com IL original e recompilado lado a lado.
 
-**KairoLibrary #1: `stloc.s => stloc.s` — 10 métodos, 10498 bytes. Exemplo: `kairo.unity.util.JarInflater::GetData(System.String)->System.Byte[]`.
+**KairoLibrary #1: `stloc.s => stloc.s` — 10 métodos, 10498 bytes.** Exemplo: `kairo.unity.util.JarInflater::GetData(System.String)->System.Byte[]`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 432.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 432.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_0024: stloc.s 5` | `IL_0024: stloc.s 4` |
 | `IL_0026: ldloc.s 5` | `IL_0026: ldloc.s 4` |
 
-**KairoLibrary #2: `stloc.s => DELETION_POINT` — 3 métodos, 5215 bytes. Exemplo: `kairo.unity.util.Compressor::Expand(System.Byte[])->System.Byte[]`.
+**KairoLibrary #2: `stloc.s => DELETION_POINT` — 3 métodos, 5215 bytes.** Exemplo: `kairo.unity.util.Compressor::Expand(System.Byte[])->System.Byte[]`.
 
-Tentativas compiladas na rodada 8: alias-field-command: 2, alias-field-occurrence: 3, assignment-ternary-if: 5, assignment-ternary-if-reverse: 4, if-polarity: 1, local-declaration-scope-hoist: 6, switch-owned-break-if-chain: 2, ternary-polarity: 1; 24 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 12; repertório anterior filtrou 724.
+Tentativas compiladas no grupo na rodada 8: alias-field-command: 2, alias-field-occurrence: 3, assignment-ternary-if: 5, assignment-ternary-if-reverse: 4, if-polarity: 1, local-declaration-scope-hoist: 6, switch-owned-break-if-chain: 2, ternary-polarity: 1; 24 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 12; repertório anterior filtrou 724.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_0050: stloc.s 4` | `IL_0050: br.s L5` |
 | `IL_0052: br.s L6` | `IL_0052: ldloc.s 4` |
 
-**KairoLibrary #3: `brfalse.s => brtrue.s` — 5 métodos, 4079 bytes. Exemplo: `kairo.unity.util.StreamUtil::WriteArray(java.io.OutputStream,System.Array,System.Int32)->System.Void`.
+**KairoLibrary #3: `brfalse.s => brtrue.s` — 5 métodos, 4079 bytes.** Exemplo: `kairo.unity.util.StreamUtil::WriteArray(java.io.OutputStream,System.Array,System.Int32)->System.Void`.
 
-Tentativas compiladas na rodada 8: nullable-conditional-coalesce-explicit: 2; 2 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 147.
+Tentativas compiladas no grupo na rodada 8: nullable-conditional-coalesce-explicit: 2; 2 com previsão incompleta. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 147.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_0001: brfalse.s O12` | `IL_0001: brtrue.s L0` |
 | `IL_0003: ldarg.1` | `IL_0003: ldc.i4.m1` |
 
-**KairoLibrary #4: `brfalse => brtrue.s` — 2 métodos, 4071 bytes. Exemplo: `kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void`.
+**KairoLibrary #4: `brfalse => brtrue.s` — 2 métodos, 4071 bytes.** Exemplo: `kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_0027: brfalse L28` | `IL_0027: brtrue.s L0` |
 | `IL_002c: ldc.i4.s 60` | `IL_0029: ret` |
 
-**KairoLibrary #5: `ldc.i4.0 => brtrue.s` — 1 métodos, 3513 bytes. Exemplo: `kairo.unity.ui.Graphics::_drawBitmap(kairo.unity.ui.Image,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)->System.Void`.
+**KairoLibrary #5: `ldc.i4.0 => brtrue.s` — 1 métodos, 3513 bytes.** Exemplo: `kairo.unity.ui.Graphics::_drawBitmap(kairo.unity.ui.Image,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 144.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_0758: ldc.i4.0` | `IL_075b: brtrue.s L36` |
 | `IL_0759: ceq` | `IL_075d: ldarg.0` |
 
-**Assembly-CSharp #1: `brfalse => brtrue` — 11 métodos, 31885 bytes. Exemplo: `form.GameForm::_update(System.Int32)->System.Boolean`.
+**Assembly-CSharp #1: `brfalse => brtrue` — 11 métodos, 31885 bytes.** Exemplo: `form.GameForm::_update(System.Int32)->System.Boolean`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): if-polarity: 2, local-declaration-scope-hoist: 2, smcs-continue-positive-tail: 1, smcs-empty-arm-restore: 3, solver-group-all-calculated-blocks: 1, solver-group-block-declarations: 3. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 788.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): if-polarity: 2, local-declaration-scope-hoist: 2, smcs-continue-positive-tail: 1, smcs-empty-arm-restore: 3, solver-group-all-calculated-blocks: 1, solver-group-block-declarations: 3. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 788.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_00e2: brfalse L5` | `IL_00e2: brtrue R265` |
 | `IL_00e7: br L7` | `IL_00e7: ldarg.0` |
 
-**Assembly-CSharp #2: `br => ret` — 9 métodos, 21529 bytes. Exemplo: `form.SoccerForm::Draw_newPlayerPopular(kairo.unity.ui.Graphics)->System.Void`.
+**Assembly-CSharp #2: `br => ret` — 9 métodos, 21529 bytes.** Exemplo: `form.SoccerForm::Draw_newPlayerPopular(kairo.unity.ui.Graphics)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): smcs-empty-arm-restore: 8, smcs-empty-arm-restore-and-suffix: 2, smcs-empty-arm-restore-first-and: 2. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 350.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível (mesmo original e hash do arquivo fonte atual): smcs-empty-arm-restore: 8, smcs-empty-arm-restore-and-suffix: 2, smcs-empty-arm-restore-first-and: 2. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 350.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_0210: br L5` | `IL_0210: ret` |
 | `IL_0215: ldarg.0` | `IL_0211: ldarg.0` |
 
-**Assembly-CSharp #3: `bne.un => beq` — 14 métodos, 19612 bytes. Exemplo: `form.SubForm::Init()->System.Boolean`.
+**Assembly-CSharp #3: `bne.un => beq` — 14 métodos, 19612 bytes.** Exemplo: `form.SubForm::Init()->System.Boolean`.
 
-Tentativas compiladas na rodada 8: calculated-selector-continue-composition: 2, smcs-value-return-guard-reverse: 1. Antes de compilar: wrong_signature: 6; orçamento recusou 0; repertório anterior filtrou 2293.
+Tentativas compiladas no grupo na rodada 8: calculated-selector-continue-composition: 2, smcs-value-return-guard-reverse: 1. Antes de compilar: wrong_signature: 6; orçamento recusou 0; repertório anterior filtrou 2293.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_014a: bne.un L7` | `IL_014a: beq L97` |
 | `IL_014f: br L97` | `IL_014f: ldarg.0` |
 
-**Assembly-CSharp #4: `stloc.s => stloc.s` — 11 métodos, 16559 bytes. Exemplo: `form.DebugForm::Draw_coatEva(kairo.unity.ui.Graphics)->System.Void`.
+**Assembly-CSharp #4: `stloc.s => stloc.s` — 11 métodos, 16559 bytes.** Exemplo: `form.DebugForm::Draw_coatEva(kairo.unity.ui.Graphics)->System.Void`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 1058.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: nenhum; orçamento recusou 0; repertório anterior filtrou 1058.
 
 | IL original | IL recompilado |
 | --- | --- |
 | `IL_01a1: stloc.s 6` | `IL_01a1: stloc.s 12` |
 | `IL_01a3: ldloc.s 5` | `IL_01a3: ldloc.s 5` |
 
-**Assembly-CSharp #5: `INSERTION_POINT => stloc.1` — 2 métodos, 12768 bytes. Exemplo: `form.SubForm::Update2()->System.Boolean`.
+**Assembly-CSharp #5: `INSERTION_POINT => stloc.1` — 2 métodos, 12768 bytes.** Exemplo: `form.SubForm::Update2()->System.Boolean`.
 
-Tentativas compiladas na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: wrong_signature: 26; orçamento recusou 0; repertório anterior filtrou 2145.
+Tentativas compiladas no grupo na rodada 8: nenhum. Histórico 7 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte. Antes de compilar: wrong_signature: 26; orçamento recusou 0; repertório anterior filtrou 2145.
 
 | IL original | IL recompilado |
 | --- | --- |
