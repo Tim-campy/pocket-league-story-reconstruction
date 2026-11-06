@@ -4380,8 +4380,12 @@ if (apdat_.resHuman2_.img[PLAYER_BODY + 100] != null) { break; }
 			int num = 10;
 			int num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;
 			int num3 = 60;
-			global::game.Player passer;
-int num10;
+
+
+
+int coordinateX;
+int coordinateY;
+
 int num4 = 0;
 			for (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)
 			{
@@ -4408,9 +4412,9 @@ int num4 = 0;
 					{
 						g.SetColor(Graphics.GetColorOfRGB(255, 0, 0));
 					}
-					int num7 = num2 + i * num;
-					int num8 = num3 + num4 * num;
-					g.FillRect(num7, num8, num, num);
+					coordinateX = num2 + i * num;
+					coordinateY = num3 + num4 * num;
+					g.FillRect(coordinateX, coordinateY, num, num);
 				}
 				num4++;
 			}
@@ -4421,13 +4425,13 @@ int num4 = 0;
 				{
 					for (int j = 0; j < Map.MAPCHIP_COAT_WNUM; j++)
 					{
-						int num7 = num2 + j * num;
-						int num8 = num3 + num9 * num;
-						g.DrawRect(num7, num8, num, num);
+						coordinateX = num2 + j * num;
+						coordinateY = num3 + num9 * num;
+						g.DrawRect(coordinateX, coordinateY, num, num);
 					}
 				}
 			}
-			passer = team.GetPasser();
+			global::game.Player passer = team.GetPasser();
 			if (passer == null)
 			{
 				passer = team2.GetPasser();
@@ -4435,11 +4439,11 @@ int num4 = 0;
 			g.SetColor(Graphics.GetColorOfRGB(0, 0, 0));
 			if (passer != null)
 			{
-				int num7 = num2 + passer.address_[0] * num;
-				int num8 = num3 + (Map.MAPCHIP_COAT_HNUM - 1 - passer.address_[1]) * num;
-				g.DrawRect(num7, num8, num, num);
+				coordinateX = num2 + passer.address_[0] * num;
+				coordinateY = num3 + (Map.MAPCHIP_COAT_HNUM - 1 - passer.address_[1]) * num;
+				g.DrawRect(coordinateX, coordinateY, num, num);
 			}
-			num10 = -1;
+			int num10 = -1;
 			if (udat_.ball_.owner_ != null)
 			{
 				num10 = udat_.ball_.owner_.team_id_;
@@ -4503,8 +4507,8 @@ int num4 = 0;
 				for (int k = 0; k < udat_.teams_[num19].players_.Length; k++)
 				{
 					Player player = udat_.teams_[num19].players_[k];
-					int num7 = (int)GameUtil.RateConvert(player.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);
-					int num8 = (int)GameUtil.RateConvert(player.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);
+					coordinateX = (int)GameUtil.RateConvert(player.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);
+					coordinateY = (int)GameUtil.RateConvert(player.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);
 					if (num19 == 1)
 					{
 						g.SetColor(Graphics.GetColorOfRGB(0, 128, 128));
@@ -4513,13 +4517,13 @@ int num4 = 0;
 					{
 						g.SetColor(Graphics.GetColorOfRGB(255, 122, 0));
 					}
-					g.FillArc(num7, num8, num18, num18, 0f, 359f);
+					g.FillArc(coordinateX, coordinateY, num18, num18, 0f, 359f);
 					g.SetColor(Graphics.GetColorOfRGB(0, 0, 0));
-					g.DrawArc(num7, num8, num18 - 1, num18 - 1, 0f, 359f);
+					g.DrawArc(coordinateX, coordinateY, num18 - 1, num18 - 1, 0f, 359f);
 					if (BitUtil.Check(player.flag_, 4))
 					{
 						g.SetColor(Graphics.GetColorOfRGB(255, 0, 255));
-						g.FillArc(num7 - 2, num8 - 2, num18 + 4, num18 + 4, 0f, 359f);
+						g.FillArc(coordinateX - 2, coordinateY - 2, num18 + 4, num18 + 4, 0f, 359f);
 					}
 				}
 			}
@@ -4531,17 +4535,21 @@ int num4 = 0;
 			int num = 10;
 			int num2 = 120 - Map.MAPCHIP_COAT_WNUM / 2 * num;
 			int num3 = 60;
-			global::game.Player player;
-global::game.Player player2;
+
+
+
+int coordinateX;
+int coordinateY;
+
 int num4 = 0;
 			g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
 			for (int num5 = Map.MAPCHIP_COAT_HNUM - 1; num5 >= 0; num5--)
 			{
 				for (int i = 0; i < Map.MAPCHIP_COAT_WNUM; i++)
 				{
-					int num6 = num2 + i * num;
-					int num7 = num3 + num5 * num;
-					g.DrawRect(num6, num7, num, num);
+					coordinateX = num2 + i * num;
+					coordinateY = num3 + num5 * num;
+					g.DrawRect(coordinateX, coordinateY, num, num);
 				}
 			}
 			formationRect_global_pos[0].x_ = team.fPos_[0] - team.fPos_[2] / 2f;
@@ -4561,37 +4569,36 @@ int num4 = 0;
 			g.FillRect(formationRect_camera_pos[0][0], formationRect_camera_pos[0][1], formationRect_camera_pos[1][0] - formationRect_camera_pos[0][0], formationRect_camera_pos[2][1] - formationRect_camera_pos[0][1]);
 			for (int k = 0; k < team.players_.Length; k++)
 			{
-				player = team.players_[k];
-				if (k != p_id)
-				{
-					continue;
-				}
+				global::game.Player player = team.players_[k];
+				if (k == p_id) {
+
 				int num8 = 0;
 				g.SetColor(Graphics.GetColorOfRGB(0, 255, 0, 220));
 				for (int num9 = player.formation_address_[0][1]; num9 >= player.formation_address_[3][1]; num9--)
 				{
 					for (int l = player.formation_address_[0][0]; l <= player.formation_address_[1][0]; l++)
 					{
-						int num6 = num2 + l * num;
-						int num7 = num3 + (Map.MAPCHIP_COAT_HNUM - num9 - 1) * num;
-						g.FillRect(num6, num7, num, num);
+						coordinateX = num2 + l * num;
+						coordinateY = num3 + (Map.MAPCHIP_COAT_HNUM - num9 - 1) * num;
+						g.FillRect(coordinateX, coordinateY, num, num);
 					}
 					num8++;
 				}
+}
 			}
 			int num10 = 6;
 			for (int m = 0; m < team.players_.Length; m++)
 			{
-				player2 = team.players_[m];
-				int num6 = (int)GameUtil.RateConvert(player2.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);
-				int num7 = (int)GameUtil.RateConvert(player2.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);
+				global::game.Player player2 = team.players_[m];
+				coordinateX = (int)GameUtil.RateConvert(player2.pos_.x_, -450f, 450f, num2, num2 + Map.MAPCHIP_COAT_WNUM * num, true);
+				coordinateY = (int)GameUtil.RateConvert(player2.pos_.z_, 900f, -900f, num3, num3 + Map.MAPCHIP_COAT_HNUM * num, true);
 				if (BitUtil.Check(player2.flag_, 4))
 				{
 					g.SetColor(Graphics.GetColorOfRGB(255, 0, 255));
-					g.FillArc(num6 - 2, num7 - 2, num10 + 4, num10 + 4, 0f, 359f);
+					g.FillArc(coordinateX - 2, coordinateY - 2, num10 + 4, num10 + 4, 0f, 359f);
 				}
 				g.SetColor(Graphics.GetColorOfRGB(255, 255, 0));
-				g.FillArc(num6, num7, num10, num10, 0f, 359f);
+				g.FillArc(coordinateX, coordinateY, num10, num10, 0f, 359f);
 			}
 		}
 

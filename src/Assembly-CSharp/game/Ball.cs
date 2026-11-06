@@ -1373,7 +1373,11 @@ udat_.gm_.SetBallTeam(-1);
 			if ((num2 >= 300f)) { num5 = JMath.Abs((int)(init_v.y_ / init_a.y_) * 2); } else { num5 = num4; }
 			int num6 = num5 * 100 / 100;
 			int num7 = num5 * 100 / 100;
-			bool flag = BitUtil.Check(flag_, 64);
+
+float coordinateX;
+float coordinateY;
+
+bool flag = BitUtil.Check(flag_, 64);
 			for (int i = 1; i < savePos_.Length; i++)
 			{
 				if (flag)
@@ -1389,28 +1393,28 @@ udat_.gm_.SetBallTeam(-1);
 				{
 					if (init_a.y_ == 0f || saveV_.y_ == 0f)
 					{
-						float num8 = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);
-						float num9 = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);
-						saveV_.x_ *= num8;
-						saveV_.z_ *= num9;
+						coordinateX = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);
+						coordinateY = GameUtil.RateConvert(i, 0f, 60f, 0.99f, 0.93f, true);
+						saveV_.x_ = (saveV_.x_) * (coordinateX);
+						saveV_.z_ = (saveV_.z_) * (coordinateY);
 					}
 					else
 					{
-						float num8;
-						float num9;
+
+
 						if (init_a.y_ == -0.25f || init_a.y_ == -0.35f)
 						{
-							num8 = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);
-							num9 = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);
+							coordinateX = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);
+							coordinateY = GameUtil.RateConvert(num, 0f, num7, 0.995f, 0.96f, true);
 						}
 						else
 						{
-							num8 = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);
-							num9 = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);
+							coordinateX = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);
+							coordinateY = GameUtil.RateConvert(num, 0f, num6, 0.995f, 0.97f, true);
 						}
-						saveV_.x_ *= num8;
-						saveV_.y_ *= 0.995f;
-						saveV_.z_ *= num9;
+						saveV_.x_ = (saveV_.x_) * (coordinateX);
+						saveV_.y_ = (saveV_.y_) * (0.995f);
+						saveV_.z_ = (saveV_.z_) * (coordinateY);
 					}
 					saveV_.y_ += saveA_.y_;
 					savePos_[i].x_ = savePos_[i - 1].x_ + saveV_.x_;

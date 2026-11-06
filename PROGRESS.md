@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,003 de 5,245 métodos matched (95.39%).** 871,497 bytes de IL nos assemblies alvo.
-571,924 bytes IL matched (65.63%).
+**5,006 de 5,245 métodos matched (95.44%).** 871,497 bytes de IL nos assemblies alvo.
+576,240 bytes IL matched (66.12%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3139 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 241 |
+| decompiled | 238 |
 | equivalent | 0 |
-| matched | 5003 |
+| matched | 5006 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1790 / 91.42% | 352587 / 58.61% |
+| `Assembly-CSharp` | 1958 | 601603 | 1793 / 91.57% | 356903 / 59.33% |
 | `KairoLibrary` | 3287 | 269894 | 3213 / 97.75% | 219337 / 81.27% |
 
 ## Namespaces
@@ -37,8 +37,8 @@ KairoLibrary: 3139 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 249 / 97.65% | 22292 / 84.59% |
-| `form` | 371 | 250649 | 327 / 88.14% | 148319 / 59.17% |
-| `game` | 441 | 202949 | 379 / 85.94% | 106889 / 52.67% |
+| `form` | 371 | 250649 | 329 / 88.68% | 151384 / 60.40% |
+| `game` | 441 | 202949 | 380 / 86.17% | 108140 / 53.28% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
@@ -115,7 +115,7 @@ KairoLibrary: 3139 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::data.TradeData` | 13 | 757 | 13 / 100.00% | 757 / 100.00% |
 | `Assembly-CSharp::data.TrainingData` | 14 | 762 | 14 / 100.00% | 762 / 100.00% |
 | `Assembly-CSharp::form.BootForm` | 21 | 7712 | 18 / 85.71% | 3707 / 48.07% |
-| `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 19 / 90.48% | 42432 / 93.26% |
+| `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 21 / 100.00% | 45497 / 100.00% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
 | `Assembly-CSharp::form.GameForm` | 51 | 16474 | 45 / 88.24% | 8291 / 50.33% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 46 / 95.83% | 2178 / 55.76% |
@@ -125,7 +125,7 @@ KairoLibrary: 3139 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::form.SubForm` | 95 | 125345 | 83 / 87.37% | 64051 / 51.10% |
 | `Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0` | 3 | 227 | 2 / 66.67% | 31 / 13.66% |
 | `Assembly-CSharp::form.TitleForm` | 24 | 8500 | 21 / 87.50% | 4423 / 52.04% |
-| `Assembly-CSharp::game.Ball` | 18 | 15652 | 13 / 72.22% | 4018 / 25.67% |
+| `Assembly-CSharp::game.Ball` | 18 | 15652 | 14 / 77.78% | 5269 / 33.66% |
 | `Assembly-CSharp::game.Camera` | 31 | 7399 | 28 / 90.32% | 4047 / 54.70% |
 | `Assembly-CSharp::game.DelayEvent` | 4 | 456 | 4 / 100.00% | 456 / 100.00% |
 | `Assembly-CSharp::game.GameManager` | 20 | 11549 | 16 / 80.00% | 5351 / 46.33% |
