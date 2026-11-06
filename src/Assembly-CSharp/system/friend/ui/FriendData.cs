@@ -396,10 +396,8 @@ namespace system.friend.ui
 					for (int l = 0; l < friendHistory_.Size(); l++)
 					{
 						FriendPlayTimeData friendPlayTimeData = (FriendPlayTimeData)friendHistory_.ElementAt(l);
-						if (!friend.friendId_.Equals(friendPlayTimeData.friendId_))
-						{
-							continue;
-						}
+						if (friend.friendId_.Equals(friendPlayTimeData.friendId_)) {
+
 						flag = true;
 						if (friend.state_.Get() == 3)
 						{
@@ -412,6 +410,7 @@ namespace system.friend.ui
 						}
 						friendPlayTimeData.state_ = new SecureInt(friend.state_);
 						break;
+}
 					}
 					if (!flag)
 					{

@@ -4513,10 +4513,8 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			JSystem.Arraycopy(scr, 0, array, 0, array.Length);
 			for (int i = 1; i < array.Length; i++)
 			{
-				if (array[i] > -2147483549)
-				{
-					continue;
-				}
+				if (array[i] <= -2147483549) {
+
 				int num3 = array[i] - int.MinValue;
 				if (Config.DEBUG)
 				{
@@ -4534,6 +4532,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 					}
 				}
 				array[i] = argi[num3];
+}
 			}
 			scr = array;
 			switch (num)

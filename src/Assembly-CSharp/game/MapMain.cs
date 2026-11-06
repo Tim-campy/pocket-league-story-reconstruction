@@ -619,10 +619,8 @@ bool flag2 = false;
 						int g2 = GameUtil.RateConvert(n, 0, udat_.tAreas_[l][m].tGroupAreas_.Length, 0, 255, true);
 						g.SetColor(Graphics.GetColorOfRGB(r, g2, 255));
 					}
-					if (udat_.tAreas_[l][m].tMode_ != 3)
-					{
-						continue;
-					}
+					if (udat_.tAreas_[l][m].tMode_ == 3) {
+
 					for (int num3 = 0; num3 < udat_.tAreas_[l][m].tGroupAreas_.Length; num3++)
 					{
 						TGroupArea tGroupArea2 = udat_.tAreas_[l][m].tGroupAreas_[num3];
@@ -639,6 +637,7 @@ bool flag2 = false;
 							g.DrawLine(tGroupArea2.goal_cpos[num6][0], tGroupArea2.goal_cpos[num6][1], tGroupArea2.goal_cpos[(num6 + 1) % 4][0], tGroupArea2.goal_cpos[(num6 + 1) % 4][1]);
 						}
 					}
+}
 				}
 			}
 		}

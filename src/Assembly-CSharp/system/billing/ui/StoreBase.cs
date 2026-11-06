@@ -182,10 +182,8 @@ if (!item.IsTicketProduct()) {
 					continue;
 				}
 				item.paymentComplete_ = true;
-				if (purchase.GetPurchaseTime() != 0L)
-				{
-					continue;
-				}
+				if (purchase.GetPurchaseTime() == 0L) {
+
 				Purchase purchase2 = SetTime(item);
 				if (purchase2 == null || purchase2.GetPurchaseTime() <= 0)
 				{
@@ -193,6 +191,7 @@ if (!item.IsTicketProduct()) {
 					throw new Exception();
 				}
 				return purchase2;
+}
 			}
 			return purchase;
 		}
