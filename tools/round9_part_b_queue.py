@@ -17,7 +17,7 @@ ROWS = [
      'br / ret', 'form.SoccerForm::Draw_newPlayerPopular(',
      'Substituir uma guarda de retorno por braco vazio e else para cair no join do if'),
     (9, 'KairoLibrary', 'b9-positive-render-with-gui-else',
-     'brfalse / brtrue.s + ret', 'kairo.unity.ui.Balloon::Draw(',
+     'brfalse / brtrue.s + ret', 'kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void',
      'Corpo sob teste positivo de render com ramo GUI em else preserva saida final'),
     (10, 'KairoLibrary', 'b9-boolean-value-before-if',
      'ldc.i4.0 + ceq / brtrue.s', 'kairo.unity.ui.Graphics::_drawBitmap(',
@@ -42,6 +42,8 @@ def main():
                    '--rule', rule, '--pair', pair, '--hypothesis', hypothesis,
                    '--probe-substring', method, '--target-substring', method,
                    '--isolate-family', '--single-step', '--push']
+        if (ROOT / f'build/round9/cycles/b{number:02d}/baseline/snapshot.json').exists():
+            command += ['--use-prepared-baseline']
         print(json.dumps({'starting_part_B_step': number, 'rule': rule}), flush=True)
         with (folder / ('b%02d.log' % number)).open('wb') as log:
             result = subprocess.run(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)

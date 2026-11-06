@@ -201,13 +201,9 @@ namespace kairo.unity.ui
 		public void Draw(Graphics g, float x, float y, Matrix4x4 matrix)
 		{
 			Text = Language.LT(Text);
-			if (!g.IsGUI())
-			{
-				if (g.render_ == null)
-				{
-					return;
-				}
-				int num = 60;
+			if (!g.IsGUI()) {
+if (g.render_ != null) {
+int num = 60;
 				int num2 = 20;
 				RectangleF transRectGUI = g.GetTransRectGUI(0f, 0f, num, num2, Draw_tmp);
 				float num3 = transRectGUI.Width() / (float)num;
@@ -233,8 +229,9 @@ namespace kairo.unity.ui
 				}
 				g.render_.balloonRenderTasks_.Add(item);
 				return;
-			}
-			float num6 = x;
+}
+} else {
+float num6 = x;
 			float num7 = y;
 			g.PushMatrix(Matrix.ScaleTemporary(Scale * scale2_, Scale * scale2_));
 			g.BeginLocalCoordination(ref x, ref y);
@@ -505,6 +502,7 @@ namespace kairo.unity.ui
 			g.PopFont();
 			g.EndLocalCoordination();
 			g.PopMatrix();
+}
 		}
 
 		private void DrawRepeat(Graphics g, float x, float y, int width, int height, Seb seb, int frame)

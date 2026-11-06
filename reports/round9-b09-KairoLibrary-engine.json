@@ -1,0 +1,2883 @@
+{
+  "assembly": "KairoLibrary",
+  "baseline_body_equal": 3139,
+  "limit_iterations": 1,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void",
+      "number": 1,
+      "initial_offset": 29,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "b9-positive-render-with-gui-else",
+          "start": 4504,
+          "end": 13815,
+          "before": "if (!g.IsGUI())\r\n\t\t\t{\r\n\t\t\t\tif (g.render_ == null)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tint num = 60;\r\n\t\t\t\tint num2 = 20;\r\n\t\t\t\tRectangleF transRectGUI = g.GetTransRectGUI(0f, 0f, num, num2, Draw_tmp);\r\n\t\t\t\tfloat num3 = transRectGUI.Width() / (float)num;\r\n\t\t\t\tfloat num4 = transRectGUI.Height() / (float)num2;\r\n\t\t\t\tfloat num5 = ((num3 < num4) ? num3 : num4);\r\n\t\t\t\tImage.BalloonRenderTask item = new Image.BalloonRenderTask(this, x, y, g.offscreen_);\r\n\t\t\t\titem.Balloon.Scale *= num5;\r\n\t\t\t\tif (g.IsClipEnable())\r\n\t\t\t\t{\r\n\t\t\t\t\tint[] clip = g.GetClip();\r\n\t\t\t\t\tif (clip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip(clip[0], clip[1], clip[2], clip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat[] imageClip = g.GetImageClip();\r\n\t\t\t\t\tif (imageClip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip((int)imageClip[0], (int)imageClip[1], (int)imageClip[2], (int)imageClip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.render_.balloonRenderTasks_.Add(item);\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfloat num6 = x;\r\n\t\t\tfloat num7 = y;\r\n\t\t\tg.PushMatrix(Matrix.ScaleTemporary(Scale * scale2_, Scale * scale2_));\r\n\t\t\tg.BeginLocalCoordination(ref x, ref y);\r\n\t\t\tg.PushFont(FontSize);\r\n\t\t\tSeb seb = Seb;\r\n\t\t\tif (seb == null)\r\n\t\t\t{\r\n\t\t\t\tseb = IApplication.GetCurrentApp().GetResource().seb[3];\r\n\t\t\t}\r\n\t\t\tImage[] img = seb.manager_.img;\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tint num8 = font.StringWidth(Text);\r\n\t\t\tint num9 = (num8 - 3) / 2 * 2;\r\n\t\t\tif (num9 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum9 = 0;\r\n\t\t\t}\r\n\t\t\tint num10 = seb.GetBoundingRect(0)[2];\r\n\t\t\tint num11 = seb.GetBoundingRect(2)[2];\r\n\t\t\tint num12 = seb.GetBoundingRect(0)[3];\r\n\t\t\tint num13 = seb.GetBoundingRect(6)[3];\r\n\t\t\tint num14 = num10 + leftSpace_ + num9 + rightSpace_ + num11;\r\n\t\t\tint num15 = num12 + topSpace_ + bottomSpace_ + num13;\r\n\t\t\tfloat num16 = x - (float)(num14 / 2) - 1f;\r\n\t\t\tfloat num17 = y - (float)num15 - 2f;\r\n\t\t\tfloat num18 = num16;\r\n\t\t\tfloat num19 = num17;\r\n\t\t\tfloat num20 = num16 + (float)num14;\r\n\t\t\tfloat num21 = num17 + (float)num15;\r\n\t\t\tif (isTail_)\r\n\t\t\t{\r\n\t\t\t\tnum21 += 2f;\r\n\t\t\t}\r\n\t\t\tnum18 /= Scale;\r\n\t\t\tnum19 /= Scale;\r\n\t\t\tnum20 /= Scale;\r\n\t\t\tnum21 /= Scale;\r\n\t\t\tfloat num22 = num18 - 200f;\r\n\t\t\tfloat num23 = num19 - 200f;\r\n\t\t\tfloat num24 = num20 + 200f;\r\n\t\t\tfloat num25 = num21 + 200f;\r\n\t\t\tif (isClip_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector = matrix.MultiplyPoint(new Vector3(clip_.left, clip_.top));\r\n\t\t\t\tVector3 vector2 = matrix.MultiplyPoint(new Vector3(clip_.right, clip_.bottom));\r\n\t\t\t\tRectangleF draw_tmp = Draw_tmp;\r\n\t\t\t\tdraw_tmp.Set(vector.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector2.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector2.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (draw_tmp.right < num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum24 = draw_tmp.right;\r\n\t\t\t\t}\r\n\t\t\t\tif (draw_tmp.bottom < num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum25 = draw_tmp.bottom;\r\n\t\t\t\t}\r\n\t\t\t\tif (num22 < draw_tmp.left)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = draw_tmp.left;\r\n\t\t\t\t}\r\n\t\t\t\tif (num23 < draw_tmp.top)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = draw_tmp.top;\r\n\t\t\t\t}\r\n\t\t\t\tif (num24 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num25 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = num25;\r\n\t\t\t\t}\r\n\t\t\t\tif (num18 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum18 = num22;\r\n\t\t\t\t}\r\n\t\t\t\tif (num19 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum19 = num23;\r\n\t\t\t\t}\r\n\t\t\t\tif (num20 > num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum20 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num21 > num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum21 = num25;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbool flag = false;\r\n\t\t\tforeach (Rectangle item2 in maskList_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector3 = matrix.MultiplyPoint(new Vector3(item2.left, item2.top));\r\n\t\t\t\tVector3 vector4 = matrix.MultiplyPoint(new Vector3(item2.right, item2.bottom));\r\n\t\t\t\tRectangleF draw_tmp2 = Draw_tmp;\r\n\t\t\t\tdraw_tmp2.Set(vector3.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector3.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector4.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector4.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (KairoMath.CheckHitRect(num18, num19, num20 - num18, num21 - num19, draw_tmp2.left, draw_tmp2.top, draw_tmp2.Width(), draw_tmp2.Height()))\r\n\t\t\t\t{\r\n\t\t\t\t\tbool flag2 = draw_tmp2.left <= num18 && num18 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag3 = draw_tmp2.left <= num20 && num20 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag4 = draw_tmp2.top <= num19 && num19 <= draw_tmp2.bottom;\r\n\t\t\t\t\tbool flag5 = draw_tmp2.top <= num21 && num21 <= draw_tmp2.bottom;\r\n\t\t\t\t\tint num26 = 0;\r\n\t\t\t\t\tif (flag2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag5)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num26 == 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!flag5)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum23 = (num19 = draw_tmp2.bottom);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag4)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum25 = (num21 = draw_tmp2.top);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag2)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum24 = (num20 = draw_tmp2.left);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum22 = (num18 = draw_tmp2.right);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tbool flag6 = draw_tmp2.right < num18;\r\n\t\t\t\tbool flag7 = num20 < draw_tmp2.left;\r\n\t\t\t\tbool flag8 = draw_tmp2.bottom < num19;\r\n\t\t\t\tbool flag9 = num21 < draw_tmp2.top;\r\n\t\t\t\tint num27 = 0;\r\n\t\t\t\tif (flag6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag7)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag8)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag9)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (num27 == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag6 && draw_tmp2.right > num22)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum22 = draw_tmp2.right;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag7 && draw_tmp2.left < num24)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum24 = draw_tmp2.left;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag8 && draw_tmp2.bottom > num23)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum23 = draw_tmp2.bottom;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag9 && draw_tmp2.top < num25)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum25 = draw_tmp2.top;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!flag)\r\n\t\t\t{\r\n\t\t\t\tnum22 = num22 * Scale + num6;\r\n\t\t\t\tnum23 = num23 * Scale + num7;\r\n\t\t\t\tnum24 = num24 * Scale + num6;\r\n\t\t\t\tnum25 = num25 * Scale + num7;\r\n\t\t\t\tg.ClipRect(num22 - num6, num23 - num7, num24 - num22, num25 - num23);\r\n\t\t\t\tfloat num28 = num16 + (float)num10 - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num29 = num16 + (float)num14 - (float)num11 - (float)rightSpace_ + (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num30 = num17;\r\n\t\t\t\tseb.DrawFrame(g, num16, num17, img, 0);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17, num14 - num10 - num11, -1, seb, 1);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17, img, 2);\r\n\t\t\t\tDrawRepeat(g, num16, num17 + (float)num12, -1, num15 - num12 - num13, seb, 3);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num12, num14 - num10 - num11, num15 - num12 - num13, seb, 4);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num14 - (float)num11, num17 + (float)num12, -1, num15 - num12 - num13, seb, 5);\r\n\t\t\t\tseb.DrawFrame(g, num16, num17 + (float)num15 - (float)num13, img, 6);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num15 - (float)num13, num14 - num10 - num11, -1, seb, 7);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17 + (float)num15 - (float)num13, img, 8);\r\n\t\t\t\tif (isTail_)\r\n\t\t\t\t{\r\n\t\t\t\t\tseb.DrawFrame(g, x - 5f, y - 6f, img, 9);\r\n\t\t\t\t}\r\n\t\t\t\tnum17 = y - (float)num15 + 2f + (float)topSpace_;\r\n\t\t\t\tfloat x2 = num16 + (float)num10 + (float)leftSpace_ - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num31 = num17 + (float)(9 - FontSize) / 2f;\r\n\t\t\t\tbool flag10 = Text.Contains('<');\r\n\t\t\t\tif (isShadow_)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool pictographVisible = TextLayout.IsPictographVisible();\r\n\t\t\t\t\tTextLayout.SetPictographVisible(false);\r\n\t\t\t\t\tg.SetColor(shadowColor_);\r\n\t\t\t\t\tstring str = TextLayout.RemoveColorTag(Text);\r\n\t\t\t\t\tif (KairoPlugin.IsWeakDrawDevice())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (flag10)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (flag10)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTextLayout.SetPictographVisible(pictographVisible);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(TextColor);\r\n\t\t\t\tif (flag10)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\tif (leftSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect = leftSpaceSeb_.GetBoundingRect(leftSpaceSebFrame_);\r\n\t\t\t\t\tleftSpaceSeb_.DrawFrame(g, num28 - (float)boundingRect[0], num17 - (float)boundingRect[1] + (float)(font.GetHeight() - boundingRect[3]) / 2f, leftSpaceSeb_.manager_.img, leftSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (rightSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect2 = rightSpaceSeb_.GetBoundingRect(rightSpaceSebFrame_);\r\n\t\t\t\t\trightSpaceSeb_.DrawFrame(g, num29 - (float)boundingRect2[0] + 1f, num17 - (float)boundingRect2[1] + (float)(font.GetHeight() - boundingRect2[3]) / 2f, rightSpaceSeb_.manager_.img, rightSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (render_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tleftSpaceRect_.Set(num28, num30 + (float)num12 - 4f, num28 + (float)leftSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trightSpaceRect_.Set(num29, num30 + (float)num12 - 4f, num29 + (float)rightSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trender_(g, num17, leftSpaceRect_, rightSpaceRect_);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t}\r\n\t\t\tg.PopFont();\r\n\t\t\tg.EndLocalCoordination();\r\n\t\t\tg.PopMatrix();",
+          "after": "if (!g.IsGUI()) {\r\nif (g.render_ != null) {\r\nint num = 60;\r\n\t\t\t\tint num2 = 20;\r\n\t\t\t\tRectangleF transRectGUI = g.GetTransRectGUI(0f, 0f, num, num2, Draw_tmp);\r\n\t\t\t\tfloat num3 = transRectGUI.Width() / (float)num;\r\n\t\t\t\tfloat num4 = transRectGUI.Height() / (float)num2;\r\n\t\t\t\tfloat num5 = ((num3 < num4) ? num3 : num4);\r\n\t\t\t\tImage.BalloonRenderTask item = new Image.BalloonRenderTask(this, x, y, g.offscreen_);\r\n\t\t\t\titem.Balloon.Scale *= num5;\r\n\t\t\t\tif (g.IsClipEnable())\r\n\t\t\t\t{\r\n\t\t\t\t\tint[] clip = g.GetClip();\r\n\t\t\t\t\tif (clip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip(clip[0], clip[1], clip[2], clip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat[] imageClip = g.GetImageClip();\r\n\t\t\t\t\tif (imageClip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip((int)imageClip[0], (int)imageClip[1], (int)imageClip[2], (int)imageClip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.render_.balloonRenderTasks_.Add(item);\r\n\t\t\t\treturn;\r\n}\r\n} else {\r\nfloat num6 = x;\r\n\t\t\tfloat num7 = y;\r\n\t\t\tg.PushMatrix(Matrix.ScaleTemporary(Scale * scale2_, Scale * scale2_));\r\n\t\t\tg.BeginLocalCoordination(ref x, ref y);\r\n\t\t\tg.PushFont(FontSize);\r\n\t\t\tSeb seb = Seb;\r\n\t\t\tif (seb == null)\r\n\t\t\t{\r\n\t\t\t\tseb = IApplication.GetCurrentApp().GetResource().seb[3];\r\n\t\t\t}\r\n\t\t\tImage[] img = seb.manager_.img;\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tint num8 = font.StringWidth(Text);\r\n\t\t\tint num9 = (num8 - 3) / 2 * 2;\r\n\t\t\tif (num9 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum9 = 0;\r\n\t\t\t}\r\n\t\t\tint num10 = seb.GetBoundingRect(0)[2];\r\n\t\t\tint num11 = seb.GetBoundingRect(2)[2];\r\n\t\t\tint num12 = seb.GetBoundingRect(0)[3];\r\n\t\t\tint num13 = seb.GetBoundingRect(6)[3];\r\n\t\t\tint num14 = num10 + leftSpace_ + num9 + rightSpace_ + num11;\r\n\t\t\tint num15 = num12 + topSpace_ + bottomSpace_ + num13;\r\n\t\t\tfloat num16 = x - (float)(num14 / 2) - 1f;\r\n\t\t\tfloat num17 = y - (float)num15 - 2f;\r\n\t\t\tfloat num18 = num16;\r\n\t\t\tfloat num19 = num17;\r\n\t\t\tfloat num20 = num16 + (float)num14;\r\n\t\t\tfloat num21 = num17 + (float)num15;\r\n\t\t\tif (isTail_)\r\n\t\t\t{\r\n\t\t\t\tnum21 += 2f;\r\n\t\t\t}\r\n\t\t\tnum18 /= Scale;\r\n\t\t\tnum19 /= Scale;\r\n\t\t\tnum20 /= Scale;\r\n\t\t\tnum21 /= Scale;\r\n\t\t\tfloat num22 = num18 - 200f;\r\n\t\t\tfloat num23 = num19 - 200f;\r\n\t\t\tfloat num24 = num20 + 200f;\r\n\t\t\tfloat num25 = num21 + 200f;\r\n\t\t\tif (isClip_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector = matrix.MultiplyPoint(new Vector3(clip_.left, clip_.top));\r\n\t\t\t\tVector3 vector2 = matrix.MultiplyPoint(new Vector3(clip_.right, clip_.bottom));\r\n\t\t\t\tRectangleF draw_tmp = Draw_tmp;\r\n\t\t\t\tdraw_tmp.Set(vector.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector2.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector2.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (draw_tmp.right < num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum24 = draw_tmp.right;\r\n\t\t\t\t}\r\n\t\t\t\tif (draw_tmp.bottom < num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum25 = draw_tmp.bottom;\r\n\t\t\t\t}\r\n\t\t\t\tif (num22 < draw_tmp.left)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = draw_tmp.left;\r\n\t\t\t\t}\r\n\t\t\t\tif (num23 < draw_tmp.top)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = draw_tmp.top;\r\n\t\t\t\t}\r\n\t\t\t\tif (num24 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num25 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = num25;\r\n\t\t\t\t}\r\n\t\t\t\tif (num18 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum18 = num22;\r\n\t\t\t\t}\r\n\t\t\t\tif (num19 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum19 = num23;\r\n\t\t\t\t}\r\n\t\t\t\tif (num20 > num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum20 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num21 > num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum21 = num25;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbool flag = false;\r\n\t\t\tforeach (Rectangle item2 in maskList_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector3 = matrix.MultiplyPoint(new Vector3(item2.left, item2.top));\r\n\t\t\t\tVector3 vector4 = matrix.MultiplyPoint(new Vector3(item2.right, item2.bottom));\r\n\t\t\t\tRectangleF draw_tmp2 = Draw_tmp;\r\n\t\t\t\tdraw_tmp2.Set(vector3.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector3.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector4.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector4.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (KairoMath.CheckHitRect(num18, num19, num20 - num18, num21 - num19, draw_tmp2.left, draw_tmp2.top, draw_tmp2.Width(), draw_tmp2.Height()))\r\n\t\t\t\t{\r\n\t\t\t\t\tbool flag2 = draw_tmp2.left <= num18 && num18 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag3 = draw_tmp2.left <= num20 && num20 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag4 = draw_tmp2.top <= num19 && num19 <= draw_tmp2.bottom;\r\n\t\t\t\t\tbool flag5 = draw_tmp2.top <= num21 && num21 <= draw_tmp2.bottom;\r\n\t\t\t\t\tint num26 = 0;\r\n\t\t\t\t\tif (flag2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag5)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num26 == 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!flag5)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum23 = (num19 = draw_tmp2.bottom);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag4)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum25 = (num21 = draw_tmp2.top);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag2)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum24 = (num20 = draw_tmp2.left);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum22 = (num18 = draw_tmp2.right);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tbool flag6 = draw_tmp2.right < num18;\r\n\t\t\t\tbool flag7 = num20 < draw_tmp2.left;\r\n\t\t\t\tbool flag8 = draw_tmp2.bottom < num19;\r\n\t\t\t\tbool flag9 = num21 < draw_tmp2.top;\r\n\t\t\t\tint num27 = 0;\r\n\t\t\t\tif (flag6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag7)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag8)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag9)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (num27 == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag6 && draw_tmp2.right > num22)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum22 = draw_tmp2.right;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag7 && draw_tmp2.left < num24)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum24 = draw_tmp2.left;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag8 && draw_tmp2.bottom > num23)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum23 = draw_tmp2.bottom;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag9 && draw_tmp2.top < num25)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum25 = draw_tmp2.top;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!flag)\r\n\t\t\t{\r\n\t\t\t\tnum22 = num22 * Scale + num6;\r\n\t\t\t\tnum23 = num23 * Scale + num7;\r\n\t\t\t\tnum24 = num24 * Scale + num6;\r\n\t\t\t\tnum25 = num25 * Scale + num7;\r\n\t\t\t\tg.ClipRect(num22 - num6, num23 - num7, num24 - num22, num25 - num23);\r\n\t\t\t\tfloat num28 = num16 + (float)num10 - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num29 = num16 + (float)num14 - (float)num11 - (float)rightSpace_ + (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num30 = num17;\r\n\t\t\t\tseb.DrawFrame(g, num16, num17, img, 0);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17, num14 - num10 - num11, -1, seb, 1);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17, img, 2);\r\n\t\t\t\tDrawRepeat(g, num16, num17 + (float)num12, -1, num15 - num12 - num13, seb, 3);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num12, num14 - num10 - num11, num15 - num12 - num13, seb, 4);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num14 - (float)num11, num17 + (float)num12, -1, num15 - num12 - num13, seb, 5);\r\n\t\t\t\tseb.DrawFrame(g, num16, num17 + (float)num15 - (float)num13, img, 6);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num15 - (float)num13, num14 - num10 - num11, -1, seb, 7);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17 + (float)num15 - (float)num13, img, 8);\r\n\t\t\t\tif (isTail_)\r\n\t\t\t\t{\r\n\t\t\t\t\tseb.DrawFrame(g, x - 5f, y - 6f, img, 9);\r\n\t\t\t\t}\r\n\t\t\t\tnum17 = y - (float)num15 + 2f + (float)topSpace_;\r\n\t\t\t\tfloat x2 = num16 + (float)num10 + (float)leftSpace_ - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num31 = num17 + (float)(9 - FontSize) / 2f;\r\n\t\t\t\tbool flag10 = Text.Contains('<');\r\n\t\t\t\tif (isShadow_)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool pictographVisible = TextLayout.IsPictographVisible();\r\n\t\t\t\t\tTextLayout.SetPictographVisible(false);\r\n\t\t\t\t\tg.SetColor(shadowColor_);\r\n\t\t\t\t\tstring str = TextLayout.RemoveColorTag(Text);\r\n\t\t\t\t\tif (KairoPlugin.IsWeakDrawDevice())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (flag10)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (flag10)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTextLayout.SetPictographVisible(pictographVisible);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(TextColor);\r\n\t\t\t\tif (flag10)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\tif (leftSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect = leftSpaceSeb_.GetBoundingRect(leftSpaceSebFrame_);\r\n\t\t\t\t\tleftSpaceSeb_.DrawFrame(g, num28 - (float)boundingRect[0], num17 - (float)boundingRect[1] + (float)(font.GetHeight() - boundingRect[3]) / 2f, leftSpaceSeb_.manager_.img, leftSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (rightSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect2 = rightSpaceSeb_.GetBoundingRect(rightSpaceSebFrame_);\r\n\t\t\t\t\trightSpaceSeb_.DrawFrame(g, num29 - (float)boundingRect2[0] + 1f, num17 - (float)boundingRect2[1] + (float)(font.GetHeight() - boundingRect2[3]) / 2f, rightSpaceSeb_.manager_.img, rightSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (render_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tleftSpaceRect_.Set(num28, num30 + (float)num12 - 4f, num28 + (float)leftSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trightSpaceRect_.Set(num29, num30 + (float)num12 - 4f, num29 + (float)rightSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trender_(g, num17, leftSpaceRect_, rightSpaceRect_);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t}\r\n\t\t\tg.PopFont();\r\n\t\t\tg.EndLocalCoordination();\r\n\t\t\tg.PopMatrix();\r\n}",
+          "compile_pass": true,
+          "old_prefix": 29,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "System.Int32",
+              "System.Int32",
+              "kairo.unity.graphics.RectangleF",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "kairo.unity.ui.Image/BalloonRenderTask",
+              "System.Int32[]",
+              "System.Single[]",
+              "System.Single",
+              "System.Single",
+              "kairo.unity.ui.Seb",
+              "kairo.unity.ui.Image[]",
+              "kairo.unity.ui.Font",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Boolean",
+              "UnityEngine.Vector3",
+              "UnityEngine.Vector3",
+              "kairo.unity.graphics.RectangleF",
+              "System.Collections.Generic.List`1/Enumerator<kairo.unity.graphics.Rectangle>",
+              "kairo.unity.graphics.Rectangle",
+              "UnityEngine.Vector3",
+              "UnityEngine.Vector3",
+              "kairo.unity.graphics.RectangleF",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Int32",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Boolean",
+              "System.Boolean",
+              "System.String",
+              "System.Int16[]",
+              "System.Int16[]"
+            ],
+            "method_id": "kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void",
+            "unsupported_reasons": [
+              "stack_scheduler_multiple_use:transRectGUI",
+              "stack_scheduler_multiple_use:num3",
+              "stack_scheduler_multiple_use:clip",
+              "stack_scheduler_multiple_use:imageClip",
+              "stack_scheduler_multiple_use:font",
+              "stack_scheduler_multiple_use:num8",
+              "stack_scheduler_multiple_use:num10",
+              "stack_scheduler_multiple_use:num12",
+              "stack_scheduler_multiple_use:num16",
+              "stack_scheduler_multiple_use:draw_tmp",
+              "stack_scheduler_multiple_use:draw_tmp2",
+              "stack_scheduler_multiple_use:flag6",
+              "stack_scheduler_multiple_use:flag7",
+              "stack_scheduler_multiple_use:flag8",
+              "stack_scheduler_multiple_use:flag9",
+              "stack_scheduler_multiple_use:flag2",
+              "stack_scheduler_multiple_use:flag3",
+              "stack_scheduler_multiple_use:flag4",
+              "stack_scheduler_multiple_use:flag5",
+              "stack_scheduler_multiple_use:flag10",
+              "stack_scheduler_single_use:pictographVisible",
+              "foreach_iteration_stack_scheduler"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\b09\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\ui\\Balloon.cs",
+            "full_source_sha256": "8b9ee444f856c7c0ac003e15d7cce0c14b9e61cefdf25417abb8626542dcaec2",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\b09\\engine\\KairoLibrary\\target-screen\\Balloon.cs",
+            "screen_source_sha256": "5c1c4133db952dcdefb285e0c13a44d08d6ad65c419a435360ca9cea9a23e1ef",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1445,
+          "screen_body_equal": false,
+          "full_compile_pass": true,
+          "new_prefix": 1445,
+          "body_equal": false,
+          "progress_kind": "raw-prefix",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [],
+          "matched_IL_gain": 0
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "b9-positive-render-with-gui-else",
+          "start": 4504,
+          "end": 13815,
+          "before": "if (!g.IsGUI())\r\n\t\t\t{\r\n\t\t\t\tif (g.render_ == null)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tint num = 60;\r\n\t\t\t\tint num2 = 20;\r\n\t\t\t\tRectangleF transRectGUI = g.GetTransRectGUI(0f, 0f, num, num2, Draw_tmp);\r\n\t\t\t\tfloat num3 = transRectGUI.Width() / (float)num;\r\n\t\t\t\tfloat num4 = transRectGUI.Height() / (float)num2;\r\n\t\t\t\tfloat num5 = ((num3 < num4) ? num3 : num4);\r\n\t\t\t\tImage.BalloonRenderTask item = new Image.BalloonRenderTask(this, x, y, g.offscreen_);\r\n\t\t\t\titem.Balloon.Scale *= num5;\r\n\t\t\t\tif (g.IsClipEnable())\r\n\t\t\t\t{\r\n\t\t\t\t\tint[] clip = g.GetClip();\r\n\t\t\t\t\tif (clip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip(clip[0], clip[1], clip[2], clip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat[] imageClip = g.GetImageClip();\r\n\t\t\t\t\tif (imageClip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip((int)imageClip[0], (int)imageClip[1], (int)imageClip[2], (int)imageClip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.render_.balloonRenderTasks_.Add(item);\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfloat num6 = x;\r\n\t\t\tfloat num7 = y;\r\n\t\t\tg.PushMatrix(Matrix.ScaleTemporary(Scale * scale2_, Scale * scale2_));\r\n\t\t\tg.BeginLocalCoordination(ref x, ref y);\r\n\t\t\tg.PushFont(FontSize);\r\n\t\t\tSeb seb = Seb;\r\n\t\t\tif (seb == null)\r\n\t\t\t{\r\n\t\t\t\tseb = IApplication.GetCurrentApp().GetResource().seb[3];\r\n\t\t\t}\r\n\t\t\tImage[] img = seb.manager_.img;\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tint num8 = font.StringWidth(Text);\r\n\t\t\tint num9 = (num8 - 3) / 2 * 2;\r\n\t\t\tif (num9 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum9 = 0;\r\n\t\t\t}\r\n\t\t\tint num10 = seb.GetBoundingRect(0)[2];\r\n\t\t\tint num11 = seb.GetBoundingRect(2)[2];\r\n\t\t\tint num12 = seb.GetBoundingRect(0)[3];\r\n\t\t\tint num13 = seb.GetBoundingRect(6)[3];\r\n\t\t\tint num14 = num10 + leftSpace_ + num9 + rightSpace_ + num11;\r\n\t\t\tint num15 = num12 + topSpace_ + bottomSpace_ + num13;\r\n\t\t\tfloat num16 = x - (float)(num14 / 2) - 1f;\r\n\t\t\tfloat num17 = y - (float)num15 - 2f;\r\n\t\t\tfloat num18 = num16;\r\n\t\t\tfloat num19 = num17;\r\n\t\t\tfloat num20 = num16 + (float)num14;\r\n\t\t\tfloat num21 = num17 + (float)num15;\r\n\t\t\tif (isTail_)\r\n\t\t\t{\r\n\t\t\t\tnum21 += 2f;\r\n\t\t\t}\r\n\t\t\tnum18 /= Scale;\r\n\t\t\tnum19 /= Scale;\r\n\t\t\tnum20 /= Scale;\r\n\t\t\tnum21 /= Scale;\r\n\t\t\tfloat num22 = num18 - 200f;\r\n\t\t\tfloat num23 = num19 - 200f;\r\n\t\t\tfloat num24 = num20 + 200f;\r\n\t\t\tfloat num25 = num21 + 200f;\r\n\t\t\tif (isClip_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector = matrix.MultiplyPoint(new Vector3(clip_.left, clip_.top));\r\n\t\t\t\tVector3 vector2 = matrix.MultiplyPoint(new Vector3(clip_.right, clip_.bottom));\r\n\t\t\t\tRectangleF draw_tmp = Draw_tmp;\r\n\t\t\t\tdraw_tmp.Set(vector.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector2.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector2.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (draw_tmp.right < num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum24 = draw_tmp.right;\r\n\t\t\t\t}\r\n\t\t\t\tif (draw_tmp.bottom < num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum25 = draw_tmp.bottom;\r\n\t\t\t\t}\r\n\t\t\t\tif (num22 < draw_tmp.left)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = draw_tmp.left;\r\n\t\t\t\t}\r\n\t\t\t\tif (num23 < draw_tmp.top)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = draw_tmp.top;\r\n\t\t\t\t}\r\n\t\t\t\tif (num24 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num25 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = num25;\r\n\t\t\t\t}\r\n\t\t\t\tif (num18 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum18 = num22;\r\n\t\t\t\t}\r\n\t\t\t\tif (num19 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum19 = num23;\r\n\t\t\t\t}\r\n\t\t\t\tif (num20 > num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum20 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num21 > num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum21 = num25;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbool flag = false;\r\n\t\t\tforeach (Rectangle item2 in maskList_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector3 = matrix.MultiplyPoint(new Vector3(item2.left, item2.top));\r\n\t\t\t\tVector3 vector4 = matrix.MultiplyPoint(new Vector3(item2.right, item2.bottom));\r\n\t\t\t\tRectangleF draw_tmp2 = Draw_tmp;\r\n\t\t\t\tdraw_tmp2.Set(vector3.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector3.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector4.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector4.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (KairoMath.CheckHitRect(num18, num19, num20 - num18, num21 - num19, draw_tmp2.left, draw_tmp2.top, draw_tmp2.Width(), draw_tmp2.Height()))\r\n\t\t\t\t{\r\n\t\t\t\t\tbool flag2 = draw_tmp2.left <= num18 && num18 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag3 = draw_tmp2.left <= num20 && num20 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag4 = draw_tmp2.top <= num19 && num19 <= draw_tmp2.bottom;\r\n\t\t\t\t\tbool flag5 = draw_tmp2.top <= num21 && num21 <= draw_tmp2.bottom;\r\n\t\t\t\t\tint num26 = 0;\r\n\t\t\t\t\tif (flag2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag5)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num26 == 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!flag5)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum23 = (num19 = draw_tmp2.bottom);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag4)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum25 = (num21 = draw_tmp2.top);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag2)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum24 = (num20 = draw_tmp2.left);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum22 = (num18 = draw_tmp2.right);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tbool flag6 = draw_tmp2.right < num18;\r\n\t\t\t\tbool flag7 = num20 < draw_tmp2.left;\r\n\t\t\t\tbool flag8 = draw_tmp2.bottom < num19;\r\n\t\t\t\tbool flag9 = num21 < draw_tmp2.top;\r\n\t\t\t\tint num27 = 0;\r\n\t\t\t\tif (flag6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag7)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag8)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag9)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (num27 == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag6 && draw_tmp2.right > num22)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum22 = draw_tmp2.right;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag7 && draw_tmp2.left < num24)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum24 = draw_tmp2.left;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag8 && draw_tmp2.bottom > num23)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum23 = draw_tmp2.bottom;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag9 && draw_tmp2.top < num25)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum25 = draw_tmp2.top;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!flag)\r\n\t\t\t{\r\n\t\t\t\tnum22 = num22 * Scale + num6;\r\n\t\t\t\tnum23 = num23 * Scale + num7;\r\n\t\t\t\tnum24 = num24 * Scale + num6;\r\n\t\t\t\tnum25 = num25 * Scale + num7;\r\n\t\t\t\tg.ClipRect(num22 - num6, num23 - num7, num24 - num22, num25 - num23);\r\n\t\t\t\tfloat num28 = num16 + (float)num10 - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num29 = num16 + (float)num14 - (float)num11 - (float)rightSpace_ + (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num30 = num17;\r\n\t\t\t\tseb.DrawFrame(g, num16, num17, img, 0);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17, num14 - num10 - num11, -1, seb, 1);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17, img, 2);\r\n\t\t\t\tDrawRepeat(g, num16, num17 + (float)num12, -1, num15 - num12 - num13, seb, 3);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num12, num14 - num10 - num11, num15 - num12 - num13, seb, 4);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num14 - (float)num11, num17 + (float)num12, -1, num15 - num12 - num13, seb, 5);\r\n\t\t\t\tseb.DrawFrame(g, num16, num17 + (float)num15 - (float)num13, img, 6);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num15 - (float)num13, num14 - num10 - num11, -1, seb, 7);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17 + (float)num15 - (float)num13, img, 8);\r\n\t\t\t\tif (isTail_)\r\n\t\t\t\t{\r\n\t\t\t\t\tseb.DrawFrame(g, x - 5f, y - 6f, img, 9);\r\n\t\t\t\t}\r\n\t\t\t\tnum17 = y - (float)num15 + 2f + (float)topSpace_;\r\n\t\t\t\tfloat x2 = num16 + (float)num10 + (float)leftSpace_ - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num31 = num17 + (float)(9 - FontSize) / 2f;\r\n\t\t\t\tbool flag10 = Text.Contains('<');\r\n\t\t\t\tif (isShadow_)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool pictographVisible = TextLayout.IsPictographVisible();\r\n\t\t\t\t\tTextLayout.SetPictographVisible(false);\r\n\t\t\t\t\tg.SetColor(shadowColor_);\r\n\t\t\t\t\tstring str = TextLayout.RemoveColorTag(Text);\r\n\t\t\t\t\tif (KairoPlugin.IsWeakDrawDevice())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (flag10)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (flag10)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTextLayout.SetPictographVisible(pictographVisible);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(TextColor);\r\n\t\t\t\tif (flag10)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\tif (leftSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect = leftSpaceSeb_.GetBoundingRect(leftSpaceSebFrame_);\r\n\t\t\t\t\tleftSpaceSeb_.DrawFrame(g, num28 - (float)boundingRect[0], num17 - (float)boundingRect[1] + (float)(font.GetHeight() - boundingRect[3]) / 2f, leftSpaceSeb_.manager_.img, leftSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (rightSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect2 = rightSpaceSeb_.GetBoundingRect(rightSpaceSebFrame_);\r\n\t\t\t\t\trightSpaceSeb_.DrawFrame(g, num29 - (float)boundingRect2[0] + 1f, num17 - (float)boundingRect2[1] + (float)(font.GetHeight() - boundingRect2[3]) / 2f, rightSpaceSeb_.manager_.img, rightSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (render_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tleftSpaceRect_.Set(num28, num30 + (float)num12 - 4f, num28 + (float)leftSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trightSpaceRect_.Set(num29, num30 + (float)num12 - 4f, num29 + (float)rightSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trender_(g, num17, leftSpaceRect_, rightSpaceRect_);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t}\r\n\t\t\tg.PopFont();\r\n\t\t\tg.EndLocalCoordination();\r\n\t\t\tg.PopMatrix();",
+          "after": "if (!g.IsGUI()) {\r\nif (g.render_ != null) {\r\nint num = 60;\r\n\t\t\t\tint num2 = 20;\r\n\t\t\t\tRectangleF transRectGUI = g.GetTransRectGUI(0f, 0f, num, num2, Draw_tmp);\r\n\t\t\t\tfloat num3 = transRectGUI.Width() / (float)num;\r\n\t\t\t\tfloat num4 = transRectGUI.Height() / (float)num2;\r\n\t\t\t\tfloat num5 = ((num3 < num4) ? num3 : num4);\r\n\t\t\t\tImage.BalloonRenderTask item = new Image.BalloonRenderTask(this, x, y, g.offscreen_);\r\n\t\t\t\titem.Balloon.Scale *= num5;\r\n\t\t\t\tif (g.IsClipEnable())\r\n\t\t\t\t{\r\n\t\t\t\t\tint[] clip = g.GetClip();\r\n\t\t\t\t\tif (clip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip(clip[0], clip[1], clip[2], clip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat[] imageClip = g.GetImageClip();\r\n\t\t\t\t\tif (imageClip != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\titem.Balloon.SetClip((int)imageClip[0], (int)imageClip[1], (int)imageClip[2], (int)imageClip[3]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tg.render_.balloonRenderTasks_.Add(item);\r\n\t\t\t\treturn;\r\n}\r\n} else {\r\nfloat num6 = x;\r\n\t\t\tfloat num7 = y;\r\n\t\t\tg.PushMatrix(Matrix.ScaleTemporary(Scale * scale2_, Scale * scale2_));\r\n\t\t\tg.BeginLocalCoordination(ref x, ref y);\r\n\t\t\tg.PushFont(FontSize);\r\n\t\t\tSeb seb = Seb;\r\n\t\t\tif (seb == null)\r\n\t\t\t{\r\n\t\t\t\tseb = IApplication.GetCurrentApp().GetResource().seb[3];\r\n\t\t\t}\r\n\t\t\tImage[] img = seb.manager_.img;\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tint num8 = font.StringWidth(Text);\r\n\t\t\tint num9 = (num8 - 3) / 2 * 2;\r\n\t\t\tif (num9 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum9 = 0;\r\n\t\t\t}\r\n\t\t\tint num10 = seb.GetBoundingRect(0)[2];\r\n\t\t\tint num11 = seb.GetBoundingRect(2)[2];\r\n\t\t\tint num12 = seb.GetBoundingRect(0)[3];\r\n\t\t\tint num13 = seb.GetBoundingRect(6)[3];\r\n\t\t\tint num14 = num10 + leftSpace_ + num9 + rightSpace_ + num11;\r\n\t\t\tint num15 = num12 + topSpace_ + bottomSpace_ + num13;\r\n\t\t\tfloat num16 = x - (float)(num14 / 2) - 1f;\r\n\t\t\tfloat num17 = y - (float)num15 - 2f;\r\n\t\t\tfloat num18 = num16;\r\n\t\t\tfloat num19 = num17;\r\n\t\t\tfloat num20 = num16 + (float)num14;\r\n\t\t\tfloat num21 = num17 + (float)num15;\r\n\t\t\tif (isTail_)\r\n\t\t\t{\r\n\t\t\t\tnum21 += 2f;\r\n\t\t\t}\r\n\t\t\tnum18 /= Scale;\r\n\t\t\tnum19 /= Scale;\r\n\t\t\tnum20 /= Scale;\r\n\t\t\tnum21 /= Scale;\r\n\t\t\tfloat num22 = num18 - 200f;\r\n\t\t\tfloat num23 = num19 - 200f;\r\n\t\t\tfloat num24 = num20 + 200f;\r\n\t\t\tfloat num25 = num21 + 200f;\r\n\t\t\tif (isClip_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector = matrix.MultiplyPoint(new Vector3(clip_.left, clip_.top));\r\n\t\t\t\tVector3 vector2 = matrix.MultiplyPoint(new Vector3(clip_.right, clip_.bottom));\r\n\t\t\t\tRectangleF draw_tmp = Draw_tmp;\r\n\t\t\t\tdraw_tmp.Set(vector.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector2.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector2.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (draw_tmp.right < num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum24 = draw_tmp.right;\r\n\t\t\t\t}\r\n\t\t\t\tif (draw_tmp.bottom < num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum25 = draw_tmp.bottom;\r\n\t\t\t\t}\r\n\t\t\t\tif (num22 < draw_tmp.left)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = draw_tmp.left;\r\n\t\t\t\t}\r\n\t\t\t\tif (num23 < draw_tmp.top)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = draw_tmp.top;\r\n\t\t\t\t}\r\n\t\t\t\tif (num24 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum22 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num25 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum23 = num25;\r\n\t\t\t\t}\r\n\t\t\t\tif (num18 < num22)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum18 = num22;\r\n\t\t\t\t}\r\n\t\t\t\tif (num19 < num23)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum19 = num23;\r\n\t\t\t\t}\r\n\t\t\t\tif (num20 > num24)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum20 = num24;\r\n\t\t\t\t}\r\n\t\t\t\tif (num21 > num25)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum21 = num25;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbool flag = false;\r\n\t\t\tforeach (Rectangle item2 in maskList_)\r\n\t\t\t{\r\n\t\t\t\tVector3 vector3 = matrix.MultiplyPoint(new Vector3(item2.left, item2.top));\r\n\t\t\t\tVector3 vector4 = matrix.MultiplyPoint(new Vector3(item2.right, item2.bottom));\r\n\t\t\t\tRectangleF draw_tmp2 = Draw_tmp;\r\n\t\t\t\tdraw_tmp2.Set(vector3.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector3.y / Scale / Scale - num7 / Scale / Scale / scale2_, vector4.x / Scale / Scale - num6 / Scale / Scale / scale2_, vector4.y / Scale / Scale - num7 / Scale / Scale / scale2_);\r\n\t\t\t\tif (KairoMath.CheckHitRect(num18, num19, num20 - num18, num21 - num19, draw_tmp2.left, draw_tmp2.top, draw_tmp2.Width(), draw_tmp2.Height()))\r\n\t\t\t\t{\r\n\t\t\t\t\tbool flag2 = draw_tmp2.left <= num18 && num18 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag3 = draw_tmp2.left <= num20 && num20 <= draw_tmp2.right;\r\n\t\t\t\t\tbool flag4 = draw_tmp2.top <= num19 && num19 <= draw_tmp2.bottom;\r\n\t\t\t\t\tbool flag5 = draw_tmp2.top <= num21 && num21 <= draw_tmp2.bottom;\r\n\t\t\t\t\tint num26 = 0;\r\n\t\t\t\t\tif (flag2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag5)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum26++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num26 == 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!flag5)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum23 = (num19 = draw_tmp2.bottom);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag4)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum25 = (num21 = draw_tmp2.top);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag2)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum24 = (num20 = draw_tmp2.left);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!flag3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum22 = (num18 = draw_tmp2.right);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tbool flag6 = draw_tmp2.right < num18;\r\n\t\t\t\tbool flag7 = num20 < draw_tmp2.left;\r\n\t\t\t\tbool flag8 = draw_tmp2.bottom < num19;\r\n\t\t\t\tbool flag9 = num21 < draw_tmp2.top;\r\n\t\t\t\tint num27 = 0;\r\n\t\t\t\tif (flag6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag7)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag8)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag9)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum27++;\r\n\t\t\t\t}\r\n\t\t\t\tif (num27 == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag6 && draw_tmp2.right > num22)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum22 = draw_tmp2.right;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag7 && draw_tmp2.left < num24)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum24 = draw_tmp2.left;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag8 && draw_tmp2.bottom > num23)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum23 = draw_tmp2.bottom;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag9 && draw_tmp2.top < num25)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum25 = draw_tmp2.top;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (!flag)\r\n\t\t\t{\r\n\t\t\t\tnum22 = num22 * Scale + num6;\r\n\t\t\t\tnum23 = num23 * Scale + num7;\r\n\t\t\t\tnum24 = num24 * Scale + num6;\r\n\t\t\t\tnum25 = num25 * Scale + num7;\r\n\t\t\t\tg.ClipRect(num22 - num6, num23 - num7, num24 - num22, num25 - num23);\r\n\t\t\t\tfloat num28 = num16 + (float)num10 - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num29 = num16 + (float)num14 - (float)num11 - (float)rightSpace_ + (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num30 = num17;\r\n\t\t\t\tseb.DrawFrame(g, num16, num17, img, 0);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17, num14 - num10 - num11, -1, seb, 1);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17, img, 2);\r\n\t\t\t\tDrawRepeat(g, num16, num17 + (float)num12, -1, num15 - num12 - num13, seb, 3);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num12, num14 - num10 - num11, num15 - num12 - num13, seb, 4);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num14 - (float)num11, num17 + (float)num12, -1, num15 - num12 - num13, seb, 5);\r\n\t\t\t\tseb.DrawFrame(g, num16, num17 + (float)num15 - (float)num13, img, 6);\r\n\t\t\t\tDrawRepeat(g, num16 + (float)num10, num17 + (float)num15 - (float)num13, num14 - num10 - num11, -1, seb, 7);\r\n\t\t\t\tseb.DrawFrame(g, num16 + (float)num14 - (float)num11, num17 + (float)num15 - (float)num13, img, 8);\r\n\t\t\t\tif (isTail_)\r\n\t\t\t\t{\r\n\t\t\t\t\tseb.DrawFrame(g, x - 5f, y - 6f, img, 9);\r\n\t\t\t\t}\r\n\t\t\t\tnum17 = y - (float)num15 + 2f + (float)topSpace_;\r\n\t\t\t\tfloat x2 = num16 + (float)num10 + (float)leftSpace_ - (float)(num8 - num9) / 2f;\r\n\t\t\t\tfloat num31 = num17 + (float)(9 - FontSize) / 2f;\r\n\t\t\t\tbool flag10 = Text.Contains('<');\r\n\t\t\t\tif (isShadow_)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool pictographVisible = TextLayout.IsPictographVisible();\r\n\t\t\t\t\tTextLayout.SetPictographVisible(false);\r\n\t\t\t\t\tg.SetColor(shadowColor_);\r\n\t\t\t\t\tstring str = TextLayout.RemoveColorTag(Text);\r\n\t\t\t\t\tif (KairoPlugin.IsWeakDrawDevice())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (flag10)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (flag10)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString2(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.5f);\r\n\t\t\t\t\t\tg.DrawString(str, x2, num31 + 0.25f);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTextLayout.SetPictographVisible(pictographVisible);\r\n\t\t\t\t}\r\n\t\t\t\tg.SetColor(TextColor);\r\n\t\t\t\tif (flag10)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString2(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(Text, x2, num31);\r\n\t\t\t\t}\r\n\t\t\t\tif (leftSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect = leftSpaceSeb_.GetBoundingRect(leftSpaceSebFrame_);\r\n\t\t\t\t\tleftSpaceSeb_.DrawFrame(g, num28 - (float)boundingRect[0], num17 - (float)boundingRect[1] + (float)(font.GetHeight() - boundingRect[3]) / 2f, leftSpaceSeb_.manager_.img, leftSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (rightSpaceSeb_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tshort[] boundingRect2 = rightSpaceSeb_.GetBoundingRect(rightSpaceSebFrame_);\r\n\t\t\t\t\trightSpaceSeb_.DrawFrame(g, num29 - (float)boundingRect2[0] + 1f, num17 - (float)boundingRect2[1] + (float)(font.GetHeight() - boundingRect2[3]) / 2f, rightSpaceSeb_.manager_.img, rightSpaceSebFrame_);\r\n\t\t\t\t}\r\n\t\t\t\tif (render_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tleftSpaceRect_.Set(num28, num30 + (float)num12 - 4f, num28 + (float)leftSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trightSpaceRect_.Set(num29, num30 + (float)num12 - 4f, num29 + (float)rightSpace_, num30 + (float)num15 - (float)num13 + 5f);\r\n\t\t\t\t\trender_(g, num17, leftSpaceRect_, rightSpaceRect_);\r\n\t\t\t\t}\r\n\t\t\t\tg.PopClip();\r\n\t\t\t}\r\n\t\t\tg.PopFont();\r\n\t\t\tg.EndLocalCoordination();\r\n\t\t\tg.PopMatrix();\r\n}",
+          "compile_pass": true,
+          "old_prefix": 29,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "System.Int32",
+              "System.Int32",
+              "kairo.unity.graphics.RectangleF",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "kairo.unity.ui.Image/BalloonRenderTask",
+              "System.Int32[]",
+              "System.Single[]",
+              "System.Single",
+              "System.Single",
+              "kairo.unity.ui.Seb",
+              "kairo.unity.ui.Image[]",
+              "kairo.unity.ui.Font",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Boolean",
+              "UnityEngine.Vector3",
+              "UnityEngine.Vector3",
+              "kairo.unity.graphics.RectangleF",
+              "System.Collections.Generic.List`1/Enumerator<kairo.unity.graphics.Rectangle>",
+              "kairo.unity.graphics.Rectangle",
+              "UnityEngine.Vector3",
+              "UnityEngine.Vector3",
+              "kairo.unity.graphics.RectangleF",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Int32",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Boolean",
+              "System.Boolean",
+              "System.String",
+              "System.Int16[]",
+              "System.Int16[]"
+            ],
+            "method_id": "kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void",
+            "unsupported_reasons": [
+              "stack_scheduler_multiple_use:transRectGUI",
+              "stack_scheduler_multiple_use:num3",
+              "stack_scheduler_multiple_use:clip",
+              "stack_scheduler_multiple_use:imageClip",
+              "stack_scheduler_multiple_use:font",
+              "stack_scheduler_multiple_use:num8",
+              "stack_scheduler_multiple_use:num10",
+              "stack_scheduler_multiple_use:num12",
+              "stack_scheduler_multiple_use:num16",
+              "stack_scheduler_multiple_use:draw_tmp",
+              "stack_scheduler_multiple_use:draw_tmp2",
+              "stack_scheduler_multiple_use:flag6",
+              "stack_scheduler_multiple_use:flag7",
+              "stack_scheduler_multiple_use:flag8",
+              "stack_scheduler_multiple_use:flag9",
+              "stack_scheduler_multiple_use:flag2",
+              "stack_scheduler_multiple_use:flag3",
+              "stack_scheduler_multiple_use:flag4",
+              "stack_scheduler_multiple_use:flag5",
+              "stack_scheduler_multiple_use:flag10",
+              "stack_scheduler_single_use:pictographVisible",
+              "foreach_iteration_stack_scheduler"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\b09\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\ui\\Balloon.cs",
+            "full_source_sha256": "8b9ee444f856c7c0ac003e15d7cce0c14b9e61cefdf25417abb8626542dcaec2",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\b09\\engine\\KairoLibrary\\target-screen\\Balloon.cs",
+            "screen_source_sha256": "5c1c4133db952dcdefb285e0c13a44d08d6ad65c419a435360ca9cea9a23e1ef",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1445,
+          "screen_body_equal": false,
+          "full_compile_pass": true,
+          "new_prefix": 1445,
+          "body_equal": false,
+          "progress_kind": "raw-prefix",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [],
+          "matched_IL_gain": 0
+        }
+      ],
+      "mapping": "native-PDB-sequence-point",
+      "stop_reason": "iteration_limit",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "null_polarity_evidence": [
+        {}
+      ],
+      "transform_helper_sha256": "f5b3ad46a00b529a37613718a498420445b5077f7906718488c5ab238a727f51",
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 46,
+              "last_use": 81,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 49,
+              "last_use": 90,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 84,
+              "last_use": 101,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 93,
+              "last_use": 98,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 102,
+              "last_use": 133,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 104,
+              "last_use": 246,
+              "loads": 5,
+              "stores": 0
+            },
+            {
+              "slot": 6,
+              "first_use": 155,
+              "last_use": 180,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 197,
+              "last_use": 225,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 255,
+              "last_use": 1954,
+              "loads": 7,
+              "stores": 1
+            },
+            {
+              "slot": 9,
+              "first_use": 258,
+              "last_use": 1959,
+              "loads": 7,
+              "stores": 1
+            },
+            {
+              "slot": 10,
+              "first_use": 335,
+              "last_use": 2302,
+              "loads": 16,
+              "stores": 2
+            },
+            {
+              "slot": 11,
+              "first_use": 372,
+              "last_use": 2319,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 12,
+              "first_use": 381,
+              "last_use": 2800,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 13,
+              "first_use": 396,
+              "last_use": 2364,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 14,
+              "first_use": 406,
+              "last_use": 2366,
+              "loads": 5,
+              "stores": 2
+            },
+            {
+              "slot": 15,
+              "first_use": 426,
+              "last_use": 2352,
+              "loads": 9,
+              "stores": 1
+            },
+            {
+              "slot": 16,
+              "first_use": 438,
+              "last_use": 2271,
+              "loads": 8,
+              "stores": 1
+            },
+            {
+              "slot": 17,
+              "first_use": 450,
+              "last_use": 2920,
+              "loads": 9,
+              "stores": 1
+            },
+            {
+              "slot": 18,
+              "first_use": 462,
+              "last_use": 2946,
+              "loads": 9,
+              "stores": 1
+            },
+            {
+              "slot": 19,
+              "first_use": 486,
+              "last_use": 2267,
+              "loads": 9,
+              "stores": 1
+            },
+            {
+              "slot": 20,
+              "first_use": 507,
+              "last_use": 2942,
+              "loads": 11,
+              "stores": 1
+            },
+            {
+              "slot": 21,
+              "first_use": 522,
+              "last_use": 2350,
+              "loads": 14,
+              "stores": 1
+            },
+            {
+              "slot": 22,
+              "first_use": 535,
+              "last_use": 2968,
+              "loads": 16,
+              "stores": 2
+            },
+            {
+              "slot": 23,
+              "first_use": 539,
+              "last_use": 1671,
+              "loads": 8,
+              "stores": 4
+            },
+            {
+              "slot": 24,
+              "first_use": 543,
+              "last_use": 1697,
+              "loads": 8,
+              "stores": 4
+            },
+            {
+              "slot": 25,
+              "first_use": 551,
+              "last_use": 1677,
+              "loads": 7,
+              "stores": 4
+            },
+            {
+              "slot": 26,
+              "first_use": 559,
+              "last_use": 1703,
+              "loads": 8,
+              "stores": 5
+            },
+            {
+              "slot": 27,
+              "first_use": 631,
+              "last_use": 1964,
+              "loads": 8,
+              "stores": 6
+            },
+            {
+              "slot": 28,
+              "first_use": 641,
+              "last_use": 1969,
+              "loads": 8,
+              "stores": 6
+            },
+            {
+              "slot": 29,
+              "first_use": 651,
+              "last_use": 1962,
+              "loads": 8,
+              "stores": 5
+            },
+            {
+              "slot": 30,
+              "first_use": 661,
+              "last_use": 1967,
+              "loads": 8,
+              "stores": 5
+            },
+            {
+              "slot": 31,
+              "first_use": 1081,
+              "last_use": 1888,
+              "loads": 1,
+              "stores": 2
+            },
+            {
+              "slot": 32,
+              "first_use": 708,
+              "last_use": 800,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 33,
+              "first_use": 744,
+              "last_use": 890,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 34,
+              "first_use": 751,
+              "last_use": 1011,
+              "loads": 9,
+              "stores": 1
+            },
+            {
+              "slot": 35,
+              "first_use": 1094,
+              "last_use": 1874,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 36,
+              "first_use": 1108,
+              "last_use": 1150,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 37,
+              "first_use": 1138,
+              "last_use": 1224,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 38,
+              "first_use": 1168,
+              "last_use": 1314,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 39,
+              "first_use": 1175,
+              "last_use": 1851,
+              "loads": 29,
+              "stores": 1
+            },
+            {
+              "slot": 40,
+              "first_use": 1444,
+              "last_use": 1616,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 41,
+              "first_use": 1474,
+              "last_use": 1632,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 42,
+              "first_use": 1504,
+              "last_use": 1600,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 43,
+              "first_use": 1534,
+              "last_use": 1584,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 44,
+              "first_use": 1537,
+              "last_use": 1579,
+              "loads": 5,
+              "stores": 5
+            },
+            {
+              "slot": 45,
+              "first_use": 1675,
+              "last_use": 1764,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 46,
+              "first_use": 1688,
+              "last_use": 1788,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 47,
+              "first_use": 1701,
+              "last_use": 1812,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 48,
+              "first_use": 1714,
+              "last_use": 1836,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 49,
+              "first_use": 1717,
+              "last_use": 1759,
+              "loads": 5,
+              "stores": 5
+            },
+            {
+              "slot": 50,
+              "first_use": 1997,
+              "last_use": 2879,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 51,
+              "first_use": 2030,
+              "last_use": 2930,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 52,
+              "first_use": 2034,
+              "last_use": 2940,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 53,
+              "first_use": 2377,
+              "last_use": 2637,
+              "loads": 8,
+              "stores": 1
+            },
+            {
+              "slot": 54,
+              "first_use": 2398,
+              "last_use": 2639,
+              "loads": 8,
+              "stores": 1
+            },
+            {
+              "slot": 55,
+              "first_use": 2413,
+              "last_use": 2608,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 56,
+              "first_use": 2460,
+              "last_use": 2574,
+              "loads": 6,
+              "stores": 1
+            },
+            {
+              "slot": 57,
+              "first_use": 2671,
+              "last_use": 2703,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 58,
+              "first_use": 2769,
+              "last_use": 2807,
+              "loads": 3,
+              "stores": 1
+            }
+          ],
+          "constraints": [
+            "source_model_incomplete"
+          ],
+          "source_only": true,
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 19,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 18,
+          "selected_rule_prefix": "b9-positive-render-with-gui-else"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "incomplete_variants_compiled": 1,
+      "incomplete_variant_limit": 12,
+      "incomplete_compiler_invocations": 2,
+      "last_attempt_point": {
+        "offset": 29,
+        "source": "src/KairoLibrary/kairo/unity/ui/Balloon.cs",
+        "point": {
+          "offset": 33,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\b09\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\ui\\Balloon.cs",
+          "start_line": 206,
+          "start_column": 5,
+          "end_line": 206,
+          "end_column": 27,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 39,
+          "line": 206,
+          "column": 5
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 39,
+          "rebuilt_offset": 39,
+          "original_index": 11,
+          "rebuilt_index": 11,
+          "original_instruction": {
+            "offset": 39,
+            "opcode": "brfalse",
+            "operand": {
+              "branch": 3011
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 39,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 42
+            }
+          },
+          "pair": "{\"opcode\":\"brfalse\",\"operand\":{\"branch\":3011}} => {\"opcode\":\"brtrue.s\",\"operand\":{\"branch\":42}}",
+          "opcode_pair": "brfalse => brtrue.s",
+          "original_context": [
+            {
+              "offset": 33,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 34,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::render_:class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 39,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "L28"
+                ]
+              }
+            },
+            {
+              "offset": 44,
+              "opcode": "ldc.i4.s",
+              "operand": 60,
+              "label": "L0"
+            },
+            {
+              "offset": 46,
+              "opcode": "stloc.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 33,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 34,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::render_:class kairo.unity.ui.Image @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 39,
+              "opcode": "brtrue.s",
+              "operand": {
+                "labels": [
+                  "L0"
+                ]
+              }
+            },
+            {
+              "offset": 41,
+              "opcode": "ret",
+              "operand": null
+            },
+            {
+              "offset": 42,
+              "opcode": "ldc.i4.s",
+              "operand": 60,
+              "label": "L0"
+            },
+            {
+              "offset": 44,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 24
+              }
+            }
+          ],
+          "original_labels": {
+            "44": "L0",
+            "191": "L1",
+            "235": "L2",
+            "254": "L3",
+            "960": "L4",
+            "1101": "L5",
+            "1443": "L6",
+            "1473": "L7",
+            "1503": "L8",
+            "1533": "L9",
+            "1534": "L10",
+            "1549": "L11",
+            "1559": "L12",
+            "1569": "L13",
+            "1579": "L14",
+            "1860": "L15",
+            "2329": "L16",
+            "2493": "L17",
+            "2513": "L18",
+            "2555": "L19",
+            "2591": "L20",
+            "2596": "L21",
+            "2630": "L22",
+            "2646": "L23",
+            "2744": "L24",
+            "2848": "L25",
+            "2987": "L26",
+            "2993": "L27",
+            "3011": "L28",
+            "101": "O101",
+            "102": "O102",
+            "360": "O360",
+            "416": "O416",
+            "579": "O579",
+            "980": "O980",
+            "1000": "O1000",
+            "1020": "O1020",
+            "1030": "O1030",
+            "1040": "O1040",
+            "1050": "O1050",
+            "1060": "O1060",
+            "1070": "O1070",
+            "1080": "O1080",
+            "1444": "O1444",
+            "1474": "O1474",
+            "1504": "O1504",
+            "1600": "O1600",
+            "1616": "O1616",
+            "1632": "O1632",
+            "1656": "O1656",
+            "1664": "O1664",
+            "1729": "O1729",
+            "1739": "O1739",
+            "1749": "O1749",
+            "1759": "O1759",
+            "1788": "O1788",
+            "1812": "O1812",
+            "1836": "O1836",
+            "1888": "O1888"
+          },
+          "rebuilt_labels": {
+            "42": "L0",
+            "201": "L1",
+            "245": "L2",
+            "264": "L3",
+            "955": "L4",
+            "1096": "L5",
+            "1434": "L6",
+            "1464": "L7",
+            "1494": "L8",
+            "1524": "L9",
+            "1705": "L10",
+            "1720": "L11",
+            "1730": "L12",
+            "1740": "L13",
+            "1750": "L14",
+            "1851": "L15",
+            "2299": "L16",
+            "2463": "L17",
+            "2483": "L18",
+            "2525": "L19",
+            "2561": "L20",
+            "2566": "L21",
+            "2600": "L22",
+            "2616": "L23",
+            "2714": "L24",
+            "2818": "L25",
+            "2957": "L26",
+            "2963": "L27",
+            "2981": "L28",
+            "110": "R110",
+            "112": "R112",
+            "365": "R365",
+            "419": "R419",
+            "578": "R578",
+            "975": "R975",
+            "995": "R995",
+            "1015": "R1015",
+            "1025": "R1025",
+            "1035": "R1035",
+            "1045": "R1045",
+            "1055": "R1055",
+            "1065": "R1065",
+            "1075": "R1075",
+            "1435": "R1435",
+            "1465": "R1465",
+            "1495": "R1495",
+            "1525": "R1525",
+            "1540": "R1540",
+            "1550": "R1550",
+            "1560": "R1560",
+            "1570": "R1570",
+            "1591": "R1591",
+            "1607": "R1607",
+            "1623": "R1623",
+            "1647": "R1647",
+            "1655": "R1655",
+            "1779": "R1779",
+            "1803": "R1803",
+            "1827": "R1827",
+            "1879": "R1879"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 11,
+              "original_stop": 12,
+              "rebuilt_start": 11,
+              "rebuilt_stop": 13
+            },
+            {
+              "kind": "replace",
+              "original_start": 13,
+              "original_stop": 14,
+              "rebuilt_start": 14,
+              "rebuilt_stop": 15
+            },
+            {
+              "kind": "replace",
+              "original_start": 15,
+              "original_stop": 16,
+              "rebuilt_start": 16,
+              "rebuilt_stop": 17
+            },
+            {
+              "kind": "replace",
+              "original_start": 19,
+              "original_stop": 20,
+              "rebuilt_start": 20,
+              "rebuilt_stop": 21
+            },
+            {
+              "kind": "replace",
+              "original_start": 21,
+              "original_stop": 22,
+              "rebuilt_start": 22,
+              "rebuilt_stop": 23
+            },
+            {
+              "kind": "replace",
+              "original_start": 27,
+              "original_stop": 28,
+              "rebuilt_start": 28,
+              "rebuilt_stop": 29
+            },
+            {
+              "kind": "replace",
+              "original_start": 30,
+              "original_stop": 31,
+              "rebuilt_start": 31,
+              "rebuilt_stop": 32
+            },
+            {
+              "kind": "replace",
+              "original_start": 32,
+              "original_stop": 33,
+              "rebuilt_start": 33,
+              "rebuilt_stop": 34
+            },
+            {
+              "kind": "replace",
+              "original_start": 35,
+              "original_stop": 38,
+              "rebuilt_start": 36,
+              "rebuilt_stop": 39
+            },
+            {
+              "kind": "replace",
+              "original_start": 39,
+              "original_stop": 40,
+              "rebuilt_start": 40,
+              "rebuilt_stop": 41
+            },
+            {
+              "kind": "replace",
+              "original_start": 41,
+              "original_stop": 44,
+              "rebuilt_start": 42,
+              "rebuilt_stop": 45
+            },
+            {
+              "kind": "replace",
+              "original_start": 50,
+              "original_stop": 51,
+              "rebuilt_start": 51,
+              "rebuilt_stop": 52
+            },
+            {
+              "kind": "replace",
+              "original_start": 54,
+              "original_stop": 55,
+              "rebuilt_start": 55,
+              "rebuilt_stop": 56
+            },
+            {
+              "kind": "replace",
+              "original_start": 62,
+              "original_stop": 64,
+              "rebuilt_start": 63,
+              "rebuilt_stop": 65
+            },
+            {
+              "kind": "replace",
+              "original_start": 65,
+              "original_stop": 66,
+              "rebuilt_start": 66,
+              "rebuilt_stop": 67
+            },
+            {
+              "kind": "replace",
+              "original_start": 67,
+              "original_stop": 68,
+              "rebuilt_start": 68,
+              "rebuilt_stop": 69
+            },
+            {
+              "kind": "replace",
+              "original_start": 70,
+              "original_stop": 71,
+              "rebuilt_start": 71,
+              "rebuilt_stop": 72
+            },
+            {
+              "kind": "replace",
+              "original_start": 73,
+              "original_stop": 74,
+              "rebuilt_start": 74,
+              "rebuilt_stop": 75
+            },
+            {
+              "kind": "replace",
+              "original_start": 76,
+              "original_stop": 77,
+              "rebuilt_start": 77,
+              "rebuilt_stop": 78
+            },
+            {
+              "kind": "replace",
+              "original_start": 83,
+              "original_stop": 85,
+              "rebuilt_start": 84,
+              "rebuilt_stop": 86
+            },
+            {
+              "kind": "replace",
+              "original_start": 86,
+              "original_stop": 87,
+              "rebuilt_start": 87,
+              "rebuilt_stop": 88
+            },
+            {
+              "kind": "replace",
+              "original_start": 88,
+              "original_stop": 89,
+              "rebuilt_start": 89,
+              "rebuilt_stop": 90
+            },
+            {
+              "kind": "replace",
+              "original_start": 92,
+              "original_stop": 93,
+              "rebuilt_start": 93,
+              "rebuilt_stop": 94
+            },
+            {
+              "kind": "replace",
+              "original_start": 96,
+              "original_stop": 97,
+              "rebuilt_start": 97,
+              "rebuilt_stop": 98
+            },
+            {
+              "kind": "replace",
+              "original_start": 100,
+              "original_stop": 101,
+              "rebuilt_start": 101,
+              "rebuilt_stop": 102
+            },
+            {
+              "kind": "replace",
+              "original_start": 108,
+              "original_stop": 109,
+              "rebuilt_start": 109,
+              "rebuilt_stop": 110
+            },
+            {
+              "kind": "replace",
+              "original_start": 112,
+              "original_stop": 113,
+              "rebuilt_start": 113,
+              "rebuilt_stop": 114
+            },
+            {
+              "kind": "replace",
+              "original_start": 114,
+              "original_stop": 115,
+              "rebuilt_start": 115,
+              "rebuilt_stop": 116
+            },
+            {
+              "kind": "replace",
+              "original_start": 140,
+              "original_stop": 142,
+              "rebuilt_start": 141,
+              "rebuilt_stop": 143
+            },
+            {
+              "kind": "replace",
+              "original_start": 148,
+              "original_stop": 150,
+              "rebuilt_start": 149,
+              "rebuilt_stop": 151
+            },
+            {
+              "kind": "replace",
+              "original_start": 152,
+              "original_stop": 153,
+              "rebuilt_start": 153,
+              "rebuilt_stop": 154
+            },
+            {
+              "kind": "replace",
+              "original_start": 156,
+              "original_stop": 158,
+              "rebuilt_start": 157,
+              "rebuilt_stop": 159
+            },
+            {
+              "kind": "replace",
+              "original_start": 161,
+              "original_stop": 163,
+              "rebuilt_start": 162,
+              "rebuilt_stop": 164
+            },
+            {
+              "kind": "replace",
+              "original_start": 169,
+              "original_stop": 171,
+              "rebuilt_start": 170,
+              "rebuilt_stop": 172
+            },
+            {
+              "kind": "replace",
+              "original_start": 174,
+              "original_stop": 176,
+              "rebuilt_start": 175,
+              "rebuilt_stop": 177
+            },
+            {
+              "kind": "replace",
+              "original_start": 180,
+              "original_stop": 182,
+              "rebuilt_start": 181,
+              "rebuilt_stop": 183
+            },
+            {
+              "kind": "replace",
+              "original_start": 186,
+              "original_stop": 188,
+              "rebuilt_start": 187,
+              "rebuilt_stop": 189
+            },
+            {
+              "kind": "replace",
+              "original_start": 192,
+              "original_stop": 194,
+              "rebuilt_start": 193,
+              "rebuilt_stop": 195
+            },
+            {
+              "kind": "replace",
+              "original_start": 198,
+              "original_stop": 200,
+              "rebuilt_start": 199,
+              "rebuilt_stop": 201
+            },
+            {
+              "kind": "replace",
+              "original_start": 203,
+              "original_stop": 204,
+              "rebuilt_start": 204,
+              "rebuilt_stop": 205
+            },
+            {
+              "kind": "replace",
+              "original_start": 208,
+              "original_stop": 209,
+              "rebuilt_start": 209,
+              "rebuilt_stop": 210
+            },
+            {
+              "kind": "replace",
+              "original_start": 210,
+              "original_stop": 212,
+              "rebuilt_start": 211,
+              "rebuilt_stop": 213
+            },
+            {
+              "kind": "replace",
+              "original_start": 218,
+              "original_stop": 219,
+              "rebuilt_start": 219,
+              "rebuilt_stop": 220
+            },
+            {
+              "kind": "replace",
+              "original_start": 220,
+              "original_stop": 221,
+              "rebuilt_start": 221,
+              "rebuilt_stop": 222
+            },
+            {
+              "kind": "replace",
+              "original_start": 222,
+              "original_stop": 223,
+              "rebuilt_start": 223,
+              "rebuilt_stop": 224
+            },
+            {
+              "kind": "replace",
+              "original_start": 229,
+              "original_stop": 230,
+              "rebuilt_start": 230,
+              "rebuilt_stop": 231
+            },
+            {
+              "kind": "replace",
+              "original_start": 231,
+              "original_stop": 232,
+              "rebuilt_start": 232,
+              "rebuilt_stop": 233
+            },
+            {
+              "kind": "replace",
+              "original_start": 236,
+              "original_stop": 243,
+              "rebuilt_start": 237,
+              "rebuilt_stop": 244
+            },
+            {
+              "kind": "replace",
+              "original_start": 245,
+              "original_stop": 248,
+              "rebuilt_start": 246,
+              "rebuilt_stop": 249
+            },
+            {
+              "kind": "replace",
+              "original_start": 250,
+              "original_stop": 251,
+              "rebuilt_start": 251,
+              "rebuilt_stop": 252
+            },
+            {
+              "kind": "replace",
+              "original_start": 254,
+              "original_stop": 255,
+              "rebuilt_start": 255,
+              "rebuilt_stop": 256
+            },
+            {
+              "kind": "replace",
+              "original_start": 257,
+              "original_stop": 259,
+              "rebuilt_start": 258,
+              "rebuilt_stop": 260
+            },
+            {
+              "kind": "replace",
+              "original_start": 262,
+              "original_stop": 264,
+              "rebuilt_start": 263,
+              "rebuilt_stop": 265
+            },
+            {
+              "kind": "replace",
+              "original_start": 267,
+              "original_stop": 269,
+              "rebuilt_start": 268,
+              "rebuilt_stop": 270
+            },
+            {
+              "kind": "replace",
+              "original_start": 272,
+              "original_stop": 274,
+              "rebuilt_start": 273,
+              "rebuilt_stop": 275
+            },
+            {
+              "kind": "replace",
+              "original_start": 277,
+              "original_stop": 279,
+              "rebuilt_start": 278,
+              "rebuilt_stop": 280
+            },
+            {
+              "kind": "replace",
+              "original_start": 281,
+              "original_stop": 283,
+              "rebuilt_start": 282,
+              "rebuilt_stop": 284
+            },
+            {
+              "kind": "replace",
+              "original_start": 285,
+              "original_stop": 287,
+              "rebuilt_start": 286,
+              "rebuilt_stop": 288
+            },
+            {
+              "kind": "replace",
+              "original_start": 289,
+              "original_stop": 291,
+              "rebuilt_start": 290,
+              "rebuilt_stop": 292
+            },
+            {
+              "kind": "replace",
+              "original_start": 293,
+              "original_stop": 294,
+              "rebuilt_start": 294,
+              "rebuilt_stop": 295
+            },
+            {
+              "kind": "replace",
+              "original_start": 328,
+              "original_stop": 329,
+              "rebuilt_start": 329,
+              "rebuilt_stop": 330
+            },
+            {
+              "kind": "replace",
+              "original_start": 347,
+              "original_stop": 348,
+              "rebuilt_start": 348,
+              "rebuilt_stop": 349
+            },
+            {
+              "kind": "replace",
+              "original_start": 366,
+              "original_stop": 367,
+              "rebuilt_start": 367,
+              "rebuilt_stop": 368
+            },
+            {
+              "kind": "replace",
+              "original_start": 385,
+              "original_stop": 386,
+              "rebuilt_start": 386,
+              "rebuilt_stop": 387
+            },
+            {
+              "kind": "replace",
+              "original_start": 399,
+              "original_stop": 400,
+              "rebuilt_start": 400,
+              "rebuilt_stop": 401
+            },
+            {
+              "kind": "replace",
+              "original_start": 403,
+              "original_stop": 404,
+              "rebuilt_start": 404,
+              "rebuilt_stop": 405
+            },
+            {
+              "kind": "replace",
+              "original_start": 406,
+              "original_stop": 407,
+              "rebuilt_start": 407,
+              "rebuilt_stop": 408
+            },
+            {
+              "kind": "replace",
+              "original_start": 410,
+              "original_stop": 412,
+              "rebuilt_start": 411,
+              "rebuilt_stop": 413
+            },
+            {
+              "kind": "replace",
+              "original_start": 417,
+              "original_stop": 419,
+              "rebuilt_start": 418,
+              "rebuilt_stop": 420
+            },
+            {
+              "kind": "replace",
+              "original_start": 424,
+              "original_stop": 427,
+              "rebuilt_start": 425,
+              "rebuilt_stop": 428
+            },
+            {
+              "kind": "replace",
+              "original_start": 428,
+              "original_stop": 432,
+              "rebuilt_start": 429,
+              "rebuilt_stop": 433
+            },
+            {
+              "kind": "replace",
+              "original_start": 433,
+              "original_stop": 437,
+              "rebuilt_start": 434,
+              "rebuilt_stop": 438
+            },
+            {
+              "kind": "replace",
+              "original_start": 438,
+              "original_stop": 439,
+              "rebuilt_start": 439,
+              "rebuilt_stop": 457
+            },
+            {
+              "kind": "delete",
+              "original_start": 440,
+              "original_stop": 457,
+              "rebuilt_start": 458,
+              "rebuilt_stop": 458
+            },
+            {
+              "kind": "replace",
+              "original_start": 496,
+              "original_stop": 497,
+              "rebuilt_start": 497,
+              "rebuilt_stop": 498
+            },
+            {
+              "kind": "replace",
+              "original_start": 515,
+              "original_stop": 516,
+              "rebuilt_start": 516,
+              "rebuilt_stop": 517
+            },
+            {
+              "kind": "replace",
+              "original_start": 534,
+              "original_stop": 535,
+              "rebuilt_start": 535,
+              "rebuilt_stop": 536
+            },
+            {
+              "kind": "replace",
+              "original_start": 553,
+              "original_stop": 554,
+              "rebuilt_start": 554,
+              "rebuilt_stop": 555
+            },
+            {
+              "kind": "replace",
+              "original_start": 565,
+              "original_stop": 569,
+              "rebuilt_start": 566,
+              "rebuilt_stop": 570
+            },
+            {
+              "kind": "replace",
+              "original_start": 570,
+              "original_stop": 572,
+              "rebuilt_start": 571,
+              "rebuilt_stop": 573
+            },
+            {
+              "kind": "replace",
+              "original_start": 585,
+              "original_stop": 586,
+              "rebuilt_start": 586,
+              "rebuilt_stop": 587
+            },
+            {
+              "kind": "replace",
+              "original_start": 587,
+              "original_stop": 588,
+              "rebuilt_start": 588,
+              "rebuilt_stop": 589
+            },
+            {
+              "kind": "replace",
+              "original_start": 595,
+              "original_stop": 596,
+              "rebuilt_start": 596,
+              "rebuilt_stop": 597
+            },
+            {
+              "kind": "replace",
+              "original_start": 598,
+              "original_stop": 599,
+              "rebuilt_start": 599,
+              "rebuilt_stop": 600
+            },
+            {
+              "kind": "replace",
+              "original_start": 600,
+              "original_stop": 601,
+              "rebuilt_start": 601,
+              "rebuilt_stop": 602
+            },
+            {
+              "kind": "replace",
+              "original_start": 608,
+              "original_stop": 609,
+              "rebuilt_start": 609,
+              "rebuilt_stop": 610
+            },
+            {
+              "kind": "replace",
+              "original_start": 611,
+              "original_stop": 612,
+              "rebuilt_start": 612,
+              "rebuilt_stop": 613
+            },
+            {
+              "kind": "replace",
+              "original_start": 613,
+              "original_stop": 614,
+              "rebuilt_start": 614,
+              "rebuilt_stop": 615
+            },
+            {
+              "kind": "replace",
+              "original_start": 621,
+              "original_stop": 622,
+              "rebuilt_start": 622,
+              "rebuilt_stop": 623
+            },
+            {
+              "kind": "replace",
+              "original_start": 624,
+              "original_stop": 625,
+              "rebuilt_start": 625,
+              "rebuilt_stop": 626
+            },
+            {
+              "kind": "replace",
+              "original_start": 626,
+              "original_stop": 627,
+              "rebuilt_start": 627,
+              "rebuilt_stop": 628
+            },
+            {
+              "kind": "insert",
+              "original_start": 634,
+              "original_stop": 634,
+              "rebuilt_start": 635,
+              "rebuilt_stop": 716
+            },
+            {
+              "kind": "delete",
+              "original_start": 662,
+              "original_stop": 743,
+              "rebuilt_start": 744,
+              "rebuilt_stop": 744
+            },
+            {
+              "kind": "replace",
+              "original_start": 745,
+              "original_stop": 746,
+              "rebuilt_start": 746,
+              "rebuilt_stop": 747
+            },
+            {
+              "kind": "replace",
+              "original_start": 749,
+              "original_stop": 750,
+              "rebuilt_start": 750,
+              "rebuilt_stop": 751
+            },
+            {
+              "kind": "replace",
+              "original_start": 753,
+              "original_stop": 755,
+              "rebuilt_start": 754,
+              "rebuilt_stop": 756
+            },
+            {
+              "kind": "replace",
+              "original_start": 758,
+              "original_stop": 759,
+              "rebuilt_start": 759,
+              "rebuilt_stop": 760
+            },
+            {
+              "kind": "replace",
+              "original_start": 762,
+              "original_stop": 764,
+              "rebuilt_start": 763,
+              "rebuilt_stop": 765
+            },
+            {
+              "kind": "replace",
+              "original_start": 767,
+              "original_stop": 768,
+              "rebuilt_start": 768,
+              "rebuilt_stop": 769
+            },
+            {
+              "kind": "replace",
+              "original_start": 771,
+              "original_stop": 773,
+              "rebuilt_start": 772,
+              "rebuilt_stop": 774
+            },
+            {
+              "kind": "replace",
+              "original_start": 776,
+              "original_stop": 777,
+              "rebuilt_start": 777,
+              "rebuilt_stop": 778
+            },
+            {
+              "kind": "replace",
+              "original_start": 780,
+              "original_stop": 781,
+              "rebuilt_start": 781,
+              "rebuilt_stop": 782
+            },
+            {
+              "kind": "replace",
+              "original_start": 789,
+              "original_stop": 790,
+              "rebuilt_start": 790,
+              "rebuilt_stop": 791
+            },
+            {
+              "kind": "replace",
+              "original_start": 791,
+              "original_stop": 792,
+              "rebuilt_start": 792,
+              "rebuilt_stop": 793
+            },
+            {
+              "kind": "replace",
+              "original_start": 795,
+              "original_stop": 796,
+              "rebuilt_start": 796,
+              "rebuilt_stop": 797
+            },
+            {
+              "kind": "replace",
+              "original_start": 797,
+              "original_stop": 799,
+              "rebuilt_start": 798,
+              "rebuilt_stop": 800
+            },
+            {
+              "kind": "replace",
+              "original_start": 802,
+              "original_stop": 803,
+              "rebuilt_start": 803,
+              "rebuilt_stop": 804
+            },
+            {
+              "kind": "replace",
+              "original_start": 804,
+              "original_stop": 806,
+              "rebuilt_start": 805,
+              "rebuilt_stop": 807
+            },
+            {
+              "kind": "replace",
+              "original_start": 809,
+              "original_stop": 810,
+              "rebuilt_start": 810,
+              "rebuilt_stop": 811
+            },
+            {
+              "kind": "replace",
+              "original_start": 811,
+              "original_stop": 813,
+              "rebuilt_start": 812,
+              "rebuilt_stop": 814
+            },
+            {
+              "kind": "replace",
+              "original_start": 816,
+              "original_stop": 817,
+              "rebuilt_start": 817,
+              "rebuilt_stop": 818
+            },
+            {
+              "kind": "replace",
+              "original_start": 818,
+              "original_stop": 819,
+              "rebuilt_start": 819,
+              "rebuilt_stop": 820
+            },
+            {
+              "kind": "replace",
+              "original_start": 820,
+              "original_stop": 822,
+              "rebuilt_start": 821,
+              "rebuilt_stop": 823
+            },
+            {
+              "kind": "replace",
+              "original_start": 823,
+              "original_stop": 825,
+              "rebuilt_start": 824,
+              "rebuilt_stop": 826
+            },
+            {
+              "kind": "replace",
+              "original_start": 826,
+              "original_stop": 828,
+              "rebuilt_start": 827,
+              "rebuilt_stop": 829
+            },
+            {
+              "kind": "replace",
+              "original_start": 829,
+              "original_stop": 831,
+              "rebuilt_start": 830,
+              "rebuilt_stop": 832
+            },
+            {
+              "kind": "replace",
+              "original_start": 834,
+              "original_stop": 836,
+              "rebuilt_start": 835,
+              "rebuilt_stop": 837
+            },
+            {
+              "kind": "replace",
+              "original_start": 838,
+              "original_stop": 840,
+              "rebuilt_start": 839,
+              "rebuilt_stop": 841
+            },
+            {
+              "kind": "replace",
+              "original_start": 846,
+              "original_stop": 848,
+              "rebuilt_start": 847,
+              "rebuilt_stop": 849
+            },
+            {
+              "kind": "replace",
+              "original_start": 850,
+              "original_stop": 851,
+              "rebuilt_start": 851,
+              "rebuilt_stop": 852
+            },
+            {
+              "kind": "replace",
+              "original_start": 857,
+              "original_stop": 859,
+              "rebuilt_start": 858,
+              "rebuilt_stop": 860
+            },
+            {
+              "kind": "replace",
+              "original_start": 865,
+              "original_stop": 866,
+              "rebuilt_start": 866,
+              "rebuilt_stop": 867
+            },
+            {
+              "kind": "replace",
+              "original_start": 867,
+              "original_stop": 868,
+              "rebuilt_start": 868,
+              "rebuilt_stop": 869
+            },
+            {
+              "kind": "replace",
+              "original_start": 869,
+              "original_stop": 872,
+              "rebuilt_start": 870,
+              "rebuilt_stop": 873
+            },
+            {
+              "kind": "replace",
+              "original_start": 877,
+              "original_stop": 879,
+              "rebuilt_start": 878,
+              "rebuilt_stop": 880
+            },
+            {
+              "kind": "replace",
+              "original_start": 881,
+              "original_stop": 884,
+              "rebuilt_start": 882,
+              "rebuilt_stop": 885
+            },
+            {
+              "kind": "replace",
+              "original_start": 885,
+              "original_stop": 886,
+              "rebuilt_start": 886,
+              "rebuilt_stop": 887
+            },
+            {
+              "kind": "replace",
+              "original_start": 888,
+              "original_stop": 889,
+              "rebuilt_start": 889,
+              "rebuilt_stop": 890
+            },
+            {
+              "kind": "replace",
+              "original_start": 891,
+              "original_stop": 892,
+              "rebuilt_start": 892,
+              "rebuilt_stop": 893
+            },
+            {
+              "kind": "replace",
+              "original_start": 893,
+              "original_stop": 895,
+              "rebuilt_start": 894,
+              "rebuilt_stop": 896
+            },
+            {
+              "kind": "replace",
+              "original_start": 897,
+              "original_stop": 898,
+              "rebuilt_start": 898,
+              "rebuilt_stop": 899
+            },
+            {
+              "kind": "replace",
+              "original_start": 900,
+              "original_stop": 902,
+              "rebuilt_start": 901,
+              "rebuilt_stop": 903
+            },
+            {
+              "kind": "replace",
+              "original_start": 907,
+              "original_stop": 910,
+              "rebuilt_start": 908,
+              "rebuilt_stop": 911
+            },
+            {
+              "kind": "replace",
+              "original_start": 913,
+              "original_stop": 917,
+              "rebuilt_start": 914,
+              "rebuilt_stop": 916
+            },
+            {
+              "kind": "insert",
+              "original_start": 919,
+              "original_stop": 919,
+              "rebuilt_start": 918,
+              "rebuilt_stop": 920
+            },
+            {
+              "kind": "replace",
+              "original_start": 923,
+              "original_stop": 925,
+              "rebuilt_start": 924,
+              "rebuilt_stop": 926
+            },
+            {
+              "kind": "replace",
+              "original_start": 927,
+              "original_stop": 929,
+              "rebuilt_start": 928,
+              "rebuilt_stop": 930
+            },
+            {
+              "kind": "replace",
+              "original_start": 931,
+              "original_stop": 933,
+              "rebuilt_start": 932,
+              "rebuilt_stop": 934
+            },
+            {
+              "kind": "replace",
+              "original_start": 934,
+              "original_stop": 935,
+              "rebuilt_start": 935,
+              "rebuilt_stop": 936
+            },
+            {
+              "kind": "replace",
+              "original_start": 936,
+              "original_stop": 940,
+              "rebuilt_start": 937,
+              "rebuilt_stop": 939
+            },
+            {
+              "kind": "insert",
+              "original_start": 942,
+              "original_stop": 942,
+              "rebuilt_start": 941,
+              "rebuilt_stop": 943
+            },
+            {
+              "kind": "replace",
+              "original_start": 946,
+              "original_stop": 948,
+              "rebuilt_start": 947,
+              "rebuilt_stop": 949
+            },
+            {
+              "kind": "replace",
+              "original_start": 950,
+              "original_stop": 951,
+              "rebuilt_start": 951,
+              "rebuilt_stop": 952
+            },
+            {
+              "kind": "replace",
+              "original_start": 953,
+              "original_stop": 955,
+              "rebuilt_start": 954,
+              "rebuilt_stop": 956
+            },
+            {
+              "kind": "replace",
+              "original_start": 958,
+              "original_stop": 962,
+              "rebuilt_start": 959,
+              "rebuilt_stop": 961
+            },
+            {
+              "kind": "insert",
+              "original_start": 964,
+              "original_stop": 964,
+              "rebuilt_start": 963,
+              "rebuilt_stop": 965
+            },
+            {
+              "kind": "replace",
+              "original_start": 966,
+              "original_stop": 967,
+              "rebuilt_start": 967,
+              "rebuilt_stop": 968
+            },
+            {
+              "kind": "replace",
+              "original_start": 968,
+              "original_stop": 971,
+              "rebuilt_start": 969,
+              "rebuilt_stop": 972
+            },
+            {
+              "kind": "replace",
+              "original_start": 973,
+              "original_stop": 974,
+              "rebuilt_start": 974,
+              "rebuilt_stop": 975
+            },
+            {
+              "kind": "replace",
+              "original_start": 976,
+              "original_stop": 977,
+              "rebuilt_start": 977,
+              "rebuilt_stop": 978
+            },
+            {
+              "kind": "replace",
+              "original_start": 982,
+              "original_stop": 984,
+              "rebuilt_start": 983,
+              "rebuilt_stop": 985
+            },
+            {
+              "kind": "replace",
+              "original_start": 986,
+              "original_stop": 988,
+              "rebuilt_start": 987,
+              "rebuilt_stop": 989
+            },
+            {
+              "kind": "delete",
+              "original_start": 990,
+              "original_stop": 999,
+              "rebuilt_start": 991,
+              "rebuilt_stop": 991
+            },
+            {
+              "kind": "delete",
+              "original_start": 1000,
+              "original_stop": 1016,
+              "rebuilt_start": 992,
+              "rebuilt_stop": 992
+            },
+            {
+              "kind": "insert",
+              "original_start": 1019,
+              "original_stop": 1019,
+              "rebuilt_start": 995,
+              "rebuilt_stop": 1020
+            },
+            {
+              "kind": "replace",
+              "original_start": 1025,
+              "original_stop": 1026,
+              "rebuilt_start": 1026,
+              "rebuilt_stop": 1027
+            },
+            {
+              "kind": "replace",
+              "original_start": 1033,
+              "original_stop": 1034,
+              "rebuilt_start": 1034,
+              "rebuilt_stop": 1035
+            },
+            {
+              "kind": "replace",
+              "original_start": 1038,
+              "original_stop": 1039,
+              "rebuilt_start": 1039,
+              "rebuilt_stop": 1040
+            },
+            {
+              "kind": "replace",
+              "original_start": 1047,
+              "original_stop": 1050,
+              "rebuilt_start": 1048,
+              "rebuilt_stop": 1051
+            },
+            {
+              "kind": "replace",
+              "original_start": 1056,
+              "original_stop": 1058,
+              "rebuilt_start": 1057,
+              "rebuilt_stop": 1059
+            },
+            {
+              "kind": "replace",
+              "original_start": 1064,
+              "original_stop": 1065,
+              "rebuilt_start": 1065,
+              "rebuilt_stop": 1066
+            },
+            {
+              "kind": "replace",
+              "original_start": 1182,
+              "original_stop": 1183,
+              "rebuilt_start": 1183,
+              "rebuilt_stop": 1184
+            },
+            {
+              "kind": "replace",
+              "original_start": 1188,
+              "original_stop": 1189,
+              "rebuilt_start": 1189,
+              "rebuilt_stop": 1190
+            },
+            {
+              "kind": "replace",
+              "original_start": 1226,
+              "original_stop": 1227,
+              "rebuilt_start": 1227,
+              "rebuilt_stop": 1228
+            },
+            {
+              "kind": "replace",
+              "original_start": 1232,
+              "original_stop": 1233,
+              "rebuilt_start": 1233,
+              "rebuilt_stop": 1234
+            },
+            {
+              "kind": "replace",
+              "original_start": 1257,
+              "original_stop": 1258,
+              "rebuilt_start": 1258,
+              "rebuilt_stop": 1259
+            },
+            {
+              "kind": "replace",
+              "original_start": 1268,
+              "original_stop": 1269,
+              "rebuilt_start": 1269,
+              "rebuilt_stop": 1270
+            },
+            {
+              "kind": "replace",
+              "original_start": 1271,
+              "original_stop": 1272,
+              "rebuilt_start": 1272,
+              "rebuilt_stop": 1273
+            },
+            {
+              "kind": "replace",
+              "original_start": 1281,
+              "original_stop": 1282,
+              "rebuilt_start": 1282,
+              "rebuilt_stop": 1283
+            },
+            {
+              "kind": "replace",
+              "original_start": 1292,
+              "original_stop": 1293,
+              "rebuilt_start": 1293,
+              "rebuilt_stop": 1294
+            },
+            {
+              "kind": "replace",
+              "original_start": 1295,
+              "original_stop": 1296,
+              "rebuilt_start": 1296,
+              "rebuilt_stop": 1297
+            },
+            {
+              "kind": "replace",
+              "original_start": 1304,
+              "original_stop": 1305,
+              "rebuilt_start": 1305,
+              "rebuilt_stop": 1306
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 632,
+              "original_stop": 633,
+              "rebuilt_start": 633,
+              "rebuilt_stop": 634,
+              "target_ordinal": 0,
+              "original_target": 1534,
+              "rebuilt_target": 1525
+            }
+          ],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 96,
+              "rebuilt_offset": 104,
+              "target_ordinal": 0,
+              "original_target": 101,
+              "rebuilt_target": 110,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 99,
+              "rebuilt_offset": 108,
+              "target_ordinal": 0,
+              "original_target": 102,
+              "rebuilt_target": 112,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 339,
+              "rebuilt_offset": 345,
+              "target_ordinal": 0,
+              "original_target": 360,
+              "rebuilt_target": 365,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 411,
+              "rebuilt_offset": 414,
+              "target_ordinal": 0,
+              "original_target": 416,
+              "rebuilt_target": 419,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 567,
+              "rebuilt_offset": 566,
+              "target_ordinal": 0,
+              "original_target": 579,
+              "rebuilt_target": 578,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 669,
+              "rebuilt_offset": 668,
+              "target_ordinal": 0,
+              "original_target": 1080,
+              "rebuilt_target": 1075,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 969,
+              "rebuilt_offset": 964,
+              "target_ordinal": 0,
+              "original_target": 980,
+              "rebuilt_target": 975,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 989,
+              "rebuilt_offset": 984,
+              "target_ordinal": 0,
+              "original_target": 1000,
+              "rebuilt_target": 995,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1009,
+              "rebuilt_offset": 1004,
+              "target_ordinal": 0,
+              "original_target": 1020,
+              "rebuilt_target": 1015,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1024,
+              "rebuilt_offset": 1019,
+              "target_ordinal": 0,
+              "original_target": 1030,
+              "rebuilt_target": 1025,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1034,
+              "rebuilt_offset": 1029,
+              "target_ordinal": 0,
+              "original_target": 1040,
+              "rebuilt_target": 1035,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1044,
+              "rebuilt_offset": 1039,
+              "target_ordinal": 0,
+              "original_target": 1050,
+              "rebuilt_target": 1045,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1411,
+              "rebuilt_offset": 1402,
+              "target_ordinal": 0,
+              "original_target": 1664,
+              "rebuilt_target": 1655,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1441,
+              "rebuilt_offset": 1432,
+              "target_ordinal": 0,
+              "original_target": 1444,
+              "rebuilt_target": 1435,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1471,
+              "rebuilt_offset": 1462,
+              "target_ordinal": 0,
+              "original_target": 1474,
+              "rebuilt_target": 1465,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1501,
+              "rebuilt_offset": 1492,
+              "target_ordinal": 0,
+              "original_target": 1504,
+              "rebuilt_target": 1495,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1766,
+              "rebuilt_offset": 1757,
+              "target_ordinal": 0,
+              "original_target": 1788,
+              "rebuilt_target": 1779,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1777,
+              "rebuilt_offset": 1768,
+              "target_ordinal": 0,
+              "original_target": 1788,
+              "rebuilt_target": 1779,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1790,
+              "rebuilt_offset": 1781,
+              "target_ordinal": 0,
+              "original_target": 1812,
+              "rebuilt_target": 1803,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1801,
+              "rebuilt_offset": 1792,
+              "target_ordinal": 0,
+              "original_target": 1812,
+              "rebuilt_target": 1803,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1814,
+              "rebuilt_offset": 1805,
+              "target_ordinal": 0,
+              "original_target": 1836,
+              "rebuilt_target": 1827,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1825,
+              "rebuilt_offset": 1816,
+              "target_ordinal": 0,
+              "original_target": 1836,
+              "rebuilt_target": 1827,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1872,
+              "rebuilt_offset": 1863,
+              "target_ordinal": 0,
+              "original_target": 1888,
+              "rebuilt_target": 1879,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [
+            {
+              "kind": "Finally",
+              "try_start": 1096,
+              "try_end": 1874,
+              "handler_start": 1874,
+              "handler_end": 1888,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Finally",
+              "try_start": 1091,
+              "try_end": 1865,
+              "handler_start": 1865,
+              "handler_end": 1879,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ]
+        },
+        "statement": {
+          "start": 4531,
+          "end": 4581,
+          "line": 206,
+          "column": 5,
+          "text": "if (g.render_ == null)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void",
+          "point": 4531,
+          "declaration_start": 4400,
+          "declaration_end": 13820
+        }
+      },
+      "stop_point": {
+        "offset": 1445,
+        "statement": "UNKNOWN: iteration limit before remapping"
+      },
+      "final_offset": 1445,
+      "body_equal": false,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "b9-positive-render-with-gui-else:attempts": 1,
+    "b9-positive-render-with-gui-else:accepted_steps": 1,
+    "b9-positive-render-with-gui-else:body_gains": 0,
+    "b9-positive-render-with-gui-else:IL_gains": 0
+  },
+  "completed": true,
+  "run_label": "b09",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\cycles\\b09\\baseline\\KairoLibrary",
+  "cycle_rule": "b9-positive-render-with-gui-else",
+  "trial_compiler_server": "/shared (CLI only)",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "b9-positive-render-with-gui-else",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 18,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "c0b2df7b65e8080da27cbb537aa00c5102eea83662db88f9d27c386c4e553a91",
+    "source_sha256": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+    "client_sha256": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+    "solver_sha256": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991"
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": []
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0,
+    "incomplete_permitted": 1
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+          "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+          "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+          "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+          "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+          "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+          "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+          "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+          "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+          "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+          "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+          "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+          "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+          "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+          "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+          "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+          "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+          "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+          "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+          "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+          "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+          "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+          "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+          "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+          "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+          "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+          "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+          "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+          "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+          "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+          "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+          "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+          "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+          "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+          "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+          "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+          "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+          "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+          "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+          "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+          "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+          "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+          "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "11a11b7428c9e4380948f78ab93d0115f36a7cf88d46e23d956391a209e8f6ff",
+          "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+          "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "ac2257fedb6c955e734edb959062f26d4ccc5b7c5564b13b3b63bfc9e25b74ae",
+          "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+          "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+          "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+          "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "5873a9dc7acf2e33cf55d67dc29cca5dcb23f5f2c1becf18e587c7f836fca83e",
+          "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+          "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+          "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "918984ae60a40ff8022d5e7ec6e200e0028e836d2a510f97920f5a1ed8efa086",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+          "src/KairoLibrary/kairo/unity/graph/Graph.cs": "77f940a388e0cdcde9a2176e5fe363d41a3bf775ba5986fe77fd8608c217a461",
+          "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+          "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+          "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+          "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+          "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+          "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+          "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+          "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "5ffd86286e676590182a9bba317b602480f57c2f8143fb01a29cfd57e3b285b2",
+          "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+          "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+          "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+          "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+          "src/KairoLibrary/kairo/unity/io/Storage.cs": "2e454271e904d7e464933091a672f38e132deb7b2cf02a917ebdb4aceefe98a2",
+          "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+          "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+          "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+          "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+          "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+          "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+          "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+          "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+          "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+          "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+          "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+          "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+          "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "720b960d44e9fc8c5ee6799e039a71a6e391a4fa76c2f0ca8029723a54b77e22",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "3bec66f8a5c738074c71d0ceff5e7acad42466f56e08da9905bb6ce1812802e0",
+          "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+          "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+          "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+          "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+          "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+          "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+          "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "bb010e349e8ce4a0db11f39c619ce5b4691545b684c4ced5e2adfac13628051c",
+          "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+          "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "60a8ad876a1916c9083b7eb24b150b3e24c9d845a6c93480300684284d0b3cb3",
+          "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+          "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+          "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+          "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+          "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+          "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "e7ea69e012f8dac1df98ad2ea41f1710e1599cb4cbb046b399d51aead58d138e",
+          "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+          "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+          "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+          "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+          "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+          "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "00bf226b5e0587d99e50ba1b2a2ce6a431db8561d33a786dfd664da97c8aafc0",
+          "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+          "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+          "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+          "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+          "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+          "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "15815486df5b8d5b8377b960e36fcd8379ddb82d9a281c73fbc96926e657cc39",
+          "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+          "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "b347676a0f45af748105cb953746b3f954ec1334a821da25cc0021d7140acb54",
+          "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "d5b99ca6a2037e02ec04ec998d337e68e566df18de07ef5b5fe6213bb30d2738",
+          "src/KairoLibrary/kairo/unity/ui/Seb.cs": "02be078fbd24363826ddef1a9ea8496dfff70b33d383768308be95997bb1ac59",
+          "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+          "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+          "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+          "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+          "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "9cb94fae336b12e568385a6da922e21d5bbd39d2bc391a771ebdf5c8bcefda3e",
+          "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+          "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "7b05ef91e36333d4162cded8c55f15e1258bb55eb26c074fdbba4e3a39be3c0a",
+          "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+          "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+          "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+          "src/KairoLibrary/kairo/unity/util/Compressor.cs": "26883acd38105c6ec178ebd684321d636a7c307812dfa26a9cc63c49a97daa26",
+          "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+          "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+          "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+          "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+          "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+          "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+          "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+          "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+          "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+          "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+          "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "8c4241f6739780b62c6a312903963f4d9541985c3094919355971456736ffa3e",
+          "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+          "src/KairoLibrary/kairo/unity/util/Language.cs": "71fbb015897831d5ca58c5badbad2c50ed2d2af096c7e35c183f5f68af3fce89",
+          "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+          "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+          "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+          "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+          "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+          "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+          "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+          "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+          "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+          "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+          "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+          "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+          "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+          "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+          "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "56d99780fa836d59282485ca823d4d3ed89cf80c1d39670dd4dc66d75917bf2e",
+          "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+          "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+          "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+        },
+        "manifest_sha256": "ed6b4e591b953a5134de52ac67456632bdb5fd4a158326a497949a951bb20742",
+        "accepted_source_set_sha256": "50332b4095b8cae84fa697fdae4f4539a9a7bd47bb667023bf2657bfe817abed",
+        "generation": 0,
+        "method_count": 3287,
+        "symbol_kind": "PDB",
+        "binary_sha256": "f197734acbf9cc34f569be3a13103ebf7aba13dea6745179a48d98f1b9350751"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void",
+        "rule": "b9-positive-render-with-gui-else",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 3139,
+  "body_gains": [],
+  "body_losses": [],
+  "matched_IL_gains": 0,
+  "builds": 6,
+  "build_seconds": 2.64000000001397,
+  "iteration_limit_hits": 1,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\b09\\engine\\KairoLibrary\\current\\KairoLibrary.dll",
+  "final_sha256": "30ab0ce823f7862250f8a2732b1f262d4c9007b96bf8d2e11fc76b2cc68e81e6",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\b09\\engine\\KairoLibrary\\source-map.json",
+  "metadata_types_equal": 337,
+  "metadata_types_total": 337,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 1,
+    "candidate_compiler_invocations": 2,
+    "methods_with_variants": 1,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "ed6b4e591b953a5134de52ac67456632bdb5fd4a158326a497949a951bb20742",
+  "source_hashes": {
+    "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+    "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+    "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+    "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+    "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+    "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+    "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+    "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+    "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+    "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+    "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+    "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+    "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+    "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+    "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+    "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+    "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+    "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+    "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+    "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+    "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+    "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+    "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+    "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+    "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+    "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+    "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+    "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+    "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+    "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+    "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+    "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+    "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+    "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+    "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+    "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+    "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+    "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+    "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+    "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+    "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+    "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+    "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "11a11b7428c9e4380948f78ab93d0115f36a7cf88d46e23d956391a209e8f6ff",
+    "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+    "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "ac2257fedb6c955e734edb959062f26d4ccc5b7c5564b13b3b63bfc9e25b74ae",
+    "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+    "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+    "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+    "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "5873a9dc7acf2e33cf55d67dc29cca5dcb23f5f2c1becf18e587c7f836fca83e",
+    "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+    "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+    "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "918984ae60a40ff8022d5e7ec6e200e0028e836d2a510f97920f5a1ed8efa086",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+    "src/KairoLibrary/kairo/unity/graph/Graph.cs": "77f940a388e0cdcde9a2176e5fe363d41a3bf775ba5986fe77fd8608c217a461",
+    "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+    "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+    "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+    "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+    "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+    "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+    "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+    "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "5ffd86286e676590182a9bba317b602480f57c2f8143fb01a29cfd57e3b285b2",
+    "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+    "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+    "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+    "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+    "src/KairoLibrary/kairo/unity/io/Storage.cs": "2e454271e904d7e464933091a672f38e132deb7b2cf02a917ebdb4aceefe98a2",
+    "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+    "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+    "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+    "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+    "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+    "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+    "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+    "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+    "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+    "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+    "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+    "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+    "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "720b960d44e9fc8c5ee6799e039a71a6e391a4fa76c2f0ca8029723a54b77e22",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "3bec66f8a5c738074c71d0ceff5e7acad42466f56e08da9905bb6ce1812802e0",
+    "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+    "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+    "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+    "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+    "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+    "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+    "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "bb010e349e8ce4a0db11f39c619ce5b4691545b684c4ced5e2adfac13628051c",
+    "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+    "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "60a8ad876a1916c9083b7eb24b150b3e24c9d845a6c93480300684284d0b3cb3",
+    "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+    "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+    "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+    "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+    "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+    "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "e7ea69e012f8dac1df98ad2ea41f1710e1599cb4cbb046b399d51aead58d138e",
+    "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+    "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+    "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+    "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+    "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+    "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "00bf226b5e0587d99e50ba1b2a2ce6a431db8561d33a786dfd664da97c8aafc0",
+    "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+    "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+    "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+    "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+    "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+    "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "15815486df5b8d5b8377b960e36fcd8379ddb82d9a281c73fbc96926e657cc39",
+    "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+    "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "b347676a0f45af748105cb953746b3f954ec1334a821da25cc0021d7140acb54",
+    "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "d5b99ca6a2037e02ec04ec998d337e68e566df18de07ef5b5fe6213bb30d2738",
+    "src/KairoLibrary/kairo/unity/ui/Seb.cs": "02be078fbd24363826ddef1a9ea8496dfff70b33d383768308be95997bb1ac59",
+    "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+    "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+    "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+    "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+    "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "9cb94fae336b12e568385a6da922e21d5bbd39d2bc391a771ebdf5c8bcefda3e",
+    "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+    "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "8b9ee444f856c7c0ac003e15d7cce0c14b9e61cefdf25417abb8626542dcaec2",
+    "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+    "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+    "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+    "src/KairoLibrary/kairo/unity/util/Compressor.cs": "26883acd38105c6ec178ebd684321d636a7c307812dfa26a9cc63c49a97daa26",
+    "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+    "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+    "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+    "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+    "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+    "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+    "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+    "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+    "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+    "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+    "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "8c4241f6739780b62c6a312903963f4d9541985c3094919355971456736ffa3e",
+    "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+    "src/KairoLibrary/kairo/unity/util/Language.cs": "71fbb015897831d5ca58c5badbad2c50ed2d2af096c7e35c183f5f68af3fce89",
+    "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+    "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+    "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+    "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+    "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+    "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+    "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+    "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+    "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+    "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+    "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+    "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+    "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+    "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+    "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "56d99780fa836d59282485ca823d4d3ed89cf80c1d39670dd4dc66d75917bf2e",
+    "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+    "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+    "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+  }
+}
