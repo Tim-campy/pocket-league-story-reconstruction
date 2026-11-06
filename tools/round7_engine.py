@@ -76,7 +76,7 @@ def syntax_identity():
         'round7_smcs_cycle_rules.cs', 'Round7RoslynCycleRules.cs', 'Round7SmcsExitRules.cs',
         'Round7SmcsGuardRules.cs','Round7StringConcatRules.cs','Round7LoopConditionRules.cs',
         'Round7SmcsSwitchRules.cs','Round7RoslynDeclarationRules.cs','Round7TerminalArmRules.cs',
-        'Round7BalancedBranchRules.cs'))).hexdigest()
+        'Round7BalancedBranchRules.cs','Round7InfiniteTailGuardRules.cs'))).hexdigest()
 
 
 def model_approval(prediction, expected_types):
@@ -585,6 +585,9 @@ def main():
                 hints.update(original_empty_zero_arm_hint(original[key],alignment['original_offset']))
                 from round7_balanced_branch_hints import balanced_branch_hints
                 hints.update(balanced_branch_hints(original[key],method,
+                    alignment['original_offset'],alignment['rebuilt_offset']))
+                from round7_infinite_tail_guard_hints import infinite_tail_guard_hints
+                hints.update(infinite_tail_guard_hints(original[key],method,
                     alignment['original_offset'],alignment['rebuilt_offset']))
             if args.calculated_parameter_aliases:
                 from round6_alias_calculus import calculated_alias_hints

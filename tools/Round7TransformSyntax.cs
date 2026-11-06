@@ -157,6 +157,7 @@ public static partial class Round7TransformSyntax {
                 AddRound7RoslynDeclarationRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7TerminalArmRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7BalancedBranchRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
+                AddRound7InfiniteTailGuardRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
                 AddRound7RoslynCycleRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);
             }
         }

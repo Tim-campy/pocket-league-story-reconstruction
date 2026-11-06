@@ -1,0 +1,24 @@
+{
+  "hypotheses": [
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Duas divergências de tamanho compensado podem bloquear as correções isoladas pelo critério de prefixo",
+      "evidence": "Duas fixtures bool/float: as edições isoladas de +5/-5 bytes regrediram o prefixo de 26 para 19; a composição reproduziu os corpos completos. No ciclo12, DebugForm.Update_gameParam avançou o prefixo bruto de 2276 para 2958 sem novo matched. reports/round7-balanced-branch-fixtures.json e round7-cycle12-Assembly-CSharp-engine.json."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "A assinatura global incorreta impedia testar a atribuição ternária local de SubForm._draw6",
+      "evidence": "As variantes do ternário mantinham os 107 locais recuperados. A composição calculada reproduziu os 105 locais originais, incluindo slots7/49/61/62; o ciclo13 fechou os13213 bytes após nove passos aceitos, sem perdas."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "for(;;) reproduz a mesma entrada de laço da variante while(true) nas fixtures da guarda final",
+      "evidence": "A variante for introduziu um salto de entrada ausente dos controles e dos três alvos diagnosticados. Enquanto isso, while(true) com guarda final reproduziu seis corpos toy completos; fonte Mono statement.cs For588, While438–449 e Do322–348. reports/round7-infinite-tail-guard-fixtures.json e diagnóstico correspondente."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A primeira fixture de sombreamento com campo sem qualificação this era um controle positivo compilável no smcs",
+      "evidence": "O smcs recusou essa tentativa com CS0135; ela foi registrada como tentativa negativa. A fixture corrigida com this.value e o bloco original preservado passou na comparação completa e de trace. Nenhum fonte do jogo foi alterado por essa tentativa."
+    }
+  ]
+}

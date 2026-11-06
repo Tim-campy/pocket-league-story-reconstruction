@@ -19,6 +19,7 @@ SOURCE='''class Fixture {
  static void ForDeclaration() {int sum=0;for(int i=0;i<3;i++) {sum+=i;}count=sum;}
  static void TerminalActions(bool flag) {if(flag) {count++;return;}count--;}
  static void Balanced(bool a,bool b) {if(a) {if(b) {count++;}}else {}}
+ static void InfiniteTail(bool flag) {do {count++;}while(flag);}
 }'''
 
 
@@ -80,6 +81,11 @@ def main():
             balanced_missing_long_branch=True,balanced_extra_fallthrough_long_branch=True)
         assert 'smcs-balanced-empty-arms' not in rules('Balanced',round7_cycle_rule='smcs-balanced-empty-arms')
         checks.append('balanced edits require both original and rebuilt IL hints')
+        point=SOURCE.index('do {',SOURCE.index('void InfiniteTail('))
+        infinite_tail=client.request(path,source=SOURCE,offset=point,compiler='smcs',max_candidates=2048,
+            round7_cycle_rule='smcs-do-infinite-tail-break',original_infinite_tail_guard=True)
+        assert any(p['rule']=='smcs-do-infinite-tail-break' for p in infinite_tail['patches'])
+        checks.append('infinite tail break dispatch with original IL evidence')
     (ROOT/'reports/round7-cycle-dispatch-tests.json').write_text(json.dumps({'passed':len(checks),'checks':checks,
         'game_candidate_compilations':0},indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'passed':len(checks)}))

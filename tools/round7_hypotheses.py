@@ -45,6 +45,9 @@ def main():
     if coalesce.exists():
         hypotheses.append({'status':'REFUTADA','hypothesis':'Uma assinatura com tipos iguais basta para posicionar os slots Int32 sem uso',
             'evidence':'Em UserData.Draw_edit2 o primeiro candidato posicionava as reservas em 10/40, apesar dos mesmos tipos; foi rejeitado. O modelo da proposta final confirmou exatamente os slots 8/38 e o verificador fechou o corpo de 6626 bytes.'})
+    additional=ROOT/'reports/round7-additional-hypotheses.json'
+    if additional.exists():
+        hypotheses.extend(json.loads(additional.read_text(encoding='utf-8'))['hypotheses'])
     output=ROOT/'reports/round7-hypotheses.json'
     output.write_text(json.dumps({'hypotheses':hypotheses},indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
 
