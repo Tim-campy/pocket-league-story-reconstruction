@@ -25,7 +25,7 @@ def main():
     p.add_argument('--rule',required=True)
     p.add_argument('--pair',required=True)
     p.add_argument('--hypothesis',required=True)
-    p.add_argument('--probe-substring',required=True)
+    p.add_argument('--probe-substring',required=True,action='append')
     p.add_argument('--push',action='store_true')
     args=p.parse_args()
     journal_path=ROOT/'reports/round7-cycle-journal.json'
@@ -37,13 +37,25 @@ def main():
     run(['tools/round7_freeze.py','--destination',baseline])
     run(['tools/round7_measure.py','--snapshot',baseline,'--label',label+'-before'])
     original=json.loads((ROOT/baseline/args.assembly/'original-methods.json').read_text(encoding='utf-8-sig'))['selected_methods']
-    selected=[m['stable_id'] for m in original if args.probe_substring in m['stable_id']]
-    if len(selected)!=1:raise ValueError('Isolated probe must select one original method: '+str(selected))
-    ids=ROOT/baseline.parent/'probe-ids.json';ids.write_text(json.dumps(selected),encoding='utf-8')
     common=['--assembly',args.assembly,'--baseline-dir',baseline,'--cycle-rule',args.rule,
         '--cache-symbol-mapping','--aligned-search-progress','--fast-screen',
         '--limit-iterations','24','--max-candidates','64','--max-model-candidates','192']
-    run(['tools/round7_engine.py','--run-label',label+'-probe','--method-ids',ids,*common])
+    probes=[]
+    for number,needle in enumerate(args.probe_substring,1):
+        selected=[m['stable_id'] for m in original if needle in m['stable_id']]
+        if len(selected)!=1:raise ValueError('Isolated probe must select one original method: '+str(selected))
+        ids=ROOT/baseline.parent/('probe%d-ids.json'%number);ids.write_text(json.dumps(selected),encoding='utf-8')
+        probe_label=label+('-probe' if number==1 else '-probe%d'%number)
+        run(['tools/round7_engine.py','--run-label',probe_label,'--method-ids',ids,*common])
+        document=json.loads((ROOT/('reports/round7-'+probe_label+'-'+args.assembly+'-engine.json')).read_text(encoding='utf-8'))
+        method=next((m for m in document['methods'] if m['id']==selected[0]),None)
+        probes.append({'label':probe_label,'method_id':selected[0],
+            'body_equal':bool(method and method['body_equal']),
+            'stop_reason':method['stop_reason'] if method else 'already_equal_at_baseline',
+            'accepted_steps':len(method['steps']) if method else 0})
+        if probes[-1]['body_equal']:break
+    (ROOT/('reports/round7-'+label+'-probe-summary.json')).write_text(json.dumps({'probes':probes,
+        'isolated_complete_match':any(p['body_equal'] for p in probes)},indent=2)+'\n',encoding='utf-8',newline='\n')
     run(['tools/round7_engine.py','--run-label',label,*common])
     run(['tools/round7_adopt.py','--run-label',label,'--baseline-dir',baseline,'--assemblies',args.assembly])
     cleanup=Path('reports/round7-'+label+'-whitespace.json')

@@ -3739,18 +3739,21 @@ if (recoveredCondition_68130)
 
 		public void Draw_edit2(Graphics g, bool isSoccerForm)
 		{
-			int num3;
-			int num2;
-			int num = (num2 = (num3 = 0));
+int coalescedValue, num, num2, num3;
+coalescedValue = num = num2 = num3 = 0;
+
+
+
+
 			int num4 = 0;
-			num4 = ((!isSoccerForm) ? GameForm.VIEW_Y : SoccerForm.VIEW_Y);
+			if (isSoccerForm) { num4 = SoccerForm.VIEW_Y; } else { num4 = GameForm.VIEW_Y; }
 			g.ClipRect(13f, num4, 221f, 236 - num4);
 			if (phase_ == 0 || phase_ == 1 || phase_ == 9 || phase_ == 11 || phase_ == 12 || phase_ == 6 || phase_ == 10 || phase_ == 13 || phase_ == 7 || phase_ == 8 || phase_ == 2 || phase_ == 3 || phase_ == 4 || phase_ == 5 || phase_ == 14 || phase_ == 16 || phase_ == 15)
 			{
-				int num5;
+
 				if (!isSoccerForm)
 				{
-					num5 = EDIT_POS_FOR_F[0][0];
+					coalescedValue = EDIT_POS_FOR_F[0][0];
 					num = EDIT_POS_FOR_F[0][1];
 					if (phase_ == 1)
 					{
@@ -3807,7 +3810,7 @@ if (recoveredCondition_68130)
 				}
 				else
 				{
-					num5 = EDIT_POS_FOR_F[1][0];
+					coalescedValue = EDIT_POS_FOR_F[1][0];
 					num = EDIT_POS_FOR_F[1][1];
 					if (phase_ == 6)
 					{
@@ -3823,7 +3826,7 @@ if (recoveredCondition_68130)
 					}
 					else if (phase_ == 14)
 					{
-						num5 = EDIT_POS_FOR_ENE[1][0];
+						coalescedValue = EDIT_POS_FOR_ENE[1][0];
 					}
 					else if (phase_ == 10)
 					{
@@ -3835,59 +3838,59 @@ if (recoveredCondition_68130)
 					}
 					else if (phase_ == 15)
 					{
-						num5 = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_FOR_F[1][0], EDIT_POS_FOR_ENE[1][0], true);
+						coalescedValue = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_FOR_F[1][0], EDIT_POS_FOR_ENE[1][0], true);
 					}
 					else if (phase_ == 16)
 					{
-						num5 = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_FOR_ENE[1][0], EDIT_POS_FOR_F[1][0], true);
+						coalescedValue = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_FOR_ENE[1][0], EDIT_POS_FOR_F[1][0], true);
 					}
 				}
 				for (int i = 0; i < 6; i++)
 				{
-					apdat_.DrawSeb(g, num5 + 107 - 107 + 33 * i, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 0);
+					apdat_.DrawSeb(g, coalescedValue + 107 - 107 + 33 * i, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 0);
 				}
-				apdat_.DrawSeb(g, num5 + 107 - 107 + 198, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 1);
+				apdat_.DrawSeb(g, coalescedValue + 107 - 107 + 198, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 1);
 				g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
 				int num6 = 16;
-				g.DrawArc(num5 + 107 - 1 - num6 / 2 - 1, num + 47 - num6 / 2 - 1, num6 + 2, num6 + 2, 0f, 360f);
-				g.DrawLine(num5 + 107 - 1, num, num5 + 107 - 1, num + 94 - 1);
+				g.DrawArc(coalescedValue + 107 - 1 - num6 / 2 - 1, num + 47 - num6 / 2 - 1, num6 + 2, num6 + 2, 0f, 360f);
+				g.DrawLine(coalescedValue + 107 - 1, num, coalescedValue + 107 - 1, num + 94 - 1);
 				int num7 = 35;
 				g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
-				g.DrawRect(num5, num + 47 - 32, num7, 65f);
-				g.DrawRect(num5, num + 47 - 16, num7 / 2, 32f);
-				g.DrawRect(num5 + 214 - num7, num + 47 - 32, num7 - 1, 65f);
-				g.DrawRect(num5 + 214 - num7 / 2, num + 47 - 16, num7 / 2 - 1, 32f);
+				g.DrawRect(coalescedValue, num + 47 - 32, num7, 65f);
+				g.DrawRect(coalescedValue, num + 47 - 16, num7 / 2, 32f);
+				g.DrawRect(coalescedValue + 214 - num7, num + 47 - 32, num7 - 1, 65f);
+				g.DrawRect(coalescedValue + 214 - num7 / 2, num + 47 - 16, num7 / 2 - 1, 32f);
 				if (phase_ == 2 || phase_ == 3 || phase_ == 4)
 				{
 					g.SetColor(Graphics.GetColorOfRGB(219, 255, 109));
-					g.FillRect(num5 + 35, num + 2, 48f, 90f);
+					g.FillRect(coalescedValue + 35, num + 2, 48f, 90f);
 					g.SetColor(Graphics.GetColorOfRGB(255, 156, 40));
-					g.FillRect(num5 + 35 + 48, num + 2, 48f, 90f);
+					g.FillRect(coalescedValue + 35 + 48, num + 2, 48f, 90f);
 					g.SetColor(Graphics.GetColorOfRGB(255, 56, 49));
-					g.FillRect(num5 + 35 + 96, num + 2, 48f, 90f);
+					g.FillRect(coalescedValue + 35 + 96, num + 2, 48f, 90f);
 					g.SetColor(Graphics.GetColorOfRGB(85, 85, 85));
-					for (int j = 0; j <= 9; j++)
+					for (int unusedOriginalSlot8, j = 0; j <= 9; j++)
 					{
 						num3 = GameUtil.RateConvert(j, 0, 9, num + 2, num + 94 - 1 - 2, true);
-						g.DrawLine(num5 + 35, num3, num5 + 214 - 1 - 35, num3);
+						g.DrawLine(coalescedValue + 35, num3, coalescedValue + 214 - 1 - 35, num3);
 					}
 					for (int k = 0; k <= 9; k++)
 					{
-						num2 = GameUtil.RateConvert(k, 0, 9, num5 + 214 - 1 - 35, num5 + 35, true);
+						num2 = GameUtil.RateConvert(k, 0, 9, coalescedValue + 214 - 1 - 35, coalescedValue + 35, true);
 						if (k % 3 == 0 && k != 0 && k != 9)
 						{
 							g.SetColor(Graphics.GetColorOfRGB(59, 228, 255));
-							g.FillRect(num5 - 13 + num2 - 1, num + 2, 3f, 90f);
+							g.FillRect(coalescedValue - 13 + num2 - 1, num + 2, 3f, 90f);
 						}
 						else
 						{
 							g.SetColor(Graphics.GetColorOfRGB(85, 85, 85));
-							g.DrawLine(num5 - 13 + num2, num + 2, num2, num + 94 - 1 - 2);
+							g.DrawLine(coalescedValue - 13 + num2, num + 2, num2, num + 94 - 1 - 2);
 						}
 					}
 				}
 				g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
-				g.DrawRect(num5, num, 213f, 93f);
+				g.DrawRect(coalescedValue, num, 213f, 93f);
 				int[] array = null;
 				int[] array2 = null;
 				if (phase_ == 6 && et_cur[5] / 10 < editTest_team.Length && et_cur[5] % 10 < editTest_team[et_cur[5] / 10].Size())
@@ -3907,9 +3910,9 @@ if (recoveredCondition_68130)
 				}
 				if (phase_ == 2 || phase_ == 3)
 				{
-					num2 = GameUtil.RateConvert(et_cur[2] % 10, 0, 9, num5 + 214 - 1 - 35, num5 + 35, true);
+					num2 = GameUtil.RateConvert(et_cur[2] % 10, 0, 9, coalescedValue + 214 - 1 - 35, coalescedValue + 35, true);
 					num3 = GameUtil.RateConvert(et_cur[2] / 10, 0, 9, num + 2, num + 94 - 1 - 2, true);
-					num2 += num5 - 13;
+					num2 += coalescedValue - 13;
 					int num8 = 15;
 					int num9 = 9;
 					int num10 = 200;
@@ -3925,7 +3928,7 @@ if (recoveredCondition_68130)
 					}
 					if (phase_ == 3 && et_cur[2] != et_cur[3])
 					{
-						num2 = GameUtil.RateConvert(et_cur[3] % 10, 0, 9, num5 + 214 - 1 - 35, num5 + 35, true);
+						num2 = GameUtil.RateConvert(et_cur[3] % 10, 0, 9, coalescedValue + 214 - 1 - 35, coalescedValue + 35, true);
 						num3 = GameUtil.RateConvert(et_cur[3] / 10, 0, 9, num + 2, num + 94 - 1 - 2, true);
 						g.SetColor(Graphics.GetColorOfRGB(154, 234, 255));
 						g.FillRect(num2 - num8, num3 + 1, num8, num9);
@@ -3938,9 +3941,9 @@ if (recoveredCondition_68130)
 					{
 						for (int m = 0; m < 9; m++)
 						{
-							num2 = GameUtil.RateConvert(l, 0, 9, num5 + 214 - 1 - 35, num5 + 35, true);
+							num2 = GameUtil.RateConvert(l, 0, 9, coalescedValue + 214 - 1 - 35, coalescedValue + 35, true);
 							num3 = GameUtil.RateConvert(m, 0, 9, num + 2, num + 94 - 1 - 2, true);
-							num2 += num5 - 13;
+							num2 += coalescedValue - 13;
 							num11 = num2 - num8;
 							num12 = num3 + 1;
 							num13 = num8;
@@ -3958,7 +3961,7 @@ if (recoveredCondition_68130)
 				}
 				if (phase_ != 2 && phase_ != 3 && phase_ != 4 && phase_ != 14)
 				{
-					num2 = num5 + 161;
+					num2 = coalescedValue + 161;
 					num3 = num + 84;
 					g.DrawImage(apdat_.resCom2_.img[128], num2, num3 - 2);
 					string[] array3 = new string[3] { "通常", "攻め", "守り" };
@@ -3974,7 +3977,7 @@ if (recoveredCondition_68130)
 					PlayerData playerData = (PlayerData)memberPDataist_.ElementAt(editForPos[n][2]);
 					num2 = editForPos[n][0];
 					num3 = editForPos[n][1];
-					num2 += num5 - 13;
+					num2 += coalescedValue - 13;
 					num15 = phaseCnt_ % 16 / 4;
 					SetDispPlayerData(seb, selectUniform_, playerData.faceImg_, num15, 1, playerData.role_, 0);
 					DrawDispPlayer(g, num2, num3 + 2);
@@ -4016,28 +4019,28 @@ if (recoveredCondition_68130)
 					{
 						array4 = GetLeagueData(teamData.id_);
 					}
-					num5 = EDIT_POS_ENE_MENU[1][0];
+					coalescedValue = EDIT_POS_ENE_MENU[1][0];
 					num = EDIT_POS_ENE_MENU[1][1];
 					if (phase_ == 15)
 					{
-						num5 = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_MENU[0][0], EDIT_POS_ENE_MENU[1][0], true);
+						coalescedValue = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_MENU[0][0], EDIT_POS_ENE_MENU[1][0], true);
 					}
 					else if (phase_ == 16)
 					{
-						num5 = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_MENU[1][0], EDIT_POS_ENE_MENU[0][0], true);
+						coalescedValue = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_MENU[1][0], EDIT_POS_ENE_MENU[0][0], true);
 					}
-					apdat_.DrawBox(g, num5 - 2, num - 13, num5 - 2 + 213, num - 13 + 74);
-					apdat_.DrawBox(g, num5 + 2, num - 9, num5 + 2 + 204, num - 9 + 66);
+					apdat_.DrawBox(g, coalescedValue - 2, num - 13, coalescedValue - 2 + 213, num - 13 + 74);
+					apdat_.DrawBox(g, coalescedValue + 2, num - 9, coalescedValue + 2 + 204, num - 9 + 66);
 					g.SetColor(Graphics.GetColorOfRGB(246, 249, 187));
-					g.FillRect(num5 + 6, num + 5, 90f, 60f);
-					num2 = num5 + 49;
+					g.FillRect(coalescedValue + 6, num + 5, 90f, 60f);
+					num2 = coalescedValue + 49;
 					num3 = num + 36;
 					DrawGraph_menuElement(g, num2, num3, playerParam1, playerParam2, 100);
 					for (int num19 = 0; num19 < GRAPH_POS.Length; num19++)
 					{
 						apdat_.DrawSeb(g, num2 + GRAPH_POS[num19][0], num3 + GRAPH_POS[num19][1], apdat_.resCom2_.seb[75], apdat_.resCom2_.img[122], num19);
 					}
-					num2 = num5 + 108;
+					num2 = coalescedValue + 108;
 					num3 = num + 12;
 					g.SetColor(SubForm.SC_WINDOW_BLUE);
 					if (matchInfoJoin_ == 0)
@@ -4085,69 +4088,69 @@ if (recoveredCondition_68130)
 				if (phase_ == 14 || phase_ == 16 || phase_ == 15)
 				{
 					TeamData teamData2 = apdat_.tData_[gm_.teamId_[1]];
-					num5 = EDIT_POS_ENE_FOR[1][0];
+					coalescedValue = EDIT_POS_ENE_FOR[1][0];
 					num = EDIT_POS_ENE_FOR[1][1];
 					if (phase_ == 15)
 					{
-						num5 = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_FOR[0][0], EDIT_POS_ENE_FOR[1][0], true);
+						coalescedValue = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_FOR[0][0], EDIT_POS_ENE_FOR[1][0], true);
 					}
 					else if (phase_ == 16)
 					{
-						num5 = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_FOR[1][0], EDIT_POS_ENE_FOR[0][0], true);
+						coalescedValue = GameUtil.RateConvert(phaseCnt_, 0, 4, EDIT_POS_ENE_FOR[1][0], EDIT_POS_ENE_FOR[0][0], true);
 					}
 					for (int num21 = 0; num21 < 6; num21++)
 					{
-						apdat_.DrawSeb(g, num5 + 107 - 107 + 33 * num21, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 0);
+						apdat_.DrawSeb(g, coalescedValue + 107 - 107 + 33 * num21, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 0);
 					}
-					apdat_.DrawSeb(g, num5 + 107 - 107 + 198, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 1);
+					apdat_.DrawSeb(g, coalescedValue + 107 - 107 + 198, num, apdat_.resCom2_.seb[45], apdat_.resCom2_.img[49], 1);
 					g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
 					int num22 = 16;
-					g.DrawArc(num5 + 107 - 1 - num22 / 2 - 1, num + 47 - num22 / 2 - 1, num22 + 2, num22 + 2, 0f, 360f);
-					g.DrawLine(num5 + 107 - 1, num, num5 + 107 - 1, num + 94 - 1);
+					g.DrawArc(coalescedValue + 107 - 1 - num22 / 2 - 1, num + 47 - num22 / 2 - 1, num22 + 2, num22 + 2, 0f, 360f);
+					g.DrawLine(coalescedValue + 107 - 1, num, coalescedValue + 107 - 1, num + 94 - 1);
 					int num23 = 35;
 					g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
-					g.DrawRect(num5, num + 47 - 32, num23, 65f);
-					g.DrawRect(num5, num + 47 - 16, num23 / 2, 32f);
-					g.DrawRect(num5 + 214 - num23, num + 47 - 32, num23 - 1, 65f);
-					g.DrawRect(num5 + 214 - num23 / 2, num + 47 - 16, num23 / 2 - 1, 32f);
+					g.DrawRect(coalescedValue, num + 47 - 32, num23, 65f);
+					g.DrawRect(coalescedValue, num + 47 - 16, num23 / 2, 32f);
+					g.DrawRect(coalescedValue + 214 - num23, num + 47 - 32, num23 - 1, 65f);
+					g.DrawRect(coalescedValue + 214 - num23 / 2, num + 47 - 16, num23 / 2 - 1, 32f);
 					if (phase_ == 2 || phase_ == 3 || phase_ == 4)
 					{
 						g.SetColor(Graphics.GetColorOfRGB(219, 255, 109));
-						g.FillRect(num5 + 35, num + 2, 48f, 90f);
+						g.FillRect(coalescedValue + 35, num + 2, 48f, 90f);
 						g.SetColor(Graphics.GetColorOfRGB(255, 156, 40));
-						g.FillRect(num5 + 35 + 48, num + 2, 48f, 90f);
+						g.FillRect(coalescedValue + 35 + 48, num + 2, 48f, 90f);
 						g.SetColor(Graphics.GetColorOfRGB(255, 56, 49));
-						g.FillRect(num5 + 35 + 96, num + 2, 48f, 90f);
+						g.FillRect(coalescedValue + 35 + 96, num + 2, 48f, 90f);
 						g.SetColor(Graphics.GetColorOfRGB(85, 85, 85));
-						for (int num24 = 0; num24 <= 9; num24++)
+						for (int unusedOriginalSlot38, num24 = 0; num24 <= 9; num24++)
 						{
 							num3 = GameUtil.RateConvert(num24, 0, 9, num + 2, num + 94 - 1 - 2, true);
-							g.DrawLine(num5 + 35, num3, num5 + 214 - 1 - 35, num3);
+							g.DrawLine(coalescedValue + 35, num3, coalescedValue + 214 - 1 - 35, num3);
 						}
 						for (int num25 = 0; num25 <= 9; num25++)
 						{
-							num2 = GameUtil.RateConvert(num25, 0, 9, num5 + 214 - 1 - 35, num5 + 35, true);
+							num2 = GameUtil.RateConvert(num25, 0, 9, coalescedValue + 214 - 1 - 35, coalescedValue + 35, true);
 							if (num25 % 3 == 0 && num25 != 0 && num25 != 9)
 							{
 								g.SetColor(Graphics.GetColorOfRGB(59, 228, 255));
-								g.FillRect(num5 - 13 + num2 - 1, num + 2, 3f, 90f);
+								g.FillRect(coalescedValue - 13 + num2 - 1, num + 2, 3f, 90f);
 							}
 							else
 							{
 								g.SetColor(Graphics.GetColorOfRGB(85, 85, 85));
-								g.DrawLine(num5 - 13 + num2, num + 2, num2, num + 94 - 1 - 2);
+								g.DrawLine(coalescedValue - 13 + num2, num + 2, num2, num + 94 - 1 - 2);
 							}
 						}
 					}
 					g.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
-					g.DrawRect(num5, num, 213f, 93f);
-					num2 = num5 + 161;
+					g.DrawRect(coalescedValue, num, 213f, 93f);
+					num2 = coalescedValue + 161;
 					num3 = num + 84;
 					g.DrawImage(apdat_.resCom2_.img[128], num2, num3 - 2);
 					string[] array5 = new string[3] { "通常", "攻め", "守り" };
 					g.SetColor(SubForm.SC_WINDOW_BLACK);
 					g.DrawString(MyFormBase.LT("ﾀｲﾌﾟ") + MyFormBase.LT(array5[teamData2.formationType_]), num2 + 5 + 24, num3 + 2, 2);
-					num2 = num5 + 1;
+					num2 = coalescedValue + 1;
 					num3 = num + 84;
 					FormationData formationData = apdat_.formationData_[teamData2.formation_];
 					g.DrawImage(apdat_.resCom2_.img[128], num2, num3 - 2);
@@ -4159,7 +4162,7 @@ if (recoveredCondition_68130)
 					{
 						num2 = editForPosEnemy[num27][0];
 						num3 = editForPosEnemy[num27][1];
-						num2 += num5 - 13;
+						num2 += coalescedValue - 13;
 						num26 = phaseCnt_ % 16 / 4;
 						if (editForPosEnemy[num27][2] == 0)
 						{
@@ -4185,12 +4188,12 @@ if (recoveredCondition_68130)
 			else if (phase_ == 6 && editMemDispMode != 0 && emdm_cnt < EMDM_ANIME_TIME[1])
 			{
 				int frame = editMemDispMode - 1;
-				int num5 = GameUtil.RateConvert(emdm_cnt, 0, EMDM_ANIME_TIME[0], -60, 0, true);
+				coalescedValue = GameUtil.RateConvert(emdm_cnt, 0, EMDM_ANIME_TIME[0], -60, 0, true);
 				g.SetColor(Graphics.GetColorOfRGB(11, 192, 245));
-				g.DrawRect(-1 + num5, 121f, 56f, 16f);
+				g.DrawRect(-1 + coalescedValue, 121f, 56f, 16f);
 				g.SetColor(Graphics.GetColorOfRGB(15, 154, 255));
-				g.FillRect(-1 + num5 + 1, 122f, 55f, 15f);
-				apdat_.DrawSeb(g, -1 + num5 + 2, 123, apdat_.resCom2_.seb[99], apdat_.resCom2_.img[182], frame);
+				g.FillRect(-1 + coalescedValue + 1, 122f, 55f, 15f);
+				apdat_.DrawSeb(g, -1 + coalescedValue + 2, 123, apdat_.resCom2_.seb[99], apdat_.resCom2_.img[182], frame);
 			}
 		}
 

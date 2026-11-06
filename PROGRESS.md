@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**4,966 de 5,245 métodos matched (94.68%).** 871,497 bytes de IL nos assemblies alvo.
-476,771 bytes IL matched (54.71%).
+**4,967 de 5,245 métodos matched (94.70%).** 871,497 bytes de IL nos assemblies alvo.
+483,397 bytes IL matched (55.47%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3132 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 278 |
+| decompiled | 277 |
 | equivalent | 0 |
-| matched | 4966 |
+| matched | 4967 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1760 / 89.89% | 265734 / 44.17% |
+| `Assembly-CSharp` | 1958 | 601603 | 1761 / 89.94% | 272360 / 45.27% |
 | `KairoLibrary` | 3287 | 269894 | 3206 / 97.54% | 211037 / 78.19% |
 
 ## Namespaces
@@ -38,7 +38,7 @@ KairoLibrary: 3132 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 248 / 97.25% | 21832 / 82.84% |
 | `form` | 371 | 250649 | 313 / 84.37% | 79454 / 31.70% |
-| `game` | 441 | 202949 | 373 / 84.58% | 93670 / 46.15% |
+| `game` | 441 | 202949 | 374 / 84.81% | 100296 / 49.42% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
@@ -140,7 +140,7 @@ KairoLibrary: 3132 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 32 / 94.12% | 3701 / 27.03% |
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 36 / 85.71% | 17011 / 76.45% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 12 / 85.71% | 1624 / 60.33% |
-| `Assembly-CSharp::game.UserData` | 92 | 55470 | 78 / 84.78% | 24580 / 44.31% |
+| `Assembly-CSharp::game.UserData` | 92 | 55470 | 79 / 85.87% | 31206 / 56.26% |
 | `Assembly-CSharp::main.AppData` | 201 | 33806 | 187 / 93.03% | 21199 / 62.71% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |

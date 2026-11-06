@@ -1,0 +1,1976 @@
+{
+  "operation": "smcs-bne-beq-source-form-diagnosis",
+  "measurement": "reports\\round7-cycle03-after-measurement.json",
+  "measurement_sha256": "fc410ac1de39bee4bf66831b41cf92cdea9432a9af725e92cccb520897e00813",
+  "provenance": {
+    "original_dump": "build\\round7\\cycles\\cycle03\\after\\Assembly-CSharp\\original-methods.json",
+    "original_dump_sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+    "rebuilt_dump": "build\\round7\\cycles\\cycle03\\after\\Assembly-CSharp\\rebuilt-methods.json",
+    "rebuilt_dump_sha256": "7d709499a36d6be032fdc6240882dff38bdf8d329907d154d5e7f86d99a3b74c",
+    "receipt": "build\\round7\\cycles\\cycle03\\after\\Assembly-CSharp\\verification.json",
+    "receipt_sha256": "6b415d92c2b4a4f8de97e1f28912a2176c87b9f4537c7016304435e593821e77",
+    "build_sha256": "5f39d5b1619f15101436137dd2ceeb44ba3e3e99858970053e819d4ed062960b"
+  },
+  "pair": "bne.un => beq",
+  "methods": 20,
+  "original_il_bytes": 38863,
+  "groups": {
+    "empty-arm-restore": {
+      "methods": 13,
+      "original_il_bytes": 26845,
+      "ids": [
+        "form.MyFormBase::SetTouchValue(System.Int32,System.Int32)->System.Void",
+        "form.SoccerForm::_draw(kairo.unity.ui.Graphics)->System.Void",
+        "form.SubForm::Init()->System.Boolean",
+        "form.SubForm::_draw2(kairo.unity.ui.Graphics)->System.Void",
+        "game.GameManager::CollisionBall_proc()->System.Void",
+        "game.TArea::SetTrainingArea(System.Int32)->System.Void",
+        "game.TGroupArea::ChangeState(System.Int32)->System.Void",
+        "game.TGroupArea::GetBall(game.TPlayer,System.Int32)->game.TBall",
+        "surface.GameView::OnTouchUnMarker(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+        "surface.TouchEffect::Draw(kairo.unity.ui.Graphics)->System.Void",
+        "system.billing.ui.StoreBase::GetUnityJson(System.String,System.String)->System.String",
+        "system.form.BillingForm::Init()->System.Boolean",
+        "system.form.FriendForm::Init()->System.Boolean"
+      ]
+    },
+    "value-return-reverse": {
+      "methods": 1,
+      "original_il_bytes": 2052,
+      "ids": [
+        "form.SpForm::Update()->System.Boolean"
+      ]
+    },
+    "continue-tail-positive": {
+      "methods": 2,
+      "original_il_bytes": 4839,
+      "ids": [
+        "form.SubForm::Init2()->System.Boolean",
+        "game.MapMain::Draw_trainingCoat(kairo.unity.ui.Graphics)->System.Void"
+      ]
+    },
+    "existing-or-guard-split": {
+      "methods": 2,
+      "original_il_bytes": 1067,
+      "ids": [
+        "game.Player::ChMoveDirect(System.Int32,System.Int32)->System.Boolean",
+        "game.Player::GetToThrowInPID()->System.Int32"
+      ]
+    },
+    "existing-void-positive-tail-model-blocked": {
+      "methods": 1,
+      "original_il_bytes": 1810,
+      "ids": [
+        "game.TGroupArea::SetPosData()->System.Void"
+      ]
+    },
+    "protected-void-positive-tail": {
+      "methods": 1,
+      "original_il_bytes": 2250,
+      "ids": [
+        "surface.GamePad::Draw(kairo.unity.ui.Graphics)->System.Void"
+      ]
+    }
+  },
+  "examples": [
+    {
+      "id": "form.MyFormBase::SetTouchValue(System.Int32,System.Int32)->System.Void",
+      "original_il_bytes": 1240,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 365,
+      "rebuilt_offset": 365,
+      "original_context": [
+        {
+          "offset": 363,
+          "opcode": "ldelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 364,
+          "opcode": "ldarg.2",
+          "operand": null
+        },
+        {
+          "offset": 365,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 375
+          }
+        },
+        {
+          "offset": 370,
+          "opcode": "br",
+          "operand": {
+            "branch": 1239
+          }
+        },
+        {
+          "offset": 375,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 376,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.MyFormBase @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::apdat_:class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 363,
+          "opcode": "ldelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 364,
+          "opcode": "ldarg.2",
+          "operand": null
+        },
+        {
+          "offset": 365,
+          "opcode": "beq",
+          "operand": {
+            "branch": 451
+          }
+        },
+        {
+          "offset": 370,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 371,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.MyFormBase @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::apdat_:class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        },
+        {
+          "offset": 376,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::sysSave_:class kairo.unity.util.Property @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\MyFormBase.cs",
+        "start_line": 324,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/form/MyFormBase.cs",
+      "mapped_statement_prefix": "if (apdat_.sysSave_.ints[3] != value)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.sysSave_.ints[3] = value;\r\n\t\t\t\t\tinstance.SetVolume(0, apdat_.sysSave_.ints[3] * 51);\r\n\t\t\t\t\tinstance.SetMute(0, apdat_.sysSave_.ints[3] == 0);\r\n\t\t\t\t\tinstance.ReflectVolumeAndMute();\r\n\t\t\t\t}",
+      "mapped_statement_suffix": "if (apdat_.sysSave_.ints[3] != value)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.sysSave_.ints[3] = value;\r\n\t\t\t\t\tinstance.SetVolume(0, apdat_.sysSave_.ints[3] * 51);\r\n\t\t\t\t\tinstance.SetMute(0, apdat_.sysSave_.ints[3] == 0);\r\n\t\t\t\t\tinstance.ReflectVolumeAndMute();\r\n\t\t\t\t}"
+    },
+    {
+      "id": "form.SoccerForm::_draw(kairo.unity.ui.Graphics)->System.Void",
+      "original_il_bytes": 2611,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 2410,
+      "rebuilt_offset": 2410,
+      "original_context": [
+        {
+          "offset": 2403,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SoccerForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::state_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 2408,
+          "opcode": "ldc.i4.s",
+          "operand": 13
+        },
+        {
+          "offset": 2410,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 2420
+          }
+        },
+        {
+          "offset": 2415,
+          "opcode": "br",
+          "operand": {
+            "branch": 2490
+          }
+        },
+        {
+          "offset": 2420,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 2421,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SoccerForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::state_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 2403,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SoccerForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::state_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 2408,
+          "opcode": "ldc.i4.s",
+          "operand": 13
+        },
+        {
+          "offset": 2410,
+          "opcode": "beq",
+          "operand": {
+            "branch": 2485
+          }
+        },
+        {
+          "offset": 2415,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 2416,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SoccerForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::state_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 2421,
+          "opcode": "ldc.i4.s",
+          "operand": 14
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SoccerForm.cs",
+        "start_line": 1963,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/form/SoccerForm.cs",
+      "mapped_statement_prefix": "if (state_ == 12)\r\n\t\t\t{\r\n\t\t\t\tDraw_matchElse(g);\r\n\t\t\t}\r\n\t\t\telse if (state_ != 13)\r\n\t\t\t{\r\n\t\t\t\tif (state_ == 14)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_newPlayerLv(g);\r\n\t\t\t\t}\r\n\t\t\t\telse if (state_ == 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_newPlayerPopular(g);\r\n\t\t\t\t}\r\n\t\t\t\telse if (state_ == 16)\r\n\t\t\t\t{\r",
+      "mapped_statement_suffix": "if (state_ == 12)\r\n\t\t\t{\r\n\t\t\t\tDraw_matchElse(g);\r\n\t\t\t}\r\n\t\t\telse if (state_ != 13)\r\n\t\t\t{\r\n\t\t\t\tif (state_ == 14)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_newPlayerLv(g);\r\n\t\t\t\t}\r\n\t\t\t\telse if (state_ == 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_newPlayerPopular(g);\r\n\t\t\t\t}\r\n\t\t\t\telse if (state_ == 16)\r\n\t\t\t\t{\r\n\t\t\t\t\tDraw_newPlayerReserach(g);\r\n\t\t\t\t}\r\n\t\t\t}"
+    },
+    {
+      "id": "form.SpForm::Update()->System.Boolean",
+      "original_il_bytes": 2052,
+      "group": "value-return-reverse",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (cond) { commands; return value; } tail -> if (!cond) { tail } else { commands; return value; }",
+      "original_offset": 488,
+      "rebuilt_offset": 488,
+      "original_context": [
+        {
+          "offset": 484,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 4
+          }
+        },
+        {
+          "offset": 486,
+          "opcode": "ldc.i4.s",
+          "operand": -3
+        },
+        {
+          "offset": 488,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 518
+          }
+        },
+        {
+          "offset": 493,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 494,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.MyFormBase @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::canvas_:class kairo.unity.ui.Canvas @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        },
+        {
+          "offset": 499,
+          "opcode": "ldarg.0",
+          "operand": null
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 484,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 4
+          }
+        },
+        {
+          "offset": 486,
+          "opcode": "ldc.i4.s",
+          "operand": -3
+        },
+        {
+          "offset": 488,
+          "opcode": "beq",
+          "operand": {
+            "branch": 675
+          }
+        },
+        {
+          "offset": 493,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 4
+          }
+        },
+        {
+          "offset": 495,
+          "opcode": "stloc.s",
+          "operand": {
+            "local": 25
+          }
+        },
+        {
+          "offset": 497,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 25
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SpForm.cs",
+        "start_line": 359,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/form/SpForm.cs",
+      "mapped_statement_prefix": "if (num2 != -3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tswitch (num2)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcase -4:\r\n\t\t\t\t\t\t\t\tShowDialog(\"\u30bb\u30fc\u30d6\u30c7\u30fc\u30bf\u3092\u53d7\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t\tcase -1:\r\n\t\t\t\t\t\t\t\tShowDialog(\"\u5168\u3066\u306e\u30c7\u30fc\u30bf\u3092\u9001\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tcase -2:\r\n\t\t\t\t\t\t\t\tShowDialo",
+      "mapped_statement_suffix": "\r\n\t\t\t\t\t\t\t\tint i = num2 % 10 + 1;\r\n\t\t\t\t\t\t\t\tif (num2 / 10 == 1)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tShowDialog(MyFormBase.LT(\"\u4e2d\u65ad\u30c7\u30fc\u30bf<0> \u3092\u9001\u4fe1\u3057\u307e\u3059\", JString.ValueOf(i)), \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tShowDialog(MyFormBase.LT(\"\u30bb\u30fc\u30d6\u30c7\u30fc\u30bf<0> \u3092\u9001\u4fe1\u3057\u307e\u3059\", JString.ValueOf(i)), \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}"
+    },
+    {
+      "id": "form.SubForm::Init()->System.Boolean",
+      "original_il_bytes": 5191,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 330,
+      "rebuilt_offset": 330,
+      "original_context": [
+        {
+          "offset": 324,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 329,
+          "opcode": "ldc.i4.6",
+          "operand": null
+        },
+        {
+          "offset": 330,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 340
+          }
+        },
+        {
+          "offset": 335,
+          "opcode": "br",
+          "operand": {
+            "branch": 5189
+          }
+        },
+        {
+          "offset": 340,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 341,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 324,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 329,
+          "opcode": "ldc.i4.6",
+          "operand": null
+        },
+        {
+          "offset": 330,
+          "opcode": "beq",
+          "operand": {
+            "branch": 5099
+          }
+        },
+        {
+          "offset": 335,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 336,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 341,
+          "opcode": "ldc.i4.7",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SubForm.cs",
+        "start_line": 1161,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/form/SubForm.cs",
+      "mapped_statement_prefix": "if (type_ == 5)\r\n\t\t\t{\r\n\t\t\t\tint matchInfoJoin = udat_.GetMatchInfoJoin();\r\n\t\t\t\tif (udat_.ChEventFlg(1))\r\n\t\t\t\t{\r\n\t\t\t\t\tAddMenu(6, 1);\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.ChEventFlg(8))\r\n\t\t\t\t{\r\n\t\t\t\t\tAddMenu(8, 1);\r\n\t\t\t\t}\r\n\t\t\t\tif (matchInfoJoin != 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tAddMenu(9, 1);\r",
+      "mapped_statement_suffix": "vUpAddParam[1]);\r\n\t\t\t\t\t\t\t\t\t\t\tfor (int num30 = 0; num30 < tenantData3.paramResearch_.Length; num30++)\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tSetMeterParam(2 + num30, TLUP_ANIME_TIME2[3] - TLUP_ANIME_TIME2[2], tenantData3.paramResearch_[num30], int.MaxValue, lvUpAddParam[2 + num30]);\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}"
+    },
+    {
+      "id": "form.SubForm::Init2()->System.Boolean",
+      "original_il_bytes": 3844,
+      "group": "continue-tail-positive",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (cond) continue; loop-tail -> if (!cond) { loop-tail }",
+      "original_offset": 83,
+      "rebuilt_offset": 83,
+      "original_context": [
+        {
+          "offset": 77,
+          "opcode": "ldloc.3",
+          "operand": null
+        },
+        {
+          "offset": 78,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class data.BaseData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 83,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 95
+          }
+        },
+        {
+          "offset": 88,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 89,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 90,
+          "opcode": "br",
+          "operand": {
+            "branch": 121
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 77,
+          "opcode": "ldloc.3",
+          "operand": null
+        },
+        {
+          "offset": 78,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class data.BaseData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 83,
+          "opcode": "beq",
+          "operand": {
+            "branch": 93
+          }
+        },
+        {
+          "offset": 88,
+          "opcode": "br",
+          "operand": {
+            "branch": 100
+          }
+        },
+        {
+          "offset": 93,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 94,
+          "opcode": "stloc.1",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SubForm.cs",
+        "start_line": 1629,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/form/SubForm.cs",
+      "mapped_statement_prefix": "if (TrainingData.TRA_PLAYER[i] != playerData.id_) { continue; }",
+      "mapped_statement_suffix": "if (TrainingData.TRA_PLAYER[i] != playerData.id_) { continue; }"
+    },
+    {
+      "id": "form.SubForm::_draw2(kairo.unity.ui.Graphics)->System.Void",
+      "original_il_bytes": 10209,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 10191,
+      "rebuilt_offset": 10191,
+      "original_context": [
+        {
+          "offset": 10184,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 10189,
+          "opcode": "ldc.i4.s",
+          "operand": 36
+        },
+        {
+          "offset": 10191,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 10201
+          }
+        },
+        {
+          "offset": 10196,
+          "opcode": "br",
+          "operand": {
+            "branch": 10208
+          }
+        },
+        {
+          "offset": 10201,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 10202,
+          "opcode": "ldarg.1",
+          "operand": null
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 10184,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 10189,
+          "opcode": "ldc.i4.s",
+          "operand": 36
+        },
+        {
+          "offset": 10191,
+          "opcode": "beq",
+          "operand": {
+            "branch": 10203
+          }
+        },
+        {
+          "offset": 10196,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 10197,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 10198,
+          "opcode": "call",
+          "operand": {
+            "method": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::_draw3``0(class kairo.unity.ui.Graphics @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SubForm.cs",
+        "start_line": 3607,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/form/SubForm.cs",
+      "mapped_statement_prefix": "if (type_ == 35)\r\n\t\t\t{\r\n\t\t\t\tapdat_.DrawWindow(g, 228, 176, 0, \"\u30ea\u30fc\u30b0\u6226\");\r\n\t\t\t\tapdat_.DrawBox(g, 12, 136, 227, 205);\r\n\t\t\t\tLeagueData leagueData4 = leagueData_;\r\n\t\t\t\tg.DrawImage(apdat_.resCom2_.img[162], 30f, 64f);\r\n\t\t\t\tnum = 129;\r\n\t\t\t\tfor (int num21 = 0; num21 < ",
+      "mapped_statement_suffix": "\r\n\t\t\t\t}\r\n\t\t\t\tnum22 = 58;\r\n\t\t\t\tfor (int num23 = 0; num23 < 2; num23++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum2 = 75 - num22 / 2 + 90 * num23;\r\n\t\t\t\t\tGameView.AddTouch(g, 3, num2 + DLGSEL_TRECT[num23][0], num3 - 2 + DLGSEL_TRECT[num23][1], num22 + DLGSEL_TRECT[num23][2], 16 + DLGSEL_TRECT[num23][3], 0x20000 | num23);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (type_ != 36)\r\n\t\t\t{\r\n\t\t\t\t_draw3(g);\r\n\t\t\t}"
+    },
+    {
+      "id": "game.GameManager::CollisionBall_proc()->System.Void",
+      "original_il_bytes": 1970,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 78,
+      "rebuilt_offset": 78,
+      "original_context": [
+        {
+          "offset": 72,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::coliBallState_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 77,
+          "opcode": "ldc.i4.4",
+          "operand": null
+        },
+        {
+          "offset": 78,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 88
+          }
+        },
+        {
+          "offset": 83,
+          "opcode": "br",
+          "operand": {
+            "branch": 483
+          }
+        },
+        {
+          "offset": 88,
+          "opcode": "ldloc.3",
+          "operand": null
+        },
+        {
+          "offset": 89,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::address_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 72,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::coliBallState_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 77,
+          "opcode": "ldc.i4.4",
+          "operand": null
+        },
+        {
+          "offset": 78,
+          "opcode": "beq",
+          "operand": {
+            "branch": 463
+          }
+        },
+        {
+          "offset": 83,
+          "opcode": "ldloc.3",
+          "operand": null
+        },
+        {
+          "offset": 84,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::address_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]"
+          }
+        },
+        {
+          "offset": 89,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\GameManager.cs",
+        "start_line": 1031,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/GameManager.cs",
+      "mapped_statement_prefix": "if (player.coliBallState_ != 4 && player.address_[0] - ball_.address_[0] >= -1 && player.address_[0] - ball_.address_[0] <= 1 && player.address_[1] - ball_.address_[1] >= -1 && player.address_[1] - ball_.address_[1] <= 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tint[] collisionData = u",
+      "mapped_statement_suffix": "num = 20f;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!(ball_.pos_.y_ >= num) && GameUtil.ChRectHitRect(ball_.pos_.x_ + (float)collisionData[0], ball_.pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], player.pos_.x_ + (float)array[0], player.pos_.z_ + (float)array[1], array[2], array[3], true))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcBallHitList.AddElement(player);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}"
+    },
+    {
+      "id": "game.MapMain::Draw_trainingCoat(kairo.unity.ui.Graphics)->System.Void",
+      "original_il_bytes": 995,
+      "group": "continue-tail-positive",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (cond) continue; loop-tail -> if (!cond) { loop-tail }",
+      "original_offset": 619,
+      "rebuilt_offset": 619,
+      "original_context": [
+        {
+          "offset": 613,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 618,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        },
+        {
+          "offset": 619,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 943
+          }
+        },
+        {
+          "offset": 624,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 625,
+          "opcode": "stloc.s",
+          "operand": {
+            "local": 11
+          }
+        },
+        {
+          "offset": 627,
+          "opcode": "br",
+          "operand": {
+            "branch": 913
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 613,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 618,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        },
+        {
+          "offset": 619,
+          "opcode": "beq",
+          "operand": {
+            "branch": 629
+          }
+        },
+        {
+          "offset": 624,
+          "opcode": "br",
+          "operand": {
+            "branch": 948
+          }
+        },
+        {
+          "offset": 629,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 630,
+          "opcode": "stloc.s",
+          "operand": {
+            "local": 11
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\MapMain.cs",
+        "start_line": 622,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/MapMain.cs",
+      "mapped_statement_prefix": "if (udat_.tAreas_[l][m].tMode_ != 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t}",
+      "mapped_statement_suffix": "if (udat_.tAreas_[l][m].tMode_ != 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t}"
+    },
+    {
+      "id": "game.Player::ChMoveDirect(System.Int32,System.Int32)->System.Boolean",
+      "original_il_bytes": 258,
+      "group": "existing-or-guard-split",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (a || b) continue -> if (a) continue; if (b) continue; already present in repertoire",
+      "original_offset": 96,
+      "rebuilt_offset": 96,
+      "original_context": [
+        {
+          "offset": 94,
+          "opcode": "ldelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 95,
+          "opcode": "ldc.i4.m1",
+          "operand": null
+        },
+        {
+          "offset": 96,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 106
+          }
+        },
+        {
+          "offset": 101,
+          "opcode": "br",
+          "operand": {
+            "branch": 235
+          }
+        },
+        {
+          "offset": 106,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 107,
+          "opcode": "ldarg.0",
+          "operand": null
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 94,
+          "opcode": "ldelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 95,
+          "opcode": "ldc.i4.m1",
+          "operand": null
+        },
+        {
+          "offset": 96,
+          "opcode": "beq",
+          "operand": {
+            "branch": 116
+          }
+        },
+        {
+          "offset": 101,
+          "opcode": "ldarg.1",
+          "operand": null
+        },
+        {
+          "offset": 102,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 103,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::moveDirectBox:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]"
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Player.cs",
+        "start_line": 1315,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/Player.cs",
+      "mapped_statement_prefix": "if ((moveDirectBox[i] == -1) || (ch_direct == moveDirectBox[i])) { continue; }",
+      "mapped_statement_suffix": "if ((moveDirectBox[i] == -1) || (ch_direct == moveDirectBox[i])) { continue; }"
+    },
+    {
+      "id": "game.Player::GetToThrowInPID()->System.Int32",
+      "original_il_bytes": 809,
+      "group": "existing-or-guard-split",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (a || b) continue -> if (a) continue; if (b) continue; already present in repertoire",
+      "original_offset": 336,
+      "rebuilt_offset": 336,
+      "original_context": [
+        {
+          "offset": 334,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 335,
+          "opcode": "ldelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 336,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 346
+          }
+        },
+        {
+          "offset": 341,
+          "opcode": "br",
+          "operand": {
+            "branch": 384
+          }
+        },
+        {
+          "offset": 346,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 347,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::screen_pos_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 334,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 335,
+          "opcode": "ldelem.i4",
+          "operand": null
+        },
+        {
+          "offset": 336,
+          "opcode": "beq",
+          "operand": {
+            "branch": 371
+          }
+        },
+        {
+          "offset": 341,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 342,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.Player @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::screen_pos_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[]"
+          }
+        },
+        {
+          "offset": 347,
+          "opcode": "ldloc.2",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Player.cs",
+        "start_line": 2084,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/Player.cs",
+      "mapped_statement_prefix": "if (((address_[0] == player2.address_[0]) && (address_[1] == player2.address_[1])) || (!(GameUtil.ChOnLine(screen_pos_, player.screen_pos_, 6, player2.screen_pos_)))) { continue; }",
+      "mapped_statement_suffix": "if (((address_[0] == player2.address_[0]) && (address_[1] == player2.address_[1])) || (!(GameUtil.ChOnLine(screen_pos_, player.screen_pos_, 6, player2.screen_pos_)))) { continue; }"
+    },
+    {
+      "id": "game.TArea::SetTrainingArea(System.Int32)->System.Void",
+      "original_il_bytes": 1055,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 260,
+      "rebuilt_offset": 260,
+      "original_context": [
+        {
+          "offset": 254,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 259,
+          "opcode": "ldc.i4.5",
+          "operand": null
+        },
+        {
+          "offset": 260,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 270
+          }
+        },
+        {
+          "offset": 265,
+          "opcode": "br",
+          "operand": {
+            "branch": 458
+          }
+        },
+        {
+          "offset": 270,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 271,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::centerPos_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 254,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 259,
+          "opcode": "ldc.i4.5",
+          "operand": null
+        },
+        {
+          "offset": 260,
+          "opcode": "beq",
+          "operand": {
+            "branch": 453
+          }
+        },
+        {
+          "offset": 265,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 266,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::centerPos_:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        },
+        {
+          "offset": 271,
+          "opcode": "ldsfld",
+          "operand": {
+            "field": "class game.MapMain @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::TRAIN_COAT_BLOCK:class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null[][]"
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\TArea.cs",
+        "start_line": 339,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/TArea.cs",
+      "mapped_statement_prefix": "if (tMode_ == 4)\r\n\t\t\t{\r\n\t\t\t\tcenterPos_.x_ = (MapMain.TRAIN_COAT_BLOCK[num][0].x_ + MapMain.TRAIN_COAT_BLOCK[num][1].x_) / 2f;\r\n\t\t\t\tcenterPos_.y_ = 0f;\r\n\t\t\t\tcenterPos_.z_ = (MapMain.TRAIN_COAT_BLOCK[num][0].z_ + MapMain.TRAIN_COAT_BLOCK[num + 1][1].z_) / 2f;\r\n\t",
+      "mapped_statement_suffix": "AT_BLOCK[num][1].x_) / 2f;\r\n\t\t\t\tcenterPos_.y_ = 0f;\r\n\t\t\t\tcenterPos_.z_ = (MapMain.TRAIN_COAT_BLOCK[num][0].z_ + MapMain.TRAIN_COAT_BLOCK[num][1].z_) / 2f;\r\n\t\t\t\tcoatW_ = JMath.Abs(MapMain.TRAIN_COAT_BLOCK[num][0].x_ - MapMain.TRAIN_COAT_BLOCK[num][1].x_);\r\n\t\t\t\tcoatH_ = JMath.Abs(MapMain.TRAIN_COAT_BLOCK[num][0].z_ - MapMain.TRAIN_COAT_BLOCK[num][1].z_);\r\n\t\t\t}"
+    },
+    {
+      "id": "game.TGroupArea::ChangeState(System.Int32)->System.Void",
+      "original_il_bytes": 1709,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 1040,
+      "rebuilt_offset": 1040,
+      "original_context": [
+        {
+          "offset": 1034,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 1039,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 1040,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 1050
+          }
+        },
+        {
+          "offset": 1045,
+          "opcode": "br",
+          "operand": {
+            "branch": 1089
+          }
+        },
+        {
+          "offset": 1050,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1051,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TGroupArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tArea_:class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 1034,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 1039,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 1040,
+          "opcode": "beq",
+          "operand": {
+            "branch": 1079
+          }
+        },
+        {
+          "offset": 1045,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1046,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TGroupArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tArea_:class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        },
+        {
+          "offset": 1051,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\TGroupArea.cs",
+        "start_line": 377,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/TGroupArea.cs",
+      "mapped_statement_prefix": "if (tArea_.tMode_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num2 = 0; num2 < tPlayerList_.Size(); num2++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tTPlayer tPlayer7 = (TPlayer)tPlayerList_.ElementAt(num2);\r\n\t\t\t\t\t\tTBall tBall2 = (TBall)tBallList_.ElementAt(num2);\r\n\t\t\t\t\t\ttBall2.ReceiveBall(tPlayer7);\r\n",
+      "mapped_statement_suffix": "nt num2 = 0; num2 < tPlayerList_.Size(); num2++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tTPlayer tPlayer7 = (TPlayer)tPlayerList_.ElementAt(num2);\r\n\t\t\t\t\t\tTBall tBall2 = (TBall)tBallList_.ElementAt(num2);\r\n\t\t\t\t\t\ttBall2.ReceiveBall(tPlayer7);\r\n\t\t\t\t\t\ttPlayer7.AddCommandLifting(0);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (tArea_.tMode_ != 2 && tArea_.tMode_ != 4 && tArea_.tMode_ != 3)\r\n\t\t\t\t{\r\n\t\t\t\t}"
+    },
+    {
+      "id": "game.TGroupArea::SetPosData()->System.Void",
+      "original_il_bytes": 1810,
+      "group": "existing-void-positive-tail-model-blocked",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "B1 terminal-guard-positive-tail already exists; cycle01 recorded one wrong_signature rejection",
+      "original_offset": 1146,
+      "rebuilt_offset": 1146,
+      "original_context": [
+        {
+          "offset": 1140,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 1145,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        },
+        {
+          "offset": 1146,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 1809
+          }
+        },
+        {
+          "offset": 1151,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1152,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        },
+        {
+          "offset": 1153,
+          "opcode": "newarr",
+          "operand": {
+            "type": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 1140,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 1145,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        },
+        {
+          "offset": 1146,
+          "opcode": "beq",
+          "operand": {
+            "branch": 1152
+          }
+        },
+        {
+          "offset": 1151,
+          "opcode": "ret",
+          "operand": null
+        },
+        {
+          "offset": 1152,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 1153,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\TGroupArea.cs",
+        "start_line": 541,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/TGroupArea.cs",
+      "mapped_statement_prefix": "if (tArea_.tMode_ != 3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}",
+      "mapped_statement_suffix": "if (tArea_.tMode_ != 3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}",
+      "earlier_failure": {
+        "stop_reason": "no_model_approved_candidate",
+        "model_rejections": [
+          {
+            "wrong_signature": 1
+          }
+        ],
+        "candidate_count": 0
+      }
+    },
+    {
+      "id": "game.TGroupArea::GetBall(game.TPlayer,System.Int32)->game.TBall",
+      "original_il_bytes": 487,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 282,
+      "rebuilt_offset": 282,
+      "original_context": [
+        {
+          "offset": 276,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 281,
+          "opcode": "ldc.i4.4",
+          "operand": null
+        },
+        {
+          "offset": 282,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 292
+          }
+        },
+        {
+          "offset": 287,
+          "opcode": "br",
+          "operand": {
+            "branch": 485
+          }
+        },
+        {
+          "offset": 292,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 293,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TGroupArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tArea_:class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 276,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 281,
+          "opcode": "ldc.i4.4",
+          "operand": null
+        },
+        {
+          "offset": 282,
+          "opcode": "beq",
+          "operand": {
+            "branch": 485
+          }
+        },
+        {
+          "offset": 287,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 288,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TGroupArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tArea_:class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+          }
+        },
+        {
+          "offset": 293,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class game.TArea @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::tMode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\TGroupArea.cs",
+        "start_line": 622,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/game/TGroupArea.cs",
+      "mapped_statement_prefix": "if (tArea_.tMode_ == 2)\r\n\t\t\t{\r\n\t\t\t\tif (!BitUtil.Check(player.flag_, 4))\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int i = 0; i < tBallList_.Size(); i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tTBall tBall = (TBall)tBallList_.ElementAt(i);\r\n\t\t\t\t\t\tif (!BitUtil.Check(tBall.flag_, 4))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\treturn tBa",
+      "mapped_statement_suffix": "dex_);\r\n\t\t\t\t\tballIndex_ = (ballIndex_ + 1 + tBallList_.Size()) % tBallList_.Size();\r\n\t\t\t\t\treturn result;\r\n\t\t\t\t}\r\n\t\t\t\tfor (int k = 0; k < tBallList_.Size(); k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTBall tBall3 = (TBall)tBallList_.ElementAt(k);\r\n\t\t\t\t\tif ((tBall3.t_owner_ == null) || (tBall3.t_owner_.trainingId_[0] != player.trainingId_[0])) { continue; }\nreturn tBall3;\r\n\t\t\t\t}\r\n\t\t\t}"
+    },
+    {
+      "id": "surface.GamePad::Draw(kairo.unity.ui.Graphics)->System.Void",
+      "original_il_bytes": 2250,
+      "group": "protected-void-positive-tail",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "void guard at end of terminal try-block -> positive tail if, retaining catch and finally",
+      "original_offset": 1711,
+      "rebuilt_offset": 1711,
+      "original_context": [
+        {
+          "offset": 1705,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class surface.GamePad @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::mode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 1710,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 1711,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 2208
+          }
+        },
+        {
+          "offset": 1716,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1717,
+          "opcode": "stloc.s",
+          "operand": {
+            "local": 21
+          }
+        },
+        {
+          "offset": 1719,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 12
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 1705,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class surface.GamePad @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::mode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 1710,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 1711,
+          "opcode": "beq",
+          "operand": {
+            "branch": 1721
+          }
+        },
+        {
+          "offset": 1716,
+          "opcode": "leave",
+          "operand": {
+            "branch": 2254
+          }
+        },
+        {
+          "offset": 1721,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1722,
+          "opcode": "stloc.s",
+          "operand": {
+            "local": 21
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GamePad.cs",
+        "start_line": 969,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/surface/GamePad.cs",
+      "mapped_statement_prefix": "if (mode_ != 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn;\r\n\t\t\t\t\t}",
+      "mapped_statement_suffix": "if (mode_ != 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn;\r\n\t\t\t\t\t}"
+    },
+    {
+      "id": "surface.GameView::OnTouchUnMarker(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+      "original_il_bytes": 270,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 92,
+      "rebuilt_offset": 92,
+      "original_context": [
+        {
+          "offset": 90,
+          "opcode": "ldc.i4.m1",
+          "operand": null
+        },
+        {
+          "offset": 91,
+          "opcode": "conv.i8",
+          "operand": null
+        },
+        {
+          "offset": 92,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 102
+          }
+        },
+        {
+          "offset": 97,
+          "opcode": "br",
+          "operand": {
+            "branch": 269
+          }
+        },
+        {
+          "offset": 102,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 103,
+          "opcode": "ldarg.0",
+          "operand": null
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 90,
+          "opcode": "ldc.i4.m1",
+          "operand": null
+        },
+        {
+          "offset": 91,
+          "opcode": "conv.i8",
+          "operand": null
+        },
+        {
+          "offset": 92,
+          "opcode": "beq",
+          "operand": {
+            "branch": 122
+          }
+        },
+        {
+          "offset": 97,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 98,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 99,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class surface.GameView @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::markComponentKey_:valuetype System.Int64 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GameView.cs",
+        "start_line": 1814,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/surface/GameView.cs",
+      "mapped_statement_prefix": "if (markComponentKey_ != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\ttouchEvent = GetTouchEventKey(markComponentKey_, 7);\r\n\t\t\t\t\tif (touchEvent == null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tClearMarker();\r\n\t\t\t\t\t}\r\n\t\t\t\t}",
+      "mapped_statement_suffix": "if (markComponentKey_ != -1)\r\n\t\t\t\t{\r\n\t\t\t\t\ttouchEvent = GetTouchEventKey(markComponentKey_, 7);\r\n\t\t\t\t\tif (touchEvent == null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tClearMarker();\r\n\t\t\t\t\t}\r\n\t\t\t\t}"
+    },
+    {
+      "id": "surface.TouchEffect::Draw(kairo.unity.ui.Graphics)->System.Void",
+      "original_il_bytes": 349,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 309,
+      "rebuilt_offset": 309,
+      "original_context": [
+        {
+          "offset": 303,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class surface.TouchEffect @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 308,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 309,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 319
+          }
+        },
+        {
+          "offset": 314,
+          "opcode": "br",
+          "operand": {
+            "branch": 348
+          }
+        },
+        {
+          "offset": 319,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 320,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class surface.TouchEffect @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 303,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class surface.TouchEffect @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 308,
+          "opcode": "ldc.i4.1",
+          "operand": null
+        },
+        {
+          "offset": 309,
+          "opcode": "beq",
+          "operand": {
+            "branch": 338
+          }
+        },
+        {
+          "offset": 314,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 315,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class surface.TouchEffect @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::id_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 320,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\TouchEffect.cs",
+        "start_line": 111,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/surface/TouchEffect.cs",
+      "mapped_statement_prefix": "if (id_ == 0)\r\n\t\t\t{\r\n\t\t\t\tobject[] array = (object[])arg_;\r\n\t\t\t\tImage image = (Image)array[0];\r\n\t\t\t\tfloat[] array2 = (float[])array[1];\r\n\t\t\t\tint num3 = 160 - 18 * num2;\r\n\t\t\t\tif (num3 <= 0) { return; }\nfloat num4 = 2.5f * (float)num2 * num;\nfloat num5 = 2.5f * (",
+      "mapped_statement_suffix": "um5 / 2f;\nfloat num6 = array2[0] * num;\nfloat num7 = array2[1] * num;\ng.SetRenderMode(1, num3, 255 - num3);\ng.DrawScaledImage(image, dx, dy, num6 + num4, num7 + num5, (int)(array2[2] + 0.5f), (int)(array2[3] + 0.5f), (int)(array2[4] + 0.5f), (int)(array2[5] + 0.5f));\ng.SetRenderMode(0, 255, 0);\r\n\t\t\t}\r\n\t\t\telse if (id_ != 1 && id_ != 2 && id_ != 3)\r\n\t\t\t{\r\n\t\t\t}"
+    },
+    {
+      "id": "system.billing.ui.StoreBase::GetUnityJson(System.String,System.String)->System.String",
+      "original_il_bytes": 390,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 250,
+      "rebuilt_offset": 250,
+      "original_context": [
+        {
+          "offset": 243,
+          "opcode": "callvirt",
+          "operand": {
+            "method": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::get_Chars``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Char @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 248,
+          "opcode": "ldc.i4.s",
+          "operand": 44
+        },
+        {
+          "offset": 250,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 260
+          }
+        },
+        {
+          "offset": 255,
+          "opcode": "br",
+          "operand": {
+            "branch": 282
+          }
+        },
+        {
+          "offset": 260,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 5
+          }
+        },
+        {
+          "offset": 262,
+          "opcode": "ldloc.2",
+          "operand": null
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 243,
+          "opcode": "callvirt",
+          "operand": {
+            "method": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::get_Chars``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Char @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 248,
+          "opcode": "ldc.i4.s",
+          "operand": 44
+        },
+        {
+          "offset": 250,
+          "opcode": "beq",
+          "operand": {
+            "branch": 277
+          }
+        },
+        {
+          "offset": 255,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 5
+          }
+        },
+        {
+          "offset": 257,
+          "opcode": "ldloc.2",
+          "operand": null
+        },
+        {
+          "offset": 258,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 6
+          }
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\billing\\ui\\StoreBase.cs",
+        "start_line": 326,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/system/billing/ui/StoreBase.cs",
+      "mapped_statement_prefix": "if (text[j] == '}')\r\n\t\t\t\t{\r\n\t\t\t\t\tflag = false;\r\n\t\t\t\t\tlist.Add(text2);\r\n\t\t\t\t\ttext2 = string.Empty;\r\n\t\t\t\t}\r\n\t\t\t\telse if (flag && (text2.Length != 0 || text[j] != ','))\r\n\t\t\t\t{\r\n\t\t\t\t\ttext2 += text[j];\r\n\t\t\t\t}",
+      "mapped_statement_suffix": "if (text[j] == '}')\r\n\t\t\t\t{\r\n\t\t\t\t\tflag = false;\r\n\t\t\t\t\tlist.Add(text2);\r\n\t\t\t\t\ttext2 = string.Empty;\r\n\t\t\t\t}\r\n\t\t\t\telse if (flag && (text2.Length != 0 || text[j] != ','))\r\n\t\t\t\t{\r\n\t\t\t\t\ttext2 += text[j];\r\n\t\t\t\t}"
+    },
+    {
+      "id": "system.form.BillingForm::Init()->System.Boolean",
+      "original_il_bytes": 654,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 467,
+      "rebuilt_offset": 467,
+      "original_context": [
+        {
+          "offset": 461,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.BillingForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 466,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 467,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 477
+          }
+        },
+        {
+          "offset": 472,
+          "opcode": "br",
+          "operand": {
+            "branch": 646
+          }
+        },
+        {
+          "offset": 477,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 478,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.BillingForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 461,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.BillingForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 466,
+          "opcode": "ldc.i4.2",
+          "operand": null
+        },
+        {
+          "offset": 467,
+          "opcode": "beq",
+          "operand": {
+            "branch": 641
+          }
+        },
+        {
+          "offset": 472,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 473,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.BillingForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 478,
+          "opcode": "ldc.i4.3",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\form\\BillingForm.cs",
+        "start_line": 234,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/system/form/BillingForm.cs",
+      "mapped_statement_prefix": "if (type_ == 1)\r\n\t\t\t{\r\n\t\t\t\tstring text;\nif (Config.APPLI_TYPE == 0) { text = \"\u901a\u4fe1\u3092\u8a31\u53ef\u3057\u96fb\u6ce2\u3092\u78ba\u8a8d\u3057\u3066\u518d\u8d77\u52d5\u3057\u3066\u304f\u3060\u3055\u3044\u3002\\n\u304a\u307e\u304b\u305b\u30ed\u30c3\u30af\u7b49\u3092\u3054\u5229\u7528\u306e\u65b9\u306f\u89e3\u9664\u3092\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002\\n\uff77\uff6f\uff7d\uff9ei\uff93\uff70\uff84\uff9e\uff8c\uff68\uff99\uff80\u8a2d\u5b9a\u4e2d\u306f\u4e00\u90e8\u6a5f\u80fd\u304c\u3054\u5229\u7528\u9802\u3051\u307e\u305b\u3093\u3002\"; } else { text = KairoText.LT(\"\u901a\u4fe1\u3092\u8a31\u53ef\u3057\u96fb\u6ce2\u3092\u78ba\u8a8d\u3057\u3066\u518d\u8d77\u52d5\u3057\u3066\u304f\u3060\u3055\u3044\u3002\\n\u901a\u4fe1OFF\u306e\u5834\u5408\u306f\u4e00\u90e8\u306e\u6a5f\u80fd\u304c\u3054\u5229\u7528\u9802\u3051\u306a\u3044\u5834\u5408\u304c\u3054\u3056\u3044\u307e\u3059\u3002\"); }\r\n\t\t",
+      "mapped_statement_suffix": "bel();\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tinstance.On(1048576);\r\n\t\t\t\t\t\tinstance.Save();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (item_.GetId() == 0 && admobSkipPurchase_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tThreadStart(1);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!skipUpdateSales_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tThreadStart(0);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tselect_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ != 4)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}"
+    },
+    {
+      "id": "system.form.FriendForm::Init()->System.Boolean",
+      "original_il_bytes": 710,
+      "group": "empty-arm-restore",
+      "source_form_status": "HYPOTHESIS",
+      "candidate_source_shape": "if (negative comparison) body -> if (positive comparison) { } else body; first && operand factored individually when needed",
+      "original_offset": 333,
+      "rebuilt_offset": 333,
+      "original_context": [
+        {
+          "offset": 327,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.FriendForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 332,
+          "opcode": "ldc.i4.4",
+          "operand": null
+        },
+        {
+          "offset": 333,
+          "opcode": "bne.un",
+          "operand": {
+            "branch": 343
+          }
+        },
+        {
+          "offset": 338,
+          "opcode": "br",
+          "operand": {
+            "branch": 642
+          }
+        },
+        {
+          "offset": 343,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 344,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.FriendForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        }
+      ],
+      "rebuilt_context": [
+        {
+          "offset": 327,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.FriendForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 332,
+          "opcode": "ldc.i4.4",
+          "operand": null
+        },
+        {
+          "offset": 333,
+          "opcode": "beq",
+          "operand": {
+            "branch": 597
+          }
+        },
+        {
+          "offset": 338,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 339,
+          "opcode": "ldfld",
+          "operand": {
+            "field": "class system.form.FriendForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::type_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          }
+        },
+        {
+          "offset": 344,
+          "opcode": "ldc.i4.5",
+          "operand": null
+        }
+      ],
+      "source_point": {
+        "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round7\\runs\\cycle03\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\form\\FriendForm.cs",
+        "start_line": 269,
+        "start_column": -1
+      },
+      "source_path": "src/Assembly-CSharp/system/form/FriendForm.cs",
+      "mapped_statement_prefix": "if (type_ == 3)\r\n\t\t\t{\r\n\t\t\t\ttext_ = string.Empty;\r\n\t\t\t}\r\n\t\t\telse if (type_ != 4 && type_ != 5 && type_ != 6 && type_ != 7 && type_ != 8 && type_ != 9 && type_ != 10)\r\n\t\t\t{\r\n\t\t\t\tif (type_ == 11)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring value = KairoText.LT(\"\u5168\u56fd\u306b\u6563\u3089\u3070\u308b\u30e6\u30fc\u30b6\u30fc\u3092<br>\u30d5\u30ec\u30f3\u30c9\u3068\u3057\u3066\u6700\u5927",
+      "mapped_statement_suffix": "Lay_ = new TextLayout();\r\n\t\t\t\t\ttextLay_.SetSize(204f, 128f);\r\n\t\t\t\t\ttextLay_.SetColor(COLOR_BLACK);\r\n\t\t\t\t\ttextLay_.SetAnchor(34);\r\n\t\t\t\t\ttextLay_.SetLineSpace(4);\r\n\t\t\t\t\ttextLay_.SetText(StringUtil.Replace(value, JString.ValueOf(friendData_.FRIEND_MAX)));\r\n\t\t\t\t\ttextLay_.Flush();\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ != 12 && type_ != 13 && type_ != 15)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}"
+    }
+  ],
+  "game_candidate_compilations": 0,
+  "frozen_rule_sha256": "5bc03f109b0ddebdf27398390c01f75c6d40dd55dcb97fe7b1615263ec7e25f5"
+}

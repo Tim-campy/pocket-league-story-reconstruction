@@ -625,6 +625,25 @@ def main():
                             p['start'], p['end'] = positions[0] // 2, (positions[0] + len(needle)) // 2
                         extras.append(p)
                     patches = extras + patches
+            if is_smcs and args.cycle_rule=='calculated-original-local-coalescence':
+                proposal_path=ROOT/'reports/round7-coalesce-patches.json'
+                proposal_doc=read(proposal_path)
+                from round7_coalesce_calculate import rebase_unique_patch
+                if (proposal_doc['calculator_sha256']!=sha(ROOT/'tools/round7_coalesce_calculate.py')
+                        or proposal_doc['syntax_source_sha256']!=sha(ROOT/'tools/round7_coalesce_syntax.cs')):
+                    raise ValueError('Coalescence calculator proof changed')
+                report['calculated_coalescence']={'proposals_sha256':sha(proposal_path),
+                    'fresh_model_before_compilation':True,'exact_unique_declaration_rebase':True}
+                for proposal in proposal_doc['patches']:
+                    if proposal['method_id']!=key or proposal['logical_path'].replace('\\','/')!=logical.replace('\\','/'):
+                        continue
+                    if (proposal['model_source_sha256']!=report['slot_model_identity']['source_sha256']
+                            or proposal['client_sha256']!=report['slot_model_identity']['client_sha256']):
+                        raise ValueError('Coalescence proposal uses another model')
+                    try:rebased=rebase_unique_patch(text,proposal)
+                    except ValueError as error:
+                        row.setdefault('coalescence_rebase_rejections',[]).append(str(error));continue
+                    patches.insert(0,rebased)
             # A new autonomous cycle cannot repeat exhausted legacy hypotheses
             # before the selected family has itself advanced this method.
             before_cycle_filter=len(patches)

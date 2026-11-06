@@ -1,0 +1,153 @@
+{
+  "operation": "source-only-prototypes-plus-isolated-toy-smcs-compiles",
+  "syntax_safety_checks": 12,
+  "toy_compiles": 8,
+  "exact_reference_body_matches": 8,
+  "target_compilations": 0,
+  "rule_sha256": "5bc03f109b0ddebdf27398390c01f75c6d40dd55dcb97fe7b1615263ec7e25f5",
+  "fixture_driver_sha256": "b8083cd97eb2d13263a69f9a96a979a49509169f6817b93ba2bb90de42269dc8",
+  "checks": [
+    "void Empty(:smcs-empty-arm-restore",
+    "void EmptyAnd(:smcs-empty-arm-first-and",
+    "void EmptySuffix(:smcs-empty-arm-and-suffix",
+    "void ContinueLoop(:smcs-continue-positive-tail",
+    "void ContinueFloat(:smcs-continue-positive-tail",
+    "void ContinueForeach(:smcs-continue-positive-tail",
+    "bool Value(:smcs-value-return-guard-reverse",
+    "void Protected(:smcs-protected-void-guard-tail",
+    "void GuardBreak(:reject-smcs-continue-positive-tail",
+    "void NotLoopTail(:reject-smcs-continue-positive-tail",
+    "void NotTryTail(:reject-smcs-protected-void-guard-tail",
+    "void Empty(:reject-smcs-empty-arm"
+  ],
+  "proofs": [
+    {
+      "method": "Empty",
+      "reference": "ExpectedEmpty",
+      "rule": "smcs-empty-arm-restore",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 0
+    },
+    {
+      "method": "EmptyAnd",
+      "reference": "ExpectedEmptyAnd",
+      "rule": "smcs-empty-arm-first-and",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 0
+    },
+    {
+      "method": "EmptySuffix",
+      "reference": "ExpectedEmptySuffix",
+      "rule": "smcs-empty-arm-and-suffix",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 0
+    },
+    {
+      "method": "ContinueLoop",
+      "reference": "ExpectedContinueLoop",
+      "rule": "smcs-continue-positive-tail",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 0
+    },
+    {
+      "method": "ContinueFloat",
+      "reference": "ExpectedContinueFloat",
+      "rule": "smcs-continue-positive-tail",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 0
+    },
+    {
+      "method": "ContinueForeach",
+      "reference": "ExpectedContinueForeach",
+      "rule": "smcs-continue-positive-tail",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 1
+    },
+    {
+      "method": "Value",
+      "reference": "ExpectedValue",
+      "rule": "smcs-value-return-guard-reverse",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 0
+    },
+    {
+      "method": "Protected",
+      "reference": "ExpectedProtected",
+      "rule": "smcs-protected-void-guard-tail",
+      "complete_body_equal": true,
+      "compared_facets": [
+        "header",
+        "locals",
+        "instructions",
+        "exception_regions",
+        "extra_sections",
+        "method_attributes",
+        "impl_attributes"
+      ],
+      "exception_regions": 2
+    }
+  ]
+}
