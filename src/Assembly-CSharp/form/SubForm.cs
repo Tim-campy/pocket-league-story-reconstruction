@@ -5657,7 +5657,7 @@ coalescedSwitchExit177847: ;
 				}
 				else
 				{
-					g.DrawString(MyFormBase.LT("<0><1>さんの交渉に向かいます", playerData.name_ + "\t" + " " + playerData.name2_), 120f, 157f, 2);
+					g.DrawString(MyFormBase.LT("<0><1>さんの交渉に向かいます", global::System.String.Concat(playerData.name_, "\t", " ", playerData.name2_)), 120f, 157f, 2);
 				}
 				string text = MyFormBase.YEN("万", tradeData.cost_);
 				if (!apdat_.ChPayMoney(tradeData.cost_))
@@ -5770,8 +5770,7 @@ coalescedSwitchExit177847: ;
 					int frame = UserData.NEGOTIATE_RESULT_TH[l];
 					int num15 = (SP_ANIME_TIME[1] - SP_ANIME_TIME[0]) * UserData.WAIT_TIME[l] / 100 + SP_ANIME_TIME[0] - 5;
 					num14 = GameUtil.RateConvert(frame_ - num15, 0, 10, -20, 0, true);
-					if (num14 > -20)
-					{
+					if (num14 <= -20) { } else {
 						apdat_.DrawSeb(g, num2, num3 + num14, apdat_.resCom2_.seb[97], apdat_.resCom2_.img[175], frame);
 					}
 				}
@@ -5797,7 +5796,7 @@ coalescedSwitchExit177847: ;
 				}
 				else
 				{
-					g.DrawString(MyFormBase.LT("<0><1>さんの獲得を発表!!", playerData3.name_ + "\t" + " " + playerData3.name2_), 120f, 166f, 2);
+					g.DrawString(MyFormBase.LT("<0><1>さんの獲得を発表!!", global::System.String.Concat(playerData3.name_, "\t", " ", playerData3.name2_)), 120f, 166f, 2);
 				}
 				g.SetColor(SC_WINDOW_BLACK);
 				g.DrawString(MyFormBase.LT("知名度が<0>ｱｯﾌﾟしました!", tradeData3.getNameValue_), 120f, 187f, 2);
@@ -6048,8 +6047,7 @@ coalescedSwitchExit190333: ;
 						g.SetColor(Graphics.GetColorOfRGB(199, 223, 148));
 						g.DrawRect(num2, num3, 74f, 16f);
 						g.DrawRect(num2 + 75, num3, 26f, 16f);
-						if (num24 < questMatchData2.matchEnemy_.Length)
-						{
+						if (num24 >= questMatchData2.matchEnemy_.Length) { } else {
 							TeamData teamData = apdat_.tData_[questMatchData2.matchEnemy_[num24]];
 							g.SetColor(SC_WINDOW_BLACK);
 							SetFontSize(g, 11);
@@ -6174,8 +6172,7 @@ coalescedSwitchExit190333: ;
 						else
 						{
 							apdat_.DrawNumImage(g, 79, tenantData.lv_, num2 + 93 + 22, num3 + 4 - 2, 0, 2);
-							if (!tenantData.IsMaxLv())
-							{
+							if (tenantData.IsMaxLv()) { } else {
 								if (apdat_.ChPayMoney(tenantData.paramStrengthCost_))
 								{
 									if (MyFormBase.Jp())
