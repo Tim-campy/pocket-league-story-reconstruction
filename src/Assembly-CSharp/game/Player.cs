@@ -1426,16 +1426,16 @@ return false;
 
 		public void Act_receive()
 		{
-			if (ChHeading())
-			{
+			if (ChHeading()) {
 				Proc_head();
 				float headJampDis = PlayerData.GetHeadJampDis(this);
 				seb_startPos.Set(pos_);
 				seb_v.y_ = GameUtil.SetVStop(headJampDis, SEB_H_HEAD_JAMPTIME / 2);
 				seb_ay = GameUtil.SetAStop(headJampDis, SEB_H_HEAD_JAMPTIME / 2);
-			}
-			else if (BitUtil.Check(udat_.ball_.flag_, 16))
-			{
+
+return;
+}
+if (BitUtil.Check(udat_.ball_.flag_, 16)) {
 				goalPos_.Set(udat_.ball_.fallPos_);
 				if (BitUtil.Check(udat_.ball_.flag_, 16) && udat_.ball_.boundNum_ == 0)
 				{
@@ -1481,23 +1481,23 @@ return false;
 				}
 				int[] collisionData = udat_.GetCollisionData(0, 3);
 				int[] collisionData2 = udat_.GetCollisionData(1, 3);
-				if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData[0], pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], goalPos_.x_ + (float)collisionData2[0], goalPos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true))
-				{
+				if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData[0], pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], goalPos_.x_ + (float)collisionData2[0], goalPos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true)) {
 					SetPlayerDirect(udat_.ball_.pos_);
-				}
-				else
-				{
+
+return;
+}
+{
 					Move(goalPos_, 1);
 				}
-			}
-			else
-			{
+
+return;
+}
+{
 				Ball ball_ = udat_.ball_;
-				if (JMath.Abs(ball_.v_.x_) < 0.01f || JMath.Abs(ball_.v_.z_) < 0.01f)
-				{
+				if (JMath.Abs(ball_.v_.x_) < 0.01f || JMath.Abs(ball_.v_.z_) < 0.01f) {
 					Move(ball_.pos_, 1);
-					return;
-				}
+
+} else {
 				float num = ball_.v_.z_ * ball_.pos_.x_ / ball_.v_.x_ - ball_.pos_.z_;
 				float num2 = ball_.v_.x_ * pos_.x_ / ball_.v_.z_ + pos_.z_;
 				temp_vec.x_ = (num + num2) / (ball_.v_.x_ / ball_.v_.z_ + ball_.v_.z_ / ball_.v_.x_);
@@ -1507,6 +1507,7 @@ return false;
 				udat_.ball_.temp_pos.x_ = (udat_.ball_.temp_pos.x_ + temp_vec.x_) / 2f;
 				udat_.ball_.temp_pos.z_ = (udat_.ball_.temp_pos.z_ + temp_vec.z_) / 2f;
 				Move(udat_.ball_.temp_pos, 1);
+}
 			}
 		}
 

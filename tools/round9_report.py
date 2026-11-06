@@ -358,6 +358,19 @@ def render(ctx,short=False):
         if not short:
             add('Fonte do compilador consultada: '+inline(primary['path'])+'; revisão '+inline(primary['revision'])+'; SHA-256 '+inline(primary['sha256'])+'. Trechos While.DoEmit '+primary['While_DoEmit']+', Do.DoEmit '+primary['Do_DoEmit']+', For.DoEmit '+primary['For_DoEmit']+'. Commit de fabricação do smcs instalado: '+primary['installed_compiler_source_commit']+'.')
     add(model_table(ctx))
+    if exists('reports/round9-control-results.json'):
+        control=read('reports/round9-control-results.json')
+        control_path=ctx['cfg'].get('control_extractor_validation','reports/round9-control-validation-public.json')
+        extraction=read(control_path);m=extraction['matched'];p=extraction['pending']
+        add('**Extrator de controle smcs.** Corpus congelado: '+inline(extraction['snapshot'])+'. Planos e árvores completos têm denominadores distintos; uma cobertura integral das instruções não completa uma árvore ambígua.',
+            table(['Métrica','Resultado'],[
+                ('Árvores completas iguais / pares completos',str(m['trees_equal'])+'/'+str(m['paired_tree_complete'])+' ('+pct(m['trees_equal'],m['paired_tree_complete'])+')'),
+                ('Cobertura das árvores nos corpos matched',str(m['paired_tree_complete'])+'/'+str(m['methods'])+' ('+pct(m['paired_tree_complete'],m['methods'])+')'),
+                ('Planos completos iguais / completos',str(m['plans_equal'])+'/'+str(m['paired_plan_complete'])),
+                ('Pendentes: IL completo / fonte completa / pares completos',str(p['il_tree_complete'])+' / '+str(p['source_tree_complete'])+' / '+str(p['paired_tree_complete'])),
+                ('Parte C: diferenças antes / reescritas com árvore igual / corpos fechados',str(control['structural_differences_before'])+' / '+str(control['control_rewrites_tree_equal_after'])+' / '+str(control['control_rewrites_matched'])),
+                ('Parte C: corpo adicional por locais sem uso',control['additional_calculated_unused_suffix_matched'])]))
+        add('A árvore original não distingue formas fonte que emitem os mesmos saltos sem evidência adicional. Ownership de salto ambíguo, EH, switch, construções anônimas e outros casos sem molde provado continuam incompletos. A AST é extraída somente do fonte; planos da compilação própria autenticam o vínculo das folhas, nunca inventam estrutura fonte. A correspondência final continua sendo corpo completo e metadados no verificador.')
     add('Precisão usa somente previsões completas; cobertura usa todos os corpos matched do corpus congelado. Incompletos ou métodos gerados sem mapeamento continuam UNKNOWN. Coincidência de tipos em previsão incompleta não é prova do lowering. '+policy_text(ctx))
     if not short:
         reasons=[]

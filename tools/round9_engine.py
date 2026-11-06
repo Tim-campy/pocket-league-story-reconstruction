@@ -558,6 +558,7 @@ def main():
                 mapped_offset = max(0, method['header']['code_size'] - 1)
             # Optional cache holds an immutable dump of the accepted generation;
             # failed trial binaries can overwrite disk without changing it.
+            symbol_method=None
             if symbol_cache:
                 symbol_method = symbol_cache.get(key, current_method=method,
                                                  require_equal_body=is_smcs)
@@ -578,6 +579,7 @@ def main():
                 debug_binary = c.build(debug=True)
                 debug_method = next(iter(inspect_methods(debug_binary, [key], symbols=True)['methods']), None) if debug_binary else None
                 if debug_method and not differences(method, debug_method)[0]:
+                    symbol_method=debug_method
                     point = select_point(debug_method, mapped_offset)
                     mapping_kind = 'MDB-full-body-equal-debug-plus-vs-minus'
                 else:
@@ -598,12 +600,32 @@ def main():
                 row['mapping_detail'] = point
                 break
             text = c.paths[logical].read_bytes().decode('utf-8-sig')
+            scoped_exit_evidence={}
+            if is_smcs:
+                from round9_scoped_exit_hints import scoped_exit_hints
+                source_bound=False
+                if symbol_cache and symbol_method and symbol_cache.stats['generation_proofs']:
+                    recorded=symbol_cache.stats['generation_proofs'][-1]
+                    live=mapping_source_proof()
+                    source_bound=(recorded.get('generation')==symbol_cache.generation
+                        and recorded.get('accepted_source_set_sha256')==live['accepted_source_set_sha256'])
+                scoped_exit_evidence=scoped_exit_hints(original[key],method,alignment,
+                    symbol_method,text,source_identity_confirmed=source_bound)
+                if scoped_exit_evidence.get('round9_scoped_exit_valid'):
+                    selected=select_point(symbol_method,scoped_exit_evidence['round9_scoped_exit_mapping_rebuilt_offset'])
+                    if selected and Path(selected['document']).resolve()==c.paths[logical].resolve():
+                        point=selected
+                    else:
+                        scoped_exit_evidence['round9_scoped_exit_valid']=False
+                        scoped_exit_evidence['round9_scoped_exit_evidence']['reason']='fresh_anchor_source_document_not_exact'
+                row.setdefault('scoped_exit_evidence',[]).append(scoped_exit_evidence)
             new_syntax_hash = syntax_identity()
             if new_syntax_hash != syntax_hash:
                 syntax.close()
                 syntax = TransformClient(syntax_path)
                 syntax_hash = new_syntax_hash
             hints = alias_hints(original[key], method, alignment['original_offset'], plain_local_types.get(key, []), type_lookup)
+            hints.update(scoped_exit_evidence)
             if is_smcs:
                 from round7_smcs_hints import rule_hints
                 current_prediction=slot_model.predict(path=str(c.paths[logical]),source=text,method_id=key)

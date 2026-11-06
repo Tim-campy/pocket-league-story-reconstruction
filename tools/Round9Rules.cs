@@ -12,6 +12,7 @@ public static partial class Round7TransformSyntax {
         AddRound9PartBRules(input,text,mapped,methodBody,model,point,patches,seen);
         AddRound9FloatingIdentityRules(input,text,mapped,methodBody,model,point,patches,seen);
         AddRound9PerArmStoreRules(input,text,mapped,methodBody,model,point,patches,seen);
+        AddRound9ScopedExitRules(input,text,mapped,methodBody,model,point,patches,seen);
         // Generation may include previously verified families. The engine still
         // filters all other families until this cycle's selected rule advances.
         if(input.TryGetProperty("round7_cycle_rules",out var learned)&&learned.ValueKind==JsonValueKind.Array) {

@@ -1,0 +1,129 @@
+{
+  "operation": "read-only-multiple-slot-causes-and-joint-selector-splitting",
+  "snapshot": "build/round9/cycles/b10/after",
+  "source_only": true,
+  "game_compilations": 0,
+  "fixture_report": "build\\round9\\new-slot-diagnosis\\fixture\\result.json",
+  "tool_sha256": {
+    "tools/Round7SlotModel.cs": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "tools/round7_slot_model.py": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+    "tools/round9_control_ast.py": "06e8f8dcf898237f784a6b5e2037aa1d225b26901d620a09c384c041c5357afa",
+    "tools/Round9ControlAst.cs": "1f4bed7a4a6603310645f23a20f55251ff93150f7050349dc1d9c8f075dbbf6c",
+    "tools/round9_control_il.py": "782dc4b922acfd00628854a77594c67ee40679d63f141b847dc356df4b3ac376",
+    "tools/round9_control_cfg.py": "e0192cb43930cde6abed6f1c5541b3c9720347b74dec1fc9ba94e92341c8b59d"
+  },
+  "cases": [
+    {
+      "id": "form.SubForm::DrawMenu(kairo.unity.ui.Graphics,System.Int32)->System.Void",
+      "original_IL_bytes": 2067,
+      "status": "CALCULATED_SOURCE_CANDIDATE_NOT_ORACLE_TESTED",
+      "original_locals": 34,
+      "own_locals": 32,
+      "candidate_model_complete": true,
+      "candidate_locals_exact": true,
+      "candidate_aliases": [
+        {
+          "name": "recoveredSelector1",
+          "slot": 28,
+          "original_lifetime": [
+            1318,
+            1491
+          ],
+          "original_store": 1318,
+          "own_store": 1318,
+          "own_recycled_slot": 31,
+          "expression_anchor_exact": true
+        },
+        {
+          "name": "recoveredSelector2",
+          "slot": 30,
+          "original_lifetime": [
+            1565,
+            1613
+          ],
+          "original_store": 1565,
+          "own_store": 1567,
+          "own_recycled_slot": 31,
+          "expression_anchor_exact": true
+        },
+        {
+          "name": "recoveredSelector3",
+          "slot": 32,
+          "original_lifetime": [
+            1679,
+            1822
+          ],
+          "original_store": 1679,
+          "own_store": 1696,
+          "own_recycled_slot": 31,
+          "expression_anchor_exact": true
+        }
+      ],
+      "own_body_identical_B10_C11": true
+    },
+    {
+      "id": "game.TPlayer::Script()->System.Boolean",
+      "original_IL_bytes": 9408,
+      "status": "DIAGNOSED_INCOMPLETE_NO_PROPOSAL",
+      "original_locals": 90,
+      "own_locals": 89,
+      "original_unused_slots": [
+        {
+          "slot": 17,
+          "type": "System.Single",
+          "IL_uses": 0
+        },
+        {
+          "slot": 33,
+          "type": "System.Single",
+          "IL_uses": 0
+        }
+      ],
+      "missing_named_selector": {
+        "original_slot": 1,
+        "original_store": 22,
+        "original_last_use": 9166,
+        "own_recycled_slot": 86
+      },
+      "additional_problem": "six recovered switches; protected returns and nonterminal switch-owned breaks make simple flat conversion unproved; other switches add reused local87",
+      "own_body_identical_B10_C11": true
+    },
+    {
+      "id": "form.SoccerForm::Draw_bonusFan(kairo.unity.ui.Graphics)->System.Void",
+      "original_IL_bytes": 3472,
+      "status": "DIAGNOSED_INCOMPLETE_NO_PROPOSAL",
+      "original_locals": 59,
+      "own_locals": 60,
+      "original_zero_chain_slots": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "original_zero_chain_length": 10,
+      "own_zero_chain_length": 9,
+      "missing_initialization_of_later_overwritten_local": {
+        "original_slot": 7,
+        "zero_store": 144,
+        "constant20_store": 148,
+        "own_variable": "num13",
+        "own_constant20_store": 145
+      },
+      "additional_problem": "four recovered switches (three switch opcodes) and one named selector missing; named declaration order alone cannot solve the whole body",
+      "own_body_identical_B10_C11": true
+    }
+  ],
+  "candidate_snapshot": "build/round9/cycles/c11/after",
+  "candidate_snapshot_sha256": "56f73b71ea0b9260621e76b46d32d835ec4155e9e4de5fcc8e14d75d8d5bf4a9",
+  "candidate_own_receipt_sha256": "b6191df0376094cf7427e908b8cd6e3f042dac4d11d9257979f485d01e0e3809",
+  "noncandidate_diagnoses_snapshot": "build/round9/cycles/b10/after; method bodies unchanged for these diagnostics at publication",
+  "model_types_exact": true,
+  "C11_own_dump_sha256": "83a29722015d80f95cffea5652ee0c9ee11c1813e52a61c63809b881edf00c92"
+}

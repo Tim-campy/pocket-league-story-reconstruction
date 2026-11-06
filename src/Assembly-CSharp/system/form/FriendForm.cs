@@ -1219,11 +1219,12 @@ Push(createdValue);
 				flag = apdat_.save_.ints[12] != 0;
 			}
 			ResourceManager resourceManager = resFriend_;
-			if (th_ != null)
-			{
+			if (th_ != null) {
 				ConnectForm.DrawConnect(g);
-			}
-			else if (type_ == 0)
+
+return;
+}
+if (type_ == 0)
 			{
 				int num = 12;
 				int num2 = 60;

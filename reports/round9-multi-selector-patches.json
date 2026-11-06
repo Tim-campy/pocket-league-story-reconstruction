@@ -1,0 +1,297 @@
+{
+  "operation": "joint-selector-local-splitting-source-only-proposal",
+  "family": "d9-calculated-multiple-selector-local-splitting",
+  "game_compilations": 0,
+  "adopted": false,
+  "body_oracle": "UNKNOWN",
+  "potential_methods": 1,
+  "potential_original_IL_bytes": 2067,
+  "calculator_sha256": "29262c0222a516b97f881040984d5e1fa3ac18f77eca3af0cc1efd27fe370d29",
+  "dependency_sha256": {
+    "tools/round9_multi_selector_calculate.py": "29262c0222a516b97f881040984d5e1fa3ac18f77eca3af0cc1efd27fe370d29",
+    "tools/test_round9_multi_selector.py": "ba17855336c2b1fce9389f16843c8bea77a10b0d09ec4e3931d826b290278d13",
+    "tools/Round7SlotModel.cs": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "tools/round7_slot_model.py": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+    "tools/round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+    "tools/round9_control_ast.py": "06e8f8dcf898237f784a6b5e2037aa1d225b26901d620a09c384c041c5357afa",
+    "tools/Round9ControlAst.cs": "1f4bed7a4a6603310645f23a20f55251ff93150f7050349dc1d9c8f075dbbf6c",
+    "tools/round9_control_il.py": "782dc4b922acfd00628854a77594c67ee40679d63f141b847dc356df4b3ac376",
+    "tools/round9_control_cfg.py": "e0192cb43930cde6abed6f1c5541b3c9720347b74dec1fc9ba94e92341c8b59d"
+  },
+  "evidence_sha256": {
+    "reports/round9-multi-selector-fixture.json": "05f644ba4332ec93d6b35fbbc76e1d840322d137dc41ad16cc8e1d20a5fa7123",
+    "reports/round9-multi-selector-diagnosis.json": "4f9dc3dbe3868b406db08a21ccbb7399d1503ceafa85b5eebfe0ea3c5447c749"
+  },
+  "snapshot": "build/round9/cycles/c11/after",
+  "snapshot_sha256": "56f73b71ea0b9260621e76b46d32d835ec4155e9e4de5fcc8e14d75d8d5bf4a9",
+  "patches": [
+    {
+      "start": 311228,
+      "end": 317450,
+      "before": "private void DrawMenu(Graphics g, int type)\r\n\t\t{\r\n\t\t\tint num = 3;\r\n\t\t\tint num2 = 29;\r\n\t\t\tint num3 = num2 * menus_.Length + 5;\r\n\t\t\tif (MyFormBase.Jp())\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < WIDTH.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tWIDTH[i] = WIDTH_DATA[0][i];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < WIDTH.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tWIDTH[j] = WIDTH_DATA[1][j];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint[] array = new int[3] { 20, 6, 0 };\r\n\t\t\tint num4 = WIDTH[type];\r\n\t\t\tint num5 = array[type];\r\n\t\t\tif (MyFormBase.Jp())\r\n\t\t\t{\r\n\t\t\t\tnum5 = 0;\r\n\t\t\t}\r\n\t\t\tGameView instance = GameView.GetInstance();\r\n\t\t\tint num6 = 0;\r\n\t\t\tint num7 = 0;\r\n\t\t\tif (g.GetOriginX() + num4 > instance.GetGameWidth())\r\n\t\t\t{\r\n\t\t\t\tnum6 = instance.GetGameWidth() - num4 - g.GetOriginX();\r\n\t\t\t}\r\n\t\t\tif (g.GetOriginY() + num3 > instance.GetGameHeight())\r\n\t\t\t{\r\n\t\t\t\tnum7 = instance.GetGameHeight() - num3 - g.GetOriginY();\r\n\t\t\t}\r\n\t\t\tfor (int k = 0; k < menus_.Length; k++)\r\n\t\t\t{\r\n\t\t\t\tint[] array2 = menus_[k];\r\n\t\t\t\tint num8 = 1000 * frame_ / num;\r\n\t\t\t\tint num9 = type * 2 + 1;\r\n\t\t\t\tif (k == select_)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum9--;\r\n\t\t\t\t}\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, num6 + 1, num7 + 1 + num2 * k, apdat_.resCom2_.seb[22], apdat_.resCom2_.img, num9, num8, num8);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tint num10 = num6 + 1;\r\n\t\t\t\t\tint num11 = num7 + 1 + num2 * k;\r\n\t\t\t\t\tint num12 = 0;\r\n\t\t\t\t\tif (type == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (k != select_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum12 += 30;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint num13 = num4 - 34 - 72;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 0, num12, 24, 30);\r\n\t\t\t\t\t\tnum10 += 24;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 24, num12, 72, 30);\r\n\t\t\t\t\t\tnum10 += 72;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 24, num12, num13, 30);\r\n\t\t\t\t\t\tnum10 += num13;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 96, num12, 10, 30);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (k != select_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum12 += 30;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint num14 = num4 - 15 - 70;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 106, num12, 4, 30);\r\n\t\t\t\t\t\tnum10 += 4;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 110, num12, 70, 30);\r\n\t\t\t\t\t\tnum10 += 70;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 110, num12, num14, 30);\r\n\t\t\t\t\t\tnum10 += num14;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 180, num12, 11, 30);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tint num15 = num6 + 10;\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum15 += 10;\r\n\t\t\t\t}\r\n\t\t\t\tint num16 = num7 + 7 + num2 * k;\r\n\t\t\t\tint num17 = num15;\r\n\t\t\t\tint num18 = num16;\r\n\t\t\t\tif (type_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tint frame = 0;\r\n\t\t\t\t\tint num19 = array2[0];\r\n\t\t\t\t\tif (num19 == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 5)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 5;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tapdat_.resCom2_.DrawSeb(g, num15 - 17, num16 - 2, 93, frame);\r\n\t\t\t\t\tnum17 += 42 + num5 / 2;\r\n\t\t\t\t\tGameView.AddTouch(g, 8, num6, num7 + num2 * k, num4, num2, 0x20000 | k);\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 4)\r\n\t\t\t\t{\r\n\t\t\t\t\tint frame2 = 0;\r\n\t\t\t\t\tint num20 = array2[0];\r\n\t\t\t\t\tif (num20 == 21)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe2 = 4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num20 == 22)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe2 = 5;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tapdat_.resCom2_.DrawSeb(g, num15 - 17, num16 - 2, 93, frame2);\r\n\t\t\t\t\tnum17 += 42 + num5 / 2;\r\n\t\t\t\t\tGameView.AddTouch(g, 8, num6, num7 + num2 * k, num4, num2, 0x20000 | k);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum17 += 34 + num5 / 2;\r\n\t\t\t\t\tGameView.AddTouch(g, 9, num6, num7 + num2 * k, num4, num2, 0x20000 | k);\r\n\t\t\t\t}\r\n\t\t\t\tif (k == select_)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_MAINMENU_SELECT);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_MAINMENU_NOTSELECT);\r\n\t\t\t\t}\r\n\t\t\t\tif (frame_ >= num)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MENU_STR[array2[0]], num17, num18 + 2, 2);\r\n\t\t\t\t}\r\n\t\t\t\tif (frame_ < num)\r\n\t\t\t\t{\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tif (type_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tswitch (array2[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\tif (LeagueData.IsExistNew() || QuestMatchData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 1:\r\n\t\t\t\t\t\tif (TrainingData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 2:\r\n\t\t\t\t\t\tif (TradeData.IsExistNew() || FanActData.IsExistNew() || TenantData.IsExistNew() || SponsorData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 3:\r\n\t\t\t\t\t\tif (FormationData.IsExistNew() || PlayerData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num21 = -12;\r\n\t\t\t\t\tswitch (array2[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\tcase 6:\r\n\t\t\t\t\t\tif (LeagueData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num21, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 8:\r\n\t\t\t\t\t\tif (QuestMatchData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num21, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 7)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num22 = -12;\r\n\t\t\t\t\tswitch (array2[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\tcase 12:\r\n\t\t\t\t\t\tif (TradeData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 14:\r\n\t\t\t\t\t\tif (FanActData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 15:\r\n\t\t\t\t\t\tif (TenantData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\tcase 16:\r\n\t\t\t\t\t\tif (SponsorData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (k == select_ && apdat_.IsTopForm(this))\r\n\t\t\t\t{\r\n\t\t\t\t\tint num23 = 0;\r\n\t\t\t\t\tif (type == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum23 = 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num6 < 120)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.resCom2_.seb[61].Draw(g, num6 + num4 + num23 + 2, num7 + 5 + num2 * k + 8, apdat_.resCom2_.img);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, num6 - 2, num7 + 5 + num2 * k + 8, apdat_.resCom2_.img);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "after": "private void DrawMenu(Graphics g, int type)\r\n\t\t{\r\n\t\t\tint num = 3;\r\n\t\t\tint num2 = 29;\r\n\t\t\tint num3 = num2 * menus_.Length + 5;\r\n\t\t\tif (MyFormBase.Jp())\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < WIDTH.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tWIDTH[i] = WIDTH_DATA[0][i];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < WIDTH.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tWIDTH[j] = WIDTH_DATA[1][j];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint[] array = new int[3] { 20, 6, 0 };\r\n\t\t\tint num4 = WIDTH[type];\r\n\t\t\tint num5 = array[type];\r\n\t\t\tif (MyFormBase.Jp())\r\n\t\t\t{\r\n\t\t\t\tnum5 = 0;\r\n\t\t\t}\r\n\t\t\tGameView instance = GameView.GetInstance();\r\n\t\t\tint num6 = 0;\r\n\t\t\tint num7 = 0;\r\n\t\t\tif (g.GetOriginX() + num4 > instance.GetGameWidth())\r\n\t\t\t{\r\n\t\t\t\tnum6 = instance.GetGameWidth() - num4 - g.GetOriginX();\r\n\t\t\t}\r\n\t\t\tif (g.GetOriginY() + num3 > instance.GetGameHeight())\r\n\t\t\t{\r\n\t\t\t\tnum7 = instance.GetGameHeight() - num3 - g.GetOriginY();\r\n\t\t\t}\r\n\t\t\tfor (int k = 0; k < menus_.Length; k++)\r\n\t\t\t{\r\n\t\t\t\tint[] array2 = menus_[k];\r\n\t\t\t\tint num8 = 1000 * frame_ / num;\r\n\t\t\t\tint num9 = type * 2 + 1;\r\n\t\t\t\tif (k == select_)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum9--;\r\n\t\t\t\t}\r\n\t\t\t\tif (MyFormBase.Jp())\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, num6 + 1, num7 + 1 + num2 * k, apdat_.resCom2_.seb[22], apdat_.resCom2_.img, num9, num8, num8);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tint num10 = num6 + 1;\r\n\t\t\t\t\tint num11 = num7 + 1 + num2 * k;\r\n\t\t\t\t\tint num12 = 0;\r\n\t\t\t\t\tif (type == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (k != select_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum12 += 30;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint num13 = num4 - 34 - 72;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 0, num12, 24, 30);\r\n\t\t\t\t\t\tnum10 += 24;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 24, num12, 72, 30);\r\n\t\t\t\t\t\tnum10 += 72;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 24, num12, num13, 30);\r\n\t\t\t\t\t\tnum10 += num13;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 96, num12, 10, 30);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (k != select_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum12 += 30;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint num14 = num4 - 15 - 70;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 106, num12, 4, 30);\r\n\t\t\t\t\t\tnum10 += 4;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 110, num12, 70, 30);\r\n\t\t\t\t\t\tnum10 += 70;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 110, num12, num14, 30);\r\n\t\t\t\t\t\tnum10 += num14;\r\n\t\t\t\t\t\tg.DrawImage(apdat_.resCom2_.img[25], num10, num11, 180, num12, 11, 30);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tint num15 = num6 + 10;\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum15 += 10;\r\n\t\t\t\t}\r\n\t\t\t\tint num16 = num7 + 7 + num2 * k;\r\n\t\t\t\tint num17 = num15;\r\n\t\t\t\tint num18 = num16;\r\n\t\t\t\tif (type_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tint frame = 0;\r\n\t\t\t\t\tint num19 = array2[0];\r\n\t\t\t\t\tif (num19 == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num19 == 5)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe = 5;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tapdat_.resCom2_.DrawSeb(g, num15 - 17, num16 - 2, 93, frame);\r\n\t\t\t\t\tnum17 += 42 + num5 / 2;\r\n\t\t\t\t\tGameView.AddTouch(g, 8, num6, num7 + num2 * k, num4, num2, 0x20000 | k);\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 4)\r\n\t\t\t\t{\r\n\t\t\t\t\tint frame2 = 0;\r\n\t\t\t\t\tint num20 = array2[0];\r\n\t\t\t\t\tif (num20 == 21)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe2 = 4;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num20 == 22)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tframe2 = 5;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tapdat_.resCom2_.DrawSeb(g, num15 - 17, num16 - 2, 93, frame2);\r\n\t\t\t\t\tnum17 += 42 + num5 / 2;\r\n\t\t\t\t\tGameView.AddTouch(g, 8, num6, num7 + num2 * k, num4, num2, 0x20000 | k);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tnum17 += 34 + num5 / 2;\r\n\t\t\t\t\tGameView.AddTouch(g, 9, num6, num7 + num2 * k, num4, num2, 0x20000 | k);\r\n\t\t\t\t}\r\n\t\t\t\tif (k == select_)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_MAINMENU_SELECT);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tg.SetColor(SC_MAINMENU_NOTSELECT);\r\n\t\t\t\t}\r\n\t\t\t\tif (frame_ >= num)\r\n\t\t\t\t{\r\n\t\t\t\t\tg.DrawString(MENU_STR[array2[0]], num17, num18 + 2, 2);\r\n\t\t\t\t}\r\n\t\t\t\tif (frame_ < num)\r\n\t\t\t\t{\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tif (type_ == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tint recoveredSelector1 = array2[0];\r\nif (recoveredSelector1 == 0) {\r\nif (LeagueData.IsExistNew() || QuestMatchData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n} else if (recoveredSelector1 == 1) {\r\nif (TrainingData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n} else if (recoveredSelector1 == 2) {\r\nif (TradeData.IsExistNew() || FanActData.IsExistNew() || TenantData.IsExistNew() || SponsorData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n} else if (recoveredSelector1 == 3) {\r\nif (FormationData.IsExistNew() || PlayerData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 18, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n}\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num21 = -12;\r\n\t\t\t\t\tint recoveredSelector2 = array2[0];\r\nif (recoveredSelector2 == 6) {\r\nif (LeagueData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num21, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n} else if (recoveredSelector2 == 8) {\r\nif (QuestMatchData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num21, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n}\r\n\t\t\t\t}\r\n\t\t\t\telse if (type_ == 7)\r\n\t\t\t\t{\r\n\t\t\t\t\tint num22 = -12;\r\n\t\t\t\t\tint recoveredSelector3 = array2[0];\r\nif (recoveredSelector3 == 12) {\r\nif (TradeData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n} else if (recoveredSelector3 == 14) {\r\nif (FanActData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n} else if (recoveredSelector3 == 15) {\r\nif (TenantData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n} else if (recoveredSelector3 == 16) {\r\nif (SponsorData.IsExistNew())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tDraw_newMark(g, num15 - 7 + num22, num16 - 5, frame2_);\r\n\t\t\t\t\t\t}\r\n}\r\n\t\t\t\t}\r\n\t\t\t\tif (k == select_ && apdat_.IsTopForm(this))\r\n\t\t\t\t{\r\n\t\t\t\t\tint num23 = 0;\r\n\t\t\t\t\tif (type == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum23 = 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num6 < 120)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.resCom2_.seb[61].Draw(g, num6 + num4 + num23 + 2, num7 + 5 + num2 * k + 8, apdat_.resCom2_.img);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.resCom2_.seb[60].Draw(g, num6 - 2, num7 + 5 + num2 * k + 8, apdat_.resCom2_.img);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "rule": "d9-calculated-multiple-selector-local-splitting",
+      "distance": 0,
+      "method_id": "form.SubForm::DrawMenu(kairo.unity.ui.Graphics,System.Int32)->System.Void",
+      "logical_path": "src/Assembly-CSharp/form/SubForm.cs",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "calculator_sha256": "29262c0222a516b97f881040984d5e1fa3ac18f77eca3af0cc1efd27fe370d29",
+      "syntax_source_sha256": "1f4bed7a4a6603310645f23a20f55251ff93150f7050349dc1d9c8f075dbbf6c",
+      "dependency_sha256": {
+        "tools/round9_multi_selector_calculate.py": "29262c0222a516b97f881040984d5e1fa3ac18f77eca3af0cc1efd27fe370d29",
+        "tools/test_round9_multi_selector.py": "ba17855336c2b1fce9389f16843c8bea77a10b0d09ec4e3931d826b290278d13",
+        "tools/Round7SlotModel.cs": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+        "tools/round7_slot_model.py": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+        "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+        "tools/round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+        "tools/round9_control_ast.py": "06e8f8dcf898237f784a6b5e2037aa1d225b26901d620a09c384c041c5357afa",
+        "tools/Round9ControlAst.cs": "1f4bed7a4a6603310645f23a20f55251ff93150f7050349dc1d9c8f075dbbf6c",
+        "tools/round9_control_il.py": "782dc4b922acfd00628854a77594c67ee40679d63f141b847dc356df4b3ac376",
+        "tools/round9_control_cfg.py": "e0192cb43930cde6abed6f1c5541b3c9720347b74dec1fc9ba94e92341c8b59d"
+      },
+      "evidence_sha256": {
+        "reports/round9-multi-selector-fixture.json": "05f644ba4332ec93d6b35fbbc76e1d840322d137dc41ad16cc8e1d20a5fa7123",
+        "reports/round9-multi-selector-diagnosis.json": "4f9dc3dbe3868b406db08a21ccbb7399d1503ceafa85b5eebfe0ea3c5447c749"
+      },
+      "complete": true,
+      "predicted_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32[]",
+        "System.Int32",
+        "System.Int32",
+        "surface.GameView",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32[]",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "source_only": true,
+      "candidate_compilations": 0,
+      "source_file_sha256": "7778903355020cbe512de758409e2340b680a0f56d81b96acff8abe0ab3afd25",
+      "source_text_sha256": "7778903355020cbe512de758409e2340b680a0f56d81b96acff8abe0ab3afd25",
+      "own_body_source_bound": true,
+      "own_compilation_receipt_sha256": "b6191df0376094cf7427e908b8cd6e3f042dac4d11d9257979f485d01e0e3809",
+      "original_dump_sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+      "own_dump_sha256": "83a29722015d80f95cffea5652ee0c9ee11c1813e52a61c63809b881edf00c92",
+      "snapshot_sha256": "56f73b71ea0b9260621e76b46d32d835ec4155e9e4de5fcc8e14d75d8d5bf4a9",
+      "source_snapshot": "build/round9/cycles/c11/after/Assembly-CSharp",
+      "rebase_policy": "unique exact UTF16 declaration; fresh complete exact NoEmit model required"
+    }
+  ],
+  "proofs": [
+    {
+      "slot": 28,
+      "labels": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "store_offset": 1318,
+      "first_use": 1318,
+      "last_use": 1491,
+      "store_expression_instructions": [
+        {
+          "offset": 1314,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 12
+          }
+        },
+        {
+          "offset": 1316,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1317,
+          "opcode": "ldelem.i4",
+          "operand": null
+        }
+      ],
+      "each_use_is_dispatch_test": true,
+      "own_store_offset": 1318,
+      "own_switch_reused_slot": 31,
+      "original_own_expression_anchor_exact": true,
+      "own_expression_instructions": [
+        {
+          "offset": 1314,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 12
+          }
+        },
+        {
+          "offset": 1316,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1317,
+          "opcode": "ldelem.i4",
+          "operand": null
+        }
+      ],
+      "name": "recoveredSelector1",
+      "selector": "array2[0]",
+      "source_span": {
+        "start": 315195,
+        "end": 315929
+      },
+      "terminal_breaks_removed": 4,
+      "selector_evaluations": 1
+    },
+    {
+      "slot": 30,
+      "labels": [
+        6,
+        8
+      ],
+      "store_offset": 1565,
+      "first_use": 1565,
+      "last_use": 1613,
+      "store_expression_instructions": [
+        {
+          "offset": 1561,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 12
+          }
+        },
+        {
+          "offset": 1563,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1564,
+          "opcode": "ldelem.i4",
+          "operand": null
+        }
+      ],
+      "each_use_is_dispatch_test": true,
+      "own_store_offset": 1567,
+      "own_switch_reused_slot": 31,
+      "original_own_expression_anchor_exact": true,
+      "own_expression_instructions": [
+        {
+          "offset": 1563,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 12
+          }
+        },
+        {
+          "offset": 1565,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1566,
+          "opcode": "ldelem.i4",
+          "operand": null
+        }
+      ],
+      "name": "recoveredSelector2",
+      "selector": "array2[0]",
+      "source_span": {
+        "start": 315999,
+        "end": 316329
+      },
+      "terminal_breaks_removed": 2,
+      "selector_evaluations": 1
+    },
+    {
+      "slot": 32,
+      "labels": [
+        12,
+        14,
+        15,
+        16
+      ],
+      "store_offset": 1679,
+      "first_use": 1679,
+      "last_use": 1822,
+      "store_expression_instructions": [
+        {
+          "offset": 1675,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 12
+          }
+        },
+        {
+          "offset": 1677,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1678,
+          "opcode": "ldelem.i4",
+          "operand": null
+        }
+      ],
+      "each_use_is_dispatch_test": true,
+      "own_store_offset": 1696,
+      "own_switch_reused_slot": 31,
+      "original_own_expression_anchor_exact": true,
+      "own_expression_instructions": [
+        {
+          "offset": 1692,
+          "opcode": "ldloc.s",
+          "operand": {
+            "local": 12
+          }
+        },
+        {
+          "offset": 1694,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1695,
+          "opcode": "ldelem.i4",
+          "operand": null
+        }
+      ],
+      "name": "recoveredSelector3",
+      "selector": "array2[0]",
+      "source_span": {
+        "start": 316399,
+        "end": 317021
+      },
+      "terminal_breaks_removed": 4,
+      "selector_evaluations": 1
+    }
+  ],
+  "fresh_current_unique_rebase": true,
+  "fresh_current_model_complete": true,
+  "fresh_current_model_types_exact": true
+}

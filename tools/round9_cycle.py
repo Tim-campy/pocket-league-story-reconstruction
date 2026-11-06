@@ -115,7 +115,8 @@ def main():
     run(['tools/round9_adopt.py','--run-label',label,'--baseline-dir',baseline,'--assemblies',args.assembly])
     cleanup=Path('reports/round9-'+label+'-whitespace.json')
     run(['tools/round9_clean_added_whitespace.py','--report',cleanup])
-    if json.loads((ROOT/cleanup).read_text(encoding='utf-8'))['blank_lines']:
+    cleaned=json.loads((ROOT/cleanup).read_text(encoding='utf-8'))
+    if cleaned['blank_lines'] or cleaned.get('nonblank_lines_edited',0):
         run(['tools/round9_adopt.py','--run-label',label,'--baseline-dir',baseline,'--assemblies',args.assembly,'--refresh-official-proof'])
     after_snapshot=baseline.parent/'after'
     run(['tools/round9_freeze.py','--destination',after_snapshot])

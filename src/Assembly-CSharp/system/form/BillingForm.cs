@@ -331,8 +331,7 @@ if (Config.APPLI_TYPE == 0) { text = "通信を許可し電波を確認して再
 			{
 				return;
 			}
-			if (threadState_ != 0)
-			{
+			if (threadState_ != 0) {
 				if (threadFrame_ == 1)
 				{
 					FormManager instance = FormManager.GetInstance();
@@ -353,8 +352,10 @@ if (Config.APPLI_TYPE == 0) { text = "通信を許可し電波を確認して再
 					{
 					}
 				}
-			}
-			else if (type_ == 0)
+
+return;
+}
+if (type_ == 0)
 			{
 				int num2 = MyFormBase.WNDFLAG_LEFT_ARW | MyFormBase.WNDFLAG_RIGHT_ARW;
 				apdat_.DrawBox(g, 37, 55, 203, 202);

@@ -13,3 +13,4 @@
 | 9 | KairoLibrary / brfalse / brtrue.s + ret | Corpo sob teste positivo de render com ramo GUI em else preserva saida final | Avanco parcial; nenhum novo matched; 1 tentativas da regra, 1 avancos | 0 | 0 |
 | 10 | KairoLibrary / ldc.i4.0 + ceq / brtrue.s | Materializar condicao como valor bool antes do if preserva negacao ceq | Nenhum candidato compilado avancou; 1 tentativas da regra, 0 avancos | 0 | 0 |
 | 11 | Assembly-CSharp / complete original control tree => existing-source leaves + calculated slots | Reemitir somente o controle completo com folhas bijetivas e locais calculados reproduz o corpo original | Novos corpos aprovados; 8 tentativas da regra, 8 avancos | 8 | 2269 |
+| 12 | Assembly-CSharp / ret => br | Ret original contra join sintetico: encerrar then e retirar else preservando escopo e condicao | Novos corpos aprovados; 7 tentativas da regra, 7 avancos | 2 | 1514 |

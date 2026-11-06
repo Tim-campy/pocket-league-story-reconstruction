@@ -9,7 +9,7 @@ LEGACY=('Round7TransformSyntax.cs','Round7NewRules.cs','Round7AliasRules.cs','Ro
  'Round7RoslynDeclarationRules.cs','Round7TerminalArmRules.cs','Round7BalancedBranchRules.cs','Round7InfiniteTailGuardRules.cs')
 
 def source_inputs():
-    paths=[ROOT/'tools'/name for name in LEGACY]+[ROOT/'tools/Round9Rules.cs',ROOT/'tools/Round8CompoundRules.cs',ROOT/'tools/Round8NullConditionalPolarityRules.cs',ROOT/'tools/Round9PartBRules.cs',ROOT/'tools/Round9FloatingIdentityRules.cs',ROOT/'tools/Round9PerArmStoreRules.cs']
+    paths=[ROOT/'tools'/name for name in LEGACY]+[ROOT/'tools/Round9Rules.cs',ROOT/'tools/Round8CompoundRules.cs',ROOT/'tools/Round8NullConditionalPolarityRules.cs',ROOT/'tools/Round9PartBRules.cs',ROOT/'tools/Round9FloatingIdentityRules.cs',ROOT/'tools/Round9PerArmStoreRules.cs',ROOT/'tools/Round9ScopedExitCandidates.cs',ROOT/'tools/Round9ScopedExitAdapter.cs']
     anchor='AddRound7InfiniteTailGuardRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);'
     main=paths[0].read_text(encoding='utf-8-sig')
     if main.count(anchor)!=1:raise ValueError('Unrecognized retained dispatcher')
