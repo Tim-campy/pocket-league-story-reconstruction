@@ -356,23 +356,20 @@ namespace form
 					{
 						string empty = string.Empty;
 						int num2 = JInteger.ParseInt(array2[0]);
-						if (num2 != -3)
-						{
-							switch (num2)
-							{
-							case -4:
-								ShowDialog("セーブデータを受信します", "はい\tいいえ");
-								return true;
-							case -1:
-								ShowDialog("全てのデータを送信します", "はい\tいいえ");
-								break;
-							case -2:
-								ShowDialog("まるごと送信します", "はい\tいいえ");
-								break;
-							default:
-							{
-								int i = num2 % 10 + 1;
-								if (num2 / 10 == 1)
+						if (num2 == -3) {
+
+						canvas_.ImeOnBlock(text_, 0, 1);
+} else {
+							if (num2 == -4) {
+ShowDialog("セーブデータを受信します", "はい\tいいえ");
+return true;
+} else if (num2 == -1) {
+ShowDialog("全てのデータを送信します", "はい\tいいえ");
+} else if (num2 == -2) {
+ShowDialog("まるごと送信します", "はい\tいいえ");
+} else {
+int i = num2 % 10 + 1;
+if (num2 / 10 == 1)
 								{
 									ShowDialog(MyFormBase.LT("中断データ<0> を送信します", JString.ValueOf(i)), "はい\tいいえ");
 								}
@@ -380,12 +377,10 @@ namespace form
 								{
 									ShowDialog(MyFormBase.LT("セーブデータ<0> を送信します", JString.ValueOf(i)), "はい\tいいえ");
 								}
-								break;
-							}
-							}
+}
+coalescedSwitchExit7380: ;
 							return true;
 						}
-						canvas_.ImeOnBlock(text_, 0, 1);
 					}
 				}
 				else if (apdat_.IsPushSoftLabel(2))
@@ -436,14 +431,16 @@ namespace form
 								int num3 = StreamUtil.ReadByte(byteArrayInputStream);
 								int num4 = StreamUtil.ReadByte(byteArrayInputStream);
 								int num5 = StreamUtil.ReadByte(byteArrayInputStream);
-								if (num5 >= 0)
+
+byte[] saveDataBytes;
+if (num5 >= 0)
 								{
-									byte[] data = StreamUtil.Read(byteArrayInputStream, true);
-									RecordStore.WriteRecord(0, 1, data);
+									saveDataBytes = StreamUtil.Read(byteArrayInputStream, true);
+									RecordStore.WriteRecord(0, 1, saveDataBytes);
 									try
 									{
 										Property property = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);
-										property.Load(data);
+										property.Load(saveDataBytes);
 										apdat_.sysSave_.ints[6] = property.ints[1] * 100 * 100 + property.ints[2] * 100 + property.ints[3];
 										apdat_.sysSave_.strs[4] = JString.ValueOf(property.lngs[0]);
 										apdat_.sysSave_.strs[2] = property.strs[0];
@@ -453,30 +450,30 @@ namespace form
 									{
 									}
 								}
-								if (num5 == -1)
-								{
+								if (num5 == -1) {
 									if (Config.APPLI_TYPE == 0)
 									{
-										byte[] data = StreamUtil.Read(byteArrayInputStream, true);
-										ScratchPad.WriteByteArray(0, 0, data);
+										saveDataBytes = StreamUtil.Read(byteArrayInputStream, true);
+										ScratchPad.WriteByteArray(0, 0, saveDataBytes);
 									}
 									else
 									{
-										RecordStore recordStore = null;
+										global::kairo.unity.ui.Dialog unusedOriginalDialog13;
+RecordStore recordStore = null;
 										try
 										{
 											recordStore = RecordStore.OpenRecordStore(0);
 											int numRecords = recordStore.GetNumRecords();
 											for (int j = 0; j < numRecords; j++)
 											{
-												byte[] data = StreamUtil.Read(byteArrayInputStream, true);
-												recordStore.WriteRecord(j, data);
+												saveDataBytes = StreamUtil.Read(byteArrayInputStream, true);
+												recordStore.WriteRecord(j, saveDataBytes);
 												if (j != 0)
 												{
 													try
 													{
 														Property property2 = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);
-														property2.Load(data);
+														property2.Load(saveDataBytes);
 														bool flag = j == 3 || j == 4;
 														int num6 = ((j != 3 && j != 1) ? 1 : 0);
 														apdat_.sysSave_.ints[((!flag) ? 6 : 11) + num6] = property2.ints[1] * 100 * 100 + property2.ints[2] * 100 + property2.ints[3];
@@ -505,13 +502,13 @@ namespace form
 										{
 										}
 									}
-								}
+								} else { }
 								if (num5 == -2)
 								{
-									byte[] data = StreamUtil.Read(byteArrayInputStream, true);
-									ScratchPad.WriteByteArray(0, 0, data);
-									data = StreamUtil.Read(byteArrayInputStream, true);
-									ScratchPad.WriteByteArray(1, 0, data);
+									saveDataBytes = StreamUtil.Read(byteArrayInputStream, true);
+									ScratchPad.WriteByteArray(0, 0, saveDataBytes);
+									saveDataBytes = StreamUtil.Read(byteArrayInputStream, true);
+									ScratchPad.WriteByteArray(1, 0, saveDataBytes);
 								}
 								byteArrayInputStream.Close();
 							}
