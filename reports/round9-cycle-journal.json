@@ -445,6 +445,36 @@
       "before_sha256": "4e3002588f07ce394f2f3adba1bd5205f512c359fc2aec70fea5470455465651",
       "after_measurement": "reports\\round9-cycle04-after-measurement.json",
       "after_sha256": "e2d23dfe7de0e86a16032bd38a5b3c94ce28ebafdff024984f9db82f4f3df7d5"
+    },
+    {
+      "cycle": 16,
+      "label": "cycle05",
+      "phase": "D",
+      "primary_target": "kairo.unity.ui.Graphics::_drawImage(kairo.unity.ui.Image,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Single)->System.Void",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "d9-explicit-float-identity-parameter",
+      "assembly": "KairoLibrary",
+      "pair": "conv.r4 => DELETION_POINT",
+      "hypothesis": "Conversao explicita Single para Single na ocorrencia comprovada preserva conv.r4 apos carga de parametro Single.",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 97
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 97,
+      "before_measurement": "reports\\round9-cycle05-before-measurement.json",
+      "before_sha256": "91b3e48727111783852425324b2f3d7b74adaf128bfcb943604b3e0382b1db0d",
+      "after_measurement": "reports\\round9-cycle05-after-measurement.json",
+      "after_sha256": "e8d931e2f19aaeabbad4d993a59b03de4407ab92501dfb20442bb129a3832390"
     }
   ],
   "consecutive_zero_cycles": 0

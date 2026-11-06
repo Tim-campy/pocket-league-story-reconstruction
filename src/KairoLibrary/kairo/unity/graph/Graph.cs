@@ -139,7 +139,7 @@ namespace kairo.unity.graph
 			{
 				return v1;
 			}
-			float num = frame / length;
+			float num = (float)(frame) / length;
 			float num2 = FastMath.Sin((float)Math.PI * num * 180f / (float)Math.PI);
 			float num3 = v0 + (v1 - v0) * (num + edging / ((float)Math.PI * 100f) * num2);
 			if (v0 < v1)
