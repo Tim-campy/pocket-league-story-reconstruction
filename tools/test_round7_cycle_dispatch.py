@@ -14,6 +14,7 @@ SOURCE='''class Fixture {
  static void EmptyBranch(int x) {if(x!=3) {count++;}}
  static void EmptyAnd(int x,int y) {if(x!=3 && y!=7) {count++;}}
  static string Concat(string a,string b) {return a+"\\t"+" "+b;}
+ static void LoopCondition(bool a,bool b) {while(a && b) {count++;}}
 }'''
 
 
@@ -53,6 +54,11 @@ def main():
             round7_cycle_rule='explicit-string-concat-preserve-literals',original_string_concat_arity=4)
         assert any(p['rule']=='explicit-string-concat-preserve-literals' for p in concat['patches'])
         checks.append('explicit Concat4 with original arity dispatch')
+        point=SOURCE.index('while(',SOURCE.index('void LoopCondition('))
+        loop_condition=client.request(path,source=SOURCE,offset=point,compiler='smcs',max_candidates=2048,
+            round7_cycle_rule='smcs-loop-condition-body-guard')
+        assert any(p['rule']=='smcs-loop-condition-body-guard' for p in loop_condition['patches'])
+        checks.append('loop condition split dispatch')
     (ROOT/'reports/round7-cycle-dispatch-tests.json').write_text(json.dumps({'passed':len(checks),'checks':checks,
         'game_candidate_compilations':0},indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'passed':len(checks)}))

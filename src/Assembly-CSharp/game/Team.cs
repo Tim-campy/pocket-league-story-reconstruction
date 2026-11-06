@@ -592,13 +592,14 @@ namespace game
 						}
 						receiverPIdBox_[0] = player.p_id_;
 						int p_id_ = player.p_id_;
-						for (int j = 1; j < receiverPIdBox_.Length && p_id_ == receiverPIdBox_[j]; j++)
-						{
-							if (j == receiverPIdBox_.Length - 1)
+						for (int j = 1; (j < receiverPIdBox_.Length); j++)
+{
+if ((p_id_ != receiverPIdBox_[j])) { break; }
+if (j == receiverPIdBox_.Length - 1)
 							{
 								players_receive_.AddElement(player);
 							}
-						}
+}
 					}
 					else
 					{
@@ -629,8 +630,7 @@ namespace game
 						}
 					}
 				}
-				else if (udat_.gm_.gameState_ != team_id_ && udat_.gm_.gameState_ != 1 - team_id_)
-				{
+				else if ((udat_.gm_.gameState_ == team_id_) || (udat_.gm_.gameState_ == 1 - team_id_)) { } else {
 				}
 				for (int l = 0; l < players_.Length; l++)
 				{

@@ -1318,15 +1318,15 @@ PlayerData.Employ(l);
 					if (num3 != flg_playerAll)
 					{
 						int num4 = apdat_.pData_.Length - 1;
-						while (num4 >= 0 && udat_.memberPDataist_.Size() < 30)
-						{
-							PlayerData playerData = apdat_.pData_[num4];
-							if (!BitUtil.Check(playerData.flag_, 12))
-							{
+						while ((num4 >= 0))
+{
+if ((udat_.memberPDataist_.Size() >= 30)) { break; }
+PlayerData playerData = apdat_.pData_[num4];
+if (BitUtil.Check(playerData.flag_, 12)) { } else {
 								PlayerData.Employ(num4);
 							}
-							num4--;
-						}
+num4--;
+}
 					}
 				}
 				if (select_ == 8)
@@ -1341,10 +1341,8 @@ PlayerData.Employ(l);
 						for (int i = 0; i < apdat_.pData_.Length; i++)
 						{
 							PlayerData playerData2 = apdat_.pData_[i];
-							if (!BitUtil.Check(playerData2.flag_, 12))
-							{
-								playerData2.SetLv(30);
-							}
+							if (BitUtil.Check(playerData2.flag_, 12)) { continue; }
+playerData2.SetLv(30);
 						}
 					}
 				}
@@ -1365,10 +1363,8 @@ PlayerData.Employ(l);
 						for (int k = 0; k < apdat_.pData_.Length; k++)
 						{
 							PlayerData playerData3 = apdat_.pData_[k];
-							if (!BitUtil.Check(playerData3.flag_, 12))
-							{
-								playerData3.AddPhysicalParam(array);
-							}
+							if (BitUtil.Check(playerData3.flag_, 12)) { continue; }
+playerData3.AddPhysicalParam(array);
 						}
 					}
 				}
@@ -1426,8 +1422,7 @@ PlayerData.Employ(l);
 					{
 						flg_loadCheck = 1;
 					}
-					if (num9 != flg_loadCheck)
-					{
+					if (num9 != flg_loadCheck) {
 						for (int n = 0; n < udat_.tenants_.Length; n++)
 						{
 							udat_.tenants_[n].Init(TenantData.TENANT_ROOT[n]);
@@ -1456,7 +1451,7 @@ PlayerData.Employ(l);
 						apdat_.mapMain_.UpdateTrainingCoatNum();
 						udat_.tAreaLv_ = AppData.ClampMax(udat_.tAreaLv_ + 1, 2);
 						apdat_.frmGame_.SetAllDraw();
-					}
+					} else { }
 				}
 				if (select_ == 14 && (canvas_.CheckKeyRepeat(65536) || canvas_.CheckKeyRepeat(262144) || canvas_.CheckKeyRepeat(1048576)))
 				{

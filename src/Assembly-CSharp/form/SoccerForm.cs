@@ -1095,9 +1095,11 @@ namespace form
 			{
 				apdat_.camera.Update_pos();
 			}
-			for (int i = 0; i < num2 && !_update(i); i++)
-			{
-			}
+			for (int i = 0; (i < num2); i++)
+{
+if ((_update(i))) { break; }
+
+}
 			proc_time = JSystem.CurrentTimeMillis() - num;
 			return true;
 		}

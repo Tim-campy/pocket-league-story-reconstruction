@@ -661,9 +661,11 @@ namespace form
 			{
 				apdat_.camera.Update_pos();
 			}
-			for (int i = 0; i < num && !_update(i); i++)
-			{
-			}
+			for (int i = 0; (i < num); i++)
+{
+if ((_update(i))) { break; }
+
+}
 			errFunc_ = -1;
 			return true;
 		}
