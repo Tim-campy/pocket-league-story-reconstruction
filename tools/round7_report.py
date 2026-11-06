@@ -128,6 +128,7 @@ def main():
         'FastVector: o original grava `<>7__wrap1:!0[]` com `stfld` no offset 35; `<>7__wrap2:Int32` é o índice sintético. O campo é a cópia da coleção do `foreach`, cujo escopo atravessa os `yield return` e precisa sobreviver às retomadas do iterador. Ele existe nos dois lados porque os dois fontes possuem esse foreach. A reconstrução acrescentava antes dele `T[] array = elementData;`: esse alias só era usado para iniciar o foreach, não precisava sobreviver ao yield e ficava em um slot local adicional. Usar diretamente `foreach (T val in elementData)` removeu o slot redundante e preservou os campos; o corpo MoveNext completo bateu. A declaração histórica literal permanece UNKNOWN; não foi necessário escrever um campo ou classe gerada.','',
         '**Modelos de slots — validação contra a linha de base**','']
     rows=[]
+    model_reasons=[]
     for name,file in [('smcs','round7-slot-model-validation.json'),('Roslyn 1.1','round7-roslyn-model-validation.json')]:
         d=read('reports/'+file)
         assembly='Assembly-CSharp' if name=='smcs' else 'KairoLibrary'
@@ -137,8 +138,15 @@ def main():
             raise ValueError('Model validation source/client changed: '+name)
         if sha(ROOT/('build/round7/baseline/'+assembly+'/verification.json'))!=d['baseline_receipt_sha256']:
             raise ValueError('Model validation baseline changed: '+name)
-        rows.append((name,d['matched_bodies'],d['matched_source_mapped'],d['matched_source_unmapped'],d['matched_model_complete'],d['matched_complete_exact'],pct(d['matched_complete_exact'],d['matched_model_complete']),pct(d['matched_model_complete'],d['matched_bodies']),d['matched_mapped_incomplete']))
-    out += [table(['Modelo','Corpos matched','Mapeados','Gerados/não mapeados','Assinaturas completas','Exatas completas','Precisão','Cobertura de completas','Mapeados incompletos'],rows),'',
+        rows.append((name,d['matched_bodies'],d['matched_source_mapped'],d['matched_source_unmapped'],d['matched_model_complete'],d['matched_complete_exact'],pct(d['matched_complete_exact'],d['matched_model_complete']),pct(d['matched_model_complete'],d['matched_bodies']),d['matched_mapped_incomplete'],d['matched_mapped_incomplete_equal']))
+        classifications=Counter()
+        for reason,count in d['matched_incomplete_classifications'].items():
+            classifications[reason.split(':',1)[0]]+=count
+        model_reasons.extend((name,reason,count) for reason,count in classifications.most_common())
+    out += [table(['Modelo','Corpos matched','Mapeados','Gerados/não mapeados','Assinaturas completas','Exatas completas','Precisão','Cobertura de completas','Mapeados incompletos','Incompletos com lista de tipos coincidente'],rows),'',
+        'Uma lista de tipos coincidente numa previsão incompleta não autoriza testar o candidato: o lowering ou scheduler não modelado pode introduzir outros slots após a mudança de fonte.','',
+        'Classificação das limitações restantes dos modelos. Contagens de razões são não exclusivas: um método pode ter mais de um motivo. Previsões completas incorretas no corpus de validação: zero; casos sem suporte permanecem UNKNOWN.','',
+        table(['Modelo','Razão agrupada','Ocorrências'],model_reasons),'',
         'A taxa das previsões completas não mede cobertura total. Casos incompletos e gerados sem mapeamento permanecem UNKNOWN; não recebem aprovação por assinatura vazia. O smcs resolve variáveis em ordem de inserção do bloco; nomes não determinam slots. O Roslyn usa ordem de declaração e temporários por assinatura, mas o escalonador de pilha pode eliminar locais. Capturas, lowering e escalonamento não modelados são rejeitados explicitamente. As notas `docs/notes/round7-slot-model.md` e `docs/notes/round7-roslyn-model.md` identificam os arquivos e trechos dos compiladores consultados.','',
         'Trechos consultados: Roslyn, snapshot `4cb203dab89e1542cdf7d88cb6d32767bc0e5460`, `src/Compilers/CSharp/Portable/CodeGen/EmitStatement.cs:594–613`: `foreach (var local in block.Locals)` chama `DefineLocal(...)` antes de `foreach (var statement in block.Statements) EmitStatement(statement)`. Mono/Unity, snapshot `b6587926c0f146c8b12985744f33a13b39a22d57`, `mcs/mcs/statement.cs:1225–1239`: `if (HoistedVariableReference != null) return;`, seguido da declaração do local quando `builder == null`. Em `ExplicitBlock.Emit`, o storey é instanciado na entrada do bloco, após os locais ordinários. A correspondência exata desses snapshots à fabricação dos executáveis instalados permanece UNKNOWN.','',
         '## 4. PENDENTES POR GRUPO','']
