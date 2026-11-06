@@ -640,7 +640,7 @@ namespace form
 				{
 					num = 10;
 				}
-				if (canvas_.CheckKeyRepeat(16) && !canvas_.CheckKeyRepeat(32))
+				if (canvas_.CheckKeyRepeat(16) && canvas_.CheckKeyRepeat(32))
 				{
 				}
 			}

@@ -1,0 +1,93 @@
+// Injected into an isolated copy of the source-only model; no Emit is used.
+    static object CoalesceResponse(JsonElement input) {
+        string path=Path.GetFullPath(input.GetProperty("path").GetString()),text=input.GetProperty("source").GetString();
+        var tree=CSharpSyntaxTree.ParseText(text,path:path);var compilation=Compilation.ReplaceSyntaxTree(Trees[path],tree);
+        var sem=compilation.GetSemanticModel(tree);var root=tree.GetRoot();string mode=input.GetProperty("coalesce_mode").GetString();
+        int bodyStart=input.GetProperty("body_start").GetInt32();var body=root.DescendantNodes().OfType<BlockSyntax>().Single(n=>n.SpanStart==bodyStart);
+        string nl=text.Contains("\r\n")?"\r\n":"\n";
+        var edits=new List<(int start,int end,string after)>();
+        string FreshName(string name){var used=new HashSet<string>(body.DescendantTokens().Where(t=>t.IsKind(SyntaxKind.IdentifierToken)).Select(t=>t.ValueText));while(used.Contains(name))name+="_";return name;}
+        string Apply(string source,int offset,IEnumerable<(int start,int end,string after)> changes){foreach(var change in changes.OrderByDescending(e=>e.start))source=source.Substring(0,change.start-offset)+change.after+source.Substring(change.end-offset);return source;}
+        if(mode=="merge-root-chain") {
+            var starts=new HashSet<int>(input.GetProperty("group_starts").EnumerateArray().Select(v=>v.GetInt32()));
+            var variables=body.DescendantNodes().OfType<VariableDeclaratorSyntax>().Where(v=>starts.Contains(v.SpanStart)).ToArray();
+            if(variables.Length!=starts.Count||variables.Length<2)throw new Exception("group_not_unique");
+            var symbols=variables.Select(v=>sem.GetDeclaredSymbol(v) as ILocalSymbol).ToArray();
+            if(symbols.Any(s=>s==null||s.IsConst)||symbols.Any(s=>!SymbolEqualityComparer.Default.Equals(s.Type,symbols[0].Type)))throw new Exception("group_types_or_const");
+            var uses=body.DescendantNodes().OfType<IdentifierNameSyntax>().Where(n=>symbols.Any(s=>SymbolEqualityComparer.Default.Equals(s,sem.GetSymbolInfo(n).Symbol))).ToArray();
+            if(uses.Any(u=>u.Ancestors().TakeWhile(a=>a!=body).Any(a=>a is AnonymousFunctionExpressionSyntax)))throw new Exception("captured_group_rejected");
+            var common=variables[0].Ancestors().OfType<BlockSyntax>().First(b=>variables.All(v=>b.Span.Contains(v.Span)));
+            if(common!=body)throw new Exception("root_zero_chain_requires_root_common_ancestor");
+            string name=FreshName("coalescedValue");
+            var statements=variables.Select(v=>v.Parent?.Parent as LocalDeclarationStatementSyntax).ToArray();
+            if(statements.Any(s=>s==null||s.Declaration.Variables.Count!=1))throw new Exception("group_requires_single_declarations");
+            foreach(var use in uses)if(!statements.Any(s=>s.Span.Contains(use.Span)))edits.Add((use.SpanStart,use.Span.End,name));
+            foreach(var variable in variables) {
+                var statement=(LocalDeclarationStatementSyntax)variable.Parent.Parent;
+                string after="";
+                if(variable.Initializer!=null) {
+                    var value=variable.Initializer.Value;
+                    var inner=uses.Where(u=>value.Span.Contains(u.Span)).Select(u=>(u.SpanStart,u.Span.End,name));
+                    after=name+" = "+Apply(value.ToString(),value.SpanStart,inner)+";";
+                }
+                edits.Add((statement.SpanStart,statement.Span.End,after));
+            }
+            var names=input.GetProperty("root_names_by_slot").EnumerateArray().Select(v=>v.GetString()).ToArray();
+            if(names.Length!=4||names[0]!="$coalesced")throw new Exception("expected_four_root_slots");
+            names[0]=name;
+            var zeroStatements=new HashSet<LocalDeclarationStatementSyntax>();
+            foreach(var oldName in names.Skip(1)) {
+                var decl=body.Statements.OfType<LocalDeclarationStatementSyntax>().Single(s=>s.Declaration.Variables.Count==1&&s.Declaration.Variables[0].Identifier.ValueText==oldName);
+                zeroStatements.Add(decl);
+            }
+            foreach(var statement in zeroStatements)edits.Add((statement.SpanStart,statement.Span.End,""));
+            string type=symbols[0].Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+            edits.Add((body.OpenBraceToken.Span.End,body.OpenBraceToken.Span.End,nl+type+" "+string.Join(", ",names)+";"+nl+string.Join(" = ",names)+" = 0;"+nl));
+        } else if(mode=="tested-local") {
+            string expression=input.GetProperty("expression").GetString();
+            var call=body.DescendantNodes().OfType<InvocationExpressionSyntax>().First(n=>n.ToString()==expression&&n.Ancestors().OfType<IfStatementSyntax>().Any(i=>i.Condition.Span.Contains(n.Span)));
+            var statement=call.Ancestors().OfType<IfStatementSyntax>().First(i=>i.Condition.Span.Contains(call.Span));
+            if(statement.Parent is not BlockSyntax)throw new Exception("tested_local_not_in_block");
+            string name=FreshName("testedValue");string type=sem.GetTypeInfo(call).Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
+            string changed=Apply(statement.ToString(),statement.SpanStart,new[]{(call.SpanStart,call.Span.End,name)});
+            edits.Add((statement.SpanStart,statement.Span.End,type+" "+name+" = "+expression+";"+nl+changed));
+        } else if(mode=="switches-to-if") {
+            foreach(var sw in body.DescendantNodes().OfType<SwitchStatementSyntax>()) {
+                string selector=sw.Expression.ToString(),prefix="",exit=FreshName("coalescedSwitchExit"+sw.SpanStart);
+                if(sw.Expression is not IdentifierNameSyntax || sem.GetSymbolInfo(sw.Expression).Symbol is not ILocalSymbol) {
+                    if(!input.TryGetProperty("allow_call_selector",out var allowed)||selector!=allowed.GetString()||sw.Parent is not BlockSyntax)throw new Exception("switch_selector_not_stable_local");
+                    selector=FreshName("switchValue");prefix=sem.GetTypeInfo(sw.Expression).Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)+" "+selector+" = "+sw.Expression+";"+nl;
+                }
+                var branches=new List<string>();
+                foreach(var section in sw.Sections) {
+                    bool isDefault=section.Labels.Any(l=>l is DefaultSwitchLabelSyntax);
+                    if(isDefault&&(section.Labels.Count!=1||section!=sw.Sections.Last()))throw new Exception("default_must_be_single_last");
+                    var statements=section.Statements.ToList();
+                    if(statements.Count==1&&statements[0] is BlockSyntax block)statements=block.Statements.ToList();
+                    if(statements.LastOrDefault() is not BreakStatementSyntax)throw new Exception("switch_section_missing_terminal_break");
+                    statements.RemoveAt(statements.Count-1);
+                    if(statements.SelectMany(s=>s.DescendantNodesAndSelf()).Any(n=>n is GotoStatementSyntax))throw new Exception("nested_goto_rejected");
+                    var breaks=statements.SelectMany(s=>s.DescendantNodesAndSelf()).OfType<BreakStatementSyntax>().Where(b=>!b.Ancestors().TakeWhile(a=>a!=sw).Any(a=>a is ForStatementSyntax||a is ForEachStatementSyntax||a is WhileStatementSyntax||a is DoStatementSyntax||a is SwitchStatementSyntax)).ToArray();
+                    string condition=isDefault?null:string.Join(" || ",section.Labels.Cast<CaseSwitchLabelSyntax>().Select(l=>selector+" == "+l.Value));
+                    string commands=string.Join(nl,statements.Select(s=>Apply(s.ToString(),s.SpanStart,breaks.Where(b=>s.Span.Contains(b.Span)).Select(b=>(b.SpanStart,b.Span.End,"goto "+exit+";")))));
+                    branches.Add((isDefault?"":"if ("+condition+") ")+"{"+nl+commands+nl+"}");
+                }
+                edits.Add((sw.SpanStart,sw.Span.End,prefix+string.Join(" else ",branches)+nl+exit+": ;"));
+            }
+        } else if(mode=="reserve-before") {
+            int start=input.GetProperty("statement_start").GetInt32();
+            if(!body.DescendantNodes().OfType<LocalDeclarationStatementSyntax>().Any(s=>s.SpanStart==start))throw new Exception("reserve_requires_declaration_boundary");
+            string name=FreshName("unusedOriginalSlot"+input.GetProperty("original_slot").GetInt32());
+            edits.Add((start,start,input.GetProperty("type_source").GetString()+" "+name+";"+nl));
+        } else if(mode=="reserve-variable-before") {
+            int start=input.GetProperty("variable_start").GetInt32();
+            var variable=body.DescendantNodes().OfType<VariableDeclaratorSyntax>().Single(v=>v.SpanStart==start);
+            if(variable.Parent is not VariableDeclarationSyntax declaration||declaration.Type.IsVar)throw new Exception("reserve_requires_explicit_local_declaration");
+            if(Key((sem.GetDeclaredSymbol(variable) as ILocalSymbol)?.Type)!=input.GetProperty("type_fullname").GetString())throw new Exception("reserved_type_differs_from_neighbor");
+            string name=FreshName("unusedOriginalSlot"+input.GetProperty("original_slot").GetInt32());
+            edits.Add((start,start,name+", "));
+        } else throw new Exception("unknown_coalesce_mode");
+        var ordered=edits.OrderBy(e=>e.start).ThenBy(e=>e.end).ToArray();
+        for(int i=1;i<ordered.Length;i++)if(ordered[i].start<ordered[i-1].end)throw new Exception("overlapping_semantic_edits");
+        return new {source=Apply(text,0,edits),source_only=true,candidate_compiled=false,edits=edits.Count};
+    }

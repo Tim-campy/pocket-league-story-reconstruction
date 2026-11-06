@@ -1,0 +1,394 @@
+{
+  "operation": "independent-smcs-coalesce-fixture",
+  "candidate_game_compilations": 0,
+  "fixture_assembly_compilations": 1,
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "source_sha256": "be225a0822a356af7f826576cc886ac8d8b46545ad111a0d1e06492128520f1e",
+  "source": "public static class CoalesceFixture {\n static void Sink(int x,int a,int b,int c){}\n public static void Original(bool first){\n  int x,a,b,c; x=a=b=c=0;\n  if(first){x=7;Sink(x,a,b,c);}else{x=9;Sink(x,a,b,c);}\n }\n public static void Split(bool first){\n  int c;int b;int a=(b=(c=0));\n  if(first){int dx=7;Sink(dx,a,b,c);}else{int dx=9;Sink(dx,a,b,c);}\n }\n public static void CoalescedDeclarationsOnly(bool first){\n  int x;int c;int b;int a=(b=(c=0));\n  if(first){x=7;Sink(x,a,b,c);}else{x=9;Sink(x,a,b,c);}\n }\n public static void CoalescedAndChain(bool first){\n  int x;int a;int b;int c;x=a=b=c=0;\n  if(first){x=7;Sink(x,a,b,c);}else{x=9;Sink(x,a,b,c);}\n }\n}",
+  "methods": [
+    {
+      "method_id": "CoalesceFixture::Sink(System.Int32,System.Int32,System.Int32,System.Int32)->System.Void",
+      "local_types": [],
+      "model_complete": true,
+      "model_exact": true,
+      "original_body_equal": false,
+      "first_instructions": [
+        {
+          "offset": 0,
+          "opcode": "ret",
+          "operand": null
+        }
+      ],
+      "original_difference_reasons": [
+        "signature",
+        "header",
+        "locals",
+        "instructions",
+        "method_attributes",
+        "resolved_body_bytes"
+      ]
+    },
+    {
+      "method_id": "CoalesceFixture::Original(System.Boolean)->System.Void",
+      "local_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "model_complete": true,
+      "model_exact": true,
+      "original_body_equal": true,
+      "first_instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 2,
+          "opcode": "stloc.3",
+          "operand": null
+        },
+        {
+          "offset": 3,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 4,
+          "opcode": "stloc.2",
+          "operand": null
+        },
+        {
+          "offset": 5,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 9,
+          "opcode": "brfalse",
+          "operand": {
+            "branch": 30
+          }
+        },
+        {
+          "offset": 14,
+          "opcode": "ldc.i4.7",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 16,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 17,
+          "opcode": "ldloc.1",
+          "operand": null
+        }
+      ],
+      "original_difference_reasons": []
+    },
+    {
+      "method_id": "CoalesceFixture::Split(System.Boolean)->System.Void",
+      "local_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "model_complete": true,
+      "model_exact": true,
+      "original_body_equal": false,
+      "first_instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 2,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 3,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 4,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.2",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "brfalse",
+          "operand": {
+            "branch": 28
+          }
+        },
+        {
+          "offset": 12,
+          "opcode": "ldc.i4.7",
+          "operand": null
+        },
+        {
+          "offset": 13,
+          "opcode": "stloc.3",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldloc.3",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "ldloc.2",
+          "operand": null
+        },
+        {
+          "offset": 16,
+          "opcode": "ldloc.1",
+          "operand": null
+        },
+        {
+          "offset": 17,
+          "opcode": "ldloc.0",
+          "operand": null
+        }
+      ],
+      "original_difference_reasons": [
+        "signature",
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    },
+    {
+      "method_id": "CoalesceFixture::CoalescedDeclarationsOnly(System.Boolean)->System.Void",
+      "local_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "model_complete": true,
+      "model_exact": true,
+      "original_body_equal": false,
+      "first_instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 2,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 3,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 4,
+          "opcode": "stloc.2",
+          "operand": null
+        },
+        {
+          "offset": 5,
+          "opcode": "stloc.3",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "brfalse",
+          "operand": {
+            "branch": 28
+          }
+        },
+        {
+          "offset": 12,
+          "opcode": "ldc.i4.7",
+          "operand": null
+        },
+        {
+          "offset": 13,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 14,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "ldloc.3",
+          "operand": null
+        },
+        {
+          "offset": 16,
+          "opcode": "ldloc.2",
+          "operand": null
+        },
+        {
+          "offset": 17,
+          "opcode": "ldloc.1",
+          "operand": null
+        }
+      ],
+      "original_difference_reasons": [
+        "signature",
+        "header",
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    },
+    {
+      "method_id": "CoalesceFixture::CoalescedAndChain(System.Boolean)->System.Void",
+      "local_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32"
+      ],
+      "model_complete": true,
+      "model_exact": true,
+      "original_body_equal": true,
+      "first_instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldc.i4.0",
+          "operand": null
+        },
+        {
+          "offset": 1,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 2,
+          "opcode": "stloc.3",
+          "operand": null
+        },
+        {
+          "offset": 3,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 4,
+          "opcode": "stloc.2",
+          "operand": null
+        },
+        {
+          "offset": 5,
+          "opcode": "dup",
+          "operand": null
+        },
+        {
+          "offset": 6,
+          "opcode": "stloc.1",
+          "operand": null
+        },
+        {
+          "offset": 7,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 8,
+          "opcode": "ldarg.0",
+          "operand": null
+        },
+        {
+          "offset": 9,
+          "opcode": "brfalse",
+          "operand": {
+            "branch": 30
+          }
+        },
+        {
+          "offset": 14,
+          "opcode": "ldc.i4.7",
+          "operand": null
+        },
+        {
+          "offset": 15,
+          "opcode": "stloc.0",
+          "operand": null
+        },
+        {
+          "offset": 16,
+          "opcode": "ldloc.0",
+          "operand": null
+        },
+        {
+          "offset": 17,
+          "opcode": "ldloc.1",
+          "operand": null
+        }
+      ],
+      "original_difference_reasons": [
+        "signature"
+      ]
+    }
+  ],
+  "fixture_body_comparison": "Complete canonical body cells, locals and EH; fixture method names differ, so signature identity is reported separately. No game states are affected."
+}

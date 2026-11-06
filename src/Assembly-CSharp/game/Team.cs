@@ -1712,7 +1712,7 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 				{
 					eva_risk_ = 100;
 				}
-				if (chargeNum_ < 4)
+				if (chargeNum_ >= 4)
 				{
 				}
 			}

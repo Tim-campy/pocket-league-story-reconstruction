@@ -10721,7 +10721,7 @@ if (value < scrollValue_)
 				{
 					g.SetColor(Graphics.GetColorOfRGB(205, 235, 111));
 					g.FillRect(right - 6 - inputFig_ * 6 - 1, top, 6f, 12f);
-					if (!apdat_.IsTopForm(this))
+					if (apdat_.IsTopForm(this))
 					{
 					}
 				}
