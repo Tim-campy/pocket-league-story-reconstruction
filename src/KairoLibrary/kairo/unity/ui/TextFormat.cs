@@ -52,14 +52,8 @@ namespace kairo.unity.ui
 				{
 					continue;
 				}
-				switch (i)
-				{
-				case 0:
-					font_ = JInteger.ParseInt(text);
-					break;
-				case 1:
-				case 2:
-				{
+				if ((i == 0)) { font_ = JInteger.ParseInt(text);
+					 } else if ((i == 1) || (i == 2)) { {
 					char c = text.CharAt(0);
 					if (c == '+' || c == '-' || c == '*' || c == '/')
 					{
@@ -67,21 +61,11 @@ namespace kairo.unity.ui
 					}
 					int num = (int)(JFloat.ParseFloat(text) * 10f);
 					int[] array2 = new int[2];
-					switch (c)
-					{
-					case '+':
-						array2[0] = 1;
-						break;
-					case '-':
-						array2[0] = 2;
-						break;
-					case '*':
-						array2[0] = 3;
-						break;
-					case '/':
-						array2[0] = 4;
-						break;
-					}
+					if ((c == '+')) { array2[0] = 1;
+						 } else if ((c == '-')) { array2[0] = 2;
+						 } else if ((c == '*')) { array2[0] = 3;
+						 } else if ((c == '/')) { array2[0] = 4;
+						 }
 					array2[1] = num;
 					if (i == 1)
 					{
@@ -91,12 +75,9 @@ namespace kairo.unity.ui
 					{
 						y_ = array2;
 					}
-					break;
-				}
-				case 3:
-					anchor_ = JInteger.ParseInt(text);
-					break;
-				}
+
+				} } else if ((i == 3)) { anchor_ = JInteger.ParseInt(text);
+					 }
 			}
 		}
 

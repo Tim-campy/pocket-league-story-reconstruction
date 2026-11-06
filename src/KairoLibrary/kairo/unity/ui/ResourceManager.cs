@@ -377,10 +377,7 @@ namespace kairo.unity.ui
 							if (CheckFileEffective(list_[num18][l]))
 							{
 								int num19 = 0;
-								switch (num18)
-								{
-								case 0:
-								{
+								if ((num18 == 0)) { {
 									string fileName2 = GetFileName(list_[0][l]);
 									string[] array7 = StringUtil.Split(fileName2, ",");
 									fileName2 = array7[0];
@@ -441,7 +438,7 @@ namespace kairo.unity.ui
 											}
 											else if (text4.StartsWith("q+") || text4.StartsWith("q-"))
 											{
-												text4 = ((text4[1] != '+') ? text4.Substring(1) : text4.Substring(2));
+												if (text4[1] == '+') { text4 = text4.Substring(2); } else { text4 = text4.Substring(1); }
 												renderQueue_ = int.Parse(text4);
 											}
 											else if (text4.StartsWith("@"))
@@ -515,10 +512,8 @@ namespace kairo.unity.ui
 									{
 										Log.Error("loadImageに失敗:" + fileName2, t2);
 									}
-									break;
-								}
-								case 1:
-								{
+
+								} } else if ((num18 == 1)) { {
 									string fileName3 = GetFileName(list_[1][l]);
 									string[] array9 = StringUtil.Split(fileName3, ",");
 									bool u = false;
@@ -576,10 +571,8 @@ namespace kairo.unity.ui
 									{
 										Log.Error("loadSebに失敗:" + fileName3, t3);
 									}
-									break;
-								}
-								case 2:
-								{
+
+								} } else if ((num18 == 2)) { {
 									string text = Config.ConvertExtension(list_[2][l].ToLowerCase());
 									int num20 = -1;
 									for (int m = 0; m < SOUND_EXT.Length; m++)
@@ -608,9 +601,8 @@ namespace kairo.unity.ui
 									{
 										Log.Error("loadSoundに失敗:" + text, t);
 									}
-									break;
-								}
-								}
+
+								} }
 								if (num19 > 0 && JSystem.CurrentTimeMillis() - num17 >= YieldTime)
 								{
 									return;
@@ -670,39 +662,31 @@ namespace kairo.unity.ui
 						array3[array[num2][num8]] = list_[num2][num8];
 					}
 					list_[num2] = array3;
-					switch (num2)
-					{
-					case 0:
-					{
+					if ((num2 == 0)) { {
 						Image[] array6 = new Image[num3];
 						for (int num11 = 0; num11 < img.Length; num11++)
 						{
 							array6[array[num2][num11]] = img[num11];
 						}
 						img = array6;
-						break;
-					}
-					case 1:
-					{
+
+					} } else if ((num2 == 1)) { {
 						Seb[] array5 = new Seb[num3];
 						for (int num10 = 0; num10 < seb.Length; num10++)
 						{
 							array5[array[num2][num10]] = seb[num10];
 						}
 						seb = array5;
-						break;
-					}
-					case 2:
-					{
+
+					} } else if ((num2 == 2)) { {
 						SoundBase[] array4 = new SoundBase[num3];
 						for (int num9 = 0; num9 < sound.Length; num9++)
 						{
 							array4[array[num2][num9]] = sound[num9];
 						}
 						sound = array4;
-						break;
-					}
-					}
+
+					} }
 				}
 			}
 			if (img != null)

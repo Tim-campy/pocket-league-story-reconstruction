@@ -505,42 +505,23 @@ namespace kairo.unity.ui
 									}
 								}
 							}
-							switch (num9)
-							{
-							case 0:
-								colorOfRGB = Graphics.GetColorOfRGB((num11 >> 16) & 0xFF, (num11 >> 8) & 0xFF, num11 & 0xFF);
-								break;
-							case 1:
-								colorOfRGB = color_;
-								break;
-							case 2:
-								font2.SetSize(num10);
+							{ if ((num9 == 0)) { colorOfRGB = Graphics.GetColorOfRGB((num11 >> 16) & 0xFF, (num11 >> 8) & 0xFF, num11 & 0xFF);
+								 } else if ((num9 == 1)) { colorOfRGB = color_;
+								 } else if ((num9 == 2)) { font2.SetSize(num10);
 								if (height < font2.GetHeight())
 								{
 									height = font2.GetHeight();
 								}
-								break;
-							case 3:
-								font2.SetSize(font_.GetSize());
+								 } else if ((num9 == 3)) { font2.SetSize(font_.GetSize());
 								if (height < font2.GetHeight())
 								{
 									height = font2.GetHeight();
 								}
-								break;
-							case 4:
-								font2.SetStyle(num10);
-								break;
-							case 5:
-								font2.SetStyle(font_.GetStyle());
-								break;
-							case 6:
-								blink = num10;
-								break;
-							case 7:
-								blink = 0;
-								break;
-							case 8:
-								if (text3.IndexOf('l') != -1)
+								 } else if ((num9 == 4)) { font2.SetStyle(num10);
+								 } else if ((num9 == 5)) { font2.SetStyle(font_.GetStyle());
+								 } else if ((num9 == 6)) { blink = num10;
+								 } else if ((num9 == 7)) { blink = 0;
+								 } else if ((num9 == 8)) { if (text3.IndexOf('l') != -1)
 								{
 									num = 1;
 								}
@@ -566,20 +547,18 @@ namespace kairo.unity.ui
 								}
 								num3 = 0f;
 								num4 = 0f;
-								break;
-							case 9:
-							{
+								 } else if ((num9 == 9)) { {
 								flag5 = true;
 								array = StringUtil.Split(text3, ",");
 								Pictograph pictograph = GetPictograph(array[0]);
 								if (pictograph == null)
 								{
-									break;
+									goto recoveredSwitchExit_11784;
 								}
 								int num12 = pictograph.Frame;
 								if (1 < array.Length && array[1].Length > 0)
 								{
-									num12 = ((!(array[1] == "∞")) ? int.Parse(array[1]) : (-1));
+									if ((array[1] == "∞")) { num12 = (-1); } else { num12 = int.Parse(array[1]); }
 								}
 								int num13 = pictograph.X;
 								if (3 < array.Length && array[3].Length > 0)
@@ -608,9 +587,9 @@ namespace kairo.unity.ui
 								num7 = num13 + (int)(x + 0.9f) + pictograph.Margin;
 								float num14 = (float)font2.GetHeight() / 12f;
 								num7 = (int)((float)num7 * num14 + 0.01f);
-								break;
-							}
-							}
+
+							} }
+recoveredSwitchExit_11784: ; }
 							flag3 = true;
 							if (!flag5)
 							{
@@ -625,7 +604,7 @@ namespace kairo.unity.ui
 					}
 					else if (c != '\n' && c != '\r')
 					{
-						num15 = ((textBlock == null) ? font2.StringWidthF(JString.ValueOf(c)) : (font2.StringWidthF(textBlock.text_ + c) - textBlock.width_));
+						if (textBlock != null) { num15 = (font2.StringWidthF(textBlock.text_ + c) - textBlock.width_); } else { num15 = font2.StringWidthF(JString.ValueOf(c)); }
 					}
 					bool flag6 = c == '\n';
 					if (!flag6 && width_ != -1f && num5 + num15 > width_ - num3 && multiLine_)
@@ -693,7 +672,7 @@ namespace kairo.unity.ui
 					{
 						if (num == 2)
 						{
-							num3 = ((width_ != -1f) ? (num3 + (width_ - num3) / 2f - num5 / 2f) : (num3 - num5 / 2f));
+							if (width_ == -1f) { num3 = (num3 - num5 / 2f); } else { num3 = (num3 + (width_ - num3) / 2f - num5 / 2f); }
 						}
 						if (num == 4)
 						{

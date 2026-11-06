@@ -1,0 +1,617 @@
+{
+  "operation": "source-only-shared-payload-and-unused-dialog-switch-guard-composition",
+  "family": "calculated-shared-payload-switch-guard",
+  "candidate_game_compilations": 0,
+  "frozen_baseline": "build\\round8\\baseline\\Assembly-CSharp",
+  "patches": [
+    {
+      "start": 6009,
+      "end": 13169,
+      "before": "public override bool Update()\r\n\t\t{\r\n\t\t\tif (dialog_ != null)\r\n\t\t\t{\r\n\t\t\t\tif (state_ == 0 && dialog_.result_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array = (string[])commands_.ElementAt(select_);\r\n\t\t\t\t\tint num = JInteger.ParseInt(array[0]);\r\n\t\t\t\t\tsend_ = select_;\r\n\t\t\t\t\ttask_ = null;\r\n\t\t\t\t\ttaskMax_ = 0;\r\n\t\t\t\t\tif (num == -4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(1);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tth_ = new JThread(this);\r\n\t\t\t\t\tth_.Start();\r\n\t\t\t\t}\r\n\t\t\t\telse if (state_ == 1 || state_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (dialog_.result_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tth_ = new JThread(this);\r\n\t\t\t\t\t\tth_.Start();\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (task_ != null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttask_.RemoveAllElements();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\ttask_ = null;\r\n\t\t\t\t\t\tChangeState(0);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tdialog_ = null;\r\n\t\t\t}\r\n\t\t\tframe_ = (frame_ + 1) % int.MaxValue;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyRepeat(131072))\r\n\t\t\t\t{\r\n\t\t\t\t\tselect_ = (select_ - 1 + commands_.Size()) % commands_.Size();\r\n\t\t\t\t}\r\n\t\t\t\telse if (canvas_.CheckKeyRepeat(524288))\r\n\t\t\t\t{\r\n\t\t\t\t\tselect_ = (select_ + 1) % commands_.Size();\r\n\t\t\t\t}\r\n\t\t\t\telse if (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array2 = (string[])commands_.ElementAt(select_);\r\n\t\t\t\t\tif (array2.Length > 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\t\tint num2 = JInteger.ParseInt(array2[0]);\r\n\t\t\t\t\t\tif (num2 != -3)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tswitch (num2)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcase -4:\r\n\t\t\t\t\t\t\t\tShowDialog(\"\u30bb\u30fc\u30d6\u30c7\u30fc\u30bf\u3092\u53d7\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t\tcase -1:\r\n\t\t\t\t\t\t\t\tShowDialog(\"\u5168\u3066\u306e\u30c7\u30fc\u30bf\u3092\u9001\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tcase -2:\r\n\t\t\t\t\t\t\t\tShowDialog(\"\u307e\u308b\u3054\u3068\u9001\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tdefault:\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint i = num2 % 10 + 1;\r\n\t\t\t\t\t\t\t\tif (num2 / 10 == 1)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tShowDialog(MyFormBase.LT(\"\u4e2d\u65ad\u30c7\u30fc\u30bf<0> \u3092\u9001\u4fe1\u3057\u307e\u3059\", JString.ValueOf(i)), \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tShowDialog(MyFormBase.LT(\"\u30bb\u30fc\u30d6\u30c7\u30fc\u30bf<0> \u3092\u9001\u4fe1\u3057\u307e\u3059\", JString.ValueOf(i)), \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcanvas_.ImeOnBlock(text_, 0, 1);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(2))\r\n\t\t\t\t{\r\n\t\t\t\t\treturn Pop();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tif (state_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (th_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (succeed_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.sysSave_.strs[10] = string.Empty;\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tDialog dialog = new Dialog(0, \"\u5b8c\u4e86\");\r\n\t\t\t\t\t\tdialog.SetText(\"\u9001\u4fe1\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\\n\u3054\u5354\u529b\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\u3002\\n\u4eca\u5f8c\u3082\u30ab\u30a4\u30ed\u30d1\u30fc\u30af\u3092\u5b9c\u3057\u304f\u304a\u9858\u3044\u81f4\u3057\u307e\u3059\u3002\");\r\n\t\t\t\t\t\tdialog.Show();\r\n\t\t\t\t\t\treturn Pop();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tShowDialog(\"\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\\n\u30ea\u30c8\u30e9\u30a4\u3057\u307e\u3059\u304b\uff1f\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\tif (state_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (th_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (succeed_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (7 <= recv_.Length && recv_[0] == 115 && recv_[1] == 97 && recv_[2] == 118 && recv_[3] == 101)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(recv_);\r\n\t\t\t\t\t\t\t\tbyteArrayInputStream.Skip(4L);\r\n\t\t\t\t\t\t\t\tint num3 = StreamUtil.ReadByte(byteArrayInputStream);\r\n\t\t\t\t\t\t\t\tint num4 = StreamUtil.ReadByte(byteArrayInputStream);\r\n\t\t\t\t\t\t\t\tint num5 = StreamUtil.ReadByte(byteArrayInputStream);\r\n\t\t\t\t\t\t\t\tif (num5 >= 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tbyte[] data = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\tRecordStore.WriteRecord(0, 1, data);\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tProperty property = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);\r\n\t\t\t\t\t\t\t\t\t\tproperty.Load(data);\r\n\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.ints[6] = property.ints[1] * 100 * 100 + property.ints[2] * 100 + property.ints[3];\r\n\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[4] = JString.ValueOf(property.lngs[0]);\r\n\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[2] = property.strs[0];\r\n\t\t\t\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num5 == -1)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tif (Config.APPLI_TYPE == 0)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tbyte[] data = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\t\tScratchPad.WriteByteArray(0, 0, data);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tRecordStore recordStore = null;\r\n\t\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\trecordStore = RecordStore.OpenRecordStore(0);\r\n\t\t\t\t\t\t\t\t\t\t\tint numRecords = recordStore.GetNumRecords();\r\n\t\t\t\t\t\t\t\t\t\t\tfor (int j = 0; j < numRecords; j++)\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tbyte[] data = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\t\t\t\trecordStore.WriteRecord(j, data);\r\n\t\t\t\t\t\t\t\t\t\t\t\tif (j != 0)\r\n\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tProperty property2 = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tproperty2.Load(data);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tbool flag = j == 3 || j == 4;\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tint num6 = ((j != 3 && j != 1) ? 1 : 0);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.ints[((!flag) ? 6 : 11) + num6] = property2.ints[1] * 100 * 100 + property2.ints[2] * 100 + property2.ints[3];\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[((!flag) ? 4 : 8) + num6] = JString.ValueOf(property2.lngs[0]);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[((!flag) ? 2 : 6) + num6] = property2.strs[0];\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tfinally\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (recordStore != null)\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\trecordStore.CloseRecordStore();\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\trecordStore = null;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num5 == -2)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tbyte[] data = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\tScratchPad.WriteByteArray(0, 0, data);\r\n\t\t\t\t\t\t\t\t\tdata = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\tScratchPad.WriteByteArray(1, 0, data);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbyteArrayInputStream.Close();\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (recv_.Length == 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tDialog dialog2 = new Dialog(0, \"\u5931\u6557\");\r\n\t\t\t\t\t\t\t\t\tdialog2.SetText(\"\u30d5\u30a1\u30a4\u30eb\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3002\");\r\n\t\t\t\t\t\t\t\t\tdialog2.Show();\r\n\t\t\t\t\t\t\t\t\tChangeState(0);\r\n\t\t\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tRecordStore.WriteRecord(0, 1, recv_);\r\n\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tProperty property3 = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);\r\n\t\t\t\t\t\t\t\t\tproperty3.Load(recv_);\r\n\t\t\t\t\t\t\t\t\tapdat_.sysSave_.ints[6] = property3.ints[1] * 100 * 100 + property3.ints[2] * 100 + property3.ints[3];\r\n\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[4] = JString.ValueOf(property3.lngs[0]);\r\n\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[2] = property3.strs[0];\r\n\t\t\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tDialog dialog3 = new Dialog(0, \"\u5b8c\u4e86\");\r\n\t\t\t\t\t\tdialog3.SetText(\"\u53d7\u4fe1\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\t\tdialog3.Show();\r\n\t\t\t\t\t\treturn Pop();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tShowDialog(\"\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\\n\u30ea\u30c8\u30e9\u30a4\u3057\u307e\u3059\u304b\uff1f\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+      "after": "public override bool Update()\r\n\t\t{\r\n\t\t\tif (dialog_ != null)\r\n\t\t\t{\r\n\t\t\t\tif (state_ == 0 && dialog_.result_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array = (string[])commands_.ElementAt(select_);\r\n\t\t\t\t\tint num = JInteger.ParseInt(array[0]);\r\n\t\t\t\t\tsend_ = select_;\r\n\t\t\t\t\ttask_ = null;\r\n\t\t\t\t\ttaskMax_ = 0;\r\n\t\t\t\t\tif (num == -4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(2);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(1);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tth_ = new JThread(this);\r\n\t\t\t\t\tth_.Start();\r\n\t\t\t\t}\r\n\t\t\t\telse if (state_ == 1 || state_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (dialog_.result_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tth_ = new JThread(this);\r\n\t\t\t\t\t\tth_.Start();\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (task_ != null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttask_.RemoveAllElements();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\ttask_ = null;\r\n\t\t\t\t\t\tChangeState(0);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tdialog_ = null;\r\n\t\t\t}\r\n\t\t\tframe_ = (frame_ + 1) % int.MaxValue;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyRepeat(131072))\r\n\t\t\t\t{\r\n\t\t\t\t\tselect_ = (select_ - 1 + commands_.Size()) % commands_.Size();\r\n\t\t\t\t}\r\n\t\t\t\telse if (canvas_.CheckKeyRepeat(524288))\r\n\t\t\t\t{\r\n\t\t\t\t\tselect_ = (select_ + 1) % commands_.Size();\r\n\t\t\t\t}\r\n\t\t\t\telse if (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array2 = (string[])commands_.ElementAt(select_);\r\n\t\t\t\t\tif (array2.Length > 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\t\tint num2 = JInteger.ParseInt(array2[0]);\r\n\t\t\t\t\t\tif (num2 == -3) {\n\r\n\t\t\t\t\t\tcanvas_.ImeOnBlock(text_, 0, 1);\n} else {\r\n\t\t\t\t\t\t\tif (num2 == -4) {\r\nShowDialog(\"\u30bb\u30fc\u30d6\u30c7\u30fc\u30bf\u3092\u53d7\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\nreturn true;\r\n} else if (num2 == -1) {\r\nShowDialog(\"\u5168\u3066\u306e\u30c7\u30fc\u30bf\u3092\u9001\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n} else if (num2 == -2) {\r\nShowDialog(\"\u307e\u308b\u3054\u3068\u9001\u4fe1\u3057\u307e\u3059\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n} else {\r\nint i = num2 % 10 + 1;\r\nif (num2 / 10 == 1)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tShowDialog(MyFormBase.LT(\"\u4e2d\u65ad\u30c7\u30fc\u30bf<0> \u3092\u9001\u4fe1\u3057\u307e\u3059\", JString.ValueOf(i)), \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tShowDialog(MyFormBase.LT(\"\u30bb\u30fc\u30d6\u30c7\u30fc\u30bf<0> \u3092\u9001\u4fe1\u3057\u307e\u3059\", JString.ValueOf(i)), \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\t\t\t\t}\r\n}\r\ncoalescedSwitchExit7380: ;\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(2))\r\n\t\t\t\t{\r\n\t\t\t\t\treturn Pop();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tif (state_ == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (th_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (succeed_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.sysSave_.strs[10] = string.Empty;\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tDialog dialog = new Dialog(0, \"\u5b8c\u4e86\");\r\n\t\t\t\t\t\tdialog.SetText(\"\u9001\u4fe1\u3092\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\\n\u3054\u5354\u529b\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\u3002\\n\u4eca\u5f8c\u3082\u30ab\u30a4\u30ed\u30d1\u30fc\u30af\u3092\u5b9c\u3057\u304f\u304a\u9858\u3044\u81f4\u3057\u307e\u3059\u3002\");\r\n\t\t\t\t\t\tdialog.Show();\r\n\t\t\t\t\t\treturn Pop();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tShowDialog(\"\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\\n\u30ea\u30c8\u30e9\u30a4\u3057\u307e\u3059\u304b\uff1f\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t\tif (state_ == 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (th_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (succeed_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (7 <= recv_.Length && recv_[0] == 115 && recv_[1] == 97 && recv_[2] == 118 && recv_[3] == 101)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(recv_);\r\n\t\t\t\t\t\t\t\tbyteArrayInputStream.Skip(4L);\r\n\t\t\t\t\t\t\t\tint num3 = StreamUtil.ReadByte(byteArrayInputStream);\r\n\t\t\t\t\t\t\t\tint num4 = StreamUtil.ReadByte(byteArrayInputStream);\r\n\t\t\t\t\t\t\t\tint num5 = StreamUtil.ReadByte(byteArrayInputStream);\r\n\t\t\t\t\t\t\t\t\r\nbyte[] saveDataBytes;\r\nif (num5 >= 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsaveDataBytes = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\tRecordStore.WriteRecord(0, 1, saveDataBytes);\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tProperty property = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);\r\n\t\t\t\t\t\t\t\t\t\tproperty.Load(saveDataBytes);\r\n\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.ints[6] = property.ints[1] * 100 * 100 + property.ints[2] * 100 + property.ints[3];\r\n\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[4] = JString.ValueOf(property.lngs[0]);\r\n\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[2] = property.strs[0];\r\n\t\t\t\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num5 == -1)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tif (Config.APPLI_TYPE == 0)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tsaveDataBytes = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\t\tScratchPad.WriteByteArray(0, 0, saveDataBytes);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tglobal::kairo.unity.ui.Dialog unusedOriginalDialog13;\r\nRecordStore recordStore = null;\r\n\t\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\trecordStore = RecordStore.OpenRecordStore(0);\r\n\t\t\t\t\t\t\t\t\t\t\tint numRecords = recordStore.GetNumRecords();\r\n\t\t\t\t\t\t\t\t\t\t\tfor (int j = 0; j < numRecords; j++)\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\tsaveDataBytes = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\t\t\t\trecordStore.WriteRecord(j, saveDataBytes);\r\n\t\t\t\t\t\t\t\t\t\t\t\tif (j != 0)\r\n\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tProperty property2 = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tproperty2.Load(saveDataBytes);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tbool flag = j == 3 || j == 4;\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tint num6 = ((j != 3 && j != 1) ? 1 : 0);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.ints[((!flag) ? 6 : 11) + num6] = property2.ints[1] * 100 * 100 + property2.ints[2] * 100 + property2.ints[3];\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[((!flag) ? 4 : 8) + num6] = JString.ValueOf(property2.lngs[0]);\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[((!flag) ? 2 : 6) + num6] = property2.strs[0];\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tfinally\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tif (recordStore != null)\r\n\t\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\t\trecordStore.CloseRecordStore();\r\n\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\trecordStore = null;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num5 == -2)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsaveDataBytes = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\tScratchPad.WriteByteArray(0, 0, saveDataBytes);\r\n\t\t\t\t\t\t\t\t\tsaveDataBytes = StreamUtil.Read(byteArrayInputStream, true);\r\n\t\t\t\t\t\t\t\t\tScratchPad.WriteByteArray(1, 0, saveDataBytes);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbyteArrayInputStream.Close();\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (recv_.Length == 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tDialog dialog2 = new Dialog(0, \"\u5931\u6557\");\r\n\t\t\t\t\t\t\t\t\tdialog2.SetText(\"\u30d5\u30a1\u30a4\u30eb\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3002\");\r\n\t\t\t\t\t\t\t\t\tdialog2.Show();\r\n\t\t\t\t\t\t\t\t\tChangeState(0);\r\n\t\t\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tRecordStore.WriteRecord(0, 1, recv_);\r\n\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tProperty property3 = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);\r\n\t\t\t\t\t\t\t\t\tproperty3.Load(recv_);\r\n\t\t\t\t\t\t\t\t\tapdat_.sysSave_.ints[6] = property3.ints[1] * 100 * 100 + property3.ints[2] * 100 + property3.ints[3];\r\n\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[4] = JString.ValueOf(property3.lngs[0]);\r\n\t\t\t\t\t\t\t\t\tapdat_.sysSave_.strs[2] = property3.strs[0];\r\n\t\t\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tDialog dialog3 = new Dialog(0, \"\u5b8c\u4e86\");\r\n\t\t\t\t\t\tdialog3.SetText(\"\u53d7\u4fe1\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\t\tdialog3.Show();\r\n\t\t\t\t\t\treturn Pop();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tShowDialog(\"\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\\n\u30ea\u30c8\u30e9\u30a4\u3057\u307e\u3059\u304b\uff1f\", \"\u306f\u3044\\t\u3044\u3044\u3048\");\r\n\t\t\t\t\treturn true;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+      "rule": "calculated-shared-payload-switch-guard",
+      "distance": 0,
+      "method_id": "form.SpForm::Update()->System.Boolean",
+      "logical_path": "src/Assembly-CSharp/form/SpForm.cs",
+      "complete": true,
+      "predicted_types": [
+        "System.String[]",
+        "System.Int32",
+        "System.String[]",
+        "System.String",
+        "System.Int32",
+        "System.Int32",
+        "kairo.unity.ui.Dialog",
+        "java.io.ByteArrayInputStream",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Byte[]",
+        "kairo.unity.util.Property",
+        "kairo.unity.ui.Dialog",
+        "kairo.unity.io.RecordStore",
+        "System.Int32",
+        "System.Int32",
+        "kairo.unity.util.Property",
+        "System.Boolean",
+        "System.Int32",
+        "kairo.unity.ui.Dialog",
+        "kairo.unity.util.Property",
+        "kairo.unity.ui.Dialog",
+        "System.Boolean"
+      ],
+      "stages": [
+        {
+          "stage": "coalesce-4-byte-arrays",
+          "count": 24,
+          "complete": true,
+          "types": [
+            "System.String[]",
+            "System.Int32",
+            "System.String[]",
+            "System.String",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "java.io.ByteArrayInputStream",
+            "System.Int32",
+            "System.Int32",
+            "System.Int32",
+            "System.Byte[]",
+            "kairo.unity.util.Property",
+            "kairo.unity.io.RecordStore",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.util.Property",
+            "System.Boolean",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "kairo.unity.util.Property",
+            "kairo.unity.ui.Dialog",
+            "System.Int32",
+            "System.Boolean"
+          ]
+        },
+        {
+          "stage": "switch-if-terminal-break-return-throw",
+          "count": 23,
+          "complete": true,
+          "types": [
+            "System.String[]",
+            "System.Int32",
+            "System.String[]",
+            "System.String",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "java.io.ByteArrayInputStream",
+            "System.Int32",
+            "System.Int32",
+            "System.Int32",
+            "System.Byte[]",
+            "kairo.unity.util.Property",
+            "kairo.unity.io.RecordStore",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.util.Property",
+            "System.Boolean",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "kairo.unity.util.Property",
+            "kairo.unity.ui.Dialog",
+            "System.Boolean"
+          ]
+        },
+        {
+          "stage": "reserve-unused-dialog13-before-recordStore",
+          "count": 24,
+          "complete": true,
+          "types": [
+            "System.String[]",
+            "System.Int32",
+            "System.String[]",
+            "System.String",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "java.io.ByteArrayInputStream",
+            "System.Int32",
+            "System.Int32",
+            "System.Int32",
+            "System.Byte[]",
+            "kairo.unity.util.Property",
+            "kairo.unity.ui.Dialog",
+            "kairo.unity.io.RecordStore",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.util.Property",
+            "System.Boolean",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "kairo.unity.util.Property",
+            "kairo.unity.ui.Dialog",
+            "System.Boolean"
+          ]
+        },
+        {
+          "stage": "guard-reverse-after-signature-repair",
+          "count": 24,
+          "complete": true,
+          "types": [
+            "System.String[]",
+            "System.Int32",
+            "System.String[]",
+            "System.String",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "java.io.ByteArrayInputStream",
+            "System.Int32",
+            "System.Int32",
+            "System.Int32",
+            "System.Byte[]",
+            "kairo.unity.util.Property",
+            "kairo.unity.ui.Dialog",
+            "kairo.unity.io.RecordStore",
+            "System.Int32",
+            "System.Int32",
+            "kairo.unity.util.Property",
+            "System.Boolean",
+            "System.Int32",
+            "kairo.unity.ui.Dialog",
+            "kairo.unity.util.Property",
+            "kairo.unity.ui.Dialog",
+            "System.Boolean"
+          ]
+        }
+      ],
+      "intervals": [
+        [
+          1060,
+          1105
+        ],
+        [
+          1275,
+          1279
+        ],
+        [
+          1327,
+          1381
+        ],
+        [
+          1683,
+          1706
+        ]
+      ],
+      "source_only": true,
+      "candidate_compilations": 0,
+      "anchors": [
+        {
+          "rebuilt_slot": 11,
+          "original_slot": 11,
+          "rebuilt_offset": 1060,
+          "original_offset": 1052,
+          "before_count": 0,
+          "after_count": 2,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 1052,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 1054,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 1055,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1060,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 1062,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 1063,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 13,
+          "original_slot": 11,
+          "rebuilt_offset": 1275,
+          "original_offset": 1267,
+          "before_count": 4,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 1254,
+              "opcode": "brtrue",
+              "operand": {
+                "branch": 1283
+              }
+            },
+            {
+              "offset": 1259,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 1261,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 1262,
+              "opcode": "call",
+              "operand": {
+                "method": "class kairo.unity.util.StreamUtil @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Read``0(class java.io.InputStream @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 1267,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1262,
+              "opcode": "brtrue",
+              "operand": {
+                "branch": 1291
+              }
+            },
+            {
+              "offset": 1267,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 1269,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 1270,
+              "opcode": "call",
+              "operand": {
+                "method": "class kairo.unity.util.StreamUtil @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Read``0(class java.io.InputStream @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 1275,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 13
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 17,
+          "original_slot": 11,
+          "rebuilt_offset": 1327,
+          "original_offset": 1319,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 1319,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 1321,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 14
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1327,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 17
+              }
+            },
+            {
+              "offset": 1329,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 14
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 21,
+          "original_slot": 11,
+          "rebuilt_offset": 1683,
+          "original_offset": 1680,
+          "before_count": 4,
+          "after_count": 0,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 1667,
+              "opcode": "bne.un",
+              "operand": {
+                "branch": 1710
+              }
+            },
+            {
+              "offset": 1672,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 1674,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 1675,
+              "opcode": "call",
+              "operand": {
+                "method": "class kairo.unity.util.StreamUtil @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Read``0(class java.io.InputStream @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 1680,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1670,
+              "opcode": "bne.un",
+              "operand": {
+                "branch": 1713
+              }
+            },
+            {
+              "offset": 1675,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 1677,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 1678,
+              "opcode": "call",
+              "operand": {
+                "method": "class kairo.unity.util.StreamUtil @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Read``0(class java.io.InputStream @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 1683,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 21
+              }
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        },
+        {
+          "rebuilt_slot": 21,
+          "original_slot": 11,
+          "rebuilt_offset": 1702,
+          "original_offset": 1699,
+          "before_count": 0,
+          "after_count": 1,
+          "original_occurrences": 1,
+          "rebuilt_occurrences": 1,
+          "original_context": [
+            {
+              "offset": 1699,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 1701,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1702,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 21
+              }
+            },
+            {
+              "offset": 1704,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            }
+          ],
+          "normalization": "diagnostic only: local access family+exact type; branch numeric destinations ignored"
+        }
+      ],
+      "special_variables": {
+        "saveDataBytes": 11,
+        "unusedOriginalDialog13": 13,
+        "recordStore": 14
+      },
+      "baseline_source_sha256": "977d0271681f49d4503b306b55a1607c670cddda38caffef4bacc9b6055377a6",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "calculator_sha256": "94902d629972aebacbdf4b6bf00b5b58cac81d2b0fab2a1f31c0cc564c89954f",
+      "syntax_source_sha256": "d8b38c6846a0afba2bb1e66d4eb2275818d025dad31c47319dcf647f27a62600",
+      "dependency_sha256": {
+        "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+        "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+        "tools\\round8_slot_anchor_calculate.py": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+        "tools\\round8_coordinate_slot_syntax.cs.txt": "f0018dae7a13fa14cf31aeae6551cad617f1011c757249a0f5179dcd64566077",
+        "tools\\prepare_round7_transform.py": "4f21150d5b05a0ff279ca671ecf95fe1c59ef6e6b6fcbb4f61278564cb11bdb2",
+        "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+        "tools\\Round7TransformSyntax.cs": "85ebbd9f28d611fb69e3f32a2220baca885b979ed354998799cbfa91d44dc0ac",
+        "tools\\Round7NewRules.cs": "9afa0452b5188cf0d29f6adc2dd911b40eb73316db5cc9e42a1953283871b9cd",
+        "tools\\Round7AliasRules.cs": "e48be73c2aeda959f54b1cb2875782ceaa26dd0ef7178985ecd9f7a5617d9653",
+        "tools\\Round7SmcsRules.cs": "14148bb0f00a76176d3ed2b3f9458fa510a904ac84d4928b74991a83448961c8",
+        "tools\\Round7RoslynRules.cs": "a8cf41f7823ce44723002e655fa499b16cd0284ae08783ce5f75b0444d0b4775",
+        "tools\\round7_smcs_cycle_rules.cs": "a186781d928eba91c0da0d9ceb8733bf7d5cd94d0feb64cc26e06ec06817b7b4",
+        "tools\\Round7RoslynCycleRules.cs": "fa8f6622a4d6a45f19a889ee48f490906750ce7d8e28962063b82b72a874cfbb",
+        "tools\\Round7SmcsExitRules.cs": "f0aef871c21b078d5e19206776ebde2b4eb593d6f06edec3e0c3e5d04c47f642",
+        "tools\\Round7SmcsGuardRules.cs": "22569da9cb233eab4b25477f77eef7b3e74a8cc0ac3204f3c66704e0178fc863",
+        "tools\\Round7StringConcatRules.cs": "6d07715abc01006c6103e58777ae507fb4d37629f956171ff7c7198f3f0581a4",
+        "tools\\Round7LoopConditionRules.cs": "4879bd96a61974ee0201a92ad2f31671e3280bf561638b6be938e0a25d24950a",
+        "tools\\Round7SmcsSwitchRules.cs": "88fedef3e86ff97236a08e96b592b53a0ae90d641af4668cff32f4ad4bc59299",
+        "tools\\Round7RoslynDeclarationRules.cs": "1f3d23110a8402eae76ad53d8248ca30067214dc4d8115a4d5dbaf5eef8152ce",
+        "tools\\Round7TerminalArmRules.cs": "36e632883c5a3727ddf0bc41dc25dc04f051eca0ea5053834073058d072fd501",
+        "tools\\Round7BalancedBranchRules.cs": "5a455141cff925cd0b4ddb6e2cb5781a1b4a7e6118d8c9740f20cf0e0ed98f4a",
+        "tools\\Round7InfiniteTailGuardRules.cs": "f371675622be881867d8ff425b180a1cbd4befa6baeb90847dadf623bc172ba0"
+      },
+      "current_unique_rebase_verified": true
+    }
+  ],
+  "methods": [
+    {
+      "method_id": "form.SpForm::Update()->System.Boolean",
+      "original_il_bytes": 2052,
+      "model_complete": true,
+      "signature_exact": true,
+      "local_count": 24,
+      "special_variables": {
+        "saveDataBytes": 11,
+        "unusedOriginalDialog13": 13,
+        "recordStore": 14
+      },
+      "game_body_match": "UNKNOWN",
+      "current_unique_rebase_verified": true
+    }
+  ],
+  "potential_il_bytes": 2052,
+  "fixture": {
+    "candidate_game_compilations": 0,
+    "fixture_assembly_compilations": 1,
+    "cases": {
+      "Fixture::Recovered(System.Int32,System.Boolean)->System.Boolean": {
+        "complete_body_exact": true,
+        "il_bytes": 285,
+        "locals": 9,
+        "exception_regions": 2
+      },
+      "Fixture::SelectorRecovered()->System.Void": {
+        "complete_body_exact": true,
+        "il_bytes": 37,
+        "locals": 1,
+        "exception_regions": 0
+      }
+    },
+    "negatives": {
+      "unapproved_effectful_selector": true,
+      "goto_case": true,
+      "captured_payload": true,
+      "interleaving": true
+    },
+    "safe_payload_lifetimes": [
+      [
+        118,
+        128
+      ],
+      [
+        152,
+        155
+      ],
+      [
+        190,
+        212
+      ],
+      [
+        266,
+        284
+      ]
+    ],
+    "single_effectful_selector_evaluation_verified_by_exact_body": true,
+    "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+    "source_sha256": "0c18dbe72494c23eda5451b72e52640b274c3797748d9a9bb97b43253eaa6667"
+  },
+  "calculator_sha256": "94902d629972aebacbdf4b6bf00b5b58cac81d2b0fab2a1f31c0cc564c89954f",
+  "syntax_source_sha256": "d8b38c6846a0afba2bb1e66d4eb2275818d025dad31c47319dcf647f27a62600",
+  "dependency_sha256": {
+    "tools\\round7_coalesce_calculate.py": "57a6a50b44f68b93e2be6a101e5b6f4aea19088ffacbeca0f332d28bba1b2250",
+    "tools\\round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7",
+    "tools\\round8_slot_anchor_calculate.py": "7b0bd7a398b55c640fe5020457efe9b50cbfcc71e0cd40b9e00b8d5a45068cc1",
+    "tools\\round8_coordinate_slot_syntax.cs.txt": "f0018dae7a13fa14cf31aeae6551cad617f1011c757249a0f5179dcd64566077",
+    "tools\\prepare_round7_transform.py": "4f21150d5b05a0ff279ca671ecf95fe1c59ef6e6b6fcbb4f61278564cb11bdb2",
+    "tools\\compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+    "tools\\Round7TransformSyntax.cs": "85ebbd9f28d611fb69e3f32a2220baca885b979ed354998799cbfa91d44dc0ac",
+    "tools\\Round7NewRules.cs": "9afa0452b5188cf0d29f6adc2dd911b40eb73316db5cc9e42a1953283871b9cd",
+    "tools\\Round7AliasRules.cs": "e48be73c2aeda959f54b1cb2875782ceaa26dd0ef7178985ecd9f7a5617d9653",
+    "tools\\Round7SmcsRules.cs": "14148bb0f00a76176d3ed2b3f9458fa510a904ac84d4928b74991a83448961c8",
+    "tools\\Round7RoslynRules.cs": "a8cf41f7823ce44723002e655fa499b16cd0284ae08783ce5f75b0444d0b4775",
+    "tools\\round7_smcs_cycle_rules.cs": "a186781d928eba91c0da0d9ceb8733bf7d5cd94d0feb64cc26e06ec06817b7b4",
+    "tools\\Round7RoslynCycleRules.cs": "fa8f6622a4d6a45f19a889ee48f490906750ce7d8e28962063b82b72a874cfbb",
+    "tools\\Round7SmcsExitRules.cs": "f0aef871c21b078d5e19206776ebde2b4eb593d6f06edec3e0c3e5d04c47f642",
+    "tools\\Round7SmcsGuardRules.cs": "22569da9cb233eab4b25477f77eef7b3e74a8cc0ac3204f3c66704e0178fc863",
+    "tools\\Round7StringConcatRules.cs": "6d07715abc01006c6103e58777ae507fb4d37629f956171ff7c7198f3f0581a4",
+    "tools\\Round7LoopConditionRules.cs": "4879bd96a61974ee0201a92ad2f31671e3280bf561638b6be938e0a25d24950a",
+    "tools\\Round7SmcsSwitchRules.cs": "88fedef3e86ff97236a08e96b592b53a0ae90d641af4668cff32f4ad4bc59299",
+    "tools\\Round7RoslynDeclarationRules.cs": "1f3d23110a8402eae76ad53d8248ca30067214dc4d8115a4d5dbaf5eef8152ce",
+    "tools\\Round7TerminalArmRules.cs": "36e632883c5a3727ddf0bc41dc25dc04f051eca0ea5053834073058d072fd501",
+    "tools\\Round7BalancedBranchRules.cs": "5a455141cff925cd0b4ddb6e2cb5781a1b4a7e6118d8c9740f20cf0e0ed98f4a",
+    "tools\\Round7InfiniteTailGuardRules.cs": "f371675622be881867d8ff425b180a1cbd4befa6baeb90847dadf623bc172ba0"
+  },
+  "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+  "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+  "slot_anchor_evidence_sha256": "b0654c84390d5ce03ad7a19ab158e348fab05b368fc3731b2ecaa1b5db4d263d",
+  "prefix_after_compilation": "UNKNOWN",
+  "baseline_descriptor_sha256": {
+    "original-methods.json": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+    "rebuilt-methods.json": "133c8a40910a993bea4973ccd7b4bbef1f0e8ca0308fa1eb0ef48644badfc625",
+    "plain-local-types.json": "c843fefcb27f82f5ffeae3bbf070efc1af5c7a03c5eb6f56ee90e3d49cb156d0"
+  }
+}

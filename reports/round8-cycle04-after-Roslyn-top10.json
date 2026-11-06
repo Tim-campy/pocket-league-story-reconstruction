@@ -1,9 +1,9 @@
 {
   "scope": "Roslyn/KairoLibrary only",
   "measurement": "reports/round8-cycle04-after-measurement.json",
-  "measurement_sha256": "9e95fcda84cd4fb5e7244b24f474ecbf95b6df7b66a5c52dbeda2e28260b5427",
-  "pending_bodies": 77,
-  "pending_original_il_bytes": 55413,
+  "measurement_sha256": "90a998e0289a2d3a749eb6fe9a465aa1048bcf441cf434d380328d165c65e63e",
+  "pending_bodies": 74,
+  "pending_original_il_bytes": 53053,
   "exact_top10": [
     {
       "pair": "{\"opcode\":\"stloc.0\",\"operand\":null} => {\"opcode\":\"stloc.1\",\"operand\":null}",
@@ -701,103 +701,6 @@
       }
     },
     {
-      "pair": "{\"opcode\":\"bne.un\",\"operand\":{\"branch\":653}} => {\"opcode\":\"bne.un\",\"operand\":{\"branch\":659}}",
-      "methods": 1,
-      "original_il_bytes": 737,
-      "method_ids": [
-        "KairoLibrary::kfw.panel.MainPanel::ComponentAction(kairo.unity.panel.Component,System.Int32,System.Int32)->System.Void"
-      ],
-      "example": {
-        "id": "KairoLibrary::kfw.panel.MainPanel::ComponentAction(kairo.unity.panel.Component,System.Int32,System.Int32)->System.Void",
-        "stable_id": "kfw.panel.MainPanel::ComponentAction(kairo.unity.panel.Component,System.Int32,System.Int32)->System.Void",
-        "source": "src/KairoLibrary/kfw/panel/MainPanel.cs",
-        "original_il_bytes": 737,
-        "rebuilt_il_bytes": 743,
-        "first_il_difference_offset": 5,
-        "first_original_instruction": {
-          "offset": 4,
-          "opcode": "bne.un",
-          "operand": {
-            "branch": 653
-          }
-        },
-        "first_rebuilt_instruction": {
-          "offset": 4,
-          "opcode": "bne.un",
-          "operand": {
-            "branch": 659
-          }
-        },
-        "original_context": [
-          {
-            "offset": 2,
-            "opcode": "ldarg.2",
-            "operand": null
-          },
-          {
-            "offset": 3,
-            "opcode": "ldc.i4.1",
-            "operand": null
-          },
-          {
-            "offset": 4,
-            "opcode": "bne.un",
-            "operand": {
-              "branch": 653
-            }
-          },
-          {
-            "offset": 9,
-            "opcode": "ldarg.1",
-            "operand": null
-          },
-          {
-            "offset": 10,
-            "opcode": "ldarg.0",
-            "operand": null
-          }
-        ],
-        "rebuilt_context": [
-          {
-            "offset": 2,
-            "opcode": "ldarg.2",
-            "operand": null
-          },
-          {
-            "offset": 3,
-            "opcode": "ldc.i4.1",
-            "operand": null
-          },
-          {
-            "offset": 4,
-            "opcode": "bne.un",
-            "operand": {
-              "branch": 659
-            }
-          },
-          {
-            "offset": 9,
-            "opcode": "ldarg.1",
-            "operand": null
-          },
-          {
-            "offset": 10,
-            "opcode": "ldarg.0",
-            "operand": null
-          }
-        ],
-        "first_pair_exact": "{\"opcode\":\"bne.un\",\"operand\":{\"branch\":653}} => {\"opcode\":\"bne.un\",\"operand\":{\"branch\":659}}",
-        "first_pair_opcodes": "bne.un => bne.un",
-        "body_differences": [
-          "header",
-          "instructions",
-          "resolved_body_bytes"
-        ],
-        "original_exception_regions": [],
-        "rebuilt_exception_regions": []
-      }
-    },
-    {
       "pair": "{\"opcode\":\"bne.un.s\",\"operand\":{\"branch\":122}} => {\"opcode\":\"bne.un.s\",\"operand\":{\"branch\":116}}",
       "methods": 1,
       "original_il_bytes": 128,
@@ -1109,6 +1012,128 @@
         "original_exception_regions": [],
         "rebuilt_exception_regions": []
       }
+    },
+    {
+      "pair": "{\"opcode\":\"bne.un.s\",\"operand\":{\"branch\":158}} => {\"opcode\":\"beq.s\",\"operand\":{\"branch\":159}}",
+      "methods": 1,
+      "original_il_bytes": 182,
+      "method_ids": [
+        "KairoLibrary::kairo.unity.system.KairoBase+<>c::<Start>b__55_0()->System.Object"
+      ],
+      "example": {
+        "id": "KairoLibrary::kairo.unity.system.KairoBase+<>c::<Start>b__55_0()->System.Object",
+        "stable_id": "kairo.unity.system.KairoBase/<>c::<Start>b__55_0()->System.Object",
+        "source": "src/KairoLibrary/kairo/unity/system/KairoBase.cs",
+        "original_il_bytes": 182,
+        "rebuilt_il_bytes": 182,
+        "first_il_difference_offset": 147,
+        "first_original_instruction": {
+          "offset": 147,
+          "opcode": "bne.un.s",
+          "operand": {
+            "branch": 158
+          }
+        },
+        "first_rebuilt_instruction": {
+          "offset": 147,
+          "opcode": "beq.s",
+          "operand": {
+            "branch": 159
+          }
+        },
+        "original_context": [
+          {
+            "offset": 141,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class kairo.unity.ui.Dialog @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Show``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 146,
+            "opcode": "ldc.i4.4",
+            "operand": null
+          },
+          {
+            "offset": 147,
+            "opcode": "bne.un.s",
+            "operand": {
+              "branch": 158
+            }
+          },
+          {
+            "offset": 149,
+            "opcode": "ldloc.0",
+            "operand": null
+          },
+          {
+            "offset": 150,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          }
+        ],
+        "rebuilt_context": [
+          {
+            "offset": 141,
+            "opcode": "callvirt",
+            "operand": {
+              "method": "class kairo.unity.ui.Dialog @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::Show``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+            }
+          },
+          {
+            "offset": 146,
+            "opcode": "ldc.i4.4",
+            "operand": null
+          },
+          {
+            "offset": 147,
+            "opcode": "beq.s",
+            "operand": {
+              "branch": 159
+            }
+          },
+          {
+            "offset": 149,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 150,
+            "opcode": "box",
+            "operand": {
+              "type": "valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            }
+          }
+        ],
+        "first_pair_exact": "{\"opcode\":\"bne.un.s\",\"operand\":{\"branch\":158}} => {\"opcode\":\"beq.s\",\"operand\":{\"branch\":159}}",
+        "first_pair_opcodes": "bne.un.s => beq.s",
+        "body_differences": [
+          "instructions",
+          "resolved_body_bytes"
+        ],
+        "original_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 3,
+            "try_end": 168,
+            "handler_start": 168,
+            "handler_end": 179,
+            "filter_start": -1,
+            "catch_type": "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        ],
+        "rebuilt_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 3,
+            "try_end": 168,
+            "handler_start": 168,
+            "handler_end": 179,
+            "filter_start": -1,
+            "catch_type": "class System.Object @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        ]
+      }
     }
   ],
   "opcode_top10": [
@@ -1290,114 +1315,6 @@
             "catch_type": null
           }
         ]
-      }
-    },
-    {
-      "pair": "br => br",
-      "methods": 7,
-      "original_il_bytes": 7668,
-      "method_ids": [
-        "KairoLibrary::kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void",
-        "KairoLibrary::kairo.unity.ui.ResourceManager+<>c__DisplayClass51_0::<LoadStart>b__0()->System.Void",
-        "KairoLibrary::kairo.unity.ui.TextFormat::Init(System.String)->System.Void",
-        "KairoLibrary::kairo.unity.ui.TextLayout::_makeTextBlocks()->System.Void",
-        "KairoLibrary::kairo.unity.surface.TouchEvent::ToString()->System.String",
-        "KairoLibrary::kairo.unity.graphics.MaterialManager::RemoveInvalidMaterials()->System.Void",
-        "KairoLibrary::kairo.unity.form.FormManagerBase+<>c__DisplayClass85_0::<Capture>b__0()->System.Void"
-      ],
-      "example": {
-        "id": "KairoLibrary::kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void",
-        "stable_id": "kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void",
-        "source": "src/KairoLibrary/kairo/unity/util/Language.cs",
-        "original_il_bytes": 893,
-        "rebuilt_il_bytes": 897,
-        "first_il_difference_offset": 394,
-        "first_original_instruction": {
-          "offset": 393,
-          "opcode": "br",
-          "operand": {
-            "branch": 779
-          }
-        },
-        "first_rebuilt_instruction": {
-          "offset": 393,
-          "opcode": "br",
-          "operand": {
-            "branch": 783
-          }
-        },
-        "original_context": [
-          {
-            "offset": 390,
-            "opcode": "ldc.i4.0",
-            "operand": null
-          },
-          {
-            "offset": 391,
-            "opcode": "stloc.s",
-            "operand": {
-              "local": 6
-            }
-          },
-          {
-            "offset": 393,
-            "opcode": "br",
-            "operand": {
-              "branch": 779
-            }
-          },
-          {
-            "offset": 398,
-            "opcode": "ldloc.1",
-            "operand": null
-          },
-          {
-            "offset": 399,
-            "opcode": "ldc.i4.s",
-            "operand": 44
-          }
-        ],
-        "rebuilt_context": [
-          {
-            "offset": 390,
-            "opcode": "ldc.i4.0",
-            "operand": null
-          },
-          {
-            "offset": 391,
-            "opcode": "stloc.s",
-            "operand": {
-              "local": 6
-            }
-          },
-          {
-            "offset": 393,
-            "opcode": "br",
-            "operand": {
-              "branch": 783
-            }
-          },
-          {
-            "offset": 398,
-            "opcode": "ldloc.1",
-            "operand": null
-          },
-          {
-            "offset": 399,
-            "opcode": "ldc.i4.s",
-            "operand": 44
-          }
-        ],
-        "first_pair_exact": "{\"opcode\":\"br\",\"operand\":{\"branch\":779}} => {\"opcode\":\"br\",\"operand\":{\"branch\":783}}",
-        "first_pair_opcodes": "br => br",
-        "body_differences": [
-          "header",
-          "locals",
-          "instructions",
-          "resolved_body_bytes"
-        ],
-        "original_exception_regions": [],
-        "rebuilt_exception_regions": []
       }
     },
     {
@@ -1643,6 +1560,112 @@
         ],
         "first_pair_exact": "{\"opcode\":\"brtrue.s\",\"operand\":{\"branch\":204}} => {\"opcode\":\"brtrue.s\",\"operand\":{\"branch\":206}}",
         "first_pair_opcodes": "brtrue.s => brtrue.s",
+        "body_differences": [
+          "header",
+          "locals",
+          "instructions",
+          "resolved_body_bytes"
+        ],
+        "original_exception_regions": [],
+        "rebuilt_exception_regions": []
+      }
+    },
+    {
+      "pair": "br => br",
+      "methods": 5,
+      "original_il_bytes": 5462,
+      "method_ids": [
+        "KairoLibrary::kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void",
+        "KairoLibrary::kairo.unity.ui.TextLayout::_makeTextBlocks()->System.Void",
+        "KairoLibrary::kairo.unity.surface.TouchEvent::ToString()->System.String",
+        "KairoLibrary::kairo.unity.graphics.MaterialManager::RemoveInvalidMaterials()->System.Void",
+        "KairoLibrary::kairo.unity.form.FormManagerBase+<>c__DisplayClass85_0::<Capture>b__0()->System.Void"
+      ],
+      "example": {
+        "id": "KairoLibrary::kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void",
+        "stable_id": "kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void",
+        "source": "src/KairoLibrary/kairo/unity/util/Language.cs",
+        "original_il_bytes": 893,
+        "rebuilt_il_bytes": 897,
+        "first_il_difference_offset": 394,
+        "first_original_instruction": {
+          "offset": 393,
+          "opcode": "br",
+          "operand": {
+            "branch": 779
+          }
+        },
+        "first_rebuilt_instruction": {
+          "offset": 393,
+          "opcode": "br",
+          "operand": {
+            "branch": 783
+          }
+        },
+        "original_context": [
+          {
+            "offset": 390,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 391,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 6
+            }
+          },
+          {
+            "offset": 393,
+            "opcode": "br",
+            "operand": {
+              "branch": 779
+            }
+          },
+          {
+            "offset": 398,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 399,
+            "opcode": "ldc.i4.s",
+            "operand": 44
+          }
+        ],
+        "rebuilt_context": [
+          {
+            "offset": 390,
+            "opcode": "ldc.i4.0",
+            "operand": null
+          },
+          {
+            "offset": 391,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 6
+            }
+          },
+          {
+            "offset": 393,
+            "opcode": "br",
+            "operand": {
+              "branch": 783
+            }
+          },
+          {
+            "offset": 398,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          {
+            "offset": 399,
+            "opcode": "ldc.i4.s",
+            "operand": 44
+          }
+        ],
+        "first_pair_exact": "{\"opcode\":\"br\",\"operand\":{\"branch\":779}} => {\"opcode\":\"br\",\"operand\":{\"branch\":783}}",
+        "first_pair_opcodes": "br => br",
         "body_differences": [
           "header",
           "locals",
@@ -2479,108 +2502,164 @@
     {
       "pair": "brtrue => brtrue",
       "methods": 3,
-      "original_il_bytes": 4660,
+      "original_il_bytes": 5243,
       "method_ids": [
-        "KairoLibrary::kairo.unity.ui.ResourceManager::LoadStart(kairo.unity.util.JarInflater,System.Int32)->System.Void",
+        "KairoLibrary::kairo.unity.ui.ResourceManager+<>c__DisplayClass51_0::<LoadStart>b__0()->System.Void",
         "KairoLibrary::kairo.unity.ui.Balloon::Draw(kairo.unity.ui.Graphics,System.Single,System.Single,UnityEngine.Matrix4x4)->System.Void",
         "KairoLibrary::kairo.unity.native.KairoPlugin+<>c__DisplayClass90_0::<CreateLobiIntent>b__0()->System.Object"
       ],
       "example": {
-        "id": "KairoLibrary::kairo.unity.ui.ResourceManager::LoadStart(kairo.unity.util.JarInflater,System.Int32)->System.Void",
-        "stable_id": "kairo.unity.ui.ResourceManager::LoadStart(kairo.unity.util.JarInflater,System.Int32)->System.Void",
+        "id": "KairoLibrary::kairo.unity.ui.ResourceManager+<>c__DisplayClass51_0::<LoadStart>b__0()->System.Void",
+        "stable_id": "kairo.unity.ui.ResourceManager/<>c__DisplayClass51_0::<LoadStart>b__0()->System.Void",
         "source": "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs",
-        "original_il_bytes": 1345,
-        "rebuilt_il_bytes": 1352,
-        "first_il_difference_offset": 431,
+        "original_il_bytes": 1928,
+        "rebuilt_il_bytes": 1928,
+        "first_il_difference_offset": 76,
         "first_original_instruction": {
-          "offset": 430,
+          "offset": 75,
           "opcode": "brtrue",
           "operand": {
-            "branch": 871
+            "branch": 1192
           }
         },
         "first_rebuilt_instruction": {
-          "offset": 430,
+          "offset": 75,
           "opcode": "brtrue",
           "operand": {
-            "branch": 878
+            "branch": 1190
           }
         },
         "original_context": [
           {
-            "offset": 424,
+            "offset": 72,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 4
+            }
+          },
+          {
+            "offset": 74,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 75,
+            "opcode": "brtrue",
+            "operand": {
+              "branch": 1192
+            }
+          },
+          {
+            "offset": 80,
             "opcode": "ldarg.0",
             "operand": null
           },
           {
-            "offset": 425,
+            "offset": 81,
             "opcode": "ldfld",
             "operand": {
-              "field": "class kairo.unity.ui.ResourceManager @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::loaded_:valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-            }
-          },
-          {
-            "offset": 430,
-            "opcode": "brtrue",
-            "operand": {
-              "branch": 871
-            }
-          },
-          {
-            "offset": 435,
-            "opcode": "ldc.i4.0",
-            "operand": null
-          },
-          {
-            "offset": 436,
-            "opcode": "stloc.s",
-            "operand": {
-              "local": 8
+              "field": "class kairo.unity.ui.ResourceManager/<>c__DisplayClass51_0 @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::<>4__this:class kairo.unity.ui.ResourceManager @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           }
         ],
         "rebuilt_context": [
           {
-            "offset": 424,
+            "offset": 72,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 4
+            }
+          },
+          {
+            "offset": 74,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          {
+            "offset": 75,
+            "opcode": "brtrue",
+            "operand": {
+              "branch": 1190
+            }
+          },
+          {
+            "offset": 80,
             "opcode": "ldarg.0",
             "operand": null
           },
           {
-            "offset": 425,
+            "offset": 81,
             "opcode": "ldfld",
             "operand": {
-              "field": "class kairo.unity.ui.ResourceManager @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::loaded_:valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
-            }
-          },
-          {
-            "offset": 430,
-            "opcode": "brtrue",
-            "operand": {
-              "branch": 878
-            }
-          },
-          {
-            "offset": 435,
-            "opcode": "ldc.i4.0",
-            "operand": null
-          },
-          {
-            "offset": 436,
-            "opcode": "stloc.s",
-            "operand": {
-              "local": 8
+              "field": "class kairo.unity.ui.ResourceManager/<>c__DisplayClass51_0 @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::<>4__this:class kairo.unity.ui.ResourceManager @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
             }
           }
         ],
-        "first_pair_exact": "{\"opcode\":\"brtrue\",\"operand\":{\"branch\":871}} => {\"opcode\":\"brtrue\",\"operand\":{\"branch\":878}}",
+        "first_pair_exact": "{\"opcode\":\"brtrue\",\"operand\":{\"branch\":1192}} => {\"opcode\":\"brtrue\",\"operand\":{\"branch\":1190}}",
         "first_pair_opcodes": "brtrue => brtrue",
         "body_differences": [
-          "header",
           "instructions",
+          "exception_regions",
           "resolved_body_bytes"
         ],
-        "original_exception_regions": [],
-        "rebuilt_exception_regions": []
+        "original_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 678,
+            "try_end": 1165,
+            "handler_start": 1165,
+            "handler_end": 1192,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Catch",
+            "try_start": 1344,
+            "try_end": 1573,
+            "handler_start": 1573,
+            "handler_end": 1600,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Catch",
+            "try_start": 1691,
+            "try_end": 1796,
+            "handler_start": 1796,
+            "handler_end": 1820,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        ],
+        "rebuilt_exception_regions": [
+          {
+            "kind": "Catch",
+            "try_start": 676,
+            "try_end": 1163,
+            "handler_start": 1163,
+            "handler_end": 1190,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Catch",
+            "try_start": 1344,
+            "try_end": 1573,
+            "handler_start": 1573,
+            "handler_end": 1600,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          },
+          {
+            "kind": "Catch",
+            "try_start": 1691,
+            "try_end": 1796,
+            "handler_start": 1796,
+            "handler_end": 1820,
+            "filter_start": -1,
+            "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+          }
+        ]
       }
     },
     {

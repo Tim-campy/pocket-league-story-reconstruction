@@ -170,7 +170,7 @@ def load_context():
     adoptions={}
     for path in (ROOT/'reports').glob('round8-*-adoption.json'):
         document=read(path)
-        if document.get('official_verified'):adoptions[document['run_label']]=document
+        if document.get('official_verified') and path.name=='round8-'+document['run_label']+'-adoption.json':adoptions[document['run_label']]=document
     for cycle in cycles:
         if cycle['label'] not in adoptions:raise ValueError('Journal cycle lacks official adoption proof: '+cycle['label'])
     historical=[]
@@ -186,6 +186,7 @@ def load_context():
 def attempt_summary(ctx,assembly,group):
     identities=set(group['method_ids']);attempts=Counter();stops=Counter();rejections=Counter();limits=0;removed=0;incomplete=0
     for name,engine in ctx['engines']:
+        if '-initial-screen-' in name:continue
         if engine['assembly']!=assembly:continue
         for row in passes(engine):
             if row['id'] not in identities:continue
@@ -296,7 +297,7 @@ def render(ctx,short=False):
     if not short:
         rule_rows=[];negative_rows=[]
         for name,engine in ctx['engines']:
-            kind='plena adotada' if adopted_engine(ctx,name,engine) else 'sonda/preparo/não adotada'
+            kind='INVALIDO: screen usou baseline' if '-initial-screen-' in name else 'plena adotada' if adopted_engine(ctx,name,engine) else 'sonda/preparo/não adotada'
             counters=engine.get('transformations',{})
             for rule in sorted({key.rsplit(':',1)[0] for key in counters}):
                 rule_rows.append((name,kind,rule,counters.get(rule+':attempts',0),counters.get(rule+':accepted_steps',0),counters.get(rule+':body_gains',0),counters.get(rule+':IL_gains',0),0 if kind=='plena adotada' else 'não adotado'))
@@ -308,6 +309,7 @@ def render(ctx,short=False):
         add(table(['Execução','Métodos/passes','Compilações falhas','Regressões rejeitadas','Metadados rejeitados','Modelo/emissor discordam','Assinatura original recusada','Rebase externo recusado','Orçamento incompleto recusado','Paradas'],negative_rows))
     budget_rows=[]
     for name,engine in ctx['engines']:
+        if '-initial-screen-' in name:continue
         rows=list(passes(engine));trials=[t for row in rows for t in row.get('trials',[]) if t.get('incomplete_prediction')]
         budget_rows.append((name,len(trials),sum(t.get('candidate_compiler_invocations',0) for t in trials),sum(bool(t.get('accepted')) for t in trials),sum(bool(r.get('incomplete_budget_limit_reached')) for r in rows)))
     if not short:add(table(['Execução','Variantes incompletas compiladas','Invocações destas variantes','Avanços aceitos','Métodos no limite'],budget_rows))

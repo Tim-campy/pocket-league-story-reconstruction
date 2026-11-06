@@ -85,52 +85,36 @@
       "rule": "switch-owned-break-if-chain",
       "assembly": "KairoLibrary",
       "pair": "brtrue.s=>switch",
-      "hypothesis": "Repeticao do ciclo18 anterior: switch recuperado vira cadeia de if preservando os donos de break; previsao incompleta agora permite compilar e verificar.",
-      "result": "Nenhum candidato compilado avancou; 6 tentativas da regra, 0 avancos",
+      "hypothesis": "Repeticao valida do ciclo18 anterior: switch vira if preservando donos de break; candidato incompleto realmente escrito no arquivo de screen e compilado com prova SHA.",
+      "result": "Novos corpos aprovados; 6 tentativas da regra, 6 avancos",
       "gains": {
         "KairoLibrary": {
-          "methods_gained": 0,
-          "il_bytes_gained": 0
+          "methods_gained": 3,
+          "il_bytes_gained": 2360
         },
         "Assembly-CSharp": {
           "methods_gained": 0,
           "il_bytes_gained": 0
         }
       },
-      "rule_accepted_steps": 0,
-      "methods_gained": 0,
-      "il_bytes_gained": 0,
+      "rule_accepted_steps": 6,
+      "methods_gained": 3,
+      "il_bytes_gained": 2360,
       "before_measurement": "reports\\round8-cycle04-before-measurement.json",
-      "before_sha256": "7964efca206add551f343d26705fad35ad95e98c096d903c348536171176fea1",
+      "before_sha256": "e5fc17732f69d3efd29079d846051fe1515a3123350b0a51c047ad2750783251",
       "after_measurement": "reports\\round8-cycle04-after-measurement.json",
-      "after_sha256": "9e95fcda84cd4fb5e7244b24f474ecbf95b6df7b66a5c52dbeda2e28260b5427"
-    },
-    {
-      "cycle": 5,
-      "label": "cycle05",
-      "rule": "nullable-conditional-coalesce-explicit",
-      "assembly": "KairoLibrary",
-      "pair": "brfalse.s=>brtrue.s",
-      "hypothesis": "Repeticao do ciclo19 anterior: acesso condicional e coalesce recuperados cedem ao teste explicito de nulo; previsao incompleta permite compilar e verificar.",
-      "result": "Nenhum candidato compilado avancou; 1 tentativas da regra, 0 avancos",
-      "gains": {
-        "KairoLibrary": {
-          "methods_gained": 0,
-          "il_bytes_gained": 0
-        },
-        "Assembly-CSharp": {
-          "methods_gained": 0,
-          "il_bytes_gained": 0
-        }
-      },
-      "rule_accepted_steps": 0,
-      "methods_gained": 0,
-      "il_bytes_gained": 0,
-      "before_measurement": "reports\\round8-cycle05-before-measurement.json",
-      "before_sha256": "32a51caee4710b02b81ad0b0eff928e092ced844ca07e80ebf43a5d378ad431e",
-      "after_measurement": "reports\\round8-cycle05-after-measurement.json",
-      "after_sha256": "9c75c24b445f4f3a9f686b3ca363ca96cd4fadfe4a2492b545f2374127d3bc8a"
+      "after_sha256": "90a998e0289a2d3a749eb6fe9a465aa1048bcf441cf434d380328d165c65e63e"
     }
   ],
-  "consecutive_zero_cycles": 2
+  "consecutive_zero_cycles": 0,
+  "superseded_experiments": {
+    "journal_archive": "reports\\round8-invalid-screen-original-journal.json",
+    "journal_archive_sha256": "4ba23feaf3ffc1f4f1cd447b336f5f30b04173f53f63913a1da2551c14ddeb36",
+    "audit": "reports\\round8-screen-audit.json",
+    "reason": "Candidate not passed to sequential source screen; these experiments did not complete the required candidate test",
+    "public_commits_preserved": [
+      "4b0097f008e2b493239773aa2abe7e3d51c6fe86",
+      "e7d2462"
+    ]
+  }
 }

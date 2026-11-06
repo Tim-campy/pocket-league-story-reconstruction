@@ -1,0 +1,136 @@
+{
+  "baseline_commit": "25b8108711a4a8920a2600cf9ffea5b710b3a481",
+  "cycles": [
+    {
+      "cycle": 1,
+      "label": "cycle01",
+      "rule": "calculated-store-anchored-local-lca",
+      "assembly": "Assembly-CSharp",
+      "pair": "stloc.s=>stloc.s",
+      "hypothesis": "Ancoras unicas de stores e intervalos sem interleaving calculam o bloco comum; reservas apenas para slots originais comprovadamente sem uso.",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 1,
+          "il_bytes_gained": 261
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 1,
+      "il_bytes_gained": 261,
+      "before_measurement": "reports\\round8-cycle01-before-measurement.json",
+      "before_sha256": "97278afeab9be0123b8a87abd538a59fc914bcb80b82b8fadf19578de17fb1e4",
+      "after_measurement": "reports\\round8-cycle01-after-measurement.json",
+      "after_sha256": "1f6989cfd75265d491523e5d0c903a95a8f873ae91a78d8aab59d50d548873a4"
+    },
+    {
+      "cycle": 2,
+      "label": "cycle02",
+      "rule": "smcs-value-return-guard-reverse",
+      "assembly": "Assembly-CSharp",
+      "pair": "guard return=>positive if/else",
+      "hypothesis": "SpForm.Update conserva o bloco positivo antes do retorno alternativo quando a guarda recuperada inverte a ordem original dos blocos.",
+      "result": "Nenhum candidato compilado avancou; 6 tentativas da regra, 0 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 0,
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round8-cycle02-before-measurement.json",
+      "before_sha256": "64ac0e65f9fa74e354413e46e17125fb81c5cd6605a5e1ccb8080dc7a4e96c23",
+      "after_measurement": "reports\\round8-cycle02-after-measurement.json",
+      "after_sha256": "d9bba80407efc2093624d10276c8bc107eaecd399916e16a2a9918f25c412d54"
+    },
+    {
+      "cycle": 3,
+      "label": "cycle03",
+      "rule": "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+      "assembly": "KairoLibrary",
+      "pair": "stloc.s=>stloc.s",
+      "hypothesis": "O modelo void try-finally preserva o renderPass vivo no handler; indices e escopos calculados recuperam os 35 slots de Graphics.DrawPolygons.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 1563
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 1563,
+      "before_measurement": "reports\\round8-cycle03-before-measurement.json",
+      "before_sha256": "8b1fe238e430103660559f475ab000b946eba61fa1fd99b68a1ebe5ca4a99b0f",
+      "after_measurement": "reports\\round8-cycle03-after-measurement.json",
+      "after_sha256": "50e1ec2fe0067b3c791f8d945e9d8f7069386bf2ae5d63fc16ad0bfd14ff7b77"
+    },
+    {
+      "cycle": 4,
+      "label": "cycle04",
+      "rule": "switch-owned-break-if-chain",
+      "assembly": "KairoLibrary",
+      "pair": "brtrue.s=>switch",
+      "hypothesis": "Repeticao do ciclo18 anterior: switch recuperado vira cadeia de if preservando os donos de break; previsao incompleta agora permite compilar e verificar.",
+      "result": "Nenhum candidato compilado avancou; 6 tentativas da regra, 0 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 0,
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round8-cycle04-before-measurement.json",
+      "before_sha256": "7964efca206add551f343d26705fad35ad95e98c096d903c348536171176fea1",
+      "after_measurement": "reports\\round8-cycle04-after-measurement.json",
+      "after_sha256": "9e95fcda84cd4fb5e7244b24f474ecbf95b6df7b66a5c52dbeda2e28260b5427"
+    },
+    {
+      "cycle": 5,
+      "label": "cycle05",
+      "rule": "nullable-conditional-coalesce-explicit",
+      "assembly": "KairoLibrary",
+      "pair": "brfalse.s=>brtrue.s",
+      "hypothesis": "Repeticao do ciclo19 anterior: acesso condicional e coalesce recuperados cedem ao teste explicito de nulo; previsao incompleta permite compilar e verificar.",
+      "result": "Nenhum candidato compilado avancou; 1 tentativas da regra, 0 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 0,
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round8-cycle05-before-measurement.json",
+      "before_sha256": "32a51caee4710b02b81ad0b0eff928e092ced844ca07e80ebf43a5d378ad431e",
+      "after_measurement": "reports\\round8-cycle05-after-measurement.json",
+      "after_sha256": "9c75c24b445f4f3a9f686b3ca363ca96cd4fadfe4a2492b545f2374127d3bc8a"
+    }
+  ],
+  "consecutive_zero_cycles": 2
+}

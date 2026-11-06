@@ -175,10 +175,7 @@ namespace kfw.panel
 					{
 						num = 3;
 					}
-					switch (num)
-					{
-					case 0:
-						result_ = text;
+					if ((num == 0)) { result_ = text;
 						if (result_.Equals(defaultText_))
 						{
 							result_ = originalText_;
@@ -193,9 +190,7 @@ namespace kfw.panel
 						}
 						Display.SetCurrent(bkCanvas_);
 						end_ = true;
-						break;
-					case 1:
-					{
+						 } else if ((num == 1)) { {
 						int num2 = maxLength_;
 						if (Language.Japanese())
 						{
@@ -214,10 +209,8 @@ namespace kfw.panel
 						Dialog dialog3 = new Dialog(1, "ﾒｯｾｰｼﾞ");
 						dialog3.SetText(StringUtil.Replace(Language.TranslateText(text3), JString.ValueOf(num2)));
 						dialog3.Show();
-						break;
-					}
-					case 2:
-					{
+
+					} } else if ((num == 2)) { {
 						Dialog dialog2 = new Dialog(1, "ﾒｯｾｰｼﾞ");
 						string text2 = "";
 						for (int j = 0; j < prohibition_.Length; j++)
@@ -230,16 +223,13 @@ namespace kfw.panel
 						}
 						dialog2.SetText(StringUtil.Replace(Language.TranslateText("システムの都合上 <0> は使えません"), text2));
 						dialog2.Show();
-						break;
-					}
-					case 3:
-					{
+
+					} } else if ((num == 3)) { {
 						Dialog dialog = new Dialog(1, "ﾒｯｾｰｼﾞ");
 						dialog.SetText(StringUtil.Replace(Language.TranslateText("<0>を入力して下さい"), itemName_));
 						dialog.Show();
-						break;
-					}
-					}
+
+					} }
 				}
 				else
 				{

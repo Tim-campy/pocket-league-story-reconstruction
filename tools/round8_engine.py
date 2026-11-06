@@ -876,7 +876,9 @@ def main():
                     row.setdefault('incomplete_budget_rejections',[]).append({'rule':patch['rule'],'source_sha256':source_key[1]})
                     continue
                 tested += 1
-                c.paths[logical].write_text(candidate, encoding='utf-8', newline='')
+                from round8_candidate_sources import write_candidate_sources
+                source_proof=write_candidate_sources(candidate,c.paths[logical],
+                    screen_paths if pool is None else None,logical,source_filter)
                 pool_result = pool.result(pool_indices[id(patch)]) if pool else None
                 built = pool_result['binary'] if pool_result else c.build(screen_paths=screen_paths)
                 trial = {'iteration': iteration + 1, 'rule': patch['rule'], 'start': patch['start'], 'end': patch['end'],
@@ -885,6 +887,7 @@ def main():
                 if slot_model:
                     trial['slot_model_prediction'] = patch['slot_model_prediction']
                 trial['screen_used'] = screen_paths is not None
+                trial['candidate_source_provenance']=source_proof
                 if pool_result:
                     trial['screen_log_path'] = pool_result['log_path']
                     trial['screen_build_seconds'] = pool_result['seconds']
