@@ -1089,8 +1089,9 @@ namespace kairo.unity.util
 			if (text.Contains("\t"))
 			{
 				string text2 = StringUtil.Replace(text, "\t", "¥t");
-				string text3 = _translateText(text2);
-				if (text2 != text3)
+				string comparisonSource = text2;
+string text3 = _translateText(comparisonSource);
+if (comparisonSource != text3)
 				{
 					return StringUtil.Replace(text3, "¥t", "\t");
 				}
@@ -1116,7 +1117,8 @@ namespace kairo.unity.util
 				}
 				return text;
 			}
-			string result = text;
+			{
+string result = text;
 			string text5 = _translateText(text);
 			if (text5 != text)
 			{
@@ -1130,7 +1132,9 @@ namespace kairo.unity.util
 				return text5;
 			}
 			return result;
-		}
+
+}
+}
 
 		private static string _translateText(string text)
 		{

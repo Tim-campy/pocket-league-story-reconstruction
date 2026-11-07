@@ -1396,7 +1396,8 @@ int num14 = indicies[recoveredIndexB];
 				}
 				return;
 			}
-			float num = image.GetWidth();
+			{
+float num = image.GetWidth();
 			float num2 = image.GetHeight();
 			if (image.standardWidth_ > 0)
 			{
@@ -1409,7 +1410,9 @@ int num14 = indicies[recoveredIndexB];
 				num2 /= num4;
 			}
 			_drawImage(image, x, y, num, num2, 0, 0, image.GetWidth(), image.GetHeight());
-		}
+
+}
+}
 
 		public void DrawImage(Image image, float dx, float dy, int sx, int sy, int width, int height)
 		{

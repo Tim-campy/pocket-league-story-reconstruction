@@ -1,0 +1,1412 @@
+{
+  "assembly": "KairoLibrary",
+  "baseline_body_equal": 3178,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String",
+      "number": 1,
+      "initial_offset": 61,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d10-late-tail-scope-comparison-translate-late-tail-stack-alias",
+          "start": 39573,
+          "end": 41640,
+          "before": "public static string TranslateText(string text, bool tabCheck = true)\r\n\t\t{\r\n\t\t\ttext = StringUtil.Replace(text, \"\\\\\", \"\u00a5\");\r\n\t\t\tif (text.IndexOf('\\b') != -1)\r\n\t\t\t{\r\n\t\t\t\ttext = StringUtil.Replace(text, \"\\b\", \"\");\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\tif (text.IndexOf(\"<\") != -1)\r\n\t\t\t{\r\n\t\t\t\tMatchCollection matchCollection = Regex.Matches(text, \"<co=[0-9A-Z]+>\");\r\n\t\t\t\tif (matchCollection.Count > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tStringBuilder stringBuilder = new StringBuilder();\r\n\t\t\t\t\tfor (int i = 0; i < matchCollection.Count; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tMatch match = matchCollection[i];\r\n\t\t\t\t\t\tif (i == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstringBuilder.Append(text.Substring(0, match.Index));\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(match.Value.ToLower());\r\n\t\t\t\t\t\tint num = text.Length;\r\n\t\t\t\t\t\tif (i + 1 < matchCollection.Count)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum = matchCollection[i + 1].Index;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(text.Substring(match.Index + match.Length, num - (match.Index + match.Length)));\r\n\t\t\t\t\t}\r\n\t\t\t\t\ttext = stringBuilder.ToString();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (text.Contains(\"\\t\"))\r\n\t\t\t{\r\n\t\t\t\tstring text2 = StringUtil.Replace(text, \"\\t\", \"\u00a5t\");\r\n\t\t\t\tstring text3 = _translateText(text2);\r\n\t\t\t\tif (text2 != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tstring text4 = StringUtil.Replace(text2, \"\\n\", \"<br>\");\r\n\t\t\t\ttext3 = _translateText(text4);\r\n\t\t\t\tif (text4 != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tif (tabCheck)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array = StringUtil.Split(text, \"\\t\");\r\n\t\t\t\t\ttext = \"\";\r\n\t\t\t\t\tfor (int j = 0; j < array.Length; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (j != 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttext += \"\\t\";\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\ttext += _translateText(array[j]);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn text;\r\n\t\t\t\t}\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\tstring result = text;\r\n\t\t\tstring text5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\ttext = StringUtil.Replace(text, \"\\r\\n\", \"<br>\");\r\n\t\t\ttext = StringUtil.Replace(text, \"\\n\", \"<br>\");\r\n\t\t\ttext5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\treturn result;\r\n\t\t}",
+          "after": "public static string TranslateText(string text, bool tabCheck = true)\r\n\t\t{\r\n\t\t\ttext = StringUtil.Replace(text, \"\\\\\", \"\u00a5\");\r\n\t\t\tif (text.IndexOf('\\b') != -1)\r\n\t\t\t{\r\n\t\t\t\ttext = StringUtil.Replace(text, \"\\b\", \"\");\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\tif (text.IndexOf(\"<\") != -1)\r\n\t\t\t{\r\n\t\t\t\tMatchCollection matchCollection = Regex.Matches(text, \"<co=[0-9A-Z]+>\");\r\n\t\t\t\tif (matchCollection.Count > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tStringBuilder stringBuilder = new StringBuilder();\r\n\t\t\t\t\tfor (int i = 0; i < matchCollection.Count; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tMatch match = matchCollection[i];\r\n\t\t\t\t\t\tif (i == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstringBuilder.Append(text.Substring(0, match.Index));\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(match.Value.ToLower());\r\n\t\t\t\t\t\tint num = text.Length;\r\n\t\t\t\t\t\tif (i + 1 < matchCollection.Count)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum = matchCollection[i + 1].Index;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(text.Substring(match.Index + match.Length, num - (match.Index + match.Length)));\r\n\t\t\t\t\t}\r\n\t\t\t\t\ttext = stringBuilder.ToString();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (text.Contains(\"\\t\"))\r\n\t\t\t{\r\n\t\t\t\tstring text2 = StringUtil.Replace(text, \"\\t\", \"\u00a5t\");\r\n\t\t\t\tstring comparisonSource = text2;\r\nstring text3 = _translateText(comparisonSource);\r\nif (comparisonSource != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tstring text4 = StringUtil.Replace(text2, \"\\n\", \"<br>\");\r\n\t\t\t\ttext3 = _translateText(text4);\r\n\t\t\t\tif (text4 != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tif (tabCheck)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array = StringUtil.Split(text, \"\\t\");\r\n\t\t\t\t\ttext = \"\";\r\n\t\t\t\t\tfor (int j = 0; j < array.Length; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (j != 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttext += \"\\t\";\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\ttext += _translateText(array[j]);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn text;\r\n\t\t\t\t}\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\t{\r\nstring result = text;\r\n\t\t\tstring text5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\ttext = StringUtil.Replace(text, \"\\r\\n\", \"<br>\");\r\n\t\t\ttext = StringUtil.Replace(text, \"\\n\", \"<br>\");\r\n\t\t\ttext5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\treturn result;\r\n\t\t\r\n}\r\n}",
+          "compile_pass": true,
+          "old_prefix": 61,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "System.Text.RegularExpressions.MatchCollection",
+              "System.Text.StringBuilder",
+              "System.Int32",
+              "System.Text.RegularExpressions.Match",
+              "System.Int32",
+              "System.String",
+              "System.String",
+              "System.String",
+              "System.String",
+              "System.String[]",
+              "System.Int32",
+              "System.String",
+              "System.String"
+            ],
+            "method_id": "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String",
+            "unsupported_reasons": [
+              "stack_scheduler_multiple_use:text2",
+              "stack_scheduler_multiple_use:comparisonSource",
+              "stack_scheduler_multiple_use:text4",
+              "stack_scheduler_single_use:result"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle26-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\util\\Language.cs",
+            "full_source_sha256": "bb4b95454e9a2888d4adac7fa6d81e06b53b7f89797b10f3da195240a1eda1d9",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle26-probe\\engine\\KairoLibrary\\target-screen\\Language.cs",
+            "screen_source_sha256": "0b7740825cd69703e739d5a33d91322c594f0d27699f3d8363d38d8391ec9dcf",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 540,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 540,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String"
+          ],
+          "matched_IL_gain": 540
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d10-late-tail-scope-comparison-translate-late-tail-stack-alias",
+          "start": 39573,
+          "end": 41640,
+          "before": "public static string TranslateText(string text, bool tabCheck = true)\r\n\t\t{\r\n\t\t\ttext = StringUtil.Replace(text, \"\\\\\", \"\u00a5\");\r\n\t\t\tif (text.IndexOf('\\b') != -1)\r\n\t\t\t{\r\n\t\t\t\ttext = StringUtil.Replace(text, \"\\b\", \"\");\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\tif (text.IndexOf(\"<\") != -1)\r\n\t\t\t{\r\n\t\t\t\tMatchCollection matchCollection = Regex.Matches(text, \"<co=[0-9A-Z]+>\");\r\n\t\t\t\tif (matchCollection.Count > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tStringBuilder stringBuilder = new StringBuilder();\r\n\t\t\t\t\tfor (int i = 0; i < matchCollection.Count; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tMatch match = matchCollection[i];\r\n\t\t\t\t\t\tif (i == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstringBuilder.Append(text.Substring(0, match.Index));\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(match.Value.ToLower());\r\n\t\t\t\t\t\tint num = text.Length;\r\n\t\t\t\t\t\tif (i + 1 < matchCollection.Count)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum = matchCollection[i + 1].Index;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(text.Substring(match.Index + match.Length, num - (match.Index + match.Length)));\r\n\t\t\t\t\t}\r\n\t\t\t\t\ttext = stringBuilder.ToString();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (text.Contains(\"\\t\"))\r\n\t\t\t{\r\n\t\t\t\tstring text2 = StringUtil.Replace(text, \"\\t\", \"\u00a5t\");\r\n\t\t\t\tstring text3 = _translateText(text2);\r\n\t\t\t\tif (text2 != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tstring text4 = StringUtil.Replace(text2, \"\\n\", \"<br>\");\r\n\t\t\t\ttext3 = _translateText(text4);\r\n\t\t\t\tif (text4 != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tif (tabCheck)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array = StringUtil.Split(text, \"\\t\");\r\n\t\t\t\t\ttext = \"\";\r\n\t\t\t\t\tfor (int j = 0; j < array.Length; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (j != 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttext += \"\\t\";\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\ttext += _translateText(array[j]);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn text;\r\n\t\t\t\t}\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\tstring result = text;\r\n\t\t\tstring text5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\ttext = StringUtil.Replace(text, \"\\r\\n\", \"<br>\");\r\n\t\t\ttext = StringUtil.Replace(text, \"\\n\", \"<br>\");\r\n\t\t\ttext5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\treturn result;\r\n\t\t}",
+          "after": "public static string TranslateText(string text, bool tabCheck = true)\r\n\t\t{\r\n\t\t\ttext = StringUtil.Replace(text, \"\\\\\", \"\u00a5\");\r\n\t\t\tif (text.IndexOf('\\b') != -1)\r\n\t\t\t{\r\n\t\t\t\ttext = StringUtil.Replace(text, \"\\b\", \"\");\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\tif (text.IndexOf(\"<\") != -1)\r\n\t\t\t{\r\n\t\t\t\tMatchCollection matchCollection = Regex.Matches(text, \"<co=[0-9A-Z]+>\");\r\n\t\t\t\tif (matchCollection.Count > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tStringBuilder stringBuilder = new StringBuilder();\r\n\t\t\t\t\tfor (int i = 0; i < matchCollection.Count; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tMatch match = matchCollection[i];\r\n\t\t\t\t\t\tif (i == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstringBuilder.Append(text.Substring(0, match.Index));\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(match.Value.ToLower());\r\n\t\t\t\t\t\tint num = text.Length;\r\n\t\t\t\t\t\tif (i + 1 < matchCollection.Count)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum = matchCollection[i + 1].Index;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstringBuilder.Append(text.Substring(match.Index + match.Length, num - (match.Index + match.Length)));\r\n\t\t\t\t\t}\r\n\t\t\t\t\ttext = stringBuilder.ToString();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (text.Contains(\"\\t\"))\r\n\t\t\t{\r\n\t\t\t\tstring text2 = StringUtil.Replace(text, \"\\t\", \"\u00a5t\");\r\n\t\t\t\tstring comparisonSource = text2;\r\nstring text3 = _translateText(comparisonSource);\r\nif (comparisonSource != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tstring text4 = StringUtil.Replace(text2, \"\\n\", \"<br>\");\r\n\t\t\t\ttext3 = _translateText(text4);\r\n\t\t\t\tif (text4 != text3)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn StringUtil.Replace(text3, \"\u00a5t\", \"\\t\");\r\n\t\t\t\t}\r\n\t\t\t\tif (tabCheck)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring[] array = StringUtil.Split(text, \"\\t\");\r\n\t\t\t\t\ttext = \"\";\r\n\t\t\t\t\tfor (int j = 0; j < array.Length; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (j != 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ttext += \"\\t\";\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\ttext += _translateText(array[j]);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn text;\r\n\t\t\t\t}\r\n\t\t\t\treturn text;\r\n\t\t\t}\r\n\t\t\t{\r\nstring result = text;\r\n\t\t\tstring text5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\ttext = StringUtil.Replace(text, \"\\r\\n\", \"<br>\");\r\n\t\t\ttext = StringUtil.Replace(text, \"\\n\", \"<br>\");\r\n\t\t\ttext5 = _translateText(text);\r\n\t\t\tif (text5 != text)\r\n\t\t\t{\r\n\t\t\t\treturn text5;\r\n\t\t\t}\r\n\t\t\treturn result;\r\n\t\t\r\n}\r\n}",
+          "compile_pass": true,
+          "old_prefix": 61,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "System.Text.RegularExpressions.MatchCollection",
+              "System.Text.StringBuilder",
+              "System.Int32",
+              "System.Text.RegularExpressions.Match",
+              "System.Int32",
+              "System.String",
+              "System.String",
+              "System.String",
+              "System.String",
+              "System.String[]",
+              "System.Int32",
+              "System.String",
+              "System.String"
+            ],
+            "method_id": "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String",
+            "unsupported_reasons": [
+              "stack_scheduler_multiple_use:text2",
+              "stack_scheduler_multiple_use:comparisonSource",
+              "stack_scheduler_multiple_use:text4",
+              "stack_scheduler_single_use:result"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle26-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\util\\Language.cs",
+            "full_source_sha256": "bb4b95454e9a2888d4adac7fa6d81e06b53b7f89797b10f3da195240a1eda1d9",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle26-probe\\engine\\KairoLibrary\\target-screen\\Language.cs",
+            "screen_source_sha256": "0b7740825cd69703e739d5a33d91322c594f0d27699f3d8363d38d8391ec9dcf",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 540,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 540,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String"
+          ],
+          "matched_IL_gain": 540
+        }
+      ],
+      "mapping": "native-PDB-sequence-point",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "null_polarity_evidence": [
+        {}
+      ],
+      "round9_calculated_emission_evidence": [
+        {
+          "float_identity": {},
+          "per_arm_stores": {}
+        }
+      ],
+      "transform_helper_sha256": "df5d9fcd8937f6c1d3835d72c58f6fcee3dbb53d215db35f085e225c0eac8e98",
+      "stop_point": {
+        "offset": 61,
+        "source": "src/KairoLibrary/kairo/unity/util/Language.cs",
+        "point": {
+          "offset": 65,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle26-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\util\\Language.cs",
+          "start_line": 1067,
+          "start_column": 5,
+          "end_line": 1067,
+          "end_column": 77,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 76,
+          "line": 1067,
+          "column": 5
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 76,
+          "rebuilt_offset": 76,
+          "original_index": 25,
+          "rebuilt_index": 25,
+          "original_instruction": {
+            "offset": 76,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 76,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          "pair": "{\"opcode\":\"stloc.0\",\"operand\":null} => {\"opcode\":\"stloc.2\",\"operand\":null}",
+          "opcode_pair": "stloc.0 => stloc.2",
+          "original_context": [
+            {
+              "offset": 66,
+              "opcode": "ldstr",
+              "operand": "<co=[0-9A-Z]+>"
+            },
+            {
+              "offset": 71,
+              "opcode": "call",
+              "operand": {
+                "method": "class System.Text.RegularExpressions.Regex @ System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Matches``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Text.RegularExpressions.MatchCollection @ System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 76,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 77,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 78,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class System.Text.RegularExpressions.MatchCollection @ System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::get_Count``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 83,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 66,
+              "opcode": "ldstr",
+              "operand": "<co=[0-9A-Z]+>"
+            },
+            {
+              "offset": 71,
+              "opcode": "call",
+              "operand": {
+                "method": "class System.Text.RegularExpressions.Regex @ System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::Matches``0(class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089,class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)->class System.Text.RegularExpressions.MatchCollection @ System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 76,
+              "opcode": "stloc.2",
+              "operand": null
+            },
+            {
+              "offset": 77,
+              "opcode": "ldloc.2",
+              "operand": null
+            },
+            {
+              "offset": 78,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class System.Text.RegularExpressions.MatchCollection @ System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089::get_Count``0()->valuetype System.Int32 @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 83,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            }
+          ],
+          "original_labels": {
+            "48": "L0",
+            "103": "L1",
+            "134": "L2",
+            "232": "L3",
+            "252": "L4",
+            "375": "L5",
+            "420": "L6",
+            "454": "L7",
+            "456": "L8",
+            "480": "L9",
+            "102": "O102",
+            "133": "O133",
+            "186": "O186",
+            "323": "O323",
+            "403": "O403",
+            "444": "O444",
+            "537": "O537"
+          },
+          "rebuilt_labels": {
+            "48": "L0",
+            "103": "L1",
+            "138": "L2",
+            "248": "L3",
+            "267": "L4",
+            "391": "L5",
+            "436": "L6",
+            "470": "L7",
+            "472": "L8",
+            "492": "L9",
+            "194": "R194",
+            "246": "R246",
+            "339": "R339",
+            "419": "R419",
+            "460": "R460",
+            "546": "R546"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 25,
+              "original_stop": 27,
+              "rebuilt_start": 25,
+              "rebuilt_stop": 27
+            },
+            {
+              "kind": "replace",
+              "original_start": 31,
+              "original_stop": 32,
+              "rebuilt_start": 31,
+              "rebuilt_stop": 32
+            },
+            {
+              "kind": "replace",
+              "original_start": 33,
+              "original_stop": 34,
+              "rebuilt_start": 33,
+              "rebuilt_stop": 34
+            },
+            {
+              "kind": "delete",
+              "original_start": 35,
+              "original_stop": 36,
+              "rebuilt_start": 35,
+              "rebuilt_stop": 35
+            },
+            {
+              "kind": "insert",
+              "original_start": 37,
+              "original_stop": 37,
+              "rebuilt_start": 36,
+              "rebuilt_stop": 37
+            },
+            {
+              "kind": "replace",
+              "original_start": 38,
+              "original_stop": 40,
+              "rebuilt_start": 38,
+              "rebuilt_stop": 40
+            },
+            {
+              "kind": "replace",
+              "original_start": 41,
+              "original_stop": 42,
+              "rebuilt_start": 41,
+              "rebuilt_stop": 42
+            },
+            {
+              "kind": "replace",
+              "original_start": 44,
+              "original_stop": 45,
+              "rebuilt_start": 44,
+              "rebuilt_stop": 45
+            },
+            {
+              "kind": "delete",
+              "original_start": 49,
+              "original_stop": 50,
+              "rebuilt_start": 49,
+              "rebuilt_stop": 49
+            },
+            {
+              "kind": "insert",
+              "original_start": 51,
+              "original_stop": 51,
+              "rebuilt_start": 50,
+              "rebuilt_stop": 51
+            },
+            {
+              "kind": "replace",
+              "original_start": 57,
+              "original_stop": 59,
+              "rebuilt_start": 57,
+              "rebuilt_stop": 59
+            },
+            {
+              "kind": "replace",
+              "original_start": 61,
+              "original_stop": 62,
+              "rebuilt_start": 61,
+              "rebuilt_stop": 62
+            },
+            {
+              "kind": "delete",
+              "original_start": 64,
+              "original_stop": 65,
+              "rebuilt_start": 64,
+              "rebuilt_stop": 64
+            },
+            {
+              "kind": "insert",
+              "original_start": 66,
+              "original_stop": 66,
+              "rebuilt_start": 65,
+              "rebuilt_stop": 66
+            },
+            {
+              "kind": "replace",
+              "original_start": 70,
+              "original_stop": 72,
+              "rebuilt_start": 70,
+              "rebuilt_stop": 72
+            },
+            {
+              "kind": "replace",
+              "original_start": 73,
+              "original_stop": 74,
+              "rebuilt_start": 73,
+              "rebuilt_stop": 74
+            },
+            {
+              "kind": "replace",
+              "original_start": 75,
+              "original_stop": 76,
+              "rebuilt_start": 75,
+              "rebuilt_stop": 76
+            },
+            {
+              "kind": "replace",
+              "original_start": 78,
+              "original_stop": 80,
+              "rebuilt_start": 78,
+              "rebuilt_stop": 80
+            },
+            {
+              "kind": "replace",
+              "original_start": 81,
+              "original_stop": 82,
+              "rebuilt_start": 81,
+              "rebuilt_stop": 82
+            },
+            {
+              "kind": "replace",
+              "original_start": 88,
+              "original_stop": 89,
+              "rebuilt_start": 88,
+              "rebuilt_stop": 89
+            },
+            {
+              "kind": "replace",
+              "original_start": 91,
+              "original_stop": 92,
+              "rebuilt_start": 91,
+              "rebuilt_stop": 93
+            },
+            {
+              "kind": "delete",
+              "original_start": 93,
+              "original_stop": 94,
+              "rebuilt_start": 94,
+              "rebuilt_stop": 94
+            },
+            {
+              "kind": "replace",
+              "original_start": 96,
+              "original_stop": 97,
+              "rebuilt_start": 96,
+              "rebuilt_stop": 97
+            },
+            {
+              "kind": "replace",
+              "original_start": 107,
+              "original_stop": 110,
+              "rebuilt_start": 107,
+              "rebuilt_stop": 109
+            },
+            {
+              "kind": "replace",
+              "original_start": 111,
+              "original_stop": 113,
+              "rebuilt_start": 110,
+              "rebuilt_stop": 113
+            },
+            {
+              "kind": "replace",
+              "original_start": 115,
+              "original_stop": 116,
+              "rebuilt_start": 115,
+              "rebuilt_stop": 116
+            },
+            {
+              "kind": "replace",
+              "original_start": 120,
+              "original_stop": 121,
+              "rebuilt_start": 120,
+              "rebuilt_stop": 121
+            },
+            {
+              "kind": "replace",
+              "original_start": 126,
+              "original_stop": 128,
+              "rebuilt_start": 126,
+              "rebuilt_stop": 128
+            },
+            {
+              "kind": "replace",
+              "original_start": 130,
+              "original_stop": 131,
+              "rebuilt_start": 130,
+              "rebuilt_stop": 131
+            },
+            {
+              "kind": "replace",
+              "original_start": 140,
+              "original_stop": 141,
+              "rebuilt_start": 140,
+              "rebuilt_stop": 141
+            },
+            {
+              "kind": "replace",
+              "original_start": 144,
+              "original_stop": 145,
+              "rebuilt_start": 144,
+              "rebuilt_stop": 145
+            },
+            {
+              "kind": "replace",
+              "original_start": 146,
+              "original_stop": 147,
+              "rebuilt_start": 146,
+              "rebuilt_stop": 147
+            },
+            {
+              "kind": "replace",
+              "original_start": 153,
+              "original_stop": 155,
+              "rebuilt_start": 153,
+              "rebuilt_stop": 155
+            },
+            {
+              "kind": "replace",
+              "original_start": 159,
+              "original_stop": 160,
+              "rebuilt_start": 159,
+              "rebuilt_stop": 160
+            },
+            {
+              "kind": "replace",
+              "original_start": 162,
+              "original_stop": 165,
+              "rebuilt_start": 162,
+              "rebuilt_stop": 165
+            },
+            {
+              "kind": "replace",
+              "original_start": 173,
+              "original_stop": 174,
+              "rebuilt_start": 173,
+              "rebuilt_stop": 174
+            },
+            {
+              "kind": "replace",
+              "original_start": 176,
+              "original_stop": 178,
+              "rebuilt_start": 176,
+              "rebuilt_stop": 178
+            },
+            {
+              "kind": "replace",
+              "original_start": 181,
+              "original_stop": 182,
+              "rebuilt_start": 181,
+              "rebuilt_stop": 182
+            },
+            {
+              "kind": "replace",
+              "original_start": 195,
+              "original_stop": 197,
+              "rebuilt_start": 195,
+              "rebuilt_stop": 197
+            },
+            {
+              "kind": "replace",
+              "original_start": 200,
+              "original_stop": 201,
+              "rebuilt_start": 200,
+              "rebuilt_stop": 201
+            },
+            {
+              "kind": "replace",
+              "original_start": 202,
+              "original_stop": 203,
+              "rebuilt_start": 202,
+              "rebuilt_stop": 203
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 34,
+              "original_stop": 35,
+              "rebuilt_start": 34,
+              "rebuilt_stop": 35,
+              "target_ordinal": 0,
+              "original_target": 232,
+              "rebuilt_target": 246
+            }
+          ],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 111,
+              "rebuilt_offset": 115,
+              "target_ordinal": 0,
+              "original_target": 133,
+              "rebuilt_target": 138,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 168,
+              "rebuilt_offset": 175,
+              "target_ordinal": 0,
+              "original_target": 186,
+              "rebuilt_target": 194,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 239,
+              "rebuilt_offset": 254,
+              "target_ordinal": 0,
+              "original_target": 102,
+              "rebuilt_target": 103,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 303,
+              "rebuilt_offset": 319,
+              "target_ordinal": 0,
+              "original_target": 323,
+              "rebuilt_target": 339,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 401,
+              "rebuilt_offset": 417,
+              "target_ordinal": 0,
+              "original_target": 444,
+              "rebuilt_target": 460,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 450,
+              "rebuilt_offset": 466,
+              "target_ordinal": 0,
+              "original_target": 403,
+              "rebuilt_target": 419,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 532,
+              "rebuilt_offset": 542,
+              "target_ordinal": 0,
+              "original_target": 537,
+              "rebuilt_target": 546,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 39852,
+          "end": 39924,
+          "line": 1067,
+          "column": 5,
+          "text": "MatchCollection matchCollection = Regex.Matches(text, \"<co=[0-9A-Z]+>\");",
+          "kind": "LocalDeclarationStatement",
+          "method_id": "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String",
+          "point": 39852,
+          "declaration_start": 39573,
+          "declaration_end": 41640
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 76,
+              "last_use": 233,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 94,
+              "last_use": 244,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 96,
+              "last_use": 232,
+              "loads": 6,
+              "stores": 2
+            },
+            {
+              "slot": 3,
+              "first_use": 109,
+              "last_use": 209,
+              "loads": 6,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 157,
+              "last_use": 201,
+              "loads": 1,
+              "stores": 2
+            },
+            {
+              "slot": 5,
+              "first_use": 284,
+              "last_use": 323,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 294,
+              "last_use": 357,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 7,
+              "first_use": 389,
+              "last_use": 446,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 399,
+              "last_use": 444,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 9,
+              "first_use": 457,
+              "last_use": 537,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 10,
+              "first_use": 465,
+              "last_use": 534,
+              "loads": 4,
+              "stores": 2
+            }
+          ],
+          "constraints": [
+            "source_model_incomplete"
+          ],
+          "source_only": true,
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 10,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 9,
+          "selected_rule_prefix": "d10-late-tail-scope-comparison"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "incomplete_variants_compiled": 1,
+      "incomplete_variant_limit": 12,
+      "incomplete_compiler_invocations": 2,
+      "final_offset": 540,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d10-late-tail-scope-comparison-translate-late-tail-stack-alias:attempts": 1,
+    "d10-late-tail-scope-comparison-translate-late-tail-stack-alias:accepted_steps": 1,
+    "d10-late-tail-scope-comparison-translate-late-tail-stack-alias:body_gains": 1,
+    "d10-late-tail-scope-comparison-translate-late-tail-stack-alias:IL_gains": 540
+  },
+  "completed": true,
+  "run_label": "cycle26-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\cycles\\cycle26\\baseline\\KairoLibrary",
+  "cycle_rule": "d10-late-tail-scope-comparison",
+  "trial_compiler_server": "/shared (CLI only)",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d10-late-tail-scope-comparison",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 9,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "c0b2df7b65e8080da27cbb537aa00c5102eea83662db88f9d27c386c4e553a91",
+    "source_sha256": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+    "client_sha256": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+    "solver_sha256": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991"
+  },
+  "external_proposals": {
+    "path": "reports\\round10-roslyn-late-tail-stack-alias-patches.json",
+    "sha256": "df10646a12d4d5e0f9dcc2be88bb209a1e88644d6f9ebd19a5dbca75ce2dec9a",
+    "dependencies_checked": {
+      "tools/Round8RoslynModel.cs": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+      "tools/round8_roslyn_model.py": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+      "tools/round7_roslyn_solver.py": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991",
+      "tools/round7_cycle_roslyn_fixture.py": "a895b4c14d66cde6286c5f4a0b19e07c854aa19ed7dfe96306c086914ba4bde0",
+      "tools/round4_symbols.py": "a7f1f8c83332ae9a4d24c2958c52dd1d6e4375e82d76c0762edaa932789bffcc",
+      "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+      "tools/round10_roslyn_late_tail_stack_alias_source.py": "82edf98998675df71f65449a1428a6c4766a0ab50605f7c92d5882d743439f0b",
+      "tools/round10_publish_frozen_bundle.py": "5c3aa48ba9c9395e57d7399777347f09707553af45ce4cca2308da2070fa9539",
+      "tools/round10_format_public_fixtures.py": "c23c192c472c54c63a62ba59982942a8bef9ff910d159bc1468b908205a529d0",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6"
+    },
+    "read_only_evidence_checked": {
+      "reports/round10-roslyn-late-tail-stack-alias-fixtures.json": "4a9a52ada8c2b44c36db7cbf5d98a7d777fff78e74f260d0b1bd2e50856178da",
+      "reports/round10-roslyn-late-tail-stack-alias-format-review.json": "0d59eb0eeb9415a6b03b4d718e66edf369fad0ad86bd047263a95e4a2e3bca20"
+    },
+    "frozen_evidence_checked": {
+      "build\\round10\\autonomous-roslyn-slots-next\\calculate.py": "5e6ae52ba5d835e0b77c18333fd4fe86455d1a37fa836facac202dcf5344b707",
+      "build\\round10\\autonomous-roslyn-slots-next\\diagnostics.json": "cdc143d8ea6be4a40097a3d9938f435b5282818ba468af1d802c96e30ceafafe",
+      "build\\round10\\autonomous-roslyn-slots-next\\freeze.json": "df8419b3d14eaa94aa8f930c355a7a474ec6fd2a5a53c5fa32fda4922a85b214",
+      "build\\round10\\autonomous-roslyn-slots-next\\history.json": "cacdcd7e0e9d0789cbcaae7d54aa595571c240244b0256dd5d81946b89911968",
+      "build\\round10\\autonomous-roslyn-slots-next\\history.py": "8fb602fe60c748c767af707f7705674b1bd91284930043c9cd298f6e154a2b3e",
+      "build\\round10\\autonomous-roslyn-slots-next\\image-late-tail-scope.after.cs": "cd26b09c2834d2217ce55b308679ce8a686f36d2b4bba34b7ea84d16c47a9c3b",
+      "build\\round10\\autonomous-roslyn-slots-next\\image-late-tail-scope.before.cs": "e245d71b322cd32eb2f0d0eea2f787ab9981bb7dfa7c249a5d5c03abfe3e6b62",
+      "build\\round10\\autonomous-roslyn-slots-next\\proposals.json": "8b7f6cce77c52a926d80ce769fb794b2f6a108f1de47d00f936868e4a0285b06",
+      "build\\round10\\autonomous-roslyn-slots-next\\slot-role-diagnostic.json": "0764b158598adb746bc4780da60c80db673fb831731539d636290c4be35be48b",
+      "build\\round10\\autonomous-roslyn-slots-next\\translate-late-tail-stack-alias.after.cs": "137a5454e575d1d836e0a34e4af9e9435c1f9c542c4f9457fa28b4b6b97e4eec",
+      "build\\round10\\autonomous-roslyn-slots-next\\translate-late-tail-stack-alias.before.cs": "0e4e16adfae512af9d5ab9d1584877b84657e43713724c56c513cc62b2c44cb0",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\fixture-report.json": "3b4ccb71875e4016e4dff56f31753a640bdadc1df78ef02dde935a6e92c7a9b0",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\run_fixture.py": "c28f8457c39e51641e9d80b88a35949f33ee7fdc7df012b3e461a5a9bb65dd31",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\calculate.py": "82edf98998675df71f65449a1428a6c4766a0ab50605f7c92d5882d743439f0b",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\export_ready.py": "16b85d0da9e1fd835dfca735b23d905b0883438430923cb0a57637ec42c483a5",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\freeze.json": "44eaeac1bd84c2c717376f7df1789dbf7b51a0e20d6ebdec2f301913574d1b70",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\goal-shape-audit.json": "f40c140213bf165333894db29a565444165554390b5f37e4747ebc6688354ec4",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\image-late-tail-scope.after.cs": "cd26b09c2834d2217ce55b308679ce8a686f36d2b4bba34b7ea84d16c47a9c3b",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\image-late-tail-scope.before.cs": "e245d71b322cd32eb2f0d0eea2f787ab9981bb7dfa7c249a5d5c03abfe3e6b62",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\image-proof-reuse.json": "365db9e48378a3efd4839d7a8f7fe12030ddaeede2aa1ea8a369f2d2ecad1c5e",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\model-manifest.json": "dbbb797e27f9b11d693bf4458ad264c1ecb0aeb55acf5213b64880e878acdf19",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\NoEmit-model-analysis.json": "911298f9cc08d5cf20a68af64109e4d0850d3e068edf5941f8a3cefdc55585ed",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\NOTE.md": "74de61adb570e7316cee5f07a67687f6f9cec023ca2245a11715e008a6c14ced",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\proposals.json": "10594fe7dca30f9849ec5b5faffb1cfa91d7d3444e955174ccb5483790cc4259",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\text-controls.json": "dd59717395906463dfb65ab9b7aae91fa78395a8138706a53cd1df026812a7e7",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\translate-late-tail-stack-alias.after.cs": "6bbe9c31900b9203febbf00c7e1900946ba01108bc0df8e4f2132b26d83c93a6",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\translate-late-tail-stack-alias.before.cs": "0e4e16adfae512af9d5ab9d1584877b84657e43713724c56c513cc62b2c44cb0",
+      "build\\round10\\autonomous-roslyn-slots-next\\fixtures\\image\\Current.cs": "6b1ab2a3c99cb62c1426a5ec087256e5a32c702934acfc65c5aa6d0765d35c5c",
+      "build\\round10\\autonomous-roslyn-slots-next\\fixtures\\image\\Expected.cs": "6aa0aea48a28efd69ca2edef36bdcbc8e02a61fd53b9eabf9e31cbce434a0cec",
+      "build\\round10\\autonomous-roslyn-slots-next\\fixtures\\translate\\Current.cs": "0574e7e16c4c374a676afac9352e865ea5f393675b399b0addcacc3066c1b71d",
+      "build\\round10\\autonomous-roslyn-slots-next\\fixtures\\translate\\Expected.cs": "52161768f62a030ad52096be0cf5b781644eec708347ec3cf594a4660f9ff396",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\before\\compile.rsp": "0ae27ccd5bf878f0c9805b95f1bdb4961c798b61f7b1f4057a62db9f1a54c7f2",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\before\\compiler.log": "c4bf1c136fa7d0e5e8db5948ecf74690c31a16d820232a15a61bd96386953b51",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\before\\Fixture.cs": "6b1ab2a3c99cb62c1426a5ec087256e5a32c702934acfc65c5aa6d0765d35c5c",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\before\\Fixture.dll": "0679a808986b2be531c30ed6a8a318f5654243b4b06a2f57addfe9cd0f047e05",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\before\\Fixture.pdb": "c77736bb78c2f6ec5e014b725ebf982db5a741fe1a4175d2465ba597d4e8c87a",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\before\\methods.json": "fb02be69f2b53ea3ff562cd3fac1cc0d99ec385e307105d4091e101549837356",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\candidate\\compile.rsp": "d5f71aac6851575a6223f61afd3de3ac738736520365ee4b02e073c78240e321",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\candidate\\compiler.log": "30457eebcaf491b0d10719e468f9fc3ec5741d1787acffcc668e8579fbd6dfb4",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\candidate\\Fixture.cs": "e97cbbae2126cc0ffebc18c12775ffb9470042e118217d9a48be245c33fd8f23",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\candidate\\Fixture.dll": "ef389f470c7ffac4d197e0295ba28da43662879a1702d825298ff30080217847",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\candidate\\Fixture.pdb": "c7b707e79b3fbe18c5e08a62a6bcc4452fa54e41f7229b3f3d1edb2f334e17a9",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\candidate\\methods.json": "e5a1797482d5fa392562715724ebbd9cc1bba9f4952fc0991a2022d13f12cef9",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\control\\compile.rsp": "67328b85c06c7ed57cea8d064d0800320215f7525eab918ec00360f61d75c806",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\control\\compiler.log": "04f3e09a8648597cffe48503324e06d54570ccea701e6c3ee46f493c49cd19e9",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\control\\Fixture.cs": "6aa0aea48a28efd69ca2edef36bdcbc8e02a61fd53b9eabf9e31cbce434a0cec",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\control\\Fixture.dll": "184bd712769f1636760217cd6cc2e3a102f9e71950bd58ff7e91d47c3f6b9cfb",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\control\\Fixture.pdb": "98716473487036fdf444067a9830929432bdc53604abc4f52d84e478230c6297",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\image\\control\\methods.json": "e5a1797482d5fa392562715724ebbd9cc1bba9f4952fc0991a2022d13f12cef9",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\before\\compile.rsp": "6fd080f3a2de63929e7ec81293861723bc13c0ab8007562dc8d55b2d587f81a3",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\before\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\before\\Fixture.cs": "0574e7e16c4c374a676afac9352e865ea5f393675b399b0addcacc3066c1b71d",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\before\\Fixture.dll": "119054b2440fdbd1efb13e1f945f2a9b4e7ef8646ece886c8ba223ddbd467fa5",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\before\\Fixture.pdb": "6b81328513ed858e8019ce1b8643380e39ccd7b5c5b1baf9f69529b090543170",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\before\\methods.json": "191cf395b83cad20ec03cd3b906ef80c5da0b8099637873926a56b91fb175284",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\candidate\\compile.rsp": "cce5c2bc97178e2da62ffd41cf79298f7216b97fdc2b3b82d41c6056c50f79a7",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\candidate\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\candidate\\Fixture.cs": "782ec7211226ad88c2c3cfd008551df5fa9913ce266c18235efb5552b7ed311a",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\candidate\\Fixture.dll": "1920c30d3ac74f64cc9d4f0ed588329505b54f6070425abdaa7254075f141e1f",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\candidate\\Fixture.pdb": "80388443d24202b84f6fc7952b7d8509ce610d07ac47049b1ce0bc338bb1cc96",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\candidate\\methods.json": "2422d2a0f5ada8f2374aa919e9c17f011e6ad21d53a86550b8fe96bb9b62f673",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\control\\compile.rsp": "39ecdf2375b8f90ba2c28b02cc250d77656b39945f41dcf6a78d1a9235ff1cb5",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\control\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\control\\Fixture.cs": "52161768f62a030ad52096be0cf5b781644eec708347ec3cf594a4660f9ff396",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\control\\Fixture.dll": "9b27f0015a46d5179d60c13358d8ffc86cc603d4008b8f17a0407b17affd6ea7",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\control\\Fixture.pdb": "7d07dd1c5d06b5ab4465420e02c2ce26b15a86c0e34843c38aac5ee3926d3239",
+      "build\\round10\\autonomous-roslyn-slots-next\\validation-v1\\translate\\control\\methods.json": "2422d2a0f5ada8f2374aa919e9c17f011e6ad21d53a86550b8fe96bb9b62f673",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\pinned\\EmitExpression.cs": "4beb87ae114cd851204eed776ed12f9cc8d533b86299d8683bf455c212876f09",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\pinned\\EmitStatement.cs": "d09dff456ccf0855cc9947e45efbb676c9baa4ee1df58eb5db414dc7866e6195",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\pinned\\Optimizer.cs": "3051e87f8c65d35a7613a8035a6c9005d58095d652219b51f182a4759988c3e6",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\pinned\\provenance.json": "dfda5b502bcc70820bfa18a21447fe59cc423e00bd5bc24d4bd7d3a6792121f8",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\fixture-report.json": "4a9a52ada8c2b44c36db7cbf5d98a7d777fff78e74f260d0b1bd2e50856178da",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\run_fixture.py": "d4ccd4e5562a2f3934b43781d766151923b0f90a96d01eb6d8540c004790ddfe",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\fixtures\\image\\Current.cs": "dcf6a2e220764a5019e51f0aff5f953460139102158876d463aac68d8aeb6048",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\fixtures\\image\\Expected.cs": "b0215150172aeb5d1ae9178e0fbafc5f1d1c8c1f2219ca08bff27d27f83fc389",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\fixtures\\translate\\Current.cs": "e264aee554e3a8bcac6aeb8198c7b1df729d4dc125e476113e28a2412188bdc9",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\fixtures\\translate\\Expected.cs": "b12a0451bbfce70d6eb0bb5b252e6bec0d0be4685f6788504c1aecc91f038264",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\before\\compile.rsp": "cae153ec1de434fe95c343cf5b2e3799d4c0aded94f1edfd83e4bdfc81f19cb3",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\before\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\before\\Fixture.cs": "0574e7e16c4c374a676afac9352e865ea5f393675b399b0addcacc3066c1b71d",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\before\\Fixture.dll": "c4c5df1b0537e7a4b4f3f9d5bdecb12c1b907db11899bc10a10a5e8909b4385a",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\before\\Fixture.pdb": "840e4c8518c5ee93c437158bc851d47ba1d027460f9bf5eb7be8e696637b506f",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\before\\methods.json": "191cf395b83cad20ec03cd3b906ef80c5da0b8099637873926a56b91fb175284",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\candidate\\compile.rsp": "aedba89f4f3f5656b7b369a130694221df58ff02ee52a47e2fdd658a86105e6e",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\candidate\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\candidate\\Fixture.cs": "cd5dd687e3b540fbd70465d4f872f1ae64f3ad2ff6efebd58e2c0fcc5eeabd66",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\candidate\\Fixture.dll": "a1f0f8d01e03908edb46557ab180dab11abf2c0c71bececf230e57946c3da8a8",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\candidate\\Fixture.pdb": "5b52488a41a3f0f94b48563ee44fa9d546c2eb6c6d842e0a089c8d302c412948",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\candidate\\methods.json": "64ac640f198c82512a7ea5f19eedee8f50f109b27d8e9268b92f8f0c9821d340",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\control\\compile.rsp": "5dc82e143ab4318574f6fbedf9287b1810e682024b24e15093ba01be706c5a64",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\control\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\control\\Fixture.cs": "3ba0e2c10e55278c9f9fd348fbd40d8e073924eb6307d4bb82f7d390cd794f8b",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\control\\Fixture.dll": "e0d49cfe3ac34e01b027f690817ecc8e2dfa7a913573005ec7607ae83bcce73e",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\control\\Fixture.pdb": "3ef254687b3da1332119123fdbe090301e6e1a89b9e539d8a34301b3405e96c1",
+      "build\\round10\\autonomous-roslyn-slots-next\\variant2\\validation-v1\\translate\\control\\methods.json": "64ac640f198c82512a7ea5f19eedee8f50f109b27d8e9268b92f8f0c9821d340",
+      "build/round10/autonomous-roslyn-slots-next/variant2/ready-for-game-probe.json": "1bd9b475e62b7b6763c6a08d59f55a4afefb3bb4703fdd57dac22450abe69a8e",
+      "build/round10/autonomous-roslyn-slots-next/variant2/calculate.py": "82edf98998675df71f65449a1428a6c4766a0ab50605f7c92d5882d743439f0b",
+      "build/round10/autonomous-roslyn-slots-next/variant2/validation-v1/fixture-report.json": "4a9a52ada8c2b44c36db7cbf5d98a7d777fff78e74f260d0b1bd2e50856178da",
+      "build/round10/autonomous-roslyn-slots-next/variant2/validation-v1/translate/before/Fixture.cs": "0574e7e16c4c374a676afac9352e865ea5f393675b399b0addcacc3066c1b71d",
+      "build/round10/autonomous-roslyn-slots-next/variant2/validation-v1/translate/candidate/Fixture.cs": "cd5dd687e3b540fbd70465d4f872f1ae64f3ad2ff6efebd58e2c0fcc5eeabd66",
+      "build/round10/autonomous-roslyn-slots-next/variant2/validation-v1/translate/control/Fixture.cs": "3ba0e2c10e55278c9f9fd348fbd40d8e073924eb6307d4bb82f7d390cd794f8b"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": []
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0,
+    "incomplete_permitted": 1
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+          "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+          "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+          "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+          "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+          "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+          "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+          "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+          "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+          "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+          "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+          "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+          "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+          "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+          "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+          "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+          "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+          "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+          "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+          "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+          "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+          "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+          "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+          "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+          "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+          "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+          "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+          "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+          "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+          "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+          "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+          "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+          "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+          "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+          "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+          "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+          "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+          "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+          "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+          "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+          "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+          "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+          "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "9b0e67c5383a620f9f9e5638748c6fb7cbf527c16ceb255190ce6a6099c9ac62",
+          "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+          "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "cddd9e169e46c794969d623071335632e2535a557f22464cabb01e9aca8afd8c",
+          "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+          "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+          "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+          "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+          "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+          "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+          "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+          "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+          "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+          "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+          "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+          "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+          "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+          "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+          "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+          "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "c8b186ca577db3c3317d4285a9dd203648b55b97a144cace084b94facd8def5d",
+          "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+          "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+          "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+          "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+          "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+          "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+          "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+          "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+          "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+          "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+          "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+          "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+          "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+          "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+          "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+          "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+          "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+          "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+          "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+          "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+          "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+          "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+          "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+          "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+          "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+          "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+          "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+          "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+          "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+          "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+          "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+          "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+          "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "180c02aae50c99db2e8f6659d90d6272e4c2b12c157f5123e299e244289bee2a",
+          "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+          "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+          "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+          "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+          "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+          "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "9171d6f906b86a52ebdf9b2611b7e12611a478f5159e4b9707698f6ebc81664d",
+          "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+          "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+          "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+          "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+          "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+          "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "fffbe2263a3e6aacfe2e801ebf90a023a91bea4d7cbf08bbbc50caa2232ab083",
+          "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+          "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "1a98843775764d222b4907f1adf189260c5f8322924132dc48b2cee6d1c53d6b",
+          "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+          "src/KairoLibrary/kairo/unity/ui/Seb.cs": "050cc0c3909a5cb89c2bcd260f24a9fc0ba3550d8ae207b5db1b11e1851e49c6",
+          "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+          "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+          "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+          "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+          "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "83509b56f8ac29e0850af0e9c8ebb3ab2738b5d3aa384e326271d0350ec44e68",
+          "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+          "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+          "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+          "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+          "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+          "src/KairoLibrary/kairo/unity/util/Compressor.cs": "c9c6ea94a4c9c95ed431a0881f17f88bec09fdb46104758ce6dcc162b4397764",
+          "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+          "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+          "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+          "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+          "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+          "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+          "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+          "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+          "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+          "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+          "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+          "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+          "src/KairoLibrary/kairo/unity/util/Language.cs": "49ea86570229c9c47bd9cd91bdce934ac92dc06cac5cbde1d53fb7acdd54cb49",
+          "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+          "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+          "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+          "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+          "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+          "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+          "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+          "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+          "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+          "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+          "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+          "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+          "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+          "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+          "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+          "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+          "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+          "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+        },
+        "manifest_sha256": "842454d6a473f8d6c4d5e44e445421ed10a3325bcd5fb8c6ed8857a8c1264108",
+        "accepted_source_set_sha256": "fb9688d7ac31e2b6586ef2aa8ace2fb4b5462dbe0106449ec40df1fdf211475c",
+        "generation": 0,
+        "method_count": 3287,
+        "symbol_kind": "PDB",
+        "binary_sha256": "93a98ca6f093265b2de8dac53904cd2af97664d5c117e1e5cf001a10cca67ba1"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String",
+        "rule": "d10-late-tail-scope-comparison-translate-late-tail-stack-alias",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 3179,
+  "body_gains": [
+    "kairo.unity.util.Language::TranslateText(System.String,System.Boolean)->System.String"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 540,
+  "builds": 6,
+  "build_seconds": 2.4069999996572733,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle26-probe\\engine\\KairoLibrary\\current\\KairoLibrary.dll",
+  "final_sha256": "e2a8f61a6f6a95376cc453fc354172f002c620aec6b538ee3ad89fdcc3ee4884",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle26-probe\\engine\\KairoLibrary\\source-map.json",
+  "metadata_types_equal": 337,
+  "metadata_types_total": 337,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 1,
+    "candidate_compiler_invocations": 2,
+    "methods_with_variants": 1,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "842454d6a473f8d6c4d5e44e445421ed10a3325bcd5fb8c6ed8857a8c1264108",
+  "source_hashes": {
+    "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+    "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+    "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+    "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+    "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+    "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+    "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+    "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+    "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+    "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+    "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+    "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+    "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+    "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+    "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+    "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+    "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+    "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+    "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+    "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+    "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+    "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+    "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+    "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+    "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+    "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+    "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+    "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+    "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+    "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+    "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+    "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+    "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+    "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+    "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+    "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+    "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+    "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+    "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+    "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+    "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+    "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+    "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "9b0e67c5383a620f9f9e5638748c6fb7cbf527c16ceb255190ce6a6099c9ac62",
+    "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+    "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "cddd9e169e46c794969d623071335632e2535a557f22464cabb01e9aca8afd8c",
+    "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+    "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+    "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+    "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+    "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+    "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+    "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+    "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+    "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+    "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+    "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+    "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+    "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+    "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+    "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+    "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "c8b186ca577db3c3317d4285a9dd203648b55b97a144cace084b94facd8def5d",
+    "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+    "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+    "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+    "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+    "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+    "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+    "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+    "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+    "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+    "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+    "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+    "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+    "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+    "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+    "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+    "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+    "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+    "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+    "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+    "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+    "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+    "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+    "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+    "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+    "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+    "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+    "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+    "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+    "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+    "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+    "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+    "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+    "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "180c02aae50c99db2e8f6659d90d6272e4c2b12c157f5123e299e244289bee2a",
+    "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+    "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+    "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+    "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+    "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+    "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "9171d6f906b86a52ebdf9b2611b7e12611a478f5159e4b9707698f6ebc81664d",
+    "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+    "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+    "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+    "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+    "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+    "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "fffbe2263a3e6aacfe2e801ebf90a023a91bea4d7cbf08bbbc50caa2232ab083",
+    "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+    "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "1a98843775764d222b4907f1adf189260c5f8322924132dc48b2cee6d1c53d6b",
+    "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+    "src/KairoLibrary/kairo/unity/ui/Seb.cs": "050cc0c3909a5cb89c2bcd260f24a9fc0ba3550d8ae207b5db1b11e1851e49c6",
+    "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+    "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+    "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+    "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+    "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "83509b56f8ac29e0850af0e9c8ebb3ab2738b5d3aa384e326271d0350ec44e68",
+    "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+    "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+    "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+    "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+    "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+    "src/KairoLibrary/kairo/unity/util/Compressor.cs": "c9c6ea94a4c9c95ed431a0881f17f88bec09fdb46104758ce6dcc162b4397764",
+    "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+    "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+    "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+    "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+    "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+    "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+    "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+    "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+    "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+    "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+    "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+    "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+    "src/KairoLibrary/kairo/unity/util/Language.cs": "bb4b95454e9a2888d4adac7fa6d81e06b53b7f89797b10f3da195240a1eda1d9",
+    "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+    "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+    "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+    "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+    "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+    "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+    "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+    "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+    "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+    "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+    "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+    "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+    "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+    "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+    "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+    "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+    "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+    "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+  }
+}
