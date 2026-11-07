@@ -76,8 +76,9 @@ fastVector = new FastVector();
 					{
 						bool flag = true;
 						int num3 = num2 - 1;
-						while (num3 >= num && text.CharAt(num3) == '\\')
-						{
+						while (num3 >= num) {
+if (text.CharAt(num3) != '\\') { break; }
+
 							flag = !flag;
 							num3--;
 						}
@@ -98,15 +99,17 @@ fastVector = new FastVector();
 				if (trim)
 				{
 					int i;
-					for (i = 0; i < text2.Length && text2[i] <= ' '; i++)
-					{
+					for (i = 0; i < text2.Length; i++) {
+if (text2[i] > ' ') { break; }
+
 					}
 					int num4 = text2.Length - 1;
-					while (num4 >= 0 && text2[num4] <= ' ')
-					{
+					while (num4 >= 0) {
+if (text2[num4] > ' ') { break; }
+
 						num4--;
 					}
-					text2 = ((num4 - i >= 0) ? text2.Substring(i, num4 - i + 1) : "");
+					if (num4 - i < 0) { text2 = ""; } else { text2 = text2.Substring(i, num4 - i + 1); }
 				}
 				if (!excludeZeroLength || text2.Length() > 0)
 				{

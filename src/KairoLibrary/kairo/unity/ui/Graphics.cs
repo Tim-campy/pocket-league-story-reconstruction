@@ -3517,8 +3517,9 @@ if (num3) {
 				Matrix[][] array = new Matrix[localMatrixIndex_ + 1][];
 				Array.Copy(localMatrixStack_, 0, array, 0, localMatrixStack_.Length);
 				int num = array.Length - 1;
-				while (num >= 0 && array[num] == null)
-				{
+				while (num >= 0) {
+if ((object)array[num] != null) { break; }
+
 					array[num] = new Matrix[2]
 					{
 						new Matrix(),

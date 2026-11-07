@@ -45,8 +45,9 @@ namespace kairo.unity.io
 		{
 			long num = 0L;
 			long num2 = 0L;
-			while (num2 < n && Read() != -1)
-			{
+			while (num2 < n) {
+if (Read() == -1) { break; }
+
 				num2++;
 				num++;
 			}
