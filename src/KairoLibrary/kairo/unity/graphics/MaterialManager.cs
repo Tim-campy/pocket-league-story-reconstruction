@@ -68,7 +68,7 @@ namespace kairo.unity.graphics
 			Dictionary<string, Material> value;
 			if (!materlas_.TryGetValue(key, out value))
 			{
-				value = (materlas_[key] = new Dictionary<string, Material>());
+				materlas_[key] = (value = new Dictionary<string, Material>());
 			}
 			string text = name;
 			if (!clipRegion && g.blendMode_ == 1)
@@ -91,7 +91,7 @@ namespace kairo.unity.graphics
 					shader = getMaterial_sb.ToShader();
 					instance.Regist(shader);
 				}
-				value2 = (value[text] = new Material(shader, image));
+				value[text] = (value2 = new Material(shader, image));
 				value2.key_ = text;
 				value2.UntiColor = getMaterial_sb.untiColor;
 				value2.RenderQueueOffset = renderQueue;
@@ -114,7 +114,7 @@ namespace kairo.unity.graphics
 			Dictionary<string, Material> value;
 			if (!materlas_.TryGetValue(key, out value))
 			{
-				value = (materlas_[key] = new Dictionary<string, Material>());
+				materlas_[key] = (value = new Dictionary<string, Material>());
 			}
 			string text = name;
 			for (int i = 0; i < args.Length; i++)
@@ -132,7 +132,7 @@ namespace kairo.unity.graphics
 			{
 				instance.Regist(shader);
 			}
-			value2 = (value[text] = new Material(shader, image));
+			value[text] = (value2 = new Material(shader, image));
 			value2.key_ = text;
 			UnityEngine.Material material2 = value2.GetMaterial();
 			for (int j = 0; j < args.Length; j += 2)

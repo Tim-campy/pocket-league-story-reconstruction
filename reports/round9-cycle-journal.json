@@ -1465,6 +1465,36 @@
       "before_sha256": "d00c3a29cdc6d7541bb0fb970ba32e24a03519dd071d01d3203775d2b37d4205",
       "after_measurement": "reports\\round9-cycle38-after-measurement.json",
       "after_sha256": "9cf632228cb831777307f513b5f01d2e81b5d9580b4a563ae7fd46552be03e72"
+    },
+    {
+      "cycle": 50,
+      "label": "cycle39",
+      "phase": "D",
+      "primary_target": "kairo.unity.graphics.MaterialManager::GetMaterial(kairo.unity.ui.Graphics,kairo.unity.ui.Image,UnityEngine.Color[],System.Single,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean)->kairo.unity.graphics.Material",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "d9-calculated-indexer-local-inner-compositions",
+      "assembly": "KairoLibrary",
+      "pair": "INSERTION_POINT=>stloc.s indexer assignment spill temps",
+      "hypothesis": "In both MaterialManager overloads place named Dictionary and Material local stores inside their indexer assignments, eliminating used-assignment spill temps together",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 2,
+          "il_bytes_gained": 872
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 2,
+      "il_bytes_gained": 872,
+      "before_measurement": "reports\\round9-cycle39-before-measurement.json",
+      "before_sha256": "6252c275d94c114e46e6c08edb084f2a62e2cbd63ea5ea55e3e774b69f89e5c2",
+      "after_measurement": "reports\\round9-cycle39-after-measurement.json",
+      "after_sha256": "950bf7beb83891d159f3a677275b0fd84044e20b16fcff12b62acd73252fc465"
     }
   ],
   "consecutive_zero_cycles": 0

@@ -1,0 +1,89 @@
+{
+  "operation": "historical-csc-indexer-local-inner-pair-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "40c01e810f892377987851e1392151143442d309ffd5e4f9c331d8b796a39410",
+  "driver_sha256": "bc2a2e6a2644625c093fa8aa055b14d67b8cf77d3ac966bf86e511f5e6ffc310",
+  "template_sha256": "42d9ca8749b6a77da342204c1810cd34982767ed057c2cc0fdd6f281b3148715",
+  "game_compilations": 0,
+  "toy_compilations": 10,
+  "positive_full_bodies": 2,
+  "negative_controls": 7,
+  "negatives": [
+    "captured-local",
+    "protected-observation",
+    "other-constructor",
+    "index-call",
+    "missing-pair",
+    "other-local-type",
+    "custom-local-indexer"
+  ],
+  "fixtures": [
+    {
+      "case": "Graphics",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "before_local_count": 6,
+      "after_local_count": 4,
+      "before": " public Material Run(Shader shader, Image image, bool mark) {\n  Image key = image;\n  string text = \"fixture\";\n  Dictionary<string, Material> value;\n  if(!materlas_.TryGetValue(key, out value)) {\n   value = (materlas_[key] = new Dictionary<string, Material>());\n  }\n  Material value2 = null;\n  if(!value.TryGetValue(text, out value2)) {\n   value2 = (value[text] = new Material(shader, image));\n   value2.key_ = text;\n   if(mark) { Mark(value2); }\n  }\n  value2.NotAccessFrame = 0;\n  return value2;\n }",
+      "after": " public Material Run(Shader shader, Image image, bool mark) {\n  Image key = image;\n  string text = \"fixture\";\n  Dictionary<string, Material> value;\n  if(!materlas_.TryGetValue(key, out value)) {\n   materlas_[key] = (value = new Dictionary<string, Material>());\n  }\n  Material value2 = null;\n  if(!value.TryGetValue(text, out value2)) {\n   value[text] = (value2 = new Material(shader, image));\n   value2.key_ = text;\n   if(mark) { Mark(value2); }\n  }\n  value2.NotAccessFrame = 0;\n  return value2;\n }",
+      "manual_control": " public Material Run(Shader shader, Image image, bool mark) {\n  Image key = image;\n  string text = \"fixture\";\n  Dictionary<string, Material> value;\n  if(!materlas_.TryGetValue(key, out value)) {\n   materlas_[key] = (value = new Dictionary<string, Material>());\n  }\n  Material value2 = null;\n  if(!value.TryGetValue(text, out value2)) {\n   value[text] = (value2 = new Material(shader, image));\n   value2.key_ = text;\n   if(mark) { Mark(value2); }\n  }\n  value2.NotAccessFrame = 0;\n  return value2;\n }"
+    },
+    {
+      "case": "Shader",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "before_local_count": 10,
+      "after_local_count": 8,
+      "before": " public Material Run(Shader shader, Image image, params object[] args) {\n  Image key = image;\n  string text = \"fixture\";\n  Dictionary<string, Material> value;\n  if(!materlas_.TryGetValue(key, out value)) {\n   value = (materlas_[key] = new Dictionary<string, Material>());\n  }\n  for(int i = 0; i < args.Length; i++) { text = text + \":\" + args[i]; }\n  Material value2 = null;\n  if(value.TryGetValue(text, out value2)) {\n   value2.NotAccessFrame = 0;\n   return value2;\n  }\n  value2 = (value[text] = new Material(shader, image));\n  value2.key_ = text;\n  for(int j = 0; j < args.Length; j += 2) {\n   string propertyName = (string)args[j];\n   object obj = args[j + 1];\n   if(obj is int) { value2.NotAccessFrame += propertyName.Length + (int)obj; }\n  }\n  return value2;\n }",
+      "after": " public Material Run(Shader shader, Image image, params object[] args) {\n  Image key = image;\n  string text = \"fixture\";\n  Dictionary<string, Material> value;\n  if(!materlas_.TryGetValue(key, out value)) {\n   materlas_[key] = (value = new Dictionary<string, Material>());\n  }\n  for(int i = 0; i < args.Length; i++) { text = text + \":\" + args[i]; }\n  Material value2 = null;\n  if(value.TryGetValue(text, out value2)) {\n   value2.NotAccessFrame = 0;\n   return value2;\n  }\n  value[text] = (value2 = new Material(shader, image));\n  value2.key_ = text;\n  for(int j = 0; j < args.Length; j += 2) {\n   string propertyName = (string)args[j];\n   object obj = args[j + 1];\n   if(obj is int) { value2.NotAccessFrame += propertyName.Length + (int)obj; }\n  }\n  return value2;\n }",
+      "manual_control": " public Material Run(Shader shader, Image image, params object[] args) {\n  Image key = image;\n  string text = \"fixture\";\n  Dictionary<string, Material> value;\n  if(!materlas_.TryGetValue(key, out value)) {\n   materlas_[key] = (value = new Dictionary<string, Material>());\n  }\n  for(int i = 0; i < args.Length; i++) { text = text + \":\" + args[i]; }\n  Material value2 = null;\n  if(value.TryGetValue(text, out value2)) {\n   value2.NotAccessFrame = 0;\n   return value2;\n  }\n  value[text] = (value2 = new Material(shader, image));\n  value2.key_ = text;\n  for(int j = 0; j < args.Length; j += 2) {\n   string propertyName = (string)args[j];\n   object obj = args[j + 1];\n   if(obj is int) { value2.NotAccessFrame += propertyName.Length + (int)obj; }\n  }\n  return value2;\n }"
+    }
+  ],
+  "isolated_components": [
+    {
+      "case": "Graphics",
+      "component": "dictionary-only",
+      "equal_to_control": false,
+      "differences": [
+        "header",
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    },
+    {
+      "case": "Graphics",
+      "component": "material-only",
+      "equal_to_control": false,
+      "differences": [
+        "header",
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    },
+    {
+      "case": "Shader",
+      "component": "dictionary-only",
+      "equal_to_control": false,
+      "differences": [
+        "header",
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    },
+    {
+      "case": "Shader",
+      "component": "material-only",
+      "equal_to_control": false,
+      "differences": [
+        "header",
+        "locals",
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    }
+  ],
+  "limitations": "Narrow named Dictionary locals and exact two assignment statements, no captures/protected observers. Arbitrary custom setters/properties are not a general semantics-preservation claim. Full actual game signature/header/EH required."
+}
