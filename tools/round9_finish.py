@@ -4,6 +4,7 @@ Runs no reconstruction transformations. Source, IL and metadata proof remain
 with the ordinary verifier; final models/extractor measurements are read-only.
 """
 import argparse
+import hashlib
 from concurrent.futures import ThreadPoolExecutor
 import json
 from pathlib import Path
@@ -21,6 +22,26 @@ def run(arguments,label,accepted=(0,)):
     if result.returncode not in accepted:
         raise RuntimeError(label+' failed: '+(result.stdout+result.stderr).decode('utf-8',errors='replace')[-5000:])
     return result
+
+
+def validate_final_control(path,corpus,expected_matched):
+    document=read(path)
+    if document.get('valid_frozen_input_measurement') is not True or document.get('inputs_changed_during_run'):
+        raise ValueError('Final control extraction changed inputs or is invalid')
+    if document.get('own_IL_or_MDB_used_to_infer_AST_control') is not False:
+        raise ValueError('Final AST control independence is not proved')
+    if (ROOT/document['snapshot']).resolve()!=(ROOT/corpus).resolve():
+        raise ValueError('Final control extraction describes another snapshot')
+    checks={str(Path(corpus)/'methods.csv'):document['ledger_sha256'],
+            document['method_irs']:document['method_irs_sha256'],
+            str(Path(document['method_irs']).parent/'source-manifest.json'):document['source_manifest_sha256'],
+            **document['extractor_inputs']}
+    for name,digest in checks.items():
+        if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:
+            raise ValueError('Stale final control evidence: '+name)
+    if document['matched']['methods']!=expected_matched:
+        raise ValueError('Final control and model matched denominators disagree')
+    return document
 
 
 def main():
@@ -51,6 +72,8 @@ def main():
     with ThreadPoolExecutor(max_workers=3) as pool:
         futures=[pool.submit(run,arguments,label) for arguments,label in jobs]
         for future in futures:future.result()
+    smcs_validation=read('reports/round9-final-smcs-model-validation.json')
+    validate_final_control('reports/round9-control-validation-final.json',corpus,smcs_validation['matched_bodies'])
     cfg['final_model_measurements']={
         'Assembly-CSharp':{'validation':'reports/round9-final-smcs-model-validation.json','corpus_baseline':corpus+'/Assembly-CSharp'},
         'KairoLibrary':{'validation':'reports/round9-final-roslyn-model-validation.json','corpus_baseline':corpus+'/KairoLibrary'}}
@@ -70,6 +93,7 @@ def main():
             'O commit B07 foi retido quando um arquivo de análise mudou depois do stage; a prova completa foi refeita. O localizador B09 exigiu assinatura completa para resolver uma sobrecarga.',
             'Um EOF vazio de helper congelado motivou permitir somente blank-at-eof no lint de estilo; o verificador de métodos/metadados não mudou. D01 revelou trivia final em duas linhas geradas: a limpeza protege literais e preserva finais de linha, passou quatro controles e exigiu nova prova completa.',
             'O planner inicial não vinculava / no stable_id a + na chave oficial de um parâmetro aninhado. Foi corrigido usando exclusivamente o mapa stable_id→chave do receipt, sem renomear assinaturas nem editar estados.']}
+    stop['preparation_notes'].extend(['D29: a API pura v1 aceitou e removeu SideEffects++ em um controle de texto; foi endurecida por igualdade de todos os tokens antes de compilar candidatos do jogo. O controle foi recusado depois da corre??o; n?o houve regress?o adotada.', 'D33 e D34: nomes de diret?rios dos runners foram corrigidos antes de qualquer compila??o. O gravador do checkpoint e uma leitura de handoff falharam com cp1252 e foram corrigidos para UTF-8 antes de escrever dados. Nenhuma fonte, estado ou candidato foi afetado. Nenhum controle C# de D30 a D40 falhou.', 'Os WIPs congelados conservam NOT_TESTED mesmo quando a fam?lia foi testada depois; os relat?rios p?blicos, recibos e di?rio s?o a autoridade. Ao parar, SetWinCharaTraining ficou somente como API/templates n?o testados; CGI_COMMON_QUERY ficou sem rota de mapeamento e sem teste. O diagn?stico de _draw4 n?o foi for?ado a uma API integral.', 'Manuten??o nativa de armazenamento em JSONs privados arquivados preservou conte?do e tamanho, com prova SHA antes/depois. N?o alterou original, refer?ncias, fontes p?blicas ou bin?rios; seus bytes f?sicos n?o entram nas m?tricas de IL e nenhum assembly foi normalizado.'])
     (ROOT/'reports/round9-stop.json').write_text(json.dumps(stop,indent=2)+'\n',encoding='utf-8',newline='\n')
     command=['tools/round9_commit.py','--run-label','final-report','--message','docs: round 9 measured results and stop','--final-report']
     if args.push:command+=['--push']

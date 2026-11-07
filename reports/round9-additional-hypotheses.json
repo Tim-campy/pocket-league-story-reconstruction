@@ -1,0 +1,54 @@
+{
+  "hypotheses": [
+    {
+      "status": "INCONCLUSIVA",
+      "hypothesis": "As guardas isoladas B06/B07 bastariam para GameForm._update e SubForm.Init.",
+      "evidence": "reports/round9-part-b-results.json: zero candidatos compilados em cada alvo; o modelo completo recusou as assinaturas. A recusa não testa a emissão do corpo. Composições diferentes fecharam _update em D02 e Init em D21."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Em SoccerForm.Draw_newPlayerPopular, o alvo L5 da leitura B08 seria a saída do método.",
+      "evidence": "A análise B08 identifica L5 no fluxo para incremento do laço (746→835); braço positivo vazio com else compilou corpo inteiro de999 bytes. Continue direto foi negativo na fixture."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "A guarda positiva de Balloon.Draw(Matrix) explica o prefixo B09, mas precisa de correções de escopo para o corpo inteiro.",
+      "evidence": "B09 avançou29→1445 sem fechar o corpo; D23, com os escopos tardios adicionados, verificou o corpo inteiro de3012 bytes. Não prova a grafia histórica do fonte."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "O local Boolean isolado B10 seria suficiente para Graphics._drawBitmap.",
+      "evidence": "B10 compilou uma variante, não avançou o prefixo1822 e recusou a assinatura emitida. Demais formas não são refutadas por esse resultado; o corpo inteiro fechou com composição distinta em D16."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "O ternário Boolean de D11 reproduz o trecho local de Graphics._drawBitmap, embora não resolva sozinho o método.",
+      "evidence": "Inspeção da emissão D11 confirmou o trecho original1880..1886; a assinatura permutada já existia no baseline, e um leave anterior mudou de destino. D14 corrigiu a assinatura real52; D16 acrescentou neg e fechou3513 bytes."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Inlining do alias de Shader.GetShader elimina a normalização Boolean local, mas precisa de stores por braço e ordem de comandos.",
+      "evidence": "D11 removeu a normalização no trecho200 mantendo16 locais, mas o desvio anterior192 mudou671→668 e violou o prefixo. A composição D14 com stores e ordem restaurados fechou1072 bytes."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A composição Graphics de D14, sem alteração aritmética, seria suficiente para fechar _drawBitmap.",
+      "evidence": "D14 emitiu assinatura original52, mas3518 contra3513 bytes, com somente ldc.r4 0/sub versus neg nos dois trechos alinhados remanescentes. D16 adicionou menos unário e verificou corpo, cabeçalho, locais e EH completos."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Uma previsão incompleta com tipos discordantes implica necessariamente assinatura emitida incorreta.",
+      "evidence": "D17 SurfaceBase.DoEvent: previsão explicitamente INCOMPLETE30 versus29 locais originais; compilação real emitiu os29 corretos e passou o corpo inteiro2305 bytes. Previsão incompleta continua sem poder de veto, dentro do orçamento12/pass e24/método/ciclo."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A API pura v1 de make-alignment-tail seria segura para trechos arbitrários apenas com os controles originais.",
+      "evidence": "Preparação D29: o controle NegativeExtraFieldWrite com SideEffects++ foi aceito e perdeu o comando na API v1; nenhum candidato do jogo foi compilado nessa etapa. O helper publicado exige igualdade de todos os tokens da cauda e recusou os8 negativos, mantendo3fixtures de corpo completo em9compilaçõestoy. O before real congelado não continha a escrita extra."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A composição D29 de Graphics._drawImage seria suficiente para reproduzir o corpo inteiro.",
+      "evidence": "O main D29 completo59/59 e o full oracle confirmaram somente um avanço parcial673→1589 para esse ID,12trials e parada incomplete_candidate_budget; o método não entrou em matched e nenhum byte foi contado como ganho dele. Isso refuta a suficiência do candidato integral, sem refutar os trechos que passaram. Os outros dois alvos D29 fecharam4222IL."
+    }
+  ]
+}

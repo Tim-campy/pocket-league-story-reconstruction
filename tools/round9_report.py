@@ -80,6 +80,25 @@ def fresh_receipt(receipt,assembly,original_hash):
         raise ValueError('Official receipt records regressions: '+assembly)
 
 
+def validate_control_proof(path,corpus,expected_matched):
+    document=read(path)
+    if document.get('valid_frozen_input_measurement') is not True or document.get('inputs_changed_during_run'):
+        raise ValueError('Final control extraction does not have frozen valid inputs')
+    if document.get('own_IL_or_MDB_used_to_infer_AST_control') is not False:
+        raise ValueError('Final AST control independence is not proved')
+    if (ROOT/document['snapshot']).resolve()!=(ROOT/corpus).resolve():
+        raise ValueError('Final control extraction uses another corpus')
+    check_hash(Path(corpus)/'methods.csv',document['ledger_sha256'],'Stale final control ledger')
+    for source,digest in document['extractor_inputs'].items():
+        check_hash(source,digest,'Stale final control extractor')
+    check_hash(document['method_irs'],document['method_irs_sha256'],'Stale final control method IRs')
+    source_manifest=Path(document['method_irs']).parent/'source-manifest.json'
+    check_hash(source_manifest,document['source_manifest_sha256'],'Stale final control source manifest')
+    if document['matched']['methods']!=expected_matched:
+        raise ValueError('Final control corpus and final smcs model corpus disagree')
+    return document
+
+
 def load_context():
     # This must remain the first precondition: an active cycle cannot publish a
     # premature final report, even if a final measurement from a retry exists.
@@ -156,6 +175,8 @@ def load_context():
             if sum(c['gains'][assembly][key] for c in cycles)!=f[field]-b[field]:raise ValueError('Journal/official net gain disagreement: '+assembly)
     if cycles and read(cycles[-1]['after_measurement'])['ledger_sha256']!=final['ledger_sha256']:
         raise ValueError('Final ledger is outside the journal')
+    if set(cfg.get('final_model_measurements',{}))!=set(ASSEMBLIES):
+        raise ValueError('Both final model measurements are required for the final report')
     models={}
     for assembly,model in cfg['models'].items():
         measurement=cfg.get('final_model_measurements',{}).get(assembly,model)
@@ -167,6 +188,11 @@ def load_context():
         corpus=read(Path(measurement['corpus_baseline'])/'verification.json')
         if proof['matched_bodies']!=sum(v['state']=='matched' and v.get('body_present',False) for v in corpus['methods'].values()):
             raise ValueError('Model validation does not cover the declared matched corpus')
+    control_path=cfg.get('control_extractor_validation')
+    if not control_path:
+        raise ValueError('Final control extraction proof is required')
+    control_corpus=Path(cfg['final_model_measurements']['Assembly-CSharp']['corpus_baseline']).parent
+    control_extraction=validate_control_proof(control_path,control_corpus,models['Assembly-CSharp']['matched_bodies'])
     engines=[]
     for path in sorted((ROOT/'reports').glob('round9-*-engine.json')):
         document=read(path)
@@ -186,7 +212,7 @@ def load_context():
     return dict(cfg=cfg,stop=stop,baseline=baseline,final=final,journal=journal,models=models,engines=engines,
         historical=historical,adoptions=adoptions,receipts=receipts,metadata=metadata,losses=losses,
         body_losses=body_losses,held=held,manifests=manifests,stable_sources=stable_sources,
-        apk_hash=next(iter(apk_hashes)),targets=targets,unfinished=unfinished)
+        apk_hash=next(iter(apk_hashes)),targets=targets,unfinished=unfinished,control_extraction=control_extraction)
 
 
 def attempt_summary(ctx,assembly,group):
@@ -197,7 +223,9 @@ def attempt_summary(ctx,assembly,group):
         for row in passes(engine):
             if row['id'] not in identities:continue
             attempts.update(t['rule'] for t in row.get('trials',[]));stops[str(row.get('stop_reason','UNKNOWN'))]+=1
-            for rejection in row.get('model_rejections',[]):rejections.update(rejection)
+            for rejection in row.get('model_rejections',[]):
+                # Remaining budget is a diagnostic gauge, not a rejected candidate count.
+                rejections.update({key:value for key,value in rejection.items() if key!='prediction_budget_remaining'})
             limits+=row.get('incomplete_budget_skipped',0)
             incomplete+=sum(bool(t.get('incomplete_prediction')) for t in row.get('trials',[]))
             removed+=sum(f.get('removed_legacy_candidates',0) for f in row.get('cycle_repertoire_filters',[]))
@@ -330,6 +358,20 @@ def render(ctx,short=False):
                 gate.get('compiled_signature_rejections',0),sum(len(row.get('external_rebase_rejections',[])) for row in rows),sum(row.get('incomplete_budget_skipped',0) for row in rows),compact_counter(Counter(str(row.get('stop_reason','UNKNOWN')) for row in rows))))
         add(table(['Execução','Natureza','Transformação','Variantes tentadas','Avanços','Corpos ganhos no motor','Bytes no motor','Perdas adotadas'],rule_rows))
         add(table(['Execução','Métodos/passes','Compilações falhas','Regressões rejeitadas','Metadados rejeitados','Modelo/emissor discordam','Assinatura original recusada','Rebase externo recusado','Orçamento incompleto recusado','Paradas'],negative_rows))
+    if short:
+        negative_chat=[]
+        for name,engine in ctx['engines']:
+            if '-initial-screen-' in name:continue
+            rows=list(passes(engine));trials=[trial for row in rows for trial in row.get('trials',[])]
+            gate=engine.get('slot_model_gate',{})
+            rejected_model=sum(item.get('wrong_signature',0) for row in rows for item in row.get('model_rejections',[]))
+            values=(sum(not t.get('compile_pass',False) or t.get('full_compile_pass') is False for t in trials),
+                    sum(bool(t.get('body_regressions')) for t in trials),sum(bool(t.get('metadata_rejected')) for t in trials),
+                    gate.get('post_compile_disagreements',0),gate.get('compiled_signature_rejections',0),rejected_model)
+            if any(values):negative_chat.append((name,*values))
+        add('Resultados negativos de todas as execuções concluídas, incluindo sondas; só aparecem linhas com alguma falha/recusa. Não são perdas adotadas.',
+            table(['Execução','Compilações falhas','Regressões recusadas','Metadados recusados','Modelo/emissor','Assinatura emitida recusada','Assinatura prevista recusada'],negative_chat)
+            if negative_chat else 'Nenhuma falha de compilação, regressão, metadado ou assinatura recusada registrada nas execuções concluídas.')
     budget_rows=[]
     for name,engine in ctx['engines']:
         if '-initial-screen-' in name:continue
@@ -339,10 +381,9 @@ def render(ctx,short=False):
     else:add('Variantes incompletas compiladas: '+str(sum(r[1] for r in budget_rows))+'; invocações dessas variantes: '+str(sum(r[2] for r in budget_rows))+'. Esses custos incluem sondas; ganhos não são contados duas vezes.')
     section(3)
     hypotheses=read('reports/round9-hypotheses.json')['hypotheses'] if exists('reports/round9-hypotheses.json') else []
+    add(table(['Estado','Hipótese','Evidência medida'],[(h['status'],h['hypothesis'],h['evidence']) for h in hypotheses]) if hypotheses else 'Hipóteses formalmente classificadas: UNKNOWN; o diário acima registra os resultados medidos.')
     if short and hypotheses:
-        add('Hipóteses registradas: '+compact_counter(Counter(h['status'] for h in hypotheses))+'. Os ganhos por ciclo estão na seção 2; zero ganho permanece INCONCLUSIVA, salvo prova isolada de refutação. A classificação não identifica o fonte histórico literal.')
-    else:
-        add(table(['Estado','Hipótese','Evidência medida'],[(h['status'],h['hypothesis'],h['evidence']) for h in hypotheses]) if hypotheses else 'Hipóteses formalmente classificadas: UNKNOWN; o diário acima registra os resultados medidos.')
+        add('Zero ganho permanece INCONCLUSIVA, salvo prova isolada de refutação. A classificação não identifica o fonte histórico literal.')
     if exists('reports/round9-loop-polarity-diagnosis.json'):
         diagnosis=read('reports/round9-loop-polarity-diagnosis.json')
         primary=diagnosis['compiler_source']
@@ -361,7 +402,7 @@ def render(ctx,short=False):
     if exists('reports/round9-control-results.json'):
         control=read('reports/round9-control-results.json')
         control_path=ctx['cfg'].get('control_extractor_validation','reports/round9-control-validation-public.json')
-        extraction=read(control_path);m=extraction['matched'];p=extraction['pending']
+        extraction=ctx['control_extraction'];m=extraction['matched'];p=extraction['pending']
         add('**Extrator de controle smcs.** Corpus congelado: '+inline(extraction['snapshot'])+'. Planos e árvores completos têm denominadores distintos; uma cobertura integral das instruções não completa uma árvore ambígua.',
             table(['Métrica','Resultado'],[
                 ('Árvores completas iguais / pares completos',str(m['trees_equal'])+'/'+str(m['paired_tree_complete'])+' ('+pct(m['trees_equal'],m['paired_tree_complete'])+')'),
