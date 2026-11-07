@@ -1,0 +1,774 @@
+{
+  "status": "OWN_FULL_BODY_EXACT",
+  "game_compilations": 0,
+  "own_compilations": 3,
+  "all_body_differences": {
+    "Fixture::.ctor()->System.Void": [],
+    "Fixture::Run(System.Int32)->System.Void": []
+  },
+  "negatives": [
+    {
+      "name": "wrongselector",
+      "rejected": true,
+      "reason": "pattern-not-unique:if ((num3 == 2))"
+    },
+    {
+      "name": "wronggroup",
+      "rejected": true,
+      "reason": "grouped selector order not proven"
+    },
+    {
+      "name": "existingelse",
+      "rejected": true,
+      "reason": "default already present"
+    },
+    {
+      "name": "nonfallthrough",
+      "rejected": true,
+      "reason": "non-fallthrough or protected arm"
+    }
+  ],
+  "code_size_before": 58,
+  "code_size_after": 63,
+  "before": {
+    "key": "Fixture::Run(System.Int32)",
+    "stable_id": "Fixture::Run(System.Int32)->System.Void",
+    "token": "[Method:0x0002]",
+    "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Run``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default",
+    "direct_references": [
+      {
+        "offset": 9,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 38,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 45,
+        "opcode": "ldfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 52,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      }
+    ],
+    "header": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 4,
+      "initlocals": true,
+      "code_size": 58
+    },
+    "locals": [
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    ],
+    "instructions": [
+      {
+        "offset": 0,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 1,
+        "opcode": "ldc.i4.2",
+        "operand": null
+      },
+      {
+        "offset": 2,
+        "opcode": "bne.un",
+        "operand": {
+          "branch": 19
+        }
+      },
+      {
+        "offset": 7,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 8,
+        "opcode": "ldc.i4.2",
+        "operand": null
+      },
+      {
+        "offset": 9,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 14,
+        "opcode": "br",
+        "operand": {
+          "branch": 43
+        }
+      },
+      {
+        "offset": 19,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 20,
+        "opcode": "ldc.i4.1",
+        "operand": null
+      },
+      {
+        "offset": 21,
+        "opcode": "beq",
+        "operand": {
+          "branch": 32
+        }
+      },
+      {
+        "offset": 26,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 27,
+        "opcode": "brtrue",
+        "operand": {
+          "branch": 43
+        }
+      },
+      {
+        "offset": 32,
+        "opcode": "ldc.i4.3",
+        "operand": null
+      },
+      {
+        "offset": 33,
+        "opcode": "stloc.0",
+        "operand": null
+      },
+      {
+        "offset": 34,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 35,
+        "opcode": "ldloc.0",
+        "operand": null
+      },
+      {
+        "offset": 36,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 37,
+        "opcode": "add",
+        "operand": null
+      },
+      {
+        "offset": 38,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 43,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 44,
+        "opcode": "dup",
+        "operand": null
+      },
+      {
+        "offset": 45,
+        "opcode": "ldfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 50,
+        "opcode": "ldc.i4.1",
+        "operand": null
+      },
+      {
+        "offset": 51,
+        "opcode": "add",
+        "operand": null
+      },
+      {
+        "offset": 52,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 57,
+        "opcode": "ret",
+        "operand": null
+      }
+    ],
+    "exception_regions": [],
+    "extra_sections": [],
+    "metadata_operands": [
+      {
+        "body_offset": 22,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 51,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 58,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 65,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 8,
+        "width": 4,
+        "identity": {
+          "locals_signature_present": true,
+          "variables": [
+            "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          ]
+        }
+      }
+    ],
+    "raw_body_hex": "13-30-04-00-3A-00-00-00-01-00-00-11-03-18-40-0C-00-00-00-02-18-7D-01-00-00-04-38-18-00-00-00-03-17-3B-06-00-00-00-03-3A-0B-00-00-00-19-0A-02-06-03-58-7D-01-00-00-04-02-25-7B-01-00-00-04-17-58-7D-01-00-00-04-2A",
+    "method_attributes": 134,
+    "impl_attributes": 0,
+    "sequence_points": []
+  },
+  "manual": {
+    "key": "Fixture::Run(System.Int32)",
+    "stable_id": "Fixture::Run(System.Int32)->System.Void",
+    "token": "[Method:0x0002]",
+    "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Run``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default",
+    "direct_references": [
+      {
+        "offset": 9,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 38,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 50,
+        "opcode": "ldfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 57,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      }
+    ],
+    "header": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 4,
+      "initlocals": true,
+      "code_size": 63
+    },
+    "locals": [
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    ],
+    "instructions": [
+      {
+        "offset": 0,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 1,
+        "opcode": "ldc.i4.2",
+        "operand": null
+      },
+      {
+        "offset": 2,
+        "opcode": "bne.un",
+        "operand": {
+          "branch": 19
+        }
+      },
+      {
+        "offset": 7,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 8,
+        "opcode": "ldc.i4.2",
+        "operand": null
+      },
+      {
+        "offset": 9,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 14,
+        "opcode": "br",
+        "operand": {
+          "branch": 48
+        }
+      },
+      {
+        "offset": 19,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 20,
+        "opcode": "ldc.i4.1",
+        "operand": null
+      },
+      {
+        "offset": 21,
+        "opcode": "beq",
+        "operand": {
+          "branch": 32
+        }
+      },
+      {
+        "offset": 26,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 27,
+        "opcode": "brtrue",
+        "operand": {
+          "branch": 48
+        }
+      },
+      {
+        "offset": 32,
+        "opcode": "ldc.i4.3",
+        "operand": null
+      },
+      {
+        "offset": 33,
+        "opcode": "stloc.0",
+        "operand": null
+      },
+      {
+        "offset": 34,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 35,
+        "opcode": "ldloc.0",
+        "operand": null
+      },
+      {
+        "offset": 36,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 37,
+        "opcode": "add",
+        "operand": null
+      },
+      {
+        "offset": 38,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 43,
+        "opcode": "br",
+        "operand": {
+          "branch": 48
+        }
+      },
+      {
+        "offset": 48,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 49,
+        "opcode": "dup",
+        "operand": null
+      },
+      {
+        "offset": 50,
+        "opcode": "ldfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 55,
+        "opcode": "ldc.i4.1",
+        "operand": null
+      },
+      {
+        "offset": 56,
+        "opcode": "add",
+        "operand": null
+      },
+      {
+        "offset": 57,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 62,
+        "opcode": "ret",
+        "operand": null
+      }
+    ],
+    "exception_regions": [],
+    "extra_sections": [],
+    "metadata_operands": [
+      {
+        "body_offset": 22,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 51,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 63,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 70,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 8,
+        "width": 4,
+        "identity": {
+          "locals_signature_present": true,
+          "variables": [
+            "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          ]
+        }
+      }
+    ],
+    "raw_body_hex": "13-30-04-00-3F-00-00-00-01-00-00-11-03-18-40-0C-00-00-00-02-18-7D-01-00-00-04-38-1D-00-00-00-03-17-3B-06-00-00-00-03-3A-10-00-00-00-19-0A-02-06-03-58-7D-01-00-00-04-38-00-00-00-00-02-25-7B-01-00-00-04-17-58-7D-01-00-00-04-2A",
+    "method_attributes": 134,
+    "impl_attributes": 0,
+    "sequence_points": []
+  },
+  "candidate": {
+    "key": "Fixture::Run(System.Int32)",
+    "stable_id": "Fixture::Run(System.Int32)->System.Void",
+    "token": "[Method:0x0002]",
+    "signature": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Run``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default",
+    "direct_references": [
+      {
+        "offset": 9,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 38,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 50,
+        "opcode": "ldfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      },
+      {
+        "offset": 57,
+        "opcode": "stfld",
+        "kind": "field",
+        "id": "Fixture::total",
+        "declaring_type": "Fixture"
+      }
+    ],
+    "header": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 4,
+      "initlocals": true,
+      "code_size": 63
+    },
+    "locals": [
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+    ],
+    "instructions": [
+      {
+        "offset": 0,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 1,
+        "opcode": "ldc.i4.2",
+        "operand": null
+      },
+      {
+        "offset": 2,
+        "opcode": "bne.un",
+        "operand": {
+          "branch": 19
+        }
+      },
+      {
+        "offset": 7,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 8,
+        "opcode": "ldc.i4.2",
+        "operand": null
+      },
+      {
+        "offset": 9,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 14,
+        "opcode": "br",
+        "operand": {
+          "branch": 48
+        }
+      },
+      {
+        "offset": 19,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 20,
+        "opcode": "ldc.i4.1",
+        "operand": null
+      },
+      {
+        "offset": 21,
+        "opcode": "beq",
+        "operand": {
+          "branch": 32
+        }
+      },
+      {
+        "offset": 26,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 27,
+        "opcode": "brtrue",
+        "operand": {
+          "branch": 48
+        }
+      },
+      {
+        "offset": 32,
+        "opcode": "ldc.i4.3",
+        "operand": null
+      },
+      {
+        "offset": 33,
+        "opcode": "stloc.0",
+        "operand": null
+      },
+      {
+        "offset": 34,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 35,
+        "opcode": "ldloc.0",
+        "operand": null
+      },
+      {
+        "offset": 36,
+        "opcode": "ldarg.1",
+        "operand": null
+      },
+      {
+        "offset": 37,
+        "opcode": "add",
+        "operand": null
+      },
+      {
+        "offset": 38,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 43,
+        "opcode": "br",
+        "operand": {
+          "branch": 48
+        }
+      },
+      {
+        "offset": 48,
+        "opcode": "ldarg.0",
+        "operand": null
+      },
+      {
+        "offset": 49,
+        "opcode": "dup",
+        "operand": null
+      },
+      {
+        "offset": 50,
+        "opcode": "ldfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 55,
+        "opcode": "ldc.i4.1",
+        "operand": null
+      },
+      {
+        "offset": 56,
+        "opcode": "add",
+        "operand": null
+      },
+      {
+        "offset": 57,
+        "opcode": "stfld",
+        "operand": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "offset": 62,
+        "opcode": "ret",
+        "operand": null
+      }
+    ],
+    "exception_regions": [],
+    "extra_sections": [],
+    "metadata_operands": [
+      {
+        "body_offset": 22,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 51,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 63,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 70,
+        "width": 4,
+        "identity": {
+          "field": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::total:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+        }
+      },
+      {
+        "body_offset": 8,
+        "width": 4,
+        "identity": {
+          "locals_signature_present": true,
+          "variables": [
+            "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          ]
+        }
+      }
+    ],
+    "raw_body_hex": "13-30-04-00-3F-00-00-00-01-00-00-11-03-18-40-0C-00-00-00-02-18-7D-01-00-00-04-38-1D-00-00-00-03-17-3B-06-00-00-00-03-3A-10-00-00-00-19-0A-02-06-03-58-7D-01-00-00-04-38-00-00-00-00-02-25-7B-01-00-00-04-17-58-7D-01-00-00-04-2A",
+    "method_attributes": 134,
+    "impl_attributes": 0,
+    "sequence_points": []
+  },
+  "dependency_sha256": {
+    "source_calculator.py": "2737ce8b24a2bb7d1a4c637ffea34c548201385479020a23fe71ee299127e276",
+    "validate.py": "52f6de6b44cce15515d6721c9691de0c9cdc7926612d2bb925b445aab561eb0e"
+  }
+}

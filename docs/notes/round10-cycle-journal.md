@@ -34,3 +34,4 @@
 | 30 | KairoLibrary / stloc.3 => stloc.s | Restaurar escopo filho da cauda MaterialManager para a alocacao original de locais e liberacao. | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 416 |
 | 31 | Assembly-CSharp / bne.un => beq | Separar continue misto de cauda positiva nos dois Player e restaurar switch de um case no Touch, com igualdade completa em fixtures e slots5/15/3. | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 1148 |
 | 32 | Assembly-CSharp / bne.un=>beq | Restore four owned continue guards, direct num3 dispatches and per-arm angle stores; remove two switch caches without changing floating comparisons | Avanco parcial; nenhum novo matched; 1 tentativas da regra, 1 avancos | 0 | 0 |
+| 33 | Assembly-CSharp / br=>DELETION_POINT | Restore explicit empty outer dispatch default, preserving the accepted20locals and all floating comparisons | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 1970 |

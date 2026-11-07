@@ -1137,7 +1137,7 @@ if (player3.direct_ == 2) { angle = 10 + GameUtil.Random(160); } else if (player
 					udat_.ball_.a_.y_ = -0.6f;
 
 				}
-}
+} else { }
 				apdat_.PlaySe(Ball.SOUND_HEAD);
 			}
 			else if (player3.coliBallState_ == 3)

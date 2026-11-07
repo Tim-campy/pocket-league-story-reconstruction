@@ -1,0 +1,9 @@
+# D32: explicit empty default after accepted collision dispatch
+
+Frozen cycle31/after. D31 is retained as a real negative:0matched,0loss,partial adoption. Its source composition removed the two switch temporaries and left exactly one sequence edit: original br1720->1725 versus no instruction. This missing five-byte jump also retargets an earlier branch, giving raw firstdifference805. The proposed source restores an explicit empty else on the OUTER chain if(num3==2)...else if(num3==1||num3==0)..., preserving every existing payload/declaration/call. It does not reapply D31. No if condition or floating expression changes.
+
+The owner is lexically the outer num3 dispatch under coliBallState0; all nested inner dispatches remain as accepted. Current and original have20locals; actual source-only model predicts all20original types complete and exactly. Original REA collision page ev_ba0fec1e6a3532e58d9ec0ee20a23dffeee843c9a7ab44cada1b8afda09a5520 remains corroborated by the same immutable original rawIL SHA519cf729b9cc64544f5ae3ed3956a757654537214b35c8401e67e666a08adefd. No originalbyte is copied to output.
+
+Mono statement.cs247-267 (pin b6587926c0f146c8b12985744f33a13b39a22d57) emits the extra join when an else syntax exists and the then arm falls through, even if that else is empty. Three independent own smcs builds prove before58bytes versus candidate/control63bytes, full bodies/headers/locals/EH/attributes equal candidate=manual. Four lexical negatives reject wrong selector,wrong groupedcase,existingelse and return-bearing payload. Zero target compilations in this study. API header independent; no model or verifier edits.
+
+History by authenticated sourceSHA through D31:67engine reports,79trials,79replayed,0unmapped,0identical candidate prior. The earlier broad negative remains explicitly recorded; the actual target result and fullassembly regressions are UNKNOWN until official oracle. Potential1method/1970IL, no claimed gain yet.

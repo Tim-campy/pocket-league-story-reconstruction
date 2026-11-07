@@ -1,0 +1,1 @@
+public class Fixture{int total; public void Run(int num3){if ((num3 == 2)) { total=2; }else if ((num3 == 1) || (num3 == 0)) {int k=3;total=k+num3;}total+=1;}}
