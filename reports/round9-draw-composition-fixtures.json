@@ -1,0 +1,33 @@
+{
+  "operation": "smcs-ten-hunk-draw-composition-own-control",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "5c94671abf02526005a3faf16b53eb37e388c06e64e1600108640236a9d33185",
+  "driver_sha256": "470580f2d6c4d1be4c273762064e03de818d75c91fcb908e3ade080cbdf778b3",
+  "game_compilations": 0,
+  "toy_compilations": 3,
+  "positive_full_bodies": 1,
+  "negative_controls": 8,
+  "negatives": [
+    "window-owner",
+    "button-extra-tail",
+    "button-wrong-initial",
+    "type-guard-effects",
+    "nonterminal-chain",
+    "dispatch-internal-return",
+    "dispatch-default",
+    "draw2-other-leaf"
+  ],
+  "fixtures": [
+    {
+      "before": "public void Run(object g){int num10=Count;if(!IsDrawWindow()){if(Count<0){return;}if(Count>10){return;}}\nfor(int i=0;i<selectButtons_.Length;i++){if(selectButtons_[i]!=null){int width=selectButtons_[i].Length;Count+=width;}}\nfor(int j=0;j<selectButtons_.Length;j++){if(selectButtons_[j]!=null){int width=selectButtons_[j].Length;Count+=width;}}\nif(type_==1){Count++;}else{if(type_==2){return;}if(type_==3){Count+=3;}else{if(type_==18){return;}if(type_==19){switch(num10){case 0:Count+=10;break;case 1:Count+=20;break;}}else{if(type_==20){return;}if(type_==23){Count+=23;}else if(type_!=29){_draw2(g);}}}}}",
+      "after": "public void Run(object g){int num10=Count;if (IsDrawWindow()) { } else {if(Count<0){return;}if(Count>10){return;}}\nfor(int i=0;i<selectButtons_.Length;i++){if (selectButtons_[i] == null) { continue; }int width=selectButtons_[i].Length;Count+=width;}\nfor(int j=0;j<selectButtons_.Length;j++){if (selectButtons_[j] == null) { continue; }int width=selectButtons_[j].Length;Count+=width;}\nif(type_==1){Count++;}else{if (type_ == 2) { } else if(type_==3){Count+=3;}else{if (type_ == 18) { } else if(type_==19){if (num10 == 0) {Count+=10;} else if (num10 == 1) {Count+=20;}}else{if (type_ == 20) { } else if(type_==23){Count+=23;}else if (type_ == 29) { } else {_draw2(g);}}}}}",
+      "manual_control": "public void Run(object g){int num10=Count;if(IsDrawWindow()){}else{if(Count<0){return;}if(Count>10){return;}}\nfor(int i=0;i<selectButtons_.Length;i++){if(selectButtons_[i]==null){continue;}int width=selectButtons_[i].Length;Count+=width;}\nfor(int j=0;j<selectButtons_.Length;j++){if(selectButtons_[j]==null){continue;}int width=selectButtons_[j].Length;Count+=width;}\nif(type_==1){Count++;}else{if(type_==2){}else if(type_==3){Count+=3;}else{if(type_==18){}else if(type_==19){if(num10==0){Count+=10;}else if(num10==1){Count+=20;}}else{if(type_==20){}else if(type_==23){Count+=23;}else if(type_==29){}else{_draw2(g);}}}}}",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "extra_switch_cache_removed": 1,
+      "window_early_returns_retained": 2,
+      "three_terminal_returns_removed": 3
+    }
+  ],
+  "limitations": "One calculated target with ten aligned edits; same string-array null semantics as original. Original signature/body/header/EH still mandatory, no state promotion from toy."
+}

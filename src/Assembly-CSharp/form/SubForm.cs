@@ -2058,8 +2058,7 @@ int num3;
 			if (topForm.GetId() == 4)
 			{
 			}
-			if (!IsDrawWindow())
-			{
+			if (IsDrawWindow()) { } else {
 				if (!IsMenu() && !flag && !apdat_.IsTopForm(this))
 				{
 					return;
@@ -2089,14 +2088,13 @@ int num3;
 					err_line = 2061;
 					for (int i = 0; i < selectButtons_.Length; i++)
 					{
-						if (selectButtons_[i] != null)
-						{
+						if (selectButtons_[i] == null) { continue; }
 							float num5 = font.StringWidthF(selectButtons_[i]);
 							if (num4 < num5)
 							{
 								num4 = num5;
 							}
-						}
+
 					}
 					num4 += 2f;
 					err_line = 2062;
@@ -2105,8 +2103,7 @@ int num3;
 					int num8 = 200;
 					for (int j = 0; j < selectButtons_.Length; j++)
 					{
-						if (selectButtons_[j] != null)
-						{
+						if (selectButtons_[j] == null) { continue; }
 							int num9 = 120 - (selectButtons_.Length - 1) * num6 / 2 + j * num6;
 							if (j == select_)
 							{
@@ -2116,18 +2113,14 @@ int num3;
 							g.SetColor(SC_WINDOW_BLACK);
 							g.DrawString(selectButtons_[j], num9, 167f, 2);
 							GameView.AddTouch(g, 3, (int)((float)num9 - num4 / 2f - 5f - (float)(num7 / 2)), 164 - num8 / 2, (int)(num4 + 10f + (float)num7), 17 + num8, 0x20000 | j);
-						}
+
 					}
 				}
 				err_line = 207;
 			}
 			else
 			{
-				if (type_ == 2)
-				{
-					return;
-				}
-				if (type_ == 3)
+				if (type_ == 2) { } else if (type_ == 3)
 				{
 					DrawMenu_btmInfo(g);
 					DrawMenu(g, 0);
@@ -2320,27 +2313,21 @@ int num3;
 					num = 67;
 					g.ClipRect(0f, num, 240f, 79f);
 					int num22 = frame_ / 2;
-					switch (num10)
-					{
-					case 0:
-						if (num22 > EVENT_HAPPY_ANIME_OY.Length - 1)
+					if (num10 == 0) {if (num22 > EVENT_HAPPY_ANIME_OY.Length - 1)
 						{
 							num22 = EVENT_HAPPY_ANIME_OY.Length - 1;
 						}
 						num3 = EVENT_HAPPY_ANIME_OY[num22] + 148;
 						apdat_.DrawSeb(g, 95, num3, apdat_.resEvent_.seb[0], apdat_.resEvent_.img[3], 0);
 						apdat_.DrawSeb(g, 143, num3, apdat_.resEvent_.seb[0], apdat_.resEvent_.img[3], 1);
-						break;
-					case 1:
-						if (num22 > EVENT_SAD_ANIME_OY.Length - 1)
+						} else if (num10 == 1) {if (num22 > EVENT_SAD_ANIME_OY.Length - 1)
 						{
 							num22 = EVENT_SAD_ANIME_OY.Length - 1;
 						}
 						num3 = EVENT_SAD_ANIME_OY[num22] + 148 - 3;
 						apdat_.DrawSeb(g, 95, num3, apdat_.resEvent_.seb[1], apdat_.resEvent_.img[4], 0);
 						apdat_.DrawSeb(g, 142, num3, apdat_.resEvent_.seb[1], apdat_.resEvent_.img[4], 1);
-						break;
-					}
+						}
 					g.PopClip();
 					GameView.AddTouch(2);
 				}
@@ -2481,22 +2468,14 @@ int num3;
 				}
 				else
 				{
-					if (type_ == 18)
-					{
-						return;
-					}
-					if (type_ == 19)
+					if (type_ == 18) { } else if (type_ == 19)
 					{
 						Draw_clearPoint(g);
 						GameView.AddTouch(2, TouchOption.Create(2));
 					}
 					else
 					{
-						if (type_ == 20)
-						{
-							return;
-						}
-						if (type_ == 23)
+						if (type_ == 20) { } else if (type_ == 23)
 						{
 							int num35 = GameUtil.RateConvert(frame_, 1, 3, 6, 232, true);
 							int num36 = textLay_.GetHeight() + 7 + 8;
@@ -2764,8 +2743,7 @@ int num3;
 								}
 							}
 						}
-						else if (type_ != 29)
-						{
+						else if (type_ == 29) { } else {
 							_draw2(g);
 						}
 					}
