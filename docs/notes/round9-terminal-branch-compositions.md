@@ -13,3 +13,5 @@ Fixtures proprias smcs2.6.5:2corpos COMPLETOS iguais aos controles manuais,4toy 
 Fresh NoEmit: duas previsoes COMPLETAS,65e19tipos EXATOS originais. Nenhum candidato de assinatura completa errada foi permitido. Fixture driver inicialmente teve escaping de newline Python invalido antes de compilar qualquer toy; calculador primeiro teve decode cp1252 e depois chave inexistente raw_il_hex, ambos antes de produzir/adotar patch. Corrigidos para UTF8 e header.code_size; nenhum desses erros e refutacao de C# nem tentativa real do jogo. Recibos finais ligam dependencias/fixtures/modelos por SHA.
 
 Suficiencia para corpos do jogo UNKNOWN antes de sonda/verificacao completa. Nada de IL original copiado, nenhuma classe gerada manual, nenhum estado editado.
+
+Resultado D21: SubForm.Init5191 e Ball.Update4629 fecharam corpos completos, incluindo maxstack/EH e assinaturas65/19. Fulloracle+2/9820IL/0perdas, commit300918ccd05848c1cafedc6e7411a2678afac72f enviado. As duas composicoes estao CONFIRMADAS para estes corpos.

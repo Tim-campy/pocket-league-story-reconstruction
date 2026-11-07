@@ -1,0 +1,39 @@
+{
+  "operation": "smcs-compound-arithmetic-plus-scope-joint-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "ae2ae35c6e4d874635153fcc8fd9f5841f980c3deabb8fe2d327a63fd84431e7",
+  "driver_sha256": "308638c2d3e42ca68a31cd13391dd80aaaca242f36d0b7e0697390dd43d0ff54",
+  "game_compilations": 0,
+  "toy_compilations": 4,
+  "positive_full_bodies": 2,
+  "negative_controls": 8,
+  "fixtures": [
+    {
+      "case": "two-dispatches-and-scalars",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "before": "public void Run(Player player,int pass_mode,int data1){switch(pass_mode){case 0:case 5:{Count++;break;}case 1:Count+=2;break;case 2:Count+=3;break;case 3:{float num=0f;int num2=0;for(int i=1;i<4;i++){if(i != player.p_id_){Player player3=player;float num3=0f;num3=((player3.team_id_!=0)?(-900f):(900f));num+=num3;num2=i;}}Count+=num2+(int)num;break;}case 4:Count+=4;break;}int num4=2;float num5=1f;float num6=1f;float num7=Read();float num8=num7+num5+num6+num4;v_.x_/=num8;v_.z_/=num8;switch(pass_mode){case 0:case 5:{int num15=(targetPId=data1);Count+=num15;break;}case 1:{int num16=(targetPId=player.p_id_);Count+=num16;break;}case 3:{int num14=(targetPId=data1);Count+=num14;break;}case 4:Count++;break;}}",
+      "after": "public void Run(Player player,int pass_mode,int data1){if (pass_mode == 0 || pass_mode == 5) {Count++;}\r\n\t\t\telse if (pass_mode == 1) {Count+=2;}\r\n\t\t\telse if (pass_mode == 2) {Count+=3;}\r\n\t\t\telse if (pass_mode == 3) {float num=0f;int num2=0;for(int i=1;i<4;i++){if (i == player.p_id_) { continue; }Player player3=player;float num3=0f;if (player3.team_id_ == 0) { num3 = (900f); } else { num3 = (-900f); }num+=num3;num2=i;}Count+=num2+(int)num;}\r\n\t\t\telse if (pass_mode == 4) {Count+=4;}float num7;\r\n\t\t\tint num4 = 2;\r\n\t\t\tfloat num5 = 1f;\r\n\t\t\tfloat num6 = 1f;\r\n\t\t\tnum7 = Read();float num8=num7+num5+num6+num4;v_.x_ = v_.x_ / num8;v_.z_ = v_.z_ / num8;if (pass_mode == 0 || pass_mode == 5) {int num15 = data1; targetPId = num15;Count+=num15;}\r\n\t\t\telse if (pass_mode == 1) {int num16 = player.p_id_; targetPId = num16;Count+=num16;}\r\n\t\t\telse if (pass_mode == 3) {int num14 = data1; targetPId = num14;Count+=num14;}\r\n\t\t\telse if (pass_mode == 4) {Count++;}}",
+      "manual_control": "public void Run(Player player,int pass_mode,int data1){if(pass_mode==0||pass_mode==5){Count++;}else if(pass_mode==1){Count+=2;}else if(pass_mode==2){Count+=3;}else if(pass_mode==3){float num=0f;int num2=0;for(int i=1;i<4;i++){if(i==player.p_id_){continue;}Player player3=player;float num3=0f;if(player3.team_id_==0){num3=900f;}else{num3=-900f;}num+=num3;num2=i;}Count+=num2+(int)num;}else if(pass_mode==4){Count+=4;}float num7;int num4=2;float num5=1f;float num6=1f;num7=Read();float num8=num7+num5+num6+num4;v_.x_=v_.x_/num8;v_.z_=v_.z_/num8;if(pass_mode==0||pass_mode==5){int num15=data1;targetPId=num15;Count+=num15;}else if(pass_mode==1){int num16=player.p_id_;targetPId=num16;Count+=num16;}else if(pass_mode==3){int num14=data1;targetPId=num14;Count+=num14;}else if(pass_mode==4){Count++;}}"
+    },
+    {
+      "case": "shared-pair-and-unused-slot",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "before": "public void Run(bool flag){if(t_owner_!=null){Count++;}else{if(a_.y_==0f||v_.y_==0f||pos_.y_<=0f){float num=GameUtil.RateConvert(savePosFrame_,0f,60f,0.99f,0.93f,true);float num2=GameUtil.RateConvert(savePosFrame_,0f,60f,0.99f,0.93f,true);v_.x_*=num;v_.z_*=num2;}else if(!flag){float num;float num2;if(a_.y_==-0.25f){num=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.96f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.96f,true);}else{num=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.97f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.97f,true);}v_.x_*=num;v_.y_*=0.995f;v_.z_*=num2;}if(Count==3){bool flag2=false;int[] collisionData=udat_.GetCollisionData(0,1);Vector3D[] goal_gpos=tGroupArea_.goal_gpos;if(collisionData[0]==Count){flag2=true;}if(flag2){pos_.x_=goal_gpos[0].x_;}}}if(pos_.y_<0f){pos_.y_*=-1f;v_.y_=(0f-v_.y_)/2f;v_.x_*=0.9f;v_.z_*=0.9f;}}",
+      "after": "public void Run(bool flag){if(t_owner_!=null){Count++;}else{\r\n\t\t\t\tfloat num;\r\n\t\t\t\tfloat num2;if(a_.y_==0f||v_.y_==0f||pos_.y_<=0f){num=GameUtil.RateConvert(savePosFrame_,0f,60f,0.99f,0.93f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,60f,0.99f,0.93f,true);v_.x_ = v_.x_ * num;v_.z_ = v_.z_ * num2;}else if(!flag){if(a_.y_==-0.25f){num=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.96f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.96f,true);}else{num=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.97f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.97f,true);}v_.x_ = v_.x_ * num;v_.y_ = v_.y_ * 0.995f;v_.z_ = v_.z_ * num2;}if(Count==3){bool flag2=false;\r\n\t\t\t\t\tfloat recoveredUnusedSingle;int[] collisionData=udat_.GetCollisionData(0,1);Vector3D[] goal_gpos=tGroupArea_.goal_gpos;if(collisionData[0]==Count){flag2=true;}if(flag2){pos_.x_=goal_gpos[0].x_;}}}if(pos_.y_<0f){pos_.y_*=-1f;v_.y_ = (-v_.y_) / 2f;v_.x_ = v_.x_ * 0.9f;v_.z_ = v_.z_ * 0.9f;}}",
+      "manual_control": "public void Run(bool flag){if(t_owner_!=null){Count++;}else{float num;float num2;if(a_.y_==0f||v_.y_==0f||pos_.y_<=0f){num=GameUtil.RateConvert(savePosFrame_,0f,60f,0.99f,0.93f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,60f,0.99f,0.93f,true);v_.x_=v_.x_*num;v_.z_=v_.z_*num2;}else if(!flag){if(a_.y_==-0.25f){num=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.96f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.96f,true);}else{num=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.97f,true);num2=GameUtil.RateConvert(savePosFrame_,0f,fallTime_*100/100,0.995f,0.97f,true);}v_.x_=v_.x_*num;v_.y_=v_.y_*0.995f;v_.z_=v_.z_*num2;}if(Count==3){bool flag2=false;float recoveredUnusedSingle;int[] collisionData=udat_.GetCollisionData(0,1);Vector3D[] goal_gpos=tGroupArea_.goal_gpos;if(collisionData[0]==Count){flag2=true;}if(flag2){pos_.x_=goal_gpos[0].x_;}}}if(pos_.y_<0f){pos_.y_*=-1f;v_.y_=-v_.y_/2f;v_.x_=v_.x_*0.9f;v_.z_=v_.z_*0.9f;}}"
+    }
+  ],
+  "negatives": [
+    "dispatch-sideeffect",
+    "dispatch-duplicate-case",
+    "continue-extra-tail",
+    "assignment-other-field",
+    "missing-divide-site",
+    "multiply-sideeffect",
+    "missing-unused-holder",
+    "different-negative"
+  ],
+  "limitations": "Pure source compositions only; original zero-use Single exists but historical variable name/scope unknown. Toy manual control proves selected declaration placement emits required shape, not historical source spelling. Game NoEmit and unchanged full oracle mandatory."
+}

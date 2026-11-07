@@ -134,17 +134,18 @@ namespace game
 			}
 			else
 			{
+				float num;
+				float num2;
 				if (a_.y_ == 0f || v_.y_ == 0f || pos_.y_ <= 0f)
 				{
-					float num = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
-					float num2 = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
-					v_.x_ *= num;
-					v_.z_ *= num2;
+					num = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
+					num2 = GameUtil.RateConvert(savePosFrame_, 0f, 60f, 0.99f, 0.93f, true);
+					v_.x_ = v_.x_ * num;
+					v_.z_ = v_.z_ * num2;
 				}
 				else if (!flag)
 				{
-					float num;
-					float num2;
+
 					if (a_.y_ == -0.25f)
 					{
 						num = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.96f, true);
@@ -155,9 +156,9 @@ namespace game
 						num = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
 						num2 = GameUtil.RateConvert(savePosFrame_, 0f, fallTime_ * 100 / 100, 0.995f, 0.97f, true);
 					}
-					v_.x_ *= num;
-					v_.y_ *= 0.995f;
-					v_.z_ *= num2;
+					v_.x_ = v_.x_ * num;
+					v_.y_ = v_.y_ * 0.995f;
+					v_.z_ = v_.z_ * num2;
 				}
 				v_.Add(a_);
 				pos_.Add(v_);
@@ -165,6 +166,7 @@ namespace game
 				if (tGroupArea_.tArea_.tMode_ == 3)
 				{
 					bool flag2 = false;
+					float recoveredUnusedSingle;
 					int[] collisionData = udat_.GetCollisionData(0, 1);
 					Vector3D[] goal_gpos = tGroupArea_.goal_gpos;
 					if (tGroupArea_.tArea_.pId_ == 2)
@@ -218,9 +220,9 @@ namespace game
 			{
 				boundNum_++;
 				pos_.y_ *= -1f;
-				v_.y_ = (0f - v_.y_) / 2f;
-				v_.x_ *= 0.9f;
-				v_.z_ *= 0.9f;
+				v_.y_ = (-v_.y_) / 2f;
+				v_.x_ = v_.x_ * 0.9f;
+				v_.z_ = v_.z_ * 0.9f;
 				if (v_.y_ < 0.3f)
 				{
 					SetStop();

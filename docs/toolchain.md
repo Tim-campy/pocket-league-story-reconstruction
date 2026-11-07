@@ -365,3 +365,5 @@ requires fresh full verification and compilation of the Git index sources.
 
 O mesmo vale para `recoveredNotifyManager`: o tipo e os acessos são do original; o nome legível é escolhido no fonte e não foi recuperado de PDB original.
 
+
+Rodada9 D22: recoveredUnusedSingle em TBall.Update_training e nome sintetico para slot Single4 sem nenhum uso no IL original. A declaracao nua apos flag2/antes collisionData e escolhida para reproduzir a assinatura, nao identificada como escopo ou nome historico. Modelo completo previu sete tipos originais; so o verificador pode aprovar o corpo.

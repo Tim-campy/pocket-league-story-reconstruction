@@ -886,22 +886,16 @@ udat_.gm_.SetBallTeam(-1);
 		{
 			v_.Set(0f, 0f, 0f);
 			a_.Set(0f, 0f, 0f);
-			switch (pass_mode)
-			{
-			case 0:
-			case 5:
-			{
+			if (pass_mode == 0 || pass_mode == 5) {
 				Player player2 = udat_.teams_[player.team_id_].players_[data1];
 				temp_pos.Set(player2.pos_);
-				break;
+
 			}
-			case 1:
-				temp_pos.Set(Camera.GetPosFromAddress(data1, data2));
+			else if (pass_mode == 1) {temp_pos.Set(Camera.GetPosFromAddress(data1, data2));
 				temp_pos.x_ += 900f / (float)Map.MAPCHIP_COAT_WNUM * 1f / 2f;
 				temp_pos.z_ += 1800f / (float)Map.MAPCHIP_COAT_HNUM * 1f / 2f;
-				break;
-			case 2:
-				temp_pos.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, -337.5f, 337.5f, true);
+				}
+			else if (pass_mode == 2) {temp_pos.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, -337.5f, 337.5f, true);
 				temp_pos.y_ = 0f;
 				if (player.team_id_ == 0)
 				{
@@ -911,18 +905,16 @@ udat_.gm_.SetBallTeam(-1);
 				{
 					temp_pos.z_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 0f, -300f, true);
 				}
-				break;
-			case 3:
-			{
+				}
+			else if (pass_mode == 3) {
 				float num = 2.1474836E+09f;
 				int num2 = 0;
 				for (int i = 1; i < udat_.teams_[player.team_id_].players_.Length; i++)
 				{
-					if (i != player.p_id_)
-					{
+					if (i == player.p_id_) { continue; }
 						Player player3 = udat_.teams_[player.team_id_].players_[i];
 						float num3 = 0f;
-						num3 = ((player3.team_id_ != 0) ? (player3.pos_.x_ * player3.pos_.x_ + (player3.pos_.z_ - -900f) * (player3.pos_.z_ - -900f)) : (player3.pos_.x_ * player3.pos_.x_ + (player3.pos_.z_ - 900f) * (player3.pos_.z_ - 900f)));
+						if (player3.team_id_ == 0) { num3 = (player3.pos_.x_ * player3.pos_.x_ + (player3.pos_.z_ - 900f) * (player3.pos_.z_ - 900f)); } else { num3 = (player3.pos_.x_ * player3.pos_.x_ + (player3.pos_.z_ - -900f) * (player3.pos_.z_ - -900f)); }
 						if (player3.pos_.x_ * player.pos_.x_ > 0f)
 						{
 							num += 180f;
@@ -932,7 +924,7 @@ udat_.gm_.SetBallTeam(-1);
 							num = num3;
 							num2 = i;
 						}
-					}
+
 				}
 				data1 = num2;
 				Player player4 = udat_.teams_[player.team_id_].players_[num2];
@@ -968,10 +960,9 @@ udat_.gm_.SetBallTeam(-1);
 						temp_pos.z_ = -720f;
 					}
 				}
-				break;
+
 			}
-			case 4:
-				temp_pos.y_ = 0f;
+			else if (pass_mode == 4) {temp_pos.y_ = 0f;
 				if (player.team_id_ == 0)
 				{
 					temp_pos.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, Map.COAT_GOAL2_GPOS_CAREA[0].x_, Map.COAT_GOAL2_GPOS_CAREA[1].x_, true);
@@ -982,12 +973,12 @@ udat_.gm_.SetBallTeam(-1);
 					temp_pos.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, Map.COAT_GOAL1_GPOS_CAREA[0].x_, Map.COAT_GOAL1_GPOS_CAREA[1].x_, true);
 					temp_pos.z_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, Map.COAT_GOAL1_GPOS_CAREA[0].z_, Map.COAT_GOAL1_GPOS_CAREA[1].z_, true);
 				}
-				break;
-			}
+				}
+			float num7;
 			int num4 = 2;
 			float num5 = 1f;
 			float num6 = 1f;
-			float num7 = (float)JMath.Sqrt((temp_pos.x_ - pos_.x_) * (temp_pos.x_ - pos_.x_) + (temp_pos.z_ - pos_.z_) * (temp_pos.z_ - pos_.z_));
+			num7 = (float)JMath.Sqrt((temp_pos.x_ - pos_.x_) * (temp_pos.x_ - pos_.x_) + (temp_pos.z_ - pos_.z_) * (temp_pos.z_ - pos_.z_));
 			if (num7 < 0.001f)
 			{
 				return;
@@ -1002,8 +993,8 @@ udat_.gm_.SetBallTeam(-1);
 				v_.z_ = (temp_pos.z_ - pos_.z_) / (float)num9;
 				if (num8 >= 1f)
 				{
-					v_.x_ /= num8;
-					v_.z_ /= num8;
+					v_.x_ = v_.x_ / num8;
+					v_.z_ = v_.z_ / num8;
 				}
 			}
 			else
@@ -1107,41 +1098,33 @@ udat_.gm_.SetBallTeam(-1);
 			{
 				v_.x_ *= 10f;
 			}
-			switch (pass_mode)
-			{
-			case 0:
-			case 5:
-			{
-				int num15 = (targetPId = data1);
+			if (pass_mode == 0 || pass_mode == 5) {
+				int num15 = data1; targetPId = num15;
 				for (int k = 0; k < udat_.teams_[player.team_id_].receiverPIdBox_.Length; k++)
 				{
 					udat_.teams_[player.team_id_].receiverPIdBox_[k] = num15;
 				}
-				break;
+
 			}
-			case 1:
-			{
-				int num16 = (targetPId = player.p_id_);
+			else if (pass_mode == 1) {
+				int num16 = player.p_id_; targetPId = num16;
 				for (int l = 0; l < udat_.teams_[player.team_id_].receiverPIdBox_.Length; l++)
 				{
 					udat_.teams_[player.team_id_].receiverPIdBox_[l] = num16;
 				}
-				break;
+
 			}
-			case 3:
-			{
+			else if (pass_mode == 3) {
 				flag_ = BitUtil.On(flag_, 64);
-				int num14 = (targetPId = data1);
+				int num14 = data1; targetPId = num14;
 				for (int j = 0; j < udat_.teams_[player.team_id_].receiverPIdBox_.Length; j++)
 				{
 					udat_.teams_[player.team_id_].receiverPIdBox_[j] = num14;
 				}
-				break;
+
 			}
-			case 4:
-				flag_ = BitUtil.On(flag_, 64);
-				break;
-			}
+			else if (pass_mode == 4) {flag_ = BitUtil.On(flag_, 64);
+				}
 			SetSavePos(pos_, v_, a_);
 			if (SOUND_RANDOM == 1)
 			{
