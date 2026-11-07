@@ -94,6 +94,11 @@
       "status": "CONFIRMADA",
       "hypothesis": "d9-named-eh-result-rejoin: Manter resultado Byte[] inicializado antes do try, atribuir ToByteArray ao mesmo local e retorna-lo depois do finally, evitando o temporario de retorno protegido separado.",
       "evidence": "cycle08: 1 matched, 189 IL bytes; Novos corpos aprovados; 1 tentativas da regra, 1 avancos"
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "d9-array-local-before-population: Array unidimensional atribuido a local antes da populacao explicita reproduz newarr;stloc;ldloc;indice em vez de inicializador dup; mesma ordem de elementos e nenhum local novo.",
+      "evidence": "cycle09: 2 matched, 2579 IL bytes; Novos corpos aprovados; 5 tentativas da regra, 5 avancos"
     }
   ]
 }

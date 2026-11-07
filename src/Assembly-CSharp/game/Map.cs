@@ -286,17 +286,15 @@ namespace game
 			Camera.ConvertGlobalToAddress(COAT_GOAL2_IN_GLOBALPOS[0], COAT_GOAL2_IN_ADDRESS[0]);
 			Camera.ConvertGlobalToAddress(COAT_GOAL2_IN_GLOBALPOS[1], COAT_GOAL2_IN_ADDRESS[1]);
 			int[] array = new int[2]
-			{
-				Camera.MAP_SCREEN_W1,
-				Camera.MAP_SCREEN_H1
-			};
+;
+			array[0] = Camera.MAP_SCREEN_W1;
+			array[1] = Camera.MAP_SCREEN_H1;
 			float num = (float)(-COAT_BASEPOINT[0]) - 0.5f;
 			float num2 = (float)(-COAT_BASEPOINT[1]) + 0.5f;
 			int[] array2 = new int[2]
-			{
-				(int)(num2 * 60f / 2f + num * 60f / 2f),
-				(int)(num2 * 30f / 2f - num * 30f / 2f)
-			};
+;
+			array2[0] = (int)(num2 * 60f / 2f + num * 60f / 2f);
+			array2[1] = (int)(num2 * 30f / 2f - num * 30f / 2f);
 			MAPCHIP_SPOS = JTool.MakeArray<int[][][]>(new int[3] { MAPCHIP_FIELD_HNUM, MAPCHIP_FIELD_WNUM, 2 });
 			for (int num3 = MAPCHIP_SPOS.Length - 1; num3 >= 0; num3--)
 			{

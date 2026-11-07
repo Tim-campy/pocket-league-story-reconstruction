@@ -1,0 +1,17 @@
+# Arrays guardados antes da população — família D09
+
+Hipótese: o decompilador fundiu `T[] a = new T[n]; a[0] = x; ...` em inicializador. A forma recuperada mantém a referência na pilha com `dup`; a original usa o slot entre os elementos. O verificador continua o único juiz de correspondência.
+
+Medição de entrada: `reports/round9-cycle08-after-measurement.json`, commit `5494baa51df54efaae9c5afa9469919ffe7e9afa`. O par `stloc.s => dup` contém UserData.Deserialize (2.114 bytes) e SetTrainingCommonMethod (3.287); `stloc.0 => dup` contém Map.SetCoatLine (2.711) e FanBonusData.SetBPFData (465). São 8.577 bytes em quatro métodos. Os três primeiros padrões de fluxo de maior peso já têm famílias testadas; esta é a primeira família nova diagnosticada antes da transferência, conforme a ordem autorizada. O peso não significa que todos os corpos fecharão.
+
+Exemplos originais: Map.SetCoatLine IL153 `newarr`,158 `stloc.0`,159 `ldloc.0`,160 índice0; recompilado IL158 `dup`. UserData.Deserialize armazena o array antes das duas chamadas ReadInt, ao contrário do inicializador recuperado. FanBonusData.SetBPFData IL96 `newarr`,101 `stloc.0`,102 `ldloc.0`,103 índice0; a declaração fica fora da condição, portanto a transformação também precisa aceitar atribuição a local existente. Training tem 63 locais originais e64 recompilados: se a previsão completa continuar errada, o candidato será vetado antes de compilar.
+
+Fonte Mono fixado: revisão `b6587926c0f146c8b12985744f33a13b39a22d57`, `mcs/mcs/expression.cs`: `EmitDynamicInitializers`6299 e `Dup`6328 mantêm a referência durante o inicializador; `ArrayCreation.Emit`6372 cria o array e6388–6405 escolhe a população. `VariableReference.EmitAssign`4321–4356 emite `source.Emit` antes de `Variable.EmitAssign`. A revisão exata que fabricou o executável permanece UNKNOWN; as fixtures usam o smcs instalado identificado pelo hash no recibo.
+
+REA confirmou o original Assembly-CSharp SHA256 `3620ed91bd3a99cba9901cea111e6f6e489474e5c0b97b99676e5d4623817949`, MVID `48ce9f89-73d2-40be-bb24-22c807c04106`, evidência resumida `ev_4844bfa3f4ff1c4ddd17197d6fcb7cd213a2c55b6f14e0757d48bb159400ee04`, pai `ev_83ada7a3add0d91e708f20d0d3b404a77f2105ee6dfc0c31454283699deba164`. A leitura estática não executou o jogo. A evidência primária de Map.SetCoatLine já inspecionada é `ev_1070fa4a84f1c2572a324ab47d4a3d3b35cfb468f18b3fd526bcf301a866653e`: IL2711, hashIL `75ba512a9b1cb24bed6157644a8867b8bb7c14c445c75489b6dc35354fd203ca`.
+
+Fixture: `tools/round9_array_population_fixtures.py`, recibo `reports/round9-array-population-fixtures.json`: quatro corpos completos idênticos no smcs instalado, dez controles negativos; ordem das chamadas preservada. O harness inicialmente converteu LF em CRLF e invalidou offsets; foi corrigido antes dos testes definitivos. Não se atribui essa falha ao compilador nem à hipótese.
+
+Limites: um array unidimensional por ocorrência, atribuído a local diretamente num bloco; tamanho constante ou omitido igual ao número de elementos. Rejeita campo/propriedade, expressão argumento, blocos implícitos, captura, autorreferência, dimensão múltipla e structs não primitivas. Não cria nomes, slots ou classes geradas. O hint exige `newarr; stloc; ldloc; ldc.i4.0` original contra `newarr; dup` com o mesmo tipo alocado. O modelo independente e a assinatura real continuam obrigatórios antes da aceitação.
+
+Os resultados de jogo, ganhos e perdas ficam no diário gerado do ciclo, e não são inferidos das fixtures.

@@ -289,11 +289,13 @@ namespace data
 			}
 			else if (fb_data.dispCharaType_ == 1)
 			{
-				array = new int[1] { charaDataId };
+				array = new int[1] ;
+				array[0] = charaDataId;
 			}
 			else if (fb_data.dispCharaType_ == 2)
 			{
-				array = new int[1] { udat_.selectSupervisorId_ };
+				array = new int[1] ;
+				array[0] = udat_.selectSupervisorId_;
 			}
 			int[] array2 = new int[param.Length];
 			for (int j = 0; j < array2.Length; j++)
@@ -303,8 +305,7 @@ namespace data
 			float ticketPriceFanBonusRate = udat_.GetTicketPriceFanBonusRate(apdat_.frmSoccer_.GetEvaCumstomer(true));
 			for (int k = 0; k < 3; k++)
 			{
-				if (k != 1 || array2[k] >= 0)
-				{
+				if ((k == 1) && (array2[k] < 0)) { } else {
 					array2[k] = (int)((float)array2[k] * ticketPriceFanBonusRate);
 				}
 			}

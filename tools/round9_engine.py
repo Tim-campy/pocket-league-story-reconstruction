@@ -627,6 +627,10 @@ def main():
             hints = alias_hints(original[key], method, alignment['original_offset'], plain_local_types.get(key, []), type_lookup)
             hints.update(scoped_exit_evidence)
             if is_smcs:
+                from round9_array_population_hints import array_population_hints
+                array_evidence=array_population_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
+                hints.update(array_evidence)
+                if array_evidence:row.setdefault('round9_array_population_evidence',[]).append(array_evidence)
                 from round7_smcs_hints import rule_hints
                 current_prediction=slot_model.predict(path=str(c.paths[logical]),source=text,method_id=key)
                 current_types=[type_lookup.get(t,'UNKNOWN') for t in method.get('locals',[])]

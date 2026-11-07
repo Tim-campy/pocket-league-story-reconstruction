@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,025 de 5,245 métodos matched (95.81%).** 871,497 bytes de IL nos assemblies alvo.
-588,913 bytes IL matched (67.57%).
+**5,027 de 5,245 métodos matched (95.84%).** 871,497 bytes de IL nos assemblies alvo.
+591,492 bytes IL matched (67.87%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 219 |
+| decompiled | 217 |
 | equivalent | 0 |
-| matched | 5025 |
+| matched | 5027 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1808 / 92.34% | 367991 / 61.17% |
+| `Assembly-CSharp` | 1958 | 601603 | 1810 / 92.44% | 370570 / 61.60% |
 | `KairoLibrary` | 3287 | 269894 | 3217 / 97.87% | 220922 / 81.86% |
 
 ## Namespaces
@@ -36,9 +36,9 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `UnityEngine.Purchasing` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
-| `data` | 255 | 26353 | 250 / 98.04% | 22509 / 85.41% |
+| `data` | 255 | 26353 | 251 / 98.43% | 22974 / 87.18% |
 | `form` | 371 | 250649 | 333 / 89.76% | 156295 / 62.36% |
-| `game` | 441 | 202949 | 387 / 87.76% | 113675 / 56.01% |
+| `game` | 441 | 202949 | 388 / 87.98% | 115789 / 57.05% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
@@ -100,7 +100,7 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::data.BaseData` | 2 | 22 | 2 / 100.00% | 22 / 100.00% |
 | `Assembly-CSharp::data.EventData` | 7 | 342 | 7 / 100.00% | 342 / 100.00% |
 | `Assembly-CSharp::data.FanActData` | 23 | 2141 | 23 / 100.00% | 2141 / 100.00% |
-| `Assembly-CSharp::data.FanBonusData` | 15 | 4141 | 13 / 86.67% | 1071 / 25.86% |
+| `Assembly-CSharp::data.FanBonusData` | 15 | 4141 | 14 / 93.33% | 1536 / 37.09% |
 | `Assembly-CSharp::data.FormationData` | 12 | 796 | 12 / 100.00% | 796 / 100.00% |
 | `Assembly-CSharp::data.LeagueData` | 17 | 1388 | 17 / 100.00% | 1388 / 100.00% |
 | `Assembly-CSharp::data.MapchipMain` | 3 | 179 | 3 / 100.00% | 179 / 100.00% |
@@ -140,7 +140,7 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 32 / 94.12% | 3701 / 27.03% |
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 37 / 88.10% | 17797 / 79.98% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 13 / 92.86% | 2200 / 81.72% |
-| `Assembly-CSharp::game.UserData` | 92 | 55470 | 80 / 86.96% | 31811 / 57.35% |
+| `Assembly-CSharp::game.UserData` | 92 | 55470 | 81 / 88.04% | 33925 / 61.16% |
 | `Assembly-CSharp::main.AppData` | 201 | 33806 | 190 / 94.53% | 21818 / 64.54% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
@@ -509,6 +509,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | Tipo | Pendentes | Primeiro método |
 |---|---:|---|
 | `Assembly-CSharp::cfg.MyConfig` | 1 | `Assembly-CSharp::cfg.MyConfig::.cctor()->System.Void` |
+| `Assembly-CSharp::data.FanBonusData` | 1 | `Assembly-CSharp::data.FanBonusData::ChBonusEvent()->System.Void` |
 | `Assembly-CSharp::data.PlayerData` | 1 | `Assembly-CSharp::data.PlayerData::Employ(System.Int32)->System.Void` |
 | `Assembly-CSharp::data.TeamData` | 1 | `Assembly-CSharp::data.TeamData::SetScoreRanking(data.LeagueData,java.util.Vector,java.util.Vector)->System.Void` |
 | `Assembly-CSharp::data.TenantData` | 1 | `Assembly-CSharp::data.TenantData::StrengthTenant()->System.Void` |
@@ -517,7 +518,6 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::game.TBall` | 1 | `Assembly-CSharp::game.TBall::Update_training()->System.Void` |
 | `Assembly-CSharp::game.Tenant` | 1 | `Assembly-CSharp::game.Tenant::Draw(kairo.unity.ui.Graphics)->System.Void` |
 | `Assembly-CSharp::surface.TouchEffect` | 1 | `Assembly-CSharp::surface.TouchEffect::Draw(kairo.unity.ui.Graphics)->System.Void` |
-| `Assembly-CSharp::system.KairoService` | 1 | `Assembly-CSharp::system.KairoService::OnStart()->System.Void` |
 
 ## Bloqueios
 

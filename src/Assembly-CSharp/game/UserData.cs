@@ -1231,10 +1231,9 @@ namespace game
 			for (int n = 0; n < num2; n++)
 			{
 				int[] obj2 = new int[2]
-				{
-					StreamUtil.ReadInt(stream),
-					StreamUtil.ReadInt(stream)
-				};
+;
+				obj2[0] = StreamUtil.ReadInt(stream);
+				obj2[1] = StreamUtil.ReadInt(stream);
 				tpplay_battleRecode.AddElement(obj2);
 			}
 			League_init();

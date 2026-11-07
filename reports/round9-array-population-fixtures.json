@@ -1,0 +1,322 @@
+{
+  "operation": "smcs-local-before-array-population-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "source_sha256": "85577b3dc1d0b103af6def2b1c33dc8163c821ba186b0e4ad7404e8d91a76e82",
+  "helper_sha256": "2a047a434f8d58b32f50b9a6c78081eb7465c6e3ca8817bfd9353c3601263dc7",
+  "hints_sha256": "9555ed224f16ab2b8baa9777cec955a01d5c4efb5434fc83b4301aa895e168c9",
+  "driver_sha256": "3f8169a7f5b7ddd4a163c24f7c7d6cb13c8b95aea32d413ceb9e4747b14a4d29",
+  "game_compilations": 0,
+  "toy_compilations": 5,
+  "positive_full_bodies": 4,
+  "negative_controls": 10,
+  "fixtures": [
+    {
+      "method": "Declare",
+      "full_body_equal": true,
+      "hints": {
+        "round9_array_population_valid": true,
+        "round9_array_population_slot": 0,
+        "round9_array_population_evidence": {
+          "original_newarr": {
+            "offset": 1,
+            "opcode": "newarr",
+            "operand": {
+              "type": "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          "original_store_load_index": [
+            {
+              "offset": 6,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 7,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 8,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_newarr_dup": [
+            {
+              "offset": 1,
+              "opcode": "newarr",
+              "operand": {
+                "type": "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 6,
+              "opcode": "dup",
+              "operand": null
+            }
+          ],
+          "source_only": true,
+          "body_oracle_required": true
+        }
+      },
+      "patch": {
+        "rule": "d9-array-local-before-population",
+        "start": 310,
+        "end": 346,
+        "before": "int[] a=new int[2]{Mark(7),Mark(8)};",
+        "after": "int[] a=new int[2];\na[0] = Mark(7);\na[1] = Mark(8);",
+        "distance": 8
+      },
+      "original_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        },
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ],
+      "candidate_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        },
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ]
+    },
+    {
+      "method": "Assign",
+      "full_body_equal": true,
+      "hints": {
+        "round9_array_population_valid": true,
+        "round9_array_population_slot": 0,
+        "round9_array_population_evidence": {
+          "original_newarr": {
+            "offset": 9,
+            "opcode": "newarr",
+            "operand": {
+              "type": "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          "original_store_load_index": [
+            {
+              "offset": 14,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 15,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 16,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_newarr_dup": [
+            {
+              "offset": 9,
+              "opcode": "newarr",
+              "operand": {
+                "type": "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "dup",
+              "operand": null
+            }
+          ],
+          "source_only": true,
+          "body_oracle_required": true
+        }
+      },
+      "patch": {
+        "rule": "d9-array-local-before-population",
+        "start": 518,
+        "end": 540,
+        "before": "a=new int[1]{Mark(7)};",
+        "after": "a=new int[1];\na[0] = Mark(7);",
+        "distance": 2
+      },
+      "original_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ],
+      "candidate_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ]
+    },
+    {
+      "method": "References",
+      "full_body_equal": true,
+      "hints": {
+        "round9_array_population_valid": true,
+        "round9_array_population_slot": 0,
+        "round9_array_population_evidence": {
+          "original_newarr": {
+            "offset": 1,
+            "opcode": "newarr",
+            "operand": {
+              "type": "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          "original_store_load_index": [
+            {
+              "offset": 6,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 7,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 8,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_newarr_dup": [
+            {
+              "offset": 1,
+              "opcode": "newarr",
+              "operand": {
+                "type": "class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 6,
+              "opcode": "dup",
+              "operand": null
+            }
+          ],
+          "source_only": true,
+          "body_oracle_required": true
+        }
+      },
+      "patch": {
+        "rule": "d9-array-local-before-population",
+        "start": 684,
+        "end": 726,
+        "before": "object[] a=new object[2]{Make(1),Make(2)};",
+        "after": "object[] a=new object[2];\na[0] = Make(1);\na[1] = Make(2);",
+        "distance": 11
+      },
+      "original_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Make``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        },
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Make``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ],
+      "candidate_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Make``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        },
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Make``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Object @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ]
+    },
+    {
+      "method": "Inferred",
+      "full_body_equal": true,
+      "hints": {
+        "round9_array_population_valid": true,
+        "round9_array_population_slot": 0,
+        "round9_array_population_evidence": {
+          "original_newarr": {
+            "offset": 1,
+            "opcode": "newarr",
+            "operand": {
+              "type": "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          },
+          "original_store_load_index": [
+            {
+              "offset": 6,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 7,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 8,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_newarr_dup": [
+            {
+              "offset": 1,
+              "opcode": "newarr",
+              "operand": {
+                "type": "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 6,
+              "opcode": "dup",
+              "operand": null
+            }
+          ],
+          "source_only": true,
+          "body_oracle_required": true
+        }
+      },
+      "patch": {
+        "rule": "d9-array-local-before-population",
+        "start": 851,
+        "end": 884,
+        "before": "var a=new int[]{Mark(1),Mark(2)};",
+        "after": "var a=new int[2];\na[0] = Mark(1);\na[1] = Mark(2);",
+        "distance": 6
+      },
+      "original_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        },
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ],
+      "candidate_call_order": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        },
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Mark``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+        }
+      ]
+    }
+  ],
+  "negatives": [
+    "RejectArgument",
+    "RejectField",
+    "RejectMulti",
+    "RejectSelf",
+    "RejectCapture",
+    "RejectEmbedded",
+    "RejectPlain",
+    "no-original-evidence",
+    "no-frontier-evidence",
+    "different-newarr-type"
+  ],
+  "evaluation_order_preserved": true,
+  "original_bytes_copied": false,
+  "initial_harness_failures": [
+    "write_text translated fixture LF to CRLF, invalidating requested offsets; fixed with exact UTF-8 write_bytes before oracle tests"
+  ],
+  "limitations": "Single-dimension local declarations/assignments only; model and game-body verification remain required."
+}

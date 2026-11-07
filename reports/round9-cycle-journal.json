@@ -565,6 +565,36 @@
       "before_sha256": "b1f733c555df7cdfd5fe665ee903a1db7fa7b114f19c72e2ad6d20cd585b6d78",
       "after_measurement": "reports\\round9-cycle08-after-measurement.json",
       "after_sha256": "9d6ec609a14541322f15c8c984f0d04c678d94f35c12a67bd43f2088b724f1c2"
+    },
+    {
+      "cycle": 20,
+      "label": "cycle09",
+      "phase": "D",
+      "primary_target": "game.Map::SetCoatLine()->System.Void",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "d9-array-local-before-population",
+      "assembly": "Assembly-CSharp",
+      "pair": "stloc.s/stloc.0 => dup",
+      "hypothesis": "Array unidimensional atribuido a local antes da populacao explicita reproduz newarr;stloc;ldloc;indice em vez de inicializador dup; mesma ordem de elementos e nenhum local novo.",
+      "result": "Novos corpos aprovados; 5 tentativas da regra, 5 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 2,
+          "il_bytes_gained": 2579
+        }
+      },
+      "rule_accepted_steps": 5,
+      "methods_gained": 2,
+      "il_bytes_gained": 2579,
+      "before_measurement": "reports\\round9-cycle09-before-measurement.json",
+      "before_sha256": "f95556c5228e944eaff11d19574ac92bbe7995c57eaac4a78ea0c9923ed023f1",
+      "after_measurement": "reports\\round9-cycle09-after-measurement.json",
+      "after_sha256": "b6b5e80cce7f6bc4c63a339513634491e212a630acae53f2f754dc58ae564f58"
     }
   ],
   "consecutive_zero_cycles": 0
