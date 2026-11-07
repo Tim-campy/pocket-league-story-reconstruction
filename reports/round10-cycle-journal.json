@@ -60,6 +60,36 @@
       "before_sha256": "46dcec73c8b36f7940b6d50114dff84aa238618704819702cab33f90fadea0a7",
       "after_measurement": "reports\\round10-cycle01-after-measurement.json",
       "after_sha256": "d4755e264416b42b896648cf46d1a6370ebdf017b6ae90c1a40ec76aff6a2152"
+    },
+    {
+      "cycle": 3,
+      "label": "cycle02",
+      "phase": "D",
+      "primary_target": "main.AppData::.cctor()->System.Void",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "static-initializer-ternary-polarity",
+      "assembly": "Assembly-CSharp",
+      "pair": "brtrue => brfalse",
+      "hypothesis": "Inverter o ternario do campo estatico com vinculo AST e stsfld preserva o cctor implicito e reproduz a polaridade original",
+      "result": "Novos corpos aprovados; 3 tentativas da regra, 3 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 1,
+          "il_bytes_gained": 1816
+        }
+      },
+      "rule_accepted_steps": 3,
+      "methods_gained": 1,
+      "il_bytes_gained": 1816,
+      "before_measurement": "reports\\round10-cycle02-before-measurement.json",
+      "before_sha256": "9bcbabb985d9ca9886938281cef0dc88c324cf59bd6bdb5550a2ac5b9c4bac95",
+      "after_measurement": "reports\\round10-cycle02-after-measurement.json",
+      "after_sha256": "9632ea14c8eb9e0760b8cd95dedf14fbd43da4a573de41736d0d7dd0fffb4b54"
     }
   ],
   "consecutive_zero_cycles": 0

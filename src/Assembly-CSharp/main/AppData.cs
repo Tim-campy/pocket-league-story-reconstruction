@@ -1477,7 +1477,7 @@ namespace main
 
 		public static readonly int[] APPLI_VERSION_RESOURCE = new int[6];
 
-		public static string CGI_COMMON_QUERY = ((Config.APPLI_TYPE != 0) ? "uid=1&sid=PL91" : "uid=NULLGWDOCOMO");
+		public static string CGI_COMMON_QUERY = ((Config.APPLI_TYPE == 0) ? "uid=NULLGWDOCOMO" : "uid=1&sid=PL91");
 
 		public static string URL = null;
 

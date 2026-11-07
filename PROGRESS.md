@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,087 de 5,245 métodos matched (96.99%).** 871,497 bytes de IL nos assemblies alvo.
-698,352 bytes IL matched (80.13%).
+**5,088 de 5,245 métodos matched (97.01%).** 871,497 bytes de IL nos assemblies alvo.
+700,168 bytes IL matched (80.34%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3167 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 157 |
+| decompiled | 156 |
 | equivalent | 0 |
-| matched | 5087 |
+| matched | 5088 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1846 / 94.28% | 448729 / 74.59% |
+| `Assembly-CSharp` | 1958 | 601603 | 1847 / 94.33% | 450545 / 74.89% |
 | `KairoLibrary` | 3287 | 269894 | 3241 / 98.60% | 249623 / 92.49% |
 
 ## Namespaces
@@ -69,7 +69,7 @@ KairoLibrary: 3167 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.ui` | 1021 | 100597 | 1003 / 98.24% | 89263 / 88.73% |
 | `kairo.unity.util` | 518 | 43955 | 512 / 98.84% | 41067 / 93.43% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
-| `main` | 223 | 35448 | 215 / 96.41% | 29587 / 83.47% |
+| `main` | 223 | 35448 | 216 / 96.86% | 31403 / 88.59% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
 | `surface` | 122 | 26518 | 111 / 90.98% | 20957 / 79.03% |
@@ -141,7 +141,7 @@ KairoLibrary: 3167 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 39 / 92.86% | 20002 / 89.89% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 13 / 92.86% | 2200 / 81.72% |
 | `Assembly-CSharp::game.UserData` | 92 | 55470 | 81 / 88.04% | 33925 / 61.16% |
-| `Assembly-CSharp::main.AppData` | 201 | 33806 | 193 / 96.02% | 27945 / 82.66% |
+| `Assembly-CSharp::main.AppData` | 201 | 33806 | 194 / 96.52% | 29761 / 88.03% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::main.Main` | 11 | 1287 | 11 / 100.00% | 1287 / 100.00% |

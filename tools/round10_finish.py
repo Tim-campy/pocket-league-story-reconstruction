@@ -69,7 +69,7 @@ def main():
             '--output','reports/round10-final-smcs-model-validation.json'],'smcs-final'),
           (['tools/round10_roslyn_validate.py','--baseline',corpus+'/KairoLibrary',
             '--output','reports/round10-final-roslyn-model-validation.json'],'roslyn-final'),
-          (['tools/round10_control_validate.py','--snapshot',corpus,'--label','final'],'control-final')]
+          (['tools/round10_control_validate.py','--snapshot',corpus,'--label','final','--stage','4'],'control-final')]
     with ThreadPoolExecutor(max_workers=3) as pool:
         futures=[pool.submit(run,arguments,label) for arguments,label in jobs]
         for future in futures:future.result()

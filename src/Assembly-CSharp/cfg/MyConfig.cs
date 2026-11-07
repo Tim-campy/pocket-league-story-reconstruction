@@ -10,9 +10,9 @@ namespace cfg
 
 		public new static bool PTW = false;
 
-		public new static bool COUNT_ENABLE = (DEBUG ? true : false);
+		public new static bool COUNT_ENABLE = ((!(DEBUG)) ? false : true);
 
-		public new static bool PRINT = (DEBUG ? true : false);
+		public new static bool PRINT = ((!(DEBUG)) ? false : true);
 
 		public new static bool USE_UNUSE_CHECK = DEBUG && !PTW;
 
