@@ -259,9 +259,9 @@ def attempts_text(summary,short=False):
     text+='.'
     if not summary['attempts']:
         if summary['history']:
-            text+=' Histórico 7/8 compatível (mesmo original e hash do arquivo fonte atual): '+compact_counter(summary['history'])+'.'
+            text+=' Histórico 7/8/9 compatível (mesmo original e hash do arquivo fonte atual): '+compact_counter(summary['history'])+'.'
             if not short:text+=' Recibos: '+', '.join(summary['history_runs'])+'.'
-        else:text+=' Histórico 7/8 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte.'
+        else:text+=' Histórico 7/8/9 compatível: UNKNOWN; não se presume compatibilidade após alteração do fonte.'
     if summary['rejections'] or summary['budget_skipped'] or summary['legacy_removed']:
         text+=' Antes de compilar: '+compact_counter(summary['rejections'])+f"; orçamento recusou {summary['budget_skipped']}; repertório anterior filtrou {summary['legacy_removed']}."
     if not short:text+=' Paradas: '+compact_counter(summary['stops'])+'.'
@@ -369,6 +369,7 @@ def render(ctx,short=False):
                 'Não houve normalização, nova exceção ou correção de bytes. Persistência futura dos demais índices, RVAs e dos 32 bytes extras de #Blob: UNKNOWN.')
         if part=='C':
             application=document['application']
+            add('Etapas de ampliação: 1 — switch, incluindo string; 2 — try/catch/finally; 3 — lógica de condições; 4 — dono de salto ambíguo.')
             add(table(['Aplicação do esqueleto smcs','Resultado'],[
                 ('Pendentes auditados, incluindo um corpo igual retido',application['audited_pending']),
                 ('Pares de árvores completos antes',application['paired_complete_before']),
@@ -394,8 +395,8 @@ def render(ctx,short=False):
             add(table(evidence.get('render_headers',['Medida','Valor']),evidence['render_rows']))
     add('Ganhos oficiais vêm do diário após adoção e verificação completa, incluindo auxiliares liberados pelo verificador. Sondas e avanços parciais são registrados separadamente; não se somam aos ganhos oficiais. Transformações herdadas da rodada 7 só aparecem abaixo quando foram efetivamente tentadas nesta rodada.')
     if short:
-        add(table(['Ciclo','Assembly / regra','Matched ganhos','Bytes ganhos','Matched perdidos'],[
-            (c['label'],c['assembly']+' / '+c['rule'],c['methods_gained'],c['il_bytes_gained'],
+        add(table(['Ciclo','Assembly / par','Hipótese','Resultado','Matched ganhos','Bytes ganhos','Matched perdidos'],[
+            (c['label'],c['assembly']+' / '+c['pair'],c['hypothesis'],c['result'],c['methods_gained'],c['il_bytes_gained'],
              sum(len(p.get('matched_losses',[])) for p in ctx['adoptions'][c['label']]['assemblies'].values())) for c in cycles]))
     else:
         add(table(['Ciclo','Compilador / par','Hipótese','Resultado','Matched ganhos','Bytes ganhos','Matched perdidos'],[
@@ -535,7 +536,7 @@ def render(ctx,short=False):
     blockers=stop.get('blockers','Dependências de instalação/arquivo/decisão do usuário: UNKNOWN (não registradas no recibo de parada).')
     if isinstance(blockers,list):blockers='; '.join(map(str,blockers)) or 'Nenhum bloqueio de instalação, arquivo ou decisão do usuário registrado.'
     add(blockers,
-        'Parada após '+str(sum(c.get('phase')=='D' for c in cycles))+' ciclos autônomos D e '+str(sum(c.get('phase')!='D' for c in cycles))+' etapas A-C; sequência autônoma final sem novo matched: '+str(ctx['journal'].get('consecutive_zero_cycles','UNKNOWN'))+'. Limites configurados: '+str(ctx['cfg']['maximum_cycles'])+' ciclos autônomos, '+str(ctx['cfg']['consecutive_zero_stop'])+' sem ganho consecutivos com fila vazia; cota Kairo: '+ctx['cfg']['kairo_cycle_quota']+'.')
+        'Parada após '+str(sum(c.get('phase')=='D' for c in cycles))+' ciclos autônomos D e '+str(sum(c.get('phase')!='D' for c in cycles))+' ciclo adicional de preparo registrado no diário; as partes A–C estão descritas na seção 2. Sequência autônoma final sem novo matched: '+str(ctx['journal'].get('consecutive_zero_cycles','UNKNOWN'))+'. Limites configurados: '+str(ctx['cfg']['maximum_cycles'])+' ciclos autônomos, '+str(ctx['cfg']['consecutive_zero_stop'])+' sem ganho consecutivos com fila vazia; cota Kairo: '+ctx['cfg']['kairo_cycle_quota']+'.')
     if ctx['unfinished']:add('Recibos de execução incompletos preservados, excluídos das somas de execuções concluídas: '+', '.join(ctx['unfinished'])+'. Motivo detalhado: UNKNOWN se não houver nota de recuperação correspondente.')
     section(8)
     recommendations=stop.get('recommendations',[])
