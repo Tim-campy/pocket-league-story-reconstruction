@@ -1107,12 +1107,8 @@ recoveredSwitchExit_11784: ; }
 				y = (int)(lf.GetY(y) + 0.01f);
 				anchor = lf.GetAnchor(anchor);
 			}
-			int num2;
-			if (lf == null || lf.GetFont() == -1)
-			{
-				num2 = (font.IsNeedLocalizeScale() ? 1 : 0);
-				if (num2 != 0)
-				{
+			bool num2 = (lf == null || lf.GetFont() == -1) && font.IsNeedLocalizeScale();
+if (num2) {
 					num = font.GetSize();
 					int height = font.GetHeight();
 					font.SetSize(font.GetLocalizeScale());
@@ -1122,11 +1118,6 @@ recoveredSwitchExit_11784: ; }
 					}
 					Font.LockLocalizeSetting();
 				}
-			}
-			else
-			{
-				num2 = 0;
-			}
 			if ((anchor & 0x60) != 0)
 			{
 				g.fontScaleOffsetEnable_ = false;
@@ -1155,7 +1146,7 @@ recoveredSwitchExit_11784: ; }
 			{
 				g.fontScaleOffsetEnable_ = true;
 			}
-			if (num2 != 0)
+			if (num2)
 			{
 				Font.UnlockLocalizeSetting();
 			}

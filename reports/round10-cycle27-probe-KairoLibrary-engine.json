@@ -1,0 +1,1225 @@
+{
+  "assembly": "KairoLibrary",
+  "baseline_body_equal": 3180,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void",
+      "number": 1,
+      "initial_offset": 134,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d10-localize-shared-boolean-cache-layout-localize-stack-bool",
+          "start": 26215,
+          "end": 28132,
+          "before": "public static void Draw(TextFormat lf, Graphics g, string text, float x, float y, float w, float h, int color, int lineSpace, int anchor = 0)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tfloat scale = g.GetScale();\r\n\t\t\tif (anchor == 0)\r\n\t\t\t{\r\n\t\t\t\tanchor = 17;\r\n\t\t\t}\r\n\t\t\tint num = -1;\r\n\t\t\tif (!Language.Japanese() && lf != null)\r\n\t\t\t{\r\n\t\t\t\tif (lf.GetFont() != -1 && lf.GetFont() != font.GetSize())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tfont.SetSize(lf.GetFont());\r\n\t\t\t\t}\r\n\t\t\t\tx = (int)(lf.GetX(x) + 0.01f);\r\n\t\t\t\ty = (int)(lf.GetY(y) + 0.01f);\r\n\t\t\t\tanchor = lf.GetAnchor(anchor);\r\n\t\t\t}\r\n\t\t\tint num2;\r\n\t\t\tif (lf == null || lf.GetFont() == -1)\r\n\t\t\t{\r\n\t\t\t\tnum2 = (font.IsNeedLocalizeScale() ? 1 : 0);\r\n\t\t\t\tif (num2 != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tint height = font.GetHeight();\r\n\t\t\t\t\tfont.SetSize(font.GetLocalizeScale());\r\n\t\t\t\t\tif ((anchor & 0x60) == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ty += (float)(height - font.GetHeight()) / 2f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tFont.LockLocalizeSetting();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tnum2 = 0;\r\n\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = false;\r\n\t\t\t}\r\n\t\t\tTextLayout textLayout = SearchCache(text, w, h, color, lineSpace, anchor, font.GetSize(), scale);\r\n\t\t\tif (textLayout != null)\r\n\t\t\t{\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\ttextLayout = new TextLayout(true);\r\n\t\t\t\ttextLayout.SetGraphicsScale(scale);\r\n\t\t\t\ttextLayout.SetSize(w, h);\r\n\t\t\t\ttextLayout.SetColor(color);\r\n\t\t\t\ttextLayout.SetLineSpace(lineSpace);\r\n\t\t\t\ttextLayout.SetAnchor(anchor);\r\n\t\t\t\ttextLayout.multiLine_ = lineSpace > 0;\r\n\t\t\t\ttextLayout.SetFontSize(font.GetSize());\r\n\t\t\t\ttextLayout.SetText(text);\r\n\t\t\t\ttextLayout.Flush();\r\n\t\t\t\tAddCache(textLayout);\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = true;\r\n\t\t\t}\r\n\t\t\tif (num2 != 0)\r\n\t\t\t{\r\n\t\t\t\tFont.UnlockLocalizeSetting();\r\n\t\t\t}\r\n\t\t\tif (num != -1)\r\n\t\t\t{\r\n\t\t\t\tfont.SetSize(num);\r\n\t\t\t}\r\n\t\t}",
+          "after": "public static void Draw(TextFormat lf, Graphics g, string text, float x, float y, float w, float h, int color, int lineSpace, int anchor = 0)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tfloat scale = g.GetScale();\r\n\t\t\tif (anchor == 0)\r\n\t\t\t{\r\n\t\t\t\tanchor = 17;\r\n\t\t\t}\r\n\t\t\tint num = -1;\r\n\t\t\tif (!Language.Japanese() && lf != null)\r\n\t\t\t{\r\n\t\t\t\tif (lf.GetFont() != -1 && lf.GetFont() != font.GetSize())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tfont.SetSize(lf.GetFont());\r\n\t\t\t\t}\r\n\t\t\t\tx = (int)(lf.GetX(x) + 0.01f);\r\n\t\t\t\ty = (int)(lf.GetY(y) + 0.01f);\r\n\t\t\t\tanchor = lf.GetAnchor(anchor);\r\n\t\t\t}\r\n\t\t\tbool num2 = (lf == null || lf.GetFont() == -1) && font.IsNeedLocalizeScale();\r\nif (num2) {\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tint height = font.GetHeight();\r\n\t\t\t\t\tfont.SetSize(font.GetLocalizeScale());\r\n\t\t\t\t\tif ((anchor & 0x60) == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ty += (float)(height - font.GetHeight()) / 2f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tFont.LockLocalizeSetting();\r\n\t\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = false;\r\n\t\t\t}\r\n\t\t\tTextLayout textLayout = SearchCache(text, w, h, color, lineSpace, anchor, font.GetSize(), scale);\r\n\t\t\tif (textLayout != null)\r\n\t\t\t{\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\ttextLayout = new TextLayout(true);\r\n\t\t\t\ttextLayout.SetGraphicsScale(scale);\r\n\t\t\t\ttextLayout.SetSize(w, h);\r\n\t\t\t\ttextLayout.SetColor(color);\r\n\t\t\t\ttextLayout.SetLineSpace(lineSpace);\r\n\t\t\t\ttextLayout.SetAnchor(anchor);\r\n\t\t\t\ttextLayout.multiLine_ = lineSpace > 0;\r\n\t\t\t\ttextLayout.SetFontSize(font.GetSize());\r\n\t\t\t\ttextLayout.SetText(text);\r\n\t\t\t\ttextLayout.Flush();\r\n\t\t\t\tAddCache(textLayout);\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = true;\r\n\t\t\t}\r\n\t\t\tif (num2)\r\n\t\t\t{\r\n\t\t\t\tFont.UnlockLocalizeSetting();\r\n\t\t\t}\r\n\t\t\tif (num != -1)\r\n\t\t\t{\r\n\t\t\t\tfont.SetSize(num);\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 134,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "kairo.unity.ui.Font",
+              "System.Single",
+              "System.Int32",
+              "System.Boolean",
+              "kairo.unity.ui.TextLayout",
+              "System.Int32"
+            ],
+            "method_id": "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void",
+            "unsupported_reasons": [
+              "stack_scheduler_multiple_use:num2"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle27-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\ui\\TextLayout.cs",
+            "full_source_sha256": "acda5c61220cb0f93867ecb3ac6b169fabce49e31868efdb37ec732dddcfd061",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle27-probe\\engine\\KairoLibrary\\target-screen\\TextLayout.cs",
+            "screen_source_sha256": "140f34b3631aa714bd48545e68c152bf73df5bbde7adfd8abd9332e730cdfd80",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 396,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 396,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 396
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d10-localize-shared-boolean-cache-layout-localize-stack-bool",
+          "start": 26215,
+          "end": 28132,
+          "before": "public static void Draw(TextFormat lf, Graphics g, string text, float x, float y, float w, float h, int color, int lineSpace, int anchor = 0)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tfloat scale = g.GetScale();\r\n\t\t\tif (anchor == 0)\r\n\t\t\t{\r\n\t\t\t\tanchor = 17;\r\n\t\t\t}\r\n\t\t\tint num = -1;\r\n\t\t\tif (!Language.Japanese() && lf != null)\r\n\t\t\t{\r\n\t\t\t\tif (lf.GetFont() != -1 && lf.GetFont() != font.GetSize())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tfont.SetSize(lf.GetFont());\r\n\t\t\t\t}\r\n\t\t\t\tx = (int)(lf.GetX(x) + 0.01f);\r\n\t\t\t\ty = (int)(lf.GetY(y) + 0.01f);\r\n\t\t\t\tanchor = lf.GetAnchor(anchor);\r\n\t\t\t}\r\n\t\t\tint num2;\r\n\t\t\tif (lf == null || lf.GetFont() == -1)\r\n\t\t\t{\r\n\t\t\t\tnum2 = (font.IsNeedLocalizeScale() ? 1 : 0);\r\n\t\t\t\tif (num2 != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tint height = font.GetHeight();\r\n\t\t\t\t\tfont.SetSize(font.GetLocalizeScale());\r\n\t\t\t\t\tif ((anchor & 0x60) == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ty += (float)(height - font.GetHeight()) / 2f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tFont.LockLocalizeSetting();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tnum2 = 0;\r\n\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = false;\r\n\t\t\t}\r\n\t\t\tTextLayout textLayout = SearchCache(text, w, h, color, lineSpace, anchor, font.GetSize(), scale);\r\n\t\t\tif (textLayout != null)\r\n\t\t\t{\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\ttextLayout = new TextLayout(true);\r\n\t\t\t\ttextLayout.SetGraphicsScale(scale);\r\n\t\t\t\ttextLayout.SetSize(w, h);\r\n\t\t\t\ttextLayout.SetColor(color);\r\n\t\t\t\ttextLayout.SetLineSpace(lineSpace);\r\n\t\t\t\ttextLayout.SetAnchor(anchor);\r\n\t\t\t\ttextLayout.multiLine_ = lineSpace > 0;\r\n\t\t\t\ttextLayout.SetFontSize(font.GetSize());\r\n\t\t\t\ttextLayout.SetText(text);\r\n\t\t\t\ttextLayout.Flush();\r\n\t\t\t\tAddCache(textLayout);\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = true;\r\n\t\t\t}\r\n\t\t\tif (num2 != 0)\r\n\t\t\t{\r\n\t\t\t\tFont.UnlockLocalizeSetting();\r\n\t\t\t}\r\n\t\t\tif (num != -1)\r\n\t\t\t{\r\n\t\t\t\tfont.SetSize(num);\r\n\t\t\t}\r\n\t\t}",
+          "after": "public static void Draw(TextFormat lf, Graphics g, string text, float x, float y, float w, float h, int color, int lineSpace, int anchor = 0)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont();\r\n\t\t\tfloat scale = g.GetScale();\r\n\t\t\tif (anchor == 0)\r\n\t\t\t{\r\n\t\t\t\tanchor = 17;\r\n\t\t\t}\r\n\t\t\tint num = -1;\r\n\t\t\tif (!Language.Japanese() && lf != null)\r\n\t\t\t{\r\n\t\t\t\tif (lf.GetFont() != -1 && lf.GetFont() != font.GetSize())\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tfont.SetSize(lf.GetFont());\r\n\t\t\t\t}\r\n\t\t\t\tx = (int)(lf.GetX(x) + 0.01f);\r\n\t\t\t\ty = (int)(lf.GetY(y) + 0.01f);\r\n\t\t\t\tanchor = lf.GetAnchor(anchor);\r\n\t\t\t}\r\n\t\t\tbool num2 = (lf == null || lf.GetFont() == -1) && font.IsNeedLocalizeScale();\r\nif (num2) {\r\n\t\t\t\t\tnum = font.GetSize();\r\n\t\t\t\t\tint height = font.GetHeight();\r\n\t\t\t\t\tfont.SetSize(font.GetLocalizeScale());\r\n\t\t\t\t\tif ((anchor & 0x60) == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ty += (float)(height - font.GetHeight()) / 2f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tFont.LockLocalizeSetting();\r\n\t\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = false;\r\n\t\t\t}\r\n\t\t\tTextLayout textLayout = SearchCache(text, w, h, color, lineSpace, anchor, font.GetSize(), scale);\r\n\t\t\tif (textLayout != null)\r\n\t\t\t{\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\ttextLayout = new TextLayout(true);\r\n\t\t\t\ttextLayout.SetGraphicsScale(scale);\r\n\t\t\t\ttextLayout.SetSize(w, h);\r\n\t\t\t\ttextLayout.SetColor(color);\r\n\t\t\t\ttextLayout.SetLineSpace(lineSpace);\r\n\t\t\t\ttextLayout.SetAnchor(anchor);\r\n\t\t\t\ttextLayout.multiLine_ = lineSpace > 0;\r\n\t\t\t\ttextLayout.SetFontSize(font.GetSize());\r\n\t\t\t\ttextLayout.SetText(text);\r\n\t\t\t\ttextLayout.Flush();\r\n\t\t\t\tAddCache(textLayout);\r\n\t\t\t\ttextLayout.Draw(g, x, y);\r\n\t\t\t}\r\n\t\t\tif ((anchor & 0x60) != 0)\r\n\t\t\t{\r\n\t\t\t\tg.fontScaleOffsetEnable_ = true;\r\n\t\t\t}\r\n\t\t\tif (num2)\r\n\t\t\t{\r\n\t\t\t\tFont.UnlockLocalizeSetting();\r\n\t\t\t}\r\n\t\t\tif (num != -1)\r\n\t\t\t{\r\n\t\t\t\tfont.SetSize(num);\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 134,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "kairo.unity.ui.Font",
+              "System.Single",
+              "System.Int32",
+              "System.Boolean",
+              "kairo.unity.ui.TextLayout",
+              "System.Int32"
+            ],
+            "method_id": "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void",
+            "unsupported_reasons": [
+              "stack_scheduler_multiple_use:num2"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle27-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\ui\\TextLayout.cs",
+            "full_source_sha256": "acda5c61220cb0f93867ecb3ac6b169fabce49e31868efdb37ec732dddcfd061",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle27-probe\\engine\\KairoLibrary\\target-screen\\TextLayout.cs",
+            "screen_source_sha256": "140f34b3631aa714bd48545e68c152bf73df5bbde7adfd8abd9332e730cdfd80",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 396,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 396,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 396
+        }
+      ],
+      "mapping": "native-PDB-sequence-point",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "null_polarity_evidence": [
+        {}
+      ],
+      "round9_calculated_emission_evidence": [
+        {
+          "float_identity": {},
+          "per_arm_stores": {}
+        }
+      ],
+      "transform_helper_sha256": "df5d9fcd8937f6c1d3835d72c58f6fcee3dbb53d215db35f085e225c0eac8e98",
+      "stop_point": {
+        "offset": 134,
+        "source": "src/KairoLibrary/kairo/unity/ui/TextLayout.cs",
+        "point": {
+          "offset": 135,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle27-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\ui\\TextLayout.cs",
+          "start_line": 1113,
+          "start_column": 5,
+          "end_line": 1113,
+          "end_column": 49,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 141,
+          "line": 1113,
+          "column": 5
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "insert",
+          "original_offset": 141,
+          "rebuilt_offset": 141,
+          "original_index": 62,
+          "rebuilt_index": 62,
+          "original_instruction": {
+            "opcode": "INSERTION_POINT",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 141,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 146
+            }
+          },
+          "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"brtrue.s\",\"operand\":{\"branch\":146}}",
+          "opcode_pair": "INSERTION_POINT => brtrue.s",
+          "original_context": [
+            {
+              "offset": 135,
+              "opcode": "ldloc.0",
+              "operand": null,
+              "label": "L3"
+            },
+            {
+              "offset": 136,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Font @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::IsNeedLocalizeScale``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 141,
+              "opcode": "br.s",
+              "operand": {
+                "labels": [
+                  "O144"
+                ]
+              }
+            },
+            {
+              "offset": 143,
+              "opcode": "ldc.i4.0",
+              "operand": null,
+              "label": "O143"
+            },
+            {
+              "offset": 144,
+              "opcode": "dup",
+              "operand": null,
+              "label": "O144"
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 135,
+              "opcode": "ldloc.0",
+              "operand": null,
+              "label": "L3"
+            },
+            {
+              "offset": 136,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.ui.Font @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::IsNeedLocalizeScale``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 141,
+              "opcode": "brtrue.s",
+              "operand": {
+                "labels": [
+                  "R146"
+                ]
+              }
+            },
+            {
+              "offset": 143,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 144,
+              "opcode": "br.s",
+              "operand": {
+                "labels": [
+                  "R147"
+                ]
+              }
+            },
+            {
+              "offset": 146,
+              "opcode": "ldc.i4.1",
+              "operand": null,
+              "label": "R146"
+            }
+          ],
+          "original_labels": {
+            "23": "L0",
+            "78": "L1",
+            "123": "L2",
+            "135": "L3",
+            "203": "L4",
+            "208": "L5",
+            "222": "L6",
+            "261": "L7",
+            "362": "L8",
+            "376": "L9",
+            "383": "L10",
+            "395": "L11",
+            "143": "O143",
+            "144": "O144"
+          },
+          "rebuilt_labels": {
+            "23": "L0",
+            "78": "L1",
+            "123": "L2",
+            "135": "L3",
+            "207": "L4",
+            "216": "L5",
+            "230": "L6",
+            "272": "L7",
+            "385": "L8",
+            "400": "L9",
+            "407": "L10",
+            "419": "L11",
+            "146": "R146",
+            "147": "R147",
+            "214": "R214",
+            "399": "R399"
+          },
+          "sequence_edits": [
+            {
+              "kind": "insert",
+              "original_start": 62,
+              "original_stop": 62,
+              "rebuilt_start": 62,
+              "rebuilt_stop": 64
+            },
+            {
+              "kind": "replace",
+              "original_start": 63,
+              "original_stop": 65,
+              "rebuilt_start": 65,
+              "rebuilt_stop": 68
+            },
+            {
+              "kind": "replace",
+              "original_start": 71,
+              "original_stop": 72,
+              "rebuilt_start": 74,
+              "rebuilt_stop": 75
+            },
+            {
+              "kind": "replace",
+              "original_start": 82,
+              "original_stop": 83,
+              "rebuilt_start": 85,
+              "rebuilt_stop": 86
+            },
+            {
+              "kind": "insert",
+              "original_start": 92,
+              "original_stop": 92,
+              "rebuilt_start": 95,
+              "rebuilt_stop": 98
+            },
+            {
+              "kind": "replace",
+              "original_start": 109,
+              "original_stop": 111,
+              "rebuilt_start": 115,
+              "rebuilt_stop": 117
+            },
+            {
+              "kind": "replace",
+              "original_start": 112,
+              "original_stop": 113,
+              "rebuilt_start": 118,
+              "rebuilt_stop": 119
+            },
+            {
+              "kind": "replace",
+              "original_start": 121,
+              "original_stop": 123,
+              "rebuilt_start": 127,
+              "rebuilt_stop": 129
+            },
+            {
+              "kind": "replace",
+              "original_start": 125,
+              "original_stop": 126,
+              "rebuilt_start": 131,
+              "rebuilt_stop": 132
+            },
+            {
+              "kind": "replace",
+              "original_start": 129,
+              "original_stop": 130,
+              "rebuilt_start": 135,
+              "rebuilt_stop": 136
+            },
+            {
+              "kind": "replace",
+              "original_start": 132,
+              "original_stop": 133,
+              "rebuilt_start": 138,
+              "rebuilt_stop": 139
+            },
+            {
+              "kind": "replace",
+              "original_start": 135,
+              "original_stop": 136,
+              "rebuilt_start": 141,
+              "rebuilt_stop": 142
+            },
+            {
+              "kind": "replace",
+              "original_start": 138,
+              "original_stop": 139,
+              "rebuilt_start": 144,
+              "rebuilt_stop": 145
+            },
+            {
+              "kind": "replace",
+              "original_start": 143,
+              "original_stop": 144,
+              "rebuilt_start": 149,
+              "rebuilt_stop": 150
+            },
+            {
+              "kind": "replace",
+              "original_start": 147,
+              "original_stop": 148,
+              "rebuilt_start": 153,
+              "rebuilt_stop": 154
+            },
+            {
+              "kind": "replace",
+              "original_start": 150,
+              "original_stop": 151,
+              "rebuilt_start": 156,
+              "rebuilt_stop": 157
+            },
+            {
+              "kind": "replace",
+              "original_start": 152,
+              "original_stop": 153,
+              "rebuilt_start": 158,
+              "rebuilt_stop": 159
+            },
+            {
+              "kind": "replace",
+              "original_start": 154,
+              "original_stop": 155,
+              "rebuilt_start": 160,
+              "rebuilt_stop": 161
+            },
+            {
+              "kind": "insert",
+              "original_start": 166,
+              "original_stop": 166,
+              "rebuilt_start": 172,
+              "rebuilt_stop": 173
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 162,
+              "original_stop": 163,
+              "rebuilt_start": 168,
+              "rebuilt_stop": 169,
+              "target_ordinal": 0,
+              "original_target": 376,
+              "rebuilt_target": 399
+            }
+          ],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 133,
+              "rebuilt_offset": 133,
+              "target_ordinal": 0,
+              "original_target": 143,
+              "rebuilt_target": 214,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 141,
+              "rebuilt_offset": 144,
+              "target_ordinal": 0,
+              "original_target": 144,
+              "rebuilt_target": 147,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 26862,
+          "end": 26906,
+          "line": 1113,
+          "column": 5,
+          "text": "num2 = (font.IsNeedLocalizeScale() ? 1 : 0);",
+          "kind": "ExpressionStatement",
+          "method_id": "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void",
+          "point": 26862,
+          "declaration_start": 26215,
+          "declaration_end": 28132
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 7,
+              "last_use": 387,
+              "loads": 12,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 14,
+              "last_use": 270,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 24,
+              "last_use": 388,
+              "loads": 2,
+              "stores": 3
+            },
+            {
+              "slot": 3,
+              "first_use": 245,
+              "last_use": 352,
+              "loads": 13,
+              "stores": 2
+            },
+            {
+              "slot": 4,
+              "first_use": 160,
+              "last_use": 184,
+              "loads": 1,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 13
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 3,
+              "votes": {
+                "3": 15
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 4,
+              "votes": {
+                "4": 2
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "font",
+              "type": "kairo.unity.ui.Font",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 26360,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "scale",
+              "type": "System.Single",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 26360,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num",
+              "type": "System.Int32",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 26360,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Int32",
+              "rebuilt_slot": 3,
+              "desired_slot": null,
+              "lexical_block": 26360,
+              "constraint": "UNKNOWN: ambiguous aligned uses"
+            },
+            {
+              "name": "textLayout",
+              "type": "kairo.unity.ui.TextLayout",
+              "rebuilt_slot": 4,
+              "desired_slot": 3,
+              "lexical_block": 26360,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "height",
+              "type": "System.Int32",
+              "rebuilt_slot": 5,
+              "desired_slot": 4,
+              "lexical_block": 26932,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 7,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 6,
+          "selected_rule_prefix": "d10-localize-shared-boolean-cache"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "incomplete_variants_compiled": 1,
+      "incomplete_variant_limit": 12,
+      "incomplete_compiler_invocations": 2,
+      "final_offset": 396,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d10-localize-shared-boolean-cache-layout-localize-stack-bool:attempts": 1,
+    "d10-localize-shared-boolean-cache-layout-localize-stack-bool:accepted_steps": 1,
+    "d10-localize-shared-boolean-cache-layout-localize-stack-bool:body_gains": 1,
+    "d10-localize-shared-boolean-cache-layout-localize-stack-bool:IL_gains": 396
+  },
+  "completed": true,
+  "run_label": "cycle27-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\cycles\\cycle27\\baseline\\KairoLibrary",
+  "cycle_rule": "d10-localize-shared-boolean-cache",
+  "trial_compiler_server": "/shared (CLI only)",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d10-localize-shared-boolean-cache",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 6,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "c0b2df7b65e8080da27cbb537aa00c5102eea83662db88f9d27c386c4e553a91",
+    "source_sha256": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+    "client_sha256": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+    "solver_sha256": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991"
+  },
+  "external_proposals": {
+    "path": "reports\\round10-roslyn-small-family-patches.json",
+    "sha256": "3a138d9bcb32728707f08bb955801dfe7d9df03915f6292849397e27ef333028",
+    "dependencies_checked": {
+      "tools/Round8RoslynModel.cs": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+      "tools/round8_roslyn_model.py": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+      "tools/round7_roslyn_solver.py": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991",
+      "tools/round7_cycle_roslyn_fixture.py": "a895b4c14d66cde6286c5f4a0b19e07c854aa19ed7dfe96306c086914ba4bde0",
+      "tools/round4_symbols.py": "a7f1f8c83332ae9a4d24c2958c52dd1d6e4375e82d76c0762edaa932789bffcc",
+      "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+      "tools/round6_alignment.py": "958871a4ab740c51efc31a777c3c4316ed02a1c3734551c49d4fe31de20c32e5",
+      "tools/round10_roslyn_small_family_source.py": "4302f63947ba3210f13742d991ab5ff8b00e19a0f45224922c99d3baa8f9250d",
+      "tools/round10_publish_frozen_bundle.py": "5c3aa48ba9c9395e57d7399777347f09707553af45ce4cca2308da2070fa9539"
+    },
+    "read_only_evidence_checked": {
+      "reports/round10-cycle12-after-measurement.json": "96fdf75ff24d122876d6a54b04a3ae7dab25223cbd63fc93558e3087e760c642",
+      "reports/round10-roslyn-small-family-fixtures.json": "3e56bf5e7acb419597e424b5ac813b54d32de231da99d3df4c714d7f46a59e80"
+    },
+    "frozen_evidence_checked": {
+      "build/round10/autonomous-roslyn-small-family/audit_and_export.py": "567e3fe04f12464f0d7ae533253cf6d4a478339ce5a325f4cd3274414af2debf",
+      "build/round10/autonomous-roslyn-small-family/calculate.py": "4302f63947ba3210f13742d991ab5ff8b00e19a0f45224922c99d3baa8f9250d",
+      "build/round10/autonomous-roslyn-small-family/call-kind-survey.json": "810e7c581ae855fe191bb0df1c72e8a8fc7b1921afe07f66cbff8491696c1962",
+      "build/round10/autonomous-roslyn-small-family/diagnostics.json": "c308b0f7d780c631bd3936d71b82fdecd6180ac8b389724747865785d9a2fb97",
+      "build/round10/autonomous-roslyn-small-family/fixture-report.json": "3e56bf5e7acb419597e424b5ac813b54d32de231da99d3df4c714d7f46a59e80",
+      "build/round10/autonomous-roslyn-small-family/goal-shape-audit.json": "96a301b8f40f62927b06f54942c20e20202887be9fd32a9c12f7f24c432b5f49",
+      "build/round10/autonomous-roslyn-small-family/graphics-localize-stack-bool.after.cs": "0b440fabdf2a21871c0b29f7423d061c1828ac9961d7baa70453f66745f8cfdb",
+      "build/round10/autonomous-roslyn-small-family/graphics-localize-stack-bool.before.cs": "d7e3fb41957e97f3f378c30880cb77f64065a371b80d268bd777ab53d93a7bd3",
+      "build/round10/autonomous-roslyn-small-family/history-selected.json": "6760caa8840a9ac85f5b1f10568bc655ca621e981f9a020fc16b676a1d29b57e",
+      "build/round10/autonomous-roslyn-small-family/history-sha-audit.json": "0cd44d486d914356ab1a6cef096a003276ed190737599109b09b1708b864a661",
+      "build/round10/autonomous-roslyn-small-family/history.json": "35dd58a07906b68a23afc7353de0cff338784f3b89a25806ed508494e58259c7",
+      "build/round10/autonomous-roslyn-small-family/layout-localize-stack-bool.after.cs": "12d296369d955c842f46a549c4754b62e54305b7e514ebf3ba8934ec9217a7cf",
+      "build/round10/autonomous-roslyn-small-family/layout-localize-stack-bool.before.cs": "d34de05754ecb8024737ea09c37a95e1d212de4a2af3c5006931272f2e46a6ff",
+      "build/round10/autonomous-roslyn-small-family/model-manifest.json": "40932baa6009fca18e9a17c98f38389dd511490eed5b6222cf5ee0791ec06046",
+      "build/round10/autonomous-roslyn-small-family/model_analysis.py": "f0dac6d2b46a3c555da8a1de590f49a67e01e972db6985b8dd225fc2a3361954",
+      "build/round10/autonomous-roslyn-small-family/NoEmit-model-analysis.json": "ebc2bc550441fbc1f50b1a33f903ca5bf41db2aba9302097d0b2b8ba6e8ac66a",
+      "build/round10/autonomous-roslyn-small-family/NOTE.md": "9c2d1e250a827bc414355eb364447d137cab9e1be553aaae6ee517bd8e5f13e7",
+      "build/round10/autonomous-roslyn-small-family/proposals.json": "b958ad5df40146fd355eaef188cb6596ff57d2ce1acd263744abde241ee8572a",
+      "build/round10/autonomous-roslyn-small-family/run_fixtures.py": "c30a317d4ccafd5313d004701d6899c3092299800653ddb6e04b36e0843388de",
+      "build/round10/autonomous-roslyn-small-family/source-audit.json": "acdbdef0e058f532d1d97942fc09704f2b4e9e3452eb71f4c51bb17fad38f054",
+      "build/round10/autonomous-roslyn-small-family/write_manual_fixtures.py": "a81e91ef74f5bee3d896646647608115961864eaef8d3f3bfc74816e55d7c407",
+      "build/round10/autonomous-roslyn-small-family/pinned/EmitExpression.cs": "4beb87ae114cd851204eed776ed12f9cc8d533b86299d8683bf455c212876f09",
+      "build/round10/autonomous-roslyn-small-family/pinned/EmitOperators.cs": "4108c9920e895631afb06cf251054cddf1366175c287df2e9499eae80bd7773e",
+      "build/round10/autonomous-roslyn-small-family/pinned/EmitStatement.cs": "d09dff456ccf0855cc9947e45efbb676c9baa4ee1df58eb5db414dc7866e6195",
+      "build/round10/autonomous-roslyn-small-family/pinned/Optimizer.cs": "3051e87f8c65d35a7613a8035a6c9005d58095d652219b51f182a4759988c3e6",
+      "build/round10/autonomous-roslyn-small-family/pinned/provenance.json": "22e36da17daa5d9bd2cbcf01a9d2cc0da09b51a173fc8513cf6196899fe03b9f",
+      "build/round10/autonomous-roslyn-small-family/fixtures/graphics/Current.cs": "69137eacf316ab14ffabfc22f2fd523827616828287d300672dbf5036a6b6c9e",
+      "build/round10/autonomous-roslyn-small-family/fixtures/graphics/Expected.cs": "40601fd35f42502feae772024f5b553454aab65b5c454930ed313a0ae18fec3a",
+      "build/round10/autonomous-roslyn-small-family/fixtures/layout/Current.cs": "aa052f9bf3835368cdf3c81e8096deea45a2c38a62bcde8c004d6c59ea4db661",
+      "build/round10/autonomous-roslyn-small-family/fixtures/layout/Expected.cs": "6270f6d684526923f9fa5ae8c29f30859fd717ee8478510b31c786e199735c02",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/before/compile.rsp": "b571b7dd7afb39acf7d80e6d577754581049f8b57f3463e9171912c0b6d83d81",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/before/Fixture.cs": "b5dcf94b3277a0c99f8596b1ded35459e04a3ca75063bec65baa3e3ba68fe8cb",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/before/methods.json": "9928e70dcad10c751d582306046cebc22b0ab7286c8ae6763285ea34efecf98c",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/candidate/compile.rsp": "5cf3d96d822925b45cbfd4b2478216277da796e9fcc19def6126b2652bab0285",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/candidate/Fixture.cs": "a676d062d08cb2acef807555671713f59013f3b6c4c0aab1c840728a3fa9ef84",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/candidate/methods.json": "2a11e0f76f15aaedd038a4b7c714958265ab4fbf5544907f5d22e6c14d10db2f",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/control/compile.rsp": "e19f97f7a4914f07a2170ac653bed19caebc26990229b57799338b07942cb310",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/control/Fixture.cs": "442384538ebb44e91acb17d9afc46ff3b479a4d63ae5aafb8a121267d104ecd9",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/control/methods.json": "2a11e0f76f15aaedd038a4b7c714958265ab4fbf5544907f5d22e6c14d10db2f",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/before/compile.rsp": "a474a45449f02877a3713547252863554cb5aca39b0a44dc36def41bf0959336",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/before/Fixture.cs": "ad787f7ea931479e279937d9a36c4e36de5d739470b1e4c7eef06d5489381ffa",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/before/methods.json": "ac0fc1f991d6c4f252972b81f59a1323e8bc889463b6c81889d2650ff4386c99",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/candidate/compile.rsp": "9e1f9ed758b1d9b729d8a04bd316e7134ac53089a1ad5e8bc3312b1e4a610e60",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/candidate/Fixture.cs": "7c920e718f0762279b9bff33205d251043c93c37be7e01b277178a9dea361ca7",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/candidate/methods.json": "f0c91f54cfc89d6bcef33d0bf83bdda1ee304bcaefeae140d81a0a36dfc63deb",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/control/compile.rsp": "ebb0c242428321a4147f6dbde56327213616fb7ac2207de4f495bb60b94ccd9e",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/control/Fixture.cs": "2b33dd3fdb8937768e60b5431510db4f4a6911d63bd9a99e7903183eb092e13b",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/control/methods.json": "f0c91f54cfc89d6bcef33d0bf83bdda1ee304bcaefeae140d81a0a36dfc63deb",
+      "build/round10/cycles/cycle12/after/KairoLibrary/verification.json": "4e57dcda4e2e772f7354744de85b0db6ba0a7e27239113283d49ab169f7fc294",
+      "build/round10/cycles/cycle12/after/KairoLibrary/original-methods.json": "d3340a2a774d1c4a604c750ca0e7b36b5fbb15da96a4d0dabc60033066dc844a",
+      "build/round10/cycles/cycle12/after/KairoLibrary/rebuilt-methods.json": "928a45caa086c7ac0a5b99fc94ba92cbc194d3fd91cd7af3c2b772e590fa4a2e",
+      "build/round10/cycles/cycle12/after/KairoLibrary/plain-local-types.json": "35a8012eefa74483e50b9b8f28e8afb5be3b57d60248b2a83841bfbb73619512",
+      "build/round10/cycles/cycle12/after/KairoLibrary/plain-local-types-rebuilt.json": "9192811647e784ea7afdffeb2979a2575630b99202e70ea00190be9712874586",
+      "build/round10/cycles/cycle12/after/KairoLibrary/build-manifest.json": "f7023a0a510684080418cb7b97a0a69a6697611e0ee479ee75d61eba3deb072b",
+      "build/round10/autonomous-roslyn-small-family/ready-for-game-probe.json": "e2eb223797508399a939639012ed5bd2151b8d31458c1e93b58397f0200e1028",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/before/Fixture.dll": "53ddab6a91e67cf191ae5fcc0f3ebf466edb8a6d115952b89742e1642f2d93df",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/before/Fixture.pdb": "fbd83542035df15d0b9b0e464e3a75a0c8df22bb5f8bc1e04f0c68375d7f77c6",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/candidate/Fixture.dll": "f83af9d60b9f4facdca7c7d9ed5a212af66370bd6825969f2ac10eacbcc40d69",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/candidate/Fixture.pdb": "89601d307cf5af049ffd908c4ef7cbaa58592745c8aeae83411b6f092b824159",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/control/Fixture.dll": "f137ab23373d6cae83f2f9995722024701ee4a22f30ff41580012bea1b88a81e",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/graphics/control/Fixture.pdb": "2e0ddd679e2e64d356d3e7e09ed3218f9cef8c172bff039cf46f02ac3e3cb1b2",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/before/Fixture.dll": "5cc2e22737b3a9f9716f969c2b666e909523b68c31f8ba470ad3ea2a9e20b5ae",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/before/Fixture.pdb": "48288f4d2faa12bc04e5bac95e757fd0a3f3295a5fedb4acbc5292e3246ceb10",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/candidate/Fixture.dll": "b957f95f2a366e6697047a040c8aba197f8d08307be6d621210c6a16c6460910",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/candidate/Fixture.pdb": "ecb962fcd0eb2a371653738a21d55f7f3138803935246bfd2a2d2390ad7aed94",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/control/Fixture.dll": "b88e675fcd9ac0921ee3d9efc5d8b4b0c1a46afc87fd805dfc6ec4dcb5debc49",
+      "build/round10/autonomous-roslyn-small-family/validation-v1/layout/control/Fixture.pdb": "3501d4116150b8ebe7942075ccb4554a6ede506dc793e92951b7980f5efe8c43",
+      "build/round10/autonomous-roslyn-small-family/ready-freeze.json": "deb7a15922d77fafd87cd33bf779cd94e9f2229d8ce68e5b7282dba55ca20db3",
+      "build/round10/autonomous-roslyn-small-family/../publication/roslyn-small-family-engine.json": "77b66d49424c81231d754ae926ae6f7a37661ffcebbaa643f47136e434fa80de"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": []
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0,
+    "incomplete_permitted": 1
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+          "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+          "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+          "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+          "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+          "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+          "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+          "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+          "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+          "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+          "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+          "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+          "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+          "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+          "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+          "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+          "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+          "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+          "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+          "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+          "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+          "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+          "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+          "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+          "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+          "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+          "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+          "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+          "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+          "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+          "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+          "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+          "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+          "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+          "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+          "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+          "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+          "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+          "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+          "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+          "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+          "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+          "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "9b0e67c5383a620f9f9e5638748c6fb7cbf527c16ceb255190ce6a6099c9ac62",
+          "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+          "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "cddd9e169e46c794969d623071335632e2535a557f22464cabb01e9aca8afd8c",
+          "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+          "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+          "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+          "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+          "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+          "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+          "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+          "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+          "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+          "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+          "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+          "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+          "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+          "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+          "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+          "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "c8b186ca577db3c3317d4285a9dd203648b55b97a144cace084b94facd8def5d",
+          "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+          "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+          "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+          "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+          "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+          "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+          "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+          "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+          "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+          "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+          "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+          "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+          "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+          "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+          "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+          "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+          "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+          "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+          "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+          "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+          "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+          "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+          "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+          "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+          "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+          "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+          "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+          "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+          "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+          "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+          "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+          "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+          "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "180c02aae50c99db2e8f6659d90d6272e4c2b12c157f5123e299e244289bee2a",
+          "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+          "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+          "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+          "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+          "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+          "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "a197a60708db7edfad9c5f0208d6dc4f85f55683483e0ab60133e40d3ae2bb3e",
+          "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+          "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+          "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+          "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+          "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+          "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "fffbe2263a3e6aacfe2e801ebf90a023a91bea4d7cbf08bbbc50caa2232ab083",
+          "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+          "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "1a98843775764d222b4907f1adf189260c5f8322924132dc48b2cee6d1c53d6b",
+          "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+          "src/KairoLibrary/kairo/unity/ui/Seb.cs": "050cc0c3909a5cb89c2bcd260f24a9fc0ba3550d8ae207b5db1b11e1851e49c6",
+          "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+          "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+          "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+          "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+          "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "83509b56f8ac29e0850af0e9c8ebb3ab2738b5d3aa384e326271d0350ec44e68",
+          "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+          "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+          "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+          "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+          "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+          "src/KairoLibrary/kairo/unity/util/Compressor.cs": "c9c6ea94a4c9c95ed431a0881f17f88bec09fdb46104758ce6dcc162b4397764",
+          "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+          "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+          "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+          "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+          "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+          "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+          "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+          "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+          "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+          "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+          "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+          "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+          "src/KairoLibrary/kairo/unity/util/Language.cs": "3ea622f04c488c0c0fcf58cf69757e1376f6fdff13c2e9046f546454f5ed23df",
+          "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+          "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+          "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+          "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+          "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+          "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+          "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+          "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+          "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+          "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+          "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+          "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+          "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+          "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+          "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+          "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+          "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+          "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+        },
+        "manifest_sha256": "6f7de947d6c7a4399f6f511abdc99f7092e8640a66b57c0bf419c371e665ecc2",
+        "accepted_source_set_sha256": "f3586af2c549fe74ae990ae4345d0805afca6d63562e556be366a97759ef4091",
+        "generation": 0,
+        "method_count": 3287,
+        "symbol_kind": "PDB",
+        "binary_sha256": "072de348d6aa2cd73ad23376c9a385422c358f3507bc553733e217421ca6ab1b"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void",
+        "rule": "d10-localize-shared-boolean-cache-layout-localize-stack-bool",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 3181,
+  "body_gains": [
+    "kairo.unity.ui.TextLayout::Draw(kairo.unity.ui.TextFormat,kairo.unity.ui.Graphics,System.String,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Int32)->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 396,
+  "builds": 6,
+  "build_seconds": 2.7350000001024455,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle27-probe\\engine\\KairoLibrary\\current\\KairoLibrary.dll",
+  "final_sha256": "db1c6c0e5e691c1afffef26741178648c5736dcd026ed46e5156e5bc40365e45",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle27-probe\\engine\\KairoLibrary\\source-map.json",
+  "metadata_types_equal": 337,
+  "metadata_types_total": 337,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 1,
+    "candidate_compiler_invocations": 2,
+    "methods_with_variants": 1,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "6f7de947d6c7a4399f6f511abdc99f7092e8640a66b57c0bf419c371e665ecc2",
+  "source_hashes": {
+    "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+    "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+    "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+    "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+    "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+    "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+    "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+    "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+    "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+    "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+    "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+    "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+    "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+    "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+    "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+    "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+    "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+    "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+    "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+    "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+    "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+    "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+    "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+    "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+    "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+    "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+    "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+    "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+    "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+    "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+    "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+    "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+    "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+    "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+    "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+    "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+    "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+    "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+    "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+    "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+    "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+    "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+    "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "9b0e67c5383a620f9f9e5638748c6fb7cbf527c16ceb255190ce6a6099c9ac62",
+    "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+    "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "cddd9e169e46c794969d623071335632e2535a557f22464cabb01e9aca8afd8c",
+    "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+    "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+    "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+    "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+    "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+    "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+    "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+    "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+    "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+    "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+    "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+    "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+    "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+    "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+    "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+    "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "c8b186ca577db3c3317d4285a9dd203648b55b97a144cace084b94facd8def5d",
+    "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+    "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+    "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+    "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+    "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+    "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+    "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+    "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+    "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+    "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+    "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+    "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+    "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+    "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+    "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+    "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+    "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+    "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+    "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+    "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+    "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+    "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+    "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+    "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+    "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+    "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+    "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+    "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+    "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+    "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+    "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+    "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+    "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "180c02aae50c99db2e8f6659d90d6272e4c2b12c157f5123e299e244289bee2a",
+    "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+    "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+    "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+    "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+    "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+    "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "a197a60708db7edfad9c5f0208d6dc4f85f55683483e0ab60133e40d3ae2bb3e",
+    "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+    "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+    "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+    "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+    "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+    "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "fffbe2263a3e6aacfe2e801ebf90a023a91bea4d7cbf08bbbc50caa2232ab083",
+    "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+    "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "1a98843775764d222b4907f1adf189260c5f8322924132dc48b2cee6d1c53d6b",
+    "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+    "src/KairoLibrary/kairo/unity/ui/Seb.cs": "050cc0c3909a5cb89c2bcd260f24a9fc0ba3550d8ae207b5db1b11e1851e49c6",
+    "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+    "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+    "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+    "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+    "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "acda5c61220cb0f93867ecb3ac6b169fabce49e31868efdb37ec732dddcfd061",
+    "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+    "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+    "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+    "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+    "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+    "src/KairoLibrary/kairo/unity/util/Compressor.cs": "c9c6ea94a4c9c95ed431a0881f17f88bec09fdb46104758ce6dcc162b4397764",
+    "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+    "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+    "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+    "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+    "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+    "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+    "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+    "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+    "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+    "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+    "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+    "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+    "src/KairoLibrary/kairo/unity/util/Language.cs": "3ea622f04c488c0c0fcf58cf69757e1376f6fdff13c2e9046f546454f5ed23df",
+    "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+    "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+    "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+    "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+    "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+    "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+    "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+    "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+    "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+    "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+    "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+    "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+    "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+    "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+    "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+    "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+    "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+    "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+  }
+}

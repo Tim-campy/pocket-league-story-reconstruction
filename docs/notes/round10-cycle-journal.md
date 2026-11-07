@@ -29,3 +29,4 @@
 | 25 | KairoLibrary / stloc.2 => stloc.1 | Restaurar dono lexical dos locais da lambda HttpObject, escrevendo apenas o fonte pai e mantendo todas as folhas. | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 944 |
 | 26 | KairoLibrary / INSERTION_POINT => stloc.s | Restaurar local do corpo e valores em pilha de MakeLangPackTemplate, preservando referencias e ordem de folhas. | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 893 |
 | 27 | KairoLibrary / stloc.0 => stloc.2 | Restaurar escopo tardio da cauda e alias em pilha nas duas comparacoes, mantendo os locais nomeados originais. | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 770 |
+| 28 | KairoLibrary / INSERTION_POINT => brtrue.s | Recuperar Boolean compartilhado do cache de localizacao entre os bracos de lock e unlock, sem promover modelos incompletos. | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 737 |

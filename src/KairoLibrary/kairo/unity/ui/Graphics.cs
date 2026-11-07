@@ -2392,12 +2392,8 @@ float num = image.GetWidth();
 				y = lf.GetY(y);
 				anchor = lf.GetAnchor(anchor);
 			}
-			int num3;
-			if (lf == null || lf.GetFont() == -1)
-			{
-				num3 = (font_.IsNeedLocalizeScale() ? 1 : 0);
-				if (num3 != 0)
-				{
+			bool num3 = (lf == null || lf.GetFont() == -1) && font_.IsNeedLocalizeScale();
+if (num3) {
 					num2 = font_.GetSize();
 					int height = font_.GetHeight();
 					font_.SetSize(font_.GetLocalizeScale());
@@ -2407,11 +2403,6 @@ float num = image.GetWidth();
 					}
 					Font.LockLocalizeSetting();
 				}
-			}
-			else
-			{
-				num3 = 0;
-			}
 			if ((num & 0x20) != 0)
 			{
 				y -= (float)(font_.GetHeight() / 2);
@@ -2421,7 +2412,7 @@ float num = image.GetWidth();
 				y -= (float)font_.GetHeight();
 			}
 			TextLayout.Draw(this, str, x, y, width, font_.GetHeight(), GetColor(), lineSpacing_, anchor);
-			if (num3 != 0)
+			if (num3)
 			{
 				Font.UnlockLocalizeSetting();
 			}
