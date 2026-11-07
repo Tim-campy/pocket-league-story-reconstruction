@@ -535,6 +535,36 @@
       "before_sha256": "6862b803d4197cb7e050908c3cfe68f29e409d845bbc164826ff454dd038b661",
       "after_measurement": "reports\\round9-cycle07-after-measurement.json",
       "after_sha256": "5922c693987cb5759407269b156ffed934eb7ee2c15d4a350bd9a5eb5977750a"
+    },
+    {
+      "cycle": 19,
+      "label": "cycle08",
+      "phase": "D",
+      "primary_target": "kairo.unity.util.JarInflater::GetData(System.String)->System.Byte[]",
+      "queue_empty_before": false,
+      "queue_empty": true,
+      "rule": "d9-named-eh-result-rejoin",
+      "assembly": "KairoLibrary",
+      "pair": "stloc.s => stloc.s",
+      "hypothesis": "Manter resultado Byte[] inicializado antes do try, atribuir ToByteArray ao mesmo local e retorna-lo depois do finally, evitando o temporario de retorno protegido separado.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 189
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 189,
+      "before_measurement": "reports\\round9-cycle08-before-measurement.json",
+      "before_sha256": "b1f733c555df7cdfd5fe665ee903a1db7fa7b114f19c72e2ad6d20cd585b6d78",
+      "after_measurement": "reports\\round9-cycle08-after-measurement.json",
+      "after_sha256": "9d6ec609a14541322f15c8c984f0d04c678d94f35c12a67bd43f2088b724f1c2"
     }
   ],
   "consecutive_zero_cycles": 0
