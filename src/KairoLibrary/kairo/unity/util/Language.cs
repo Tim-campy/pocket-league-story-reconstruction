@@ -691,10 +691,9 @@ namespace kairo.unity.util
 			{
 				string text5 = StringUtil.GetString(array5);
 				langPackFormats_ = new Dictionary<string, LangPackFormat>();
-				string[] files = text5.Split('\n');
-				for (int i = 0; i < files.Length; i++)
+				foreach (string recoveredLangFormatLine in text5.Split('\n'))
 				{
-					string[] array6 = files[i].Split(',');
+					string[] array6 = recoveredLangFormatLine.Split(',');
 					LangPackFormat langPackFormat = new LangPackFormat(array6[0], (char)int.Parse(array6[1]), (char)int.Parse(array6[2]));
 					langPackFormats_[langPackFormat.File.ToLower()] = langPackFormat;
 				}

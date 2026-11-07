@@ -1075,6 +1075,36 @@
       "before_sha256": "ca91531a5832bc171b3893e57bf494c5d20ff5560bf5bc0980e888e446682108",
       "after_measurement": "reports\\round9-cycle25-after-measurement.json",
       "after_sha256": "9d087e036c6330a2c516cedd8fb785ab9d6593c7678e1c280f8e0f6e37009ef6"
+    },
+    {
+      "cycle": 37,
+      "label": "cycle26",
+      "phase": "D",
+      "primary_target": "kairo.unity.graphics.Offscreen::OnPostRender()->System.Void",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "d9-calculated-render-and-format-foreach-compositions",
+      "assembly": "KairoLibrary",
+      "pair": "stloc.s=>stloc.s; cached array/index slots and composed render branches",
+      "hypothesis": "Compose whole Offscreen graphics child scope, per-arm callback result, stable struct-array operator assignments, four negations and fallback else; Language parser array for becomes resource-once foreach with first effect Split invocation and temp reuse judged only by compiler",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 2,
+          "il_bytes_gained": 3022
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 2,
+      "il_bytes_gained": 3022,
+      "before_measurement": "reports\\round9-cycle26-before-measurement.json",
+      "before_sha256": "8c3189b5314ea4183b489eecb2debee7c027466aad6e032f682dca8c95e607a1",
+      "after_measurement": "reports\\round9-cycle26-after-measurement.json",
+      "after_sha256": "c67f4a4a34c65c06aaab0e24d63aa92ff88064a761cb9b7d7dc18c54ffa1882a"
     }
   ],
   "consecutive_zero_cycles": 0

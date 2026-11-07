@@ -1,0 +1,61 @@
+{
+  "operation": "historical-csc-render-and-language-composition-own-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "825ef134e323e8d87fbcaf2b1b4ad496b00b9bbf674b5f89c7db7c0231e2ec95",
+  "driver_sha256": "fa6e97c0ef99bcb6d5c4e05bd1ee649437186cdc92acedf9c10bd5f87588eb6d",
+  "game_compilations": 0,
+  "toy_compilations": 6,
+  "positive_full_bodies": 2,
+  "negative_controls": 9,
+  "negatives": [
+    "matrix-index-call",
+    "matrix-index-write",
+    "nonzero-subtraction",
+    "flag-extra-return",
+    "late-name-outside-scope",
+    "parser-nonadjacent-array-loop",
+    "parser-first-effect",
+    "parser-index-more-than-once",
+    "parser-loop-nested"
+  ],
+  "fixtures": [
+    {
+      "case": "offscreen-whole-five-components",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "before_local_count": 14,
+      "after_local_count": 14,
+      "before": "public void Run()\n{\n try\n {\n  for(int earlier=0;earlier<Count;earlier++){int child=Count;Count+=child;}\n  Graphics graphics = GetGraphics();\n  if (graphics == null) { return; }\n  List<Image.TextRenderTask> textRenderTasks_ = image_.textRenderTasks_;\n  List<Image.BalloonRenderTask> balloonRenderTasks_ = image_.balloonRenderTasks_;\n  List<Image.TouchTask> touchTasks_ = image_.touchTasks_;\n  bool flag2 = false;\n  try { flag2 = DynamicRender == null || DynamicRender(graphics, this); }\n  finally { Count++; }\n  if (flag2)\n  {\n   Matrix4x4 matrix4x = new Matrix4x4();\n   int num2 = Count;\n   for (int l = 0; l < num2; l++)\n   {\n    renderMatrix_[l] *= Matrix4x4.TRS(new Vector3(0f, GetHeight(), 0f), Quaternion.identity, new Vector3(1f, 1f, 1f));\n    renderMatrix_[l] *= matrix4x;\n   }\n   Image.TextRenderTask value = new Image.TextRenderTask();\n   Vector3 vector = new Vector3(value.X, 0f - value.Y, 0f);\n   value.Y = 0f - vector.y;\n   Image.BalloonRenderTask value2 = new Image.BalloonRenderTask();\n   Vector3 vector2 = new Vector3(value2.X, 0f - value2.Y, 0f);\n   value2.Y = 0f - vector2.y;\n   return;\n  }\n  image_.textRenderTasks_ = textRenderTasks_;\n  image_.balloonRenderTasks_ = balloonRenderTasks_;\n  image_.touchTasks_ = touchTasks_;\n }\n catch(Exception){Count++;}\n finally{Count++;}\n}",
+      "after": "public void Run()\n{\n try\n {\n  for(int earlier=0;earlier<Count;earlier++){int child=Count;Count+=child;}\n  Graphics graphics = GetGraphics();\n  if ((object)graphics != null) {\n  List<Image.TextRenderTask> textRenderTasks_ = image_.textRenderTasks_;\n  List<Image.BalloonRenderTask> balloonRenderTasks_ = image_.balloonRenderTasks_;\n  List<Image.TouchTask> touchTasks_ = image_.touchTasks_;\n  bool flag2 = false;\n  try { if (DynamicRender == null) { flag2 = true; } else { flag2 = DynamicRender(graphics, this); } }\n  finally { Count++; }\n  if (flag2)\n  {\n   Matrix4x4 matrix4x = new Matrix4x4();\n   int num2 = Count;\n   for (int l = 0; l < num2; l++)\n   {\n    renderMatrix_[l] = renderMatrix_[l] * Matrix4x4.TRS(new Vector3(0f, GetHeight(), 0f), Quaternion.identity, new Vector3(1f, 1f, 1f));\n    renderMatrix_[l] = renderMatrix_[l] * matrix4x;\n   }\n   Image.TextRenderTask value = new Image.TextRenderTask();\n   Vector3 vector = new Vector3(value.X, -value.Y, 0f);\n   value.Y = -vector.y;\n   Image.BalloonRenderTask value2 = new Image.BalloonRenderTask();\n   Vector3 vector2 = new Vector3(value2.X, -value2.Y, 0f);\n   value2.Y = -vector2.y;\n   \n  } else {\n  image_.textRenderTasks_ = textRenderTasks_;\n  image_.balloonRenderTasks_ = balloonRenderTasks_;\n  image_.touchTasks_ = touchTasks_;\n  }\r\n  }\r\n }\n catch(Exception){Count++;}\n finally{Count++;}\n}",
+      "manual_control": "public void Run(){try{for(int earlier=0;earlier<Count;earlier++){int child=Count;Count+=child;}Graphics graphics=GetGraphics();if((object)graphics!=null){List<Image.TextRenderTask>textRenderTasks_=image_.textRenderTasks_;List<Image.BalloonRenderTask>balloonRenderTasks_=image_.balloonRenderTasks_;List<Image.TouchTask>touchTasks_=image_.touchTasks_;bool flag2=false;try{if(DynamicRender==null){flag2=true;}else{flag2=DynamicRender(graphics,this);}}finally{Count++;}if(flag2){Matrix4x4 matrix4x=new Matrix4x4();int num2=Count;for(int l=0;l<num2;l++){renderMatrix_[l]=renderMatrix_[l]*Matrix4x4.TRS(new Vector3(0f,GetHeight(),0f),Quaternion.identity,new Vector3(1f,1f,1f));renderMatrix_[l]=renderMatrix_[l]*matrix4x;}Image.TextRenderTask value=new Image.TextRenderTask();Vector3 vector=new Vector3(value.X,-value.Y,0f);value.Y=-vector.y;Image.BalloonRenderTask value2=new Image.BalloonRenderTask();Vector3 vector2=new Vector3(value2.X,-value2.Y,0f);value2.Y=-vector2.y;}else{image_.textRenderTasks_=textRenderTasks_;image_.balloonRenderTasks_=balloonRenderTasks_;image_.touchTasks_=touchTasks_;}}}catch(Exception){Count++;}finally{Count++;}}",
+      "matrix_operator_calls": [
+        {
+          "offset": 238,
+          "opcode": "call",
+          "operand": {
+            "method": "valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::op_Multiply``0(valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null)->valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+          }
+        },
+        {
+          "offset": 271,
+          "opcode": "call",
+          "operand": {
+            "method": "valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::op_Multiply``0(valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null,valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null)->valuetype Matrix4x4 @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+          }
+        }
+      ]
+    },
+    {
+      "case": "parser-array-foreach-reuse",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "before_local_count": 6,
+      "after_local_count": 4,
+      "before": "public void Run(string[] array5)\n{\n foreach(string earlier in array5){Count+=earlier.Length;}\n if (array5 != null)\n {\n  string text5 = array5[0];\n  string[] files = text5.Split('\\n');\n  for (int i = 0; i < files.Length; i++)\n  {\n   string[] array6 = files[i].Split(',');\n   Count+=array6.Length;\n  }\n }\n}",
+      "after": "public void Run(string[] array5)\n{\n foreach(string earlier in array5){Count+=earlier.Length;}\n if (array5 != null)\n {\n  string text5 = array5[0];\n  foreach (string recoveredLangFormatLine in text5.Split('\\n'))\n  {\n   string[] array6 = recoveredLangFormatLine.Split(',');\n   Count+=array6.Length;\n  }\n }\n}",
+      "manual_control": "public void Run(string[] array5){foreach(string earlier in array5){Count+=earlier.Length;}if(array5!=null){string text5=array5[0];foreach(string recoveredLangFormatLine in text5.Split('\\n')){string[] array6=recoveredLangFormatLine.Split(',');Count+=array6.Length;}}}",
+      "matrix_operator_calls": []
+    }
+  ],
+  "limitations": "Struct-array operator is user-defined in toy and called once per expression, stable receiver/index only. No casts/ref/artificial usage inserted into game. Historical source spelling and actual game signature/body unknown until unchanged oracle."
+}

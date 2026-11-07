@@ -459,10 +459,7 @@ namespace kairo.unity.graphics
 					RenderAlterStatics(null);
 				}
 				kairo.unity.ui.Graphics graphics = instance.BeginPaint(graDynamics_);
-				if (graphics == null)
-				{
-					return;
-				}
+				if ((object)graphics != null) {
 				List<Image.TextRenderTask> textRenderTasks_ = image_.textRenderTasks_;
 				List<Image.BalloonRenderTask> balloonRenderTasks_ = image_.balloonRenderTasks_;
 				List<Image.TouchTask> touchTasks_ = image_.touchTasks_;
@@ -472,7 +469,7 @@ namespace kairo.unity.graphics
 				bool flag2 = false;
 				try
 				{
-					flag2 = DynamicRender == null || DynamicRender(graphics, this);
+					if (DynamicRender == null) { flag2 = true; } else { flag2 = DynamicRender(graphics, this); }
 				}
 				finally
 				{
@@ -525,8 +522,8 @@ namespace kairo.unity.graphics
 							{
 								renderMatrix_[l] = staticTransformGen_;
 							}
-							renderMatrix_[l] *= Matrix4x4.TRS(new Vector3(0f, GetHeight(), 0f), Quaternion.identity, new Vector3(1f, 1f, 1f));
-							renderMatrix_[l] *= matrix4x;
+							renderMatrix_[l] = renderMatrix_[l] * Matrix4x4.TRS(new Vector3(0f, GetHeight(), 0f), Quaternion.identity, new Vector3(1f, 1f, 1f));
+							renderMatrix_[l] = renderMatrix_[l] * matrix4x;
 						}
 						renderIndex_[l] = 0;
 						renderLength_[l] = 0;
@@ -594,21 +591,21 @@ namespace kairo.unity.graphics
 					for (int n = 0; n < image_.textRenderTasks_.Count; n++)
 					{
 						Image.TextRenderTask value = image_.textRenderTasks_[n];
-						Vector3 vector = dynamicTransform_.MultiplyPoint(new Vector3(value.X, 0f - value.Y, 0f));
+						Vector3 vector = dynamicTransform_.MultiplyPoint(new Vector3(value.X, -value.Y, 0f));
 						value.X = vector.x;
-						value.Y = 0f - vector.y;
+						value.Y = -vector.y;
 						image_.textRenderTasks_[n] = value;
 					}
 					for (int num7 = 0; num7 < image_.balloonRenderTasks_.Count; num7++)
 					{
 						Image.BalloonRenderTask value2 = image_.balloonRenderTasks_[num7];
-						Vector3 vector2 = dynamicTransform_.MultiplyPoint(new Vector3(value2.X, 0f - value2.Y, 0f));
+						Vector3 vector2 = dynamicTransform_.MultiplyPoint(new Vector3(value2.X, -value2.Y, 0f));
 						value2.X = vector2.x;
-						value2.Y = 0f - vector2.y;
+						value2.Y = -vector2.y;
 						image_.balloonRenderTasks_[num7] = value2;
 					}
-					return;
-				}
+
+				} else {
 				image_.textRenderTasks_ = textRenderTasks_;
 				image_.balloonRenderTasks_ = balloonRenderTasks_;
 				image_.touchTasks_ = touchTasks_;
@@ -621,6 +618,8 @@ namespace kairo.unity.graphics
 					{
 						image2.checkCount_ = Config.checkCount_;
 					}
+				}
+				}
 				}
 			}
 			catch (Exception t)
