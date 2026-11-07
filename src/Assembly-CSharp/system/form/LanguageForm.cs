@@ -266,13 +266,12 @@ int x = 20;
 		{
 			TouchComponent component = e.component;
 			FormManager instance = FormManager.GetInstance();
-			if ((component.id == 3)) { if ((component.value != 20160614)) { } else {
-				int type = e.type;
-				if (type != 1) { } else {
+			if ((component.id == 3)) { if (component.value == 20160614) { switch (e.type) { case 1:
 					instance.Push(new LanguageForm());
-				}
+				 break; }
 				return false;
-			} }
+
+} }
 			return true;
 		}
 	}

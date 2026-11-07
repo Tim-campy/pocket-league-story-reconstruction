@@ -32,3 +32,4 @@
 | 28 | KairoLibrary / INSERTION_POINT => brtrue.s | Recuperar Boolean compartilhado do cache de localizacao entre os bracos de lock e unlock, sem promover modelos incompletos. | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 737 |
 | 29 | KairoLibrary / ldarg.0 => DELETION_POINT | Restaurar primeira guarda com break no corpo dos lacos, preservando proprietario do incremento e escopos. | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 614 |
 | 30 | KairoLibrary / stloc.3 => stloc.s | Restaurar escopo filho da cauda MaterialManager para a alocacao original de locais e liberacao. | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 416 |
+| 31 | Assembly-CSharp / bne.un => beq | Separar continue misto de cauda positiva nos dois Player e restaurar switch de um case no Touch, com igualdade completa em fixtures e slots5/15/3. | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 1148 |

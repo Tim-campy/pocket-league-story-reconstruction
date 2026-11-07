@@ -1300,7 +1300,8 @@ int[] array = null;
 			for (int i = 0; i < moveDirectBox.Length; i++)
 			{
 				num++;
-				if ((moveDirectBox[i] == -1) || (ch_direct == moveDirectBox[i])) { continue; }
+				if (moveDirectBox[i] == -1) { continue; }
+if (ch_direct != moveDirectBox[i]) {
 if (ch_direct > moveDirectBox[i])
 					{
 						num2 = JMath.Abs(ch_direct - moveDirectBox[i]);
@@ -1320,7 +1321,8 @@ if (array[num2] <= num)
 						return true;
 					}
 return false;
-			}
+
+}}
 			return true;
 		}
 
@@ -2065,10 +2067,12 @@ break;
 				for (int j = 0; j < udat_.teams_[1 - team_id_].players_.Length; j++)
 				{
 					Player player2 = udat_.teams_[1 - team_id_].players_[j];
-					if (((address_[0] == player2.address_[0]) && (address_[1] == player2.address_[1])) || (!(GameUtil.ChOnLine(screen_pos_, player.screen_pos_, 6, player2.screen_pos_)))) { continue; }
+					if (address_[0] == player2.address_[0] && address_[1] == player2.address_[1]) { continue; }
+if (GameUtil.ChOnLine(screen_pos_,player.screen_pos_,6,player2.screen_pos_)) {
 flag = true;
 break;
-				}
+
+}}
 				if (flag && eva_pass_info[i][0] == 1)
 				{
 					num3 = num3 * 90 / 100;
@@ -2091,8 +2095,7 @@ break;
 				num5 = 0f;
 				for (int l = 1; l < udat_.teams_[team_id_].players_.Length; l++)
 				{
-					if (l != p_id_)
-					{
+					if (l == p_id_) { continue; }
 						Player player3 = udat_.teams_[team_id_].players_[l];
 						float num7 = (float)JMath.Sqrt((player3.pos_.x_ - pos_.x_) * (player3.pos_.x_ - pos_.x_) + (player3.pos_.z_ - pos_.z_) * (player3.pos_.z_ - pos_.z_));
 						if (num5 < num7)
@@ -2100,7 +2103,7 @@ break;
 							num5 = num7;
 							num6 = l;
 						}
-					}
+
 				}
 			}
 			return num6;
