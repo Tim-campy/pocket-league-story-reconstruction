@@ -238,9 +238,8 @@ namespace kairo.unity.ui
 			{
 				dataInputStream = new DataInputStream(stream);
 				int num = 0;
-				short[][] array;
-int num2 = dataInputStream.ReadByte();
 				int num3;
+int num2 = dataInputStream.ReadByte();
 				if (num2 < 0)
 				{
 					num = -num2;
@@ -252,7 +251,7 @@ int num2 = dataInputStream.ReadByte();
 					num3 = (short)(((num2 & 0xFF) << 8) | (num4 & 0xFF));
 				}
 				maxFrame_ = dataInputStream.ReadShort();
-				array = new short[num3][];
+				short[][] array = new short[num3][];
 				sbyte[][] array2 = new sbyte[num3][];
 				int[] array3 = new int[12];
 				Vector vector = null;
@@ -267,10 +266,7 @@ int num2 = dataInputStream.ReadByte();
 					array2[i] = new sbyte[num5 * 8];
 					for (int j = 0; j < num5; j++)
 					{
-						switch (num)
-						{
-						case 0:
-						{
+						if (num == 0) {
 							array3[0] = dataInputStream.ReadShort();
 							array3[1] = dataInputStream.ReadShort();
 							array3[2] = dataInputStream.ReadShort();
@@ -291,27 +287,14 @@ int num2 = dataInputStream.ReadByte();
 								int num10 = array3[8] & 0xFF;
 								int num11 = (array3[9] & 0xFF00) >> 8;
 								int num12 = array3[9] & 0xFF;
-								switch (num8)
-								{
-								case 8192:
-									array3[10] = 1;
-									break;
-								case 16384:
-									array3[10] = 2;
-									break;
-								case 32768:
-									array3[10] = 3;
-									break;
-								}
+								if (num8 == 8192) { array3[10] = 1; } else if (num8 == 16384) { array3[10] = 2; } else if (num8 == 32768) { array3[10] = 3; }
 								if (array3[10] != 0)
 								{
 									num9 = 128;
 								}
 								array3[11] = (num9 << 24) | (num10 << 16) | (num11 << 8) | num12;
 							}
-							break;
-						}
-						case 1:
+							} else if (num == 1) {
 							array3[0] = dataInputStream.ReadShort();
 							array3[1] = dataInputStream.ReadShort();
 							array3[6] = dataInputStream.ReadShort();
@@ -342,8 +325,7 @@ int num2 = dataInputStream.ReadByte();
 									array3[9] = 1;
 								}
 							}
-							break;
-						}
+							}
 						int num13 = (int)(((array3[11] & 0xFF000000u) >> 24) & 0xFF);
 						if (array3[10] == 1 && num13 == 255)
 						{
@@ -372,16 +354,15 @@ int num2 = dataInputStream.ReadByte();
 							array4[num14 + 3] = (sbyte)((array3[11] >> 16) & 0xFF);
 							array4[num14 + 4] = (sbyte)((array3[11] >> 8) & 0xFF);
 							array4[num14 + 5] = (sbyte)(array3[11] & 0xFF);
-							vector.AddElement(new short[7]
-							{
-								(short)array3[1],
-								(short)array3[6],
-								(short)array3[7],
-								(short)array3[2],
-								(short)array3[3],
-								(short)array3[4],
-								(short)array3[5]
-							});
+							short[] recoveredSpriteRecord = new short[7];
+recoveredSpriteRecord[0] = (short)array3[1];
+recoveredSpriteRecord[1] = (short)array3[6];
+recoveredSpriteRecord[2] = (short)array3[7];
+recoveredSpriteRecord[3] = (short)array3[2];
+recoveredSpriteRecord[4] = (short)array3[3];
+recoveredSpriteRecord[5] = (short)array3[4];
+recoveredSpriteRecord[6] = (short)array3[5];
+vector.AddElement(recoveredSpriteRecord);
 						}
 					}
 				}
@@ -393,7 +374,9 @@ int num2 = dataInputStream.ReadByte();
 				layerHeads_ = new int[array2.Length];
 				spriteFrames_ = new short[num15];
 				spriteBuffer_ = new sbyte[num15 * 8];
-				int l = 0;
+				int[] array5;
+{
+int l = 0;
 				int num16 = 0;
 				for (; l < layerHeads_.Length; l++)
 				{
@@ -413,7 +396,7 @@ int num2 = dataInputStream.ReadByte();
 				}
 				vector = null;
 				boundingRects_ = new sbyte[maxFrame_ * 4];
-				int[] array5 = new int[4];
+				array5 = new int[4];
 				for (int n = 0; n < maxFrame_; n++)
 				{
 					int[][] spritesLocal = GetSpritesLocal(n);
@@ -510,8 +493,8 @@ int num2 = dataInputStream.ReadByte();
 						array5[3] = num20;
 					}
 				}
-				array5[2] -= array5[0];
-				array5[3] -= array5[1];
+				array5[2] = array5[2] - array5[0];
+				array5[3] = array5[3] - array5[1];
 				boundingRect_ = (long)((((ulong)(short)array5[0] & 0xFFFFuL) << 48) | (((ulong)(short)array5[1] & 0xFFFFuL) << 32) | (((ulong)(short)array5[2] & 0xFFFFuL) << 16) | ((ulong)(short)array5[3] & 0xFFFFuL));
 				if (vector != null)
 				{
@@ -521,7 +504,9 @@ int num2 = dataInputStream.ReadByte();
 						boundingRectsEx_[num27] = ((JShort)vector.ElementAt(num27)).ShortValue();
 					}
 				}
-			}
+
+}
+}
 			finally
 			{
 				dataInputStream?.Close();
