@@ -1,0 +1,50 @@
+{
+  "operation": "historical-csc-named-receiver-before-protected-return-temp-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "0e0f57c4a05dcce4ef9fbc5bc34b20ca2e04a4f962862bdce8ad3e38e861ddb1",
+  "driver_sha256": "8e31291cb260abee73007b480314e69e6445008cc96f91ca3a23c91229508327",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 4,
+  "negatives": [
+    "not-in-try",
+    "child-block",
+    "duplicate-target",
+    "target-only-in-comment"
+  ],
+  "fixtures": [
+    {
+      "case": "early-protected-return",
+      "full_body_equal": true,
+      "extra_named_receiver_local": 1,
+      "receiver_callvirt": true,
+      "source_parent_try_unchanged": true,
+      "before": "public bool Run(bool early)\n{\n try\n {\n  if(early)return true;\n  NotifyManager.GetInstance()?.UpdateValues();\n  return false;\n }\n finally{Count++;}\n}",
+      "after": "public bool Run(bool early)\n{\n try\n {\n  if(early)return true;\n  NotifyManager recoveredNotifyManager = NotifyManager.GetInstance();\n  if ((object)recoveredNotifyManager != null)\n  \trecoveredNotifyManager.UpdateValues();\n  return false;\n }\n finally{Count++;}\n}",
+      "manual_control": "public bool Run(bool early){try{if(early)return true;NotifyManager recoveredNotifyManager=NotifyManager.GetInstance();if((object)recoveredNotifyManager!=null)recoveredNotifyManager.UpdateValues();return false;}finally{Count++;}}"
+    },
+    {
+      "case": "earlier-root-local",
+      "full_body_equal": true,
+      "extra_named_receiver_local": 1,
+      "receiver_callvirt": true,
+      "source_parent_try_unchanged": true,
+      "before": "public bool Run(bool early)\n{\n int prefix=Count;\n try\n {\n  if(early)return prefix>0;\n  NotifyManager.GetInstance()?.UpdateValues();\n  Count+=prefix;return Count>0;\n }\n finally{Count++;}\n}",
+      "after": "public bool Run(bool early)\n{\n int prefix=Count;\n try\n {\n  if(early)return prefix>0;\n  NotifyManager recoveredNotifyManager = NotifyManager.GetInstance();\n  if ((object)recoveredNotifyManager != null)\n  \trecoveredNotifyManager.UpdateValues();\n  Count+=prefix;return Count>0;\n }\n finally{Count++;}\n}",
+      "manual_control": "public bool Run(bool early){int prefix=Count;try{if(early)return prefix>0;NotifyManager recoveredNotifyManager=NotifyManager.GetInstance();if((object)recoveredNotifyManager!=null)recoveredNotifyManager.UpdateValues();Count+=prefix;return Count>0;}finally{Count++;}}"
+    },
+    {
+      "case": "fresh-name-collision",
+      "full_body_equal": true,
+      "extra_named_receiver_local": 1,
+      "receiver_callvirt": true,
+      "source_parent_try_unchanged": true,
+      "before": "public bool Run(bool early)\n{\n int recoveredNotifyManager=Count;\n try\n {\n  if(early)return true;\n  NotifyManager.GetInstance()?.UpdateValues();\n  return recoveredNotifyManager>0;\n }\n finally{Count++;}\n}",
+      "after": "public bool Run(bool early)\n{\n int recoveredNotifyManager=Count;\n try\n {\n  if(early)return true;\n  NotifyManager recoveredNotifyManager2 = NotifyManager.GetInstance();\n  if ((object)recoveredNotifyManager2 != null)\n  \trecoveredNotifyManager2.UpdateValues();\n  return recoveredNotifyManager>0;\n }\n finally{Count++;}\n}",
+      "manual_control": "public bool Run(bool early){int recoveredNotifyManager=Count;try{if(early)return true;NotifyManager recoveredNotifyManager2=NotifyManager.GetInstance();if((object)recoveredNotifyManager2!=null)recoveredNotifyManager2.UpdateValues();return recoveredNotifyManager>0;}finally{Count++;}}"
+    }
+  ],
+  "named_receiver_reserved_before_lazy_return_temp": true,
+  "limitations": "One proven game receiver; no hidden later use or artificial ref argument introduced. Actual signature/body still mandatory."
+}

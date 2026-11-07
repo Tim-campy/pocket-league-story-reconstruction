@@ -363,3 +363,5 @@ requires fresh full verification and compilation of the Git index sources.
 
 `recoveredLanguagePackChanged` e `recoveredInventoryResult` são nomes escolhidos no fonte para reproduzir tipos, ordem e duração dos slots originais. Os nomes históricos desses locais são UNKNOWN. Eles não são apresentados como nomes originais nem campos/membros recuperados dos metadados.
 
+O mesmo vale para `recoveredNotifyManager`: o tipo e os acessos são do original; o nome legível é escolhido no fonte e não foi recuperado de PDB original.
+

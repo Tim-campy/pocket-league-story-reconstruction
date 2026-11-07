@@ -426,10 +426,9 @@ namespace kairo.unity.form
 				SaveRecorder instance4 = SaveRecorder.GetInstance();
 				bool flag = false;
 				bool flag2 = currentApp.Visibe();
-				if (instance4 != null && flag != lastKeyguard_ && flag)
-				{
+				if (instance4 != null && flag != lastKeyguard_) { if (flag) {
 					ProcessEvent(AppEventType.Sleep);
-				}
+				} }
 				lastKeyguard_ = flag;
 				lastVisibleActivity_ = flag2;
 				if (flag || !flag2)
@@ -440,7 +439,9 @@ namespace kairo.unity.form
 				}
 				instance3.Resume();
 				SurfaceManagerBase surfaceManager = instance2.GetSurfaceManager();
-				NotifyManager.GetInstance()?.UpdateValues();
+				NotifyManager recoveredNotifyManager = NotifyManager.GetInstance();
+				if ((object)recoveredNotifyManager != null)
+					recoveredNotifyManager.UpdateValues();
 				while (lockUpdate_)
 				{
 					if (lockUpdateTime_ == 0L)
