@@ -101,21 +101,12 @@ namespace game
 					}
 				}
 				bool flag = true;
-				for (int k = 0; k < tGroupAreas_.Length; k++)
-				{
-					if (!flag)
-					{
-						break;
-					}
+				for (int k = 0; k < tGroupAreas_.Length && flag; k++) {
 					for (int l = 0; l < tGroupAreas_[k].tPlayerList_.Size(); l++)
 					{
 						TPlayer tPlayer2 = (TPlayer)tGroupAreas_[k].tPlayerList_.ElementAt(l);
 						int[] collisionData = udat_.GetCollisionData(0, 0);
-						if (!GameUtil.ChRectHitRect(tPlayer2.pos_.x_ + (float)collisionData[0], tPlayer2.pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], tGroupAreas_[k].centerPos_.x_ - tGroupAreas_[k].coatW_ / 2f, tGroupAreas_[k].centerPos_.z_ + tGroupAreas_[k].coatH_ / 2f, tGroupAreas_[k].coatW_, tGroupAreas_[k].coatH_, true))
-						{
-							flag = false;
-							break;
-						}
+						if (GameUtil.ChRectHitRect(tPlayer2.pos_.x_ + (float)collisionData[0], tPlayer2.pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], tGroupAreas_[k].centerPos_.x_ - tGroupAreas_[k].coatW_ / 2f, tGroupAreas_[k].centerPos_.z_ + tGroupAreas_[k].coatH_ / 2f, tGroupAreas_[k].coatW_, tGroupAreas_[k].coatH_, true)) { continue; } flag = false; break;
 					}
 				}
 				if (flag)
@@ -143,12 +134,7 @@ namespace game
 					tGroupAreas_[num2].Update();
 				}
 			}
-			else
-			{
-				if (state_ != 14)
-				{
-					return;
-				}
+			else if (state_ == 14) {
 				for (int num3 = 0; num3 < tGroupAreas_.Length; num3++)
 				{
 					for (int num4 = 0; num4 < tGroupAreas_[num3].tPlayerList_.Size(); num4++)
@@ -163,21 +149,12 @@ namespace game
 					}
 				}
 				bool flag2 = true;
-				for (int num6 = 0; num6 < tGroupAreas_.Length; num6++)
-				{
-					if (!flag2)
-					{
-						break;
-					}
+				for (int num6 = 0; num6 < tGroupAreas_.Length && flag2; num6++) {
 					for (int num7 = 0; num7 < tGroupAreas_[num6].tPlayerList_.Size(); num7++)
 					{
 						TPlayer tPlayer5 = (TPlayer)tGroupAreas_[num6].tPlayerList_.ElementAt(num7);
 						int[] collisionData2 = udat_.GetCollisionData(0, 0);
-						if (!GameUtil.ChRectHitRect(tPlayer5.pos_.x_ + (float)collisionData2[0], tPlayer5.pos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], tGroupAreas_[num6].centerPos_.x_ - tGroupAreas_[num6].coatW_ / 2f, tGroupAreas_[num6].centerPos_.z_ + tGroupAreas_[num6].coatH_ / 2f, tGroupAreas_[num6].coatW_, tGroupAreas_[num6].coatH_, true))
-						{
-							flag2 = false;
-							break;
-						}
+						if (GameUtil.ChRectHitRect(tPlayer5.pos_.x_ + (float)collisionData2[0], tPlayer5.pos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], tGroupAreas_[num6].centerPos_.x_ - tGroupAreas_[num6].coatW_ / 2f, tGroupAreas_[num6].centerPos_.z_ + tGroupAreas_[num6].coatH_ / 2f, tGroupAreas_[num6].coatW_, tGroupAreas_[num6].coatH_, true)) { continue; } flag2 = false; break;
 					}
 				}
 				if (flag2)

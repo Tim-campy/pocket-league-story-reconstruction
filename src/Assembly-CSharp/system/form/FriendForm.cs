@@ -768,10 +768,7 @@ Push(createdValue);
 				}
 				if (canvas_.CheckKeyPulse(1048576))
 				{
-					if (select_ == 0) { } else {
-						return Pop();
-					}
-					FriendData.ActionSendMail(friendData_.INTRODUCTION_APPLY_SUBJECT, friendData_.INTRODUCTION_APPLY_TEXT);
+					if (select_ == 0) {FriendData.ActionSendMail(friendData_.INTRODUCTION_APPLY_SUBJECT, friendData_.INTRODUCTION_APPLY_TEXT);} else { return Pop(); }
 				}
 				if (apdat_.IsPushSoftLabel(2))
 				{
@@ -784,12 +781,9 @@ Push(createdValue);
 				{
 					if (next_.type_ == 8)
 					{
-						if (friendData_.applyList_.Size() <= 0)
-						{
-							return Pop();
-						}
+						if (friendData_.applyList_.Size() > 0) {
 						friend_ = (Friend)friendData_.applyList_.FirstElement();
-					}
+					} else { return Pop(); }}
 					else
 					{
 						th_ = new JThread(delegate
@@ -910,8 +904,11 @@ Push(createdValue);
 				{
 					if (select_ == 0)
 					{
-						if (friend_.state_.Get() != 3)
-						{
+						if (friend_.state_.Get() == 3) {
+						FriendForm friendForm3 = new FriendForm(9);
+						friendForm3.friend_ = friend_;
+						Push(friendForm3);
+					} else {
 							th_ = new JThread(delegate
 							{
 								try
@@ -935,11 +932,7 @@ Push(createdValue);
 							});
 							th_.Start();
 							return true;
-						}
-						FriendForm friendForm3 = new FriendForm(9);
-						friendForm3.friend_ = friend_;
-						Push(friendForm3);
-					}
+						}}
 					return Pop();
 				}
 				if (apdat_.IsPushSoftLabel(2))

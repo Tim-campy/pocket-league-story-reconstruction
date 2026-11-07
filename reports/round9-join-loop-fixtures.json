@@ -1,0 +1,61 @@
+{
+  "operation": "smcs-friend-joins-and-paired-loop-own-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "references_sha256": {
+    "original/extracted/assets/bin/Data/Managed/mscorlib.dll": "7f16171cf5f87ca1e4c229727526d2fbc786079fc0c960f36197013ea0d986e1",
+    "original/extracted/assets/bin/Data/Managed/System.Core.dll": "104278a0bf67b4de8fd1e910e3292a3ef51808ebee7a5f2a229125f18463c98c"
+  },
+  "producer_sha256": "817ee72da99fe68632f2584abe1f22a4254e39e094fc2395ec706b442ce92703",
+  "driver_sha256": "77cef62c06e495f42e1844743d306f46f19b91915c93d4fa94b067e512562be5",
+  "game_compilations": 0,
+  "toy_compilations": 6,
+  "positive_full_bodies": 2,
+  "negative_controls": 8,
+  "negatives": [
+    "friend-mail-arm-effects",
+    "friend-apply-guard-effects",
+    "friend-state-dialog-other",
+    "area-for-initial-other",
+    "area-initial-guard-effects",
+    "area-hit-break-effects",
+    "area-terminal-state-other",
+    "area-nonterminal-hit"
+  ],
+  "fixtures": [
+    {
+      "case": "friend",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "all_fixture_methods_equal": true,
+      "fixture_method_count": 18,
+      "locals_unchanged": true,
+      "before": "public bool Run()\n    {\n        if (type_ == 0) { sink_++; }\n        else if (type_ == 5)\n        {\n            if (canvas_.CheckKeyPulse(1048576))\n            {\n                if (select_ == 0) { } else { return Pop(); }\n                FriendData.ActionSendMail(friendData_.INTRODUCTION_APPLY_SUBJECT, friendData_.INTRODUCTION_APPLY_TEXT);\n            }\n        }\n        else if (type_ == 6)\n        {\n            if (next_ != null)\n            {\n                if (next_.type_ == 8)\n                {\n                    if (friendData_.applyList_.Size() <= 0) { return Pop(); }\n                    friend_ = (Friend)friendData_.applyList_.FirstElement();\n                }\n                else { sink_++; }\n                next_ = null;\n                return true;\n            }\n        }\n        else if (type_ == 8)\n        {\n            if (canvas_.CheckKeyPulse(1048576))\n            {\n                if (select_ == 0)\n                {\n                    if (friend_.state_.Get() != 3)\n                    {\n                        th_ = new JThread(delegate { try { sink_++; } finally { th_ = null; } });\n                        th_.Start();\n                        return true;\n                    }\n                    FriendForm friendForm3 = new FriendForm(9);\n                    friendForm3.friend_ = friend_;\n                    Push(friendForm3);\n                }\n                return Pop();\n            }\n        }\n        return false;\n    }",
+      "after": "public bool Run()\n    {\n        if (type_ == 0) { sink_++; }\n        else if (type_ == 5)\n        {\n            if (canvas_.CheckKeyPulse(1048576))\n            {\n                if (select_ == 0) {FriendData.ActionSendMail(friendData_.INTRODUCTION_APPLY_SUBJECT, friendData_.INTRODUCTION_APPLY_TEXT);} else { return Pop(); }\n            }\n        }\n        else if (type_ == 6)\n        {\n            if (next_ != null)\n            {\n                if (next_.type_ == 8)\n                {\n                    if (friendData_.applyList_.Size() > 0) {\n                    friend_ = (Friend)friendData_.applyList_.FirstElement();\n                } else { return Pop(); }}\n                else { sink_++; }\n                next_ = null;\n                return true;\n            }\n        }\n        else if (type_ == 8)\n        {\n            if (canvas_.CheckKeyPulse(1048576))\n            {\n                if (select_ == 0)\n                {\n                    if (friend_.state_.Get() == 3) {\n                    FriendForm friendForm3 = new FriendForm(9);\n                    friendForm3.friend_ = friend_;\n                    Push(friendForm3);\n                } else {\n                        th_ = new JThread(delegate { try { sink_++; } finally { th_ = null; } });\n                        th_.Start();\n                        return true;\n                    }}\n                return Pop();\n            }\n        }\n        return false;\n    }",
+      "manual_control": "public bool Run()\n    {\n        if (type_ == 0) { sink_++; }\n        else if (type_ == 5)\n        {\n            if (canvas_.CheckKeyPulse(1048576))\n            {\n                if (select_ == 0)\n                {\n                    FriendData.ActionSendMail(friendData_.INTRODUCTION_APPLY_SUBJECT, friendData_.INTRODUCTION_APPLY_TEXT);\n                }\n                else { return Pop(); }\n            }\n        }\n        else if (type_ == 6)\n        {\n            if (next_ != null)\n            {\n                if (next_.type_ == 8)\n                {\n                    if (friendData_.applyList_.Size() > 0)\n                    {\n                        friend_ = (Friend)friendData_.applyList_.FirstElement();\n                    }\n                    else { return Pop(); }\n                }\n                else { sink_++; }\n                next_ = null;\n                return true;\n            }\n        }\n        else if (type_ == 8)\n        {\n            if (canvas_.CheckKeyPulse(1048576))\n            {\n                if (select_ == 0)\n                {\n                    if (friend_.state_.Get() == 3)\n                    {\n                        FriendForm friendForm3 = new FriendForm(9);\n                        friendForm3.friend_ = friend_;\n                        Push(friendForm3);\n                    }\n                    else\n                    {\n                        th_ = new JThread(delegate { try { sink_++; } finally { th_ = null; } });\n                        th_.Start();\n                        return true;\n                    }\n                }\n                return Pop();\n            }\n        }\n        return false;\n    }",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    },
+    {
+      "case": "area",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "all_fixture_methods_equal": true,
+      "fixture_method_count": 7,
+      "locals_unchanged": true,
+      "before": "public void Run()\n    {\n        if (state_ == 11)\n        {\n            bool flag = true;\n            for (int k = 0; k < tGroupAreas_.Length; k++)\n            {\n                if (!flag) { break; }\n                for (int l = 0; l < tGroupAreas_[k].tPlayerList_.Size(); l++)\n                {\n                    if (!GameUtil.ChRectHitRect(tGroupAreas_[k].x_ + l, true))\n                    {\n                        flag = false;\n                        break;\n                    }\n                }\n            }\n            if (flag) { ChangeState(12); }\n        }\n        else if (state_ == 12) { sink_++; }\n        else\n        {\n            if (state_ != 14) { return; }\n            bool flag2 = true;\n            for (int num6 = 0; num6 < tGroupAreas_.Length; num6++)\n            {\n                if (!flag2) { break; }\n                for (int num7 = 0; num7 < tGroupAreas_[num6].tPlayerList_.Size(); num7++)\n                {\n                    if (!GameUtil.ChRectHitRect(tGroupAreas_[num6].x_ + num7, true))\n                    {\n                        flag2 = false;\n                        break;\n                    }\n                }\n            }\n            if (flag2) { ChangeState(12); }\n        }\n    }",
+      "after": "public void Run()\n    {\n        if (state_ == 11)\n        {\n            bool flag = true;\n            for (int k = 0; k < tGroupAreas_.Length && flag; k++) {\n                for (int l = 0; l < tGroupAreas_[k].tPlayerList_.Size(); l++)\n                {\n                    if (GameUtil.ChRectHitRect(tGroupAreas_[k].x_ + l, true)) { continue; } flag = false; break;\n                }\n            }\n            if (flag) { ChangeState(12); }\n        }\n        else if (state_ == 12) { sink_++; }\n        else if (state_ == 14) {\n            bool flag2 = true;\n            for (int num6 = 0; num6 < tGroupAreas_.Length && flag2; num6++) {\n                for (int num7 = 0; num7 < tGroupAreas_[num6].tPlayerList_.Size(); num7++)\n                {\n                    if (GameUtil.ChRectHitRect(tGroupAreas_[num6].x_ + num7, true)) { continue; } flag2 = false; break;\n                }\n            }\n            if (flag2) { ChangeState(12); }\n        }\n    }",
+      "manual_control": "public void Run()\n    {\n        if (state_ == 11)\n        {\n            bool flag = true;\n            for (int k = 0; k < tGroupAreas_.Length && flag; k++)\n            {\n                for (int l = 0; l < tGroupAreas_[k].tPlayerList_.Size(); l++)\n                {\n                    if (GameUtil.ChRectHitRect(tGroupAreas_[k].x_ + l, true)) { continue; }\n                    flag = false;\n                    break;\n                }\n            }\n            if (flag) { ChangeState(12); }\n        }\n        else if (state_ == 12) { sink_++; }\n        else if (state_ == 14)\n        {\n            bool flag2 = true;\n            for (int num6 = 0; num6 < tGroupAreas_.Length && flag2; num6++)\n            {\n                for (int num7 = 0; num7 < tGroupAreas_[num6].tPlayerList_.Size(); num7++)\n                {\n                    if (GameUtil.ChRectHitRect(tGroupAreas_[num6].x_ + num7, true)) { continue; }\n                    flag2 = false;\n                    break;\n                }\n            }\n            if (flag2) { ChangeState(12); }\n        }\n    }",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    }
+  ],
+  "limitations": "Paired loop changes tested together, not the rejected isolated continue. Existing lambda body/order and all compiled toy auxiliary bodies compared; full target oracle remains mandatory. No float comparison is complemented."
+}

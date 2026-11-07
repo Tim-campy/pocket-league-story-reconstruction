@@ -1,0 +1,42 @@
+// NOT_TESTED. Proposed manual control, not a measured fixture result.
+public class Fixture
+{
+    public class OwnList { public int Size() { return 2; } }
+    public class Area { public OwnList tPlayerList_ = new OwnList(); public float x_; }
+    public static class GameUtil { public static bool ChRectHitRect(float x, bool inclusive) { return inclusive && x > 0f; } }
+    public Area[] tGroupAreas_ = new Area[3];
+    public int state_, sink_;
+    private void ChangeState(int x) { state_ = x; }
+    public void Run()
+    {
+        if (state_ == 11)
+        {
+            bool flag = true;
+            for (int k = 0; k < tGroupAreas_.Length && flag; k++)
+            {
+                for (int l = 0; l < tGroupAreas_[k].tPlayerList_.Size(); l++)
+                {
+                    if (GameUtil.ChRectHitRect(tGroupAreas_[k].x_ + l, true)) { continue; }
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) { ChangeState(12); }
+        }
+        else if (state_ == 12) { sink_++; }
+        else if (state_ == 14)
+        {
+            bool flag2 = true;
+            for (int num6 = 0; num6 < tGroupAreas_.Length && flag2; num6++)
+            {
+                for (int num7 = 0; num7 < tGroupAreas_[num6].tPlayerList_.Size(); num7++)
+                {
+                    if (GameUtil.ChRectHitRect(tGroupAreas_[num6].x_ + num7, true)) { continue; }
+                    flag2 = false;
+                    break;
+                }
+            }
+            if (flag2) { ChangeState(12); }
+        }
+    }
+}

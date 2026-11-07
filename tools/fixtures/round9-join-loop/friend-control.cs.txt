@@ -1,0 +1,79 @@
+// NOT_TESTED. Proposed manual control; no oracle result is claimed.
+public class Fixture
+{
+    public class Canvas { public bool CheckKeyPulse(int key) { return key > 0; } }
+    public class State { public int value_; public int Get() { return value_; } }
+    public class Friend { public State state_ = new State(); }
+    public class FriendForm { public int type_; public Friend friend_; public FriendForm(int type) { type_ = type; } }
+    public class OwnList { public int count_; public int Size() { return count_; } public object FirstElement() { return new Friend(); } }
+    public class FriendData
+    {
+        public string INTRODUCTION_APPLY_SUBJECT = "toy subject", INTRODUCTION_APPLY_TEXT = "toy text";
+        public OwnList applyList_ = new OwnList();
+        public static void ActionSendMail(string a, string b) { }
+    }
+    public class JThread { public JThread(System.Threading.ThreadStart run) { } public void Start() { } }
+    public Canvas canvas_ = new Canvas();
+    public FriendData friendData_ = new FriendData();
+    public Friend friend_ = new Friend();
+    public FriendForm next_;
+    public JThread th_;
+    public int type_, select_, sink_;
+    private bool Pop() { return false; }
+    private bool Push(FriendForm f) { return true; }
+    public bool Run()
+    {
+        if (type_ == 0) { sink_++; }
+        else if (type_ == 5)
+        {
+            if (canvas_.CheckKeyPulse(1048576))
+            {
+                if (select_ == 0)
+                {
+                    FriendData.ActionSendMail(friendData_.INTRODUCTION_APPLY_SUBJECT, friendData_.INTRODUCTION_APPLY_TEXT);
+                }
+                else { return Pop(); }
+            }
+        }
+        else if (type_ == 6)
+        {
+            if (next_ != null)
+            {
+                if (next_.type_ == 8)
+                {
+                    if (friendData_.applyList_.Size() > 0)
+                    {
+                        friend_ = (Friend)friendData_.applyList_.FirstElement();
+                    }
+                    else { return Pop(); }
+                }
+                else { sink_++; }
+                next_ = null;
+                return true;
+            }
+        }
+        else if (type_ == 8)
+        {
+            if (canvas_.CheckKeyPulse(1048576))
+            {
+                if (select_ == 0)
+                {
+                    if (friend_.state_.Get() == 3)
+                    {
+                        FriendForm friendForm3 = new FriendForm(9);
+                        friendForm3.friend_ = friend_;
+                        Push(friendForm3);
+                    }
+                    else
+                    {
+                        th_ = new JThread(delegate { try { sink_++; } finally { th_ = null; } });
+                        th_.Start();
+                        return true;
+                    }
+                }
+                return Pop();
+            }
+        }
+        return false;
+    }
+}
