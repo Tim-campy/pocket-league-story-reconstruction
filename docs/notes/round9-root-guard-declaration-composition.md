@@ -1,0 +1,11 @@
+# Guarda positiva preservando declarações do pai — D15
+
+Base8a5a6664685aa7e98c0be8c298be950ea5904473; medição fresca `reports/round9-cycle14-after-measurement.json`. Dois métodos/2.949 bytes: KairoService.OnStart600 e GameForm.ProgressTime2349. As assinaturas originais e atuais já têm os mesmos9 e30 tipos. A novidade é compor a mudança de controle com a permanência das declarações no pai, não repetir o wrapper positivo ou o hoist isolados.
+
+Kairo após D12: `if(P){}else{return;} LineupForm lineupForm=new...; tail`. Original519 brfalse599(ret comum), atual524 br530(tail)/529 ret prematuro; LineupForm deve continuar slot8. ProgressTime: guarda num5!=num13, original2226 beq2348(ret comum), atual2226 beq2236(ret)/2231 br2237(tail); SupervisorData continua slot26, índice27, PlayerData28, índice interno29 são filhos. Cada caso tem seis bytes extras de br+ret, mas só a compilação poderá confirmar o corpo.
+
+Forma proposta: `T local; if(P){local=initializer;tail;}`. A declaração sem inicializador fica no mesmo pai, em ordem relativa, antes da guarda; a inicialização continua depois da condição. Declarações de for e blocos filhos não são movidas. Simplesmente envolver o tail mudaria a alocação; simplesmente hoistar o bare deixa o controle errado. Essas peças já tiveram resultados negativos isolados no ciclo12, que não são apagados.
+
+Mono fixado b6587926c0f146c8b12985744f33a13b39a22d57, statement.cs2032–2046 EmitMeta: variáveis do bloco, temporários registrados e filhos seguem suas posições de alocação. O produtor léxico exige método void, guarda raiz com braço vazio/else-return, tipos explícitos suportados consecutivos no início do tail, nenhum uso da variável na guarda, captura, const/var/ref/using ou transferência posterior sem dono comprovado. Ele não completa árvores EH ou faz normalização.
+
+Três fixtures próprias deram corpo inteiro idêntico, incluindo catch e dois laços filhos; sete controles negativos recusaram formatos inseguros. O modelo fresco aprovou ambas as propostas **COMPLETAS** com tipos exatamente originais. Recibos vinculados: reports/round9-root-guard-composition-fixtures.json e reports/round9-root-guard-composition-patches.json. Essas aprovações são de assinatura, não de corpo do jogo; estado só muda pelo oráculo completo.

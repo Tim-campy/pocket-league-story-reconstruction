@@ -1508,10 +1508,9 @@ apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 					}
 				}
 			}
-			if (num5 != num13) { } else {
-				return;
-			}
-			SupervisorData supervisorData2 = apdat_.svisorData_[udat_.selectSupervisorId_];
+			SupervisorData supervisorData2;
+if (num5 != num13) {
+			supervisorData2 = apdat_.svisorData_[udat_.selectSupervisorId_];
 			for (int l = 0; l < udat_.memberPDataist_.Size(); l++)
 			{
 				PlayerData playerData = (PlayerData)udat_.memberPDataist_.ElementAt(l);
@@ -1519,7 +1518,9 @@ apdat_.SubMoney(tenantData.paramKeepCost_, 1);
 				{
 				}
 			}
-		}
+
+}
+}
 
 		public void SetBattleData()
 		{

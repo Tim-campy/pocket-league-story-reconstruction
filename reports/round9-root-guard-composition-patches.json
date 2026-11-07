@@ -1,0 +1,4678 @@
+{
+  "operation": "calculated-root-guard-and-declaration-source-composition",
+  "family": "d9-calculated-root-guard-declaration-composition",
+  "baseline": "build/round9/cycles/cycle14/after/Assembly-CSharp",
+  "calculator_sha256": "b54f4bfb0e189c41963f3b03ce54f63db9c5bba4901211b2c271df7bc9cdf2e7",
+  "dependency_sha256": {
+    "tools/round9_root_guard_composition_source.py": "0fe0c7e09a9ce38dd4c49f8d9856e7b168fbb19909b1160eaa12ddcf5a63894c",
+    "tools/round9_root_guard_composition_fixtures.py": "85da90bd47c963a19e2a987aa595800ce08a684dfa83a7b6aca465e690b480c5",
+    "tools/round9_root_guard_composition_calculate.py": "b54f4bfb0e189c41963f3b03ce54f63db9c5bba4901211b2c271df7bc9cdf2e7",
+    "tools/Round7SlotModel.cs": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "tools/round7_slot_model.py": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a"
+  },
+  "evidence_sha256": {
+    "reports/round9-root-guard-composition-fixtures.json": "263141def533dd8ad9cadd2c2bdad3516f4f55a1ede63eed335e47060681f78a"
+  },
+  "game_compilations": 0,
+  "adopted": false,
+  "body_oracle": "UNKNOWN",
+  "patches": [
+    {
+      "rule": "d9-calculated-root-guard-declaration-composition",
+      "method_id": "system.KairoService::OnStart()->System.Void",
+      "logical_path": "src/Assembly-CSharp/system/KairoService.cs",
+      "start": 1403,
+      "end": 3621,
+      "before": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+      "after": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tLineupForm lineupForm;\r\nif (instance2.CheckShowableLineup()) {\r\n\t\t\tlineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\r\n}\r\n}",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "calculator_sha256": "b54f4bfb0e189c41963f3b03ce54f63db9c5bba4901211b2c271df7bc9cdf2e7",
+      "dependency_sha256": {
+        "tools/round9_root_guard_composition_source.py": "0fe0c7e09a9ce38dd4c49f8d9856e7b168fbb19909b1160eaa12ddcf5a63894c",
+        "tools/round9_root_guard_composition_fixtures.py": "85da90bd47c963a19e2a987aa595800ce08a684dfa83a7b6aca465e690b480c5",
+        "tools/round9_root_guard_composition_calculate.py": "b54f4bfb0e189c41963f3b03ce54f63db9c5bba4901211b2c271df7bc9cdf2e7",
+        "tools/Round7SlotModel.cs": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+        "tools/round7_slot_model.py": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a"
+      },
+      "evidence_sha256": {
+        "reports/round9-root-guard-composition-fixtures.json": "263141def533dd8ad9cadd2c2bdad3516f4f55a1ede63eed335e47060681f78a"
+      },
+      "source_file_sha256": "1102f55f3d41006b1d3b8a69278602d9403d756a4971de073b769c66b0bd4fe0",
+      "source_text_sha256": "1102f55f3d41006b1d3b8a69278602d9403d756a4971de073b769c66b0bd4fe0",
+      "complete": true,
+      "predicted_types": [
+        "form.FormManager",
+        "form.SubForm",
+        "System.String",
+        "System.Int32",
+        "system.form.FriendForm",
+        "System.Exception",
+        "system.billing.ui.BillingItem",
+        "system.lineup.MyLineup",
+        "system.form.LineupForm"
+      ],
+      "source_snapshot": "build/round9/cycles/cycle14/after/Assembly-CSharp",
+      "original_dump_sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+      "own_dump_sha256": "c2b5736b0ea0e4b2da5a96104c4b90d917f3e2412a75c0470fc005e462f9147f",
+      "own_compilation_receipt_sha256": "3c909e3c8f79e4fce817c272c1a7fa0d8af88e131358b0ee2ebc6421a7ada0b0",
+      "source_only": true,
+      "rebase_policy": "unique exact UTF16 method; fresh complete/incomplete model policy and actual signature gate"
+    },
+    {
+      "rule": "d9-calculated-root-guard-declaration-composition",
+      "method_id": "form.GameForm::ProgressTime(System.Int32,System.Int32)->System.Void",
+      "logical_path": "src/Assembly-CSharp/form/GameForm.cs",
+      "start": 34186,
+      "end": 40082,
+      "before": "public void ProgressTime(int add, int frameCount)\r\n\t\t{\r\n\t\t\tint num = apdat_.save_.ints[4];\r\n\t\t\tint num2 = apdat_.save_.ints[1];\r\n\t\t\tint num3 = apdat_.save_.ints[2];\r\n\t\t\tint num4 = apdat_.save_.ints[3];\r\n\t\t\tint num5 = TRAINING_PARAMUP_TIME.Length - 1;\r\n\t\t\tfor (int i = 0; i < TRAINING_PARAMUP_TIME.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (num <= TRAINING_PARAMUP_TIME[i])\r\n\t\t\t\t{\r\n\t\t\t\t\tnum5 = i;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tapdat_.save_.ints[5] = apdat_.save_.ints[4];\r\n\t\t\tapdat_.save_.ints[4] += add;\r\n\t\t\tif (apdat_.save_.ints[4] >= 10800)\r\n\t\t\t{\r\n\t\t\t\tint num6 = apdat_.save_.ints[4];\r\n\t\t\t\tapdat_.save_.ints[4] = apdat_.save_.ints[5];\r\n\t\t\t\tapdat_.SaveGame(true);\r\n\t\t\t\tapdat_.save_.ints[4] = num6;\r\n\t\t\t}\r\n\t\t\twhile (apdat_.save_.ints[4] >= 10800)\r\n\t\t\t{\r\n\t\t\t\tapdat_.save_.ints[3]++;\r\n\t\t\t\tapdat_.save_.ints[4] -= 10800;\r\n\t\t\t\tif (apdat_.save_.ints[3] >= 4)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.save_.ints[3] = 0;\r\n\t\t\t\t\tapdat_.save_.ints[2]++;\r\n\t\t\t\t\tif (apdat_.save_.ints[2] >= 12)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.save_.ints[2] = 0;\r\n\t\t\t\t\t\tapdat_.save_.ints[1]++;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (num2 != apdat_.save_.ints[1])\r\n\t\t\t{\r\n\t\t\t\tudat_.RotateTestPlayParam();\r\n\t\t\t\tudat_.RecordReset();\r\n\t\t\t\tudat_.CustomerNumReset();\r\n\t\t\t\tapdat_.AddPopupMessage(36, null);\r\n\t\t\t}\r\n\t\t\tif (num3 != apdat_.save_.ints[2])\r\n\t\t\t{\r\n\t\t\t\tJSystem.Gc();\r\n\t\t\t\tif (Config.TRIAL_VERSION && apdat_.save_.ints[1] + 1 >= 2 && apdat_.save_.ints[2] + 1 >= 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tPush(SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u304a\u3064\u304b\u308c\u3055\u307e\u3067\u3057\u305f\u3002<br>\u3053\u3053\u3067\u4f53\u9a13\u7248\u306f\u7d42\u4e86\u3068\u306a\u308a\u307e\u3059\"), null));\r\n\t\t\t\t\tPush(SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u306a\u304a\u88fd\u54c1\u7248\u3067\u306f\u5e74\u6570\u5236\u9650\u306a\u304f\u5fc3\u3086\u304f\u307e\u3067\u30b2\u30fc\u30e0\u304c\u904a\u3079\u3001\u7d20\u6575\u306a\u30b5\u30c3\u30ab\u30fc\u30c1\u30fc\u30e0\u3092\u904b\u55b6\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\"), null));\r\n\t\t\t\t\tPush(SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u3053\u306e\u3042\u3068\u6b63\u5f0f\u7248\u306e\u30b5\u30a4\u30c8\u306b\u30a2\u30af\u30bb\u30b9\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\"), null));\r\n\t\t\t\t\tdialog_ = SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u305d\u308c\u3067\u306f\u307e\u305f\u4f1a\u3044\u307e\u3057\u3087\u3046\u3002\"), null);\r\n\t\t\t\t\tdialog_.dialogId_ = 105;\r\n\t\t\t\t\tPush(dialog_);\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.save_.ints[1] == 7 && apdat_.save_.ints[2] == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.ExecEvent(3, 7 + string.Empty, null);\r\n\t\t\t\t\tapdat_.Push(new SubForm(19));\r\n\t\t\t\t\tapdat_.save_.ints[14] = 1;\r\n\t\t\t\t\tapdat_.sysSave_.ints[9] = 1;\r\n\t\t\t\t\tudat_.SetContinueGameData();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.svisorData_[udat_.selectSupervisorId_].workMonth_++;\r\n\t\t\t\tint num7 = 0;\r\n\t\t\t\tSupervisorData supervisorData = apdat_.svisorData_[udat_.selectSupervisorId_];\r\n\t\t\t\tnum7 += supervisorData.GetSallay();\r\n\t\t\t\tapdat_.SubMoney(supervisorData.GetSallay(), 3);\r\n\t\t\t\tfor (int j = 0; j < udat_.tenants_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTenant tenant = udat_.tenants_[j];\r\n\t\t\t\t\tif ((tenant.state_ != 1) && (tenant.state_ != 4)) { continue; }\nif (tenant.tenantDataId_ == -1) { continue; }\nTenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];\nnum7 += tenantData.paramKeepCost_;\napdat_.SubMoney(tenantData.paramKeepCost_, 1);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (num4 != apdat_.save_.ints[3])\r\n\t\t\t{\r\n\t\t\t\tint matchInfoJoin = udat_.GetMatchInfoJoin();\r\n\t\t\t\tif (matchInfoJoin != 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchInfoWeek_++;\r\n\t\t\t\t\tif ((matchInfoJoin == 0)) {\r\n\t\t\t\t\t\tLeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];\r\n\t\t\t\t\t\tif (udat_.matchInfoWeek_ >= leagueData.schedule_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbusgather_ph = 1;\r\n\t\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(156))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(156, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (LeagueData.IsVictoryMatch())\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(131, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse if (LeagueData.IsLastMatch())\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(130, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(129, udat_.league_setu_ + 1 + string.Empty, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tSubForm form2 = new SubForm(78);\r\n\t\t\t\t\t\t\tapdat_.Push(form2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLEAGUE_SCHEDULE_UPDATECNT = 12;\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t} else if ((matchInfoJoin == 1)) {\r\n\t\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\t\tif (udat_.matchInfoWeek_ >= questMatchData.schedule_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbusgather_ph = 1;\r\n\t\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(156))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(156, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (QuestMatchData.IsVictoryMatch())\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(131, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(133, questMatchData.name_, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tSubForm form = new SubForm(78);\r\n\t\t\t\t\t\t\tapdat_.Push(form);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLEAGUE_SCHEDULE_UPDATECNT = 12;\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.save_.ints[3] == 2 && apdat_.save_.ints[2] == 11)\r\n\t\t\t\t{\r\n\t\t\t\t\tTeamData teamData = apdat_.tData_[0];\r\n\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(166))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.ExecEvent(166, null, null);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tapdat_.ExecEvent(110, teamData.name_ + \"\\t\" + udat_.memberPDataist_.Size(), null);\r\n\t\t\t\t}\r\n\t\t\t\tfor (int num8 = udat_.restTPlayers_.Size() - 1; num8 >= 0; num8--)\r\n\t\t\t\t{\r\n\t\t\t\t\tTPlayer tenantIn = (TPlayer)udat_.restTPlayers_.ElementAt(num8);\r\n\t\t\t\t\tif (udat_.SetTenantIn(tenantIn))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.restTPlayers_.RemoveElementAt(num8);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint num9 = apdat_.save_.ints[4];\r\n\t\t\tint num10 = apdat_.save_.ints[1];\r\n\t\t\tint num11 = apdat_.save_.ints[2];\r\n\t\t\tint num12 = apdat_.save_.ints[3];\r\n\t\t\tint num13 = TRAINING_PARAMUP_TIME.Length - 1;\r\n\t\t\tfor (int k = 0; k < TRAINING_PARAMUP_TIME.Length; k++)\r\n\t\t\t{\r\n\t\t\t\tif (num9 <= TRAINING_PARAMUP_TIME[k])\r\n\t\t\t\t{\r\n\t\t\t\t\tnum13 = k;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tnum9 += add;\r\n\t\t\twhile (num9 >= 10800)\r\n\t\t\t{\r\n\t\t\t\tnum12++;\r\n\t\t\t\tnum9 -= 10800;\r\n\t\t\t\tif (num12 >= 4)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum12 = 0;\r\n\t\t\t\t\tnum11++;\r\n\t\t\t\t\tif (num11 >= 12)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum11 = 0;\r\n\t\t\t\t\t\tnum10++;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (num5 != num13) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tSupervisorData supervisorData2 = apdat_.svisorData_[udat_.selectSupervisorId_];\r\n\t\t\tfor (int l = 0; l < udat_.memberPDataist_.Size(); l++)\r\n\t\t\t{\r\n\t\t\t\tPlayerData playerData = (PlayerData)udat_.memberPDataist_.ElementAt(l);\r\n\t\t\t\tfor (int m = 0; m < playerData.trainingPoint_.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+      "after": "public void ProgressTime(int add, int frameCount)\r\n\t\t{\r\n\t\t\tint num = apdat_.save_.ints[4];\r\n\t\t\tint num2 = apdat_.save_.ints[1];\r\n\t\t\tint num3 = apdat_.save_.ints[2];\r\n\t\t\tint num4 = apdat_.save_.ints[3];\r\n\t\t\tint num5 = TRAINING_PARAMUP_TIME.Length - 1;\r\n\t\t\tfor (int i = 0; i < TRAINING_PARAMUP_TIME.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (num <= TRAINING_PARAMUP_TIME[i])\r\n\t\t\t\t{\r\n\t\t\t\t\tnum5 = i;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tapdat_.save_.ints[5] = apdat_.save_.ints[4];\r\n\t\t\tapdat_.save_.ints[4] += add;\r\n\t\t\tif (apdat_.save_.ints[4] >= 10800)\r\n\t\t\t{\r\n\t\t\t\tint num6 = apdat_.save_.ints[4];\r\n\t\t\t\tapdat_.save_.ints[4] = apdat_.save_.ints[5];\r\n\t\t\t\tapdat_.SaveGame(true);\r\n\t\t\t\tapdat_.save_.ints[4] = num6;\r\n\t\t\t}\r\n\t\t\twhile (apdat_.save_.ints[4] >= 10800)\r\n\t\t\t{\r\n\t\t\t\tapdat_.save_.ints[3]++;\r\n\t\t\t\tapdat_.save_.ints[4] -= 10800;\r\n\t\t\t\tif (apdat_.save_.ints[3] >= 4)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.save_.ints[3] = 0;\r\n\t\t\t\t\tapdat_.save_.ints[2]++;\r\n\t\t\t\t\tif (apdat_.save_.ints[2] >= 12)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.save_.ints[2] = 0;\r\n\t\t\t\t\t\tapdat_.save_.ints[1]++;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (num2 != apdat_.save_.ints[1])\r\n\t\t\t{\r\n\t\t\t\tudat_.RotateTestPlayParam();\r\n\t\t\t\tudat_.RecordReset();\r\n\t\t\t\tudat_.CustomerNumReset();\r\n\t\t\t\tapdat_.AddPopupMessage(36, null);\r\n\t\t\t}\r\n\t\t\tif (num3 != apdat_.save_.ints[2])\r\n\t\t\t{\r\n\t\t\t\tJSystem.Gc();\r\n\t\t\t\tif (Config.TRIAL_VERSION && apdat_.save_.ints[1] + 1 >= 2 && apdat_.save_.ints[2] + 1 >= 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tPush(SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u304a\u3064\u304b\u308c\u3055\u307e\u3067\u3057\u305f\u3002<br>\u3053\u3053\u3067\u4f53\u9a13\u7248\u306f\u7d42\u4e86\u3068\u306a\u308a\u307e\u3059\"), null));\r\n\t\t\t\t\tPush(SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u306a\u304a\u88fd\u54c1\u7248\u3067\u306f\u5e74\u6570\u5236\u9650\u306a\u304f\u5fc3\u3086\u304f\u307e\u3067\u30b2\u30fc\u30e0\u304c\u904a\u3079\u3001\u7d20\u6575\u306a\u30b5\u30c3\u30ab\u30fc\u30c1\u30fc\u30e0\u3092\u904b\u55b6\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\"), null));\r\n\t\t\t\t\tPush(SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u3053\u306e\u3042\u3068\u6b63\u5f0f\u7248\u306e\u30b5\u30a4\u30c8\u306b\u30a2\u30af\u30bb\u30b9\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\"), null));\r\n\t\t\t\t\tdialog_ = SubForm.MakeTalkForm(0, MyFormBase.LT(\"\u305d\u308c\u3067\u306f\u307e\u305f\u4f1a\u3044\u307e\u3057\u3087\u3046\u3002\"), null);\r\n\t\t\t\t\tdialog_.dialogId_ = 105;\r\n\t\t\t\t\tPush(dialog_);\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.save_.ints[1] == 7 && apdat_.save_.ints[2] == 3)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.ExecEvent(3, 7 + string.Empty, null);\r\n\t\t\t\t\tapdat_.Push(new SubForm(19));\r\n\t\t\t\t\tapdat_.save_.ints[14] = 1;\r\n\t\t\t\t\tapdat_.sysSave_.ints[9] = 1;\r\n\t\t\t\t\tudat_.SetContinueGameData();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.svisorData_[udat_.selectSupervisorId_].workMonth_++;\r\n\t\t\t\tint num7 = 0;\r\n\t\t\t\tSupervisorData supervisorData = apdat_.svisorData_[udat_.selectSupervisorId_];\r\n\t\t\t\tnum7 += supervisorData.GetSallay();\r\n\t\t\t\tapdat_.SubMoney(supervisorData.GetSallay(), 3);\r\n\t\t\t\tfor (int j = 0; j < udat_.tenants_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTenant tenant = udat_.tenants_[j];\r\n\t\t\t\t\tif ((tenant.state_ != 1) && (tenant.state_ != 4)) { continue; }\nif (tenant.tenantDataId_ == -1) { continue; }\nTenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];\nnum7 += tenantData.paramKeepCost_;\napdat_.SubMoney(tenantData.paramKeepCost_, 1);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (num4 != apdat_.save_.ints[3])\r\n\t\t\t{\r\n\t\t\t\tint matchInfoJoin = udat_.GetMatchInfoJoin();\r\n\t\t\t\tif (matchInfoJoin != 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchInfoWeek_++;\r\n\t\t\t\t\tif ((matchInfoJoin == 0)) {\r\n\t\t\t\t\t\tLeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];\r\n\t\t\t\t\t\tif (udat_.matchInfoWeek_ >= leagueData.schedule_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbusgather_ph = 1;\r\n\t\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(156))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(156, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (LeagueData.IsVictoryMatch())\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(131, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse if (LeagueData.IsLastMatch())\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(130, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(129, udat_.league_setu_ + 1 + string.Empty, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tSubForm form2 = new SubForm(78);\r\n\t\t\t\t\t\t\tapdat_.Push(form2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLEAGUE_SCHEDULE_UPDATECNT = 12;\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t} else if ((matchInfoJoin == 1)) {\r\n\t\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\t\tif (udat_.matchInfoWeek_ >= questMatchData.schedule_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbusgather_ph = 1;\r\n\t\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(156))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(156, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (QuestMatchData.IsVictoryMatch())\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(131, null, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tapdat_.ExecEvent(133, questMatchData.name_, null);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tSubForm form = new SubForm(78);\r\n\t\t\t\t\t\t\tapdat_.Push(form);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLEAGUE_SCHEDULE_UPDATECNT = 12;\r\n\t\t\t\t\t\t}\r\n\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.save_.ints[3] == 2 && apdat_.save_.ints[2] == 11)\r\n\t\t\t\t{\r\n\t\t\t\t\tTeamData teamData = apdat_.tData_[0];\r\n\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(166))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.ExecEvent(166, null, null);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tapdat_.ExecEvent(110, teamData.name_ + \"\\t\" + udat_.memberPDataist_.Size(), null);\r\n\t\t\t\t}\r\n\t\t\t\tfor (int num8 = udat_.restTPlayers_.Size() - 1; num8 >= 0; num8--)\r\n\t\t\t\t{\r\n\t\t\t\t\tTPlayer tenantIn = (TPlayer)udat_.restTPlayers_.ElementAt(num8);\r\n\t\t\t\t\tif (udat_.SetTenantIn(tenantIn))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.restTPlayers_.RemoveElementAt(num8);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint num9 = apdat_.save_.ints[4];\r\n\t\t\tint num10 = apdat_.save_.ints[1];\r\n\t\t\tint num11 = apdat_.save_.ints[2];\r\n\t\t\tint num12 = apdat_.save_.ints[3];\r\n\t\t\tint num13 = TRAINING_PARAMUP_TIME.Length - 1;\r\n\t\t\tfor (int k = 0; k < TRAINING_PARAMUP_TIME.Length; k++)\r\n\t\t\t{\r\n\t\t\t\tif (num9 <= TRAINING_PARAMUP_TIME[k])\r\n\t\t\t\t{\r\n\t\t\t\t\tnum13 = k;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tnum9 += add;\r\n\t\t\twhile (num9 >= 10800)\r\n\t\t\t{\r\n\t\t\t\tnum12++;\r\n\t\t\t\tnum9 -= 10800;\r\n\t\t\t\tif (num12 >= 4)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum12 = 0;\r\n\t\t\t\t\tnum11++;\r\n\t\t\t\t\tif (num11 >= 12)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum11 = 0;\r\n\t\t\t\t\t\tnum10++;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tSupervisorData supervisorData2;\r\nif (num5 != num13) {\r\n\t\t\tsupervisorData2 = apdat_.svisorData_[udat_.selectSupervisorId_];\r\n\t\t\tfor (int l = 0; l < udat_.memberPDataist_.Size(); l++)\r\n\t\t\t{\r\n\t\t\t\tPlayerData playerData = (PlayerData)udat_.memberPDataist_.ElementAt(l);\r\n\t\t\t\tfor (int m = 0; m < playerData.trainingPoint_.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\r\n}\r\n}",
+      "model_source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+      "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+      "calculator_sha256": "b54f4bfb0e189c41963f3b03ce54f63db9c5bba4901211b2c271df7bc9cdf2e7",
+      "dependency_sha256": {
+        "tools/round9_root_guard_composition_source.py": "0fe0c7e09a9ce38dd4c49f8d9856e7b168fbb19909b1160eaa12ddcf5a63894c",
+        "tools/round9_root_guard_composition_fixtures.py": "85da90bd47c963a19e2a987aa595800ce08a684dfa83a7b6aca465e690b480c5",
+        "tools/round9_root_guard_composition_calculate.py": "b54f4bfb0e189c41963f3b03ce54f63db9c5bba4901211b2c271df7bc9cdf2e7",
+        "tools/Round7SlotModel.cs": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+        "tools/round7_slot_model.py": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a"
+      },
+      "evidence_sha256": {
+        "reports/round9-root-guard-composition-fixtures.json": "263141def533dd8ad9cadd2c2bdad3516f4f55a1ede63eed335e47060681f78a"
+      },
+      "source_file_sha256": "a05d4fc37702d78b352b5eaeeef8462bc5eb42b419c1c19d9f57af9c37bb77a8",
+      "source_text_sha256": "a05d4fc37702d78b352b5eaeeef8462bc5eb42b419c1c19d9f57af9c37bb77a8",
+      "complete": true,
+      "predicted_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.SupervisorData",
+        "System.Int32",
+        "game.Tenant",
+        "data.TenantData",
+        "System.Int32",
+        "data.LeagueData",
+        "form.SubForm",
+        "data.QuestMatchData",
+        "form.SubForm",
+        "data.TeamData",
+        "System.Int32",
+        "game.TPlayer",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.SupervisorData",
+        "System.Int32",
+        "data.PlayerData",
+        "System.Int32"
+      ],
+      "source_snapshot": "build/round9/cycles/cycle14/after/Assembly-CSharp",
+      "original_dump_sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+      "own_dump_sha256": "c2b5736b0ea0e4b2da5a96104c4b90d917f3e2412a75c0470fc005e462f9147f",
+      "own_compilation_receipt_sha256": "3c909e3c8f79e4fce817c272c1a7fa0d8af88e131358b0ee2ebc6421a7ada0b0",
+      "source_only": true,
+      "rebase_policy": "unique exact UTF16 method; fresh complete/incomplete model policy and actual signature gate"
+    }
+  ],
+  "proofs": [
+    {
+      "method_id": "system.KairoService::OnStart()->System.Void",
+      "logical_path": "src/Assembly-CSharp/system/KairoService.cs",
+      "source_file_sha256": "1102f55f3d41006b1d3b8a69278602d9403d756a4971de073b769c66b0bd4fe0",
+      "before_prediction": {
+        "method_id": "system.KairoService::OnStart()->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "form.FormManager",
+          "form.SubForm",
+          "System.String",
+          "System.Int32",
+          "system.form.FriendForm",
+          "System.Exception",
+          "system.billing.ui.BillingItem",
+          "system.lineup.MyLineup",
+          "system.form.LineupForm"
+        ],
+        "variables": [
+          {
+            "name": "instance",
+            "type": "form.FormManager",
+            "kind": "declared",
+            "start": 1455,
+            "end": 1491,
+            "slot": 0,
+            "block": 0,
+            "type_source": "FormManager",
+            "statement_start": 1443,
+            "statement_end": 1492,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3621,
+            "initializer": "FormManager.GetInstance()"
+          },
+          {
+            "name": "subForm",
+            "type": "form.SubForm",
+            "kind": "declared",
+            "start": 1556,
+            "end": 1623,
+            "slot": 1,
+            "block": 1,
+            "type_source": "SubForm",
+            "statement_start": 1548,
+            "statement_end": 1624,
+            "lexical_scope_start": 1541,
+            "lexical_scope_end": 2104,
+            "initializer": "SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"))"
+          },
+          {
+            "name": "packageName",
+            "type": "System.String",
+            "kind": "declared",
+            "start": 1808,
+            "end": 1867,
+            "slot": 2,
+            "block": 5,
+            "type_source": "string",
+            "statement_start": 1801,
+            "statement_end": 1868,
+            "lexical_scope_start": 1541,
+            "lexical_scope_end": 2104,
+            "initializer": "IApplication.GetCurrentApp().GetPackageName()"
+          },
+          {
+            "name": "i",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 2118,
+            "end": 2123,
+            "slot": 3,
+            "block": 6,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "friendForm",
+            "type": "system.form.FriendForm",
+            "kind": "declared",
+            "start": 2401,
+            "end": 2431,
+            "slot": 4,
+            "block": 10,
+            "type_source": "FriendForm",
+            "statement_start": 2390,
+            "statement_end": 2432,
+            "lexical_scope_start": 2383,
+            "lexical_scope_end": 2650,
+            "initializer": "new FriendForm(0)"
+          },
+          {
+            "name": "t",
+            "type": "System.Exception",
+            "kind": "declared",
+            "start": 2875,
+            "end": 2888,
+            "slot": 5,
+            "block": 16,
+            "type_source": "Exception",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "item",
+            "type": "system.billing.ui.BillingItem",
+            "kind": "declared",
+            "start": 3093,
+            "end": 3119,
+            "slot": 6,
+            "block": 20,
+            "type_source": "BillingItem",
+            "statement_start": 3081,
+            "statement_end": 3120,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3621,
+            "initializer": "billing_.GetItem(0)"
+          },
+          {
+            "name": "instance2",
+            "type": "system.lineup.MyLineup",
+            "kind": "declared",
+            "start": 3217,
+            "end": 3251,
+            "slot": 7,
+            "block": 22,
+            "type_source": "MyLineup",
+            "statement_start": 3208,
+            "statement_end": 3252,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3621,
+            "initializer": "MyLineup.GetInstance()"
+          },
+          {
+            "name": "lineupForm",
+            "type": "system.form.LineupForm",
+            "kind": "declared",
+            "start": 3339,
+            "end": 3369,
+            "slot": 8,
+            "block": 25,
+            "type_source": "LineupForm",
+            "statement_start": 3328,
+            "statement_end": 3370,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3621,
+            "initializer": "new LineupForm(0)"
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 1437,
+            "end": 3621,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "instance",
+                "type": "form.FormManager",
+                "kind": "declared",
+                "start": 1455,
+                "end": 1491,
+                "slot": 0,
+                "block": 0,
+                "type_source": "FormManager",
+                "statement_start": 1443,
+                "statement_end": 1492,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3621,
+                "initializer": "FormManager.GetInstance()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 1541,
+            "end": 2104,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "subForm",
+                "type": "form.SubForm",
+                "kind": "declared",
+                "start": 1556,
+                "end": 1623,
+                "slot": 1,
+                "block": 1,
+                "type_source": "SubForm",
+                "statement_start": 1548,
+                "statement_end": 1624,
+                "lexical_scope_start": 1541,
+                "lexical_scope_end": 2104,
+                "initializer": "SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"))"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 1694,
+            "end": 1795,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 1712,
+            "end": 1748,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 1779,
+            "end": 1788,
+            "parent": 2,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "implicit-after-statement",
+            "start": 1801,
+            "end": 1868,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "packageName",
+                "type": "System.String",
+                "kind": "declared",
+                "start": 1808,
+                "end": 1867,
+                "slot": 2,
+                "block": 5,
+                "type_source": "string",
+                "statement_start": 1801,
+                "statement_end": 1868,
+                "lexical_scope_start": 1541,
+                "lexical_scope_end": 2104,
+                "initializer": "IApplication.GetCurrentApp().GetPackageName()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "for",
+            "start": 2109,
+            "end": 2323,
+            "parent": 0,
+            "used": false,
+            "variables": [
+              {
+                "name": "i",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 2118,
+                "end": 2123,
+                "slot": 3,
+                "block": 6,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 2141,
+            "end": 2323,
+            "parent": 6,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 2157,
+            "end": 2252,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 2281,
+            "end": 2317,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 2383,
+            "end": 2650,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "friendForm",
+                "type": "system.form.FriendForm",
+                "kind": "declared",
+                "start": 2401,
+                "end": 2431,
+                "slot": 4,
+                "block": 10,
+                "type_source": "FriendForm",
+                "statement_start": 2390,
+                "statement_end": 2432,
+                "lexical_scope_start": 2383,
+                "lexical_scope_end": 2650,
+                "initializer": "new FriendForm(0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "explicit",
+            "start": 2508,
+            "end": 2609,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 2526,
+            "end": 2562,
+            "parent": 11,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "explicit",
+            "start": 2593,
+            "end": 2602,
+            "parent": 11,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "explicit",
+            "start": 2692,
+            "end": 3076,
+            "parent": 0,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 15,
+            "kind": "explicit",
+            "start": 2708,
+            "end": 2863,
+            "parent": 14,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 16,
+            "kind": "catch-variable",
+            "start": 2869,
+            "end": 2962,
+            "parent": 14,
+            "used": false,
+            "variables": [
+              {
+                "name": "t",
+                "type": "System.Exception",
+                "kind": "declared",
+                "start": 2875,
+                "end": 2888,
+                "slot": 5,
+                "block": 16,
+                "type_source": "Exception",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 17,
+            "kind": "explicit",
+            "start": 2894,
+            "end": 2962,
+            "parent": 16,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 18,
+            "kind": "explicit",
+            "start": 2926,
+            "end": 2955,
+            "parent": 17,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 19,
+            "kind": "explicit",
+            "start": 3026,
+            "end": 3070,
+            "parent": 14,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 20,
+            "kind": "implicit-after-statement",
+            "start": 3081,
+            "end": 3120,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "item",
+                "type": "system.billing.ui.BillingItem",
+                "kind": "declared",
+                "start": 3093,
+                "end": 3119,
+                "slot": 6,
+                "block": 20,
+                "type_source": "BillingItem",
+                "statement_start": 3081,
+                "statement_end": 3120,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3621,
+                "initializer": "billing_.GetItem(0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 21,
+            "kind": "explicit",
+            "start": 3174,
+            "end": 3203,
+            "parent": 20,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 22,
+            "kind": "implicit-after-statement",
+            "start": 3208,
+            "end": 3252,
+            "parent": 20,
+            "used": true,
+            "variables": [
+              {
+                "name": "instance2",
+                "type": "system.lineup.MyLineup",
+                "kind": "declared",
+                "start": 3217,
+                "end": 3251,
+                "slot": 7,
+                "block": 22,
+                "type_source": "MyLineup",
+                "statement_start": 3208,
+                "statement_end": 3252,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3621,
+                "initializer": "MyLineup.GetInstance()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 23,
+            "kind": "explicit",
+            "start": 3294,
+            "end": 3297,
+            "parent": 22,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 24,
+            "kind": "explicit",
+            "start": 3303,
+            "end": 3323,
+            "parent": 22,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 25,
+            "kind": "implicit-after-statement",
+            "start": 3328,
+            "end": 3370,
+            "parent": 22,
+            "used": true,
+            "variables": [
+              {
+                "name": "lineupForm",
+                "type": "system.form.LineupForm",
+                "kind": "declared",
+                "start": 3339,
+                "end": 3369,
+                "slot": 8,
+                "block": 25,
+                "type_source": "LineupForm",
+                "statement_start": 3328,
+                "statement_end": 3370,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3621,
+                "initializer": "new LineupForm(0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 26,
+            "kind": "explicit",
+            "start": 3443,
+            "end": 3536,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 27,
+            "kind": "explicit",
+            "start": 3459,
+            "end": 3493,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 28,
+            "kind": "explicit",
+            "start": 3522,
+            "end": 3530,
+            "parent": 26,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 29,
+            "kind": "explicit",
+            "start": 3549,
+            "end": 3582,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 30,
+            "kind": "explicit",
+            "start": 3609,
+            "end": 3616,
+            "parent": 25,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 1403,
+        "declaration_end": 3621,
+        "body_start": 1437,
+        "body_end": 3621
+      },
+      "after_prediction": {
+        "method_id": "system.KairoService::OnStart()->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "form.FormManager",
+          "form.SubForm",
+          "System.String",
+          "System.Int32",
+          "system.form.FriendForm",
+          "System.Exception",
+          "system.billing.ui.BillingItem",
+          "system.lineup.MyLineup",
+          "system.form.LineupForm"
+        ],
+        "variables": [
+          {
+            "name": "instance",
+            "type": "form.FormManager",
+            "kind": "declared",
+            "start": 1455,
+            "end": 1491,
+            "slot": 0,
+            "block": 0,
+            "type_source": "FormManager",
+            "statement_start": 1443,
+            "statement_end": 1492,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3611,
+            "initializer": "FormManager.GetInstance()"
+          },
+          {
+            "name": "subForm",
+            "type": "form.SubForm",
+            "kind": "declared",
+            "start": 1556,
+            "end": 1623,
+            "slot": 1,
+            "block": 1,
+            "type_source": "SubForm",
+            "statement_start": 1548,
+            "statement_end": 1624,
+            "lexical_scope_start": 1541,
+            "lexical_scope_end": 2104,
+            "initializer": "SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"))"
+          },
+          {
+            "name": "packageName",
+            "type": "System.String",
+            "kind": "declared",
+            "start": 1808,
+            "end": 1867,
+            "slot": 2,
+            "block": 5,
+            "type_source": "string",
+            "statement_start": 1801,
+            "statement_end": 1868,
+            "lexical_scope_start": 1541,
+            "lexical_scope_end": 2104,
+            "initializer": "IApplication.GetCurrentApp().GetPackageName()"
+          },
+          {
+            "name": "i",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 2118,
+            "end": 2123,
+            "slot": 3,
+            "block": 6,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "friendForm",
+            "type": "system.form.FriendForm",
+            "kind": "declared",
+            "start": 2401,
+            "end": 2431,
+            "slot": 4,
+            "block": 10,
+            "type_source": "FriendForm",
+            "statement_start": 2390,
+            "statement_end": 2432,
+            "lexical_scope_start": 2383,
+            "lexical_scope_end": 2650,
+            "initializer": "new FriendForm(0)"
+          },
+          {
+            "name": "t",
+            "type": "System.Exception",
+            "kind": "declared",
+            "start": 2875,
+            "end": 2888,
+            "slot": 5,
+            "block": 16,
+            "type_source": "Exception",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "item",
+            "type": "system.billing.ui.BillingItem",
+            "kind": "declared",
+            "start": 3093,
+            "end": 3119,
+            "slot": 6,
+            "block": 20,
+            "type_source": "BillingItem",
+            "statement_start": 3081,
+            "statement_end": 3120,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3611,
+            "initializer": "billing_.GetItem(0)"
+          },
+          {
+            "name": "instance2",
+            "type": "system.lineup.MyLineup",
+            "kind": "declared",
+            "start": 3217,
+            "end": 3251,
+            "slot": 7,
+            "block": 22,
+            "type_source": "MyLineup",
+            "statement_start": 3208,
+            "statement_end": 3252,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3611,
+            "initializer": "MyLineup.GetInstance()"
+          },
+          {
+            "name": "lineupForm",
+            "type": "system.form.LineupForm",
+            "kind": "declared",
+            "start": 3268,
+            "end": 3278,
+            "slot": 8,
+            "block": 23,
+            "type_source": "LineupForm",
+            "statement_start": 3257,
+            "statement_end": 3279,
+            "lexical_scope_start": 1437,
+            "lexical_scope_end": 3611,
+            "initializer": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 1437,
+            "end": 3611,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "instance",
+                "type": "form.FormManager",
+                "kind": "declared",
+                "start": 1455,
+                "end": 1491,
+                "slot": 0,
+                "block": 0,
+                "type_source": "FormManager",
+                "statement_start": 1443,
+                "statement_end": 1492,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3611,
+                "initializer": "FormManager.GetInstance()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 1541,
+            "end": 2104,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "subForm",
+                "type": "form.SubForm",
+                "kind": "declared",
+                "start": 1556,
+                "end": 1623,
+                "slot": 1,
+                "block": 1,
+                "type_source": "SubForm",
+                "statement_start": 1548,
+                "statement_end": 1624,
+                "lexical_scope_start": 1541,
+                "lexical_scope_end": 2104,
+                "initializer": "SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"))"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 1694,
+            "end": 1795,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 1712,
+            "end": 1748,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 1779,
+            "end": 1788,
+            "parent": 2,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "implicit-after-statement",
+            "start": 1801,
+            "end": 1868,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "packageName",
+                "type": "System.String",
+                "kind": "declared",
+                "start": 1808,
+                "end": 1867,
+                "slot": 2,
+                "block": 5,
+                "type_source": "string",
+                "statement_start": 1801,
+                "statement_end": 1868,
+                "lexical_scope_start": 1541,
+                "lexical_scope_end": 2104,
+                "initializer": "IApplication.GetCurrentApp().GetPackageName()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "for",
+            "start": 2109,
+            "end": 2323,
+            "parent": 0,
+            "used": false,
+            "variables": [
+              {
+                "name": "i",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 2118,
+                "end": 2123,
+                "slot": 3,
+                "block": 6,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 2141,
+            "end": 2323,
+            "parent": 6,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 2157,
+            "end": 2252,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 2281,
+            "end": 2317,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 2383,
+            "end": 2650,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "friendForm",
+                "type": "system.form.FriendForm",
+                "kind": "declared",
+                "start": 2401,
+                "end": 2431,
+                "slot": 4,
+                "block": 10,
+                "type_source": "FriendForm",
+                "statement_start": 2390,
+                "statement_end": 2432,
+                "lexical_scope_start": 2383,
+                "lexical_scope_end": 2650,
+                "initializer": "new FriendForm(0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "explicit",
+            "start": 2508,
+            "end": 2609,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 2526,
+            "end": 2562,
+            "parent": 11,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "explicit",
+            "start": 2593,
+            "end": 2602,
+            "parent": 11,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "explicit",
+            "start": 2692,
+            "end": 3076,
+            "parent": 0,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 15,
+            "kind": "explicit",
+            "start": 2708,
+            "end": 2863,
+            "parent": 14,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 16,
+            "kind": "catch-variable",
+            "start": 2869,
+            "end": 2962,
+            "parent": 14,
+            "used": false,
+            "variables": [
+              {
+                "name": "t",
+                "type": "System.Exception",
+                "kind": "declared",
+                "start": 2875,
+                "end": 2888,
+                "slot": 5,
+                "block": 16,
+                "type_source": "Exception",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 17,
+            "kind": "explicit",
+            "start": 2894,
+            "end": 2962,
+            "parent": 16,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 18,
+            "kind": "explicit",
+            "start": 2926,
+            "end": 2955,
+            "parent": 17,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 19,
+            "kind": "explicit",
+            "start": 3026,
+            "end": 3070,
+            "parent": 14,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 20,
+            "kind": "implicit-after-statement",
+            "start": 3081,
+            "end": 3120,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "item",
+                "type": "system.billing.ui.BillingItem",
+                "kind": "declared",
+                "start": 3093,
+                "end": 3119,
+                "slot": 6,
+                "block": 20,
+                "type_source": "BillingItem",
+                "statement_start": 3081,
+                "statement_end": 3120,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3611,
+                "initializer": "billing_.GetItem(0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 21,
+            "kind": "explicit",
+            "start": 3174,
+            "end": 3203,
+            "parent": 20,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 22,
+            "kind": "implicit-after-statement",
+            "start": 3208,
+            "end": 3252,
+            "parent": 20,
+            "used": true,
+            "variables": [
+              {
+                "name": "instance2",
+                "type": "system.lineup.MyLineup",
+                "kind": "declared",
+                "start": 3217,
+                "end": 3251,
+                "slot": 7,
+                "block": 22,
+                "type_source": "MyLineup",
+                "statement_start": 3208,
+                "statement_end": 3252,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3611,
+                "initializer": "MyLineup.GetInstance()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 23,
+            "kind": "implicit-after-statement",
+            "start": 3257,
+            "end": 3279,
+            "parent": 22,
+            "used": true,
+            "variables": [
+              {
+                "name": "lineupForm",
+                "type": "system.form.LineupForm",
+                "kind": "declared",
+                "start": 3268,
+                "end": 3278,
+                "slot": 8,
+                "block": 23,
+                "type_source": "LineupForm",
+                "statement_start": 3257,
+                "statement_end": 3279,
+                "lexical_scope_start": 1437,
+                "lexical_scope_end": 3611,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 24,
+            "kind": "explicit",
+            "start": 3318,
+            "end": 3608,
+            "parent": 23,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 25,
+            "kind": "explicit",
+            "start": 3428,
+            "end": 3521,
+            "parent": 24,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 26,
+            "kind": "explicit",
+            "start": 3444,
+            "end": 3478,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 27,
+            "kind": "explicit",
+            "start": 3507,
+            "end": 3515,
+            "parent": 25,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 28,
+            "kind": "explicit",
+            "start": 3534,
+            "end": 3567,
+            "parent": 24,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 29,
+            "kind": "explicit",
+            "start": 3594,
+            "end": 3601,
+            "parent": 24,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 1403,
+        "declaration_end": 3611,
+        "body_start": 1437,
+        "body_end": 3611
+      },
+      "original_types": [
+        "form.FormManager",
+        "form.SubForm",
+        "System.String",
+        "System.Int32",
+        "system.form.FriendForm",
+        "System.Exception",
+        "system.billing.ui.BillingItem",
+        "system.lineup.MyLineup",
+        "system.form.LineupForm"
+      ],
+      "complete": true,
+      "types_equal": true,
+      "eligible_under_user_model_policy": true,
+      "lexical_evidence": {
+        "guard_source_span": [
+          1854,
+          1920
+        ],
+        "guard_source_span_utf16": [
+          1854,
+          1920
+        ],
+        "lexical_offsets": "Python-codepoint offsets relative to method declaration; explicit *_utf16 fields use UTF16",
+        "condition_preserved": "instance2.CheckShowableLineup()",
+        "root_declarations": [
+          {
+            "type": "LineupForm",
+            "name": "lineupForm",
+            "initializer": "new LineupForm(0)",
+            "start": 1925,
+            "end": 1967
+          }
+        ],
+        "nested_declarations_moved": false,
+        "initializer_order_preserved": true,
+        "model_proof": "UNKNOWN",
+        "body_oracle": "UNKNOWN"
+      },
+      "body_oracle": "UNKNOWN",
+      "original_il_bytes": 600,
+      "game_compilations": 0
+    },
+    {
+      "method_id": "form.GameForm::ProgressTime(System.Int32,System.Int32)->System.Void",
+      "logical_path": "src/Assembly-CSharp/form/GameForm.cs",
+      "source_file_sha256": "a05d4fc37702d78b352b5eaeeef8462bc5eb42b419c1c19d9f57af9c37bb77a8",
+      "before_prediction": {
+        "method_id": "form.GameForm::ProgressTime(System.Int32,System.Int32)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "data.SupervisorData",
+          "System.Int32",
+          "game.Tenant",
+          "data.TenantData",
+          "System.Int32",
+          "data.LeagueData",
+          "form.SubForm",
+          "data.QuestMatchData",
+          "form.SubForm",
+          "data.TeamData",
+          "System.Int32",
+          "game.TPlayer",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "data.SupervisorData",
+          "System.Int32",
+          "data.PlayerData",
+          "System.Int32"
+        ],
+        "variables": [
+          {
+            "name": "num",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34249,
+            "end": 34275,
+            "slot": 0,
+            "block": 0,
+            "type_source": "int",
+            "statement_start": 34245,
+            "statement_end": 34276,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[4]"
+          },
+          {
+            "name": "num2",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34285,
+            "end": 34312,
+            "slot": 1,
+            "block": 1,
+            "type_source": "int",
+            "statement_start": 34281,
+            "statement_end": 34313,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[1]"
+          },
+          {
+            "name": "num3",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34322,
+            "end": 34349,
+            "slot": 2,
+            "block": 2,
+            "type_source": "int",
+            "statement_start": 34318,
+            "statement_end": 34350,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[2]"
+          },
+          {
+            "name": "num4",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34359,
+            "end": 34386,
+            "slot": 3,
+            "block": 3,
+            "type_source": "int",
+            "statement_start": 34355,
+            "statement_end": 34387,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[3]"
+          },
+          {
+            "name": "num5",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34396,
+            "end": 34435,
+            "slot": 4,
+            "block": 4,
+            "type_source": "int",
+            "statement_start": 34392,
+            "statement_end": 34436,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+          },
+          {
+            "name": "i",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34450,
+            "end": 34455,
+            "slot": 5,
+            "block": 5,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "num6",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34729,
+            "end": 34756,
+            "slot": 6,
+            "block": 8,
+            "type_source": "int",
+            "statement_start": 34725,
+            "statement_end": 34757,
+            "lexical_scope_start": 34718,
+            "lexical_scope_end": 34875,
+            "initializer": "apdat_.save_.ints[4]"
+          },
+          {
+            "name": "num7",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 36355,
+            "end": 36363,
+            "slot": 7,
+            "block": 16,
+            "type_source": "int",
+            "statement_start": 36351,
+            "statement_end": 36364,
+            "lexical_scope_start": 35447,
+            "lexical_scope_end": 36920,
+            "initializer": "0"
+          },
+          {
+            "name": "supervisorData",
+            "type": "data.SupervisorData",
+            "kind": "declared",
+            "start": 36385,
+            "end": 36447,
+            "slot": 8,
+            "block": 17,
+            "type_source": "SupervisorData",
+            "statement_start": 36370,
+            "statement_end": 36448,
+            "lexical_scope_start": 35447,
+            "lexical_scope_end": 36920,
+            "initializer": "apdat_.svisorData_[udat_.selectSupervisorId_]"
+          },
+          {
+            "name": "j",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 36557,
+            "end": 36562,
+            "slot": 9,
+            "block": 18,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tenant",
+            "type": "game.Tenant",
+            "kind": "declared",
+            "start": 36616,
+            "end": 36642,
+            "slot": 10,
+            "block": 19,
+            "type_source": "Tenant",
+            "statement_start": 36609,
+            "statement_end": 36643,
+            "lexical_scope_start": 36601,
+            "lexical_scope_end": 36914,
+            "initializer": "udat_.tenants_[j]"
+          },
+          {
+            "name": "tenantData",
+            "type": "data.TenantData",
+            "kind": "declared",
+            "start": 36771,
+            "end": 36824,
+            "slot": 11,
+            "block": 22,
+            "type_source": "TenantData",
+            "statement_start": 36760,
+            "statement_end": 36825,
+            "lexical_scope_start": 36601,
+            "lexical_scope_end": 36914,
+            "initializer": "apdat_.tenantData_[tenant.tenantDataId_]"
+          },
+          {
+            "name": "matchInfoJoin",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 36974,
+            "end": 37014,
+            "slot": 12,
+            "block": 23,
+            "type_source": "int",
+            "statement_start": 36970,
+            "statement_end": 37015,
+            "lexical_scope_start": 36963,
+            "lexical_scope_end": 39126,
+            "initializer": "udat_.GetMatchInfoJoin()"
+          },
+          {
+            "name": "leagueData",
+            "type": "data.LeagueData",
+            "kind": "declared",
+            "start": 37134,
+            "end": 37188,
+            "slot": 13,
+            "block": 25,
+            "type_source": "LeagueData",
+            "statement_start": 37123,
+            "statement_end": 37189,
+            "lexical_scope_start": 37114,
+            "lexical_scope_end": 37869,
+            "initializer": "apdat_.leagueData_[udat_.selectLeagueId_]"
+          },
+          {
+            "name": "form2",
+            "type": "form.SubForm",
+            "kind": "declared",
+            "start": 37728,
+            "end": 37751,
+            "slot": 14,
+            "block": 31,
+            "type_source": "SubForm",
+            "statement_start": 37720,
+            "statement_end": 37752,
+            "lexical_scope_start": 37254,
+            "lexical_scope_end": 37789,
+            "initializer": "new SubForm(78)"
+          },
+          {
+            "name": "questMatchData",
+            "type": "data.QuestMatchData",
+            "kind": "declared",
+            "start": 37925,
+            "end": 37975,
+            "slot": 15,
+            "block": 33,
+            "type_source": "QuestMatchData",
+            "statement_start": 37910,
+            "statement_end": 37976,
+            "lexical_scope_start": 37901,
+            "lexical_scope_end": 38538,
+            "initializer": "apdat_.qmData_[udat_.selectQmId_]"
+          },
+          {
+            "name": "form",
+            "type": "form.SubForm",
+            "kind": "declared",
+            "start": 38399,
+            "end": 38421,
+            "slot": 16,
+            "block": 38,
+            "type_source": "SubForm",
+            "statement_start": 38391,
+            "statement_end": 38422,
+            "lexical_scope_start": 38045,
+            "lexical_scope_end": 38458,
+            "initializer": "new SubForm(78)"
+          },
+          {
+            "name": "teamData",
+            "type": "data.TeamData",
+            "kind": "declared",
+            "start": 38634,
+            "end": 38661,
+            "slot": 17,
+            "block": 40,
+            "type_source": "TeamData",
+            "statement_start": 38625,
+            "statement_end": 38662,
+            "lexical_scope_start": 38617,
+            "lexical_scope_end": 38858,
+            "initializer": "apdat_.tData_[0]"
+          },
+          {
+            "name": "num8",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 38873,
+            "end": 38910,
+            "slot": 18,
+            "block": 42,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tenantIn",
+            "type": "game.TPlayer",
+            "kind": "declared",
+            "start": 38952,
+            "end": 39007,
+            "slot": 19,
+            "block": 43,
+            "type_source": "TPlayer",
+            "statement_start": 38944,
+            "statement_end": 39008,
+            "lexical_scope_start": 38936,
+            "lexical_scope_end": 39120,
+            "initializer": "(TPlayer)udat_.restTPlayers_.ElementAt(num8)"
+          },
+          {
+            "name": "num9",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39135,
+            "end": 39162,
+            "slot": 20,
+            "block": 45,
+            "type_source": "int",
+            "statement_start": 39131,
+            "statement_end": 39163,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[4]"
+          },
+          {
+            "name": "num10",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39172,
+            "end": 39200,
+            "slot": 21,
+            "block": 46,
+            "type_source": "int",
+            "statement_start": 39168,
+            "statement_end": 39201,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[1]"
+          },
+          {
+            "name": "num11",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39210,
+            "end": 39238,
+            "slot": 22,
+            "block": 47,
+            "type_source": "int",
+            "statement_start": 39206,
+            "statement_end": 39239,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[2]"
+          },
+          {
+            "name": "num12",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39248,
+            "end": 39276,
+            "slot": 23,
+            "block": 48,
+            "type_source": "int",
+            "statement_start": 39244,
+            "statement_end": 39277,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.save_.ints[3]"
+          },
+          {
+            "name": "num13",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39286,
+            "end": 39326,
+            "slot": 24,
+            "block": 49,
+            "type_source": "int",
+            "statement_start": 39282,
+            "statement_end": 39327,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+          },
+          {
+            "name": "k",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39341,
+            "end": 39346,
+            "slot": 25,
+            "block": 50,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "supervisorData2",
+            "type": "data.SupervisorData",
+            "kind": "declared",
+            "start": 39787,
+            "end": 39850,
+            "slot": 26,
+            "block": 58,
+            "type_source": "SupervisorData",
+            "statement_start": 39772,
+            "statement_end": 39851,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40082,
+            "initializer": "apdat_.svisorData_[udat_.selectSupervisorId_]"
+          },
+          {
+            "name": "l",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39865,
+            "end": 39870,
+            "slot": 27,
+            "block": 59,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "playerData",
+            "type": "data.PlayerData",
+            "kind": "declared",
+            "start": 39933,
+            "end": 39992,
+            "slot": 28,
+            "block": 60,
+            "type_source": "PlayerData",
+            "statement_start": 39922,
+            "statement_end": 39993,
+            "lexical_scope_start": 39915,
+            "lexical_scope_end": 40077,
+            "initializer": "(PlayerData)udat_.memberPDataist_.ElementAt(l)"
+          },
+          {
+            "name": "m",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 40008,
+            "end": 40013,
+            "slot": 29,
+            "block": 61,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 34239,
+            "end": 40082,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "num",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34249,
+                "end": 34275,
+                "slot": 0,
+                "block": 0,
+                "type_source": "int",
+                "statement_start": 34245,
+                "statement_end": 34276,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[4]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 34281,
+            "end": 34313,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "num2",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34285,
+                "end": 34312,
+                "slot": 1,
+                "block": 1,
+                "type_source": "int",
+                "statement_start": 34281,
+                "statement_end": 34313,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[1]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "implicit-after-statement",
+            "start": 34318,
+            "end": 34350,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "num3",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34322,
+                "end": 34349,
+                "slot": 2,
+                "block": 2,
+                "type_source": "int",
+                "statement_start": 34318,
+                "statement_end": 34350,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[2]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "implicit-after-statement",
+            "start": 34355,
+            "end": 34387,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "num4",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34359,
+                "end": 34386,
+                "slot": 3,
+                "block": 3,
+                "type_source": "int",
+                "statement_start": 34355,
+                "statement_end": 34387,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[3]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "implicit-after-statement",
+            "start": 34392,
+            "end": 34436,
+            "parent": 3,
+            "used": true,
+            "variables": [
+              {
+                "name": "num5",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34396,
+                "end": 34435,
+                "slot": 4,
+                "block": 4,
+                "type_source": "int",
+                "statement_start": 34392,
+                "statement_end": 34436,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "for",
+            "start": 34441,
+            "end": 34592,
+            "parent": 4,
+            "used": false,
+            "variables": [
+              {
+                "name": "i",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34450,
+                "end": 34455,
+                "slot": 5,
+                "block": 5,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 34500,
+            "end": 34592,
+            "parent": 5,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 34549,
+            "end": 34586,
+            "parent": 6,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 34718,
+            "end": 34875,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "num6",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34729,
+                "end": 34756,
+                "slot": 6,
+                "block": 8,
+                "type_source": "int",
+                "statement_start": 34725,
+                "statement_end": 34757,
+                "lexical_scope_start": 34718,
+                "lexical_scope_end": 34875,
+                "initializer": "apdat_.save_.ints[4]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 34922,
+            "end": 35224,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 35030,
+            "end": 35218,
+            "parent": 9,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "explicit",
+            "start": 35138,
+            "end": 35211,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 35267,
+            "end": 35404,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "explicit",
+            "start": 35447,
+            "end": 36920,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "explicit",
+            "start": 35570,
+            "end": 36011,
+            "parent": 13,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 15,
+            "kind": "explicit",
+            "start": 36082,
+            "end": 36280,
+            "parent": 13,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 16,
+            "kind": "implicit-after-statement",
+            "start": 36351,
+            "end": 36364,
+            "parent": 13,
+            "used": true,
+            "variables": [
+              {
+                "name": "num7",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 36355,
+                "end": 36363,
+                "slot": 7,
+                "block": 16,
+                "type_source": "int",
+                "statement_start": 36351,
+                "statement_end": 36364,
+                "lexical_scope_start": 35447,
+                "lexical_scope_end": 36920,
+                "initializer": "0"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 17,
+            "kind": "implicit-after-statement",
+            "start": 36370,
+            "end": 36448,
+            "parent": 16,
+            "used": true,
+            "variables": [
+              {
+                "name": "supervisorData",
+                "type": "data.SupervisorData",
+                "kind": "declared",
+                "start": 36385,
+                "end": 36447,
+                "slot": 8,
+                "block": 17,
+                "type_source": "SupervisorData",
+                "statement_start": 36370,
+                "statement_end": 36448,
+                "lexical_scope_start": 35447,
+                "lexical_scope_end": 36920,
+                "initializer": "apdat_.svisorData_[udat_.selectSupervisorId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 18,
+            "kind": "for",
+            "start": 36548,
+            "end": 36914,
+            "parent": 17,
+            "used": false,
+            "variables": [
+              {
+                "name": "j",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 36557,
+                "end": 36562,
+                "slot": 9,
+                "block": 18,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 19,
+            "kind": "explicit",
+            "start": 36601,
+            "end": 36914,
+            "parent": 18,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenant",
+                "type": "game.Tenant",
+                "kind": "declared",
+                "start": 36616,
+                "end": 36642,
+                "slot": 10,
+                "block": 19,
+                "type_source": "Tenant",
+                "statement_start": 36609,
+                "statement_end": 36643,
+                "lexical_scope_start": 36601,
+                "lexical_scope_end": 36914,
+                "initializer": "udat_.tenants_[j]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 20,
+            "kind": "explicit",
+            "start": 36700,
+            "end": 36713,
+            "parent": 19,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 21,
+            "kind": "explicit",
+            "start": 36746,
+            "end": 36759,
+            "parent": 19,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 22,
+            "kind": "implicit-after-statement",
+            "start": 36760,
+            "end": 36825,
+            "parent": 19,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenantData",
+                "type": "data.TenantData",
+                "kind": "declared",
+                "start": 36771,
+                "end": 36824,
+                "slot": 11,
+                "block": 22,
+                "type_source": "TenantData",
+                "statement_start": 36760,
+                "statement_end": 36825,
+                "lexical_scope_start": 36601,
+                "lexical_scope_end": 36914,
+                "initializer": "apdat_.tenantData_[tenant.tenantDataId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 23,
+            "kind": "explicit",
+            "start": 36963,
+            "end": 39126,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "matchInfoJoin",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 36974,
+                "end": 37014,
+                "slot": 12,
+                "block": 23,
+                "type_source": "int",
+                "statement_start": 36970,
+                "statement_end": 37015,
+                "lexical_scope_start": 36963,
+                "lexical_scope_end": 39126,
+                "initializer": "udat_.GetMatchInfoJoin()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 24,
+            "kind": "explicit",
+            "start": 37050,
+            "end": 38545,
+            "parent": 23,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 25,
+            "kind": "explicit",
+            "start": 37114,
+            "end": 37869,
+            "parent": 24,
+            "used": true,
+            "variables": [
+              {
+                "name": "leagueData",
+                "type": "data.LeagueData",
+                "kind": "declared",
+                "start": 37134,
+                "end": 37188,
+                "slot": 13,
+                "block": 25,
+                "type_source": "LeagueData",
+                "statement_start": 37123,
+                "statement_end": 37189,
+                "lexical_scope_start": 37114,
+                "lexical_scope_end": 37869,
+                "initializer": "apdat_.leagueData_[udat_.selectLeagueId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 26,
+            "kind": "explicit",
+            "start": 37254,
+            "end": 37789,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 27,
+            "kind": "explicit",
+            "start": 37334,
+            "end": 37389,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 28,
+            "kind": "explicit",
+            "start": 37439,
+            "end": 37494,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 29,
+            "kind": "explicit",
+            "start": 37546,
+            "end": 37601,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 30,
+            "kind": "explicit",
+            "start": 37623,
+            "end": 37711,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 31,
+            "kind": "implicit-after-statement",
+            "start": 37720,
+            "end": 37752,
+            "parent": 26,
+            "used": true,
+            "variables": [
+              {
+                "name": "form2",
+                "type": "form.SubForm",
+                "kind": "declared",
+                "start": 37728,
+                "end": 37751,
+                "slot": 14,
+                "block": 31,
+                "type_source": "SubForm",
+                "statement_start": 37720,
+                "statement_end": 37752,
+                "lexical_scope_start": 37254,
+                "lexical_scope_end": 37789,
+                "initializer": "new SubForm(78)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 32,
+            "kind": "explicit",
+            "start": 37809,
+            "end": 37859,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 33,
+            "kind": "explicit",
+            "start": 37901,
+            "end": 38538,
+            "parent": 24,
+            "used": true,
+            "variables": [
+              {
+                "name": "questMatchData",
+                "type": "data.QuestMatchData",
+                "kind": "declared",
+                "start": 37925,
+                "end": 37975,
+                "slot": 15,
+                "block": 33,
+                "type_source": "QuestMatchData",
+                "statement_start": 37910,
+                "statement_end": 37976,
+                "lexical_scope_start": 37901,
+                "lexical_scope_end": 38538,
+                "initializer": "apdat_.qmData_[udat_.selectQmId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 34,
+            "kind": "explicit",
+            "start": 38045,
+            "end": 38458,
+            "parent": 33,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 35,
+            "kind": "explicit",
+            "start": 38125,
+            "end": 38180,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 36,
+            "kind": "explicit",
+            "start": 38234,
+            "end": 38289,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 37,
+            "kind": "explicit",
+            "start": 38311,
+            "end": 38382,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 38,
+            "kind": "implicit-after-statement",
+            "start": 38391,
+            "end": 38422,
+            "parent": 34,
+            "used": true,
+            "variables": [
+              {
+                "name": "form",
+                "type": "form.SubForm",
+                "kind": "declared",
+                "start": 38399,
+                "end": 38421,
+                "slot": 16,
+                "block": 38,
+                "type_source": "SubForm",
+                "statement_start": 38391,
+                "statement_end": 38422,
+                "lexical_scope_start": 38045,
+                "lexical_scope_end": 38458,
+                "initializer": "new SubForm(78)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 39,
+            "kind": "explicit",
+            "start": 38478,
+            "end": 38528,
+            "parent": 33,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 40,
+            "kind": "explicit",
+            "start": 38617,
+            "end": 38858,
+            "parent": 23,
+            "used": true,
+            "variables": [
+              {
+                "name": "teamData",
+                "type": "data.TeamData",
+                "kind": "declared",
+                "start": 38634,
+                "end": 38661,
+                "slot": 17,
+                "block": 40,
+                "type_source": "TeamData",
+                "statement_start": 38625,
+                "statement_end": 38662,
+                "lexical_scope_start": 38617,
+                "lexical_scope_end": 38858,
+                "initializer": "apdat_.tData_[0]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 41,
+            "kind": "explicit",
+            "start": 38711,
+            "end": 38762,
+            "parent": 40,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 42,
+            "kind": "for",
+            "start": 38864,
+            "end": 39120,
+            "parent": 23,
+            "used": false,
+            "variables": [
+              {
+                "name": "num8",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 38873,
+                "end": 38910,
+                "slot": 18,
+                "block": 42,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 43,
+            "kind": "explicit",
+            "start": 38936,
+            "end": 39120,
+            "parent": 42,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenantIn",
+                "type": "game.TPlayer",
+                "kind": "declared",
+                "start": 38952,
+                "end": 39007,
+                "slot": 19,
+                "block": 43,
+                "type_source": "TPlayer",
+                "statement_start": 38944,
+                "statement_end": 39008,
+                "lexical_scope_start": 38936,
+                "lexical_scope_end": 39120,
+                "initializer": "(TPlayer)udat_.restTPlayers_.ElementAt(num8)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 44,
+            "kind": "explicit",
+            "start": 39054,
+            "end": 39113,
+            "parent": 43,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 45,
+            "kind": "implicit-after-statement",
+            "start": 39131,
+            "end": 39163,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "num9",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39135,
+                "end": 39162,
+                "slot": 20,
+                "block": 45,
+                "type_source": "int",
+                "statement_start": 39131,
+                "statement_end": 39163,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[4]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 46,
+            "kind": "implicit-after-statement",
+            "start": 39168,
+            "end": 39201,
+            "parent": 45,
+            "used": true,
+            "variables": [
+              {
+                "name": "num10",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39172,
+                "end": 39200,
+                "slot": 21,
+                "block": 46,
+                "type_source": "int",
+                "statement_start": 39168,
+                "statement_end": 39201,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[1]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 47,
+            "kind": "implicit-after-statement",
+            "start": 39206,
+            "end": 39239,
+            "parent": 46,
+            "used": true,
+            "variables": [
+              {
+                "name": "num11",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39210,
+                "end": 39238,
+                "slot": 22,
+                "block": 47,
+                "type_source": "int",
+                "statement_start": 39206,
+                "statement_end": 39239,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[2]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 48,
+            "kind": "implicit-after-statement",
+            "start": 39244,
+            "end": 39277,
+            "parent": 47,
+            "used": true,
+            "variables": [
+              {
+                "name": "num12",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39248,
+                "end": 39276,
+                "slot": 23,
+                "block": 48,
+                "type_source": "int",
+                "statement_start": 39244,
+                "statement_end": 39277,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.save_.ints[3]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 49,
+            "kind": "implicit-after-statement",
+            "start": 39282,
+            "end": 39327,
+            "parent": 48,
+            "used": true,
+            "variables": [
+              {
+                "name": "num13",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39286,
+                "end": 39326,
+                "slot": 24,
+                "block": 49,
+                "type_source": "int",
+                "statement_start": 39282,
+                "statement_end": 39327,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 50,
+            "kind": "for",
+            "start": 39332,
+            "end": 39485,
+            "parent": 49,
+            "used": false,
+            "variables": [
+              {
+                "name": "k",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39341,
+                "end": 39346,
+                "slot": 25,
+                "block": 50,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 51,
+            "kind": "explicit",
+            "start": 39391,
+            "end": 39485,
+            "parent": 50,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 52,
+            "kind": "explicit",
+            "start": 39441,
+            "end": 39479,
+            "parent": 51,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 53,
+            "kind": "explicit",
+            "start": 39533,
+            "end": 39714,
+            "parent": 49,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 54,
+            "kind": "explicit",
+            "start": 39595,
+            "end": 39708,
+            "parent": 53,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 55,
+            "kind": "explicit",
+            "start": 39658,
+            "end": 39701,
+            "parent": 54,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 56,
+            "kind": "explicit",
+            "start": 39738,
+            "end": 39741,
+            "parent": 49,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 57,
+            "kind": "explicit",
+            "start": 39747,
+            "end": 39767,
+            "parent": 49,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 58,
+            "kind": "implicit-after-statement",
+            "start": 39772,
+            "end": 39851,
+            "parent": 49,
+            "used": true,
+            "variables": [
+              {
+                "name": "supervisorData2",
+                "type": "data.SupervisorData",
+                "kind": "declared",
+                "start": 39787,
+                "end": 39850,
+                "slot": 26,
+                "block": 58,
+                "type_source": "SupervisorData",
+                "statement_start": 39772,
+                "statement_end": 39851,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40082,
+                "initializer": "apdat_.svisorData_[udat_.selectSupervisorId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 59,
+            "kind": "for",
+            "start": 39856,
+            "end": 40077,
+            "parent": 58,
+            "used": false,
+            "variables": [
+              {
+                "name": "l",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39865,
+                "end": 39870,
+                "slot": 27,
+                "block": 59,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 60,
+            "kind": "explicit",
+            "start": 39915,
+            "end": 40077,
+            "parent": 59,
+            "used": true,
+            "variables": [
+              {
+                "name": "playerData",
+                "type": "data.PlayerData",
+                "kind": "declared",
+                "start": 39933,
+                "end": 39992,
+                "slot": 28,
+                "block": 60,
+                "type_source": "PlayerData",
+                "statement_start": 39922,
+                "statement_end": 39993,
+                "lexical_scope_start": 39915,
+                "lexical_scope_end": 40077,
+                "initializer": "(PlayerData)udat_.memberPDataist_.ElementAt(l)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 61,
+            "kind": "for",
+            "start": 39999,
+            "end": 40071,
+            "parent": 60,
+            "used": false,
+            "variables": [
+              {
+                "name": "m",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 40008,
+                "end": 40013,
+                "slot": 29,
+                "block": 61,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 62,
+            "kind": "explicit",
+            "start": 40063,
+            "end": 40071,
+            "parent": 61,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 34186,
+        "declaration_end": 40082,
+        "body_start": 34239,
+        "body_end": 40082
+      },
+      "after_prediction": {
+        "method_id": "form.GameForm::ProgressTime(System.Int32,System.Int32)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "data.SupervisorData",
+          "System.Int32",
+          "game.Tenant",
+          "data.TenantData",
+          "System.Int32",
+          "data.LeagueData",
+          "form.SubForm",
+          "data.QuestMatchData",
+          "form.SubForm",
+          "data.TeamData",
+          "System.Int32",
+          "game.TPlayer",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "System.Int32",
+          "data.SupervisorData",
+          "System.Int32",
+          "data.PlayerData",
+          "System.Int32"
+        ],
+        "variables": [
+          {
+            "name": "num",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34249,
+            "end": 34275,
+            "slot": 0,
+            "block": 0,
+            "type_source": "int",
+            "statement_start": 34245,
+            "statement_end": 34276,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[4]"
+          },
+          {
+            "name": "num2",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34285,
+            "end": 34312,
+            "slot": 1,
+            "block": 1,
+            "type_source": "int",
+            "statement_start": 34281,
+            "statement_end": 34313,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[1]"
+          },
+          {
+            "name": "num3",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34322,
+            "end": 34349,
+            "slot": 2,
+            "block": 2,
+            "type_source": "int",
+            "statement_start": 34318,
+            "statement_end": 34350,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[2]"
+          },
+          {
+            "name": "num4",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34359,
+            "end": 34386,
+            "slot": 3,
+            "block": 3,
+            "type_source": "int",
+            "statement_start": 34355,
+            "statement_end": 34387,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[3]"
+          },
+          {
+            "name": "num5",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34396,
+            "end": 34435,
+            "slot": 4,
+            "block": 4,
+            "type_source": "int",
+            "statement_start": 34392,
+            "statement_end": 34436,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+          },
+          {
+            "name": "i",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34450,
+            "end": 34455,
+            "slot": 5,
+            "block": 5,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "num6",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 34729,
+            "end": 34756,
+            "slot": 6,
+            "block": 8,
+            "type_source": "int",
+            "statement_start": 34725,
+            "statement_end": 34757,
+            "lexical_scope_start": 34718,
+            "lexical_scope_end": 34875,
+            "initializer": "apdat_.save_.ints[4]"
+          },
+          {
+            "name": "num7",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 36355,
+            "end": 36363,
+            "slot": 7,
+            "block": 16,
+            "type_source": "int",
+            "statement_start": 36351,
+            "statement_end": 36364,
+            "lexical_scope_start": 35447,
+            "lexical_scope_end": 36920,
+            "initializer": "0"
+          },
+          {
+            "name": "supervisorData",
+            "type": "data.SupervisorData",
+            "kind": "declared",
+            "start": 36385,
+            "end": 36447,
+            "slot": 8,
+            "block": 17,
+            "type_source": "SupervisorData",
+            "statement_start": 36370,
+            "statement_end": 36448,
+            "lexical_scope_start": 35447,
+            "lexical_scope_end": 36920,
+            "initializer": "apdat_.svisorData_[udat_.selectSupervisorId_]"
+          },
+          {
+            "name": "j",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 36557,
+            "end": 36562,
+            "slot": 9,
+            "block": 18,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tenant",
+            "type": "game.Tenant",
+            "kind": "declared",
+            "start": 36616,
+            "end": 36642,
+            "slot": 10,
+            "block": 19,
+            "type_source": "Tenant",
+            "statement_start": 36609,
+            "statement_end": 36643,
+            "lexical_scope_start": 36601,
+            "lexical_scope_end": 36914,
+            "initializer": "udat_.tenants_[j]"
+          },
+          {
+            "name": "tenantData",
+            "type": "data.TenantData",
+            "kind": "declared",
+            "start": 36771,
+            "end": 36824,
+            "slot": 11,
+            "block": 22,
+            "type_source": "TenantData",
+            "statement_start": 36760,
+            "statement_end": 36825,
+            "lexical_scope_start": 36601,
+            "lexical_scope_end": 36914,
+            "initializer": "apdat_.tenantData_[tenant.tenantDataId_]"
+          },
+          {
+            "name": "matchInfoJoin",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 36974,
+            "end": 37014,
+            "slot": 12,
+            "block": 23,
+            "type_source": "int",
+            "statement_start": 36970,
+            "statement_end": 37015,
+            "lexical_scope_start": 36963,
+            "lexical_scope_end": 39126,
+            "initializer": "udat_.GetMatchInfoJoin()"
+          },
+          {
+            "name": "leagueData",
+            "type": "data.LeagueData",
+            "kind": "declared",
+            "start": 37134,
+            "end": 37188,
+            "slot": 13,
+            "block": 25,
+            "type_source": "LeagueData",
+            "statement_start": 37123,
+            "statement_end": 37189,
+            "lexical_scope_start": 37114,
+            "lexical_scope_end": 37869,
+            "initializer": "apdat_.leagueData_[udat_.selectLeagueId_]"
+          },
+          {
+            "name": "form2",
+            "type": "form.SubForm",
+            "kind": "declared",
+            "start": 37728,
+            "end": 37751,
+            "slot": 14,
+            "block": 31,
+            "type_source": "SubForm",
+            "statement_start": 37720,
+            "statement_end": 37752,
+            "lexical_scope_start": 37254,
+            "lexical_scope_end": 37789,
+            "initializer": "new SubForm(78)"
+          },
+          {
+            "name": "questMatchData",
+            "type": "data.QuestMatchData",
+            "kind": "declared",
+            "start": 37925,
+            "end": 37975,
+            "slot": 15,
+            "block": 33,
+            "type_source": "QuestMatchData",
+            "statement_start": 37910,
+            "statement_end": 37976,
+            "lexical_scope_start": 37901,
+            "lexical_scope_end": 38538,
+            "initializer": "apdat_.qmData_[udat_.selectQmId_]"
+          },
+          {
+            "name": "form",
+            "type": "form.SubForm",
+            "kind": "declared",
+            "start": 38399,
+            "end": 38421,
+            "slot": 16,
+            "block": 38,
+            "type_source": "SubForm",
+            "statement_start": 38391,
+            "statement_end": 38422,
+            "lexical_scope_start": 38045,
+            "lexical_scope_end": 38458,
+            "initializer": "new SubForm(78)"
+          },
+          {
+            "name": "teamData",
+            "type": "data.TeamData",
+            "kind": "declared",
+            "start": 38634,
+            "end": 38661,
+            "slot": 17,
+            "block": 40,
+            "type_source": "TeamData",
+            "statement_start": 38625,
+            "statement_end": 38662,
+            "lexical_scope_start": 38617,
+            "lexical_scope_end": 38858,
+            "initializer": "apdat_.tData_[0]"
+          },
+          {
+            "name": "num8",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 38873,
+            "end": 38910,
+            "slot": 18,
+            "block": 42,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tenantIn",
+            "type": "game.TPlayer",
+            "kind": "declared",
+            "start": 38952,
+            "end": 39007,
+            "slot": 19,
+            "block": 43,
+            "type_source": "TPlayer",
+            "statement_start": 38944,
+            "statement_end": 39008,
+            "lexical_scope_start": 38936,
+            "lexical_scope_end": 39120,
+            "initializer": "(TPlayer)udat_.restTPlayers_.ElementAt(num8)"
+          },
+          {
+            "name": "num9",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39135,
+            "end": 39162,
+            "slot": 20,
+            "block": 45,
+            "type_source": "int",
+            "statement_start": 39131,
+            "statement_end": 39163,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[4]"
+          },
+          {
+            "name": "num10",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39172,
+            "end": 39200,
+            "slot": 21,
+            "block": 46,
+            "type_source": "int",
+            "statement_start": 39168,
+            "statement_end": 39201,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[1]"
+          },
+          {
+            "name": "num11",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39210,
+            "end": 39238,
+            "slot": 22,
+            "block": 47,
+            "type_source": "int",
+            "statement_start": 39206,
+            "statement_end": 39239,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[2]"
+          },
+          {
+            "name": "num12",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39248,
+            "end": 39276,
+            "slot": 23,
+            "block": 48,
+            "type_source": "int",
+            "statement_start": 39244,
+            "statement_end": 39277,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "apdat_.save_.ints[3]"
+          },
+          {
+            "name": "num13",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39286,
+            "end": 39326,
+            "slot": 24,
+            "block": 49,
+            "type_source": "int",
+            "statement_start": 39282,
+            "statement_end": 39327,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+          },
+          {
+            "name": "k",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39341,
+            "end": 39346,
+            "slot": 25,
+            "block": 50,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "supervisorData2",
+            "type": "data.SupervisorData",
+            "kind": "declared",
+            "start": 39734,
+            "end": 39749,
+            "slot": 26,
+            "block": 56,
+            "type_source": "SupervisorData",
+            "statement_start": 39719,
+            "statement_end": 39750,
+            "lexical_scope_start": 34239,
+            "lexical_scope_end": 40077,
+            "initializer": null
+          },
+          {
+            "name": "l",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39855,
+            "end": 39860,
+            "slot": 27,
+            "block": 58,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "playerData",
+            "type": "data.PlayerData",
+            "kind": "declared",
+            "start": 39923,
+            "end": 39982,
+            "slot": 28,
+            "block": 59,
+            "type_source": "PlayerData",
+            "statement_start": 39912,
+            "statement_end": 39983,
+            "lexical_scope_start": 39905,
+            "lexical_scope_end": 40067,
+            "initializer": "(PlayerData)udat_.memberPDataist_.ElementAt(l)"
+          },
+          {
+            "name": "m",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 39998,
+            "end": 40003,
+            "slot": 29,
+            "block": 60,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 34239,
+            "end": 40077,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "num",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34249,
+                "end": 34275,
+                "slot": 0,
+                "block": 0,
+                "type_source": "int",
+                "statement_start": 34245,
+                "statement_end": 34276,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[4]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 34281,
+            "end": 34313,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "num2",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34285,
+                "end": 34312,
+                "slot": 1,
+                "block": 1,
+                "type_source": "int",
+                "statement_start": 34281,
+                "statement_end": 34313,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[1]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "implicit-after-statement",
+            "start": 34318,
+            "end": 34350,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "num3",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34322,
+                "end": 34349,
+                "slot": 2,
+                "block": 2,
+                "type_source": "int",
+                "statement_start": 34318,
+                "statement_end": 34350,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[2]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "implicit-after-statement",
+            "start": 34355,
+            "end": 34387,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "num4",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34359,
+                "end": 34386,
+                "slot": 3,
+                "block": 3,
+                "type_source": "int",
+                "statement_start": 34355,
+                "statement_end": 34387,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[3]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "implicit-after-statement",
+            "start": 34392,
+            "end": 34436,
+            "parent": 3,
+            "used": true,
+            "variables": [
+              {
+                "name": "num5",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34396,
+                "end": 34435,
+                "slot": 4,
+                "block": 4,
+                "type_source": "int",
+                "statement_start": 34392,
+                "statement_end": 34436,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "for",
+            "start": 34441,
+            "end": 34592,
+            "parent": 4,
+            "used": false,
+            "variables": [
+              {
+                "name": "i",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34450,
+                "end": 34455,
+                "slot": 5,
+                "block": 5,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 34500,
+            "end": 34592,
+            "parent": 5,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 34549,
+            "end": 34586,
+            "parent": 6,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 34718,
+            "end": 34875,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "num6",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 34729,
+                "end": 34756,
+                "slot": 6,
+                "block": 8,
+                "type_source": "int",
+                "statement_start": 34725,
+                "statement_end": 34757,
+                "lexical_scope_start": 34718,
+                "lexical_scope_end": 34875,
+                "initializer": "apdat_.save_.ints[4]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 34922,
+            "end": 35224,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 35030,
+            "end": 35218,
+            "parent": 9,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "explicit",
+            "start": 35138,
+            "end": 35211,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 35267,
+            "end": 35404,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "explicit",
+            "start": 35447,
+            "end": 36920,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "explicit",
+            "start": 35570,
+            "end": 36011,
+            "parent": 13,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 15,
+            "kind": "explicit",
+            "start": 36082,
+            "end": 36280,
+            "parent": 13,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 16,
+            "kind": "implicit-after-statement",
+            "start": 36351,
+            "end": 36364,
+            "parent": 13,
+            "used": true,
+            "variables": [
+              {
+                "name": "num7",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 36355,
+                "end": 36363,
+                "slot": 7,
+                "block": 16,
+                "type_source": "int",
+                "statement_start": 36351,
+                "statement_end": 36364,
+                "lexical_scope_start": 35447,
+                "lexical_scope_end": 36920,
+                "initializer": "0"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 17,
+            "kind": "implicit-after-statement",
+            "start": 36370,
+            "end": 36448,
+            "parent": 16,
+            "used": true,
+            "variables": [
+              {
+                "name": "supervisorData",
+                "type": "data.SupervisorData",
+                "kind": "declared",
+                "start": 36385,
+                "end": 36447,
+                "slot": 8,
+                "block": 17,
+                "type_source": "SupervisorData",
+                "statement_start": 36370,
+                "statement_end": 36448,
+                "lexical_scope_start": 35447,
+                "lexical_scope_end": 36920,
+                "initializer": "apdat_.svisorData_[udat_.selectSupervisorId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 18,
+            "kind": "for",
+            "start": 36548,
+            "end": 36914,
+            "parent": 17,
+            "used": false,
+            "variables": [
+              {
+                "name": "j",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 36557,
+                "end": 36562,
+                "slot": 9,
+                "block": 18,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 19,
+            "kind": "explicit",
+            "start": 36601,
+            "end": 36914,
+            "parent": 18,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenant",
+                "type": "game.Tenant",
+                "kind": "declared",
+                "start": 36616,
+                "end": 36642,
+                "slot": 10,
+                "block": 19,
+                "type_source": "Tenant",
+                "statement_start": 36609,
+                "statement_end": 36643,
+                "lexical_scope_start": 36601,
+                "lexical_scope_end": 36914,
+                "initializer": "udat_.tenants_[j]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 20,
+            "kind": "explicit",
+            "start": 36700,
+            "end": 36713,
+            "parent": 19,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 21,
+            "kind": "explicit",
+            "start": 36746,
+            "end": 36759,
+            "parent": 19,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 22,
+            "kind": "implicit-after-statement",
+            "start": 36760,
+            "end": 36825,
+            "parent": 19,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenantData",
+                "type": "data.TenantData",
+                "kind": "declared",
+                "start": 36771,
+                "end": 36824,
+                "slot": 11,
+                "block": 22,
+                "type_source": "TenantData",
+                "statement_start": 36760,
+                "statement_end": 36825,
+                "lexical_scope_start": 36601,
+                "lexical_scope_end": 36914,
+                "initializer": "apdat_.tenantData_[tenant.tenantDataId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 23,
+            "kind": "explicit",
+            "start": 36963,
+            "end": 39126,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "matchInfoJoin",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 36974,
+                "end": 37014,
+                "slot": 12,
+                "block": 23,
+                "type_source": "int",
+                "statement_start": 36970,
+                "statement_end": 37015,
+                "lexical_scope_start": 36963,
+                "lexical_scope_end": 39126,
+                "initializer": "udat_.GetMatchInfoJoin()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 24,
+            "kind": "explicit",
+            "start": 37050,
+            "end": 38545,
+            "parent": 23,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 25,
+            "kind": "explicit",
+            "start": 37114,
+            "end": 37869,
+            "parent": 24,
+            "used": true,
+            "variables": [
+              {
+                "name": "leagueData",
+                "type": "data.LeagueData",
+                "kind": "declared",
+                "start": 37134,
+                "end": 37188,
+                "slot": 13,
+                "block": 25,
+                "type_source": "LeagueData",
+                "statement_start": 37123,
+                "statement_end": 37189,
+                "lexical_scope_start": 37114,
+                "lexical_scope_end": 37869,
+                "initializer": "apdat_.leagueData_[udat_.selectLeagueId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 26,
+            "kind": "explicit",
+            "start": 37254,
+            "end": 37789,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 27,
+            "kind": "explicit",
+            "start": 37334,
+            "end": 37389,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 28,
+            "kind": "explicit",
+            "start": 37439,
+            "end": 37494,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 29,
+            "kind": "explicit",
+            "start": 37546,
+            "end": 37601,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 30,
+            "kind": "explicit",
+            "start": 37623,
+            "end": 37711,
+            "parent": 26,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 31,
+            "kind": "implicit-after-statement",
+            "start": 37720,
+            "end": 37752,
+            "parent": 26,
+            "used": true,
+            "variables": [
+              {
+                "name": "form2",
+                "type": "form.SubForm",
+                "kind": "declared",
+                "start": 37728,
+                "end": 37751,
+                "slot": 14,
+                "block": 31,
+                "type_source": "SubForm",
+                "statement_start": 37720,
+                "statement_end": 37752,
+                "lexical_scope_start": 37254,
+                "lexical_scope_end": 37789,
+                "initializer": "new SubForm(78)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 32,
+            "kind": "explicit",
+            "start": 37809,
+            "end": 37859,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 33,
+            "kind": "explicit",
+            "start": 37901,
+            "end": 38538,
+            "parent": 24,
+            "used": true,
+            "variables": [
+              {
+                "name": "questMatchData",
+                "type": "data.QuestMatchData",
+                "kind": "declared",
+                "start": 37925,
+                "end": 37975,
+                "slot": 15,
+                "block": 33,
+                "type_source": "QuestMatchData",
+                "statement_start": 37910,
+                "statement_end": 37976,
+                "lexical_scope_start": 37901,
+                "lexical_scope_end": 38538,
+                "initializer": "apdat_.qmData_[udat_.selectQmId_]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 34,
+            "kind": "explicit",
+            "start": 38045,
+            "end": 38458,
+            "parent": 33,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 35,
+            "kind": "explicit",
+            "start": 38125,
+            "end": 38180,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 36,
+            "kind": "explicit",
+            "start": 38234,
+            "end": 38289,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 37,
+            "kind": "explicit",
+            "start": 38311,
+            "end": 38382,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 38,
+            "kind": "implicit-after-statement",
+            "start": 38391,
+            "end": 38422,
+            "parent": 34,
+            "used": true,
+            "variables": [
+              {
+                "name": "form",
+                "type": "form.SubForm",
+                "kind": "declared",
+                "start": 38399,
+                "end": 38421,
+                "slot": 16,
+                "block": 38,
+                "type_source": "SubForm",
+                "statement_start": 38391,
+                "statement_end": 38422,
+                "lexical_scope_start": 38045,
+                "lexical_scope_end": 38458,
+                "initializer": "new SubForm(78)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 39,
+            "kind": "explicit",
+            "start": 38478,
+            "end": 38528,
+            "parent": 33,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 40,
+            "kind": "explicit",
+            "start": 38617,
+            "end": 38858,
+            "parent": 23,
+            "used": true,
+            "variables": [
+              {
+                "name": "teamData",
+                "type": "data.TeamData",
+                "kind": "declared",
+                "start": 38634,
+                "end": 38661,
+                "slot": 17,
+                "block": 40,
+                "type_source": "TeamData",
+                "statement_start": 38625,
+                "statement_end": 38662,
+                "lexical_scope_start": 38617,
+                "lexical_scope_end": 38858,
+                "initializer": "apdat_.tData_[0]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 41,
+            "kind": "explicit",
+            "start": 38711,
+            "end": 38762,
+            "parent": 40,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 42,
+            "kind": "for",
+            "start": 38864,
+            "end": 39120,
+            "parent": 23,
+            "used": false,
+            "variables": [
+              {
+                "name": "num8",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 38873,
+                "end": 38910,
+                "slot": 18,
+                "block": 42,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 43,
+            "kind": "explicit",
+            "start": 38936,
+            "end": 39120,
+            "parent": 42,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenantIn",
+                "type": "game.TPlayer",
+                "kind": "declared",
+                "start": 38952,
+                "end": 39007,
+                "slot": 19,
+                "block": 43,
+                "type_source": "TPlayer",
+                "statement_start": 38944,
+                "statement_end": 39008,
+                "lexical_scope_start": 38936,
+                "lexical_scope_end": 39120,
+                "initializer": "(TPlayer)udat_.restTPlayers_.ElementAt(num8)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 44,
+            "kind": "explicit",
+            "start": 39054,
+            "end": 39113,
+            "parent": 43,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 45,
+            "kind": "implicit-after-statement",
+            "start": 39131,
+            "end": 39163,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "num9",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39135,
+                "end": 39162,
+                "slot": 20,
+                "block": 45,
+                "type_source": "int",
+                "statement_start": 39131,
+                "statement_end": 39163,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[4]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 46,
+            "kind": "implicit-after-statement",
+            "start": 39168,
+            "end": 39201,
+            "parent": 45,
+            "used": true,
+            "variables": [
+              {
+                "name": "num10",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39172,
+                "end": 39200,
+                "slot": 21,
+                "block": 46,
+                "type_source": "int",
+                "statement_start": 39168,
+                "statement_end": 39201,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[1]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 47,
+            "kind": "implicit-after-statement",
+            "start": 39206,
+            "end": 39239,
+            "parent": 46,
+            "used": true,
+            "variables": [
+              {
+                "name": "num11",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39210,
+                "end": 39238,
+                "slot": 22,
+                "block": 47,
+                "type_source": "int",
+                "statement_start": 39206,
+                "statement_end": 39239,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[2]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 48,
+            "kind": "implicit-after-statement",
+            "start": 39244,
+            "end": 39277,
+            "parent": 47,
+            "used": true,
+            "variables": [
+              {
+                "name": "num12",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39248,
+                "end": 39276,
+                "slot": 23,
+                "block": 48,
+                "type_source": "int",
+                "statement_start": 39244,
+                "statement_end": 39277,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "apdat_.save_.ints[3]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 49,
+            "kind": "implicit-after-statement",
+            "start": 39282,
+            "end": 39327,
+            "parent": 48,
+            "used": true,
+            "variables": [
+              {
+                "name": "num13",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39286,
+                "end": 39326,
+                "slot": 24,
+                "block": 49,
+                "type_source": "int",
+                "statement_start": 39282,
+                "statement_end": 39327,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": "TRAINING_PARAMUP_TIME.Length - 1"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 50,
+            "kind": "for",
+            "start": 39332,
+            "end": 39485,
+            "parent": 49,
+            "used": false,
+            "variables": [
+              {
+                "name": "k",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39341,
+                "end": 39346,
+                "slot": 25,
+                "block": 50,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 51,
+            "kind": "explicit",
+            "start": 39391,
+            "end": 39485,
+            "parent": 50,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 52,
+            "kind": "explicit",
+            "start": 39441,
+            "end": 39479,
+            "parent": 51,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 53,
+            "kind": "explicit",
+            "start": 39533,
+            "end": 39714,
+            "parent": 49,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 54,
+            "kind": "explicit",
+            "start": 39595,
+            "end": 39708,
+            "parent": 53,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 55,
+            "kind": "explicit",
+            "start": 39658,
+            "end": 39701,
+            "parent": 54,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 56,
+            "kind": "implicit-after-statement",
+            "start": 39719,
+            "end": 39750,
+            "parent": 49,
+            "used": true,
+            "variables": [
+              {
+                "name": "supervisorData2",
+                "type": "data.SupervisorData",
+                "kind": "declared",
+                "start": 39734,
+                "end": 39749,
+                "slot": 26,
+                "block": 56,
+                "type_source": "SupervisorData",
+                "statement_start": 39719,
+                "statement_end": 39750,
+                "lexical_scope_start": 34239,
+                "lexical_scope_end": 40077,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 57,
+            "kind": "explicit",
+            "start": 39771,
+            "end": 40074,
+            "parent": 56,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 58,
+            "kind": "for",
+            "start": 39846,
+            "end": 40067,
+            "parent": 57,
+            "used": false,
+            "variables": [
+              {
+                "name": "l",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39855,
+                "end": 39860,
+                "slot": 27,
+                "block": 58,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 59,
+            "kind": "explicit",
+            "start": 39905,
+            "end": 40067,
+            "parent": 58,
+            "used": true,
+            "variables": [
+              {
+                "name": "playerData",
+                "type": "data.PlayerData",
+                "kind": "declared",
+                "start": 39923,
+                "end": 39982,
+                "slot": 28,
+                "block": 59,
+                "type_source": "PlayerData",
+                "statement_start": 39912,
+                "statement_end": 39983,
+                "lexical_scope_start": 39905,
+                "lexical_scope_end": 40067,
+                "initializer": "(PlayerData)udat_.memberPDataist_.ElementAt(l)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 60,
+            "kind": "for",
+            "start": 39989,
+            "end": 40061,
+            "parent": 59,
+            "used": false,
+            "variables": [
+              {
+                "name": "m",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 39998,
+                "end": 40003,
+                "slot": 29,
+                "block": 60,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 61,
+            "kind": "explicit",
+            "start": 40053,
+            "end": 40061,
+            "parent": 60,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 34186,
+        "declaration_end": 40077,
+        "body_start": 34239,
+        "body_end": 40077
+      },
+      "original_types": [
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.SupervisorData",
+        "System.Int32",
+        "game.Tenant",
+        "data.TenantData",
+        "System.Int32",
+        "data.LeagueData",
+        "form.SubForm",
+        "data.QuestMatchData",
+        "form.SubForm",
+        "data.TeamData",
+        "System.Int32",
+        "game.TPlayer",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "System.Int32",
+        "data.SupervisorData",
+        "System.Int32",
+        "data.PlayerData",
+        "System.Int32"
+      ],
+      "complete": true,
+      "types_equal": true,
+      "eligible_under_user_model_policy": true,
+      "lexical_evidence": {
+        "guard_source_span": [
+          5533,
+          5581
+        ],
+        "guard_source_span_utf16": [
+          5533,
+          5581
+        ],
+        "lexical_offsets": "Python-codepoint offsets relative to method declaration; explicit *_utf16 fields use UTF16",
+        "condition_preserved": "num5 != num13",
+        "root_declarations": [
+          {
+            "type": "SupervisorData",
+            "name": "supervisorData2",
+            "initializer": "apdat_.svisorData_[udat_.selectSupervisorId_]",
+            "start": 5586,
+            "end": 5665
+          }
+        ],
+        "nested_declarations_moved": false,
+        "initializer_order_preserved": true,
+        "model_proof": "UNKNOWN",
+        "body_oracle": "UNKNOWN"
+      },
+      "body_oracle": "UNKNOWN",
+      "original_il_bytes": 2349,
+      "game_compilations": 0
+    }
+  ],
+  "potential_methods": 2,
+  "potential_original_IL_bytes": 2949,
+  "novelty": "Joint bare declarations retained in root plus positive tail control; isolated declaration-hoist/control candidates previously failed."
+}

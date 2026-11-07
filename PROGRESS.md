@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,035 de 5,245 métodos matched (96.00%).** 871,497 bytes de IL nos assemblies alvo.
-597,321 bytes IL matched (68.54%).
+**5,037 de 5,245 métodos matched (96.03%).** 871,497 bytes de IL nos assemblies alvo.
+600,270 bytes IL matched (68.88%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3144 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 209 |
+| decompiled | 207 |
 | equivalent | 0 |
-| matched | 5035 |
+| matched | 5037 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1817 / 92.80% | 375327 / 62.39% |
+| `Assembly-CSharp` | 1958 | 601603 | 1819 / 92.90% | 378276 / 62.88% |
 | `KairoLibrary` | 3287 | 269894 | 3218 / 97.90% | 221994 / 82.25% |
 
 ## Namespaces
@@ -37,7 +37,7 @@ KairoLibrary: 3144 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 252 / 98.82% | 23108 / 87.69% |
-| `form` | 371 | 250649 | 335 / 90.30% | 158566 / 63.26% |
+| `form` | 371 | 250649 | 336 / 90.57% | 160915 / 64.20% |
 | `game` | 441 | 202949 | 388 / 87.98% | 115789 / 57.05% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
@@ -73,7 +73,7 @@ KairoLibrary: 3144 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
 | `surface` | 122 | 26518 | 109 / 89.34% | 16686 / 62.92% |
-| `system` | 20 | 1636 | 19 / 95.00% | 1036 / 63.33% |
+| `system` | 20 | 1636 | 20 / 100.00% | 1636 / 100.00% |
 | `system.billing` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
 | `system.billing.ui` | 153 | 13782 | 148 / 96.73% | 11788 / 85.53% |
 | `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
@@ -117,7 +117,7 @@ KairoLibrary: 3144 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::form.BootForm` | 21 | 7712 | 18 / 85.71% | 3707 / 48.07% |
 | `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 21 / 100.00% | 45497 / 100.00% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
-| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 46 / 90.20% | 9978 / 60.57% |
+| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 47 / 92.16% | 12327 / 74.83% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 46 / 95.83% | 2178 / 55.76% |
 | `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
 | `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 53 / 85.48% | 19932 / 59.25% |
@@ -159,7 +159,7 @@ KairoLibrary: 3144 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 8 / 100.00% | 1729 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffect` | 5 | 821 | 4 / 80.00% | 472 / 57.49% |
 | `Assembly-CSharp::surface.TouchEffectManager` | 14 | 704 | 14 / 100.00% | 704 / 100.00% |
-| `Assembly-CSharp::system.KairoService` | 15 | 1353 | 14 / 93.33% | 753 / 55.65% |
+| `Assembly-CSharp::system.KairoService` | 15 | 1353 | 15 / 100.00% | 1353 / 100.00% |
 | `Assembly-CSharp::system.KairoText` | 5 | 283 | 5 / 100.00% | 283 / 100.00% |
 | `Assembly-CSharp::system.billing.MyBilling` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
 | `Assembly-CSharp::system.billing.ui.ApplyTask` | 12 | 1507 | 12 / 100.00% | 1507 / 100.00% |
@@ -517,7 +517,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::game.TBall` | 1 | `Assembly-CSharp::game.TBall::Update_training()->System.Void` |
 | `Assembly-CSharp::game.Tenant` | 1 | `Assembly-CSharp::game.Tenant::Draw(kairo.unity.ui.Graphics)->System.Void` |
 | `Assembly-CSharp::surface.TouchEffect` | 1 | `Assembly-CSharp::surface.TouchEffect::Draw(kairo.unity.ui.Graphics)->System.Void` |
-| `Assembly-CSharp::system.KairoService` | 1 | `Assembly-CSharp::system.KairoService::OnStart()->System.Void` |
+| `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
 
 ## Bloqueios
 

@@ -1,0 +1,51 @@
+{
+  "operation": "smcs-root-declaration-plus-positive-tail-composition-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "0fe0c7e09a9ce38dd4c49f8d9856e7b168fbb19909b1160eaa12ddcf5a63894c",
+  "driver_sha256": "85da90bd47c963a19e2a987aa595800ce08a684dfa83a7b6aca465e690b480c5",
+  "game_compilations": 0,
+  "toy_compilations": 6,
+  "positive_full_bodies": 3,
+  "negative_controls": 7,
+  "fixtures": [
+    {
+      "case": "protected-tail",
+      "before": "public void Run(bool guard,int n){Count++;if(guard){}else{return;}LineupForm lineupForm=new LineupForm(Count++);while(n>0){try{Count+=lineupForm.Value;}catch(Exception){Count--;}n--;}}",
+      "after": "public void Run(bool guard,int n){Count++;LineupForm lineupForm;\nif (guard) {lineupForm = new LineupForm(Count++);while(n>0){try{Count+=lineupForm.Value;}catch(Exception){Count--;}n--;}\n}\n}",
+      "expected_manual": "public void Run(bool guard,int n){LineupForm lineupForm;Count++;if(guard){lineupForm=new LineupForm(Count++);while(n>0){try{Count+=lineupForm.Value;}catch(Exception){Count--;}n--;}}}",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "initializer_evaluation_remains_after_condition": true
+    },
+    {
+      "case": "nested-for-locals",
+      "before": "public void Run(int first,int last,int n){Count+=3;if(first!=last){}else{return;}SupervisorData supervisorData2=new SupervisorData(Count++);for(int l=0;l<n;l++){PlayerData playerData=new PlayerData(l);for(int m=0;m<playerData.Value;m++){Count+=supervisorData2.Value;}}}",
+      "after": "public void Run(int first,int last,int n){Count+=3;SupervisorData supervisorData2;\nif (first!=last) {supervisorData2 = new SupervisorData(Count++);for(int l=0;l<n;l++){PlayerData playerData=new PlayerData(l);for(int m=0;m<playerData.Value;m++){Count+=supervisorData2.Value;}}\n}\n}",
+      "expected_manual": "public void Run(int first,int last,int n){SupervisorData supervisorData2;Count+=3;if(first!=last){supervisorData2=new SupervisorData(Count++);for(int l=0;l<n;l++){PlayerData playerData=new PlayerData(l);for(int m=0;m<playerData.Value;m++){Count+=supervisorData2.Value;}}}}",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "initializer_evaluation_remains_after_condition": true
+    },
+    {
+      "case": "two-root-declarations",
+      "before": "public void Run(bool guard){if(guard){}else{return;}LineupForm first=new LineupForm(Count++);SupervisorData second=new SupervisorData(Count++);Count+=first.Value+second.Value;}",
+      "after": "public void Run(bool guard){LineupForm first;\nSupervisorData second;\nif (guard) {first = new LineupForm(Count++);second = new SupervisorData(Count++);Count+=first.Value+second.Value;\n}\n}",
+      "expected_manual": "public void Run(bool guard){LineupForm first;SupervisorData second;if(guard){first=new LineupForm(Count++);second=new SupervisorData(Count++);Count+=first.Value+second.Value;}}",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "initializer_evaluation_remains_after_condition": true
+    }
+  ],
+  "negatives": [
+    "var",
+    "condition-uses-local",
+    "capture",
+    "nonvoid",
+    "tail-transfer",
+    "missing-else-return",
+    "nonleading-root-declaration"
+  ],
+  "child_loop_variables_not_hoisted": true,
+  "no_compiler_generated_class_authored": true,
+  "limitations": "Explicit root declarations at leading tail only; no captures or unsupported transfers."
+}

@@ -141,10 +141,9 @@ break;				}
 				lineup_.Start();
 			}
 			MyLineup instance2 = MyLineup.GetInstance();
-			if (instance2.CheckShowableLineup()) { } else {
-				return;
-			}
-			LineupForm lineupForm = new LineupForm(0);
+			LineupForm lineupForm;
+if (instance2.CheckShowableLineup()) {
+			lineupForm = new LineupForm(0);
 			instance.Push(lineupForm);
 			while (lineupForm.CheckUsable())
 			{
@@ -163,7 +162,9 @@ break;				}
 			catch (Exception)
 			{
 			}
-		}
+
+}
+}
 
 		protected override void Connected(string cgi, byte[] send, bool split)
 		{
