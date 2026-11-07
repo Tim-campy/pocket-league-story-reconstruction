@@ -14,7 +14,7 @@ namespace cfg
 
 		public new static bool PRINT = ((!(DEBUG)) ? false : true);
 
-		public new static bool USE_UNUSE_CHECK = DEBUG && !PTW;
+		public new static bool USE_UNUSE_CHECK = (!DEBUG) ? false : !PTW;
 
 		public new static int LANGUAGE = 1;
 
@@ -44,13 +44,13 @@ namespace cfg
 
 		public new static bool ADMOB_ENABLE = false;
 
-		public new static bool DEBUG_CMD = (DEBUG ? true : false);
+		public new static bool DEBUG_CMD = (!DEBUG) ? false : true;
 
-		public new static bool SHOW_DEBUG = DEBUG && !PTW;
+		public new static bool SHOW_DEBUG = (!DEBUG) ? false : !PTW;
 
-		public new static bool SHOW_FPS = DEBUG && !PTW;
+		public new static bool SHOW_FPS = (!DEBUG) ? false : !PTW;
 
-		public new static bool SHOW_MEM = DEBUG && false;
+		public new static bool SHOW_MEM = (!DEBUG) ? false : false;
 
 		public new static bool UNITY_EDITOR = false;
 

@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,099 de 5,245 métodos matched (97.22%).** 871,497 bytes de IL nos assemblies alvo.
-718,111 bytes IL matched (82.40%).
+**5,100 de 5,245 métodos matched (97.24%).** 871,497 bytes de IL nos assemblies alvo.
+718,452 bytes IL matched (82.44%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3170 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 145 |
+| decompiled | 144 |
 | equivalent | 0 |
-| matched | 5099 |
+| matched | 5100 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1855 / 94.74% | 466834 / 77.60% |
+| `Assembly-CSharp` | 1958 | 601603 | 1856 / 94.79% | 467175 / 77.66% |
 | `KairoLibrary` | 3287 | 269894 | 3244 / 98.69% | 251277 / 93.10% |
 
 ## Namespaces
@@ -35,7 +35,7 @@ KairoLibrary: 3170 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `BuildInfos` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `UnityEngine.Purchasing` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
-| `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
+| `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 252 / 98.82% | 23108 / 87.69% |
 | `form` | 371 | 250649 | 342 / 92.18% | 191656 / 76.46% |
 | `game` | 441 | 202949 | 401 / 90.93% | 143121 / 70.52% |
@@ -96,7 +96,7 @@ KairoLibrary: 3170 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::TJPlacement` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::UnityEngine.Purchasing.Product` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::analytics.AnalyticsTracker` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
-| `Assembly-CSharp::cfg.MyConfig` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
+| `Assembly-CSharp::cfg.MyConfig` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `Assembly-CSharp::data.BaseData` | 2 | 22 | 2 / 100.00% | 22 / 100.00% |
 | `Assembly-CSharp::data.EventData` | 7 | 342 | 7 / 100.00% | 342 / 100.00% |
 | `Assembly-CSharp::data.FanActData` | 23 | 2141 | 23 / 100.00% | 2141 / 100.00% |
@@ -508,7 +508,6 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 
 | Tipo | Pendentes | Primeiro método |
 |---|---:|---|
-| `Assembly-CSharp::cfg.MyConfig` | 1 | `Assembly-CSharp::cfg.MyConfig::.cctor()->System.Void` |
 | `Assembly-CSharp::data.FanBonusData` | 1 | `Assembly-CSharp::data.FanBonusData::ChBonusEvent()->System.Void` |
 | `Assembly-CSharp::data.TeamData` | 1 | `Assembly-CSharp::data.TeamData::SetScoreRanking(data.LeagueData,java.util.Vector,java.util.Vector)->System.Void` |
 | `Assembly-CSharp::data.TenantData` | 1 | `Assembly-CSharp::data.TenantData::StrengthTenant()->System.Void` |
@@ -518,6 +517,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
 | `Assembly-CSharp::system.billing.util.Json` | 1 | `Assembly-CSharp::system.billing.util.Json::MakeJson(System.String[])->System.String` |
 | `Assembly-CSharp::system.form.BillingForm` | 1 | `Assembly-CSharp::system.form.BillingForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
+| `Assembly-CSharp::system.form.LineupForm` | 1 | `Assembly-CSharp::system.form.LineupForm::SetTouchValue(System.Int32,System.Int32)->System.Void` |
 
 ## Bloqueios
 

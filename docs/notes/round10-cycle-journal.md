@@ -10,3 +10,4 @@
 | 6 | KairoLibrary / brfalse.s => brtrue.s | Separar a guarda invalidTouch e manter corpo positivo com escopos e stores originais em Canvas.OnInputUpdate | Novos corpos aprovados; 13 tentativas da regra, 3 avancos | 2 | 600 |
 | 7 | Assembly-CSharp / bne.un => beq | Restaurar por composicao os ramos vazios terminais, OR separado e cauda positiva nos seletores Int32 | Novos corpos aprovados; 6 tentativas da regra, 6 avancos | 6 | 3458 |
 | 8 | KairoLibrary / brtrue.s => ldc.i4.4 | Separar licenca zero e restaurar switch denso com bucket default nas entradas um a tres | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 1054 |
+| 9 | Assembly-CSharp / brtrue => ldc.i4.0 | Restaurar os cinco inicializadores Boolean como ternarios orientados pelo IL, inclusive DEBUG com dois ramos false | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 341 |
