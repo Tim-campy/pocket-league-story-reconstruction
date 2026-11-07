@@ -75,7 +75,7 @@ namespace kairo.unity.ui
 						int num6 = pictograph.Y;
 						if (1 < pictographParam_.Length && pictographParam_[1].Length > 0)
 						{
-							num3 = ((!(pictographParam_[1] == "∞")) ? int.Parse(pictographParam_[1]) : (-1));
+							if (pictographParam_[1] == "∞") { num3 = -1; } else { num3 = int.Parse(pictographParam_[1]); }
 						}
 						if (2 < pictographParam_.Length && pictographParam_[2].Length > 0)
 						{
@@ -164,6 +164,7 @@ namespace kairo.unity.ui
 						}
 						return result;
 					}
+					{
 					int num11 = len;
 					if (num11 > text_.Length())
 					{
@@ -187,6 +188,7 @@ namespace kairo.unity.ui
 						font_.Draw(g, text_.Substring(0, len), x + num, y + num2);
 					}
 					return num11;
+					}
 				}
 				finally
 				{
@@ -763,10 +765,7 @@ recoveredSwitchExit_11784: ; }
 					}
 					num4 += (float)height;
 				}
-				if ((num2 == 32)) { num4 = ((height_ != -1f) ? ((height_ - num4) / 2f) : ((-(num4)) / 2f));
-					 } else if ((num2 == 64)) { num4 = ((height_ != -1f) ? (height_ - num4) : (0f - num4));
-					 } else { num4 = 0f;
-					 }
+				if (num2 == 32) { if (height_ == -1f) { num4 = -num4 / 2f; } else { num4 = (height_ - num4) / 2f; } } else if (num2 == 64) { if (height_ == -1f) { num4 = -num4; } else { num4 = height_ - num4; } } else { num4 = 0f; }
 				if (height_ != -1f && num4 < 0f)
 				{
 					num4 = 0f;

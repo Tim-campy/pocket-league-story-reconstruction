@@ -1539,8 +1539,8 @@ int num14 = indicies[recoveredIndexB];
 			{
 				if (image.optimizePass_ != 0)
 				{
-					float num17 = width / swidth;
-					float num18 = height / sheight;
+					float num17 = (float)width / swidth;
+					float num18 = (float)height / sheight;
 					if (image.optimizeSeb_ == null)
 					{
 						int num19 = sx / image.optimizeBlockWidth_;
@@ -1622,6 +1622,7 @@ int num14 = indicies[recoveredIndexB];
 						}
 						return;
 					}
+					{
 					int num25 = -1;
 					int num26 = image.optimizeSeb_.Length / 4;
 					for (int j = 0; j < num26; j++)
@@ -1642,16 +1643,13 @@ int num14 = indicies[recoveredIndexB];
 							break;
 						}
 					}
-					if (num25 == -1)
-					{
-						return;
-					}
+					if (num25 != -1) {
 					image.GetOptimizeSeb(num25);
 					for (int k = 0; k < image.optimizePass_; k++)
 					{
 						int num28 = num25 * image.optimizePass_ + k;
 						int[] array = null;
-						array = ((image.optimizeAccess_ == null) ? image.GetOptimize(image.optimizeAccessL_[num28]) : image.GetOptimize(image.optimizeAccess_[num28]));
+						if (image.optimizeAccess_ == null) { array = image.GetOptimize(image.optimizeAccessL_[num28]); } else { array = image.GetOptimize(image.optimizeAccess_[num28]); }
 						if (array == null)
 						{
 							continue;
@@ -1719,6 +1717,8 @@ int num14 = indicies[recoveredIndexB];
 							}
 						}
 						image3.checkCount_ = Config.checkCount_;
+					}
+					}
 					}
 				}
 				else
