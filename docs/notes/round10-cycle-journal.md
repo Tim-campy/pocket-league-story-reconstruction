@@ -31,3 +31,4 @@
 | 27 | KairoLibrary / stloc.0 => stloc.2 | Restaurar escopo tardio da cauda e alias em pilha nas duas comparacoes, mantendo os locais nomeados originais. | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 770 |
 | 28 | KairoLibrary / INSERTION_POINT => brtrue.s | Recuperar Boolean compartilhado do cache de localizacao entre os bracos de lock e unlock, sem promover modelos incompletos. | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 737 |
 | 29 | KairoLibrary / ldarg.0 => DELETION_POINT | Restaurar primeira guarda com break no corpo dos lacos, preservando proprietario do incremento e escopos. | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 614 |
+| 30 | KairoLibrary / stloc.3 => stloc.s | Restaurar escopo filho da cauda MaterialManager para a alocacao original de locais e liberacao. | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 416 |

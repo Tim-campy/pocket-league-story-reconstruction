@@ -212,7 +212,8 @@ namespace kairo.unity.graphics
 					list.Add(key);
 					continue;
 				}
-				Dictionary<string, Material> dictionary = materlas_[key];
+				{
+Dictionary<string, Material> dictionary = materlas_[key];
 				string text = null;
 				foreach (KeyValuePair<string, Material> item2 in dictionary)
 				{
@@ -236,15 +237,16 @@ namespace kairo.unity.graphics
 				{
 					dictionary.Remove(text);
 				}
-			}
-			if (list == null)
-			{
-				return;
-			}
+
+}
+}
+			if (list != null) {
+
 			foreach (Image item3 in list)
 			{
 				materlas_.Remove(item3);
 			}
+}
 		}
 
 		public void Clear()
