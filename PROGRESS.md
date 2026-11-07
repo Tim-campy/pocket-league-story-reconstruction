@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,071 de 5,245 métodos matched (96.68%).** 871,497 bytes de IL nos assemblies alvo.
-687,571 bytes IL matched (78.90%).
+**5,074 de 5,245 métodos matched (96.74%).** 871,497 bytes de IL nos assemblies alvo.
+691,393 bytes IL matched (79.33%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3156 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 173 |
+| decompiled | 170 |
 | equivalent | 0 |
-| matched | 5071 |
+| matched | 5074 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1841 / 94.02% | 443778 / 73.77% |
+| `Assembly-CSharp` | 1958 | 601603 | 1844 / 94.18% | 447600 / 74.40% |
 | `KairoLibrary` | 3287 | 269894 | 3230 / 98.27% | 243793 / 90.33% |
 
 ## Namespaces
@@ -72,9 +72,9 @@ KairoLibrary: 3156 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `main` | 223 | 35448 | 215 / 96.41% | 29587 / 83.47% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `surface` | 122 | 26518 | 109 / 89.34% | 16686 / 62.92% |
+| `surface` | 122 | 26518 | 110 / 90.16% | 20240 / 76.33% |
 | `system` | 20 | 1636 | 20 / 100.00% | 1636 / 100.00% |
-| `system.billing` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
+| `system.billing` | 8 | 956 | 8 / 100.00% | 956 / 100.00% |
 | `system.billing.ui` | 153 | 13782 | 148 / 96.73% | 11788 / 85.53% |
 | `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
 | `system.form` | 192 | 33269 | 184 / 95.83% | 30293 / 91.05% |
@@ -155,13 +155,13 @@ KairoLibrary: 3156 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::native.WebBoxPlugin+<SetVisible>c__AnonStorey6` | 2 | 43 | 2 / 100.00% | 43 / 100.00% |
 | `Assembly-CSharp::panel.MainPanel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
 | `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 27 / 93.10% | 6659 / 68.75% |
-| `Assembly-CSharp::surface.GameView` | 66 | 13578 | 56 / 84.85% | 7122 / 52.45% |
+| `Assembly-CSharp::surface.GameView` | 66 | 13578 | 57 / 86.36% | 10676 / 78.63% |
 | `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 8 / 100.00% | 1729 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffect` | 5 | 821 | 4 / 80.00% | 472 / 57.49% |
 | `Assembly-CSharp::surface.TouchEffectManager` | 14 | 704 | 14 / 100.00% | 704 / 100.00% |
 | `Assembly-CSharp::system.KairoService` | 15 | 1353 | 15 / 100.00% | 1353 / 100.00% |
 | `Assembly-CSharp::system.KairoText` | 5 | 283 | 5 / 100.00% | 283 / 100.00% |
-| `Assembly-CSharp::system.billing.MyBilling` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
+| `Assembly-CSharp::system.billing.MyBilling` | 8 | 956 | 8 / 100.00% | 956 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.ApplyTask` | 12 | 1507 | 12 / 100.00% | 1507 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.BillingItem` | 26 | 1007 | 26 / 100.00% | 1007 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.BillingManager` | 44 | 6863 | 40 / 90.91% | 4968 / 72.39% |

@@ -1,0 +1,21 @@
+// NOT_TESTED. One own toy for both identical ticket emission patterns.
+public class FixtureBase
+{
+    protected int sink_;
+    public void Provisioning(object task) { sink_ += 2; }
+}
+public class Fixture : FixtureBase
+{
+    public void Run(object task, string text)
+    {
+        int num = 1;
+        if (text.Equals("ad"))
+        {
+            int num2 = num + 1;
+            try { sink_ += num2; }
+            catch (System.Exception) { }
+        }
+        else if (!text.Equals("ticket")) { }
+        base.Provisioning(task);
+    }
+}

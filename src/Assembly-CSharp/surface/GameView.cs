@@ -778,10 +778,7 @@ if (CheckTouch(id, value))
 					{
 						array = DrawVerticalScroll(g, x, y, w, h, Get(value), num - 1, num2, flag, (id == 12) ? (0) : (1));
 					}
-					if (array == null)
-					{
-						goto dispatchExit;
-					}
+					if (array != null) {
 					if (flag && num - num2 > 0)
 					{
 						opt.flag |= 36;
@@ -856,7 +853,7 @@ if (CheckTouch(id, value))
 						h = array[1];
 					}
 
-				}
+				}}
 dispatchExit: ;
 }
 			}
@@ -984,8 +981,7 @@ dispatchExit: ;
 					for (int i = 0; i < componentLength; i++)
 					{
 						TouchComponent component = GetComponent(i);
-						if (component.id == 2 || component.id == 3)
-						{
+						if (component.id != 2 && component.id != 3) { continue; } {
 							int num26 = value & 0xFFFF;
 							if (num26 == 0 && CheckHitRect(num22, num24, num23 - num22, num25 - num24, component.x, component.y, component.width, component.height))
 							{
@@ -1039,7 +1035,7 @@ dispatchExit: ;
 				}
 				if (TOUCHPARAMS[id][5] == 1 && (opt == null || (opt.flag & 0x20) == 0))
 				{
-					float num27 = ((g == null) ? GetScaleRatio() : g.GetScale());
+					float num27 = ((g != null) ? g.GetScale() : GetScaleRatio());
 					int num28 = (int)((float)(GetWidth() * 100) / num27 + 0.01f);
 					int num29 = (int)((float)(GetHeight() * 100) / num27 + 0.01f);
 					if (num22 < 0)
@@ -1076,7 +1072,7 @@ dispatchExit: ;
 				int num31 = 0;
 				if (TOUCHPARAMS[id][4] == 1)
 				{
-					num31 |= 1 << (id & 0x1F);
+					num31 |= 1 << id;
 				}
 				if (opt != null)
 				{
@@ -1093,16 +1089,13 @@ dispatchExit: ;
 					int num32 = 0;
 					if (TOUCHPARAMS[component2.id][4] == 1)
 					{
-						num32 |= 1 << (component2.id & 0x1F);
+						num32 |= 1 << component2.id;
 					}
 					if (component2.option != null)
 					{
 						num32 |= component2.option.collisionBits;
 					}
-					if (((num32 & (1 << touchComponent.id)) == 0 && (num31 & (1 << component2.id)) == 0) || touchComponent.GetPriority() != component2.GetPriority() || !CheckHitRect(touchComponent.x, touchComponent.y, touchComponent.width, touchComponent.height, component2.x, component2.y, component2.width, component2.height))
-					{
-						continue;
-					}
+					if (((num32 & (1 << touchComponent.id)) == 0 && (num31 & (1 << component2.id)) == 0)) { continue; } if (touchComponent.GetPriority() != component2.GetPriority() || !CheckHitRect(touchComponent.x, touchComponent.y, touchComponent.width, touchComponent.height, component2.x, component2.y, component2.width, component2.height)) { continue; }
 					int num33 = touchComponent.width - (component2.x - touchComponent.x);
 					if (component2.x < touchComponent.x)
 					{

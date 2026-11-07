@@ -1,0 +1,76 @@
+// NOT_TESTED. Independent toy; executor must review both scope and expected IL.
+public class Fixture
+{
+    public class Graphics { public float GetScale() { return 2f; } }
+    public class TouchComponent
+    {
+        public int id, x, y, width, height, priority_;
+        public int GetPriority() { return priority_; }
+    }
+    public TouchComponent[] components_ = new TouchComponent[3];
+    public int sink_;
+    private int[] GetArray() { return new int[] { 1, 2 }; }
+    private float GetScaleRatio() { return 1f; }
+    private bool CheckHitRect(int a, int b, int c, int d, int e, int f, int g, int h) { return a + b + c + d > e + f + g + h; }
+    public TouchComponent Run(Graphics g, int id, int value)
+    {
+        int y = 0, w = 0, h = 0;
+        if (g != null)
+        {
+            {
+                if ((id == 21)) { sink_ = 1; }
+                else if ((id == 12) || (id == 14) || (id == 15))
+                {
+                    int num = 5, num2 = 2;
+                    bool flag = value > 0;
+                    int[] array = GetArray();
+                    if (array == null) { goto dispatchExit; }
+                    if (flag && num - num2 > 0) { sink_ += value; }
+                    else { y = array[0]; w = 5; h = array[1]; }
+                }
+                dispatchExit: ;
+            }
+        }
+        try
+        {
+            switch (id)
+            {
+                case 13:
+                {
+                    int componentLength = components_.Length;
+                    for (int i = 0; i < componentLength; i++)
+                    {
+                        TouchComponent component = components_[i];
+                        if (component.id == 2 || component.id == 3)
+                        {
+                            int num26 = value & 0xFFFF;
+                            sink_ += num26;
+                        }
+                    }
+                    break;
+                }
+            }
+            float num27 = ((g == null) ? GetScaleRatio() : g.GetScale());
+            sink_ += (int)num27 + y + w + h;
+            TouchComponent touchComponent = components_[0];
+            int num31 = 0;
+            if (id > 0) { num31 |= 1 << (id & 0x1F); }
+            int componentLength2 = components_.Length;
+            for (int j = 0; j < componentLength2; j++)
+            {
+                TouchComponent component2 = components_[j];
+                if (component2 == touchComponent) { continue; }
+                int num32 = 0;
+                if (component2.id > 0) { num32 |= 1 << (component2.id & 0x1F); }
+                if (((num32 & (1 << touchComponent.id)) == 0 && (num31 & (1 << component2.id)) == 0) || touchComponent.GetPriority() != component2.GetPriority() || !CheckHitRect(touchComponent.x, touchComponent.y, touchComponent.width, touchComponent.height, component2.x, component2.y, component2.width, component2.height))
+                {
+                    continue;
+                }
+                int num33 = touchComponent.width - component2.x;
+                sink_ += num33;
+            }
+            return touchComponent;
+        }
+        finally { sink_++; }
+    }
+}

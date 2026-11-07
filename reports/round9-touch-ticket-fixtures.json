@@ -1,0 +1,69 @@
+{
+  "operation": "smcs-touch-ticket-and-local-join-own-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "references_sha256": {
+    "original/extracted/assets/bin/Data/Managed/mscorlib.dll": "7f16171cf5f87ca1e4c229727526d2fbc786079fc0c960f36197013ea0d986e1",
+    "original/extracted/assets/bin/Data/Managed/System.Core.dll": "104278a0bf67b4de8fd1e910e3292a3ef51808ebee7a5f2a229125f18463c98c"
+  },
+  "producer_sha256": "1fad777cbba132145ff788a46b0c76c23a36556d14d4a978229dc00e172797e1",
+  "driver_sha256": "0171a6f6fd8be5f582888f7461add4f7eed6eabeaaa003cd705e351bab3fdb45",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 9,
+  "negatives": [
+    "touch-null-guard-side-effect",
+    "touch-dispatch-label-other",
+    "touch-component-owner-other",
+    "touch-scale-expression-other",
+    "touch-shift-mask-other",
+    "touch-collision-guard-effects",
+    "cancel-nonempty-ticket",
+    "cancel-extra-empty-else",
+    "provision-after-base-effects"
+  ],
+  "fixtures": [
+    {
+      "case": "touch",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before_local_count": 21,
+      "after_local_count": 21,
+      "before": "public TouchComponent Run(Graphics g, int id, int value)\n    {\n        int y = 0, w = 0, h = 0;\n        if (g != null)\n        {\n            {\n                if ((id == 21)) { sink_ = 1; }\n                else if ((id == 12) || (id == 14) || (id == 15))\n                {\n                    int num = 5, num2 = 2;\n                    bool flag = value > 0;\n                    int[] array = GetArray();\n                    if (array == null) { goto dispatchExit; }\n                    if (flag && num - num2 > 0) { sink_ += value; }\n                    else { y = array[0]; w = 5; h = array[1]; }\n                }\n                dispatchExit: ;\n            }\n        }\n        try\n        {\n            switch (id)\n            {\n                case 13:\n                {\n                    int componentLength = components_.Length;\n                    for (int i = 0; i < componentLength; i++)\n                    {\n                        TouchComponent component = components_[i];\n                        if (component.id == 2 || component.id == 3)\n                        {\n                            int num26 = value & 0xFFFF;\n                            sink_ += num26;\n                        }\n                    }\n                    break;\n                }\n            }\n            float num27 = ((g == null) ? GetScaleRatio() : g.GetScale());\n            sink_ += (int)num27 + y + w + h;\n            TouchComponent touchComponent = components_[0];\n            int num31 = 0;\n            if (id > 0) { num31 |= 1 << (id & 0x1F); }\n            int componentLength2 = components_.Length;\n            for (int j = 0; j < componentLength2; j++)\n            {\n                TouchComponent component2 = components_[j];\n                if (component2 == touchComponent) { continue; }\n                int num32 = 0;\n                if (component2.id > 0) { num32 |= 1 << (component2.id & 0x1F); }\n                if (((num32 & (1 << touchComponent.id)) == 0 && (num31 & (1 << component2.id)) == 0) || touchComponent.GetPriority() != component2.GetPriority() || !CheckHitRect(touchComponent.x, touchComponent.y, touchComponent.width, touchComponent.height, component2.x, component2.y, component2.width, component2.height))\n                {\n                    continue;\n                }\n                int num33 = touchComponent.width - component2.x;\n                sink_ += num33;\n            }\n            return touchComponent;\n        }\n        finally { sink_++; }\n    }",
+      "after": "public TouchComponent Run(Graphics g, int id, int value)\n    {\n        int y = 0, w = 0, h = 0;\n        if (g != null)\n        {\n            {\n                if ((id == 21)) { sink_ = 1; }\n                else if ((id == 12) || (id == 14) || (id == 15))\n                {\n                    int num = 5, num2 = 2;\n                    bool flag = value > 0;\n                    int[] array = GetArray();\n                    if (array != null) {\n                    if (flag && num - num2 > 0) { sink_ += value; }\n                    else { y = array[0]; w = 5; h = array[1]; }\n                }}\n                dispatchExit: ;\n            }\n        }\n        try\n        {\n            switch (id)\n            {\n                case 13:\n                {\n                    int componentLength = components_.Length;\n                    for (int i = 0; i < componentLength; i++)\n                    {\n                        TouchComponent component = components_[i];\n                        if (component.id != 2 && component.id != 3) { continue; } {\n                            int num26 = value & 0xFFFF;\n                            sink_ += num26;\n                        }\n                    }\n                    break;\n                }\n            }\n            float num27 = ((g != null) ? g.GetScale() : GetScaleRatio());\n            sink_ += (int)num27 + y + w + h;\n            TouchComponent touchComponent = components_[0];\n            int num31 = 0;\n            if (id > 0) { num31 |= 1 << id; }\n            int componentLength2 = components_.Length;\n            for (int j = 0; j < componentLength2; j++)\n            {\n                TouchComponent component2 = components_[j];\n                if (component2 == touchComponent) { continue; }\n                int num32 = 0;\n                if (component2.id > 0) { num32 |= 1 << component2.id; }\n                if (((num32 & (1 << touchComponent.id)) == 0 && (num31 & (1 << component2.id)) == 0)) { continue; } if (touchComponent.GetPriority() != component2.GetPriority() || !CheckHitRect(touchComponent.x, touchComponent.y, touchComponent.width, touchComponent.height, component2.x, component2.y, component2.width, component2.height)) { continue; }\n                int num33 = touchComponent.width - component2.x;\n                sink_ += num33;\n            }\n            return touchComponent;\n        }\n        finally { sink_++; }\n    }",
+      "manual_control": "public TouchComponent Run(Graphics g, int id, int value)\n    {\n        int y = 0, w = 0, h = 0;\n        if (g != null)\n        {\n            {\n                if ((id == 21)) { sink_ = 1; }\n                else if ((id == 12) || (id == 14) || (id == 15))\n                {\n                    int num = 5, num2 = 2;\n                    bool flag = value > 0;\n                    int[] array = GetArray();\n                    if (array != null)\n                    {\n                        if (flag && num - num2 > 0) { sink_ += value; }\n                        else { y = array[0]; w = 5; h = array[1]; }\n                    }\n                }\n                dispatchExit: ;\n            }\n        }\n        try\n        {\n            switch (id)\n            {\n                case 13:\n                {\n                    int componentLength = components_.Length;\n                    for (int i = 0; i < componentLength; i++)\n                    {\n                        TouchComponent component = components_[i];\n                        if (component.id != 2 && component.id != 3) { continue; }\n                        {\n                            int num26 = value & 0xFFFF;\n                            sink_ += num26;\n                        }\n                    }\n                    break;\n                }\n            }\n            float num27 = ((g != null) ? g.GetScale() : GetScaleRatio());\n            sink_ += (int)num27 + y + w + h;\n            TouchComponent touchComponent = components_[0];\n            int num31 = 0;\n            if (id > 0) { num31 |= 1 << id; }\n            int componentLength2 = components_.Length;\n            for (int j = 0; j < componentLength2; j++)\n            {\n                TouchComponent component2 = components_[j];\n                if (component2 == touchComponent) { continue; }\n                int num32 = 0;\n                if (component2.id > 0) { num32 |= 1 << component2.id; }\n                if ((num32 & (1 << touchComponent.id)) == 0 && (num31 & (1 << component2.id)) == 0)\n                {\n                    continue;\n                }\n                if (touchComponent.GetPriority() != component2.GetPriority() || !CheckHitRect(touchComponent.x, touchComponent.y, touchComponent.width, touchComponent.height, component2.x, component2.y, component2.width, component2.height))\n                {\n                    continue;\n                }\n                int num33 = touchComponent.width - component2.x;\n                sink_ += num33;\n            }\n            return touchComponent;\n        }\n        finally { sink_++; }\n    }",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    },
+    {
+      "case": "cancel",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before_local_count": 2,
+      "after_local_count": 2,
+      "before": "public void Run(object task, string text)\n    {\n        int num = 1;\n        if (text.Equals(\"ad\"))\n        {\n            int num2 = num + 1;\n            try { sink_ += num2; }\n            catch (System.Exception) { }\n        }\n        else if (!text.Equals(\"ticket\")) { }\n        base.Cancel(task);\n    }",
+      "after": "public void Run(object task, string text)\n    {\n        int num = 1;\n        if (text.Equals(\"ad\"))\n        {\n            int num2 = num + 1;\n            try { sink_ += num2; }\n            catch (System.Exception) { }\n        }\n        else if (text.Equals(\"ticket\")) { }\n        base.Cancel(task);\n    }",
+      "manual_control": "public void Run(object task, string text)\n    {\n        int num = 1;\n        if (text.Equals(\"ad\"))\n        {\n            int num2 = num + 1;\n            try { sink_ += num2; }\n            catch (System.Exception) { }\n        }\n        else if (text.Equals(\"ticket\")) { }\n        base.Cancel(task);\n    }",
+      "unordered_opcodes": []
+    },
+    {
+      "case": "provision",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before_local_count": 2,
+      "after_local_count": 2,
+      "before": "public void Run(object task, string text)\n    {\n        int num = 1;\n        if (text.Equals(\"ad\"))\n        {\n            int num2 = num + 1;\n            try { sink_ += num2; }\n            catch (System.Exception) { }\n        }\n        else if (!text.Equals(\"ticket\")) { }\n        base.Provisioning(task);\n    }",
+      "after": "public void Run(object task, string text)\n    {\n        int num = 1;\n        if (text.Equals(\"ad\"))\n        {\n            int num2 = num + 1;\n            try { sink_ += num2; }\n            catch (System.Exception) { }\n        }\n        else if (text.Equals(\"ticket\")) { }\n        base.Provisioning(task);\n    }",
+      "manual_control": "public void Run(object task, string text)\n    {\n        int num = 1;\n        if (text.Equals(\"ad\"))\n        {\n            int num2 = num + 1;\n            try { sink_ += num2; }\n            catch (System.Exception) { }\n        }\n        else if (text.Equals(\"ticket\")) { }\n        base.Provisioning(task);\n    }",
+      "unordered_opcodes": []
+    }
+  ],
+  "limitations": "Touch composition covers multiple compensating sites, exact Int32 shift masks, lexical for owners and a reference-null ternary. Empty ticket polarity tested without adding an else. Original target locals/IL/EH still mandatory."
+}

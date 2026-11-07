@@ -1,0 +1,15 @@
+# Round 9 D35: touch dispatch and empty ticket tests
+
+Baseline D34 HEADa3c0ddefacbf49d2eb9f79c48b292af994414f97. Fresh weighted histogram reports/round9-cycle34-after-measurement.json. Three source candidates total3,822 IL: GameView._addTouch3,554 and MyBilling.Cancel155/Provisioning113. Complete models predict exact original types56/4/3. Main covers all116 App pending bodies. Body outcomes UNKNOWN until oracle.
+
+Touch composes five forms across seven existing hunks: array!=null wraps only the scroll-arm tail while retaining dispatchExit; component ids2/3 use a negative continue plus unchanged standalone child payload; the scale ternary tests g!=null and emits GetScale first; the two Int32 shifts omit redundant explicit &31 because this smcs inserts its own mask; and collision-bit rejection is a separate continue before priority/hit rejection. All call arguments, child locals and for-i/for-j owners are preserved. Saldo diagnosis -5+5+0-6+5=-1 accounts for current3,555 versus original3,554; not approval.
+
+The prior R7C10 switch and id12 ternary partials remain. Its rejected array variant was an empty positive arm plus ELSE goto, not a positive wrapper around the tail. The new source addresses later compensating hunks at the same time; it does not replay the old isolated guard.
+
+Both MyBilling methods restore positive text.Equals(ticket) in the empty final ELSE-IF, with NO additional else. The following base call and EH remain. C06 really rejected positive Equals with an extra empty ELSE; that emits a real join and is not this proposal. Empty-body historical syntax remains potentially ambiguous, while required emitted polarity is unambiguous in original137/142 and95/100 call/branch sites.
+
+Mono pin b6587926c0f146c8b12985744f33a13b39a22d57 expression.cs1814-1831 constructs the shift count BitwiseAnd mask0x1f for Int32/UInt32 and0x3f otherwise. This API is limited to the demonstrated Int32 sites; no Int64 generalization is claimed. statement.cs247-267 retains empty ELSE joins,1141-1150 binds continue to LoopBegin. The scale condition is reference nullness; no floating relational comparison is complemented.
+
+Three independently written full header/locals/IL/EH controls and nine negatives passed in nine toy builds. Cancel and Provisioning use separate own programs and base callees; all original target signatures remain mandatory. No preparation or C# control failed. Evidence reports/round9-touch-ticket-fixtures.json and fresh binding/models/dependencies reports/round9-touch-ticket-patches.json. Reader templates were untested before this executor ran them.
+
+RegistApplyTask629 is EXCLUDED: original Boolean12 missing, its exact lexical declaration scope is not demonstrated by this packet. It is not a tested failure or a model-refused candidate. No candidate is invented just to fill the family. Original DLL/REA identities remain upstream and immutable; original DTOs and official receipts are hash-bound. Exact-method REA corroboration requested separately. Full oracle and zero regressions precede commit; no IL transplantation, normalization, manual generated game class or ledger edit.

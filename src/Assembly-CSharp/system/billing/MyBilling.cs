@@ -140,9 +140,7 @@ namespace system.billing
 				{
 				}
 			}
-			else if (!text.Equals("ticket"))
-			{
-			}
+			else if (text.Equals("ticket")) { }
 			base.Provisioning(task);
 		}
 
@@ -167,9 +165,7 @@ namespace system.billing
 				{
 				}
 			}
-			else if (!text.Equals("ticket"))
-			{
-			}
+			else if (text.Equals("ticket")) { }
 			base.Cancel(task);
 		}
 
