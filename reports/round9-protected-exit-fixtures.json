@@ -1,0 +1,531 @@
+{
+  "operation": "smcs-protected-transfer-owner-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "source_sha256": "3afc58b79a084fca99bd6b700cd8be686ecb3ec25649149b5d0c48317bb9b9a8",
+  "helper_sha256": "4991877685e58664b9e5652508143d69bb24fc0211eb459de15d972d4b39546e",
+  "hints_sha256": "3c34d4a8827b7c93e548b9415fdca9576d9cfc3ef0f2dbae5da3b57e33767ee6",
+  "driver_sha256": "13781a2d876f74ea1d4e22bb3819ebdca140ad001007c30cc23f17bd1a39cc7b",
+  "toy_compilations": 6,
+  "compilation_count_scope": "final successful run; earlier syntax-failed attempt plus4 compiled toy assemblies in initial hint-shape run",
+  "game_compilations": 0,
+  "positive_full_bodies": 5,
+  "negative_controls": 7,
+  "fixtures": [
+    {
+      "method": "Loop",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_protected_exit_mode": "loop-try-break",
+        "round9_protected_exit_evidence": {
+          "original_context": [
+            {
+              "offset": 9,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "leave",
+              "operand": {
+                "branch": 55
+              }
+            },
+            {
+              "offset": 19,
+              "opcode": "leave",
+              "operand": {
+                "branch": 44
+              }
+            },
+            {
+              "offset": 24,
+              "opcode": "pop",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 9,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "leave",
+              "operand": {
+                "branch": 44
+              }
+            },
+            {
+              "offset": 19,
+              "opcode": "pop",
+              "operand": null
+            },
+            {
+              "offset": 20,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 7,
+              "try_end": 24,
+              "handler_start": 24,
+              "handler_end": 44,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 7,
+              "try_end": 19,
+              "handler_start": 19,
+              "handler_end": 44,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "lexical_source_owner_check_required": true,
+          "tree_EH_completeness_not_assumed": true
+        }
+      },
+      "patch": {
+        "rule": "d9-protected-exit-owner",
+        "start": 267,
+        "end": 347,
+        "before": "for(int i=0;i<3;i++){try{Work(fail);}catch(Exception){Count+=i;continue;}break;}",
+        "after": "for(int i=0;i<3;i++){try{Work(fail);break;}catch(Exception){Count+=i;}}",
+        "distance": 21
+      },
+      "EH_equal": true
+    },
+    {
+      "method": "Outer",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_protected_exit_mode": "loop-try-break",
+        "round9_protected_exit_evidence": {
+          "original_context": [
+            {
+              "offset": 16,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 21,
+              "opcode": "leave",
+              "operand": {
+                "branch": 62
+              }
+            },
+            {
+              "offset": 26,
+              "opcode": "leave",
+              "operand": {
+                "branch": 51
+              }
+            },
+            {
+              "offset": 31,
+              "opcode": "pop",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 16,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 21,
+              "opcode": "leave",
+              "operand": {
+                "branch": 51
+              }
+            },
+            {
+              "offset": 26,
+              "opcode": "pop",
+              "operand": null
+            },
+            {
+              "offset": 27,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 14,
+              "try_end": 31,
+              "handler_start": 31,
+              "handler_end": 51,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 14,
+              "try_end": 26,
+              "handler_start": 26,
+              "handler_end": 51,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "lexical_source_owner_check_required": true,
+          "tree_EH_completeness_not_assumed": true
+        }
+      },
+      "patch": {
+        "rule": "d9-protected-exit-owner",
+        "start": 551,
+        "end": 631,
+        "before": "for(int i=0;i<3;i++){try{Work(fail);}catch(Exception){Count+=i;continue;}break;}",
+        "after": "for(int i=0;i<3;i++){try{Work(fail);break;}catch(Exception){Count+=i;}}",
+        "distance": 21
+      },
+      "EH_equal": true
+    },
+    {
+      "method": "Finally",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_protected_exit_mode": "loop-try-break",
+        "round9_protected_exit_evidence": {
+          "original_context": [
+            {
+              "offset": 9,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "leave",
+              "operand": {
+                "branch": 71
+              }
+            },
+            {
+              "offset": 19,
+              "opcode": "leave",
+              "operand": {
+                "branch": 60
+              }
+            },
+            {
+              "offset": 24,
+              "opcode": "pop",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 9,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "leave",
+              "operand": {
+                "branch": 60
+              }
+            },
+            {
+              "offset": 19,
+              "opcode": "pop",
+              "operand": null
+            },
+            {
+              "offset": 20,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 7,
+              "try_end": 24,
+              "handler_start": 24,
+              "handler_end": 44,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 7,
+              "try_end": 44,
+              "handler_start": 44,
+              "handler_end": 60,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 7,
+              "try_end": 19,
+              "handler_start": 19,
+              "handler_end": 44,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 7,
+              "try_end": 44,
+              "handler_start": 44,
+              "handler_end": 60,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ],
+          "lexical_source_owner_check_required": true,
+          "tree_EH_completeness_not_assumed": true
+        }
+      },
+      "patch": {
+        "rule": "d9-protected-exit-owner",
+        "start": 816,
+        "end": 915,
+        "before": "for(int i=0;i<3;i++){try{Work(fail);}catch(Exception){Count+=i;continue;}finally{Count+=17;}break;}",
+        "after": "for(int i=0;i<3;i++){try{Work(fail);break;}catch(Exception){Count+=i;}finally{Count+=17;}}",
+        "distance": 21
+      },
+      "EH_equal": true
+    },
+    {
+      "method": "Guard",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_protected_exit_mode": "guard-try-returns",
+        "round9_protected_exit_evidence": {
+          "original_context": [
+            {
+              "offset": 8,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 13,
+              "opcode": "leave",
+              "operand": {
+                "branch": 48
+              }
+            },
+            {
+              "offset": 18,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 19,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 8,
+              "opcode": "call",
+              "operand": {
+                "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Work``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 13,
+              "opcode": "leave",
+              "operand": {
+                "branch": 73
+              }
+            },
+            {
+              "offset": 18,
+              "opcode": "leave",
+              "operand": {
+                "branch": 58
+              }
+            },
+            {
+              "offset": 23,
+              "opcode": "stloc.0",
+              "operand": null
+            }
+          ],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 6,
+              "try_end": 18,
+              "handler_start": 18,
+              "handler_end": 48,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 6,
+              "try_end": 23,
+              "handler_start": 23,
+              "handler_end": 58,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "lexical_source_owner_check_required": true,
+          "tree_EH_completeness_not_assumed": true
+        }
+      },
+      "patch": {
+        "rule": "d9-protected-exit-owner",
+        "start": 1100,
+        "end": 1195,
+        "before": "{if(save){try{Work(fail);return;}catch(Exception e){Count+=e.Message.Length;return;}}Count+=9;}",
+        "after": "{if(save){try{Work(fail);}catch(Exception e){Count+=e.Message.Length;}}else{Count+=9;}}",
+        "distance": 10
+      },
+      "EH_equal": true
+    },
+    {
+      "method": "GuardPrefix",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_protected_exit_mode": "guard-try-returns",
+        "round9_protected_exit_evidence": {
+          "original_context": [
+            {
+              "offset": 27,
+              "opcode": "leave",
+              "operand": {
+                "branch": 52
+              }
+            },
+            {
+              "offset": 32,
+              "opcode": "pop",
+              "operand": null
+            },
+            {
+              "offset": 33,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 34,
+              "opcode": "dup",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 27,
+              "opcode": "leave",
+              "operand": {
+                "branch": 77
+              }
+            },
+            {
+              "offset": 32,
+              "opcode": "leave",
+              "operand": {
+                "branch": 62
+              }
+            },
+            {
+              "offset": 37,
+              "opcode": "pop",
+              "operand": null
+            },
+            {
+              "offset": 38,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 20,
+              "try_end": 32,
+              "handler_start": 32,
+              "handler_end": 52,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 20,
+              "try_end": 37,
+              "handler_start": 37,
+              "handler_end": 62,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "lexical_source_owner_check_required": true,
+          "tree_EH_completeness_not_assumed": true
+        }
+      },
+      "patch": {
+        "rule": "d9-protected-exit-owner",
+        "start": 1373,
+        "end": 1459,
+        "before": "{Count+=3;if(save){try{Work(fail);return;}catch(Exception){Count++;return;}}Count+=9;}",
+        "after": "{Count+=3;if(save){try{Work(fail);}catch(Exception){Count++;}}else{Count+=9;}}",
+        "distance": 19
+      },
+      "EH_equal": true
+    }
+  ],
+  "negatives": [
+    "RejectNoBreak",
+    "RejectNoContinue",
+    "RejectWhile",
+    "RejectValue",
+    "RejectInnerReturn",
+    "RejectFinally",
+    "no-EH-evidence"
+  ],
+  "no_new_locals": true,
+  "EH_compared_in_body_oracle": true,
+  "loop_ownership_and_finally_preserved": true,
+  "initial_harness_failures": [
+    "Initial manual Finally fixture had one extra closing brace; compilation failed before any control comparison. Fixed before final fixture run.",
+    "Sequence aligner associated the original normal leave with first versus second rebuilt leave in short Guard fixture; hint now checks both placements against exact EH handler boundaries without normalizing instructions."
+  ],
+  "limitations": "Specific direct For/Try/terminal CatchContinue/outer Break, or root void If/TryReturns plus tail; no general EH tree inference."
+}

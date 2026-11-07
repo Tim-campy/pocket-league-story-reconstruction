@@ -1,0 +1,2488 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1807,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "system.KairoService::OnStart()->System.Void",
+      "number": 1,
+      "initial_offset": 153,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d9-protected-exit-owner",
+          "start": 2109,
+          "end": 2345,
+          "before": "for (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}",
+          "after": "for (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 153,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "8c652c5e45ba0dca3ea503f85638ea3cffd56f3c9b8babd84269a4c103f24de9"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794025313905053900\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0469999999040738,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 519,
+          "screen_body_equal": false,
+          "full_compile_pass": true,
+          "new_prefix": 519,
+          "body_equal": false,
+          "progress_kind": "raw-prefix",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [],
+          "matched_IL_gain": 0
+        },
+        {
+          "iteration": 2,
+          "rule": "smcs-empty-arm-restore",
+          "start": 3257,
+          "end": 3319,
+          "before": "if (!instance2.CheckShowableLineup())\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}",
+          "after": "if (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 519,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "1102f55f3d41006b1d3b8a69278602d9403d756a4971de073b769c66b0bd4fe0"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0002\\compiler.log",
+          "screen_build_seconds": 0.8119999999180436,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 520,
+          "screen_body_equal": false,
+          "full_compile_pass": true,
+          "new_prefix": 520,
+          "body_equal": false,
+          "progress_kind": "raw-prefix",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [],
+          "matched_IL_gain": 0
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d9-protected-exit-owner",
+          "start": 2109,
+          "end": 2345,
+          "before": "for (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}",
+          "after": "for (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 153,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "8c652c5e45ba0dca3ea503f85638ea3cffd56f3c9b8babd84269a4c103f24de9"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794025313905053900\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0469999999040738,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 519,
+          "screen_body_equal": false,
+          "full_compile_pass": true,
+          "new_prefix": 519,
+          "body_equal": false,
+          "progress_kind": "raw-prefix",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [],
+          "matched_IL_gain": 0
+        },
+        {
+          "iteration": 2,
+          "rule": "solver-group-block-declarations",
+          "start": 1403,
+          "end": 3617,
+          "before": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tif (!instance2.CheckShowableLineup())\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "after": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t\nBillingItem item;\nMyLineup instance2;\nLineupForm lineupForm;\nitem = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tinstance2 = MyLineup.GetInstance();\r\n\t\t\tif (!instance2.CheckShowableLineup())\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tlineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 519,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "9bc0774e75e7043ad10082b13d8b520781d7bed59fe7731efb4503da25db805c"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.8279999999795109,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 519,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        },
+        {
+          "iteration": 2,
+          "rule": "solver-group-all-calculated-blocks",
+          "start": 1403,
+          "end": 3617,
+          "before": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tif (!instance2.CheckShowableLineup())\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "after": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\t\nSubForm subForm;\nstring packageName;\nsubForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tpackageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t\nBillingItem item;\nMyLineup instance2;\nLineupForm lineupForm;\nitem = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tinstance2 = MyLineup.GetInstance();\r\n\t\t\tif (!instance2.CheckShowableLineup())\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tlineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 519,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "b5ed4391869e12fed57f2976f2ab8113f6882952712c06e75caafd5388140ba4"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0001\\compiler.log",
+          "screen_build_seconds": 0.8440000000409782,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 519,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        },
+        {
+          "iteration": 2,
+          "rule": "smcs-empty-arm-restore",
+          "start": 3257,
+          "end": 3319,
+          "before": "if (!instance2.CheckShowableLineup())\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}",
+          "after": "if (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}",
+          "compile_pass": true,
+          "old_prefix": 519,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "1102f55f3d41006b1d3b8a69278602d9403d756a4971de073b769c66b0bd4fe0"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0002\\compiler.log",
+          "screen_build_seconds": 0.8119999999180436,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 520,
+          "screen_body_equal": false,
+          "full_compile_pass": true,
+          "new_prefix": 520,
+          "body_equal": false,
+          "progress_kind": "raw-prefix",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [],
+          "matched_IL_gain": 0
+        },
+        {
+          "iteration": 3,
+          "rule": "solver-group-block-declarations",
+          "start": 1403,
+          "end": 3621,
+          "before": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "after": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t\nBillingItem item;\nMyLineup instance2;\nLineupForm lineupForm;\nitem = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tinstance2 = MyLineup.GetInstance();\r\n\t\t\tif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tlineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 520,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "1745a57bb8348ba6a8daade3f2babaa6469bba59f31341be721bafcc4b9e1236"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.8900000000139698,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 520,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        },
+        {
+          "iteration": 3,
+          "rule": "solver-group-all-calculated-blocks",
+          "start": 1403,
+          "end": 3621,
+          "before": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "after": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\t\nSubForm subForm;\nstring packageName;\nsubForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tpackageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t\nBillingItem item;\nMyLineup instance2;\nLineupForm lineupForm;\nitem = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tinstance2 = MyLineup.GetInstance();\r\n\t\t\tif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tlineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 520,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "3c801c34acf603d320f6a9ac0418ae1b747a8282585c9bf165536df5ca751774"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0001\\compiler.log",
+          "screen_build_seconds": 0.9060000000754371,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 520,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        },
+        {
+          "iteration": 3,
+          "rule": "if-polarity",
+          "start": 3257,
+          "end": 3323,
+          "before": "if (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}",
+          "after": "if (!(instance2.CheckShowableLineup())) {\r\n\t\t\t\treturn;\r\n\t\t\t} else { }",
+          "compile_pass": true,
+          "old_prefix": 520,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "6505050390a0127eaa1f4f5818c689976e2ca93c0042370070f0d5ac28dd17dd"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0002\\compiler.log",
+          "screen_build_seconds": 0.8279999999795109,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 519,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        },
+        {
+          "iteration": 3,
+          "rule": "guard-return-reverse",
+          "start": 3257,
+          "end": 3323,
+          "before": "if (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}",
+          "after": "if (!(instance2.CheckShowableLineup())) {\r\n\t\t\t\treturn;\r\n\t\t\t}\n",
+          "compile_pass": true,
+          "old_prefix": 520,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "37e9b53bf07450f99eb71219ede1f1996e5ea62b75c701ce26d9998755ce2d66"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0003\\compiler.log",
+          "screen_build_seconds": 0.8599999999860302,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 519,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        },
+        {
+          "iteration": 3,
+          "rule": "local-declaration-scope-hoist",
+          "start": 3257,
+          "end": 3370,
+          "before": "if (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);",
+          "after": "global::system.form.LineupForm lineupForm;\nif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tlineupForm = new LineupForm(0);",
+          "compile_pass": true,
+          "old_prefix": 520,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "38c0e79c5b985d5dbfff3bbd2d41657794ffb4f05668ab985323a2e4d7077cdb"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0004\\compiler.log",
+          "screen_build_seconds": 0.875,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 520,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        },
+        {
+          "iteration": 3,
+          "rule": "solver-group-block-declarations",
+          "start": 1403,
+          "end": 3621,
+          "before": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\tSubForm subForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tstring packageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "after": "public override void OnStart()\r\n\t\t{\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tif (appliVersion_ < GetLatestVersion())\r\n\t\t\t{\r\n\t\t\t\t\nSubForm subForm;\nstring packageName;\nsubForm = SubForm.MakeDialog(KairoText.LT(\"\uff71\uff8c\uff9f\uff98\u306e\uff8a\uff9e\uff70\uff7c\uff9e\uff6e\uff9d\uff71\uff6f\uff8c\uff9f\u3092\u884c\u3044\u307e\u3059\"));\r\n\t\t\t\tinstance.Push(subForm);\r\n\t\t\t\twhile (subForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tpackageName = IApplication.GetCurrentApp().GetPackageName();\r\n\t\t\t\tCanvas.OpenBrowser(\"market://details?id=\" + packageName + \"&referrer=utm_source%3Dappli%26utm_medium%3Dhouse_ad%26utm_content%3D\" + packageName + \"_lite%26utm_campaign%3Dbanner\");\r\n\t\t\t\tinstance.RemoveAllForms();\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < 3; i++)\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tbilling_.UpdateBillingItems(false);\r\n\t\t\t\t\tbilling_.UpdateApplyTask(false);\r\nbreak;\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(1000L);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (CheckUserId() && !friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\tFriendForm friendForm = new FriendForm(0);\r\n\t\t\t\tinstance.Push(friendForm);\r\n\t\t\t\twhile (friendForm.CheckUsable())\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t}\r\n\t\t\tif (friend_.CheckRegistFriend())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.CgiRegistFriend(SecureString.ToString(friend_.friSave_.strs[0]), friend_.friSave_.ints[1].Get());\r\n\t\t\t\t\tfriend_.RefreshFriendList();\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception t)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (friend_.friendList_.Size() < friend_.FRIEND_MAX)\r\n\t\t\t\t{\r\n\t\t\t\t\tfriend_.UpdateRandomFriend();\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tBillingItem item = billing_.GetItem(0);\r\n\t\t\tif (item.GetState() == 0 && startCount_ > 1)\r\n\t\t\t{\r\n\t\t\t\tlineup_.Start();\r\n\t\t\t}\r\n\t\t\tMyLineup instance2 = MyLineup.GetInstance();\r\n\t\t\tif (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tLineupForm lineupForm = new LineupForm(0);\r\n\t\t\tinstance.Push(lineupForm);\r\n\t\t\twhile (lineupForm.CheckUsable())\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception)\r\n\t\t\t\t{\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tJThread.Sleep(500L);\r\n\t\t\t}\r\n\t\t\tcatch (Exception)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 520,
+          "accepted": false,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "form.SubForm",
+              "System.String",
+              "System.Int32",
+              "system.form.FriendForm",
+              "System.Exception",
+              "system.billing.ui.BillingItem",
+              "system.lineup.MyLineup",
+              "system.form.LineupForm"
+            ],
+            "method_id": "system.KairoService::OnStart()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+            "full_source_sha256": "004271d165ebe399f5fad027ac4712847abcbf4230022f9b25f17aa2ba4f4e0d"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0005\\compiler.log",
+          "screen_build_seconds": 0.7959999999729916,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 520,
+          "screen_body_equal": false,
+          "screen_rejected": true
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "no_transformation_advances",
+      "symbol_mapping_cache_generations": [
+        0,
+        1,
+        2
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 179,
+            "rebuilt_offset": 179,
+            "opcode_pair": [
+              "leave",
+              "leave"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        },
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 519,
+            "rebuilt_offset": 519,
+            "opcode_pair": [
+              "brfalse",
+              "brtrue"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        },
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 519,
+            "rebuilt_offset": 519,
+            "opcode_pair": [
+              "brfalse",
+              "brfalse"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "round9_protected_exit_evidence": [
+        {
+          "round9_protected_exit_mode": "loop-try-break",
+          "round9_protected_exit_evidence": {
+            "original_context": [
+              {
+                "offset": 174,
+                "opcode": "callvirt",
+                "operand": {
+                  "method": "class system.billing.ui.BillingManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::UpdateApplyTask``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 179,
+                "opcode": "leave",
+                "operand": {
+                  "branch": 217
+                }
+              },
+              {
+                "offset": 184,
+                "opcode": "leave",
+                "operand": {
+                  "branch": 206
+                }
+              },
+              {
+                "offset": 189,
+                "opcode": "pop",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 174,
+                "opcode": "callvirt",
+                "operand": {
+                  "method": "class system.billing.ui.BillingManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::UpdateApplyTask``0(valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 179,
+                "opcode": "leave",
+                "operand": {
+                  "branch": 206
+                }
+              },
+              {
+                "offset": 184,
+                "opcode": "pop",
+                "operand": null
+              },
+              {
+                "offset": 185,
+                "opcode": "ldc.i4",
+                "operand": 1000
+              }
+            ],
+            "original_exception_regions": [
+              {
+                "kind": "Catch",
+                "try_start": 577,
+                "try_end": 593,
+                "handler_start": 593,
+                "handler_end": 599,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 546,
+                "try_end": 559,
+                "handler_start": 559,
+                "handler_end": 565,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 322,
+                "try_end": 392,
+                "handler_start": 392,
+                "handler_end": 417,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 265,
+                "try_end": 278,
+                "handler_start": 278,
+                "handler_end": 284,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 157,
+                "try_end": 189,
+                "handler_start": 189,
+                "handler_end": 206,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 52,
+                "try_end": 65,
+                "handler_start": 65,
+                "handler_end": 71,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            ],
+            "rebuilt_exception_regions": [
+              {
+                "kind": "Catch",
+                "try_start": 583,
+                "try_end": 599,
+                "handler_start": 599,
+                "handler_end": 605,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 552,
+                "try_end": 565,
+                "handler_start": 565,
+                "handler_end": 571,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 327,
+                "try_end": 397,
+                "handler_start": 397,
+                "handler_end": 422,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 270,
+                "try_end": 283,
+                "handler_start": 283,
+                "handler_end": 289,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 157,
+                "try_end": 184,
+                "handler_start": 184,
+                "handler_end": 206,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              {
+                "kind": "Catch",
+                "try_start": 52,
+                "try_end": 65,
+                "handler_start": 65,
+                "handler_end": 71,
+                "filter_start": -1,
+                "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            ],
+            "lexical_source_owner_check_required": true,
+            "tree_EH_completeness_not_assumed": true
+          }
+        }
+      ],
+      "transform_helper_sha256": "d0d7a93c5c5d656a8d158355df8e70d055ce9988c55a1f28936e83e9394012d3",
+      "stop_point": {
+        "offset": 520,
+        "source": "src/Assembly-CSharp/system/KairoService.cs",
+        "point": {
+          "offset": 512,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\system\\KairoService.cs",
+          "start_line": 144,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 519,
+          "line": 144,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "branch_retarget",
+          "original_offset": 519,
+          "rebuilt_offset": 519,
+          "original_index": 160,
+          "rebuilt_index": 160,
+          "original_instruction": {
+            "offset": 519,
+            "opcode": "brfalse",
+            "operand": {
+              "branch": 599
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 519,
+            "opcode": "brfalse",
+            "operand": {
+              "branch": 529
+            }
+          },
+          "pair": "{\"opcode\":\"brfalse\",\"operand\":{\"branch\":599}} => {\"opcode\":\"brfalse\",\"operand\":{\"branch\":529}}",
+          "opcode_pair": "brfalse => brfalse",
+          "original_context": [
+            {
+              "offset": 512,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 514,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.system.lineup.ui.LineupManager @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::CheckShowableLineup``0()->valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 519,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "L17"
+                ]
+              }
+            },
+            {
+              "offset": 524,
+              "opcode": "ldc.i4.0",
+              "operand": null,
+              "label": "L14"
+            },
+            {
+              "offset": 525,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LineupForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 512,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 7
+              }
+            },
+            {
+              "offset": 514,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.system.lineup.ui.LineupManager @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::CheckShowableLineup``0()->valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 519,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "R529"
+                ]
+              }
+            },
+            {
+              "offset": 524,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L14"
+                ]
+              }
+            },
+            {
+              "offset": 529,
+              "opcode": "ret",
+              "operand": null,
+              "label": "R529"
+            }
+          ],
+          "original_labels": {
+            "52": "L0",
+            "71": "L1",
+            "150": "L2",
+            "157": "L3",
+            "206": "L4",
+            "210": "L5",
+            "217": "L6",
+            "265": "L7",
+            "284": "L8",
+            "307": "L9",
+            "412": "L10",
+            "417": "L11",
+            "458": "L12",
+            "505": "L13",
+            "524": "L14",
+            "546": "L15",
+            "565": "L16",
+            "599": "L17"
+          },
+          "rebuilt_labels": {
+            "52": "L0",
+            "71": "L1",
+            "150": "L2",
+            "157": "L3",
+            "206": "L4",
+            "210": "L5",
+            "217": "L6",
+            "265": "L7",
+            "284": "L8",
+            "307": "L9",
+            "412": "L10",
+            "417": "L11",
+            "458": "L12",
+            "505": "L13",
+            "530": "L14",
+            "552": "L15",
+            "571": "L16",
+            "605": "L17",
+            "529": "R529"
+          },
+          "sequence_edits": [
+            {
+              "kind": "insert",
+              "original_start": 161,
+              "original_stop": 161,
+              "rebuilt_start": 161,
+              "rebuilt_stop": 163
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 160,
+              "original_stop": 161,
+              "rebuilt_start": 160,
+              "rebuilt_stop": 161,
+              "target_ordinal": 0,
+              "original_target": 599,
+              "rebuilt_target": 529
+            }
+          ],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 577,
+              "try_end": 593,
+              "handler_start": 593,
+              "handler_end": 599,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 546,
+              "try_end": 559,
+              "handler_start": 559,
+              "handler_end": 565,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 322,
+              "try_end": 392,
+              "handler_start": 392,
+              "handler_end": 417,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 265,
+              "try_end": 278,
+              "handler_start": 278,
+              "handler_end": 284,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 157,
+              "try_end": 189,
+              "handler_start": 189,
+              "handler_end": 206,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 52,
+              "try_end": 65,
+              "handler_start": 65,
+              "handler_end": 71,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 583,
+              "try_end": 599,
+              "handler_start": 599,
+              "handler_end": 605,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 552,
+              "try_end": 565,
+              "handler_start": 565,
+              "handler_end": 571,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 322,
+              "try_end": 392,
+              "handler_start": 392,
+              "handler_end": 417,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 265,
+              "try_end": 278,
+              "handler_start": 278,
+              "handler_end": 284,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 157,
+              "try_end": 189,
+              "handler_start": 189,
+              "handler_end": 206,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 52,
+              "try_end": 65,
+              "handler_start": 65,
+              "handler_end": 71,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ]
+        },
+        "statement": {
+          "start": 3257,
+          "end": 3323,
+          "line": 144,
+          "column": 4,
+          "text": "if (instance2.CheckShowableLineup()) { } else {\r\n\t\t\t\treturn;\r\n\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "system.KairoService::OnStart()->System.Void",
+          "point": 3254,
+          "declaration_start": 1403,
+          "declaration_end": 3621
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 5,
+              "last_use": 532,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 38,
+              "last_use": 71,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 92,
+              "last_use": 121,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 151,
+              "last_use": 210,
+              "loads": 2,
+              "stores": 2
+            },
+            {
+              "slot": 4,
+              "first_use": 249,
+              "last_use": 284,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 392,
+              "last_use": 404,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 469,
+              "last_use": 471,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 510,
+              "last_use": 512,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 530,
+              "last_use": 565,
+              "loads": 2,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 3
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "instance",
+              "type": "form.FormManager",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "subForm",
+              "type": "form.SubForm",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 1541,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "packageName",
+              "type": "System.String",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 1541,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "friendForm",
+              "type": "system.form.FriendForm",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 2405,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "item",
+              "type": "system.billing.ui.BillingItem",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "instance2",
+              "type": "system.lineup.MyLineup",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "lineupForm",
+              "type": "system.form.LineupForm",
+              "rebuilt_slot": 8,
+              "desired_slot": 8,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        },
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 5,
+              "last_use": 532,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 38,
+              "last_use": 71,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 92,
+              "last_use": 121,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 151,
+              "last_use": 210,
+              "loads": 2,
+              "stores": 2
+            },
+            {
+              "slot": 4,
+              "first_use": 249,
+              "last_use": 284,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 392,
+              "last_use": 404,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 469,
+              "last_use": 471,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 510,
+              "last_use": 512,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 530,
+              "last_use": 565,
+              "loads": 2,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 3
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "instance",
+              "type": "form.FormManager",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "subForm",
+              "type": "form.SubForm",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 1541,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "packageName",
+              "type": "System.String",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 1541,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "friendForm",
+              "type": "system.form.FriendForm",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 2383,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "item",
+              "type": "system.billing.ui.BillingItem",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "instance2",
+              "type": "system.lineup.MyLineup",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "lineupForm",
+              "type": "system.form.LineupForm",
+              "rebuilt_slot": 8,
+              "desired_slot": 8,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        },
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 5,
+              "last_use": 532,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 38,
+              "last_use": 71,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 92,
+              "last_use": 121,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 151,
+              "last_use": 210,
+              "loads": 2,
+              "stores": 2
+            },
+            {
+              "slot": 4,
+              "first_use": 249,
+              "last_use": 284,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 392,
+              "last_use": 404,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 469,
+              "last_use": 471,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 510,
+              "last_use": 512,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 530,
+              "last_use": 565,
+              "loads": 2,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 3
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "instance",
+              "type": "form.FormManager",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "subForm",
+              "type": "form.SubForm",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 1541,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "packageName",
+              "type": "System.String",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 1541,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "friendForm",
+              "type": "system.form.FriendForm",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 2383,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "item",
+              "type": "system.billing.ui.BillingItem",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "instance2",
+              "type": "system.lineup.MyLineup",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "lineupForm",
+              "type": "system.form.LineupForm",
+              "rebuilt_slot": 8,
+              "desired_slot": 8,
+              "lexical_block": 1437,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 8,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 7,
+          "selected_rule_prefix": "d9-protected-exit-owner"
+        }
+      ],
+      "model_rejections": [
+        {},
+        {
+          "wrong_signature": 1
+        },
+        {
+          "wrong_signature": 1
+        }
+      ],
+      "screen_baseline_equal": true,
+      "candidate_count": 6,
+      "final_offset": 520,
+      "body_equal": false,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d9-protected-exit-owner:attempts": 1,
+    "d9-protected-exit-owner:accepted_steps": 1,
+    "d9-protected-exit-owner:body_gains": 0,
+    "d9-protected-exit-owner:IL_gains": 0,
+    "solver-group-block-declarations:attempts": 3,
+    "solver-group-all-calculated-blocks:attempts": 2,
+    "smcs-empty-arm-restore:attempts": 1,
+    "smcs-empty-arm-restore:accepted_steps": 1,
+    "smcs-empty-arm-restore:body_gains": 0,
+    "smcs-empty-arm-restore:IL_gains": 0,
+    "if-polarity:attempts": 1,
+    "guard-return-reverse:attempts": 1,
+    "local-declaration-scope-hoist:attempts": 1
+  },
+  "completed": true,
+  "run_label": "cycle12-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\cycles\\cycle12\\baseline\\Assembly-CSharp",
+  "cycle_rule": "d9-protected-exit-owner",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d9-protected-exit-owner",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 7,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "8539358ae4471cfff8eb10f5c8995cab25747535fdd33d9dd05117f5751bfd4b",
+    "source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 3,
+    "baseline_equal": 3,
+    "baseline_different_or_failed": 0,
+    "candidates": 10,
+    "rejected": 8,
+    "full_positive_checks": 2,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "system.KairoService::OnStart()->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794025313905053900",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.0469999999040738,
+        "wall_seconds": 7.094000000040978,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.0469999999040738,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794025313905053900\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794025313905053900\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      },
+      {
+        "method_id": "system.KairoService::OnStart()->System.Void",
+        "iteration": 2,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600",
+        "submitted": 6,
+        "finished": 6,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 4.23499999998603,
+        "wall_seconds": 6.656000000075437,
+        "unused_speculative_finished": 3,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.8279999999795109,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 1,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.8440000000409782,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0001\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0001\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 2,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.8119999999180436,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0002\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0002\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 3,
+            "observed_by_caller": false,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.5790000000270084,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0003\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0003\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 4,
+            "observed_by_caller": false,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.5940000000409782,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0004\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0004\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 5,
+            "observed_by_caller": false,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.5779999999795109,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0005\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-01-1794025327838108600\\candidate-0005\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      },
+      {
+        "method_id": "system.KairoService::OnStart()->System.Void",
+        "iteration": 3,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400",
+        "submitted": 6,
+        "finished": 6,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 5.15500000002794,
+        "wall_seconds": 2.437999999965541,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.8900000000139698,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 1,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.9060000000754371,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0001\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0001\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 2,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.8279999999795109,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0002\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0002\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 3,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.8599999999860302,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0003\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0003\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 4,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.875,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0004\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0004\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          },
+          {
+            "index": 5,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.7959999999729916,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0005\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-02-1794025340903389400\\candidate-0005\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 15,
+    "approved": 13,
+    "incomplete": 0,
+    "wrong_signature": 2,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 2,
+    "requests": 3,
+    "hits": 0,
+    "loads": 3,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 2,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "53318e32c8d6137d3aafc340a36726b3731292d1f46c269fa8cd5349bf18400c",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "a05d4fc37702d78b352b5eaeeef8462bc5eb42b419c1c19d9f57af9c37bb77a8",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "fae94efaab08c5c55d30e73021bb2d5cf74280eef7116e4ae8b9b177e05dbe3c",
+          "src/Assembly-CSharp/form/SpForm.cs": "fd53a81dac4ade19c562a3b38eb0032130d61fb642f5a9f3a399c0f75b39f7f6",
+          "src/Assembly-CSharp/form/SubForm.cs": "f8a60fbca2733585ae2950f88c0a6de3c70868359d412a0e7d6fd2cbd9f43890",
+          "src/Assembly-CSharp/form/TitleForm.cs": "d361e5b3eb850ccc3cbded040ffc5baad16cfe82cbd97f48493808424d0c2892",
+          "src/Assembly-CSharp/game/Ball.cs": "755e9942e72fb6638249e681c58420ab851b4122d6796c8e76beb61e164306e7",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "a4df654904fad44bc1e6a7848ddb324f4824ac9a58cac495415a9f8c6cb0f313",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "4de8bbd494ce7f22474d994842301e3d2e4365a4adf47c36a4c5d7221820b34d",
+          "src/Assembly-CSharp/game/MapMain.cs": "e1712ab04cd2a4f5947ebbaa9764848537742237bb5e33fc6004c97c6e6f98b8",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "6f64463d259f0560433f95f670252a7198b91f783251f66654a3a119c908085f",
+          "src/Assembly-CSharp/game/TArea.cs": "58856c7acca44a1cf2f777ff2117463dad2636cba82ff54457d050cfe6b0c2f8",
+          "src/Assembly-CSharp/game/TBall.cs": "6db28f3bdbda1631045439b05f149bb301c6808a1ea854c302f1f0085d631265",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "98891c18a31ebe0c181c4969c811a237fce52eb8c36a00bbbbe4ff11b4aaab5e",
+          "src/Assembly-CSharp/game/TPlayer.cs": "2874a030e69f330e2b943af4c0b83e217364181422755d1a03cfea497c48ba89",
+          "src/Assembly-CSharp/game/Team.cs": "c28769db883c553e48eb7dc45531d26ba3fcff8556673c178b7b9aa942ca318f",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "c0adf58a584f5254a0e5aa3d58616fbe6d3a7bb9eff2f0bd7dfa1c54baead222",
+          "src/Assembly-CSharp/main/AppData.cs": "ac78c979825939c6ca12c4270fbe4d66678e428f945046c12a6fbaf932d712e1",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+          "src/Assembly-CSharp/surface/GameView.cs": "6676148bf8a36a1746382f6ed0c05122f9937993e069d831b46896569af4b223",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "ddd9a43d9aec39d66598df639a6d5bd9a1b27334ebcecbe6f45eefe1e5719ccc",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "61ea3578d9f82c4e13fffc1d865ecd29a9179e38ec643c5221afd2dea2950bc6",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "3691bd55b8f033ac0ca29dee324ff1159081602b5ec923af69fa3623add9d62f",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "0cab263d1e74af70d8fee5cc1b267c5b1be9ff94116632a026c2075691a6990e",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "70768827cfa71b12c7a1f8a769b291c48ef3a9ba1514af761eefd2b389d59d30",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "43b25ab18fa29748c128f1d6c8575f95218610edebb675db653a3f8a6f6eb027",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "b8c1794a338a2e15eb625d3ce4f15e16e49628d01acec577462bbf7ffbca6446",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "5b4b0f1fa71cee91ba6f04ab904d01486948bef834bdb4d1fb7f8fb621c8e933",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "f2302ae23bc0dc312f922b7b5babdfd8c192eb6ba12699150c1f833065588274",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "65e98c620320b320000d9af683517e7d61cae01024d59a376d6a718d68db790c",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "425727b173d82e4843362ffbb731ad58f16cf3637b723404e0fef38b1f1a4df3",
+        "accepted_source_set_sha256": "1c9cb721797869d3c5cf84ada0d449fc66167925edef8db1d7c964167aca21ed",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "a27ab7ec6ed87d90243d3dd46f0bf856fa6d543f1159505da6f76c24cc2c121e"
+      },
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "53318e32c8d6137d3aafc340a36726b3731292d1f46c269fa8cd5349bf18400c",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "a05d4fc37702d78b352b5eaeeef8462bc5eb42b419c1c19d9f57af9c37bb77a8",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "fae94efaab08c5c55d30e73021bb2d5cf74280eef7116e4ae8b9b177e05dbe3c",
+          "src/Assembly-CSharp/form/SpForm.cs": "fd53a81dac4ade19c562a3b38eb0032130d61fb642f5a9f3a399c0f75b39f7f6",
+          "src/Assembly-CSharp/form/SubForm.cs": "f8a60fbca2733585ae2950f88c0a6de3c70868359d412a0e7d6fd2cbd9f43890",
+          "src/Assembly-CSharp/form/TitleForm.cs": "d361e5b3eb850ccc3cbded040ffc5baad16cfe82cbd97f48493808424d0c2892",
+          "src/Assembly-CSharp/game/Ball.cs": "755e9942e72fb6638249e681c58420ab851b4122d6796c8e76beb61e164306e7",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "a4df654904fad44bc1e6a7848ddb324f4824ac9a58cac495415a9f8c6cb0f313",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "4de8bbd494ce7f22474d994842301e3d2e4365a4adf47c36a4c5d7221820b34d",
+          "src/Assembly-CSharp/game/MapMain.cs": "e1712ab04cd2a4f5947ebbaa9764848537742237bb5e33fc6004c97c6e6f98b8",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "6f64463d259f0560433f95f670252a7198b91f783251f66654a3a119c908085f",
+          "src/Assembly-CSharp/game/TArea.cs": "58856c7acca44a1cf2f777ff2117463dad2636cba82ff54457d050cfe6b0c2f8",
+          "src/Assembly-CSharp/game/TBall.cs": "6db28f3bdbda1631045439b05f149bb301c6808a1ea854c302f1f0085d631265",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "98891c18a31ebe0c181c4969c811a237fce52eb8c36a00bbbbe4ff11b4aaab5e",
+          "src/Assembly-CSharp/game/TPlayer.cs": "2874a030e69f330e2b943af4c0b83e217364181422755d1a03cfea497c48ba89",
+          "src/Assembly-CSharp/game/Team.cs": "c28769db883c553e48eb7dc45531d26ba3fcff8556673c178b7b9aa942ca318f",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "c0adf58a584f5254a0e5aa3d58616fbe6d3a7bb9eff2f0bd7dfa1c54baead222",
+          "src/Assembly-CSharp/main/AppData.cs": "ac78c979825939c6ca12c4270fbe4d66678e428f945046c12a6fbaf932d712e1",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+          "src/Assembly-CSharp/surface/GameView.cs": "6676148bf8a36a1746382f6ed0c05122f9937993e069d831b46896569af4b223",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "ddd9a43d9aec39d66598df639a6d5bd9a1b27334ebcecbe6f45eefe1e5719ccc",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "8c652c5e45ba0dca3ea503f85638ea3cffd56f3c9b8babd84269a4c103f24de9",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "3691bd55b8f033ac0ca29dee324ff1159081602b5ec923af69fa3623add9d62f",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "0cab263d1e74af70d8fee5cc1b267c5b1be9ff94116632a026c2075691a6990e",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "70768827cfa71b12c7a1f8a769b291c48ef3a9ba1514af761eefd2b389d59d30",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "43b25ab18fa29748c128f1d6c8575f95218610edebb675db653a3f8a6f6eb027",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "b8c1794a338a2e15eb625d3ce4f15e16e49628d01acec577462bbf7ffbca6446",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "5b4b0f1fa71cee91ba6f04ab904d01486948bef834bdb4d1fb7f8fb621c8e933",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "f2302ae23bc0dc312f922b7b5babdfd8c192eb6ba12699150c1f833065588274",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "65e98c620320b320000d9af683517e7d61cae01024d59a376d6a718d68db790c",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "425727b173d82e4843362ffbb731ad58f16cf3637b723404e0fef38b1f1a4df3",
+        "accepted_source_set_sha256": "bc5801e8fc2d68acc57eb8e11dc1d8f5b891fd9e21660bbd716d6b92b2685c03",
+        "generation": 1,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "64682a3c7b791e4ad2739d3c6d200372db9731f760a48fadc1590e8a875f8db5"
+      },
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "53318e32c8d6137d3aafc340a36726b3731292d1f46c269fa8cd5349bf18400c",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "a05d4fc37702d78b352b5eaeeef8462bc5eb42b419c1c19d9f57af9c37bb77a8",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "fae94efaab08c5c55d30e73021bb2d5cf74280eef7116e4ae8b9b177e05dbe3c",
+          "src/Assembly-CSharp/form/SpForm.cs": "fd53a81dac4ade19c562a3b38eb0032130d61fb642f5a9f3a399c0f75b39f7f6",
+          "src/Assembly-CSharp/form/SubForm.cs": "f8a60fbca2733585ae2950f88c0a6de3c70868359d412a0e7d6fd2cbd9f43890",
+          "src/Assembly-CSharp/form/TitleForm.cs": "d361e5b3eb850ccc3cbded040ffc5baad16cfe82cbd97f48493808424d0c2892",
+          "src/Assembly-CSharp/game/Ball.cs": "755e9942e72fb6638249e681c58420ab851b4122d6796c8e76beb61e164306e7",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "a4df654904fad44bc1e6a7848ddb324f4824ac9a58cac495415a9f8c6cb0f313",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "4de8bbd494ce7f22474d994842301e3d2e4365a4adf47c36a4c5d7221820b34d",
+          "src/Assembly-CSharp/game/MapMain.cs": "e1712ab04cd2a4f5947ebbaa9764848537742237bb5e33fc6004c97c6e6f98b8",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "6f64463d259f0560433f95f670252a7198b91f783251f66654a3a119c908085f",
+          "src/Assembly-CSharp/game/TArea.cs": "58856c7acca44a1cf2f777ff2117463dad2636cba82ff54457d050cfe6b0c2f8",
+          "src/Assembly-CSharp/game/TBall.cs": "6db28f3bdbda1631045439b05f149bb301c6808a1ea854c302f1f0085d631265",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "98891c18a31ebe0c181c4969c811a237fce52eb8c36a00bbbbe4ff11b4aaab5e",
+          "src/Assembly-CSharp/game/TPlayer.cs": "2874a030e69f330e2b943af4c0b83e217364181422755d1a03cfea497c48ba89",
+          "src/Assembly-CSharp/game/Team.cs": "c28769db883c553e48eb7dc45531d26ba3fcff8556673c178b7b9aa942ca318f",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "c0adf58a584f5254a0e5aa3d58616fbe6d3a7bb9eff2f0bd7dfa1c54baead222",
+          "src/Assembly-CSharp/main/AppData.cs": "ac78c979825939c6ca12c4270fbe4d66678e428f945046c12a6fbaf932d712e1",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+          "src/Assembly-CSharp/surface/GameView.cs": "6676148bf8a36a1746382f6ed0c05122f9937993e069d831b46896569af4b223",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "ddd9a43d9aec39d66598df639a6d5bd9a1b27334ebcecbe6f45eefe1e5719ccc",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "1102f55f3d41006b1d3b8a69278602d9403d756a4971de073b769c66b0bd4fe0",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "3691bd55b8f033ac0ca29dee324ff1159081602b5ec923af69fa3623add9d62f",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "0cab263d1e74af70d8fee5cc1b267c5b1be9ff94116632a026c2075691a6990e",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "70768827cfa71b12c7a1f8a769b291c48ef3a9ba1514af761eefd2b389d59d30",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "43b25ab18fa29748c128f1d6c8575f95218610edebb675db653a3f8a6f6eb027",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "b8c1794a338a2e15eb625d3ce4f15e16e49628d01acec577462bbf7ffbca6446",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "5b4b0f1fa71cee91ba6f04ab904d01486948bef834bdb4d1fb7f8fb621c8e933",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "f2302ae23bc0dc312f922b7b5babdfd8c192eb6ba12699150c1f833065588274",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "65e98c620320b320000d9af683517e7d61cae01024d59a376d6a718d68db790c",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "425727b173d82e4843362ffbb731ad58f16cf3637b723404e0fef38b1f1a4df3",
+        "accepted_source_set_sha256": "38c046ea29da95021b33a76da91d3b16a70cce9f22c4a918155907acd04e16a1",
+        "generation": 2,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "eaa21e549bac2727b1c7b23093022f366163f350891af9328e11c149a0b3eb36"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "system.KairoService::OnStart()->System.Void",
+        "rule": "d9-protected-exit-owner",
+        "full_verification_passed": true
+      },
+      {
+        "generation": 2,
+        "accepted_method": "system.KairoService::OnStart()->System.Void",
+        "rule": "smcs-empty-arm-restore",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1807,
+  "body_gains": [],
+  "body_losses": [],
+  "matched_IL_gains": 0,
+  "builds": 23,
+  "build_seconds": 21.56299999996554,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "f87b01597ac2ae0c769b8483cc34d719ddfab19dc1f1a771710cb7339a6c466f",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round9\\runs\\cycle12-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "425727b173d82e4843362ffbb731ad58f16cf3637b723404e0fef38b1f1a4df3",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "53318e32c8d6137d3aafc340a36726b3731292d1f46c269fa8cd5349bf18400c",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "a05d4fc37702d78b352b5eaeeef8462bc5eb42b419c1c19d9f57af9c37bb77a8",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "fae94efaab08c5c55d30e73021bb2d5cf74280eef7116e4ae8b9b177e05dbe3c",
+    "src/Assembly-CSharp/form/SpForm.cs": "fd53a81dac4ade19c562a3b38eb0032130d61fb642f5a9f3a399c0f75b39f7f6",
+    "src/Assembly-CSharp/form/SubForm.cs": "f8a60fbca2733585ae2950f88c0a6de3c70868359d412a0e7d6fd2cbd9f43890",
+    "src/Assembly-CSharp/form/TitleForm.cs": "d361e5b3eb850ccc3cbded040ffc5baad16cfe82cbd97f48493808424d0c2892",
+    "src/Assembly-CSharp/game/Ball.cs": "755e9942e72fb6638249e681c58420ab851b4122d6796c8e76beb61e164306e7",
+    "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "a4df654904fad44bc1e6a7848ddb324f4824ac9a58cac495415a9f8c6cb0f313",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "4de8bbd494ce7f22474d994842301e3d2e4365a4adf47c36a4c5d7221820b34d",
+    "src/Assembly-CSharp/game/MapMain.cs": "e1712ab04cd2a4f5947ebbaa9764848537742237bb5e33fc6004c97c6e6f98b8",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "6f64463d259f0560433f95f670252a7198b91f783251f66654a3a119c908085f",
+    "src/Assembly-CSharp/game/TArea.cs": "58856c7acca44a1cf2f777ff2117463dad2636cba82ff54457d050cfe6b0c2f8",
+    "src/Assembly-CSharp/game/TBall.cs": "6db28f3bdbda1631045439b05f149bb301c6808a1ea854c302f1f0085d631265",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "98891c18a31ebe0c181c4969c811a237fce52eb8c36a00bbbbe4ff11b4aaab5e",
+    "src/Assembly-CSharp/game/TPlayer.cs": "2874a030e69f330e2b943af4c0b83e217364181422755d1a03cfea497c48ba89",
+    "src/Assembly-CSharp/game/Team.cs": "c28769db883c553e48eb7dc45531d26ba3fcff8556673c178b7b9aa942ca318f",
+    "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+    "src/Assembly-CSharp/game/UserData.cs": "c0adf58a584f5254a0e5aa3d58616fbe6d3a7bb9eff2f0bd7dfa1c54baead222",
+    "src/Assembly-CSharp/main/AppData.cs": "ac78c979825939c6ca12c4270fbe4d66678e428f945046c12a6fbaf932d712e1",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+    "src/Assembly-CSharp/surface/GameView.cs": "6676148bf8a36a1746382f6ed0c05122f9937993e069d831b46896569af4b223",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "ddd9a43d9aec39d66598df639a6d5bd9a1b27334ebcecbe6f45eefe1e5719ccc",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "1102f55f3d41006b1d3b8a69278602d9403d756a4971de073b769c66b0bd4fe0",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "3691bd55b8f033ac0ca29dee324ff1159081602b5ec923af69fa3623add9d62f",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "0cab263d1e74af70d8fee5cc1b267c5b1be9ff94116632a026c2075691a6990e",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "70768827cfa71b12c7a1f8a769b291c48ef3a9ba1514af761eefd2b389d59d30",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "43b25ab18fa29748c128f1d6c8575f95218610edebb675db653a3f8a6f6eb027",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "b8c1794a338a2e15eb625d3ce4f15e16e49628d01acec577462bbf7ffbca6446",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "5b4b0f1fa71cee91ba6f04ab904d01486948bef834bdb4d1fb7f8fb621c8e933",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "f2302ae23bc0dc312f922b7b5babdfd8c192eb6ba12699150c1f833065588274",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "65e98c620320b320000d9af683517e7d61cae01024d59a376d6a718d68db790c",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

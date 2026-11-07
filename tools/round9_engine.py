@@ -635,6 +635,10 @@ def main():
                 division_evidence=field_division_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
                 hints.update(division_evidence)
                 if division_evidence:row.setdefault('round9_field_division_evidence',[]).append(division_evidence)
+                from round9_protected_exit_hints import protected_exit_hints
+                protected_evidence=protected_exit_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
+                hints.update(protected_evidence)
+                if protected_evidence:row.setdefault('round9_protected_exit_evidence',[]).append(protected_evidence)
                 from round7_smcs_hints import rule_hints
                 current_prediction=slot_model.predict(path=str(c.paths[logical]),source=text,method_id=key)
                 current_types=[type_lookup.get(t,'UNKNOWN') for t in method.get('locals',[])]

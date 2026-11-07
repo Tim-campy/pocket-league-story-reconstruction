@@ -655,7 +655,37 @@
       "before_sha256": "d3af27cbbc39f7330649d0aa3482ad2fb7118735cd96609dfef58cd4085bcde2",
       "after_measurement": "reports\\round9-cycle11-after-measurement.json",
       "after_sha256": "71276e587aa4341effc5e303d9c36f33d7c96c5739b2879d84a17bfefa1bdcd1"
+    },
+    {
+      "cycle": 23,
+      "label": "cycle12",
+      "phase": "D",
+      "primary_target": "system.KairoService::OnStart()->System.Void",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "d9-protected-exit-owner",
+      "assembly": "Assembly-CSharp",
+      "pair": "leave=>leave / catch-entry=>extra-leave",
+      "hypothesis": "Restaurar owner EH: mover break terminal do For para Try e remover Continue terminal Catch; em void IfTryReturns retirar returns protegidos e criar else com tail, preservando leaves automaticos e limites EH.",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 1,
+          "il_bytes_gained": 222
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 1,
+      "il_bytes_gained": 222,
+      "before_measurement": "reports\\round9-cycle12-before-measurement.json",
+      "before_sha256": "de6bf1488db9ecf1d86c105c8c8e996873bd24b94f5381edf402c0efe49fd491",
+      "after_measurement": "reports\\round9-cycle12-after-measurement.json",
+      "after_sha256": "1ae56ad0bef4807af2d2399890571ada2db79258d798c494ce07dffa1c53275f"
     }
   ],
-  "consecutive_zero_cycles": 1
+  "consecutive_zero_cycles": 0
 }

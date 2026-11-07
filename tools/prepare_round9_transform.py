@@ -13,6 +13,7 @@ def source_inputs():
     paths += [ROOT/'tools/Round9ArrayPopulationRules.cs']
     paths += [ROOT/'tools/Round9FieldDivisionRules.cs']
     paths += [ROOT/'tools/Round9BooleanContextRules.cs']
+    paths += [ROOT/'tools/Round9ProtectedExitRules.cs']
     anchor='AddRound7InfiniteTailGuardRules(cycleRequest.RootElement,text,mapped,methodBody,model,point,patches,seen);'
     main=paths[0].read_text(encoding='utf-8-sig')
     if main.count(anchor)!=1:raise ValueError('Unrecognized retained dispatcher')

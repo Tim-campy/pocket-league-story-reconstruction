@@ -94,13 +94,11 @@ namespace system
 				{
 					billing_.UpdateBillingItems(false);
 					billing_.UpdateApplyTask(false);
-				}
+break;				}
 				catch (Exception)
 				{
 					JThread.Sleep(1000L);
-					continue;
 				}
-				break;
 			}
 			if (CheckUserId() && !friend_.CheckRegistFriend())
 			{
@@ -143,8 +141,7 @@ namespace system
 				lineup_.Start();
 			}
 			MyLineup instance2 = MyLineup.GetInstance();
-			if (!instance2.CheckShowableLineup())
-			{
+			if (instance2.CheckShowableLineup()) { } else {
 				return;
 			}
 			LineupForm lineupForm = new LineupForm(0);

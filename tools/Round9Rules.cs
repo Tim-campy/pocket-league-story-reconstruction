@@ -16,6 +16,7 @@ public static partial class Round7TransformSyntax {
         AddRound9ArrayPopulationRules(input,text,mapped,methodBody,model,point,patches,seen);
         AddRound9FieldDivisionRules(input,text,mapped,methodBody,model,point,patches,seen);
         AddRound9BooleanContextRules(input,text,mapped,methodBody,model,point,patches,seen);
+        AddRound9ProtectedExitRules(input,text,mapped,methodBody,model,point,patches,seen);
         // Generation may include previously verified families. The engine still
         // filters all other families until this cycle's selected rule advances.
         if(input.TryGetProperty("round7_cycle_rules",out var learned)&&learned.ValueKind==JsonValueKind.Array) {

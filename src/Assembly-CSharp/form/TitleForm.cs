@@ -449,7 +449,6 @@ namespace form
 					canvas_.UpdateSoftLabel();
 					apdat_.LoadGame(selectSave_, selectSaveType_ == 0);
 					formMan_.ChangeCurrentForm(apdat_.frmGame_);
-					return;
 				}
 				catch (Exception t)
 				{
@@ -459,11 +458,10 @@ namespace form
 						Log.Info(t);
 					}
 					formMan_.Push(SubForm.MakeDialog("ロードに失敗しました"));
-					return;
 				}
 			}
-			formMan_.Push(SubForm.MakeDialog("セーブデータがありません"));
-		}
+else{			formMan_.Push(SubForm.MakeDialog("セーブデータがありません"));
+}		}
 
 		private void NewGame()
 		{
