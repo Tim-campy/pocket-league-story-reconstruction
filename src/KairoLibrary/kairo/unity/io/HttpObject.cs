@@ -97,10 +97,11 @@ namespace kairo.unity.io
 				{
 					return new byte[1][] { "1\n100".GetBytes() };
 				}
-				switch (KairoPlugin.LicenseCheck())
-				{
-				case 0:
-					return new byte[1][] { "1\n100".GetBytes() };
+				int recoveredLicenseStatus = KairoPlugin.LicenseCheck();
+if (recoveredLicenseStatus == 0) {
+return new byte[1][] { "1\n100".GetBytes() };
+}
+switch (recoveredLicenseStatus) {
 				case 4:
 					errorCode_ = -98;
 					errorText_ = Language.TranslateText("サーバーエラーが発生しました。");
@@ -114,7 +115,10 @@ namespace kairo.unity.io
 					errorText_ += "\n";
 					errorText_ += Language.TranslateText("認証に失敗しました。購入時のアカウントを設定し、電波状態を確認してください。");
 					break;
-				default:
+				case 1:
+case 2:
+case 3:
+default:
 					errorCode_ = -1;
 					errorText_ = Language.TranslateText("認証に失敗しました。");
 					errorText_ += "\n";

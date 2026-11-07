@@ -90,7 +90,7 @@
     {
       "id": "d-ready-roslyn-lifetimes",
       "phase": "D",
-      "status": "pending",
+      "status": "split_into_pending_children",
       "readiness": "READY_FOR_GAME_PROBE",
       "method_ids": [
         "kairo.unity.graphics.MaterialManager::RemoveInvalidMaterials()->System.Void",
@@ -99,7 +99,12 @@
       ],
       "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
       "report": "reports/round10-roslyn-lifetimes-patches.json",
-      "report_sha256": "def39fcbb2d7a0aa738d4854aab3b15329d74671f2482cb73ea1da9b7610929c"
+      "report_sha256": "def39fcbb2d7a0aa738d4854aab3b15329d74671f2482cb73ea1da9b7610929c",
+      "children": [
+        "d-ready-roslyn-material-scope",
+        "d-ready-roslyn-language-body-local",
+        "d-ready-roslyn-http-dispatch"
+      ]
     },
     {
       "id": "d-ready-static-bool",
@@ -112,6 +117,90 @@
       "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
       "report": "reports/round10-static-bool-patches.json",
       "report_sha256": "01e6839c104b436b81121dffb80d71ebd50abc7db4244db15b236c926bdfb46d"
+    },
+    {
+      "id": "d-ready-smcs-unused-slot-scopes",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "game.Map::Draw_copyArea(kairo.unity.ui.Graphics,System.Int32[])->System.Void",
+        "game.MapMain::Draw_copyArea(kairo.unity.ui.Graphics,System.Int32[])->System.Void",
+        "game.Map::SetDefaultCoatEva()->System.Void"
+      ],
+      "required_work": "Fresh model, actual target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-smcs-unused-slot-scopes-patches.json",
+      "report_sha256": "c9de0afaaf013821294cc3501eb57fdddcf10eb65d161fc97b01dd26caab351a"
+    },
+    {
+      "id": "d-ready-smcs-guard-slot-compositions",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "form.SpForm::AddCommand(System.Int32,System.String)->System.Void",
+        "system.billing.ui.BillingManager::RegistApplyTask(System.Boolean)->System.Boolean",
+        "system.surface.GameBanner::Load()->System.Void"
+      ],
+      "required_work": "Fresh model, actual target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-smcs-guard-slot-compositions-patches.json",
+      "report_sha256": "2a1ea9cd4ac16dca68fef1d59b0f82457de67791f5a6ecf7fc4b9867f7c1a026"
+    },
+    {
+      "id": "d-ready-roslyn-loop-body-guards",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "kairo.unity.io.BitArrayInputStream::Skip(System.Int64)->System.Int64",
+        "kairo.unity.ui.Graphics::PushMatrix(kairo.unity.ui.Matrix)->System.Void",
+        "kairo.unity.util.StringUtil::Split(System.String,System.String,System.Boolean,System.Boolean,System.Boolean)->System.String[]"
+      ],
+      "required_work": "Fresh model, actual target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-roslyn-loop-body-guards-patches.json",
+      "report_sha256": "64c73c4503735703a472de2fd0aeb87f637e746d599b27c7711a87d570e3449c"
+    },
+    {
+      "id": "d-ready-roslyn-material-scope",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "kairo.unity.graphics.MaterialManager::RemoveInvalidMaterials()->System.Void"
+      ],
+      "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-roslyn-lifetimes-patches.json",
+      "report_sha256": "def39fcbb2d7a0aa738d4854aab3b15329d74671f2482cb73ea1da9b7610929c",
+      "rule": "d10-roslyn-composition-material-tail-child-scope",
+      "parent_queue_id": "d-ready-roslyn-lifetimes"
+    },
+    {
+      "id": "d-ready-roslyn-language-body-local",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void"
+      ],
+      "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-roslyn-lifetimes-patches.json",
+      "report_sha256": "def39fcbb2d7a0aa738d4854aab3b15329d74671f2482cb73ea1da9b7610929c",
+      "rule": "d10-roslyn-composition-language-body-local-stack-candidate",
+      "parent_queue_id": "d-ready-roslyn-lifetimes"
+    },
+    {
+      "id": "d-ready-roslyn-http-dispatch",
+      "phase": "D",
+      "status": "tested",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]"
+      ],
+      "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-cycle07-KairoLibrary-engine.json",
+      "report_sha256": "def39fcbb2d7a0aa738d4854aab3b15329d74671f2482cb73ea1da9b7610929c",
+      "rule": "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+      "parent_queue_id": "d-ready-roslyn-lifetimes"
     }
   ],
   "prepared_registry": "config/round10-prepared-families.json",
@@ -200,7 +289,10 @@
     "O primeiro commit C01 parou na formata\u00e7\u00e3o de uma linha vazia com quatro espa\u00e7os no produtor raw. O hash do produtor foi preservado; revis\u00e3o restrita de formata\u00e7\u00e3o, sem relaxar o verificador. A repeti\u00e7\u00e3o do commit fez nova verifica\u00e7\u00e3o completa e publicou f3e3455.",
     "O recibo de ado\u00e7\u00e3o C01 escreveu baseline_commit UNKNOWN por limita\u00e7\u00e3o do adapter. O snapshot independente identifica ee994d2d052a9b20203791371e3a5556afe815dd; o adapter futuro passou a ler snapshot.json. Nenhum resultado de m\u00e9todo foi editado.",
     "Falhas de drivers na prepara\u00e7\u00e3o (schemas assembly/maxstack e manifesto AST duplicado) foram corrigidas, preservando os rascunhos. Fixtures e candidatos de jogo s\u00e3o contagens distintas.",
-    "After cycle04, three additional fixture-tested source families were registered as pending tests. They prevent counting zero-gain cycles until tested; method states remain exclusively verifier-generated. The standalone eight-section report adapter was reviewed for A/B/C evidence, baseline runtime scope, raw PDB-path persistence, exact current measurements, models, and ten inline IL examples."
+    "After cycle04, three additional fixture-tested source families were registered as pending tests. They prevent counting zero-gain cycles until tested; method states remain exclusively verifier-generated. The standalone eight-section report adapter was reviewed for A/B/C evidence, baseline runtime scope, raw PDB-path persistence, exact current measurements, models, and ten inline IL examples.",
+    "After cycle06, newly fixture-tested families were added to the prepared queue: d-ready-smcs-unused-slot-scopes, d-ready-smcs-guard-slot-compositions, d-ready-roslyn-loop-body-guards. Adding proposals does not promote any method state.",
+    "The three prepared Roslyn lifetime/dispatch compositions have distinct aligned pairs; their queue item was split into three pending diagnostic families, without assuming any target gain.",
+    "Cycle07 adopted HttpObject._connect with zero regressions, then its commit stopped at Git whitespace on four blank fixture lines. Failed commit logs were frozen before a trivia-only public-copy repair. The retry reruns full official verification and source/index proof; it does not rerun the cycle or add a journal gain. An earlier publication formatter preflight also rejected an incorrect blank-line assumption before writing; the subsequent literal-protected, token-identical cleanup is recorded separately."
   ],
   "kairo_window_size": 5
 }

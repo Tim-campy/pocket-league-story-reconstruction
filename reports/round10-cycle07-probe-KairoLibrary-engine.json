@@ -1,0 +1,1096 @@
+{
+  "assembly": "KairoLibrary",
+  "baseline_body_equal": 3169,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]",
+      "number": 1,
+      "initial_offset": 162,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+          "start": 1695,
+          "end": 8220,
+          "before": "private byte[][] _connect(string url, byte[] send, bool check, bool split)\r\n\t\t{\r\n\t\t\taskRetry_ = false;\r\n\t\t\tif (url.IndexOf(\"get_score.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\treturn new byte[1][] { \"OK\\n0,0\".GetBytes() };\r\n\t\t\t}\r\n\t\t\terrorCode_ = 0;\r\n\t\t\terrorText_ = null;\r\n\t\t\terrorTextOrg_ = null;\r\n\t\t\terrorUrl_ = null;\r\n\t\t\terror_ = null;\r\n\t\t\tbyte[][] recv = null;\r\n\t\t\tint totalSize = 0;\r\n\t\t\tint recvSize = 0;\r\n\t\t\tif (url.IndexOf(\"regist.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\tif (!Config.REGIST_ENABLE)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n\t\t\t\t}\r\n\t\t\t\tswitch (KairoPlugin.LicenseCheck())\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\treturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n\t\t\t\tcase 4:\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u30b5\u30fc\u30d0\u30fc\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 5:\r\n\t\t\t\tcase 257:\r\n\t\t\t\t\terrorCode_ = -99;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u901a\u4fe1\u3092\u8a31\u53ef\u3057\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u4e0b\u3055\u3044\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\terrorCode_ = -1;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tif (errorText_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Language.Japanese())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/en/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\terrorTextOrg_ = errorText_;\r\n\t\t\t\tthrow new IOException();\r\n\t\t\t}\r\n\t\t\twhile (url.IndexOf(\"NULLGWDOCOMO\") != -1)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\tif (url.Contains(\"?\"))\r\n\t\t\t{\r\n\t\t\t\turl = url + \"&\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\turl = url + \"?\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\tif (Config.TRACE_URL && Config.PRINT)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"[URL] \" + url);\r\n\t\t\t}\r\n\t\t\tif (send != null && Config.POST_MARK)\r\n\t\t\t{\r\n\t\t\t\tByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();\r\n\t\t\t\tStreamUtil.Write(byteArrayOutputStream, send);\r\n\t\t\t\tStreamUtil.WriteInt(byteArrayOutputStream, 1234567890);\r\n\t\t\t\tsend = byteArrayOutputStream.ToByteArray();\r\n\t\t\t}\r\n\t\t\tByteArrayInputStream bais = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tint timeout = 60000;\r\n\t\t\t\tlong begin = JSystem.CurrentTimeMillis();\r\n\t\t\t\thttp_ = (WWW)IApplication.GetCurrentApp().RunOnUiThread(() => (send != null) ? (new WWW(url, send)) : (new WWW(url)), true);\r\n\t\t\t\twhile (true)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true);\r\n\t\t\t\t\tif (completed)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_ == null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(\"timeout\");\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (!string.IsNullOrEmpty(http_.error))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(http_.error);\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbyte[] bytes = http_.bytes;\r\n\t\t\t\t\t\ttotalSize = bytes.Length;\r\n\t\t\t\t\t\tbais = new ByteArrayInputStream(bytes);\r\n\t\t\t\t\t\tif (check)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (2 <= totalSize)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tsbyte num = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\tsbyte b = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\trecvSize += 2;\r\n\t\t\t\t\t\t\t\tif (3 <= totalSize)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tStreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize++;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num != 79 || b != 75)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorTextOrg_ = Encoding.UTF8.GetString(bytes);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(bais, totalSize - recvSize);\r\n\t\t\t\t\t\t\t\t\tstring value = Encoding.UTF8.GetString(bytes2);\r\n\t\t\t\t\t\t\t\t\tstring[] array = StringUtil.Split(value, \"\\n\");\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (array.Length != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorCode_ = JInteger.ParseInt(array[0]);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t{ bool recoveredCondition_5948 = 1 < array.Length;\nif (recoveredCondition_5948)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorText_ = array[1].Replace('|', '\\n');\r\n\t\t\t\t\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = value;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"<\", \"(\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \">\", \")\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"\\n\", \" \");\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Info(\"Http\\t\\t[error]\" + errorCode_ + \":\" + errorText_);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\terror_ = new IOException();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\terror_ = new IOException(\"response \" + totalSize + \" bytes\");\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (error_ == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tVector vector = new Vector();\r\n\t\t\t\t\t\t\tbyte[] array2;\r\n\t\t\t\t\t\t\tfor (; recvSize < totalSize; recvSize += array2.Length)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint size = totalSize - recvSize;\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsize = StreamUtil.ReadInt(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize += 4;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tarray2 = StreamUtil.Read(bais, size);\r\n\t\t\t\t\t\t\t\tvector.AddElement(array2);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (vector.Size() == 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2]);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2] { 1, 0 });\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv = new byte[vector.Size()][];\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfor (int i = 0; i < vector.Size(); i++)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv[i] = (byte[])vector.ElementAt(i);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}, true);\r\n\t\t\t\tif (error_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tthrow error_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\terrorUrl_ = url;\r\n\t\t\t\tif (errorCode_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t}\r\n\t\t\t\tthrow ex;\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (bais != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbais.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbais = null;\r\n\t\t\t\tif (http_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}, true);\r\n\t\t\t\t}\r\n\t\t\t\thttp_ = null;\r\n\t\t\t}\r\n\t\t\treturn recv;\r\n\t\t}",
+          "after": "private byte[][] _connect(string url, byte[] send, bool check, bool split)\r\n\t\t{\r\n\t\t\taskRetry_ = false;\r\n\t\t\tif (url.IndexOf(\"get_score.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\treturn new byte[1][] { \"OK\\n0,0\".GetBytes() };\r\n\t\t\t}\r\n\t\t\terrorCode_ = 0;\r\n\t\t\terrorText_ = null;\r\n\t\t\terrorTextOrg_ = null;\r\n\t\t\terrorUrl_ = null;\r\n\t\t\terror_ = null;\r\n\t\t\tbyte[][] recv = null;\r\n\t\t\tint totalSize = 0;\r\n\t\t\tint recvSize = 0;\r\n\t\t\tif (url.IndexOf(\"regist.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\tif (!Config.REGIST_ENABLE)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n\t\t\t\t}\r\n\t\t\t\tint recoveredLicenseStatus = KairoPlugin.LicenseCheck();\r\nif (recoveredLicenseStatus == 0) {\r\nreturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n}\r\nswitch (recoveredLicenseStatus) {\r\n\t\t\t\tcase 4:\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u30b5\u30fc\u30d0\u30fc\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 5:\r\n\t\t\t\tcase 257:\r\n\t\t\t\t\terrorCode_ = -99;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u901a\u4fe1\u3092\u8a31\u53ef\u3057\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u4e0b\u3055\u3044\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\ncase 2:\r\ncase 3:\r\ndefault:\r\n\t\t\t\t\terrorCode_ = -1;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tif (errorText_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Language.Japanese())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/en/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\terrorTextOrg_ = errorText_;\r\n\t\t\t\tthrow new IOException();\r\n\t\t\t}\r\n\t\t\twhile (url.IndexOf(\"NULLGWDOCOMO\") != -1)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\tif (url.Contains(\"?\"))\r\n\t\t\t{\r\n\t\t\t\turl = url + \"&\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\turl = url + \"?\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\tif (Config.TRACE_URL && Config.PRINT)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"[URL] \" + url);\r\n\t\t\t}\r\n\t\t\tif (send != null && Config.POST_MARK)\r\n\t\t\t{\r\n\t\t\t\tByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();\r\n\t\t\t\tStreamUtil.Write(byteArrayOutputStream, send);\r\n\t\t\t\tStreamUtil.WriteInt(byteArrayOutputStream, 1234567890);\r\n\t\t\t\tsend = byteArrayOutputStream.ToByteArray();\r\n\t\t\t}\r\n\t\t\tByteArrayInputStream bais = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tint timeout = 60000;\r\n\t\t\t\tlong begin = JSystem.CurrentTimeMillis();\r\n\t\t\t\thttp_ = (WWW)IApplication.GetCurrentApp().RunOnUiThread(() => (send != null) ? (new WWW(url, send)) : (new WWW(url)), true);\r\n\t\t\t\twhile (true)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true);\r\n\t\t\t\t\tif (completed)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_ == null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(\"timeout\");\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (!string.IsNullOrEmpty(http_.error))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(http_.error);\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbyte[] bytes = http_.bytes;\r\n\t\t\t\t\t\ttotalSize = bytes.Length;\r\n\t\t\t\t\t\tbais = new ByteArrayInputStream(bytes);\r\n\t\t\t\t\t\tif (check)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (2 <= totalSize)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tsbyte num = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\tsbyte b = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\trecvSize += 2;\r\n\t\t\t\t\t\t\t\tif (3 <= totalSize)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tStreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize++;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num != 79 || b != 75)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorTextOrg_ = Encoding.UTF8.GetString(bytes);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(bais, totalSize - recvSize);\r\n\t\t\t\t\t\t\t\t\tstring value = Encoding.UTF8.GetString(bytes2);\r\n\t\t\t\t\t\t\t\t\tstring[] array = StringUtil.Split(value, \"\\n\");\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (array.Length != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorCode_ = JInteger.ParseInt(array[0]);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t{ bool recoveredCondition_5948 = 1 < array.Length;\nif (recoveredCondition_5948)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorText_ = array[1].Replace('|', '\\n');\r\n\t\t\t\t\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = value;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"<\", \"(\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \">\", \")\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"\\n\", \" \");\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Info(\"Http\\t\\t[error]\" + errorCode_ + \":\" + errorText_);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\terror_ = new IOException();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\terror_ = new IOException(\"response \" + totalSize + \" bytes\");\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (error_ == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tVector vector = new Vector();\r\n\t\t\t\t\t\t\tbyte[] array2;\r\n\t\t\t\t\t\t\tfor (; recvSize < totalSize; recvSize += array2.Length)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint size = totalSize - recvSize;\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsize = StreamUtil.ReadInt(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize += 4;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tarray2 = StreamUtil.Read(bais, size);\r\n\t\t\t\t\t\t\t\tvector.AddElement(array2);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (vector.Size() == 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2]);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2] { 1, 0 });\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv = new byte[vector.Size()][];\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfor (int i = 0; i < vector.Size(); i++)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv[i] = (byte[])vector.ElementAt(i);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}, true);\r\n\t\t\t\tif (error_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tthrow error_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\terrorUrl_ = url;\r\n\t\t\t\tif (errorCode_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t}\r\n\t\t\t\tthrow ex;\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (bais != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbais.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbais = null;\r\n\t\t\t\tif (http_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}, true);\r\n\t\t\t\t}\r\n\t\t\t\thttp_ = null;\r\n\t\t\t}\r\n\t\t\treturn recv;\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 162,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "System.Byte[][]",
+              "System.Int32",
+              "System.Int32",
+              "java.io.ByteArrayInputStream",
+              "System.Int32",
+              "java.io.ByteArrayOutputStream",
+              "System.Int32",
+              "System.Int64",
+              "System.Boolean",
+              "System.Exception"
+            ],
+            "method_id": "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]",
+            "unsupported_reasons": [
+              "anonymous_function_or_capture",
+              "stack_scheduler_multiple_use:recoveredLicenseStatus",
+              "stack_scheduler_multiple_use:byteArrayOutputStream",
+              "stack_scheduler_single_use:completed",
+              "switch_lowering",
+              "exception_lowering"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle07-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\io\\HttpObject.cs",
+            "full_source_sha256": "1e9282d99b1eb1f91281d88ab986a6bfb08f5d573c8f076e745e2f5cce6514de",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle07-probe\\engine\\KairoLibrary\\target-screen\\HttpObject.cs",
+            "screen_source_sha256": "b69c16052ddf66a47eed540a07db599e4e50c9f3505fc2b94a2aff922632108a",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1054,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1054,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]"
+          ],
+          "matched_IL_gain": 1054
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+          "start": 1695,
+          "end": 8220,
+          "before": "private byte[][] _connect(string url, byte[] send, bool check, bool split)\r\n\t\t{\r\n\t\t\taskRetry_ = false;\r\n\t\t\tif (url.IndexOf(\"get_score.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\treturn new byte[1][] { \"OK\\n0,0\".GetBytes() };\r\n\t\t\t}\r\n\t\t\terrorCode_ = 0;\r\n\t\t\terrorText_ = null;\r\n\t\t\terrorTextOrg_ = null;\r\n\t\t\terrorUrl_ = null;\r\n\t\t\terror_ = null;\r\n\t\t\tbyte[][] recv = null;\r\n\t\t\tint totalSize = 0;\r\n\t\t\tint recvSize = 0;\r\n\t\t\tif (url.IndexOf(\"regist.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\tif (!Config.REGIST_ENABLE)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n\t\t\t\t}\r\n\t\t\t\tswitch (KairoPlugin.LicenseCheck())\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\treturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n\t\t\t\tcase 4:\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u30b5\u30fc\u30d0\u30fc\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 5:\r\n\t\t\t\tcase 257:\r\n\t\t\t\t\terrorCode_ = -99;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u901a\u4fe1\u3092\u8a31\u53ef\u3057\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u4e0b\u3055\u3044\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\terrorCode_ = -1;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tif (errorText_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Language.Japanese())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/en/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\terrorTextOrg_ = errorText_;\r\n\t\t\t\tthrow new IOException();\r\n\t\t\t}\r\n\t\t\twhile (url.IndexOf(\"NULLGWDOCOMO\") != -1)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\tif (url.Contains(\"?\"))\r\n\t\t\t{\r\n\t\t\t\turl = url + \"&\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\turl = url + \"?\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\tif (Config.TRACE_URL && Config.PRINT)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"[URL] \" + url);\r\n\t\t\t}\r\n\t\t\tif (send != null && Config.POST_MARK)\r\n\t\t\t{\r\n\t\t\t\tByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();\r\n\t\t\t\tStreamUtil.Write(byteArrayOutputStream, send);\r\n\t\t\t\tStreamUtil.WriteInt(byteArrayOutputStream, 1234567890);\r\n\t\t\t\tsend = byteArrayOutputStream.ToByteArray();\r\n\t\t\t}\r\n\t\t\tByteArrayInputStream bais = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tint timeout = 60000;\r\n\t\t\t\tlong begin = JSystem.CurrentTimeMillis();\r\n\t\t\t\thttp_ = (WWW)IApplication.GetCurrentApp().RunOnUiThread(() => (send != null) ? (new WWW(url, send)) : (new WWW(url)), true);\r\n\t\t\t\twhile (true)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true);\r\n\t\t\t\t\tif (completed)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_ == null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(\"timeout\");\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (!string.IsNullOrEmpty(http_.error))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(http_.error);\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbyte[] bytes = http_.bytes;\r\n\t\t\t\t\t\ttotalSize = bytes.Length;\r\n\t\t\t\t\t\tbais = new ByteArrayInputStream(bytes);\r\n\t\t\t\t\t\tif (check)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (2 <= totalSize)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tsbyte num = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\tsbyte b = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\trecvSize += 2;\r\n\t\t\t\t\t\t\t\tif (3 <= totalSize)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tStreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize++;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num != 79 || b != 75)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorTextOrg_ = Encoding.UTF8.GetString(bytes);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(bais, totalSize - recvSize);\r\n\t\t\t\t\t\t\t\t\tstring value = Encoding.UTF8.GetString(bytes2);\r\n\t\t\t\t\t\t\t\t\tstring[] array = StringUtil.Split(value, \"\\n\");\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (array.Length != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorCode_ = JInteger.ParseInt(array[0]);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t{ bool recoveredCondition_5948 = 1 < array.Length;\nif (recoveredCondition_5948)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorText_ = array[1].Replace('|', '\\n');\r\n\t\t\t\t\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = value;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"<\", \"(\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \">\", \")\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"\\n\", \" \");\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Info(\"Http\\t\\t[error]\" + errorCode_ + \":\" + errorText_);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\terror_ = new IOException();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\terror_ = new IOException(\"response \" + totalSize + \" bytes\");\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (error_ == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tVector vector = new Vector();\r\n\t\t\t\t\t\t\tbyte[] array2;\r\n\t\t\t\t\t\t\tfor (; recvSize < totalSize; recvSize += array2.Length)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint size = totalSize - recvSize;\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsize = StreamUtil.ReadInt(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize += 4;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tarray2 = StreamUtil.Read(bais, size);\r\n\t\t\t\t\t\t\t\tvector.AddElement(array2);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (vector.Size() == 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2]);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2] { 1, 0 });\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv = new byte[vector.Size()][];\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfor (int i = 0; i < vector.Size(); i++)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv[i] = (byte[])vector.ElementAt(i);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}, true);\r\n\t\t\t\tif (error_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tthrow error_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\terrorUrl_ = url;\r\n\t\t\t\tif (errorCode_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t}\r\n\t\t\t\tthrow ex;\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (bais != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbais.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbais = null;\r\n\t\t\t\tif (http_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}, true);\r\n\t\t\t\t}\r\n\t\t\t\thttp_ = null;\r\n\t\t\t}\r\n\t\t\treturn recv;\r\n\t\t}",
+          "after": "private byte[][] _connect(string url, byte[] send, bool check, bool split)\r\n\t\t{\r\n\t\t\taskRetry_ = false;\r\n\t\t\tif (url.IndexOf(\"get_score.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\treturn new byte[1][] { \"OK\\n0,0\".GetBytes() };\r\n\t\t\t}\r\n\t\t\terrorCode_ = 0;\r\n\t\t\terrorText_ = null;\r\n\t\t\terrorTextOrg_ = null;\r\n\t\t\terrorUrl_ = null;\r\n\t\t\terror_ = null;\r\n\t\t\tbyte[][] recv = null;\r\n\t\t\tint totalSize = 0;\r\n\t\t\tint recvSize = 0;\r\n\t\t\tif (url.IndexOf(\"regist.php\") != -1)\r\n\t\t\t{\r\n\t\t\t\tif (!Config.REGIST_ENABLE)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n\t\t\t\t}\r\n\t\t\t\tint recoveredLicenseStatus = KairoPlugin.LicenseCheck();\r\nif (recoveredLicenseStatus == 0) {\r\nreturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n}\r\nswitch (recoveredLicenseStatus) {\r\n\t\t\t\tcase 4:\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u30b5\u30fc\u30d0\u30fc\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 5:\r\n\t\t\t\tcase 257:\r\n\t\t\t\t\terrorCode_ = -99;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u901a\u4fe1\u3092\u8a31\u53ef\u3057\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u4e0b\u3055\u3044\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\ncase 2:\r\ncase 3:\r\ndefault:\r\n\t\t\t\t\terrorCode_ = -1;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tif (errorText_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (Language.Japanese())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terrorText_ += \"\\thttp://kairopark.jp/android/en/faq.html#licence\";\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\terrorTextOrg_ = errorText_;\r\n\t\t\t\tthrow new IOException();\r\n\t\t\t}\r\n\t\t\twhile (url.IndexOf(\"NULLGWDOCOMO\") != -1)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\tif (url.Contains(\"?\"))\r\n\t\t\t{\r\n\t\t\t\turl = url + \"&\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\turl = url + \"?\" + GetTimeStampParam();\r\n\t\t\t}\r\n\t\t\tif (Config.TRACE_URL && Config.PRINT)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"[URL] \" + url);\r\n\t\t\t}\r\n\t\t\tif (send != null && Config.POST_MARK)\r\n\t\t\t{\r\n\t\t\t\tByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();\r\n\t\t\t\tStreamUtil.Write(byteArrayOutputStream, send);\r\n\t\t\t\tStreamUtil.WriteInt(byteArrayOutputStream, 1234567890);\r\n\t\t\t\tsend = byteArrayOutputStream.ToByteArray();\r\n\t\t\t}\r\n\t\t\tByteArrayInputStream bais = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tint timeout = 60000;\r\n\t\t\t\tlong begin = JSystem.CurrentTimeMillis();\r\n\t\t\t\thttp_ = (WWW)IApplication.GetCurrentApp().RunOnUiThread(() => (send != null) ? (new WWW(url, send)) : (new WWW(url)), true);\r\n\t\t\t\twhile (true)\r\n\t\t\t\t{\r\n\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_.isDone)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (JSystem.CurrentTimeMillis() - begin >= timeout)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\thttp_ = null;\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}, true);\r\n\t\t\t\t\tif (completed)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t}\r\n\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t{\r\n\t\t\t\t\tif (http_ == null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(\"timeout\");\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (!string.IsNullOrEmpty(http_.error))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\terror_ = new IOException(http_.error);\r\n\t\t\t\t\t\taskRetry_ = IsRetryEnable;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbyte[] bytes = http_.bytes;\r\n\t\t\t\t\t\ttotalSize = bytes.Length;\r\n\t\t\t\t\t\tbais = new ByteArrayInputStream(bytes);\r\n\t\t\t\t\t\tif (check)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (2 <= totalSize)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tsbyte num = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\tsbyte b = StreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\trecvSize += 2;\r\n\t\t\t\t\t\t\t\tif (3 <= totalSize)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tStreamUtil.ReadByte(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize++;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (num != 79 || b != 75)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorTextOrg_ = Encoding.UTF8.GetString(bytes);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(bais, totalSize - recvSize);\r\n\t\t\t\t\t\t\t\t\tstring value = Encoding.UTF8.GetString(bytes2);\r\n\t\t\t\t\t\t\t\t\tstring[] array = StringUtil.Split(value, \"\\n\");\r\n\t\t\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tif (array.Length != 0)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorCode_ = JInteger.ParseInt(array[0]);\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t{ bool recoveredCondition_5948 = 1 < array.Length;\nif (recoveredCondition_5948)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\terrorText_ = array[1].Replace('|', '\\n');\r\n\t\t\t\t\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = value;\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"<\", \"(\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \">\", \")\");\r\n\t\t\t\t\t\t\t\t\t\terrorText_ = StringUtil.Replace(errorText_, \"\\n\", \" \");\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tLog.Info(\"Http\\t\\t[error]\" + errorCode_ + \":\" + errorText_);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\terror_ = new IOException();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\terror_ = new IOException(\"response \" + totalSize + \" bytes\");\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (error_ == null)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tVector vector = new Vector();\r\n\t\t\t\t\t\t\tbyte[] array2;\r\n\t\t\t\t\t\t\tfor (; recvSize < totalSize; recvSize += array2.Length)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tint size = totalSize - recvSize;\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsize = StreamUtil.ReadInt(bais);\r\n\t\t\t\t\t\t\t\t\trecvSize += 4;\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tarray2 = StreamUtil.Read(bais, size);\r\n\t\t\t\t\t\t\t\tvector.AddElement(array2);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (vector.Size() == 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (split)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2]);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\trecv = JTool.MakeArray<byte[][]>(new int[2] { 1, 0 });\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv = new byte[vector.Size()][];\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfor (int i = 0; i < vector.Size(); i++)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\trecv[i] = (byte[])vector.ElementAt(i);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}, true);\r\n\t\t\t\tif (error_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tthrow error_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\terrorUrl_ = url;\r\n\t\t\t\tif (errorCode_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t}\r\n\t\t\t\tthrow ex;\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (bais != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbais.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbais = null;\r\n\t\t\t\tif (http_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tIApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\thttp_.Dispose();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}, true);\r\n\t\t\t\t}\r\n\t\t\t\thttp_ = null;\r\n\t\t\t}\r\n\t\t\treturn recv;\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 162,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [
+              "System.Byte[][]",
+              "System.Int32",
+              "System.Int32",
+              "java.io.ByteArrayInputStream",
+              "System.Int32",
+              "java.io.ByteArrayOutputStream",
+              "System.Int32",
+              "System.Int64",
+              "System.Boolean",
+              "System.Exception"
+            ],
+            "method_id": "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]",
+            "unsupported_reasons": [
+              "anonymous_function_or_capture",
+              "stack_scheduler_multiple_use:recoveredLicenseStatus",
+              "stack_scheduler_multiple_use:byteArrayOutputStream",
+              "stack_scheduler_single_use:completed",
+              "switch_lowering",
+              "exception_lowering"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle07-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\io\\HttpObject.cs",
+            "full_source_sha256": "1e9282d99b1eb1f91281d88ab986a6bfb08f5d573c8f076e745e2f5cce6514de",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle07-probe\\engine\\KairoLibrary\\target-screen\\HttpObject.cs",
+            "screen_source_sha256": "b69c16052ddf66a47eed540a07db599e4e50c9f3505fc2b94a2aff922632108a",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1054,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1054,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]"
+          ],
+          "matched_IL_gain": 1054
+        }
+      ],
+      "mapping": "native-PDB-sequence-point",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "null_polarity_evidence": [
+        {}
+      ],
+      "round9_calculated_emission_evidence": [
+        {
+          "float_identity": {},
+          "per_arm_stores": {}
+        }
+      ],
+      "transform_helper_sha256": "df5d9fcd8937f6c1d3835d72c58f6fcee3dbb53d215db35f085e225c0eac8e98",
+      "stop_point": {
+        "offset": 162,
+        "source": "src/KairoLibrary/kairo/unity/io/HttpObject.cs",
+        "point": {
+          "offset": 193,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle07-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\io\\HttpObject.cs",
+          "start_line": 100,
+          "start_column": 5,
+          "end_line": 100,
+          "end_column": 40,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 200,
+          "line": 100,
+          "column": 5
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 200,
+          "rebuilt_offset": 200,
+          "original_index": 77,
+          "rebuilt_index": 77,
+          "original_instruction": {
+            "offset": 200,
+            "opcode": "brtrue.s",
+            "operand": {
+              "branch": 222
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 200,
+            "opcode": "ldc.i4.4",
+            "operand": null
+          },
+          "pair": "{\"opcode\":\"brtrue.s\",\"operand\":{\"branch\":222}} => {\"opcode\":\"ldc.i4.4\",\"operand\":null}",
+          "opcode_pair": "brtrue.s => ldc.i4.4",
+          "original_context": [
+            {
+              "offset": 198,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 199,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 200,
+              "opcode": "brtrue.s",
+              "operand": {
+                "labels": [
+                  "O222"
+                ]
+              }
+            },
+            {
+              "offset": 202,
+              "opcode": "ldc.i4.1",
+              "operand": null,
+              "label": "L2"
+            },
+            {
+              "offset": 203,
+              "opcode": "newarr",
+              "operand": {
+                "type": "valuetype System.Byte @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 198,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 199,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 200,
+              "opcode": "ldc.i4.4",
+              "operand": null
+            },
+            {
+              "offset": 201,
+              "opcode": "bgt.s",
+              "operand": {
+                "labels": [
+                  "R215"
+                ]
+              }
+            },
+            {
+              "offset": 203,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 204,
+              "opcode": "brfalse.s",
+              "operand": {
+                "labels": [
+                  "L2"
+                ]
+              }
+            },
+            {
+              "offset": 206,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 207,
+              "opcode": "ldc.i4.4",
+              "operand": null
+            },
+            {
+              "offset": 208,
+              "opcode": "beq.s",
+              "operand": {
+                "labels": [
+                  "L3"
+                ]
+              }
+            },
+            {
+              "offset": 210,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L5"
+                ]
+              }
+            },
+            {
+              "offset": 215,
+              "opcode": "ldloc.1",
+              "operand": null,
+              "label": "R215"
+            },
+            {
+              "offset": 216,
+              "opcode": "ldc.i4.5",
+              "operand": null
+            },
+            {
+              "offset": 217,
+              "opcode": "beq.s",
+              "operand": {
+                "labels": [
+                  "L4"
+                ]
+              }
+            },
+            {
+              "offset": 219,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 220,
+              "opcode": "ldc.i4",
+              "operand": 257
+            }
+          ],
+          "original_labels": {
+            "88": "L0",
+            "193": "L1",
+            "202": "L2",
+            "263": "L3",
+            "343": "L4",
+            "420": "L5",
+            "494": "L6",
+            "533": "L7",
+            "555": "L8",
+            "573": "L9",
+            "640": "L10",
+            "668": "L11",
+            "705": "L12",
+            "761": "L13",
+            "842": "L14",
+            "880": "L15",
+            "903": "L16",
+            "946": "L17",
+            "976": "L18",
+            "1001": "L19",
+            "1039": "L20",
+            "1047": "L21",
+            "222": "O222"
+          },
+          "rebuilt_labels": {
+            "88": "L0",
+            "193": "L1",
+            "232": "L2",
+            "252": "L3",
+            "332": "L4",
+            "409": "L5",
+            "483": "L6",
+            "522": "L7",
+            "544": "L8",
+            "562": "L9",
+            "629": "L10",
+            "657": "L11",
+            "694": "L12",
+            "750": "L13",
+            "831": "L14",
+            "869": "L15",
+            "892": "L16",
+            "935": "L17",
+            "965": "L18",
+            "990": "L19",
+            "1028": "L20",
+            "1036": "L21",
+            "215": "R215"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 77,
+              "original_stop": 78,
+              "rebuilt_start": 77,
+              "rebuilt_stop": 92
+            },
+            {
+              "kind": "delete",
+              "original_start": 86,
+              "original_stop": 94,
+              "rebuilt_start": 100,
+              "rebuilt_stop": 100
+            }
+          ],
+          "branch_retarget_differences": [],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 768,
+              "try_end": 948,
+              "handler_start": 948,
+              "handler_end": 977,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 985,
+              "try_end": 998,
+              "handler_start": 998,
+              "handler_end": 1001,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 768,
+              "try_end": 977,
+              "handler_start": 977,
+              "handler_end": 1047,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 757,
+              "try_end": 937,
+              "handler_start": 937,
+              "handler_end": 966,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            },
+            {
+              "kind": "Catch",
+              "try_start": 974,
+              "try_end": 987,
+              "handler_start": 987,
+              "handler_end": 990,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 757,
+              "try_end": 966,
+              "handler_start": 966,
+              "handler_end": 1036,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ]
+        },
+        "statement": {
+          "start": 2237,
+          "end": 3027,
+          "line": 100,
+          "column": 5,
+          "text": "switch (KairoPlugin.LicenseCheck())\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\treturn new byte[1][] { \"1\\n100\".GetBytes() };\r\n\t\t\t\tcase 4:\r\n\t\t\t\t\terrorCode_ = -98;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u30b5\u30fc\u30d0\u30fc\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 5:\r\n\t\t\t\tcase 257:\r\n\t\t\t\t\terrorCode_ = -99;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u901a\u4fe1\u3092\u8a31\u53ef\u3057\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u4e0b\u3055\u3044\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\terrorCode_ = -1;\r\n\t\t\t\t\terrorText_ = Language.TranslateText(\"\u8a8d\u8a3c\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\");\r\n\t\t\t\t\terrorText_ += \"\\n\";\r\n\t\t\t\t\terrorText_ += Language.TranslateText(\"\u8cfc\u5165\u6642\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u3092\u8a2d\u5b9a\u3057\u3001\u96fb\u6ce2\u72b6\u614b\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\");\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}",
+          "kind": "SwitchStatement",
+          "method_id": "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]",
+          "point": 2237,
+          "declaration_start": 1695,
+          "declaration_end": 8220
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 5,
+              "last_use": 1047,
+              "loads": 27,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 198,
+              "last_use": 250,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 725,
+              "last_use": 750,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 773,
+              "last_use": 908,
+              "loads": 8,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 871,
+              "last_use": 878,
+              "loads": 1,
+              "stores": 1
+            }
+          ],
+          "constraints": [
+            "source_model_incomplete"
+          ],
+          "source_only": true,
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 7,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 6,
+          "selected_rule_prefix": "d10-roslyn-composition-http-zero-guard-dense-default-bucket"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "incomplete_variants_compiled": 1,
+      "incomplete_variant_limit": 12,
+      "incomplete_compiler_invocations": 2,
+      "final_offset": 1054,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket:attempts": 1,
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket:accepted_steps": 1,
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket:body_gains": 1,
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket:IL_gains": 1054
+  },
+  "completed": true,
+  "run_label": "cycle07-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\cycles\\cycle07\\baseline\\KairoLibrary",
+  "cycle_rule": "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+  "trial_compiler_server": "/shared (CLI only)",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 6,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "c0b2df7b65e8080da27cbb537aa00c5102eea83662db88f9d27c386c4e553a91",
+    "source_sha256": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+    "client_sha256": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+    "solver_sha256": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991"
+  },
+  "external_proposals": {
+    "path": "reports\\round10-roslyn-lifetimes-patches.json",
+    "sha256": "def39fcbb2d7a0aa738d4854aab3b15329d74671f2482cb73ea1da9b7610929c",
+    "dependencies_checked": {
+      "tools/round10_roslyn_lifetimes_source.py": "bc69d6557314b99747524270c87dee8bf6b0f305fa9cfbbea80d0faad6da2e7b",
+      "tools/round10_publish_ready_families.py": "70cb38acd909813e30a449c8167d4f9bc2cb434ca87447ef4f4e3f9c4e51fc8f"
+    },
+    "read_only_evidence_checked": {
+      "reports/round10-roslyn-lifetimes-fixtures.json": "4a24b224addf7f71516af9ca301ddae3a72d832e1691f354a6348915422a4a0b"
+    },
+    "frozen_evidence_checked": {
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\fixture-report.json": "4a24b224addf7f71516af9ca301ddae3a72d832e1691f354a6348915422a4a0b",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\freeze.json": "6c6482c7e958aa1be4c26ec3f56609d1c1100da2884754ed51660e57a0c7bcee",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\handoff-bundle.json": "694432372ab615f0930ddad4f2b3d94d6c627370ae309a4bc4a412ac01794788",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\calculate.py": "bc69d6557314b99747524270c87dee8bf6b0f305fa9cfbbea80d0faad6da2e7b",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\export_ready.py": "f132ff7028e1c9be9540b00a275f742f86ea517e5d0d0c7c453b416913fe4479",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\before\\Fixture.cs": "43db46495d1deaaa715e1249038206efad6cf1e5c06c31a5e4166a5a514e8792",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\before\\Fixture.dll": "be0629fac2af0404ea629f50a9ab5678480acbf7e9c44d8c4573619cb458f8a1",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\before\\Fixture.pdb": "e319fc81009aff2b8386b82d648ea622df1d605192476fbf33cb0d6cb6560c45",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\before\\compile.rsp": "124271b52f9886e73d339eb7eba33dd86f3b01f85c43d6a6be81e555bae28caf",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\before\\compiler.log": "c53f8bfde9d6601f15e35ecdd457f86645a67d686c8aebb49656d7d0c610b337",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\before\\methods.json": "cc617031b883186613aeda5b03d545a1acfe5d154e9714e331a9dcea8a6a6f86",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\control\\Fixture.cs": "cbbadcd15c3c6ed18ffbecad6873252bb828fdcb3fd19e2914b6f072df84cbbb",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\control\\Fixture.dll": "45e1015fc659d874925529dd6b00712686c30772f9dd5defa849fa13ecab5362",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\control\\Fixture.pdb": "fb65bf13280df309c5ca921dd018e3ae757fa66cd4b6c0317ac1bd22c4284ffb",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\control\\compile.rsp": "1857e3da46083110d5f101d9b74242bf30130518f97b5e2d3c27acc153282d46",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\control\\compiler.log": "74c24f55c26b27c6f14479df7a79cf0a5bb060feff6e3b5d4debc35920d672b3",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\control\\methods.json": "dc9fc8b3f37a559c4d7f3ff4bb8789c587bbc381a7f65d5ab6894d2221bc0ddc",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\candidate\\Fixture.cs": "3a31d895793ec4c6c561c1ef9a4abdfdfeba8c14bb83a1210216ce93adcfb0d3",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\candidate\\Fixture.dll": "564d970157c601c0629ef79e0970cf6cf49ef25f34e6cbcdd8f0b8843314fa18",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\candidate\\Fixture.pdb": "08d9f3f78c701ad867f1c2315ce02fb46a24bc1021881f438c9a9a95ff2e1a11",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\candidate\\compile.rsp": "fa6f809925298aaa83c59207c346942de5ffe74605d2c781ff31544804e2f46d",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\candidate\\compiler.log": "af7f2b370632c61d0e0a0d76d8ba471a133187fe43e594eda3f884a6e7f2df1a",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\material\\candidate\\methods.json": "dc9fc8b3f37a559c4d7f3ff4bb8789c587bbc381a7f65d5ab6894d2221bc0ddc",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\before\\Fixture.cs": "652782b7fb1233562a2e87ec817d373dbf98c58d6a2ac428d91e23d4161be50d",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\before\\Fixture.dll": "9e6a4cbbb0acba99bdc091238546d3e3009717e85c833a2cab9c0740080a8b1b",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\before\\Fixture.pdb": "69ab792646e5ea8a7c27a541807a3026301f1792409ee3f24ed5657c0b1cb533",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\before\\compile.rsp": "62d86b731d74279825f35ad86b73946fd2d6ece6032cf3abb080ef8dd236e176",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\before\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\before\\methods.json": "8e6184d8457c6318436747400825ae1186dbd82f3a8fed3a5d34dcbd32961c35",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\control\\Fixture.cs": "4fd802b478e3b52e2b52a38c3119df128d8a4e2c307c6a27ab0e5078a714670d",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\control\\Fixture.dll": "be001f1dfe67a5ed741158d1621b3045134bc1921d950596f01e403124937e40",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\control\\Fixture.pdb": "0ee941615454f7028ce1c3d5d8990d8186982d0d84353354cb8776cfea9443b7",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\control\\compile.rsp": "30252972033a5a19b745063687b217c396f7220593af71742d1d4a3000aadd05",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\control\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\control\\methods.json": "c1a0f0cf3006bf1be8111550e57281ffcac00b4f7ffe85a4b276404c57896b50",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\candidate\\Fixture.cs": "e6313c7f69f31e5e684f128c3109e83b2928c34f387130c4e16cb4d4511751a3",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\candidate\\Fixture.dll": "5f28fa02f947077bd8b6ba63c7de844d998ade389cf20bf867b782552f01105d",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\candidate\\Fixture.pdb": "f6f9ff5d331ccfc499d850cc9e3d2aa44322bed956a000d8bfbd7c082e624f73",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\candidate\\compile.rsp": "fb86c689d58825c8bff2420985cbde23d52959bce30938df6eb346703a7768b7",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\candidate\\compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\language\\candidate\\methods.json": "c1a0f0cf3006bf1be8111550e57281ffcac00b4f7ffe85a4b276404c57896b50",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\before\\Fixture.cs": "e9ec91f9ea451fb7141a6760b23c509dcb661a1118fafc6d09ebdf29d77a2fde",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\before\\Fixture.dll": "a68bd6d7ab9183eccbbb84771d66e7b79ae083f18dcbaa970619a09677c69fb4",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\before\\Fixture.pdb": "b7c0f71c3d97943cafd9dde87449d23184077db8abf221637f3e09541484de59",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\before\\compile.rsp": "5551a4fbc4769c6205d6ac9dfcb9e4bd98177764c441dc1dc327d0839c822037",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\before\\compiler.log": "45df3cd1b09fa2690aeb1bd8c8c87704873441b22d45c28bf85388d58d7cf2a5",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\before\\methods.json": "18f24dc08fadb496d7f624d189fe900aeee91eaf680226147c4737e6ff317ef3",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\control\\Fixture.cs": "92c32d0b75d4025832597756b299506312a9d730589677133fe0e3844ae2088e",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\control\\Fixture.dll": "57f61c8acbbf021f8f8fa3e50c52934ca33528c9cd2e82a7a22cc13ab2f6c510",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\control\\Fixture.pdb": "d5c7cd068fe15d1bfc45aea7de27952b0ae6b67372ae60b199c43cc0b97967c9",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\control\\compile.rsp": "b04717fae0fdd032db89abbd2f1acc90d53845103bcfb951336b6e78896f6048",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\control\\compiler.log": "e4bae0be8357984629fc0f469b016d2902334451905d9efeda97b0529fe6faeb",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\control\\methods.json": "d3b176a6f7356f3b084ec1a81132bfff2e71a47018a315ee8d6f2106dcf3892b",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\candidate\\Fixture.cs": "f8367b513d2d77af2bb38127e60f89c3b8f15a0432069be3dbe383a7985bef37",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\candidate\\Fixture.dll": "13a53f2a9a6e1097e87d3a62bb2eec19bb07548f27083452b6e25d07c022cd66",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\candidate\\Fixture.pdb": "08ee2deb8cf1e613b0f0052fbc40996c0753bb74c52b41047637734ff8570617",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\candidate\\compile.rsp": "d7ddf10f0bec562babff3ee56707c2b1a3724d22c3299c5e25ef2d8238d98f1a",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\candidate\\compiler.log": "654d59af7b4fb05d4e3ca63a0773b6ae6345a1bf4ab85a20bce11dd0f0ba9c1e",
+      "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\autonomous-roslyn-lifetimes\\validation-v1\\http\\candidate\\methods.json": "d3b176a6f7356f3b084ec1a81132bfff2e71a47018a315ee8d6f2106dcf3892b",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/ready-for-game-probe.json": "2adf237f1139aeb1dbbd2180387a0f7e41b7eeb1ac6bb9760b641afa68372c3e",
+      "build/round10/autonomous-roslyn-lifetimes/calculate.py": "bc69d6557314b99747524270c87dee8bf6b0f305fa9cfbbea80d0faad6da2e7b",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/fixture-report.json": "4a24b224addf7f71516af9ca301ddae3a72d832e1691f354a6348915422a4a0b",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/http/before/Fixture.cs": "e9ec91f9ea451fb7141a6760b23c509dcb661a1118fafc6d09ebdf29d77a2fde",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/language/before/Fixture.cs": "652782b7fb1233562a2e87ec817d373dbf98c58d6a2ac428d91e23d4161be50d",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/material/before/Fixture.cs": "43db46495d1deaaa715e1249038206efad6cf1e5c06c31a5e4166a5a514e8792",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/http/control/Fixture.cs": "92c32d0b75d4025832597756b299506312a9d730589677133fe0e3844ae2088e",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/language/control/Fixture.cs": "4fd802b478e3b52e2b52a38c3119df128d8a4e2c307c6a27ab0e5078a714670d",
+      "build/round10/autonomous-roslyn-lifetimes/validation-v1/material/control/Fixture.cs": "cbbadcd15c3c6ed18ffbecad6873252bb828fdcb3fd19e2914b6f072df84cbbb"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": []
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0,
+    "incomplete_permitted": 1
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+          "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+          "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+          "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+          "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+          "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+          "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+          "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+          "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+          "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+          "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+          "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+          "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+          "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+          "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+          "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+          "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+          "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+          "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+          "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+          "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+          "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+          "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+          "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+          "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+          "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+          "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+          "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+          "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+          "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+          "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+          "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+          "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+          "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+          "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+          "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+          "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+          "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+          "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+          "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+          "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+          "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+          "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "9b0e67c5383a620f9f9e5638748c6fb7cbf527c16ceb255190ce6a6099c9ac62",
+          "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+          "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "cddd9e169e46c794969d623071335632e2535a557f22464cabb01e9aca8afd8c",
+          "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+          "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+          "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+          "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+          "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+          "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+          "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+          "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+          "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+          "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+          "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+          "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+          "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+          "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+          "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+          "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "6a57e2033db76925a1a28f3df5168eedb34fb233f1e43d3a558df8190f5a8d56",
+          "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+          "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+          "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+          "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+          "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+          "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+          "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+          "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+          "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+          "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+          "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+          "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+          "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+          "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+          "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+          "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+          "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+          "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+          "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+          "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+          "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+          "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+          "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+          "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+          "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+          "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+          "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+          "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+          "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+          "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+          "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+          "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+          "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "6da570d2e8be18c84abd0673faf490b00cab9d4525b850fc22b34467e43fd9b3",
+          "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+          "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+          "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+          "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+          "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+          "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "9171d6f906b86a52ebdf9b2611b7e12611a478f5159e4b9707698f6ebc81664d",
+          "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+          "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+          "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+          "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+          "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+          "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "15815486df5b8d5b8377b960e36fcd8379ddb82d9a281c73fbc96926e657cc39",
+          "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+          "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "b347676a0f45af748105cb953746b3f954ec1334a821da25cc0021d7140acb54",
+          "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+          "src/KairoLibrary/kairo/unity/ui/Seb.cs": "49e990b9e918b57ade98b04cd869cc4fbc35275c626bb42773123701072fe561",
+          "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+          "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+          "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+          "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+          "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "83509b56f8ac29e0850af0e9c8ebb3ab2738b5d3aa384e326271d0350ec44e68",
+          "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+          "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+          "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+          "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+          "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+          "src/KairoLibrary/kairo/unity/util/Compressor.cs": "2d45c823381408fc0ce22d3b86903c3b0e1724e6318f5f9238e2b166b5a75760",
+          "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+          "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+          "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+          "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+          "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+          "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+          "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+          "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+          "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+          "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+          "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+          "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+          "src/KairoLibrary/kairo/unity/util/Language.cs": "1dcfcbf5363fac62fc730c885d0b6500e0410b552bda3358462a38f6a1e5de42",
+          "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+          "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+          "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+          "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+          "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+          "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+          "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+          "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+          "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+          "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+          "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+          "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+          "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+          "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+          "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+          "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+          "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+          "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+        },
+        "manifest_sha256": "807d085acdf65beed090893d993f53cb5958589a905daadf9c78d03baa8a1dba",
+        "accepted_source_set_sha256": "d267f220b7656ab9f621b0e55ab963617ca73e22427b94c3d295ea552f392eef",
+        "generation": 0,
+        "method_count": 3287,
+        "symbol_kind": "PDB",
+        "binary_sha256": "06794716a6ee44d577270e68f6fd493a2d49745dddfe168725b27071b4530976"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]",
+        "rule": "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 3170,
+  "body_gains": [
+    "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 1054,
+  "builds": 6,
+  "build_seconds": 7.079000000143424,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle07-probe\\engine\\KairoLibrary\\current\\KairoLibrary.dll",
+  "final_sha256": "498a2a6e42e78f1d261835d6735359621d38516eeeb414fe81abbbcec7cbf93f",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle07-probe\\engine\\KairoLibrary\\source-map.json",
+  "metadata_types_equal": 337,
+  "metadata_types_total": 337,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 1,
+    "candidate_compiler_invocations": 2,
+    "methods_with_variants": 1,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "807d085acdf65beed090893d993f53cb5958589a905daadf9c78d03baa8a1dba",
+  "source_hashes": {
+    "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+    "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+    "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+    "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+    "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+    "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+    "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+    "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+    "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+    "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+    "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+    "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+    "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+    "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+    "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+    "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+    "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+    "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+    "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+    "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+    "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+    "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+    "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+    "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+    "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+    "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+    "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+    "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+    "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+    "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+    "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+    "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+    "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+    "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+    "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+    "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+    "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+    "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+    "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+    "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+    "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+    "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+    "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "9b0e67c5383a620f9f9e5638748c6fb7cbf527c16ceb255190ce6a6099c9ac62",
+    "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+    "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "cddd9e169e46c794969d623071335632e2535a557f22464cabb01e9aca8afd8c",
+    "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+    "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+    "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+    "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+    "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+    "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+    "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+    "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+    "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+    "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+    "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+    "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "90cf16ee5ace283520ed8d43f158e144b93551defb690e4178f81d946d19f141",
+    "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+    "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+    "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+    "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "1e9282d99b1eb1f91281d88ab986a6bfb08f5d573c8f076e745e2f5cce6514de",
+    "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+    "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+    "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+    "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+    "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+    "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+    "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+    "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+    "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+    "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+    "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+    "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+    "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+    "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+    "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+    "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+    "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+    "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+    "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+    "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+    "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+    "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+    "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+    "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+    "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+    "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+    "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+    "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+    "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+    "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+    "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+    "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+    "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "6da570d2e8be18c84abd0673faf490b00cab9d4525b850fc22b34467e43fd9b3",
+    "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+    "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+    "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+    "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+    "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+    "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "9171d6f906b86a52ebdf9b2611b7e12611a478f5159e4b9707698f6ebc81664d",
+    "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+    "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+    "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+    "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+    "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+    "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "15815486df5b8d5b8377b960e36fcd8379ddb82d9a281c73fbc96926e657cc39",
+    "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+    "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "b347676a0f45af748105cb953746b3f954ec1334a821da25cc0021d7140acb54",
+    "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+    "src/KairoLibrary/kairo/unity/ui/Seb.cs": "49e990b9e918b57ade98b04cd869cc4fbc35275c626bb42773123701072fe561",
+    "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+    "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+    "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+    "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+    "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "83509b56f8ac29e0850af0e9c8ebb3ab2738b5d3aa384e326271d0350ec44e68",
+    "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+    "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+    "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+    "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+    "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+    "src/KairoLibrary/kairo/unity/util/Compressor.cs": "2d45c823381408fc0ce22d3b86903c3b0e1724e6318f5f9238e2b166b5a75760",
+    "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+    "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+    "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+    "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+    "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+    "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+    "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+    "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+    "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+    "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+    "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+    "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+    "src/KairoLibrary/kairo/unity/util/Language.cs": "1dcfcbf5363fac62fc730c885d0b6500e0410b552bda3358462a38f6a1e5de42",
+    "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+    "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+    "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+    "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+    "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+    "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+    "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+    "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+    "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+    "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+    "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+    "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+    "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+    "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+    "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+    "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "3745448c9b591ac9490c6a08b5885d988e7abd077deb9546b3d7fbc56452500c",
+    "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+    "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+  }
+}
