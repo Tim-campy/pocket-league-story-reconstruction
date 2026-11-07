@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,039 de 5,245 métodos matched (96.07%).** 871,497 bytes de IL nos assemblies alvo.
-606,088 bytes IL matched (69.55%).
+**5,040 de 5,245 métodos matched (96.09%).** 871,497 bytes de IL nos assemblies alvo.
+613,082 bytes IL matched (70.35%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3146 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 205 |
+| decompiled | 204 |
 | equivalent | 0 |
-| matched | 5039 |
+| matched | 5040 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1819 / 92.90% | 378276 / 62.88% |
+| `Assembly-CSharp` | 1958 | 601603 | 1820 / 92.95% | 385270 / 64.04% |
 | `KairoLibrary` | 3287 | 269894 | 3220 / 97.96% | 227812 / 84.41% |
 
 ## Namespaces
@@ -77,7 +77,7 @@ KairoLibrary: 3146 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `system.billing` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
 | `system.billing.ui` | 153 | 13782 | 148 / 96.73% | 11788 / 85.53% |
 | `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
-| `system.form` | 192 | 33269 | 180 / 93.75% | 15261 / 45.87% |
+| `system.form` | 192 | 33269 | 181 / 94.27% | 22255 / 66.89% |
 | `system.friend` | 4 | 570 | 3 / 75.00% | 284 / 49.82% |
 | `system.friend.ui` | 47 | 4407 | 47 / 100.00% | 4407 / 100.00% |
 | `system.lineup` | 3 | 46 | 3 / 100.00% | 46 / 100.00% |
@@ -177,7 +177,7 @@ KairoLibrary: 3146 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::system.billing.util.SkuDetails` | 11 | 294 | 11 / 100.00% | 294 / 100.00% |
 | `Assembly-CSharp::system.form.BillingForm` | 42 | 7424 | 38 / 90.48% | 3151 / 42.44% |
 | `Assembly-CSharp::system.form.ConnectForm` | 11 | 400 | 11 / 100.00% | 400 / 100.00% |
-| `Assembly-CSharp::system.form.FriendForm` | 53 | 17764 | 50 / 94.34% | 4745 / 26.71% |
+| `Assembly-CSharp::system.form.FriendForm` | 53 | 17764 | 51 / 96.23% | 11739 / 66.08% |
 | `Assembly-CSharp::system.form.HttpForm` | 16 | 894 | 16 / 100.00% | 894 / 100.00% |
 | `Assembly-CSharp::system.form.HttpForm+HttpMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
 | `Assembly-CSharp::system.form.HttpForm+ResultData` | 11 | 132 | 11 / 100.00% | 132 / 100.00% |

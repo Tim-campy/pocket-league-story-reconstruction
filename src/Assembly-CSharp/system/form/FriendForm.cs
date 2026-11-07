@@ -1414,11 +1414,15 @@ if (type_ == 0)
 			}
 			else
 			{
-				if (type_ == 4 || type_ == 5 || type_ == 6 || type_ == 7 || type_ == 8 || type_ == 9 || type_ == 10 || type_ == 11)
-				{
-					return;
-				}
-				if (type_ == 12)
+				if (type_ == 4) { }
+				else if (type_ == 5) { }
+				else if (type_ == 6) { }
+				else if (type_ == 7) { }
+				else if (type_ == 8) { }
+				else if (type_ == 9) { }
+				else if (type_ == 10) { }
+				else if (type_ == 11) { }
+				else if (type_ == 12)
 				{
 					if (flag)
 					{

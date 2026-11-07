@@ -1,0 +1,39 @@
+{
+  "operation": "smcs-terminal-OR-return-versus-joint-empty-else-arms-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "c45a49e0a46388bc17cf475bbc730534194eccf90ce709efe9fc97d24a613d3a",
+  "driver_sha256": "0586907c18fb29304cc6f71bd056d28883d0eb5ba43a37c66f995aef83a47a4a",
+  "game_compilations": 0,
+  "toy_compilations": 4,
+  "positive_full_bodies": 2,
+  "negative_controls": 6,
+  "fixtures": [
+    {
+      "case": "root",
+      "body_equal": true,
+      "locals_equal": true,
+      "before": "public void Run(int type){if(type == 4 || type == 5 || type == 6 || type == 7 || type == 8 || type == 9 || type == 10 || type == 11){return;}if (type == 12) {int first=Count;Count+=first;} else if(type==13){for(int i=0;i<3;i++){Count+=i;}} else {Count++;}}",
+      "after": "public void Run(int type){if (type == 4) { }\nelse if (type == 5) { }\nelse if (type == 6) { }\nelse if (type == 7) { }\nelse if (type == 8) { }\nelse if (type == 9) { }\nelse if (type == 10) { }\nelse if (type == 11) { }\nelse if (type == 12) {int first=Count;Count+=first;} else if(type==13){for(int i=0;i<3;i++){Count+=i;}} else {Count++;}}",
+      "manual_control": "public void Run(int type){if(type==4){}else if(type==5){}else if(type==6){}else if(type==7){}else if(type==8){}else if(type==9){}else if(type==10){}else if(type==11){}else if (type == 12) {int first=Count;Count+=first;} else if(type==13){for(int i=0;i<3;i++){Count+=i;}} else {Count++;}}"
+    },
+    {
+      "case": "terminal-else",
+      "body_equal": true,
+      "locals_equal": true,
+      "before": "public void Run(int type){if(type==0){Count+=3;}else{if(type == 4 || type == 5 || type == 6 || type == 7 || type == 8 || type == 9 || type == 10 || type == 11){return;}if (type == 12) {int first=Count;Count+=first;} else if(type==13){for(int i=0;i<3;i++){Count+=i;}} else {Count++;}}}",
+      "after": "public void Run(int type){if(type==0){Count+=3;}else{if (type == 4) { }\nelse if (type == 5) { }\nelse if (type == 6) { }\nelse if (type == 7) { }\nelse if (type == 8) { }\nelse if (type == 9) { }\nelse if (type == 10) { }\nelse if (type == 11) { }\nelse if (type == 12) {int first=Count;Count+=first;} else if(type==13){for(int i=0;i<3;i++){Count+=i;}} else {Count++;}}}",
+      "manual_control": "public void Run(int type){if(type==0){Count+=3;}else{if(type==4){}else if(type==5){}else if(type==6){}else if(type==7){}else if(type==8){}else if(type==9){}else if(type==10){}else if(type==11){}else if (type == 12) {int first=Count;Count+=first;} else if(type==13){for(int i=0;i<3;i++){Count+=i;}} else {Count++;}}}"
+    }
+  ],
+  "negatives": [
+    "nonterminal-parent",
+    "loop-owner",
+    "duplicate-case",
+    "side-effect-selector",
+    "guard-has-effects",
+    "following-selector-differs"
+  ],
+  "preserved_following_chain": true,
+  "no_new_locals": true,
+  "limitations": "One terminal flat same-selector OR list with block return and complete following chain; no loop/protected owner inferred."
+}
