@@ -234,28 +234,23 @@ namespace kairo.unity.ui
 				do
 				{
 					asRedo_ = false;
-					long num2;
+					AutoSaveLogData log;
 long num = JSystem.CurrentTimeMillis();
+long num2;
 					if (asPreSaveMethod_ != null)
 					{
 						asPreSaveMethod_();
 					}
-					if (asCancel_)
-					{
-						break;
-					}
+					if (asCancel_) { return; }
 					if (asRedo_)
 					{
 						continue;
 					}
 					num2 = JSystem.CurrentTimeMillis();
-					AutoSaveLogData log;
+
 					Property property = MakeSaveData(asProperty_, out log);
 					long num3 = JSystem.CurrentTimeMillis() - num2;
-					if (asCancel_)
-					{
-						break;
-					}
+					if (asCancel_) { return; }
 					if (asRedo_)
 					{
 						continue;
@@ -264,10 +259,7 @@ long num = JSystem.CurrentTimeMillis();
 					{
 						asPostSaveMethod_(property.ToByteArray());
 					}
-					if (asCancel_)
-					{
-						break;
-					}
+					if (asCancel_) { return; }
 					if (asRedo_ || !asLog_)
 					{
 						continue;
