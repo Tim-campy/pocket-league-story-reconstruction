@@ -167,10 +167,7 @@ namespace kairo.unity.ui
 				lockThreadCount_ = 0;
 				lockThread_ = null;
 			}
-			if (!forced)
-			{
-				return;
-			}
+			if (forced) {
 			for (int i = 0; i < saveReserve_.Length; i++)
 			{
 				if (!saveReserve_[i])
@@ -190,7 +187,8 @@ namespace kairo.unity.ui
 					}
 				}
 			}
-		}
+					}
+}
 
 		protected void SaveGame(bool auto, Property property, PackMethod packMethod, PreSaveMethod preSaveMethod, PostSaveMethod postSaveMethod, PrePackMethod prePackMethod, PostPackMethod postPackMethod, bool log)
 		{

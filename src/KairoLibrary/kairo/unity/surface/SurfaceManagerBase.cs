@@ -293,10 +293,7 @@ namespace kairo.unity.surface
 					g.EndGLRender();
 				}
 			}
-			if (!Config.DEBUG || surfaceList_.Size() <= 0 || paintRects_.Count <= 0)
-			{
-				return;
-			}
+			if (Config.DEBUG && surfaceList_.Size() > 0 && paintRects_.Count > 0) {
 			SurfaceBase surfaceBase = surfaceList_.FirstElement();
 			g.SetRenderRect(surfaceBase.GetX(), surfaceBase.GetY(), surfaceBase.GetWidth(), surfaceBase.GetHeight());
 			g.Scale(surfaceBase.GetScaleRatio());
@@ -358,7 +355,8 @@ namespace kairo.unity.surface
 				g.Scale(100f);
 				g.ClearRenderRect();
 			}
-		}
+					}
+}
 
 		public int[] GetBoundingRect()
 		{

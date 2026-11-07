@@ -396,15 +396,15 @@ namespace kairo.unity.graphics
 
 		private void LateUpdate()
 		{
-			if (image_ != null && !dispose_ && GetLayout != null)
-			{
+			if (image_ == null || dispose_) { return; }
+			if (GetLayout == null) { return; }
 				int width;
 				int height;
 				Image.Format format;
 				Image.Filter filterMode;
 				GetLayout(out width, out height, out format, out filterMode);
 				Resize(width, height, format, filterMode);
-			}
+
 		}
 
 		private void OnPostRender()

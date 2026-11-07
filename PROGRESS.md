@@ -2,22 +2,22 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,078 de 5,245 métodos matched (96.82%).** 871,497 bytes de IL nos assemblies alvo.
-694,796 bytes IL matched (79.72%).
+**5,081 de 5,245 métodos matched (96.87%).** 871,497 bytes de IL nos assemblies alvo.
+695,926 bytes IL matched (79.85%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3163 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 166 |
+| decompiled | 163 |
 | equivalent | 0 |
-| matched | 5078 |
+| matched | 5081 |
 | external | 0 |
 
 ## Assemblies
@@ -25,7 +25,7 @@ KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
 | `Assembly-CSharp` | 1958 | 601603 | 1844 / 94.18% | 447600 / 74.40% |
-| `KairoLibrary` | 3287 | 269894 | 3234 / 98.39% | 247196 / 91.59% |
+| `KairoLibrary` | 3287 | 269894 | 3237 / 98.48% | 248326 / 92.01% |
 
 ## Namespaces
 
@@ -49,7 +49,7 @@ KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.analytics` | 15 | 1284 | 15 / 100.00% | 1284 / 100.00% |
 | `kairo.unity.form` | 88 | 6284 | 87 / 98.86% | 5600 / 89.12% |
 | `kairo.unity.graph` | 7 | 680 | 7 / 100.00% | 680 / 100.00% |
-| `kairo.unity.graphics` | 195 | 21048 | 188 / 96.41% | 18984 / 90.19% |
+| `kairo.unity.graphics` | 195 | 21048 | 189 / 96.92% | 19042 / 90.47% |
 | `kairo.unity.iOSsupport` | 4 | 18 | 4 / 100.00% | 18 / 100.00% |
 | `kairo.unity.io` | 149 | 9866 | 144 / 96.64% | 7577 / 76.80% |
 | `kairo.unity.licensing` | 7 | 101 | 7 / 100.00% | 101 / 100.00% |
@@ -58,7 +58,7 @@ KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.native` | 212 | 10404 | 209 / 98.58% | 9676 / 93.00% |
 | `kairo.unity.native.util` | 16 | 1601 | 16 / 100.00% | 1601 / 100.00% |
 | `kairo.unity.panel` | 37 | 765 | 37 / 100.00% | 765 / 100.00% |
-| `kairo.unity.surface` | 187 | 14973 | 185 / 98.93% | 13646 / 91.14% |
+| `kairo.unity.surface` | 187 | 14973 | 186 / 99.47% | 14601 / 97.52% |
 | `kairo.unity.system` | 193 | 16116 | 190 / 98.45% | 15916 / 98.76% |
 | `kairo.unity.system.appli` | 2 | 26 | 2 / 100.00% | 26 / 100.00% |
 | `kairo.unity.system.lineup.ui` | 23 | 2607 | 22 / 95.65% | 2415 / 92.64% |
@@ -66,7 +66,7 @@ KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.system.notification.ui` | 24 | 911 | 24 / 100.00% | 911 / 100.00% |
 | `kairo.unity.system.payment` | 14 | 752 | 14 / 100.00% | 752 / 100.00% |
 | `kairo.unity.system.tapjoy.ui` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
-| `kairo.unity.ui` | 1021 | 100597 | 1000 / 97.94% | 88721 / 88.19% |
+| `kairo.unity.ui` | 1021 | 100597 | 1001 / 98.04% | 88838 / 88.31% |
 | `kairo.unity.util` | 518 | 43955 | 512 / 98.84% | 41067 / 93.43% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
 | `main` | 223 | 35448 | 215 / 96.41% | 29587 / 83.47% |
@@ -262,7 +262,7 @@ KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.graphics.MeshManager` | 24 | 3389 | 23 / 95.83% | 3248 / 95.84% |
 | `KairoLibrary::kairo.unity.graphics.MeshManager+LayerMesh` | 2 | 52 | 2 / 100.00% | 52 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.MeshRecord` | 6 | 300 | 6 / 100.00% | 300 / 100.00% |
-| `KairoLibrary::kairo.unity.graphics.Offscreen` | 29 | 3347 | 28 / 96.55% | 3289 / 98.27% |
+| `KairoLibrary::kairo.unity.graphics.Offscreen` | 29 | 3347 | 29 / 100.00% | 3347 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.Offscreen+<>c__DisplayClass33_0` | 2 | 209 | 2 / 100.00% | 209 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.Offscreen+<>c__DisplayClass34_0` | 2 | 617 | 2 / 100.00% | 617 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.Offscreen+<>c__DisplayClass35_0` | 2 | 638 | 2 / 100.00% | 638 / 100.00% |
@@ -356,7 +356,7 @@ KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.surface.SurfaceBase+MotionEventRecord` | 19 | 882 | 19 / 100.00% | 882 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.SurfaceBase+MotionEventRecord+MultiTouch` | 9 | 170 | 9 / 100.00% | 170 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.SurfaceBase+TouchPoint` | 2 | 76 | 2 / 100.00% | 76 / 100.00% |
-| `KairoLibrary::kairo.unity.surface.SurfaceManagerBase` | 25 | 3793 | 24 / 96.00% | 2838 / 74.82% |
+| `KairoLibrary::kairo.unity.surface.SurfaceManagerBase` | 25 | 3793 | 25 / 100.00% | 3793 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.TouchComponent` | 11 | 461 | 11 / 100.00% | 461 / 100.00% |
 | `KairoLibrary::kairo.unity.surface.TouchEvent` | 7 | 673 | 6 / 85.71% | 301 / 44.73% |
 | `KairoLibrary::kairo.unity.surface.TouchOption` | 21 | 851 | 21 / 100.00% | 851 / 100.00% |
@@ -428,7 +428,7 @@ KairoLibrary: 3160 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.ResourceManager` | 49 | 3927 | 49 / 100.00% | 3927 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.ResourceManager+<>c__DisplayClass51_0` | 3 | 1995 | 2 / 66.67% | 67 / 3.36% |
 | `KairoLibrary::kairo.unity.ui.ResourceManager+JarCache` | 1 | 22 | 1 / 100.00% | 22 / 100.00% |
-| `KairoLibrary::kairo.unity.ui.SaveRecorder` | 20 | 2773 | 18 / 90.00% | 2119 / 76.42% |
+| `KairoLibrary::kairo.unity.ui.SaveRecorder` | 20 | 2773 | 19 / 95.00% | 2236 / 80.63% |
 | `KairoLibrary::kairo.unity.ui.SaveRecorder+<>c__DisplayClass26_0` | 2 | 147 | 2 / 100.00% | 147 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.SaveRecorder+PackMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.ui.SaveRecorder+PostPackMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |

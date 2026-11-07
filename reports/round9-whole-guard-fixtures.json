@@ -1,0 +1,57 @@
+{
+  "operation": "historical-csc-reference-integer-whole-guard-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "987c45506dae870c42e3ef181d7fd7594d9c376bece6d89f5806f752067f4574",
+  "driver_sha256": "e65216c29030fcd88887e8cf4666f86e704d0f6613783d27f713152169ccb6a7",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 9,
+  "negatives": [
+    "surface-nonempty-return",
+    "surface-bounds-other",
+    "surface-capture",
+    "unlock-return-effects",
+    "unlock-other-flag",
+    "unlock-other-loop-entry",
+    "offscreen-extra-effect",
+    "offscreen-other-delegate",
+    "offscreen-before-effect"
+  ],
+  "fixtures": [
+    {
+      "case": "surface",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "template_sha256": "4556f476dc2bb513afc0628bd59a52b4867d1516920044295b17051c5446457d",
+      "before_local_count": 3,
+      "after_local_count": 3,
+      "before": " public void Run(Graphics g) {\n  bool flag = IsAutoGLRender(); int i;\n  for(i=0; i<surfaceList_.Size(); i++){ if(flag){g.Mark(i);} }\n  if (!Config.DEBUG || surfaceList_.Size() <= 0 || paintRects_.Count <= 0) { return; }\n  SurfaceBase surfaceBase = surfaceList_.FirstElement();\n  try {\n    g.Mark(surfaceBase.value + 0);\n    g.Mark(surfaceBase.value + 1);\n    g.Mark(surfaceBase.value + 2);\n    g.Mark(surfaceBase.value + 3);\n    g.Mark(surfaceBase.value + 4);\n    g.Mark(surfaceBase.value + 5);\n    g.Mark(surfaceBase.value + 6);\n    g.Mark(surfaceBase.value + 7);\n    g.Mark(surfaceBase.value + 8);\n    g.Mark(surfaceBase.value + 9);\n    g.Mark(surfaceBase.value + 10);\n    g.Mark(surfaceBase.value + 11);\n    g.Mark(surfaceBase.value + 12);\n    g.Mark(surfaceBase.value + 13);\n    g.Mark(surfaceBase.value + 14);\n    g.Mark(surfaceBase.value + 15);\n    g.Mark(surfaceBase.value + 16);\n    g.Mark(surfaceBase.value + 17);\n    g.Mark(surfaceBase.value + 18);\n    g.Mark(surfaceBase.value + 19);\n    g.Mark(surfaceBase.value + 20);\n    g.Mark(surfaceBase.value + 21);\n    g.Mark(surfaceBase.value + 22);\n    g.Mark(surfaceBase.value + 23);\n    g.Mark(surfaceBase.value + 24);\n    g.Mark(surfaceBase.value + 25);\n    g.Mark(surfaceBase.value + 26);\n    g.Mark(surfaceBase.value + 27);\n    g.Mark(surfaceBase.value + 28);\n    g.Mark(surfaceBase.value + 29);\n    g.Mark(surfaceBase.value + 30);\n    g.Mark(surfaceBase.value + 31);\n    g.Mark(surfaceBase.value + 32);\n    g.Mark(surfaceBase.value + 33);\n    g.Mark(surfaceBase.value + 34);\n    g.Mark(surfaceBase.value + 35);\n    g.Mark(surfaceBase.value + 36);\n    g.Mark(surfaceBase.value + 37);\n    g.Mark(surfaceBase.value + 38);\n    g.Mark(surfaceBase.value + 39);\n  } finally { g.Mark(-1); }\n }",
+      "after": " public void Run(Graphics g) {\n  bool flag = IsAutoGLRender(); int i;\n  for(i=0; i<surfaceList_.Size(); i++){ if(flag){g.Mark(i);} }\n  if (Config.DEBUG && surfaceList_.Size() > 0 && paintRects_.Count > 0) {\n  SurfaceBase surfaceBase = surfaceList_.FirstElement();\n  try {\n    g.Mark(surfaceBase.value + 0);\n    g.Mark(surfaceBase.value + 1);\n    g.Mark(surfaceBase.value + 2);\n    g.Mark(surfaceBase.value + 3);\n    g.Mark(surfaceBase.value + 4);\n    g.Mark(surfaceBase.value + 5);\n    g.Mark(surfaceBase.value + 6);\n    g.Mark(surfaceBase.value + 7);\n    g.Mark(surfaceBase.value + 8);\n    g.Mark(surfaceBase.value + 9);\n    g.Mark(surfaceBase.value + 10);\n    g.Mark(surfaceBase.value + 11);\n    g.Mark(surfaceBase.value + 12);\n    g.Mark(surfaceBase.value + 13);\n    g.Mark(surfaceBase.value + 14);\n    g.Mark(surfaceBase.value + 15);\n    g.Mark(surfaceBase.value + 16);\n    g.Mark(surfaceBase.value + 17);\n    g.Mark(surfaceBase.value + 18);\n    g.Mark(surfaceBase.value + 19);\n    g.Mark(surfaceBase.value + 20);\n    g.Mark(surfaceBase.value + 21);\n    g.Mark(surfaceBase.value + 22);\n    g.Mark(surfaceBase.value + 23);\n    g.Mark(surfaceBase.value + 24);\n    g.Mark(surfaceBase.value + 25);\n    g.Mark(surfaceBase.value + 26);\n    g.Mark(surfaceBase.value + 27);\n    g.Mark(surfaceBase.value + 28);\n    g.Mark(surfaceBase.value + 29);\n    g.Mark(surfaceBase.value + 30);\n    g.Mark(surfaceBase.value + 31);\n    g.Mark(surfaceBase.value + 32);\n    g.Mark(surfaceBase.value + 33);\n    g.Mark(surfaceBase.value + 34);\n    g.Mark(surfaceBase.value + 35);\n    g.Mark(surfaceBase.value + 36);\n    g.Mark(surfaceBase.value + 37);\n    g.Mark(surfaceBase.value + 38);\n    g.Mark(surfaceBase.value + 39);\n  } finally { g.Mark(-1); }\n   }\r\n}",
+      "manual_control": " public void Run(Graphics g) {\n  bool flag = IsAutoGLRender(); int i;\n  for(i=0; i<surfaceList_.Size(); i++){ if(flag){g.Mark(i);} }\n  if (Config.DEBUG && surfaceList_.Size() > 0 && paintRects_.Count > 0) {\n   SurfaceBase surfaceBase = surfaceList_.FirstElement();\n   try {\n    g.Mark(surfaceBase.value + 0);\n    g.Mark(surfaceBase.value + 1);\n    g.Mark(surfaceBase.value + 2);\n    g.Mark(surfaceBase.value + 3);\n    g.Mark(surfaceBase.value + 4);\n    g.Mark(surfaceBase.value + 5);\n    g.Mark(surfaceBase.value + 6);\n    g.Mark(surfaceBase.value + 7);\n    g.Mark(surfaceBase.value + 8);\n    g.Mark(surfaceBase.value + 9);\n    g.Mark(surfaceBase.value + 10);\n    g.Mark(surfaceBase.value + 11);\n    g.Mark(surfaceBase.value + 12);\n    g.Mark(surfaceBase.value + 13);\n    g.Mark(surfaceBase.value + 14);\n    g.Mark(surfaceBase.value + 15);\n    g.Mark(surfaceBase.value + 16);\n    g.Mark(surfaceBase.value + 17);\n    g.Mark(surfaceBase.value + 18);\n    g.Mark(surfaceBase.value + 19);\n    g.Mark(surfaceBase.value + 20);\n    g.Mark(surfaceBase.value + 21);\n    g.Mark(surfaceBase.value + 22);\n    g.Mark(surfaceBase.value + 23);\n    g.Mark(surfaceBase.value + 24);\n    g.Mark(surfaceBase.value + 25);\n    g.Mark(surfaceBase.value + 26);\n    g.Mark(surfaceBase.value + 27);\n    g.Mark(surfaceBase.value + 28);\n    g.Mark(surfaceBase.value + 29);\n    g.Mark(surfaceBase.value + 30);\n    g.Mark(surfaceBase.value + 31);\n    g.Mark(surfaceBase.value + 32);\n    g.Mark(surfaceBase.value + 33);\n    g.Mark(surfaceBase.value + 34);\n    g.Mark(surfaceBase.value + 35);\n    g.Mark(surfaceBase.value + 36);\n    g.Mark(surfaceBase.value + 37);\n    g.Mark(surfaceBase.value + 38);\n    g.Mark(surfaceBase.value + 39);\n   } finally { g.Mark(-1); }\n  }\n }"
+    },
+    {
+      "case": "unlock",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "template_sha256": "63b2b98017718f5a7acf4de526a8c09cf7ab8ead39e2c3a368c305c924a45a7b",
+      "before_local_count": 2,
+      "after_local_count": 2,
+      "before": " public void Run(bool forced) {\n  lockThreadCount_--;\n  if(lockThreadCount_<=0 || forced){lockThreadCount_=0;lockThread_=null;}\n  if (!forced) { return; }\n  for (int i = 0; i < saveReserve_.Length; i++) {\n   if(!saveReserve_[i]) { continue; }\n   try { saveReserve_[i]=false; SaveGame(i==1,true); }\n   catch(Exception t) { if(Config.PRINT) { Log.Info(t); } }\n  }\n }",
+      "after": " public void Run(bool forced) {\n  lockThreadCount_--;\n  if(lockThreadCount_<=0 || forced){lockThreadCount_=0;lockThread_=null;}\n  if (forced) {\n  for (int i = 0; i < saveReserve_.Length; i++) {\n   if(!saveReserve_[i]) { continue; }\n   try { saveReserve_[i]=false; SaveGame(i==1,true); }\n   catch(Exception t) { if(Config.PRINT) { Log.Info(t); } }\n  }\n   }\r\n}",
+      "manual_control": " public void Run(bool forced) {\n  lockThreadCount_--;\n  if(lockThreadCount_<=0 || forced){lockThreadCount_=0;lockThread_=null;}\n  if (forced) {\n   for (int i = 0; i < saveReserve_.Length; i++) {\n    if(!saveReserve_[i]) { continue; }\n    try { saveReserve_[i]=false; SaveGame(i==1,true); }\n    catch(Exception t) { if(Config.PRINT) { Log.Info(t); } }\n   }\n  }\n }"
+    },
+    {
+      "case": "offscreen",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "template_sha256": "9de693fb0cc1b11a5bb6d483140ebacd48852b6f9819990b429422c75ceb7a13",
+      "before_local_count": 4,
+      "after_local_count": 4,
+      "before": " public void Run() {\n  if (image_ != null && !dispose_ && GetLayout != null) {\n   int width;\n   int height;\n   Image.Format format;\n   Image.Filter filterMode;\n   GetLayout(out width, out height, out format, out filterMode);\n   Resize(width, height, format, filterMode);\n  }\n }",
+      "after": " public void Run() {\n  if (image_ == null || dispose_) { return; }\r\n  if (GetLayout == null) { return; }\n   int width;\n   int height;\n   Image.Format format;\n   Image.Filter filterMode;\n   GetLayout(out width, out height, out format, out filterMode);\n   Resize(width, height, format, filterMode);\n  \n }",
+      "manual_control": " public void Run() {\n  if(image_ == null || dispose_) { return; }\n  if(GetLayout == null) { return; }\n  int width;\n  int height;\n  Image.Format format;\n  Image.Filter filterMode;\n  GetLayout(out width, out height, out format, out filterMode);\n  Resize(width, height, format, filterMode);\n }"
+    }
+  ],
+  "limitations": "Own independent controls check positive root tails and two distinct Offscreen early returns, not old combined OR guard. Reference/int tests only; no float relation inversion. Candidate game locals/header/EH mandatory."
+}
