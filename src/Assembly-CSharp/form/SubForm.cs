@@ -4890,11 +4890,7 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 			}
 			else
 			{
-				if (type_ == 48)
-				{
-					return;
-				}
-				if (type_ == 49)
+				if (type_ == 48) { } else if (type_ == 49)
 				{
 					apdat_.DrawWindow(g, 228, 176, 0, "特別な練習");
 					apdat_.DrawBox(g, 12, 136, 227, 205);
@@ -4931,10 +4927,7 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 						apdat_.DrawSeb(g, num2, num3 - 4 + 1, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 4);
 						udat_.SetDispPlayerData(num17, udat_.selectUniform_, playerData3.faceImg_, num16, 1);
 						udat_.DrawDispPlayer(g, num2, num3 - 4 + num18);
-						if (training_cnt < TRA_ANIME_TIME2[0] || training_cnt >= TRA_ANIME_TIME2[1])
-						{
-							continue;
-						}
+						if (training_cnt >= TRA_ANIME_TIME2[0] && training_cnt < TRA_ANIME_TIME2[1]) {
 						int num19 = training_cnt - TRA_ANIME_TIME2[0];
 						int num20 = num19 / 25;
 						int num21 = num19 % 25;
@@ -4965,7 +4958,8 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 							Draw_upParam(g, 35, num22 + 6, num23 + 15 + num25, num15, 1);
 						}
 						g.PopClip();
-					}
+
+}}
 					num2 = 94;
 					num3 = 132;
 					int num26 = GameUtil.RateConvert(training_cnt, TRA_ANIME_TIME2[0], TRA_ANIME_TIME2[1], 0, 50, true);
@@ -5015,8 +5009,8 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 							num2 = num4 + 30 + 52 * num31;
 							g.SetColor(Graphics.GetColorOfRGB(214, 236, 244));
 							g.DrawRect(num2, num3, 51f, num29 - 1);
-							if (TrainingData.TRA_PLAYER[num31] != -1)
-							{
+							if (TrainingData.TRA_PLAYER[num31] == -1) { continue; }
+{
 								PlayerData playerData4 = apdat_.pData_[TrainingData.TRA_PLAYER[num31]];
 								num27 = TrainingData.TRA_UPPARAM_DISP[num31][num28];
 								int num32 = 0;
@@ -5029,24 +5023,11 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 								g.SetColor(Graphics.GetColorOfRGB(57, 57, 70));
 								g.FillRect(num2 + 1, num3 + 1, 50f, num29 - 2);
 								int phyParamBarW = PlayerData.GetPhyParamBarW(num32, 50);
-								switch (num28)
-								{
-								case 0:
-									g.SetColor(Graphics.GetColorOfRGB(252, 54, 0));
-									break;
-								case 1:
-									g.SetColor(Graphics.GetColorOfRGB(84, 188, 255));
-									break;
-								case 2:
-									g.SetColor(Graphics.GetColorOfRGB(103, 255, 121));
-									break;
-								case 3:
-									g.SetColor(Graphics.GetColorOfRGB(248, 248, 248));
-									break;
-								case 4:
-									g.SetColor(Graphics.GetColorOfRGB(255, 251, 0));
-									break;
-								}
+								if (num28 == 0) { g.SetColor(Graphics.GetColorOfRGB(252, 54, 0)); }
+else if (num28 == 1) { g.SetColor(Graphics.GetColorOfRGB(84, 188, 255)); }
+else if (num28 == 2) { g.SetColor(Graphics.GetColorOfRGB(103, 255, 121)); }
+else if (num28 == 3) { g.SetColor(Graphics.GetColorOfRGB(248, 248, 248)); }
+else if (num28 == 4) { g.SetColor(Graphics.GetColorOfRGB(255, 251, 0)); }
 								g.FillRect(num2 + 1, num3 + 1, phyParamBarW, num29 - 2);
 								apdat_.DrawNumImage(g, seb, num32, num2 + 26, num3 + 2, 0, 2);
 							}
@@ -5128,10 +5109,11 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 					g.FillRect(num2, num3, num35, num36);
 					g.SetColor(Graphics.GetColorOfRGB(142, 215, 45));
 					g.DrawRect(num2, num3, num35 - 1, num36 - 1);
-					int num37 = 0;
+					int num39, num37;
+num39 = num37 = 0;
 					for (int num38 = 0; num38 < formationData.formation_.Length; num38++)
 					{
-						int num39 = GameUtil.RateConvert(formationData.formation_[num38][1], 0, 8, num2 + num35 - 10, num2 + 10, true);
+						 num39 = GameUtil.RateConvert(formationData.formation_[num38][1], 0, 8, num2 + num35 - 10, num2 + 10, true);
 						num37 = GameUtil.RateConvert(formationData.formation_[num38][0], 0, 8, num3 + 1 + 1, num3 + num36 - 1 - 2, true);
 						if (num38 == 0)
 						{
@@ -5312,7 +5294,7 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 				else if (type_ == 53)
 				{
 					apdat_.DrawWindow(g, 228, 204, 0, "選手の獲得");
-					num = ((!MyFormBase.Jp()) ? 51 : 50);
+					if (MyFormBase.Jp()) { num = 50; } else { num = 51; }
 					SetFontSize(g, 10);
 					g.SetColor(SC_WINDOW_BLACK);
 					g.DrawString("名前", 44f, num);
@@ -5478,24 +5460,11 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 						g.SetColor(Graphics.GetColorOfRGB(57, 57, 70));
 						g.FillRect(num4 + 31 + 1, num3 + 1 + 1, 50f, 9f);
 						int phyParamBarW2 = PlayerData.GetPhyParamBarW(playerData6.paramPhysical_[num47], 50);
-						switch (num47)
-						{
-						case 0:
-							g.SetColor(Graphics.GetColorOfRGB(252, 54, 0));
-							break;
-						case 1:
-							g.SetColor(Graphics.GetColorOfRGB(84, 188, 255));
-							break;
-						case 2:
-							g.SetColor(Graphics.GetColorOfRGB(103, 255, 121));
-							break;
-						case 3:
-							g.SetColor(Graphics.GetColorOfRGB(248, 248, 248));
-							break;
-						case 4:
-							g.SetColor(Graphics.GetColorOfRGB(255, 251, 0));
-							break;
-						}
+						if (num47 == 0) { g.SetColor(Graphics.GetColorOfRGB(252, 54, 0)); }
+else if (num47 == 1) { g.SetColor(Graphics.GetColorOfRGB(84, 188, 255)); }
+else if (num47 == 2) { g.SetColor(Graphics.GetColorOfRGB(103, 255, 121)); }
+else if (num47 == 3) { g.SetColor(Graphics.GetColorOfRGB(248, 248, 248)); }
+else if (num47 == 4) { g.SetColor(Graphics.GetColorOfRGB(255, 251, 0)); }
 						g.FillRect(num4 + 32, num3 + 2, phyParamBarW2, 9f);
 					}
 					if (udArrowCnt > 0)
@@ -5508,13 +5477,14 @@ apdat_.DrawSeb(g, num2, num3 + num11, apdat_.resCom2_.seb[97], apdat_.resCom2_.i
 					{
 						GameView.AddTouch(g, 2, num4 - 25 - 5, num - 50, 70, 30, 1376456, TouchOption.Create(2));
 						GameView.AddTouch(g, 2, num4 - 25 - 5, num + 100, 70, 30, 1376456, TouchOption.Create(2));
-						return;
-					}
+
+} else {
 					TouchOption touchOption = TouchOption.Create(2);
 					TouchOption touchOption2 = TouchOption.Create(2);
 					GameView.AddTouch(g, 24, num4, num - 13, apdat_.resCom2_.seb[24], 0, 17, touchOption.Margin(40, 40, 45, 0));
 					GameView.AddTouch(g, 24, num4, num + 64 + 13, apdat_.resCom2_.seb[24], 1, 19, touchOption2.Margin(40, 40, -15, 60));
-				}
+
+}}
 				else
 				{
 					_draw5(g);
