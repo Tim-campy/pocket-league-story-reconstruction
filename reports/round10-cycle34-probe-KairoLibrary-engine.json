@@ -1,0 +1,1140 @@
+{
+  "assembly": "KairoLibrary",
+  "baseline_body_equal": 3186,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void",
+      "number": 1,
+      "initial_offset": 27,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d10-residual-lambda-local-lifetimes-capture",
+          "start": 22783,
+          "end": 28586,
+          "before": "public void Capture(SurfaceBase view, string[] captureTables = null, OnCaptureCompleted method = null, bool saveToTmpDirectory = false)\r\n\t\t{\r\n\t\t\tIApplication app = IApplication.GetCurrentApp();\r\n\t\t\tkairo.unity.ui.Canvas canvas = kairo.unity.ui.Canvas.GetInstance();\r\n\t\t\tbool isPause = IsPause();\r\n\t\t\tif (!isPause)\r\n\t\t\t{\r\n\t\t\t\tSetPause(true);\r\n\t\t\t}\r\n\t\t\tif (captureTables == null)\r\n\t\t\t{\r\n\t\t\t\tcaptureTables = new string[6] { \"768:1024,_768_1024_ipad\", \"640:960,_640_960_35inch\", \"640:1136,_640_1136_40inch\", \"750:1334,_750_1334_47inch\", \"1242:2208,_1242_2208_55inch\", \"2048:2732,_2048_2732_129inch\" };\r\n\t\t\t}\r\n\t\t\tbool bkFullscreen = canvas.IsFullscreen();\r\n\t\t\tcanvas.Fullscreen(true);\r\n\t\t\tcapturing_ = true;\r\n\t\t\tint stopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\tJThread captureThread = new JThread(delegate\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tList<string> saveFiles = new List<string>();\r\n\t\t\t\t\tfor (int i = 0; i < captureTables.Length; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring text = captureTables[i];\r\n\t\t\t\t\t\tstring path = \"temporary_screenshot\" + captureCount_ + \".png\";\r\n\t\t\t\t\t\tif (Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpath = app.GetDataPath() + \"/\" + path;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcaptureCount_++;\r\n\t\t\t\t\t\tstring[] info = text.Trim().Split(',');\r\n\t\t\t\t\t\tfor (int j = 0; j < info.Length; j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tinfo[j] = info[j].Trim();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint width = 0;\r\n\t\t\t\t\t\tint height = 0;\r\n\t\t\t\t\t\tif (info.Length != 0 && info[0].Length > 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstring[] array = info[0].Split(':');\r\n\t\t\t\t\t\t\twidth = int.Parse(array[0]);\r\n\t\t\t\t\t\t\theight = int.Parse(array[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tRuntimePlatform platform = Application.platform;\r\n\t\t\t\t\t\t\tif (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpath = Application.persistentDataPath + \"/\" + path;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbool flag = false;\r\n\t\t\t\t\t\twhile (!File.Exists(path))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbyte[] data = File.ReadAllBytes(path);\r\n\t\t\t\t\t\t\tFile.Delete(path);\r\n\t\t\t\t\t\t\tfloat scaleRatio = app.GetScaleRatio();\r\n\t\t\t\t\t\t\tImage image = Image.Load(data, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\tif (image.GetWidth() < 100 && image.GetHeight() < 100)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (width == 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Resize((int)((float)(view.GetWidth() * 100) / scaleRatio + 0.1f), (int)((float)(view.GetHeight() * 100) / scaleRatio - 1f + 0.1f), view.GetX(), view.GetY(), view.GetWidth(), view.GetHeight() - 1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tint num = (int)((float)image.GetWidth() * (float)height / (float)width + 0.1f);\r\n\t\t\t\t\t\t\t\t\tif (num <= image.GetHeight())\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), num);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tImage image2 = Image.CreateImage(image.GetWidth(), num, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\t\t\t\tint[] array2 = new int[image2.GetWidth() * image2.GetHeight()];\r\n\t\t\t\t\t\t\t\t\t\tfor (int k = 0; k < array2.Length; k++)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tarray2[k] = -16777216;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timage.GetARGBPixels(0, 0, image.GetWidth(), image.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage2.SetARGBPixels(0, 0, image2.GetWidth(), image2.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t\t\timage = image2;\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), image.GetHeight());\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring text2 = \"{date}\";\r\n\t\t\t\t\t\t\t\tif (1 < info.Length && info[1].Length > 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttext2 += info[1];\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring save = null;\r\n\t\t\t\t\t\t\t\tif (saveToTmpDirectory)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToTmpCaptureDirectory(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToSd(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (save != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsaveFiles.Add(save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfinally\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (image != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\timage = null;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ti--;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (method != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tmethod(saveFiles.ToArray());\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception ex)\r\n\t\t\t\t{\r\n\t\t\t\t\tKairoPlugin.ShowToast(string.Concat(ex));\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!isPause)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tSetPause(false);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcapturing_ = false;\r\n\t\t\t\t\tcanvas.Fullscreen(bkFullscreen);\r\n\t\t\t\t\tcanvas.SetAspectRatio();\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t\t\tcaptureThread.Start();\r\n\t\t}",
+          "after": "public void Capture(SurfaceBase view, string[] captureTables = null, OnCaptureCompleted method = null, bool saveToTmpDirectory = false)\r\n\t\t{\r\n\t\t\tIApplication app = IApplication.GetCurrentApp();\r\n\t\t\tkairo.unity.ui.Canvas canvas = kairo.unity.ui.Canvas.GetInstance();\r\n\t\t\tbool isPause = IsPause();\r\n\t\t\tif (!isPause)\r\n\t\t\t{\r\n\t\t\t\tSetPause(true);\r\n\t\t\t}\r\n\t\t\tif (captureTables == null)\r\n\t\t\t{\r\n\t\t\t\tcaptureTables = new string[6] { \"768:1024,_768_1024_ipad\", \"640:960,_640_960_35inch\", \"640:1136,_640_1136_40inch\", \"750:1334,_750_1334_47inch\", \"1242:2208,_1242_2208_55inch\", \"2048:2732,_2048_2732_129inch\" };\r\n\t\t\t}\r\n\t\t\tbool bkFullscreen = canvas.IsFullscreen();\r\n\t\t\tcanvas.Fullscreen(true);\r\n\t\t\tcapturing_ = true;\r\n\t\t\tint stopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\tJThread captureThread = new JThread(delegate\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tList<string> saveFiles = new List<string>();\r\n\t\t\t\t\tfor (int i = 0; i < captureTables.Length; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring text = captureTables[i];\r\n\t\t\t\t\t\tstring path = \"temporary_screenshot\" + captureCount_ + \".png\";\r\n\t\t\t\t\t\tif (Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpath = app.GetDataPath() + \"/\" + path;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcaptureCount_++;\r\n\t\t\t\t\t\tstring[] info = text.Trim().Split(',');\r\n\t\t\t\t\t\tfor (int j = 0; j < info.Length; j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tinfo[j] = info[j].Trim();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint width = 0;\r\n\t\t\t\t\t\tint height = 0;\r\n\t\t\t\t\t\tif (info.Length != 0 && info[0].Length > 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstring[] array = info[0].Split(':');\r\n\t\t\t\t\t\t\twidth = int.Parse(array[0]);\r\n\t\t\t\t\t\t\theight = int.Parse(array[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tRuntimePlatform platform = Application.platform;\r\n\t\t\t\t\t\t\tif (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpath = Application.persistentDataPath + \"/\" + path;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbool flag = false;\r\n\t\t\t\t\t\twhile (true) { if (File.Exists(path)) { flag = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbyte[] data = File.ReadAllBytes(path);\r\n\t\t\t\t\t\t\tFile.Delete(path);\r\n\t\t\t\t\t\t\tfloat scaleRatio = app.GetScaleRatio();\r\n\t\t\t\t\t\t\tImage image = Image.Load(data, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\tif (image.GetWidth() < 100 && image.GetHeight() < 100)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (width == 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Resize((int)((float)(view.GetWidth() * 100) / scaleRatio + 0.1f), (int)((float)(view.GetHeight() * 100) / scaleRatio - 1f + 0.1f), view.GetX(), view.GetY(), view.GetWidth(), view.GetHeight() - 1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tint num = (int)((float)image.GetWidth() * (float)height / (float)width + 0.1f);\r\n\t\t\t\t\t\t\t\t\tif (num <= image.GetHeight())\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), num);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tImage image2 = Image.CreateImage(image.GetWidth(), num, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\t\t\t\tint[] array2 = new int[image2.GetWidth() * image2.GetHeight()];\r\n\t\t\t\t\t\t\t\t\t\tfor (int k = 0; k < array2.Length; k++)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tarray2[k] = -16777216;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timage.GetARGBPixels(0, 0, image.GetWidth(), image.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage2.SetARGBPixels(0, 0, image2.GetWidth(), image2.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t\t\timage = image2;\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), image.GetHeight());\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring text2 = \"{date}\";\r\n\t\t\t\t\t\t\t\tif (1 < info.Length && info[1].Length > 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttext2 += info[1];\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring save = null;\r\n\t\t\t\t\t\t\t\tif (saveToTmpDirectory)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToTmpCaptureDirectory(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToSd(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (save != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsaveFiles.Add(save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfinally\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (image != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\timage = null;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true); break; } JThread.Sleep(10L); } if (!flag) { i--; }\r\n\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (method != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tmethod(saveFiles.ToArray());\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception ex)\r\n\t\t\t\t{\r\n\t\t\t\t\tKairoPlugin.ShowToast(string.Concat(ex));\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!isPause)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tSetPause(false);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcapturing_ = false;\r\n\t\t\t\t\tcanvas.Fullscreen(bkFullscreen);\r\n\t\t\t\t\tcanvas.SetAspectRatio();\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t\t\tcaptureThread.Start();\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 27,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [],
+            "method_id": "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void",
+            "unsupported_reasons": [
+              "generated_or_unmapped_source_method"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle34-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\form\\FormManagerBase.cs",
+            "full_source_sha256": "69a757b6eac1b42af6dc993cd406823bf23a0f904fe2e75b7f74a70bccb34b9c",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle34-probe\\engine\\KairoLibrary\\target-screen\\FormManagerBase.cs",
+            "screen_source_sha256": "ff1aac46f9a08b41f67cfe69b8af67eea2524a4ef44a9b5b11e06e0311116ab8",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 684,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 684,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void"
+          ],
+          "matched_IL_gain": 684
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d10-residual-lambda-local-lifetimes-capture",
+          "start": 22783,
+          "end": 28586,
+          "before": "public void Capture(SurfaceBase view, string[] captureTables = null, OnCaptureCompleted method = null, bool saveToTmpDirectory = false)\r\n\t\t{\r\n\t\t\tIApplication app = IApplication.GetCurrentApp();\r\n\t\t\tkairo.unity.ui.Canvas canvas = kairo.unity.ui.Canvas.GetInstance();\r\n\t\t\tbool isPause = IsPause();\r\n\t\t\tif (!isPause)\r\n\t\t\t{\r\n\t\t\t\tSetPause(true);\r\n\t\t\t}\r\n\t\t\tif (captureTables == null)\r\n\t\t\t{\r\n\t\t\t\tcaptureTables = new string[6] { \"768:1024,_768_1024_ipad\", \"640:960,_640_960_35inch\", \"640:1136,_640_1136_40inch\", \"750:1334,_750_1334_47inch\", \"1242:2208,_1242_2208_55inch\", \"2048:2732,_2048_2732_129inch\" };\r\n\t\t\t}\r\n\t\t\tbool bkFullscreen = canvas.IsFullscreen();\r\n\t\t\tcanvas.Fullscreen(true);\r\n\t\t\tcapturing_ = true;\r\n\t\t\tint stopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\tJThread captureThread = new JThread(delegate\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tList<string> saveFiles = new List<string>();\r\n\t\t\t\t\tfor (int i = 0; i < captureTables.Length; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring text = captureTables[i];\r\n\t\t\t\t\t\tstring path = \"temporary_screenshot\" + captureCount_ + \".png\";\r\n\t\t\t\t\t\tif (Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpath = app.GetDataPath() + \"/\" + path;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcaptureCount_++;\r\n\t\t\t\t\t\tstring[] info = text.Trim().Split(',');\r\n\t\t\t\t\t\tfor (int j = 0; j < info.Length; j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tinfo[j] = info[j].Trim();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint width = 0;\r\n\t\t\t\t\t\tint height = 0;\r\n\t\t\t\t\t\tif (info.Length != 0 && info[0].Length > 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstring[] array = info[0].Split(':');\r\n\t\t\t\t\t\t\twidth = int.Parse(array[0]);\r\n\t\t\t\t\t\t\theight = int.Parse(array[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tRuntimePlatform platform = Application.platform;\r\n\t\t\t\t\t\t\tif (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpath = Application.persistentDataPath + \"/\" + path;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbool flag = false;\r\n\t\t\t\t\t\twhile (!File.Exists(path))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tJThread.Sleep(10L);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbyte[] data = File.ReadAllBytes(path);\r\n\t\t\t\t\t\t\tFile.Delete(path);\r\n\t\t\t\t\t\t\tfloat scaleRatio = app.GetScaleRatio();\r\n\t\t\t\t\t\t\tImage image = Image.Load(data, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\tif (image.GetWidth() < 100 && image.GetHeight() < 100)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (width == 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Resize((int)((float)(view.GetWidth() * 100) / scaleRatio + 0.1f), (int)((float)(view.GetHeight() * 100) / scaleRatio - 1f + 0.1f), view.GetX(), view.GetY(), view.GetWidth(), view.GetHeight() - 1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tint num = (int)((float)image.GetWidth() * (float)height / (float)width + 0.1f);\r\n\t\t\t\t\t\t\t\t\tif (num <= image.GetHeight())\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), num);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tImage image2 = Image.CreateImage(image.GetWidth(), num, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\t\t\t\tint[] array2 = new int[image2.GetWidth() * image2.GetHeight()];\r\n\t\t\t\t\t\t\t\t\t\tfor (int k = 0; k < array2.Length; k++)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tarray2[k] = -16777216;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timage.GetARGBPixels(0, 0, image.GetWidth(), image.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage2.SetARGBPixels(0, 0, image2.GetWidth(), image2.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t\t\timage = image2;\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), image.GetHeight());\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring text2 = \"{date}\";\r\n\t\t\t\t\t\t\t\tif (1 < info.Length && info[1].Length > 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttext2 += info[1];\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring save = null;\r\n\t\t\t\t\t\t\t\tif (saveToTmpDirectory)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToTmpCaptureDirectory(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToSd(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (save != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsaveFiles.Add(save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfinally\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (image != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\timage = null;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\ti--;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (method != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tmethod(saveFiles.ToArray());\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception ex)\r\n\t\t\t\t{\r\n\t\t\t\t\tKairoPlugin.ShowToast(string.Concat(ex));\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!isPause)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tSetPause(false);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcapturing_ = false;\r\n\t\t\t\t\tcanvas.Fullscreen(bkFullscreen);\r\n\t\t\t\t\tcanvas.SetAspectRatio();\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t\t\tcaptureThread.Start();\r\n\t\t}",
+          "after": "public void Capture(SurfaceBase view, string[] captureTables = null, OnCaptureCompleted method = null, bool saveToTmpDirectory = false)\r\n\t\t{\r\n\t\t\tIApplication app = IApplication.GetCurrentApp();\r\n\t\t\tkairo.unity.ui.Canvas canvas = kairo.unity.ui.Canvas.GetInstance();\r\n\t\t\tbool isPause = IsPause();\r\n\t\t\tif (!isPause)\r\n\t\t\t{\r\n\t\t\t\tSetPause(true);\r\n\t\t\t}\r\n\t\t\tif (captureTables == null)\r\n\t\t\t{\r\n\t\t\t\tcaptureTables = new string[6] { \"768:1024,_768_1024_ipad\", \"640:960,_640_960_35inch\", \"640:1136,_640_1136_40inch\", \"750:1334,_750_1334_47inch\", \"1242:2208,_1242_2208_55inch\", \"2048:2732,_2048_2732_129inch\" };\r\n\t\t\t}\r\n\t\t\tbool bkFullscreen = canvas.IsFullscreen();\r\n\t\t\tcanvas.Fullscreen(true);\r\n\t\t\tcapturing_ = true;\r\n\t\t\tint stopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\tJThread captureThread = new JThread(delegate\r\n\t\t\t{\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tList<string> saveFiles = new List<string>();\r\n\t\t\t\t\tfor (int i = 0; i < captureTables.Length; i++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring text = captureTables[i];\r\n\t\t\t\t\t\tstring path = \"temporary_screenshot\" + captureCount_ + \".png\";\r\n\t\t\t\t\t\tif (Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tpath = app.GetDataPath() + \"/\" + path;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcaptureCount_++;\r\n\t\t\t\t\t\tstring[] info = text.Trim().Split(',');\r\n\t\t\t\t\t\tfor (int j = 0; j < info.Length; j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tinfo[j] = info[j].Trim();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tint width = 0;\r\n\t\t\t\t\t\tint height = 0;\r\n\t\t\t\t\t\tif (info.Length != 0 && info[0].Length > 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tstring[] array = info[0].Split(':');\r\n\t\t\t\t\t\t\twidth = int.Parse(array[0]);\r\n\t\t\t\t\t\t\theight = int.Parse(array[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tif (width != 0)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcanvas.SetAspectRatio(width, height);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\twhile (true)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool completed = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif (IApplication.GetCurrentApp().GetTotalFrames() - stopFrame < 10)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t\t\tApplication.CaptureScreenshot(path);\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true);\r\n\t\t\t\t\t\t\tif (completed)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!Config.UNITY_EDITOR)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tRuntimePlatform platform = Application.platform;\r\n\t\t\t\t\t\t\tif (platform == RuntimePlatform.IPhonePlayer || platform == RuntimePlatform.Android)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tpath = Application.persistentDataPath + \"/\" + path;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbool flag = false;\r\n\t\t\t\t\t\twhile (true) { if (File.Exists(path)) { flag = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbyte[] data = File.ReadAllBytes(path);\r\n\t\t\t\t\t\t\tFile.Delete(path);\r\n\t\t\t\t\t\t\tfloat scaleRatio = app.GetScaleRatio();\r\n\t\t\t\t\t\t\tImage image = Image.Load(data, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\tif (image.GetWidth() < 100 && image.GetHeight() < 100)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\treturn false;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (width == 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Resize((int)((float)(view.GetWidth() * 100) / scaleRatio + 0.1f), (int)((float)(view.GetHeight() * 100) / scaleRatio - 1f + 0.1f), view.GetX(), view.GetY(), view.GetWidth(), view.GetHeight() - 1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tint num = (int)((float)image.GetWidth() * (float)height / (float)width + 0.1f);\r\n\t\t\t\t\t\t\t\t\tif (num <= image.GetHeight())\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), num);\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\tImage image2 = Image.CreateImage(image.GetWidth(), num, Image.Format.ARGB32, Image.Filter.Trilinear);\r\n\t\t\t\t\t\t\t\t\t\tint[] array2 = new int[image2.GetWidth() * image2.GetHeight()];\r\n\t\t\t\t\t\t\t\t\t\tfor (int k = 0; k < array2.Length; k++)\r\n\t\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\tarray2[k] = -16777216;\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\timage.GetARGBPixels(0, 0, image.GetWidth(), image.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage2.SetARGBPixels(0, 0, image2.GetWidth(), image2.GetHeight(), array2);\r\n\t\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t\t\timage = image2;\r\n\t\t\t\t\t\t\t\t\t\timage.Resize(width, height, 0, 0, image.GetWidth(), image.GetHeight());\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring text2 = \"{date}\";\r\n\t\t\t\t\t\t\t\tif (1 < info.Length && info[1].Length > 0)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\ttext2 += info[1];\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tstring save = null;\r\n\t\t\t\t\t\t\t\tif (saveToTmpDirectory)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToTmpCaptureDirectory(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tKairoPlugin.SaveToSd(text2 + \".png\", ((Texture2D)image.GetImage()).EncodeToPNG(), out save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tif (save != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tsaveFiles.Add(save);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tfinally\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tif (image != null)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\timage.Dispose();\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\timage = null;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\treturn true;\r\n\t\t\t\t\t\t}, true); break; } JThread.Sleep(10L); } if (!flag) { i--; }\r\n\t\t\t\t\t\tstopFrame = IApplication.GetCurrentApp().GetTotalFrames();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (method != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tmethod(saveFiles.ToArray());\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tcatch (Exception ex)\r\n\t\t\t\t{\r\n\t\t\t\t\tKairoPlugin.ShowToast(string.Concat(ex));\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!isPause)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tSetPause(false);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcapturing_ = false;\r\n\t\t\t\t\tcanvas.Fullscreen(bkFullscreen);\r\n\t\t\t\t\tcanvas.SetAspectRatio();\r\n\t\t\t\t}\r\n\t\t\t});\r\n\t\t\tcaptureThread.Start();\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 27,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": false,
+            "predicted_types": [],
+            "method_id": "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void",
+            "unsupported_reasons": [
+              "generated_or_unmapped_source_method"
+            ]
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle34-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\form\\FormManagerBase.cs",
+            "full_source_sha256": "69a757b6eac1b42af6dc993cd406823bf23a0f904fe2e75b7f74a70bccb34b9c",
+            "screen_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle34-probe\\engine\\KairoLibrary\\target-screen\\FormManagerBase.cs",
+            "screen_source_sha256": "ff1aac46f9a08b41f67cfe69b8af67eea2524a4ef44a9b5b11e06e0311116ab8",
+            "screen_updated_from_candidate": true
+          },
+          "incomplete_prediction": true,
+          "candidate_compiler_invocations": 2,
+          "predicted_signature_confirmed": false,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 684,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 684,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 337,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void"
+          ],
+          "matched_IL_gain": 684
+        }
+      ],
+      "mapping": "native-PDB-sequence-point",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "null_polarity_evidence": [
+        {}
+      ],
+      "round9_calculated_emission_evidence": [
+        {
+          "float_identity": {},
+          "per_arm_stores": {}
+        }
+      ],
+      "transform_helper_sha256": "df5d9fcd8937f6c1d3835d72c58f6fcee3dbb53d215db35f085e225c0eac8e98",
+      "stop_point": {
+        "offset": 27,
+        "source": "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs",
+        "point": {
+          "offset": 182,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle34-probe\\engine\\KairoLibrary\\sources\\src\\KairoLibrary\\kairo\\unity\\form\\FormManagerBase.cs",
+          "start_line": 1112,
+          "start_column": 12,
+          "end_line": 1112,
+          "end_column": 21,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 183,
+          "line": 1112,
+          "column": 12
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 183,
+          "rebuilt_offset": 183,
+          "original_index": 61,
+          "rebuilt_index": 61,
+          "original_instruction": {
+            "offset": 183,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 5
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 183,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 4
+            }
+          },
+          "pair": "{\"opcode\":\"stloc.s\",\"operand\":{\"local\":5}} => {\"opcode\":\"stloc.s\",\"operand\":{\"local\":4}}",
+          "opcode_pair": "stloc.s => stloc.s",
+          "original_context": [
+            {
+              "offset": 177,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.form.FormManagerBase/<>c__DisplayClass85_1 @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::info:class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]"
+              }
+            },
+            {
+              "offset": 182,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 183,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 5
+              }
+            },
+            {
+              "offset": 185,
+              "opcode": "br.s",
+              "operand": {
+                "labels": [
+                  "O216"
+                ]
+              }
+            },
+            {
+              "offset": 187,
+              "opcode": "ldloc.2",
+              "operand": null,
+              "label": "L2"
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 177,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.form.FormManagerBase/<>c__DisplayClass85_1 @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::info:class System.String @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089[]"
+              }
+            },
+            {
+              "offset": 182,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 183,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 185,
+              "opcode": "br.s",
+              "operand": {
+                "labels": [
+                  "R216"
+                ]
+              }
+            },
+            {
+              "offset": 187,
+              "opcode": "ldloc.2",
+              "operand": null,
+              "label": "L2"
+            }
+          ],
+          "original_labels": {
+            "31": "L0",
+            "130": "L1",
+            "187": "L2",
+            "323": "L3",
+            "361": "L4",
+            "374": "L5",
+            "412": "L6",
+            "450": "L7",
+            "480": "L8",
+            "543": "L9",
+            "563": "L10",
+            "607": "L11",
+            "642": "L12",
+            "683": "L13",
+            "216": "O216",
+            "477": "O477",
+            "525": "O525",
+            "535": "O535"
+          },
+          "rebuilt_labels": {
+            "31": "L0",
+            "130": "L1",
+            "187": "L2",
+            "323": "L3",
+            "361": "L4",
+            "374": "L5",
+            "412": "L6",
+            "450": "L7",
+            "487": "L8",
+            "534": "L9",
+            "554": "L10",
+            "598": "L11",
+            "633": "L12",
+            "674": "L13",
+            "216": "R216",
+            "479": "R479"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 61,
+              "original_stop": 62,
+              "rebuilt_start": 61,
+              "rebuilt_stop": 62
+            },
+            {
+              "kind": "replace",
+              "original_start": 65,
+              "original_stop": 66,
+              "rebuilt_start": 65,
+              "rebuilt_stop": 66
+            },
+            {
+              "kind": "replace",
+              "original_start": 68,
+              "original_stop": 69,
+              "rebuilt_start": 68,
+              "rebuilt_stop": 69
+            },
+            {
+              "kind": "replace",
+              "original_start": 72,
+              "original_stop": 73,
+              "rebuilt_start": 72,
+              "rebuilt_stop": 73
+            },
+            {
+              "kind": "replace",
+              "original_start": 75,
+              "original_stop": 77,
+              "rebuilt_start": 75,
+              "rebuilt_stop": 77
+            },
+            {
+              "kind": "replace",
+              "original_start": 110,
+              "original_stop": 111,
+              "rebuilt_start": 110,
+              "rebuilt_stop": 111
+            },
+            {
+              "kind": "replace",
+              "original_start": 112,
+              "original_stop": 113,
+              "rebuilt_start": 112,
+              "rebuilt_stop": 113
+            },
+            {
+              "kind": "replace",
+              "original_start": 118,
+              "original_stop": 119,
+              "rebuilt_start": 118,
+              "rebuilt_stop": 119
+            },
+            {
+              "kind": "replace",
+              "original_start": 134,
+              "original_stop": 135,
+              "rebuilt_start": 134,
+              "rebuilt_stop": 135
+            },
+            {
+              "kind": "replace",
+              "original_start": 136,
+              "original_stop": 137,
+              "rebuilt_start": 136,
+              "rebuilt_stop": 137
+            },
+            {
+              "kind": "replace",
+              "original_start": 152,
+              "original_stop": 153,
+              "rebuilt_start": 152,
+              "rebuilt_stop": 153
+            },
+            {
+              "kind": "replace",
+              "original_start": 154,
+              "original_stop": 155,
+              "rebuilt_start": 154,
+              "rebuilt_stop": 155
+            },
+            {
+              "kind": "replace",
+              "original_start": 162,
+              "original_stop": 164,
+              "rebuilt_start": 162,
+              "rebuilt_stop": 164
+            },
+            {
+              "kind": "replace",
+              "original_start": 166,
+              "original_stop": 167,
+              "rebuilt_start": 166,
+              "rebuilt_stop": 167
+            },
+            {
+              "kind": "replace",
+              "original_start": 176,
+              "original_stop": 178,
+              "rebuilt_start": 176,
+              "rebuilt_stop": 180
+            },
+            {
+              "kind": "delete",
+              "original_start": 189,
+              "original_stop": 196,
+              "rebuilt_start": 191,
+              "rebuilt_stop": 191
+            }
+          ],
+          "branch_retarget_differences": [],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 185,
+              "rebuilt_offset": 185,
+              "target_ordinal": 0,
+              "original_target": 216,
+              "rebuilt_target": 216,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 430,
+              "rebuilt_offset": 430,
+              "target_ordinal": 0,
+              "original_target": 477,
+              "rebuilt_target": 487,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 448,
+              "rebuilt_offset": 448,
+              "target_ordinal": 0,
+              "original_target": 477,
+              "rebuilt_target": 487,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 491,
+              "rebuilt_offset": 498,
+              "target_ordinal": 0,
+              "original_target": 525,
+              "rebuilt_target": 479,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 0,
+              "try_end": 609,
+              "handler_start": 609,
+              "handler_end": 622,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 0,
+              "try_end": 622,
+              "handler_start": 622,
+              "handler_end": 683,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 0,
+              "try_end": 600,
+              "handler_start": 600,
+              "handler_end": 613,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 0,
+              "try_end": 613,
+              "handler_start": 613,
+              "handler_end": 674,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ]
+        },
+        "statement": {
+          "start": 24020,
+          "end": 24109,
+          "line": 1112,
+          "column": 7,
+          "text": "for (int j = 0; j < info.Length; j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tinfo[j] = info[j].Trim();\r\n\t\t\t\t\t\t}",
+          "kind": "ForStatement",
+          "method_id": "kairo.unity.form.FormManagerBase::Capture(kairo.unity.surface.SurfaceBase,System.String[],kairo.unity.form.FormManagerBase/OnCaptureCompleted,System.Boolean)->System.Void",
+          "point": 24025,
+          "declaration_start": 22783,
+          "declaration_end": 28586
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 5,
+              "last_use": 591,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 25,
+              "last_use": 563,
+              "loads": 4,
+              "stores": 3
+            },
+            {
+              "slot": 2,
+              "first_use": 36,
+              "last_use": 498,
+              "loads": 25,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 52,
+              "last_use": 155,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 478,
+              "last_use": 535,
+              "loads": 1,
+              "stores": 2
+            },
+            {
+              "slot": 5,
+              "first_use": 183,
+              "last_use": 216,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 6,
+              "first_use": 291,
+              "last_use": 309,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 352,
+              "last_use": 410,
+              "loads": 2,
+              "stores": 2
+            },
+            {
+              "slot": 8,
+              "first_use": 437,
+              "last_use": 444,
+              "loads": 2,
+              "stores": 1
+            }
+          ],
+          "constraints": [
+            "source_model_incomplete"
+          ],
+          "source_only": true,
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 2,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 1,
+          "selected_rule_prefix": "d10-residual-lambda-local-lifetimes"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "incomplete_variants_compiled": 1,
+      "incomplete_variant_limit": 12,
+      "incomplete_compiler_invocations": 2,
+      "final_offset": 684,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d10-residual-lambda-local-lifetimes-capture:attempts": 1,
+    "d10-residual-lambda-local-lifetimes-capture:accepted_steps": 1,
+    "d10-residual-lambda-local-lifetimes-capture:body_gains": 1,
+    "d10-residual-lambda-local-lifetimes-capture:IL_gains": 684
+  },
+  "completed": true,
+  "run_label": "cycle34-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\cycles\\cycle34\\baseline\\KairoLibrary",
+  "cycle_rule": "d10-residual-lambda-local-lifetimes",
+  "trial_compiler_server": "/shared (CLI only)",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d10-residual-lambda-local-lifetimes",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 1,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "c0b2df7b65e8080da27cbb537aa00c5102eea83662db88f9d27c386c4e553a91",
+    "source_sha256": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+    "client_sha256": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+    "solver_sha256": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991"
+  },
+  "external_proposals": {
+    "path": "reports\\round10-residual34-roslyn-slots-patches.json",
+    "sha256": "b8f838739157430a50aae772938e274a5a43c263f69cc95528d7baccdf8bdd1f",
+    "dependencies_checked": {
+      "tools/round10_residual30_guard_dispatch_source.py": "9cc4733c6f134c4b5fd679d7605867ea780eba015ad3d956364f372cc758e281",
+      "tools/round10_smcs_branch_joins_source.py": "55ceb0b198f4b93fb278e566cdea670596889d0cf907e505757c6c37b8f8fa27",
+      "tools/round10_bind_indexed_family.py": "17114ca36b82afabdc692c5483d4febb5b4fde3418215109e19d533ce53445df",
+      "tools/round10_residual34_roslyn_slots_source.py": "26321e92f5fb7e91f902dd452add6b4bed3aece241c9f3c2e051ab1716d9017a",
+      "tools/round10_publish_frozen_bundle.py": "5c3aa48ba9c9395e57d7399777347f09707553af45ce4cca2308da2070fa9539"
+    },
+    "read_only_evidence_checked": {
+      "reports/round10-residual34-roslyn-slots-fixtures.json": "6d0d74c34156d003c339cc71cbfdb315e0ecad9088a29047d4d94ad7936b554d"
+    },
+    "frozen_evidence_checked": {
+      "build/round10/residual34-roslyn-slots/calculate.py": "41809ed939df6fa2d099e72d54b6bc0e683cf61d3bde1e782424021f483c67ed",
+      "build/round10/residual34-roslyn-slots/capture-evidence.json": "f020a51c92f52bbd9d87748b2ee577877c7b8cd251d9b85f28b917813a9dbc46",
+      "build/round10/residual34-roslyn-slots/capture.after.txt": "15d906d75605e193692cb499f50c394b8bcff8671da61c43a45788b2efe5d211",
+      "build/round10/residual34-roslyn-slots/capture.source.txt": "4d72c5d9963e630fecb0ff6c615579a3228db4b7ece54e3e64a282849953ca77",
+      "build/round10/residual34-roslyn-slots/export.py": "cd57c13fd166d05fea1728e49be6c8d2981e9413380aec4b5d8ef64b78cbe358",
+      "build/round10/residual34-roslyn-slots/fixture_sources.py": "40f7d127f0dc8e73c31331868e7dde8f806b62d2d7a7960eb98851dadd41094e",
+      "build/round10/residual34-roslyn-slots/historical-ambiguous-trials.json": "7e7177266d02bfd42d3f54be1f0acb767a31ba72cd2e7866fb497fbe362c66bb",
+      "build/round10/residual34-roslyn-slots/history-by-SHA.json": "271d56c973b6e2914bdac3958750dd3f795d56af06c7e871c90d50ccd6deefa6",
+      "build/round10/residual34-roslyn-slots/history-run.log": "791259cb46fe879ed585b9a6b7fdedbef20ce759d4b0d42a1af9a6b36b17088a",
+      "build/round10/residual34-roslyn-slots/history.py": "c75633297e7cbaef36c54529282ade171000f1af95e9eec38c523b4bf2c648cb",
+      "build/round10/residual34-roslyn-slots/NoEmit.json": "be89bf90030651cf44a6c2c8c474e72af6cc3fe4af93d2407334610504ae7b6c",
+      "build/round10/residual34-roslyn-slots/patches-UNVALIDATED.json": "2499557a9fc85a1ddf87d93125d0c43926c05eb54efa90314fa3b350ec0e1638",
+      "build/round10/residual34-roslyn-slots/primary-corroboration.json": "ec9f642281cc5a4bab5617378f501a011929a36382b7f16e21b1cf43d23895fa",
+      "build/round10/residual34-roslyn-slots/probe-bundle.json": "2d46046daf1f436322037d931feaf1476c3b99b4dc3d42ae9386476eb78e603c",
+      "build/round10/residual34-roslyn-slots/rea-capture-summary.json": "a55f0cd50dfcb0c404e4d97a575c94549fa2739a02a59190b6e90568adfdf557",
+      "build/round10/residual34-roslyn-slots/rea-capture.json": "9ed166723aead1df77e9e2969e2ab94f9fe87bebb6e2648e757079c74dc9368c",
+      "build/round10/residual34-roslyn-slots/rea-image-summary.json": "83728ea6b18ef7b4487d5533f2f63488a64093d3b0943ba238c9fa07be4042cc",
+      "build/round10/residual34-roslyn-slots/rea-use.json": "00be3a40e4c11dff465241c11157beb4d7d1b9f5077cb79c2f9ebfecf1d48098",
+      "build/round10/residual34-roslyn-slots/README.md": "b47ee14bf32702cff897b3221bcd59b02b5766dfd2d5cd63042deab0d85a84ea",
+      "build/round10/residual34-roslyn-slots/source-manifest.json": "59b4b273bf91c7dc045beede38742d9952b1f570be81fe1e6c19fbd7b4539e16",
+      "build/round10/residual34-roslyn-slots/source_calculator.py": "26321e92f5fb7e91f902dd452add6b4bed3aece241c9f3c2e051ab1716d9017a",
+      "build/round10/residual34-roslyn-slots/use-evidence.json": "c83c6d34f59ed53348c28f296ea281c2c257e0d061e393e568a713775bd9d541",
+      "build/round10/residual34-roslyn-slots/use.after.txt": "7f46b287da2db265af947fe94b373bc8e453355f2edbb620325a9fc87ff4ce13",
+      "build/round10/residual34-roslyn-slots/use.source.txt": "6499053ac5f64e15a625d3f5210c602d0a30a02c2cfa7c0b5992bf00a157b6fe",
+      "build/round10/residual34-roslyn-slots/validate.py": "7d0a39cc88b80034bdf3a76733db33c187e7cb267cde59cda5176664ea0f4ade",
+      "build/round10/residual34-roslyn-slots/toy/report.json": "6d0d74c34156d003c339cc71cbfdb315e0ecad9088a29047d4d94ad7936b554d",
+      "build/round10/residual34-roslyn-slots/toy/before/compile.rsp": "62ae7ff32d62fc05b6875b72bfbccee08246c9ccd593ece52e7fa65ed781d186",
+      "build/round10/residual34-roslyn-slots/toy/before/compiler.log": "2a8e7df8dc5861d0fd53702a47b051e16b210732bd1202add75b5c5b198377e5",
+      "build/round10/residual34-roslyn-slots/toy/before/Fixture.cs": "2ef4f544d109f7ad873f64e5c51313a2254298a33409e8621482c8020a3c7033",
+      "build/round10/residual34-roslyn-slots/toy/before/Fixture.dll": "41baec47eede099f489bd5eab9a89d328e5b31ba2e3b4899e44a97058684f6d7",
+      "build/round10/residual34-roslyn-slots/toy/before/Fixture.pdb": "89c4f1bdba0b7232026fb8334a72d2019c33b72fee404bdf3252d59043c02705",
+      "build/round10/residual34-roslyn-slots/toy/candidate/compile.rsp": "5d07e89ff69acc8eb19811a045fef0682fc8ed13fe7efbc42891090993a99164",
+      "build/round10/residual34-roslyn-slots/toy/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/residual34-roslyn-slots/toy/candidate/Fixture.cs": "f2eccfd0db5c98b6484ed64f0a4bdb9daeeda3c011c8d6655874f77e0f5fb2fd",
+      "build/round10/residual34-roslyn-slots/toy/candidate/Fixture.dll": "70cdaa50ea3abeb1740571cb687cd03c9e8e9bb7becac4a49643de0f7fe87a22",
+      "build/round10/residual34-roslyn-slots/toy/candidate/Fixture.pdb": "e8bc542287a7c7389a7f267141ffaa38316dbe6fac066f88e654447b59e8e01d",
+      "build/round10/residual34-roslyn-slots/toy/manual/compile.rsp": "80f9d726e37516f9e872501b626f899c5914fd9c90064194e89c3dde5257d92a",
+      "build/round10/residual34-roslyn-slots/toy/manual/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/residual34-roslyn-slots/toy/manual/Fixture.cs": "a87f1ff61f1a68a08a8cd38539307380cba10733cae53039496ee2a56d38ec69",
+      "build/round10/residual34-roslyn-slots/toy/manual/Fixture.dll": "107e29412ddc6aa989281ffe0500d1b6dacc42bc93fe7615fb1418e02e475616",
+      "build/round10/residual34-roslyn-slots/toy/manual/Fixture.pdb": "5f0f494aa64a7f5664f3a28c86279a5786722f3cf678efd56c081a45b3359a32",
+      "build/round10/residual34-roslyn-slots/frozen-index.json": "3894bdbc6f434a9b0cf7ff7ae48d4104640c7714f8068817b0ce7a6e2b0b5bb2",
+      "build/round10/residual34-roslyn-slots/../publication/residual34-roslyn-slots-indexed-engine.json": "c07309ca4c9c9ef1b2c15be5a7cd6f2cb48ae57b16e3da6f2f2cb64305f29154"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": []
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0,
+    "incomplete_permitted": 1
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+          "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+          "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+          "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+          "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+          "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+          "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+          "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+          "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+          "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+          "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+          "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+          "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+          "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+          "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+          "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+          "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+          "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+          "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+          "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+          "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+          "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+          "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+          "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+          "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+          "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+          "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+          "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+          "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+          "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+          "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+          "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+          "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+          "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+          "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+          "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+          "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+          "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+          "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+          "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+          "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+          "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+          "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "9b0e67c5383a620f9f9e5638748c6fb7cbf527c16ceb255190ce6a6099c9ac62",
+          "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+          "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "a49cd225b3d772a5a0bb8a104520f50179d7e5090ec9c286cba935833973425e",
+          "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+          "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+          "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+          "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+          "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+          "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+          "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+          "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+          "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+          "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+          "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+          "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+          "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "53fbffc44d64544dc518d08010a2a6c5c4424b480d71c2b64ed42ffb86bb095f",
+          "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+          "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+          "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+          "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "c8b186ca577db3c3317d4285a9dd203648b55b97a144cace084b94facd8def5d",
+          "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+          "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+          "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+          "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+          "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+          "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+          "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+          "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+          "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+          "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+          "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+          "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+          "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+          "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+          "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+          "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+          "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+          "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+          "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+          "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+          "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+          "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+          "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+          "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+          "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+          "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+          "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+          "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+          "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+          "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+          "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+          "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+          "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+          "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+          "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+          "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "180c02aae50c99db2e8f6659d90d6272e4c2b12c157f5123e299e244289bee2a",
+          "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+          "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+          "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+          "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+          "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+          "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "0a71677089edddbde65b080a094d5e1acd372e625876dc00d5e7224cfd224f97",
+          "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+          "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+          "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+          "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+          "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+          "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+          "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "fffbe2263a3e6aacfe2e801ebf90a023a91bea4d7cbf08bbbc50caa2232ab083",
+          "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+          "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "1a98843775764d222b4907f1adf189260c5f8322924132dc48b2cee6d1c53d6b",
+          "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+          "src/KairoLibrary/kairo/unity/ui/Seb.cs": "050cc0c3909a5cb89c2bcd260f24a9fc0ba3550d8ae207b5db1b11e1851e49c6",
+          "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+          "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+          "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+          "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+          "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "acda5c61220cb0f93867ecb3ac6b169fabce49e31868efdb37ec732dddcfd061",
+          "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+          "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+          "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+          "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+          "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+          "src/KairoLibrary/kairo/unity/util/Compressor.cs": "c9c6ea94a4c9c95ed431a0881f17f88bec09fdb46104758ce6dcc162b4397764",
+          "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+          "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+          "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+          "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+          "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+          "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+          "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+          "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+          "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+          "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+          "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+          "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+          "src/KairoLibrary/kairo/unity/util/Language.cs": "3ea622f04c488c0c0fcf58cf69757e1376f6fdff13c2e9046f546454f5ed23df",
+          "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+          "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+          "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+          "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+          "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+          "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+          "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+          "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+          "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+          "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+          "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+          "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+          "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+          "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+          "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+          "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "ba256b4a3ee20daa896c6d3037ed2adcd68c296e8bc1b55586dd8e04d866d860",
+          "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+          "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+        },
+        "manifest_sha256": "a6250f67b3c280688dcc6257ec3ff0fd1724fec763c2ccafc70b13601c17edfc",
+        "accepted_source_set_sha256": "058cf1315af3c4c35b7dc3ea8cb5c94541fc03f17875ad450ff47838ca488d8f",
+        "generation": 0,
+        "method_count": 3287,
+        "symbol_kind": "PDB",
+        "binary_sha256": "44af6e8102e885e051fd5bce1f8233267fac62e719beea304d5983c443f781f4"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void",
+        "rule": "d10-residual-lambda-local-lifetimes-capture",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 3187,
+  "body_gains": [
+    "kairo.unity.form.FormManagerBase/<>c__DisplayClass85_0::<Capture>b__0()->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 684,
+  "builds": 6,
+  "build_seconds": 4.4359999999869615,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle34-probe\\engine\\KairoLibrary\\current\\KairoLibrary.dll",
+  "final_sha256": "1c55ce94c196814b213b509f494c97ddc263e8f408d06820a37dc924642e65fe",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle34-probe\\engine\\KairoLibrary\\source-map.json",
+  "metadata_types_equal": 337,
+  "metadata_types_total": 337,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 1,
+    "candidate_compiler_invocations": 2,
+    "methods_with_variants": 1,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "a6250f67b3c280688dcc6257ec3ff0fd1724fec763c2ccafc70b13601c17edfc",
+  "source_hashes": {
+    "src/KairoLibrary/java/io/ByteArrayInputStream.cs": "bf59c4da1d7fd2a2f532b6e72c98eba8978c193fc854bd63d4da983787483fc3",
+    "src/KairoLibrary/java/io/ByteArrayOutputStream.cs": "e96ca313d69c7f83e0de36dbae7f404220491d3b67f46545a327f614442c81cc",
+    "src/KairoLibrary/java/io/DataInputStream.cs": "5b71e5b0f9bd6a92d123691d097fb55943d297c0d480cd69ae039669b6d7ea3d",
+    "src/KairoLibrary/java/io/DataOutputStream.cs": "1c72151b8f932e37cb347fba3d5204a9704c8890c2862f997754469620086fe7",
+    "src/KairoLibrary/java/io/EOFException.cs": "df6306e24611a14af9831cc6098de89c0c60435e2210cb125375e296c52de074",
+    "src/KairoLibrary/java/io/InputStream.cs": "6424aff75a6b336259aaed79770bb87cd8eb524d9863aef73719703dab98adbc",
+    "src/KairoLibrary/java/io/OutputStream.cs": "331ef7c6992b60c014d4f856e82d0b868d0de1fbfba6aa756888ecde889851f4",
+    "src/KairoLibrary/java/io/WrappedSystemStream.cs": "07fc699da1fdd259fa7b15f0f633ccf3a5dd17447faa9dd6c4924100db502525",
+    "src/KairoLibrary/java/lang/JBoolean.cs": "b45139f4c8a1f60ec11543d5b094bae2d00d541a5f46b4a993c84f1abea0c731",
+    "src/KairoLibrary/java/lang/JByte.cs": "869b57d05875e475ff69b6c000afa6818bd081abc5f2f61b4969a633d4d12a39",
+    "src/KairoLibrary/java/lang/JCharacter.cs": "2f5e3f5260865906902c8430a136bfa7e931fe2c721dabd58e302476db7c3a84",
+    "src/KairoLibrary/java/lang/JDouble.cs": "af598bfc864a7d0da1e79489fa96f6ea1291cc2b6d76a15b42d5a3034f2aab33",
+    "src/KairoLibrary/java/lang/JFloat.cs": "31cca5849a25c72ccc59d7b2e6811c065ae19e85b1e67fa52d936c31129b1db8",
+    "src/KairoLibrary/java/lang/JInteger.cs": "ad491b155065c2b61475cee5d0457e1eb1233e33d7fad193337d9ebeb415ce51",
+    "src/KairoLibrary/java/lang/JLong.cs": "63ad332aa4282a0bbe16f31c06dfebe1182c54fb9b59591e5a95cdf7507f3f3e",
+    "src/KairoLibrary/java/lang/JMath.cs": "9860752a04780c6108a761ff687ec96e71a938acbddf34ff86a885fbea04a4da",
+    "src/KairoLibrary/java/lang/JRunnable.cs": "f1451d338a46b812d0eec90e1dd4ba04ff4688f7eb40a7a64ff4b524fc7387d4",
+    "src/KairoLibrary/java/lang/JRuntime.cs": "c209ab01265338850fc561ff82b9ea21d17d51b9a9c12963e94931cbb9134c41",
+    "src/KairoLibrary/java/lang/JShort.cs": "0737b41b70b0e0b28f772f4d7fda7982424d85a2f9a8a4734dc1b33b15380258",
+    "src/KairoLibrary/java/lang/JString.cs": "61273608ed20657cee74d35d8951a086760cbf3bad0c56a8d3230291aa85c375",
+    "src/KairoLibrary/java/lang/JSystem.cs": "c4e8f5f6d6ca6427aedcab629aee84d40b42821300758fe52b297cea360b4230",
+    "src/KairoLibrary/java/lang/JThread.cs": "ea36bd38b1e14578b9591753dd8be1d3e2b264fcfb8f3b4437019bcd9ce339be",
+    "src/KairoLibrary/java/lang/StringEx.cs": "13f801b687ff748c145be10f0c97def8a22008ae7c405318896fe46ffa4e0843",
+    "src/KairoLibrary/java/native/JavaPlugin.cs": "a40729088e537334b47b842698bbaa0dcc62b3e6dbfa4f014c736733b60e7a01",
+    "src/KairoLibrary/java/native/PluginBase.cs": "03bf86121c47ad50fbf5f098e949d56d06050d09a10f4c9894b812bca5e85ed3",
+    "src/KairoLibrary/java/net/URLDecoder.cs": "60067294268bd549b1ecd00fda848d76b83410650aed7dec28e4374d94a03c7c",
+    "src/KairoLibrary/java/net/URLEncoder.cs": "751748a4537ed834c6a71e609e69c1c51ace5a2afbe1e89e9bb3d8ef2211ae3e",
+    "src/KairoLibrary/java/util/JCalendar.cs": "cddc58cbfcbf02185a8ce3e63e7ae6748502bd4861821c2e34a7eb3d17852e7e",
+    "src/KairoLibrary/java/util/JDate.cs": "82229716d32ac69db721dc274101d2c01afd57ee81caec36f3d35fbd6b509a79",
+    "src/KairoLibrary/java/util/JLocale.cs": "8635242e6792240f3766c85f33fe2e108b32ad969c545d37feb2d94c11679f5a",
+    "src/KairoLibrary/java/util/JRandom.cs": "ea9a23d75f7d24d8627c4b4027060fd61b56b39ff87ac58a2f337a9a69f03c93",
+    "src/KairoLibrary/java/util/JTimeZone.cs": "38735853684da45b9c8d81f5d4df75f7be0b8a522f78c879b46743ef58656f56",
+    "src/KairoLibrary/java/util/JTool.cs": "1bb01e7f7ce103ff187bb17bdb80a59617d8f02a6efdf5fb21db8dbebf88be6c",
+    "src/KairoLibrary/java/util/IVector.cs": "c055c8932caf49c9895f4f71c5c0bc8a9cb15672acf0f1cdcfa26e46f2ae57ff",
+    "src/KairoLibrary/java/util/Vector.cs": "2ef88b058fdc50346525f719b06fbff47b968eb1c3d27a7f1442aaa9639cad24",
+    "src/KairoLibrary/java/util/Vector`1.cs": "0951b847db56ebf876037602509e4bdb5a040cece046e0798fdd16f2c8be6f0b",
+    "src/KairoLibrary/kairo/common/cfg/Config.cs": "212375994c0421ffc843d8c8e610a7ecfd230af8ef0d9d743defae3fe87ddb52",
+    "src/KairoLibrary/kairo/unity/ad/AdSize.cs": "04a2ec1e4afdc1ba20bb3d3db437bbb0f42451197f3712d6642684d561cb94e5",
+    "src/KairoLibrary/kairo/unity/ad/AdMobView.cs": "643bc0ef8666625005a950034c848654c35f81ab75dcd27d1f0599ff4a02a0b6",
+    "src/KairoLibrary/kairo/unity/ad/InterstitialAd.cs": "98231f8536456608948cf4d819db7f3306a48ff1e43878e9ac6fd22f8deee89a",
+    "src/KairoLibrary/kairo/unity/analytics/AnalyticsTracker.cs": "e5fcf568c56deaec547dfcae6bea3315fe73e54e632148ba5c5c39387e4150a6",
+    "src/KairoLibrary/kairo/unity/form/FormBase.cs": "a40cdc44121704f35b678c16fc8ba9240a4110552cd8f269b166597ae513cb01",
+    "src/KairoLibrary/kairo/unity/form/FormManagerBase.cs": "69a757b6eac1b42af6dc993cd406823bf23a0f904fe2e75b7f74a70bccb34b9c",
+    "src/KairoLibrary/kairo/unity/graphics/Material.cs": "5c5e097e1b687aac67607194218d6c426e0a938b615e5d46acf3f6d733850645",
+    "src/KairoLibrary/kairo/unity/graphics/MaterialManager.cs": "a49cd225b3d772a5a0bb8a104520f50179d7e5090ec9c286cba935833973425e",
+    "src/KairoLibrary/kairo/unity/graphics/MeshBuilder.cs": "c1f27bc426227f74c7fd4ca15a7ac231c64a019ca43dcf5fc44de3719bf5dba5",
+    "src/KairoLibrary/kairo/unity/graphics/MeshManager.cs": "2da52fb841f3b55836ece39ef77ab8986ff9eb869b2ca4fc47c6edf0b5c41ae6",
+    "src/KairoLibrary/kairo/unity/graphics/MeshRecord.cs": "4f67b2f6a5be0b109965b3a389f45f7fda9bf6577dcf24c3ca3f1b132ec048c4",
+    "src/KairoLibrary/kairo/unity/graphics/Offscreen.cs": "74e958cd810afb75439a27b126e4cdee83771ecf4e1bae1f30e7863955ce0c8d",
+    "src/KairoLibrary/kairo/unity/graphics/Point.cs": "91db25eec03d19e0b6d89de36b7bd03533d676e6178a6c9d676c9a3637d3eca3",
+    "src/KairoLibrary/kairo/unity/graphics/Rectangle.cs": "696b8a93241dd3b928a0903710377c075094f89816e7340075341f25d78e64d0",
+    "src/KairoLibrary/kairo/unity/graphics/RectangleF.cs": "62f3aff0e2f8d568de63a7017ba1ea1ff4bd7d0e7428683b88a3a202dd9dd502",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderBuilder.cs": "0f265bb17de587df172e39d9e01dc230808d47c4f2d91e882b75b90147a80e23",
+    "src/KairoLibrary/kairo/unity/graphics/ShaderManager.cs": "13db0e48ef2d55a5e8c6c89268307b0aa60be6b1b161f920979793facfd046a9",
+    "src/KairoLibrary/kairo/unity/graph/Graph.cs": "5345e63dcf7bff410c4aed3fdef67e45d109919919cf2cce32cf1a29912c9cfe",
+    "src/KairoLibrary/kairo/unity/iOSsupport/DeviceUtil.cs": "543b571c87b47f8b8dddafb57515800bc739898739b0e9ea77294c74828fbe68",
+    "src/KairoLibrary/kairo/unity/iOSsupport/RecordUtil.cs": "873feecdff9ab9b4774463e3c0f3e6484f2b5d05edc326036ab62e643df2591c",
+    "src/KairoLibrary/kairo/unity/io/AssetReader.cs": "8d79e2e996ef0268675e28297e50006b6570457deddc9fb94697dfc744938ebd",
+    "src/KairoLibrary/kairo/unity/io/BitArrayInputStream.cs": "53fbffc44d64544dc518d08010a2a6c5c4424b480d71c2b64ed42ffb86bb095f",
+    "src/KairoLibrary/kairo/unity/io/BitArrayOutputStream.cs": "7be30a0aa206526f9d22165bb429efd2179ccab07df440ee825ed7dfe74b861f",
+    "src/KairoLibrary/kairo/unity/io/ByteListOutputStream.cs": "eca65276382432917eedecf9d91f35ce57b6fd739332e3a694fa504ce05135b2",
+    "src/KairoLibrary/kairo/unity/io/ConnectionException.cs": "771948ea8a875c03ca41353f8ccaefcbdcfef9ee5e31bc2c38d6bcf8cb3e6c4f",
+    "src/KairoLibrary/kairo/unity/io/HttpObject.cs": "c8b186ca577db3c3317d4285a9dd203648b55b97a144cace084b94facd8def5d",
+    "src/KairoLibrary/kairo/unity/io/Http.cs": "a9ff9a7aa42c8a58e156c3a34fd9fd19870bc160c271de176339835290f56e1e",
+    "src/KairoLibrary/kairo/unity/io/RecordStore.cs": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+    "src/KairoLibrary/kairo/unity/io/RecordStoreListener.cs": "616bacc49e494623ffa9f09fdd6331a360a33a2ee464dbcc44b67184d6070225",
+    "src/KairoLibrary/kairo/unity/io/ScratchPad.cs": "fa92a2e95f9a51a87ad5bd67f3fc613790ef78e4a2744be7cb1d6db5797ab890",
+    "src/KairoLibrary/kairo/unity/io/Storage.cs": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+    "src/KairoLibrary/kairo/unity/licensing/LicenseChecker.cs": "f5ecf6fbb95825deff195988f8d604c92ceeb0a829e739fbea3c2a098e11d1b8",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/FastMath.cs": "90a38a6fbf0df2ebf00127354f929b8b9a3e26fd1d78a1f06d339dd0eb175d5b",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Transform.cs": "28571cb81ad1a62048af0ff55c9b7fef86e78b85c040b1cbe38a2313a29df738",
+    "src/KairoLibrary/kairo/unity/m3d4/util3d/Vector3D.cs": "c73a63e5653ef517efb5c48ed6cc4f3f4c39186b0075ed83fc5de28f7fa1ab7e",
+    "src/KairoLibrary/kairo/unity/math/KairoMath.cs": "36565a4b5a06954957ba95246575bc67f560c10d854012bfd907fbc9206c9b17",
+    "src/KairoLibrary/kairo/unity/native/AdMobPlugin.cs": "36501ec2868f0c53bd121bafcc3e0c8f3db3dd10b5fe77eecbba6df8898d238b",
+    "src/KairoLibrary/kairo/unity/native/KairoPlugin.cs": "74c5baa5828bdbfd7c69736563e67034d6f8ec2a93459419ab215e865765fbee",
+    "src/KairoLibrary/kairo/unity/native/util/AsyncThread.cs": "7cbfef707e14b032f9b353660c550a573b17c04ae94ed5be2eb71c117a8be69b",
+    "src/KairoLibrary/kairo/unity/native/util/Dialog.cs": "7f54b1372d89f8b1686ee6c750527bd417fbc78062ef93d1df636c38d5091f4f",
+    "src/KairoLibrary/kairo/unity/native/util/StringUtil.cs": "f1576b1c78c48c853d64c794fa5c2116fc70f7cbca9c03c755f283fdb732cd8b",
+    "src/KairoLibrary/kairo/unity/panel/Button.cs": "6d6b8c2f0fffb065db98832582e452e53e1000d945600bbe370a3a40782824ee",
+    "src/KairoLibrary/kairo/unity/panel/Component.cs": "2305b813199edb2268d2fd67476e06478aeb7e429aa0be40c6c25d518b36bbb2",
+    "src/KairoLibrary/kairo/unity/panel/FepPanel.cs": "c990eca26d29d2796ca604eef954119d843f03834d63e2c76bb535bf235de451",
+    "src/KairoLibrary/kairo/unity/panel/Label.cs": "79db331937c9aaf62546918aade44fe3c2e2eb9cb5db06badf2694d07f9cbcab",
+    "src/KairoLibrary/kairo/unity/panel/TextBox.cs": "58c622ddc280a9f2c3deb75e275c3fc055b585ca088ada1ff9772b24b2dcd140",
+    "src/KairoLibrary/kairo/unity/surface/MotionEvent.cs": "30fa575067d06816e67625f2ae42d3b2bdfebec4a6c235835af26d68ee8cc388",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceBase.cs": "9be14b9b1a6154bcb5cc6b683021f55b4d3ed25930336cf2626146906a9e585c",
+    "src/KairoLibrary/kairo/unity/surface/SurfaceManagerBase.cs": "7bcc1ca56a5ca0eca37221ebb00cc56e072f4a0765301fbc0120a5ebf60ee843",
+    "src/KairoLibrary/kairo/unity/surface/TouchComponent.cs": "86d414f7eee9b5ac0f9feb4c4b60736d0f439527a9379597e60cfdf3bfd5d35e",
+    "src/KairoLibrary/kairo/unity/surface/TouchEvent.cs": "0ff0b66c25247e5c335135b704b253f42d7d9d4a22865348abeefe838965149a",
+    "src/KairoLibrary/kairo/unity/surface/TouchOption.cs": "c9622254885d4834b0e3217403a36d6b42acaa7f079eff85a5429b95106a3928",
+    "src/KairoLibrary/kairo/unity/surface/TouchValueAccessor.cs": "4edae0fbcad5bc6e7a228f3426a64e4b870ef2d872cee8afa2abebd3aeb20530",
+    "src/KairoLibrary/kairo/unity/system/ErrorCode.cs": "39fddfef0aaad1fe0a201332978a6d744ea9d8a55919491199b79e354fbe10e4",
+    "src/KairoLibrary/kairo/unity/system/GameDataRecord.cs": "dd53dd4b7005dad54618bdb648d0e242f1443f913daccc5965574aa00c1da2a6",
+    "src/KairoLibrary/kairo/unity/system/KairoBase.cs": "e56198657a69bfd958acdea29d621dacaf38773fff0c8e229e0af28458b61f0e",
+    "src/KairoLibrary/kairo/unity/system/KairoClub.cs": "5db7f7f788c0371fe087053fcb38f238bc1bc3e639096d2edee1b3ce661fe82a",
+    "src/KairoLibrary/kairo/unity/system/appli/GameAppli.cs": "e645fc711a88f17ba1dcff86008f30a1945322275bf869c4dc65dd7530feb948",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupData.cs": "e9ea58abd78ab3ef3fda09a960777d0c36206ea2be3da24aa57ec47f9446ccdc",
+    "src/KairoLibrary/kairo/unity/system/lineup/ui/LineupManager.cs": "20451e13877e7aaa381d1e36c506dda73ee9a1f756ec304e5147d0994ec5dd0f",
+    "src/KairoLibrary/kairo/unity/system/lobi/LobiManager.cs": "ffbb9ba9dfc02e6e2fa06a7fdbf202e97937182671031869f2385ff2e9fafaa0",
+    "src/KairoLibrary/kairo/unity/system/notification/ui/NotifyManager.cs": "befc10cb39566bede5e0c29a8434aa0e2adccf4f1118100dca5cd9ff7bfca857",
+    "src/KairoLibrary/kairo/unity/system/payment/IllegalPurchaseException.cs": "9e11be0c74c766789388c5698e3302251e6986d3ad7726fa82938fd9c8e82849",
+    "src/KairoLibrary/kairo/unity/system/payment/PaymentDataRecord.cs": "3e3bbd5a293ab61504b81a90b2c3903a0a342aaeaad31f4905ad18b5ad8ec571",
+    "src/KairoLibrary/kairo/unity/system/tapjoy/ui/ITapjoy.cs": "8b215cb0cadee39cde5a3c4ba9b65dfc8822f8c1d1fd2da73aaa7127d03ff2f0",
+    "src/KairoLibrary/kairo/unity/ui/Canvas.cs": "180c02aae50c99db2e8f6659d90d6272e4c2b12c157f5123e299e244289bee2a",
+    "src/KairoLibrary/kairo/unity/ui/DepthInfo.cs": "127396c63d9519d1df9293494b117cc7789587463216b8c3d9d27263b858b52a",
+    "src/KairoLibrary/kairo/unity/ui/Dialog.cs": "9bc23188172bc86210c41124073af7f034c7b3becf9226ad8070bf1834890c85",
+    "src/KairoLibrary/kairo/unity/ui/AppEventType.cs": "0db4b9259ab51bb21cbaa32ff5c5ff51de22be041f7e7929a80daade619a373a",
+    "src/KairoLibrary/kairo/unity/ui/AppEvent.cs": "60ad6f54f666045bbc31bad86626426b074d8aeecf1a3ba6dec88608fd5a0710",
+    "src/KairoLibrary/kairo/unity/ui/Font.cs": "89ace2fab97e420b2999fdbd3f04057370c9bf850e23456cadcc9ec902042495",
+    "src/KairoLibrary/kairo/unity/ui/Graphics.cs": "0a71677089edddbde65b080a094d5e1acd372e625876dc00d5e7224cfd224f97",
+    "src/KairoLibrary/kairo/unity/ui/Handler.cs": "3849e0df15c90d1121e4eddb2fd03112e99b4e55c35a2c423027d4e2c035c071",
+    "src/KairoLibrary/kairo/unity/ui/IApplication.cs": "57dd20a000305eec8223924ad1e5975b61d4480396dc5769ac8887a442c52db5",
+    "src/KairoLibrary/kairo/unity/ui/Image.cs": "149cbcf93e07f9e1d1e7ff90a29a0e78fe29610f08fab392337236c7eef6055a",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlasManager.cs": "497c89b0733e1a059f4d64b8df137485efa542f7d6077138d7139d9dc2b20df8",
+    "src/KairoLibrary/kairo/unity/ui/ImageAtlas.cs": "d5bdbf0f56375983bde5e3b7c01e2ccbedcac541723c168c9115ceaf299b36ec",
+    "src/KairoLibrary/kairo/unity/ui/ImageTransform.cs": "1ca1ad76e0f4f35a7ab4be2895c281947d238e5e4327c87996dc4470937f9519",
+    "src/KairoLibrary/kairo/unity/ui/KeyEvent.cs": "fe6cecd7a981197311d3ecbdbd2e3a305a6062ff2243afb4c0a746056cf7479e",
+    "src/KairoLibrary/kairo/unity/ui/Matrix.cs": "fffbe2263a3e6aacfe2e801ebf90a023a91bea4d7cbf08bbbc50caa2232ab083",
+    "src/KairoLibrary/kairo/unity/ui/Pictograph.cs": "5e406e63f9cde4e7dd9a969a7ecce8a8b56902480a1743f6beb2526e8c2c8bd6",
+    "src/KairoLibrary/kairo/unity/ui/ResourceManager.cs": "1a98843775764d222b4907f1adf189260c5f8322924132dc48b2cee6d1c53d6b",
+    "src/KairoLibrary/kairo/unity/ui/SaveRecorder.cs": "81f54a071a94a9192a5a1a79d946710f9ad7b9558bf8467563f7ef0cd8d3bf47",
+    "src/KairoLibrary/kairo/unity/ui/Seb.cs": "050cc0c3909a5cb89c2bcd260f24a9fc0ba3550d8ae207b5db1b11e1851e49c6",
+    "src/KairoLibrary/kairo/unity/ui/SoundBase.cs": "0058dff25c20cc4cf5ffb4f49c1d1869ed3156d2980b3febf7972b36d247482e",
+    "src/KairoLibrary/kairo/unity/ui/SoundOGG.cs": "b88e5f1218bf5716ad6ff829365642475518af327577052db949785b86a9d808",
+    "src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs": "0847a70a0093817d2d4fcfff123b3c7c4697ed0ad77494498b0e59b845576e14",
+    "src/KairoLibrary/kairo/unity/ui/TextFormat.cs": "34c7ea462e3071c46ec76a64d46dc0f4cfef2f67aade72ad227557ef77491f4e",
+    "src/KairoLibrary/kairo/unity/ui/TextLayout.cs": "acda5c61220cb0f93867ecb3ac6b169fabce49e31868efdb37ec732dddcfd061",
+    "src/KairoLibrary/kairo/unity/ui/UIException.cs": "e96c5c24a01c6189a98d21e55181676c74ef4cc95264db4ce5bf96a8da3caaab",
+    "src/KairoLibrary/kairo/unity/ui/Balloon.cs": "b341581b65f4d9efd0db448696711bd21f1454a9050acd8bfad94dda7e918cc9",
+    "src/KairoLibrary/kairo/unity/util/Base64.cs": "ca1bbe861320dfe4757ab13605d7d241aa0763139e34006831a8b88c80d0a1a4",
+    "src/KairoLibrary/kairo/unity/util/BitUtil.cs": "6874c1049a7869b84ead42fdf98175c5dd1c47e2d0281780ded070b32205f121",
+    "src/KairoLibrary/kairo/unity/util/ClockTime.cs": "791316640318d8782ee3b2312b8210f39eb8373c7daab43b2708cf7de0bbe52f",
+    "src/KairoLibrary/kairo/unity/util/Compressor.cs": "c9c6ea94a4c9c95ed431a0881f17f88bec09fdb46104758ce6dcc162b4397764",
+    "src/KairoLibrary/kairo/unity/util/CRC64.cs": "f3c8b1d65d8507b0f0099067ac9f5c4520c70d932650ec298a0ea2efb758ad5c",
+    "src/KairoLibrary/kairo/unity/util/DisplayMetrics.cs": "e300c768ca92552b08c06ee4c7da9d5de1241b3eb62423877e3a82d2e4b1a0e8",
+    "src/KairoLibrary/kairo/unity/util/EncodeUtil.cs": "c980a6c922f7baa6dce35c6cdbb818ec7a4cd185469a42c653ce04540d02299e",
+    "src/KairoLibrary/kairo/unity/util/Encrypter.cs": "8a9a2fb3e4885bd024a48eaa3e00bd69eb39b4b4c6b831759a05dbddf5bcca0a",
+    "src/KairoLibrary/kairo/unity/util/FastVector.cs": "9be6c0d3cccf5f38880db879557862b7772d03b412a3c411dcc2216c5f2f59af",
+    "src/KairoLibrary/kairo/unity/util/FastVector`1.cs": "1c31bc9546e3ce559bf4ec4278985739f3e157450b3b5f1a1bd668492a7f8365",
+    "src/KairoLibrary/kairo/unity/util/IllegalFileException.cs": "0724314f8f7edc37679e6248888ad00fa42aea5276491ca2da8fe0c6ec7eb6f5",
+    "src/KairoLibrary/kairo/unity/util/IntentUtil.cs": "5cf14d2580d7e0cd430a930f7fd5bb69b104e17d989adfd92db36af5defa2bac",
+    "src/KairoLibrary/kairo/unity/util/ISerializable.cs": "f91d426aa59f5deda65ca1fdf9f62cd13955006b5092eeb28788046e4e8374e9",
+    "src/KairoLibrary/kairo/unity/util/JarFormatException.cs": "33c84c053284cc5c879cbc5ee452277fb3d19393074135d2d9964079de52e795",
+    "src/KairoLibrary/kairo/unity/util/JarInflater.cs": "3ccf34a79c652050490b21ef176bdfa9525d4292b635dfad7df603a5f955a220",
+    "src/KairoLibrary/kairo/unity/util/KairoException.cs": "7b1827e82ba73d2da60252230ff6d5b1386ba0d73311b56be359ec27fa010d68",
+    "src/KairoLibrary/kairo/unity/util/Language.cs": "3ea622f04c488c0c0fcf58cf69757e1376f6fdff13c2e9046f546454f5ed23df",
+    "src/KairoLibrary/kairo/unity/util/Log.cs": "3696ecc88ed4ace3ecf0e23daecc6b825251d24efeaff2891f10d5778a380989",
+    "src/KairoLibrary/kairo/unity/util/LogListener.cs": "e69b744b38b4ca0548bca6185f076904a0f1eeb45474f18207c337c1a50e8551",
+    "src/KairoLibrary/kairo/unity/util/MD5.cs": "f6762dab6f5b8def9e23ba7cb6b4f0f46a0e1b038fd475d151835eefb64e25dd",
+    "src/KairoLibrary/kairo/unity/util/NotPermitException.cs": "cc4b82d222d4303f89ef57aa7cd0070c1cc94ef6c7bf8c155bd691d44d6ff779",
+    "src/KairoLibrary/kairo/unity/util/Property.cs": "7c7c33d8fd66ba96440ed9c32b26c172033fa318f00c2ae8d660242e5de377c5",
+    "src/KairoLibrary/kairo/unity/util/SecureByte.cs": "e6cebcbcedf361fd197fcfe47a1442b69a4f9a1afe1d05d38f77c738ed1f93c6",
+    "src/KairoLibrary/kairo/unity/util/SecureByteArray.cs": "b3b207f7e9e58cf7a5d845a7c1d74d92a74e4cf08f1abe4657d5ff00767a504c",
+    "src/KairoLibrary/kairo/unity/util/SecureChar.cs": "cd050e0d278a5bd646579fc07098ed3ab474551f664e41f6f853d40acb01bec9",
+    "src/KairoLibrary/kairo/unity/util/SecureInt.cs": "34ac9175ef77ca9583b03e55c2b1c3bac019f457ce29b240f40768e1268400eb",
+    "src/KairoLibrary/kairo/unity/util/SecureLong.cs": "5a019476bfb8877dac040fbb97625b059b3f8fe206304767b41aa70c0984f639",
+    "src/KairoLibrary/kairo/unity/util/SecureNumber.cs": "2cc1ec50a4931179a5664346484c02cc1a2018ef7e1ca63b7b068d2dc8ec5e9b",
+    "src/KairoLibrary/kairo/unity/util/SecureProperty.cs": "313e32ca50841677744364ad4ef0d7225c86f084b8be8cb2f5838d985debcb77",
+    "src/KairoLibrary/kairo/unity/util/SecureShort.cs": "09600fcb3c491e68e8996ef04de13f535987cc9209463ff2dbf8f58ee0bf5259",
+    "src/KairoLibrary/kairo/unity/util/SecureString.cs": "d154cd88c482ab1b59e0e38302f7c07eeb8aa9ef1cb554bb4f0091cedbf9a251",
+    "src/KairoLibrary/kairo/unity/util/StreamUtil.cs": "a6ba984a8d152d283b1a3fe9cea34c9e74de2efd57a5c3f08ccc346490a3993b",
+    "src/KairoLibrary/kairo/unity/util/StringUtil.cs": "ba256b4a3ee20daa896c6d3037ed2adcd68c296e8bc1b55586dd8e04d866d860",
+    "src/KairoLibrary/kfw/panel/MainPanel.cs": "992f4614346de7822c434e0cbf677e61930fb42816676e53bff7c63cbf1e4ec4",
+    "src/KairoLibrary/AssemblyInfo.cs": "1cbf6b1009bb124159b5efe89cd83d0b051b8e0c05ab8295a984f132679525c5"
+  }
+}

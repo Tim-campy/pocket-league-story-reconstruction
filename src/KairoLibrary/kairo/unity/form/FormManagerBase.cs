@@ -1167,11 +1167,7 @@ namespace kairo.unity.form
 							}
 						}
 						bool flag = false;
-						while (!File.Exists(path))
-						{
-							JThread.Sleep(10L);
-						}
-						if (!(bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
+						while (true) { if (File.Exists(path)) { flag = (bool)IApplication.GetCurrentApp().RunOnUiThread(delegate
 						{
 							byte[] data = File.ReadAllBytes(path);
 							File.Delete(path);
@@ -1241,10 +1237,7 @@ namespace kairo.unity.form
 								image = null;
 							}
 							return true;
-						}, true))
-						{
-							i--;
-						}
+						}, true); break; } JThread.Sleep(10L); } if (!flag) { i--; }
 						stopFrame = IApplication.GetCurrentApp().GetTotalFrames();
 					}
 					if (method != null)

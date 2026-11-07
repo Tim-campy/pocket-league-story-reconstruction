@@ -49,7 +49,7 @@ def main():
     queue_empty=not any(r['status']=='pending' for r in cfg['prepared_queue'])
     if args.phase=='D' and any(cfg.get('required_parts',{}).get(part)!='complete' for part in 'ABC'):
         raise ValueError('Parts A, B and C must finish before autonomous work')
-    if args.phase=='D' and ((queue_empty and journal['consecutive_zero_cycles']>=5) or len(autonomous)>=40):raise ValueError('A user stop condition prevents autonomous cycle')
+    if args.phase=='D' and ((queue_empty and journal['consecutive_zero_cycles']>=cfg['consecutive_zero_stop']) or len(autonomous)>=cfg['maximum_cycles']):raise ValueError('A user stop condition prevents autonomous cycle')
     if args.number!=len(journal['cycles'])+1:raise ValueError('Cycle number is not next')
     if args.phase=='D' and len(autonomous)>=4 and args.assembly!='KairoLibrary' and not any(r['assembly']=='KairoLibrary' for r in autonomous[-4:]):
         raise ValueError('The fifth cycle in a rolling block must examine KairoLibrary')

@@ -17,7 +17,7 @@ def measured_zero_streak(journal):
  return count
 
 def stop_reason(cfg,journal):
- if len(d_rows(journal))>=40:return'maximum_40_D_cycles'
+ if len(d_rows(journal))>=cfg['maximum_cycles']:return'maximum_'+str(cfg['maximum_cycles'])+'_D_cycles'
  if queue_empty(cfg)and measured_zero_streak(journal)>=5:return'five_zero_D_cycles_with_queue_empty_before_and_after'
  return None
 
@@ -30,7 +30,9 @@ def official_identity_map(receipt):
  return result
 
 def validate_cycle(cfg,journal,request):
- if cfg.get('maximum_cycles')!=40 or cfg.get('consecutive_zero_stop')!=5 or cfg.get('maximum_consecutive_primary_same_method')!=2:raise GuardError('Protocol constants changed')
+ cap=cfg.get('maximum_cycles')
+ override=cfg.get('user_stop_limit_override',{})
+ if cap not in (35,40) or (cap==35 and (override.get('previous_maximum_cycles')!=40 or override.get('instruction')!='Pare essa rodada no ciclo35' or override.get('reason')!='stop_limit_user35')) or cfg.get('consecutive_zero_stop')!=5 or cfg.get('maximum_consecutive_primary_same_method')!=2:raise GuardError('Protocol constants changed without the recorded user override')
  rows=d_rows(journal);phase=request['phase'];reason=stop_reason(cfg,journal)
  if reason:raise GuardError('Reconstruction stopped: '+reason)
  if cfg.get('phase')=='stopped':raise GuardError('Round already stopped')

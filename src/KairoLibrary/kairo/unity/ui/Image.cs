@@ -726,7 +726,7 @@ for ( num15 = 0; num15 < optimizePass_; num15++)
 			}
 			IApplication.GetCurrentApp().RunOnUiThread(delegate
 			{
-				byte[] array = src_;
+				byte[] array = src_; int num2; int num3;
 				if (array == null && file_ != null)
 				{
 					if (rsId_ == -1)
@@ -789,8 +789,8 @@ for ( num15 = 0; num15 < optimizePass_; num15++)
 					{
 						Config.createImageArea_ += GetWidth() * GetHeight();
 					}
-					int num2 = sourceImageMaxCount_;
-					int num3 = sourceImageMaxPixels_;
+					num2 = sourceImageMaxCount_;
+					num3 = sourceImageMaxPixels_;
 					while (sourceImageList_.elementCount > 1 && ((num2 > 0 && num2 < sourceImageList_.elementCount) || (num3 > 0 && num3 < sourceImagePixels_)))
 					{
 						Image image = null;
