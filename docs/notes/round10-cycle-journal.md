@@ -13,3 +13,4 @@
 | 9 | Assembly-CSharp / brtrue => ldc.i4.0 | Restaurar os cinco inicializadores Boolean como ternarios orientados pelo IL, inclusive DEBUG com dois ramos false | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 341 |
 | 10 | Assembly-CSharp / brtrue => ldc.i4.0 | Eliminar alias Boolean sintetico e restaurar guardas continue e ramos vazios originais como composicao por metodo | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 6470 |
 | 11 | Assembly-CSharp / stloc.s => stloc.s | Calcular locais sem uso e reposicionar declaracoes e escopos para obter os slots originais, mantendo expressoes float | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 2417 |
+| 12 | Assembly-CSharp / stloc.s => stloc.s; stloc.1 => stloc.s | Declarar seletor antes dos corpos, substituir dispatches por ifs e compor alias e cadeia de dez zeros, preservando saida protegida | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 4892 |

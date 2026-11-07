@@ -2465,10 +2465,9 @@ hitList.AddElement(player);
 				try
 				{
 					int[] firstScript = GetFirstScript();
-					switch (firstScript[0])
-					{
-					case 1:
-						if (firstScript[2] == 1)
+int recoveredScriptCommand = firstScript[0];
+					if ((recoveredScriptCommand == 1)) {
+if (firstScript[2] == 1)
 						{
 							flag_ = BitUtil.On(flag_, 1);
 						}
@@ -2478,36 +2477,43 @@ hitList.AddElement(player);
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 2:
-						ChangeState(firstScript[1]);
+
+}
+else if ((recoveredScriptCommand == 2)) {
+ChangeState(firstScript[1]);
 						script_.RemoveElementAt(0);
 						continue;
-					case 3:
-						seb_ = firstScript[1];
+}
+else if ((recoveredScriptCommand == 3)) {
+seb_ = firstScript[1];
 						sebCnt_ = 0;
 						frame_ = 0;
 						flag_ = BitUtil.On(flag_, 2);
 						script_.RemoveElementAt(0);
 						continue;
-					case 4:
-						direct_ = firstScript[1];
+}
+else if ((recoveredScriptCommand == 4)) {
+direct_ = firstScript[1];
 						script_.RemoveElementAt(0);
 						continue;
-					case 5:
-						flag_ = firstScript[1];
+}
+else if ((recoveredScriptCommand == 5)) {
+flag_ = firstScript[1];
 						script_.RemoveElementAt(0);
 						continue;
-					case 6:
-						flag_ = BitUtil.On(flag_, firstScript[1]);
+}
+else if ((recoveredScriptCommand == 6)) {
+flag_ = BitUtil.On(flag_, firstScript[1]);
 						script_.RemoveElementAt(0);
 						continue;
-					case 7:
-						flag_ = BitUtil.Off(flag_, firstScript[1]);
+}
+else if ((recoveredScriptCommand == 7)) {
+flag_ = BitUtil.Off(flag_, firstScript[1]);
 						script_.RemoveElementAt(0);
 						continue;
-					case 9:
-						if (sebCnt_ < SEB_H_SAVING_ANIME[0])
+}
+else if ((recoveredScriptCommand == 9)) {
+if (sebCnt_ < SEB_H_SAVING_ANIME[0])
 						{
 							pos_.x_ = seb_startPos.x_ + seb_v.x_ * (float)sebCnt_;
 							pos_.z_ = seb_startPos.z_ + seb_v.z_ * (float)sebCnt_;
@@ -2529,9 +2535,10 @@ hitList.AddElement(player);
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 10:
-						if (sebCnt_ < SEB_H_SLIDING_ANIME[0])
+
+}
+else if ((recoveredScriptCommand == 10)) {
+if (sebCnt_ < SEB_H_SLIDING_ANIME[0])
 						{
 							pos_.x_ += seb_v.x_;
 							pos_.z_ += seb_v.z_;
@@ -2542,9 +2549,10 @@ hitList.AddElement(player);
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 11:
-						pos_.y_ = seb_v.y_ * (float)sebCnt_ + seb_ay * (float)sebCnt_ * (float)(sebCnt_ + 1) / 2f;
+
+}
+else if ((recoveredScriptCommand == 11)) {
+pos_.y_ = seb_v.y_ * (float)sebCnt_ + seb_ay * (float)sebCnt_ * (float)(sebCnt_ + 1) / 2f;
 						if (sebCnt_ >= SEB_H_HEAD_ANIME[SEB_H_HEAD_ANIME.Length - 1])
 						{
 							flag_ = BitUtil.Off(flag_, 64);
@@ -2555,15 +2563,18 @@ hitList.AddElement(player);
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 12:
-						script_.RemoveElementAt(0);
+
+}
+else if ((recoveredScriptCommand == 12)) {
+script_.RemoveElementAt(0);
 						continue;
-					case 13:
-						script_.RemoveElementAt(0);
+}
+else if ((recoveredScriptCommand == 13)) {
+script_.RemoveElementAt(0);
 						continue;
-					case 14:
-					{
+}
+else if ((recoveredScriptCommand == 14)) {
+{
 						int num = sebCnt_ % SEB_H_GOALGLAD_ANIME[1];
 						float num2 = GameUtil.SetVStop(8f, SEB_H_GOALGLAD_ANIME[0] / 2);
 						float num3 = GameUtil.SetAStop(8f, SEB_H_GOALGLAD_ANIME[0] / 2);
@@ -2572,18 +2583,20 @@ hitList.AddElement(player);
 						{
 							pos_.y_ = 0f;
 						}
-						break;
+
 					}
-					case 15:
-						script_.RemoveElementAt(0);
+}
+else if ((recoveredScriptCommand == 15)) {
+script_.RemoveElementAt(0);
 						continue;
-					}
-				}
+}
+				break;
+}
 				finally
 				{
 					insertScriptIndex_ = -1;
 				}
-				break;
+
 			}
 			return false;
 		}

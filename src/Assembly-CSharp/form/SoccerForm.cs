@@ -2246,16 +2246,9 @@ instance = GameView.GetInstance();
 			int num2 = ((JInteger)array[3]).IntValue();
 			int[] array3 = (int[])array[4];
 			int num3 = ((JInteger)array[5]).IntValue();
-			int num5;
-			int num6;
-			int num7;
-			int num8;
-			int num9;
-			int num12;
-			int num11;
-			int num10;
-			int num4 = (num5 = (num6 = (num7 = (num8 = (num9 = (num10 = (num11 = (num12 = 0))))))));
-			int num13 = 20;
+			int num13, num4, num5, num6, num7, num8, num9, num10, num11, num12;
+num13 = num4 = num5 = num6 = num7 = num8 = num9 = num10 = num11 = num12 = 0;
+num13 = 20;
 			num4 = 72;
 			int num14 = 43;
 			int num15 = 7;
@@ -2330,10 +2323,9 @@ instance = GameView.GetInstance();
 			else if (bonus_f_cnt < BONUS_F_CYCLE[2])
 			{
 				num5 = num16;
-				switch (array2[4])
-				{
-				case 0:
-				{
+				int recoveredBonusKind = array2[4];
+if ((recoveredBonusKind == 0)) {
+{
 					int num25 = 14;
 					int num26 = 6;
 					int num27 = (bonus_f_cnt - BONUS_F_CYCLE[1]) % (num25 + num26);
@@ -2345,18 +2337,20 @@ instance = GameView.GetInstance();
 					{
 						num6 = num4;
 					}
-					num18 = ((num6 < num4) ? 3 : 0);
+					if ((num6 < num4)) { num18 = 3; } else { num18 = 0; }
 					frame = 0;
-					break;
+
 				}
-				case 1:
-					num6 = num4;
+}
+else if ((recoveredBonusKind == 1)) {
+num6 = num4;
 					num18 = 11;
 					frame = 0;
 					num23 = -1;
-					break;
-				case 2:
-				{
+
+}
+else if ((recoveredBonusKind == 2)) {
+{
 					num6 = num4;
 					num18 = 1;
 					int num24 = (bonus_f_cnt - BONUS_F_CYCLE[1]) % Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1];
@@ -2372,9 +2366,9 @@ instance = GameView.GetInstance();
 					{
 						frame = 2;
 					}
-					break;
+
 				}
-				}
+}
 			}
 			else if (bonus_f_cnt < BONUS_F_CYCLE[3])
 			{
@@ -2396,33 +2390,30 @@ instance = GameView.GetInstance();
 			for (int k = 0; k < num20; k++)
 			{
 				num30 = num18;
-				switch (num2)
-				{
-				case 0:
-				case 1:
-				{
+				if ((num2 == 0) || (num2 == 1)) {
+{
 					PlayerData playerData = apdat_.pData_[array3[k]];
 					faceImg = playerData.faceImg_;
 					bodyImg = udat_.selectUniform_;
-					break;
+
 				}
-				case 2:
-				{
+}
+else if ((num2 == 2)) {
+{
 					SupervisorData supervisorData = apdat_.svisorData_[udat_.selectSupervisorId_];
 					faceImg = supervisorData.headImg_;
 					bodyImg = supervisorData.bodyImg_;
-					switch (num18)
-					{
-					case 10:
-						num30 = 0;
-						break;
-					case 3:
-						num30 = 16;
-						break;
-					}
-					break;
+					if ((num18 == 10)) {
+num30 = 0;
+
+}
+else if ((num18 == 3)) {
+num30 = 16;
+
+}
+
 				}
-				}
+}
 				apdat_.DrawSeb(g, num5 - num22 / 2 + 7 + k * (14 + num21) - 1, num4 + 1 + num23, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 4);
 				udat_.SetDispPlayerData(num30, bodyImg, faceImg, frame, 1);
 				udat_.DrawDispPlayer(g, num5 - num22 / 2 + 7 + k * (14 + num21), num6);
@@ -2448,14 +2439,12 @@ instance = GameView.GetInstance();
 				int num31 = 0;
 				int num32 = 0;
 				num11 = 141;
-				switch (l)
-				{
-				case 0:
-				{
+				if ((l == 0)) {
+{
 					num31 = FanActData.GetFanDispParam(temp_fan, 0);
 					num32 = FanActData.GetFanDispParam(temp_fan + temp_addFan, 0);
 					int num34 = 0;
-					num34 = ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1]) ? num31 : ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1] || bonus_f_cnt >= BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[2]) ? num32 : GameUtil.RateConvert(bonus_f_cnt - BONUS_F_CYCLE[0], BONUS_F_CYCLE_MAIN[1], BONUS_F_CYCLE_MAIN[2], num31, num32, true)));
+					if ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1])) { num34 = num31; } else { if (((bonus_f_cnt >= BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1]) && (bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[2]))) { num34 = (GameUtil.RateConvert(bonus_f_cnt - BONUS_F_CYCLE[0], BONUS_F_CYCLE_MAIN[1], BONUS_F_CYCLE_MAIN[2], num31, num32, true)); } else { num34 = (num32); } }
 					if (MyFormBase.Jp())
 					{
 						apdat_.DrawNumImageComma(g, 78, num34, num11 + 14 - 2, num12 + 2, 0, 0, 4);
@@ -2466,28 +2455,30 @@ instance = GameView.GetInstance();
 						apdat_.DrawNumImageComma(g, 78, num34, num11 + 14 - 2 + 10, num12 + 2, 0, 0, 4);
 						apdat_.DrawSeb(g, num11 + 15 + 10, num12 + 3, apdat_.resCom2_.seb[78], apdat_.resCom2_.img[105], 18);
 					}
-					break;
+
 				}
-				case 1:
-				{
+}
+else if ((l == 1)) {
+{
 					num31 = FanActData.GetFanDispParam(temp_assist, 1);
 					num32 = FanActData.GetFanDispParam(temp_assist + temp_addAssist, 1);
 					int num35 = 52;
 					int num36 = 0;
 					int num37 = 0;
-					num37 = ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1]) ? num31 : ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1] || bonus_f_cnt >= BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[2]) ? num32 : GameUtil.RateConvert(bonus_f_cnt - BONUS_F_CYCLE[0], BONUS_F_CYCLE_MAIN[1], BONUS_F_CYCLE_MAIN[2], num31, num32, true)));
+					if ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1])) { num37 = num31; } else { if (((bonus_f_cnt >= BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1]) && (bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[2]))) { num37 = (GameUtil.RateConvert(bonus_f_cnt - BONUS_F_CYCLE[0], BONUS_F_CYCLE_MAIN[1], BONUS_F_CYCLE_MAIN[2], num31, num32, true)); } else { num37 = (num32); } }
 					apdat_.DrawNumImage(g, 78, num37, num11 + 22, num12 + 2, 0, 4);
 					num36 = GameUtil.RateConvert(num37, 0, 100, 0, num35 - 2, true);
 					g.DrawImage(apdat_.resCom2_.img[129], num11 + 48 - 101, num12 + 4 - 2, 0, 0, 52, 10);
 					g.DrawImage(apdat_.resCom2_.img[129], num11 + 48 + 1 - 101, num12 + 5 - 2, 1, 10, num36, 8);
-					break;
+
 				}
-				case 2:
-				{
+}
+else if ((l == 2)) {
+{
 					num31 = FanActData.GetFanDispParam(temp_nameValue, 2);
 					num32 = FanActData.GetFanDispParam(temp_nameValue + temp_addNameValue, 2);
 					int num33 = 0;
-					num33 = ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1]) ? num31 : ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1] || bonus_f_cnt >= BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[2]) ? num32 : GameUtil.RateConvert(bonus_f_cnt - BONUS_F_CYCLE[0], BONUS_F_CYCLE_MAIN[1], BONUS_F_CYCLE_MAIN[2], num31, num32, true)));
+					if ((bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1])) { num33 = num31; } else { if (((bonus_f_cnt >= BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[1]) && (bonus_f_cnt < BONUS_F_CYCLE[0] + BONUS_F_CYCLE_MAIN[2]))) { num33 = (GameUtil.RateConvert(bonus_f_cnt - BONUS_F_CYCLE[0], BONUS_F_CYCLE_MAIN[1], BONUS_F_CYCLE_MAIN[2], num31, num32, true)); } else { num33 = (num32); } }
 					if (MyFormBase.Jp())
 					{
 						apdat_.DrawNumImage(g, 78, num33, 123, num12 + 2, 0, 2);
@@ -2496,13 +2487,11 @@ instance = GameView.GetInstance();
 					{
 						apdat_.DrawNumImage(g, 78, num33, 163, num12 + 2, 0, 4);
 					}
-					break;
+
 				}
-				}
-				if (bonus_f_cnt < BONUS_F_CYCLE[0])
-				{
-					continue;
-				}
+}
+				if (bonus_f_cnt >= BONUS_F_CYCLE[0]) {
+
 				int num38 = num32 - num31;
 				if (num38 == 0)
 				{
@@ -2529,6 +2518,7 @@ instance = GameView.GetInstance();
 				{
 					SubForm.Draw_upParam(g, 35, num13 + 201, num12 + 2, num38);
 				}
+}
 			}
 			GameView.AddTouch(2);
 		}
