@@ -37,3 +37,4 @@
 | 33 | Assembly-CSharp / br=>DELETION_POINT | Restore explicit empty outer dispatch default, preserving the accepted20locals and all floating comparisons | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 1970 |
 | 34 | Assembly-CSharp / ble=>bgt | Compose owned loop guards and positive payloads, restore nested ranking break, and name the final stream Boolean in its original slot | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 2307 |
 | 35 | KairoLibrary / stloc.s=>stloc.s;stloc.3=>stloc.1 | Restore file-completion Boolean across wait and callback; declare image limits in lambda parent block while preserving assignment positions | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 1 | 684 |
+| 36 | Assembly-CSharp / ble=>bgt | Compose state-local interval guards, per-arm English stores, state10 sibling arm, direct card dispatch and missing named frame21 | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 2309 |

@@ -555,12 +555,7 @@ namespace game
 					g.FillRect(0f, 0f, gameView.GetGameWidth(), gameView.GetGameHeight());
 					g.SetColor(Graphics.GetColorOfRGB(0, 0, 0, 255));
 				}
-				if (num2 <= 6) {
-					return;
-				}
-if (num2 > 36) {
-					return;
-				}
+				if (num2 > 6 && num2 <= 36) {
 				int num4 = 0;
 				if (state_ == 5)
 				{
@@ -584,7 +579,7 @@ if (num2 > 36) {
 					g.FillRect(0f, 73f, gameView.GetGameWidth(), 13f);
 					g.SetColor(Graphics.GetColorOfRGB(0, 0, 0, 255));
 					int num5 = 0;
-					num5 = ((!Language.English()) ? GameUtil.RateConvert(num2, 6, 14, gameView.GetGameWidth(), gameView.GetGameWidth() / 2 - 42, true) : GameUtil.RateConvert(num2, 6, 14, gameView.GetGameWidth(), gameView.GetGameWidth() / 2 - 49, true));
+					if (Language.English()) { num5 = GameUtil.RateConvert(num2, 6, 14, gameView.GetGameWidth(), gameView.GetGameWidth() / 2 - 49, true); } else { num5 = GameUtil.RateConvert(num2, 6, 14, gameView.GetGameWidth(), gameView.GetGameWidth() / 2 - 42, true); }
 					apdat_.DrawSeb(g, num5, 68, apdat_.resCom2_.seb[53], apdat_.resCom2_.img[63], 0);
 					if (num2 >= 14)
 					{
@@ -609,7 +604,8 @@ if (num2 > 36) {
 				{
 					apdat_.DrawSeb(g, gameView.GetGameWidth() / 2, 80, apdat_.resCom2_.seb[53 + num4], apdat_.resCom2_.img[63 + num4], 0);
 				}
-			}
+
+}}
 			else if (state_ == 8)
 			{
 				int num11 = stateCnt_ % 8 / 2;
@@ -630,12 +626,7 @@ if (num2 > 36) {
 					apdat_.DrawSeb(g, gameView.GetGameWidth() / 2, gameView.GetGameHeight() / 2, apdat_.resCom2_.seb[58], apdat_.resCom2_.img[68], 0);
 				}
 			}
-			else
-			{
-				if (state_ != 10)
-				{
-					return;
-				}
+			else if (state_ == 10) {
 				g.SetColor(Graphics.GetColorOfRGB(0, 0, 0, 128));
 				g.FillRect(0f, SoccerForm.VIEW_Y, 240f, SoccerForm.VIEW_H);
 				apdat_.DrawSeb(g, 0, 118, apdat_.resCom2_.seb[33], apdat_.resCom2_.img[35], 0);
@@ -646,19 +637,7 @@ if (num2 > 36) {
 				{
 					int num12 = stateCnt_ % 16 / 4;
 					int num13 = 0;
-					switch (num12)
-					{
-					case 0:
-					case 2:
-						num13 = 0;
-						break;
-					case 1:
-						num13 = 1;
-						break;
-					default:
-						num13 = 2;
-						break;
-					}
+					if (num12 == 0 || num12 == 2) { num13 = 0; } else if (num12 == 1) { num13 = 1; } else { num13 = 2; }
 					int x = GameUtil.RateConvert(stateCnt_, 0, WAIT_CARD[0], 68, 101, true);
 					apdat_.DrawSeb(g, x, 141, apdat_.resCom2_.seb[34], apdat_.resCom2_.img[36], num13);
 				}
@@ -704,7 +683,7 @@ if (num2 > 36) {
 					}
 					else if (time_animePattern == 3)
 					{
-						if ((stateCnt_ - WAIT_CARD[2]) % 12 / 6 == 0)
+						int recoveredCardFrame = (stateCnt_ - WAIT_CARD[2]) % 12 / 6; if (recoveredCardFrame == 0)
 						{
 							udat_.SetDispPlayerData(4, teamData.bodyImg_, playerData.faceImg_, 0, 1);
 						}
