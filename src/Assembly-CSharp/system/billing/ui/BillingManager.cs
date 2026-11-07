@@ -801,10 +801,11 @@ flag = true;
 									continue;
 								}
 							}
-							if (flag3 || (!billingItem2.recovery_ && !Consume(billingItem2)))
-							{
-								continue;
-							}
+							if (flag3) { continue; }
+if (!billingItem2.recovery_) {
+bool recoveredConsumeResult = Consume(billingItem2);
+if (!recoveredConsumeResult) { continue; }
+}
 							billingItem2.recovery_ = false;
 							billingItem2.ChangeState(0);
 							AddPurchaseLog(billingItem2.GetProductId(), 1, billingItem2.GetPurchase());

@@ -153,12 +153,9 @@ namespace system.surface
 				Vector vector = new Vector();
 				for (int i = 0; i < FILENAMES.Length; i++)
 				{
-					{ bool recoveredCondition_4093 = (image_ == null && i != 0) || i == current_ || jarInflater.GetSize(FILENAMES[i]) == -1;
-if (recoveredCondition_4093)
-					{
-						continue;
-					}
-}
+					if (image_ == null && i != 0) { continue; }
+if (i == current_) { continue; }
+if (jarInflater.GetSize(FILENAMES[i]) == -1) { continue; }
 					if (i == 1)
 					{
 						bool flag = true;

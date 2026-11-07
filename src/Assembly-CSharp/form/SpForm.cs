@@ -182,9 +182,9 @@ namespace form
 			{
 				bool flag = id / 10 == 1;
 				int num2 = id % 10;
-				string text = apdat_.sysSave_.strs[((!flag) ? 2 : 6) + num2];
-				string text2 = apdat_.sysSave_.strs[((!flag) ? 4 : 8) + num2];
-				int num3 = apdat_.sysSave_.ints[((!flag) ? 6 : 11) + num2];
+				string text = apdat_.sysSave_.strs[(flag ? 6 : 2) + num2];
+				string text2 = apdat_.sysSave_.strs[(flag ? 8 : 4) + num2];
+				int num3 = apdat_.sysSave_.ints[(flag ? 11 : 6) + num2];
 				if (num3 == -1)
 				{
 					commands_.AddElement(new string[2]
@@ -192,12 +192,12 @@ namespace form
 						JString.ValueOf(id),
 						str
 					});
-					return;
-				}
+
+} else {
 				try
 				{
 					recordStore = RecordStore.OpenRecordStore(0);
-					num = recordStore.GetRecordSize(((!flag) ? 1 : 3) + num2);
+					num = recordStore.GetRecordSize((flag ? 3 : 1) + num2);
 				}
 				catch (Exception)
 				{
@@ -224,11 +224,10 @@ namespace form
 					JString.ValueOf(num3),
 					text2
 				});
-				return;
-			}
-			switch (id)
-			{
-			case -1:
+
+}
+} else {
+if (id == -1) {
 				try
 				{
 					if (Config.APPLI_TYPE == 0)
@@ -267,8 +266,9 @@ namespace form
 					str,
 					JString.ValueOf(num)
 				});
-				break;
-			case -2:
+
+}
+else if (id == -2) {
 				try
 				{
 					num = ScratchPad.GetSPSize(0) + ScratchPad.GetSPSize(1);
@@ -282,16 +282,18 @@ namespace form
 					str,
 					JString.ValueOf(num)
 				});
-				break;
-			default:
+
+}
+else {
 				commands_.AddElement(new string[3]
 				{
 					JString.ValueOf(id),
 					str,
 					JString.ValueOf(-1)
 				});
-				break;
-			}
+
+}
+}
 		}
 
 		public override bool Update()
