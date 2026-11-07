@@ -443,7 +443,7 @@ namespace kairo.unity.ui
 											}
 											else if (text4.StartsWith("@"))
 											{
-												imageAtlasId_ = ((text4.Length != 1) ? int.Parse(text4.Substring(1)) : 0);
+												if (text4.Length == 1) { imageAtlasId_ = 0; } else { imageAtlasId_ = int.Parse(text4.Substring(1)); }
 											}
 											else if (text4.Contains('x'))
 											{
@@ -521,18 +521,10 @@ namespace kairo.unity.ui
 									int num21 = 0;
 									for (int num22 = 1; num22 < array9.Length; num22++)
 									{
-										switch (array9[num22].CharAt(0))
-										{
-										case 'u':
-											u = true;
-											break;
-										case 'v':
-											v = true;
-											break;
-										case 'c':
-											num21 = JInteger.ParseInt(array9[num22].Substring(1));
-											break;
-										}
+										char recoveredOptionChar = array9[num22].CharAt(0);
+if (recoveredOptionChar == 'u') { u = true; }
+else if (recoveredOptionChar == 'v') { v = true; }
+else if (recoveredOptionChar == 'c') { num21 = JInteger.ParseInt(array9[num22].Substring(1)); }
 									}
 									fileName3 = array9[0];
 									sebFileName[l] = fileName3;
