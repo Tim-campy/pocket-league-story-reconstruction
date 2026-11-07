@@ -1,0 +1,101 @@
+{
+  "operation": "smcs-two-terminal-branch-composition-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "9222ea4dcb6200d4e4358589af9334803ad8d2b971a8a572525e2c8026ce68da",
+  "driver_sha256": "62bdcd14e3c9aa5cb04ea0729322eac3c2de8ad5191c68d789fced37b5c6498e",
+  "game_compilations": 0,
+  "toy_compilations": 4,
+  "positive_full_bodies": 2,
+  "negative_controls": 7,
+  "fixtures": [
+    {
+      "case": "tenant-continue-and-empty-chain",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "before": "public bool Run(){if(type_==61){for(int i=0;i<apdat_.tenantData_.Length;i++){TenantData tenantData=apdat_.tenantData_[i];if ((type_ != 61 || (tenantData.id_ != TenantData.TENANT_ID_STADIUM && tenantData.id_ != TenantData.TENANT_ID_TRAININGAREA && tenantData.id_ != TenantData.TENANT_ID_TRAININGAREA_SPRED)) && tenantData.state_ != 0){ary1.AddElement(tenantData);}}}else if (type_ != 62 && type_ != 63){if (type_ != 64){return Init2();}TenantData tenantData3 = apdat_.tenantData_[tenantDataId_]; int[] lvUpAddParam = tenantData3.GetLvUpAddParam();Count+=lvUpAddParam[0];}return true;}",
+      "after": "public bool Run(){if(type_==61){for(int i=0;i<apdat_.tenantData_.Length;i++){TenantData tenantData=apdat_.tenantData_[i];if (type_ == 61) {\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tif (tenantData.id_ == TenantData.TENANT_ID_STADIUM) { continue; }\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tif (tenantData.id_ == TenantData.TENANT_ID_TRAININGAREA) { continue; }\r\n\t\t\t\t\t\t\t\t\t\t\t\t\tif (tenantData.id_ == TenantData.TENANT_ID_TRAININGAREA_SPRED) { continue; }\r\n\t\t\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t\t\t\tif (tenantData.state_ != 0) {ary1.AddElement(tenantData);}}}else if (type_ == 62) { }\r\n\t\t\t\t\t\t\t\t\t\telse if (type_ == 63) { }\r\n\t\t\t\t\t\t\t\t\t\telse if (type_ == 64) {TenantData tenantData3 = apdat_.tenantData_[tenantDataId_]; int[] lvUpAddParam = tenantData3.GetLvUpAddParam();Count+=lvUpAddParam[0];}\r\n\t\t\t\t\t\t\t\t\t\telse {return Init2();}return true;}",
+      "manual_control": "public bool Run(){if(type_==61){for(int i=0;i<apdat_.tenantData_.Length;i++){TenantData tenantData=apdat_.tenantData_[i];if(type_==61){if(tenantData.id_==TenantData.TENANT_ID_STADIUM){continue;}if(tenantData.id_==TenantData.TENANT_ID_TRAININGAREA){continue;}if(tenantData.id_==TenantData.TENANT_ID_TRAININGAREA_SPRED){continue;}}if(tenantData.state_!=0){ary1.AddElement(tenantData);}}}else if(type_==62){}else if(type_==63){}else if(type_==64){TenantData tenantData3=apdat_.tenantData_[tenantDataId_];int[] lvUpAddParam=tenantData3.GetLvUpAddParam();Count+=lvUpAddParam[0];}else{return Init2();}return true;}",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    },
+    {
+      "case": "empty-debug-and-float-branches",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "before": "public bool Run(bool flag13,bool flag8){int num3=0;if (flag13 && !flag8 && SoccerForm.DEBUG_BALLTEST_MODE != 1){if (SoccerForm.DEBUG_WALLREFRECT == 1){Count++;}else if ((!(lineOutPos_.z_ < -900f)) && (!(lineOutPos_.z_ > 900f))){udat_.gm_.ChangeState(3);}else{if (!(lineOutPos_.z_ > 900f)){}else{num3 = 1;}Count+=num3;}}Count+=num3;return false;}",
+      "after": "public bool Run(bool flag13,bool flag8){int num3=0;if (flag13 && !flag8) {\r\n\t\t\t\t\tif (SoccerForm.DEBUG_BALLTEST_MODE == 1) { }\r\n\t\t\t\t\telse if (SoccerForm.DEBUG_WALLREFRECT == 1){Count++;}else if (lineOutPos_.z_ < -900f || lineOutPos_.z_ > 900f) {if (lineOutPos_.z_ > 900f) {num3 = 1;}Count+=num3;} else {udat_.gm_.ChangeState(3);}}Count+=num3;return false;}",
+      "manual_control": "public bool Run(bool flag13,bool flag8){int num3=0;if(flag13&&!flag8){if(SoccerForm.DEBUG_BALLTEST_MODE==1){}else if(SoccerForm.DEBUG_WALLREFRECT==1){Count++;}else if(lineOutPos_.z_<-900f||lineOutPos_.z_>900f){if(lineOutPos_.z_>900f){num3=1;}Count+=num3;}else{udat_.gm_.ChangeState(3);}}Count+=num3;return false;}",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "ble.un",
+        "ble.un"
+      ]
+    }
+  ],
+  "negatives": [
+    "tenant-owner-is-while",
+    "tenant-extra-tail",
+    "tenant-guard-effects",
+    "tenant-final-return-other",
+    "float-positive-other",
+    "debug-extra-tail",
+    "float-comparison-other"
+  ],
+  "float_boundary_and_NaN_cases": [
+    {
+      "z": "-inf",
+      "inside": false,
+      "assign_one": false
+    },
+    {
+      "z": "-901.0",
+      "inside": false,
+      "assign_one": false
+    },
+    {
+      "z": "-900.0",
+      "inside": true,
+      "assign_one": false
+    },
+    {
+      "z": "-0.0",
+      "inside": true,
+      "assign_one": false
+    },
+    {
+      "z": "0.0",
+      "inside": true,
+      "assign_one": false
+    },
+    {
+      "z": "900.0",
+      "inside": true,
+      "assign_one": false
+    },
+    {
+      "z": "901.0",
+      "inside": false,
+      "assign_one": true
+    },
+    {
+      "z": "inf",
+      "inside": false,
+      "assign_one": true
+    },
+    {
+      "z": "nan",
+      "inside": true,
+      "assign_one": false
+    }
+  ],
+  "limitations": "Two exact source-control compositions, no emitter model changed. Nonfloating tenant fields stable; positive float operators preserved and ordered/unordered opcodes retained. Game bodies/signatures unknown before oracle."
+}

@@ -1559,8 +1559,12 @@ ary1.RemoveElement(playerData);
 											for (int num29 = 0; num29 < apdat_.tenantData_.Length; num29++)
 											{
 												TenantData tenantData = apdat_.tenantData_[num29];
-												if ((type_ != 61 || (tenantData.id_ != TenantData.TENANT_ID_STADIUM && tenantData.id_ != TenantData.TENANT_ID_TRAININGAREA && tenantData.id_ != TenantData.TENANT_ID_TRAININGAREA_SPRED)) && tenantData.state_ != 0)
-												{
+												if (type_ == 61) {
+													if (tenantData.id_ == TenantData.TENANT_ID_STADIUM) { continue; }
+													if (tenantData.id_ == TenantData.TENANT_ID_TRAININGAREA) { continue; }
+													if (tenantData.id_ == TenantData.TENANT_ID_TRAININGAREA_SPRED) { continue; }
+												}
+												if (tenantData.state_ != 0) {
 													ary1.AddElement(tenantData);
 												}
 											}
@@ -1580,12 +1584,9 @@ ary1.RemoveElement(playerData);
 												textLay_.Flush();
 											}
 										}
-										else if (type_ != 62 && type_ != 63)
-										{
-											if (type_ != 64)
-											{
-												return Init2();
-											}
+										else if (type_ == 62) { }
+										else if (type_ == 63) { }
+										else if (type_ == 64) {
 											TenantData tenantData3 = apdat_.tenantData_[tenantDataId_];
 											int[] lvUpAddParam = tenantData3.GetLvUpAddParam();
 											SetMeterParam(0, TLUP_ANIME_TIME[5] - TLUP_ANIME_TIME[4], tenantData3.paramUsePrice_, int.MaxValue, lvUpAddParam[0]);
@@ -1595,6 +1596,9 @@ ary1.RemoveElement(playerData);
 												SetMeterParam(2 + num30, TLUP_ANIME_TIME2[3] - TLUP_ANIME_TIME2[2], tenantData3.paramResearch_[num30], int.MaxValue, lvUpAddParam[2 + num30]);
 											}
 										}
+										else {
+												return Init2();
+											}
 									}
 								}
 							}

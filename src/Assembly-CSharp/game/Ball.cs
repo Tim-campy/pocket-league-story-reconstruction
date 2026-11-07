@@ -668,19 +668,17 @@ float unusedOriginalSlot12;
 					}
 					flag13 = true;
 				}
-				if (flag13 && !flag8 && SoccerForm.DEBUG_BALLTEST_MODE != 1)
-				{
-					if (SoccerForm.DEBUG_WALLREFRECT == 1)
+				if (flag13 && !flag8) {
+					if (SoccerForm.DEBUG_BALLTEST_MODE == 1) { }
+					else if (SoccerForm.DEBUG_WALLREFRECT == 1)
 					{
 						ChGravity();
 						SetSavePos(pos_, v_, a_);
 						targetPId = -1;
 					}
-					else if ((!(lineOutPos_.z_ < -900f)) && (!(lineOutPos_.z_ > 900f))) {
-						udat_.gm_.ChangeState(3);
-					} else {
+					else if (lineOutPos_.z_ < -900f || lineOutPos_.z_ > 900f) {
 						int num3 = -1;
-						if (!(lineOutPos_.z_ > 900f)) { } else {
+						if (lineOutPos_.z_ > 900f) {
 							num3 = 1;
 						}
 						int num4 = -1;
@@ -696,6 +694,8 @@ float unusedOriginalSlot12;
 						{
 							udat_.gm_.ChangeState(5);
 						}
+					} else {
+						udat_.gm_.ChangeState(3);
 					}
 				}
 			}  }
