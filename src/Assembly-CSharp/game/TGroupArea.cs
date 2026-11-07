@@ -597,7 +597,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 					}
 				}
 			}
-			else if (tArea_.tMode_ != 4 && tArea_.tMode_ == 3)
+			else if (tArea_.tMode_ == 4) { } else if (tArea_.tMode_ == 3)
 			{
 				if (!BitUtil.Check(player.flag_, 4))
 				{
@@ -608,9 +608,8 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 				for (int k = 0; k < tBallList_.Size(); k++)
 				{
 					TBall tBall3 = (TBall)tBallList_.ElementAt(k);
-					if ((tBall3.t_owner_ == null) || (tBall3.t_owner_.trainingId_[0] != player.trainingId_[0])) { continue; }
-return tBall3;
-				}
+					if (tBall3.t_owner_ != null && tBall3.t_owner_.trainingId_[0] == player.trainingId_[0]) { return tBall3; }
+}
 			}
 			return null;
 		}

@@ -260,7 +260,7 @@ if (Config.APPLI_TYPE == 0) { text = "通信を許可し電波を確認して再
 						select_ = 1;
 					}
 				}
-				else if (type_ != 4)
+				else if (type_ == 4)
 				{
 				}
 			}
@@ -373,10 +373,7 @@ if (type_ == 0)
 			}
 			else
 			{
-				if (type_ == 2 || type_ == 3 || type_ == 4 || type_ != 5)
-				{
-					return;
-				}
+				if (type_ == 2) { } else if (type_ == 3) { } else if (type_ == 4) { } else if (type_ == 5) {
 				int num3 = 174;
 				int num4 = 107;
 				int num5 = 120 - num3 / 2;
@@ -410,7 +407,8 @@ if (type_ == 0)
 					g.ClearClip();
 					num9 += 37;
 				}
-			}
+
+}}
 		}
 
 		public override bool Finish()

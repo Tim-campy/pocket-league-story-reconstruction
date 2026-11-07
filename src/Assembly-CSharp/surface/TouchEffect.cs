@@ -108,8 +108,7 @@ g.SetRenderMode(1, num3, 255 - num3);
 g.DrawScaledImage(image, dx, dy, num6 + num4, num7 + num5, (int)(array2[2] + 0.5f), (int)(array2[3] + 0.5f), (int)(array2[4] + 0.5f), (int)(array2[5] + 0.5f));
 g.SetRenderMode(0, 255, 0);
 			}
-			else if (id_ == 1) { } else if ((id_ == 2) || (id_ == 3)) { } else {
-			}
+			else if (id_ == 1) { } else if (id_ == 2) { } else if (id_ == 3) { }
 		}
 	}
 }

@@ -8,3 +8,4 @@
 | 4 | Assembly-CSharp / br => ret | Compor nove ajustes de controle e escopos preserva slots43-49 e91-92, calcula cadeia67-69 e remove o cache de switch93 | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 12484 |
 | 5 | Assembly-CSharp / brfalse => brtrue | Guarda positiva no construtor com escopo e atribuicao composta originais | Novos corpos aprovados; 11 tentativas da regra, 1 avancos | 1 | 347 |
 | 6 | KairoLibrary / brfalse.s => brtrue.s | Separar a guarda invalidTouch e manter corpo positivo com escopos e stores originais em Canvas.OnInputUpdate | Novos corpos aprovados; 13 tentativas da regra, 3 avancos | 2 | 600 |
+| 7 | Assembly-CSharp / bne.un => beq | Restaurar por composicao os ramos vazios terminais, OR separado e cauda positiva nos seletores Int32 | Novos corpos aprovados; 6 tentativas da regra, 6 avancos | 6 | 3458 |

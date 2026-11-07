@@ -278,8 +278,7 @@ namespace system.form
 					textLay_.SetText(StringUtil.Replace(value, JString.ValueOf(friendData_.FRIEND_MAX)));
 					textLay_.Flush();
 				}
-				else if (type_ == 12) { } else if ((type_ == 13) || (type_ == 15)) { } else {
-				}
+				else if (type_ == 12) { } else if (type_ == 13) { } else if (type_ == 15) { }
 			}
 			if (th_ != null)
 			{
