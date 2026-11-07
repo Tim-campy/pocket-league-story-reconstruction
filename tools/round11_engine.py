@@ -273,6 +273,9 @@ class Compiler:
         self.builds += 1
         self.last_log = (p.stdout + p.stderr).decode('utf-8', errors='replace')
         (out.parent / 'compiler.log').write_text(self.last_log, encoding='utf-8')
+        if p.returncode == 0 and not is_app:
+            from round11_pdb_mirror import mirror
+            mirror(out, flags)
         return out if p.returncode == 0 else None
 
     def dump(self, binary, ids=None):

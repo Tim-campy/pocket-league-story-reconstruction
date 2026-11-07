@@ -44,12 +44,13 @@ namespace kairo.unity.ui
 					{
 						SetVolume(volume, mute);
 						base.track_.time = 0f;
-					}
-					else
-					{
+
+return;
+}
+{
 						Stop();
-						if (!(type_ == 1 && mute))
-						{
+						if (type_ == 1 && mute) { return; }
+{
 							if (loop_ != 0)
 							{
 								priority_ = 2;
@@ -63,8 +64,8 @@ namespace kairo.unity.ui
 								priority_ = 0;
 							}
 							int port = instance.GetPort(priority_);
-							if (port != -1)
-							{
+							if (port == -1) { return; }
+{
 								instance.RemovePort(port);
 								instance.SetPort(port, this);
 								SetVolume(volume, mute);

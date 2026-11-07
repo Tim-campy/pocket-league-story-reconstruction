@@ -169,8 +169,9 @@ def main():
     if args.phase=='C':
         front=cfg['c_fronts'][args.front]
         front['attempts'].append({'label':label,'engine':'reports/round11-'+label+'-'+args.assembly+'-engine.json',
-                                  'adoption':'reports/round11-'+label+'-adoption.json','result':result,'assembly':args.assembly})
-        front['status']='verified' if set(front['required_assemblies'])<={a['assembly'] for a in front['attempts']} else 'partial'
+                                  'adoption':'reports/round11-'+label+'-adoption.json','result':result,'assembly':args.assembly,
+                                  'evaluation_status':'INFRA_NOT_EVALUATED_NO_PDB_MAPPING' if engine['methods'] and all(m.get('stop_reason')=='source_mapping_UNKNOWN' for m in engine['methods']) else 'evaluated'})
+        front['status']='verified' if set(front['required_assemblies'])<={a['assembly'] for a in front['attempts'] if not a.get('evaluation_status','').startswith('INFRA_')} else 'partial'
         if all(f['status']=='verified' for f in cfg['c_fronts'].values()):cfg['required_parts']['C']='complete'
     cfg.update(phase='autonomous_D' if args.phase=='D' else 'part_C',autonomous_started=args.phase=='D')
     (ROOT/'config/round11-protocol.json').write_text(json.dumps(cfg,indent=2)+'\n',encoding='utf-8',newline='\n')

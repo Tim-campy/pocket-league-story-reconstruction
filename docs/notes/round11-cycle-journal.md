@@ -3,3 +3,4 @@
 | Ciclo | Assembly / par | Hipotese | Resultado | Metodos ganhos | Bytes de IL ganhos |
 | --- | --- | --- | --- | --- | --- |
 | 1 | KairoLibrary / leave=>br | Restore three protected returns in the Play lambda while retaining payloads and lexical scopes | INCONCLUSIVA: nenhum candidato autorizado pelo modelo/mapeamento; 0 tentativas da regra, 0 avancos | 0 | 0 |
+| 2 | KairoLibrary / leave=>br | After GUID-bound private PDB mirroring, test the three protected returns in the Play lambda; first pass had no mapped trial | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 383 |
