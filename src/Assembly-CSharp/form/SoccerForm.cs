@@ -3123,10 +3123,7 @@ int num3;
 				{
 					g.DrawImage(apdat_.resCom2_.img[165], num2 + 43, num3 + 2);
 					int num5 = stateCnt_ - PBONUS_NP_LV_TRAINING1[0] - i * 16;
-					if (num5 < 0)
-					{
-						continue;
-					}
+					if(num5<0){}else{
 					if (num5 < PBONUS_NP_LV_T_GET[0])
 					{
 						int num6 = GameUtil.RateConvert(num5, 0, PBONUS_NP_LV_T_GET[0], 0, 4, true);
@@ -3153,7 +3150,7 @@ int num3;
 					{
 						g.DrawImage(apdat_.resCom2_.img[164], num2 + 47, num3 + 6);
 					}
-				}
+				}}
 				else
 				{
 					apdat_.DrawNumImage(g, 79, string.Empty, playerData.actscoreScore_, string.Empty, num2 + 62 + 2 + 16, num3 + 6, 0, 4);

@@ -465,17 +465,16 @@ RecordStore recordStore = null;
 											{
 												saveDataBytes = StreamUtil.Read(byteArrayInputStream, true);
 												recordStore.WriteRecord(j, saveDataBytes);
-												if (j != 0)
-												{
+												if(j==0){continue;} {
 													try
 													{
 														Property property2 = new Property(AppData.defSaveP_, AppData.defSaveI_, AppData.defSaveL_, AppData.defSaveS_, AppData.defSaveB_);
 														property2.Load(saveDataBytes);
 														bool flag = j == 3 || j == 4;
-														int num6 = ((j != 3 && j != 1) ? 1 : 0);
-														apdat_.sysSave_.ints[((!flag) ? 6 : 11) + num6] = property2.ints[1] * 100 * 100 + property2.ints[2] * 100 + property2.ints[3];
-														apdat_.sysSave_.strs[((!flag) ? 4 : 8) + num6] = JString.ValueOf(property2.lngs[0]);
-														apdat_.sysSave_.strs[((!flag) ? 2 : 6) + num6] = property2.strs[0];
+														int num6 = ((j==3||j==1)?0:1);
+														apdat_.sysSave_.ints[(flag?11:6) + num6] = property2.ints[1] * 100 * 100 + property2.ints[2] * 100 + property2.ints[3];
+														apdat_.sysSave_.strs[(flag?8:4) + num6] = JString.ValueOf(property2.lngs[0]);
+														apdat_.sysSave_.strs[(flag?6:2) + num6] = property2.strs[0];
 													}
 													catch (Exception)
 													{
@@ -499,7 +498,7 @@ RecordStore recordStore = null;
 										{
 										}
 									}
-								} else { }
+								}
 								if (num5 == -2)
 								{
 									saveDataBytes = StreamUtil.Read(byteArrayInputStream, true);

@@ -388,11 +388,9 @@ g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 0, 0, w, 24);
 g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 2, 0, w, 24);
 
 } else if ((type == 2)) {
-				if (w <= TBAR_W[type])
-				{
+				if(w<=TBAR_W[type]){
 					g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 22, 0, w, 24);
-					goto dispatchExit;
-				}
+					}else{
 				int num4 = w;
 				int num5 = 0;
 				while (num4 > 0)
@@ -403,15 +401,13 @@ g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 2, 0, w, 24);
 					num5 += num6;
 				}
 
-			} else if ((type == 3)) {
+			}} else if ((type == 3)) {
 g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 113, 0, w, 24);
 
 } else if ((type == 4)) {
-				if (w <= TBAR_W[type])
-				{
+				if(w<=TBAR_W[type]){
 					g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 118, 0, w, 24);
-					goto dispatchExit;
-				}
+					}else{
 				int num = w;
 				int num2 = 0;
 				while (num > 0)
@@ -422,11 +418,11 @@ g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 113, 0, w, 24);
 					num2 += num3;
 				}
 
-			} else if ((type == 5)) {
+			}} else if ((type == 5)) {
 g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 238, 0, w, 24);
 
 }
-dispatchExit: ;
+
 }
 		}
 

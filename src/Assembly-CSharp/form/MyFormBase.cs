@@ -321,21 +321,20 @@ namespace form
 				apdat_.save_.ints[13] = value;
 				break;
 			case 524288:
-				if (apdat_.sysSave_.ints[3] == value) { } else {
+				if(apdat_.sysSave_.ints[3]==value){break;}
 					apdat_.sysSave_.ints[3] = value;
 					instance.SetVolume(0, apdat_.sysSave_.ints[3] * 51);
 					instance.SetMute(0, apdat_.sysSave_.ints[3] == 0);
 					instance.ReflectVolumeAndMute();
-				}
+
 				break;
 			case 589824:
-				if (apdat_.sysSave_.ints[4] != value)
-				{
+				if(apdat_.sysSave_.ints[4]==value){break;}
 					apdat_.sysSave_.ints[4] = value;
 					instance.SetVolume(1, apdat_.sysSave_.ints[4] * 51);
 					instance.SetMute(1, apdat_.sysSave_.ints[4] == 0);
 					instance.ReflectVolumeAndMute();
-				}
+
 				break;
 			case 655360:
 				apdat_.sysSave_.ints[14] = value;
@@ -348,8 +347,7 @@ namespace form
 				apdat_.frmGame_.SetAllDraw();
 				break;
 			case 720896:
-				if (!Config.ADMOB_ENABLE)
-				{
+				if(Config.ADMOB_ENABLE){}else{
 					apdat_.sysSave_.ints[13] = value;
 					if (value == -1)
 					{
@@ -415,9 +413,7 @@ namespace form
 			case 262144:
 				apdat_.frmSoccer_.scrollValue_ = value;
 				break;
-			case 1441792:
-			case 1507328:
-				break;
+			case 1441792:break;case 1507328:break;
 			default:
 				if (Config.PRINT)
 				{

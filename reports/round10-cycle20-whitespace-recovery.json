@@ -1,0 +1,50 @@
+{
+  "operation": "narrow-added-whitespace-recovery",
+  "file": "src/Assembly-CSharp/form/MyFormBase.cs",
+  "before_sha256": "019bf180e00f59b15ae851159505b424fb58837bc6613b996f6615e125751ea5",
+  "after_sha256": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+  "rows": [
+    {
+      "line": 329,
+      "before": "\t\t\t\t\r\n",
+      "after": "\r\n",
+      "protected_token_overlap": []
+    },
+    {
+      "line": 337,
+      "before": "\t\t\t\t\r\n",
+      "after": "\r\n",
+      "protected_token_overlap": []
+    }
+  ],
+  "reason": "Global interpolation substring guard refuses all lines because closing dollar currency string contains dollar-doublequote; both edited lines are outside every literal token.",
+  "global_guard_matches": [
+    {
+      "line": 515,
+      "prefix": "$\"",
+      "containing_literal": [
+        "\"$\""
+      ]
+    },
+    {
+      "line": 526,
+      "prefix": "$\"",
+      "containing_literal": [
+        "\"$\""
+      ]
+    },
+    {
+      "line": 537,
+      "prefix": "$\"",
+      "containing_literal": [
+        "\"$\""
+      ]
+    }
+  ],
+  "lexical_tokens_identical": true,
+  "line_count_preserved": true,
+  "line_endings_preserved": true,
+  "original_assemblies_modified": false,
+  "ledger_modified": false,
+  "game_body_status": "fresh official verification required"
+}

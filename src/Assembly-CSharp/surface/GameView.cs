@@ -1795,13 +1795,13 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 				ClearMarker();
 				break;
 			case 7:
-				if (markComponentKey_ == -1) { } else {
+				if(markComponentKey_==-1){break;}
 					touchEvent = GetTouchEventKey(markComponentKey_, 7);
 					if (touchEvent == null)
 					{
 						ClearMarker();
 					}
-				}
+
 				break;
 			case 1:
 				if (markComponentKey_ == -1)
@@ -1823,15 +1823,7 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 				{
 					break;
 				}
-				touchEvent = GetTouchEventId(22, 1);
-				if (touchEvent == null)
-				{
-					touchEvent = GetTouchEventKey(markComponentKey_, 1);
-					if (touchEvent == null)
-					{
-						ClearMarker();
-					}
-				}
+				touchEvent=GetTouchEventId(22,1);if(touchEvent!=null){break;}touchEvent=GetTouchEventKey(markComponentKey_,1);if(touchEvent!=null){break;}ClearMarker();
 				break;
 			}
 		}
