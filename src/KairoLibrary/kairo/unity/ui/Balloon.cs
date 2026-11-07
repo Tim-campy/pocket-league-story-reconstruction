@@ -375,6 +375,7 @@ float num6 = x;
 					}
 					continue;
 				}
+				{
 				bool flag6 = draw_tmp2.right < num18;
 				bool flag7 = num20 < draw_tmp2.left;
 				bool flag8 = draw_tmp2.bottom < num19;
@@ -414,6 +415,7 @@ float num6 = x;
 					{
 						num25 = draw_tmp2.top;
 					}
+				}
 				}
 			}
 			if (!flag)

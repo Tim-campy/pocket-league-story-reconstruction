@@ -1,0 +1,50 @@
+{
+  "operation": "historical-csc-late-child-scopes-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "9e63e29f523ab79713d66039013b2f52c59275d8763f8dea78f3c4d40a59df9e",
+  "driver_sha256": "2173fd14175334027cf0cdc7b76120a676a03da1533427b7223821424627fce0",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 8,
+  "fixtures": [
+    {
+      "case": "balloon-post-continue-tail",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "original_body_order_and_loop_actions_retained": true,
+      "before": "public void Run()\n{\n foreach (Rectangle item2 in maskList_)\n {\n  if (KairoMath.CheckHitRect(item2,draw_tmp2))\n  {\n   bool flag2=Read(),flag3=Read(),flag4=Read(),flag5=Read();\n   int num26=ReadInt();\n   Touch(ref flag2);Touch(ref flag3);Touch(ref flag4);Touch(ref flag5);Touch(ref num26);\n   continue;\n  }\n  bool flag6 = draw_tmp2.right < num18;\n  bool flag7 = Read();\n  bool flag8 = Read();\n  bool flag9 = Read();\n  int num27 = ReadInt();\n  Touch(ref flag6);Touch(ref flag7);Touch(ref flag8);Touch(ref flag9);Touch(ref num27);\n }\n}",
+      "after": "public void Run()\n{\n foreach (Rectangle item2 in maskList_)\n {\n  if (KairoMath.CheckHitRect(item2,draw_tmp2))\n  {\n   bool flag2=Read(),flag3=Read(),flag4=Read(),flag5=Read();\n   int num26=ReadInt();\n   Touch(ref flag2);Touch(ref flag3);Touch(ref flag4);Touch(ref flag5);Touch(ref num26);\n   continue;\n  }\n  {\n  bool flag6 = draw_tmp2.right < num18;\n  bool flag7 = Read();\n  bool flag8 = Read();\n  bool flag9 = Read();\n  int num27 = ReadInt();\n  Touch(ref flag6);Touch(ref flag7);Touch(ref flag8);Touch(ref flag9);Touch(ref num27);\n  }\n }\n}",
+      "manual_control": "public void Run(){foreach(Rectangle item2 in maskList_){if(KairoMath.CheckHitRect(item2,draw_tmp2)){bool flag2=Read(),flag3=Read(),flag4=Read(),flag5=Read();int num26=ReadInt();Touch(ref flag2);Touch(ref flag3);Touch(ref flag4);Touch(ref flag5);Touch(ref num26);continue;}{bool flag6=draw_tmp2.right<num18;bool flag7=Read();bool flag8=Read();bool flag9=Read();int num27=ReadInt();Touch(ref flag6);Touch(ref flag7);Touch(ref flag8);Touch(ref flag9);Touch(ref num27);}}}"
+    },
+    {
+      "case": "seb-index11-stride12",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "original_body_order_and_loop_actions_retained": true,
+      "before": "public void Run(int num8,int num9){if(Count>0){double earlierChild=ReadDouble();Touch(ref earlierChild);}int num11 = num8;\nint num12 = num8 * 8;\nwhile (num11 <= num9){if(Count==5){break;}if(Count==6){Count++;continue;}Touch(ref num11);Touch(ref num12);num11++;num12 += 8;}Count++;}",
+      "after": "public void Run(int num8,int num9){if(Count>0){double earlierChild=ReadDouble();Touch(ref earlierChild);}for (int num11 = num8, num12 = num8 * 8; num11 <= num9;){if(Count==5){break;}if(Count==6){Count++;continue;}Touch(ref num11);Touch(ref num12);num11++;num12 += 8;}Count++;}",
+      "manual_control": "public void Run(int num8,int num9){if(Count>0){double earlierChild=ReadDouble();Touch(ref earlierChild);}for(int num11=num8,num12=num8*8;num11<=num9;){if(Count==5){break;}if(Count==6){Count++;continue;}Touch(ref num11);Touch(ref num12);num11++;num12+=8;}Count++;}"
+    },
+    {
+      "case": "seb-index12-stride13",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "original_body_order_and_loop_actions_retained": true,
+      "before": "public void Run(int num9,int num10){if(Count>0){double earlierChild=ReadDouble();Touch(ref earlierChild);}int num12 = num9;\nint num13 = num9 * 8;\nwhile (num12 <= num10){if(Count==5){break;}if(Count==6){Count++;continue;}Touch(ref num12);Touch(ref num13);num12++;num13 += 8;}Count++;}",
+      "after": "public void Run(int num9,int num10){if(Count>0){double earlierChild=ReadDouble();Touch(ref earlierChild);}for (int num12 = num9, num13 = num9 * 8; num12 <= num10;){if(Count==5){break;}if(Count==6){Count++;continue;}Touch(ref num12);Touch(ref num13);num12++;num13 += 8;}Count++;}",
+      "manual_control": "public void Run(int num9,int num10){if(Count>0){double earlierChild=ReadDouble();Touch(ref earlierChild);}for(int num12=num9,num13=num9*8;num12<=num10;){if(Count==5){break;}if(Count==6){Count++;continue;}Touch(ref num12);Touch(ref num13);num12++;num13+=8;}Count++;}"
+    }
+  ],
+  "negatives": [
+    "balloon-capture",
+    "balloon-outer-use",
+    "balloon-nested-continue-owner",
+    "balloon-between-effects",
+    "scan-outside-use",
+    "scan-nested-owner",
+    "scan-capture",
+    "scan-missing-body-increment"
+  ],
+  "limitations": "Reference calls in own toy make local allocation observable, never inserted in game sources. Game header/IL/locals/EH oracle remains unchanged; role mapping is diagnostic only."
+}

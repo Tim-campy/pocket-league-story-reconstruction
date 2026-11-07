@@ -712,9 +712,7 @@ int num2 = dataInputStream.ReadByte();
 					}
 				}
 			}
-			int num11 = num8;
-			int num12 = num8 * 8;
-			while (num11 <= num9)
+			for (int num11 = num8, num12 = num8 * 8; num11 <= num9;)
 			{
 				if (frameNo == spriteFrames_[num11])
 				{
@@ -841,9 +839,7 @@ int num2 = dataInputStream.ReadByte();
 					}
 				}
 			}
-			int num12 = num9;
-			int num13 = num9 * 8;
-			while (num12 <= num10)
+			for (int num12 = num9, num13 = num9 * 8; num12 <= num10;)
 			{
 				if (frameNo == spriteFrames_[num12])
 				{

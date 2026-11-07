@@ -367,3 +367,5 @@ O mesmo vale para `recoveredNotifyManager`: o tipo e os acessos são do original
 
 
 Rodada9 D22: recoveredUnusedSingle em TBall.Update_training e nome sintetico para slot Single4 sem nenhum uso no IL original. A declaracao nua apos flag2/antes collisionData e escolhida para reproduzir a assinatura, nao identificada como escopo ou nome historico. Modelo completo previu sete tipos originais; so o verificador pode aprovar o corpo.
+
+D22 confirmou o corpo inteiro de TBall.Update_training com sete locais reais e recoveredUnusedSingle sem inicializador. Isto prova uma fonte que reproduz o original; nao identifica nome nem escopo historicos unicos.
