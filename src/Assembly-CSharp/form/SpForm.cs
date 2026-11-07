@@ -64,10 +64,7 @@ namespace form
 			: base(3)
 		{
 			text_ = null;
-			if (th == null)
-			{
-				return;
-			}
+			if (th != null) {
 			if (Config.PTW)
 			{
 				text_ = string.Empty;
@@ -85,8 +82,7 @@ namespace form
 				{
 					text = text.SubstringJ(0, num);
 				}
-				string text2 = text_;
-				text_ = text2 + text + "," + Http.GetErrorCode() + "\n";
+				text_ += text + "," + Http.GetErrorCode() + "\n";
 			}
 			string text3 = string.Empty + th;
 			string text4 = th.GetType().Name;
@@ -109,7 +105,8 @@ namespace form
 				text3 = text3 + "," + ((UIException)th).GetStatus();
 			}
 			text_ += text3;
-		}
+					}
+}
 
 		public override string ToString()
 		{

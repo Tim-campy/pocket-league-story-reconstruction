@@ -1,0 +1,48 @@
+{
+  "operation": "publish-frozen-fixture-tested-source-proposals",
+  "family": "static-bool",
+  "source_only": true,
+  "target_compilations": 0,
+  "target_source_writes": false,
+  "method_state_writes": false,
+  "body_status": "UNKNOWN",
+  "patches": [
+    {
+      "method_id": "cfg.MyConfig::.cctor()->System.Void",
+      "logical_path": "src/Assembly-CSharp/cfg/MyConfig.cs",
+      "start": 0,
+      "end": 2052,
+      "before": "using kairo.common.cfg;\r\n\r\nnamespace cfg\r\n{\r\n\tpublic class MyConfig : Config\r\n\t{\r\n\t\tpublic new static int APPLI_TYPE = 2;\r\n\r\n\t\tpublic new static bool DEBUG = false;\r\n\r\n\t\tpublic new static bool PTW = false;\r\n\r\n\t\tpublic new static bool COUNT_ENABLE = ((!(DEBUG)) ? false : true);\r\n\r\n\t\tpublic new static bool PRINT = ((!(DEBUG)) ? false : true);\r\n\r\n\t\tpublic new static bool USE_UNUSE_CHECK = DEBUG && !PTW;\r\n\r\n\t\tpublic new static int LANGUAGE = 1;\r\n\r\n\t\tpublic new static bool LOWDEPTH_TEST = false;\r\n\r\n\t\tpublic new static bool FULLSCREEN = false;\r\n\r\n\t\tpublic new static int AD_SIZE = 0;\r\n\r\n\t\tpublic new static bool LOCALIZE_FONT_SCALE = false;\r\n\r\n\t\tpublic new static bool ICLOUD = false;\r\n\r\n\t\tpublic new static string BASE64_PUBLIC_KEY = \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6AQ0JoxDzeN7d5vGxuRtD/dpxGHRGEavR7lt5O2fKbtK3GmGaSS9/fHyc/M3w5HkwPFk65hqKlD5k5Zz9d8PZN4gp5eM/uOU/Z5k/Rra5BffxBWDgkMod5z7WV2hx8Ge2JtMDlTz2dip80mMdDtqbFR002FxAIIT4NaY9Im881Um/DT6LZmkMm8XrYx783QlarYq4QH43n3/9+xk+znGDNWjaP0q+f7//dHXSvFXC+oDci/YXKPT/tPl+/OP2YzwmJ+9Y8oRAPRTtUQPNCCLC0zWDIMUyYdcO7kRud0QkoP1cI55ZD2UZDvIL6Fua48OmL7yy6VBRY6EC6dkLEKsBQIDAQAB\";\r\n\r\n\t\tpublic new static string AD_UNIT_ID = string.Empty;\r\n\r\n\t\tpublic new static bool TRACE_URL = true;\r\n\r\n\t\tpublic new static bool DEBUG_UID = true;\r\n\r\n\t\tpublic new static string UID = \"NULLGWDOCOMO\";\r\n\r\n\t\tpublic new static bool REGIST_ENABLE = true;\r\n\r\n\t\tpublic new static bool TRIAL_VERSION = false;\r\n\r\n\t\tpublic new static bool ADMOB_ENABLE = false;\r\n\r\n\t\tpublic new static bool DEBUG_CMD = (DEBUG ? true : false);\r\n\r\n\t\tpublic new static bool SHOW_DEBUG = DEBUG && !PTW;\r\n\r\n\t\tpublic new static bool SHOW_FPS = DEBUG && !PTW;\r\n\r\n\t\tpublic new static bool SHOW_MEM = DEBUG && false;\r\n\r\n\t\tpublic new static bool UNITY_EDITOR = false;\r\n\r\n\t\tpublic new static int PID = 55;\r\n\r\n\t\tpublic new static string APPLI_NAME = \"Soccer_en\";\r\n\r\n\t\tpublic new static string OUTPUT_CSV_NAME = \"PL Story\";\r\n\r\n\t\tpublic static bool GOOGLE_PLAY = false;\r\n\r\n\t\tpublic static bool AMAZON = false;\r\n\r\n\t\tpublic static bool SMART_PASS = false;\r\n\t}\r\n}\r\n",
+      "after": "using kairo.common.cfg;\r\n\r\nnamespace cfg\r\n{\r\n\tpublic class MyConfig : Config\r\n\t{\r\n\t\tpublic new static int APPLI_TYPE = 2;\r\n\r\n\t\tpublic new static bool DEBUG = false;\r\n\r\n\t\tpublic new static bool PTW = false;\r\n\r\n\t\tpublic new static bool COUNT_ENABLE = ((!(DEBUG)) ? false : true);\r\n\r\n\t\tpublic new static bool PRINT = ((!(DEBUG)) ? false : true);\r\n\r\n\t\tpublic new static bool USE_UNUSE_CHECK = (!DEBUG) ? false : !PTW;\r\n\r\n\t\tpublic new static int LANGUAGE = 1;\r\n\r\n\t\tpublic new static bool LOWDEPTH_TEST = false;\r\n\r\n\t\tpublic new static bool FULLSCREEN = false;\r\n\r\n\t\tpublic new static int AD_SIZE = 0;\r\n\r\n\t\tpublic new static bool LOCALIZE_FONT_SCALE = false;\r\n\r\n\t\tpublic new static bool ICLOUD = false;\r\n\r\n\t\tpublic new static string BASE64_PUBLIC_KEY = \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6AQ0JoxDzeN7d5vGxuRtD/dpxGHRGEavR7lt5O2fKbtK3GmGaSS9/fHyc/M3w5HkwPFk65hqKlD5k5Zz9d8PZN4gp5eM/uOU/Z5k/Rra5BffxBWDgkMod5z7WV2hx8Ge2JtMDlTz2dip80mMdDtqbFR002FxAIIT4NaY9Im881Um/DT6LZmkMm8XrYx783QlarYq4QH43n3/9+xk+znGDNWjaP0q+f7//dHXSvFXC+oDci/YXKPT/tPl+/OP2YzwmJ+9Y8oRAPRTtUQPNCCLC0zWDIMUyYdcO7kRud0QkoP1cI55ZD2UZDvIL6Fua48OmL7yy6VBRY6EC6dkLEKsBQIDAQAB\";\r\n\r\n\t\tpublic new static string AD_UNIT_ID = string.Empty;\r\n\r\n\t\tpublic new static bool TRACE_URL = true;\r\n\r\n\t\tpublic new static bool DEBUG_UID = true;\r\n\r\n\t\tpublic new static string UID = \"NULLGWDOCOMO\";\r\n\r\n\t\tpublic new static bool REGIST_ENABLE = true;\r\n\r\n\t\tpublic new static bool TRIAL_VERSION = false;\r\n\r\n\t\tpublic new static bool ADMOB_ENABLE = false;\r\n\r\n\t\tpublic new static bool DEBUG_CMD = (!DEBUG) ? false : true;\r\n\r\n\t\tpublic new static bool SHOW_DEBUG = (!DEBUG) ? false : !PTW;\r\n\r\n\t\tpublic new static bool SHOW_FPS = (!DEBUG) ? false : !PTW;\r\n\r\n\t\tpublic new static bool SHOW_MEM = (!DEBUG) ? false : false;\r\n\r\n\t\tpublic new static bool UNITY_EDITOR = false;\r\n\r\n\t\tpublic new static int PID = 55;\r\n\r\n\t\tpublic new static string APPLI_NAME = \"Soccer_en\";\r\n\r\n\t\tpublic new static string OUTPUT_CSV_NAME = \"PL Story\";\r\n\r\n\t\tpublic static bool GOOGLE_PLAY = false;\r\n\r\n\t\tpublic static bool AMAZON = false;\r\n\r\n\t\tpublic static bool SMART_PASS = false;\r\n\t}\r\n}\r\n",
+      "rule": "d10-static-bool-composition",
+      "model_complete": null,
+      "source_only": true
+    }
+  ],
+  "calculator_sha256": "d381485bf0a21bbe879081533a6be46541b5ff1ca99bb80f66c7b0adf68a5678",
+  "dependency_sha256": {
+    "tools/round10_static_bool_source.py": "d381485bf0a21bbe879081533a6be46541b5ff1ca99bb80f66c7b0adf68a5678",
+    "tools/round10_publish_ready_families.py": "70cb38acd909813e30a449c8167d4f9bc2cb434ca87447ef4f4e3f9c4e51fc8f"
+  },
+  "evidence_sha256": {
+    "reports/round10-static-bool-fixtures.json": "c44571af2603c167522ef69da4540dc2591d750062ec08b35997203ecd57c725"
+  },
+  "frozen_evidence_sha256": {
+    "build/round10/static-bool-followup/ready-bundle.json": "da975e6456309c09ce11670a2a8ada99f986c47c4d8802a508a8a94a097e9b0a",
+    "build/round10/static-bool-followup/proposal.py": "d381485bf0a21bbe879081533a6be46541b5ff1ca99bb80f66c7b0adf68a5678",
+    "build/round10/static-bool-followup/toy-validation/report.json": "8d4a485816c821800e927eebeb59da0772a5bbcf39349fe1b0a2f9d14d986c7f",
+    "build/round10/static-bool-followup/FixtureBefore.cs": "b4ec855e140008c6a219b45958c668ad8353b51d48e3b7f94b228d136f7af655",
+    "build/round10/static-bool-followup/FixtureManual.cs": "1bdeb6db176405c3b1bcea563e6a2265c2f1117fe0c009df8189fac1cafff606",
+    "build/round10/static-bool-followup/FixtureStaticBefore.cs": "6d7870aeed2f91b3cc3b3df1d7fd472cf3bf56f973c876db5899de6ce7287926",
+    "build/round10/static-bool-followup/FixtureStaticManual.cs": "63a4c880d92d83b68e8a5be4b9524689660e3734c4944b2f5c763e92f7f2732a",
+    "build/round10/static-bool-followup/before.cs.txt": "9a06603914819e9bf4d47cfdf69136a367f7780364ca7ce876c90db09605fb18",
+    "build/round10/static-bool-followup/after.cs.txt": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0"
+  },
+  "own_fixture_source_sha256": {
+    "tools/fixtures/round10-static-bool/0-FixtureBefore.cs": "b4ec855e140008c6a219b45958c668ad8353b51d48e3b7f94b228d136f7af655",
+    "tools/fixtures/round10-static-bool/1-FixtureManual.cs": "1bdeb6db176405c3b1bcea563e6a2265c2f1117fe0c009df8189fac1cafff606",
+    "tools/fixtures/round10-static-bool/2-FixtureStaticBefore.cs": "6d7870aeed2f91b3cc3b3df1d7fd472cf3bf56f973c876db5899de6ce7287926",
+    "tools/fixtures/round10-static-bool/3-FixtureStaticManual.cs": "63a4c880d92d83b68e8a5be4b9524689660e3734c4944b2f5c763e92f7f2732a"
+  },
+  "fresh_model_and_real_compiler_required": true
+}
