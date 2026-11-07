@@ -426,9 +426,9 @@ namespace kairo.unity.form
 				SaveRecorder instance4 = SaveRecorder.GetInstance();
 				bool flag = false;
 				bool flag2 = currentApp.Visibe();
-				if (instance4 != null && flag != lastKeyguard_) { if (flag) {
+				if (instance4 != null && ((flag != lastKeyguard_) & flag)) {
 					ProcessEvent(AppEventType.Sleep);
-				} }
+				}
 				lastKeyguard_ = flag;
 				lastVisibleActivity_ = flag2;
 				if (flag || !flag2)
@@ -458,7 +458,7 @@ namespace kairo.unity.form
 				{
 					updateStartTime_ = JSystem.CurrentTimeMillis();
 				}
-				instance4?.Lock();
+				if ((object)instance4 != null) { instance4.Lock(); }
 				if (resume_)
 				{
 					FormBase formBase = (FormBase)formStack_.LastElement();
@@ -565,7 +565,7 @@ namespace kairo.unity.form
 						}
 					}
 				}
-				instance4?.Unlock(true);
+				if ((object)instance4 != null) { instance4.Unlock(true); }
 				waitLateUpdate_ = false;
 				Updated();
 				serviceUpdate_ = false;
@@ -616,15 +616,7 @@ namespace kairo.unity.form
 					{
 						try
 						{
-							switch (reserveSave)
-							{
-							case 1:
-								instance.Save();
-								break;
-							case 2:
-								instance.SaveAll();
-								break;
-							}
+							if (reserveSave == 1) { instance.Save(); } else if (reserveSave == 2) { instance.SaveAll(); }
 						}
 						catch (Exception)
 						{

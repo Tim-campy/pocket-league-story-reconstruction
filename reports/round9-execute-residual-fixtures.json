@@ -1,0 +1,41 @@
+{
+  "operation": "historical-csc-execute-four-reason-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "1d067120c76c6d8ad03c22926ef665c04fd22707132bbb6cf466720504b345fa",
+  "driver_sha256": "f5fede1f9581f91c1d1f6125fa4ecf2dd270df426fdebe851384d197dddf886f",
+  "game_compilations": 0,
+  "toy_compilations": 6,
+  "positive_full_bodies": 2,
+  "negative_controls": 6,
+  "negatives": [
+    "float-flag",
+    "enum-selector",
+    "unstable-receiver",
+    "extra-outer-effect",
+    "nested-case-break",
+    "missing-loop-exit"
+  ],
+  "fixtures": [
+    {
+      "case": "protected-return",
+      "full_body_equal": true,
+      "locals_unchanged": true,
+      "Lock_and_Unlock_callvirt": true,
+      "retry_loop_and_protected_return_retained": true,
+      "before": "public bool Run(bool input)\n{\n bool flag = input;\n SaveRecorder instance4 = recorder;\n SaveRecorder instance = recorder;\n int reserveSave = Reserve;\n try {\n if (instance4 != null && flag != lastKeyguard_) { if (flag) { ProcessEvent(AppEventType.Sleep); } }\n instance4?.Lock();\n instance4?.Unlock(true);\n for (int j = 0; j < 3; j++) {\n try {\n switch (reserveSave) {\n case 1: instance.Save(); break;\n case 2: instance.SaveAll(); break;\n }\n } catch (Exception) { Count++; continue; }\n break;\n }\n return flag;\n } finally {Count++;}\n}",
+      "after": "public bool Run(bool input)\n{\n bool flag = input;\n SaveRecorder instance4 = recorder;\n SaveRecorder instance = recorder;\n int reserveSave = Reserve;\n try {\n if (instance4 != null && ((flag != lastKeyguard_) & flag)) { ProcessEvent(AppEventType.Sleep); }\n if ((object)instance4 != null) { instance4.Lock(); }\n if ((object)instance4 != null) { instance4.Unlock(true); }\n for (int j = 0; j < 3; j++) {\n try {\n if (reserveSave == 1) { instance.Save(); } else if (reserveSave == 2) { instance.SaveAll(); }\n } catch (Exception) { Count++; continue; }\n break;\n }\n return flag;\n } finally {Count++;}\n}",
+      "manual_control": "public bool Run(bool input){bool flag=input;SaveRecorder instance4=recorder;SaveRecorder instance=recorder;int reserveSave=Reserve;try{if(instance4!=null && ((flag!=lastKeyguard_)&flag)){ProcessEvent(AppEventType.Sleep);}if((object)instance4!=null){instance4.Lock();}if((object)instance4!=null){instance4.Unlock(true);}for(int j=0;j<3;j++){try{if(reserveSave==1){instance.Save();}else if(reserveSave==2){instance.SaveAll();}}catch(Exception){Count++;continue;}break;}return flag;}finally{Count++;}}"
+    },
+    {
+      "case": "effects-preserved",
+      "full_body_equal": true,
+      "locals_unchanged": true,
+      "Lock_and_Unlock_callvirt": true,
+      "retry_loop_and_protected_return_retained": true,
+      "before": "public bool Run(bool input)\n{\n bool flag = input; Count++;\n SaveRecorder instance4 = recorder;\n SaveRecorder instance = recorder;\n int reserveSave = Reserve;\n try {\n if (instance4 != null && flag != lastKeyguard_) { if (flag) { ProcessEvent(AppEventType.Sleep); } }\n instance4?.Lock();\n instance4?.Unlock(true);\n for (int j = 0; j < 3; j++) {\n try {\n switch (reserveSave) {\n case 1: instance.Save(); break;\n case 2: instance.SaveAll(); break;\n }\n } catch (Exception) { Count++; continue; }\n break;\n }\n Count += reserveSave; return flag;\n } finally {Count++;}\n}",
+      "after": "public bool Run(bool input)\n{\n bool flag = input; Count++;\n SaveRecorder instance4 = recorder;\n SaveRecorder instance = recorder;\n int reserveSave = Reserve;\n try {\n if (instance4 != null && ((flag != lastKeyguard_) & flag)) { ProcessEvent(AppEventType.Sleep); }\n if ((object)instance4 != null) { instance4.Lock(); }\n if ((object)instance4 != null) { instance4.Unlock(true); }\n for (int j = 0; j < 3; j++) {\n try {\n if (reserveSave == 1) { instance.Save(); } else if (reserveSave == 2) { instance.SaveAll(); }\n } catch (Exception) { Count++; continue; }\n break;\n }\n Count += reserveSave; return flag;\n } finally {Count++;}\n}",
+      "manual_control": "public bool Run(bool input){bool flag=input;Count++;SaveRecorder instance4=recorder;SaveRecorder instance=recorder;int reserveSave=Reserve;try{if(instance4!=null && ((flag!=lastKeyguard_)&flag)){ProcessEvent(AppEventType.Sleep);}if((object)instance4!=null){instance4.Lock();}if((object)instance4!=null){instance4.Unlock(true);}for(int j=0;j<3;j++){try{if(reserveSave==1){instance.Save();}else if(reserveSave==2){instance.SaveAll();}}catch(Exception){Count++;continue;}break;}Count+=reserveSave;return flag;}finally{Count++;}}"
+    }
+  ],
+  "limitations": "Control body and EH/slots compared exactly; whole game method remains unknown until oracle. Eager boolean changes only pure builtin local/field loads, preserves null short circuit and calls."
+}
