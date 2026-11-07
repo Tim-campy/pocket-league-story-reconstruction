@@ -11,3 +11,5 @@ Own independently written Current/Expected control passed full header/locals/IL/
 Fresh model remains honestly INCOMPLETE45 predicted versus43 original. No flag was promoted to fit. Actual43 locals and full body/EH must pass; the existing12-incomplete budget remains. No handwritten generated game code or byte editing is used. Full verification and zero regressions precede commit.
 
 Pinned Roslyn4cb203dab89e1542cdf7d88cb6d32767bc0e5460 EmitStatement.cs648-700 distinguishes indirect protected return and its label from normal fallthrough. Original static REA already corroborated Graphics060002ac,2,248IL/1,079 decoded/max10; original hash unchanged. Detailed frozen D29 diagnosis and new WIP inputs are hash-bound upstream; neither static diagnosis nor a fixture marks this method matched.
+
+D36 full result: residual closed, +1 /2248IL, all55 pending Kairo bodies processed; actual43 locals/header/3EH passed. Zero regressions and staged proof, commit85c75de571e4995f9ecb29f556ba510f53321979 pushed. This is a new gain only in D36; D29 remains a partial historical step.

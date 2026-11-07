@@ -2252,9 +2252,10 @@ bool flag = cgi.Contains("virtual_currency.php");
 					if (array == null || array.Length == 0)
 					{
 						result = -1;
-						goto IL_0304;
+
 					}
-					for (int j = 0; j < array.Length; j++)
+					else {
+for (int j = 0; j < array.Length; j++)
 					{
 						if (4 < array[j].Length)
 						{
@@ -2270,6 +2271,8 @@ bool flag = cgi.Contains("virtual_currency.php");
 							result = EncodeUtil.ByteAryToInt(array[j], true);
 						}
 					}
+					break;
+					}
 				}
 				catch (Exception t)
 				{
@@ -2278,10 +2281,8 @@ bool flag = cgi.Contains("virtual_currency.php");
 						Log.Info(t);
 					}
 					result = -1;
-					goto IL_0304;
+
 				}
-				break;
-				IL_0304:
 				JThread.Sleep(100L);
 			}
 			while (num2 < num);

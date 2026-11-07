@@ -68,10 +68,10 @@ namespace kairo.unity.io
 						goto IL_00ab;
 					}
 					num++;
-					goto end_IL_0014;
+					continue;
 					IL_00ab:
 					throw ex;
-					end_IL_0014:;
+
 				}
 			}
 		}

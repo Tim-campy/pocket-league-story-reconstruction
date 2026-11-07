@@ -1,0 +1,57 @@
+{
+  "operation": "historical-csc-protected-retry-and-heap-exit-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "80969a3e9c6f1ca6c99a792c1713df1ed686377d7c839d13456a5b3f9c0eff62",
+  "driver_sha256": "6f2d97019fa559d8ef08b5c1e90ec0055afffc39ed20f2e3c99d64e564ba85eb",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 9,
+  "negatives": [
+    "payment-loop-owned-break",
+    "payment-tail-effects",
+    "payment-different-retry-label",
+    "http-nested-continue-owner",
+    "http-label-end-effects",
+    "http-rethrow-other",
+    "storage-heap-setter-observer",
+    "storage-media-other",
+    "storage-capture"
+  ],
+  "fixtures": [
+    {
+      "case": "payment",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "template_sha256": "15dfb343bc4d63c7e5564398e406d750af88c5edc455fc614de26499ffbd8189",
+      "before_local_count": 5,
+      "after_local_count": 5,
+      "before": " public int Run(bool async, int num) {\n  int num2 = 0; int result = 0;\n  do {\n   num2++;\n   try {\n    if(async) { ConnectAsync(); break; }\n    byte[][] array = Connect();\n    if (array == null || array.Length == 0) { result = -1; goto IL_0304; }\n    for (int j = 0; j < array.Length; j++) { result += array[j].Length; }\n   } catch(Exception t) {\n    if(Config.DEBUG) { Log.Info(t); }\n    result = -1;\n    goto IL_0304;\n   }\n   break;\n   IL_0304:\n   JThread.Sleep(100L);\n  } while(num2 < num);\n  return result;\n }",
+      "after": " public int Run(bool async, int num) {\n  int num2 = 0; int result = 0;\n  do {\n   num2++;\n   try {\n    if(async) { ConnectAsync(); break; }\n    byte[][] array = Connect();\n    if (array == null || array.Length == 0) { result = -1;  }\r\n    else {\r\nfor (int j = 0; j < array.Length; j++) { result += array[j].Length; }\r\n    break;\r\n    }\n   } catch(Exception t) {\n    if(Config.DEBUG) { Log.Info(t); }\n    result = -1;\n    \n   }\n   JThread.Sleep(100L);\n  } while(num2 < num);\n  return result;\n }",
+      "manual_control": " public int Run(bool async, int num) {\n  int num2 = 0; int result = 0;\n  do {\n   num2++;\n   try {\n    if(async) { ConnectAsync(); break; }\n    byte[][] array = Connect();\n    if (array == null || array.Length == 0) { result = -1; }\n    else {\n     for (int j = 0; j < array.Length; j++) { result += array[j].Length; }\n     break;\n    }\n   } catch(Exception t) {\n    if(Config.DEBUG) { Log.Info(t); }\n    result = -1;\n   }\n   JThread.Sleep(100L);\n  } while(num2 < num);\n  return result;\n }"
+    },
+    {
+      "case": "http",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "template_sha256": "da98e714808422818f72f14c91c8e4bcbba04f3ed22672fddd20695de831539c",
+      "before_local_count": 3,
+      "after_local_count": 3,
+      "before": " public byte[][] Run() {\n  int num = 0;\n  while(true) {\n   try { return Core(); }\n   catch(Exception ex) {\n    if(!askRetry_) { goto IL_00ab; }\n    if(!Retry()) { goto IL_00ab; }\n    Trace(0);\n    Trace(1);\n    Trace(2);\n    Trace(3);\n    Trace(4);\n    Trace(5);\n    Trace(6);\n    Trace(7);\n    Trace(8);\n    Trace(9);\n    Trace(10);\n    Trace(11);\n    Trace(12);\n    Trace(13);\n    Trace(14);\n    Trace(15);\n    Trace(16);\n    Trace(17);\n    Trace(18);\n    Trace(19);\n    Trace(20);\n    Trace(21);\n    Trace(22);\n    Trace(23);\n    Trace(24);\n    Trace(25);\n    Trace(26);\n    Trace(27);\n    num++;\n    goto end_IL_0014;\n    IL_00ab:\n    throw ex;\n    end_IL_0014:;\n   }\n  }\n }",
+      "after": " public byte[][] Run() {\n  int num = 0;\n  while(true) {\n   try { return Core(); }\n   catch(Exception ex) {\n    if(!askRetry_) { goto IL_00ab; }\n    if(!Retry()) { goto IL_00ab; }\n    Trace(0);\n    Trace(1);\n    Trace(2);\n    Trace(3);\n    Trace(4);\n    Trace(5);\n    Trace(6);\n    Trace(7);\n    Trace(8);\n    Trace(9);\n    Trace(10);\n    Trace(11);\n    Trace(12);\n    Trace(13);\n    Trace(14);\n    Trace(15);\n    Trace(16);\n    Trace(17);\n    Trace(18);\n    Trace(19);\n    Trace(20);\n    Trace(21);\n    Trace(22);\n    Trace(23);\n    Trace(24);\n    Trace(25);\n    Trace(26);\n    Trace(27);\n    num++;\n    continue;\n    IL_00ab:\n    throw ex;\n    \n   }\n  }\n }",
+      "manual_control": " public byte[][] Run() {\n  int num = 0;\n  while(true) {\n   try { return Core(); }\n   catch(Exception ex) {\n    if(!askRetry_) { goto IL_00ab; }\n    if(!Retry()) { goto IL_00ab; }\n    Trace(0);\n    Trace(1);\n    Trace(2);\n    Trace(3);\n    Trace(4);\n    Trace(5);\n    Trace(6);\n    Trace(7);\n    Trace(8);\n    Trace(9);\n    Trace(10);\n    Trace(11);\n    Trace(12);\n    Trace(13);\n    Trace(14);\n    Trace(15);\n    Trace(16);\n    Trace(17);\n    Trace(18);\n    Trace(19);\n    Trace(20);\n    Trace(21);\n    Trace(22);\n    Trace(23);\n    Trace(24);\n    Trace(25);\n    Trace(26);\n    Trace(27);\n    num++;\n    continue;\n    IL_00ab:\n    throw ex;\n   }\n  }\n }"
+    },
+    {
+      "case": "storage",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "template_sha256": "e690e0648d310abdb4059fe4dddb6894456da1cd152d4328c0c9037987bcb077",
+      "before_local_count": 2,
+      "after_local_count": 2,
+      "before": " public void Run(string filename, byte[] data) {\n  try {\n   filename=Config.ConvertExtension(filename);\n   if(Config.USE_HEAP_STORAGE && media_==2) {\n    int num=_SearchHeapFile(filename);\n    if (num != -1) { heapData_.SetElementAt(data, num); return; }\n    heapName_.AddElement(filename);\n    heapData_.AddElement(data);\n   }\n   else if (media_ != 3 && (media_ == 1 || media_ == 4)) {\n    if(data==null) { data=new byte[0]; }\n    WriteFile(filename,data);\n    Record(0);\n    Record(1);\n    Record(2);\n    Record(3);\n    Record(4);\n    Record(5);\n    Record(6);\n    Record(7);\n    Record(8);\n    Record(9);\n    Record(10);\n    Record(11);\n    Record(12);\n    Record(13);\n    Record(14);\n    Record(15);\n    Record(16);\n    Record(17);\n    Record(18);\n    Record(19);\n    Record(20);\n    Record(21);\n    Record(22);\n    Record(23);\n   }\n  } catch(UnauthorizedAccessException ex) { throw new Exception(ex.Message,ex); }\n }",
+      "after": " public void Run(string filename, byte[] data) {\n  try {\n   filename=Config.ConvertExtension(filename);\n   if(Config.USE_HEAP_STORAGE && media_==2) {\n    int num=_SearchHeapFile(filename);\n    if (num != -1) { heapData_.SetElementAt(data, num); } else {\n    heapName_.AddElement(filename);\n    heapData_.AddElement(data);\n       }\r\n    return;\r\n}\n   else { if (media_ == 3) { return; } if (media_ == 1 || media_ == 4) {\n    if(data==null) { data=new byte[0]; }\n    WriteFile(filename,data);\n    Record(0);\n    Record(1);\n    Record(2);\n    Record(3);\n    Record(4);\n    Record(5);\n    Record(6);\n    Record(7);\n    Record(8);\n    Record(9);\n    Record(10);\n    Record(11);\n    Record(12);\n    Record(13);\n    Record(14);\n    Record(15);\n    Record(16);\n    Record(17);\n    Record(18);\n    Record(19);\n    Record(20);\n    Record(21);\n    Record(22);\n    Record(23);\n   }\r\n   }\n  } catch(UnauthorizedAccessException ex) { throw new Exception(ex.Message,ex); }\n }",
+      "manual_control": " public void Run(string filename, byte[] data) {\n  try {\n   filename=Config.ConvertExtension(filename);\n   if(Config.USE_HEAP_STORAGE && media_==2) {\n    int num=_SearchHeapFile(filename);\n    if(num!=-1) { heapData_.SetElementAt(data,num); }\n    else { heapName_.AddElement(filename); heapData_.AddElement(data); }\n    return;\n   }\n   else {\n    if(media_==3) { return; }\n    if(media_==1 || media_==4) {\n     if(data==null) { data=new byte[0]; }\n     WriteFile(filename,data);\n    Record(0);\n    Record(1);\n    Record(2);\n    Record(3);\n    Record(4);\n    Record(5);\n    Record(6);\n    Record(7);\n    Record(8);\n    Record(9);\n    Record(10);\n    Record(11);\n    Record(12);\n    Record(13);\n    Record(14);\n    Record(15);\n    Record(16);\n    Record(17);\n    Record(18);\n    Record(19);\n    Record(20);\n    Record(21);\n    Record(22);\n    Record(23);\n    }\n   }\n  } catch(UnauthorizedAccessException ex) { throw new Exception(ex.Message,ex); }\n }"
+    }
+  ],
+  "limitations": "Independent manual controls preserve retry do/while and catch continue owners, heap common returns and media3 guard. Heavy own catch tests backward leave width; game exact headers/locals/EH mandatory. No rethrow substitution or invented source mapping."
+}

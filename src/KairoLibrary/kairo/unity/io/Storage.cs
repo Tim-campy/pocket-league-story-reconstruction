@@ -196,16 +196,13 @@ namespace kairo.unity.io
 				if (Config.USE_HEAP_STORAGE && media_ == 2)
 				{
 					int num = _SearchHeapFile(filename);
-					if (num != -1)
-					{
-						heapData_.SetElementAt(data, num);
-						return;
-					}
+					if (num != -1) { heapData_.SetElementAt(data, num); } else {
 					heapName_.AddElement(filename);
 					heapData_.AddElement(data);
-				}
-				else if (media_ != 3 && (media_ == 1 || media_ == 4))
-				{
+									}
+					return;
+}
+				else { if (media_ == 3) { return; } if (media_ == 1 || media_ == 4) {
 					if (data == null)
 					{
 						data = new byte[0];
@@ -221,6 +218,7 @@ namespace kairo.unity.io
 						Directory.CreateDirectory(directoryName);
 					}
 					File.WriteAllBytes(path, data);
+				}
 				}
 			}
 			catch (UnauthorizedAccessException ex)

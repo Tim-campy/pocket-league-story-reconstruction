@@ -1,0 +1,15 @@
+# Round 9 D37: protected retry and heap exit owners
+
+Baseline D36 HEAD85c75de571e4995f9ecb29f556ba510f53321979. Fresh weighted measurement reports/round9-cycle36-after-measurement.json. Three targets1,155 IL: KairoBase.ConnectPaymemtMoney789, HttpObject.Connect175, Storage.Write191. Main covers all54 pending Kairo bodies. After bodies UNKNOWN before oracle.
+
+Payment's invalid-array guard sets result=-1 and jumps beyond try to retry Sleep; successful scan currently falls through the try and breaks the retry do outside it. Source restores invalid-array IF with scan in ELSE and moves that successful do-break INSIDE try, removes the old outer break and catch goto so catch falls through Sleep. Array loop has no break; the existing async break remains owned by the same do. No retry call or exception handling leaf is changed. Root/catch/loop topology is checked explicitly, not guessed from raw target addresses.
+
+Http replaces only the catch's num++ followed by goto to its empty end label with continue of the UNIQUE while(true), and removes that empty label. Both existing goto-to-throw checks remain; throw ex is preserved, not replaced with rethrow. Original166 leave2 differs from current166 br.s170 then170 leave2; the removed intra-catch jump accounts for two bytes.
+
+Storage shares the terminal heap return AFTER if(setExisting)/else(addNew), instead of returning only on existing-file path. It separately restores explicit media3 return before media1/4 file body. Heap vector operations, filename/array handling and exception wrapping stay verbatim. The two components together account for current192 versus original191, still diagnosis before compilation.
+
+Pinned Roslyn4cb203dab89e1542cdf7d88cb6d32767bc0e5460 EmitStatement.cs566-568 emits label-directed goto;733-806 emits protected scopes;648-728 chooses indirect protected returns. The later IL-builder protected branch/leave rewriting source is NOT present in the pinned cache, so its implementation remains UNKNOWN and is not falsely attributed to EmitGoto alone. The actual historical compiler and independent fixtures test emitted behavior directly.
+
+Three full header/locals/IL/EH controls and nine negatives passed in nine toy builds, no failures. Heavy catch/file leaves exercise branch width. Own capture/extra-effect/other-owner/rethrow variants are refused. Reader templates were NOT_TESTED before this executor ran them. Evidence reports/round9-protected-owner-fixtures.json. Fresh models are INCOMPLETE: Payment11 types equal; Http6 against original7; Storage4 types equal. Original actual11/7/4 and full EH required; unchanged12-incomplete budget. No flag promotion. Models/payload/bindings reports/round9-protected-owner-patches.json.
+
+REA primary parent ev_1aec33ccfd6f2f413e15287dba38f30bf9249f30ed34c92febe7e6925767eec1: resume-20261107/rea-payment-connect-method.json0600061b/360decoded/2EH; rea-http-connect-method.json06000866/69/1EH; rea-storage-write-method.json060008b5/79/1EH. Original hashes unchanged. No manual generated game types, byte patch, normalization or state edit; full verification precedes commit.
