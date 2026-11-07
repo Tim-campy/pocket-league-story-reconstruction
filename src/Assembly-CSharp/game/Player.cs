@@ -2355,9 +2355,9 @@ if (recoveredCondition_54620)
 			{
 				if (i == p_id_) { continue; }
 Player player = udat_.teams_[team_id_].players_[i];
-if ((((player.address_[0] - ball_.address_[0] < -2) || (player.address_[0] - ball_.address_[0] > 2)) || (player.address_[1] - ball_.address_[1] < -2)) || (player.address_[1] - ball_.address_[1] > 2)) { continue; }
-if (!(player.ChTrapOrHeading())) { continue; }
-hitList.AddElement(player);
+if (player.address_[0] - ball_.address_[0] < -2 || player.address_[0] - ball_.address_[0] > 2) { continue; }
+if (player.address_[1] - ball_.address_[1] < -2 || player.address_[1] - ball_.address_[1] > 2) { continue; }
+if (player.ChTrapOrHeading()) { hitList.AddElement(player); }
 			}
 			for (int j = 1; j < udat_.teams_[1 - team_id_].players_.Length; j++)
 			{

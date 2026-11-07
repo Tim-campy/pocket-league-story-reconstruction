@@ -6101,10 +6101,7 @@ if (recoveredCondition_173183)
 					byteArrayInputStream4 = null;
 				}
 			}
-			if (apdat_.sysSave_.bins[4].Length <= 0)
-			{
-				return;
-			}
+			if (apdat_.sysSave_.bins[4].Length > 0) {
 			ByteArrayInputStream byteArrayInputStream5 = null;
 			try
 			{
@@ -6112,7 +6109,7 @@ if (recoveredCondition_173183)
 				for (int n = 0; n < apdat_.tradeData_.Length; n++)
 				{
 					TradeData tradeData = apdat_.tradeData_[n];
-					if (StreamUtil.ReadBoolean(byteArrayInputStream5))
+					bool recoveredTradePresent = StreamUtil.ReadBoolean(byteArrayInputStream5); if (recoveredTradePresent)
 					{
 						if (tradeData.IsPlayerInMember())
 						{
@@ -6135,6 +6132,7 @@ if (recoveredCondition_173183)
 				}
 				byteArrayInputStream5 = null;
 			}
-		}
+
+}}
 	}
 }

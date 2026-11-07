@@ -286,23 +286,20 @@ goalScoreRate_[1] = goalScoreRate_[0] + 20; }
 			for (int l = 0; l < instance.memberPDataist_.Size(); l++)
 			{
 				PlayerData playerData = (PlayerData)instance.memberPDataist_.ElementAt(l);
-				if (playerData.game_goalInLeague_ <= 0)
-				{
-					continue;
-				}
+				if (playerData.game_goalInLeague_ > 0) {
 				int num3 = 0;
 				for (num3 = 0; num3 < out_ary2.Size(); num3++)
 				{
 					int[] array3 = (int[])out_ary2.ElementAt(num3);
-					if (playerData.game_goalInLeague_ < array3[0]) { return; }
-break;
+					if (playerData.game_goalInLeague_ >= array3[0]) { break; }
 				}
 				if (num3 >= 0 && num3 <= out_ary1.Size() && num3 <= out_ary2.Size())
 				{
 					out_ary1.InsertElementAt(playerData.name_, num3);
 					out_ary2.InsertElementAt(new int[3] { playerData.game_goalInLeague_, 0, playerData.id_ }, num3);
 				}
-			}
+
+}}
 		}
 	}
 }
