@@ -2087,13 +2087,11 @@ namespace kairo.unity.util
 				text.Substring(num2 + 1, num3 - (num2 + 1));
 				text.Substring(num3 + 1, num4 - (num3 + 1));
 				string text6 = text.Substring(num4 + 1, num5 - (num4 + 1));
-				int length;
-				do
-				{
-					length = text6.Length;
-					text6 = Regex.Replace(text6, "^<po=[^>]+>|</po>$", "");
-				}
-				while (length != text6.Length);
+				while (true) {
+int length = text6.Length;
+text6 = Regex.Replace(text6, "^<po=[^>]+>|</po>$", "");
+if (length == text6.Length) { break; }
+}
 				if (text6.Length > 0)
 				{
 					if (text5.Length <= 0)
