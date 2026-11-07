@@ -1649,7 +1649,7 @@ int num14 = indicies[recoveredIndexB];
 					{
 						int num28 = num25 * image.optimizePass_ + k;
 						int[] array = null;
-						if (image.optimizeAccess_ == null) { array = image.GetOptimize(image.optimizeAccessL_[num28]); } else { array = image.GetOptimize(image.optimizeAccess_[num28]); }
+						if (image.optimizeAccess_ != null) { array = image.GetOptimize(image.optimizeAccess_[num28]); } else { array = image.GetOptimize(image.optimizeAccessL_[num28]); }
 						if (array == null)
 						{
 							continue;
@@ -1719,6 +1719,7 @@ int num14 = indicies[recoveredIndexB];
 						image3.checkCount_ = Config.checkCount_;
 					}
 					}
+					return;
 					}
 				}
 				else

@@ -1,0 +1,49 @@
+{
+  "operation": "historical-csc-image-protected-exit-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "3e6ff850324e3caedb06b1448c0b666881af36d410d8d8494dc18ed3cb57c347",
+  "driver_sha256": "f742395831c3becaebe727143e774d9a1e6ac5326f2c6ef1110bc2aad4402134",
+  "game_compilations": 0,
+  "toy_compilations": 5,
+  "positive_full_bodies": 1,
+  "negative_controls": 5,
+  "negatives": [
+    "image-extra-tail-effect",
+    "image-existing-terminal-return",
+    "image-other-access-overload",
+    "image-other-lookup-initializer",
+    "image-capture"
+  ],
+  "fixtures": [
+    {
+      "case": "image",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "template_sha256": "8b9a440f8a1cb924d45a32f7f433f098b08b53fa4ac0e8f57dc68dd366b9082f",
+      "before_local_count": 6,
+      "after_local_count": 6,
+      "before": " public static void Run(Image image, int sx) {\n  if(image == null) { return; }\n  try {\n   if(image.optimizePass_ != 0) {\n    {\n     int num25 = -1;\n     int num26 = image.optimizeSeb_.Length / 4;\n     for(int j = 0; j < num26; j++) {\n      if(image.optimizeSeb_[j * 4] == sx) { num25 = j; break; }\n     }\n     if (num25 != -1) {\n      image.GetOptimizeSeb(num25);\n      for(int k = 0; k < image.optimizePass_; k++) {\n       int num28 = num25 * image.optimizePass_ + k;\n       int[] array = null;\n       if (image.optimizeAccess_ == null) { array = image.GetOptimize(image.optimizeAccessL_[num28]); } else { array = image.GetOptimize(image.optimizeAccess_[num28]); }\n       if(array == null) { continue; }\n       Consume(array[0]);\n      }\n     }\n    }\n   } else { Fallback(image); }\n  } finally { Cleanup(); }\n }",
+      "after": " public static void Run(Image image, int sx) {\n  if(image == null) { return; }\n  try {\n   if(image.optimizePass_ != 0) {\n    {\n     int num25 = -1;\n     int num26 = image.optimizeSeb_.Length / 4;\n     for(int j = 0; j < num26; j++) {\n      if(image.optimizeSeb_[j * 4] == sx) { num25 = j; break; }\n     }\n     if (num25 != -1) {\n      image.GetOptimizeSeb(num25);\n      for(int k = 0; k < image.optimizePass_; k++) {\n       int num28 = num25 * image.optimizePass_ + k;\n       int[] array = null;\n       if (image.optimizeAccess_ != null) { array = image.GetOptimize(image.optimizeAccess_[num28]); } else { array = image.GetOptimize(image.optimizeAccessL_[num28]); }\n       if(array == null) { continue; }\n       Consume(array[0]);\n      }\n     }\r\n     return;\n    }\n   } else { Fallback(image); }\n  } finally { Cleanup(); }\n }",
+      "manual_control": " public static void Run(Image image, int sx) {\n  if(image == null) { return; }\n  try {\n   if(image.optimizePass_ != 0) {\n    {\n     int num25 = -1;\n     int num26 = image.optimizeSeb_.Length / 4;\n     for(int j = 0; j < num26; j++) {\n      if(image.optimizeSeb_[j * 4] == sx) { num25 = j; break; }\n     }\n     if (num25 != -1) {\n      image.GetOptimizeSeb(num25);\n      for(int k = 0; k < image.optimizePass_; k++) {\n       int num28 = num25 * image.optimizePass_ + k;\n       int[] array = null;\n       if (image.optimizeAccess_ != null) { array = image.GetOptimize(image.optimizeAccess_[num28]); } else { array = image.GetOptimize(image.optimizeAccessL_[num28]); }\n       if(array == null) { continue; }\n       Consume(array[0]);\n      }\n     }\n     return;\n    }\n   } else { Fallback(image); }\n  } finally { Cleanup(); }\n }"
+    }
+  ],
+  "isolated_component_controls": [
+    {
+      "component": "access-only",
+      "equal_to_manual_control": false,
+      "differences": [
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    },
+    {
+      "component": "return-only",
+      "equal_to_manual_control": false,
+      "differences": [
+        "instructions",
+        "resolved_body_bytes"
+      ]
+    }
+  ],
+  "limitations": "Own template checks full composition, plus isolated access/return components recorded separately. Target has43 real original locals and three EH regions; no new local or floating relation rewrite. Isolated D29 access variant was already a negative target trial and is not replayed."
+}
