@@ -7526,44 +7526,61 @@ coalescedWidth = num28 = 0;
 					}
 				}
 				int num3 = 0;
-				num3 = ((!MyFormBase.Jp()) ? 124 : 104);
+				if (MyFormBase.Jp()) { num3 = 104; } else { num3 = 124; }
 				int[] array = FrameMenu();
 				if (array != null)
 				{
 					int num4 = array[0];
 					int num5 = array[1];
 					int num6 = 29;
-					switch (num4)
-					{
-					case 0:
+					if (num4 == 0) {
+
 						if (!udat_.ChEventFlg(8) && !udat_.ChEventFlg(8))
 						{
 							apdat_.ExecEvent(152, null, null);
-							break;
-						}
+
+} else {
+
 						return Push(new SubForm(5, x_ + num3, y_ + num6 * select_));
-					case 1:
+
+}
+}
+else if (num4 == 1) {
+
 						if (!apdat_.CheckAlreadyEvent(158))
 						{
 							apdat_.ExecEvent(158, null, null);
 						}
 						Push(new SubForm(45));
-						break;
-					case 2:
+
+}
+else if (num4 == 2) {
+
 						if (!udat_.ChEventFlg(2) && !udat_.ChEventFlg(16) && !udat_.ChEventFlg(4) && !udat_.ChEventFlg(32))
 						{
 							apdat_.ExecEvent(175, null, null);
-							break;
-						}
+
+} else {
+
 						return Push(new SubForm(7, x_ + num3, y_ + num6 * select_));
-					case 3:
+
+}
+}
+else if (num4 == 3) {
+
 						Push(new SubForm(26));
-						break;
-					case 4:
+
+}
+else if (num4 == 4) {
+
 						return Push(new SubForm(11, x_ + num3, y_ + num6 * select_));
-					case 5:
+
+}
+else if (num4 == 5) {
+
 						return Push(new SubForm(12, x_ + num3, y_ + num6 * select_));
-					}
+
+}
 					return apdat_.RemoveAllMenuForms();
 				}
 				if (apdat_.IsPushSoftLabel(3))
@@ -7595,19 +7612,22 @@ coalescedWidth = num28 = 0;
 					int num9 = array2[0];
 					int num10 = array2[1];
 					int num11 = 24;
-					switch (num9)
-					{
-					case 21:
+					if (num9 == 21) {
+
 						Push(new SubForm(14));
-						break;
-					case 22:
+
+}
+else if (num9 == 22) {
+
 						Push(new SubForm(15));
-						break;
-					case 25:
+
+}
+else if (num9 == 25) {
+
 						udat_.gm_.gameTime_ = GameManager.HALFTIME;
 						udat_.gm_.halfTime = true;
-						break;
-					}
+
+}
 					return apdat_.RemoveAllMenuForms();
 				}
 			}
@@ -7637,7 +7657,8 @@ coalescedWidth = num28 = 0;
 					if (dialog_.result_ == 0)
 					{
 						dialog_ = null;
-						if (udat_.GetMatchInfoJoin() == 0)
+						int recoveredMatchInfoJoin = udat_.GetMatchInfoJoin();
+if (recoveredMatchInfoJoin == 0)
 						{
 							udat_.League_resetScore();
 							LeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];
@@ -7653,18 +7674,28 @@ coalescedWidth = num28 = 0;
 				{
 					int num14 = array4[0];
 					int num15 = array4[1];
-					switch (num14)
-					{
-					case 6:
+					if (num14 == 6) {
+
 						Push(new SubForm(33, 0));
-						break;
-					case 8:
+
+}
+else if (num14 == 7) {
+
+}
+else if (num14 == 8) {
+
 						Push(new SubForm(58));
-						break;
-					case 9:
+
+}
+else if (num14 == 9) {
+
 						dialog_ = MakeDialog("参加中の大会を棄権します", "はい\tいいえ", 1);
 						return Push(dialog_);
-					}
+
+}
+else if (num14 == 10) {
+
+}
 					return apdat_.RemoveAllMenuForms();
 				}
 			}
@@ -7689,17 +7720,17 @@ coalescedWidth = num28 = 0;
 				{
 					int num18 = array6[0];
 					int num19 = array6[1];
-					switch (num18)
-					{
-					case 14:
+					if (num18 == 14) {
+
 						if (!apdat_.CheckAlreadyEvent(165))
 						{
 							apdat_.ExecEvent(165, null, null);
 						}
 						Push(new SubForm(39));
-						break;
-					case 12:
-					{
+
+}
+else if (num18 == 12) {
+
 						if (udat_.memberPDataist_.Size() >= 30)
 						{
 							apdat_.ExecEvent(143, null, null);
@@ -7725,23 +7756,26 @@ coalescedWidth = num28 = 0;
 						}
 						apdat_.ExecEvent(123, num20 + string.Empty, null);
 						Push(new SubForm(53));
-						break;
-					}
-					case 15:
+
+}
+else if (num18 == 15) {
+
 						if (!apdat_.CheckAlreadyEvent(164))
 						{
 							apdat_.ExecEvent(164, null, null);
 						}
 						Push(new SubForm(60));
-						break;
-					case 16:
+
+}
+else if (num18 == 16) {
+
 						if (!apdat_.CheckAlreadyEvent(155))
 						{
 							apdat_.ExecEvent(155, null, null);
 						}
 						Push(new SubForm(42));
-						break;
-					}
+
+}
 					return apdat_.RemoveAllMenuForms();
 				}
 			}
@@ -7752,21 +7786,26 @@ coalescedWidth = num28 = 0;
 				{
 					int num21 = array7[0];
 					int num22 = array7[1];
-					switch (num21)
-					{
-					case 17:
+					if (num21 == 17) {
+
 						Push(new SubForm(67));
-						break;
-					case 13:
+
+}
+else if (num21 == 13) {
+
 						Push(new SubForm(50));
-						break;
-					case 18:
+
+}
+else if (num21 == 18) {
+
 						Push(new SubForm(77));
-						break;
-					case 19:
+
+}
+else if (num21 == 19) {
+
 						Push(new SubForm(74));
-						break;
-					}
+
+}
 					return apdat_.RemoveAllMenuForms();
 				}
 			}
@@ -7776,13 +7815,16 @@ coalescedWidth = num28 = 0;
 				{
 					if (dialog_.result_ == 0)
 					{
-						if (dialog_.dialogId_ != 99)
-						{
-							return formMan_.RemoveAllForms();
-						}
+						if (dialog_.dialogId_ == 99) {
+
 						dialog_ = null;
 						Canvas.OpenBrowser(AppData.SITE_URL);
-					}
+
+} else {
+
+							return formMan_.RemoveAllForms();
+
+}}
 					dialog_ = null;
 				}
 				int[] array8 = FrameMenu();
@@ -7790,30 +7832,44 @@ coalescedWidth = num28 = 0;
 				{
 					int num23 = array8[0];
 					int num24 = array8[1];
-					switch (num23)
-					{
-					case 20:
+					if (num23 == 20) {
+
 						Push(new SubForm(16));
-						break;
-					case 21:
+
+}
+else if (num23 == 21) {
+
 						Push(new SubForm(14));
-						break;
-					case 22:
+
+}
+else if (num23 == 22) {
+
 						Push(new SubForm(15));
-						break;
-					case 23:
+
+}
+else if (num23 == 23) {
+
 						if (!Config.TRIAL_VERSION)
 						{
 							Push(new RankForm());
-							break;
-						}
+
+} else {
+
 						return Push(MakeTalkForm(0, MyFormBase.LT("ハイスコアは<br>正式版でご利用頂けます!!"), null));
-					case 24:
+
+}
+}
+else if (num23 == 24) {
+
 						dialog_ = MakeDialog("ゲームを終了します", "はい\tいいえ", 1);
 						return Push(dialog_);
-					case 29:
+
+}
+else if (num23 == 29) {
+
 						return formMan_.ChangeCurrentForm(apdat_.frmTitle_);
-					}
+
+}
 					return apdat_.RemoveAllMenuForms();
 				}
 				if (apdat_.IsPushSoftLabel(5))
@@ -7836,20 +7892,26 @@ coalescedWidth = num28 = 0;
 				{
 					int num25 = array9[0];
 					int num26 = array9[1];
-					switch (num25)
-					{
-					case 26:
+					if (num25 == 26) {
+
 						result_ = 0;
 						return Pop();
-					case 27:
+
+}
+else if (num25 == 27) {
+
 						result_ = 1;
 						dialog_ = MakeDialog("今のセーブデータに\n上書きされます", "はい\tいいえ", 1);
 						return Push(dialog_);
-					case 28:
+
+}
+else if (num25 == 28) {
+
 						result_ = 2;
 						dialog_ = MakeDialog("今のセーブデータは\n消えてしまいます", "はい\tいいえ", 1);
 						return Push(dialog_);
-					}
+
+}
 				}
 			}
 			else if (type_ == 0)
@@ -7895,15 +7957,16 @@ coalescedWidth = num28 = 0;
 				int num27 = eventIds_[page_];
 				if (frame_ == 1)
 				{
-					switch (num27)
-					{
-					case 0:
+					if (num27 == 0) {
+
 						apdat_.PlayJingle(17);
-						break;
-					case 1:
+
+}
+else if (num27 == 1) {
+
 						apdat_.PlayJingle(21);
-						break;
-					}
+
+}
 				}
 				if (canvas_.CheckKeyPulse(1048576) || (Config.DEBUG_CMD && canvas_.CheckKeyState(64)))
 				{
@@ -7946,7 +8009,7 @@ coalescedWidth = num28 = 0;
 					}
 					if (select_ == CONFIG_ORIENTATION)
 					{
-						num28 = ((num28 != -1) ? 1 : 0);
+						if (num28 == -1) { num28 = 0; } else { num28 = 1; }
 					}
 					int num29 = num28;
 					if (select_ != CONFIG_SPEED || apdat_.sysSave_.ints[9] != 0)
@@ -7968,7 +8031,7 @@ coalescedWidth = num28 = 0;
 						}
 						if (select_ == CONFIG_ORIENTATION)
 						{
-							num28 = ((num28 != 0) ? app_.GetOrientation() : (-1));
+							if (num28 == 0) { num28 = -1; } else { num28 = app_.GetOrientation(); }
 						}
 						SetTouchValue(CONFIG_VALUES[select_], num28);
 					}
@@ -8005,7 +8068,7 @@ coalescedWidth = num28 = 0;
 					}
 					if (select_ == CONFIG_EN_ORIENTATION)
 					{
-						num30 = ((num30 != -1) ? 1 : 0);
+						if (num30 == -1) { num30 = 0; } else { num30 = 1; }
 					}
 					int num31 = num30;
 					if (select_ != CONFIG_EN_SPEED || apdat_.sysSave_.ints[9] != 0)
@@ -8027,7 +8090,7 @@ coalescedWidth = num28 = 0;
 						}
 						if (select_ == CONFIG_EN_ORIENTATION)
 						{
-							num30 = ((num30 != 0) ? app_.GetOrientation() : (-1));
+							if (num30 == 0) { num30 = -1; } else { num30 = app_.GetOrientation(); }
 						}
 						SetTouchValue(CONFIG_EN_VALUES[select_], num30);
 						if (select_ == CONFIG_EN_CURRENCY)
@@ -8300,7 +8363,8 @@ coalescedWidth = num28 = 0;
 				{
 					page_ = (page_ + 1) % 3;
 				}
-				int num38 = 9;
+				int recoveredUnusedLocal65;
+int num38 = 9;
 				if (scrollValue_ > select_)
 				{
 					scrollValue_ = select_;
@@ -8429,12 +8493,10 @@ coalescedWidth = num28 = 0;
 						{
 							udat_.gm_.score_[0] = 1;
 						}
-						else if (!flag3)
-						{
+						else if (flag3) { } else {
 							udat_.gm_.score_[1] = 1;
 						}
-						if (!udat_.League_update())
-						{
+						if (udat_.League_update()) {
 						}
 					}
 				}
@@ -8498,10 +8560,8 @@ coalescedWidth = num28 = 0;
 				}
 				if (canvas_.CheckKeyPulse(1048576))
 				{
-					if (select_ != 0)
-					{
-						return Pop();
-					}
+					if (select_ == 0) {
+
 					LeagueData leagueData4 = leagueData_;
 					if (apdat_.ChPayMoney(leagueData4.joinCost_))
 					{
@@ -8518,7 +8578,12 @@ coalescedWidth = num28 = 0;
 					{
 						apdat_.ExecEvent(14, null, null);
 					}
-				}
+
+} else {
+
+						return Pop();
+
+}}
 				else if (apdat_.IsPushSoftLabel(2))
 				{
 					return Pop();
@@ -8583,8 +8648,8 @@ coalescedWidth = num28 = 0;
 						int num50 = 0;
 						for (int m = 0; m < fw_cnt.Length * 2; m++)
 						{
-							if (fw_cnt[m % fw_cnt.Length] <= 0)
-							{
+							if (fw_cnt[m % fw_cnt.Length] > 0) { continue; }
+
 								if (num50 == num49)
 								{
 									fw_cnt[num50] = FW_ANIME[3];
@@ -8595,7 +8660,7 @@ coalescedWidth = num28 = 0;
 									break;
 								}
 								num50++;
-							}
+
 						}
 						fw_commonWait = GameUtil.Random(30) + 5;
 						for (int n = 0; n < fw_goRate.Length; n++)
@@ -8668,10 +8733,8 @@ coalescedWidth = num28 = 0;
 				if (canvas_.CheckKeyPulse(1048576))
 				{
 					FanActData fanActData2 = fanActData_;
-					if (select_ != 0)
-					{
-						return Pop();
-					}
+					if (select_ == 0) {
+
 					int num53 = GameUtil.RateConvert(fanActData2.rank_, 0, 6, fanActData2.cost_[0], fanActData2.cost_[1], true);
 					if (udat_.ChResearchPoin(fanActData2.costType_, num53))
 					{
@@ -8718,7 +8781,12 @@ coalescedWidth = num28 = 0;
 						apdat_.ExecEvent(13, null, null);
 					}
 					Pop();
-				}
+
+} else {
+
+						return Pop();
+
+}}
 				else if (apdat_.IsPushSoftLabel(2))
 				{
 					return Pop();
@@ -8726,10 +8794,8 @@ coalescedWidth = num28 = 0;
 			}
 			else
 			{
-				if (type_ != 41)
-				{
-					return Update2();
-				}
+				if (type_ == 41) {
+
 				if (frame_ == FA2_ANIME_TIME[2] + 1)
 				{
 					apdat_.PlaySe(25);
@@ -8757,8 +8823,12 @@ coalescedWidth = num28 = 0;
 					}
 					else
 					{
-						if (frame_ >= FA2_ANIME_TIME[6])
-						{
+						if (frame_ < FA2_ANIME_TIME[6]) {
+
+						frame_ = FA2_ANIME_TIME[6] - 1;
+
+} else {
+
 							int rank_ = fanActData3.rank_;
 							for (int num56 = 0; num56 < 4; num56++)
 							{
@@ -8778,11 +8848,15 @@ coalescedWidth = num28 = 0;
 								apdat_.ExecuteScript(fanActData3.execsScript_[fanActData3.rank_ - 1], true, null, null, 0, 0, -1);
 							}
 							return Pop();
-						}
-						frame_ = FA2_ANIME_TIME[6] - 1;
-					}
+
+}}
 				}
-			}
+
+} else {
+
+					return Update2();
+
+}}
 			return true;
 		}
 
