@@ -291,8 +291,7 @@ namespace kairo.unity.graphics
 				text = text.Replace("<colorMask>", newValue);
 				text = text.Replace("<stencil>", newValue2);
 			}
-			else { bool recoveredCondition_7106 = (nameId & 2) != 0;
-if (recoveredCondition_7106)
+			else { if ((nameId & 2) != 0)
 			{
 				string newValue3 = "1";
 				if ((nameId & 8) != 0)
@@ -354,7 +353,14 @@ if (recoveredCondition_7106)
 				{
 					if ((nameId & 0x20) == 0)
 					{
-						text4 = (((nameId & 0x10000) != 0) ? "SetTexture [_MainTex] { combine texture }" : "SetTexture [_MainTex] { combine texture * primary }");
+						if ((nameId & 0x10000) == 0)
+						{
+							text4 = "SetTexture [_MainTex] { combine texture * primary }";
+						}
+						else
+						{
+							text4 = "SetTexture [_MainTex] { combine texture }";
+						}
 					}
 					else
 					{
@@ -377,11 +383,9 @@ if (recoveredCondition_7106)
 						text3 = "Blend Zero OneMinusSrcAlpha, One OneMinusSrcAlpha";
 					}
 				}
-				else if ((nameId & 0x80) == 0)
+				else if ((nameId & 0x80) != 0)
 				{
-					text3 = (((nameId & 0x100) == 0) ? "Blend SrcAlpha OneMinusSrcAlpha, One OneMinusSrcAlpha" : "Blend Off");
-				}
-				else if ((nameId & 0x2000) != 0)
+					if ((nameId & 0x2000) != 0)
 				{
 					text3 = "Blend SrcAlpha One, One OneMinusSrcAlpha BlendOp RevSub";
 				}
@@ -392,6 +396,18 @@ if (recoveredCondition_7106)
 				else if ((nameId & 0x8000) != 0)
 				{
 					text3 = "Blend Zero OneMinusSrcAlpha, One OneMinusSrcAlpha";
+				}
+				}
+				else
+				{
+					if ((nameId & 0x100) != 0)
+					{
+						text3 = "Blend Off";
+					}
+					else
+					{
+						text3 = "Blend SrcAlpha OneMinusSrcAlpha, One OneMinusSrcAlpha";
+					}
 				}
 				if (num != 0)
 				{
@@ -411,7 +427,8 @@ if (recoveredCondition_7106)
 			text = text.Replace("<clip>", text2.TrimStart('\r', '\n'));
 			text = text.Replace("<bind>", text5.TrimStart('\r', '\n'));
 			text = text.Replace("<tex>", text4.TrimStart('\r', '\n'));
-			return text.Replace("'", "\"");
+			text = text.Replace("'", "\"");
+			return text;
 		}
 
 		public string GetName()
