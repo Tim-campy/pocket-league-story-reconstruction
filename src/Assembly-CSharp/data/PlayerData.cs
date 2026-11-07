@@ -1026,7 +1026,7 @@ return;
 			if ((num < 0) || (num >= apdat_.tradeData_.Length)) { return; }
 TradeData tradeData = apdat_.tradeData_[num];
 tradeData.ChangeState(2);
-tradeData.feelPt_ /= 2;
+tradeData.feelPt_ = (tradeData.feelPt_) / (2);
 		}
 
 		public static void Dismissal(int pDataId)

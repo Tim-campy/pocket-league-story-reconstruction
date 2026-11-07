@@ -987,11 +987,11 @@ if (LeagueData.IsVictoryMatch())
 					PBONUS_NP_LV_ADDEXP = AppData.Clamp(PBONUS_NP_LV_ADDEXP, 150, 5000);
 					if (udat_.gm_.score_[0] == udat_.gm_.score_[1])
 					{
-						PBONUS_NP_LV_ADDEXP /= 2;
+						PBONUS_NP_LV_ADDEXP = (PBONUS_NP_LV_ADDEXP) / (2);
 					}
 					else if (udat_.gm_.score_[0] < udat_.gm_.score_[1])
 					{
-						PBONUS_NP_LV_ADDEXP /= 4;
+						PBONUS_NP_LV_ADDEXP = (PBONUS_NP_LV_ADDEXP) / (4);
 					}
 					PBONUS_NP_LV_GETPOPULAR = GameUtil.RateConvert(teamData3.warPotential_, 50, 700, 0, 15, false);
 					PBONUS_NP_LV_GETTRAINING = GameUtil.RateConvert(teamData3.warPotential_, 50, 700, 5, 15, false);
@@ -1014,7 +1014,7 @@ if (LeagueData.IsVictoryMatch())
 					}
 					num4 = num5 / udat_.memberPDataist_.Size();
 					int num6 = 0;
-					num6 = ((udat_.gm_.score_[0] <= udat_.gm_.score_[1]) ? ((udat_.gm_.score_[0] == udat_.gm_.score_[1]) ? 1 : 2) : 0);
+					if ((udat_.gm_.score_[0] > udat_.gm_.score_[1])) { num6 = (0); } else { if ((udat_.gm_.score_[0] == udat_.gm_.score_[1])) { num6 = 1; } else { num6 = 2; } }
 					int num7 = 100 - num6 * 20;
 					int x = teamData2.warPotential_ - teamData3.warPotential_;
 					int num8 = GameUtil.RateConvert(x, 100, -100, 80, 120, true);

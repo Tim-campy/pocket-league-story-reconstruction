@@ -1,0 +1,125 @@
+{
+  "operation": "smcs-stable-field-division-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "source_sha256": "4ee3d3c2fd28aa3aa6b5a061454f2a3a3982c9154b9450f1b757422b201e9c7a",
+  "helper_sha256": "d2c628c50c6895b9e531efa9956e14268ad8d00a5cabb1be782f5b36807f90f0",
+  "hints_sha256": "258aabcdc18fbdc2ba99018b8724556ebeb31bb5d584b9d7d1557d7ddd5e6915",
+  "driver_sha256": "f5caecac479bda780b766b94c745b1bd3336c80d15bfa50e9bfd7f9d7a9a4042",
+  "game_compilations": 0,
+  "toy_compilations": 8,
+  "positive_full_bodies": 6,
+  "negative_controls": 8,
+  "fixtures": [
+    {
+      "method": "Implicit",
+      "full_body_equal": true,
+      "steps": [
+        {
+          "rule": "d9-explicit-field-division",
+          "start": 431,
+          "end": 439,
+          "before": "Field/=2",
+          "after": "Field = (Field) / (2)",
+          "distance": 5
+        }
+      ],
+      "locals_equal": true
+    },
+    {
+      "method": "Local",
+      "full_body_equal": true,
+      "steps": [
+        {
+          "rule": "d9-explicit-field-division",
+          "start": 524,
+          "end": 530,
+          "before": "a.I/=2",
+          "after": "a.I = (a.I) / (2)",
+          "distance": 3
+        }
+      ],
+      "locals_equal": true
+    },
+    {
+      "method": "Float",
+      "full_body_equal": true,
+      "steps": [
+        {
+          "rule": "d9-explicit-field-division",
+          "start": 625,
+          "end": 638,
+          "before": "Data.F/=scale",
+          "after": "Data.F = (Data.F) / (scale)",
+          "distance": 6
+        }
+      ],
+      "locals_equal": true
+    },
+    {
+      "method": "Double",
+      "full_body_equal": true,
+      "steps": [
+        {
+          "rule": "d9-explicit-field-division",
+          "start": 737,
+          "end": 750,
+          "before": "Data.D/=scale",
+          "after": "Data.D = (Data.D) / (scale)",
+          "distance": 6
+        }
+      ],
+      "locals_equal": true
+    },
+    {
+      "method": "Long",
+      "full_body_equal": true,
+      "steps": [
+        {
+          "rule": "d9-explicit-field-division",
+          "start": 841,
+          "end": 854,
+          "before": "Data.L/=scale",
+          "after": "Data.L = (Data.L) / (scale)",
+          "distance": 6
+        }
+      ],
+      "locals_equal": true
+    },
+    {
+      "method": "Twice",
+      "full_body_equal": true,
+      "steps": [
+        {
+          "rule": "d9-explicit-field-division",
+          "start": 935,
+          "end": 943,
+          "before": "Field/=2",
+          "after": "Field = (Field) / (2)",
+          "distance": 5
+        },
+        {
+          "rule": "d9-explicit-field-division",
+          "start": 957,
+          "end": 965,
+          "before": "Field/=4",
+          "after": "Field = (Field) / (4)",
+          "distance": 5
+        }
+      ],
+      "locals_equal": true
+    }
+  ],
+  "negatives": [
+    "RejectMethod",
+    "RejectProperty",
+    "RejectVolatile",
+    "RejectByte",
+    "RejectDecimal",
+    "RejectConvert",
+    "RejectValue",
+    "no-original-evidence"
+  ],
+  "no_new_locals": true,
+  "checked_context_preserved": true,
+  "limitations": "Only equal primitive field/RHS types and repeatable field/local/parameter/this receivers; division only, old multiplication family unchanged."
+}
