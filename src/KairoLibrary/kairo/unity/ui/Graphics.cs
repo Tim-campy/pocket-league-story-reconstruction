@@ -135,8 +135,7 @@ namespace kairo.unity.ui
 				}
 				if (!ResultColors.TryGetValue(Colors.Length, out resultColors_))
 				{
-					Color[] array = (ResultColors[Colors.Length] = new Color[Colors.Length]);
-					resultColors_ = array;
+					resultColors_ = (ResultColors[Colors.Length] = new Color[Colors.Length]);
 				}
 			}
 
@@ -173,8 +172,7 @@ namespace kairo.unity.ui
 				}
 				if (!ResultColors.TryGetValue(Colors.Length, out resultColors_))
 				{
-					Color[] array = (ResultColors[Colors.Length] = new Color[Colors.Length]);
-					resultColors_ = array;
+					resultColors_ = (ResultColors[Colors.Length] = new Color[Colors.Length]);
 				}
 			}
 

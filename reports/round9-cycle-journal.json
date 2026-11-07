@@ -1495,6 +1495,36 @@
       "before_sha256": "6252c275d94c114e46e6c08edb084f2a62e2cbd63ea5ea55e3e774b69f89e5c2",
       "after_measurement": "reports\\round9-cycle39-after-measurement.json",
       "after_sha256": "950bf7beb83891d159f3a677275b0fd84044e20b16fcff12b62acd73252fc465"
+    },
+    {
+      "cycle": 51,
+      "label": "cycle40",
+      "phase": "D",
+      "primary_target": "kairo.unity.ui.Graphics/RenderPass::Init(kairo.unity.ui.Graphics,kairo.unity.graphics.Material,UnityEngine.Color[])->System.Void",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "d9-calculated-field-outer-result-compositions",
+      "assembly": "KairoLibrary",
+      "pair": "ldarg.0=>DELETION_POINT field outer cache result assignment",
+      "hypothesis": "Fuse adjacent named Color array and field store into instance-field outer indexer assignment, retaining one synthetic Color array temp and original receiver stack order",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 2,
+          "il_bytes_gained": 425
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 2,
+      "il_bytes_gained": 425,
+      "before_measurement": "reports\\round9-cycle40-before-measurement.json",
+      "before_sha256": "7b82c4abd98ea950185a009956a85fc41057cb3671a8d7eb3bae577f812abba8",
+      "after_measurement": "reports\\round9-cycle40-after-measurement.json",
+      "after_sha256": "5bff2e6901c7f6ecd81a47b92ac193437b5b5faac281bfbc60222d2761596544"
     }
   ],
   "consecutive_zero_cycles": 0

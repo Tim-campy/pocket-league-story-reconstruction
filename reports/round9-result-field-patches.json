@@ -1,0 +1,311 @@
+{
+  "operation": "calculated-field-outer-result-compositions",
+  "family": "d9-calculated-field-outer-result-compositions",
+  "calculator_sha256": "4243b6cf8582b0dd23a3a588ecbcb8c1d3abec5c9e0861ab6400591a6ba5b253",
+  "dependency_sha256": {
+    "tools/round9_result_field_source.py": "143f419360e1e702e3bddfa9b79e8c25461d139d146030f0fd75aa7882cb540c",
+    "tools/round9_result_field_fixtures.py": "4e16618bfc7955f53abb8ce4b371e4b04c551b512d57994dae72eda5a55f40bc",
+    "tools/round9_result_field_calculate.py": "4243b6cf8582b0dd23a3a588ecbcb8c1d3abec5c9e0861ab6400591a6ba5b253",
+    "tools/Round8RoslynModel.cs": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+    "tools/round8_roslyn_model.py": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+    "tools/fixtures/round9-result-field/FixtureResultField.cs": "dc3214c4fe29df15be09ac0380e843f9e27c377b92c58f22f399242ce9b81f41"
+  },
+  "evidence_sha256": {
+    "reports/round9-result-field-fixtures.json": "5fa111cb792b05b72baad0e9ec8e4b5fe9d28c5a22d835d1f8d68619ae65eb30"
+  },
+  "baseline": "build/round9/cycles/cycle39/after/KairoLibrary",
+  "game_compilations": 0,
+  "adopted": false,
+  "body_oracle": "UNKNOWN",
+  "patches": [
+    {
+      "rule": "d9-calculated-field-outer-result-compositions",
+      "method_id": "kairo.unity.ui.Graphics/RenderPass::Init(kairo.unity.ui.Graphics,kairo.unity.graphics.Material,UnityEngine.Color[])->System.Void",
+      "logical_path": "src/KairoLibrary/kairo/unity/ui/Graphics.cs",
+      "start": 2138,
+      "end": 2883,
+      "before": "public void Init(Graphics g, kairo.unity.graphics.Material material, params Color[] colors)\r\n\t\t\t{\r\n\t\t\t\tg_ = g;\r\n\t\t\t\tRenderOperator = 0;\r\n\t\t\t\tRenderSrcRatio = 255;\r\n\t\t\t\tRenderDstRatio = 0;\r\n\t\t\t\tpushBlendColor_ = false;\r\n\t\t\t\tcolorRatio_ = 255;\r\n\t\t\t\talphaRatio_ = 255;\r\n\t\t\t\tMaterial = material;\r\n\t\t\t\topaqueTransOrder_ = -1;\r\n\t\t\t\tif (colors.Length == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = DefaultColors;\r\n\t\t\t\t}\r\n\t\t\t\telse if (colors.Length == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = OneColors;\r\n\t\t\t\t\tOneColors[0] = colors[0];\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = colors;\r\n\t\t\t\t}\r\n\t\t\t\tif (!ResultColors.TryGetValue(Colors.Length, out resultColors_))\r\n\t\t\t\t{\r\n\t\t\t\t\tColor[] array = (ResultColors[Colors.Length] = new Color[Colors.Length]);\r\n\t\t\t\t\tresultColors_ = array;\r\n\t\t\t\t}\r\n\t\t\t}",
+      "after": "public void Init(Graphics g, kairo.unity.graphics.Material material, params Color[] colors)\r\n\t\t\t{\r\n\t\t\t\tg_ = g;\r\n\t\t\t\tRenderOperator = 0;\r\n\t\t\t\tRenderSrcRatio = 255;\r\n\t\t\t\tRenderDstRatio = 0;\r\n\t\t\t\tpushBlendColor_ = false;\r\n\t\t\t\tcolorRatio_ = 255;\r\n\t\t\t\talphaRatio_ = 255;\r\n\t\t\t\tMaterial = material;\r\n\t\t\t\topaqueTransOrder_ = -1;\r\n\t\t\t\tif (colors.Length == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = DefaultColors;\r\n\t\t\t\t}\r\n\t\t\t\telse if (colors.Length == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = OneColors;\r\n\t\t\t\t\tOneColors[0] = colors[0];\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = colors;\r\n\t\t\t\t}\r\n\t\t\t\tif (!ResultColors.TryGetValue(Colors.Length, out resultColors_))\r\n\t\t\t\t{\r\n\t\t\t\t\tresultColors_ = (ResultColors[Colors.Length] = new Color[Colors.Length]);\r\n\t\t\t\t}\r\n\t\t\t}",
+      "model_source_sha256": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+      "client_sha256": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+      "calculator_sha256": "4243b6cf8582b0dd23a3a588ecbcb8c1d3abec5c9e0861ab6400591a6ba5b253",
+      "dependency_sha256": {
+        "tools/round9_result_field_source.py": "143f419360e1e702e3bddfa9b79e8c25461d139d146030f0fd75aa7882cb540c",
+        "tools/round9_result_field_fixtures.py": "4e16618bfc7955f53abb8ce4b371e4b04c551b512d57994dae72eda5a55f40bc",
+        "tools/round9_result_field_calculate.py": "4243b6cf8582b0dd23a3a588ecbcb8c1d3abec5c9e0861ab6400591a6ba5b253",
+        "tools/Round8RoslynModel.cs": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+        "tools/round8_roslyn_model.py": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+        "tools/fixtures/round9-result-field/FixtureResultField.cs": "dc3214c4fe29df15be09ac0380e843f9e27c377b92c58f22f399242ce9b81f41"
+      },
+      "evidence_sha256": {
+        "reports/round9-result-field-fixtures.json": "5fa111cb792b05b72baad0e9ec8e4b5fe9d28c5a22d835d1f8d68619ae65eb30"
+      },
+      "source_file_sha256": "b0d08fa0491f42007bc331f3d01b14b76968ad52c931e6072a7f4bc1e1c94c2a",
+      "source_text_sha256": "b0d08fa0491f42007bc331f3d01b14b76968ad52c931e6072a7f4bc1e1c94c2a",
+      "complete": true,
+      "predicted_types": [
+        "UnityEngine.Color[]"
+      ],
+      "source_only": true,
+      "source_snapshot": "build/round9/cycles/cycle39/after/KairoLibrary",
+      "original_dump_sha256": "d3340a2a774d1c4a604c750ca0e7b36b5fbb15da96a4d0dabc60033066dc844a",
+      "own_dump_sha256": "90bf707dff206e54783b8019827adab3eb2883c95eddf54b5ecd288291d1dbe4",
+      "own_compilation_receipt_sha256": "dfcd8846dfd21fa91738e6b91fe0602ec1dd7c9ba4e1a502894b78e9cbcf1843"
+    },
+    {
+      "rule": "d9-calculated-field-outer-result-compositions",
+      "method_id": "kairo.unity.ui.Graphics/RenderPass::Init(kairo.unity.ui.Graphics,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,UnityEngine.Color[])->System.Void",
+      "logical_path": "src/KairoLibrary/kairo/unity/ui/Graphics.cs",
+      "start": 3166,
+      "end": 4073,
+      "before": "public void Init(Graphics g, int renderOperator, int renderSrcRatio, int renderDstRatio, int colorRatio, int alphaRatio, params Color[] colors)\r\n\t\t\t{\r\n\t\t\t\tg_ = g;\r\n\t\t\t\tRenderOperator = renderOperator;\r\n\t\t\t\tRenderSrcRatio = renderSrcRatio;\r\n\t\t\t\tRenderDstRatio = renderDstRatio;\r\n\t\t\t\tColors = ((colors.Length == 0) ? DefaultColors : colors);\r\n\t\t\t\tpushBlendColor_ = false;\r\n\t\t\t\tcolorRatio_ = colorRatio;\r\n\t\t\t\talphaRatio_ = alphaRatio;\r\n\t\t\t\tMaterial = null;\r\n\t\t\t\topaqueTransOrder_ = -1;\r\n\t\t\t\tif (colors.Length == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = DefaultColors;\r\n\t\t\t\t}\r\n\t\t\t\telse if (colors.Length == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = OneColors;\r\n\t\t\t\t\tOneColors[0] = colors[0];\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = colors;\r\n\t\t\t\t}\r\n\t\t\t\tif (!ResultColors.TryGetValue(Colors.Length, out resultColors_))\r\n\t\t\t\t{\r\n\t\t\t\t\tColor[] array = (ResultColors[Colors.Length] = new Color[Colors.Length]);\r\n\t\t\t\t\tresultColors_ = array;\r\n\t\t\t\t}\r\n\t\t\t}",
+      "after": "public void Init(Graphics g, int renderOperator, int renderSrcRatio, int renderDstRatio, int colorRatio, int alphaRatio, params Color[] colors)\r\n\t\t\t{\r\n\t\t\t\tg_ = g;\r\n\t\t\t\tRenderOperator = renderOperator;\r\n\t\t\t\tRenderSrcRatio = renderSrcRatio;\r\n\t\t\t\tRenderDstRatio = renderDstRatio;\r\n\t\t\t\tColors = ((colors.Length == 0) ? DefaultColors : colors);\r\n\t\t\t\tpushBlendColor_ = false;\r\n\t\t\t\tcolorRatio_ = colorRatio;\r\n\t\t\t\talphaRatio_ = alphaRatio;\r\n\t\t\t\tMaterial = null;\r\n\t\t\t\topaqueTransOrder_ = -1;\r\n\t\t\t\tif (colors.Length == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = DefaultColors;\r\n\t\t\t\t}\r\n\t\t\t\telse if (colors.Length == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = OneColors;\r\n\t\t\t\t\tOneColors[0] = colors[0];\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tColors = colors;\r\n\t\t\t\t}\r\n\t\t\t\tif (!ResultColors.TryGetValue(Colors.Length, out resultColors_))\r\n\t\t\t\t{\r\n\t\t\t\t\tresultColors_ = (ResultColors[Colors.Length] = new Color[Colors.Length]);\r\n\t\t\t\t}\r\n\t\t\t}",
+      "model_source_sha256": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+      "client_sha256": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+      "calculator_sha256": "4243b6cf8582b0dd23a3a588ecbcb8c1d3abec5c9e0861ab6400591a6ba5b253",
+      "dependency_sha256": {
+        "tools/round9_result_field_source.py": "143f419360e1e702e3bddfa9b79e8c25461d139d146030f0fd75aa7882cb540c",
+        "tools/round9_result_field_fixtures.py": "4e16618bfc7955f53abb8ce4b371e4b04c551b512d57994dae72eda5a55f40bc",
+        "tools/round9_result_field_calculate.py": "4243b6cf8582b0dd23a3a588ecbcb8c1d3abec5c9e0861ab6400591a6ba5b253",
+        "tools/Round8RoslynModel.cs": "c8a09759ba73e1282e0bdd4ab8e032769cf8cdfa07b66b503d2fde58a91d8e81",
+        "tools/round8_roslyn_model.py": "cd0da00da61ca285645beab70eb337b38a8b5a5c143cd1eced5a034e31777c10",
+        "tools/fixtures/round9-result-field/FixtureResultField.cs": "dc3214c4fe29df15be09ac0380e843f9e27c377b92c58f22f399242ce9b81f41"
+      },
+      "evidence_sha256": {
+        "reports/round9-result-field-fixtures.json": "5fa111cb792b05b72baad0e9ec8e4b5fe9d28c5a22d835d1f8d68619ae65eb30"
+      },
+      "source_file_sha256": "b0d08fa0491f42007bc331f3d01b14b76968ad52c931e6072a7f4bc1e1c94c2a",
+      "source_text_sha256": "b0d08fa0491f42007bc331f3d01b14b76968ad52c931e6072a7f4bc1e1c94c2a",
+      "complete": true,
+      "predicted_types": [
+        "UnityEngine.Color[]"
+      ],
+      "source_only": true,
+      "source_snapshot": "build/round9/cycles/cycle39/after/KairoLibrary",
+      "original_dump_sha256": "d3340a2a774d1c4a604c750ca0e7b36b5fbb15da96a4d0dabc60033066dc844a",
+      "own_dump_sha256": "90bf707dff206e54783b8019827adab3eb2883c95eddf54b5ecd288291d1dbe4",
+      "own_compilation_receipt_sha256": "dfcd8846dfd21fa91738e6b91fe0602ec1dd7c9ba4e1a502894b78e9cbcf1843"
+    }
+  ],
+  "proofs": [
+    {
+      "method_id": "kairo.unity.ui.Graphics/RenderPass::Init(kairo.unity.ui.Graphics,kairo.unity.graphics.Material,UnityEngine.Color[])->System.Void",
+      "original_types": [
+        "UnityEngine.Color[]"
+      ],
+      "prediction": {
+        "method_id": "kairo.unity.ui.Graphics/RenderPass::Init(kairo.unity.ui.Graphics,kairo.unity.graphics.Material,UnityEngine.Color[])->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "UnityEngine.Color[]"
+        ],
+        "variables": [
+          {
+            "name": "$assignment-value",
+            "type": "UnityEngine.Color[]",
+            "kind": "emit-temporary",
+            "start": 2785,
+            "end": 2839,
+            "slot": 0,
+            "block": -1,
+            "type_source": null,
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "storage_proofs": [],
+            "initializer": null,
+            "next_statement_start": -1,
+            "next_statement_end": -1,
+            "next_statement_kind": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 2234,
+            "end": 2854,
+            "parent": -1,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 2493,
+            "end": 2531,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 2571,
+            "end": 2637,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 2653,
+            "end": 2684,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 2760,
+            "end": 2848,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "modeled_lowerings": [],
+        "unsupported_reasons": [],
+        "declaration_start": 2138,
+        "declaration_end": 2854,
+        "body_start": 2234,
+        "body_end": 2854
+      },
+      "types_equal": true,
+      "eligible_under_user_model_policy": true,
+      "before_inventory": [
+        {},
+        {
+          "Init": 1,
+          "TryGetValue": 1
+        }
+      ],
+      "after_inventory": [
+        {},
+        {
+          "Init": 1,
+          "TryGetValue": 1
+        }
+      ]
+    },
+    {
+      "method_id": "kairo.unity.ui.Graphics/RenderPass::Init(kairo.unity.ui.Graphics,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,UnityEngine.Color[])->System.Void",
+      "original_types": [
+        "UnityEngine.Color[]"
+      ],
+      "prediction": {
+        "method_id": "kairo.unity.ui.Graphics/RenderPass::Init(kairo.unity.ui.Graphics,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,UnityEngine.Color[])->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "UnityEngine.Color[]"
+        ],
+        "variables": [
+          {
+            "name": "$assignment-value",
+            "type": "UnityEngine.Color[]",
+            "kind": "emit-temporary",
+            "start": 3975,
+            "end": 4029,
+            "slot": 0,
+            "block": -1,
+            "type_source": null,
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "storage_proofs": [],
+            "initializer": null,
+            "next_statement_start": -1,
+            "next_statement_end": -1,
+            "next_statement_kind": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 3314,
+            "end": 4044,
+            "parent": -1,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 3683,
+            "end": 3721,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 3761,
+            "end": 3827,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 3843,
+            "end": 3874,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 3950,
+            "end": 4038,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "modeled_lowerings": [],
+        "unsupported_reasons": [],
+        "declaration_start": 3166,
+        "declaration_end": 4044,
+        "body_start": 3314,
+        "body_end": 4044
+      },
+      "types_equal": true,
+      "eligible_under_user_model_policy": true,
+      "before_inventory": [
+        {},
+        {
+          "Init": 1,
+          "TryGetValue": 1
+        }
+      ],
+      "after_inventory": [
+        {},
+        {
+          "Init": 1,
+          "TryGetValue": 1
+        }
+      ]
+    }
+  ],
+  "potential_methods": 2,
+  "potential_original_IL_bytes": 425,
+  "novelty": "Two own RenderPass.Init overloads place instance field outside used ResultColors setter assignment, removing intermediate named array but retaining required synthetic temp. Distinct from indexer-local-inner."
+}
