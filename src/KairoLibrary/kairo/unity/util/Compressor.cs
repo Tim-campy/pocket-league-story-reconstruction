@@ -59,7 +59,7 @@ namespace kairo.unity.util
 			}
 			long num = JSystem.CurrentTimeMillis();
 			global::kairo.unity.util.FastVector fastVector;
-global::kairo.unity.util.Compressor.Node node;
+
 for (int i = 0; i < weights_.Length; i++)
 			{
 				weights_[i] = 0;
@@ -78,7 +78,7 @@ for (int i = 0; i < weights_.Length; i++)
 			{
 				if (weights_[l] > 0)
 				{
-					node = new Node(null, null, null, weights_[l], l);
+					Node node = new Node(null, null, null, weights_[l], l);
 					fastVector.AddElement(node);
 					nodeTbl_[l] = node;
 				}
@@ -86,7 +86,8 @@ for (int i = 0; i < weights_.Length; i++)
 			if (fastVector.elementCount == 1)
 			{
 				Node node2 = (Node)fastVector.elementData[0];
-				Node node3 = (node2.parent_ = new Node(null, node2, node2, node2.weight_ + node2.weight_, 0));
+				Node node3 = new Node(null, node2, node2, node2.weight_ + node2.weight_, 0);
+node2.parent_ = node3;
 				fastVector.elementData[0] = node3;
 			}
 			else
@@ -96,7 +97,10 @@ for (int i = 0; i < weights_.Length; i++)
 					int[] array = _getLowestNode(fastVector);
 					Node node4 = (Node)fastVector.elementData[array[1]];
 					Node node5 = (Node)fastVector.elementData[array[0]];
-					fastVector.AddElement(node5.parent_ = (node4.parent_ = new Node(null, node4, node5, node4.weight_ + node5.weight_, 0)));
+					Node recoveredCombinedNode = new Node(null, node4, node5, node4.weight_ + node5.weight_, 0);
+node4.parent_ = recoveredCombinedNode;
+node5.parent_ = recoveredCombinedNode;
+fastVector.AddElement(recoveredCombinedNode);
 					fastVector.RemoveElement(node4);
 					fastVector.RemoveElement(node5);
 				}
@@ -147,13 +151,14 @@ for (int i = 0; i < weights_.Length; i++)
 				byte[] data2 = _getBitBuffer();
 				StreamUtil.WriteInt(byteArrayOutputStream, bitPoint_);
 				StreamUtil.Write(byteArrayOutputStream, data2);
-				return byteArrayOutputStream.ToByteArray();
+				array2 = byteArrayOutputStream.ToByteArray();
 			}
 			finally
 			{
 				byteArrayOutputStream?.Close();
 				byteArrayOutputStream = null;
 			}
+return array2;
 		}
 
 		public static byte[] Expand(byte[] data)
@@ -245,7 +250,8 @@ for (int i = 0; i < weights_.Length; i++)
 					node.left_ = _readNodeFromBitBuffer();
 					node.left_.parent_ = node;
 				}
-				if (_readBit() == 0)
+				num = _readBit();
+if (num == 0)
 				{
 					node.right_ = _readNodeFromBitBuffer();
 					node.right_.parent_ = node;

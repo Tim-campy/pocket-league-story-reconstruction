@@ -2,22 +2,22 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,131 de 5,245 métodos matched (97.83%).** 871,497 bytes de IL nos assemblies alvo.
-799,117 bytes IL matched (91.69%).
+**5,134 de 5,245 métodos matched (97.88%).** 871,497 bytes de IL nos assemblies alvo.
+800,141 bytes IL matched (91.81%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3173 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3176 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 113 |
+| decompiled | 110 |
 | equivalent | 0 |
-| matched | 5131 |
+| matched | 5134 |
 | external | 0 |
 
 ## Assemblies
@@ -25,7 +25,7 @@ KairoLibrary: 3173 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
 | `Assembly-CSharp` | 1958 | 601603 | 1884 / 96.22% | 541588 / 90.02% |
-| `KairoLibrary` | 3287 | 269894 | 3247 / 98.78% | 257529 / 95.42% |
+| `KairoLibrary` | 3287 | 269894 | 3250 / 98.87% | 258553 / 95.80% |
 
 ## Namespaces
 
@@ -66,8 +66,8 @@ KairoLibrary: 3173 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.system.notification.ui` | 24 | 911 | 24 / 100.00% | 911 / 100.00% |
 | `kairo.unity.system.payment` | 14 | 752 | 14 / 100.00% | 752 / 100.00% |
 | `kairo.unity.system.tapjoy.ui` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
-| `kairo.unity.ui` | 1021 | 100597 | 1008 / 98.73% | 96115 / 95.54% |
-| `kairo.unity.util` | 518 | 43955 | 512 / 98.84% | 41067 / 93.43% |
+| `kairo.unity.ui` | 1021 | 100597 | 1009 / 98.82% | 96264 / 95.69% |
+| `kairo.unity.util` | 518 | 43955 | 514 / 99.23% | 41942 / 95.42% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
 | `main` | 223 | 35448 | 216 / 96.86% | 31403 / 88.59% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
@@ -423,7 +423,7 @@ KairoLibrary: 3173 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.ImageAtlasManager+<>c__DisplayClass7_0` | 2 | 137 | 2 / 100.00% | 137 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.ImageTransform` | 16 | 930 | 16 / 100.00% | 930 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.KeyEvent` | 4 | 37 | 4 / 100.00% | 37 / 100.00% |
-| `KairoLibrary::kairo.unity.ui.Matrix` | 34 | 2139 | 33 / 97.06% | 1990 / 93.03% |
+| `KairoLibrary::kairo.unity.ui.Matrix` | 34 | 2139 | 34 / 100.00% | 2139 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Pictograph` | 16 | 199 | 16 / 100.00% | 199 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.ResourceManager` | 49 | 3927 | 49 / 100.00% | 3927 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.ResourceManager+<>c__DisplayClass51_0` | 3 | 1995 | 3 / 100.00% | 1995 / 100.00% |
@@ -453,7 +453,7 @@ KairoLibrary: 3173 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.util.BitUtil` | 21 | 316 | 21 / 100.00% | 316 / 100.00% |
 | `KairoLibrary::kairo.unity.util.CRC64` | 5 | 152 | 5 / 100.00% | 152 / 100.00% |
 | `KairoLibrary::kairo.unity.util.ClockTime` | 4 | 41 | 4 / 100.00% | 41 / 100.00% |
-| `KairoLibrary::kairo.unity.util.Compressor` | 13 | 1663 | 11 / 84.62% | 788 / 47.38% |
+| `KairoLibrary::kairo.unity.util.Compressor` | 13 | 1663 | 13 / 100.00% | 1663 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Compressor+Node` | 2 | 51 | 2 / 100.00% | 51 / 100.00% |
 | `KairoLibrary::kairo.unity.util.DisplayMetrics` | 17 | 778 | 17 / 100.00% | 778 / 100.00% |
 | `KairoLibrary::kairo.unity.util.EncodeUtil` | 25 | 719 | 25 / 100.00% | 719 / 100.00% |
