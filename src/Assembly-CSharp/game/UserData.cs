@@ -4777,11 +4777,7 @@ continue; }
 					tAreas_[n][num6].SetTrainingArea(tModeList_[n][num6]);
 				}
 			}
-			Vector[] array = new Vector[2]
-			{
-				new Vector(),
-				new Vector()
-			};
+			Vector[] array = new Vector[2]; array[0] = new Vector(); array[1] = new Vector();
 			int[] array2 = new int[2];
 			for (int num7 = 0; num7 < tPlayers_.Length; num7++)
 			{
@@ -4808,8 +4804,7 @@ continue; }
 					for (int num10 = array[num8].Size() - 1; num10 >= 0; num10--)
 					{
 						TPlayer tPlayer = (TPlayer)array[num8].ElementAt(num10);
-						if (tPlayer.role_ == 0)
-						{
+						if (tPlayer.role_ != 0) { } else {
 							tAreas_[num8][num9].tGroupAreas_[0].tPlayerList_.AddElement(tPlayer);
 							array[num8].RemoveElementAt(num10);
 							break;
@@ -4933,15 +4928,9 @@ continue; }
 				for (int num27 = array[num24].Size() - 1; num27 >= 0; num27--)
 				{
 					TPlayer obj4 = (TPlayer)array[num24].ElementAt(num27);
-					switch ((num25 >= num26) ? GameUtil.Random(2) : 0)
-					{
-					case 0:
-						tAreas_[num24][0].tGroupAreas_[0].tPlayerList_.AddElement(obj4);
-						break;
-					case 1:
-						tAreas_[num24][1].tGroupAreas_[0].tPlayerList_.AddElement(obj4);
-						break;
-					}
+					if (num25 < num26) { num23 = 0; } else { num23 = GameUtil.Random(2); }
+if (num23 == 0) { tAreas_[num24][0].tGroupAreas_[0].tPlayerList_.AddElement(obj4); }
+else if (num23 == 1) { tAreas_[num24][1].tGroupAreas_[0].tPlayerList_.AddElement(obj4); }
 					array[num24].RemoveElementAt(num27);
 				}
 			}
