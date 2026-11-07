@@ -374,8 +374,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 						tPlayer7.AddCommandLifting(0);
 					}
 				}
-				else if (tArea_.tMode_ == 2) { } else if (tArea_.tMode_ == 4) { } else if ((tArea_.tMode_ != 3)) {
-				}
+				else if (tArea_.tMode_ == 2) { } else if (tArea_.tMode_ == 4) { } else if (tArea_.tMode_ == 3) { }
 			}
 			else if (state_ == 13)
 			{
@@ -386,23 +385,16 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 					tPlayer8.AddCommandWait(10);
 				}
 			}
-			else
-			{
-				if (state_ != 14)
-				{
-					return;
-				}
+			else if (state_ == 14) {
 				int num4 = 0;
 				for (int num5 = 0; num5 < tPlayerList_.Size(); num5++)
 				{
 					TPlayer tPlayer9 = (TPlayer)tPlayerList_.ElementAt(num5);
 					if (tPlayer9.oldTrainingId_[1] == 0)
 					{
-						if (tPlayer9.trainingId_[1] == 0)
-						{
+						if (tPlayer9.trainingId_[1] == 0) {
 							tPlayer9.AddCommandTenantIn();
-							continue;
-						}
+							} else {
 						tPlayer9.pos_.Set(MapMain.MOVE_POINT[7]);
 						tPlayer9.AddCommandWait(num4);
 						tPlayer9.AddCommandFlagOff(1);
@@ -418,7 +410,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 						Vector3D startTrainingGatherPos = tArea_.GetStartTrainingGatherPos(this, tPlayer9);
 						tPlayer9.AddCommandTrainigMoveGoalPosSet((int)startTrainingGatherPos.x_, (int)startTrainingGatherPos.z_);
 						num4 += 6;
-					}
+					}}
 					else if (tPlayer9.trainingId_[1] == 0)
 					{
 						if (tPlayer9.trainingId_[2] == 0)
@@ -535,27 +527,14 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 				filed_gpos[2] = new Vector3D(vector3D4.x_ + num7 / 2f, 0f, vector3D4.z_ - num8 / 2f);
 				filed_gpos[3] = new Vector3D(vector3D4.x_ - num7 / 2f, 0f, vector3D4.z_ - num8 / 2f);
 			}
-			else
-			{
-				if (tArea_.tMode_ != 3)
-				{
-					return;
-				}
+			else if (tArea_.tMode_ == 3) {
 				traPos_ = new Vector3D[3];
 				for (int j = 0; j < traPos_.Length; j++)
 				{
 					traPos_[j] = new Vector3D();
 					traPos_[j].x_ = centerPos_.x_;
 					int num9 = 90;
-					switch (j)
-					{
-					case 1:
-						num9 = 70;
-						break;
-					case 2:
-						num9 = 15;
-						break;
-					}
+					if (j == 1) { num9 = 70; } else if (j == 2) { num9 = 15; }
 					if (tArea_.pId_ == 3)
 					{
 						num9 = 100 - num9;
@@ -574,7 +553,7 @@ apdat_.InsertGameObject(8, 0, camera_pos[1], 39, 37, 0, camera_pos[0], camera_po
 				float num13 = 24f;
 				if (tArea_.pId_ == 3)
 				{
-					num13 = 0f - num13;
+					num13 = -num13;
 				}
 				goal_gpos[0] = new Vector3D(vector3D6.x_ - num12 / 2f, 0f, vector3D6.z_);
 				goal_gpos[1] = new Vector3D(vector3D6.x_ + num12 / 2f, 0f, vector3D6.z_);

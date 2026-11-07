@@ -1,0 +1,27 @@
+// NOT_TESTED. Proposed manual control; no extra empty else after gameState.
+public class Fixture
+{
+    public class Game { public int gameState_, state_; }
+    public class Data { public Game gm_ = new Game(); }
+    public class Player { public int sink_; public void Update() { sink_++; } }
+    public Data udat_ = new Data();
+    public Player[] players_ = new Player[4];
+    public int team_id_;
+    public bool active_;
+    public void Run()
+    {
+        if (udat_.gm_.state_ == 0)
+        {
+            if (active_) { players_[0].Update(); }
+            else if (udat_.gm_.gameState_ == team_id_) { }
+            else if (udat_.gm_.gameState_ == 1 - team_id_) { }
+            for (int l = 0; l < players_.Length; l++) { players_[l].Update(); }
+        }
+        else if (udat_.gm_.state_ == 7) { }
+        else if (udat_.gm_.state_ == 6) { }
+        else if (udat_.gm_.state_ == 8)
+        {
+            for (int num4 = 0; num4 < players_.Length; num4++) { players_[num4].Update(); }
+        }
+    }
+}

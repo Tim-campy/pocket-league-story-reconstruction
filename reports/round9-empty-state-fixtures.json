@@ -1,0 +1,81 @@
+{
+  "operation": "smcs-empty-state-and-local-join-own-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "references_sha256": {
+    "original/extracted/assets/bin/Data/Managed/mscorlib.dll": "7f16171cf5f87ca1e4c229727526d2fbc786079fc0c960f36197013ea0d986e1",
+    "original/extracted/assets/bin/Data/Managed/System.Core.dll": "104278a0bf67b4de8fd1e910e3292a3ef51808ebee7a5f2a229125f18463c98c"
+  },
+  "producer_sha256": "55cc29d90d805251cd7b84d203fc3f0dd4ddb1cffeae28b6852aa207bf17051f",
+  "driver_sha256": "5473c419e87311e9a09d2f18cb44f425c441dfbd0ec839d32ded66115a815307",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 9,
+  "negatives": [
+    "setpos-other-case",
+    "setpos-other-phase",
+    "setpos-other-negation",
+    "change-nonempty-last-arm",
+    "change-tenant-continue-effects",
+    "change-wrong-loop-owner",
+    "team-nonempty-else",
+    "team-other-state-complement",
+    "team-other-final-state"
+  ],
+  "fixtures": [
+    {
+      "case": "setpos",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": false,
+      "before_local_count": 4,
+      "after_local_count": 3,
+      "before": "public void Run()\n    {\n        if (tArea_.tMode_ == 1) { sink_ = 1f; }\n        else\n        {\n            if (tArea_.tMode_ != 3) { return; }\n            for (int j = 0; j < 3; j++)\n            {\n                int num9 = 90;\n                switch (j)\n                {\n                    case 1: num9 = 70; break;\n                    case 2: num9 = 15; break;\n                }\n                sink_ = num9;\n            }\n            float num13 = 24f;\n            if (tArea_.tMode_ == 3) { num13 = 0f - num13; }\n            sink_ = num13;\n        }\n    }",
+      "after": "public void Run()\n    {\n        if (tArea_.tMode_ == 1) { sink_ = 1f; }\n        else if (tArea_.tMode_ == 3) {\n            for (int j = 0; j < 3; j++)\n            {\n                int num9 = 90;\n                if (j == 1) { num9 = 70; } else if (j == 2) { num9 = 15; }\n                sink_ = num9;\n            }\n            float num13 = 24f;\n            if (tArea_.tMode_ == 3) { num13 = -num13; }\n            sink_ = num13;\n        }\n    }",
+      "manual_control": "public void Run()\n    {\n        if (tArea_.tMode_ == 1) { sink_ = 1f; }\n        else if (tArea_.tMode_ == 3)\n        {\n            for (int j = 0; j < 3; j++)\n            {\n                int num9 = 90;\n                if (j == 1) { num9 = 70; }\n                else if (j == 2) { num9 = 15; }\n                sink_ = num9;\n            }\n            float num13 = 24f;\n            if (tArea_.tMode_ == 3) { num13 = -num13; }\n            sink_ = num13;\n        }\n    }",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    },
+    {
+      "case": "change",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before_local_count": 5,
+      "after_local_count": 5,
+      "before": "public void Run()\n    {\n        if (state_ == 0)\n        {\n            if (tArea_.tMode_ == 2) { }\n            else if (tArea_.tMode_ == 4) { }\n            else if ((tArea_.tMode_ != 3)) { }\n        }\n        else\n        {\n            if (state_ != 14) { return; }\n            int num4 = 0;\n            for (int num5 = 0; num5 < list_.Length; num5++)\n            {\n                Player tPlayer9 = list_[num5];\n                if (tPlayer9.oldTrainingId_[1] == 0)\n                {\n                    if (tPlayer9.trainingId_[1] == 0)\n                    {\n                        tPlayer9.AddCommandTenantIn();\n                        continue;\n                    }\n                    Vector3D startTrainingGatherPos = new Vector3D();\n                    startTrainingGatherPos.value_ = num4;\n                    tPlayer9.Work(startTrainingGatherPos);\n                    num4 += 6;\n                }\n                else if (tPlayer9.trainingId_[1] == 0)\n                {\n                    tPlayer9.AddCommandTenantIn();\n                }\n                else\n                {\n                    Vector3D startTrainingGatherPos2 = new Vector3D();\n                    tPlayer9.Work(startTrainingGatherPos2);\n                }\n            }\n        }\n    }",
+      "after": "public void Run()\n    {\n        if (state_ == 0)\n        {\n            if (tArea_.tMode_ == 2) { }\n            else if (tArea_.tMode_ == 4) { }\n            else if (tArea_.tMode_ == 3) { }\n        }\n        else if (state_ == 14) {\n            int num4 = 0;\n            for (int num5 = 0; num5 < list_.Length; num5++)\n            {\n                Player tPlayer9 = list_[num5];\n                if (tPlayer9.oldTrainingId_[1] == 0)\n                {\n                    if (tPlayer9.trainingId_[1] == 0) {\n                        tPlayer9.AddCommandTenantIn();\n                        } else {\n                    Vector3D startTrainingGatherPos = new Vector3D();\n                    startTrainingGatherPos.value_ = num4;\n                    tPlayer9.Work(startTrainingGatherPos);\n                    num4 += 6;\n                }}\n                else if (tPlayer9.trainingId_[1] == 0)\n                {\n                    tPlayer9.AddCommandTenantIn();\n                }\n                else\n                {\n                    Vector3D startTrainingGatherPos2 = new Vector3D();\n                    tPlayer9.Work(startTrainingGatherPos2);\n                }\n            }\n        }\n    }",
+      "manual_control": "public void Run()\n    {\n        if (state_ == 0)\n        {\n            if (tArea_.tMode_ == 2) { }\n            else if (tArea_.tMode_ == 4) { }\n            else if (tArea_.tMode_ == 3) { }\n        }\n        else if (state_ == 14)\n        {\n            int num4 = 0;\n            for (int num5 = 0; num5 < list_.Length; num5++)\n            {\n                Player tPlayer9 = list_[num5];\n                if (tPlayer9.oldTrainingId_[1] == 0)\n                {\n                    if (tPlayer9.trainingId_[1] == 0)\n                    {\n                        tPlayer9.AddCommandTenantIn();\n                    }\n                    else\n                    {\n                        Vector3D startTrainingGatherPos = new Vector3D();\n                        startTrainingGatherPos.value_ = num4;\n                        tPlayer9.Work(startTrainingGatherPos);\n                        num4 += 6;\n                    }\n                }\n                else if (tPlayer9.trainingId_[1] == 0)\n                {\n                    tPlayer9.AddCommandTenantIn();\n                }\n                else\n                {\n                    Vector3D startTrainingGatherPos2 = new Vector3D();\n                    tPlayer9.Work(startTrainingGatherPos2);\n                }\n            }\n        }\n    }",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    },
+    {
+      "case": "team",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before_local_count": 2,
+      "after_local_count": 2,
+      "before": "public void Run()\n    {\n        if (udat_.gm_.state_ == 0)\n        {\n            if (active_) { players_[0].Update(); }\n            else if ((udat_.gm_.gameState_ == team_id_) || (udat_.gm_.gameState_ == 1 - team_id_)) { } else { }\n            for (int l = 0; l < players_.Length; l++) { players_[l].Update(); }\n        }\n        else if (udat_.gm_.state_ != 7 && udat_.gm_.state_ != 6 && udat_.gm_.state_ == 8)\n        {\n            for (int num4 = 0; num4 < players_.Length; num4++) { players_[num4].Update(); }\n        }\n    }",
+      "after": "public void Run()\n    {\n        if (udat_.gm_.state_ == 0)\n        {\n            if (active_) { players_[0].Update(); }\n            else if (udat_.gm_.gameState_ == team_id_) { } else if (udat_.gm_.gameState_ == 1 - team_id_) { }\n            for (int l = 0; l < players_.Length; l++) { players_[l].Update(); }\n        }\n        else if (udat_.gm_.state_ == 7) { } else if (udat_.gm_.state_ == 6) { } else if (udat_.gm_.state_ == 8) {\n            for (int num4 = 0; num4 < players_.Length; num4++) { players_[num4].Update(); }\n        }\n    }",
+      "manual_control": "public void Run()\n    {\n        if (udat_.gm_.state_ == 0)\n        {\n            if (active_) { players_[0].Update(); }\n            else if (udat_.gm_.gameState_ == team_id_) { }\n            else if (udat_.gm_.gameState_ == 1 - team_id_) { }\n            for (int l = 0; l < players_.Length; l++) { players_[l].Update(); }\n        }\n        else if (udat_.gm_.state_ == 7) { }\n        else if (udat_.gm_.state_ == 6) { }\n        else if (udat_.gm_.state_ == 8)\n        {\n            for (int num4 = 0; num4 < players_.Length; num4++) { players_[num4].Update(); }\n        }\n    }",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    }
+  ],
+  "limitations": "Own source controls; removing a switch cache can change local inventory. All candidate facets must match manual control, not the old program. Continue and intermediate if join have distinct proven owners. No floating relational operator is complemented."
+}

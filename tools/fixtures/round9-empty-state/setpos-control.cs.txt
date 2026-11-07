@@ -1,0 +1,24 @@
+// NOT_TESTED. Proposed manual control, not an oracle or a measured fixture.
+public class Fixture
+{
+    public class Area { public int tMode_; }
+    public Area tArea_ = new Area();
+    public float sink_;
+    public void Run()
+    {
+        if (tArea_.tMode_ == 1) { sink_ = 1f; }
+        else if (tArea_.tMode_ == 3)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                int num9 = 90;
+                if (j == 1) { num9 = 70; }
+                else if (j == 2) { num9 = 15; }
+                sink_ = num9;
+            }
+            float num13 = 24f;
+            if (tArea_.tMode_ == 3) { num13 = -num13; }
+            sink_ = num13;
+        }
+    }
+}

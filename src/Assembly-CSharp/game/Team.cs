@@ -630,8 +630,7 @@ if (j == receiverPIdBox_.Length - 1)
 						}
 					}
 				}
-				else if ((udat_.gm_.gameState_ == team_id_) || (udat_.gm_.gameState_ == 1 - team_id_)) { } else {
-				}
+				else if (udat_.gm_.gameState_ == team_id_) { } else if (udat_.gm_.gameState_ == 1 - team_id_) { }
 				for (int l = 0; l < players_.Length; l++)
 				{
 					players_[l].Update();
@@ -663,8 +662,7 @@ if (j == receiverPIdBox_.Length - 1)
 					players_[num3].Update();
 				}
 			}
-			else if (udat_.gm_.state_ != 7 && udat_.gm_.state_ != 6 && udat_.gm_.state_ == 8)
-			{
+			else if (udat_.gm_.state_ == 7) { } else if (udat_.gm_.state_ == 6) { } else if (udat_.gm_.state_ == 8) {
 				for (int num4 = 0; num4 < players_.Length; num4++)
 				{
 					players_[num4].Update();

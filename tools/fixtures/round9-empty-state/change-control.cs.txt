@@ -1,0 +1,57 @@
+// NOT_TESTED. Proposed manual control, preserves the join before the loop join.
+public class Fixture
+{
+    public class Area { public int tMode_; }
+    public class Vector3D { public int value_; }
+    public class Player
+    {
+        public int[] oldTrainingId_ = new int[3];
+        public int[] trainingId_ = new int[3];
+        public int sink_;
+        public void AddCommandTenantIn() { sink_ = 1; }
+        public void Work(Vector3D p) { sink_ = p.value_; }
+    }
+    public Area tArea_ = new Area();
+    public int state_;
+    public Player[] list_ = new Player[4];
+    public void Run()
+    {
+        if (state_ == 0)
+        {
+            if (tArea_.tMode_ == 2) { }
+            else if (tArea_.tMode_ == 4) { }
+            else if (tArea_.tMode_ == 3) { }
+        }
+        else if (state_ == 14)
+        {
+            int num4 = 0;
+            for (int num5 = 0; num5 < list_.Length; num5++)
+            {
+                Player tPlayer9 = list_[num5];
+                if (tPlayer9.oldTrainingId_[1] == 0)
+                {
+                    if (tPlayer9.trainingId_[1] == 0)
+                    {
+                        tPlayer9.AddCommandTenantIn();
+                    }
+                    else
+                    {
+                        Vector3D startTrainingGatherPos = new Vector3D();
+                        startTrainingGatherPos.value_ = num4;
+                        tPlayer9.Work(startTrainingGatherPos);
+                        num4 += 6;
+                    }
+                }
+                else if (tPlayer9.trainingId_[1] == 0)
+                {
+                    tPlayer9.AddCommandTenantIn();
+                }
+                else
+                {
+                    Vector3D startTrainingGatherPos2 = new Vector3D();
+                    tPlayer9.Work(startTrainingGatherPos2);
+                }
+            }
+        }
+    }
+}
