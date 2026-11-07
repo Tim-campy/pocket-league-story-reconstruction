@@ -2,22 +2,22 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,107 de 5,245 métodos matched (97.37%).** 871,497 bytes de IL nos assemblies alvo.
-732,231 bytes IL matched (84.02%).
+**5,108 de 5,245 métodos matched (97.39%).** 871,497 bytes de IL nos assemblies alvo.
+734,152 bytes IL matched (84.24%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3170 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 137 |
+| decompiled | 136 |
 | equivalent | 0 |
-| matched | 5107 |
+| matched | 5108 |
 | external | 0 |
 
 ## Assemblies
@@ -25,7 +25,7 @@ KairoLibrary: 3170 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
 | `Assembly-CSharp` | 1958 | 601603 | 1863 / 95.15% | 480954 / 79.95% |
-| `KairoLibrary` | 3287 | 269894 | 3244 / 98.69% | 251277 / 93.10% |
+| `KairoLibrary` | 3287 | 269894 | 3245 / 98.72% | 253198 / 93.81% |
 
 ## Namespaces
 
@@ -66,7 +66,7 @@ KairoLibrary: 3170 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.system.notification.ui` | 24 | 911 | 24 / 100.00% | 911 / 100.00% |
 | `kairo.unity.system.payment` | 14 | 752 | 14 / 100.00% | 752 / 100.00% |
 | `kairo.unity.system.tapjoy.ui` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
-| `kairo.unity.ui` | 1021 | 100597 | 1005 / 98.43% | 89863 / 89.33% |
+| `kairo.unity.ui` | 1021 | 100597 | 1006 / 98.53% | 91784 / 91.24% |
 | `kairo.unity.util` | 518 | 43955 | 512 / 98.84% | 41067 / 93.43% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
 | `main` | 223 | 35448 | 216 / 96.86% | 31403 / 88.59% |
@@ -382,7 +382,7 @@ KairoLibrary: 3170 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.AppEvent` | 1 | 41 | 1 / 100.00% | 41 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Balloon` | 27 | 4072 | 27 / 100.00% | 4072 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Balloon+BalloonRender` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
-| `KairoLibrary::kairo.unity.ui.Canvas` | 82 | 8325 | 81 / 98.78% | 6404 / 76.92% |
+| `KairoLibrary::kairo.unity.ui.Canvas` | 82 | 8325 | 82 / 100.00% | 8325 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Canvas+<>c` | 3 | 398 | 3 / 100.00% | 398 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Canvas+<>c__DisplayClass107_0` | 2 | 75 | 2 / 100.00% | 75 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Canvas+<>c__DisplayClass152_0` | 2 | 172 | 2 / 100.00% | 172 / 100.00% |

@@ -705,8 +705,7 @@ if (Input.touchCount > 0 && IApplication.GetCurrentApp().GetTotalFrames() > 10) 
 				onTouchPointer_.TryGetValue(touch.fingerId, out value);
 				if (touch.phase == TouchPhase.Began)
 				{
-					value = new float[4];
- onTouchPointer_[touch.fingerId] = value;
+					onTouchPointer_[touch.fingerId] = (value = new float[4]);
 				}
 				if (value != null)
 				{
@@ -822,11 +821,7 @@ if (Input.touchCount > 0 && IApplication.GetCurrentApp().GetTotalFrames() > 10) 
 				}
 				OnTouchEvent(new MotionEvent(3, array9, array10, array11));
 			}
-			if (list3.Count <= 0)
-			{
-				return;
-			}
-			{
+			if (list3.Count > 0) {
 int num3 = 0;
 			if (list2.Count == 0)
 			{
