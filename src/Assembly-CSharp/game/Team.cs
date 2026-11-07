@@ -887,20 +887,17 @@ ballNearPlayer_.AddElement(player);
 float num2;
 for (int i = 0; i < players_.Length; i++)
 			{
-				{ bool recoveredCondition_24616 = players_[i].role_ != 0;
-if (recoveredCondition_24616)
-				{
+				if (players_[i].role_ == 0) { continue; }
+
 					Player player = players_[i];
-					if (player.seb_ != 12)
-					{
+if (player.seb_ == 12) { continue; }
+
 						num = (float)JMath.Sqrt((ball_.temp_pos.x_ - player.pos_.x_) * (ball_.temp_pos.x_ - player.pos_.x_) + (ball_.temp_pos.z_ - player.pos_.z_) * (ball_.temp_pos.z_ - player.pos_.z_));
 						num2 = (float)JMath.Sqrt((player.formationGo_.x_ - player.pos_.x_) * (player.formationGo_.x_ - player.pos_.x_) + (player.formationGo_.z_ - player.pos_.z_) * (player.formationGo_.z_ - player.pos_.z_));
 						player.temp_len = (w_disBoal * num + w_formation * num2) / (w_disBoal + w_formation);
 						player.temp_len = GameUtil.RateConvert(player.temp_len, 225f, 0f, 0f, 100f, true);
 						ballNearPlayer_.AddElement(player);
-					}
-				}
-}
+
 			}
 			for (int j = 0; j < ballNearPlayer_.Size() - 1; j++)
 			{

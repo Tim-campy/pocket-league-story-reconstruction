@@ -2537,8 +2537,8 @@ if ((editTest_temp.Size() > 0 && editTest_fw.Size() <= 5)) {
 				{
 					if (canvas_.CheckKeyRepeat(65536))
 					{
-						{ bool recoveredCondition_68130 = et_cur[0] % 3 == 0;
-if (recoveredCondition_68130)
+
+if (et_cur[0] % 3 == 0)
 						{
 							et_cur[0] += 2;
 						}
@@ -2546,7 +2546,7 @@ if (recoveredCondition_68130)
 						{
 							et_cur[0] = (et_cur[0] - 1 + MENU_STR.Length) % MENU_STR.Length;
 						}
-}
+
 					}
 					if (canvas_.CheckKeyRepeat(262144))
 					{
@@ -2576,8 +2576,7 @@ if (recoveredCondition_68130)
 							apdat_.Push(new SubForm(27));
 							return false;
 						}
-						if (et_cur[0] != 5)
-						{
+						if (et_cur[0] == 5) { } else {
 							if (et_cur[0] == 0)
 							{
 								if (!apdat_.CheckAlreadyEvent(161))
@@ -2865,7 +2864,7 @@ if (recoveredCondition_68130)
 					{
 						array4[0] = et_cur[2] / 10;
 						array4[1] = et_cur[2] % 10;
-					}
+					} else { }
 					et_cur[2] = et_cur[3];
 					ChangeEditPhase(2, isSoccerForm);
 				}

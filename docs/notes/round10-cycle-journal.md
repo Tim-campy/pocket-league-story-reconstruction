@@ -11,3 +11,4 @@
 | 7 | Assembly-CSharp / bne.un => beq | Restaurar por composicao os ramos vazios terminais, OR separado e cauda positiva nos seletores Int32 | Novos corpos aprovados; 6 tentativas da regra, 6 avancos | 6 | 3458 |
 | 8 | KairoLibrary / brtrue.s => ldc.i4.4 | Separar licenca zero e restaurar switch denso com bucket default nas entradas um a tres | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 1054 |
 | 9 | Assembly-CSharp / brtrue => ldc.i4.0 | Restaurar os cinco inicializadores Boolean como ternarios orientados pelo IL, inclusive DEBUG com dois ramos false | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 341 |
+| 10 | Assembly-CSharp / brtrue => ldc.i4.0 | Eliminar alias Boolean sintetico e restaurar guardas continue e ramos vazios originais como composicao por metodo | Novos corpos aprovados; 2 tentativas da regra, 2 avancos | 2 | 6470 |
