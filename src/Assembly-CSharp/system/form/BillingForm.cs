@@ -690,15 +690,15 @@ if (type_ == 0)
 						int num5 = 0;
 						for (int j = 0; j < items.Length; j++)
 						{
-							if ((items[j] == null) || (items[j].GetState() != 1)) { continue; }
-if (items[j].GetPurchase() == null) { continue; }
+							if (items[j] == null) { continue; }
+if (items[j].GetState() == 1 && items[j].GetPurchase() != null) {
 if (text2.Length() > 0)
 								{
 									text2 += "\n\n";
 								}
 text2 = text2 + items[j].GetProductId() + "\n" + items[j].GetPurchase().GetOrderId();
 num5++;
-						}
+						}}
 						PurchaseLogView purchaseLogView2 = new PurchaseLogView("現在の購入状態");
 						purchaseLogView2.SetLog(num5, text2, false);
 						purchaseLogView2.Show();
@@ -732,8 +732,7 @@ num5++;
 					return Pop();
 				}
 			}
-			else if (type_ != 4 && type_ == 5)
-			{
+			else if (type_ == 4) { } else if (type_ == 5) {
 				int num6 = 2;
 				if (canvas_.CheckKeyRepeat(131072))
 				{

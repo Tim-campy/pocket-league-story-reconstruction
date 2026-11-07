@@ -1,0 +1,42 @@
+// NOT_TESTED / NOT_COMPILED. Independent toy functions, fields and leaves.
+// Use transform_collision only on the declaration of Fixture.Run.
+public class Vec
+{
+    public float x_, z_;
+}
+public class Player
+{
+    public int[] address_ = new int[2];
+    public Vec pos_ = new Vec();
+    public static bool ChBodyHitBody(Player one, Player two) { return one != two; }
+}
+public static class GameUtil
+{
+    public static bool Hit;
+    public static bool ChRectHitRect(float one, float two) { return Hit; }
+}
+public class Fixture
+{
+    public int kind, state_, observed;
+    public void Run(Player p1, Player p2)
+    {
+        int num = kind;
+        if (num == 0 || p1.address_[0] - p2.address_[0] < -1 || p1.address_[0] - p2.address_[0] > 1 || p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1)
+        {
+            return;
+        }
+        int[] collisionData = new int[4];
+        int[] collisionData2 = new int[4];
+        if (!GameUtil.ChRectHitRect(p1.pos_.x_, p2.pos_.z_)) { return; }
+        if (num != 4)
+        {
+            float num4 = p1.pos_.x_;
+            float num5 = p2.pos_.z_;
+            int num6 = 0;
+            num6 = ((!(num5 > num4)) ? 1 : 0);
+            observed = num6 + collisionData.Length + collisionData2.Length;
+        }
+        if (state_ != 0 || (num != 2 && num != 3 && num != 4)) { return; }
+        if (Player.ChBodyHitBody(p1, p2)) { observed += num; }
+    }
+}

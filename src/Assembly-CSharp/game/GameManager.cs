@@ -881,16 +881,12 @@ if (recoveredCondition_20510)
 		public void Collision_proc(Player p1, Player p2)
 		{
 			int num = COLI_PROC_DIAGRAM[p1.coliState_][p2.coliState_];
-			if (num == 0 || p1.address_[0] - p2.address_[0] < -1 || p1.address_[0] - p2.address_[0] > 1 || p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1)
-			{
-				return;
-			}
+			if (num == 0) { return; }
+if (p1.address_[0] - p2.address_[0] < -1 || p1.address_[0] - p2.address_[0] > 1) { return; }
+if (p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1) { return; }
 			int[] collisionData = udat_.GetCollisionData(0, 0);
 			int[] collisionData2 = udat_.GetCollisionData(1, 0);
-			if (!GameUtil.ChRectHitRect(p1.pos_.x_ + (float)collisionData[0], p1.pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], p2.pos_.x_ + (float)collisionData2[0], p2.pos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true))
-			{
-				return;
-			}
+			if (GameUtil.ChRectHitRect(p1.pos_.x_ + (float)collisionData[0], p1.pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], p2.pos_.x_ + (float)collisionData2[0], p2.pos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true)) {
 			if (num != 4)
 			{
 				float num2 = collisionData2[2] / 2;
@@ -904,7 +900,7 @@ if (recoveredCondition_20510)
 				else
 				{
 					int num6 = 0;
-					num6 = ((!(num5 > num4)) ? 1 : 0);
+					if (num5 > num4) { num6 = 0; } else { num6 = 1; }
 					Player.chColPos.Set(p1.pos_);
 					if (num6 == 0)
 					{
@@ -946,10 +942,7 @@ if (recoveredCondition_20510)
 					}
 				}
 			}
-			if (state_ != 0 || (num != 2 && num != 3 && num != 4))
-			{
-				return;
-			}
+			if (state_ == 0 && (num == 2 || num == 3 || num == 4)) {
 			if (Player.ChBodyHitBody(p1, p2))
 			{
 				if (num == 4)
@@ -1014,7 +1007,7 @@ if (recoveredCondition_20510)
 					Player.SetEfCharge(p2, p1, false);
 				}
 			}
-		}
+		}}}
 
 		public void CollisionBall_proc()
 		{

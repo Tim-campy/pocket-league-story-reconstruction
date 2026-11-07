@@ -1,0 +1,55 @@
+{
+  "operation": "smcs-billing-and-collision-own-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "references_sha256": {
+    "original/extracted/assets/bin/Data/Managed/mscorlib.dll": "7f16171cf5f87ca1e4c229727526d2fbc786079fc0c960f36197013ea0d986e1",
+    "original/extracted/assets/bin/Data/Managed/System.Core.dll": "104278a0bf67b4de8fd1e910e3292a3ef51808ebee7a5f2a229125f18463c98c"
+  },
+  "producer_sha256": "cfae57ff0121d94ae2b7b3a1c48ffb2f36b576de20060a45bce35248dad36b70",
+  "driver_sha256": "f7019bd32c9fddc1b2486aade6ebe4ca3e6ab177d2a0ce3fe5dc8fc442f3f33a",
+  "game_compilations": 0,
+  "toy_compilations": 6,
+  "positive_full_bodies": 2,
+  "negative_controls": 8,
+  "negatives": [
+    "billing-null-guard-effects",
+    "billing-loop-initial-other",
+    "billing-tail-nonlocal-return",
+    "billing-no-common-return",
+    "collision-axis-limit-other",
+    "collision-first-return-effects",
+    "collision-phase-kind-other",
+    "collision-float-op-other"
+  ],
+  "fixtures": [
+    {
+      "case": "billing",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before": "public bool Run(BillingItem[] items)\n    {\n        if (type_ == 3)\n        {\n            string text2 = string.Empty;\n            int num5 = 0;\n            for (int j = 0; j < items.Length; j++)\n            {\n                if ((items[j] == null) || (items[j].GetState() != 1)) { continue; }\n                if (items[j].GetPurchase() == null) { continue; }\n                if (text2.Length() > 0) { text2 += \"toy-separator\"; }\n                text2 = text2 + items[j].GetProductId() + \":\" + items[j].GetPurchase().GetOrderId();\n                num5++;\n            }\n            observed = num5 + text2.Length();\n        }\n        else if (type_ != 4 && type_ == 5)\n        {\n            int count = 2;\n            observed += count;\n        }\n        return true;\n    }",
+      "after": "public bool Run(BillingItem[] items)\n    {\n        if (type_ == 3)\n        {\n            string text2 = string.Empty;\n            int num5 = 0;\n            for (int j = 0; j < items.Length; j++)\n            {\n                if (items[j] == null) { continue; }\r\nif (items[j].GetState() == 1 && items[j].GetPurchase() != null) {\n                if (text2.Length() > 0) { text2 += \"toy-separator\"; }\n                text2 = text2 + items[j].GetProductId() + \":\" + items[j].GetPurchase().GetOrderId();\n                num5++;\n            }}\n            observed = num5 + text2.Length();\n        }\n        else if (type_ == 4) { } else if (type_ == 5) {\n            int count = 2;\n            observed += count;\n        }\n        return true;\n    }",
+      "manual_control": "public bool Run(BillingItem[] items)\n{\n    if (type_ == 3)\n    {\n        string text2 = string.Empty;\n        int num5 = 0;\n        for (int j = 0; j < items.Length; j++)\n        {\n            if (items[j] == null) { continue; }\n            if (items[j].GetState() == 1 && items[j].GetPurchase() != null)\n            {\n                if (text2.Length() > 0) { text2 += \"toy-separator\"; }\n                text2 = text2 + items[j].GetProductId() + \":\" + items[j].GetPurchase().GetOrderId();\n                num5++;\n            }\n        }\n        observed = num5 + text2.Length();\n    }\n    else if (type_ == 4) { }\n    else if (type_ == 5)\n    {\n        int count = 2;\n        observed += count;\n    }\n    return true;\n}",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    },
+    {
+      "case": "collision",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before": "public void Run(Player p1, Player p2)\n    {\n        int num = kind;\n        if (num == 0 || p1.address_[0] - p2.address_[0] < -1 || p1.address_[0] - p2.address_[0] > 1 || p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1)\n        {\n            return;\n        }\n        int[] collisionData = new int[4];\n        int[] collisionData2 = new int[4];\n        if (!GameUtil.ChRectHitRect(p1.pos_.x_, p2.pos_.z_)) { return; }\n        if (num != 4)\n        {\n            float num4 = p1.pos_.x_;\n            float num5 = p2.pos_.z_;\n            int num6 = 0;\n            num6 = ((!(num5 > num4)) ? 1 : 0);\n            observed = num6 + collisionData.Length + collisionData2.Length;\n        }\n        if (state_ != 0 || (num != 2 && num != 3 && num != 4)) { return; }\n        if (Player.ChBodyHitBody(p1, p2)) { observed += num; }\n    }",
+      "after": "public void Run(Player p1, Player p2)\n    {\n        int num = kind;\n        if (num == 0) { return; }\r\nif (p1.address_[0] - p2.address_[0] < -1 || p1.address_[0] - p2.address_[0] > 1) { return; }\r\nif (p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1) { return; }\n        int[] collisionData = new int[4];\n        int[] collisionData2 = new int[4];\n        if (GameUtil.ChRectHitRect(p1.pos_.x_, p2.pos_.z_)) {\n        if (num != 4)\n        {\n            float num4 = p1.pos_.x_;\n            float num5 = p2.pos_.z_;\n            int num6 = 0;\n            if (num5 > num4) { num6 = 0; } else { num6 = 1; }\n            observed = num6 + collisionData.Length + collisionData2.Length;\n        }\n        if (state_ == 0 && (num == 2 || num == 3 || num == 4)) {\n        if (Player.ChBodyHitBody(p1, p2)) { observed += num; }\n    }}}",
+      "manual_control": "public void Run(Player p1, Player p2)\n{\n    int num = kind;\n    if (num == 0) { return; }\n    if (p1.address_[0] - p2.address_[0] < -1 || p1.address_[0] - p2.address_[0] > 1) { return; }\n    if (p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1) { return; }\n    int[] collisionData = new int[4];\n    int[] collisionData2 = new int[4];\n    if (GameUtil.ChRectHitRect(p1.pos_.x_, p2.pos_.z_))\n    {\n        if (num != 4)\n        {\n            float num4 = p1.pos_.x_;\n            float num5 = p2.pos_.z_;\n            int num6 = 0;\n            if (num5 > num4) { num6 = 0; } else { num6 = 1; }\n            observed = num6 + collisionData.Length + collisionData2.Length;\n        }\n        if (state_ == 0 && (num == 2 || num == 3 || num == 4))\n        {\n            if (Player.ChBodyHitBody(p1, p2)) { observed += num; }\n        }\n    }\n}",
+      "unordered_opcodes": [
+        "ble.un",
+        "bne.un"
+      ]
+    }
+  ],
+  "limitations": "System.Core reference added only to own toy compilation for its extension method; game toolchain/references unchanged. Original floating > is preserved, not replaced with >=/<=. CGI field is not tested by this method runner."
+}

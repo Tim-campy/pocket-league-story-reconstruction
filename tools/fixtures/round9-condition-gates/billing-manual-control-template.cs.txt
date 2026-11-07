@@ -1,0 +1,27 @@
+// NOT_TESTED / NOT_COMPILED. Replace Fixture.Run only in the sibling toy header.
+public bool Run(BillingItem[] items)
+{
+    if (type_ == 3)
+    {
+        string text2 = string.Empty;
+        int num5 = 0;
+        for (int j = 0; j < items.Length; j++)
+        {
+            if (items[j] == null) { continue; }
+            if (items[j].GetState() == 1 && items[j].GetPurchase() != null)
+            {
+                if (text2.Length() > 0) { text2 += "toy-separator"; }
+                text2 = text2 + items[j].GetProductId() + ":" + items[j].GetPurchase().GetOrderId();
+                num5++;
+            }
+        }
+        observed = num5 + text2.Length();
+    }
+    else if (type_ == 4) { }
+    else if (type_ == 5)
+    {
+        int count = 2;
+        observed += count;
+    }
+    return true;
+}

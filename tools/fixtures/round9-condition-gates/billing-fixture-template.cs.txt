@@ -1,0 +1,45 @@
+// NOT_TESTED / NOT_COMPILED. Independent toy data and leaves, not a game body.
+// Use transform_billing only on the declaration of Fixture.Run.
+public static class ToyText
+{
+    public static int Length(this string value) { return value.Length; }
+}
+public class Purchase
+{
+    public string GetOrderId() { return "toy-order"; }
+}
+public class BillingItem
+{
+    public int state;
+    public Purchase purchase;
+    public int GetState() { return state; }
+    public Purchase GetPurchase() { return purchase; }
+    public string GetProductId() { return "toy-product"; }
+}
+public class Fixture
+{
+    public int type_, observed;
+    public bool Run(BillingItem[] items)
+    {
+        if (type_ == 3)
+        {
+            string text2 = string.Empty;
+            int num5 = 0;
+            for (int j = 0; j < items.Length; j++)
+            {
+                if ((items[j] == null) || (items[j].GetState() != 1)) { continue; }
+                if (items[j].GetPurchase() == null) { continue; }
+                if (text2.Length() > 0) { text2 += "toy-separator"; }
+                text2 = text2 + items[j].GetProductId() + ":" + items[j].GetPurchase().GetOrderId();
+                num5++;
+            }
+            observed = num5 + text2.Length();
+        }
+        else if (type_ != 4 && type_ == 5)
+        {
+            int count = 2;
+            observed += count;
+        }
+        return true;
+    }
+}

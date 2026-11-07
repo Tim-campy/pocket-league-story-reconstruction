@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,059 de 5,245 métodos matched (96.45%).** 871,497 bytes de IL nos assemblies alvo.
-664,492 bytes IL matched (76.25%).
+**5,061 de 5,245 métodos matched (96.49%).** 871,497 bytes de IL nos assemblies alvo.
+668,389 bytes IL matched (76.69%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3154 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 185 |
+| decompiled | 183 |
 | equivalent | 0 |
-| matched | 5059 |
+| matched | 5061 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1831 / 93.51% | 423444 / 70.39% |
+| `Assembly-CSharp` | 1958 | 601603 | 1833 / 93.62% | 427341 / 71.03% |
 | `KairoLibrary` | 3287 | 269894 | 3228 / 98.21% | 241048 / 89.31% |
 
 ## Namespaces
@@ -38,7 +38,7 @@ KairoLibrary: 3154 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 252 / 98.82% | 23108 / 87.69% |
 | `form` | 371 | 250649 | 339 / 91.37% | 178413 / 71.18% |
-| `game` | 441 | 202949 | 394 / 89.34% | 132000 / 65.04% |
+| `game` | 441 | 202949 | 395 / 89.57% | 133396 / 65.73% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
@@ -77,7 +77,7 @@ KairoLibrary: 3154 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `system.billing` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
 | `system.billing.ui` | 153 | 13782 | 148 / 96.73% | 11788 / 85.53% |
 | `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
-| `system.form` | 192 | 33269 | 181 / 94.27% | 22255 / 66.89% |
+| `system.form` | 192 | 33269 | 182 / 94.79% | 24756 / 74.41% |
 | `system.friend` | 4 | 570 | 3 / 75.00% | 284 / 49.82% |
 | `system.friend.ui` | 47 | 4407 | 47 / 100.00% | 4407 / 100.00% |
 | `system.lineup` | 3 | 46 | 3 / 100.00% | 46 / 100.00% |
@@ -128,7 +128,7 @@ KairoLibrary: 3154 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.Ball` | 18 | 15652 | 16 / 88.89% | 13195 / 84.30% |
 | `Assembly-CSharp::game.Camera` | 31 | 7399 | 29 / 93.55% | 4254 / 57.49% |
 | `Assembly-CSharp::game.DelayEvent` | 4 | 456 | 4 / 100.00% | 456 / 100.00% |
-| `Assembly-CSharp::game.GameManager` | 20 | 11549 | 16 / 80.00% | 5351 / 46.33% |
+| `Assembly-CSharp::game.GameManager` | 20 | 11549 | 17 / 85.00% | 6747 / 58.42% |
 | `Assembly-CSharp::game.GameUtil` | 47 | 3570 | 46 / 97.87% | 3404 / 95.35% |
 | `Assembly-CSharp::game.Map` | 18 | 13729 | 12 / 66.67% | 5728 / 41.72% |
 | `Assembly-CSharp::game.MapMain` | 14 | 7415 | 12 / 85.71% | 6109 / 82.39% |
@@ -175,7 +175,7 @@ KairoLibrary: 3154 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::system.billing.util.Json` | 7 | 672 | 6 / 85.71% | 599 / 89.14% |
 | `Assembly-CSharp::system.billing.util.Purchase` | 15 | 527 | 15 / 100.00% | 527 / 100.00% |
 | `Assembly-CSharp::system.billing.util.SkuDetails` | 11 | 294 | 11 / 100.00% | 294 / 100.00% |
-| `Assembly-CSharp::system.form.BillingForm` | 42 | 7424 | 38 / 90.48% | 3151 / 42.44% |
+| `Assembly-CSharp::system.form.BillingForm` | 42 | 7424 | 39 / 92.86% | 5652 / 76.13% |
 | `Assembly-CSharp::system.form.ConnectForm` | 11 | 400 | 11 / 100.00% | 400 / 100.00% |
 | `Assembly-CSharp::system.form.FriendForm` | 53 | 17764 | 51 / 96.23% | 11739 / 66.08% |
 | `Assembly-CSharp::system.form.HttpForm` | 16 | 894 | 16 / 100.00% | 894 / 100.00% |
