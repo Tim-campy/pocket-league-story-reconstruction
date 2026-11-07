@@ -625,7 +625,37 @@
       "before_sha256": "99317597c1d86f5fdb9d2299b3c6f52b18da94ae12dbd6c9186017c83a6c3dc0",
       "after_measurement": "reports\\round9-cycle10-after-measurement.json",
       "after_sha256": "3727381a1857f891adbf21cdd7ec3dca0b0f3692f61853df1d78d86657cbd614"
+    },
+    {
+      "cycle": 22,
+      "label": "cycle11",
+      "phase": "D",
+      "primary_target": "kairo.unity.ui.Graphics::_drawBitmap(kairo.unity.ui.Image,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)->System.Void",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "d9-boolean-value-branch-context",
+      "assembly": "KairoLibrary",
+      "pair": "ldc.i4.0=>brtrue.s / branch=>zero-normalization",
+      "hypothesis": "Contexto Boolean de valor exige ternario semlocal com juncao0/1; contexto de branch elimina alias adjacente de uma leitura e normalizacao explicita com zero. Preservar expressoes internas e ordem de chamadas.",
+      "result": "Nenhum candidato compilado avancou; 2 tentativas da regra, 0 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 0,
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round9-cycle11-before-measurement.json",
+      "before_sha256": "d3af27cbbc39f7330649d0aa3482ad2fb7118735cd96609dfef58cd4085bcde2",
+      "after_measurement": "reports\\round9-cycle11-after-measurement.json",
+      "after_sha256": "71276e587aa4341effc5e303d9c36f33d7c96c5739b2879d84a17bfefa1bdcd1"
     }
   ],
-  "consecutive_zero_cycles": 0
+  "consecutive_zero_cycles": 1
 }

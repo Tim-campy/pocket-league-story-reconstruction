@@ -658,6 +658,10 @@ def main():
                 hints.update(calculated)
                 row.setdefault('calculated_alias_evidence', []).append(calculated)
             if not is_smcs:
+                from round9_boolean_context_hints import boolean_context_hints
+                context_evidence=boolean_context_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
+                hints.update(context_evidence)
+                if context_evidence:row.setdefault('round9_boolean_context_evidence',[]).append(context_evidence)
                 from round8_null_polarity_hints import null_polarity_hints
                 nullable_hints=null_polarity_hints(original[key],method,alignment['original_offset'],alignment['rebuilt_offset'])
                 hints.update(nullable_hints)

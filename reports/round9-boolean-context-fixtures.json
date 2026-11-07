@@ -1,0 +1,353 @@
+{
+  "operation": "historical-Roslyn-Boolean-value-branch-context-fixtures",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "source_sha256": "a267f1571fad6e8ad45b19f3da7a083030cf9aee78b93b9485df75b468170f00",
+  "helper_sha256": "d9dfb8f6e2e3ec4b246577a837640b6d794ee222492b7321f7e4d1c7429226a5",
+  "hints_sha256": "2804dea1664464765842ebd38d7b1cf464a720a68b5fcfed6bfa833e456b6aa5",
+  "driver_sha256": "df53cd230abd6c904e124c5aa8feaead35a622b433faeb3bd5caebd98fc1b2c0",
+  "toy_compilations": 6,
+  "compilation_count_scope": "final successful run; previous implementation runs compiled2+5+6+6 toy assemblies",
+  "game_compilations": 0,
+  "positive_full_bodies": 5,
+  "negative_controls": 5,
+  "fixtures": [
+    {
+      "method": "Value",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_boolean_context_mode": "materialize-tail",
+        "round9_boolean_context_evidence": {
+          "original": [
+            {
+              "offset": 6,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 7,
+              "opcode": "ceq",
+              "operand": null
+            },
+            {
+              "offset": 9,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 12
+              }
+            },
+            {
+              "offset": 11,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 12,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 28
+              }
+            }
+          ],
+          "rebuilt": [
+            {
+              "offset": 6,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 22
+              }
+            },
+            {
+              "offset": 8,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "no_named_local": true
+        }
+      },
+      "patch": {
+        "rule": "d9-boolean-value-branch-context",
+        "start": 735,
+        "end": 746,
+        "before": "a&&b&&!tail",
+        "after": "!(a&&b) ? false : (!tail)",
+        "distance": 3
+      },
+      "calls_original": [],
+      "calls_candidate": []
+    },
+    {
+      "method": "Float",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_boolean_context_mode": "materialize-tail",
+        "round9_boolean_context_evidence": {
+          "original": [
+            {
+              "offset": 17,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 18,
+              "opcode": "ceq",
+              "operand": null
+            },
+            {
+              "offset": 20,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 23
+              }
+            },
+            {
+              "offset": 22,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 23,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 39
+              }
+            }
+          ],
+          "rebuilt": [
+            {
+              "offset": 17,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 33
+              }
+            },
+            {
+              "offset": 19,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "no_named_local": true
+        }
+      },
+      "patch": {
+        "rule": "d9-boolean-value-branch-context",
+        "start": 898,
+        "end": 922,
+        "before": "Guard()&&value>0f&&!tail",
+        "after": "!(Guard()&&value>0f) ? false : (!tail)",
+        "distance": 3
+      },
+      "calls_original": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Guard``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+        }
+      ],
+      "calls_candidate": [
+        {
+          "method": "class Fixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Guard``0()->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=True;explicit=False;cc=Default"
+        }
+      ]
+    },
+    {
+      "method": "Equality",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_boolean_context_mode": "materialize-tail",
+        "round9_boolean_context_evidence": {
+          "original": [
+            {
+              "offset": 12,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 13,
+              "opcode": "ceq",
+              "operand": null
+            },
+            {
+              "offset": 15,
+              "opcode": "br.s",
+              "operand": {
+                "branch": 18
+              }
+            },
+            {
+              "offset": 17,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 18,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 34
+              }
+            }
+          ],
+          "rebuilt": [
+            {
+              "offset": 12,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 28
+              }
+            },
+            {
+              "offset": 14,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "no_named_local": true
+        }
+      },
+      "patch": {
+        "rule": "d9-boolean-value-branch-context",
+        "start": 1087,
+        "end": 1106,
+        "before": "(x==null)&&a&&!tail",
+        "after": "!((x==null)&&a) ? false : (!tail)",
+        "distance": 3
+      },
+      "calls_original": [
+        {
+          "method": "class Compared @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::op_Equality``0(class Compared @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null,class Compared @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+        }
+      ],
+      "calls_candidate": [
+        {
+          "method": "class Compared @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::op_Equality``0(class Compared @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null,class Compared @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null)->valuetype System.Boolean @ mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;this=False;explicit=False;cc=Default"
+        }
+      ]
+    },
+    {
+      "method": "Inline",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_boolean_context_mode": "inline-adjacent-alias",
+        "round9_boolean_context_evidence": {
+          "original": [
+            {
+              "offset": 3,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 20
+              }
+            },
+            {
+              "offset": 5,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "rebuilt": [
+            {
+              "offset": 3,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 4,
+              "opcode": "cgt.un",
+              "operand": null
+            },
+            {
+              "offset": 6,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 23
+              }
+            }
+          ],
+          "source_adjacent_single_use_required": true
+        }
+      },
+      "patch": {
+        "rule": "d9-boolean-value-branch-context",
+        "start": 1226,
+        "end": 1282,
+        "before": "bool alias=(mask&2)!=0;if(alias){Count++;}else{Count--;}",
+        "after": "if(((mask&2)!=0)){Count++;}else{Count--;}",
+        "distance": 23
+      },
+      "calls_original": [],
+      "calls_candidate": []
+    },
+    {
+      "method": "InlineZero",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "hint": {
+        "round9_boolean_context_mode": "inline-adjacent-alias",
+        "round9_boolean_context_evidence": {
+          "original": [
+            {
+              "offset": 3,
+              "opcode": "brtrue.s",
+              "operand": {
+                "branch": 20
+              }
+            },
+            {
+              "offset": 5,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "rebuilt": [
+            {
+              "offset": 3,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 4,
+              "opcode": "ceq",
+              "operand": null
+            },
+            {
+              "offset": 6,
+              "opcode": "brfalse.s",
+              "operand": {
+                "branch": 23
+              }
+            }
+          ],
+          "source_adjacent_single_use_required": true
+        }
+      },
+      "patch": {
+        "rule": "d9-boolean-value-branch-context",
+        "start": 1401,
+        "end": 1457,
+        "before": "bool alias=(mask&2)==0;if(alias){Count++;}else{Count--;}",
+        "after": "if(((mask&2)==0)){Count++;}else{Count--;}",
+        "distance": 23
+      },
+      "calls_original": [],
+      "calls_candidate": []
+    }
+  ],
+  "negatives": [
+    "RejectMultiple",
+    "RejectSeparated",
+    "RejectCustom",
+    "RejectNoAnd",
+    "no-original-evidence"
+  ],
+  "alias_declaration_and_if_mapping_same_patch": true,
+  "float_unordered_semantics_preserved_by_explicit_not": true,
+  "no_new_named_locals": true,
+  "initial_harness_failures": [
+    "Overload guard initially rejected builtin Single comparison symbols as though user-defined; fixed before final controls",
+    "Static review found generic nested-overload guard excessive; restricted to outer logical operator and added Equality fixture. Actual renderForceMaterial_ is kairo.unity.graphics.Material without overloaded equality, so no real-target veto was demonstrated",
+    "Static review found mapped alias declaration needs adjacent sibling If; added precise sibling selection and equal-patch controls at both source positions before game compilation"
+  ],
+  "limitations": "Only original value-join or redundant zero-normalization shapes; adjacent unique-use alias only. Every game candidate needs independent model and complete body oracle."
+}
