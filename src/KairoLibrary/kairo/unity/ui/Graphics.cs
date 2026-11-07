@@ -199,10 +199,8 @@ namespace kairo.unity.ui
 					GL.LoadPixelMatrix();
 					GL.Viewport(new Rect(0f, 0f, UnityEngine.Screen.width, UnityEngine.Screen.height));
 				}
-				if (Material != null)
-				{
-					return;
-				}
+				if (Material == null) {
+
 				if (RenderOperator != -1)
 				{
 					g_.PushRenderMode(RenderOperator, RenderSrcRatio, RenderDstRatio);
@@ -215,6 +213,7 @@ namespace kairo.unity.ui
 						g_.PushBlendMode(0);
 					}
 				}
+}
 			}
 
 			public Color[] Begin()

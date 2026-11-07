@@ -1,5 +1,20 @@
 # Fila da rodada 10
 
+As descrições de preparação abaixo registram o estado antes dos testes. Os
+resultados oficiais já adotados são:
+
+| Ciclo | Alvo | Métodos ganhos | Bytes de IL ganhos | Perdas |
+|---|---|---:|---:|---:|
+| cycle01 | SetWinCharaTraining | 1 | 412 | 0 |
+| cycle02 | AppData..cctor / CGI_COMMON_QUERY | 1 | 1816 | 0 |
+| cycle03 | SubForm._draw4 | 1 | 12484 | 0 |
+| cycle04 | SpForm..ctor(Exception), guarda + composição | 1 | 347 | 0 |
+
+Em `_draw4`, o corpo completo aprovado tem 93 locais e maxstack 800. No ciclo02,
+MyConfig..cctor avançou de 23 para 67 bytes de prefixo idêntico, sem fechar o
+corpo. Os ganhos da sonda e da passagem plena não são somados duas vezes.
+Os recibos e commits ficam no diário `round10-cycle-journal`.
+
 READY significa que há uma proposta C# e uma fixture própria aprovada. Não
 significa corpo do jogo em matched. A previsão de slots, a compilação isolada,
 a comparação do corpo inteiro e a verificação oficial continuam obrigatórias.

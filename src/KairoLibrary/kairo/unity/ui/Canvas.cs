@@ -670,10 +670,9 @@ int i;
 
 		public void OnInputUpdate()
 		{
-			if (invalidTouch_ || Input.touchCount <= 0 || IApplication.GetCurrentApp().GetTotalFrames() <= 10)
-			{
-				return;
-			}
+			if (invalidTouch_) { return; }
+if (Input.touchCount > 0 && IApplication.GetCurrentApp().GetTotalFrames() > 10) {
+
 			List<int[]> list = new List<int[]>();
 			List<int[]> list2 = new List<int[]>();
 			List<int[]> list3 = new List<int[]>();
@@ -706,7 +705,8 @@ int i;
 				onTouchPointer_.TryGetValue(touch.fingerId, out value);
 				if (touch.phase == TouchPhase.Began)
 				{
-					value = (onTouchPointer_[touch.fingerId] = new float[4]);
+					value = new float[4];
+ onTouchPointer_[touch.fingerId] = value;
 				}
 				if (value != null)
 				{
@@ -826,7 +826,8 @@ int i;
 			{
 				return;
 			}
-			int num3 = 0;
+			{
+int num3 = 0;
 			if (list2.Count == 0)
 			{
 				num3 = 1;
@@ -862,7 +863,11 @@ int i;
 					list7[0][2]
 				}));
 			}
-		}
+
+}
+
+}
+}
 
 		public void DecideKeyState()
 		{
@@ -1103,10 +1108,8 @@ int i;
 			keyEventState_ = 0;
 			keyStateWork_ = 0;
 			invalidTouch_ = true;
-			if (Input.touchCount <= 0)
-			{
-				return;
-			}
+			if (Input.touchCount > 0) {
+
 			List<int[]> list = new List<int[]>();
 			for (int j = 0; j < Input.touchCount; j++)
 			{
@@ -1147,6 +1150,7 @@ int i;
 				}
 				OnTouchEvent(new MotionEvent(3, array, array2, pointerDelta));
 			}
+}
 		}
 
 		public bool OnKeyDown(KeyCode keyCode, KeyEvent evt)

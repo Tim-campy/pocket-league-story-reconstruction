@@ -69,6 +69,49 @@
       ],
       "required_work": "Nine-edit source composition and own fixture passed; fresh slots model and whole game body remain to verify",
       "report": "reports/round10-cycle03-Assembly-CSharp-engine.json"
+    },
+    {
+      "id": "d-ready-smcs-empty-arms",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "system.form.FriendForm::Init()->System.Boolean",
+        "surface.TouchEffect::Draw(kairo.unity.ui.Graphics)->System.Void",
+        "system.form.BillingForm::_draw(kairo.unity.ui.Graphics)->System.Void",
+        "game.TGroupArea::GetBall(game.TPlayer,System.Int32)->game.TBall",
+        "system.form.BillingForm::Init()->System.Boolean",
+        "system.form.MatchForm::_draw(kairo.unity.ui.Graphics)->System.Void"
+      ],
+      "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-smcs-empty-arms-patches.json",
+      "report_sha256": "cd8a849b128d1e1324a49040d5a2b55cc37a6459e11e59139c9cdeb49283399e"
+    },
+    {
+      "id": "d-ready-roslyn-lifetimes",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "kairo.unity.graphics.MaterialManager::RemoveInvalidMaterials()->System.Void",
+        "kairo.unity.util.Language::MakeLangPackTemplate(System.Boolean,System.Int32,System.String&,System.String&)->System.Void",
+        "kairo.unity.io.HttpObject::_connect(System.String,System.Byte[],System.Boolean,System.Boolean)->System.Byte[][]"
+      ],
+      "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-roslyn-lifetimes-patches.json",
+      "report_sha256": "def39fcbb2d7a0aa738d4854aab3b15329d74671f2482cb73ea1da9b7610929c"
+    },
+    {
+      "id": "d-ready-static-bool",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY_FOR_GAME_PROBE",
+      "method_ids": [
+        "cfg.MyConfig::.cctor()->System.Void"
+      ],
+      "required_work": "Fresh model, real target compiler, all-pending pass, full official verification; no gain assumed",
+      "report": "reports/round10-static-bool-patches.json",
+      "report_sha256": "01e6839c104b436b81121dffb80d71ebd50abc7db4244db15b236c926bdfb46d"
     }
   ],
   "prepared_registry": "config/round10-prepared-families.json",
@@ -93,7 +136,7 @@
     "tools/round9_roslyn_validate.py": "5aa15d2b6589972b6762fad4607583129e2a54d264ee5a1c5be36819f875ae9b",
     "tools/round9_control_validate.py": "da9b136147c23ab497f6d1b0ec0caff02b7d05b4b11c9eb9f54ead07fbc72882"
   },
-  "controller_review_status": "PROPOSAL_NOT_INSTALLED_NOT_EXECUTED",
+  "controller_review_status": "EXECUTED_WITH_MEASURED_FULL_VERIFICATION_PROOFS",
   "part_evidence": {
     "A": {
       "report": "reports/round10-functional-test.json",
@@ -151,12 +194,13 @@
       ]
     }
   },
-  "report_schema_reviewed": false,
+  "report_schema_reviewed": true,
   "preparation_notes": [
     "C01: sonda e passe principal fecharam o mesmo m\u00e9todo de 717 bytes; o ganho oficial \u00e9 1 m\u00e9todo, sem somar a sonda.",
     "O primeiro commit C01 parou na formata\u00e7\u00e3o de uma linha vazia com quatro espa\u00e7os no produtor raw. O hash do produtor foi preservado; revis\u00e3o restrita de formata\u00e7\u00e3o, sem relaxar o verificador. A repeti\u00e7\u00e3o do commit fez nova verifica\u00e7\u00e3o completa e publicou f3e3455.",
     "O recibo de ado\u00e7\u00e3o C01 escreveu baseline_commit UNKNOWN por limita\u00e7\u00e3o do adapter. O snapshot independente identifica ee994d2d052a9b20203791371e3a5556afe815dd; o adapter futuro passou a ler snapshot.json. Nenhum resultado de m\u00e9todo foi editado.",
-    "Falhas de drivers na prepara\u00e7\u00e3o (schemas assembly/maxstack e manifesto AST duplicado) foram corrigidas, preservando os rascunhos. Fixtures e candidatos de jogo s\u00e3o contagens distintas."
+    "Falhas de drivers na prepara\u00e7\u00e3o (schemas assembly/maxstack e manifesto AST duplicado) foram corrigidas, preservando os rascunhos. Fixtures e candidatos de jogo s\u00e3o contagens distintas.",
+    "After cycle04, three additional fixture-tested source families were registered as pending tests. They prevent counting zero-gain cycles until tested; method states remain exclusively verifier-generated. The standalone eight-section report adapter was reviewed for A/B/C evidence, baseline runtime scope, raw PDB-path persistence, exact current measurements, models, and ten inline IL examples."
   ],
   "kairo_window_size": 5
 }
