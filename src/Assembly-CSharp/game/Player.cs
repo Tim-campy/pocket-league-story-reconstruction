@@ -1341,7 +1341,7 @@ return false;
 			float num4 = (go_pos.x_ - pos_.x_) * (go_pos.x_ - pos_.x_);
 			float num5 = num4 / (num2 * num3);
 			int num6 = 0;
-			if ((num5 >= GameUtil.Cos(22))) { num6 = 0; } else { num6 = ((num5 >= GameUtil.Cos(67)) ? ((go_pos.z_ > pos_.z_) ? 1 : 7) : ((num5 >= GameUtil.Cos(112)) ? ((!(go_pos.z_ > pos_.z_)) ? 6 : 2) : ((!(num5 >= GameUtil.Cos(157))) ? 4 : ((!(go_pos.z_ > pos_.z_)) ? 5 : 3)))); }
+			if(num5>=GameUtil.Cos(22)){num6=0;}else if(num5>=GameUtil.Cos(67)){if(go_pos.z_>pos_.z_){num6=1;}else{num6=7;}}else if(num5>=GameUtil.Cos(112)){if(go_pos.z_>pos_.z_){num6=2;}else{num6=6;}}else if(num5>=GameUtil.Cos(157)){if(go_pos.z_>pos_.z_){num6=3;}else{num6=5;}}else{num6=4;}
 			if (!ChMoveDirect(num6, act_id))
 			{
 				SetMoveDirectBox(-1);
@@ -1371,15 +1371,14 @@ return false;
 			Camera.ConvertGlobalToScreen(v_, temp_direct_s);
 			temp_direct_s[0] -= Camera.MAP_SCREEN_BASE_POS[0];
 			temp_direct_s[1] -= Camera.MAP_SCREEN_BASE_POS[1];
-			num7 = ((temp_direct_s[0] > 0) ? ((temp_direct_s[1] <= 0) ? 1 : 0) : ((temp_direct_s[1] <= 0) ? 2 : 3));
+			if(temp_direct_s[0]>0){if(temp_direct_s[1]>0){num7=0;}else{num7=1;}}else{if(temp_direct_s[1]>0){num7=3;}else{num7=2;}}
 			for (int num8 = directBox_.Length - 1; num8 >= 1; num8--)
 			{
 				directBox_[num8] = directBox_[num8 - 1];
 			}
 			directBox_[0] = num7;
 			int num9 = num7;
-			for (int i = 1; i < directBox_.Length && num9 == directBox_[i]; i++)
-			{
+			for(int i=1;i<directBox_.Length;i++){if(num9!=directBox_[i]){break;}
 				if (i == directBox_.Length - 1)
 				{
 					direct_ = num9;

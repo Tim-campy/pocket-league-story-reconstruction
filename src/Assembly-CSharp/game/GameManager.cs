@@ -776,34 +776,21 @@ if (num2 > 36) {
 			for (int k = 0; k < 2; k++)
 			{
 				int num2 = 0;
-				num2 = ((k == 0) ? (num) : ((1 - num)));
+				if(k==0){num2=num;}else{num2=1-num;}
 				for (int l = 0; l < udat_.teams_[num2].players_.Length; l++)
 				{
 					Player p = udat_.teams_[num2].players_[l];
 					for (int m = 0; m < udat_.teams_[0].players_.Length; m++)
 					{
-						{ bool recoveredCondition_20510 = num2 != 0 || l != m;
-if (recoveredCondition_20510)
-						{
-							Player p2 = udat_.teams_[0].players_[m];
-							Collision_proc(p, p2);
-						}
-}
+						{if(num2==0 && l==m){continue;} Player p2=udat_.teams_[0].players_[m];Collision_proc(p,p2);}
 					}
 					for (int n = 0; n < udat_.teams_[1].players_.Length; n++)
 					{
-						if (num2 != 1 || l != n)
-						{
-							Player p3 = udat_.teams_[1].players_[n];
-							Collision_proc(p, p3);
-						}
+						if(num2==1 && l==n){continue;} {Player p3=udat_.teams_[1].players_[n];Collision_proc(p,p3);}
 					}
 				}
 			}
-			if (state_ != 0 || gameState_ != 2 || !BitUtil.Check(udat_.ball_.flag_, 8))
-			{
-				return;
-			}
+			if(state_==0 && gameState_==2 && BitUtil.Check(udat_.ball_.flag_,8)){
 			for (int num3 = 0; num3 < 2; num3++)
 			{
 				for (int num4 = 0; num4 < udat_.teams_[num3].players_.Length; num4++)
@@ -812,7 +799,7 @@ if (recoveredCondition_20510)
 				}
 			}
 			CollisionBall_proc();
-		}
+		}}
 
 		public void Collision_updateCollisionState(Player player)
 		{

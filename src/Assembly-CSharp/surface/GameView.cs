@@ -668,11 +668,10 @@ namespace surface
 			int num4 = boundingRect[3];
 			if (g != null)
 			{
-				if (id == 1 || id == 18 || id == 26)
-				{
+				switch(id){case 1:case 18:case 26:{
 					int num5 = -1;
-					int num6 = ((frame != 0 && frame != 3) ? 1 : 3);
-					num5 = ((!instance_.CheckTouch(id, value)) ? ((frame != 0 && frame != 3) ? 1 : 0) : ((frame != 0 && frame != 3) ? 3 : 2));
+					int num6 = ((frame==0 || frame==3)?3:1);
+					if(instance_.CheckTouch(id,value)){num5=((frame==0 || frame==3)?2:3);}else{num5=((frame==0 || frame==3)?0:1);}
 					float[] imageRect = GetImageRect(num5);
 					x += (int)((float)(boundingRect[0] + boundingRect[2] / 2) - (imageRect[0] + imageRect[2] / 2f));
 					y += (int)((float)(boundingRect[1] + boundingRect[3] / 2) - (imageRect[1] + imageRect[3] / 2f));
@@ -682,24 +681,23 @@ namespace surface
 					num4 = (int)imageRect[3];
 					if (id == 18)
 					{
-						switch (num6)
-						{
-						case 3:
-							num -= 30;
+						if ((num6 == 3)) {
+num -= 30;
 							num2 -= 10;
 							num3 += 40;
 							num4 += 20;
-							break;
-						case 1:
-							num -= 10;
+
+}
+else if ((num6 == 1)) {
+num -= 10;
 							num2 -= 10;
 							num3 += 40;
 							num4 += 20;
-							break;
-						}
+
+}
 					}
 					instance_.DrawImage(g, x, y, num5);
-				}
+				break;}}
 			}
 			TouchComponent touchComponent = instance_._addTouch(g, id, num, num2, num3, num4, value, opt);
 			if (touchComponent == null)

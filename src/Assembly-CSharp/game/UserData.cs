@@ -2106,7 +2106,7 @@ league_data_[team_id][2]++; } else if ((league_result == 2)) { league_data_[team
 			int num = teamData.warPotential_ - teamData2.warPotential_;
 			int warPotential_ = teamData.warPotential_;
 			int num2 = 0;
-			num2 = (flag ? ((num >= 0) ? ((num2 + GameUtil.RateConvert(num, 0, 50, 5, 1, true))) : ((num2 + GameUtil.RateConvert(num, 0, -50, 5, 30, true)))) : ((!flag2) ? (num2 + GameUtil.RateConvert(num, -50, 50, 0, -6, true)) : (num2 + GameUtil.RateConvert(num, -50, 50, 6, -3, true))));
+			if(flag){if(num>=0){num2=num2+GameUtil.RateConvert(num,0,50,5,1,true);}else{num2=num2+GameUtil.RateConvert(num,0,-50,5,30,true);}}else if(flag2){num2=num2+GameUtil.RateConvert(num,-50,50,6,-3,true);}else{num2=num2+GameUtil.RateConvert(num,-50,50,0,-6,true);}
 			teamData.AddTeamEva(num2);
 			game_matchEva_ = GameUtil.RateConvert(teamData.warPotential_ - warPotential_, -20, 20, 0, 1000, true);
 			if (flag)

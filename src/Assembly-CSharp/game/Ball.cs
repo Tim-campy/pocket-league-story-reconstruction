@@ -1170,21 +1170,21 @@ udat_.gm_.SetBallTeam(-1);
 				rand_cos[2] = rand_cos[1] + 30;
 				int num7 = 0;
 				int num8 = GameUtil.Random(rand_cos[2]);
-				num7 = ((num8 > rand_cos[1]) ? 2 : ((num8 > rand_cos[0]) ? 1 : 0));
+				if(num8>rand_cos[1]){num7=2;}else if(num8>rand_cos[0]){num7=1;}else{num7=0;}
 				float num9 = 0f;
 				float num10 = 0f;
-				switch (num7)
-				{
-				case 0:
-					num9 = array[0].x_;
-					break;
-				case 1:
-					num9 = array[1].x_;
-					break;
-				default:
-					num9 = 0f;
-					break;
-				}
+				if ((num7 == 0)) {
+num9 = array[0].x_;
+
+}
+else if ((num7 == 1)) {
+num9 = array[1].x_;
+
+}
+else {
+num9 = 0f;
+
+}
 				num10 = GameUtil.RateConvert(GameUtil.Random(130) - 30, 0f, 100f, array[0].x_, array[1].x_, false);
 				float num11 = 0.7f;
 				float num12 = 1f - num11;
@@ -1198,10 +1198,8 @@ udat_.gm_.SetBallTeam(-1);
 				g1.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (num14 + array[0].x_) / 2f, (num14 + array[1].x_) / 2f, true);
 				g1.z_ = array[0].z_;
 			}
-			switch (shoot_mode)
-			{
-			case 0:
-			{
+			if ((shoot_mode == 0)) {
+{
 				int playerBodyPoseEva = PlayerData.GetPlayerBodyPoseEva(player, 10);
 				float shootSpeed = PlayerData.GetShootSpeed(player, playerBodyPoseEva);
 				shootSpeed = PlayerData.AuraUpdate(player, shootSpeed, 0);
@@ -1212,10 +1210,11 @@ udat_.gm_.SetBallTeam(-1);
 				float shootV0y2 = PlayerData.GetShootV0y(player, eva);
 				v_.y_ = shootV0y2;
 				a_.y_ = -0.1f;
-				break;
+
 			}
-			case 1:
-			{
+}
+else if ((shoot_mode == 1)) {
+{
 				float value = PlayerData.GetShootSpeed(player, 50) * 80f / 100f;
 				value = PlayerData.AuraUpdate(player, value, 0);
 				float num15 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));
@@ -1226,23 +1225,22 @@ udat_.gm_.SetBallTeam(-1);
 				int num16 = GameUtil.Random(100);
 				float x = (float)JMath.Sqrt((g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));
 				num16 += (int)GameUtil.RateConvert(x, 200f, 60f, -20f, -70f, true);
-				v_.y_ = GameUtil.RateConvert(num16, 0f, 99f, (0f - shootV0y) * 350f / 100f, shootV0y * (float)headShootUpRadRate / 100f, true);
+				v_.y_ = GameUtil.RateConvert(num16, 0f, 99f, (-shootV0y) * 350f / 100f, shootV0y * (float)headShootUpRadRate / 100f, true);
 				a_.y_ = -0.6f;
-				break;
+
 			}
-			}
+}
 			shoot_goalPos.Set(g1);
 			flag_ = BitUtil.On(flag_, 48);
 			SetSavePos(pos_, v_, a_);
-			switch (shoot_mode)
-			{
-			case 0:
-				apdat_.PlaySe(SOUND_SHOOT_KICK);
-				break;
-			case 1:
-				apdat_.PlaySe(SOUND_SHOOT_HEAD);
-				break;
-			}
+			if ((shoot_mode == 0)) {
+apdat_.PlaySe(SOUND_SHOOT_KICK);
+
+}
+else if ((shoot_mode == 1)) {
+apdat_.PlaySe(SOUND_SHOOT_HEAD);
+
+}
 		}
 
 		public void SetHeadingData(Player player)

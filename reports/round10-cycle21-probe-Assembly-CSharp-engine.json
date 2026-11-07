@@ -1,0 +1,1617 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1871,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "game.Ball::SetShoot(game.Player,System.Int32)->System.Void",
+      "number": 1,
+      "initial_offset": 441,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d10-smcs-deleted-stores-d10-calculated-deleted-store-and-selector-layout",
+          "start": 29643,
+          "end": 33591,
+          "before": "public void SetShoot(Player player, int shoot_mode)\r\n\t\t{\r\n\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\tVector3D[] array = null;\r\n\t\t\tif (player.team_id_ == 0) { array = Map.GOAL2_GLOBAL_POS; } else { array = Map.GOAL1_GLOBAL_POS; }\r\n\t\t\tGameUtil.Sub(array[0], pos_, vec1);\r\n\t\t\tGameUtil.Sub(array[1], pos_, vec2);\r\n\t\t\tvec3.x_ = pos_.x_;\r\n\t\t\tvec3.z_ = array[0].z_;\r\n\t\t\tGameUtil.Sub(vec3, pos_, vec3);\r\n\t\t\tPlayer player2 = udat_.teams_[1 - player.team_id_].players_[0];\r\n\t\t\tGameUtil.Sub(player2.pos_, pos_, vec_GK);\r\n\t\t\tfloat num = (float)JMath.Sqrt(vec1.x_ * vec1.x_ + vec1.z_ * vec1.z_);\r\n\t\t\tfloat num2 = (float)JMath.Sqrt(vec2.x_ * vec2.x_ + vec2.z_ * vec2.z_);\r\n\t\t\tfloat num3 = (float)JMath.Sqrt(vec3.x_ * vec3.x_ + vec3.z_ * vec3.z_);\r\n\t\t\tfloat num4 = (float)JMath.Sqrt(vec_GK.x_ * vec_GK.x_ + vec_GK.z_ * vec_GK.z_);\r\n\t\t\tif (num3 > num4)\r\n\t\t\t{\r\n\t\t\t\tfloat num5 = 0f;\r\n\t\t\t\tif (num * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum5 = (vec1.x_ * vec3.x_ + vec1.z_ * vec3.z_) / (num * num3);\r\n\t\t\t\t}\r\n\t\t\t\tfloat num6 = 0f;\r\n\t\t\t\tif (num2 * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = (vec2.x_ * vec3.x_ + vec2.z_ * vec3.z_) / (num2 * num3);\r\n\t\t\t\t}\r\n\t\t\t\trand_cos[0] = (int)(num5 * 100f);\r\n\t\t\t\trand_cos[1] = rand_cos[0] + (int)(num6 * 100f);\r\n\t\t\t\trand_cos[2] = rand_cos[1] + 30;\r\n\t\t\t\tint num7 = 0;\r\n\t\t\t\tint num8 = GameUtil.Random(rand_cos[2]);\r\n\t\t\t\tnum7 = ((num8 > rand_cos[1]) ? 2 : ((num8 > rand_cos[0]) ? 1 : 0));\r\n\t\t\t\tfloat num9 = 0f;\r\n\t\t\t\tfloat num10 = 0f;\r\n\t\t\t\tswitch (num7)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tnum9 = array[0].x_;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tnum9 = array[1].x_;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\tnum9 = 0f;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tnum10 = GameUtil.RateConvert(GameUtil.Random(130) - 30, 0f, 100f, array[0].x_, array[1].x_, false);\r\n\t\t\t\tfloat num11 = 0.7f;\r\n\t\t\t\tfloat num12 = 1f - num11;\r\n\t\t\t\tg1.x_ = (num11 * num9 + num12 * num10) / (num11 + num12);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tfloat num13 = array[1].x_ - array[0].x_;\r\n\t\t\t\tfloat num14 = GameUtil.RateConvert(pos_.x_, array[0].x_, array[1].x_, 0f - num13 / 4f, 0f + num13 / 4f, true);\r\n\t\t\t\tg1.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (num14 + array[0].x_) / 2f, (num14 + array[1].x_) / 2f, true);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\tswitch (shoot_mode)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t{\r\n\t\t\t\tint playerBodyPoseEva = PlayerData.GetPlayerBodyPoseEva(player, 10);\r\n\t\t\t\tfloat shootSpeed = PlayerData.GetShootSpeed(player, playerBodyPoseEva);\r\n\t\t\t\tshootSpeed = PlayerData.AuraUpdate(player, shootSpeed, 0);\r\n\t\t\t\tfloat num17 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = shootSpeed * (g1.x_ - pos_.x_) / num17;\r\n\t\t\t\tv_.z_ = shootSpeed * (g1.z_ - pos_.z_) / num17;\r\n\t\t\t\tint eva = playerBodyPoseEva;\r\n\t\t\t\tfloat shootV0y2 = PlayerData.GetShootV0y(player, eva);\r\n\t\t\t\tv_.y_ = shootV0y2;\r\n\t\t\t\ta_.y_ = -0.1f;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tcase 1:\r\n\t\t\t{\r\n\t\t\t\tfloat value = PlayerData.GetShootSpeed(player, 50) * 80f / 100f;\r\n\t\t\t\tvalue = PlayerData.AuraUpdate(player, value, 0);\r\n\t\t\t\tfloat num15 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = value * (g1.x_ - pos_.x_) / num15;\r\n\t\t\t\tv_.z_ = value * (g1.z_ - pos_.z_) / num15;\r\n\t\t\t\tfloat shootV0y = PlayerData.GetShootV0y(player, 50);\r\n\t\t\t\tint headShootUpRadRate = PlayerData.GetHeadShootUpRadRate(player);\r\n\t\t\t\tint num16 = GameUtil.Random(100);\r\n\t\t\t\tfloat x = (float)JMath.Sqrt((g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tnum16 += (int)GameUtil.RateConvert(x, 200f, 60f, -20f, -70f, true);\r\n\t\t\t\tv_.y_ = GameUtil.RateConvert(num16, 0f, 99f, (0f - shootV0y) * 350f / 100f, shootV0y * (float)headShootUpRadRate / 100f, true);\r\n\t\t\t\ta_.y_ = -0.6f;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\t}\r\n\t\t\tshoot_goalPos.Set(g1);\r\n\t\t\tflag_ = BitUtil.On(flag_, 48);\r\n\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\tswitch (shoot_mode)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t\tapdat_.PlaySe(SOUND_SHOOT_KICK);\r\n\t\t\t\tbreak;\r\n\t\t\tcase 1:\r\n\t\t\t\tapdat_.PlaySe(SOUND_SHOOT_HEAD);\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void SetShoot(Player player, int shoot_mode)\r\n\t\t{\r\n\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\tVector3D[] array = null;\r\n\t\t\tif (player.team_id_ == 0) { array = Map.GOAL2_GLOBAL_POS; } else { array = Map.GOAL1_GLOBAL_POS; }\r\n\t\t\tGameUtil.Sub(array[0], pos_, vec1);\r\n\t\t\tGameUtil.Sub(array[1], pos_, vec2);\r\n\t\t\tvec3.x_ = pos_.x_;\r\n\t\t\tvec3.z_ = array[0].z_;\r\n\t\t\tGameUtil.Sub(vec3, pos_, vec3);\r\n\t\t\tPlayer player2 = udat_.teams_[1 - player.team_id_].players_[0];\r\n\t\t\tGameUtil.Sub(player2.pos_, pos_, vec_GK);\r\n\t\t\tfloat num = (float)JMath.Sqrt(vec1.x_ * vec1.x_ + vec1.z_ * vec1.z_);\r\n\t\t\tfloat num2 = (float)JMath.Sqrt(vec2.x_ * vec2.x_ + vec2.z_ * vec2.z_);\r\n\t\t\tfloat num3 = (float)JMath.Sqrt(vec3.x_ * vec3.x_ + vec3.z_ * vec3.z_);\r\n\t\t\tfloat num4 = (float)JMath.Sqrt(vec_GK.x_ * vec_GK.x_ + vec_GK.z_ * vec_GK.z_);\r\n\t\t\tif (num3 > num4)\r\n\t\t\t{\r\n\t\t\t\tfloat num5 = 0f;\r\n\t\t\t\tif (num * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum5 = (vec1.x_ * vec3.x_ + vec1.z_ * vec3.z_) / (num * num3);\r\n\t\t\t\t}\r\n\t\t\t\tfloat num6 = 0f;\r\n\t\t\t\tif (num2 * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = (vec2.x_ * vec3.x_ + vec2.z_ * vec3.z_) / (num2 * num3);\r\n\t\t\t\t}\r\n\t\t\t\trand_cos[0] = (int)(num5 * 100f);\r\n\t\t\t\trand_cos[1] = rand_cos[0] + (int)(num6 * 100f);\r\n\t\t\t\trand_cos[2] = rand_cos[1] + 30;\r\n\t\t\t\tint num7 = 0;\r\n\t\t\t\tint num8 = GameUtil.Random(rand_cos[2]);\r\n\t\t\t\tif(num8>rand_cos[1]){num7=2;}else if(num8>rand_cos[0]){num7=1;}else{num7=0;}\r\n\t\t\t\tfloat num9 = 0f;\r\n\t\t\t\tfloat num10 = 0f;\r\n\t\t\t\tif ((num7 == 0)) {\nnum9 = array[0].x_;\r\n\t\t\t\t\t\n}\nelse if ((num7 == 1)) {\nnum9 = array[1].x_;\r\n\t\t\t\t\t\n}\nelse {\nnum9 = 0f;\r\n\t\t\t\t\t\n}\r\n\t\t\t\tnum10 = GameUtil.RateConvert(GameUtil.Random(130) - 30, 0f, 100f, array[0].x_, array[1].x_, false);\r\n\t\t\t\tfloat num11 = 0.7f;\r\n\t\t\t\tfloat num12 = 1f - num11;\r\n\t\t\t\tg1.x_ = (num11 * num9 + num12 * num10) / (num11 + num12);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tfloat num13 = array[1].x_ - array[0].x_;\r\n\t\t\t\tfloat num14 = GameUtil.RateConvert(pos_.x_, array[0].x_, array[1].x_, 0f - num13 / 4f, 0f + num13 / 4f, true);\r\n\t\t\t\tg1.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (num14 + array[0].x_) / 2f, (num14 + array[1].x_) / 2f, true);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\tif ((shoot_mode == 0)) {\n{\r\n\t\t\t\tint playerBodyPoseEva = PlayerData.GetPlayerBodyPoseEva(player, 10);\r\n\t\t\t\tfloat shootSpeed = PlayerData.GetShootSpeed(player, playerBodyPoseEva);\r\n\t\t\t\tshootSpeed = PlayerData.AuraUpdate(player, shootSpeed, 0);\r\n\t\t\t\tfloat num17 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = shootSpeed * (g1.x_ - pos_.x_) / num17;\r\n\t\t\t\tv_.z_ = shootSpeed * (g1.z_ - pos_.z_) / num17;\r\n\t\t\t\tint eva = playerBodyPoseEva;\r\n\t\t\t\tfloat shootV0y2 = PlayerData.GetShootV0y(player, eva);\r\n\t\t\t\tv_.y_ = shootV0y2;\r\n\t\t\t\ta_.y_ = -0.1f;\r\n\t\t\t\t\r\n\t\t\t}\n}\nelse if ((shoot_mode == 1)) {\n{\r\n\t\t\t\tfloat value = PlayerData.GetShootSpeed(player, 50) * 80f / 100f;\r\n\t\t\t\tvalue = PlayerData.AuraUpdate(player, value, 0);\r\n\t\t\t\tfloat num15 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = value * (g1.x_ - pos_.x_) / num15;\r\n\t\t\t\tv_.z_ = value * (g1.z_ - pos_.z_) / num15;\r\n\t\t\t\tfloat shootV0y = PlayerData.GetShootV0y(player, 50);\r\n\t\t\t\tint headShootUpRadRate = PlayerData.GetHeadShootUpRadRate(player);\r\n\t\t\t\tint num16 = GameUtil.Random(100);\r\n\t\t\t\tfloat x = (float)JMath.Sqrt((g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tnum16 += (int)GameUtil.RateConvert(x, 200f, 60f, -20f, -70f, true);\r\n\t\t\t\tv_.y_ = GameUtil.RateConvert(num16, 0f, 99f, (-shootV0y) * 350f / 100f, shootV0y * (float)headShootUpRadRate / 100f, true);\r\n\t\t\t\ta_.y_ = -0.6f;\r\n\t\t\t\t\r\n\t\t\t}\n}\r\n\t\t\tshoot_goalPos.Set(g1);\r\n\t\t\tflag_ = BitUtil.On(flag_, 48);\r\n\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\tif ((shoot_mode == 0)) {\napdat_.PlaySe(SOUND_SHOOT_KICK);\r\n\t\t\t\t\n}\nelse if ((shoot_mode == 1)) {\napdat_.PlaySe(SOUND_SHOOT_HEAD);\r\n\t\t\t\t\n}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 441,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.m3d4.util3d.Vector3D[]",
+              "game.Player",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Single"
+            ],
+            "method_id": "game.Ball::SetShoot(game.Player,System.Int32)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Ball.cs",
+            "full_source_sha256": "d4ce73b2cab4e7bf9e60ab281167cbfbb4110dffa232cee85ede091bede76755"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794082655566736500\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.077999999979511,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1863,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1863,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Ball::SetShoot(game.Player,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 1863
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d10-smcs-deleted-stores-d10-calculated-deleted-store-and-selector-layout",
+          "start": 29643,
+          "end": 33591,
+          "before": "public void SetShoot(Player player, int shoot_mode)\r\n\t\t{\r\n\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\tVector3D[] array = null;\r\n\t\t\tif (player.team_id_ == 0) { array = Map.GOAL2_GLOBAL_POS; } else { array = Map.GOAL1_GLOBAL_POS; }\r\n\t\t\tGameUtil.Sub(array[0], pos_, vec1);\r\n\t\t\tGameUtil.Sub(array[1], pos_, vec2);\r\n\t\t\tvec3.x_ = pos_.x_;\r\n\t\t\tvec3.z_ = array[0].z_;\r\n\t\t\tGameUtil.Sub(vec3, pos_, vec3);\r\n\t\t\tPlayer player2 = udat_.teams_[1 - player.team_id_].players_[0];\r\n\t\t\tGameUtil.Sub(player2.pos_, pos_, vec_GK);\r\n\t\t\tfloat num = (float)JMath.Sqrt(vec1.x_ * vec1.x_ + vec1.z_ * vec1.z_);\r\n\t\t\tfloat num2 = (float)JMath.Sqrt(vec2.x_ * vec2.x_ + vec2.z_ * vec2.z_);\r\n\t\t\tfloat num3 = (float)JMath.Sqrt(vec3.x_ * vec3.x_ + vec3.z_ * vec3.z_);\r\n\t\t\tfloat num4 = (float)JMath.Sqrt(vec_GK.x_ * vec_GK.x_ + vec_GK.z_ * vec_GK.z_);\r\n\t\t\tif (num3 > num4)\r\n\t\t\t{\r\n\t\t\t\tfloat num5 = 0f;\r\n\t\t\t\tif (num * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum5 = (vec1.x_ * vec3.x_ + vec1.z_ * vec3.z_) / (num * num3);\r\n\t\t\t\t}\r\n\t\t\t\tfloat num6 = 0f;\r\n\t\t\t\tif (num2 * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = (vec2.x_ * vec3.x_ + vec2.z_ * vec3.z_) / (num2 * num3);\r\n\t\t\t\t}\r\n\t\t\t\trand_cos[0] = (int)(num5 * 100f);\r\n\t\t\t\trand_cos[1] = rand_cos[0] + (int)(num6 * 100f);\r\n\t\t\t\trand_cos[2] = rand_cos[1] + 30;\r\n\t\t\t\tint num7 = 0;\r\n\t\t\t\tint num8 = GameUtil.Random(rand_cos[2]);\r\n\t\t\t\tnum7 = ((num8 > rand_cos[1]) ? 2 : ((num8 > rand_cos[0]) ? 1 : 0));\r\n\t\t\t\tfloat num9 = 0f;\r\n\t\t\t\tfloat num10 = 0f;\r\n\t\t\t\tswitch (num7)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tnum9 = array[0].x_;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tnum9 = array[1].x_;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\tnum9 = 0f;\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tnum10 = GameUtil.RateConvert(GameUtil.Random(130) - 30, 0f, 100f, array[0].x_, array[1].x_, false);\r\n\t\t\t\tfloat num11 = 0.7f;\r\n\t\t\t\tfloat num12 = 1f - num11;\r\n\t\t\t\tg1.x_ = (num11 * num9 + num12 * num10) / (num11 + num12);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tfloat num13 = array[1].x_ - array[0].x_;\r\n\t\t\t\tfloat num14 = GameUtil.RateConvert(pos_.x_, array[0].x_, array[1].x_, 0f - num13 / 4f, 0f + num13 / 4f, true);\r\n\t\t\t\tg1.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (num14 + array[0].x_) / 2f, (num14 + array[1].x_) / 2f, true);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\tswitch (shoot_mode)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t{\r\n\t\t\t\tint playerBodyPoseEva = PlayerData.GetPlayerBodyPoseEva(player, 10);\r\n\t\t\t\tfloat shootSpeed = PlayerData.GetShootSpeed(player, playerBodyPoseEva);\r\n\t\t\t\tshootSpeed = PlayerData.AuraUpdate(player, shootSpeed, 0);\r\n\t\t\t\tfloat num17 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = shootSpeed * (g1.x_ - pos_.x_) / num17;\r\n\t\t\t\tv_.z_ = shootSpeed * (g1.z_ - pos_.z_) / num17;\r\n\t\t\t\tint eva = playerBodyPoseEva;\r\n\t\t\t\tfloat shootV0y2 = PlayerData.GetShootV0y(player, eva);\r\n\t\t\t\tv_.y_ = shootV0y2;\r\n\t\t\t\ta_.y_ = -0.1f;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tcase 1:\r\n\t\t\t{\r\n\t\t\t\tfloat value = PlayerData.GetShootSpeed(player, 50) * 80f / 100f;\r\n\t\t\t\tvalue = PlayerData.AuraUpdate(player, value, 0);\r\n\t\t\t\tfloat num15 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = value * (g1.x_ - pos_.x_) / num15;\r\n\t\t\t\tv_.z_ = value * (g1.z_ - pos_.z_) / num15;\r\n\t\t\t\tfloat shootV0y = PlayerData.GetShootV0y(player, 50);\r\n\t\t\t\tint headShootUpRadRate = PlayerData.GetHeadShootUpRadRate(player);\r\n\t\t\t\tint num16 = GameUtil.Random(100);\r\n\t\t\t\tfloat x = (float)JMath.Sqrt((g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tnum16 += (int)GameUtil.RateConvert(x, 200f, 60f, -20f, -70f, true);\r\n\t\t\t\tv_.y_ = GameUtil.RateConvert(num16, 0f, 99f, (0f - shootV0y) * 350f / 100f, shootV0y * (float)headShootUpRadRate / 100f, true);\r\n\t\t\t\ta_.y_ = -0.6f;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\t}\r\n\t\t\tshoot_goalPos.Set(g1);\r\n\t\t\tflag_ = BitUtil.On(flag_, 48);\r\n\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\tswitch (shoot_mode)\r\n\t\t\t{\r\n\t\t\tcase 0:\r\n\t\t\t\tapdat_.PlaySe(SOUND_SHOOT_KICK);\r\n\t\t\t\tbreak;\r\n\t\t\tcase 1:\r\n\t\t\t\tapdat_.PlaySe(SOUND_SHOOT_HEAD);\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void SetShoot(Player player, int shoot_mode)\r\n\t\t{\r\n\t\t\tv_.Set(0f, 0f, 0f);\r\n\t\t\ta_.Set(0f, 0f, 0f);\r\n\t\t\tVector3D[] array = null;\r\n\t\t\tif (player.team_id_ == 0) { array = Map.GOAL2_GLOBAL_POS; } else { array = Map.GOAL1_GLOBAL_POS; }\r\n\t\t\tGameUtil.Sub(array[0], pos_, vec1);\r\n\t\t\tGameUtil.Sub(array[1], pos_, vec2);\r\n\t\t\tvec3.x_ = pos_.x_;\r\n\t\t\tvec3.z_ = array[0].z_;\r\n\t\t\tGameUtil.Sub(vec3, pos_, vec3);\r\n\t\t\tPlayer player2 = udat_.teams_[1 - player.team_id_].players_[0];\r\n\t\t\tGameUtil.Sub(player2.pos_, pos_, vec_GK);\r\n\t\t\tfloat num = (float)JMath.Sqrt(vec1.x_ * vec1.x_ + vec1.z_ * vec1.z_);\r\n\t\t\tfloat num2 = (float)JMath.Sqrt(vec2.x_ * vec2.x_ + vec2.z_ * vec2.z_);\r\n\t\t\tfloat num3 = (float)JMath.Sqrt(vec3.x_ * vec3.x_ + vec3.z_ * vec3.z_);\r\n\t\t\tfloat num4 = (float)JMath.Sqrt(vec_GK.x_ * vec_GK.x_ + vec_GK.z_ * vec_GK.z_);\r\n\t\t\tif (num3 > num4)\r\n\t\t\t{\r\n\t\t\t\tfloat num5 = 0f;\r\n\t\t\t\tif (num * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum5 = (vec1.x_ * vec3.x_ + vec1.z_ * vec3.z_) / (num * num3);\r\n\t\t\t\t}\r\n\t\t\t\tfloat num6 = 0f;\r\n\t\t\t\tif (num2 * num3 != 0f)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = (vec2.x_ * vec3.x_ + vec2.z_ * vec3.z_) / (num2 * num3);\r\n\t\t\t\t}\r\n\t\t\t\trand_cos[0] = (int)(num5 * 100f);\r\n\t\t\t\trand_cos[1] = rand_cos[0] + (int)(num6 * 100f);\r\n\t\t\t\trand_cos[2] = rand_cos[1] + 30;\r\n\t\t\t\tint num7 = 0;\r\n\t\t\t\tint num8 = GameUtil.Random(rand_cos[2]);\r\n\t\t\t\tif(num8>rand_cos[1]){num7=2;}else if(num8>rand_cos[0]){num7=1;}else{num7=0;}\r\n\t\t\t\tfloat num9 = 0f;\r\n\t\t\t\tfloat num10 = 0f;\r\n\t\t\t\tif ((num7 == 0)) {\nnum9 = array[0].x_;\r\n\t\t\t\t\t\n}\nelse if ((num7 == 1)) {\nnum9 = array[1].x_;\r\n\t\t\t\t\t\n}\nelse {\nnum9 = 0f;\r\n\t\t\t\t\t\n}\r\n\t\t\t\tnum10 = GameUtil.RateConvert(GameUtil.Random(130) - 30, 0f, 100f, array[0].x_, array[1].x_, false);\r\n\t\t\t\tfloat num11 = 0.7f;\r\n\t\t\t\tfloat num12 = 1f - num11;\r\n\t\t\t\tg1.x_ = (num11 * num9 + num12 * num10) / (num11 + num12);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tfloat num13 = array[1].x_ - array[0].x_;\r\n\t\t\t\tfloat num14 = GameUtil.RateConvert(pos_.x_, array[0].x_, array[1].x_, 0f - num13 / 4f, 0f + num13 / 4f, true);\r\n\t\t\t\tg1.x_ = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, (num14 + array[0].x_) / 2f, (num14 + array[1].x_) / 2f, true);\r\n\t\t\t\tg1.z_ = array[0].z_;\r\n\t\t\t}\r\n\t\t\tif ((shoot_mode == 0)) {\n{\r\n\t\t\t\tint playerBodyPoseEva = PlayerData.GetPlayerBodyPoseEva(player, 10);\r\n\t\t\t\tfloat shootSpeed = PlayerData.GetShootSpeed(player, playerBodyPoseEva);\r\n\t\t\t\tshootSpeed = PlayerData.AuraUpdate(player, shootSpeed, 0);\r\n\t\t\t\tfloat num17 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = shootSpeed * (g1.x_ - pos_.x_) / num17;\r\n\t\t\t\tv_.z_ = shootSpeed * (g1.z_ - pos_.z_) / num17;\r\n\t\t\t\tint eva = playerBodyPoseEva;\r\n\t\t\t\tfloat shootV0y2 = PlayerData.GetShootV0y(player, eva);\r\n\t\t\t\tv_.y_ = shootV0y2;\r\n\t\t\t\ta_.y_ = -0.1f;\r\n\t\t\t\t\r\n\t\t\t}\n}\nelse if ((shoot_mode == 1)) {\n{\r\n\t\t\t\tfloat value = PlayerData.GetShootSpeed(player, 50) * 80f / 100f;\r\n\t\t\t\tvalue = PlayerData.AuraUpdate(player, value, 0);\r\n\t\t\t\tfloat num15 = (float)JMath.Sqrt((g1.x_ - pos_.x_) * (g1.x_ - pos_.x_) + (g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tv_.x_ = value * (g1.x_ - pos_.x_) / num15;\r\n\t\t\t\tv_.z_ = value * (g1.z_ - pos_.z_) / num15;\r\n\t\t\t\tfloat shootV0y = PlayerData.GetShootV0y(player, 50);\r\n\t\t\t\tint headShootUpRadRate = PlayerData.GetHeadShootUpRadRate(player);\r\n\t\t\t\tint num16 = GameUtil.Random(100);\r\n\t\t\t\tfloat x = (float)JMath.Sqrt((g1.z_ - pos_.z_) * (g1.z_ - pos_.z_));\r\n\t\t\t\tnum16 += (int)GameUtil.RateConvert(x, 200f, 60f, -20f, -70f, true);\r\n\t\t\t\tv_.y_ = GameUtil.RateConvert(num16, 0f, 99f, (-shootV0y) * 350f / 100f, shootV0y * (float)headShootUpRadRate / 100f, true);\r\n\t\t\t\ta_.y_ = -0.6f;\r\n\t\t\t\t\r\n\t\t\t}\n}\r\n\t\t\tshoot_goalPos.Set(g1);\r\n\t\t\tflag_ = BitUtil.On(flag_, 48);\r\n\t\t\tSetSavePos(pos_, v_, a_);\r\n\t\t\tif ((shoot_mode == 0)) {\napdat_.PlaySe(SOUND_SHOOT_KICK);\r\n\t\t\t\t\n}\nelse if ((shoot_mode == 1)) {\napdat_.PlaySe(SOUND_SHOOT_HEAD);\r\n\t\t\t\t\n}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 441,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.m3d4.util3d.Vector3D[]",
+              "game.Player",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Single"
+            ],
+            "method_id": "game.Ball::SetShoot(game.Player,System.Int32)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Ball.cs",
+            "full_source_sha256": "d4ce73b2cab4e7bf9e60ab281167cbfbb4110dffa232cee85ede091bede76755"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794082655566736500\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.077999999979511,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1863,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1863,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Ball::SetShoot(game.Player,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 1863
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 683,
+            "rebuilt_offset": 683,
+            "opcode_pair": [
+              "stloc.s",
+              "br"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "df5d9fcd8937f6c1d3835d72c58f6fcee3dbb53d215db35f085e225c0eac8e98",
+      "stop_point": {
+        "offset": 441,
+        "source": "src/Assembly-CSharp/game/Ball.cs",
+        "point": {
+          "offset": 667,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Ball.cs",
+          "start_line": 1173,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 683,
+          "line": 1173,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "delete",
+          "original_offset": 683,
+          "rebuilt_offset": 683,
+          "original_index": 225,
+          "rebuilt_index": 225,
+          "original_instruction": {
+            "offset": 683,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 8
+            }
+          },
+          "rebuilt_instruction": {
+            "opcode": "DELETION_POINT",
+            "operand": null
+          },
+          "pair": "{\"opcode\":\"stloc.s\",\"operand\":{\"local\":8}} => {\"opcode\":\"DELETION_POINT\",\"operand\":null}",
+          "opcode_pair": "stloc.s => DELETION_POINT",
+          "original_context": [
+            {
+              "offset": 677,
+              "opcode": "ble",
+              "operand": {
+                "labels": [
+                  "L4"
+                ]
+              }
+            },
+            {
+              "offset": 682,
+              "opcode": "ldc.i4.2",
+              "operand": null
+            },
+            {
+              "offset": 683,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 685,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L7"
+                ]
+              }
+            },
+            {
+              "offset": 690,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 9
+              },
+              "label": "L4"
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 677,
+              "opcode": "ble",
+              "operand": {
+                "labels": [
+                  "L4"
+                ]
+              }
+            },
+            {
+              "offset": 682,
+              "opcode": "ldc.i4.2",
+              "operand": null
+            },
+            {
+              "offset": 683,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L6"
+                ]
+              }
+            },
+            {
+              "offset": 688,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 9
+              },
+              "label": "L4"
+            },
+            {
+              "offset": 690,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "original_labels": {
+            "76": "L0",
+            "82": "L1",
+            "516": "L2",
+            "587": "L3",
+            "690": "L4",
+            "713": "L5",
+            "714": "L6",
+            "716": "L7",
+            "737": "L8",
+            "760": "L9",
+            "775": "L10",
+            "782": "L11",
+            "899": "L12",
+            "1069": "L13",
+            "1075": "L14",
+            "1345": "L15",
+            "1752": "L16",
+            "1818": "L17",
+            "1846": "L18",
+            "1862": "L19",
+            "752": "O752",
+            "1338": "O1338",
+            "1839": "O1839"
+          },
+          "rebuilt_labels": {
+            "76": "L0",
+            "82": "L1",
+            "516": "L2",
+            "587": "L3",
+            "688": "L4",
+            "709": "L5",
+            "710": "L6",
+            "712": "L7",
+            "750": "L8",
+            "765": "L9",
+            "780": "L10",
+            "792": "L11",
+            "909": "L12",
+            "1079": "L13",
+            "1102": "L14",
+            "1365": "L15",
+            "1782": "L16",
+            "1865": "L17",
+            "1886": "L18",
+            "1907": "L19"
+          },
+          "sequence_edits": [
+            {
+              "kind": "delete",
+              "original_start": 225,
+              "original_stop": 226,
+              "rebuilt_start": 225,
+              "rebuilt_stop": 225
+            },
+            {
+              "kind": "delete",
+              "original_start": 234,
+              "original_stop": 235,
+              "rebuilt_start": 233,
+              "rebuilt_stop": 233
+            },
+            {
+              "kind": "replace",
+              "original_start": 243,
+              "original_stop": 244,
+              "rebuilt_start": 241,
+              "rebuilt_stop": 248
+            },
+            {
+              "kind": "delete",
+              "original_start": 250,
+              "original_stop": 253,
+              "rebuilt_start": 254,
+              "rebuilt_stop": 254
+            },
+            {
+              "kind": "insert",
+              "original_start": 261,
+              "original_stop": 261,
+              "rebuilt_start": 262,
+              "rebuilt_stop": 263
+            },
+            {
+              "kind": "replace",
+              "original_start": 375,
+              "original_stop": 376,
+              "rebuilt_start": 377,
+              "rebuilt_stop": 384
+            },
+            {
+              "kind": "delete",
+              "original_start": 467,
+              "original_stop": 470,
+              "rebuilt_start": 475,
+              "rebuilt_stop": 475
+            },
+            {
+              "kind": "insert",
+              "original_start": 592,
+              "original_stop": 592,
+              "rebuilt_start": 597,
+              "rebuilt_stop": 598
+            },
+            {
+              "kind": "replace",
+              "original_start": 593,
+              "original_stop": 594,
+              "rebuilt_start": 599,
+              "rebuilt_stop": 600
+            },
+            {
+              "kind": "insert",
+              "original_start": 611,
+              "original_stop": 611,
+              "rebuilt_start": 617,
+              "rebuilt_stop": 618
+            },
+            {
+              "kind": "replace",
+              "original_start": 631,
+              "original_stop": 632,
+              "rebuilt_start": 638,
+              "rebuilt_stop": 645
+            },
+            {
+              "kind": "delete",
+              "original_start": 637,
+              "original_stop": 640,
+              "rebuilt_start": 650,
+              "rebuilt_stop": 650
+            },
+            {
+              "kind": "insert",
+              "original_start": 644,
+              "original_stop": 644,
+              "rebuilt_start": 654,
+              "rebuilt_stop": 655
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 226,
+              "original_stop": 227,
+              "rebuilt_start": 225,
+              "rebuilt_stop": 226,
+              "target_ordinal": 0,
+              "original_target": 716,
+              "rebuilt_target": 710
+            },
+            {
+              "kind": "branch_retarget",
+              "original_start": 235,
+              "original_stop": 236,
+              "rebuilt_start": 233,
+              "rebuilt_stop": 234,
+              "target_ordinal": 0,
+              "original_target": 716,
+              "rebuilt_target": 710
+            }
+          ],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 30959,
+          "end": 31026,
+          "line": 1173,
+          "column": 5,
+          "text": "num7 = ((num8 > rand_cos[1]) ? 2 : ((num8 > rand_cos[0]) ? 1 : 0));",
+          "kind": "ExpressionStatement",
+          "method_id": "game.Ball::SetShoot(game.Player,System.Int32)->System.Void",
+          "point": 30955,
+          "declaration_start": 29643,
+          "declaration_end": 33591
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 53,
+              "last_use": 1056,
+              "loads": 15,
+              "stores": 3
+            },
+            {
+              "slot": 1,
+              "first_use": 207,
+              "last_use": 208,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 280,
+              "last_use": 509,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 331,
+              "last_use": 580,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 382,
+              "last_use": 581,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 434,
+              "last_use": 438,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 450,
+              "last_use": 594,
+              "loads": 1,
+              "stores": 2
+            },
+            {
+              "slot": 7,
+              "first_use": 521,
+              "last_use": 619,
+              "loads": 1,
+              "stores": 2
+            },
+            {
+              "slot": 8,
+              "first_use": 650,
+              "last_use": 752,
+              "loads": 2,
+              "stores": 4
+            },
+            {
+              "slot": 9,
+              "first_use": 665,
+              "last_use": 690,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 10,
+              "first_use": 721,
+              "last_use": 855,
+              "loads": 1,
+              "stores": 4
+            },
+            {
+              "slot": 11,
+              "first_use": 728,
+              "last_use": 860,
+              "loads": 1,
+              "stores": 2
+            },
+            {
+              "slot": 12,
+              "first_use": 835,
+              "last_use": 864,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 13,
+              "first_use": 845,
+              "last_use": 866,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 14,
+              "first_use": 916,
+              "last_use": 964,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 15,
+              "first_use": 979,
+              "last_use": 1022,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 16,
+              "first_use": 1083,
+              "last_use": 1290,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 17,
+              "first_use": 1093,
+              "last_use": 1256,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 18,
+              "first_use": 1208,
+              "last_use": 1282,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 19,
+              "first_use": 1292,
+              "last_use": 1295,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 20,
+              "first_use": 1302,
+              "last_use": 1310,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 21,
+              "first_use": 1365,
+              "last_use": 1528,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 22,
+              "first_use": 1480,
+              "last_use": 1554,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 23,
+              "first_use": 1570,
+              "last_use": 1713,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 24,
+              "first_use": 1578,
+              "last_use": 1715,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 25,
+              "first_use": 1587,
+              "last_use": 1685,
+              "loads": 2,
+              "stores": 2
+            },
+            {
+              "slot": 26,
+              "first_use": 1643,
+              "last_use": 1647,
+              "loads": 1,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 18
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 9,
+              "votes": {
+                "9": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 10,
+              "votes": {
+                "10": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 11,
+              "votes": {
+                "11": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 12,
+              "original_slot": 12,
+              "votes": {
+                "12": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 13,
+              "original_slot": 13,
+              "votes": {
+                "13": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 14,
+              "original_slot": 14,
+              "votes": {
+                "14": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 15,
+              "original_slot": 15,
+              "votes": {
+                "15": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 16,
+              "original_slot": 16,
+              "votes": {
+                "16": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 17,
+              "original_slot": 17,
+              "votes": {
+                "17": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 18,
+              "original_slot": 18,
+              "votes": {
+                "18": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 19,
+              "original_slot": 19,
+              "votes": {
+                "19": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 20,
+              "original_slot": 20,
+              "votes": {
+                "20": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 21,
+              "original_slot": 21,
+              "votes": {
+                "21": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 22,
+              "original_slot": 22,
+              "votes": {
+                "22": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 23,
+              "original_slot": 23,
+              "votes": {
+                "23": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 24,
+              "original_slot": 24,
+              "votes": {
+                "24": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 25,
+              "original_slot": 25,
+              "votes": {
+                "25": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 26,
+              "original_slot": 26,
+              "votes": {
+                "26": 2
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "array",
+              "type": "kairo.unity.m3d4.util3d.Vector3D[]",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 29698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "player2",
+              "type": "game.Player",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 29698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num",
+              "type": "System.Single",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 29698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Single",
+              "rebuilt_slot": 3,
+              "desired_slot": 3,
+              "lexical_block": 29698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Single",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 29698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Single",
+              "rebuilt_slot": 5,
+              "desired_slot": 5,
+              "lexical_block": 29698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num5",
+              "type": "System.Single",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num6",
+              "type": "System.Single",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num7",
+              "type": "System.Int32",
+              "rebuilt_slot": 8,
+              "desired_slot": 8,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num8",
+              "type": "System.Int32",
+              "rebuilt_slot": 9,
+              "desired_slot": 9,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num9",
+              "type": "System.Single",
+              "rebuilt_slot": 10,
+              "desired_slot": 10,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num10",
+              "type": "System.Single",
+              "rebuilt_slot": 11,
+              "desired_slot": 11,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num11",
+              "type": "System.Single",
+              "rebuilt_slot": 12,
+              "desired_slot": 12,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num12",
+              "type": "System.Single",
+              "rebuilt_slot": 13,
+              "desired_slot": 13,
+              "lexical_block": 30492,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num13",
+              "type": "System.Single",
+              "rebuilt_slot": 14,
+              "desired_slot": 14,
+              "lexical_block": 31522,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num14",
+              "type": "System.Single",
+              "rebuilt_slot": 15,
+              "desired_slot": 15,
+              "lexical_block": 31522,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerBodyPoseEva",
+              "type": "System.Int32",
+              "rebuilt_slot": 16,
+              "desired_slot": 16,
+              "lexical_block": 31892,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "shootSpeed",
+              "type": "System.Single",
+              "rebuilt_slot": 17,
+              "desired_slot": 17,
+              "lexical_block": 31892,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num17",
+              "type": "System.Single",
+              "rebuilt_slot": 18,
+              "desired_slot": 18,
+              "lexical_block": 31892,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "eva",
+              "type": "System.Int32",
+              "rebuilt_slot": 19,
+              "desired_slot": 19,
+              "lexical_block": 31892,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "shootV0y2",
+              "type": "System.Single",
+              "rebuilt_slot": 20,
+              "desired_slot": 20,
+              "lexical_block": 31892,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "value",
+              "type": "System.Single",
+              "rebuilt_slot": 21,
+              "desired_slot": 21,
+              "lexical_block": 32504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num15",
+              "type": "System.Single",
+              "rebuilt_slot": 22,
+              "desired_slot": 22,
+              "lexical_block": 32504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "shootV0y",
+              "type": "System.Single",
+              "rebuilt_slot": 23,
+              "desired_slot": 23,
+              "lexical_block": 32504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "headShootUpRadRate",
+              "type": "System.Int32",
+              "rebuilt_slot": 24,
+              "desired_slot": 24,
+              "lexical_block": 32504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num16",
+              "type": "System.Int32",
+              "rebuilt_slot": 25,
+              "desired_slot": 25,
+              "lexical_block": 32504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "x",
+              "type": "System.Single",
+              "rebuilt_slot": 26,
+              "desired_slot": 26,
+              "lexical_block": 32504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 21,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 20,
+          "selected_rule_prefix": "d10-smcs-deleted-stores"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 1863,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "game.Ball::SetShoot(game.Player,System.Int32)->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d10-smcs-deleted-stores-d10-calculated-deleted-store-and-selector-layout:attempts": 1,
+    "d10-smcs-deleted-stores-d10-calculated-deleted-store-and-selector-layout:accepted_steps": 1,
+    "d10-smcs-deleted-stores-d10-calculated-deleted-store-and-selector-layout:body_gains": 1,
+    "d10-smcs-deleted-stores-d10-calculated-deleted-store-and-selector-layout:IL_gains": 1863
+  },
+  "completed": true,
+  "run_label": "cycle21-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\cycles\\cycle21\\baseline\\Assembly-CSharp",
+  "cycle_rule": "d10-smcs-deleted-stores",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d10-smcs-deleted-stores",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 20,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "8539358ae4471cfff8eb10f5c8995cab25747535fdd33d9dd05117f5751bfd4b",
+    "source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round10-smcs-deleted-stores-patches.json",
+    "sha256": "a6e83283f8318ef955c78e36b24d5c90cdfd204ee921e78495684851034f737b",
+    "dependencies_checked": {
+      "tools/round10_bind_indexed_family.py": "17114ca36b82afabdc692c5483d4febb5b4fde3418215109e19d533ce53445df",
+      "tools/round10_smcs_deleted_stores_source.py": "9ea75cf0d6752571443a8d5719ed8c77e16de062b7c94765dba79f480ea5aee7",
+      "tools/round10_publish_frozen_bundle.py": "5c3aa48ba9c9395e57d7399777347f09707553af45ce4cca2308da2070fa9539"
+    },
+    "read_only_evidence_checked": {
+      "reports/round10-smcs-deleted-stores-fixtures.json": "7381a469ea09b8970df577eeb6fe90908ec58d5b934d87896db16c79e85a4616"
+    },
+    "frozen_evidence_checked": {
+      "build/round10/autonomous-smcs-deleted-stores/before-methods.json": "f1b4550b8c5baf1f7f63625fbaf1f5036305a4c177ea3213de3b0cb6ae7d46b4",
+      "build/round10/autonomous-smcs-deleted-stores/calculate.py": "bbd60a8d4a4031dd228d73de0ae5aa52ef71db5982fc3b468e54681cb356066b",
+      "build/round10/autonomous-smcs-deleted-stores/candidate-methods.json": "456eebce2ab0a630282e40bd1829a08d5b246ab3ee43e68710b0ee6f05ba9889",
+      "build/round10/autonomous-smcs-deleted-stores/collision-synthetic-boolean-kept-methods.json": "218249717e1618a6d7eacf41c939f34f29fa4a7e8788d778e2ecaec1b0f35a4d",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/before/compiler.log": "078ddb97b0403f38e04d1ac547f4030c22442bbaf07742c5d898ebe7c0034458",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/before/Fixture.cs": "05c4ca65f0e93e4ec51c6620af1c555b5d1cc532da078a2bbb357c1f9c392113",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/before/Fixture.dll": "4f592da3a25b5ac2ad3108758d0ff162a8b19307867ce3093409ee3498b74233",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/candidate/compiler.log": "63b08735a2897e3e2ce6081c76a0f5f1903d8204f05151460bd65ab1d50c77a9",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/candidate/Fixture.cs": "7070648067ab8884c7c36e4b5c109ebc68ede11d24aca0ea881e2e6d8ef6e478",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/candidate/Fixture.dll": "87b61c75e47132b3fc19e95943167c10bf2073161de0ffe4f2ce58273e39c450",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/collision-synthetic-boolean-kept/compiler.log": "a426ab0e8f40182f5ca271e4179fd8d8904cb411502f216422d59569704811fc",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/collision-synthetic-boolean-kept/Fixture.cs": "f714b6fa2190a166f879b3fd8dbd902826fcc4a158a9a624c3b23bda709b6b36",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/collision-synthetic-boolean-kept/Fixture.dll": "ff295f93fb80d013a69597c55b218bcd9c476439155731a704d62833e2a4f735",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/control/compiler.log": "6ab31ab1d1c5ab022821f1e0e5a393c6319c556135531bcd9bcaaf137352036c",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/control/Fixture.cs": "7d45dd8a28cd8e20621aff3787d37173aba6ab8a46b5199e72fb04adac550792",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/control/Fixture.dll": "d75e35a6ed7afe7168d6572de4479736e62099441fdd732190a25bd9b8f6a49f",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/gameparam-outer-conditional-single-store/compiler.log": "f89a965d9a28d5b753d51f667efc10da310a53e075cf71351cb2a94f6800ef94",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/gameparam-outer-conditional-single-store/Fixture.cs": "f5af189dde0737fca39ee5543486597e61a3a31ea1b91383ca39a5fbf3f19205",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/gameparam-outer-conditional-single-store/Fixture.dll": "34b79bf9edb51bde0701cc5012b34d193bdeeb7d16d0ca250ff5db93b8a0179e",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/move-wrong-float-negation/compiler.log": "e7bfaa4ef9cbb90b8cd51753d1d8e923b716d0cc7f34f36a2b7325307fd082a8",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/move-wrong-float-negation/Fixture.cs": "2d713d960bf79bff3fc83ad6d289626e424b4a5738d251f4596b5c30f549dc8a",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/move-wrong-float-negation/Fixture.dll": "bec1f5e2a790bd90c01f6eadf9fbd042a487c599b22d84a3b73c7b10e7639ae5",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/shoot-one-store-after-join/compiler.log": "c514b75a285c26f249f98747b9b3681da2c8a2237a586d71800d907dda3ec02f",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/shoot-one-store-after-join/Fixture.cs": "f88995a6b98bea755afb4044240bfbe16040dfb9003480ff2a3ba61410996f21",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/shoot-one-store-after-join/Fixture.dll": "88f4837f660958a15425ead7473601108c1c80b142a8ef7696ec6f3030dfc18a",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/touch-both-selector-caches-retained/compiler.log": "b486c034d03efb031cd4457d4215cb33a8f22ede32dcf52fef01fbe4f7fb5c82",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/touch-both-selector-caches-retained/Fixture.cs": "01880707813efc3cba75e2758c520e7432202f1eb3fea9609fce4ead997518a6",
+      "build/round10/autonomous-smcs-deleted-stores/compiled/touch-both-selector-caches-retained/Fixture.dll": "6f3d171bee60da58b2a2b61c17a26f327489796b03880651555a12caef32a4ce",
+      "build/round10/autonomous-smcs-deleted-stores/compiler-evidence.json": "c00c5991bcbe96b081e99b27698589749889424ba910cca61481cbbaa8dfba58",
+      "build/round10/autonomous-smcs-deleted-stores/control-methods.json": "456eebce2ab0a630282e40bd1829a08d5b246ab3ee43e68710b0ee6f05ba9889",
+      "build/round10/autonomous-smcs-deleted-stores/diagnostic.py": "e06a3c54ecceb4f6c5a3028d3a2a1e2ff3b73e800b5a66672b2922222dd2bbf7",
+      "build/round10/autonomous-smcs-deleted-stores/finalize.py": "a718bc0e0277ba03e61201321d0993643b1266a58079085fe669e31275c496c0",
+      "build/round10/autonomous-smcs-deleted-stores/fixture-results.json": "7381a469ea09b8970df577eeb6fe90908ec58d5b934d87896db16c79e85a4616",
+      "build/round10/autonomous-smcs-deleted-stores/FixtureCandidate.cs": "2d1bbc43f7b5bddc13dfb912e544355cecb8c30c151b5afbc411c9a0cbdd354a",
+      "build/round10/autonomous-smcs-deleted-stores/FixtureControl.cs": "9b613e80fae1b44bb97b84d8cc79c6141c04792f8b5b77a7c3e951dc37e339b5",
+      "build/round10/autonomous-smcs-deleted-stores/FixtureControl.methods.cs.txt": "27de3147ce778575fdeccfb369edcae297bcd2319ef1a068486f8df6d3738b67",
+      "build/round10/autonomous-smcs-deleted-stores/FixtureCurrent.cs": "05c4ca65f0e93e4ec51c6620af1c555b5d1cc532da078a2bbb357c1f9c392113",
+      "build/round10/autonomous-smcs-deleted-stores/frozen-source-manifest.json": "123a42696aef1b7547eff30ccab05fd59067427417d1e3f48be3b2c0a459660c",
+      "build/round10/autonomous-smcs-deleted-stores/game_Ball__SetShoot/analysis.json": "da538c66dba8b2eff3cec25c7c8efa72d906862fd24f820050e6a615bfce4c6f",
+      "build/round10/autonomous-smcs-deleted-stores/game_Ball__SetShoot/method.after.cs": "b717ae4a6da5cf0c5fba645078c566471867b4913477af8f36564ec6bf5568ce",
+      "build/round10/autonomous-smcs-deleted-stores/game_Ball__SetShoot/method.before.cs": "072203db622681bbc1bfca40dd63b2242780fb68a261788861e9a541bdee3d4e",
+      "build/round10/autonomous-smcs-deleted-stores/game_Ball__SetShoot/model-after.json": "aa72b3e38e426654ab9a14aa244b609cbab0df6f830026471d04cc70db4cc543",
+      "build/round10/autonomous-smcs-deleted-stores/game_Ball__SetShoot/model-before.json": "60da3a8cde8c7221d3f736b2461039357a903c84ee861a34680aed3f7c52202c",
+      "build/round10/autonomous-smcs-deleted-stores/game_Ball__SetShoot/role-diagnostic.json": "9f46abd63b88dbca16e856f3403581ed10e2ef24fb88d80b023ef7afe82cc8ed",
+      "build/round10/autonomous-smcs-deleted-stores/game_GameManager__Collision/analysis.json": "7340bf17c23be5df7a9cc844d4144006929e73ec388233f77804aec9a178887f",
+      "build/round10/autonomous-smcs-deleted-stores/game_GameManager__Collision/method.after.cs": "8d43f808cb5acdd995c30e09bce669f99bf943b38ff6e89a77782e5131ceb573",
+      "build/round10/autonomous-smcs-deleted-stores/game_GameManager__Collision/method.before.cs": "48b4a1165ad40f36751d5f3337957759f5c6d15decd50763b57134c5a90bbf91",
+      "build/round10/autonomous-smcs-deleted-stores/game_GameManager__Collision/model-after.json": "d0f0fd69b365f9ef027bb4de4afb0285939a292cfc2e1e5e1744872227a31fde",
+      "build/round10/autonomous-smcs-deleted-stores/game_GameManager__Collision/model-before.json": "f020d0f9dd770a97b63ca73e83ccabf3232841b1ebe9ab42c626d42a3a8fd59b",
+      "build/round10/autonomous-smcs-deleted-stores/game_GameManager__Collision/role-diagnostic.json": "6e345a28887695c4995c2ced3d96e76f794f01c80213dcb76da8a718c6562de3",
+      "build/round10/autonomous-smcs-deleted-stores/game_Player__Move/analysis.json": "734e7d43e88081f6f5e1236af4068fe99b7c3d18cd5546eb8b005a89b0e14574",
+      "build/round10/autonomous-smcs-deleted-stores/game_Player__Move/method.after.cs": "e769aa20d73638882c6f8c0766ec4adcaf6745ec7f87452b92144f2cb9fc7ab4",
+      "build/round10/autonomous-smcs-deleted-stores/game_Player__Move/method.before.cs": "3bd259ccf8126bcddb38a977f3cfbe1c79f36b321009676ac19b76ee8de191e4",
+      "build/round10/autonomous-smcs-deleted-stores/game_Player__Move/model-after.json": "0e79dfa344c12528542514e8d4b87487c621139651ae5ad19b437c103e27c046",
+      "build/round10/autonomous-smcs-deleted-stores/game_Player__Move/model-before.json": "197adbeaf2b77eb0424464c98ce5859c6b76f668b5300b834ed65e1b90ecbdfb",
+      "build/round10/autonomous-smcs-deleted-stores/game_Player__Move/role-diagnostic.json": "b2f3a498e13ec52b0ae05255babc6a7cfeefdc79763ae40a4bcd83a986f93d68",
+      "build/round10/autonomous-smcs-deleted-stores/game_UserData__Update_gameParam/analysis.json": "a31a706a3f8b8d4065d80f03c78fd6553f1f2c431c81c1dbf0ccea63af02613c",
+      "build/round10/autonomous-smcs-deleted-stores/game_UserData__Update_gameParam/method.after.cs": "084bcad73b99f9223f72081ebfec4ef84855df08db420e0af27884abfb893074",
+      "build/round10/autonomous-smcs-deleted-stores/game_UserData__Update_gameParam/method.before.cs": "c64e7644c5b566d054c4a465f0e29e0440318f97baec224431effa87f38f3d5f",
+      "build/round10/autonomous-smcs-deleted-stores/game_UserData__Update_gameParam/model-after.json": "32480d07c54888d31e7dcb207fd5bc15a9f0d69ca888440d483a95a03d2db545",
+      "build/round10/autonomous-smcs-deleted-stores/game_UserData__Update_gameParam/model-before.json": "ec2eb44df4876a963121a2f230439b220176249bd4d305de490caddb8afb4743",
+      "build/round10/autonomous-smcs-deleted-stores/game_UserData__Update_gameParam/role-diagnostic.json": "60baf1ecb3a06d696c948bb53589f033bd33864bd61b9f1bb9c7ccf5caefa756",
+      "build/round10/autonomous-smcs-deleted-stores/gameparam-outer-conditional-single-store-methods.json": "017a1155f2d67f824ff3e13652de4dd8706e0097514f805080fda56d73c122fa",
+      "build/round10/autonomous-smcs-deleted-stores/history-review.json": "3d45f886a891c7779f6e74a7158506f9862d9925201af12b435a0dcf26dd3d50",
+      "build/round10/autonomous-smcs-deleted-stores/history.json": "c6a6c7b71f19d0b1caeca11177dbfdb00723d53cb483dfb1182ce61873e23846",
+      "build/round10/autonomous-smcs-deleted-stores/model-results.json": "b828fb0b0fdea7be5009d22179a81aaa837c986cc1c0f52c48e10c16e4baa510",
+      "build/round10/autonomous-smcs-deleted-stores/model.py": "78dfb0fbf3e314183b34130d28eb14703325c1fcd8e4ede2207bfb94a2528359",
+      "build/round10/autonomous-smcs-deleted-stores/move-wrong-float-negation-methods.json": "31ef55eee0187ad75af66608581be7f03dc21100d504637790baf6ed06926345",
+      "build/round10/autonomous-smcs-deleted-stores/package.py": "990b39a20165f20ae2ca2b99cc8bc2c2dd408cd9ff48c0addbcdaeb32bf60932",
+      "build/round10/autonomous-smcs-deleted-stores/probe-bundle.json": "f6f33e8c6201e8edbbfb31d1ffd666bd685b429a4a4307de5cb2a125c083b919",
+      "build/round10/autonomous-smcs-deleted-stores/README.md": "f83f361730f0c1abda1b92dc32847878fa4e53861bf68de1ece6001e1197d6c4",
+      "build/round10/autonomous-smcs-deleted-stores/ready.json": "ae339e21a93fdbd9d0fb555d4570faaa869219bc1a34ca77c0f2824264b78262",
+      "build/round10/autonomous-smcs-deleted-stores/region-accounting.json": "c05bf0e0924f477fe6548ff8c1bca35ee8033f32246397b296c254b480da7a41",
+      "build/round10/autonomous-smcs-deleted-stores/shoot-one-store-after-join-methods.json": "7305db8590ec783b2f68b3ea62228ba513e97be08b0ab967ed817df63495c96a",
+      "build/round10/autonomous-smcs-deleted-stores/source_calculator.py": "9ea75cf0d6752571443a8d5719ed8c77e16de062b7c94765dba79f480ea5aee7",
+      "build/round10/autonomous-smcs-deleted-stores/stage-results.json": "270d3a0b20605acc3fca8b64dd9d3a66d2d47b6aa4d300ea9d5d00211d7f17b8",
+      "build/round10/autonomous-smcs-deleted-stores/stage.py": "9852fc5141d2e3ef8a430af6cb683143d425077663603aeac5582d8c628309a9",
+      "build/round10/autonomous-smcs-deleted-stores/surface_GameView__AddTouch/analysis.json": "4e42fc92f624664adb6279a0e0ca484bbf2583c96dd64188aec82d9b6f37fdbd",
+      "build/round10/autonomous-smcs-deleted-stores/surface_GameView__AddTouch/method.after.cs": "2697773dfec88bf31d66984bb4f867314a18331c084676e2d6f7412440015813",
+      "build/round10/autonomous-smcs-deleted-stores/surface_GameView__AddTouch/method.before.cs": "bf168e6ac78563bac72fc27d3c25c07eaa4165d80a1d558449f03e40ce8acd89",
+      "build/round10/autonomous-smcs-deleted-stores/surface_GameView__AddTouch/model-after.json": "2f24b0b83deb3e8f4e34c25c4b86d80fb9983621b36104402b25628b3030e43d",
+      "build/round10/autonomous-smcs-deleted-stores/surface_GameView__AddTouch/model-before.json": "14d65702a20b3200c5354f30511686c683f4dc374aff8bd46457f097b498b3d3",
+      "build/round10/autonomous-smcs-deleted-stores/surface_GameView__AddTouch/role-diagnostic.json": "642a6c886717b3bc71ef6308f19a037cae34509a9b6c14d4dc247a97d23d0f88",
+      "build/round10/autonomous-smcs-deleted-stores/touch-both-selector-caches-retained-methods.json": "4b9e35642904dc70a08a602d0386fa1bc0b6c25973dfb0a1e7c90c85199f3499",
+      "build/round10/autonomous-smcs-deleted-stores/validate.py": "fa01c263bb2c0ad4d8f1727ba0058abb144e4c87dc1541770e656729ee24e6c3",
+      "build/round10/autonomous-smcs-deleted-stores/frozen-index.json": "f511f951b8ba9d0a62bf4743d212d1b4d1c2a67d9364300c41ba9dc3d6ed145f",
+      "build/round10/autonomous-smcs-deleted-stores/../publication/smcs-deleted-stores-indexed-engine.json": "4ffc61b1e8bcf721e086732dbf3977a043384704e8748a644f7933d58be77069"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "game.Ball::SetShoot(game.Player,System.Int32)->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794082655566736500",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.077999999979511,
+        "wall_seconds": 7.2350000001024455,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.077999999979511,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794082655566736500\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794082655566736500\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "28c2fb144926eb01b0621949edbbd856741ae91b0fecd9367054f47e97497b2d",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "361ebf2270f0711913589c6b2f9178624cdde495eeb84c7c9c2323d27d269564",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+          "src/Assembly-CSharp/form/SpForm.cs": "292600404773d63deade708304a62c123390db712789c3ad516dbb19411f0990",
+          "src/Assembly-CSharp/form/SubForm.cs": "4bbba7380796ab5df5dd2f48f09c1a44fad0254cf9c3e5e6dfc615126cf9c39f",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "5d8bddca8ebbac505ceab15ecee1f43e37fdc64bf1058002d9a5b2d458c5548b",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "e80e5dfbcf480aed02cbfad5e7264bde1c547e7d7dd0460b33dedcfac5c15a56",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "cdfdc16de4eb0b387bccae1277679118a586762033f9885180fb760533eb330c",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "9fb6e7471f477d700c935898375a8906d4714de16b32bf785ffdbfa569decccf",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+          "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "0b021192b8336d8e1f2bc32abe075afe1e510390340aac5f8fef85485023cd5f",
+          "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+          "src/Assembly-CSharp/surface/GameView.cs": "56bf9619c9ce075510481c8a6dd39f58e1d5ebbc2ffe4e0080505e6b3964b265",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3d9e96402fdbfdd4d6516b417114b098352ec8b174fbee22dff76d7509c67240",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "47078f79ffcc689a9673cab23822db0cf49dfc448ab7ec11898dfafc12648386",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "9d0999f53a9b876191cf7182bc90a1eed30952f0f831db3f97d51aecc07d541e",
+        "accepted_source_set_sha256": "a57e5bfa5f56e7b565e55bdb8f153c0639fc5518715555d485618c19585fee91",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "3c2fcf0d652e702977eaa86e96c979c9748bc3364e6caea6b30bcadfe1cff705"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "game.Ball::SetShoot(game.Player,System.Int32)->System.Void",
+        "rule": "d10-smcs-deleted-stores-d10-calculated-deleted-store-and-selector-layout",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1872,
+  "body_gains": [
+    "game.Ball::SetShoot(game.Player,System.Int32)->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 1863,
+  "builds": 6,
+  "build_seconds": 6.937999999849126,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "8979488a05793d306abbd0a4ea35575926fe6266ce3794d90a328e4ff004eaa5",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle21-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "9d0999f53a9b876191cf7182bc90a1eed30952f0f831db3f97d51aecc07d541e",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "28c2fb144926eb01b0621949edbbd856741ae91b0fecd9367054f47e97497b2d",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "361ebf2270f0711913589c6b2f9178624cdde495eeb84c7c9c2323d27d269564",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+    "src/Assembly-CSharp/form/SpForm.cs": "292600404773d63deade708304a62c123390db712789c3ad516dbb19411f0990",
+    "src/Assembly-CSharp/form/SubForm.cs": "4bbba7380796ab5df5dd2f48f09c1a44fad0254cf9c3e5e6dfc615126cf9c39f",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "d4ce73b2cab4e7bf9e60ab281167cbfbb4110dffa232cee85ede091bede76755",
+    "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "e80e5dfbcf480aed02cbfad5e7264bde1c547e7d7dd0460b33dedcfac5c15a56",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "cdfdc16de4eb0b387bccae1277679118a586762033f9885180fb760533eb330c",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "9fb6e7471f477d700c935898375a8906d4714de16b32bf785ffdbfa569decccf",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+    "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+    "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+    "src/Assembly-CSharp/game/UserData.cs": "0b021192b8336d8e1f2bc32abe075afe1e510390340aac5f8fef85485023cd5f",
+    "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+    "src/Assembly-CSharp/surface/GameView.cs": "56bf9619c9ce075510481c8a6dd39f58e1d5ebbc2ffe4e0080505e6b3964b265",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3d9e96402fdbfdd4d6516b417114b098352ec8b174fbee22dff76d7509c67240",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "47078f79ffcc689a9673cab23822db0cf49dfc448ab7ec11898dfafc12648386",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}
