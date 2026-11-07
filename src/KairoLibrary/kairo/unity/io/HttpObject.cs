@@ -204,6 +204,7 @@ default:
 					else
 					{
 						byte[] bytes = http_.bytes;
+Vector vector;
 						totalSize = bytes.Length;
 						bais = new ByteArrayInputStream(bytes);
 						if (check)
@@ -236,12 +237,9 @@ default:
 										{
 											errorCode_ = JInteger.ParseInt(array[0]);
 										}
-										{ bool recoveredCondition_5948 = 1 < array.Length;
-if (recoveredCondition_5948)
-										{
+										if (1 < array.Length) {
 											errorText_ = array[1].Replace('|', '\n');
 										}
-}
 									}
 									catch (Exception)
 									{
@@ -263,21 +261,22 @@ if (recoveredCondition_5948)
 								error_ = new IOException("response " + totalSize + " bytes");
 							}
 						}
-						if (error_ == null)
-						{
-							Vector vector = new Vector();
-							byte[] array2;
-							for (; recvSize < totalSize; recvSize += array2.Length)
-							{
+						if (error_ != null) { return; }
+{
+							vector = new Vector();
+							while (recvSize < totalSize)
+{
 								int size = totalSize - recvSize;
 								if (split)
 								{
 									size = StreamUtil.ReadInt(bais);
 									recvSize += 4;
 								}
-								array2 = StreamUtil.Read(bais, size);
+								byte[] array2 = StreamUtil.Read(bais, size);
 								vector.AddElement(array2);
-							}
+
+recvSize += array2.Length;
+}
 							if (vector.Size() == 0)
 							{
 								if (split)

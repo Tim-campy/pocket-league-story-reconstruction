@@ -26,3 +26,4 @@
 | 22 | Assembly-CSharp / stloc.s => DELETION_POINT | Compor stores locais por braco e restaurar apenas o cache externo original de AddTouch; preservar nomes, expressoes float e negativo historico. | Novos corpos aprovados; 5 tentativas da regra, 5 avancos | 5 | 4627 |
 | 23 | Assembly-CSharp / brfalse => brtrue | Testar composicao congelada com IDs originais, fixtures proprias e gate fresco; sem ganho presumido. | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 1592 |
 | 24 | KairoLibrary / stloc.s => stloc.2 | Restaurar Nodes nomeados e resultado apos finally, reusar num de readBit e declarar tres indices Matrix no pai de uma vez. | Novos corpos aprovados; 3 tentativas da regra, 3 avancos | 3 | 1024 |
+| 25 | KairoLibrary / stloc.2 => stloc.1 | Restaurar dono lexical dos locais da lambda HttpObject, escrevendo apenas o fonte pai e mantendo todas as folhas. | Novos corpos aprovados; 1 tentativas da regra, 1 avancos | 1 | 944 |
