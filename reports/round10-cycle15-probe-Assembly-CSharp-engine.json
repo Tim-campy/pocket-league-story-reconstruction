@@ -1,0 +1,3000 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1860,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "form.SoccerForm::_update(System.Int32)->System.Boolean",
+      "number": 1,
+      "initial_offset": 826,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d10-smcs-switch-join-d10-smcs-switch-layout-d10-calculated-dispatch-local-join-layout",
+          "start": 26535,
+          "end": 39759,
+          "before": "private bool _update(int frameCount)\r\n\t\t{\r\n\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(1))\r\n\t\t\t{\r\n\t\t\t\treturn formMan_.Push(new DebugForm());\r\n\t\t\t}\r\n\t\t\tstateCnt_ = (stateCnt_ + 1) % int.MaxValue;\r\n\t\t\tScript();\r\n\t\t\tapdat_.UpdateEffect();\r\n\t\t\tint num = 5;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tUpdate_main();\r\n\t\t\t\tSetStatusPlayer();\r\n\t\t\t\tif (statusPlayer_ != null && canvas_.CheckKeyRepeat(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData = apdat_.pData_[statusPlayer_.pData_id_];\r\n\t\t\t\t\tif (playerData.auraPoint_ == 10000 && !BitUtil.Check(statusPlayer_.flag_, 262144) && udat_.gm_.state_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData.Start_aura(statusPlayer_);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int i = 0; i < udat_.teams_[0].players_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayer player = udat_.teams_[0].players_[i];\r\n\t\t\t\t\tPlayerData playerData2 = apdat_.pData_[player.pData_id_];\r\n\t\t\t\t\tplayerData2.Update_aura(player);\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.gm_.state_ != 1 && statusAmeftoCnt_ > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tstatusAmeftoCnt_--;\r\n\t\t\t\t}\r\n\t\t\t\tint num2 = statusAmeftoMode_;\r\n\t\t\t\tif (statusAmeftoCnt_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536) || canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ - 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ + 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (num2 != statusAmeftoMode_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!udat_.gm_.halfTime)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[0].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[1].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\tif (statusAmeftoMode_ == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(139))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tapdat_.ExecEvent(139, null, null);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (statusAmeftoMode_ == 1 && !apdat_.CheckAlreadyEvent(140))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.ExecEvent(140, null, null);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(128))\r\n\t\t\t\t{\r\n\t\t\t\t\tAddCommandCard(GameUtil.Random(2), 0, 0);\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.IsPushSoftLabel(4))\r\n\t\t\t\t{\r\n\t\t\t\t\treturn Push(menu_);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 1)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 2)\r\n\t\t\t{\r\n\t\t\t\tif (udat_.gm_.score_[0] > udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[0]++;\r\n\t\t\t\t}\r\n\t\t\t\telse if (udat_.gm_.score_[0] < udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[2]++;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[1]++;\r\n\t\t\t\t}\r\n\t\t\t\tudat_.matchGetGoalTotal_ += udat_.gm_.score_[0];\r\n\t\t\t\tint matchInfoJoin = udat_.GetMatchInfoJoin();\r\n\t\t\t\tif (matchInfoJoin == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.Update_league();\r\n\t\t\t\t}\r\n\t\t\t\tudat_.Update_gameParam();\r\n\t\t\t\tChangeState(3);\r\n\t\t\t\tswitch (matchInfoJoin)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t{\r\n\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\tif (BitUtil.Check(questMatchData.flag_, 2) && QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tPush(new SubForm(37));\r\n\t\t\t}\r\n\t\t\telse if (state_ == 3)\r\n\t\t\t{\r\n\t\t\t\tChangeState(9);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 4)\r\n\t\t\t{\r\n\t\t\t\tudat_.matchInfoWeek_ = 0;\r\n\t\t\t\tudat_.Init_bus();\r\n\t\t\t\tapdat_.camera.SetMapMainBasePos();\r\n\t\t\t\tif (udat_.GetMatchInfoJoin() == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.league_setu_++;\r\n\t\t\t\t\tudat_.League_finish();\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.Qm_update();\r\n\t\t\t\t}\r\n\t\t\t\tChangeState(5);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 5)\r\n\t\t\t{\r\n\t\t\t\tformMan_.ChangeCurrentForm(apdat_.frmGame_);\r\n\t\t\t\tapdat_.frmGame_.ChangeState(0);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 6)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[61].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[62].Frame();\r\n\t\t\t\tif (udat_.Update_edit(true))\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 7)\r\n\t\t\t{\r\n\t\t\t\tstadiumMoveCnt_++;\r\n\t\t\t\tSetAllDraw();\r\n\t\t\t\tif (stateCnt_ < STADIUM_CAMERA_TIME[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][0]);\r\n\t\t\t\t}\r\n\t\t\t\telse if (stateCnt_ < STADIUM_CAMERA_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat x_ = Camera.pos.x_;\r\n\t\t\t\t\tfloat y_ = Camera.pos.y_;\r\n\t\t\t\t\tCamera.pos.x_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].x_, STADIUM_CAERA_BASE_POS[stadiumId_][1].x_, true);\r\n\t\t\t\t\tCamera.pos.y_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].y_, STADIUM_CAERA_BASE_POS[stadiumId_][1].y_, true);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][1]);\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && stateCnt_ >= STADIUM_BTMINFO_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tstateCnt_ = STADIUM_CAMERA_TIME[2];\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= STADIUM_CAMERA_TIME[2])\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(8);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 8)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 25)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(6);\r\n\t\t\t\t\tVector3D global_pos = new Vector3D();\r\n\t\t\t\t\tint[] array = new int[2];\r\n\t\t\t\t\tCamera.ConvertGlobalToScreen(global_pos, array);\r\n\t\t\t\t\tCamera.pos.x_ = array[0];\r\n\t\t\t\t\tCamera.pos.y_ = array[1];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 9)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_f_cnt < BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_f_cnt++;\r\n\t\t\t\tif (bonus_f_cnt >= BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_f_cnt = 0;\r\n\t\t\t\t\tbonus_f_index++;\r\n\t\t\t\t\tif (bonus_f_index < FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttemp_fan += temp_addFan;\r\n\t\t\t\t\t\ttemp_assist += temp_addAssist;\r\n\t\t\t\t\t\ttemp_nameValue += temp_addNameValue;\r\n\t\t\t\t\t\tobject[] array2 = (object[])FanBonusData.bonus_f_data1.ElementAt(bonus_f_index);\r\n\t\t\t\t\t\tint[] array3 = (int[])array2[2];\r\n\t\t\t\t\t\ttemp_addFan = array3[0];\r\n\t\t\t\t\t\ttemp_addAssist = array3[1];\r\n\t\t\t\t\t\ttemp_addNameValue = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (bonus_f_index >= FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(14);\r\n\t\t\t\t\t\tfor (int j = 0; j < FanBonusData.bonus_f_data1.Size(); j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tobject[] array4 = (object[])FanBonusData.bonus_f_data1.ElementAt(j);\r\n\t\t\t\t\t\t\tint[] array5 = (int[])array4[2];\r\n\t\t\t\t\t\t\tint num3 = ((JInteger)array4[3]).IntValue();\r\n\t\t\t\t\t\t\tint[] array6 = (int[])array4[4];\r\n\t\t\t\t\t\t\tint num4 = ((JInteger)array4[5]).IntValue();\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[0], 0);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[1], 1);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[2], 2);\r\n\t\t\t\t\t\t\tint fanEva = FanActData.GetFanEva(0);\r\n\t\t\t\t\t\t\tif (num4 != 1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tswitch (num3)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tfor (int l = 0; l < array6.Length; l++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData4 = apdat_.pData_[array6[l]];\r\n\t\t\t\t\t\t\t\t\tplayerData4.AddPopular(1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcase 1:\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tfor (int k = 0; k < array6.Length; k++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData3 = apdat_.pData_[array6[k]];\r\n\t\t\t\t\t\t\t\t\tplayerData3.AddPopular(3);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 10)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1];\r\n\t\t\t\t}\r\n\t\t\t\tfor (int m = 0; m < BONUS_IN_CYCLE.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_in_cnt < BONUS_IN_CYCLE[m])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (bonus_in_param[m][0] == 0 && bonus_in_param[m][1] == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[m];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_in_cnt++;\r\n\t\t\t\tif (bonus_in_cnt >= BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_index++;\r\n\t\t\t\t\tif (bonus_in_index >= 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(11);\r\n\t\t\t\t\t\tfor (int n = 0; n < bonus_in_param.Length; n++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tswitch (n)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\t\tcase 1:\r\n\t\t\t\t\t\t\tcase 2:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 0);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 0);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tcase 3:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 2);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 2);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tcase 4:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 3);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 3);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tdefault:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 4);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 4);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 11)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(12);\r\n\t\t\t\t\tif (udat_.GetMatchInfoJoin() == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(12);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 12)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\tPush(new SubForm(33, 1));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 14)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tfor (int num5 = 0; num5 < udat_.memberPDataist_.Size(); num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData5 = (PlayerData)udat_.memberPDataist_.ElementAt(num5);\r\n\t\t\t\t\tif (playerData5.temp_anime > 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData5.temp_anime--;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[2] && stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num6 = 0; num6 < udat_.memberPDataist_.Size(); num6++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData6 = (PlayerData)udat_.memberPDataist_.ElementAt(num6);\r\n\t\t\t\t\t\tint num7 = GameUtil.RateConvert(stateCnt_ - 1, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num8 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num9 = num8 - num7;\r\n\t\t\t\t\t\tplayerData6.temp_exp += num9;\r\n\t\t\t\t\t\tint nextLvUpExp = PlayerData.GetNextLvUpExp(playerData6.temp_lv);\r\n\t\t\t\t\t\tif (playerData6.temp_exp > nextLvUpExp)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData6.temp_exp -= nextLvUpExp;\r\n\t\t\t\t\t\t\tplayerData6.temp_lv = AppData.ClampMax(playerData6.temp_lv + 1, 30);\r\n\t\t\t\t\t\t\tplayerData6.temp_lvUp = true;\r\n\t\t\t\t\t\t\tplayerData6.temp_anime = 12;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ - 1 + 2) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ + 1) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ == PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num10 = 0; num10 < 11; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData7 = (PlayerData)udat_.memberPDataist_.ElementAt(num10);\r\n\t\t\t\t\t\tplayerData7.AddExp(PBONUS_NP_LV_ADDEXP, false);\r\n\t\t\t\t\t\tplayerData7.temp_exp = playerData7.exp_;\r\n\t\t\t\t\t\tif (playerData7.temp_lv != playerData7.lv_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData7.temp_lvUp = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tplayerData7.temp_lv = playerData7.lv_;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TIME[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (stateCnt_ >= PBONUS_NP_LV_TIME[3] && select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 15)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_POPULAR[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_POPULAR[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num11 = 0; num11 < udat_.memberPDataist_.Size(); num11++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData8 = (PlayerData)udat_.memberPDataist_.ElementAt(num11);\r\n\t\t\t\t\t\t\tplayerData8.AddPopular(PBONUS_NP_LV_GETPOPULAR);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 16)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TRAINING1[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TRAINING1[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num12 = 0; num12 < 11; num12++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData9 = (PlayerData)udat_.memberPDataist_.ElementAt(num12);\r\n\t\t\t\t\t\t\tif (playerData9.bonus_research[0] != -1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tudat_.AddResearchPoint(playerData9.bonus_research[0], playerData9.bonus_research[1]);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(10);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\treturn false;\r\n\t\t}",
+          "after": "private bool _update(int frameCount)\r\n\t\t{\r\n\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(1))\r\n\t\t\t{\r\n\t\t\t\treturn formMan_.Push(new DebugForm());\r\n\t\t\t}\r\n\t\t\tstateCnt_ = (stateCnt_ + 1) % int.MaxValue;\r\n\t\t\tScript();\r\n\t\t\tapdat_.UpdateEffect();\r\n\t\t\tint num = 5;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tUpdate_main();\r\n\t\t\t\tSetStatusPlayer();\r\n\t\t\t\tif (statusPlayer_ != null && canvas_.CheckKeyRepeat(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData = apdat_.pData_[statusPlayer_.pData_id_];\r\n\t\t\t\t\tif (playerData.auraPoint_ == 10000 && !BitUtil.Check(statusPlayer_.flag_, 262144) && udat_.gm_.state_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData.Start_aura(statusPlayer_);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int i = 0; i < udat_.teams_[0].players_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayer player = udat_.teams_[0].players_[i];\r\n\t\t\t\t\tPlayerData playerData2 = apdat_.pData_[player.pData_id_];\r\n\t\t\t\t\tplayerData2.Update_aura(player);\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.gm_.state_ != 1 && statusAmeftoCnt_ > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tstatusAmeftoCnt_--;\r\n\t\t\t\t}\r\n\t\t\t\tint num2 = statusAmeftoMode_;\r\n\t\t\t\tif (statusAmeftoCnt_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536) || canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ - 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ + 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (num2 != statusAmeftoMode_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!udat_.gm_.halfTime)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[0].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[1].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\tif (statusAmeftoMode_ == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(139))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tapdat_.ExecEvent(139, null, null);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (statusAmeftoMode_ == 1 && !apdat_.CheckAlreadyEvent(140))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.ExecEvent(140, null, null);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(128))\r\n\t\t\t\t{\r\n\t\t\t\t\tAddCommandCard(GameUtil.Random(2), 0, 0);\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.IsPushSoftLabel(4))\r\n\t\t\t\t{\r\n\t\t\t\t\treturn Push(menu_);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 1)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 2)\r\n\t\t\t{\r\n\t\t\t\tif (udat_.gm_.score_[0] > udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[0]++;\r\n\t\t\t\t}\r\n\t\t\t\telse if (udat_.gm_.score_[0] < udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[2]++;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[1]++;\r\n\t\t\t\t}\r\n\t\t\t\tudat_.matchGetGoalTotal_ += udat_.gm_.score_[0];\r\n\t\t\t\tint matchInfoJoin = udat_.GetMatchInfoJoin();\r\n\t\t\t\tif (matchInfoJoin == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.Update_league();\r\n\t\t\t\t}\r\n\t\t\t\tudat_.Update_gameParam();\r\n\t\t\t\tChangeState(3);\r\n\t\t\t\tif ((matchInfoJoin == 0)) {\nif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\n}\nelse if ((matchInfoJoin == 1)) {\n{\r\n\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\tif (BitUtil.Check(questMatchData.flag_, 2) && QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t}\n}\r\n\t\t\t\tPush(new SubForm(37));\r\n\t\t\t}\r\n\t\t\telse if (state_ == 3)\r\n\t\t\t{\r\n\t\t\t\tChangeState(9);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 4)\r\n\t\t\t{\r\n\t\t\t\tudat_.matchInfoWeek_ = 0;\r\n\t\t\t\tudat_.Init_bus();\r\n\t\t\t\tapdat_.camera.SetMapMainBasePos();int recoveredMatchInfoJoin4=udat_.GetMatchInfoJoin();if(recoveredMatchInfoJoin4==0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.league_setu_++;\r\n\t\t\t\t\tudat_.League_finish();\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.Qm_update();\r\n\t\t\t\t}\r\n\t\t\t\tChangeState(5);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 5)\r\n\t\t\t{\r\n\t\t\t\tformMan_.ChangeCurrentForm(apdat_.frmGame_);\r\n\t\t\t\tapdat_.frmGame_.ChangeState(0);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 6)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[61].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[62].Frame();\r\n\t\t\t\tif (udat_.Update_edit(true))\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 7)\r\n\t\t\t{\r\n\t\t\t\tstadiumMoveCnt_++;\r\n\t\t\t\tSetAllDraw();\r\n\t\t\t\tif (stateCnt_ < STADIUM_CAMERA_TIME[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][0]);\r\n\t\t\t\t}\r\n\t\t\t\telse if (stateCnt_ < STADIUM_CAMERA_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat x_ = Camera.pos.x_;\r\n\t\t\t\t\tfloat y_ = Camera.pos.y_;\r\n\t\t\t\t\tCamera.pos.x_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].x_, STADIUM_CAERA_BASE_POS[stadiumId_][1].x_, true);\r\n\t\t\t\t\tCamera.pos.y_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].y_, STADIUM_CAERA_BASE_POS[stadiumId_][1].y_, true);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][1]);\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && stateCnt_ >= STADIUM_BTMINFO_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tstateCnt_ = STADIUM_CAMERA_TIME[2];\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= STADIUM_CAMERA_TIME[2])\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(8);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 8)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 25)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(6);\r\n\t\t\t\t\tVector3D global_pos = new Vector3D();\r\n\t\t\t\t\tint[] array = new int[2];\r\n\t\t\t\t\tCamera.ConvertGlobalToScreen(global_pos, array);\r\n\t\t\t\t\tCamera.pos.x_ = array[0];\r\n\t\t\t\t\tCamera.pos.y_ = array[1];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 9)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_f_cnt < BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_f_cnt++;\r\n\t\t\t\tif (bonus_f_cnt >= BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_f_cnt = 0;\r\n\t\t\t\t\tbonus_f_index++;\r\n\t\t\t\t\tif (bonus_f_index < FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttemp_fan += temp_addFan;\r\n\t\t\t\t\t\ttemp_assist += temp_addAssist;\r\n\t\t\t\t\t\ttemp_nameValue += temp_addNameValue;\r\n\t\t\t\t\t\tobject[] array2 = (object[])FanBonusData.bonus_f_data1.ElementAt(bonus_f_index);\r\n\t\t\t\t\t\tint[] array3 = (int[])array2[2];\r\n\t\t\t\t\t\ttemp_addFan = array3[0];\r\n\t\t\t\t\t\ttemp_addAssist = array3[1];\r\n\t\t\t\t\t\ttemp_addNameValue = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (bonus_f_index >= FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(14);\r\n\t\t\t\t\t\tfor (int j = 0; j < FanBonusData.bonus_f_data1.Size(); j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tobject[] array4 = (object[])FanBonusData.bonus_f_data1.ElementAt(j);\r\n\t\t\t\t\t\t\tint[] array5 = (int[])array4[2];\r\n\t\t\t\t\t\t\tint num3 = ((JInteger)array4[3]).IntValue();\r\n\t\t\t\t\t\t\tint[] array6 = (int[])array4[4];\r\n\t\t\t\t\t\t\tint num4 = ((JInteger)array4[5]).IntValue();\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[0], 0);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[1], 1);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[2], 2);\r\n\t\t\t\t\t\t\tint fanEva = FanActData.GetFanEva(0);\r\n\t\t\t\t\t\t\tif(num4==1){\r\n\t\t\t\t\t\t\tif ((num3 == 0)) {\n{\r\n\t\t\t\t\t\t\t\tfor (int l = 0; l < array6.Length; l++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData4 = apdat_.pData_[array6[l]];\r\n\t\t\t\t\t\t\t\t\tplayerData4.AddPopular(1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t}\n}\nelse if ((num3 == 1)) {\n{\r\n\t\t\t\t\t\t\t\tfor (int k = 0; k < array6.Length; k++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData3 = apdat_.pData_[array6[k]];\r\n\t\t\t\t\t\t\t\t\tplayerData3.AddPopular(3);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t\t}}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 10)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1];\r\n\t\t\t\t}\r\n\t\t\t\tfor (int m = 0; m < BONUS_IN_CYCLE.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_in_cnt < BONUS_IN_CYCLE[m])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (bonus_in_param[m][0] == 0 && bonus_in_param[m][1] == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[m];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_in_cnt++;\r\n\t\t\t\tif (bonus_in_cnt >= BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_index++;\r\n\t\t\t\t\tif (bonus_in_index >= 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(11);\r\n\t\t\t\t\t\tfor (int n = 0; n < bonus_in_param.Length; n++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif ((n == 0) || (n == 1) || (n == 2)) {\napdat_.AddMoney(bonus_in_param[n][0], 0);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 0);\r\n\t\t\t\t\t\t\t\t\n}\nelse if ((n == 3)) {\napdat_.AddMoney(bonus_in_param[n][0], 2);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 2);\r\n\t\t\t\t\t\t\t\t\n}\nelse if ((n == 4)) {\napdat_.AddMoney(bonus_in_param[n][0], 3);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 3);\r\n\t\t\t\t\t\t\t\t\n}\nelse {\napdat_.AddMoney(bonus_in_param[n][0], 4);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 4);\r\n\t\t\t\t\t\t\t\t\n}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 11)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(12);int recoveredMatchInfoJoin11=udat_.GetMatchInfoJoin();if(recoveredMatchInfoJoin11==0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(12);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 12)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\tPush(new SubForm(33, 1));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 14)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tfor (int num5 = 0; num5 < udat_.memberPDataist_.Size(); num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData5 = (PlayerData)udat_.memberPDataist_.ElementAt(num5);\r\n\t\t\t\t\tif (playerData5.temp_anime > 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData5.temp_anime--;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[2] && stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num6 = 0; num6 < udat_.memberPDataist_.Size(); num6++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData6 = (PlayerData)udat_.memberPDataist_.ElementAt(num6);\r\n\t\t\t\t\t\tint num7 = GameUtil.RateConvert(stateCnt_ - 1, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num8 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num9 = num8 - num7;\r\n\t\t\t\t\t\tplayerData6.temp_exp += num9;\r\n\t\t\t\t\t\tint nextLvUpExp = PlayerData.GetNextLvUpExp(playerData6.temp_lv);\r\n\t\t\t\t\t\tif (playerData6.temp_exp > nextLvUpExp)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData6.temp_exp -= nextLvUpExp;\r\n\t\t\t\t\t\t\tplayerData6.temp_lv = AppData.ClampMax(playerData6.temp_lv + 1, 30);\r\n\t\t\t\t\t\t\tplayerData6.temp_lvUp = true;\r\n\t\t\t\t\t\t\tplayerData6.temp_anime = 12;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ - 1 + 2) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ + 1) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ == PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num10 = 0; num10 < 11; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData7 = (PlayerData)udat_.memberPDataist_.ElementAt(num10);\r\n\t\t\t\t\t\tplayerData7.AddExp(PBONUS_NP_LV_ADDEXP, false);\r\n\t\t\t\t\t\tplayerData7.temp_exp = playerData7.exp_;\r\n\t\t\t\t\t\tif (playerData7.temp_lv != playerData7.lv_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData7.temp_lvUp = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tplayerData7.temp_lv = playerData7.lv_;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TIME[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (stateCnt_ >= PBONUS_NP_LV_TIME[3] && select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}else {}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 15)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_POPULAR[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_POPULAR[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num11 = 0; num11 < udat_.memberPDataist_.Size(); num11++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData8 = (PlayerData)udat_.memberPDataist_.ElementAt(num11);\r\n\t\t\t\t\t\t\tplayerData8.AddPopular(PBONUS_NP_LV_GETPOPULAR);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}else {}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 16)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TRAINING1[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TRAINING1[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num12 = 0; num12 < 11; num12++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData9 = (PlayerData)udat_.memberPDataist_.ElementAt(num12);\r\n\t\t\t\t\t\t\tif(playerData9.bonus_research[0]==-1){continue;} udat_.AddResearchPoint(playerData9.bonus_research[0],playerData9.bonus_research[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(10);\r\n\t\t\t\t\t}else {}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\treturn false;\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 826,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "game.Player",
+              "data.PlayerData",
+              "System.Int32",
+              "System.Int32",
+              "data.QuestMatchData",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "kairo.unity.m3d4.util3d.Vector3D",
+              "System.Int32[]",
+              "System.Object[]",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Object[]",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData"
+            ],
+            "method_id": "form.SoccerForm::_update(System.Int32)->System.Boolean",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SoccerForm.cs",
+            "full_source_sha256": "7eb92b6a4c3bd9fe06c513408113447db8e0ceccdeb7d288b08674b3a002c7a7"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794078944724311200\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 3.0630000000819564,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 4742,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 4742,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.SoccerForm::_update(System.Int32)->System.Boolean"
+          ],
+          "matched_IL_gain": 4742
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d10-smcs-switch-join-d10-smcs-switch-layout-d10-calculated-dispatch-local-join-layout",
+          "start": 26535,
+          "end": 39759,
+          "before": "private bool _update(int frameCount)\r\n\t\t{\r\n\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(1))\r\n\t\t\t{\r\n\t\t\t\treturn formMan_.Push(new DebugForm());\r\n\t\t\t}\r\n\t\t\tstateCnt_ = (stateCnt_ + 1) % int.MaxValue;\r\n\t\t\tScript();\r\n\t\t\tapdat_.UpdateEffect();\r\n\t\t\tint num = 5;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tUpdate_main();\r\n\t\t\t\tSetStatusPlayer();\r\n\t\t\t\tif (statusPlayer_ != null && canvas_.CheckKeyRepeat(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData = apdat_.pData_[statusPlayer_.pData_id_];\r\n\t\t\t\t\tif (playerData.auraPoint_ == 10000 && !BitUtil.Check(statusPlayer_.flag_, 262144) && udat_.gm_.state_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData.Start_aura(statusPlayer_);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int i = 0; i < udat_.teams_[0].players_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayer player = udat_.teams_[0].players_[i];\r\n\t\t\t\t\tPlayerData playerData2 = apdat_.pData_[player.pData_id_];\r\n\t\t\t\t\tplayerData2.Update_aura(player);\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.gm_.state_ != 1 && statusAmeftoCnt_ > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tstatusAmeftoCnt_--;\r\n\t\t\t\t}\r\n\t\t\t\tint num2 = statusAmeftoMode_;\r\n\t\t\t\tif (statusAmeftoCnt_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536) || canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ - 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ + 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (num2 != statusAmeftoMode_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!udat_.gm_.halfTime)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[0].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[1].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\tif (statusAmeftoMode_ == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(139))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tapdat_.ExecEvent(139, null, null);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (statusAmeftoMode_ == 1 && !apdat_.CheckAlreadyEvent(140))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.ExecEvent(140, null, null);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(128))\r\n\t\t\t\t{\r\n\t\t\t\t\tAddCommandCard(GameUtil.Random(2), 0, 0);\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.IsPushSoftLabel(4))\r\n\t\t\t\t{\r\n\t\t\t\t\treturn Push(menu_);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 1)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 2)\r\n\t\t\t{\r\n\t\t\t\tif (udat_.gm_.score_[0] > udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[0]++;\r\n\t\t\t\t}\r\n\t\t\t\telse if (udat_.gm_.score_[0] < udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[2]++;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[1]++;\r\n\t\t\t\t}\r\n\t\t\t\tudat_.matchGetGoalTotal_ += udat_.gm_.score_[0];\r\n\t\t\t\tint matchInfoJoin = udat_.GetMatchInfoJoin();\r\n\t\t\t\tif (matchInfoJoin == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.Update_league();\r\n\t\t\t\t}\r\n\t\t\t\tudat_.Update_gameParam();\r\n\t\t\t\tChangeState(3);\r\n\t\t\t\tswitch (matchInfoJoin)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t{\r\n\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\tif (BitUtil.Check(questMatchData.flag_, 2) && QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tPush(new SubForm(37));\r\n\t\t\t}\r\n\t\t\telse if (state_ == 3)\r\n\t\t\t{\r\n\t\t\t\tChangeState(9);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 4)\r\n\t\t\t{\r\n\t\t\t\tudat_.matchInfoWeek_ = 0;\r\n\t\t\t\tudat_.Init_bus();\r\n\t\t\t\tapdat_.camera.SetMapMainBasePos();\r\n\t\t\t\tif (udat_.GetMatchInfoJoin() == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.league_setu_++;\r\n\t\t\t\t\tudat_.League_finish();\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.Qm_update();\r\n\t\t\t\t}\r\n\t\t\t\tChangeState(5);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 5)\r\n\t\t\t{\r\n\t\t\t\tformMan_.ChangeCurrentForm(apdat_.frmGame_);\r\n\t\t\t\tapdat_.frmGame_.ChangeState(0);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 6)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[61].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[62].Frame();\r\n\t\t\t\tif (udat_.Update_edit(true))\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 7)\r\n\t\t\t{\r\n\t\t\t\tstadiumMoveCnt_++;\r\n\t\t\t\tSetAllDraw();\r\n\t\t\t\tif (stateCnt_ < STADIUM_CAMERA_TIME[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][0]);\r\n\t\t\t\t}\r\n\t\t\t\telse if (stateCnt_ < STADIUM_CAMERA_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat x_ = Camera.pos.x_;\r\n\t\t\t\t\tfloat y_ = Camera.pos.y_;\r\n\t\t\t\t\tCamera.pos.x_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].x_, STADIUM_CAERA_BASE_POS[stadiumId_][1].x_, true);\r\n\t\t\t\t\tCamera.pos.y_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].y_, STADIUM_CAERA_BASE_POS[stadiumId_][1].y_, true);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][1]);\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && stateCnt_ >= STADIUM_BTMINFO_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tstateCnt_ = STADIUM_CAMERA_TIME[2];\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= STADIUM_CAMERA_TIME[2])\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(8);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 8)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 25)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(6);\r\n\t\t\t\t\tVector3D global_pos = new Vector3D();\r\n\t\t\t\t\tint[] array = new int[2];\r\n\t\t\t\t\tCamera.ConvertGlobalToScreen(global_pos, array);\r\n\t\t\t\t\tCamera.pos.x_ = array[0];\r\n\t\t\t\t\tCamera.pos.y_ = array[1];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 9)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_f_cnt < BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_f_cnt++;\r\n\t\t\t\tif (bonus_f_cnt >= BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_f_cnt = 0;\r\n\t\t\t\t\tbonus_f_index++;\r\n\t\t\t\t\tif (bonus_f_index < FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttemp_fan += temp_addFan;\r\n\t\t\t\t\t\ttemp_assist += temp_addAssist;\r\n\t\t\t\t\t\ttemp_nameValue += temp_addNameValue;\r\n\t\t\t\t\t\tobject[] array2 = (object[])FanBonusData.bonus_f_data1.ElementAt(bonus_f_index);\r\n\t\t\t\t\t\tint[] array3 = (int[])array2[2];\r\n\t\t\t\t\t\ttemp_addFan = array3[0];\r\n\t\t\t\t\t\ttemp_addAssist = array3[1];\r\n\t\t\t\t\t\ttemp_addNameValue = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (bonus_f_index >= FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(14);\r\n\t\t\t\t\t\tfor (int j = 0; j < FanBonusData.bonus_f_data1.Size(); j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tobject[] array4 = (object[])FanBonusData.bonus_f_data1.ElementAt(j);\r\n\t\t\t\t\t\t\tint[] array5 = (int[])array4[2];\r\n\t\t\t\t\t\t\tint num3 = ((JInteger)array4[3]).IntValue();\r\n\t\t\t\t\t\t\tint[] array6 = (int[])array4[4];\r\n\t\t\t\t\t\t\tint num4 = ((JInteger)array4[5]).IntValue();\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[0], 0);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[1], 1);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[2], 2);\r\n\t\t\t\t\t\t\tint fanEva = FanActData.GetFanEva(0);\r\n\t\t\t\t\t\t\tif (num4 != 1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcontinue;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tswitch (num3)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tfor (int l = 0; l < array6.Length; l++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData4 = apdat_.pData_[array6[l]];\r\n\t\t\t\t\t\t\t\t\tplayerData4.AddPopular(1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tcase 1:\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tfor (int k = 0; k < array6.Length; k++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData3 = apdat_.pData_[array6[k]];\r\n\t\t\t\t\t\t\t\t\tplayerData3.AddPopular(3);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 10)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1];\r\n\t\t\t\t}\r\n\t\t\t\tfor (int m = 0; m < BONUS_IN_CYCLE.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_in_cnt < BONUS_IN_CYCLE[m])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (bonus_in_param[m][0] == 0 && bonus_in_param[m][1] == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[m];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_in_cnt++;\r\n\t\t\t\tif (bonus_in_cnt >= BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_index++;\r\n\t\t\t\t\tif (bonus_in_index >= 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(11);\r\n\t\t\t\t\t\tfor (int n = 0; n < bonus_in_param.Length; n++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tswitch (n)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tcase 0:\r\n\t\t\t\t\t\t\tcase 1:\r\n\t\t\t\t\t\t\tcase 2:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 0);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 0);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tcase 3:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 2);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 2);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tcase 4:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 3);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 3);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\tdefault:\r\n\t\t\t\t\t\t\t\tapdat_.AddMoney(bonus_in_param[n][0], 4);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 4);\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 11)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(12);\r\n\t\t\t\t\tif (udat_.GetMatchInfoJoin() == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(12);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 12)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\tPush(new SubForm(33, 1));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 14)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tfor (int num5 = 0; num5 < udat_.memberPDataist_.Size(); num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData5 = (PlayerData)udat_.memberPDataist_.ElementAt(num5);\r\n\t\t\t\t\tif (playerData5.temp_anime > 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData5.temp_anime--;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[2] && stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num6 = 0; num6 < udat_.memberPDataist_.Size(); num6++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData6 = (PlayerData)udat_.memberPDataist_.ElementAt(num6);\r\n\t\t\t\t\t\tint num7 = GameUtil.RateConvert(stateCnt_ - 1, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num8 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num9 = num8 - num7;\r\n\t\t\t\t\t\tplayerData6.temp_exp += num9;\r\n\t\t\t\t\t\tint nextLvUpExp = PlayerData.GetNextLvUpExp(playerData6.temp_lv);\r\n\t\t\t\t\t\tif (playerData6.temp_exp > nextLvUpExp)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData6.temp_exp -= nextLvUpExp;\r\n\t\t\t\t\t\t\tplayerData6.temp_lv = AppData.ClampMax(playerData6.temp_lv + 1, 30);\r\n\t\t\t\t\t\t\tplayerData6.temp_lvUp = true;\r\n\t\t\t\t\t\t\tplayerData6.temp_anime = 12;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ - 1 + 2) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ + 1) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ == PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num10 = 0; num10 < 11; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData7 = (PlayerData)udat_.memberPDataist_.ElementAt(num10);\r\n\t\t\t\t\t\tplayerData7.AddExp(PBONUS_NP_LV_ADDEXP, false);\r\n\t\t\t\t\t\tplayerData7.temp_exp = playerData7.exp_;\r\n\t\t\t\t\t\tif (playerData7.temp_lv != playerData7.lv_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData7.temp_lvUp = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tplayerData7.temp_lv = playerData7.lv_;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TIME[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (stateCnt_ >= PBONUS_NP_LV_TIME[3] && select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 15)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_POPULAR[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_POPULAR[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num11 = 0; num11 < udat_.memberPDataist_.Size(); num11++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData8 = (PlayerData)udat_.memberPDataist_.ElementAt(num11);\r\n\t\t\t\t\t\t\tplayerData8.AddPopular(PBONUS_NP_LV_GETPOPULAR);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 16)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TRAINING1[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TRAINING1[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num12 = 0; num12 < 11; num12++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData9 = (PlayerData)udat_.memberPDataist_.ElementAt(num12);\r\n\t\t\t\t\t\t\tif (playerData9.bonus_research[0] != -1)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tudat_.AddResearchPoint(playerData9.bonus_research[0], playerData9.bonus_research[1]);\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(10);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\treturn false;\r\n\t\t}",
+          "after": "private bool _update(int frameCount)\r\n\t\t{\r\n\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(1))\r\n\t\t\t{\r\n\t\t\t\treturn formMan_.Push(new DebugForm());\r\n\t\t\t}\r\n\t\t\tstateCnt_ = (stateCnt_ + 1) % int.MaxValue;\r\n\t\t\tScript();\r\n\t\t\tapdat_.UpdateEffect();\r\n\t\t\tint num = 5;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tUpdate_main();\r\n\t\t\t\tSetStatusPlayer();\r\n\t\t\t\tif (statusPlayer_ != null && canvas_.CheckKeyRepeat(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData = apdat_.pData_[statusPlayer_.pData_id_];\r\n\t\t\t\t\tif (playerData.auraPoint_ == 10000 && !BitUtil.Check(statusPlayer_.flag_, 262144) && udat_.gm_.state_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData.Start_aura(statusPlayer_);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int i = 0; i < udat_.teams_[0].players_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayer player = udat_.teams_[0].players_[i];\r\n\t\t\t\t\tPlayerData playerData2 = apdat_.pData_[player.pData_id_];\r\n\t\t\t\t\tplayerData2.Update_aura(player);\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.gm_.state_ != 1 && statusAmeftoCnt_ > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tstatusAmeftoCnt_--;\r\n\t\t\t\t}\r\n\t\t\t\tint num2 = statusAmeftoMode_;\r\n\t\t\t\tif (statusAmeftoCnt_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536) || canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ - 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstatusAmeftoMode_ = (statusAmeftoMode_ + 1 + 3) % 3;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (num2 != statusAmeftoMode_)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (!udat_.gm_.halfTime)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[0].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.teams_[1].amefto_pz = Team.AMEFTO_PZ[statusAmeftoMode_];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tstatusAmeftoCnt_ = STATUS_AMEFTO_ANIME[1];\r\n\t\t\t\t\tif (statusAmeftoMode_ == 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (!apdat_.CheckAlreadyEvent(139))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tapdat_.ExecEvent(139, null, null);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (statusAmeftoMode_ == 1 && !apdat_.CheckAlreadyEvent(140))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tapdat_.ExecEvent(140, null, null);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.DEBUG_CMD && canvas_.CheckKeyPulse(128))\r\n\t\t\t\t{\r\n\t\t\t\t\tAddCommandCard(GameUtil.Random(2), 0, 0);\r\n\t\t\t\t}\r\n\t\t\t\tif (apdat_.IsPushSoftLabel(4))\r\n\t\t\t\t{\r\n\t\t\t\t\treturn Push(menu_);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 1)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 2)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 2)\r\n\t\t\t{\r\n\t\t\t\tif (udat_.gm_.score_[0] > udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[0]++;\r\n\t\t\t\t}\r\n\t\t\t\telse if (udat_.gm_.score_[0] < udat_.gm_.score_[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[2]++;\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.matchResult_[1]++;\r\n\t\t\t\t}\r\n\t\t\t\tudat_.matchGetGoalTotal_ += udat_.gm_.score_[0];\r\n\t\t\t\tint matchInfoJoin = udat_.GetMatchInfoJoin();\r\n\t\t\t\tif (matchInfoJoin == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tudat_.Update_league();\r\n\t\t\t\t}\r\n\t\t\t\tudat_.Update_gameParam();\r\n\t\t\t\tChangeState(3);\r\n\t\t\t\tif ((matchInfoJoin == 0)) {\nif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\n}\nelse if ((matchInfoJoin == 1)) {\n{\r\n\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\tif (BitUtil.Check(questMatchData.flag_, 2) && QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\t\r\n\t\t\t\t}\n}\r\n\t\t\t\tPush(new SubForm(37));\r\n\t\t\t}\r\n\t\t\telse if (state_ == 3)\r\n\t\t\t{\r\n\t\t\t\tChangeState(9);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 4)\r\n\t\t\t{\r\n\t\t\t\tudat_.matchInfoWeek_ = 0;\r\n\t\t\t\tudat_.Init_bus();\r\n\t\t\t\tapdat_.camera.SetMapMainBasePos();int recoveredMatchInfoJoin4=udat_.GetMatchInfoJoin();if(recoveredMatchInfoJoin4==0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.league_setu_++;\r\n\t\t\t\t\tudat_.League_finish();\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tif (QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tudat_.matchFlgVictory_ = 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tudat_.Qm_update();\r\n\t\t\t\t}\r\n\t\t\t\tChangeState(5);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 5)\r\n\t\t\t{\r\n\t\t\t\tformMan_.ChangeCurrentForm(apdat_.frmGame_);\r\n\t\t\t\tapdat_.frmGame_.ChangeState(0);\r\n\t\t\t}\r\n\t\t\telse if (state_ == 6)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[61].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tapdat_.resCom2_.seb[62].Frame();\r\n\t\t\t\tif (udat_.Update_edit(true))\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 7)\r\n\t\t\t{\r\n\t\t\t\tstadiumMoveCnt_++;\r\n\t\t\t\tSetAllDraw();\r\n\t\t\t\tif (stateCnt_ < STADIUM_CAMERA_TIME[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][0]);\r\n\t\t\t\t}\r\n\t\t\t\telse if (stateCnt_ < STADIUM_CAMERA_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat x_ = Camera.pos.x_;\r\n\t\t\t\t\tfloat y_ = Camera.pos.y_;\r\n\t\t\t\t\tCamera.pos.x_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].x_, STADIUM_CAERA_BASE_POS[stadiumId_][1].x_, true);\r\n\t\t\t\t\tCamera.pos.y_ = GameUtil.RateConvert(stateCnt_, STADIUM_CAMERA_TIME[0], STADIUM_CAMERA_TIME[1], STADIUM_CAERA_BASE_POS[stadiumId_][0].y_, STADIUM_CAERA_BASE_POS[stadiumId_][1].y_, true);\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tCamera.pos.Set(STADIUM_CAERA_BASE_POS[stadiumId_][1]);\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && stateCnt_ >= STADIUM_BTMINFO_TIME[1])\r\n\t\t\t\t{\r\n\t\t\t\t\tstateCnt_ = STADIUM_CAMERA_TIME[2];\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= STADIUM_CAMERA_TIME[2])\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(8);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 8)\r\n\t\t\t{\r\n\t\t\t\tif (stateCnt_ >= 25)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(6);\r\n\t\t\t\t\tVector3D global_pos = new Vector3D();\r\n\t\t\t\t\tint[] array = new int[2];\r\n\t\t\t\t\tCamera.ConvertGlobalToScreen(global_pos, array);\r\n\t\t\t\t\tCamera.pos.x_ = array[0];\r\n\t\t\t\t\tCamera.pos.y_ = array[1];\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 9)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_f_cnt < BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[1] + BONUS_F_CYCLE_MAIN[0];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbonus_f_cnt = BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_f_cnt++;\r\n\t\t\t\tif (bonus_f_cnt >= BONUS_F_CYCLE[BONUS_F_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_f_cnt = 0;\r\n\t\t\t\t\tbonus_f_index++;\r\n\t\t\t\t\tif (bonus_f_index < FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttemp_fan += temp_addFan;\r\n\t\t\t\t\t\ttemp_assist += temp_addAssist;\r\n\t\t\t\t\t\ttemp_nameValue += temp_addNameValue;\r\n\t\t\t\t\t\tobject[] array2 = (object[])FanBonusData.bonus_f_data1.ElementAt(bonus_f_index);\r\n\t\t\t\t\t\tint[] array3 = (int[])array2[2];\r\n\t\t\t\t\t\ttemp_addFan = array3[0];\r\n\t\t\t\t\t\ttemp_addAssist = array3[1];\r\n\t\t\t\t\t\ttemp_addNameValue = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (bonus_f_index >= FanBonusData.bonus_f_data1.Size())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(14);\r\n\t\t\t\t\t\tfor (int j = 0; j < FanBonusData.bonus_f_data1.Size(); j++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tobject[] array4 = (object[])FanBonusData.bonus_f_data1.ElementAt(j);\r\n\t\t\t\t\t\t\tint[] array5 = (int[])array4[2];\r\n\t\t\t\t\t\t\tint num3 = ((JInteger)array4[3]).IntValue();\r\n\t\t\t\t\t\t\tint[] array6 = (int[])array4[4];\r\n\t\t\t\t\t\t\tint num4 = ((JInteger)array4[5]).IntValue();\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[0], 0);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[1], 1);\r\n\t\t\t\t\t\t\tFanActData.AddFanParam(array5[2], 2);\r\n\t\t\t\t\t\t\tint fanEva = FanActData.GetFanEva(0);\r\n\t\t\t\t\t\t\tif(num4==1){\r\n\t\t\t\t\t\t\tif ((num3 == 0)) {\n{\r\n\t\t\t\t\t\t\t\tfor (int l = 0; l < array6.Length; l++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData4 = apdat_.pData_[array6[l]];\r\n\t\t\t\t\t\t\t\t\tplayerData4.AddPopular(1);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t}\n}\nelse if ((num3 == 1)) {\n{\r\n\t\t\t\t\t\t\t\tfor (int k = 0; k < array6.Length; k++)\r\n\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\tPlayerData playerData3 = apdat_.pData_[array6[k]];\r\n\t\t\t\t\t\t\t\t\tplayerData3.AddPopular(3);\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t\t}}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 10)\r\n\t\t\t{\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1];\r\n\t\t\t\t}\r\n\t\t\t\tfor (int m = 0; m < BONUS_IN_CYCLE.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (bonus_in_cnt < BONUS_IN_CYCLE[m])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (bonus_in_param[m][0] == 0 && bonus_in_param[m][1] == 0)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbonus_in_cnt = BONUS_IN_CYCLE[m];\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbonus_in_cnt++;\r\n\t\t\t\tif (bonus_in_cnt >= BONUS_IN_CYCLE[BONUS_IN_CYCLE.Length - 1])\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_in_index++;\r\n\t\t\t\t\tif (bonus_in_index >= 1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(11);\r\n\t\t\t\t\t\tfor (int n = 0; n < bonus_in_param.Length; n++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tif ((n == 0) || (n == 1) || (n == 2)) {\napdat_.AddMoney(bonus_in_param[n][0], 0);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 0);\r\n\t\t\t\t\t\t\t\t\n}\nelse if ((n == 3)) {\napdat_.AddMoney(bonus_in_param[n][0], 2);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 2);\r\n\t\t\t\t\t\t\t\t\n}\nelse if ((n == 4)) {\napdat_.AddMoney(bonus_in_param[n][0], 3);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 3);\r\n\t\t\t\t\t\t\t\t\n}\nelse {\napdat_.AddMoney(bonus_in_param[n][0], 4);\r\n\t\t\t\t\t\t\t\tapdat_.SubMoney(bonus_in_param[n][1], 4);\r\n\t\t\t\t\t\t\t\t\n}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 11)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(12);int recoveredMatchInfoJoin11=udat_.GetMatchInfoJoin();if(recoveredMatchInfoJoin11==0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(12);\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 12)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576) && select_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tChangeState(4);\r\n\t\t\t\t\tPush(new SubForm(33, 1));\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 14)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tfor (int num5 = 0; num5 < udat_.memberPDataist_.Size(); num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tPlayerData playerData5 = (PlayerData)udat_.memberPDataist_.ElementAt(num5);\r\n\t\t\t\t\tif (playerData5.temp_anime > 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tplayerData5.temp_anime--;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[2] && stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num6 = 0; num6 < udat_.memberPDataist_.Size(); num6++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData6 = (PlayerData)udat_.memberPDataist_.ElementAt(num6);\r\n\t\t\t\t\t\tint num7 = GameUtil.RateConvert(stateCnt_ - 1, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num8 = GameUtil.RateConvert(stateCnt_, PBONUS_NP_LV_TIME[2], PBONUS_NP_LV_TIME[3], 0, PBONUS_NP_LV_ADDEXP, true);\r\n\t\t\t\t\t\tint num9 = num8 - num7;\r\n\t\t\t\t\t\tplayerData6.temp_exp += num9;\r\n\t\t\t\t\t\tint nextLvUpExp = PlayerData.GetNextLvUpExp(playerData6.temp_lv);\r\n\t\t\t\t\t\tif (playerData6.temp_exp > nextLvUpExp)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData6.temp_exp -= nextLvUpExp;\r\n\t\t\t\t\t\t\tplayerData6.temp_lv = AppData.ClampMax(playerData6.temp_lv + 1, 30);\r\n\t\t\t\t\t\t\tplayerData6.temp_lvUp = true;\r\n\t\t\t\t\t\t\tplayerData6.temp_anime = 12;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ >= PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(65536))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ - 1 + 2) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (canvas_.CheckKeyRepeat(262144))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tselect_ = (select_ + 1) % 2;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (stateCnt_ == PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int num10 = 0; num10 < 11; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPlayerData playerData7 = (PlayerData)udat_.memberPDataist_.ElementAt(num10);\r\n\t\t\t\t\t\tplayerData7.AddExp(PBONUS_NP_LV_ADDEXP, false);\r\n\t\t\t\t\t\tplayerData7.temp_exp = playerData7.exp_;\r\n\t\t\t\t\t\tif (playerData7.temp_lv != playerData7.lv_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tplayerData7.temp_lvUp = true;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tplayerData7.temp_lv = playerData7.lv_;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TIME[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TIME[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (stateCnt_ >= PBONUS_NP_LV_TIME[3] && select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}else {}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 15)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_POPULAR[3])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_POPULAR[3] - 1;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num11 = 0; num11 < udat_.memberPDataist_.Size(); num11++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData8 = (PlayerData)udat_.memberPDataist_.ElementAt(num11);\r\n\t\t\t\t\t\t\tplayerData8.AddPopular(PBONUS_NP_LV_GETPOPULAR);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(16);\r\n\t\t\t\t\t}else {}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (state_ == 16)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.seb[60].Frame();\r\n\t\t\t\tif (canvas_.CheckKeyPulse(1048576))\r\n\t\t\t\t{\r\n\t\t\t\t\tif (stateCnt_ < PBONUS_NP_LV_TRAINING1[1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstateCnt_ = PBONUS_NP_LV_TRAINING1[1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (select_ == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tfor (int num12 = 0; num12 < 11; num12++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayerData playerData9 = (PlayerData)udat_.memberPDataist_.ElementAt(num12);\r\n\t\t\t\t\t\t\tif(playerData9.bonus_research[0]==-1){continue;} udat_.AddResearchPoint(playerData9.bonus_research[0],playerData9.bonus_research[1]);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tChangeState(10);\r\n\t\t\t\t\t}else {}\r\n\t\t\t\t}\r\n\t\t\t\telse if (apdat_.IsPushSoftLabel(6))\r\n\t\t\t\t{\r\n\t\t\t\t\tbonus_softKey = 1 - bonus_softKey;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t}\r\n\t\t\treturn false;\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 826,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "game.Player",
+              "data.PlayerData",
+              "System.Int32",
+              "System.Int32",
+              "data.QuestMatchData",
+              "System.Int32",
+              "System.Single",
+              "System.Single",
+              "kairo.unity.m3d4.util3d.Vector3D",
+              "System.Int32[]",
+              "System.Object[]",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Object[]",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData",
+              "System.Int32",
+              "data.PlayerData"
+            ],
+            "method_id": "form.SoccerForm::_update(System.Int32)->System.Boolean",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SoccerForm.cs",
+            "full_source_sha256": "7eb92b6a4c3bd9fe06c513408113447db8e0ceccdeb7d288b08674b3a002c7a7"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794078944724311200\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 3.0630000000819564,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 4742,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 4742,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.SoccerForm::_update(System.Int32)->System.Boolean"
+          ],
+          "matched_IL_gain": 4742
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 1123,
+            "rebuilt_offset": 1123,
+            "opcode_pair": [
+              "brtrue",
+              "stloc.s"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "df5d9fcd8937f6c1d3835d72c58f6fcee3dbb53d215db35f085e225c0eac8e98",
+      "stop_point": {
+        "offset": 826,
+        "source": "src/Assembly-CSharp/form/SoccerForm.cs",
+        "point": {
+          "offset": 1121,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SoccerForm.cs",
+          "start_line": 1214,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 1123,
+          "line": 1214,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 1123,
+          "rebuilt_offset": 1123,
+          "original_index": 368,
+          "rebuilt_index": 368,
+          "original_instruction": {
+            "offset": 1123,
+            "opcode": "brtrue",
+            "operand": {
+              "branch": 1171
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 1123,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 41
+            }
+          },
+          "pair": "{\"opcode\":\"brtrue\",\"operand\":{\"branch\":1171}} => {\"opcode\":\"stloc.s\",\"operand\":{\"local\":41}}",
+          "opcode_pair": "brtrue => stloc.s",
+          "original_context": [
+            {
+              "offset": 1116,
+              "opcode": "call",
+              "operand": {
+                "method": "class form.SoccerForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ChangeState``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 1121,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 1123,
+              "opcode": "brtrue",
+              "operand": {
+                "labels": [
+                  "O1171"
+                ]
+              }
+            },
+            {
+              "offset": 1128,
+              "opcode": "call",
+              "operand": {
+                "method": "class data.LeagueData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsVictoryLeague``0()->valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              },
+              "label": "L24"
+            },
+            {
+              "offset": 1133,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "L25"
+                ]
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 1116,
+              "opcode": "call",
+              "operand": {
+                "method": "class form.SoccerForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ChangeState``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 1121,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 1123,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 41
+              }
+            },
+            {
+              "offset": 1125,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 41
+              }
+            },
+            {
+              "offset": 1127,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "L24"
+                ]
+              }
+            },
+            {
+              "offset": 1132,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 41
+              }
+            },
+            {
+              "offset": 1134,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 1135,
+              "opcode": "beq",
+              "operand": {
+                "labels": [
+                  "L26"
+                ]
+              }
+            },
+            {
+              "offset": 1140,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L27"
+                ]
+              }
+            },
+            {
+              "offset": 1145,
+              "opcode": "call",
+              "operand": {
+                "method": "class data.LeagueData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsVictoryLeague``0()->valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=False;explicit=False;cc=Default"
+              },
+              "label": "L24"
+            },
+            {
+              "offset": 1150,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "L25"
+                ]
+              }
+            }
+          ],
+          "original_labels": {
+            "44": "L0",
+            "238": "L1",
+            "245": "L2",
+            "298": "L3",
+            "372": "L4",
+            "433": "L5",
+            "446": "L6",
+            "451": "L7",
+            "490": "L8",
+            "529": "L9",
+            "598": "L10",
+            "628": "L11",
+            "693": "L12",
+            "698": "L13",
+            "750": "L14",
+            "795": "L15",
+            "825": "L16",
+            "830": "L17",
+            "861": "L18",
+            "866": "L19",
+            "946": "L20",
+            "1014": "L21",
+            "1036": "L22",
+            "1103": "L23",
+            "1128": "L24",
+            "1166": "L25",
+            "1179": "L26",
+            "1260": "L27",
+            "1279": "L28",
+            "1304": "L29",
+            "1397": "L30",
+            "1432": "L31",
+            "1454": "L32",
+            "1465": "L33",
+            "1477": "L34",
+            "1534": "L35",
+            "1642": "L36",
+            "1647": "L37",
+            "1726": "L38",
+            "1927": "L39",
+            "1951": "L40",
+            "2003": "L41",
+            "2028": "L42",
+            "2033": "L43",
+            "2119": "L44",
+            "2124": "L45",
+            "2210": "L46",
+            "2231": "L47",
+            "2434": "L48",
+            "2471": "L49",
+            "2605": "L50",
+            "2662": "L51",
+            "2670": "L52",
+            "2737": "L53",
+            "2742": "L54",
+            "2797": "L55",
+            "2805": "L56",
+            "2870": "L57",
+            "2895": "L58",
+            "3000": "L59",
+            "3061": "L60",
+            "3122": "L61",
+            "3175": "L62",
+            "3244": "L63",
+            "3249": "L64",
+            "3359": "L65",
+            "3366": "L66",
+            "3371": "L67",
+            "3462": "L68",
+            "3467": "L69",
+            "3512": "L70",
+            "3638": "L71",
+            "3871": "L72",
+            "3928": "L73",
+            "3965": "L74",
+            "3991": "L75",
+            "4100": "L76",
+            "4159": "L77",
+            "4201": "L78",
+            "4206": "L79",
+            "4237": "L80",
+            "4242": "L81",
+            "4338": "L82",
+            "4357": "L83",
+            "4437": "L84",
+            "4442": "L85",
+            "4473": "L86",
+            "4478": "L87",
+            "4572": "L88",
+            "4591": "L89",
+            "4636": "L90",
+            "4693": "L91",
+            "4698": "L92",
+            "4729": "L93",
+            "4740": "L94",
+            "1171": "O1171",
+            "2638": "O2638",
+            "2654": "O2654",
+            "2703": "O2703",
+            "2714": "O2714",
+            "2720": "O2720",
+            "2875": "O2875",
+            "2881": "O2881",
+            "2977": "O2977",
+            "3053": "O3053",
+            "3114": "O3114",
+            "3223": "O3223",
+            "3229": "O3229",
+            "3565": "O3565",
+            "3571": "O3571",
+            "3842": "O3842",
+            "3848": "O3848",
+            "4071": "O4071",
+            "4091": "O4091",
+            "4401": "O4401",
+            "4665": "O4665",
+            "4671": "O4671"
+          },
+          "rebuilt_labels": {
+            "44": "L0",
+            "238": "L1",
+            "245": "L2",
+            "298": "L3",
+            "372": "L4",
+            "433": "L5",
+            "446": "L6",
+            "451": "L7",
+            "490": "L8",
+            "529": "L9",
+            "598": "L10",
+            "628": "L11",
+            "693": "L12",
+            "698": "L13",
+            "750": "L14",
+            "795": "L15",
+            "825": "L16",
+            "830": "L17",
+            "861": "L18",
+            "866": "L19",
+            "946": "L20",
+            "1014": "L21",
+            "1036": "L22",
+            "1103": "L23",
+            "1145": "L24",
+            "1183": "L25",
+            "1188": "L26",
+            "1274": "L27",
+            "1293": "L28",
+            "1318": "L29",
+            "1407": "L30",
+            "1442": "L31",
+            "1464": "L32",
+            "1475": "L33",
+            "1487": "L34",
+            "1544": "L35",
+            "1652": "L36",
+            "1657": "L37",
+            "1736": "L38",
+            "1937": "L39",
+            "1961": "L40",
+            "2013": "L41",
+            "2038": "L42",
+            "2043": "L43",
+            "2129": "L44",
+            "2134": "L45",
+            "2220": "L46",
+            "2241": "L47",
+            "2444": "L48",
+            "2481": "L49",
+            "2637": "L50",
+            "2686": "L51",
+            "2694": "L52",
+            "2766": "L53",
+            "2771": "L54",
+            "2826": "L55",
+            "2834": "L56",
+            "2899": "L57",
+            "2924": "L58",
+            "3042": "L59",
+            "3095": "L60",
+            "3148": "L61",
+            "3201": "L62",
+            "3275": "L63",
+            "3280": "L64",
+            "3386": "L65",
+            "3393": "L66",
+            "3398": "L67",
+            "3489": "L68",
+            "3494": "L69",
+            "3539": "L70",
+            "3665": "L71",
+            "3898": "L72",
+            "3955": "L73",
+            "3992": "L74",
+            "4018": "L75",
+            "4127": "L76",
+            "4186": "L77",
+            "4223": "L78",
+            "4228": "L79",
+            "4259": "L80",
+            "4264": "L81",
+            "4360": "L82",
+            "4379": "L83",
+            "4454": "L84",
+            "4459": "L85",
+            "4490": "L86",
+            "4495": "L87",
+            "4589": "L88",
+            "4608": "L89",
+            "4648": "L90",
+            "4700": "L91",
+            "4705": "L92",
+            "4736": "L93",
+            "4747": "L94",
+            "1269": "R1269",
+            "2605": "R2605",
+            "2629": "R2629",
+            "2670": "R2670",
+            "2727": "R2727",
+            "2743": "R2743",
+            "2749": "R2749",
+            "2904": "R2904",
+            "2910": "R2910",
+            "3006": "R3006",
+            "3254": "R3254",
+            "3260": "R3260",
+            "3592": "R3592",
+            "3598": "R3598",
+            "3869": "R3869",
+            "3875": "R3875",
+            "4098": "R4098",
+            "4118": "R4118",
+            "4423": "R4423",
+            "4677": "R4677",
+            "4683": "R4683"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 368,
+              "original_stop": 369,
+              "rebuilt_start": 368,
+              "rebuilt_stop": 375
+            },
+            {
+              "kind": "delete",
+              "original_start": 382,
+              "original_stop": 385,
+              "rebuilt_start": 388,
+              "rebuilt_stop": 388
+            },
+            {
+              "kind": "insert",
+              "original_start": 410,
+              "original_stop": 410,
+              "rebuilt_start": 413,
+              "rebuilt_stop": 414
+            },
+            {
+              "kind": "delete",
+              "original_start": 442,
+              "original_stop": 444,
+              "rebuilt_start": 446,
+              "rebuilt_stop": 446
+            },
+            {
+              "kind": "replace",
+              "original_start": 561,
+              "original_stop": 562,
+              "rebuilt_start": 563,
+              "rebuilt_stop": 564
+            },
+            {
+              "kind": "replace",
+              "original_start": 564,
+              "original_stop": 565,
+              "rebuilt_start": 566,
+              "rebuilt_stop": 567
+            },
+            {
+              "kind": "replace",
+              "original_start": 670,
+              "original_stop": 671,
+              "rebuilt_start": 672,
+              "rebuilt_stop": 673
+            },
+            {
+              "kind": "replace",
+              "original_start": 673,
+              "original_stop": 674,
+              "rebuilt_start": 675,
+              "rebuilt_stop": 677
+            },
+            {
+              "kind": "delete",
+              "original_start": 675,
+              "original_stop": 676,
+              "rebuilt_start": 678,
+              "rebuilt_stop": 678
+            },
+            {
+              "kind": "replace",
+              "original_start": 678,
+              "original_stop": 679,
+              "rebuilt_start": 680,
+              "rebuilt_stop": 681
+            },
+            {
+              "kind": "replace",
+              "original_start": 684,
+              "original_stop": 685,
+              "rebuilt_start": 686,
+              "rebuilt_stop": 687
+            },
+            {
+              "kind": "replace",
+              "original_start": 784,
+              "original_stop": 786,
+              "rebuilt_start": 786,
+              "rebuilt_stop": 788
+            },
+            {
+              "kind": "replace",
+              "original_start": 789,
+              "original_stop": 790,
+              "rebuilt_start": 791,
+              "rebuilt_stop": 792
+            },
+            {
+              "kind": "replace",
+              "original_start": 791,
+              "original_stop": 792,
+              "rebuilt_start": 793,
+              "rebuilt_stop": 794
+            },
+            {
+              "kind": "replace",
+              "original_start": 796,
+              "original_stop": 797,
+              "rebuilt_start": 798,
+              "rebuilt_stop": 799
+            },
+            {
+              "kind": "replace",
+              "original_start": 801,
+              "original_stop": 802,
+              "rebuilt_start": 803,
+              "rebuilt_stop": 804
+            },
+            {
+              "kind": "replace",
+              "original_start": 814,
+              "original_stop": 815,
+              "rebuilt_start": 816,
+              "rebuilt_stop": 817
+            },
+            {
+              "kind": "replace",
+              "original_start": 817,
+              "original_stop": 818,
+              "rebuilt_start": 819,
+              "rebuilt_stop": 820
+            },
+            {
+              "kind": "replace",
+              "original_start": 820,
+              "original_stop": 822,
+              "rebuilt_start": 822,
+              "rebuilt_stop": 824
+            },
+            {
+              "kind": "replace",
+              "original_start": 825,
+              "original_stop": 827,
+              "rebuilt_start": 827,
+              "rebuilt_stop": 829
+            },
+            {
+              "kind": "replace",
+              "original_start": 831,
+              "original_stop": 833,
+              "rebuilt_start": 833,
+              "rebuilt_stop": 835
+            },
+            {
+              "kind": "replace",
+              "original_start": 836,
+              "original_stop": 838,
+              "rebuilt_start": 838,
+              "rebuilt_stop": 840
+            },
+            {
+              "kind": "replace",
+              "original_start": 842,
+              "original_stop": 844,
+              "rebuilt_start": 844,
+              "rebuilt_stop": 846
+            },
+            {
+              "kind": "replace",
+              "original_start": 848,
+              "original_stop": 849,
+              "rebuilt_start": 850,
+              "rebuilt_stop": 851
+            },
+            {
+              "kind": "replace",
+              "original_start": 853,
+              "original_stop": 854,
+              "rebuilt_start": 855,
+              "rebuilt_stop": 856
+            },
+            {
+              "kind": "insert",
+              "original_start": 860,
+              "original_stop": 860,
+              "rebuilt_start": 862,
+              "rebuilt_stop": 876
+            },
+            {
+              "kind": "delete",
+              "original_start": 861,
+              "original_stop": 868,
+              "rebuilt_start": 877,
+              "rebuilt_stop": 877
+            },
+            {
+              "kind": "replace",
+              "original_start": 872,
+              "original_stop": 874,
+              "rebuilt_start": 881,
+              "rebuilt_stop": 883
+            },
+            {
+              "kind": "replace",
+              "original_start": 876,
+              "original_stop": 878,
+              "rebuilt_start": 885,
+              "rebuilt_stop": 887
+            },
+            {
+              "kind": "replace",
+              "original_start": 880,
+              "original_stop": 881,
+              "rebuilt_start": 889,
+              "rebuilt_stop": 890
+            },
+            {
+              "kind": "replace",
+              "original_start": 883,
+              "original_stop": 886,
+              "rebuilt_start": 892,
+              "rebuilt_stop": 895
+            },
+            {
+              "kind": "delete",
+              "original_start": 890,
+              "original_stop": 893,
+              "rebuilt_start": 899,
+              "rebuilt_stop": 899
+            },
+            {
+              "kind": "replace",
+              "original_start": 894,
+              "original_stop": 895,
+              "rebuilt_start": 900,
+              "rebuilt_stop": 901
+            },
+            {
+              "kind": "replace",
+              "original_start": 899,
+              "original_stop": 901,
+              "rebuilt_start": 905,
+              "rebuilt_stop": 907
+            },
+            {
+              "kind": "replace",
+              "original_start": 903,
+              "original_stop": 905,
+              "rebuilt_start": 909,
+              "rebuilt_stop": 911
+            },
+            {
+              "kind": "replace",
+              "original_start": 907,
+              "original_stop": 908,
+              "rebuilt_start": 913,
+              "rebuilt_stop": 914
+            },
+            {
+              "kind": "replace",
+              "original_start": 910,
+              "original_stop": 913,
+              "rebuilt_start": 916,
+              "rebuilt_stop": 919
+            },
+            {
+              "kind": "replace",
+              "original_start": 916,
+              "original_stop": 917,
+              "rebuilt_start": 922,
+              "rebuilt_stop": 924
+            },
+            {
+              "kind": "replace",
+              "original_start": 919,
+              "original_stop": 921,
+              "rebuilt_start": 926,
+              "rebuilt_stop": 928
+            },
+            {
+              "kind": "replace",
+              "original_start": 944,
+              "original_stop": 945,
+              "rebuilt_start": 951,
+              "rebuilt_stop": 952
+            },
+            {
+              "kind": "replace",
+              "original_start": 949,
+              "original_stop": 950,
+              "rebuilt_start": 956,
+              "rebuilt_stop": 957
+            },
+            {
+              "kind": "replace",
+              "original_start": 954,
+              "original_stop": 955,
+              "rebuilt_start": 961,
+              "rebuilt_stop": 962
+            },
+            {
+              "kind": "replace",
+              "original_start": 961,
+              "original_stop": 962,
+              "rebuilt_start": 968,
+              "rebuilt_stop": 969
+            },
+            {
+              "kind": "replace",
+              "original_start": 968,
+              "original_stop": 969,
+              "rebuilt_start": 975,
+              "rebuilt_stop": 976
+            },
+            {
+              "kind": "replace",
+              "original_start": 972,
+              "original_stop": 973,
+              "rebuilt_start": 979,
+              "rebuilt_stop": 980
+            },
+            {
+              "kind": "replace",
+              "original_start": 975,
+              "original_stop": 977,
+              "rebuilt_start": 982,
+              "rebuilt_stop": 984
+            },
+            {
+              "kind": "replace",
+              "original_start": 1011,
+              "original_stop": 1012,
+              "rebuilt_start": 1018,
+              "rebuilt_stop": 1019
+            },
+            {
+              "kind": "replace",
+              "original_start": 1013,
+              "original_stop": 1021,
+              "rebuilt_start": 1020,
+              "rebuilt_stop": 1025
+            },
+            {
+              "kind": "replace",
+              "original_start": 1025,
+              "original_stop": 1026,
+              "rebuilt_start": 1029,
+              "rebuilt_stop": 1030
+            },
+            {
+              "kind": "replace",
+              "original_start": 1036,
+              "original_stop": 1037,
+              "rebuilt_start": 1040,
+              "rebuilt_stop": 1041
+            },
+            {
+              "kind": "delete",
+              "original_start": 1044,
+              "original_stop": 1047,
+              "rebuilt_start": 1048,
+              "rebuilt_stop": 1048
+            },
+            {
+              "kind": "replace",
+              "original_start": 1051,
+              "original_stop": 1052,
+              "rebuilt_start": 1052,
+              "rebuilt_stop": 1053
+            },
+            {
+              "kind": "replace",
+              "original_start": 1062,
+              "original_stop": 1063,
+              "rebuilt_start": 1063,
+              "rebuilt_stop": 1064
+            },
+            {
+              "kind": "delete",
+              "original_start": 1070,
+              "original_stop": 1073,
+              "rebuilt_start": 1071,
+              "rebuilt_stop": 1071
+            },
+            {
+              "kind": "replace",
+              "original_start": 1077,
+              "original_stop": 1078,
+              "rebuilt_start": 1075,
+              "rebuilt_stop": 1076
+            },
+            {
+              "kind": "replace",
+              "original_start": 1088,
+              "original_stop": 1089,
+              "rebuilt_start": 1086,
+              "rebuilt_stop": 1087
+            },
+            {
+              "kind": "replace",
+              "original_start": 1100,
+              "original_stop": 1101,
+              "rebuilt_start": 1098,
+              "rebuilt_stop": 1099
+            },
+            {
+              "kind": "replace",
+              "original_start": 1111,
+              "original_stop": 1112,
+              "rebuilt_start": 1109,
+              "rebuilt_stop": 1110
+            },
+            {
+              "kind": "replace",
+              "original_start": 1118,
+              "original_stop": 1119,
+              "rebuilt_start": 1116,
+              "rebuilt_stop": 1118
+            },
+            {
+              "kind": "replace",
+              "original_start": 1121,
+              "original_stop": 1123,
+              "rebuilt_start": 1120,
+              "rebuilt_stop": 1122
+            },
+            {
+              "kind": "delete",
+              "original_start": 1154,
+              "original_stop": 1156,
+              "rebuilt_start": 1153,
+              "rebuilt_stop": 1153
+            },
+            {
+              "kind": "replace",
+              "original_start": 1206,
+              "original_stop": 1207,
+              "rebuilt_start": 1203,
+              "rebuilt_stop": 1204
+            },
+            {
+              "kind": "replace",
+              "original_start": 1211,
+              "original_stop": 1212,
+              "rebuilt_start": 1208,
+              "rebuilt_stop": 1209
+            },
+            {
+              "kind": "replace",
+              "original_start": 1214,
+              "original_stop": 1216,
+              "rebuilt_start": 1211,
+              "rebuilt_stop": 1213
+            },
+            {
+              "kind": "replace",
+              "original_start": 1219,
+              "original_stop": 1220,
+              "rebuilt_start": 1216,
+              "rebuilt_stop": 1217
+            },
+            {
+              "kind": "replace",
+              "original_start": 1225,
+              "original_stop": 1226,
+              "rebuilt_start": 1222,
+              "rebuilt_stop": 1223
+            },
+            {
+              "kind": "replace",
+              "original_start": 1228,
+              "original_stop": 1230,
+              "rebuilt_start": 1225,
+              "rebuilt_stop": 1227
+            },
+            {
+              "kind": "replace",
+              "original_start": 1248,
+              "original_stop": 1249,
+              "rebuilt_start": 1245,
+              "rebuilt_stop": 1246
+            },
+            {
+              "kind": "replace",
+              "original_start": 1253,
+              "original_stop": 1254,
+              "rebuilt_start": 1250,
+              "rebuilt_stop": 1251
+            },
+            {
+              "kind": "replace",
+              "original_start": 1256,
+              "original_stop": 1257,
+              "rebuilt_start": 1253,
+              "rebuilt_stop": 1254
+            },
+            {
+              "kind": "replace",
+              "original_start": 1272,
+              "original_stop": 1273,
+              "rebuilt_start": 1269,
+              "rebuilt_stop": 1270
+            },
+            {
+              "kind": "replace",
+              "original_start": 1286,
+              "original_stop": 1289,
+              "rebuilt_start": 1283,
+              "rebuilt_stop": 1286
+            },
+            {
+              "kind": "replace",
+              "original_start": 1290,
+              "original_stop": 1292,
+              "rebuilt_start": 1287,
+              "rebuilt_stop": 1289
+            },
+            {
+              "kind": "replace",
+              "original_start": 1294,
+              "original_stop": 1295,
+              "rebuilt_start": 1291,
+              "rebuilt_stop": 1292
+            },
+            {
+              "kind": "replace",
+              "original_start": 1297,
+              "original_stop": 1298,
+              "rebuilt_start": 1294,
+              "rebuilt_stop": 1295
+            },
+            {
+              "kind": "replace",
+              "original_start": 1300,
+              "original_stop": 1302,
+              "rebuilt_start": 1297,
+              "rebuilt_stop": 1299
+            },
+            {
+              "kind": "replace",
+              "original_start": 1303,
+              "original_stop": 1304,
+              "rebuilt_start": 1300,
+              "rebuilt_stop": 1301
+            },
+            {
+              "kind": "replace",
+              "original_start": 1305,
+              "original_stop": 1306,
+              "rebuilt_start": 1302,
+              "rebuilt_stop": 1303
+            },
+            {
+              "kind": "replace",
+              "original_start": 1308,
+              "original_stop": 1309,
+              "rebuilt_start": 1305,
+              "rebuilt_stop": 1306
+            },
+            {
+              "kind": "replace",
+              "original_start": 1311,
+              "original_stop": 1313,
+              "rebuilt_start": 1308,
+              "rebuilt_stop": 1310
+            },
+            {
+              "kind": "replace",
+              "original_start": 1319,
+              "original_stop": 1320,
+              "rebuilt_start": 1316,
+              "rebuilt_stop": 1317
+            },
+            {
+              "kind": "replace",
+              "original_start": 1322,
+              "original_stop": 1323,
+              "rebuilt_start": 1319,
+              "rebuilt_stop": 1320
+            },
+            {
+              "kind": "replace",
+              "original_start": 1325,
+              "original_stop": 1326,
+              "rebuilt_start": 1322,
+              "rebuilt_stop": 1323
+            },
+            {
+              "kind": "replace",
+              "original_start": 1328,
+              "original_stop": 1330,
+              "rebuilt_start": 1325,
+              "rebuilt_stop": 1327
+            },
+            {
+              "kind": "replace",
+              "original_start": 1376,
+              "original_stop": 1377,
+              "rebuilt_start": 1373,
+              "rebuilt_stop": 1374
+            },
+            {
+              "kind": "replace",
+              "original_start": 1381,
+              "original_stop": 1382,
+              "rebuilt_start": 1378,
+              "rebuilt_stop": 1379
+            },
+            {
+              "kind": "replace",
+              "original_start": 1384,
+              "original_stop": 1386,
+              "rebuilt_start": 1381,
+              "rebuilt_stop": 1383
+            },
+            {
+              "kind": "replace",
+              "original_start": 1390,
+              "original_stop": 1392,
+              "rebuilt_start": 1387,
+              "rebuilt_stop": 1389
+            },
+            {
+              "kind": "replace",
+              "original_start": 1394,
+              "original_stop": 1395,
+              "rebuilt_start": 1391,
+              "rebuilt_stop": 1392
+            },
+            {
+              "kind": "replace",
+              "original_start": 1396,
+              "original_stop": 1397,
+              "rebuilt_start": 1393,
+              "rebuilt_stop": 1394
+            },
+            {
+              "kind": "replace",
+              "original_start": 1399,
+              "original_stop": 1400,
+              "rebuilt_start": 1396,
+              "rebuilt_stop": 1397
+            },
+            {
+              "kind": "replace",
+              "original_start": 1402,
+              "original_stop": 1404,
+              "rebuilt_start": 1399,
+              "rebuilt_stop": 1401
+            },
+            {
+              "kind": "replace",
+              "original_start": 1406,
+              "original_stop": 1407,
+              "rebuilt_start": 1403,
+              "rebuilt_stop": 1404
+            },
+            {
+              "kind": "replace",
+              "original_start": 1409,
+              "original_stop": 1411,
+              "rebuilt_start": 1406,
+              "rebuilt_stop": 1408
+            },
+            {
+              "kind": "delete",
+              "original_start": 1444,
+              "original_stop": 1445,
+              "rebuilt_start": 1441,
+              "rebuilt_stop": 1441
+            },
+            {
+              "kind": "replace",
+              "original_start": 1492,
+              "original_stop": 1493,
+              "rebuilt_start": 1488,
+              "rebuilt_stop": 1489
+            },
+            {
+              "kind": "replace",
+              "original_start": 1497,
+              "original_stop": 1498,
+              "rebuilt_start": 1493,
+              "rebuilt_stop": 1494
+            },
+            {
+              "kind": "replace",
+              "original_start": 1500,
+              "original_stop": 1502,
+              "rebuilt_start": 1496,
+              "rebuilt_stop": 1498
+            },
+            {
+              "kind": "replace",
+              "original_start": 1505,
+              "original_stop": 1506,
+              "rebuilt_start": 1501,
+              "rebuilt_stop": 1502
+            },
+            {
+              "kind": "replace",
+              "original_start": 1508,
+              "original_stop": 1510,
+              "rebuilt_start": 1504,
+              "rebuilt_stop": 1506
+            },
+            {
+              "kind": "delete",
+              "original_start": 1518,
+              "original_stop": 1519,
+              "rebuilt_start": 1514,
+              "rebuilt_stop": 1514
+            },
+            {
+              "kind": "replace",
+              "original_start": 1564,
+              "original_stop": 1565,
+              "rebuilt_start": 1559,
+              "rebuilt_stop": 1560
+            },
+            {
+              "kind": "replace",
+              "original_start": 1569,
+              "original_stop": 1570,
+              "rebuilt_start": 1564,
+              "rebuilt_stop": 1565
+            },
+            {
+              "kind": "replace",
+              "original_start": 1572,
+              "original_stop": 1574,
+              "rebuilt_start": 1567,
+              "rebuilt_stop": 1569
+            },
+            {
+              "kind": "replace",
+              "original_start": 1578,
+              "original_stop": 1580,
+              "rebuilt_start": 1573,
+              "rebuilt_stop": 1574
+            },
+            {
+              "kind": "replace",
+              "original_start": 1582,
+              "original_stop": 1583,
+              "rebuilt_start": 1576,
+              "rebuilt_stop": 1577
+            },
+            {
+              "kind": "replace",
+              "original_start": 1586,
+              "original_stop": 1587,
+              "rebuilt_start": 1580,
+              "rebuilt_stop": 1581
+            },
+            {
+              "kind": "replace",
+              "original_start": 1591,
+              "original_stop": 1592,
+              "rebuilt_start": 1585,
+              "rebuilt_stop": 1586
+            },
+            {
+              "kind": "replace",
+              "original_start": 1594,
+              "original_stop": 1596,
+              "rebuilt_start": 1588,
+              "rebuilt_stop": 1590
+            },
+            {
+              "kind": "delete",
+              "original_start": 1601,
+              "original_stop": 1602,
+              "rebuilt_start": 1595,
+              "rebuilt_stop": 1595
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 397,
+              "original_stop": 398,
+              "rebuilt_start": 400,
+              "rebuilt_stop": 401,
+              "target_ordinal": 0,
+              "original_target": 1260,
+              "rebuilt_target": 1269
+            },
+            {
+              "kind": "branch_retarget",
+              "original_start": 399,
+              "original_stop": 400,
+              "rebuilt_start": 402,
+              "rebuilt_stop": 403,
+              "target_ordinal": 0,
+              "original_target": 1260,
+              "rebuilt_target": 1269
+            }
+          ],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 2466,
+              "rebuilt_offset": 2476,
+              "target_ordinal": 0,
+              "original_target": 2720,
+              "rebuilt_target": 2749,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2600,
+              "rebuilt_offset": 2632,
+              "target_ordinal": 0,
+              "original_target": 2638,
+              "rebuilt_target": 2670,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2649,
+              "rebuilt_offset": 2681,
+              "target_ordinal": 0,
+              "original_target": 2714,
+              "rebuilt_target": 2743,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2665,
+              "rebuilt_offset": 2689,
+              "target_ordinal": 0,
+              "original_target": 2703,
+              "rebuilt_target": 2727,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2800,
+              "rebuilt_offset": 2829,
+              "target_ordinal": 0,
+              "original_target": 2881,
+              "rebuilt_target": 2910,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2819,
+              "rebuilt_offset": 2848,
+              "target_ordinal": 0,
+              "original_target": 2875,
+              "rebuilt_target": 2904,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2972,
+              "rebuilt_offset": 3001,
+              "target_ordinal": 0,
+              "original_target": 3229,
+              "rebuilt_target": 3260,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3048,
+              "rebuilt_offset": 3090,
+              "target_ordinal": 0,
+              "original_target": 3223,
+              "rebuilt_target": 3254,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3109,
+              "rebuilt_offset": 3143,
+              "target_ordinal": 0,
+              "original_target": 3223,
+              "rebuilt_target": 3254,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3170,
+              "rebuilt_offset": 3196,
+              "target_ordinal": 0,
+              "original_target": 3223,
+              "rebuilt_target": 3254,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3239,
+              "rebuilt_offset": 3270,
+              "target_ordinal": 0,
+              "original_target": 2977,
+              "rebuilt_target": 3006,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3507,
+              "rebuilt_offset": 3534,
+              "target_ordinal": 0,
+              "original_target": 3571,
+              "rebuilt_target": 3598,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3545,
+              "rebuilt_offset": 3572,
+              "target_ordinal": 0,
+              "original_target": 3565,
+              "rebuilt_target": 3592,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3633,
+              "rebuilt_offset": 3660,
+              "target_ordinal": 0,
+              "original_target": 3848,
+              "rebuilt_target": 3875,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3781,
+              "rebuilt_offset": 3808,
+              "target_ordinal": 0,
+              "original_target": 3842,
+              "rebuilt_target": 3869,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 3986,
+              "rebuilt_offset": 4013,
+              "target_ordinal": 0,
+              "original_target": 4091,
+              "rebuilt_target": 4118,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 4058,
+              "rebuilt_offset": 4085,
+              "target_ordinal": 0,
+              "original_target": 4071,
+              "rebuilt_target": 4098,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 4352,
+              "rebuilt_offset": 4374,
+              "target_ordinal": 0,
+              "original_target": 4401,
+              "rebuilt_target": 4423,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 4586,
+              "rebuilt_offset": 4603,
+              "target_ordinal": 0,
+              "original_target": 4671,
+              "rebuilt_target": 4683,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 29416,
+          "end": 29873,
+          "line": 1214,
+          "column": 5,
+          "text": "switch (matchInfoJoin)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tif (LeagueData.IsVictoryLeague())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t{\r\n\t\t\t\t\tQuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];\r\n\t\t\t\t\tif (BitUtil.Check(questMatchData.flag_, 2) && QuestMatchData.IsVictoryQuestMatch())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tPush(new SubForm(75));\r\n\t\t\t\t\t\tPush(new SubForm(38));\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\t}",
+          "kind": "SwitchStatement",
+          "method_id": "form.SoccerForm::_update(System.Int32)->System.Boolean",
+          "point": 29412,
+          "declaration_start": 26535,
+          "declaration_end": 39759
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 82,
+              "last_use": 82,
+              "loads": 0,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 162,
+              "last_use": 226,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 239,
+              "last_use": 298,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 3,
+              "first_use": 265,
+              "last_use": 288,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 284,
+              "last_use": 286,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 378,
+              "last_use": 529,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 1083,
+              "last_use": 1171,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 1202,
+              "last_use": 1204,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 1366,
+              "last_use": 1368,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 9,
+              "first_use": 1754,
+              "last_use": 1754,
+              "loads": 0,
+              "stores": 1
+            },
+            {
+              "slot": 10,
+              "first_use": 1766,
+              "last_use": 1766,
+              "loads": 0,
+              "stores": 1
+            },
+            {
+              "slot": 11,
+              "first_use": 2070,
+              "last_use": 2080,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 12,
+              "first_use": 2078,
+              "last_use": 2109,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 13,
+              "first_use": 2391,
+              "last_use": 2393,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 14,
+              "first_use": 2402,
+              "last_use": 2425,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 15,
+              "first_use": 2464,
+              "last_use": 2720,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 16,
+              "first_use": 2488,
+              "last_use": 2528,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 17,
+              "first_use": 2499,
+              "last_use": 2564,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 18,
+              "first_use": 2515,
+              "last_use": 2654,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 19,
+              "first_use": 2526,
+              "last_use": 2705,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 20,
+              "first_use": 2542,
+              "last_use": 2582,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 21,
+              "first_use": 2580,
+              "last_use": 2580,
+              "loads": 0,
+              "stores": 1
+            },
+            {
+              "slot": 22,
+              "first_use": 2598,
+              "last_use": 2638,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 23,
+              "first_use": 2622,
+              "last_use": 2624,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 24,
+              "first_use": 2663,
+              "last_use": 2703,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 25,
+              "first_use": 2687,
+              "last_use": 2689,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 26,
+              "first_use": 2798,
+              "last_use": 2881,
+              "loads": 6,
+              "stores": 2
+            },
+            {
+              "slot": 27,
+              "first_use": 2970,
+              "last_use": 3229,
+              "loads": 15,
+              "stores": 2
+            },
+            {
+              "slot": 28,
+              "first_use": 3337,
+              "last_use": 3339,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 29,
+              "first_use": 3505,
+              "last_use": 3571,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 30,
+              "first_use": 3535,
+              "last_use": 3550,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 31,
+              "first_use": 3631,
+              "last_use": 3848,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 32,
+              "first_use": 3661,
+              "last_use": 3833,
+              "loads": 8,
+              "stores": 1
+            },
+            {
+              "slot": 33,
+              "first_use": 3698,
+              "last_use": 3737,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 34,
+              "first_use": 3733,
+              "last_use": 3735,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 35,
+              "first_use": 3740,
+              "last_use": 3750,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 36,
+              "first_use": 3770,
+              "last_use": 3794,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 37,
+              "first_use": 3984,
+              "last_use": 4091,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 38,
+              "first_use": 4014,
+              "last_use": 4073,
+              "loads": 8,
+              "stores": 1
+            },
+            {
+              "slot": 39,
+              "first_use": 4350,
+              "last_use": 4401,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 40,
+              "first_use": 4380,
+              "last_use": 4382,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 41,
+              "first_use": 4584,
+              "last_use": 4671,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 42,
+              "first_use": 4614,
+              "last_use": 4651,
+              "loads": 3,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 1
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 9,
+              "votes": {
+                "9": 1
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 10,
+              "votes": {
+                "10": 1
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 11,
+              "votes": {
+                "11": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 12,
+              "votes": {
+                "12": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 12,
+              "original_slot": 13,
+              "votes": {
+                "13": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 13,
+              "original_slot": 14,
+              "votes": {
+                "14": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 14,
+              "original_slot": 15,
+              "votes": {
+                "15": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 15,
+              "original_slot": 16,
+              "votes": {
+                "16": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 16,
+              "original_slot": 17,
+              "votes": {
+                "17": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 17,
+              "original_slot": 18,
+              "votes": {
+                "18": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 18,
+              "original_slot": 19,
+              "votes": {
+                "19": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 19,
+              "original_slot": 20,
+              "votes": {
+                "20": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 20,
+              "original_slot": 21,
+              "votes": {
+                "21": 1
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 21,
+              "original_slot": 22,
+              "votes": {
+                "22": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 22,
+              "original_slot": 23,
+              "votes": {
+                "23": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 23,
+              "original_slot": 24,
+              "votes": {
+                "24": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 24,
+              "original_slot": 25,
+              "votes": {
+                "25": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 25,
+              "original_slot": 26,
+              "votes": {
+                "26": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 26,
+              "original_slot": 27,
+              "votes": {
+                "27": 13
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 27,
+              "original_slot": 29,
+              "votes": {
+                "29": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 28,
+              "original_slot": 30,
+              "votes": {
+                "30": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 29,
+              "original_slot": 31,
+              "votes": {
+                "31": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 30,
+              "original_slot": 32,
+              "votes": {
+                "32": 9
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 31,
+              "original_slot": 33,
+              "votes": {
+                "33": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 32,
+              "original_slot": 34,
+              "votes": {
+                "34": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 33,
+              "original_slot": 35,
+              "votes": {
+                "35": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 34,
+              "original_slot": 36,
+              "votes": {
+                "36": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 35,
+              "original_slot": 37,
+              "votes": {
+                "37": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 36,
+              "original_slot": 38,
+              "votes": {
+                "38": 9
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 37,
+              "original_slot": 39,
+              "votes": {
+                "39": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 38,
+              "original_slot": 40,
+              "votes": {
+                "40": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 39,
+              "original_slot": 41,
+              "votes": {
+                "41": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 40,
+              "original_slot": 42,
+              "votes": {
+                "42": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 41,
+              "original_slot": 27,
+              "votes": {
+                "27": 1
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "num",
+              "type": "System.Int32",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 26575,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 26936,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "player",
+              "type": "game.Player",
+              "rebuilt_slot": 3,
+              "desired_slot": 3,
+              "lexical_block": 27258,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData2",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 27258,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Int32",
+              "rebuilt_slot": 5,
+              "desired_slot": 5,
+              "lexical_block": 26818,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "matchInfoJoin",
+              "type": "System.Int32",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 28926,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "questMatchData",
+              "type": "data.QuestMatchData",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 29606,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "x_",
+              "type": "System.Single",
+              "rebuilt_slot": 8,
+              "desired_slot": 9,
+              "lexical_block": 31067,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "y_",
+              "type": "System.Single",
+              "rebuilt_slot": 9,
+              "desired_slot": 10,
+              "lexical_block": 31067,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "global_pos",
+              "type": "kairo.unity.m3d4.util3d.Vector3D",
+              "rebuilt_slot": 10,
+              "desired_slot": 11,
+              "lexical_block": 31899,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 11,
+              "desired_slot": 12,
+              "lexical_block": 31899,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array2",
+              "type": "System.Object[]",
+              "rebuilt_slot": 12,
+              "desired_slot": 13,
+              "lexical_block": 32657,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array3",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 13,
+              "desired_slot": 14,
+              "lexical_block": 32657,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array4",
+              "type": "System.Object[]",
+              "rebuilt_slot": 15,
+              "desired_slot": 16,
+              "lexical_block": 33182,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array5",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 16,
+              "desired_slot": 17,
+              "lexical_block": 33182,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Int32",
+              "rebuilt_slot": 17,
+              "desired_slot": 18,
+              "lexical_block": 33182,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array6",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 18,
+              "desired_slot": 19,
+              "lexical_block": 33182,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Int32",
+              "rebuilt_slot": 19,
+              "desired_slot": 20,
+              "lexical_block": 33182,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "fanEva",
+              "type": "System.Int32",
+              "rebuilt_slot": 20,
+              "desired_slot": 21,
+              "lexical_block": 33182,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData4",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 22,
+              "desired_slot": 23,
+              "lexical_block": 33811,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData3",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 24,
+              "desired_slot": 25,
+              "lexical_block": 34032,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData5",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 28,
+              "desired_slot": 30,
+              "lexical_block": 36163,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData6",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 30,
+              "desired_slot": 32,
+              "lexical_block": 36504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num7",
+              "type": "System.Int32",
+              "rebuilt_slot": 31,
+              "desired_slot": 33,
+              "lexical_block": 36504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num8",
+              "type": "System.Int32",
+              "rebuilt_slot": 32,
+              "desired_slot": 34,
+              "lexical_block": 36504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num9",
+              "type": "System.Int32",
+              "rebuilt_slot": 33,
+              "desired_slot": 35,
+              "lexical_block": 36504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "nextLvUpExp",
+              "type": "System.Int32",
+              "rebuilt_slot": 34,
+              "desired_slot": 36,
+              "lexical_block": 36504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData7",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 36,
+              "desired_slot": 38,
+              "lexical_block": 37614,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData8",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 38,
+              "desired_slot": 40,
+              "lexical_block": 38687,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "playerData9",
+              "type": "data.PlayerData",
+              "rebuilt_slot": 40,
+              "desired_slot": 42,
+              "lexical_block": 39303,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 37,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 36,
+          "selected_rule_prefix": "d10-smcs-switch-join"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 4742,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "form.SoccerForm::_update(System.Int32)->System.Boolean"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d10-smcs-switch-join-d10-smcs-switch-layout-d10-calculated-dispatch-local-join-layout:attempts": 1,
+    "d10-smcs-switch-join-d10-smcs-switch-layout-d10-calculated-dispatch-local-join-layout:accepted_steps": 1,
+    "d10-smcs-switch-join-d10-smcs-switch-layout-d10-calculated-dispatch-local-join-layout:body_gains": 1,
+    "d10-smcs-switch-join-d10-smcs-switch-layout-d10-calculated-dispatch-local-join-layout:IL_gains": 4742
+  },
+  "completed": true,
+  "run_label": "cycle15-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\cycles\\cycle15\\baseline\\Assembly-CSharp",
+  "cycle_rule": "d10-smcs-switch-join",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d10-smcs-switch-join",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 36,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "8539358ae4471cfff8eb10f5c8995cab25747535fdd33d9dd05117f5751bfd4b",
+    "source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round10-smcs-switch-join-family-patches.json",
+    "sha256": "13dd1f8c108cf1e1c5ff4cf6d004308f8fcc9bf99990161805e598dfb79184ab",
+    "dependencies_checked": {
+      "tools/round10_merge_switch_join_family.py": "0569672eaa652289d37c64a04a4e50c1578bf1ec0350ed6cc106e19ab311de38",
+      "tools/round10_bind_private_family.py": "c67a0e1565ebea895855edacc1a1a895476383a09797a6501ec2504645bdc3b9",
+      "tools/round10_smcs_switch_selector_compositions_source.py": "3ed5b498170fe22779f88485e0eaa8d543b69f77adc4a53cb7d3ead8f27126c0",
+      "tools/round10_publish_frozen_bundle.py": "5c3aa48ba9c9395e57d7399777347f09707553af45ce4cca2308da2070fa9539",
+      "tools/round10_format_public_fixtures.py": "c23c192c472c54c63a62ba59982942a8bef9ff910d159bc1468b908205a529d0",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round10_bind_indexed_family.py": "17114ca36b82afabdc692c5483d4febb5b4fde3418215109e19d533ce53445df",
+      "tools/round10_smcs_switch_layout_compositions_source.py": "a87f2a0a6cec1c20f679d3a9b749f0f31784d19ac6750eefb8b0fcdcc97b4675"
+    },
+    "read_only_evidence_checked": {
+      "reports/round10-cycle13-after-measurement.json": "77212c9be3499d1b18843820c2b48bdfa630ec0e68011ece86b3cd28075b9da2",
+      "reports/round10-smcs-switch-selector-compositions-fixtures.json": "6beff15c312945fa43771ada34a739289664ab47a412cc77b9568e6030fb6eda",
+      "reports/round10-smcs-switch-selector-compositions-format-review.json": "662b6a1e2217cef1a8ac9b7995e804e5c590a6f33e67bc47b67a7f5b47039c8b",
+      "reports/round10-smcs-switch-selector-compositions-patches.json": "1fcf1c7dcfa59041bc64c4864506f06c96f202ee2fc958486250a4ab7956b1a6",
+      "reports/round10-smcs-switch-layout-compositions-fixtures.json": "84c42b1fced5add50c1ff2ef9cf99a895862b7b72ce1720533c72fb672accf23",
+      "reports/round10-smcs-switch-layout-compositions-format-review.json": "78ee7dbb73d543826e86fb8df1c0fb5b04cf9bfcff6c72284cfd6511b8f795b9",
+      "reports/round10-smcs-switch-layout-compositions-patches.json": "2b0eb3617bf7e7a8f1b5a4961e379f2e3255dfbd4899779fb715266161e73fce"
+    },
+    "frozen_evidence_checked": {
+      "build/round10/autonomous-smcs-condition-locals/boot-after.cs.txt": "c2228dd3375cd456cb43124686af3ec6388deafd4cd30ea0b225459bb4f931d6",
+      "build/round10/autonomous-smcs-condition-locals/boot-before.cs.txt": "c17043177625204669b4cf073cb6aa333836e47bd37a51a10e4ad27af23e31b8",
+      "build/round10/autonomous-smcs-condition-locals/boot-IL-evidence.json": "e243e65f616e86c1ed2f5327beddc5ee91732fcc59715a25016f93582b7d4ad8",
+      "build/round10/autonomous-smcs-condition-locals/fan-IL-evidence.json": "7462a38ff0c5602b61fafc1a146025a3c9f080b3ba08feed63d03e2fb6678740",
+      "build/round10/autonomous-smcs-condition-locals/fixture_sources.py": "d7e2046bf9072edbe7c6f05cf1026647fa239baaebd1088025063a31ed738d0f",
+      "build/round10/autonomous-smcs-condition-locals/history-by-method-sha.json": "5020768b0a0302b99b7131649565f0e61e7075b6b6560c3356ce733d051f4f6a",
+      "build/round10/autonomous-smcs-condition-locals/leaf-inventory.json": "53e840439714c963567df2088ae2d02a5aee1549bd42d5b434608802d46094f7",
+      "build/round10/autonomous-smcs-condition-locals/prepare.py": "f04e09e4540fa3d1e688e7ce99991efe57d732d65e17beeb25eb132c60e5e67d",
+      "build/round10/autonomous-smcs-condition-locals/proposal.py": "3ed5b498170fe22779f88485e0eaa8d543b69f77adc4a53cb7d3ead8f27126c0",
+      "build/round10/autonomous-smcs-condition-locals/README.md": "4ff83cbb885dc5297f14cc2cbdf6cf62e65ba3a499506761242f8d25ce0b0d86",
+      "build/round10/autonomous-smcs-condition-locals/source-patches.json": "ee683ce2bf7278968a046c623413eb24c5e7b3cffa3af7f28852694f3c595e88",
+      "build/round10/autonomous-smcs-condition-locals/topbar-after.cs.txt": "f0048bab6b3ec4e1b9632ab1e0dd1aac912e41192a24ed0526faeaa0ee9bed1b",
+      "build/round10/autonomous-smcs-condition-locals/topbar-before.cs.txt": "cb5cf6b2009e0e4c1e0aa7870dcb954719be285ea8031bcc0913ab11ca3bbcd6",
+      "build/round10/autonomous-smcs-condition-locals/topbar-IL-evidence.json": "4cda6deae1ebee1d965a1209e94a13746181bd66616cc9e01fbaa4d900ea765a",
+      "build/round10/autonomous-smcs-condition-locals/update-IL-evidence.json": "c3d483a50727ac4fa3959d29092146af8025b4543199e3a2a5e11de12deee6f4",
+      "build/round10/autonomous-smcs-condition-locals/validate_toy.py": "50122eeb9d895721d4b4f0d1e8f7b467daaa873de91e720d655da03d161865a7",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/report-in-progress.json": "7d8048f7d0f156583d90e647ac1347654bf3d109415ba459dee43c35b816c3a2",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/report.json": "6beff15c312945fa43771ada34a739289664ab47a412cc77b9568e6030fb6eda",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/before/compiler.log": "ea28bd7a20d13ea672c1e93621e20515e38a97b20c37d501b00a51bec4e05e53",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/before/Fixture.cs": "1823049f83ae03f17b456770b5599394c306313cdafa290365d6e94d7b0495f7",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/before/Fixture.dll": "ed16158f8c719e0cee460c376ddfb545ab09866d9c32d35da616ed9180dac403",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/candidate/compiler.log": "5dda329033dd618ef25a9c91b7611b78497e4679652bff9a6c72fc6fdc38896a",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/candidate/Fixture.cs": "243bc143832671dd8652853cba1f35210c5442af3fb13bc9dd1bf823afcadf31",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/candidate/Fixture.dll": "1c8a4f42dfaa7d048bd6f5861d252edf4dff766de0e2d56bc6eee14b884fa167",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/manual/compiler.log": "6248db76da0ab769593da2077278cbf651daf7627b232bf42ed8cbef5213e7ea",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/manual/Fixture.cs": "0814d13142e81d959537c5e13a86722897076a9c292798608f6d9b126a3f4ccc",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/boot/manual/Fixture.dll": "ea3bf9605b38b49cb1961118529a04873f960b530a90e04fcf5cc8d66d1219c8",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/before/Fixture.cs": "a833b64e52e3f8a52cce7da4680aa59b7b9921c75b622495eb73b59167425025",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/before/Fixture.dll": "de0d32d9305184fb5c4f365fc0bf1d9ea9cfab05040fc3db1b6d4fc9b4860d2b",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/candidate/Fixture.cs": "b789f7424d03d7818ec884536f45c839b3c10a79e8a490aebbd005a28e1a2e0a",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/candidate/Fixture.dll": "4d27784f86612145582b4b6d73edf6f3b2c9a3a258087ba7f446dc4e15b548f4",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/manual/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/manual/Fixture.cs": "9d47c27fd3c4a2283cfadb1c55fe1611db2d0992934e6ded1de4bc775a841b8b",
+      "build/round10/autonomous-smcs-condition-locals/toy-validation/topbar/manual/Fixture.dll": "b6b15dae8bba427230a0d8e40f932fc24066c04a2e9244c4417c6372b49067eb",
+      "build/round10/autonomous-smcs-condition-locals/../publication/smcs-switch-selector-compositions-engine.json": "e516dd43f805d47c8ca91ac6d1f38bee2c02d163f523260fbf3ebde51237c798",
+      "build/round10/autonomous-smcs-switch-layout-next/before-methods.json": "d76fe17e8c036451b4533cb1759003112c0b8d448c8376e679ec55755acbc1e0",
+      "build/round10/autonomous-smcs-switch-layout-next/calculate.py": "b851c0c032ad4d3453c8a467373ae8dafad311c4b236693d52e038c38a734ac4",
+      "build/round10/autonomous-smcs-switch-layout-next/candidate-methods.json": "fcfccf55434ba021c3f00d039781d52fc583d3a61a0fd038fc965542239d433f",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/before/compiler.log": "83d3a1ff58bc5e0798875a1417675a4e75d00771420174407e25e1f54352070e",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/before/Fixture.cs": "985abe15052bd30416a5f483e429fa778bc007f4ffa3eda7d2a509b2993e2038",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/before/Fixture.dll": "bc5c309db8724999a78692a9375e2b75376d6c30df98752633bced07448b3e6b",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/candidate/compiler.log": "54e8538e736e668cf3b3eff39cb2aa6dd7f418f91185c1dced2a050d10b0a5da",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/candidate/Fixture.cs": "c869698e69b837e946e5f4cc095b806f2ae2e53d342e5ecd953a3459f4ed9e0c",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/candidate/Fixture.dll": "95511ad1e1158fe7b6fd1c86dc8a91860bab45bc73220c0fd0bb0ce35542bf23",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/control/compiler.log": "c2698207e6748ba7e6b7aee14a6c69c92526e4a176bdc799b5a68cb033b32ff5",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/control/Fixture.cs": "fc2bbd929fbe955c711d715a4ed33883141002f3bacc617b822aa17e8f29d439",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/control/Fixture.dll": "e138cf4b1499dad735e56894000e6b17e3c45ec961ecfcce141117bf68771628",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-empty-ten-arm/compiler.log": "4e60496e6c6350fba8095ff6e9ddea74803bd361dfa8bbe183f0ebb5aceccf23",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-empty-ten-arm/Fixture.cs": "6cbfc2c9df8cef826ae85763319a44c9c5a0bc8ef665654423aaee99ec00425f",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-empty-ten-arm/Fixture.dll": "11e2d9a670f72249cd0f84de25df28e451ef1595303ee11eec1904894be661f0",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-inner-empty-else/compiler.log": "0074266858a3b4fc4c8a2735c2e76949d63ec9107959fed4938116162a288f0c",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-inner-empty-else/Fixture.cs": "65faa47c09d90800d4c3e39d0697cbb4c32d0c41d03f41b34ca3226b54a6f9d1",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-inner-empty-else/Fixture.dll": "b8b2124ee565ab08829cb52215298d7c1a9972fbe4f920529fb004ed93b88d10",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-tested-call-alias/compiler.log": "c31b51318c755f646e02d35343ecc17bba36d9f7394098192f4fb63513f4ac43",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-tested-call-alias/Fixture.cs": "afcb55fa8a1df591f5d30043f3adfd38f4f8838150e75525e1d548540cc83275",
+      "build/round10/autonomous-smcs-switch-layout-next/compiled/missing-tested-call-alias/Fixture.dll": "009201b7eed5e6bc44e37f16150290caf1adf430d45bb5fc39c99a4d2c2a4563",
+      "build/round10/autonomous-smcs-switch-layout-next/compiler-evidence.json": "8eaabafbd507c648e67c068c56c8cf2b30081e08dd93441e71bf62d33b415b04",
+      "build/round10/autonomous-smcs-switch-layout-next/complete-results.json": "52079baab2aa8a1474baa691a29ee5c248ac28146de991e8302df2a1f2661644",
+      "build/round10/autonomous-smcs-switch-layout-next/control-methods.json": "fcfccf55434ba021c3f00d039781d52fc583d3a61a0fd038fc965542239d433f",
+      "build/round10/autonomous-smcs-switch-layout-next/data_FanBonusData__ChBonusEvent/analysis.json": "df4137fb7a3deb57e1a65b5437e6ef862687267fbf51ffc32606029990f6a4a6",
+      "build/round10/autonomous-smcs-switch-layout-next/data_FanBonusData__ChBonusEvent/complete.after.cs": "3f4091092ba010a20fe5815d4faef4188e43c3d98029a48a4912f1546b20f4c7",
+      "build/round10/autonomous-smcs-switch-layout-next/data_FanBonusData__ChBonusEvent/layout.after.cs": "6a99c53fbff1db9b033e31aa6669b2a934c9daa63f6cb111c7dfa51f439a4742",
+      "build/round10/autonomous-smcs-switch-layout-next/data_FanBonusData__ChBonusEvent/method.before.cs": "b0f3937bf3f8ce1536ab909abe1e7e63bf976be68de9acd1a0089a06d457ad50",
+      "build/round10/autonomous-smcs-switch-layout-next/data_FanBonusData__ChBonusEvent/model-complete.json": "a8f806f96320de6bd4c8db25b5768317f4678680c86aba01e0160f97e410ed3e",
+      "build/round10/autonomous-smcs-switch-layout-next/data_FanBonusData__ChBonusEvent/model-layout.json": "f160934e8c9df0288eaffc5c1ebf1bf38aad76d6b84f929dc87e0f65526580cf",
+      "build/round10/autonomous-smcs-switch-layout-next/data_FanBonusData__ChBonusEvent/role-diagnostic.json": "5797be2624924ef81bf50465a6fce7ea30a87578a89f3d58d50e943ce93e57b8",
+      "build/round10/autonomous-smcs-switch-layout-next/diagnostic.py": "ed17555c6fcec00bc55e1b8c89c2bb137fe382ef0759bc90cd393f71884f153d",
+      "build/round10/autonomous-smcs-switch-layout-next/fixture-results.json": "84c42b1fced5add50c1ff2ef9cf99a895862b7b72ce1720533c72fb672accf23",
+      "build/round10/autonomous-smcs-switch-layout-next/FixtureCandidate.cs": "f992cf49eb635c9441dc92c661f417032eb9617cd1b8a4977dfecf9fa60467ae",
+      "build/round10/autonomous-smcs-switch-layout-next/FixtureControl.cs": "5a4fc78803a33b606fe66307ac562fcba743bd74e0fafb02122f8dd633afff8b",
+      "build/round10/autonomous-smcs-switch-layout-next/FixtureControl.methods.cs.txt": "f16fd459b3071f62f5e4162f48ae24bf5428c9a4303bce6f73ce4a917f2c802d",
+      "build/round10/autonomous-smcs-switch-layout-next/FixtureCurrent.cs": "985abe15052bd30416a5f483e429fa778bc007f4ffa3eda7d2a509b2993e2038",
+      "build/round10/autonomous-smcs-switch-layout-next/form_SoccerForm___update/analysis.json": "d7c665cd87a37c92b2d9ae34d6cd8f803eb4dd08e544fd5742547190c8022441",
+      "build/round10/autonomous-smcs-switch-layout-next/form_SoccerForm___update/complete.after.cs": "ccdb568474570a08fb805f6de622c4b2e8f9362dce5d5bbf3cc4df4000b83e2c",
+      "build/round10/autonomous-smcs-switch-layout-next/form_SoccerForm___update/layout.after.cs": "003bca16c5d0f622b9afaa60099de7f590a0b62ef3396b88dc56157876cdbd46",
+      "build/round10/autonomous-smcs-switch-layout-next/form_SoccerForm___update/method.before.cs": "51de928bcd1f8ea5fb2d9baf52c3d3b3f9c6b29d461612d3be9ef433cca38fea",
+      "build/round10/autonomous-smcs-switch-layout-next/form_SoccerForm___update/model-complete.json": "61c60d34e041fad92ee4ee3aecbb49b65275eec21f081746452a6a5da0118e2a",
+      "build/round10/autonomous-smcs-switch-layout-next/form_SoccerForm___update/model-layout.json": "ee46f7b4c57b73accd320d1fa1467cb9e2020073d19935d6321d270f1b69d382",
+      "build/round10/autonomous-smcs-switch-layout-next/form_SoccerForm___update/role-diagnostic.json": "5f179716265d621dd81af09ade70e9f638f7e43ce295f8f246376c4858503a27",
+      "build/round10/autonomous-smcs-switch-layout-next/freeze.py": "e3e7cb20de7343908bd4c2601eb19d2839330180c46fd0cdf88b5778c2bb3ad2",
+      "build/round10/autonomous-smcs-switch-layout-next/frozen-source-manifest.json": "8bff5160c600d02f5dc292d38cccd5dbc5e8c2fefb9c7b05508e9f9dcc4e5a83",
+      "build/round10/autonomous-smcs-switch-layout-next/history.json": "561bf2ff8113e1f965697edcba4609d705eb850ee168c15b4125765f0e417db5",
+      "build/round10/autonomous-smcs-switch-layout-next/layout-results.json": "a53a943886be0ea0b3aaadb35c91a433a2756e2a4a13e4c45a8421661235a8a3",
+      "build/round10/autonomous-smcs-switch-layout-next/missing-empty-ten-arm-methods.json": "5a51bd4bed0b4c545ded958ba21e7978cf3f817d93465dad29a318ffa6ec8c57",
+      "build/round10/autonomous-smcs-switch-layout-next/missing-inner-empty-else-methods.json": "b3daa198e0e917c7f3ea9949406c9d58017d6ae12b647a80934930a0da2e7e29",
+      "build/round10/autonomous-smcs-switch-layout-next/missing-tested-call-alias-methods.json": "4666cf304780e73c9e9486c7aedd4c3dcf04ef60ba8ebcf8a7b2707d01144ef6",
+      "build/round10/autonomous-smcs-switch-layout-next/model_complete.py": "5d170ea6e45b920f66873d9aee10281b544f2460005d864bfa60bac144a8cca1",
+      "build/round10/autonomous-smcs-switch-layout-next/model_layout.py": "27dbbb4c3a6dbe1e3ac30a3365e44b0a99f34ce2c9a691ebc855a8efbe073d00",
+      "build/round10/autonomous-smcs-switch-layout-next/package.py": "5a7466a39ae789d2ade5519c3197b12874ea52f5e29fc4d33c3be47bff382071",
+      "build/round10/autonomous-smcs-switch-layout-next/probe-bundle.json": "8cbacb99c9abacff4ed849835ca36270d2256f83749a6ce09f7a8560eefdbc61",
+      "build/round10/autonomous-smcs-switch-layout-next/README.md": "082f65ce04fec31099062c3f0711abdb685183d072db6553a1641a3ee202698e",
+      "build/round10/autonomous-smcs-switch-layout-next/ready.json": "b369af3c37d30d331f57b859ae35f9c01bdbecf220822f45b382c93a4cdc050a",
+      "build/round10/autonomous-smcs-switch-layout-next/region-accounting.json": "4dd179c226a6d2a18eeba558b4de7c521098442cf37569f276cb71980937215a",
+      "build/round10/autonomous-smcs-switch-layout-next/source_calculator.py": "a87f2a0a6cec1c20f679d3a9b749f0f31784d19ac6750eefb8b0fcdcc97b4675",
+      "build/round10/autonomous-smcs-switch-layout-next/stage-results.json": "3271b053f5985b6176755ac68127ec875758acae1660aac2f97efb3f03d98550",
+      "build/round10/autonomous-smcs-switch-layout-next/stage.py": "a5823492a1c967b8f166db3a0251d596772b1d952240a3964d91b36f44a29252",
+      "build/round10/autonomous-smcs-switch-layout-next/validate.py": "b029a53c9c8d7672438974e39cf0c3b67bed81bc9fbe2fd4b46b807b56395d0d",
+      "build/round10/autonomous-smcs-switch-layout-next/frozen-index.json": "3f0c469098c87fdf4bc0373e69b0d0e2299de9194a92699f8db4b108decb3d7e",
+      "build/round10/autonomous-smcs-switch-layout-next/../publication/smcs-switch-layout-compositions-indexed-engine.json": "1743ae220d695fb6efff93b49bd9f5aa128f5af8e4814844820153ee4159bc4a"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "form.SoccerForm::_update(System.Int32)->System.Boolean",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794078944724311200",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 3.0630000000819564,
+        "wall_seconds": 16.406000000191852,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 3.0630000000819564,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794078944724311200\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794078944724311200\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "05f27eddcc46074db5228a4879bdd93a0318b2177a0842e0543e5d68343ef089",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "95224e1d0673b7e83fc194730ba9e43c787336b7f007a5e2a703cc6ef772c62b",
+          "src/Assembly-CSharp/form/SpForm.cs": "40181aa015f81f479d7da8cba85230e30afb6698d83c12b74ff322b798bc739c",
+          "src/Assembly-CSharp/form/SubForm.cs": "f54d0c7e6478a12acfca2defd28dfd12c3fc06392665eede6f8a8c7f5d6beafb",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "5d8bddca8ebbac505ceab15ecee1f43e37fdc64bf1058002d9a5b2d458c5548b",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "e80e5dfbcf480aed02cbfad5e7264bde1c547e7d7dd0460b33dedcfac5c15a56",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "cdfdc16de4eb0b387bccae1277679118a586762033f9885180fb760533eb330c",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "9fb6e7471f477d700c935898375a8906d4714de16b32bf785ffdbfa569decccf",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+          "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "68ee0849e33912bdfd84f978edf3ba5716deb70d3b4acdc4cb011c024851f421",
+          "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+          "src/Assembly-CSharp/surface/GameView.cs": "44f1215ea5a8f7c8dd759bf5a4590c8a871d853e67ac6d1b8e3f195a5b795847",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3d9e96402fdbfdd4d6516b417114b098352ec8b174fbee22dff76d7509c67240",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "47078f79ffcc689a9673cab23822db0cf49dfc448ab7ec11898dfafc12648386",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "e383dae2eb74873c40f64911e17728e527415333da8b7b56a6ac33200321eff9",
+        "accepted_source_set_sha256": "ce5811e824776bc9ff1b68438b55412975ac19ba5f961ce53fc213d6152266ee",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "fca86df138e4cd32cd2d881247ed6232b5bcf04d4011fd54f4802c0d4d631983"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "form.SoccerForm::_update(System.Int32)->System.Boolean",
+        "rule": "d10-smcs-switch-join-d10-smcs-switch-layout-d10-calculated-dispatch-local-join-layout",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1861,
+  "body_gains": [
+    "form.SoccerForm::_update(System.Int32)->System.Boolean"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 4742,
+  "builds": 6,
+  "build_seconds": 11.813000000314787,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "b296bcbd72f2377d352f79fe9d1092a115457d44374234fd52845bafd17b8dd8",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle15-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "e383dae2eb74873c40f64911e17728e527415333da8b7b56a6ac33200321eff9",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "05f27eddcc46074db5228a4879bdd93a0318b2177a0842e0543e5d68343ef089",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "7eb92b6a4c3bd9fe06c513408113447db8e0ceccdeb7d288b08674b3a002c7a7",
+    "src/Assembly-CSharp/form/SpForm.cs": "40181aa015f81f479d7da8cba85230e30afb6698d83c12b74ff322b798bc739c",
+    "src/Assembly-CSharp/form/SubForm.cs": "f54d0c7e6478a12acfca2defd28dfd12c3fc06392665eede6f8a8c7f5d6beafb",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "5d8bddca8ebbac505ceab15ecee1f43e37fdc64bf1058002d9a5b2d458c5548b",
+    "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "e80e5dfbcf480aed02cbfad5e7264bde1c547e7d7dd0460b33dedcfac5c15a56",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "cdfdc16de4eb0b387bccae1277679118a586762033f9885180fb760533eb330c",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "9fb6e7471f477d700c935898375a8906d4714de16b32bf785ffdbfa569decccf",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+    "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+    "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+    "src/Assembly-CSharp/game/UserData.cs": "68ee0849e33912bdfd84f978edf3ba5716deb70d3b4acdc4cb011c024851f421",
+    "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+    "src/Assembly-CSharp/surface/GameView.cs": "44f1215ea5a8f7c8dd759bf5a4590c8a871d853e67ac6d1b8e3f195a5b795847",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3d9e96402fdbfdd4d6516b417114b098352ec8b174fbee22dff76d7509c67240",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "47078f79ffcc689a9673cab23822db0cf49dfc448ab7ec11898dfafc12648386",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

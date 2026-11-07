@@ -649,15 +649,14 @@ namespace form
 		public void Draw_topBarParts(Graphics g, int type, int dx, int w)
 		{
 			int height = VIEW_Y - 1;
-			switch (type)
-			{
-			case 0:
-			{
+			if (type == 0) {
+
 				if (w <= TBAR_W[type])
 				{
 					g.DrawImage(apdat_.resCom2_.img[32], dx, 0f, TBAR_SX[type], 0, w, height);
-					break;
-				}
+
+} else {
+
 				int num7 = w;
 				int num8 = 0;
 				while (num7 > 0)
@@ -667,30 +666,32 @@ namespace form
 					num7 -= num9;
 					num8 += num9;
 				}
-				break;
-			}
-			case 1:
-			case 3:
-			case 5:
+
+}
+}
+else if (type == 1 || type == 5 || type == 3) {
+
 				g.DrawImage(apdat_.resCom2_.img[32], dx, 0f, TBAR_SX[type], 0, w, height);
-				switch (type)
-				{
-				case 1:
+				if (type == 1) {
+
 					g.DrawImage(apdat_.resCom2_.img[32], dx - 1, 0f, TBAR_SX[type] + 1, 0, 3, height);
-					break;
-				case 5:
+
+}
+else if (type == 5) {
+
 					g.DrawImage(apdat_.resCom2_.img[32], dx - 1 + w, 0f, TBAR_SX[type] + 1, 0, 3, height);
-					break;
-				}
-				break;
-			case 2:
-			case 4:
-			{
+
+}
+
+}
+else if (type == 2 || type == 4) {
+
 				if (w <= TBAR_W[type])
 				{
 					g.DrawImage(apdat_.resCom2_.img[32], dx, 0f, TBAR_SX[type], 0, w, height);
-					break;
-				}
+
+} else {
+
 				int num4 = w;
 				int num5 = 0;
 				while (num4 > 0)
@@ -700,15 +701,17 @@ namespace form
 					num4 -= num6;
 					num5 += num6;
 				}
-				break;
-			}
-			case 6:
-			{
+
+}
+}
+else if (type == 6) {
+
 				if (w <= TBAR_W[type])
 				{
 					g.DrawImage(apdat_.resCom2_.img[32], dx, 0f, TBAR_SX[type], 0, w, height);
-					break;
-				}
+
+} else {
+
 				int num = w;
 				int num2 = 0;
 				while (num > 0)
@@ -718,9 +721,9 @@ namespace form
 					num -= num3;
 					num2 += num3;
 				}
-				break;
-			}
-			}
+
+}
+}
 		}
 
 		public int[] GetFirstScript()
@@ -1211,26 +1214,25 @@ if ((_update(i))) { break; }
 				}
 				udat_.Update_gameParam();
 				ChangeState(3);
-				switch (matchInfoJoin)
-				{
-				case 0:
-					if (LeagueData.IsVictoryLeague())
+				if ((matchInfoJoin == 0)) {
+if (LeagueData.IsVictoryLeague())
 					{
 						Push(new SubForm(75));
 						Push(new SubForm(38));
 					}
-					break;
-				case 1:
-				{
+
+}
+else if ((matchInfoJoin == 1)) {
+{
 					QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 					if (BitUtil.Check(questMatchData.flag_, 2) && QuestMatchData.IsVictoryQuestMatch())
 					{
 						Push(new SubForm(75));
 						Push(new SubForm(38));
 					}
-					break;
+
 				}
-				}
+}
 				Push(new SubForm(37));
 			}
 			else if (state_ == 3)
@@ -1241,8 +1243,7 @@ if ((_update(i))) { break; }
 			{
 				udat_.matchInfoWeek_ = 0;
 				udat_.Init_bus();
-				apdat_.camera.SetMapMainBasePos();
-				if (udat_.GetMatchInfoJoin() == 0)
+				apdat_.camera.SetMapMainBasePos();int recoveredMatchInfoJoin4=udat_.GetMatchInfoJoin();if(recoveredMatchInfoJoin4==0)
 				{
 					if (LeagueData.IsVictoryLeague())
 					{
@@ -1359,32 +1360,28 @@ if ((_update(i))) { break; }
 							FanActData.AddFanParam(array5[1], 1);
 							FanActData.AddFanParam(array5[2], 2);
 							int fanEva = FanActData.GetFanEva(0);
-							if (num4 != 1)
-							{
-								continue;
-							}
-							switch (num3)
-							{
-							case 0:
-							{
+							if(num4==1){
+							if ((num3 == 0)) {
+{
 								for (int l = 0; l < array6.Length; l++)
 								{
 									PlayerData playerData4 = apdat_.pData_[array6[l]];
 									playerData4.AddPopular(1);
 								}
-								break;
+
 							}
-							case 1:
-							{
+}
+else if ((num3 == 1)) {
+{
 								for (int k = 0; k < array6.Length; k++)
 								{
 									PlayerData playerData3 = apdat_.pData_[array6[k]];
 									playerData3.AddPopular(3);
 								}
-								break;
+
 							}
-							}
-						}
+}
+						}}
 					}
 				}
 			}
@@ -1414,27 +1411,26 @@ if ((_update(i))) { break; }
 						ChangeState(11);
 						for (int n = 0; n < bonus_in_param.Length; n++)
 						{
-							switch (n)
-							{
-							case 0:
-							case 1:
-							case 2:
-								apdat_.AddMoney(bonus_in_param[n][0], 0);
+							if ((n == 0) || (n == 1) || (n == 2)) {
+apdat_.AddMoney(bonus_in_param[n][0], 0);
 								apdat_.SubMoney(bonus_in_param[n][1], 0);
-								break;
-							case 3:
-								apdat_.AddMoney(bonus_in_param[n][0], 2);
+
+}
+else if ((n == 3)) {
+apdat_.AddMoney(bonus_in_param[n][0], 2);
 								apdat_.SubMoney(bonus_in_param[n][1], 2);
-								break;
-							case 4:
-								apdat_.AddMoney(bonus_in_param[n][0], 3);
+
+}
+else if ((n == 4)) {
+apdat_.AddMoney(bonus_in_param[n][0], 3);
 								apdat_.SubMoney(bonus_in_param[n][1], 3);
-								break;
-							default:
-								apdat_.AddMoney(bonus_in_param[n][0], 4);
+
+}
+else {
+apdat_.AddMoney(bonus_in_param[n][0], 4);
 								apdat_.SubMoney(bonus_in_param[n][1], 4);
-								break;
-							}
+
+}
 						}
 					}
 				}
@@ -1444,8 +1440,7 @@ if ((_update(i))) { break; }
 				apdat_.resCom2_.seb[60].Frame();
 				if (canvas_.CheckKeyPulse(1048576) && select_ == 0)
 				{
-					ChangeState(12);
-					if (udat_.GetMatchInfoJoin() == 0)
+					ChangeState(12);int recoveredMatchInfoJoin11=udat_.GetMatchInfoJoin();if(recoveredMatchInfoJoin11==0)
 					{
 						ChangeState(12);
 					}
@@ -1528,7 +1523,7 @@ if ((_update(i))) { break; }
 					else if (stateCnt_ >= PBONUS_NP_LV_TIME[3] && select_ == 0)
 					{
 						ChangeState(16);
-					}
+					}else {}
 				}
 				else if (apdat_.IsPushSoftLabel(6))
 				{
@@ -1552,7 +1547,7 @@ if ((_update(i))) { break; }
 							playerData8.AddPopular(PBONUS_NP_LV_GETPOPULAR);
 						}
 						ChangeState(16);
-					}
+					}else {}
 				}
 				else if (apdat_.IsPushSoftLabel(6))
 				{
@@ -1573,13 +1568,10 @@ if ((_update(i))) { break; }
 						for (int num12 = 0; num12 < 11; num12++)
 						{
 							PlayerData playerData9 = (PlayerData)udat_.memberPDataist_.ElementAt(num12);
-							if (playerData9.bonus_research[0] != -1)
-							{
-								udat_.AddResearchPoint(playerData9.bonus_research[0], playerData9.bonus_research[1]);
-							}
+							if(playerData9.bonus_research[0]==-1){continue;} udat_.AddResearchPoint(playerData9.bonus_research[0],playerData9.bonus_research[1]);
 						}
 						ChangeState(10);
-					}
+					}else {}
 				}
 				else if (apdat_.IsPushSoftLabel(6))
 				{

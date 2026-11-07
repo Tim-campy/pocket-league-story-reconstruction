@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,110 de 5,245 métodos matched (97.43%).** 871,497 bytes de IL nos assemblies alvo.
-754,950 bytes IL matched (86.63%).
+**5,114 de 5,245 métodos matched (97.50%).** 871,497 bytes de IL nos assemblies alvo.
+763,477 bytes IL matched (87.61%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 134 |
+| decompiled | 130 |
 | equivalent | 0 |
-| matched | 5110 |
+| matched | 5114 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1865 / 95.25% | 501752 / 83.40% |
+| `Assembly-CSharp` | 1958 | 601603 | 1869 / 95.45% | 510279 / 84.82% |
 | `KairoLibrary` | 3287 | 269894 | 3245 / 98.72% | 253198 / 93.81% |
 
 ## Namespaces
@@ -36,8 +36,8 @@ KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `UnityEngine.Purchasing` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
-| `data` | 255 | 26353 | 252 / 98.82% | 23108 / 87.69% |
-| `form` | 371 | 250649 | 344 / 92.72% | 206518 / 82.39% |
+| `data` | 255 | 26353 | 253 / 99.22% | 25713 / 97.57% |
+| `form` | 371 | 250649 | 347 / 93.53% | 212440 / 84.76% |
 | `game` | 441 | 202949 | 408 / 92.52% | 162836 / 80.23% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
@@ -100,7 +100,7 @@ KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::data.BaseData` | 2 | 22 | 2 / 100.00% | 22 / 100.00% |
 | `Assembly-CSharp::data.EventData` | 7 | 342 | 7 / 100.00% | 342 / 100.00% |
 | `Assembly-CSharp::data.FanActData` | 23 | 2141 | 23 / 100.00% | 2141 / 100.00% |
-| `Assembly-CSharp::data.FanBonusData` | 15 | 4141 | 14 / 93.33% | 1536 / 37.09% |
+| `Assembly-CSharp::data.FanBonusData` | 15 | 4141 | 15 / 100.00% | 4141 / 100.00% |
 | `Assembly-CSharp::data.FormationData` | 12 | 796 | 12 / 100.00% | 796 / 100.00% |
 | `Assembly-CSharp::data.LeagueData` | 17 | 1388 | 17 / 100.00% | 1388 / 100.00% |
 | `Assembly-CSharp::data.MapchipMain` | 3 | 179 | 3 / 100.00% | 179 / 100.00% |
@@ -114,13 +114,13 @@ KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::data.TenantData` | 26 | 2743 | 25 / 96.15% | 2641 / 96.28% |
 | `Assembly-CSharp::data.TradeData` | 13 | 757 | 13 / 100.00% | 757 / 100.00% |
 | `Assembly-CSharp::data.TrainingData` | 14 | 762 | 14 / 100.00% | 762 / 100.00% |
-| `Assembly-CSharp::form.BootForm` | 21 | 7712 | 18 / 85.71% | 3707 / 48.07% |
+| `Assembly-CSharp::form.BootForm` | 21 | 7712 | 19 / 90.48% | 4194 / 54.38% |
 | `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 21 / 100.00% | 45497 / 100.00% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
 | `Assembly-CSharp::form.GameForm` | 51 | 16474 | 47 / 92.16% | 12327 / 74.83% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 46 / 95.83% | 2178 / 55.76% |
 | `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
-| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 54 / 87.10% | 23404 / 69.57% |
+| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 56 / 90.32% | 28839 / 85.73% |
 | `Assembly-CSharp::form.SpForm` | 19 | 7256 | 16 / 84.21% | 4576 / 63.07% |
 | `Assembly-CSharp::form.SubForm` | 95 | 125345 | 90 / 94.74% | 104457 / 83.34% |
 | `Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0` | 3 | 227 | 2 / 66.67% | 31 / 13.66% |
@@ -508,7 +508,6 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 
 | Tipo | Pendentes | Primeiro método |
 |---|---:|---|
-| `Assembly-CSharp::data.FanBonusData` | 1 | `Assembly-CSharp::data.FanBonusData::ChBonusEvent()->System.Void` |
 | `Assembly-CSharp::data.TeamData` | 1 | `Assembly-CSharp::data.TeamData::SetScoreRanking(data.LeagueData,java.util.Vector,java.util.Vector)->System.Void` |
 | `Assembly-CSharp::data.TenantData` | 1 | `Assembly-CSharp::data.TenantData::StrengthTenant()->System.Void` |
 | `Assembly-CSharp::form.TitleForm` | 1 | `Assembly-CSharp::form.TitleForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
@@ -518,6 +517,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::game.Tenant` | 1 | `Assembly-CSharp::game.Tenant::Draw(kairo.unity.ui.Graphics)->System.Void` |
 | `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
 | `Assembly-CSharp::system.billing.util.Json` | 1 | `Assembly-CSharp::system.billing.util.Json::MakeJson(System.String[])->System.String` |
+| `Assembly-CSharp::system.form.BillingForm` | 1 | `Assembly-CSharp::system.form.BillingForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
 
 ## Bloqueios
 

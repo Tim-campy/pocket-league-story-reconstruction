@@ -374,10 +374,8 @@ fb_list.AddElement(fanBonusData);
 			for (int i = 0; i < TERA_MODE_LIST.Length; i++)
 			{
 				int num = TERA_MODE_LIST[i];
-				switch (num)
-				{
-				case 0:
-					if (instance2.gm_.score_[0] > instance2.gm_.score_[1])
+				if ((num == 0)) {
+if (instance2.gm_.score_[0] > instance2.gm_.score_[1])
 					{
 						int warPotential_5 = teamData.warPotential_;
 						int warPotential_6 = teamData2.warPotential_;
@@ -398,9 +396,10 @@ fb_list.AddElement(fanBonusData);
 							SetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);
 						}
 					}
-					break;
-				case 13:
-					if (instance2.gm_.score_[0] == instance2.gm_.score_[1])
+
+}
+else if ((num == 13)) {
+if (instance2.gm_.score_[0] == instance2.gm_.score_[1])
 					{
 						int warPotential_ = teamData.warPotential_;
 						int warPotential_2 = teamData2.warPotential_;
@@ -416,9 +415,10 @@ fb_list.AddElement(fanBonusData);
 							SetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);
 						}
 					}
-					break;
-				case 1:
-					if (instance2.gm_.score_[0] < instance2.gm_.score_[1])
+
+}
+else if ((num == 1)) {
+if (instance2.gm_.score_[0] < instance2.gm_.score_[1])
 					{
 						int warPotential_3 = teamData.warPotential_;
 						int warPotential_4 = teamData2.warPotential_;
@@ -439,13 +439,11 @@ fb_list.AddElement(fanBonusData);
 							SetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);
 						}
 					}
-					break;
-				case 2:
-				{
-					if (instance2.gm_.score_[0] <= instance2.gm_.score_[1])
-					{
-						break;
-					}
+
+}
+else if ((num == 2)) {
+{
+					if(instance2.gm_.score_[0]>instance2.gm_.score_[1]){
 					Vector fanBonusDataList4 = GetFanBonusDataList(num);
 					for (int n = 0; n < fanBonusDataList4.Size(); n++)
 					{
@@ -456,15 +454,13 @@ fb_list.AddElement(fanBonusData);
 							break;
 						}
 					}
-					break;
-				}
-				case 15:
-				case 16:
-				{
-					if (instance2.gm_.score_[0] <= instance2.gm_.score_[1])
-					{
-						break;
 					}
+
+				}
+}
+else if ((num == 15) || (num == 16)) {
+{
+					if(instance2.gm_.score_[0]>instance2.gm_.score_[1]){
 					int matchInfoJoin = instance2.GetMatchInfoJoin();
 					if (matchInfoJoin == 1)
 					{
@@ -475,22 +471,22 @@ fb_list.AddElement(fanBonusData);
 							SetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);
 						}
 					}
-					break;
+					}
+
 				}
-				case 3:
-					if (instance2.GetMatchInfoJoin() == 0 && LeagueData.IsVictoryLeague())
+}
+else if ((num == 3)) {
+int recoveredMatchInfoJoin=instance2.GetMatchInfoJoin();if(recoveredMatchInfoJoin==0 && LeagueData.IsVictoryLeague())
 					{
 						LeagueData leagueData = instance.leagueData_[instance2.selectLeagueId_];
 						fanBonusData = GetFanBonusData(num, leagueData.id_);
 						SetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);
 					}
-					break;
-				case 14:
-				{
-					if (!LeagueData.IsLastMatch())
-					{
-						break;
-					}
+
+}
+else if ((num == 14)) {
+{
+					if(LeagueData.IsLastMatch()){
 					LeagueData league_data = instance.leagueData_[instance2.selectLeagueId_];
 					Vector out_ary = new Vector();
 					Vector vector = new Vector();
@@ -505,17 +501,20 @@ fb_list.AddElement(fanBonusData);
 							SetBPFData(fanBonusData, StringUtil.Replace(fanBonusData.message_, playerData3.name_), fanBonusData.param, playerData3.id_);
 						}
 					}
-					break;
+					}
+
 				}
-				case 4:
-					if (instance2.gm_.score_[0] >= 3 && instance2.gm_.score_[1] >= 3)
+}
+else if ((num == 4)) {
+if (instance2.gm_.score_[0] >= 3 && instance2.gm_.score_[1] >= 3)
 					{
 						fanBonusData = GetFanBonusData(num, 0);
 						SetBPFData(fanBonusData, fanBonusData.message_, fanBonusData.param);
 					}
-					break;
-				case 5:
-				{
+
+}
+else if ((num == 5)) {
+{
 					Vector vector2 = new Vector();
 					bool flag = false;
 					for (int num7 = 0; num7 < instance2.gm_.scorerListUserTeam.Size(); num7++)
@@ -532,10 +531,7 @@ fb_list.AddElement(fanBonusData);
 								break;
 							}
 						}
-						if (!flag)
-						{
-							vector2.AddElement(new int[2] { num8, 1 });
-						}
+						if(flag){continue;} vector2.AddElement(new int[2]{num8,1});
 					}
 					for (int num10 = 0; num10 < vector2.Size(); num10++)
 					{
@@ -547,10 +543,11 @@ fb_list.AddElement(fanBonusData);
 							SetBPFData(fanBonusData, StringUtil.Replace(fanBonusData.message_, playerData5.name_), fanBonusData.param, playerData5.id_);
 						}
 					}
-					break;
+
 				}
-				case 6:
-				{
+}
+else if ((num == 6)) {
+{
 					Vector fanBonusDataList6 = GetFanBonusDataList(num);
 					for (int num5 = 0; num5 < fanBonusDataList6.Size(); num5++)
 					{
@@ -565,10 +562,11 @@ fb_list.AddElement(fanBonusData);
 							}
 						}
 					}
-					break;
+
 				}
-				case 7:
-				{
+}
+else if ((num == 7)) {
+{
 					Vector fanBonusDataList5 = GetFanBonusDataList(num);
 					for (int num3 = 0; num3 < fanBonusDataList5.Size(); num3++)
 					{
@@ -583,10 +581,11 @@ fb_list.AddElement(fanBonusData);
 							}
 						}
 					}
-					break;
+
 				}
-				case 8:
-				{
+}
+else if ((num == 8)) {
+{
 					Vector fanBonusDataList3 = GetFanBonusDataList(num);
 					for (int l = 0; l < fanBonusDataList3.Size(); l++)
 					{
@@ -601,14 +600,15 @@ fb_list.AddElement(fanBonusData);
 							}
 						}
 					}
-					break;
+
 				}
-				case 11:
-				{
-					if (instance2.gm_.score_[0] <= instance2.gm_.score_[1])
-					{
-						break;
-					}
+}
+else if ((num == 10)) {
+
+}
+else if ((num == 11)) {
+{
+					if(instance2.gm_.score_[0]>instance2.gm_.score_[1]){
 					SupervisorData supervisorData = instance.svisorData_[instance2.selectSupervisorId_];
 					Vector fanBonusDataList2 = GetFanBonusDataList(num);
 					for (int k = 0; k < fanBonusDataList2.Size(); k++)
@@ -621,23 +621,21 @@ fb_list.AddElement(fanBonusData);
 							break;
 						}
 					}
-					break;
+					}
+
 				}
-				case 12:
-				{
+}
+else if ((num == 12)) {
+{
 					Vector fanBonusDataList = GetFanBonusDataList(num);
 					for (int j = 0; j < fanBonusDataList.Size(); j++)
 					{
 						FanBonusData fanBonusData4 = (FanBonusData)fanBonusDataList.ElementAt(j);
-						if (fanBonusData4.state_ != 1 && instance2.customer_total_ >= fanBonusData4.termModeValue_ * 10000)
-						{
-							SetBPFData(fanBonusData4, fanBonusData4.message_, fanBonusData4.param);
-							break;
-						}
+						if(fanBonusData4.state_==1){continue;} if(instance2.customer_total_>=fanBonusData4.termModeValue_*10000){SetBPFData(fanBonusData4,fanBonusData4.message_,fanBonusData4.param);break;}
 					}
-					break;
+
 				}
-				}
+}
 			}
 		}
 	}

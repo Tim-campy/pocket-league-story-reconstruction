@@ -861,33 +861,35 @@ byte[] bytes = apdat_.CgiGetScore("0,1");
 			{
 				if (array[i].Length() == 0 || JLong.ParseLong(array[i]) == 0L)
 				{
-					switch (i)
-					{
-					case 0:
+					if (i == 0) {
+
 						apdat_.sysSave_.lngs[0] = 0L;
 						apdat_.sysSave_.lngs[1] = 0L;
-						break;
-					case 1:
+
+}
+else if (i == 1) {
+
 						apdat_.sysSave_.lngs[2] = 5000L;
 						apdat_.sysSave_.lngs[3] = 0L;
-						break;
-					}
+
+}
 					continue;
 				}
 				long num2 = JLong.ParseLong(array[i]);
-				switch (i)
-				{
-				case 0:
+				if (i == 0) {
+
 					apdat_.sysSave_.lngs[0] = num2;
 					apdat_.sysSave_.lngs[1] = num2;
 					apdat_.sysSave_.strs[0] = "[以前のスコア]";
-					break;
-				case 1:
+
+}
+else if (i == 1) {
+
 					apdat_.sysSave_.lngs[2] = num2;
 					apdat_.sysSave_.lngs[3] = num2;
 					apdat_.sysSave_.strs[1] = "[以前のスコア]";
-					break;
-				}
+
+}
 			}
 			apdat_.SaveSystem();
 		}
