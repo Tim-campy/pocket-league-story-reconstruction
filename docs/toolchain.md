@@ -387,3 +387,37 @@ builds C# verificados e a assinatura por uma assinatura de teste. É somente um
 artefato funcional: não é a reconstrução final nem entra nas métricas byte a byte.
 A chave privada e os arquivos do telefone permanecem fora do Git. As opções e
 referências dos dois compiladores alvo não mudaram por causa desse teste.
+## Rodada 11: saída histórica do PDB da KairoLibrary
+
+Correção documental da rodada anterior: `build_csharp.py` e os manifestos
+efetivos usam a **KairoLibrary original como referência de compilação** do
+Assembly-CSharp. Ela fornece metadados/API; não é copiada como resultado do
+build e seu IL não é inserido no Assembly-CSharp. O APK funcional anterior
+recebeu a KairoLibrary reconstruída. A afirmação anterior de que a referência
+de compilação já era a DLL reconstruída estava incorreta; a seleção de
+referências não foi alterada para corrigir essa descrição.
+
+O caminho CodeView original foi lido novamente e reproduzido pelo próprio
+compilador: `E:\workspace\Library\KairoLibrary\obj\Android\KairoLibrary.pdb`.
+A opção adicional é `/pdb:E:\workspace\Library\KairoLibrary\obj\Android\KairoLibrary.pdb`.
+O csc continua sendo pacote Microsoft.Net.Compilers 1.1.0, executável
+1.1.0.51109, com as opções e referências anteriores. O diretório/nome do PDB
+são agora explícitos; a DLL não é reescrita após o build.
+
+`tools/kairo_pdb_output.py` cria ou valida o alias SUBST E: exclusivamente para
+`build/historical-pdb-drive`, a partir de `config/kairo-pdb-output.json`.
+Outra unidade E: é recusada sem sobrescrita. Os PDBs gerados são espelhados
+para análise, mantendo o caminho histórico no CodeView. Helper e configuração
+fazem parte dos hashes do recibo oficial de verificação.
+
+Medição `reports/round11-pdb-path.json`: as 97 diferenças de caminho e
+preenchimento desapareceram; o RSDS completo coincide após excluir somente
+o GUID do PDB previamente comprovado. Os corpos e estados de ambos os
+assemblies ficaram iguais aos do início da rodada; zero ganhos e perdas.
+Detalhes: `docs/notes/round11-pdb-path.md`.
+
+Compressão para remontagem futura das DLLs: DEFLATE bruto nível 6, zlib 1.3.1,
+wbits=-15, memLevel=8, estratégia padrão e Z_FINISH. Aplicado às DLLs originais,
+reproduziu os streams comprimidos completos, respectivamente 248092 e321171
+bytes. Isso não identifica a biblioteca histórica. Contrato de comparação:
+`docs/notes/round11-apk-final-comparison.md`; medição: `reports/round11-apk-contract.json`.

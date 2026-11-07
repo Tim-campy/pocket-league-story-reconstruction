@@ -1,0 +1,226 @@
+{
+  "maximum_cycles": 40,
+  "consecutive_zero_stop": 5,
+  "maximum_consecutive_primary_same_method": 2,
+  "incomplete_candidate_variants_per_method_per_cycle": 24,
+  "incomplete_candidate_variants_per_method_per_pass": 12,
+  "incomplete_passes": "one isolated probe plus one all-pending assembly pass; at most 24 per method/cycle",
+  "complete_wrong_signature_rejected": true,
+  "incomplete_prediction_does_not_reject": true,
+  "require_original_signature_after_compilation": true,
+  "stop_counter_requires_empty_prepared_queue": true,
+  "models": {
+    "Assembly-CSharp": {
+      "module": "round7_slot_model",
+      "source": "tools/Round7SlotModel.cs",
+      "client": "tools/round7_slot_model.py",
+      "solver": "tools/round7_slot_solver.py",
+      "validation": "reports/round8-slot-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/Assembly-CSharp"
+    },
+    "KairoLibrary": {
+      "module": "round8_roslyn_model",
+      "source": "tools/Round8RoslynModel.cs",
+      "client": "tools/round8_roslyn_model.py",
+      "solver": "tools/round7_roslyn_solver.py",
+      "validation": "reports/round8-roslyn-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/KairoLibrary"
+    }
+  },
+  "baseline_commit": "b1116f9635778eaf19218175bb7391ee0adf2a9a",
+  "phase": "part_C",
+  "autonomous_started": false,
+  "required_parts": {
+    "A": "complete",
+    "B": "complete",
+    "C": "not_started"
+  },
+  "c_fronts": {
+    "C1": {
+      "name": "extend-try-SoundOGG-Play",
+      "status": "not_started",
+      "attempts": [],
+      "required_assemblies": [
+        "KairoLibrary"
+      ]
+    },
+    "C2": {
+      "name": "parameter-alias-ShaderBuilder-Init",
+      "status": "not_started",
+      "attempts": [],
+      "required_assemblies": [
+        "KairoLibrary"
+      ]
+    },
+    "C3": {
+      "name": "try-return-guard-SaveRecorder-AutoSaveRun",
+      "status": "not_started",
+      "attempts": [],
+      "required_assemblies": [
+        "KairoLibrary"
+      ]
+    },
+    "C4": {
+      "name": "split-chain-UserData-SetTrainingCommonMethod",
+      "status": "not_started",
+      "attempts": [],
+      "required_assemblies": [
+        "Assembly-CSharp"
+      ]
+    },
+    "C5": {
+      "name": "mirror-comparison-operands-both-compilers",
+      "status": "not_started",
+      "attempts": [],
+      "required_assemblies": [
+        "KairoLibrary",
+        "Assembly-CSharp"
+      ]
+    },
+    "C6": {
+      "name": "constant-true-lowering-Seb.Draw",
+      "status": "not_started",
+      "attempts": [],
+      "required_assemblies": [
+        "KairoLibrary"
+      ]
+    }
+  },
+  "prepared_queue": [
+    {
+      "id": "initial-app-local-slots",
+      "selection_mode": "queue_initial",
+      "phase": "D",
+      "assembly": "Assembly-CSharp",
+      "status": "pending",
+      "readiness": "REQUIRES_NEW_SOURCE_PROPOSALS",
+      "method_ids": [
+        "main.AppData::SendSaveData(System.String,System.Int32,System.Exception)->System.Void",
+        "surface.GamePad::AddTouch(kairo.unity.ui.Graphics,System.Single,System.Single,System.Int32,System.Int32,System.Boolean)->System.Void",
+        "system.billing.ui.BillingManager::ConnectRegistMarketPurchase()->System.Void",
+        "form.BootForm::Load()->System.Void",
+        "main.AppData::Draw(System.String,System.Boolean)->System.Void"
+      ],
+      "potential_original_il_bytes": 8074
+    },
+    {
+      "id": "initial-image-use",
+      "selection_mode": "queue_initial",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "REQUIRES_NEW_SOURCE_PROPOSALS",
+      "method_ids": [
+        "kairo.unity.ui.Image::<Use>b__96_0()->System.Void"
+      ],
+      "potential_original_il_bytes": 680
+    },
+    {
+      "id": "initial-app-init2",
+      "selection_mode": "queue_initial",
+      "phase": "D",
+      "assembly": "Assembly-CSharp",
+      "status": "pending",
+      "readiness": "REQUIRES_NEW_SOURCE_PROPOSALS",
+      "method_ids": [
+        "form.SubForm::Init2()->System.Boolean"
+      ],
+      "potential_original_il_bytes": 3844
+    }
+  ],
+  "baseline_measurement": "reports/round11-baseline-measurement.json",
+  "part_evidence": {
+    "A": {
+      "report": "reports/round11-pdb-path.json",
+      "report_sha256": "a2165f6da105df9667be8655d4f8aa5da7095a36378f016dfe00b8859043b33d",
+      "result": "Caminho PDB original emitido pelo compilador; 97 diferencas de caminho/padding para zero; CodeView ex-GUID igual; nenhum corpo ou estado alterado",
+      "status": "evaluated",
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round11-baseline-measurement.json",
+      "before_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c",
+      "after_measurement": "reports\\round11-after-ab-measurement.json",
+      "after_sha256": "a3d4b4619e8f978f872737c6ab7d4632f5e2a1afcdfd6eda7da576c1f417226a"
+    },
+    "B": {
+      "report": "reports/round11-apk-contract.json",
+      "report_sha256": "d38633b86fb38dba02d9e51d324ee305eaad16195b3992010d2540500a361d78",
+      "result": "Contrato final documentado; DEFLATE nivel6 reproduz streams originais exatos das duas DLLs; nenhum APK montado ou executado",
+      "status": "evaluated",
+      "methods_gained": 0,
+      "il_bytes_gained": 0,
+      "before_measurement": "reports\\round11-baseline-measurement.json",
+      "before_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c",
+      "after_measurement": "reports\\round11-after-ab-measurement.json",
+      "after_sha256": "a3d4b4619e8f978f872737c6ab7d4632f5e2a1afcdfd6eda7da576c1f417226a"
+    }
+  },
+  "report_schema_reviewed": true,
+  "controller_review_status": "PURE_QA_PASSED_19_TESTS_NO_TARGET_EXECUTION",
+  "selection_policy": {
+    "initial_queue_precedes_autonomous_selection": true,
+    "initial_queue_allows_App_while_Kairo_diverges": true,
+    "initial_queue_ordered": true,
+    "after_initial_queue": "KairoLibrary until no divergent bodies, then Assembly-CSharp",
+    "Kairo_close_definition": "divergent_bodies == 0; held-equal metadata links remain separate and do not justify editing methods",
+    "D_count_includes_initial_queue": true,
+    "no_rolling_five_quota": true
+  },
+  "raw_triggers": {
+    "KairoLibrary": {
+      "when": "first measurement with divergent_bodies == 0",
+      "exceptions": "Only the four proven nondeterministic fields; the original PDB path is reproduced by compilation and is NOT an extra exception"
+    },
+    "Assembly-CSharp": {
+      "when": "first measurement with divergent_bodies <= 10",
+      "read_only": true
+    }
+  },
+  "history_rounds": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "historical_control_validation": "reports/round10-control-validation-final.json",
+  "preparation_notes": [
+    "Parallel orchestration workers were restricted to new round11 files; the root executed the authorized A/B build-path change and full verifier sequentially.",
+    "A and B are evidence-only phases: no method or IL gains may be attributed to them. C1-C6 must each receive full official verification before D.",
+    "The three explicit initial recommendations run before autonomous discovery; App initial items are the only priority exception while Kairo still diverges. Do not wait indefinitely behind Kairo closure.",
+    "All incompleteness, failed trials and partial prefix advances must remain explicit. Only official verifier promotes methods.",
+    "No generated class is hand-written, no original IL is copied into output, and no assembly normalization is permitted.",
+    "Part A output uses the historical PDB path via an owned SUBST drive, with no post-build DLL edit; the initial measurement is retained separately from the frozen final A proof.",
+    "A one-off read-only diagnostic had an unmatched-parenthesis syntax error before any read/write; it was corrected and the dedicated proof tool passed.",
+    "Root report QA corrected effective compiler options to come from build manifests, explicitly rejects nested adoption losses, and reports model accuracy and coverage."
+  ],
+  "orchestration_review": {
+    "pure_tests": 19,
+    "target_compilations": 0,
+    "model_executions": 0,
+    "verifier_executions": 0,
+    "ledger_writes": 0,
+    "round10_frozen_files_unchanged": true,
+    "scope": "40/41,5-empty-queue-zeros,initial-queue-exception,Kairopriority,C-fronts,ABzero,rawthresholds,8-section-render,partial-not-matched; root:actual-manifest-PDB-options,metadata-artifact-identity,nested-adoption-loss-rejection,model-accuracy-and-coverage",
+    "files_sha256": {
+      "tools/round11_controller.py": "3f5a400ed862b736439ea6a9307ddd800ef44f527267069949d56ed8ccbe5996",
+      "tools/round11_cycle.py": "c2584dd48e410398bbab939677306ede1b5469b935245fbee51b55c9897d254d",
+      "tools/round11_engine.py": "9125f635fc5d47b9ac7019e15adcc21ba35ae760d674aebb0874b2fa86397075",
+      "tools/round11_adopt.py": "c2a87b7a35a15051c0b9f7ca262b10cddf1e67cd901b89059b3f8924c52d78a4",
+      "tools/round11_commit.py": "fd9273123929d752a58deb3da11d2575d70564e9eb9b2859110340bae38f78cb",
+      "tools/round11_git_proof.py": "a1d3c37ae185088878d9f6b331ab21c923be777642d322d4923ff2ce672e0758",
+      "tools/round11_freeze.py": "90b336cc2b51b62a5db9f93c1a8535e73aa287cd33aaf639c2bfe4501121c26a",
+      "tools/round11_measure.py": "f898a6c5befd590d2496c7bab9d5a4ca48d40331c7d2558714eae42230b49dca",
+      "tools/round11_journal.py": "2c1f5e14c2b20ba5da09f2a501401e90e1a25ac3694a7afc254e03c6cdadbb3a",
+      "tools/round11_hypotheses.py": "76fe87ca3ef41f2a8f8726d9ee1ac4d818ad2d1f6a45c547b8d7d7f7879e5c00",
+      "tools/round11_finish.py": "71c03b01b60627118fca82ceee5b2b856724dc6ea32b9e8579e57f64db3c578b",
+      "tools/round11_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round11_roslyn_validate.py": "d62cb2bfc06e89ad2b7275c7aeebab743070daf62b9410def1698bf6fa9d1127",
+      "tools/round11_control_validate.py": "ccca34aef3bd634acbdcde2ebb578e2a65eaf328326a2132c105b6f77224c0d8",
+      "tools/round11_parts.py": "895131a7c946ebb7fc8789bbb72dbd19625d17881216c778dda9648946bcaad2",
+      "tools/round11_raw_gate.py": "0fdbeae23111b0629a461968ed631afdd87a445c4e00072bf2bbbbbf1fd44430",
+      "tools/round11_report.py": "3ea2c8272fed5e5f01f344203fb6eb56e9a485a3da522476be265c9ec416f30d",
+      "tools/round11_test_protocol.py": "0ce0837845a65a9f5bc4da764c15057a2a14878af2e27cbfe7eaedc8edf6c9e1"
+    }
+  },
+  "baseline_measurement_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c"
+}

@@ -1,4 +1,4 @@
-"""Build all recovered KairoLibrary C# with Roslyn 5.8 and explicit options.
+"""Build all recovered KairoLibrary C# with the selected Roslyn and explicit options.
 
 No original IL or DLL is copied into the output. SDK/runtime DLLs are references
 only. The original remains read-only; generated artifacts are confined to build/.
@@ -7,10 +7,12 @@ import hashlib
 import argparse
 import json
 import re
+import shutil
 from pathlib import Path
 import subprocess
 from compiler_probes import UNITY, ROSLYN
 from kairo_candidate import CORELIB_PATH,CORELIB_SHA256
+from kairo_pdb_output import prepare as prepare_pdb_output
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -51,17 +53,25 @@ def main():
     for path in references:
         if not path.is_file(): raise SystemExit('Missing reference: '+str(path))
     output=folder/'KairoLibrary.dll'
+    pdb_output,pdb_provenance=prepare_pdb_output()
     flags=['/nologo','/noconfig','/nostdlib+','/target:library','/platform:anycpu','/optimize+',
         '/debug:pdbonly','/deterministic-','/langversion:6','/unsafe-','/checked-',
-        '/codepage:65001','/utf8output','/out:'+str(output)]
+        '/codepage:65001','/utf8output','/pdb:'+str(pdb_output),'/out:'+str(output)]
     # Both original assemblies lack the unsafe-generated module/security rows.
     # Own fixtures prove their origin; the full verifier checks this selection.
     args=[flag for flag in flags if flag!='/noconfig']+['/reference:'+str(p) for p in references]+[str(selected[p]) for p in order]
     rsp=folder/'compile.rsp';rsp.write_text('\n'.join('"'+a+'"' for a in args)+'\n',encoding='utf-8',newline='\n')
     result=subprocess.run([str(compiler),'/noconfig','@'+str(rsp)],capture_output=True,text=True,encoding='utf-8',errors='replace')
     log=result.stdout+result.stderr;(folder/'compiler.log').write_text(log,encoding='utf-8',newline='\n')
+    if result.returncode==0:
+        # The compiler writes the historical path. Mirror its PDB for existing
+        # sequence-point consumers; the compiled DLL is never rewritten.
+        mirror=folder/'KairoLibrary.pdb'
+        shutil.copyfile(pdb_output,mirror)
+        pdb_provenance.update(analysis_mirror=str(mirror),
+            pdb_sha256=hashlib.sha256(mirror.read_bytes()).hexdigest())
     manifest={'compiler':str(compiler),'compiler_sha256':hashlib.sha256(compiler.read_bytes()).hexdigest(),
-        'flags':flags,'references':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in references],
+        'flags':flags,'pdb_output':pdb_provenance,'references':[{'path':str(p),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in references],
         'sources':[dict({'path':p,'sha256':hashlib.sha256(selected[p].read_bytes()).hexdigest()},
             **({'input_path':str(selected[p])} if p in replacements else {})) for p in order],
         'exit_code':result.returncode,'output_sha256':hashlib.sha256(output.read_bytes()).hexdigest() if result.returncode==0 and output.exists() else None}

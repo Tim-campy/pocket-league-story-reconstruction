@@ -113,7 +113,7 @@ def main():
     receipt={'schema_version':1,'assembly':'KairoLibrary','build_artifact':BUILD_FOLDER+'/KairoLibrary.dll',
         'build_sha256':manifest['output_sha256'],'original_sha256':cache['artifact_sha256'],
         'verifier_sha256':sha(Path(__file__)),'inspector_source_sha256':source_hash,'sources':manifest['sources'],
-        'helper_source_hashes':{p:sha(ROOT/p) for p in ('tools/kairo_candidate.py','tools/build_kairo.py','tools/generated_groups.py','tools/compare_kairo.py','tools/metadata_compare.py','tools/metadata_state.py','tools/MetadataInspector.cs','tools/prepare_metadata_inspector.py')},
+        'helper_source_hashes':{p:sha(ROOT/p) for p in ('tools/kairo_candidate.py','tools/build_kairo.py','tools/kairo_pdb_output.py','config/kairo-pdb-output.json','tools/generated_groups.py','tools/compare_kairo.py','tools/metadata_compare.py','tools/metadata_state.py','tools/MetadataInspector.cs','tools/prepare_metadata_inspector.py')},
         'methods':results,'counts':dict(counts),'regressions':regressions,'body_regressions':body_regressions,'type_metadata_identity':'MATCHED' if metadata['types_equal']==metadata['types_total'] else 'PARTIAL',
         'types_equal':metadata['types_equal'],'types_total':metadata['types_total'],'type_regressions':metadata['type_state_regressions'],
         'whole_assembly_byte_identity':False,'normalized_assembly_fields':[]}
