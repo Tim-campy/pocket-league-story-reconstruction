@@ -1,0 +1,17 @@
+// NOT_TESTED / NOT_COMPILED. Replace the Run declaration in the sibling toy header.
+public bool Run()
+{
+    if (push_)
+    {
+        if ((canvas_.CheckKeyPulse(1048576)))
+        {
+            if (select_ < linups_.Length)
+            {
+                Canvas.OpenBrowser(linups_[select_].GetURL());
+            }
+            else { return Pop(); }
+        }
+    }
+    observed += 10;
+    return true;
+}

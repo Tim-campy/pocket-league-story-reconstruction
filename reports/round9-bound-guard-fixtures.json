@@ -1,0 +1,61 @@
+{
+  "operation": "smcs-signed-bounds-and-compensating-joins-own-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "references_sha256": {
+    "original/extracted/assets/bin/Data/Managed/mscorlib.dll": "7f16171cf5f87ca1e4c229727526d2fbc786079fc0c960f36197013ea0d986e1",
+    "original/extracted/assets/bin/Data/Managed/System.Core.dll": "104278a0bf67b4de8fd1e910e3292a3ef51808ebee7a5f2a229125f18463c98c"
+  },
+  "producer_sha256": "172b474298361df470c687ed4a477296c0749273d62f9890b05adf4ce088021e",
+  "driver_sha256": "b252a337a7831476a83233cb361a818846f5d3f61dbed839a5eedcb74d0eda49",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 9,
+  "negatives": [
+    "map-side-effects",
+    "map-limit-other",
+    "map-condition-extra",
+    "effect-loop-owner-other",
+    "effect-frame-operator-other",
+    "effect-default-guard-side-effects",
+    "lineup-external-else-has-effect",
+    "lineup-no-external-else",
+    "lineup-inner-return-effect"
+  ],
+  "fixtures": [
+    {
+      "case": "map",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before": "public void Run(int address_x, int address_y)\n    {\n        int num = address_x - COAT_BASEPOINT[0];\n        int num2 = address_y - COAT_BASEPOINT[1];\n        if (num < 0 || num > MAPCHIP_COAT_WNUM || num2 < -1 || num2 > MAPCHIP_COAT_HNUM) { return; }\n        observed = num + num2;\n    }",
+      "after": "public void Run(int address_x, int address_y)\n    {\n        int num = address_x - COAT_BASEPOINT[0];\n        int num2 = address_y - COAT_BASEPOINT[1];\n        if (num < 0) { return; }\r\nif (num > MAPCHIP_COAT_WNUM) { return; }\r\nif (num2 < -1) { return; }\r\nif (num2 > MAPCHIP_COAT_HNUM) { return; }\n        observed = num + num2;\n    }",
+      "manual_control": "public void Run(int address_x, int address_y)\n{\n    int num = address_x - COAT_BASEPOINT[0];\n    int num2 = address_y - COAT_BASEPOINT[1];\n    if (num < 0) { return; }\n    if (num > MAPCHIP_COAT_WNUM) { return; }\n    if (num2 < -1) { return; }\n    if (num2 > MAPCHIP_COAT_HNUM) { return; }\n    observed = num + num2;\n}",
+      "unordered_opcodes": []
+    },
+    {
+      "case": "effect",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before": "public void Run()\n    {\n        for (int i = 0; i < effect_.Size(); i++)\n        {\n            int[] array = (int[])effect_.ElementAt(i);\n            if (array[0] == 3)\n            {\n                if (array[1] >= 0)\n                {\n                    TPlayer tPlayer2 = new TPlayer();\n                    observed += tPlayer2.value + 3;\n                }\n            }\n            else\n            {\n                if (array[0] != 6) { continue; }\n                if (array[1] < 0) { continue; }\n                observed += 6;\n            }\n        }\n    }",
+      "after": "public void Run()\n    {\n        for (int i = 0; i < effect_.Size(); i++)\n        {\n            int[] array = (int[])effect_.ElementAt(i);\n            if (array[0] == 3)\n            {\n                if (array[1] < 0) { continue; }{\n                    TPlayer tPlayer2 = new TPlayer();\n                    observed += tPlayer2.value + 3;\n                }\n            }\n            else if (array[0] == 6) {\n                if (array[1] < 0) { continue; }\n                observed += 6;\n            }\n        }\n    }",
+      "manual_control": "public void Run()\n{\n    for (int i = 0; i < effect_.Size(); i++)\n    {\n        int[] array = (int[])effect_.ElementAt(i);\n        if (array[0] == 3)\n        {\n            if (array[1] < 0) { continue; }\n            {\n                TPlayer tPlayer2 = new TPlayer();\n                observed += tPlayer2.value + 3;\n            }\n        }\n        else if (array[0] == 6)\n        {\n            if (array[1] < 0) { continue; }\n            observed += 6;\n        }\n    }\n}",
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un"
+      ]
+    },
+    {
+      "case": "lineup",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before": "public bool Run()\n    {\n        if (push_)\n        {\n            if ((canvas_.CheckKeyPulse(1048576)))\n            {\n                if (select_ >= linups_.Length) { return Pop(); }\n                Canvas.OpenBrowser(linups_[select_].GetURL());\n            }\n            else { }\n        }\n        observed += 10;\n        return true;\n    }",
+      "after": "public bool Run()\n    {\n        if (push_)\n        {\n            if ((canvas_.CheckKeyPulse(1048576)))\n            {\n                if (select_ < linups_.Length) {\n                Canvas.OpenBrowser(linups_[select_].GetURL());\n            } else { return Pop(); }}\n        }\n        observed += 10;\n        return true;\n    }",
+      "manual_control": "public bool Run()\n{\n    if (push_)\n    {\n        if ((canvas_.CheckKeyPulse(1048576)))\n        {\n            if (select_ < linups_.Length)\n            {\n                Canvas.OpenBrowser(linups_[select_].GetURL());\n            }\n            else { return Pop(); }\n        }\n    }\n    observed += 10;\n    return true;\n}",
+      "unordered_opcodes": []
+    }
+  ],
+  "limitations": "Own independent controls only. Integer signed bounds retain operators. Effect continue belongs to for-i; standalone child local block retained. Lineup requires both edits and explicitly rejects the previous inner-only form."
+}

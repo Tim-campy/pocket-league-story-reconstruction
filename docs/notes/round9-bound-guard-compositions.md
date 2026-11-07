@@ -1,0 +1,15 @@
+# Round 9 D31: bounds and compensating scoped joins
+
+Baseline D30 HEAD 1f6e71065fdfe2d07bdbd2758adef7a980f5eb8c; fresh histogram reports/round9-cycle30-after-measurement.json. Three original methods total 4,926 IL: Map.Draw_coatLine 3,042; AppData.DrawEffect 1,662; LineupForm.Update 222. New complete source models predict original local types exactly: 2 / 15 / 1. Before compilation, bodies remain UNKNOWN. Main covers every124 pending Assembly-CSharp body.
+
+Map original return offsets27/39/47/59 distinguish four separate signed integer bounds guards from the recovered combined OR. The two subtractions and all drawing commands remain in place. Previous variants retained three conditions combined, or wrapped one positive combined guard; none was this four-return form. The three extra returns explain the measured 3,039 to 3,042 size discrepancy, not a body claim.
+
+DrawEffect original566 bge576 then571 br1640 belongs to for-i increment1640. Restore a negative frame continue followed by the existing standalone child block, preserving TPlayer's lexical scope. The final else-with-negative-type6 guard becomes else-if-positive6, removing a different five-byte branch. The two edits compensate in method length. Old tail-early-return incorrectly exited the method and regressed prefix558 to3; that rejected candidate is preserved and is not repeated.
+
+Lineup is explicitly a two-edit composition. Remove the proven empty ELSE of the outer keypulse IF and independently restore the positive inner select<Length browser arm with ELSE Pop. R8 C02 only inverted the inner IF and retained the outer ELSE, regressing162 to34. C06 had introduced that outer empty ELSE while adopting partial steps34 to143 to162. Both real historical measurements remain negative; neither alone tests the new composition.
+
+Own controls: three complete header/locals/IL/EH matches, nine negatives, nine toy builds, zero failures. The Lineup negative rejects a missing or nonempty outer ELSE, so this API cannot offer the old isolated inversion. Effect controls reject altered loop ownership and side effects in the replaced guard. Map controls reject altered bounds and nonempty return guards. Templates supplied by the reader were untested until this execution. Evidence: reports/round9-bound-guard-fixtures.json and fresh binding/model/dependency receipts in reports/round9-bound-guard-patches.json.
+
+Mono pin b6587926c0f146c8b12985744f33a13b39a22d57: statement.cs If.DoEmit247-264 emits the explicit join of an ELSE when the true arm may complete; While/For440-619 binds continue to the condition/increment owner; EmitMeta2032-2046 allocates parent declarations before children. These distinctions are retained. No floating comparison is complemented.
+
+REA static original proof: resume-20261107/rea-map-coatline-method.json token060002fa,1482 decoded/3042IL; rea-app-effect-method.json0600047e,811/1662; rea-lineup-update-method.json06000717,82/222. Original fields/bodies are read-only. Fixture and model do not replace full oracle, and no IL or generated game class is supplied by hand.

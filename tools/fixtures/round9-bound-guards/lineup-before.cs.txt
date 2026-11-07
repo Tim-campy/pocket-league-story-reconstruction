@@ -1,0 +1,34 @@
+// NOT_TESTED / NOT_COMPILED. Independent toy leaves; transform only Fixture.Run.
+public class Link { public string GetURL() { return "toy"; } }
+public class Pad
+{
+    public bool pressed;
+    public bool CheckKeyPulse(int key) { return pressed; }
+}
+public static class Canvas
+{
+    public static string last;
+    public static void OpenBrowser(string url) { last = url; }
+}
+public class Fixture
+{
+    public bool push_;
+    public int select_, observed;
+    public Pad canvas_;
+    public Link[] linups_;
+    bool Pop() { observed++; return false; }
+    public bool Run()
+    {
+        if (push_)
+        {
+            if ((canvas_.CheckKeyPulse(1048576)))
+            {
+                if (select_ >= linups_.Length) { return Pop(); }
+                Canvas.OpenBrowser(linups_[select_].GetURL());
+            }
+            else { }
+        }
+        observed += 10;
+        return true;
+    }
+}

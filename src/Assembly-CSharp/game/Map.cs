@@ -755,10 +755,10 @@ bool flag2 = false;
 		{
 			int num = address_x - COAT_BASEPOINT[0];
 			int num2 = address_y - COAT_BASEPOINT[1];
-			if (num < 0 || num > MAPCHIP_COAT_WNUM || num2 < -1 || num2 > MAPCHIP_COAT_HNUM)
-			{
-				return;
-			}
+			if (num < 0) { return; }
+if (num > MAPCHIP_COAT_WNUM) { return; }
+if (num2 < -1) { return; }
+if (num2 > MAPCHIP_COAT_HNUM) { return; }
 			old_camera_pos[0] = camera_pos[0];
 			old_camera_pos[1] = camera_pos[1];
 			if (num == 0 && num2 >= 0 && num2 <= MAPCHIP_COAT_HNUM - 1)

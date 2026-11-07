@@ -3429,8 +3429,7 @@ continue; }
 				}
 				else if (array[0] == 3)
 				{
-					if (array[1] >= 0)
-					{
+					if (array[1] < 0) { continue; }{
 						TPlayer tPlayer2 = udat_.tPlayers_[array[2]];
 						Camera.ConvertScreenToCamera(tPlayer2.screen_pos_, ef_cpos);
 						resCom2_.DrawSeb(g, ef_cpos[0], ef_cpos[1] - 16, 94, array[1] % 12 / 6);
@@ -3465,11 +3464,7 @@ continue; }
 					DrawSeb(g, ef_cpos[0] - 19 + 35, ef_cpos[1] - 46 + 33, resCom2_.seb[83], resCom2_.img[94], array[4]);
 					DrawNumImage(g, 35, array[5], ef_cpos[0] + 7 + 35, ef_cpos[1] - 44 + 33, 0, 2);
 				}
-				else
-				{
-					if (array[0] != 6) {
-						continue;
-					}
+				else if (array[0] == 6) {
 if (array[1] < 0) {
 						continue;
 					}

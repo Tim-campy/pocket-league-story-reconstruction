@@ -183,12 +183,11 @@ namespace system.form
 					select_ = (select_ + 1 + num) % num;
 				}
 				if ((canvas_.CheckKeyPulse(1048576))) {
-					if (select_ >= linups_.Length)
-					{
-						return Pop();
-					}
+					if (select_ < linups_.Length) {
 					Canvas.OpenBrowser(linups_[select_].GetURL());
-				} else { }
+				} else {
+						return Pop();
+					}}
 			}
 			formMan_.DrawAllForms();
 			SetSoftlabel();

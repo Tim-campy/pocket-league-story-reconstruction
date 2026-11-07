@@ -1,0 +1,34 @@
+// NOT_TESTED / NOT_COMPILED. Independent toy leaves; transform only Fixture.Run.
+public class ToyVector
+{
+    public object[] data;
+    public int Size() { return data.Length; }
+    public object ElementAt(int index) { return data[index]; }
+}
+public class TPlayer { public int value; }
+public class Fixture
+{
+    public ToyVector effect_;
+    public int observed;
+    public void Run()
+    {
+        for (int i = 0; i < effect_.Size(); i++)
+        {
+            int[] array = (int[])effect_.ElementAt(i);
+            if (array[0] == 3)
+            {
+                if (array[1] >= 0)
+                {
+                    TPlayer tPlayer2 = new TPlayer();
+                    observed += tPlayer2.value + 3;
+                }
+            }
+            else
+            {
+                if (array[0] != 6) { continue; }
+                if (array[1] < 0) { continue; }
+                observed += 6;
+            }
+        }
+    }
+}

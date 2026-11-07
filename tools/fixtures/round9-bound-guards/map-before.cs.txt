@@ -1,0 +1,14 @@
+// NOT_TESTED / NOT_COMPILED. Independent toy leaves; transform only Fixture.Run.
+public class Fixture
+{
+    public static int[] COAT_BASEPOINT = new int[2];
+    public static int MAPCHIP_COAT_WNUM, MAPCHIP_COAT_HNUM;
+    public int observed;
+    public void Run(int address_x, int address_y)
+    {
+        int num = address_x - COAT_BASEPOINT[0];
+        int num2 = address_y - COAT_BASEPOINT[1];
+        if (num < 0 || num > MAPCHIP_COAT_WNUM || num2 < -1 || num2 > MAPCHIP_COAT_HNUM) { return; }
+        observed = num + num2;
+    }
+}
