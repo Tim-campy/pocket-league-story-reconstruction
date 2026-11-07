@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,108 de 5,245 métodos matched (97.39%).** 871,497 bytes de IL nos assemblies alvo.
-734,152 bytes IL matched (84.24%).
+**5,109 de 5,245 métodos matched (97.41%).** 871,497 bytes de IL nos assemblies alvo.
+743,560 bytes IL matched (85.32%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 136 |
+| decompiled | 135 |
 | equivalent | 0 |
-| matched | 5108 |
+| matched | 5109 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1863 / 95.15% | 480954 / 79.95% |
+| `Assembly-CSharp` | 1958 | 601603 | 1864 / 95.20% | 490362 / 81.51% |
 | `KairoLibrary` | 3287 | 269894 | 3245 / 98.72% | 253198 / 93.81% |
 
 ## Namespaces
@@ -38,7 +38,7 @@ KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 252 / 98.82% | 23108 / 87.69% |
 | `form` | 371 | 250649 | 343 / 92.45% | 195128 / 77.85% |
-| `game` | 441 | 202949 | 407 / 92.29% | 153428 / 75.60% |
+| `game` | 441 | 202949 | 408 / 92.52% | 162836 / 80.23% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
@@ -137,7 +137,7 @@ KairoLibrary: 3171 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.TArea` | 14 | 4070 | 14 / 100.00% | 4070 / 100.00% |
 | `Assembly-CSharp::game.TBall` | 14 | 5087 | 14 / 100.00% | 5087 / 100.00% |
 | `Assembly-CSharp::game.TGroupArea` | 14 | 7524 | 14 / 100.00% | 7524 / 100.00% |
-| `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 32 / 94.12% | 3701 / 27.03% |
+| `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 33 / 97.06% | 13109 / 95.74% |
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 40 / 95.24% | 20671 / 92.90% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 13 / 92.86% | 2200 / 81.72% |
 | `Assembly-CSharp::game.UserData` | 92 | 55470 | 82 / 89.13% | 39726 / 71.62% |
@@ -514,10 +514,10 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::form.TitleForm` | 1 | `Assembly-CSharp::form.TitleForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
 | `Assembly-CSharp::game.GameUtil` | 1 | `Assembly-CSharp::game.GameUtil::.ctor()->System.Void` |
 | `Assembly-CSharp::game.MapMain` | 1 | `Assembly-CSharp::game.MapMain::Draw_coat(kairo.unity.ui.Graphics,System.Boolean)->System.Void` |
+| `Assembly-CSharp::game.TPlayer` | 1 | `Assembly-CSharp::game.TPlayer::CollisionSaving(game.TBall)->System.Void` |
 | `Assembly-CSharp::game.Tenant` | 1 | `Assembly-CSharp::game.Tenant::Draw(kairo.unity.ui.Graphics)->System.Void` |
 | `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
 | `Assembly-CSharp::system.billing.util.Json` | 1 | `Assembly-CSharp::system.billing.util.Json::MakeJson(System.String[])->System.String` |
-| `Assembly-CSharp::system.form.BillingForm` | 1 | `Assembly-CSharp::system.form.BillingForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
 
 ## Bloqueios
 

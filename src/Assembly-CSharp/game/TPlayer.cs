@@ -483,10 +483,9 @@ namespace game
 				try
 				{
 					int[] firstScript = GetFirstScript();
-					switch (firstScript[0])
-					{
-					case 1:
-						if (firstScript[2] == 1)
+int recoveredScriptCommand = firstScript[0];
+					if ((recoveredScriptCommand == 1)) {
+if (firstScript[2] == 1)
 						{
 							flag_ = BitUtil.On(flag_, 1);
 						}
@@ -496,36 +495,43 @@ namespace game
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 2:
-						ChangeState(firstScript[1]);
+
+}
+else if ((recoveredScriptCommand == 2)) {
+ChangeState(firstScript[1]);
 						script_.RemoveElementAt(0);
 						continue;
-					case 3:
-						seb_ = firstScript[1];
+}
+else if ((recoveredScriptCommand == 3)) {
+seb_ = firstScript[1];
 						sebCnt_ = 0;
 						frame_ = 0;
 						flag_ = BitUtil.On(flag_, 2);
 						script_.RemoveElementAt(0);
 						continue;
-					case 4:
-						direct_ = firstScript[1];
+}
+else if ((recoveredScriptCommand == 4)) {
+direct_ = firstScript[1];
 						script_.RemoveElementAt(0);
 						continue;
-					case 5:
-						flag_ = firstScript[1];
+}
+else if ((recoveredScriptCommand == 5)) {
+flag_ = firstScript[1];
 						script_.RemoveElementAt(0);
 						continue;
-					case 6:
-						flag_ = BitUtil.On(flag_, firstScript[1]);
+}
+else if ((recoveredScriptCommand == 6)) {
+flag_ = BitUtil.On(flag_, firstScript[1]);
 						script_.RemoveElementAt(0);
 						continue;
-					case 7:
-						flag_ = BitUtil.Off(flag_, firstScript[1]);
+}
+else if ((recoveredScriptCommand == 7)) {
+flag_ = BitUtil.Off(flag_, firstScript[1]);
 						script_.RemoveElementAt(0);
 						continue;
-					case 9:
-						if (sebCnt_ < Player.SEB_H_SAVING_ANIME[0])
+}
+else if ((recoveredScriptCommand == 9)) {
+if (sebCnt_ < Player.SEB_H_SAVING_ANIME[0])
 						{
 							pos_.x_ = seb_startPos.x_ + seb_v.x_ * (float)sebCnt_;
 							pos_.z_ = seb_startPos.z_ + seb_v.z_ * (float)sebCnt_;
@@ -547,9 +553,10 @@ namespace game
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 10:
-						if (sebCnt_ < Player.SEB_H_SLIDING_ANIME[0])
+
+}
+else if ((recoveredScriptCommand == 10)) {
+if (sebCnt_ < Player.SEB_H_SLIDING_ANIME[0])
 						{
 							pos_.x_ += seb_v.x_;
 							pos_.z_ += seb_v.z_;
@@ -560,9 +567,10 @@ namespace game
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 11:
-						pos_.y_ = seb_v.y_ * (float)sebCnt_ + seb_ay * (float)sebCnt_ * (float)(sebCnt_ + 1) / 2f;
+
+}
+else if ((recoveredScriptCommand == 11)) {
+pos_.y_ = seb_v.y_ * (float)sebCnt_ + seb_ay * (float)sebCnt_ * (float)(sebCnt_ + 1) / 2f;
 						if (sebCnt_ >= Player.SEB_H_HEAD_ANIME[Player.SEB_H_HEAD_ANIME.Length - 1])
 						{
 							flag_ = BitUtil.Off(flag_, 64);
@@ -573,15 +581,18 @@ namespace game
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
-					case 12:
-						script_.RemoveElementAt(0);
+
+}
+else if ((recoveredScriptCommand == 12)) {
+script_.RemoveElementAt(0);
 						continue;
-					case 13:
-						script_.RemoveElementAt(0);
+}
+else if ((recoveredScriptCommand == 13)) {
+script_.RemoveElementAt(0);
 						continue;
-					case 14:
-					{
+}
+else if ((recoveredScriptCommand == 14)) {
+{
 						int num6 = sebCnt_ % Player.SEB_H_GOALGLAD_ANIME[1];
 						float num7 = GameUtil.SetVStop(8f, Player.SEB_H_GOALGLAD_ANIME[0] / 2);
 						float num8 = GameUtil.SetAStop(8f, Player.SEB_H_GOALGLAD_ANIME[0] / 2);
@@ -590,13 +601,15 @@ namespace game
 						{
 							pos_.y_ = 0f;
 						}
-						break;
+
 					}
-					case 15:
-						script_.RemoveElementAt(0);
+}
+else if ((recoveredScriptCommand == 15)) {
+script_.RemoveElementAt(0);
 						continue;
-					case 17:
-					{
+}
+else if ((recoveredScriptCommand == 17)) {
+{
 						int[] collisionData21 = Player.udat_.GetCollisionData(0, 5);
 						int[] collisionData22 = Player.udat_.GetCollisionData(1, 5);
 						if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData21[0], pos_.z_ + (float)collisionData21[1], collisionData21[2], collisionData21[3], goalPos_.x_ + (float)collisionData22[0], goalPos_.z_ + (float)collisionData22[1], collisionData22[2], collisionData22[3], true))
@@ -612,10 +625,11 @@ namespace game
 							isTrainingMove2 = true;
 						}
 						Move(goalPos_, -1, speed_eva2, isTrainingMove2);
-						break;
+
 					}
-					case 18:
-					{
+}
+else if ((recoveredScriptCommand == 18)) {
+{
 						goalPos_.x_ = firstScript[1];
 						goalPos_.z_ = firstScript[2];
 						int[] collisionData5 = Player.udat_.GetCollisionData(0, 5);
@@ -633,10 +647,11 @@ namespace game
 							isTrainingMove = true;
 						}
 						Move(goalPos_, -1, speed_eva, isTrainingMove);
-						break;
+
 					}
-					case 19:
-					{
+}
+else if ((recoveredScriptCommand == 19)) {
+{
 						TBall ball2 = tGroupArea_.GetBall(this, 0);
 						ball2.SetPassDataTraining(this, 0, false);
 						ball2.ReleaseBall(this);
@@ -651,15 +666,14 @@ namespace game
 						script_.RemoveElementAt(0);
 						continue;
 					}
-					case 20:
-					{
+}
+else if ((recoveredScriptCommand == 20)) {
+{
 						TBall ball9 = tGroupArea_.GetBall(this, 1);
-						if (!BitUtil.Check(ball9.flag_, 8))
-						{
-							break;
-						}
+						if (BitUtil.Check(ball9.flag_, 8)) {
 						int[] collisionData19 = Player.udat_.GetCollisionData(0, 0);
 						int[] collisionData20 = Player.udat_.GetCollisionData(1, 1);
+float recoveredUnusedSingle17;
 						if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData19[0], pos_.z_ + (float)collisionData19[1], collisionData19[2], collisionData19[3], ball9.pos_.x_ + (float)collisionData20[0], ball9.pos_.z_ + (float)collisionData20[1], collisionData20[2], collisionData20[3], true))
 						{
 							ball9.ReceiveBall(this);
@@ -691,10 +705,13 @@ namespace game
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
+
+}
+
 					}
-					case 21:
-					{
+}
+else if ((recoveredScriptCommand == 21)) {
+{
 						TBall ball8 = tGroupArea_.GetBall(this, 2);
 						int[] collisionData17 = Player.udat_.GetCollisionData(0, 0);
 						int[] collisionData18 = Player.udat_.GetCollisionData(1, 1);
@@ -711,10 +728,11 @@ namespace game
 						{
 							Move(ball8.pos_, -1);
 						}
-						break;
+
 					}
-					case 22:
-					{
+}
+else if ((recoveredScriptCommand == 22)) {
+{
 						TBall ball3 = tGroupArea_.GetBall(this, 3);
 						int num9 = GameUtil.Random(3);
 						if (GameUtil.Random(100) < 10)
@@ -733,7 +751,8 @@ namespace game
 							float x = (pos_.x_ + LIFTING_POS[num9].x_ - ball3.pos_.x_) / (float)num10;
 							ball3.v_.Set(x, y, 0f);
 							ball3.a_.Set(0f, -0.45f, 0f);
-						}
+						float recoveredUnusedSingle33;
+}
 						else
 						{
 							int angle = GameUtil.Random(360);
@@ -744,35 +763,36 @@ namespace game
 							ball3.v_.Set(x2, y2, z);
 							ball3.a_.Set(0f, -0.45f, 0f);
 						}
-						switch (num9)
-						{
-						case 0:
-							AddCommandWait(num10 - (Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1] - 1));
+						if ((num9 == 0)) {
+AddCommandWait(num10 - (Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1] - 1));
 							AddCommandChangeDirect(2);
 							AddCommandWait(5);
 							AddCommandChangeSeb(1);
 							AddCommandWait(Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1] - 1);
 							AddCommandChangeSeb(0);
 							AddCommandLifting(num9);
-							break;
-						case 1:
-							AddCommandWait(num10 - (Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1] - 1));
+
+}
+else if ((num9 == 1)) {
+AddCommandWait(num10 - (Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1] - 1));
 							AddCommandChangeDirect(1);
 							AddCommandWait(5);
 							AddCommandChangeSeb(1);
 							AddCommandWait(Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1] - 1);
 							AddCommandChangeSeb(0);
 							AddCommandLifting(num9);
-							break;
-						case 2:
-							AddCommandWait(num10 - 14 + 5);
+
+}
+else if ((num9 == 2)) {
+AddCommandWait(num10 - 14 + 5);
 							AddCommandFlagOff(2);
 							AddCommandWait(14);
 							AddCommandFlagOn(2);
 							AddCommandLifting(num9);
-							break;
-						case -1:
-						{
+
+}
+else if ((num9 == -1)) {
+{
 							flag_ = BitUtil.Off(flag_, 131072);
 							ball3.ReleaseBall(this);
 							ball3.receive_wait *= 2;
@@ -784,14 +804,15 @@ namespace game
 							AddCommandFlagOn(131072);
 							AddCommandChangeDirect(2);
 							AddCommandLifting(0);
-							break;
+
 						}
-						}
+}
 						script_.RemoveElementAt(0);
 						continue;
 					}
-					case 23:
-					{
+}
+else if ((recoveredScriptCommand == 23)) {
+{
 						TBall ball5 = tGroupArea_.GetBall(this, 4);
 						int[] collisionData7 = Player.udat_.GetCollisionData(0, 0);
 						int[] collisionData8 = Player.udat_.GetCollisionData(1, 1);
@@ -808,10 +829,11 @@ namespace game
 						{
 							Move(ball5.pos_, -1);
 						}
-						break;
+
 					}
-					case 24:
-					{
+}
+else if ((recoveredScriptCommand == 24)) {
+{
 						PlayerData playerData3 = Player.apdat_.pData_[pData_id_];
 						int num19 = playerData3.paramPhysical_[2];
 						float num20 = GameUtil.RateConvert(num19, 0f, 1000f, CORN_AROUND_POS[dpoint][0].x_, CORN_AROUND_POS[dpoint][1].x_, true);
@@ -824,7 +846,7 @@ namespace game
 						}
 						else
 						{
-							goalPos_.z_ += 0f - num21;
+							goalPos_.z_ += -num21;
 						}
 						int[] collisionData15 = Player.udat_.GetCollisionData(0, 5);
 						int[] collisionData16 = Player.udat_.GetCollisionData(1, 5);
@@ -854,10 +876,11 @@ namespace game
 						{
 							Move(goalPos_, -1);
 						}
-						break;
+
 					}
-					case 25:
-					{
+}
+else if ((recoveredScriptCommand == 25)) {
+{
 						int num12 = tGroupArea_.older_vec.IndexOf(this);
 						goalPos_.Set(tGroupArea_.traPos_[0]);
 						goalPos_.x_ -= 20f;
@@ -889,14 +912,16 @@ namespace game
 						{
 							Move(goalPos_, -1);
 						}
-						break;
+
 					}
-					case 26:
-						tGroupArea_.older_vec.AddElement(this);
+}
+else if ((recoveredScriptCommand == 26)) {
+tGroupArea_.older_vec.AddElement(this);
 						script_.RemoveElementAt(0);
 						continue;
-					case 27:
-					{
+}
+else if ((recoveredScriptCommand == 27)) {
+{
 						PlayerData playerData2 = Player.apdat_.pData_[pData_id_];
 						int num11 = 100;
 						TBall ball4 = tGroupArea_.GetBall(this, 7);
@@ -912,8 +937,9 @@ namespace game
 						script_.RemoveElementAt(0);
 						continue;
 					}
-					case 28:
-					{
+}
+else if ((recoveredScriptCommand == 28)) {
+{
 						int num4 = tGroupArea_.older_vec.IndexOf(this);
 						goalPos_.Set(tGroupArea_.traPos_[0]);
 						goalPos_.x_ -= (float)num4 * 20f;
@@ -957,14 +983,16 @@ namespace game
 						{
 							Move(goalPos_, -1);
 						}
-						break;
+
 					}
-					case 29:
-						tGroupArea_.older_vec.AddElement(this);
+}
+else if ((recoveredScriptCommand == 29)) {
+tGroupArea_.older_vec.AddElement(this);
 						script_.RemoveElementAt(0);
 						continue;
-					case 30:
-					{
+}
+else if ((recoveredScriptCommand == 30)) {
+{
 						for (int k = 0; k < tGroupArea_.tBallList_.Size(); k++)
 						{
 							TBall tBall3 = (TBall)tGroupArea_.tBallList_.ElementAt(k);
@@ -973,10 +1001,9 @@ namespace game
 								continue;
 							}
 							int toGoalLineTime = tBall3.GetToGoalLineTime(this);
-							if (toGoalLineTime <= 0 || toGoalLineTime >= Player.SEB_H_SAVING_ANIME[0] * 5 / 10)
-							{
-								continue;
-							}
+							if (toGoalLineTime > 0) {
+ if (toGoalLineTime < Player.SEB_H_SAVING_ANIME[0]*5/10) {
+
 							flag_ = BitUtil.On(flag_, 8);
 							AddCommandChangeSeb(14);
 							AddCommandTraSaving();
@@ -1013,11 +1040,10 @@ namespace game
 							}
 							script_.RemoveElementAt(0);
 							break;
+}
+}
 						}
-						if (BitUtil.Check(flag_, 8))
-						{
-							break;
-						}
+						if (!BitUtil.Check(flag_, 8)) {
 						int[] collisionData13 = Player.udat_.GetCollisionData(0, 5);
 						int[] collisionData14 = Player.udat_.GetCollisionData(1, 5);
 						goalPos_.Set(tGroupArea_.traPos_[2]);
@@ -1044,19 +1070,19 @@ namespace game
 						{
 							Move(goalPos_, -1);
 						}
-						break;
+
+}
+
 					}
-					case 31:
-					{
+}
+else if ((recoveredScriptCommand == 31)) {
+{
 						if (BitUtil.Check(flag_, 8) && !BitUtil.Check(flag_, 4))
 						{
 							for (int i = 0; i < tGroupArea_.tBallList_.Size(); i++)
 							{
 								TBall tBall = (TBall)tGroupArea_.tBallList_.ElementAt(i);
-								if (tBall.ChBallDirectHere(this))
-								{
-									CollisionSaving(tBall);
-								}
+								if(!tBall.ChBallDirectHere(this)){continue;} CollisionSaving(tBall);
 							}
 						}
 						if (sebCnt_ < Player.SEB_H_SAVING_ANIME[0])
@@ -1100,91 +1126,92 @@ namespace game
 							script_.RemoveElementAt(0);
 							continue;
 						}
-						break;
+
 					}
-					case 32:
-					{
+}
+else if ((recoveredScriptCommand == 32)) {
+{
 						seb_ = 10;
 						int num13 = 0;
 						int num14 = 0;
-						num13 = ((pos_.x_ >= tGroupArea_.centerPos_.x_ + tGroupArea_.coatW_ / 2f) ? 2 : ((pos_.x_ > tGroupArea_.centerPos_.x_ - tGroupArea_.coatW_ / 2f) ? 1 : 0));
-						num14 = ((!(pos_.z_ >= tGroupArea_.centerPos_.z_ + tGroupArea_.coatH_ / 2f)) ? ((pos_.z_ > tGroupArea_.centerPos_.z_ - tGroupArea_.coatH_ / 2f) ? 1 : 2) : 0);
-						switch (num13)
-						{
-						case 0:
-							goalPos_.x_ = tGroupArea_.centerPos_.x_ - tGroupArea_.coatW_ / 2f;
-							break;
-						case 1:
-							goalPos_.x_ = pos_.x_;
-							break;
-						default:
-							goalPos_.x_ = tGroupArea_.centerPos_.x_ + tGroupArea_.coatW_ / 2f;
-							break;
-						}
-						switch (num14)
-						{
-						case 0:
-							goalPos_.z_ = tGroupArea_.centerPos_.z_ + tGroupArea_.coatH_ / 2f;
-							break;
-						case 1:
-							goalPos_.z_ = pos_.z_;
-							break;
-						default:
-							goalPos_.z_ = tGroupArea_.centerPos_.z_ - tGroupArea_.coatH_ / 2f;
-							break;
-						}
+						if(pos_.x_>=tGroupArea_.centerPos_.x_+tGroupArea_.coatW_/2f){num13=2;} else if(pos_.x_>tGroupArea_.centerPos_.x_-tGroupArea_.coatW_/2f){num13=1;} else{num13=0;}
+						if(pos_.z_>=tGroupArea_.centerPos_.z_+tGroupArea_.coatH_/2f){num14=0;} else if(pos_.z_>tGroupArea_.centerPos_.z_-tGroupArea_.coatH_/2f){num14=1;} else{num14=2;}
+						if ((num13 == 0)) {
+goalPos_.x_ = tGroupArea_.centerPos_.x_ - tGroupArea_.coatW_ / 2f;
+
+}
+else if ((num13 == 1)) {
+goalPos_.x_ = pos_.x_;
+
+}
+else {
+goalPos_.x_ = tGroupArea_.centerPos_.x_ + tGroupArea_.coatW_ / 2f;
+
+}
+						if ((num14 == 0)) {
+goalPos_.z_ = tGroupArea_.centerPos_.z_ + tGroupArea_.coatH_ / 2f;
+
+}
+else if ((num14 == 1)) {
+goalPos_.z_ = pos_.z_;
+
+}
+else {
+goalPos_.z_ = tGroupArea_.centerPos_.z_ - tGroupArea_.coatH_ / 2f;
+
+}
 						int[] collisionData11 = Player.udat_.GetCollisionData(0, 5);
 						int[] collisionData12 = Player.udat_.GetCollisionData(1, 5);
 						if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData11[0], pos_.z_ + (float)collisionData11[1], collisionData11[2], collisionData11[3], goalPos_.x_ + (float)collisionData12[0], goalPos_.z_ + (float)collisionData12[1], collisionData12[2], collisionData12[3], true))
 						{
 							int num15 = num13 + num14 * 3;
 							int num16 = 0;
-							switch (num15)
-							{
-							case 1:
-							case 2:
-								num16 = 0;
-								break;
-							case 0:
-							case 3:
-								num16 = 3;
-								break;
-							case 6:
-							case 7:
-								num16 = 2;
-								break;
-							case 5:
-							case 8:
-								num16 = 1;
-								break;
-							default:
-								num16 = GameUtil.Random(4);
-								break;
-							}
-							switch (num16)
-							{
-							case 0:
-								AddCommandTrainigMoveGoalPosSet((int)pos_.x_, (int)(tGroupArea_.centerPos_.z_ + tGroupArea_.coatH_ / 2f));
-								break;
-							case 1:
-								AddCommandTrainigMoveGoalPosSet((int)(tGroupArea_.centerPos_.x_ + tGroupArea_.coatW_ / 2f), (int)pos_.z_);
-								break;
-							case 2:
-								AddCommandTrainigMoveGoalPosSet((int)pos_.x_, (int)(tGroupArea_.centerPos_.z_ - tGroupArea_.coatH_ / 2f));
-								break;
-							case 3:
-								AddCommandTrainigMoveGoalPosSet((int)(tGroupArea_.centerPos_.x_ - tGroupArea_.coatW_ / 2f), (int)pos_.z_);
-								break;
-							}
+							if ((num15 == 1) || (num15 == 2)) {
+num16 = 0;
+
+}
+else if ((num15 == 0) || (num15 == 3)) {
+num16 = 3;
+
+}
+else if ((num15 == 6) || (num15 == 7)) {
+num16 = 2;
+
+}
+else if ((num15 == 8) || (num15 == 5)) {
+num16 = 1;
+
+}
+else {
+num16 = GameUtil.Random(4);
+
+}
+							if ((num16 == 0)) {
+AddCommandTrainigMoveGoalPosSet((int)pos_.x_, (int)(tGroupArea_.centerPos_.z_ + tGroupArea_.coatH_ / 2f));
+
+}
+else if ((num16 == 1)) {
+AddCommandTrainigMoveGoalPosSet((int)(tGroupArea_.centerPos_.x_ + tGroupArea_.coatW_ / 2f), (int)pos_.z_);
+
+}
+else if ((num16 == 2)) {
+AddCommandTrainigMoveGoalPosSet((int)pos_.x_, (int)(tGroupArea_.centerPos_.z_ - tGroupArea_.coatH_ / 2f));
+
+}
+else if ((num16 == 3)) {
+AddCommandTrainigMoveGoalPosSet((int)(tGroupArea_.centerPos_.x_ - tGroupArea_.coatW_ / 2f), (int)pos_.z_);
+
+}
 							AddCommandRunning(num16);
 							script_.RemoveElementAt(0);
 							continue;
 						}
 						Move(goalPos_, -1);
-						break;
+
 					}
-					case 33:
-					{
+}
+else if ((recoveredScriptCommand == 33)) {
+{
 						if (firstScript[1] == 0)
 						{
 							goalPos_.x_ = tGroupArea_.centerPos_.x_ - tGroupArea_.coatW_ / 2f;
@@ -1216,10 +1243,11 @@ namespace game
 							continue;
 						}
 						Move(goalPos_, -1);
-						break;
+
 					}
-					case 34:
-					{
+}
+else if ((recoveredScriptCommand == 34)) {
+{
 						PlayerData playerData = Player.apdat_.pData_[pData_id_];
 						int lv_ = playerData.lv_;
 						int num5 = playerData.UpdateStockExp();
@@ -1234,13 +1262,15 @@ namespace game
 						script_.RemoveElementAt(0);
 						continue;
 					}
-					case 35:
-						flag_ = BitUtil.On(flag_, 1);
+}
+else if ((recoveredScriptCommand == 35)) {
+flag_ = BitUtil.On(flag_, 1);
 						Player.udat_.SetTenantIn(this);
 						script_.RemoveElementAt(0);
 						continue;
-					case 36:
-					{
+}
+else if ((recoveredScriptCommand == 36)) {
+{
 						int num = GameUtil.Random(100);
 						float num2 = GameUtil.RateConvert(num, 0f, 99f, MapMain.MOVE_POINT[8].x_, MapMain.MOVE_POINT[9].x_, true);
 						float num3 = GameUtil.RateConvert(num, 0f, 99f, MapMain.MOVE_POINT[8].z_, MapMain.MOVE_POINT[9].z_, true);
@@ -1255,13 +1285,14 @@ namespace game
 						script_.RemoveElementAt(0);
 						continue;
 					}
-					}
-				}
+}
+				break;
+}
 				finally
 				{
 					insertScriptIndex_ = -1;
 				}
-				break;
+
 			}
 			return false;
 		}
