@@ -85,7 +85,7 @@ def main():
     common=['--assembly',args.assembly,'--baseline-dir',baseline,'--cycle-rule',args.rule,
         '--cache-symbol-mapping','--aligned-search-progress','--fast-screen',
         '--limit-iterations','24','--max-candidates','64','--max-model-candidates','192']
-    common+=['--max-incomplete-candidates',str(json.loads((ROOT/'config/round10-protocol.json').read_text())['incomplete_candidate_variants_per_method_per_pass'])]
+    common+=['--max-incomplete-candidates',str(json.loads((ROOT/'config/round10-protocol.json').read_text(encoding='utf-8'))['incomplete_candidate_variants_per_method_per_pass'])]
     if args.external_proposals:common+=['--external-proposals',str(args.external_proposals)]
     if args.isolate_family:common+=['--isolate-family']
     if args.single_step:common[common.index('--limit-iterations')+1]='1'

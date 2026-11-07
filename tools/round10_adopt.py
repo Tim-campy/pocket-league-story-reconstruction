@@ -154,7 +154,7 @@ def main():
     else:
         report={'operation':'source-only-production-proof-and-official-verification',
             'run_label':args.run_label,'baseline_dir':str(baseline),
-            'baseline_commit':'aecb02b8a7b0965508e223335e44ae36a95a0939' if baseline==ROOT / 'build/round10/baseline' else 'UNKNOWN',
+            'baseline_commit':read(baseline/'snapshot.json')['commit'],
             'selected_assemblies':sorted(selected),'official_verified':False,'assemblies':{},'changed_sources':[]}
         if args.incremental:
             previous=read(output)

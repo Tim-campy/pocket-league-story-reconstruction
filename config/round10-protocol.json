@@ -29,23 +29,24 @@
     }
   },
   "baseline_commit": "aecb02b8a7b0965508e223335e44ae36a95a0939",
-  "phase": "parts_B_C",
-  "autonomous_started": false,
+  "phase": "autonomous_D",
+  "autonomous_started": true,
   "required_parts": {
     "A": "complete",
     "B": "complete",
-    "C": "pending"
+    "C": "complete"
   },
   "prepared_queue": [
     {
       "id": "d-setwin-chara-training",
       "phase": "D",
-      "status": "pending",
+      "status": "tested",
       "readiness": "READY",
       "method_ids": [
         "form.SubForm::SetWinCharaTraining(System.Int32,System.Int32)->System.Void"
       ],
-      "required_work": "Own fixture passed; fresh model, isolated game probe and full official verification still required"
+      "required_work": "Own fixture passed; fresh model, isolated game probe and full official verification still required",
+      "report": "reports/round10-cycle01-Assembly-CSharp-engine.json"
     },
     {
       "id": "d-cgi-common-query-cctor",
@@ -104,9 +105,56 @@
       "manifest_sha256": "28d52f5342a1c4acae342f2bd19994188ab89ecf28d578bf690dedd222f6748f",
       "note": "docs/notes/round10-raw-measurement.md",
       "summary": "Measurement only: 23 equal table row counts; 97 persistent CodeView path bytes; no raw corrections or DLL normalization."
+    },
+    "C": {
+      "report": "reports/round10-control-results.json",
+      "sha256": "09f4bad145438bb952f612ff8737c094484db9304a33bd8ddf7a5858111d2826",
+      "summary": "Extrator ampliado nas quatro etapas e validado nos m\u00e9todos matched; 114 pendentes auditados, uma reescrita de 717 bytes adotada oficialmente, zero perdas. \u00c1rvores amb\u00edguas continuam incompletas.",
+      "render_headers": [
+        "Etapa",
+        "Planos completos matched",
+        "\u00c1rvores pareadas matched",
+        "\u00c1rvores pareadas pendentes",
+        "Iguais nos pendentes"
+      ],
+      "render_rows": [
+        [
+          "1",
+          "1487/1838",
+          "1267/1838",
+          "18/114",
+          "11"
+        ],
+        [
+          "2",
+          "1555/1838",
+          "1292/1838",
+          "19/114",
+          "11"
+        ],
+        [
+          "3",
+          "1555/1838",
+          "1305/1838",
+          "19/114",
+          "11"
+        ],
+        [
+          "4",
+          "1555/1838",
+          "1305/1838",
+          "19/114",
+          "11"
+        ]
+      ]
     }
   },
   "report_schema_reviewed": false,
-  "preparation_notes": [],
+  "preparation_notes": [
+    "C01: sonda e passe principal fecharam o mesmo m\u00e9todo de 717 bytes; o ganho oficial \u00e9 1 m\u00e9todo, sem somar a sonda.",
+    "O primeiro commit C01 parou na formata\u00e7\u00e3o de uma linha vazia com quatro espa\u00e7os no produtor raw. O hash do produtor foi preservado; revis\u00e3o restrita de formata\u00e7\u00e3o, sem relaxar o verificador. A repeti\u00e7\u00e3o do commit fez nova verifica\u00e7\u00e3o completa e publicou f3e3455.",
+    "O recibo de ado\u00e7\u00e3o C01 escreveu baseline_commit UNKNOWN por limita\u00e7\u00e3o do adapter. O snapshot independente identifica ee994d2d052a9b20203791371e3a5556afe815dd; o adapter futuro passou a ler snapshot.json. Nenhum resultado de m\u00e9todo foi editado.",
+    "Falhas de drivers na prepara\u00e7\u00e3o (schemas assembly/maxstack e manifesto AST duplicado) foram corrigidas, preservando os rascunhos. Fixtures e candidatos de jogo s\u00e3o contagens distintas."
+  ],
   "kairo_window_size": 5
 }

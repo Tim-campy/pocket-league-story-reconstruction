@@ -11130,14 +11130,10 @@ if (pageMax != -1)
 				{
 					WIN_CHA[2] = 1;
 				}
-				return;
-			}
+				} else {
 			WIN_CHA[1] = 0;
 			int num5 = 0;
-			switch (tMode)
-			{
-			case 0:
-				WIN_CHA[0] = 1;
+			if (tMode == 0) {WIN_CHA[0] = 1;
 				num5 = time % Player.SEB_H_KICK_ANIME[Player.SEB_H_KICK_ANIME.Length - 1];
 				if (num5 < Player.SEB_H_KICK_ANIME[0])
 				{
@@ -11151,19 +11147,14 @@ if (pageMax != -1)
 				{
 					WIN_CHA[2] = 2;
 				}
-				break;
-			case 1:
-				WIN_CHA[0] = 10;
+				} else if (tMode == 1) {WIN_CHA[0] = 10;
 				num5 = time % Player.SEB_H_HEAD_ANIME[Player.SEB_H_HEAD_ANIME.Length - 1];
 				WIN_CHA[2] = time % (Player.SEB_H_WALK_ASPEED * 4) / Player.SEB_H_WALK_ASPEED;
-				break;
-			case 3:
-				WIN_CHA[0] = 4;
+				} else if (tMode == 3) {WIN_CHA[0] = 4;
 				num5 = time % Player.SEB_H_THROWIN_ANIME[Player.SEB_H_THROWIN_ANIME.Length - 1];
 				WIN_CHA[2] = time % 12 / 6;
-				break;
-			}
-		}
+				}
+		}}
 
 		public void SetMeterParamRank(int line, int TIME, int value, int valueMax, int rank, int rankMax, int add)
 		{

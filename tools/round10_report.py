@@ -365,6 +365,29 @@ def render(ctx,short=False):
             add('Persistência independente dos corpos, PROVADA com caminhos/opções atuais: 97 bytes do caminho CodeView/PDB. '
                 'Foram excluídos analiticamente apenas MVID, timestamp COFF, timestamp do diretório de debug e GUID RSDS. '
                 'Não houve normalização, nova exceção ou correção de bytes. Persistência futura dos demais índices, RVAs e dos 32 bytes extras de #Blob: UNKNOWN.')
+        if part=='C':
+            application=document['application']
+            add(table(['Aplicação do esqueleto smcs','Resultado'],[
+                ('Pendentes auditados, incluindo um corpo igual retido',application['audited_pending']),
+                ('Pares de árvores completos antes',application['paired_complete_before']),
+                ('Árvores iguais / diferentes antes',str(application['trees_equal_before'])+' / '+str(application['trees_different_before'])),
+                ('Métodos reescritos com plano/árvore candidatos iguais ao original',application['candidate_tree_and_plan_equal_original']),
+                ('Corpos aprovados pelo verificador / bytes de IL',str(application['matched_gains'])+' / '+str(application['original_il_bytes_gained'])),
+                ('Retiradas de matched',application['matched_losses'])]))
+            add('Alvo aprovado: '+inline(application['target_id'])+
+                '. Os demais bloqueios do cálculo de fonte: '+compact_counter(Counter(application['groups']))+
+                '. Não foram criadas folhas ou instruções a partir de bytes originais.')
+            final_stage=document['stages'][-1]['groups']['matched']
+            add('No corpus fixo de '+str(document['baseline_matched_bodies'])+' corpos matched: '+
+                str(final_stage['source_plan_complete'])+' planos completos/'+str(final_stage['source_plan_complete'])+' iguais; '+
+                str(final_stage['paired_tree_complete'])+' árvores pareadas/'+str(final_stage['trees_equal'])+' iguais. '
+                'Cobertura das árvores: '+format(final_stage['paired_tree_complete']/document['baseline_matched_bodies']*100,'.6f')+
+                '%. Switch string/sparse e regiões com owner indistinguível mantêm os limites de completude documentados.')
+            add('Resultados negativos preservados: a primeira ampliação EH teve 14 planos completos incorretos e foi reprovada; '
+                'a lógica composta revelou uma renormalização de laço, corrigida antes do aceite. '
+                'A validação final de cada etapa não tem planos/árvores incorretos nos matched. '
+                'O renderizador manteve árvore/plano em '+str(application['renderer_roundtrip_exact'])+'/'+
+                str(application['renderer_roundtrip_tested'])+' controles NoEmit; '+application['renderer_negative']+'.')
         if evidence.get('render_rows'):
             add(table(evidence.get('render_headers',['Medida','Valor']),evidence['render_rows']))
     add('Ganhos oficiais vêm do diário após adoção e verificação completa, incluindo auxiliares liberados pelo verificador. Sondas e avanços parciais são registrados separadamente; não se somam aos ganhos oficiais. Transformações herdadas da rodada 7 só aparecem abaixo quando foram efetivamente tentadas nesta rodada.')
