@@ -1,0 +1,175 @@
+{
+  "target_compilations": 0,
+  "own_fixture_compilations": 4,
+  "results": [
+    {
+      "compiler": "smcs",
+      "all_methods_equal": 22,
+      "all_body_differences": {
+        "Fixture::.cctor()->System.Void": [],
+        "Fixture::Read()->System.Int32": [],
+        "Fixture::ArrayLocal()->System.Int32": [],
+        "Fixture::InverseChain()->System.Int32": [],
+        "Fixture::MapInts(System.Int32[])->System.Void": [],
+        "Fixture::LtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NotLtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::LeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GtInt(System.Int32,System.Int32)->System.Int32": [],
+        "Fixture::EqFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::WrongNegatedFloatComplement(System.Single,System.Single)->System.Int32": [],
+        "Fixture::FloatNeg(System.Single)->System.Single": [],
+        "Fixture::FloatZeroSub(System.Single)->System.Single": [],
+        "Fixture::Field(System.Int32)->System.Int32": [],
+        "Fixture::Ref(System.Int32&,System.Int32)->System.Int32": [],
+        "Fixture::Mixed(System.Int32,System.Single)->System.Int32": [],
+        "Fixture::Call(System.Int32)->System.Int32": [],
+        "Fixture::SemanticChecks()->System.Int32": [],
+        "Vector::.ctor()->System.Void": [],
+        "<PrivateImplementationDetails>::.ctor()->System.Void": []
+      },
+      "candidate_sha256": "bed83ae09623f9fa54798d197b4ff785374eac3beb56a803862057250ec92f74",
+      "control_sha256": "3f2fcaea7ddd95229eca4666baef56e8083be5f0063429b85186cfadfced2aa1"
+    },
+    {
+      "compiler": "roslyn",
+      "all_methods_equal": 21,
+      "all_body_differences": {
+        "Fixture::Read()->System.Int32": [],
+        "Fixture::ArrayLocal()->System.Int32": [],
+        "Fixture::InverseChain()->System.Int32": [],
+        "Fixture::MapInts(System.Int32[])->System.Void": [],
+        "Fixture::LtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NotLtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::LeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GtInt(System.Int32,System.Int32)->System.Int32": [],
+        "Fixture::EqFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::WrongNegatedFloatComplement(System.Single,System.Single)->System.Int32": [],
+        "Fixture::FloatNeg(System.Single)->System.Single": [],
+        "Fixture::FloatZeroSub(System.Single)->System.Single": [],
+        "Fixture::Field(System.Int32)->System.Int32": [],
+        "Fixture::Ref(System.Int32&,System.Int32)->System.Int32": [],
+        "Fixture::Mixed(System.Int32,System.Single)->System.Int32": [],
+        "Fixture::Call(System.Int32)->System.Int32": [],
+        "Fixture::SemanticChecks()->System.Int32": [],
+        "Fixture::.cctor()->System.Void": [],
+        "Vector::.ctor()->System.Void": []
+      },
+      "candidate_sha256": "1d7707afa8c996ce626b53dd754e770d67a00579a7253d3c7cb676a4b2b13fee",
+      "control_sha256": "d2042494a05932d7aa1944513f90dfb5a19b663695ba6cfa879b2f957aa4d860"
+    }
+  ],
+  "AST_integration": {
+    "AST_no_emit": true,
+    "target_compilations": 0,
+    "positive_patches": [
+      {
+        "name": "LtFloat",
+        "patch": {
+          "rule": "r11-c5-mirror-primitive-operands",
+          "start": 1390,
+          "end": 1395,
+          "before": "a < b",
+          "after": "(b > a)",
+          "distance": 13
+        }
+      },
+      {
+        "name": "NotLtFloat",
+        "patch": {
+          "rule": "r11-c5-mirror-primitive-operands",
+          "start": 1497,
+          "end": 1502,
+          "before": "a < b",
+          "after": "(b > a)",
+          "distance": 15
+        }
+      },
+      {
+        "name": "LeDouble",
+        "patch": {
+          "rule": "r11-c5-mirror-primitive-operands",
+          "start": 1603,
+          "end": 1609,
+          "before": "a <= b",
+          "after": "(b >= a)",
+          "distance": 13
+        }
+      },
+      {
+        "name": "GeDouble",
+        "patch": {
+          "rule": "r11-c5-mirror-primitive-operands",
+          "start": 1709,
+          "end": 1715,
+          "before": "a >= b",
+          "after": "(b <= a)",
+          "distance": 13
+        }
+      },
+      {
+        "name": "GtInt",
+        "patch": {
+          "rule": "r11-c5-mirror-primitive-operands",
+          "start": 1806,
+          "end": 1811,
+          "before": "a > b",
+          "after": "(b < a)",
+          "distance": 13
+        }
+      },
+      {
+        "name": "EqFloat",
+        "patch": {
+          "rule": "r11-c5-mirror-primitive-operands",
+          "start": 1908,
+          "end": 1914,
+          "before": "a == b",
+          "after": "(b == a)",
+          "distance": 13
+        }
+      },
+      {
+        "name": "NeDouble",
+        "patch": {
+          "rule": "r11-c5-mirror-primitive-operands",
+          "start": 2014,
+          "end": 2020,
+          "before": "a != b",
+          "after": "(b != a)",
+          "distance": 13
+        }
+      }
+    ],
+    "guard_negatives": [
+      {
+        "name": "Field",
+        "rejected": true
+      },
+      {
+        "name": "Ref",
+        "rejected": true
+      },
+      {
+        "name": "Mixed",
+        "rejected": true
+      },
+      {
+        "name": "Call",
+        "rejected": true
+      }
+    ],
+    "syntax_identity": "57ba9de0a9b582d0fcdd2b715c45cc8bbc850ae8b948bbfbccdec8028ac6fe0d"
+  },
+  "declared_scope": "primitive local/parameter operands; enclosing explicit negation retained; no property/call/ref/mixed type",
+  "source_sha256": {
+    "Round11ComparisonRules.cs": "1e4f3c6e06a2b0f4aa958c6feb479292f33a92d4be4f28c033da60a8443488ef",
+    "prepare_round11_transform.py": "99ac7ddcdb24f38d2c44a8316f0d6cc3979eba65c79425738c7bf2a3f94c1604",
+    "ast_check.py": "4fb377736afd13a6663e48019ee769c0b87af1657802405583fec4866b581aa6",
+    "FixtureCandidate.cs": "75259190887e1e4bd077ebd20b5eab6ab4b5e58f4464926f15dbdee20f314707",
+    "FixtureControl.cs": "2c2f34a5e677122c61367cfa4220f344462b45aa4b96fea79eba94a5b331c3ce"
+  }
+}

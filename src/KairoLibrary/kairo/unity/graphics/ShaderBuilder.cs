@@ -193,9 +193,10 @@ namespace kairo.unity.graphics
 			untiColor = !setClip && img != null && alpha >= 0.99f && renderOperator == 0 && renderSrcAlpha >= 255 && g.blendMode_ == 0;
 			if (untiColor && colors != null)
 			{
-				for (int i = 0; i < colors.Length; i++)
+				Color[] recoveredShaderColors = colors;
+for (int i = 0; i < recoveredShaderColors.Length; i++)
 				{
-					Color color = colors[i];
+					Color color = recoveredShaderColors[i];
 					if (color.r < 1f || color.g < 1f || color.b < 1f)
 					{
 						untiColor = false;
@@ -212,15 +213,7 @@ namespace kairo.unity.graphics
 				alphaType = img.GetAlphaType();
 			}
 			this.opaTransOrder = opaTransOrder;
-			switch (opaTransOrder)
-			{
-			case 1:
-				alphaType = 1;
-				break;
-			case 2:
-				alphaType = 2;
-				break;
-			}
+			if (opaTransOrder == 1) { alphaType = 1; } else if (opaTransOrder == 2) { alphaType = 2; }
 			if (renderOperator != 0)
 			{
 				alphaType = 2;

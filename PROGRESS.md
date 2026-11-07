@@ -2,22 +2,22 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,154 de 5,245 métodos matched (98.27%).** 871,497 bytes de IL nos assemblies alvo.
-813,316 bytes IL matched (93.32%).
+**5,155 de 5,245 métodos matched (98.28%).** 871,497 bytes de IL nos assemblies alvo.
+813,783 bytes IL matched (93.38%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3188 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3189 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 90 |
+| decompiled | 89 |
 | equivalent | 0 |
-| matched | 5154 |
+| matched | 5155 |
 | external | 0 |
 
 ## Assemblies
@@ -25,7 +25,7 @@ KairoLibrary: 3188 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
 | `Assembly-CSharp` | 1958 | 601603 | 1892 / 96.63% | 549322 / 91.31% |
-| `KairoLibrary` | 3287 | 269894 | 3262 / 99.24% | 263994 / 97.81% |
+| `KairoLibrary` | 3287 | 269894 | 3263 / 99.27% | 264461 / 97.99% |
 
 ## Namespaces
 
@@ -49,7 +49,7 @@ KairoLibrary: 3188 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.analytics` | 15 | 1284 | 15 / 100.00% | 1284 / 100.00% |
 | `kairo.unity.form` | 88 | 6284 | 88 / 100.00% | 6284 / 100.00% |
 | `kairo.unity.graph` | 7 | 680 | 7 / 100.00% | 680 / 100.00% |
-| `kairo.unity.graphics` | 195 | 21048 | 192 / 98.46% | 20330 / 96.59% |
+| `kairo.unity.graphics` | 195 | 21048 | 193 / 98.97% | 20797 / 98.81% |
 | `kairo.unity.iOSsupport` | 4 | 18 | 4 / 100.00% | 18 / 100.00% |
 | `kairo.unity.io` | 149 | 9866 | 147 / 98.66% | 9608 / 97.38% |
 | `kairo.unity.licensing` | 7 | 101 | 7 / 100.00% | 101 / 100.00% |
@@ -272,7 +272,7 @@ KairoLibrary: 3188 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.graphics.Point` | 7 | 137 | 7 / 100.00% | 137 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.Rectangle` | 10 | 269 | 10 / 100.00% | 269 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.RectangleF` | 12 | 332 | 12 / 100.00% | 332 / 100.00% |
-| `KairoLibrary::kairo.unity.graphics.ShaderBuilder` | 14 | 3664 | 13 / 92.86% | 3197 / 87.25% |
+| `KairoLibrary::kairo.unity.graphics.ShaderBuilder` | 14 | 3664 | 14 / 100.00% | 3664 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.ShaderBuilder+Node` | 8 | 290 | 8 / 100.00% | 290 / 100.00% |
 | `KairoLibrary::kairo.unity.graphics.ShaderManager` | 4 | 105 | 4 / 100.00% | 105 / 100.00% |
 | `KairoLibrary::kairo.unity.iOSsupport.DeviceUtil` | 2 | 9 | 2 / 100.00% | 9 / 100.00% |

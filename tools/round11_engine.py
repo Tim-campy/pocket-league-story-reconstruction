@@ -72,7 +72,7 @@ def local_slot(instruction, prefix_op):
 
 
 def syntax_identity():
-    from prepare_round10_transform import identity
+    from prepare_round11_transform import identity
     return identity()
 
 
@@ -385,7 +385,7 @@ def main():
     report['cycle_rule']=args.cycle_rule
     learned_rules=[]
     if args.cycle_rule:
-        for journal_name in ('round7-cycle-journal.json','round8-cycle-journal.json','round11-cycle-journal.json'):
+        for journal_name in ('round7-cycle-journal.json','round8-cycle-journal.json','round9-cycle-journal.json','round10-cycle-journal.json','round11-cycle-journal.json'):
             journal_path=ROOT/'reports'/journal_name
             if journal_path.exists():
                 learned_rules += [r['rule'] for r in read(journal_path)['cycles'] if r.get('rule') and r.get('rule_accepted_steps',0)>0]
@@ -400,7 +400,7 @@ def main():
     report.setdefault('cycle_repertoire_counts', {'filtered_steps':0, 'removed_legacy_candidates':0,
                                                  'kept_selected_candidates':0})
     # Helpers are built once and kept alive; they never write source/ledger files.
-    from round10_transform import TransformClient
+    from round11_transform import TransformClient
     from round4_symbols import inspect_methods, select_point
     syntax_manifest = dict(c.manifest)
     syntax_manifest['sources'] = [{'path': str(c.paths[s['path']]), 'input_path': str(c.paths[s['path']])} for s in c.manifest['sources']]

@@ -63,8 +63,17 @@
     },
     "C2": {
       "name": "parameter-alias-ShaderBuilder-Init",
-      "status": "not_started",
-      "attempts": [],
+      "status": "verified",
+      "attempts": [
+        {
+          "label": "c03",
+          "engine": "reports/round11-c03-KairoLibrary-engine.json",
+          "adoption": "reports/round11-c03-adoption.json",
+          "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+          "assembly": "KairoLibrary",
+          "evaluation_status": "evaluated"
+        }
+      ],
       "required_assemblies": [
         "KairoLibrary"
       ]
@@ -232,7 +241,7 @@
     "files_sha256": {
       "tools/round11_controller.py": "3f5a400ed862b736439ea6a9307ddd800ef44f527267069949d56ed8ccbe5996",
       "tools/round11_cycle.py": "beb94005ad632593378d4180d5d584abeb2a4af462efef2b3c453a0e6c1a03c2",
-      "tools/round11_engine.py": "c033db987dbb3d7f26778ed0d48775daedfb13e015c0671c33a82a4fb63bbdb1",
+      "tools/round11_engine.py": "21710e1815dd09e1adc14e5750efeb13f0ab0cf9f8241238432162a5e12f5a0e",
       "tools/round11_adopt.py": "c2a87b7a35a15051c0b9f7ca262b10cddf1e67cd901b89059b3f8924c52d78a4",
       "tools/round11_commit.py": "fd9273123929d752a58deb3da11d2575d70564e9eb9b2859110340bae38f78cb",
       "tools/round11_git_proof.py": "a1d3c37ae185088878d9f6b331ab21c923be777642d322d4923ff2ce672e0758",
@@ -249,7 +258,10 @@
       "tools/round11_report.py": "3ea2c8272fed5e5f01f344203fb6eb56e9a485a3da522476be265c9ec416f30d",
       "tools/round11_test_protocol.py": "fd2012801dfa7a9c4cfaa75fc8e444e41f5e9a5962e8ebca3611a14c4757e8a4",
       "tools/round11_pdb_mirror.py": "5574c8f6f56d249a068ae38a2e67d95fbc2baf1e0c33278ca701eca7bf54034b",
-      "tools/round11_test_pdb_mirror.py": "f23c41ebabb60998016cbdaaa604679b5951b5ff4c2a219a353e61b6a0a8e3ce"
+      "tools/round11_test_pdb_mirror.py": "f23c41ebabb60998016cbdaaa604679b5951b5ff4c2a219a353e61b6a0a8e3ce",
+      "tools/Round11ComparisonRules.cs": "1e4f3c6e06a2b0f4aa958c6feb479292f33a92d4be4f28c033da60a8443488ef",
+      "tools/prepare_round11_transform.py": "99ac7ddcdb24f38d2c44a8316f0d6cc3979eba65c79425738c7bf2a3f94c1604",
+      "tools/round11_transform.py": "f78cd4e22455c40d8cc1b98b2348018d3e1d41779f9f49c3154ff98895b11115"
     },
     "runtime_symbol_mirror": {
       "fixture_report": "reports/round11-pdb-mirror-fixture.json",
@@ -257,5 +269,12 @@
       "private_PE_never_modified": true
     }
   },
-  "baseline_measurement_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c"
+  "baseline_measurement_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c",
+  "comparison_mirror_repertoire": {
+    "rule": "r11-c5-mirror-primitive-operands",
+    "scope": "both compilers; symbol-proven primitive locals/parameters; outer negation preserved",
+    "fixture_report": "reports/round11-c5-mirror-integration-fixtures.json",
+    "fixture_report_sha256": "2f0d6517c34c067b082ae153e944d441b1593c8623a0d13a89e4ae54c24ba7fd",
+    "target_status": "UNKNOWN before actual C5 passes"
+  }
 }
