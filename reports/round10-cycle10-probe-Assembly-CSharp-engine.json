@@ -1,0 +1,2145 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1853,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "game.Map::SetDefaultCoatEva()->System.Void",
+      "number": 1,
+      "initial_offset": 78,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "d10-smcs-unused-slot-d10-calculated-unused-local-scope-composition",
+          "start": 15467,
+          "end": 19285,
+          "before": "public void SetDefaultCoatEva()\r\n\t\t{\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tfloat num = 100f;\r\n\t\t\tint num5;\nfloat num2 = 1000f;\r\n\t\t\tglobal::System.Single originalUnusedSlot1;\nfor (int i = 0; i < MAPCHIP_COAT_HNUM; i++)\r\n\t\t\t{\r\n\t\t\t\tfloat num3 = num;\r\n\t\t\t\tfloat num4 = num2;\r\n\t\t\t\tnum5 = COAT_GOAL2_ADDRESS[1][1] - i;\r\n\t\t\t\tif (num5 > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int j = 0; j < num5; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int k = 0; k < MAPCHIP_COAT_WNUM; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[i][k] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[i][k] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int l = COAT_GOAL2_ADDRESS[1][1]; l <= COAT_GOAL2_ADDRESS[0][1]; l++)\r\n\t\t\t{\r\n\t\t\t\tfloat num3 = num;\r\n\t\t\t\tfloat num4 = num2;\r\n\t\t\t\tfor (int num6 = COAT_GOAL1_ADDRESS[0][0] - 1; num6 >= 0; num6--)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][num6] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][num6] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tnum3 = num;\r\n\t\t\t\tnum4 = num2;\r\n\t\t\t\tfor (int m = COAT_GOAL1_ADDRESS[1][0] + 1; m < MAPCHIP_COAT_WNUM; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][m] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][m] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num7 = COAT_GOAL2_ADDRESS[1][1] - 1; num7 >= 0; num7--)\r\n\t\t\t{\r\n\t\t\t\tfor (int num8 = COAT_GOAL1_ADDRESS[0][0] - 1; num8 >= 0; num8--)\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat num3 = Team.DEAFULT_FORMATION_EVA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][num8] = (int)num3;\r\n\t\t\t\t\tfloat num4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tfor (int n = COAT_GOAL1_ADDRESS[1][0] + 1; n < MAPCHIP_COAT_WNUM; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat num3 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num3;\r\n\t\t\t\t\tfloat num4 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num9 = 4; num9 <= 6; num9++)\r\n\t\t\t{\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] * 0 / 100;\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] * 0 / 100;\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void SetDefaultCoatEva()\r\n\t\t{\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tfloat num = 100f;\nglobal::System.Single recoveredUnusedSingleSlot1;\nfloat num2 = 1000f;\nglobal::System.Single originalUnusedSlot1;\nfloat num3, num4;\nfor (int i = 0; i < MAPCHIP_COAT_HNUM; i++)\r\n\t\t\t{\r\n\t\t\t\t num3 = num;\r\n\t\t\t\t num4 = num2;\r\n\t\t\t\tint num5 = COAT_GOAL2_ADDRESS[1][1] - i;\r\n\t\t\t\tif (num5 > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int j = 0; j < num5; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int k = 0; k < MAPCHIP_COAT_WNUM; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[i][k] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[i][k] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int l = COAT_GOAL2_ADDRESS[1][1]; l <= COAT_GOAL2_ADDRESS[0][1]; l++)\r\n\t\t\t{\r\n\t\t\t\t num3 = num;\r\n\t\t\t\t num4 = num2;\r\n\t\t\t\tfor (int num6 = COAT_GOAL1_ADDRESS[0][0] - 1; num6 >= 0; num6--)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][num6] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][num6] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tnum3 = num;\r\n\t\t\t\tnum4 = num2;\r\n\t\t\t\tfor (int m = COAT_GOAL1_ADDRESS[1][0] + 1; m < MAPCHIP_COAT_WNUM; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][m] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][m] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num7 = COAT_GOAL2_ADDRESS[1][1] - 1; num7 >= 0; num7--)\r\n\t\t\t{\r\n\t\t\t\tfor (int num8 = COAT_GOAL1_ADDRESS[0][0] - 1; num8 >= 0; num8--)\r\n\t\t\t\t{\r\n\t\t\t\t\t num3 = Team.DEAFULT_FORMATION_EVA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][num8] = (int)num3;\r\n\t\t\t\t\t num4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tfor (int n = COAT_GOAL1_ADDRESS[1][0] + 1; n < MAPCHIP_COAT_WNUM; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\t num3 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num3;\r\n\t\t\t\t\t num4 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num9 = 4; num9 <= 6; num9++)\r\n\t\t\t{\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] * 0 / 100;\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] * 0 / 100;\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 78,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32"
+            ],
+            "method_id": "game.Map::SetDefaultCoatEva()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Map.cs",
+            "full_source_sha256": "36d94fcb75fd0c213d6e7594164702f4c1953017ddd6e37051c153fb19e06dac"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794073990866666500\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.375,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1054,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1054,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Map::SetDefaultCoatEva()->System.Void"
+          ],
+          "matched_IL_gain": 1054
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "d10-smcs-unused-slot-d10-calculated-unused-local-scope-composition",
+          "start": 15467,
+          "end": 19285,
+          "before": "public void SetDefaultCoatEva()\r\n\t\t{\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tfloat num = 100f;\r\n\t\t\tint num5;\nfloat num2 = 1000f;\r\n\t\t\tglobal::System.Single originalUnusedSlot1;\nfor (int i = 0; i < MAPCHIP_COAT_HNUM; i++)\r\n\t\t\t{\r\n\t\t\t\tfloat num3 = num;\r\n\t\t\t\tfloat num4 = num2;\r\n\t\t\t\tnum5 = COAT_GOAL2_ADDRESS[1][1] - i;\r\n\t\t\t\tif (num5 > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int j = 0; j < num5; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int k = 0; k < MAPCHIP_COAT_WNUM; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[i][k] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[i][k] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int l = COAT_GOAL2_ADDRESS[1][1]; l <= COAT_GOAL2_ADDRESS[0][1]; l++)\r\n\t\t\t{\r\n\t\t\t\tfloat num3 = num;\r\n\t\t\t\tfloat num4 = num2;\r\n\t\t\t\tfor (int num6 = COAT_GOAL1_ADDRESS[0][0] - 1; num6 >= 0; num6--)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][num6] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][num6] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tnum3 = num;\r\n\t\t\t\tnum4 = num2;\r\n\t\t\t\tfor (int m = COAT_GOAL1_ADDRESS[1][0] + 1; m < MAPCHIP_COAT_WNUM; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][m] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][m] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num7 = COAT_GOAL2_ADDRESS[1][1] - 1; num7 >= 0; num7--)\r\n\t\t\t{\r\n\t\t\t\tfor (int num8 = COAT_GOAL1_ADDRESS[0][0] - 1; num8 >= 0; num8--)\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat num3 = Team.DEAFULT_FORMATION_EVA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][num8] = (int)num3;\r\n\t\t\t\t\tfloat num4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tfor (int n = COAT_GOAL1_ADDRESS[1][0] + 1; n < MAPCHIP_COAT_WNUM; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tfloat num3 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num3;\r\n\t\t\t\t\tfloat num4 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num9 = 4; num9 <= 6; num9++)\r\n\t\t\t{\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] * 0 / 100;\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] * 0 / 100;\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void SetDefaultCoatEva()\r\n\t\t{\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });\r\n\t\t\tfloat num = 100f;\nglobal::System.Single recoveredUnusedSingleSlot1;\nfloat num2 = 1000f;\nglobal::System.Single originalUnusedSlot1;\nfloat num3, num4;\nfor (int i = 0; i < MAPCHIP_COAT_HNUM; i++)\r\n\t\t\t{\r\n\t\t\t\t num3 = num;\r\n\t\t\t\t num4 = num2;\r\n\t\t\t\tint num5 = COAT_GOAL2_ADDRESS[1][1] - i;\r\n\t\t\t\tif (num5 > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int j = 0; j < num5; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int k = 0; k < MAPCHIP_COAT_WNUM; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[i][k] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[i][k] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int l = COAT_GOAL2_ADDRESS[1][1]; l <= COAT_GOAL2_ADDRESS[0][1]; l++)\r\n\t\t\t{\r\n\t\t\t\t num3 = num;\r\n\t\t\t\t num4 = num2;\r\n\t\t\t\tfor (int num6 = COAT_GOAL1_ADDRESS[0][0] - 1; num6 >= 0; num6--)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][num6] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][num6] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tnum3 = num;\r\n\t\t\t\tnum4 = num2;\r\n\t\t\t\tfor (int m = COAT_GOAL1_ADDRESS[1][0] + 1; m < MAPCHIP_COAT_WNUM; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[l][m] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[l][m] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num7 = COAT_GOAL2_ADDRESS[1][1] - 1; num7 >= 0; num7--)\r\n\t\t\t{\r\n\t\t\t\tfor (int num8 = COAT_GOAL1_ADDRESS[0][0] - 1; num8 >= 0; num8--)\r\n\t\t\t\t{\r\n\t\t\t\t\t num3 = Team.DEAFULT_FORMATION_EVA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][num8] = (int)num3;\r\n\t\t\t\t\t num4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7 + 1][num8];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t\tfor (int n = COAT_GOAL1_ADDRESS[1][0] + 1; n < MAPCHIP_COAT_WNUM; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\t num3 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num3;\r\n\t\t\t\t\t num4 = Team.DEAFULT_FORMATION_EVA[num7][n];\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7 + 1][n])\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum4 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[num7][n] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int num9 = 4; num9 <= 6; num9++)\r\n\t\t\t{\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA[Team.DEAFULT_FORMATION_EVA.Length - 1][num9] * 0 / 100;\r\n\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[Team.DEAFULT_FORMATION_EVA_PENALTYAREA.Length - 1][num9] * 0 / 100;\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 78,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32"
+            ],
+            "method_id": "game.Map::SetDefaultCoatEva()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Map.cs",
+            "full_source_sha256": "36d94fcb75fd0c213d6e7594164702f4c1953017ddd6e37051c153fb19e06dac"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794073990866666500\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.375,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1054,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1054,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Map::SetDefaultCoatEva()->System.Void"
+          ],
+          "matched_IL_gain": 1054
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 77,
+            "rebuilt_offset": 77,
+            "opcode_pair": [
+              "stloc.s",
+              "stloc.s"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "df5d9fcd8937f6c1d3835d72c58f6fcee3dbb53d215db35f085e225c0eac8e98",
+      "stop_point": {
+        "offset": 78,
+        "source": "src/Assembly-CSharp/game/Map.cs",
+        "point": {
+          "offset": 76,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Map.cs",
+          "start_line": 383,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 77,
+          "line": 383,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 77,
+          "rebuilt_offset": 77,
+          "original_index": 29,
+          "rebuilt_index": 29,
+          "original_instruction": {
+            "offset": 77,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 6
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 77,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 4
+            }
+          },
+          "pair": "{\"opcode\":\"stloc.s\",\"operand\":{\"local\":6}} => {\"opcode\":\"stloc.s\",\"operand\":{\"local\":4}}",
+          "opcode_pair": "stloc.s => stloc.s",
+          "original_context": [
+            {
+              "offset": 75,
+              "opcode": "stloc.2",
+              "operand": null
+            },
+            {
+              "offset": 76,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 77,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 6
+              }
+            },
+            {
+              "offset": 79,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "O215"
+                ]
+              }
+            },
+            {
+              "offset": 84,
+              "opcode": "ldloc.0",
+              "operand": null,
+              "label": "L0"
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 75,
+              "opcode": "stloc.2",
+              "operand": null
+            },
+            {
+              "offset": 76,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 77,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 79,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "R212"
+                ]
+              }
+            },
+            {
+              "offset": 84,
+              "opcode": "ldloc.0",
+              "operand": null,
+              "label": "L0"
+            }
+          ],
+          "original_labels": {
+            "84": "L0",
+            "120": "L1",
+            "146": "L2",
+            "243": "L3",
+            "459": "L4",
+            "477": "L5",
+            "565": "L6",
+            "667": "L7",
+            "713": "L8",
+            "801": "L9",
+            "903": "L10",
+            "957": "L11",
+            "155": "O155",
+            "163": "O163",
+            "197": "O197",
+            "215": "O215",
+            "267": "O267",
+            "321": "O321",
+            "353": "O353",
+            "407": "O407",
+            "425": "O425",
+            "528": "O528",
+            "630": "O630",
+            "687": "O687",
+            "764": "O764",
+            "866": "O866",
+            "923": "O923",
+            "941": "O941",
+            "1045": "O1045"
+          },
+          "rebuilt_labels": {
+            "84": "L0",
+            "165": "L1",
+            "194": "L2",
+            "240": "L3",
+            "456": "L4",
+            "474": "L5",
+            "562": "L6",
+            "664": "L7",
+            "710": "L8",
+            "798": "L9",
+            "900": "L10",
+            "954": "L11",
+            "118": "R118",
+            "144": "R144",
+            "152": "R152",
+            "160": "R160",
+            "212": "R212",
+            "264": "R264",
+            "318": "R318",
+            "350": "R350",
+            "404": "R404",
+            "422": "R422",
+            "525": "R525",
+            "627": "R627",
+            "684": "R684",
+            "761": "R761",
+            "863": "R863",
+            "920": "R920",
+            "938": "R938",
+            "1042": "R1042"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 29,
+              "original_stop": 30,
+              "rebuilt_start": 29,
+              "rebuilt_stop": 30
+            },
+            {
+              "kind": "replace",
+              "original_start": 32,
+              "original_stop": 33,
+              "rebuilt_start": 32,
+              "rebuilt_stop": 33
+            },
+            {
+              "kind": "replace",
+              "original_start": 34,
+              "original_stop": 35,
+              "rebuilt_start": 34,
+              "rebuilt_stop": 35
+            },
+            {
+              "kind": "replace",
+              "original_start": 40,
+              "original_stop": 41,
+              "rebuilt_start": 40,
+              "rebuilt_stop": 41
+            },
+            {
+              "kind": "replace",
+              "original_start": 42,
+              "original_stop": 44,
+              "rebuilt_start": 42,
+              "rebuilt_stop": 44
+            },
+            {
+              "kind": "insert",
+              "original_start": 47,
+              "original_stop": 47,
+              "rebuilt_start": 47,
+              "rebuilt_stop": 65
+            },
+            {
+              "kind": "insert",
+              "original_start": 49,
+              "original_stop": 49,
+              "rebuilt_start": 67,
+              "rebuilt_stop": 68
+            },
+            {
+              "kind": "replace",
+              "original_start": 50,
+              "original_stop": 53,
+              "rebuilt_start": 69,
+              "rebuilt_stop": 71
+            },
+            {
+              "kind": "replace",
+              "original_start": 54,
+              "original_stop": 57,
+              "rebuilt_start": 72,
+              "rebuilt_stop": 81
+            },
+            {
+              "kind": "replace",
+              "original_start": 62,
+              "original_stop": 63,
+              "rebuilt_start": 86,
+              "rebuilt_stop": 87
+            },
+            {
+              "kind": "delete",
+              "original_start": 64,
+              "original_stop": 71,
+              "rebuilt_start": 88,
+              "rebuilt_stop": 88
+            },
+            {
+              "kind": "delete",
+              "original_start": 72,
+              "original_stop": 82,
+              "rebuilt_start": 89,
+              "rebuilt_stop": 89
+            },
+            {
+              "kind": "replace",
+              "original_start": 84,
+              "original_stop": 93,
+              "rebuilt_start": 91,
+              "rebuilt_stop": 93
+            },
+            {
+              "kind": "replace",
+              "original_start": 100,
+              "original_stop": 101,
+              "rebuilt_start": 100,
+              "rebuilt_stop": 101
+            },
+            {
+              "kind": "replace",
+              "original_start": 103,
+              "original_stop": 104,
+              "rebuilt_start": 103,
+              "rebuilt_stop": 104
+            },
+            {
+              "kind": "replace",
+              "original_start": 105,
+              "original_stop": 106,
+              "rebuilt_start": 105,
+              "rebuilt_stop": 106
+            },
+            {
+              "kind": "replace",
+              "original_start": 113,
+              "original_stop": 114,
+              "rebuilt_start": 113,
+              "rebuilt_stop": 114
+            },
+            {
+              "kind": "replace",
+              "original_start": 115,
+              "original_stop": 116,
+              "rebuilt_start": 115,
+              "rebuilt_stop": 116
+            },
+            {
+              "kind": "replace",
+              "original_start": 118,
+              "original_stop": 120,
+              "rebuilt_start": 118,
+              "rebuilt_stop": 120
+            },
+            {
+              "kind": "replace",
+              "original_start": 122,
+              "original_stop": 123,
+              "rebuilt_start": 122,
+              "rebuilt_stop": 123
+            },
+            {
+              "kind": "insert",
+              "original_start": 124,
+              "original_stop": 124,
+              "rebuilt_start": 124,
+              "rebuilt_stop": 127
+            },
+            {
+              "kind": "delete",
+              "original_start": 125,
+              "original_stop": 128,
+              "rebuilt_start": 128,
+              "rebuilt_stop": 128
+            },
+            {
+              "kind": "replace",
+              "original_start": 131,
+              "original_stop": 132,
+              "rebuilt_start": 131,
+              "rebuilt_stop": 132
+            },
+            {
+              "kind": "insert",
+              "original_start": 133,
+              "original_stop": 133,
+              "rebuilt_start": 133,
+              "rebuilt_stop": 134
+            },
+            {
+              "kind": "delete",
+              "original_start": 134,
+              "original_stop": 135,
+              "rebuilt_start": 135,
+              "rebuilt_stop": 135
+            },
+            {
+              "kind": "replace",
+              "original_start": 137,
+              "original_stop": 138,
+              "rebuilt_start": 137,
+              "rebuilt_stop": 138
+            },
+            {
+              "kind": "replace",
+              "original_start": 140,
+              "original_stop": 142,
+              "rebuilt_start": 140,
+              "rebuilt_stop": 142
+            },
+            {
+              "kind": "replace",
+              "original_start": 145,
+              "original_stop": 146,
+              "rebuilt_start": 145,
+              "rebuilt_stop": 146
+            },
+            {
+              "kind": "replace",
+              "original_start": 147,
+              "original_stop": 148,
+              "rebuilt_start": 147,
+              "rebuilt_stop": 148
+            },
+            {
+              "kind": "replace",
+              "original_start": 155,
+              "original_stop": 156,
+              "rebuilt_start": 155,
+              "rebuilt_stop": 156
+            },
+            {
+              "kind": "replace",
+              "original_start": 157,
+              "original_stop": 158,
+              "rebuilt_start": 157,
+              "rebuilt_stop": 158
+            },
+            {
+              "kind": "replace",
+              "original_start": 160,
+              "original_stop": 162,
+              "rebuilt_start": 160,
+              "rebuilt_stop": 162
+            },
+            {
+              "kind": "replace",
+              "original_start": 164,
+              "original_stop": 165,
+              "rebuilt_start": 164,
+              "rebuilt_stop": 165
+            },
+            {
+              "kind": "insert",
+              "original_start": 166,
+              "original_stop": 166,
+              "rebuilt_start": 166,
+              "rebuilt_stop": 169
+            },
+            {
+              "kind": "delete",
+              "original_start": 167,
+              "original_stop": 170,
+              "rebuilt_start": 170,
+              "rebuilt_stop": 170
+            },
+            {
+              "kind": "replace",
+              "original_start": 173,
+              "original_stop": 174,
+              "rebuilt_start": 173,
+              "rebuilt_stop": 174
+            },
+            {
+              "kind": "replace",
+              "original_start": 175,
+              "original_stop": 177,
+              "rebuilt_start": 175,
+              "rebuilt_stop": 177
+            },
+            {
+              "kind": "replace",
+              "original_start": 179,
+              "original_stop": 180,
+              "rebuilt_start": 179,
+              "rebuilt_stop": 180
+            },
+            {
+              "kind": "replace",
+              "original_start": 182,
+              "original_stop": 184,
+              "rebuilt_start": 182,
+              "rebuilt_stop": 184
+            },
+            {
+              "kind": "replace",
+              "original_start": 186,
+              "original_stop": 187,
+              "rebuilt_start": 186,
+              "rebuilt_stop": 187
+            },
+            {
+              "kind": "replace",
+              "original_start": 189,
+              "original_stop": 191,
+              "rebuilt_start": 189,
+              "rebuilt_stop": 191
+            },
+            {
+              "kind": "replace",
+              "original_start": 204,
+              "original_stop": 205,
+              "rebuilt_start": 204,
+              "rebuilt_stop": 205
+            },
+            {
+              "kind": "replace",
+              "original_start": 213,
+              "original_stop": 214,
+              "rebuilt_start": 213,
+              "rebuilt_stop": 214
+            },
+            {
+              "kind": "replace",
+              "original_start": 216,
+              "original_stop": 217,
+              "rebuilt_start": 216,
+              "rebuilt_stop": 217
+            },
+            {
+              "kind": "replace",
+              "original_start": 218,
+              "original_stop": 219,
+              "rebuilt_start": 218,
+              "rebuilt_stop": 219
+            },
+            {
+              "kind": "replace",
+              "original_start": 221,
+              "original_stop": 223,
+              "rebuilt_start": 221,
+              "rebuilt_stop": 223
+            },
+            {
+              "kind": "replace",
+              "original_start": 224,
+              "original_stop": 225,
+              "rebuilt_start": 224,
+              "rebuilt_stop": 225
+            },
+            {
+              "kind": "replace",
+              "original_start": 226,
+              "original_stop": 227,
+              "rebuilt_start": 226,
+              "rebuilt_stop": 227
+            },
+            {
+              "kind": "replace",
+              "original_start": 233,
+              "original_stop": 234,
+              "rebuilt_start": 233,
+              "rebuilt_stop": 234
+            },
+            {
+              "kind": "replace",
+              "original_start": 235,
+              "original_stop": 236,
+              "rebuilt_start": 235,
+              "rebuilt_stop": 236
+            },
+            {
+              "kind": "replace",
+              "original_start": 240,
+              "original_stop": 242,
+              "rebuilt_start": 240,
+              "rebuilt_stop": 242
+            },
+            {
+              "kind": "replace",
+              "original_start": 243,
+              "original_stop": 244,
+              "rebuilt_start": 243,
+              "rebuilt_stop": 244
+            },
+            {
+              "kind": "replace",
+              "original_start": 247,
+              "original_stop": 248,
+              "rebuilt_start": 247,
+              "rebuilt_stop": 248
+            },
+            {
+              "kind": "replace",
+              "original_start": 252,
+              "original_stop": 253,
+              "rebuilt_start": 252,
+              "rebuilt_stop": 253
+            },
+            {
+              "kind": "replace",
+              "original_start": 256,
+              "original_stop": 257,
+              "rebuilt_start": 256,
+              "rebuilt_stop": 257
+            },
+            {
+              "kind": "replace",
+              "original_start": 259,
+              "original_stop": 260,
+              "rebuilt_start": 259,
+              "rebuilt_stop": 260
+            },
+            {
+              "kind": "replace",
+              "original_start": 261,
+              "original_stop": 262,
+              "rebuilt_start": 261,
+              "rebuilt_stop": 262
+            },
+            {
+              "kind": "replace",
+              "original_start": 263,
+              "original_stop": 265,
+              "rebuilt_start": 263,
+              "rebuilt_stop": 265
+            },
+            {
+              "kind": "replace",
+              "original_start": 268,
+              "original_stop": 269,
+              "rebuilt_start": 268,
+              "rebuilt_stop": 269
+            },
+            {
+              "kind": "replace",
+              "original_start": 270,
+              "original_stop": 271,
+              "rebuilt_start": 270,
+              "rebuilt_stop": 271
+            },
+            {
+              "kind": "replace",
+              "original_start": 273,
+              "original_stop": 275,
+              "rebuilt_start": 273,
+              "rebuilt_stop": 275
+            },
+            {
+              "kind": "replace",
+              "original_start": 276,
+              "original_stop": 277,
+              "rebuilt_start": 276,
+              "rebuilt_stop": 277
+            },
+            {
+              "kind": "replace",
+              "original_start": 278,
+              "original_stop": 279,
+              "rebuilt_start": 278,
+              "rebuilt_stop": 279
+            },
+            {
+              "kind": "replace",
+              "original_start": 285,
+              "original_stop": 286,
+              "rebuilt_start": 285,
+              "rebuilt_stop": 286
+            },
+            {
+              "kind": "replace",
+              "original_start": 287,
+              "original_stop": 288,
+              "rebuilt_start": 287,
+              "rebuilt_stop": 288
+            },
+            {
+              "kind": "replace",
+              "original_start": 292,
+              "original_stop": 294,
+              "rebuilt_start": 292,
+              "rebuilt_stop": 294
+            },
+            {
+              "kind": "replace",
+              "original_start": 295,
+              "original_stop": 296,
+              "rebuilt_start": 295,
+              "rebuilt_stop": 296
+            },
+            {
+              "kind": "replace",
+              "original_start": 299,
+              "original_stop": 300,
+              "rebuilt_start": 299,
+              "rebuilt_stop": 300
+            },
+            {
+              "kind": "replace",
+              "original_start": 304,
+              "original_stop": 305,
+              "rebuilt_start": 304,
+              "rebuilt_stop": 305
+            },
+            {
+              "kind": "replace",
+              "original_start": 308,
+              "original_stop": 309,
+              "rebuilt_start": 308,
+              "rebuilt_stop": 309
+            },
+            {
+              "kind": "replace",
+              "original_start": 311,
+              "original_stop": 312,
+              "rebuilt_start": 311,
+              "rebuilt_stop": 312
+            },
+            {
+              "kind": "replace",
+              "original_start": 313,
+              "original_stop": 314,
+              "rebuilt_start": 313,
+              "rebuilt_stop": 314
+            },
+            {
+              "kind": "replace",
+              "original_start": 315,
+              "original_stop": 317,
+              "rebuilt_start": 315,
+              "rebuilt_stop": 317
+            },
+            {
+              "kind": "replace",
+              "original_start": 319,
+              "original_stop": 320,
+              "rebuilt_start": 319,
+              "rebuilt_stop": 320
+            },
+            {
+              "kind": "replace",
+              "original_start": 322,
+              "original_stop": 324,
+              "rebuilt_start": 322,
+              "rebuilt_stop": 324
+            },
+            {
+              "kind": "replace",
+              "original_start": 333,
+              "original_stop": 334,
+              "rebuilt_start": 333,
+              "rebuilt_stop": 334
+            },
+            {
+              "kind": "replace",
+              "original_start": 336,
+              "original_stop": 337,
+              "rebuilt_start": 336,
+              "rebuilt_stop": 337
+            },
+            {
+              "kind": "replace",
+              "original_start": 338,
+              "original_stop": 339,
+              "rebuilt_start": 338,
+              "rebuilt_stop": 339
+            },
+            {
+              "kind": "replace",
+              "original_start": 341,
+              "original_stop": 343,
+              "rebuilt_start": 341,
+              "rebuilt_stop": 343
+            },
+            {
+              "kind": "replace",
+              "original_start": 344,
+              "original_stop": 345,
+              "rebuilt_start": 344,
+              "rebuilt_stop": 345
+            },
+            {
+              "kind": "replace",
+              "original_start": 346,
+              "original_stop": 347,
+              "rebuilt_start": 346,
+              "rebuilt_stop": 347
+            },
+            {
+              "kind": "replace",
+              "original_start": 353,
+              "original_stop": 354,
+              "rebuilt_start": 353,
+              "rebuilt_stop": 354
+            },
+            {
+              "kind": "replace",
+              "original_start": 355,
+              "original_stop": 356,
+              "rebuilt_start": 355,
+              "rebuilt_stop": 356
+            },
+            {
+              "kind": "replace",
+              "original_start": 360,
+              "original_stop": 362,
+              "rebuilt_start": 360,
+              "rebuilt_stop": 362
+            },
+            {
+              "kind": "replace",
+              "original_start": 363,
+              "original_stop": 364,
+              "rebuilt_start": 363,
+              "rebuilt_stop": 364
+            },
+            {
+              "kind": "replace",
+              "original_start": 367,
+              "original_stop": 368,
+              "rebuilt_start": 367,
+              "rebuilt_stop": 368
+            },
+            {
+              "kind": "replace",
+              "original_start": 372,
+              "original_stop": 373,
+              "rebuilt_start": 372,
+              "rebuilt_stop": 373
+            },
+            {
+              "kind": "replace",
+              "original_start": 376,
+              "original_stop": 377,
+              "rebuilt_start": 376,
+              "rebuilt_stop": 377
+            },
+            {
+              "kind": "replace",
+              "original_start": 379,
+              "original_stop": 380,
+              "rebuilt_start": 379,
+              "rebuilt_stop": 380
+            },
+            {
+              "kind": "replace",
+              "original_start": 381,
+              "original_stop": 382,
+              "rebuilt_start": 381,
+              "rebuilt_stop": 382
+            },
+            {
+              "kind": "replace",
+              "original_start": 383,
+              "original_stop": 385,
+              "rebuilt_start": 383,
+              "rebuilt_stop": 385
+            },
+            {
+              "kind": "replace",
+              "original_start": 388,
+              "original_stop": 389,
+              "rebuilt_start": 388,
+              "rebuilt_stop": 389
+            },
+            {
+              "kind": "replace",
+              "original_start": 390,
+              "original_stop": 391,
+              "rebuilt_start": 390,
+              "rebuilt_stop": 391
+            },
+            {
+              "kind": "replace",
+              "original_start": 393,
+              "original_stop": 395,
+              "rebuilt_start": 393,
+              "rebuilt_stop": 395
+            },
+            {
+              "kind": "replace",
+              "original_start": 396,
+              "original_stop": 397,
+              "rebuilt_start": 396,
+              "rebuilt_stop": 397
+            },
+            {
+              "kind": "replace",
+              "original_start": 398,
+              "original_stop": 399,
+              "rebuilt_start": 398,
+              "rebuilt_stop": 399
+            },
+            {
+              "kind": "replace",
+              "original_start": 405,
+              "original_stop": 406,
+              "rebuilt_start": 405,
+              "rebuilt_stop": 406
+            },
+            {
+              "kind": "replace",
+              "original_start": 407,
+              "original_stop": 408,
+              "rebuilt_start": 407,
+              "rebuilt_stop": 408
+            },
+            {
+              "kind": "replace",
+              "original_start": 412,
+              "original_stop": 414,
+              "rebuilt_start": 412,
+              "rebuilt_stop": 414
+            },
+            {
+              "kind": "replace",
+              "original_start": 415,
+              "original_stop": 416,
+              "rebuilt_start": 415,
+              "rebuilt_stop": 416
+            },
+            {
+              "kind": "replace",
+              "original_start": 419,
+              "original_stop": 420,
+              "rebuilt_start": 419,
+              "rebuilt_stop": 420
+            },
+            {
+              "kind": "replace",
+              "original_start": 424,
+              "original_stop": 425,
+              "rebuilt_start": 424,
+              "rebuilt_stop": 425
+            },
+            {
+              "kind": "replace",
+              "original_start": 428,
+              "original_stop": 429,
+              "rebuilt_start": 428,
+              "rebuilt_stop": 429
+            },
+            {
+              "kind": "replace",
+              "original_start": 431,
+              "original_stop": 432,
+              "rebuilt_start": 431,
+              "rebuilt_stop": 432
+            },
+            {
+              "kind": "replace",
+              "original_start": 433,
+              "original_stop": 434,
+              "rebuilt_start": 433,
+              "rebuilt_stop": 434
+            },
+            {
+              "kind": "replace",
+              "original_start": 435,
+              "original_stop": 437,
+              "rebuilt_start": 435,
+              "rebuilt_stop": 437
+            },
+            {
+              "kind": "replace",
+              "original_start": 439,
+              "original_stop": 440,
+              "rebuilt_start": 439,
+              "rebuilt_stop": 440
+            },
+            {
+              "kind": "replace",
+              "original_start": 442,
+              "original_stop": 444,
+              "rebuilt_start": 442,
+              "rebuilt_stop": 444
+            },
+            {
+              "kind": "replace",
+              "original_start": 446,
+              "original_stop": 447,
+              "rebuilt_start": 446,
+              "rebuilt_stop": 447
+            },
+            {
+              "kind": "replace",
+              "original_start": 449,
+              "original_stop": 451,
+              "rebuilt_start": 449,
+              "rebuilt_stop": 451
+            },
+            {
+              "kind": "replace",
+              "original_start": 454,
+              "original_stop": 455,
+              "rebuilt_start": 454,
+              "rebuilt_stop": 455
+            },
+            {
+              "kind": "replace",
+              "original_start": 463,
+              "original_stop": 464,
+              "rebuilt_start": 463,
+              "rebuilt_stop": 464
+            },
+            {
+              "kind": "replace",
+              "original_start": 471,
+              "original_stop": 472,
+              "rebuilt_start": 471,
+              "rebuilt_stop": 472
+            },
+            {
+              "kind": "replace",
+              "original_start": 485,
+              "original_stop": 486,
+              "rebuilt_start": 485,
+              "rebuilt_stop": 486
+            },
+            {
+              "kind": "replace",
+              "original_start": 493,
+              "original_stop": 494,
+              "rebuilt_start": 493,
+              "rebuilt_stop": 494
+            },
+            {
+              "kind": "replace",
+              "original_start": 500,
+              "original_stop": 501,
+              "rebuilt_start": 500,
+              "rebuilt_stop": 501
+            },
+            {
+              "kind": "replace",
+              "original_start": 503,
+              "original_stop": 505,
+              "rebuilt_start": 503,
+              "rebuilt_stop": 505
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 63,
+              "original_stop": 64,
+              "rebuilt_start": 87,
+              "rebuilt_stop": 88,
+              "target_ordinal": 0,
+              "original_target": 120,
+              "rebuilt_target": 160
+            }
+          ],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 79,
+              "rebuilt_offset": 79,
+              "target_ordinal": 0,
+              "original_target": 215,
+              "rebuilt_target": 212,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 107,
+              "rebuilt_offset": 105,
+              "target_ordinal": 0,
+              "original_target": 155,
+              "rebuilt_target": 152,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 238,
+              "rebuilt_offset": 235,
+              "target_ordinal": 0,
+              "original_target": 425,
+              "rebuilt_target": 422,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 262,
+              "rebuilt_offset": 259,
+              "target_ordinal": 0,
+              "original_target": 321,
+              "rebuilt_target": 318,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 324,
+              "rebuilt_offset": 321,
+              "target_ordinal": 0,
+              "original_target": 267,
+              "rebuilt_target": 264,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 348,
+              "rebuilt_offset": 345,
+              "target_ordinal": 0,
+              "original_target": 407,
+              "rebuilt_target": 404,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 414,
+              "rebuilt_offset": 411,
+              "target_ordinal": 0,
+              "original_target": 353,
+              "rebuilt_target": 350,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 454,
+              "rebuilt_offset": 451,
+              "target_ordinal": 0,
+              "original_target": 941,
+              "rebuilt_target": 938,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 472,
+              "rebuilt_offset": 469,
+              "target_ordinal": 0,
+              "original_target": 687,
+              "rebuilt_target": 684,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 507,
+              "rebuilt_offset": 504,
+              "target_ordinal": 0,
+              "original_target": 528,
+              "rebuilt_target": 525,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 609,
+              "rebuilt_offset": 606,
+              "target_ordinal": 0,
+              "original_target": 630,
+              "rebuilt_target": 627,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 708,
+              "rebuilt_offset": 705,
+              "target_ordinal": 0,
+              "original_target": 923,
+              "rebuilt_target": 920,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 743,
+              "rebuilt_offset": 740,
+              "target_ordinal": 0,
+              "original_target": 764,
+              "rebuilt_target": 761,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 845,
+              "rebuilt_offset": 842,
+              "target_ordinal": 0,
+              "original_target": 866,
+              "rebuilt_target": 863,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 952,
+              "rebuilt_offset": 949,
+              "target_ordinal": 0,
+              "original_target": 1045,
+              "rebuilt_target": 1042,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 15843,
+          "end": 16294,
+          "line": 383,
+          "column": 1,
+          "text": "for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)\r\n\t\t\t{\r\n\t\t\t\tfloat num3 = num;\r\n\t\t\t\tfloat num4 = num2;\r\n\t\t\t\tnum5 = COAT_GOAL2_ADDRESS[1][1] - i;\r\n\t\t\t\tif (num5 > 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tfor (int j = 0; j < num5; j++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum3 *= 0.8f;\r\n\t\t\t\t\t\tnum4 *= 0.1f;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfor (int k = 0; k < MAPCHIP_COAT_WNUM; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA[i][k] = (int)num3;\r\n\t\t\t\t\tTeam.DEAFULT_FORMATION_EVA_PENALTYAREA[i][k] = (int)num4;\r\n\t\t\t\t}\r\n\t\t\t}",
+          "kind": "ForStatement",
+          "method_id": "game.Map::SetDefaultCoatEva()->System.Void",
+          "point": 15843,
+          "declaration_start": 15467,
+          "declaration_end": 19285
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 69,
+              "last_use": 329,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 75,
+              "last_use": 332,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 85,
+              "last_use": 811,
+              "loads": 14,
+              "stores": 12
+            },
+            {
+              "slot": 5,
+              "first_use": 88,
+              "last_use": 913,
+              "loads": 10,
+              "stores": 12
+            },
+            {
+              "slot": 6,
+              "first_use": 77,
+              "last_use": 215,
+              "loads": 5,
+              "stores": 2
+            },
+            {
+              "slot": 7,
+              "first_use": 102,
+              "last_use": 148,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 113,
+              "last_use": 146,
+              "loads": 2,
+              "stores": 2
+            },
+            {
+              "slot": 9,
+              "first_use": 156,
+              "last_use": 197,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 10,
+              "first_use": 236,
+              "last_use": 425,
+              "loads": 6,
+              "stores": 2
+            },
+            {
+              "slot": 11,
+              "first_use": 260,
+              "last_use": 321,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 12,
+              "first_use": 346,
+              "last_use": 407,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 13,
+              "first_use": 452,
+              "last_use": 941,
+              "loads": 26,
+              "stores": 2
+            },
+            {
+              "slot": 14,
+              "first_use": 470,
+              "last_use": 687,
+              "loads": 14,
+              "stores": 2
+            },
+            {
+              "slot": 15,
+              "first_use": 706,
+              "last_use": 923,
+              "loads": 14,
+              "stores": 2
+            },
+            {
+              "slot": 16,
+              "first_use": 950,
+              "last_use": 1045,
+              "loads": 6,
+              "stores": 2
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 7,
+              "votes": {
+                "7": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 6,
+              "votes": {
+                "6": 7
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 4,
+              "votes": {
+                "4": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 5,
+              "votes": {
+                "5": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 8,
+              "votes": {
+                "8": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 9,
+              "votes": {
+                "9": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 10,
+              "votes": {
+                "10": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 4,
+              "votes": {
+                "4": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 5,
+              "votes": {
+                "5": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 12,
+              "original_slot": 11,
+              "votes": {
+                "11": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 13,
+              "original_slot": 12,
+              "votes": {
+                "12": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 14,
+              "original_slot": 13,
+              "votes": {
+                "13": 28
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 15,
+              "original_slot": 14,
+              "votes": {
+                "14": 16
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 16,
+              "original_slot": 4,
+              "votes": {
+                "4": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 17,
+              "original_slot": 5,
+              "votes": {
+                "5": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 18,
+              "original_slot": 15,
+              "votes": {
+                "15": 16
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 19,
+              "original_slot": 4,
+              "votes": {
+                "4": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 20,
+              "original_slot": 5,
+              "votes": {
+                "5": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 21,
+              "original_slot": 16,
+              "votes": {
+                "16": 8
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "num",
+              "type": "System.Single",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 15502,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num5",
+              "type": "System.Int32",
+              "rebuilt_slot": 1,
+              "desired_slot": 7,
+              "lexical_block": 15502,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Single",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 15502,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "originalUnusedSlot1",
+              "type": "System.Single",
+              "rebuilt_slot": 3,
+              "desired_slot": null,
+              "lexical_block": 15502,
+              "constraint": "UNKNOWN: ambiguous aligned uses"
+            },
+            {
+              "name": "num3",
+              "type": "System.Single",
+              "rebuilt_slot": 5,
+              "desired_slot": 4,
+              "lexical_block": 15891,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Single",
+              "rebuilt_slot": 6,
+              "desired_slot": 5,
+              "lexical_block": 15891,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Single",
+              "rebuilt_slot": 10,
+              "desired_slot": 4,
+              "lexical_block": 16378,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Single",
+              "rebuilt_slot": 11,
+              "desired_slot": 5,
+              "lexical_block": 16378,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Single",
+              "rebuilt_slot": 16,
+              "desired_slot": 4,
+              "lexical_block": 17110,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Single",
+              "rebuilt_slot": 17,
+              "desired_slot": 5,
+              "lexical_block": 17110,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Single",
+              "rebuilt_slot": 19,
+              "desired_slot": 4,
+              "lexical_block": 18074,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Single",
+              "rebuilt_slot": 20,
+              "desired_slot": 5,
+              "lexical_block": 18074,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 18,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 17,
+          "selected_rule_prefix": "d10-smcs-unused-slot"
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 1054,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "game.Map::SetDefaultCoatEva()->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "d10-smcs-unused-slot-d10-calculated-unused-local-scope-composition:attempts": 1,
+    "d10-smcs-unused-slot-d10-calculated-unused-local-scope-composition:accepted_steps": 1,
+    "d10-smcs-unused-slot-d10-calculated-unused-local-scope-composition:body_gains": 1,
+    "d10-smcs-unused-slot-d10-calculated-unused-local-scope-composition:IL_gains": 1054
+  },
+  "completed": true,
+  "run_label": "cycle10-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\cycles\\cycle10\\baseline\\Assembly-CSharp",
+  "cycle_rule": "d10-smcs-unused-slot",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "d10-smcs-unused-slot",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 17,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "8539358ae4471cfff8eb10f5c8995cab25747535fdd33d9dd05117f5751bfd4b",
+    "source_sha256": "79df4cafdebe4bdd9e4a93d567416e08a38cd62abec844945cb102fc0d33c287",
+    "client_sha256": "041ef2e413e7750550a287ba4b64d4a8d99b6749c6aa19e9500437ca556e8f2a",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round10-smcs-unused-slot-scopes-patches.json",
+    "sha256": "c9de0afaaf013821294cc3501eb57fdddcf10eb65d161fc97b01dd26caab351a",
+    "dependencies_checked": {
+      "tools/round9_part_b_fixtures.py": "994bfb9d0399d6982003ec869d9168b3cbc9362682b2701438a4f2f2a12b499e",
+      "tools/round4_symbols.py": "a7f1f8c83332ae9a4d24c2958c52dd1d6e4375e82d76c0762edaa932789bffcc",
+      "tools/prepare_round4_symbols.py": "abe80d4ee8f60bdd864bd519b81ac3b02f48190d096162c2124cf02f237c2d45",
+      "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+      "tools/round10_smcs_unused_slot_scopes_source.py": "c9ac9fb8a55ef76f77878208f92fe39ffa77ac02b61a603676c8da9a82e87685",
+      "tools/round10_publish_frozen_bundle.py": "5c3aa48ba9c9395e57d7399777347f09707553af45ce4cca2308da2070fa9539"
+    },
+    "read_only_evidence_checked": {
+      "reports/round10-smcs-unused-slot-scopes-fixtures.json": "16438d9032b2944fcccc49444612eb2a7ff7b459b912ffbd3742d36e3ea1bd2c"
+    },
+    "frozen_evidence_checked": {
+      "build\\round10\\autonomous-smcs-next\\before-methods.json": "797c85eb1e2c0a2238a0afac3d660020dd4ade534eb2602d77ac5e7b15f8ff57",
+      "build\\round10\\autonomous-smcs-next\\bind.py": "3a648f6e474850bdeab6a80fe837cea3c836ae645e96b3319f7734b9addf43a6",
+      "build\\round10\\autonomous-smcs-next\\calculate.py": "c9ac9fb8a55ef76f77878208f92fe39ffa77ac02b61a603676c8da9a82e87685",
+      "build\\round10\\autonomous-smcs-next\\candidate-methods.json": "9e29865d3ec95056dd97b5f8346048ef13cd66942dcfdf983ce8acae2ad873bd",
+      "build\\round10\\autonomous-smcs-next\\compiler-evidence.json": "9cdd754629baa60c565e45a3982caf0c97b93392954038d367980f8f70cf7417",
+      "build\\round10\\autonomous-smcs-next\\control-methods.json": "9e29865d3ec95056dd97b5f8346048ef13cd66942dcfdf983ce8acae2ad873bd",
+      "build\\round10\\autonomous-smcs-next\\diagnose.py": "190126a965617469efcba1841f38b3099c95e2629cd353ce8557472558d01a0e",
+      "build\\round10\\autonomous-smcs-next\\fixture-results.json": "16438d9032b2944fcccc49444612eb2a7ff7b459b912ffbd3742d36e3ea1bd2c",
+      "build\\round10\\autonomous-smcs-next\\FixtureControl.cs": "2188c3ed36681b2fecb2b308c030035cc063e9a0ea1a0126bef02b747f9492bc",
+      "build\\round10\\autonomous-smcs-next\\FixtureControl.methods.cs.txt": "bc8d167cb9bd9e4cdafcf4c7a6f1e2653c9bcd0fd2c8f059d844b001482fb7f1",
+      "build\\round10\\autonomous-smcs-next\\FixtureCurrent.cs": "6c6277e47646cff11f4ed3d4e51e5e442aa3b0ce5189b23c9e6d90c7c821ec5c",
+      "build\\round10\\autonomous-smcs-next\\history.json": "273c0fc2254a8c37c265309cf4e97aa369f1889e77e95608d9a498d12ef897e5",
+      "build\\round10\\autonomous-smcs-next\\negative-dimensions-remain-in-child-methods.json": "b473e8422afccfcd6a1c973fb59afa3a1f62dceeba7afdd5ab764d06df2caf6f",
+      "build\\round10\\autonomous-smcs-next\\negative-Main-shared-ternary-store-methods.json": "118c1f0e8c13cc14edacd771579305f1c79682dca145fda21813337730e9c2a6",
+      "build\\round10\\autonomous-smcs-next\\negative-missing-unused-nine-Int32-methods.json": "f0693b8229be5254865b9d3d7d817644a3a501c629fdb86ad1ddf4a00d43eee5",
+      "build\\round10\\autonomous-smcs-next\\negative-missing-unused-Single-methods.json": "19bf46c8d3631af269382d97483f8168a9747fe88597805054e7012a9c2283ce",
+      "build\\round10\\autonomous-smcs-next\\prepare.py": "4713fd1b6a5b0f90822948f67461aa592057f2cf646bb701ef1543291b082513",
+      "build\\round10\\autonomous-smcs-next\\proposals.json": "d34e59c628da751250509b4cb2e72a230afecdabe0b6a647619fd0ccd8740a39",
+      "build\\round10\\autonomous-smcs-next\\README.md": "6a3e6f7f17e7a3ecdb3168818cf125b3f4dcda660f0f8eadcae430d51e9a6e1b",
+      "build\\round10\\autonomous-smcs-next\\selection.json": "8dce3e1e24f72c5f6872e15b62b37891160594c125994bd8b7a7f756fce3c549",
+      "build\\round10\\autonomous-smcs-next\\slot-role-diagnostic.json": "dba6a0a1d3bd42329effc7a2a66b4a55e04b81fd0637aecbf553e9266dac4ffb",
+      "build\\round10\\autonomous-smcs-next\\validate.py": "763ba7b748735ee62d79b03e5d3aaf35fb79787f4b6e2c30eb83025a3d257b22",
+      "build\\round10\\autonomous-smcs-next\\game_MapMain__Draw_copyArea\\diagnostic.json": "8a37a02ac161b4f10d2a5c9c88c567fe9c2f1f44ac0813f25270e412d296d1c1",
+      "build\\round10\\autonomous-smcs-next\\game_MapMain__Draw_copyArea\\method.after.cs": "996184114023a137a6f97a16f8953035e5df9c3a2b2b9c13d67d4f16764198d5",
+      "build\\round10\\autonomous-smcs-next\\game_MapMain__Draw_copyArea\\method.before.cs": "c7cf670e67dee612e08ff827686adb259435f3a22216b8e41bd1b317e85f438f",
+      "build\\round10\\autonomous-smcs-next\\game_MapMain__Draw_copyArea\\proposal.json": "7b33e323f429fa113881be4e1c13b67b0d9ff041fe4901ff6efcbd6f1ce40178",
+      "build\\round10\\autonomous-smcs-next\\game_Map__Draw_copyArea\\diagnostic.json": "a11e6396f17ea8db47f66f9cca2edd495d5366a5fa96b7f89a9b3a4a2faad8ef",
+      "build\\round10\\autonomous-smcs-next\\game_Map__Draw_copyArea\\method.after.cs": "68f5083a0f180ef62fef47eb94ed289ee2d7e7a53e15e28033ef7464ea98618a",
+      "build\\round10\\autonomous-smcs-next\\game_Map__Draw_copyArea\\method.before.cs": "35be0e4a107faf224257c4aeb6b1a674568b552e0b5b27526b198069753457b6",
+      "build\\round10\\autonomous-smcs-next\\game_Map__Draw_copyArea\\proposal.json": "42a2c3ae3b12e1bb4906a4d222ef8577342fdaf1e09b8f18b05f8a4d4f16b2a0",
+      "build\\round10\\autonomous-smcs-next\\game_Map__SetDefaultCoatEva\\diagnostic.json": "abe71296326254615204561046700e8e615648f4517297c66beecd9b611c62cf",
+      "build\\round10\\autonomous-smcs-next\\game_Map__SetDefaultCoatEva\\method.after.cs": "230e9d4ed2f53bfb8b2aa962e2366f78dabf85ffbfae55f672aa83dfdcfae487",
+      "build\\round10\\autonomous-smcs-next\\game_Map__SetDefaultCoatEva\\method.before.cs": "db61246ce3629d9ee8a0ee3bbfb6acc119004d6a3c47fa8e805a0e2eb07b8a78",
+      "build\\round10\\autonomous-smcs-next\\game_Map__SetDefaultCoatEva\\proposal.json": "a32097951dfc8a3d729a4c3254d7dba2bf722b910a2354b5d0ca9068d8c89541",
+      "build/round10/baseline/Assembly-CSharp/build-manifest.json": "a09853e7260d244a8515a48287786783cf0a28a7e943ebbbf77c83226461b681",
+      "build/round10/autonomous-smcs-next/probe-bundle.json": "e77fe3bfc36c89503d2c57b1e18fe221906933dedcf3c6fa99c9ee6b34dd7f4a",
+      "build/round10/autonomous-smcs-next/calculate.py": "c9ac9fb8a55ef76f77878208f92fe39ffa77ac02b61a603676c8da9a82e87685",
+      "build/round10/autonomous-smcs-next/fixture-results.json": "16438d9032b2944fcccc49444612eb2a7ff7b459b912ffbd3742d36e3ea1bd2c",
+      "build/round10/autonomous-smcs-next/compiled/before/Fixture.cs": "6c6277e47646cff11f4ed3d4e51e5e442aa3b0ce5189b23c9e6d90c7c821ec5c",
+      "build/round10/autonomous-smcs-next/compiled/candidate/Fixture.cs": "4736370af16048e201ec337f0467a0c165821c582c84450c999e5d1ce16a77df",
+      "build/round10/autonomous-smcs-next/compiled/control/Fixture.cs": "15286e38146e805939fac895401820fb35dc4b2f20fefdab3ffb4667d9f05a77",
+      "build/round10/autonomous-smcs-next/compiled/negative-dimensions-remain-in-child/Fixture.cs": "581e257159e6ccd63102417efe43c78971fe940d92a2bc9efc3c71c42e4016c3",
+      "build/round10/autonomous-smcs-next/compiled/negative-Main-shared-ternary-store/Fixture.cs": "5cea7e0665d6f4bab5669cc1ed7d99e6771d981ae70d172acc548a0e159e7eeb",
+      "build/round10/autonomous-smcs-next/compiled/negative-missing-unused-nine-Int32/Fixture.cs": "03aa22235a5a60096e8c37c746347dd9f0fe9a8d35d5c8a0908513f440589e13",
+      "build/round10/autonomous-smcs-next/compiled/negative-missing-unused-Single/Fixture.cs": "f318344082d0cbbf699af39a91630e0db8b5b327ca035448e56f3743a475f795",
+      "build/round10/autonomous-smcs-next/FixtureControl.cs": "2188c3ed36681b2fecb2b308c030035cc063e9a0ea1a0126bef02b747f9492bc",
+      "build/round10/autonomous-smcs-next/FixtureCurrent.cs": "6c6277e47646cff11f4ed3d4e51e5e442aa3b0ce5189b23c9e6d90c7c821ec5c"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "game.Map::SetDefaultCoatEva()->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794073990866666500",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.375,
+        "wall_seconds": 12.155999999959022,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.375,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794073990866666500\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794073990866666500\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "05f27eddcc46074db5228a4879bdd93a0318b2177a0842e0543e5d68343ef089",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "fae94efaab08c5c55d30e73021bb2d5cf74280eef7116e4ae8b9b177e05dbe3c",
+          "src/Assembly-CSharp/form/SpForm.cs": "40181aa015f81f479d7da8cba85230e30afb6698d83c12b74ff322b798bc739c",
+          "src/Assembly-CSharp/form/SubForm.cs": "5e42071f8bd42d8280dbda8834b170fe9b1e143074b68f08e28eb6684b788a4d",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "5d8bddca8ebbac505ceab15ecee1f43e37fdc64bf1058002d9a5b2d458c5548b",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "e80e5dfbcf480aed02cbfad5e7264bde1c547e7d7dd0460b33dedcfac5c15a56",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "680de6413753b272dd1983303bb94a346625a9f65b470a7e0518e3c7f26a9885",
+          "src/Assembly-CSharp/game/MapMain.cs": "e1712ab04cd2a4f5947ebbaa9764848537742237bb5e33fc6004c97c6e6f98b8",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "f514f7cc2cd96d5cb87f5734052195dd56569ee7bb508cf8a459ff353fa4849f",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "2874a030e69f330e2b943af4c0b83e217364181422755d1a03cfea497c48ba89",
+          "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "68ee0849e33912bdfd84f978edf3ba5716deb70d3b4acdc4cb011c024851f421",
+          "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+          "src/Assembly-CSharp/surface/GameView.cs": "44f1215ea5a8f7c8dd759bf5a4590c8a871d853e67ac6d1b8e3f195a5b795847",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3d9e96402fdbfdd4d6516b417114b098352ec8b174fbee22dff76d7509c67240",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "47078f79ffcc689a9673cab23822db0cf49dfc448ab7ec11898dfafc12648386",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "d53a0ef64dddf1f5a9e3e2e953e3e2a5589271d5bf07fd9ede14d4c987d8b083",
+        "accepted_source_set_sha256": "d81c0e84463e2e5f75e498bdc913cd795c02c9c8cd78463e27f9685d1fc19a89",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "dfbec22577bca9d9ad2c187e9283b294fe43548576e8411505d721761189a7e5"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "game.Map::SetDefaultCoatEva()->System.Void",
+        "rule": "d10-smcs-unused-slot-d10-calculated-unused-local-scope-composition",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1854,
+  "body_gains": [
+    "game.Map::SetDefaultCoatEva()->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 1054,
+  "builds": 6,
+  "build_seconds": 8.547999999951571,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "984790e009bc48b7832c4ef0dbe8d7dedcaafe1e4623954fece1c69d72b2c1ac",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\runs\\cycle10-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "d53a0ef64dddf1f5a9e3e2e953e3e2a5589271d5bf07fd9ede14d4c987d8b083",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "e52e31b43fde83091843abc6fde8d5286caed01ad2cc067f588643cb9137500a",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "15d02123780821b7bf3274db6109c7305d4988f3885e25ca30c22e36bf633b5d",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "d49759978a4108e80b17ff1986311819edbdb7384d1eb789030f0ed1723427bd",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "05f27eddcc46074db5228a4879bdd93a0318b2177a0842e0543e5d68343ef089",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "51431f986ef956b1447624734d8469cb7b8adfa3cc48e84752965d8d602cd8a1",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "fae94efaab08c5c55d30e73021bb2d5cf74280eef7116e4ae8b9b177e05dbe3c",
+    "src/Assembly-CSharp/form/SpForm.cs": "40181aa015f81f479d7da8cba85230e30afb6698d83c12b74ff322b798bc739c",
+    "src/Assembly-CSharp/form/SubForm.cs": "5e42071f8bd42d8280dbda8834b170fe9b1e143074b68f08e28eb6684b788a4d",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "5d8bddca8ebbac505ceab15ecee1f43e37fdc64bf1058002d9a5b2d458c5548b",
+    "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "e80e5dfbcf480aed02cbfad5e7264bde1c547e7d7dd0460b33dedcfac5c15a56",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "36d94fcb75fd0c213d6e7594164702f4c1953017ddd6e37051c153fb19e06dac",
+    "src/Assembly-CSharp/game/MapMain.cs": "e1712ab04cd2a4f5947ebbaa9764848537742237bb5e33fc6004c97c6e6f98b8",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "f514f7cc2cd96d5cb87f5734052195dd56569ee7bb508cf8a459ff353fa4849f",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "2874a030e69f330e2b943af4c0b83e217364181422755d1a03cfea497c48ba89",
+    "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+    "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+    "src/Assembly-CSharp/game/UserData.cs": "68ee0849e33912bdfd84f978edf3ba5716deb70d3b4acdc4cb011c024851f421",
+    "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+    "src/Assembly-CSharp/surface/GameView.cs": "44f1215ea5a8f7c8dd759bf5a4590c8a871d853e67ac6d1b8e3f195a5b795847",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3d9e96402fdbfdd4d6516b417114b098352ec8b174fbee22dff76d7509c67240",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "47078f79ffcc689a9673cab23822db0cf49dfc448ab7ec11898dfafc12648386",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "884ee789704887a2ab7e481de04577b785161172157655c3bbf4326f79899d14",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

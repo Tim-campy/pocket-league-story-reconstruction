@@ -516,14 +516,14 @@ for (int num = MAPCHIP_FIELD_HNUM - 1; num >= 0; num--)
 		{
 			bool flag = false;
 			int num = 0;
-			global::System.Int32 originalUnusedSlot2;
-
-int num2;
+			global::System.Int32 originalUnusedSlot2, recoveredUnusedSlot3;
 bool flag2 = false;
+int recoveredUnusedSlot5, recoveredUnusedSlot6, recoveredUnusedSlot7, recoveredUnusedSlot8, recoveredUnusedSlot9, recoveredUnusedSlot10, recoveredUnusedSlot11, recoveredUnusedSlot12, width, height;
+
 			global::data.MapchipMain mapchipMain = null;
-			mapchipMain = ((MAP_GROUND != 0) ? mapchipGrounds[MAP_GROUND - 1] : null);
-			num2 = 0;
-			int num3 = 0;
+			if (MAP_GROUND == 0) { mapchipMain = null; } else { mapchipMain = mapchipGrounds[MAP_GROUND - 1]; }
+			int num2 = 0;
+int num3 = 0;
 			for (int num4 = MAPCHIP_FIELD_HNUM - 1; num4 >= 0; num4--)
 			{
 				for (int i = 0; i < MAPCHIP_FIELD_WNUM; i++)
@@ -539,12 +539,12 @@ bool flag2 = false;
 						mapchipMain2 = mapchipMain;
 					}
 					Image image = apdat_.resMapChipMain_.img[mapchipMain2.img_];
-					int height = image.GetHeight();
+					 height = image.GetHeight();
 					if (height >= 30)
 					{
 						continue;
 					}
-					int width = image.GetWidth();
+					 width = image.GetWidth();
 					Camera.ConvertScreenToCamera(MAPCHIP_SPOS[num4][i], camera_pos);
 					flag = false;
 					if (draw_rect[0] != 0 && GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - height, width, height, GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, draw_rect[0], false))

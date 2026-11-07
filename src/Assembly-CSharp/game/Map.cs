@@ -377,14 +377,15 @@ namespace game
 			Team.DEAFULT_FORMATION_EVA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });
 			Team.DEAFULT_FORMATION_EVA_PENALTYAREA = JTool.MakeArray<int[][]>(new int[2] { MAPCHIP_COAT_HNUM, MAPCHIP_COAT_WNUM });
 			float num = 100f;
-			int num5;
+global::System.Single recoveredUnusedSingleSlot1;
 float num2 = 1000f;
-			global::System.Single originalUnusedSlot1;
+global::System.Single originalUnusedSlot1;
+float num3, num4;
 for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 			{
-				float num3 = num;
-				float num4 = num2;
-				num5 = COAT_GOAL2_ADDRESS[1][1] - i;
+				 num3 = num;
+				 num4 = num2;
+				int num5 = COAT_GOAL2_ADDRESS[1][1] - i;
 				if (num5 > 0)
 				{
 					for (int j = 0; j < num5; j++)
@@ -401,8 +402,8 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 			}
 			for (int l = COAT_GOAL2_ADDRESS[1][1]; l <= COAT_GOAL2_ADDRESS[0][1]; l++)
 			{
-				float num3 = num;
-				float num4 = num2;
+				 num3 = num;
+				 num4 = num2;
 				for (int num6 = COAT_GOAL1_ADDRESS[0][0] - 1; num6 >= 0; num6--)
 				{
 					num3 *= 0.8f;
@@ -424,7 +425,7 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 			{
 				for (int num8 = COAT_GOAL1_ADDRESS[0][0] - 1; num8 >= 0; num8--)
 				{
-					float num3 = Team.DEAFULT_FORMATION_EVA[num7][num8];
+					 num3 = Team.DEAFULT_FORMATION_EVA[num7][num8];
 					if (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][num8 + 1])
 					{
 						num3 = Team.DEAFULT_FORMATION_EVA[num7][num8 + 1];
@@ -434,7 +435,7 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 						num3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][num8];
 					}
 					Team.DEAFULT_FORMATION_EVA[num7][num8] = (int)num3;
-					float num4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8];
+					 num4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8];
 					if (num3 > (float)Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1])
 					{
 						num4 = Team.DEAFULT_FORMATION_EVA_PENALTYAREA[num7][num8 + 1];
@@ -447,7 +448,7 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 				}
 				for (int n = COAT_GOAL1_ADDRESS[1][0] + 1; n < MAPCHIP_COAT_WNUM; n++)
 				{
-					float num3 = Team.DEAFULT_FORMATION_EVA[num7][n];
+					 num3 = Team.DEAFULT_FORMATION_EVA[num7][n];
 					if (num3 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])
 					{
 						num3 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];
@@ -457,7 +458,7 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 						num3 = Team.DEAFULT_FORMATION_EVA[num7 + 1][n];
 					}
 					Team.DEAFULT_FORMATION_EVA[num7][n] = (int)num3;
-					float num4 = Team.DEAFULT_FORMATION_EVA[num7][n];
+					 num4 = Team.DEAFULT_FORMATION_EVA[num7][n];
 					if (num4 > (float)Team.DEAFULT_FORMATION_EVA[num7][n - 1])
 					{
 						num4 = Team.DEAFULT_FORMATION_EVA[num7][n - 1];
@@ -688,13 +689,13 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 		{
 			bool flag = false;
 			int num = 0;
-			global::System.Int32 originalUnusedSlot2;
-
-int num2;
+			global::System.Int32 originalUnusedSlot2, recoveredUnusedSlot3;
 bool flag2 = false;
+int recoveredUnusedSlot5, recoveredUnusedSlot6, recoveredUnusedSlot7, recoveredUnusedSlot8, recoveredUnusedSlot9, recoveredUnusedSlot10, recoveredUnusedSlot11, recoveredUnusedSlot12, width, height;
+
 			global::data.MapchipMatch mapchipMatch = mapchipGrounds[MAP_GROUND];
-			num2 = 0;
-			int num3 = 0;
+			int num2 = 0;
+int num3 = 0;
 			for (int num4 = MAPCHIP_FIELD_HNUM - 1; num4 >= 0; num4--)
 			{
 				for (int i = 0; i < MAPCHIP_FIELD_WNUM; i++)
@@ -710,12 +711,12 @@ bool flag2 = false;
 						mapchipMatch2 = mapchipMatch;
 					}
 					Image image = apdat_.resMapChip_.img[mapchipMatch2.img_];
-					int height = image.GetHeight();
+					 height = image.GetHeight();
 					if (height >= 30)
 					{
 						continue;
 					}
-					int width = image.GetWidth();
+					 width = image.GetWidth();
 					Camera.ConvertScreenToCamera(MAPCHIP_SPOS[num4][i], camera_pos);
 					flag = false;
 					if (draw_rect[0] != 0 && GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - height, width, height, SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, draw_rect[0], false))
