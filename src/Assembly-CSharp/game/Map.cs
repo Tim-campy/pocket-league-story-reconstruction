@@ -629,7 +629,7 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 						num8 = camera_pos[1];
 						mapchipMatch2 = apdat_.mapchipMatch_[apdat_.stadiumData_[stadiumId_].img_out_];
 						Image image = apdat_.resMapChip_.img[mapchipMatch2.img_];
-						if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image.GetHeight(), 60, image.GetHeight(), SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))) { } else {
+						if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image.GetHeight(), 60, image.GetHeight(), SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))) { continue; }{
 							apdat_.InsertGameObject(4, 0, num8, mapchipMatch2.img_, mapchipMatch2.seb_, 0, camera_pos[0], camera_pos[1], false, 0);
 						}
 						continue;
@@ -646,8 +646,7 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 						mapchipMatch2 = apdat_.mapchipMatch_[MAPCHIP_IMG[num9][j]];
 						if (BitUtil.Check(mapchipMatch2.flag_, 1) && !offscreen)
 						{
-							if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1], 60, 29, SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))
-							{
+							if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1], 60, 29, SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))) { continue; }{
 								Draw_coatLine(g, j, num9, camera_pos[0], camera_pos[1]);
 							}
 							continue;
@@ -658,8 +657,7 @@ for (int i = 0; i < MAPCHIP_COAT_HNUM; i++)
 						}
 					}
 					Image image2 = apdat_.resMapChip_.img[mapchipMatch2.img_];
-					if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image2.GetHeight(), 60, image2.GetHeight(), SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))
-					{
+					if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image2.GetHeight(), 60, image2.GetHeight(), SoccerForm.VIEW_X, SoccerForm.VIEW_Y, SoccerForm.VIEW_W, SoccerForm.VIEW_H, false))) { continue; }{
 						if (!offscreen)
 						{
 							Draw_coatLine(g, j, num9, camera_pos[0], camera_pos[1]);

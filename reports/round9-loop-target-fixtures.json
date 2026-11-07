@@ -1,0 +1,52 @@
+{
+  "operation": "smcs-intermediate-section-joins-versus-direct-loop-targets-own-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "4493c842b192cade232468310428062b12da65dfab338c4a883182c45d3a215d",
+  "driver_sha256": "e5db86a172d5be2075ff757eaf2837e1c64640cd5ab90bfa716da07dce895769",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": 10,
+  "negatives": [
+    "execute-money-early-guard-effects",
+    "execute-money-false-extra-effect",
+    "execute-trade-guard-effect",
+    "coat-owner-other-variable",
+    "coat-missing-owned-tail-continue",
+    "coat-extra-positive-guard",
+    "zsort-first-guard-not-empty",
+    "zsort-extra-after-payload",
+    "zsort-case9-must-remain-distinct",
+    "zsort-loop-sibling-after-switch"
+  ],
+  "fixtures": [
+    {
+      "case": "execute-section-local-joins",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "local_signature_unchanged": true,
+      "before": "public void Run(int[] scr){int num=scr[0];switch(num){case 0:if(scr[1]<0){SubMoney(-scr[1],4);break;}AddMoney(scr[1],4);AddPopupMessage(\"money\");break;case 17:{if(scr[1]==-1){break;}TradeData tradeData2 = tradeData_[scr[1]];Count+=tradeData2.Value;break;}default:Count++;break;}}",
+      "after": "public void Run(int[] scr){int num=scr[0];switch(num){case 0:if (scr[1] < 0) {SubMoney(-scr[1],4);} else {AddMoney(scr[1],4);AddPopupMessage(\"money\");}break;case 17:{if (scr[1] != -1) {TradeData tradeData2 = tradeData_[scr[1]];Count+=tradeData2.Value;}break;}default:Count++;break;}}",
+      "manual_control": "public void Run(int[] scr){int num=scr[0];switch(num){case 0:if(scr[1]<0){SubMoney(-scr[1],4);}else{AddMoney(scr[1],4);AddPopupMessage(\"money\");}break;case 17:{if(scr[1]!=-1){TradeData tradeData2=tradeData_[scr[1]];Count+=tradeData2.Value;}break;}default:Count++;break;}}"
+    },
+    {
+      "case": "coat-explicit-loop-continues",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "local_signature_unchanged": true,
+      "before": "public void Run(){for(int num9=0;num9<2;num9++){for(int j=0;j<3;j++){if(Count==1){if (!(GameUtil.ChRectHitRect(j,num9))){}else{apdat_.InsertGameObject(j,num9);}continue;}if(Count==2){if(GameUtil.ChRectHitRect(j+1,num9)){Draw_coatLine(j,num9);}continue;}if(GameUtil.ChRectHitRect(j+2,num9)){int width=j+num9;Count+=width;apdat_.InsertGameObject(j,width);}}}}",
+      "after": "public void Run(){for(int num9=0;num9<2;num9++){for(int j=0;j<3;j++){if(Count==1){if (!(GameUtil.ChRectHitRect(j,num9))){ continue; }{apdat_.InsertGameObject(j,num9);}continue;}if(Count==2){if (!(GameUtil.ChRectHitRect(j+1,num9))) { continue; }{Draw_coatLine(j,num9);}continue;}if (!(GameUtil.ChRectHitRect(j+2,num9))) { continue; }{int width=j+num9;Count+=width;apdat_.InsertGameObject(j,width);}}}}",
+      "manual_control": "public void Run(){for(int num9=0;num9<2;num9++){for(int j=0;j<3;j++){if(Count==1){if(!(GameUtil.ChRectHitRect(j,num9))){continue;}{apdat_.InsertGameObject(j,num9);}continue;}if(Count==2){if(!(GameUtil.ChRectHitRect(j+1,num9))){continue;}{Draw_coatLine(j,num9);}continue;}if(!(GameUtil.ChRectHitRect(j+2,num9))){continue;}{int width=j+num9;Count+=width;apdat_.InsertGameObject(j,width);}}}}"
+    },
+    {
+      "case": "zsort-direct-loop-targets",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "local_signature_unchanged": true,
+      "before": "public void Run(int typeBits){for(int j=0;j<12;j++){int num2=j;switch(num2){case 1:if (!(BitUtil.Check(typeBits, 1 << num2))){}else{int q=Count+1;Count+=q;}break;case 2:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+2;Count+=q;}break;case 3:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+3;Count+=q;}break;case 8:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+8;Count+=q;}break;case 9:if (!BitUtil.Check(typeBits, 1 << num2)){break;}Count+=9;break;case 4:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+4;Count+=q;}break;case 5:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+5;Count+=q;}break;case 6:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+6;Count+=q;}break;case 7:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+7;Count+=q;}break;case 10:if (BitUtil.Check(typeBits, 1 << num2)){int q=Count+10;Count+=q;}break;}}}",
+      "after": "public void Run(int typeBits){for(int j=0;j<12;j++){int num2=j;switch(num2){case 1:if (!(BitUtil.Check(typeBits, 1 << num2))){ continue; }{int q=Count+1;Count+=q;}break;case 2:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+2;Count+=q;}break;case 3:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+3;Count+=q;}break;case 8:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+8;Count+=q;}break;case 9:if (!BitUtil.Check(typeBits, 1 << num2)){break;}Count+=9;break;case 4:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+4;Count+=q;}break;case 5:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+5;Count+=q;}break;case 6:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+6;Count+=q;}break;case 7:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+7;Count+=q;}break;case 10:if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{int q=Count+10;Count+=q;}break;}}}",
+      "manual_control": "public void Run(int typeBits){for(int j=0;j<12;j++){int num2=j;switch(num2){case 1:if (!(BitUtil.Check(typeBits, 1 << num2))){continue;}{int q=Count+1;Count+=q;}break;case 2:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+2;Count+=q;}break;case 3:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+3;Count+=q;}break;case 8:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+8;Count+=q;}break;case 9:if (!BitUtil.Check(typeBits, 1 << num2)){break;}Count+=9;break;case 4:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+4;Count+=q;}break;case 5:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+5;Count+=q;}break;case 6:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+6;Count+=q;}break;case 7:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+7;Count+=q;}break;case 10:if (!BitUtil.Check(typeBits, 1 << num2)){continue;}{int q=Count+10;Count+=q;}break;}}}"
+    }
+  ],
+  "limitations": "Exact manual source controls preserve standalone declaration blocks. Loop continue never used when a sibling remains after switch. Case9 distinct break retained. Compiled body/signature/header/EH of game remain sole judge."
+}

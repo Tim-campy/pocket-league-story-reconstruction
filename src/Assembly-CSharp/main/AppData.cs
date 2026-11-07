@@ -4543,14 +4543,12 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 			switch (num)
 			{
 			case 0:
-				if (scr[1] < 0)
-				{
+				if (scr[1] < 0) {
 					SubMoney(-scr[1], 4);
-					break;
-				}
+					} else {
 				AddMoney(scr[1], 4);
 				AddPopupMessage(1, MyFormBase.YEN("万", scr[1]));
-				break;
+				}break;
 			case 1:
 				subForm = ExecEvent(scr[1], args, argi);
 				break;
@@ -4704,10 +4702,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 				break;
 			case 17:
 			{
-				if (scr[1] == -1)
-				{
-					break;
-				}
+				if (scr[1] != -1) {
 				TradeData tradeData2 = tradeData_[scr[1]];
 				if (tradeData2.state_ != 2)
 				{
@@ -4721,7 +4716,7 @@ subForm.humanCharaIndex_ = talkCharaIndex;
 						udat_.OnEventFlg(16);
 					}
 				}
-				break;
+				}break;
 			}
 			case 18:
 			{
@@ -5189,27 +5184,24 @@ num3 = num = 0;
 					switch (num2)
 					{
 					case 1:
-						if (!(BitUtil.Check(typeBits, 1 << num2))) { } else {
+						if (!(BitUtil.Check(typeBits, 1 << num2))) { continue; }{
 							player = udat_.GetPlayer(array[1] / 100, array[1] % 100);
 							player.Draw(g, array[6], array[7], array[9], true);
 						}
 						break;
 					case 2:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							TPlayer tPlayer2 = udat_.GetTPlayer(array[1]);
 							tPlayer2.Draw(g, array[6], array[7], array[9], false);
 						}
 						break;
 					case 3:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							udat_.tp_svisor_.Draw(g, array[6], array[7], array[9], false);
 						}
 						break;
 					case 8:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							DrawSeb(g, array[6], array[7], resCom2_.seb[array[4]], resCom2_.img[array[3]], array[5]);
 						}
 						break;
@@ -5230,32 +5222,27 @@ num3 = num = 0;
 						}
 						break;
 					case 4:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							DrawSeb(g, array[6], array[7], resMapChip_.seb[array[4]], resMapChip_.img[array[3]], array[5]);
 						}
 						break;
 					case 5:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							DrawSeb(g, array[6], array[7], resMapChipMain_.seb[array[4]], resMapChipMain_.img[array[3]], array[5]);
 						}
 						break;
 					case 6:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							g.DrawImage(resMapChipMain_.img[array[3]], array[6], array[7]);
 						}
 						break;
 					case 7:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							g.DrawImage(resMapObject_.img[array[3]], array[6], array[7]);
 						}
 						break;
 					case 10:
-						if (BitUtil.Check(typeBits, 1 << num2))
-						{
+						if (!BitUtil.Check(typeBits, 1 << num2)) { continue; }{
 							TPlayer tPlayer = udat_.tPlayers_[array[1]];
 							PlayerData playerData = pData_[tPlayer.pData_id_];
 							num3 = array[6] - 25;
