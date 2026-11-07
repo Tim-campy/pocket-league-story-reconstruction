@@ -109,20 +109,22 @@ Um EOF vazio de helper congelado motivou permitir somente blank-at-eof no lint d
 
 O planner inicial não vinculava / no stable_id a + na chave oficial de um parâmetro aninhado. Foi corrigido usando exclusivamente o mapa stable_id→chave do receipt, sem renomear assinaturas nem editar estados.
 
-D29: a API pura v1 aceitou e removeu SideEffects++ em um controle de texto; foi endurecida por igualdade de todos os tokens antes de compilar candidatos do jogo. O controle foi recusado depois da corre??o; n?o houve regress?o adotada.
+D29: a API pura v1 aceitou e removeu SideEffects++ em um controle de texto; foi endurecida por igualdade de todos os tokens antes de compilar candidatos do jogo. O controle foi recusado depois da correção; não houve regressão adotada.
 
-D33 e D34: nomes de diret?rios dos runners foram corrigidos antes de qualquer compila??o. O gravador do checkpoint e uma leitura de handoff falharam com cp1252 e foram corrigidos para UTF-8 antes de escrever dados. Nenhuma fonte, estado ou candidato foi afetado. Nenhum controle C# de D30 a D40 falhou.
+D33 e D34: nomes de diretórios dos runners foram corrigidos antes de qualquer compilação. O gravador do checkpoint e uma leitura de handoff falharam com cp1252 e foram corrigidos para UTF-8 antes de escrever dados. Nenhuma fonte, estado ou candidato foi afetado. Nenhum controle C# de D30 a D40 falhou.
 
-Os WIPs congelados conservam NOT_TESTED mesmo quando a fam?lia foi testada depois; os relat?rios p?blicos, recibos e di?rio s?o a autoridade. Ao parar, SetWinCharaTraining ficou somente como API/templates n?o testados; CGI_COMMON_QUERY ficou sem rota de mapeamento e sem teste. O diagn?stico de _draw4 n?o foi for?ado a uma API integral.
+Os WIPs congelados conservam NOT_TESTED mesmo quando a família foi testada depois; os relatórios públicos, recibos e diário são a autoridade. Ao parar, SetWinCharaTraining ficou somente como API/templates não testados; CGI_COMMON_QUERY ficou sem rota de mapeamento e sem teste. O diagnóstico de _draw4 não foi forçado a uma API integral.
 
-Manuten??o nativa de armazenamento em JSONs privados arquivados preservou conte?do e tamanho, com prova SHA antes/depois. N?o alterou original, refer?ncias, fontes p?blicas ou bin?rios; seus bytes f?sicos n?o entram nas m?tricas de IL e nenhum assembly foi normalizado.
+Manutenção nativa de armazenamento em JSONs privados arquivados preservou conteúdo e tamanho, com prova SHA antes/depois. Não alterou original, referências, fontes públicas ou binários; seus bytes físicos não entram nas métricas de IL e nenhum assembly foi normalizado.
+
+A primeira geração final teve caracteres corrompidos nas notas acrescentadas por um pipeline de texto do Windows; os textos foram corrigidos por arquivo UTF-8 e a prova completa do commit foi refeita. Nenhuma fonte alvo, método, estado ou métrica foi alterado por essa correção.
 
 Frentes preparadas antes da parada, sem teste dos respectivos candidatos no jogo; ganhos e perdas adotados: zero.
 
 | Frente | Preparado / prova | Compilações de candidatos do jogo | Métodos ganhos / perdidos |
 | --- | --- | --- | --- |
 | SetWinCharaTraining: API pura e templates NOT_TESTED; nenhuma fixture/modelo/candidatura do jogo desta proposta | 1 alvos; 412 bytes; 0 corpos de fixture exatos | 0 | 0 / 0 |
-| CGI_COMMON_QUERY / AppData..cctor: express?o pura; rota de inicializador sem mapeamento; sem fixture/modelo/candidatura, sem model-veto | 1 alvos; 1816 bytes; 0 corpos de fixture exatos | 0 | 0 / 0 |
+| CGI_COMMON_QUERY / AppData..cctor: expressão pura; rota de inicializador sem mapeamento; sem fixture/modelo/candidatura, sem model-veto | 1 alvos; 1816 bytes; 0 corpos de fixture exatos | 0 | 0 / 0 |
 
 | Execução | Natureza | Transformação | Variantes tentadas | Avanços | Corpos ganhos no motor | Bytes no motor | Perdas adotadas |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -1045,6 +1047,6 @@ Parada após 40 ciclos autônomos D e 11 etapas A-C; sequência autônoma final 
 
 ## 8. SUA RECOMENDAÇÃO
 
-1. Testar a composi??o j? preparada de SetWinCharaTraining (412 bytes), ap?s fixture pr?pria e modelo novo. Limite de ganho: 0..1 m?todo; a proposta ainda n?o foi compilada no jogo. ? o menor custo de prepara??o restante identificado.
-2. Implementar e validar o v?nculo AST de inicializador est?tico com o stsfld de CGI_COMMON_QUERY em AppData..cctor (1816 bytes), sem construtor manual. Depois testar o tern?rio proposto. Limite: 0..1 m?todo; a rota atual n?o tem mapeamento, e a express?o ainda n?o foi compilada.
-3. Resolver os quatro limites de declara??es/escopos do SubForm._draw4 de12484 bytes (locais43..49,67..69 com zerochain,91/92 e cache93/maxstack) antes de propor outra fonte integral. Fechamento esperado: UNKNOWN, limite0..1 m?todo; os29 hunks e93/94 locais ainda n?o t?m composi??o certificada. O grupo br=>ret restante cont?m2 m?todos/12896 bytes, incluindo o SetWin acima; n?o somar as estimativas como alvos disjuntos.
+1. Testar a composição já preparada de SetWinCharaTraining (412 bytes), após fixture própria e modelo novo. Limite de ganho: 0..1 método; a proposta ainda não foi compilada no jogo. É o menor custo de preparação restante identificado.
+2. Implementar e validar o vínculo AST de inicializador estático com o stsfld de CGI_COMMON_QUERY em AppData..cctor (1816 bytes), sem construtor manual. Depois testar o ternário proposto. Limite: 0..1 método; a rota atual não tem mapeamento, e a expressão ainda não foi compilada.
+3. Resolver os quatro limites de declarações/escopos de SubForm._draw4 (12484 bytes: locais43..49,67..69 com zerochain,91/92 e cache93/maxstack) antes de propor outra fonte integral. Fechamento esperado: UNKNOWN; limite0..1 método, pois os29 hunks e93/94 locais ainda não têm composição certificada. O grupo br=>ret contém2 métodos/12896 bytes, incluindo o SetWin acima; não somar as estimativas como alvos disjuntos.
