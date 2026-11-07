@@ -147,10 +147,7 @@ namespace kairo.unity.system.lineup.ui
 			try
 			{
 				byte[] array = Storage.Read(3, false, "lineup.dat");
-				if (array == null)
-				{
-					return;
-				}
+				if ((object)array != null) {
 				jarInflater = new JarInflater(array);
 				string time = "";
 				try
@@ -329,7 +326,7 @@ namespace kairo.unity.system.lineup.ui
 						showCount_[gameId_]++;
 					}
 				}
-			}
+			}}
 			catch (Exception t6)
 			{
 				if (Config.PRINT)
@@ -339,7 +336,7 @@ namespace kairo.unity.system.lineup.ui
 			}
 			finally
 			{
-				jarInflater?.Close();
+				if ((object)jarInflater != null) { jarInflater.Close(); }
 				jarInflater = null;
 			}
 		}

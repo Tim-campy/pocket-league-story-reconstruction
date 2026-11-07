@@ -389,154 +389,154 @@ namespace kairo.unity.util
 				{
 					WriteArray(os, (Array)item, arrayLengthBytes);
 				}
-				return;
+
 			}
-			if (elementType == typeof(bool))
+			else if (elementType == typeof(bool))
 			{
 				foreach (object item2 in array)
 				{
 					WriteBoolean(os, (bool)item2);
 				}
-				return;
+
 			}
-			if (elementType == typeof(byte))
+			else if (elementType == typeof(byte))
 			{
 				foreach (object item3 in array)
 				{
 					WriteByte(os, (byte)item3);
 				}
-				return;
+
 			}
-			if (elementType == typeof(sbyte))
+			else if (elementType == typeof(sbyte))
 			{
 				foreach (object item4 in array)
 				{
 					WriteByte(os, (sbyte)item4);
 				}
-				return;
+
 			}
-			if (elementType == typeof(short))
+			else if (elementType == typeof(short))
 			{
 				foreach (object item5 in array)
 				{
 					WriteShort(os, (short)item5);
 				}
-				return;
+
 			}
-			if (elementType == typeof(ushort))
+			else if (elementType == typeof(ushort))
 			{
 				foreach (object item6 in array)
 				{
 					WriteShort(os, (ushort)item6);
 				}
-				return;
+
 			}
-			if (elementType == typeof(int))
+			else if (elementType == typeof(int))
 			{
 				foreach (object item7 in array)
 				{
 					WriteInt(os, (int)item7);
 				}
-				return;
+
 			}
-			if (elementType == typeof(uint))
+			else if (elementType == typeof(uint))
 			{
 				foreach (object item8 in array)
 				{
 					WriteInt(os, (uint)item8);
 				}
-				return;
+
 			}
-			if (elementType == typeof(long))
+			else if (elementType == typeof(long))
 			{
 				foreach (object item9 in array)
 				{
 					WriteLong(os, (long)item9);
 				}
-				return;
+
 			}
-			if (elementType == typeof(ulong))
+			else if (elementType == typeof(ulong))
 			{
 				foreach (object item10 in array)
 				{
 					WriteLong(os, (ulong)item10);
 				}
-				return;
+
 			}
-			if (elementType == typeof(float))
+			else if (elementType == typeof(float))
 			{
 				foreach (object item11 in array)
 				{
 					WriteFloat(os, (float)item11);
 				}
-				return;
+
 			}
-			if (elementType == typeof(double))
+			else if (elementType == typeof(double))
 			{
 				foreach (object item12 in array)
 				{
 					WriteDouble(os, (double)item12);
 				}
-				return;
+
 			}
-			if (elementType == typeof(string))
+			else if (elementType == typeof(string))
 			{
 				foreach (object item13 in array)
 				{
 					WriteString(os, (string)item13);
 				}
-				return;
+
 			}
-			if (elementType == typeof(SecureByte))
+			else if (elementType == typeof(SecureByte))
 			{
 				foreach (object item14 in array)
 				{
 					WriteByte(os, (SecureByte)item14);
 				}
-				return;
+
 			}
-			if (elementType == typeof(SecureShort))
+			else if (elementType == typeof(SecureShort))
 			{
 				foreach (object item15 in array)
 				{
 					WriteShort(os, (SecureShort)item15);
 				}
-				return;
+
 			}
-			if (elementType == typeof(SecureInt))
+			else if (elementType == typeof(SecureInt))
 			{
 				foreach (object item16 in array)
 				{
 					WriteInt(os, (SecureInt)item16);
 				}
-				return;
+
 			}
-			if (elementType == typeof(SecureLong))
+			else if (elementType == typeof(SecureLong))
 			{
 				foreach (object item17 in array)
 				{
 					WriteLong(os, (SecureLong)item17);
 				}
-				return;
+
 			}
-			if (elementType == typeof(SecureString))
+			else if (elementType == typeof(SecureString))
 			{
 				foreach (object item18 in array)
 				{
 					WriteString(os, (SecureString)item18);
 				}
-				return;
+
 			}
-			if (elementType.GetInterface(typeof(ISerializable).Name) != null)
+			else if (elementType.GetInterface(typeof(ISerializable).Name) != null)
 			{
 				foreach (ISerializable item19 in array)
 				{
 					WriteBoolean(os, item19 != null);
 					item19?.Serialize(os);
 				}
-				return;
+
 			}
-			throw new ArgumentException("StreamUtil.WriteArray : unsupported by " + elementType.FullName);
+			else { throw new ArgumentException("StreamUtil.WriteArray : unsupported by " + elementType.FullName); }
 		}
 
 		public static T ReadArray<T>(InputStream stream, int arrayLengthBytes = 4)

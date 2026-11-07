@@ -1255,6 +1255,36 @@
       "before_sha256": "50fc0e100309135f2372e6897945857dcfc583882f849be3eb76d1061d656f9e",
       "after_measurement": "reports\\round9-cycle31-after-measurement.json",
       "after_sha256": "ea385d4bbf9691ee7649f8ee76b8cae95290331bcf704affb5c7efa36c7eed19"
+    },
+    {
+      "cycle": 43,
+      "label": "cycle32",
+      "phase": "D",
+      "primary_target": "kairo.unity.util.StreamUtil::WriteArray(java.io.OutputStream,System.Array,System.Int32)->System.Void",
+      "queue_empty_before": true,
+      "queue_empty": true,
+      "rule": "d9-calculated-protected-type-and-array-tail-compositions",
+      "assembly": "KairoLibrary",
+      "pair": "ret=>leave protected foreach exits and positive try tail",
+      "hypothesis": "Nineteen protected type arms form one common-exit chain; positive first array guard inside try plus explicit stable Close receiver guard restores normal exits",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 2,
+          "il_bytes_gained": 2745
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 2,
+      "il_bytes_gained": 2745,
+      "before_measurement": "reports\\round9-cycle32-before-measurement.json",
+      "before_sha256": "ac016486ec40e7acd80a2b6115dc05bebc27aaa5575fb42b1c55eeb724742c33",
+      "after_measurement": "reports\\round9-cycle32-after-measurement.json",
+      "after_sha256": "d89838220836975a35ec27b1fab8d2f49a9f90d9413b5c0f92f1535700e84571"
     }
   ],
   "consecutive_zero_cycles": 0

@@ -13,3 +13,5 @@ Own controls: three complete header/locals/IL/EH matches, nine negatives, nine t
 Mono pin b6587926c0f146c8b12985744f33a13b39a22d57: statement.cs If.DoEmit247-264 emits the explicit join of an ELSE when the true arm may complete; While/For440-619 binds continue to the condition/increment owner; EmitMeta2032-2046 allocates parent declarations before children. These distinctions are retained. No floating comparison is complemented.
 
 REA static original proof: resume-20261107/rea-map-coatline-method.json token060002fa,1482 decoded/3042IL; rea-app-effect-method.json0600047e,811/1662; rea-lineup-update-method.json06000717,82/222. Original fields/bodies are read-only. Fixture and model do not replace full oracle, and no IL or generated game class is supplied by hand.
+
+D31 measured result: all three bodies matched, +3 /4926 IL after124/124 pending methods processed. Zero regressions, full staged source proof passed; commit429cb234b377d85241026cf057c1d1d65ef1cd0d pushed.
