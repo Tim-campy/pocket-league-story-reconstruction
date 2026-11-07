@@ -1008,8 +1008,10 @@ if (p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1)
 				for (int j = 0; j < udat_.teams_[i].players_.Length; j++)
 				{
 					Player player = udat_.teams_[i].players_[j];
-					if (player.coliBallState_ != 4 && player.address_[0] - ball_.address_[0] >= -1 && player.address_[0] - ball_.address_[0] <= 1 && player.address_[1] - ball_.address_[1] >= -1 && player.address_[1] - ball_.address_[1] <= 1)
-					{
+					if (player.coliBallState_ == 4) { continue; }
+if (player.address_[0]-ball_.address_[0] < -1 || player.address_[0]-ball_.address_[0] > 1) { continue; }
+if (player.address_[1]-ball_.address_[1] < -1 || player.address_[1]-ball_.address_[1] > 1) { continue; }
+
 						int[] collisionData = udat_.GetCollisionData(0, 1);
 						int[] array = null;
 						float num = 0f;
@@ -1033,11 +1035,12 @@ if (p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1)
 							array = udat_.GetCollisionData(0, 0);
 							num = 20f;
 						}
-						if (!(ball_.pos_.y_ >= num) && GameUtil.ChRectHitRect(ball_.pos_.x_ + (float)collisionData[0], ball_.pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], player.pos_.x_ + (float)array[0], player.pos_.z_ + (float)array[1], array[2], array[3], true))
+						if (ball_.pos_.y_ >= num) { continue; }
+if ( GameUtil.ChRectHitRect(ball_.pos_.x_ + (float)collisionData[0], ball_.pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], player.pos_.x_ + (float)array[0], player.pos_.z_ + (float)array[1], array[2], array[3], true))
 						{
 							cBallHitList.AddElement(player);
 						}
-					}
+
 				}
 			}
 			if (cBallHitList.Size() == 0)
@@ -1086,60 +1089,55 @@ if (p1.address_[1] - p2.address_[1] < -1 || p1.address_[1] - p2.address_[1] > 1)
 				ball_.flag_ = BitUtil.Off(ball_.flag_, 96);
 				ball_.receive_wait = Ball.RECEIVE_WAIT_MIN * 3;
 				ball_.flag_ = BitUtil.Off(ball_.flag_, 8);
-				switch (num3)
-				{
-				case 2:
-					udat_.ball_.ReceiveBall(player3);
-					break;
-				case 0:
-				case 1:
-				{
+				if ((num3 == 2)) {
+udat_.ball_.ReceiveBall(player3);
+
+}
+else if ((num3 == 1) || (num3 == 0)) {
+{
 					udat_.ball_.ReceiveBall(player3);
 					udat_.ball_.ReleaseBall(player3);
 					int num4 = 30;
 					int n = 120;
 					float num5 = (float)JMath.Sqrt(udat_.ball_.v_.x_ * udat_.ball_.v_.x_ + udat_.ball_.v_.z_ * udat_.ball_.v_.z_);
 					float num6 = 0f;
-					switch (num3)
-					{
-					case 1:
-						num6 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 0.5f, 0.35f, true);
-						break;
-					case 0:
-						num6 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 0.5f, 0.35f, true);
-						break;
-					}
+					if ((num3 == 1)) {
+num6 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 0.5f, 0.35f, true);
+
+}
+else if ((num3 == 0)) {
+num6 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 0.5f, 0.35f, true);
+
+}
 					num5 *= num6;
 					int angle = 0;
 					if (player3.team_id_ == 0)
 					{
-						switch (num3)
-						{
-						case 1:
-							angle = num4 + GameUtil.Random(n);
-							break;
-						case 0:
-							angle = ((player3.direct_ != 0) ? ((player3.direct_ != 1) ? (190 + GameUtil.Random(70)) : (280 + GameUtil.Random(70))) : (190 + GameUtil.Random(160)));
-							break;
-						}
+						if ((num3 == 1)) {
+angle = num4 + GameUtil.Random(n);
+
+}
+else if ((num3 == 0)) {
+if (player3.direct_ == 0) { angle = 190 + GameUtil.Random(160); } else if (player3.direct_ == 1) { angle = 280 + GameUtil.Random(70); } else { angle = 190 + GameUtil.Random(70); }
+
+}
 					}
 					else
 					{
-						switch (num3)
-						{
-						case 1:
-							angle = 180 + num4 + GameUtil.Random(n);
-							break;
-						case 0:
-							angle = ((player3.direct_ != 2) ? ((player3.direct_ != 1) ? (100 + GameUtil.Random(70)) : (10 + GameUtil.Random(70))) : (10 + GameUtil.Random(160)));
-							break;
-						}
+						if ((num3 == 1)) {
+angle = 180 + num4 + GameUtil.Random(n);
+
+}
+else if ((num3 == 0)) {
+if (player3.direct_ == 2) { angle = 10 + GameUtil.Random(160); } else if (player3.direct_ == 1) { angle = 10 + GameUtil.Random(70); } else { angle = 100 + GameUtil.Random(70); }
+
+}
 					}
 					udat_.ball_.v_.Set(num5 * GameUtil.Cos(angle), udat_.ball_.v_.y_ * 0.5f, num5 * GameUtil.Sin(angle));
 					udat_.ball_.a_.y_ = -0.6f;
-					break;
+
 				}
-				}
+}
 				apdat_.PlaySe(Ball.SOUND_HEAD);
 			}
 			else if (player3.coliBallState_ == 3)

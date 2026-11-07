@@ -1,0 +1,17 @@
+# Residual D31: collision guards, direct dispatch and per-arm stores
+
+Frozen snapshot cycle30/after, HEAD695c6bda3ccf1323bd4a520d47f8ab0aa302843e. Actual game body remains UNKNOWN until the official oracle. One method1970IL,20alignment regions. No target compilation in this study.
+
+The remaining bne.un=>beq group has2methods/5814IL: CollisionBall_proc1970 and Init23844. Init2 remains UNKNOWN (136regions,68/68locals); no old isolated polarity negative is repeated or promoted.
+
+Collision has20original versus22current locals. All20named locals already have the original order/types; two reused compiler switch caches are the only extras. Four direct num3 dispatches are recovered as ifchains from positive original local loads/comparisons and owned jumps, not from absence of a switch opcode. First outer case2 precedes grouped cases1,0. Three inner dispatches keep case1 then0 order, without merging duplicate payloads. Removing all4switches removes exactly2temporaries. Real source-only NoEmit is complete and predicts the exact20original types, independently of the comparison.
+
+First three original guards are coliBallState==4, xdiff<-1||xdiff>1 and ydiff<-1||ydiff>1, each continue targets the lexical for-j increment. The fourth guard is ball.pos.y>=num, emitted blt.un to payload followed by br to increment; preserve >= literally. Inverting it to !(y<num) changes NaN behavior and loses .un. The remainder of the collision rectangle call is a separate positive if. Every payload, float computation, receiver evaluation and original declaration scope is preserved. Later two nested angle ternaries become three assignments each, keeping the source expression/Random arguments and original case order. No comparison of floats is complemented.
+
+Primary original evidence is REA parent ev_d0c3f915c66573f58416ccb1a5817022cac6d2d7359222c2da1c7b2bc9740568, collision page ev_ba0fec1e6a3532e58d9ec0ee20a23dffeee843c9a7ab44cada1b8afda09a5520, saved immutable in residual30-bne/rea-collision.json. Original Assembly-CSharp SHA3620ed91bd3a99cba9901cea111e6f6e489474e5c0b97b99676e5d4623817949, MVID48ce9f89-73d2-40be-bb24-22c807c04106, token0x060002bd. Raw1970IL SHA519cf729b9cc64544f5ae3ed3956a757654537214b35c8401e67e666a08adefd corroborates frozen Cecil DTO; no original byte enters reconstruction.
+
+Own independent fixture before/manual/candidate compiled with pinned smcs2.6.5: candidate equals manual for entire bodies, headers,locals,EH,attributes; before differs. Fourth own build intentionally complements the Single comparison and proves blt differs from correct blt.un. Five lexical negatives reject wrong guard/loopowner/nonterminal break/selector/anglecase. Compiler/flags/refs and all DTOs retained in toy/report.json. Candidate is header independent; fixture uses its own classes and payloads.
+
+Mono pin b6587926c0f146c8b12985744f33a13b39a22d57: statement.cs247-267 If emits false branch, then body and owned join; Continue1148-1150 jumps to LoopBegin; Switch3830-3842 allocates temporary even for a named local, released3865-3866. This explains both extra caches and why restoring only first polarity would not close the method.
+
+History audited through cycle30 by authenticated raw source SHA, reversing accepted edits then replaying trials:65reports,63trials,63replayed,0unmapped,0identical composed candidates. Old isolated rule failures remain valid for their actual before source. Game equality/prefix/header/maxstack/regressions remain UNKNOWN until official all-pending cycle.
