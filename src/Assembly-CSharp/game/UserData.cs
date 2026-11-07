@@ -3114,9 +3114,8 @@ if (et_cur[0] % 3 == 0)
 		public void Draw_edit(Graphics g, bool isSoccerForm)
 		{
 			TeamData teamData = apdat_.tData_[gm_.teamId_[0]];
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num9, num, num2, num3;
+num9 = num = num2 = num3 = 0;
 			int num4 = 0;
 			if (isSoccerForm)
 			{
@@ -3137,7 +3136,7 @@ if (et_cur[0] % 3 == 0)
 				int num8 = 2;
 				if (!isSoccerForm)
 				{
-					int num9 = EDIT_POS_MENU[0][0];
+					num9= EDIT_POS_MENU[0][0];
 					num = EDIT_POS_MENU[0][1];
 					if (phase_ == 9 || phase_ == 10)
 					{
@@ -3186,7 +3185,7 @@ if (et_cur[0] % 3 == 0)
 				}
 				else
 				{
-					int num9 = EDIT_POS_MENU_SOC[0][0];
+					num9= EDIT_POS_MENU_SOC[0][0];
 					num = EDIT_POS_MENU_SOC[0][1];
 					if (phase_ == 9 || phase_ == 10)
 					{
@@ -3296,7 +3295,7 @@ if (et_cur[0] % 3 == 0)
 			}
 			if (phase_ == 0 || phase_ == 1 || phase_ == 9 || phase_ == 10 || phase_ == 11 || phase_ == 12 || phase_ == 13 || phase_ == 2 || phase_ == 3 || phase_ == 4 || phase_ == 5 || phase_ == 14 || phase_ == 16 || phase_ == 15)
 			{
-				int num9;
+
 				if (!isSoccerForm)
 				{
 					num9 = EDIT_POS_TOPHELP_F[0][0];
@@ -3344,7 +3343,7 @@ if (et_cur[0] % 3 == 0)
 					if (phase_ == 5 || phase_ == 12)
 					{
 						string empty = string.Empty;
-						empty = ((et_cur[4] == 0) ? "ﾊﾞﾗﾝｽ重視で試合に臨みます。" : ((et_cur[4] != 1) ? "下がり目でﾃﾞｨﾌｪﾝｽします。" : "攻める意識がやや高くなります。"));
+						if (et_cur[4] == 0) { empty = "ﾊﾞﾗﾝｽ重視で試合に臨みます。"; } else if (et_cur[4] == 1) { empty = "攻める意識がやや高くなります。"; } else { empty = "下がり目でﾃﾞｨﾌｪﾝｽします。"; }
 						g.DrawString2(empty, num9 + 28, num + 6);
 					}
 					else if (phase_ == 1)
@@ -3402,7 +3401,7 @@ if (et_cur[0] % 3 == 0)
 				int num11 = 4;
 				int num12 = 18;
 				int num13 = 2;
-				int num9 = EDIT_POS_MENU_F[0][0];
+				num9= EDIT_POS_MENU_F[0][0];
 				num = EDIT_POS_MENU_F[0][1];
 				if (phase_ == 9)
 				{
@@ -3460,7 +3459,7 @@ if (et_cur[0] % 3 == 0)
 			}
 			if (phase_ == 6 || phase_ == 7 || phase_ == 8 || phase_ == 10 || phase_ == 13)
 			{
-				int num9 = EDIT_POS_MENU_M[0][0];
+				num9= EDIT_POS_MENU_M[0][0];
 				num = EDIT_POS_MENU_M[0][1];
 				if (phase_ == 10)
 				{
@@ -3687,7 +3686,8 @@ if (et_cur[0] % 3 == 0)
 								{
 									apdat_.DrawMoney2(g, 78, sallay, num2 + num20 - 2 - 2, num3 + 4, -1, 0, 4);
 								}
-								else if (AppData.GetInstance().sysSave_.ints[14] == 1)
+								else { bool recoveredMoneyStyle = AppData.GetInstance().sysSave_.ints[14] == 1;
+if (recoveredMoneyStyle)
 								{
 									apdat_.DrawMoney2(g, 78, sallay, num2 + num20 - 2 - 2 + 2, num3 + 4, 0, 0, 4);
 								}
@@ -3699,7 +3699,8 @@ if (et_cur[0] % 3 == 0)
 								{
 									apdat_.DrawMoney2(g, 78, sallay, num2 + num20 - 2 - 2 - 8 + 3, num3 + 4, -1, 0, 4);
 								}
-							}
+
+}}
 							if (editMemDispMode == 1 || editMemDispMode == 2 || editMemDispMode == 3 || editMemDispMode == 4)
 							{
 								int num23 = 1114112;
