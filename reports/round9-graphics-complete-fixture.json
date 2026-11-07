@@ -1,0 +1,24 @@
+{
+  "operation": "historical-csc-full-graphics-Boolean-block-unary-composition-fixture",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "fd5d5375e5625f917153af7b41d1b4a200afc67dba572d681c522d396c5aa830",
+  "driver_sha256": "22cd95033a2022f6fd5dca7846497984a68613003e74a3f22c9c03332774a3d8",
+  "game_compilations": 0,
+  "toy_compilations": 3,
+  "positive_full_bodies": 1,
+  "negative_controls": 3,
+  "negatives": [
+    "missing-matrix-declaration",
+    "duplicate-subtraction",
+    "already-negated"
+  ],
+  "full_body_equal": true,
+  "C14_shape_signature_equal": true,
+  "C14_shape_extra_IL_bytes": 5,
+  "original_float_operator_neg_preserved": true,
+  "no_relational_float_operator_rewritten": true,
+  "before": "public void Run(bool flag,bool flag2){if (flag && renderIsReplace_ && (blendMode_ == 0 || blendMode_ == 3) && renderForceMaterial_ == null && localMatrixIndex_ == -1 && !useFigureClip_ && !setFigureClip_) {Gui();} else if ((flag) || (!(flag2))) {string[] freshVectors=Fresh();object[] renderPasses=Passes();for(int passIndex=0;passIndex<renderPasses.Length;passIndex++){object renderPass=renderPasses[passIndex];double color=Count;Count+=(int)color+freshVectors.Length+(renderPass==null?0:1);} Matrix4x4 matrix = new Matrix4x4();matrix.m13=Count;matrix.m13 = 0f - matrix.m13;Count+=(int)matrix.m13;} else {int[] cachedVertices=Cache();for(int cachedIndex=0;cachedIndex<cachedVertices.Length;cachedIndex++){long cachedMesh=cachedVertices[cachedIndex];Count+=(int)cachedMesh;}}}",
+  "after": "public void Run(bool flag,bool flag2){if (!(flag && renderIsReplace_ && (blendMode_ == 0 || blendMode_ == 3) && renderForceMaterial_ == null && localMatrixIndex_ == -1 && !useFigureClip_) ? false : (!setFigureClip_)) {Gui();} else if ((!flag) & flag2) {int[] cachedVertices=Cache();for(int cachedIndex=0;cachedIndex<cachedVertices.Length;cachedIndex++){long cachedMesh=cachedVertices[cachedIndex];Count+=(int)cachedMesh;}} else {string[] freshVectors=Fresh();object[] renderPasses=Passes();for(int passIndex=0;passIndex<renderPasses.Length;passIndex++){object renderPass=renderPasses[passIndex];double color=Count;Count+=(int)color+freshVectors.Length+(renderPass==null?0:1);} Matrix4x4 matrix = new Matrix4x4();matrix.m13=Count;matrix.m13 = -matrix.m13;Count+=(int)matrix.m13;}}",
+  "manual_control": "public void Run(bool flag,bool flag2){if (!(flag && renderIsReplace_ && (blendMode_ == 0 || blendMode_ == 3) && renderForceMaterial_ == null && localMatrixIndex_ == -1 && !useFigureClip_) ? false : (!setFigureClip_)) {Gui();} else if ((!flag) & flag2) {int[] cachedVertices=Cache();for(int cachedIndex=0;cachedIndex<cachedVertices.Length;cachedIndex++){long cachedMesh=cachedVertices[cachedIndex];Count+=(int)cachedMesh;}} else {string[] freshVectors=Fresh();object[] renderPasses=Passes();for(int passIndex=0;passIndex<renderPasses.Length;passIndex++){object renderPass=renderPasses[passIndex];double color=Count;Count+=(int)color+freshVectors.Length+(renderPass==null?0:1);} Matrix4x4 matrix = new Matrix4x4();matrix.m13=Count;matrix.m13 = -matrix.m13;Count+=(int)matrix.m13;}}",
+  "limitations": "Single field type is proved by primary game metadata and the independent fixture; no arbitrary numeric subtraction is rewritten."
+}

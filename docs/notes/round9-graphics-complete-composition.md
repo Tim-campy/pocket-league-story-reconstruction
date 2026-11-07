@@ -1,0 +1,11 @@
+# Graphics: composição integral e menos unário — D16
+
+Base3e70d46385af79a3ab70595e28d791fba0001300; medição fresca `reports/round9-cycle15-after-measurement.json`. O alvo isolado Graphics._drawBitmap tem3.513 bytes e é a continuação calculada do candidato D14, sem adotar o intermediário rejeitado. A menor composição inteira liga quatro fatos: Booleano por ternário, cache primeiro, and Booleano ávido e menos unário.
+
+O candidato D14 já provou assinatura52 exata. Leitura estática dos seus bytes encontrou só dois trechos: ldc.r4(+0) extra3238 e sub3250 versus neg original3245. Seu tamanho3.518 desloca leave1553 para3517 e finais EH+5; original3.513/ret3512. Não há retargets semânticos nem diferença de largura de branch nessa comparação alinhada. A expressão fonte é `matrix.m13 = 0f - matrix.m13;`; hipótese sustentada é `matrix.m13 = -matrix.m13;`. O tipo real do campo é System.Single no MemberRef capturado.
+
+Menos unário é uma primitiva já conhecida; não é apresentado como descoberta nova. A novidade testável é o payload completo D14 + esse delta, porque cada candidato incompleto altera destinos anteriores e falha no prefixo. A forma anterior não é reaplicada sem mudança. Zero-menos e neg não são presumidos iguais para signed zero; o opcode neg original é o alvo, e nenhum operador relacional de float é trocado.
+
+Fixture própria Matrix4x4 com campo Single: o candidato equivalente a D14 tem a mesma assinatura do controle manual, mas exatamente cinco bytes de IL a mais; a composição integral gera o corpo completo idêntico. Três controles recusam âncora/declarador ausente, duplicação e candidato já negado. São três compilações de fixture, zero do jogo nessa etapa. O produtor preserva chamadas e literais, permitindo como única remoção numérica um0f; não edita DLL nem offsets.
+
+O modelo fresco continua **INCOMPLETO**, mas prevê todos52 tipos exatamente originais; o flag não foi promovido. O limite de incompletos e a assinatura real compilada continuam obrigatórios. Recibos: reports/round9-graphics-complete-fixture.json e reports/round9-graphics-complete-patches.json, com dependências e fonte/dumps/recibo ligados por hash. Resultado do jogo será somente o gerado pelo verificador.

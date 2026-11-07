@@ -1905,12 +1905,26 @@ int num14 = indicies[recoveredIndexB];
 				RectangleF sourceRect = renderCache_.SourceRect;
 				RectangleF drawBitmap_rc4 = _drawBitmap_rc2;
 				drawBitmap_rc4.Set(dx - imageExpand_ / 2f, dy - imageExpand_ / 2f, dx + width + imageExpand_, dy + height + imageExpand_);
-				if (flag && renderIsReplace_ && (blendMode_ == 0 || blendMode_ == 3) && renderForceMaterial_ == null && localMatrixIndex_ == -1 && !useFigureClip_ && !setFigureClip_)
+				if (!(flag && renderIsReplace_ && (blendMode_ == 0 || blendMode_ == 3) && renderForceMaterial_ == null && localMatrixIndex_ == -1 && !useFigureClip_) ? false : (!setFigureClip_))
 				{
 					UpdateGUIGroup();
 					GUI.DrawTextureWithTexCoords(GetTransRectGUI(drawBitmap_rc4, drawBitmap_rc4).ToRect(), image_, new Rect(sourceRect.left, sourceRect.top, sourceRect.Width(), sourceRect.Height()), image.GetAlphaType() != 0);
 				}
-				else if ((flag) || (!(flag2))) {
+				else if ((!flag) & flag2) {
+					Vector3[] transRectGL = GetTransRectGL(drawBitmap_rc4, _drawBitmap_vertices);
+					for (int l = 0; l < renderCache_.Count; l++)
+					{
+						MeshBuilder meshBuilder = renderCache_.Meshes[l];
+						if (meshBuilder.vertexColor)
+						{
+							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top, renderCache_.Colors[l]);
+						}
+						else
+						{
+							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top);
+						}
+					}
+				} else {
 					UpdateGLClip();
 					Vector3[] transRectGL2 = GetTransRectGL(drawBitmap_rc4, _drawBitmap_vertices);
 					RenderPass[] renderPass = GetRenderPass(image2);
@@ -1951,20 +1965,6 @@ int num14 = indicies[recoveredIndexB];
 					}
 					renderCache_.Image = image;
 					renderCache_.Empty = false;
-				} else {
-					Vector3[] transRectGL = GetTransRectGL(drawBitmap_rc4, _drawBitmap_vertices);
-					for (int l = 0; l < renderCache_.Count; l++)
-					{
-						MeshBuilder meshBuilder = renderCache_.Meshes[l];
-						if (meshBuilder.vertexColor)
-						{
-							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top, renderCache_.Colors[l]);
-						}
-						else
-						{
-							meshBuilder.AddQuad(transRectGL, sourceRect.left, sourceRect.top, sourceRect.right - sourceRect.left, sourceRect.bottom - sourceRect.top);
-						}
-					}
 				}
 				if (isGUI_ && image.textRenderTasks_.Count > 0)
 				{
@@ -2010,7 +2010,7 @@ int num14 = indicies[recoveredIndexB];
 							if (balloonRenderTask.Offscreen != null)
 							{
 								matrix = balloonRenderTask.Offscreen.dynamicTransform_;
-								matrix.m13 = 0f - matrix.m13;
+								matrix.m13 = -matrix.m13;
 							}
 							float scale2_ = balloonRenderTask.Balloon.scale2_;
 							balloonRenderTask.Balloon.scale2_ *= num15;
