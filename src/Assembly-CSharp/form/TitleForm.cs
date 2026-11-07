@@ -580,10 +580,10 @@ else{			formMan_.Push(SubForm.MakeDialog("セーブデータがありません")
 						{
 							g.SetColor(Graphics.GetColorOfRGB(44, 138, 255));
 							g.FillRect(num23 - num21 / 2, num18 + num19 * i + 4, num21, 16f);
-							if ((Config.TRIAL_VERSION) && (Language.English())) { return; }
+							if ((Config.TRIAL_VERSION) && (Language.English())) { } else {
 apdat_.DrawSeb(g, 79 - num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 0);
 apdat_.DrawSeb(g, 160 + num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], apdat_.resCom2_.img[2], 0);
-						}
+						}}
 						if (i == selMenu_)
 						{
 							g.SetColor(Graphics.GetColorOfRGB(255, 255, 224));
@@ -646,7 +646,7 @@ apdat_.DrawSeb(g, 160 + num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], a
 				for (int j = 0; j < 2; j++)
 				{
 					apdat_.DrawBox(g, num27, num25 - 12, num27 + num28, num25 - 12 + num29);
-					int num30 = apdat_.sysSave_.ints[((j != 0) ? 6 : 11) + selectSave_];
+					int num30 = apdat_.sysSave_.ints[((j == 0) ? 11 : 6) + selectSave_];
 					if (num30 == -1 && j == 0)
 					{
 						g.DrawImage(apdat_.resCom2_.img[193], num27 + 10 + IMG_SL[1][0], num25 + 15 + IMG_SL[1][1], IMG_SL[1][2], IMG_SL[1][3], IMG_SL[1][4], IMG_SL[1][5]);
@@ -688,13 +688,13 @@ apdat_.DrawSeb(g, 160 + num22, num18 + num19 * i + 18, apdat_.resCom2_.seb[0], a
 						int num31 = 1 - j;
 						g.DrawImage(apdat_.resCom2_.img[193], num27 + 10 + IMG_SL[num31][0], num25 + 6 + IMG_SL[num31][1], IMG_SL[num31][2], IMG_SL[num31][3], IMG_SL[num31][4], IMG_SL[num31][5]);
 						g.SetColor(Graphics.GetColorOfRGB(30, 30, 30));
-						g.DrawString(apdat_.sysSave_.strs[((j != 0) ? 2 : 6) + selectSave_], 7 + num27 + 90, num25 + 7, 2);
+						g.DrawString(apdat_.sysSave_.strs[((j == 0) ? 6 : 2) + selectSave_], 7 + num27 + 90, num25 + 7, 2);
 						int num32 = num30 / 10000;
 						int num33 = num30 % 10000 / 100;
 						int num34 = num30 % 100;
 						g.SetColor(Graphics.GetColorOfRGB(30, 30, 30));
 						g.DrawString(LF("10,,+2"), MyFormBase.LT("<0>年<1>月<2>週", StringUtil.FormatString(JString.ValueOf(num32 + 1), 2, ' ') + "\t" + StringUtil.FormatString(JString.ValueOf(num33 + 1), 2, ' ', false) + "\t" + JString.ValueOf(num34 + 1)), 7 + num27 + 70 - 72, num25 + 24);
-						g.DrawString(MyFormBase.YEN("万円", JLong.ParseLong(apdat_.sysSave_.strs[((j != 0) ? 4 : 8) + selectSave_])), num27 + 172, num25 + 24, 4);
+						g.DrawString(MyFormBase.YEN("万円", JLong.ParseLong(apdat_.sysSave_.strs[((j == 0) ? 8 : 4) + selectSave_])), num27 + 172, num25 + 24, 4);
 						if (selectSaveType_ == j && apdat_.IsTopForm(this))
 						{
 							apdat_.resCom2_.seb[61].Draw(g, 7 + num27 + 145, num25 + 12, apdat_.resCom2_.img);

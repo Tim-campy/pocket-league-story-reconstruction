@@ -1,0 +1,51 @@
+{
+  "operation": "smcs-sibling-block-exit-own-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "bfc356b9287bc495402f8193fe5200852ea0ed1ebd492cd9f3100b1f74655cb7",
+  "driver_sha256": "4bbc6185545f23319ee93a013b221ceae077155914015017c8b2ca2d0b2d14ff",
+  "game_compilations": 0,
+  "toy_compilations": 6,
+  "positive_full_bodies": 2,
+  "negative_controls": 8,
+  "negatives": [
+    "highlight-for-initial-other",
+    "highlight-guard-effect",
+    "highlight-next-sibling-other",
+    "highlight-tail-declaration",
+    "integer-ternary-values-other",
+    "passer-call-arguments-other",
+    "passer-next-section-other",
+    "passer-tail-extra-effect"
+  ],
+  "fixtures": [
+    {
+      "case": "highlight-sibling-with-three-ternaries",
+      "full_body_equal": true,
+      "all_fixture_method_bodies_equal": [
+        ".ctor",
+        "<Run>m__0",
+        "Run"
+      ],
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before": "public void Run(){ThreadStart action=delegate{Count++;};action();for(int i=0;i<3;i++){if(i==selMenu_){Count++;if ((Config.TRIAL_VERSION) && (Language.English())){return;}apdat_.DrawSeb(1,2);apdat_.DrawSeb(3,4);}if(i==selMenu_){Count+=2;}for(int j=0;j<2;j++){apdat_.DrawSeb((j != 0) ? 6 : 11,0);apdat_.DrawSeb((j != 0) ? 2 : 6,0);apdat_.DrawSeb((j != 0) ? 4 : 8,0);}}}",
+      "after": "public void Run(){ThreadStart action=delegate{Count++;};action();for(int i=0;i<3;i++){if(i==selMenu_){Count++;if ((Config.TRIAL_VERSION) && (Language.English())){ } else {apdat_.DrawSeb(1,2);apdat_.DrawSeb(3,4);}}if(i==selMenu_){Count+=2;}for(int j=0;j<2;j++){apdat_.DrawSeb((j == 0) ? 11 : 6,0);apdat_.DrawSeb((j == 0) ? 6 : 2,0);apdat_.DrawSeb((j == 0) ? 8 : 4,0);}}}",
+      "manual_control": "public void Run(){ThreadStart action=delegate{Count++;};action();for(int i=0;i<3;i++){if(i==selMenu_){Count++;if((Config.TRIAL_VERSION)&&(Language.English())){}else{apdat_.DrawSeb(1,2);apdat_.DrawSeb(3,4);}}if(i==selMenu_){Count+=2;}for(int j=0;j<2;j++){apdat_.DrawSeb((j == 0) ? 11 : 6,0);apdat_.DrawSeb((j == 0) ? 6 : 2,0);apdat_.DrawSeb((j == 0) ? 8 : 4,0);}}}"
+    },
+    {
+      "case": "passer-seven-to-eight-sibling",
+      "full_body_equal": true,
+      "all_fixture_method_bodies_equal": [
+        ".ctor",
+        "Cal_evaCoatMulti9block",
+        "Run"
+      ],
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "before": "public void Run(){if(ch_ceva[7]==1){int cx=Count;int cy=2;if(udat_.gm_.state_==5){return;}Cal_evaCoatMulti9block(coatEva_new_deffence,cx,cy,CEVA_PASSER_MP2_DIV);}if(ch_ceva[8]==1){Count+=8;}}",
+      "after": "public void Run(){if(ch_ceva[7]==1){int cx=Count;int cy=2;if(udat_.gm_.state_==5){ } else {Cal_evaCoatMulti9block(coatEva_new_deffence,cx,cy,CEVA_PASSER_MP2_DIV);}}if(ch_ceva[8]==1){Count+=8;}}",
+      "manual_control": "public void Run(){if(ch_ceva[7]==1){int cx=Count;int cy=2;if(udat_.gm_.state_==5){}else{Cal_evaCoatMulti9block(coatEva_new_deffence,cx,cy,CEVA_PASSER_MP2_DIV);}}if(ch_ceva[8]==1){Count+=8;}}"
+    }
+  ],
+  "limitations": "Named scopes and sibling nodes proven lexically; no break/continue/return invented for method or loop. Compiler creates delegate helper itself; every Fixture method compared, no generated class manually written. Game original signatures/body mandatory."
+}

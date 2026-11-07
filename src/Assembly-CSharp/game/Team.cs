@@ -1128,9 +1128,9 @@ passer = udat_.teams_[1 - team_id_].GetPasser();
 					cx = udat_.ball_.address_[0];
 					cy = udat_.ball_.address_[1];
 				}
-				if (udat_.gm_.state_ == 5) { return; }
+				if (udat_.gm_.state_ == 5) { } else {
 Cal_evaCoatMulti9block(coatEva_new_deffence, cx, cy, CEVA_PASSER_MP2_DIV);
-			}
+			}}
 			if (ch_ceva[8] == 1)
 			{
 				for (int num5 = 0; num5 < players_.Length; num5++)

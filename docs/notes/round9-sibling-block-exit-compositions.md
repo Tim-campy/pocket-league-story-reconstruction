@@ -1,0 +1,15 @@
+# Joins de bloco irmao - D27
+
+Base7337d56be6cdbe15f6370d4494ee4bc5e25384aa, medicao fresca cycle26-after. App131pendentes188373IL, grupo br/ret4/17215, dois alvos calculados4319IL: Title_draw3603 eTeamNewDeffence716. Subdraw4_12484 tem29hunks/extraCache/zerochain e escopos ainda nao calculados, semAPI/READY. Novo dono lexical e o join APOSBLOCOATUAL, nunca methodreturn/loopcontinue. Nao repetircommon-exit isolado.
+
+Title3603/3599,42locais/maxstack231jaiguais,7hunks. Original1137br1275, onde1275eproximo if(i==selMenu_) que ainda desenha texto/touch no MESMOfor; ret atual sai do metodo cedo. GuardaTRIAL_VERSION&&Language.English deve emptyarm/else APENASdois DrawSeb. Prefixoactions/decls eirmao seguinte ficam exatos; producerprova paiifselection e fori0, cauda2callsemaisnada. Compor tres ternariosInt32 j!=0?6:11,?2:6,?4:8 emj==0?11:6,?6:2,?8:4, mantem valores eordem deavaliacao, nenhuma comparacaofloat alterada. Guard+4bytes previsto, ternarios0net masorientacao/ILdiferem.
+
+Team716/712,16locais/maxstack14jaiguais,1hunk. Original599br626 seguech_ceva8; retfinal715. Dentrodech7, preservarcx/cy/passer e outros prefixos, ifstate5{}else{Cal9block(args);} eentaoirmaoch8 foraelse. Nada dehoistdecls oubreak/continue. APIexigeexatamenteesseparentifroot eproximoirmao8, umaunicaCalcall/argumentosoriginaisnatail.
+
+NEGATIVOSREAISR7C06 preservados: Title6trialsassinaturaconfirmada,5raw855->855 e1->854, todosrecusados. Inverterselection/state, emptyAND ouguardnegado vazio/else aindaMANTINHAMreturn; naoenglobalocaltail nemcompoe3ternarios. Team2trialsassinaturasconfirmadas:ch7outerempty472->471 eguardstate5condopostaelseMANTENDOreturn472->472. Naoeraforma nova scopedtail. Leiturasnaoforamdeclaradasrefutadaspor0candidates; aquihouvecompilacoesdeformasinsuficientes.
+
+UnityMono b6587926c0f146c8b12985744f33a13b39a22d57 statement.cs225-264if/else/join e1117-1154break/continuedonosdistintos. Aquiinsertsoif/else, semtransferenciainventada;IntegerternaryemissionalteragrafiasigualdadeInt32semfloat. Ajoin1275/626foidentificadonoILoriginal+proximoirmaoC#, naoequivalenciaCFGqueapagaBR.
+
+REA primaria: resume-20261107/rea-title-draw-method.json,parent ev_43b97d07bd9ccd720dd7d8197456443a711e4635db36809fb465c77ed21fbfd3 (paginaresolveTitle_draw),06000267,3603IL,max231,sig110000a2,1465/1465,rawSHAf9812e7d673999f74e5c92e217497084537b54dd9fcfef178a4a2d50efa46a81. Team ev_d997a458c2090b28b4a5d10432b462b7e1a2bb8671258188ba97cd118ea77bc5,rea-team-summary/defence-method.json,060003a9,716,max14,sig11000109,288/288,raw790289b3f8dc9f875c009954fdf0f41f699d28a5e883921f70282e2af31f36d8. Originaisreadonly,CILcomplete,nenhumnormalizacao.
+
+Fixturesproprias2corpos COMPLETOS iguaiscontrolesmanuais,6toybuilds,8negativos(initialfor,guardefeito,irmaodiferente,decltail,ternariovaloroutro,Calargsoutros,ch9,tailExtraEffect). Titletoycont?mdelegategeneradopelocompilador, eTODOSmetodosFixture,inclhelperlambda,comparadoscontrole/candidato;nenhumaclassegeradamanual. CamposoriginalmetadataInt32/Booleanconfirmados, loops/siblingsbodyverbati;42/16tipos COMPETOS EXATOS emfreshNoEmit. Suficiencia/ganhojogoUNKNOWNantesonda/fulloracle, nenhumstateedit.
