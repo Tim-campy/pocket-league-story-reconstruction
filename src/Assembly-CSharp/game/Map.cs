@@ -309,10 +309,10 @@ namespace game
 				mapObjects_[j].spos_[0] += (MAPCHIP_SPOS.Length - 1) * 60 / 2 - array[0] + array2[0];
 				mapObjects_[j].spos_[1] += (MAPCHIP_SPOS.Length - 1) * 30 / 2 - array[1] + array2[1];
 			}
-			COAT_CONNER[0][0] = -array[0];
-			COAT_CONNER[0][1] = -array[1];
+			COAT_CONNER[0][0] = (0 - array[0]);
+			COAT_CONNER[0][1] = (0 - array[1]);
 			COAT_CONNER[1][0] = 0 + MAPCHIP_COAT_WNUM * 60 / 2 - array[0];
-			COAT_CONNER[1][1] = -(MAPCHIP_COAT_WNUM * 30 / 2) - array[1];
+			COAT_CONNER[1][1] = (0 - (MAPCHIP_COAT_WNUM * 30 / 2)) - array[1];
 			COAT_CONNER[2][0] = MAPCHIP_COAT_HNUM * 60 / 2 - array[0];
 			COAT_CONNER[2][1] = MAPCHIP_COAT_HNUM * 30 / 2 - array[1];
 			COAT_CONNER[3][0] = MAPCHIP_COAT_HNUM * 60 / 2 + MAPCHIP_COAT_WNUM * 60 / 2 - array[0];
@@ -324,9 +324,9 @@ namespace game
 			COAT_CENTER[2][0] = MAPCHIP_COAT_HNUM * 60 / 2 / 2 + MAPCHIP_COAT_WNUM * 60 / 2 / 2 - array[0];
 			COAT_CENTER[2][1] = MAPCHIP_COAT_HNUM * 30 / 2 / 2 - MAPCHIP_COAT_WNUM * 30 / 2 / 2 - array[1];
 			COAT_GOAL1[0][0] = 0 + MAPCHIP_COAT_WNUM * 60 / 2 / 4 - array[0];
-			COAT_GOAL1[0][1] = -(MAPCHIP_COAT_WNUM * 30 / 2 / 4) - array[1];
+			COAT_GOAL1[0][1] = (0 - (MAPCHIP_COAT_WNUM * 30 / 2 / 4)) - array[1];
 			COAT_GOAL1[1][0] = 0 + MAPCHIP_COAT_WNUM * 3 * 60 / 2 / 4 - array[0];
-			COAT_GOAL1[1][1] = -(MAPCHIP_COAT_WNUM * 3 * 30 / 2 / 4) - array[1];
+			COAT_GOAL1[1][1] = (0 - (MAPCHIP_COAT_WNUM * 3 * 30 / 2 / 4)) - array[1];
 			COAT_GOAL1[2][0] = MAPCHIP_COAT_HNUM / 8 * 60 / 2 + MAPCHIP_COAT_WNUM * 60 / 2 / 4 - array[0];
 			COAT_GOAL1[2][1] = MAPCHIP_COAT_HNUM / 8 * 30 / 2 - MAPCHIP_COAT_WNUM * 30 / 2 / 4 - array[1];
 			COAT_GOAL1[3][0] = MAPCHIP_COAT_HNUM / 8 * 60 / 2 + MAPCHIP_COAT_WNUM * 3 * 60 / 2 / 4 - array[0];
@@ -340,9 +340,9 @@ namespace game
 			COAT_GOAL2[3][0] = (MAPCHIP_COAT_HNUM - MAPCHIP_COAT_HNUM / 8) * 60 / 2 + MAPCHIP_COAT_WNUM * 3 * 60 / 2 / 4 - array[0];
 			COAT_GOAL2[3][1] = (MAPCHIP_COAT_HNUM - MAPCHIP_COAT_HNUM / 8) * 30 / 2 - MAPCHIP_COAT_WNUM * 3 * 30 / 2 / 4 - array[1];
 			COAT_GOAL1_IN[0][0] = 0 + MAPCHIP_COAT_WNUM * 30 * 3 / 8 - array[0];
-			COAT_GOAL1_IN[0][1] = -(MAPCHIP_COAT_WNUM * 15 * 3 / 8) - array[1];
+			COAT_GOAL1_IN[0][1] = (0 - (MAPCHIP_COAT_WNUM * 15 * 3 / 8)) - array[1];
 			COAT_GOAL1_IN[1][0] = 0 + MAPCHIP_COAT_WNUM * 30 * 5 / 8 - array[0];
-			COAT_GOAL1_IN[1][1] = -(MAPCHIP_COAT_WNUM * 15 * 5 / 8) - array[1];
+			COAT_GOAL1_IN[1][1] = (0 - (MAPCHIP_COAT_WNUM * 15 * 5 / 8)) - array[1];
 			COAT_GOAL1_IN[2][0] = MAPCHIP_COAT_HNUM / 16 * 60 / 2 + MAPCHIP_COAT_WNUM * 30 * 3 / 8 - array[0];
 			COAT_GOAL1_IN[2][1] = MAPCHIP_COAT_HNUM / 16 * 30 / 2 - MAPCHIP_COAT_WNUM * 15 * 3 / 8 - array[1];
 			COAT_GOAL1_IN[3][0] = MAPCHIP_COAT_HNUM / 16 * 60 / 2 + MAPCHIP_COAT_WNUM * 30 * 5 / 8 - array[0];
@@ -356,7 +356,7 @@ namespace game
 			COAT_GOAL2_IN[3][0] = (MAPCHIP_COAT_HNUM - MAPCHIP_COAT_HNUM / 16) * 60 / 2 + MAPCHIP_COAT_WNUM * 30 * 5 / 8 - array[0];
 			COAT_GOAL2_IN[3][1] = (MAPCHIP_COAT_HNUM - MAPCHIP_COAT_HNUM / 16) * 30 / 2 - MAPCHIP_COAT_WNUM * 15 * 5 / 8 - array[1];
 			GOAL1[0][0] = 0 + MAPCHIP_COAT_WNUM * 60 / 2 / 2 - array[0];
-			GOAL1[0][1] = -(MAPCHIP_COAT_WNUM * 30 / 2 / 2) - array[1];
+			GOAL1[0][1] = (0 - (MAPCHIP_COAT_WNUM * 30 / 2 / 2)) - array[1];
 			GOAL2[0][0] = MAPCHIP_COAT_HNUM * 60 / 2 + MAPCHIP_COAT_WNUM * 60 / 2 / 2 - array[0];
 			GOAL2[0][1] = MAPCHIP_COAT_HNUM * 30 / 2 - MAPCHIP_COAT_WNUM * 30 / 2 / 2 - array[1];
 			int num4 = 20;

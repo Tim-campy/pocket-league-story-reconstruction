@@ -182,7 +182,7 @@ def main():
         '--before','reports/round11-'+label+'-before-measurement.json',
         '--after','reports/round11-'+label+'-after-measurement.json'])
     run(['tools/round11_hypotheses.py'])
-    commit=['tools/round11_commit.py','--run-label',label,'--message','match: round 11 '+label+' '+args.rule]
+    commit=['tools/round11_commit.py','--run-label',label,'--message',('match: ' if engine['body_gains'] else 'wip: ')+'round 11 '+label+' '+args.rule]
     if args.push:commit+=['--push']
     run(commit)
     print(json.dumps({'cycle':label,'completed':True,'result':result}),flush=True)

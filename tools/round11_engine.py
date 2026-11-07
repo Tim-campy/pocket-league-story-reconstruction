@@ -389,6 +389,9 @@ def main():
             journal_path=ROOT/'reports'/journal_name
             if journal_path.exists():
                 learned_rules += [r['rule'] for r in read(journal_path)['cycles'] if r.get('rule') and r.get('rule_accepted_steps',0)>0]
+        # Fixture-validated opt-in families remain available to later accepted
+        # methods even when their first full pass finds no matching source site.
+        learned_rules += read(ROOT/'config/round11-protocol.json').get('persistent_repertoire_rules', [])
         learned_rules=list(dict.fromkeys(learned_rules+[args.cycle_rule]))
     report['learned_cycle_rules']=learned_rules
     report['cycle_repertoire_policy']={
