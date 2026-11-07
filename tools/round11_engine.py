@@ -397,7 +397,7 @@ def main():
     report.setdefault('cycle_repertoire_counts', {'filtered_steps':0, 'removed_legacy_candidates':0,
                                                  'kept_selected_candidates':0})
     # Helpers are built once and kept alive; they never write source/ledger files.
-    from round11_transform import TransformClient
+    from round10_transform import TransformClient
     from round4_symbols import inspect_methods, select_point
     syntax_manifest = dict(c.manifest)
     syntax_manifest['sources'] = [{'path': str(c.paths[s['path']]), 'input_path': str(c.paths[s['path']])} for s in c.manifest['sources']]
@@ -444,6 +444,13 @@ def main():
             path=(ROOT/relative).resolve()
             if not path.is_relative_to((ROOT/'build/round11').resolve()) or sha(path)!=expected:
                 raise ValueError('External frozen round11 evidence changed: '+relative)
+        historical=dict(proposal_doc.get('historical_frozen_evidence_sha256',{}))
+        for proposal in proposal_doc['patches']:
+            historical.update(proposal.get('historical_frozen_evidence_sha256',{}))
+        for relative,expected in historical.items():
+            path=(ROOT/relative).resolve()
+            if not path.is_relative_to((ROOT/'build/round10/final-corpus').resolve()) or path.suffix!='.json' or sha(path)!=expected:
+                raise ValueError('Read-only historical JSON evidence changed: '+relative)
         for field in ('calculator','syntax_source'):
             expected=proposal_doc.get(field+'_sha256')
             if expected and not any(sha(p)==expected for p in (ROOT/'tools').glob('*') if p.is_file()):
@@ -452,6 +459,7 @@ def main():
         report['external_proposals']={'path':str(args.external_proposals),'sha256':sha(args.external_proposals),
             'dependencies_checked':dependencies,'read_only_evidence_checked':evidence,
             'frozen_evidence_checked':frozen_evidence,
+            'historical_frozen_evidence_checked':historical,
             'fresh_model_required':True,'exact_unique_rebase':True}
     baseline_variants = {}
     if args.calculated_alternatives:

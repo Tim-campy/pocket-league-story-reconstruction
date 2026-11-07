@@ -192,6 +192,17 @@ class Protocol(unittest.TestCase):
         with self.assertRaises(ValueError):
             report.validate_adoption({'official_verified': True, 'assemblies': {'KairoLibrary': {'matched_losses': ['fixture-method']}}})
 
+    def test_all_round11_imports_exist_including_late_imports(self):
+        import ast
+        for path in (ROOT / 'tools').glob('round11*.py'):
+            for node in ast.walk(ast.parse(path.read_text(encoding='utf-8'))):
+                names = ([node.module] if isinstance(node, ast.ImportFrom) else
+                         [name.name for name in node.names] if isinstance(node, ast.Import) else [])
+                for name in names:
+                    if name and name.startswith('round11'):
+                        self.assertTrue((ROOT / 'tools' / (name + '.py')).is_file(),
+                                        str(path) + ':' + str(node.lineno) + ' imports ' + name)
+
 
 if __name__ == '__main__':
     unittest.main()

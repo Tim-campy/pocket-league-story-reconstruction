@@ -1,0 +1,54 @@
+[
+  {
+    "hypothesis": "C4_target_inverse_assignment_chain_at_offset802",
+    "status": "REFUTADA",
+    "scope": "diagnosis of this target region only",
+    "evidence": "REA/Cecil original newarr797;stloc14@802;ldloc14@804, rebuilt newarr797;dup802; source is array initializer, not chained assignment."
+  },
+  {
+    "hypothesis": "C4_explicit_array_local_then_stores_emits_original_region",
+    "status": "CONFIRMADA_EM_FIXTURE",
+    "target_body_status": "UNKNOWN",
+    "evidence": "Both compilers candidate/manual-control whole bodies equal; constructor order/runtime checks pass. Target NoEmit complete64 versus original63; extra slot63 Int32 switch temporary. Standalone target proposal excluded from probe bundle."
+  },
+  {
+    "hypothesis": "Generic_explicit_local_vs_inverse_chain_has_same_effect_on_both_compilers",
+    "status": "REFUTADA",
+    "scope": "own fixture only",
+    "evidence": "smcs current differs; Roslyn1.1 current and explicit control already equal (optimized)."
+  },
+  {
+    "hypothesis": "C5_target_remaining_hunks_are_operand_mirror_comparisons",
+    "status": "REFUTADA",
+    "scope": "diagnosis of Map.SetCoatLine only",
+    "evidence": "All16 sequence edits form eight ldc0/sub versus neg Int32 sites. No divergent floating comparison."
+  },
+  {
+    "hypothesis": "C5_pure_primitive_operand_mirror_preserving_explicit_negation",
+    "status": "CONFIRMADA_EM_FIXTURE",
+    "target_applicability": "Not applicable to Map remaining hunks",
+    "evidence": "Seven comparison bodies per compiler equal independent mirrored controls; 49 Single and49 Double input-pairs include NaN/infinities/signed-zero; opcodes retain ordered/unordered distinction."
+  },
+  {
+    "hypothesis": "C5_Map_eight_unchecked_Int32_zero_subtractions",
+    "status": "CONFIRMADA_EM_FIXTURE",
+    "target_body_status": "UNKNOWN",
+    "evidence": "Eight reviewed Int32 statements generate candidate=manual-control on both compilers; smcs own code grows183\u2192191, same +8 as target2703\u21922711. Real NoEmit complete10/10 exact."
+  },
+  {
+    "hypothesis": "Float_explicit_negation_can_be_replaced_by_complement_operator",
+    "status": "REFUTADA",
+    "evidence": "!(a<b) versus b>=a own negative fails NaN semantic check with code4 in both compilers."
+  },
+  {
+    "hypothesis": "Float_unary_negation_and_zero_minus_are_bit_identical",
+    "status": "REFUTADA",
+    "evidence": "At +0, own runtime unary-negation yields bits -2147483648, zero-minus yields0 in both compiler outputs. Map edit restricted to proven Int32 unchecked."
+  },
+  {
+    "hypothesis": "C4_array_plus_existing_slot40_dispatch_composition",
+    "status": "CONFIRMADA_EM_FIXTURE",
+    "target_body_status": "UNKNOWN",
+    "evidence": "Original stores0 and Random2 into40, already num23; own candidate/control bodies exact on both compilers. Complete source-only NoEmit predicts original63types, removing only emit-temp63. Repeated-RNG negative detected in both. Other later target control hunks left for oracle/motor."
+  }
+]

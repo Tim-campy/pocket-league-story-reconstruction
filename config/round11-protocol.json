@@ -38,8 +38,16 @@
   "c_fronts": {
     "C1": {
       "name": "extend-try-SoundOGG-Play",
-      "status": "not_started",
-      "attempts": [],
+      "status": "verified",
+      "attempts": [
+        {
+          "label": "c01",
+          "engine": "reports/round11-c01-KairoLibrary-engine.json",
+          "adoption": "reports/round11-c01-adoption.json",
+          "result": "INCONCLUSIVA: nenhum candidato autorizado pelo modelo/mapeamento; 0 tentativas da regra, 0 avancos",
+          "assembly": "KairoLibrary"
+        }
+      ],
       "required_assemblies": [
         "KairoLibrary"
       ]
@@ -140,7 +148,11 @@
       "before_measurement": "reports\\round11-baseline-measurement.json",
       "before_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c",
       "after_measurement": "reports\\round11-after-ab-measurement.json",
-      "after_sha256": "a3d4b4619e8f978f872737c6ab7d4632f5e2a1afcdfd6eda7da576c1f417226a"
+      "after_sha256": "a3d4b4619e8f978f872737c6ab7d4632f5e2a1afcdfd6eda7da576c1f417226a",
+      "frozen_provenance": {
+        "report": "reports/round11-after-ab-frozen-provenance.json",
+        "sha256": "9a8a1c993921cdce5457ce25899af6a105aa95422e83e8946327332998b8aa63"
+      }
     },
     "B": {
       "report": "reports/round11-apk-contract.json",
@@ -152,11 +164,15 @@
       "before_measurement": "reports\\round11-baseline-measurement.json",
       "before_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c",
       "after_measurement": "reports\\round11-after-ab-measurement.json",
-      "after_sha256": "a3d4b4619e8f978f872737c6ab7d4632f5e2a1afcdfd6eda7da576c1f417226a"
+      "after_sha256": "a3d4b4619e8f978f872737c6ab7d4632f5e2a1afcdfd6eda7da576c1f417226a",
+      "frozen_provenance": {
+        "report": "reports/round11-after-ab-frozen-provenance.json",
+        "sha256": "9a8a1c993921cdce5457ce25899af6a105aa95422e83e8946327332998b8aa63"
+      }
     }
   },
   "report_schema_reviewed": true,
-  "controller_review_status": "PURE_QA_PASSED_19_TESTS_NO_TARGET_EXECUTION",
+  "controller_review_status": "PURE_QA_PASSED_20_TESTS_NO_TARGET_EXECUTION",
   "selection_policy": {
     "initial_queue_precedes_autonomous_selection": true,
     "initial_queue_allows_App_while_Kairo_diverges": true,
@@ -191,10 +207,13 @@
     "No generated class is hand-written, no original IL is copied into output, and no assembly normalization is permitted.",
     "Part A output uses the historical PDB path via an owned SUBST drive, with no post-build DLL edit; the initial measurement is retained separately from the frozen final A proof.",
     "A one-off read-only diagnostic had an unmatched-parenthesis syntax error before any read/write; it was corrected and the dedicated proof tool passed.",
-    "Root report QA corrected effective compiler options to come from build manifests, explicitly rejects nested adoption losses, and reports model accuracy and coverage."
+    "Root report QA corrected effective compiler options to come from build manifests, explicitly rejects nested adoption losses, and reports model accuracy and coverage.",
+    "A late round11_transform import was detected before any target trial and corrected to the existing immutable round10 TransformClient; an AST import-graph regression check covers nested imports.",
+    "Immutable aliases for the A/B after-measurement are in reports/round11-after-ab-frozen-provenance.json; all recorded dump, receipt and build hashes equal the frozen Part A snapshot.",
+    "Correction to previous report: Assembly-CSharp compiles against original KairoLibrary as a metadata/API reference; the test APK contained reconstructed KairoLibrary. No compilation reference was changed."
   ],
   "orchestration_review": {
-    "pure_tests": 19,
+    "pure_tests": 20,
     "target_compilations": 0,
     "model_executions": 0,
     "verifier_executions": 0,
@@ -204,7 +223,7 @@
     "files_sha256": {
       "tools/round11_controller.py": "3f5a400ed862b736439ea6a9307ddd800ef44f527267069949d56ed8ccbe5996",
       "tools/round11_cycle.py": "c2584dd48e410398bbab939677306ede1b5469b935245fbee51b55c9897d254d",
-      "tools/round11_engine.py": "9125f635fc5d47b9ac7019e15adcc21ba35ae760d674aebb0874b2fa86397075",
+      "tools/round11_engine.py": "7b5926d150d8e879cbccf6740e05d557920767725a81ab35887b45d832d6853c",
       "tools/round11_adopt.py": "c2a87b7a35a15051c0b9f7ca262b10cddf1e67cd901b89059b3f8924c52d78a4",
       "tools/round11_commit.py": "fd9273123929d752a58deb3da11d2575d70564e9eb9b2859110340bae38f78cb",
       "tools/round11_git_proof.py": "a1d3c37ae185088878d9f6b331ab21c923be777642d322d4923ff2ce672e0758",
@@ -219,7 +238,7 @@
       "tools/round11_parts.py": "895131a7c946ebb7fc8789bbb72dbd19625d17881216c778dda9648946bcaad2",
       "tools/round11_raw_gate.py": "0fdbeae23111b0629a461968ed631afdd87a445c4e00072bf2bbbbbf1fd44430",
       "tools/round11_report.py": "3ea2c8272fed5e5f01f344203fb6eb56e9a485a3da522476be265c9ec416f30d",
-      "tools/round11_test_protocol.py": "0ce0837845a65a9f5bc4da764c15057a2a14878af2e27cbfe7eaedc8edf6c9e1"
+      "tools/round11_test_protocol.py": "fd2012801dfa7a9c4cfaa75fc8e444e41f5e9a5962e8ebca3611a14c4757e8a4"
     }
   },
   "baseline_measurement_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c"
