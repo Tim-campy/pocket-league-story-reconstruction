@@ -371,3 +371,19 @@ Rodada9 D22: recoveredUnusedSingle em TBall.Update_training e nome sintetico par
 D22 confirmou o corpo inteiro de TBall.Update_training com sete locais reais e recoveredUnusedSingle sem inicializador. Isto prova uma fonte que reproduz o original; nao identifica nome nem escopo historicos unicos.
 
 D26: recoveredLangFormatLine e local sintetico do foreachparser de Language.Init. Nomehistorico UNKNOWN; o compilador o elimina/reutiliza temporarios no corpo aprovado17locais. Recurso Split avaliado uma vez, nome do recurso/primeiroforeach intactos.
+
+# Rodada 10: execução Android e APK de teste
+
+O teste funcional usa ADB 1.0.41, platform-tools 37.0.1-15733141, e as ferramentas
+`keytool`/`jarsigner` do Microsoft JDK 21.0.12.101 já instaladas. Nenhuma instalação
+de ferramenta foi necessária. A execução ocorreu em Samsung SM-S908E, Android
+16/API 36, com o player armeabi-v7a. O APK assinado com uma nova chave local de
+teste abriu, chegou ao menu e completou uma partida; a prova e seus limites estão
+em [round10-functional-test.json](../reports/round10-functional-test.json) e na
+[nota de execução](notes/round10-functional-test.md).
+
+Esse APK contém os arquivos do APK do usuário, substituindo as duas DLLs pelos
+builds C# verificados e a assinatura por uma assinatura de teste. É somente um
+artefato funcional: não é a reconstrução final nem entra nas métricas byte a byte.
+A chave privada e os arquivos do telefone permanecem fora do Git. As opções e
+referências dos dois compiladores alvo não mudaram por causa desse teste.

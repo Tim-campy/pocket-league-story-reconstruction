@@ -1,0 +1,92 @@
+{
+  "schema": "smcs-control-tree-v1 with additive Round10 templates",
+  "status": "C1..C4 independently validated on frozen baseline10; unproved forms remain UNKNOWN",
+  "independence": "AST receives frozen C# and reference metadata only; IL extractor receives methodDTO only. Neither uses the opposite side to infer structure.",
+  "APIs": {
+    "source": "round10_control_ast.Client(manifest, stage=1..4).extract(path, source=None, method_id=None)",
+    "IL": "round10_control_il.CONTROL_STAGE=1..4; extract_il(methodDTO)",
+    "projection": "canonical_plan(ir); canonical_tree(ir). canonical_tree never reads emission_plan.",
+    "validation": "python tools/round10_control_validate.py --snapshot build/round10/baseline --stage N --label LABEL"
+  },
+  "switch": {
+    "canonical": {
+      "kind": "switch",
+      "dispatch": {
+        "normalization_opcode": "add|sub|null",
+        "normalization_value": "exact signed Int32 constant or 0",
+        "table": "ordered section indices; -1 is the proven switch exit",
+        "default_branch_opcode": "br (width retained)"
+      },
+      "sections": [
+        {
+          "keys": "Int32 labels, grouped by shared physical body",
+          "body": "sequence"
+        }
+      ]
+    },
+    "raw_data": [
+      "dense_first",
+      "dense_normalization_opcode",
+      "dense_normalization_value",
+      "dense_table",
+      "dense_default_branch"
+    ],
+    "raw_sections": "node.children are sections; child.data.case_keys preserves semantic labels in source/physical order",
+    "source_selector": "data.selector and selector_type; selector evaluation/temp-store are preceding source lowering leaves, not target C# statements to transplant independently",
+    "tree_limits": "Single dense Int32 table, no default body, outside loop/EH frames; cases and all transfer owners must also be complete. Sparse, hybrid, string, constants, nullable and wider governing types remain UNKNOWN where not proved.",
+    "string_plan": "Dictionary/Hashtable lowering follows pinned Mono, including null/cache guards and source-label map order. No string-switch nodes occur in the mapped baseline source corpus; own fixtures prove plans. Generated fields are never hand-written. Global naming context remains required for metadata reconstruction."
+  },
+  "EH": {
+    "canonical": {
+      "kind": "try",
+      "handler_kind": "catch|finally",
+      "catch_types": "ordered normalized type names",
+      "try_epilogue_opcode": "leave",
+      "handler_epilogue_opcodes": "ordered leave|endfinally",
+      "body": "sequence",
+      "handlers": "ordered sequences"
+    },
+    "raw_data": [
+      "eh_kind",
+      "eh_catch_types",
+      "eh_try_epilogue",
+      "eh_handler_epilogues"
+    ],
+    "raw_children": "try body followed by handler bodies; catch prologue store/pop is a lowering leaf",
+    "protected_return": "A return node can have opcode leave; source renderer emits C# return within try, never an IL leave statement. Footer reload/ret stays explicit in IR.",
+    "implicit_edges": "Reflection.Emit adds a try/catch leave even after an explicit protected-return leave. Never drop duplicates or branches to the next instruction.",
+    "boundary_labels": "MarkLabel and EH boundary metadata are zero-width. A coincident label points at the first actual instruction of the region. The source writer emits EH metadata before labels for that instruction slot; destinations are not rewritten. Fixture evidence separately compares external/internal EH-entry edges.",
+    "tree_limits": "Flat catch group or single finally with literal epilogues. Nested/combined/filter/fault EH, using/lock equivalence and ambiguous loop ownership are UNKNOWN until separately proved."
+  },
+  "logic": {
+    "AND_if": "Recursive literal if(a&&b) versus nested if equivalence; explicit joins retained. Already normalized loops must not be processed twice.",
+    "common_loop_test": {
+      "kind": "test-chain",
+      "taken_target": "loop-body",
+      "predicates": "ordered leaf/test sequence with every exact branch opcode"
+    },
+    "raw_markers": [
+      "source logical.data.r10_common_loop_target_chain",
+      "IL logical.data.condition_chain"
+    ],
+    "limits": "Only literal common-target chains are combined. OR conditions with mixed continuations, lifted/overloaded logic and side-effecting constant reductions stay UNKNOWN. Floating .un branches and explicit negation are preserved."
+  },
+  "owners": {
+    "policy": "Separate switch and loop frames; continue skips switches. All physical candidate owners must be recorded; never choose the first owner merely because target offsets coincide.",
+    "ambiguity": "Coincident switch exit/loop continue or break targets, and iterator-suffix versus if-join ownership, remain tree_complete=false. Exact emission-plan coverage does not establish lexical ownership.",
+    "additive_fields": [
+      "target_owner_kind",
+      "target_breakable_depth",
+      "target_depth (loop depth)",
+      "owner_candidates"
+    ]
+  },
+  "application": "Bindings must prove source-to-own-IL plan/tree correspondence before original-to-source leaf matching. Synthetic dispatch, catch prologue and protected-return leaves belong to lowering atoms; they are not standalone source statements. Solver complete+wrong rejects; incomplete is distinct from proved wrong and follows the controller's bounded oracle policy.",
+  "forbidden": [
+    "AST bootstrapped from original or own IL",
+    "manual generated classes/fields",
+    "target IL byte copying",
+    "assembly normalization",
+    "manual ledger promotion"
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "maximum_cycles": 40,
+  "consecutive_zero_stop": 5,
+  "incomplete_candidate_variants_per_method_per_cycle": 24,
+  "incomplete_candidate_variants_per_method_per_pass": 12,
+  "incomplete_passes": "at most one isolated probe for a method plus one full assembly pass",
+  "complete_wrong_signature_rejected": true,
+  "incomplete_prediction_does_not_reject": true,
+  "require_original_signature_after_compilation": true,
+  "kairo_cycle_quota": "at least one KairoLibrary cycle in every consecutive block of five cycles",
+  "maximum_consecutive_primary_same_method": 2,
+  "stop_counter_requires_empty_prepared_queue": true,
+  "models": {
+    "Assembly-CSharp": {
+      "module": "round7_slot_model",
+      "source": "tools/Round7SlotModel.cs",
+      "client": "tools/round7_slot_model.py",
+      "solver": "tools/round7_slot_solver.py",
+      "validation": "reports/round8-slot-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/Assembly-CSharp"
+    },
+    "KairoLibrary": {
+      "module": "round8_roslyn_model",
+      "source": "tools/Round8RoslynModel.cs",
+      "client": "tools/round8_roslyn_model.py",
+      "solver": "tools/round7_roslyn_solver.py",
+      "validation": "reports/round8-roslyn-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/KairoLibrary"
+    }
+  },
+  "baseline_commit": "aecb02b8a7b0965508e223335e44ae36a95a0939",
+  "phase": "parts_B_C",
+  "autonomous_started": false,
+  "required_parts": {
+    "A": "complete",
+    "B": "complete",
+    "C": "pending"
+  },
+  "prepared_queue": [
+    {
+      "id": "d-setwin-chara-training",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY",
+      "method_ids": [
+        "form.SubForm::SetWinCharaTraining(System.Int32,System.Int32)->System.Void"
+      ],
+      "required_work": "Own fixture passed; fresh model, isolated game probe and full official verification still required"
+    },
+    {
+      "id": "d-cgi-common-query-cctor",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY",
+      "method_ids": [
+        "main.AppData::.cctor()->System.Void"
+      ],
+      "required_work": "Source field and both stsfld anchors bound; own fixture passed; game probe and full verification still required"
+    },
+    {
+      "id": "d-subform-draw4",
+      "phase": "D",
+      "status": "pending",
+      "readiness": "READY",
+      "method_ids": [
+        "form.SubForm::_draw4(kairo.unity.ui.Graphics)->System.Void"
+      ],
+      "required_work": "Nine-edit source composition and own fixture passed; fresh slots model and whole game body remain to verify"
+    }
+  ],
+  "prepared_registry": "config/round10-prepared-families.json",
+  "baseline_measurement": "reports/round10-baseline-measurement.json",
+  "frozen_round9_inputs": {
+    "tools/round9_cycle.py": "969b28a70d2b9a9dd36c0507c4030e76e89487ce2473ca1126e5f2bea4810243",
+    "tools/round9_engine.py": "d7f117420e4a4bd8010d89bf923c2ad117cf7c4ca13c27e6c1bbd13a2c8d0121",
+    "tools/round9_adopt.py": "f4a923c11d1396bb7dc9bd8d276f9196779a47b1964d8abd27a58ccb7b40dc08",
+    "tools/round9_report.py": "002429e2f1329fc64b849ec1eb61050015d9b384c4fa968cc27a045c219215cf",
+    "tools/round9_freeze.py": "691201469cc26fdf3dd07c4cc837ef68b31469f7b8e0431058e6e381732a5820",
+    "tools/round9_measure.py": "0d724a3e6dbce933c61fd5bf41298ecda7248b20827ad76349a6031efef5e49b",
+    "tools/round9_journal.py": "9f39ba5e01b4a9329263af2f8719bb78fd6e21cc72e6bd24a12261ad163f4e8d",
+    "tools/round9_commit.py": "c98b5495323207b6328019a0385077640312347c9e99df8f779b3d905ab77497",
+    "tools/round9_git_proof.py": "c8ac21b672a61899a65de2c5aca86cce36e44f0d09edf72531ec3e1e9a5855bc",
+    "tools/round9_finish.py": "99397eb9cb14003a1e149df946705923d9317fd14212183628e26e288fe3b284",
+    "tools/round9_hypotheses.py": "3caeef137587a9f74ee152d426e62f8043380a7fd8d8e7e7347fdf3ece8c8b9f",
+    "tools/round9_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+    "tools/prepare_round9_transform.py": "de0c72a6b166e70e4cbc4a447d78b4180a82afa2a5a845327e8f2aa93499b75b",
+    "tools/round9_transform.py": "42a8f2c4f749b61fbb57b6b41f4786863a2ec53a0695b05bee3bbf737a0cbea7",
+    "tools/round9_model_policy.py": "d29d6a3dca679f75762d3529ec94924d78d503b8ce6ad64fa725c4322f42a628",
+    "tools/round9_prepared_d_queue.py": "a7fe818913cc27386b8056cb8d4186c88816e0e3819d250d73e1253917b4a006",
+    "tools/round9_roslyn_validate.py": "5aa15d2b6589972b6762fad4607583129e2a54d264ee5a1c5be36819f875ae9b",
+    "tools/round9_control_validate.py": "da9b136147c23ab497f6d1b0ec0caff02b7d05b4b11c9eb9f54ead07fbc72882"
+  },
+  "controller_review_status": "PROPOSAL_NOT_INSTALLED_NOT_EXECUTED",
+  "part_evidence": {
+    "A": {
+      "report": "reports/round10-functional-test.json",
+      "sha256": "3e9ad64a2f6f0ff19d6881483b14efc18cfc82e6326ce353df4621ab5094f51a",
+      "summary": "Functional scenario completed on physical Android device; TEST_ONLY APK, not byte-identical reconstruction progress."
+    },
+    "B": {
+      "report": "reports/round10-KairoLibrary-raw-measurement.json",
+      "sha256": "bc9b0699e00ed8c1ae2689d33d65302409d8f84af2ed889e0798db09a3217faf",
+      "manifest": "reports/round10-KairoLibrary-raw-manifest.json",
+      "manifest_sha256": "28d52f5342a1c4acae342f2bd19994188ab89ecf28d578bf690dedd222f6748f",
+      "note": "docs/notes/round10-raw-measurement.md",
+      "summary": "Measurement only: 23 equal table row counts; 97 persistent CodeView path bytes; no raw corrections or DLL normalization."
+    }
+  },
+  "report_schema_reviewed": false,
+  "preparation_notes": [],
+  "kairo_window_size": 5
+}

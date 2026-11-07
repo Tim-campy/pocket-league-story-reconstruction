@@ -1,0 +1,39 @@
+{
+  "operation": "round10-guard-lifetime-independent-fixtures",
+  "toy_compilations": 6,
+  "game_compilations": 0,
+  "positive_full_bodies": 2,
+  "fixtures": [
+    {
+      "fixture": "Canvas",
+      "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+      "candidate_matches_manual_control": true,
+      "before_body_different": true,
+      "before_locals": 10,
+      "control_locals": 9,
+      "original_control": "using System.Collections.Generic;\npublic class Fixture {\n public bool invalidTouch_;\n public Dictionary<int,float[]> onTouchPointer_=new Dictionary<int,float[]>();\n public struct Touch { public int fingerId; }\n public static class Input { public static int touchCount=2; public static Touch GetTouch(int i) { Touch t; t.fingerId=i; return t; } }\n public class IApplication { public static IApplication GetCurrentApp(){return new IApplication();} public int GetTotalFrames(){return 20;} }\n public int result;\n void Consume(float[] values,int n){result+=values.Length+n;}\n public void Run() {\n  if (invalidTouch_) { return; }\n  if (Input.touchCount > 0 && IApplication.GetCurrentApp().GetTotalFrames() > 10) {\n   List<int[]> list = new List<int[]>();\n   for(int i=0;i<Input.touchCount;i++) {\n    Touch touch=Input.GetTouch(i);\n    float[] value=null;\n    onTouchPointer_.TryGetValue(touch.fingerId,out value);\n    if(value==null) { value = new float[4]; onTouchPointer_[touch.fingerId] = value; }\n    list.Add(new int[]{touch.fingerId}); Consume(value,i);\n   }\n   if(list.Count>0) { int total=0; for(int j=0;j<list.Count;j++) { total+=list[j][0]; } result+=total; }\n   {\n    int num3 = 0;\n    if(list.Count==1) { num3=list[0][0]; }\n    if(list.Count>num3) { int width=6; for(int m=0;m<list.Count-num3;m++){ result+=list[m][0]+width; } }\n   }\n  }\n }\n}\n",
+      "candidate": "using System.Collections.Generic;\npublic class Fixture {\n public bool invalidTouch_;\n public Dictionary<int,float[]> onTouchPointer_=new Dictionary<int,float[]>();\n public struct Touch { public int fingerId; }\n public static class Input { public static int touchCount=2; public static Touch GetTouch(int i) { Touch t; t.fingerId=i; return t; } }\n public class IApplication { public static IApplication GetCurrentApp(){return new IApplication();} public int GetTotalFrames(){return 20;} }\n public int result;\n void Consume(float[] values,int n){result+=values.Length+n;}\n public void Run() {\n  if (invalidTouch_) { return; }\nif (Input.touchCount > 0 && IApplication.GetCurrentApp().GetTotalFrames() > 10) {\n\n  List<int[]> list = new List<int[]>();\n  for(int i=0;i<Input.touchCount;i++) {\n   Touch touch=Input.GetTouch(i);\n   float[] value=null;\n   onTouchPointer_.TryGetValue(touch.fingerId,out value);\n   if(value==null) { value = new float[4];\n onTouchPointer_[touch.fingerId] = value; }\n   list.Add(new int[]{touch.fingerId}); Consume(value,i);\n  }\n  if(list.Count>0) { int total=0; for(int j=0;j<list.Count;j++) { total+=list[j][0]; } result+=total; }\n  {\nint num3 = 0;\n  if(list.Count==1) { num3=list[0][0]; }\n  if(list.Count>num3) { int width=6; for(int m=0;m<list.Count-num3;m++){ result+=list[m][0]+width; } }\n \n}\n\n}\n}\n}\n"
+    },
+    {
+      "fixture": "Sp",
+      "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+      "candidate_matches_manual_control": true,
+      "before_body_different": true,
+      "before_locals": 6,
+      "control_locals": 6,
+      "original_control": "using System;\npublic class Fixture {\n string text_;\n public static class Config { public static bool PTW; }\n public static class Http { public static string GetErrorUrl(){return \"a.b\";} public static int GetErrorCode(){return 7;} }\n public Fixture(Exception th) {\n  text_=null;\n  if (th != null) {\n   if (Config.PTW) { text_=string.Empty; }\n   if(Http.GetErrorUrl()!=null) {\n    string text=Http.GetErrorUrl(); int index=text.Length;\n    if(index>0) { text=text.Substring(0,index); }\n    text_ += text + \",\" + Http.GetErrorCode() + \"\\n\";\n   }\n   string full=string.Empty+th; string name=th.GetType().Name; int position=name.Length;\n   if(position>0) { full=full+name; } text_+=full;\n  }\n }\n}\n",
+      "candidate": "using System;\npublic class Fixture {\n string text_;\n public static class Config { public static bool PTW; }\n public static class Http { public static string GetErrorUrl(){return \"a.b\";} public static int GetErrorCode(){return 7;} }\n public Fixture(Exception th) {\n  text_=null;\n  if (th != null) {\n  if (Config.PTW) { text_=string.Empty; }\n  if(Http.GetErrorUrl()!=null) {\n   string text=Http.GetErrorUrl(); int index=text.Length;\n   if(index>0) { text=text.Substring(0,index); }\n   text_ += text + \",\" + Http.GetErrorCode() + \"\\n\";\n  }\n  string full=string.Empty+th; string name=th.GetType().Name; int position=name.Length;\n  if(position>0) { full=full+name; } text_+=full;\n   }\r\n}\n}\n"
+    }
+  ],
+  "dependencies": {
+    "tools/round10_guard_composition_calculate.py": "43354d4435026973a7596adf7347c574b343c1b6383f58d1e83200fd5ead5890",
+    "tools/round10_guard_composition_source.py": "246e4737bae0dadcad83053ded954aaf0afd967cac5ade510b798066d64d3351",
+    "tools/round9_whole_guard_source.py": "987c45506dae870c42e3ef181d7fd7594d9c376bece6d89f5806f752067f4574",
+    "tools/round10_training_source.py": "599feb265155d10301c0007cefadf643ec85b7e2b2bca2d8e333a14611e9c16f",
+    "tools/fixtures/round10-guard-compositions/CanvasCurrent.cs": "8665ababedafa4c66f55b46999426016d73349e3d54d635f4b8452b4497dab67",
+    "tools/fixtures/round10-guard-compositions/CanvasControl.cs": "3176884e2af8425fd97f767db9c9326f2e32de08fbd2d3a7a83f364cec4cd889",
+    "tools/fixtures/round10-guard-compositions/SpCurrent.cs": "b817266bcdcbeaa5c14dfaf96c911d4fba67137e187a42b0d9b51639ed0d1142",
+    "tools/fixtures/round10-guard-compositions/SpControl.cs": "6e9ae044094063ac3746abd9099387bd9ea7c4ce38794f3e4d9902e486f2a90a"
+  },
+  "target_body_status": "UNKNOWN_UNTIL_VERIFIER"
+}

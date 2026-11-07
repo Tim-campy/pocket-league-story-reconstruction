@@ -1,0 +1,47 @@
+{
+  "operation": "round10-root-guard-independent-historical-fixtures",
+  "game_compilations": 0,
+  "toy_compilations": 9,
+  "positive_full_bodies": 3,
+  "negative_controls": [
+    "opt-in",
+    "nonvoid",
+    "nonempty-guard"
+  ],
+  "rules_sha256": "821f9ef694a193634d2f293cc2bf280d55ddefd5ec46637bd405233f56c65465",
+  "dispatcher_sha256": "11ff8ca084e4aef3a77283791cfb5dedd61d7931f607f5ce35256eee68bd7430",
+  "driver_sha256": "fa451536d8db4431adf7b7d618386c054d382e2c18b0dbaa35d0970f11240174",
+  "cases": [
+    {
+      "case": "smcs-constructor",
+      "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+      "rule": "root-guard-positive-tail",
+      "before_body_different": true,
+      "candidate_full_body_matches_independent_control": true,
+      "before": "using System; public class GuardFixture { int count; public GuardFixture(Exception th) { count=0; if(th==null) { return; } count=th.Message.Length; } }",
+      "control": "using System; public class GuardFixture { int count; public GuardFixture(Exception th) { count=0; if(th!=null) { count=th.Message.Length; } } }",
+      "candidate": "using System; public class GuardFixture { int count; public GuardFixture(Exception th) { count=0; if (th != null) {\n count=th.Message.Length;\n} } }"
+    },
+    {
+      "case": "roslyn-prefix-and-positive",
+      "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+      "rule": "root-guard-positive-tail-split-prefix-1",
+      "before_body_different": true,
+      "candidate_full_body_matches_independent_control": true,
+      "before": "public class GuardFixture { public int count; public void Run(bool invalid,int touches,int frames) { if(invalid || touches<=0 || frames<=10) { return; } count=touches+frames; } }",
+      "control": "public class GuardFixture { public int count; public void Run(bool invalid,int touches,int frames) { if(invalid) { return; } if(touches>0 && frames>10) { count=touches+frames; } } }",
+      "candidate": "public class GuardFixture { public int count; public void Run(bool invalid,int touches,int frames) { if (invalid) { return; }\nif ((touches > 0) && (frames > 10)) {\n count=touches+frames;\n} } }"
+    },
+    {
+      "case": "smcs-float-negation",
+      "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+      "rule": "root-guard-positive-tail",
+      "before_body_different": true,
+      "candidate_full_body_matches_independent_control": true,
+      "before": "public class GuardFixture { public int count; public void Run(float value) { if(value<0f) { return; } count=7; } }",
+      "control": "public class GuardFixture { public int count; public void Run(float value) { if(!(value<0f)) { count=7; } } }",
+      "candidate": "public class GuardFixture { public int count; public void Run(float value) { if (!(value<0f)) {\n count=7;\n} } }"
+    }
+  ],
+  "target_body_verification_required": true
+}

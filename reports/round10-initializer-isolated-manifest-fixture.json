@@ -1,0 +1,97 @@
+{
+  "operation": "round10-static-initializer-smcs-fixture",
+  "toy_compilations": 3,
+  "game_compilations": 0,
+  "candidate_full_body_matches_independent_control": true,
+  "before_differs_from_control": true,
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "before": "public class InitializerFixture { public static int Flag=1; public static string Query=(Flag!=0) ? \"right\" : \"left\"; }",
+  "control": "public class InitializerFixture { public static int Flag=1; public static string Query=(Flag==0) ? \"left\" : \"right\"; }",
+  "candidate": "public class InitializerFixture { public static int Flag=1; public static string Query=(Flag == 0) ? \"left\" : \"right\"; }",
+  "mapping": {
+    "point": {
+      "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\initializer-fixture\\isolated-manifest\\Source.cs",
+      "start_line": 1,
+      "start_column": 88
+    },
+    "logical_path": "Source.cs",
+    "field": {
+      "field_id": "InitializerFixture::Query",
+      "method_id": "InitializerFixture::.cctor()->System.Void",
+      "start": 87,
+      "end": 115,
+      "declaration_start": 60,
+      "declaration_end": 116,
+      "line": 1,
+      "column": 88,
+      "expression": "(Flag!=0) ? \"right\" : \"left\"",
+      "explicit_static_constructor": false
+    },
+    "mapping_kind": "AST-static-field-initializer-with-original-and-rebuilt-stsfld-anchors",
+    "source_sha256": "c0613dfe8cbb35017ac1b4cb8678a9d4c5662873bfa56416ceb9d8b8c251f7e0",
+    "original_anchor": {
+      "offset": 31,
+      "opcode": "stsfld",
+      "operand": {
+        "field": "class InitializerFixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Query:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      }
+    },
+    "rebuilt_anchor": {
+      "offset": 31,
+      "opcode": "stsfld",
+      "operand": {
+        "field": "class InitializerFixture @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Query:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      }
+    },
+    "unknown": "Source point is the whole initializer; not a PDB sequence point",
+    "preserves_declaration_form": true
+  },
+  "game_mapping": {
+    "point": {
+      "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round10\\baseline\\Assembly-CSharp\\src\\Assembly-CSharp\\main\\AppData.cs",
+      "start_line": 1480,
+      "start_column": 43
+    },
+    "logical_path": "src/Assembly-CSharp/main/AppData.cs",
+    "field": {
+      "field_id": "main.AppData::CGI_COMMON_QUERY",
+      "method_id": "main.AppData::.cctor()->System.Void",
+      "start": 35403,
+      "end": 35469,
+      "declaration_start": 35363,
+      "declaration_end": 35470,
+      "line": 1480,
+      "column": 43,
+      "expression": "((Config.APPLI_TYPE != 0) ? \"uid=1&sid=PL91\" : \"uid=NULLGWDOCOMO\")",
+      "explicit_static_constructor": false
+    },
+    "mapping_kind": "AST-static-field-initializer-with-original-and-rebuilt-stsfld-anchors",
+    "source_sha256": "10952ce6e440118944229eb7f9a12a2044f0290598918c9225401a68104f410d",
+    "original_anchor": {
+      "offset": 54,
+      "opcode": "stsfld",
+      "operand": {
+        "field": "class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::CGI_COMMON_QUERY:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      }
+    },
+    "rebuilt_anchor": {
+      "offset": 54,
+      "opcode": "stsfld",
+      "operand": {
+        "field": "class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::CGI_COMMON_QUERY:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+      }
+    },
+    "unknown": "Source point is the whole initializer; not a PDB sequence point",
+    "preserves_declaration_form": true
+  },
+  "dependencies": {
+    "tools/round10_initializer_calculate.py": "88dc0fd9b876e6e9f58c8047b7ada507e2dac262730b1e5214b488c9b2743f62",
+    "tools/Round10FieldInitializerRules.cs": "6c81b5a7f306dd14ab925e566d79277d1cb80fa348f1a10b3f04152e39732a93",
+    "tools/round10_initializer_mapping.py": "4041b0fa0675eaf381bf9cf820ed0c3aa563f03b73849f8cb0c56e8f1715b6de",
+    "tools/Round10Transform.cs": "11ff8ca084e4aef3a77283791cfb5dedd61d7931f607f5ce35256eee68bd7430",
+    "tools/prepare_round10_transform.py": "e1161f6f2968b3a4a6dd7a15c950db8a935afa229e2d212c5836787b7aa4ee8a",
+    "tools/round10_transform.py": "4a61d3a8d2ab91ae2e7d60e6b11eaf598b42524b8a86693979cc01ccc3cd98ad"
+  },
+  "game_body_status": "UNKNOWN_UNTIL_VERIFIER",
+  "explicit_constructor_inserted": false
+}

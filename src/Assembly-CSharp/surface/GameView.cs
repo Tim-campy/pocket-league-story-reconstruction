@@ -1250,92 +1250,88 @@ instance_.markComponentFrame_ = 0;
 
 		protected override void OnTouchEvent(TouchEvent e)
 		{
-			TouchComponent component = e.component;
-			if (formMan_.GetTopForm() is MyFormBase)
-			{
-				MyFormBase myFormBase = (MyFormBase)formMan_.GetTopForm();
-				if (!myFormBase.OnTouchEvent(e))
-				{
-					return;
-				}
-			}
-			switch (component.id)
-			{
-			case 0:
-				OnTouchTitleMenu(e.type, component.value, e);
-				break;
-			case 1:
-			case 18:
-				OnTouchDlgPage(e.type, component.value, e);
-				break;
-			case 26:
-				OnTouchDlgPage2(e.type, component.value, e);
-				break;
-			case 24:
-				OnTouchDlgPage(e.type, component.value, e);
-				break;
-			case 2:
-				OnTouchDlgCmd(e.type, component.value, e);
-				break;
-			case 3:
-				OnTouchDlgSel(e.type, component.value, e);
-				break;
-			case 4:
-				OnTouchKeyClick(e.type, component.value, e);
-				break;
-			case 5:
-				OnTouchKeyPress(e.type, component.value, e);
-				break;
-			case 6:
-				OnTouchKeyDown(e.type, component.value, e);
-				break;
-			case 7:
-				OnTouchKeyUp(e.type, component.value, e);
-				break;
-			case 8:
-				OnTouchMainMenu(e.type, component.value, e);
-				break;
-			case 9:
-				OnTouchSubMenu(e.type, component.value, e);
-				break;
-			case 10:
-				OnTouchList(e.type, component.value, e);
-				break;
-			case 11:
-			case 23:
-				OnTouchScrollList(e.type, component.value, e);
-				break;
-			case 12:
-			case 14:
-			case 15:
-			case 22:
-				OnTouchVScrollBar(e.type, component.value, e);
-				break;
-			case 13:
-				OnTouchVScrollButton(e.type, component.value, e);
-				break;
-			case 16:
-				OnTouchUnMarker(e.type, component.value, e);
-				break;
-			case 17:
-				OnTouchCamera(e.type, component.value, e);
-				break;
-			case 19:
-				OnTouchTrackBar(e.type, component.value, e);
-				break;
-			case 20:
-				OnTouchKeyClick(e.type, component.value, e);
-				break;
-			case 21:
-				OnTouchKeyClick(e.type, component.value, e);
-				break;
-			case 27:
-				OnTouchRect(e.type, component.value, e);
-				break;
-			case 25:
-				break;
-			}
-		}
+TouchComponent component = e.component;
+if (formMan_.GetTopForm() is MyFormBase) {
+MyFormBase myFormBase = (MyFormBase)formMan_.GetTopForm();
+if (!myFormBase.OnTouchEvent(e)) {
+return;
+}
+}
+switch (component.id) {
+case 0:
+OnTouchTitleMenu(e.type, component.value, e);
+break;
+case 1:
+case 18:
+OnTouchDlgPage(e.type, component.value, e);
+break;
+case 26:
+OnTouchDlgPage2(e.type, component.value, e);
+break;
+case 24:
+OnTouchDlgPage(e.type, component.value, e);
+break;
+case 2:
+OnTouchDlgCmd(e.type, component.value, e);
+break;
+case 3:
+OnTouchDlgSel(e.type, component.value, e);
+break;
+case 4:
+OnTouchKeyClick(e.type, component.value, e);
+break;
+case 5:
+OnTouchKeyPress(e.type, component.value, e);
+break;
+case 6:
+OnTouchKeyDown(e.type, component.value, e);
+break;
+case 7:
+OnTouchKeyUp(e.type, component.value, e);
+break;
+case 8:
+OnTouchMainMenu(e.type, component.value, e);
+break;
+case 9:
+OnTouchSubMenu(e.type, component.value, e);
+break;
+case 10:
+OnTouchList(e.type, component.value, e);
+break;
+case 11:
+case 23:
+OnTouchScrollList(e.type, component.value, e);
+break;
+case 12:
+case 14:
+case 15:
+case 22:
+OnTouchVScrollBar(e.type, component.value, e);
+break;
+case 13:
+OnTouchVScrollButton(e.type, component.value, e);
+break;
+case 16:
+OnTouchUnMarker(e.type, component.value, e);
+break;
+case 17:
+OnTouchCamera(e.type, component.value, e);
+break;
+case 19:
+OnTouchTrackBar(e.type, component.value, e);
+break;
+case 20:
+OnTouchKeyClick(e.type, component.value, e);
+break;
+case 21:
+OnTouchKeyClick(e.type, component.value, e);
+break;
+case 27:
+OnTouchRect(e.type, component.value, e);
+break;
+}
+return;
+}
 
 		internal void OnTouchTitleMenu(int type, int v, TouchEvent e)
 		{

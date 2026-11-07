@@ -1,0 +1,7571 @@
+{
+  "operation": "independent-AST-control-plan-fixture-validation",
+  "owner_resolution_tests": [
+    {
+      "name": "switch-break-or-loop-continue",
+      "expected_complete": false,
+      "actual": {
+        "complete": false,
+        "reason": "transfer-owner-alias-ambiguous",
+        "owner_candidates": [
+          {
+            "kind": "break",
+            "target_owner_kind": "switch",
+            "target_breakable_depth": 0,
+            "lexical_loop_depth": 0,
+            "target_index": 9
+          },
+          {
+            "kind": "continue",
+            "target_owner_kind": "loop",
+            "target_breakable_depth": 1,
+            "lexical_loop_depth": 0,
+            "target_index": 9
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "switch-break-or-loop-break",
+      "expected_complete": false,
+      "actual": {
+        "complete": false,
+        "reason": "transfer-owner-alias-ambiguous",
+        "owner_candidates": [
+          {
+            "kind": "break",
+            "target_owner_kind": "switch",
+            "target_breakable_depth": 0,
+            "lexical_loop_depth": 0,
+            "target_index": 20
+          },
+          {
+            "kind": "break",
+            "target_owner_kind": "loop",
+            "target_breakable_depth": 1,
+            "lexical_loop_depth": 0,
+            "target_index": 20
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "unique-switch-break",
+      "expected_complete": true,
+      "actual": {
+        "complete": true,
+        "owner_candidates": [
+          {
+            "kind": "break",
+            "target_owner_kind": "switch",
+            "target_breakable_depth": 0,
+            "lexical_loop_depth": 0,
+            "target_index": 12
+          }
+        ],
+        "chosen": {
+          "kind": "break",
+          "target_owner_kind": "switch",
+          "target_breakable_depth": 0,
+          "lexical_loop_depth": 0,
+          "target_index": 12
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "continue-skips-switch",
+      "expected_complete": true,
+      "actual": {
+        "complete": true,
+        "owner_candidates": [
+          {
+            "kind": "continue",
+            "target_owner_kind": "loop",
+            "target_breakable_depth": 1,
+            "lexical_loop_depth": 0,
+            "target_index": 9
+          }
+        ],
+        "chosen": {
+          "kind": "continue",
+          "target_owner_kind": "loop",
+          "target_breakable_depth": 1,
+          "lexical_loop_depth": 0,
+          "target_index": 9
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "outer-break-needs-goto",
+      "expected_complete": false,
+      "actual": {
+        "complete": false,
+        "reason": "outer-break-keyword-unmodeled",
+        "owner_candidates": [
+          {
+            "kind": "break",
+            "target_owner_kind": "loop",
+            "target_breakable_depth": 1,
+            "lexical_loop_depth": 1,
+            "target_index": 30
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "name": "protected-return-or-loop-exit",
+      "expected_complete": false,
+      "actual": {
+        "complete": false,
+        "reason": "transfer-owner-alias-ambiguous",
+        "owner_candidates": [
+          {
+            "kind": "break",
+            "target_owner_kind": "loop",
+            "target_breakable_depth": 0,
+            "lexical_loop_depth": 0,
+            "target_index": 42
+          },
+          {
+            "kind": "return",
+            "target_owner_kind": "method",
+            "target_breakable_depth": 0,
+            "lexical_loop_depth": 0,
+            "target_index": 42
+          }
+        ]
+      },
+      "pass": true
+    }
+  ],
+  "raw_owner_body_pairs": [
+    {
+      "left": "SwitchBreakTail",
+      "right": "SwitchContinueTail",
+      "raw_body_equal": true,
+      "expected_equal": true,
+      "pass": true
+    },
+    {
+      "left": "SwitchBreakMid",
+      "right": "SwitchContinueMid",
+      "raw_body_equal": false,
+      "expected_equal": false,
+      "pass": true
+    }
+  ],
+  "game_compilations": 0,
+  "fixture_compilations": 1,
+  "AST_predictions_captured_before_fixture_compilation": true,
+  "complete": 51,
+  "plan_complete": 66,
+  "paired_tree_complete": 47,
+  "trees_equal": 47,
+  "equal": 66,
+  "wrong_complete": 0,
+  "EH_entry_edge_proofs_equal": 66,
+  "EH_entry_edge_proofs_wrong": 0,
+  "rows": [
+    {
+      "method_id": "Fixture::U(System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::B()->System.Boolean",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::IfNoElse(System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "ble",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "ble",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::IfElse(System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "ble",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "ble",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::Early(System.Boolean)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::DuplicateRet(System.Boolean)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::Null(System.Object)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::NotNull(System.Object)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::Zero(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::BoolTrue(System.Boolean)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::StringCompare(System.String,System.String)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::StringNull(System.String)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::FloatLt(System.Single,System.Single)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::FloatNegated(System.Single,System.Single)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::UInt(System.UInt32,System.UInt32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::BytePromotion(System.Byte,System.Byte)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::LogicalAnd(System.Boolean,System.Boolean)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::And3(System.Single,System.Single,System.Single)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "ble.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "ble.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::And3WithFor(System.Boolean,System.Boolean,System.Boolean)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::And3WithForeach(System.Boolean,System.Boolean,System.Boolean,System.Int32[])->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::WhileOr(System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::WhileOr3(System.Int32,System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::WhileNotAnd(System.Single,System.Single)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bge.un",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::LogicalOr(System.Boolean,System.Boolean)->System.Int32",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::LogicalValueAnd(System.Boolean,System.Boolean)->System.Boolean",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br.s",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br.s",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::LogicalValueOr(System.Boolean,System.Boolean)->System.Boolean",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br.s",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br.s",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::Ternary(System.Boolean,System.Int32,System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::TernaryArg(System.Boolean,System.Int32,System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::While(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::For(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::Do(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::Array(System.Int32[])->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bne.un",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::Infinite(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L0"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L0"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::EmptyIf(System.Boolean)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::ConstantIf()->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::ZeroLoop()->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::DecimalEq(System.Decimal,System.Decimal)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::DecimalLt(System.Decimal,System.Decimal)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::DelegateEq(Fixture/D,Fixture/D)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::ConstantAnd(System.Boolean)->System.Boolean",
+      "complete": false,
+      "plan_complete": false,
+      "tree_complete": false,
+      "reasons": [
+        {
+          "code": "logical-constant-side-effect-reduction-unmodeled",
+          "node_id": "S0",
+          "detail": "x&&false"
+        }
+      ],
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::OnlyConst()->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::TryFinally()->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::UnnamedCatch()->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::NamedCatch()->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::MultiCatch()->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.ArgumentException",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::ReturnFinally(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::ReturnCatch(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::ReturnVoidFinally(System.Boolean)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::WhileTry(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [
+          [
+            3,
+            "catch",
+            "System.Exception",
+            true
+          ]
+        ],
+        "IL": [
+          [
+            3,
+            "catch",
+            "System.Exception",
+            true
+          ]
+        ],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::ForTry(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "finally",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L1"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "finally",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "finally",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "terminal",
+          "opcode": "endfinally"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "finally",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [
+          [
+            2,
+            "finally",
+            null,
+            true
+          ]
+        ],
+        "IL": [
+          [
+            2,
+            "finally",
+            null,
+            true
+          ]
+        ],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::InsideTryWhile(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L2"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L2"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L1"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L2"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L2"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::OutsideInsideWhile(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L3"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L3"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L3"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L3"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "bgt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [
+          [
+            5,
+            "catch",
+            "System.Exception",
+            true
+          ]
+        ],
+        "IL": [
+          [
+            5,
+            "catch",
+            "System.Exception",
+            true
+          ]
+        ],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::IfTry(System.Boolean)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_begin",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_try_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "try_end"
+        },
+        {
+          "kind": "eh_handler",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_start"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "leave",
+          "target_label": "L0"
+        },
+        {
+          "kind": "eh_end",
+          "handler_kind": "catch",
+          "catch_type": "System.Exception",
+          "region_role": "handler_end"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::NestedEH()->System.Void",
+      "complete": false,
+      "plan_complete": false,
+      "tree_complete": false,
+      "reasons": [
+        {
+          "code": "r10-nested-EH-table-order-unvalidated",
+          "node_id": "S1",
+          "detail": ""
+        },
+        {
+          "code": "r10-EH-tree-nested-owner-unvalidated",
+          "node_id": "S3",
+          "detail": ""
+        },
+        {
+          "code": "r10-EH-tree-nested-owner-unvalidated",
+          "node_id": "S1",
+          "detail": ""
+        }
+      ],
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::CombinedEH()->System.Void",
+      "complete": false,
+      "plan_complete": false,
+      "tree_complete": false,
+      "reasons": [
+        {
+          "code": "r10-combined-filtered-EH-lowering-unvalidated",
+          "node_id": "S1",
+          "detail": ""
+        },
+        {
+          "code": "r10-EH-tree-nested-owner-unvalidated",
+          "node_id": "S1",
+          "detail": ""
+        }
+      ],
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::TerminalFinally()->System.Void",
+      "complete": false,
+      "plan_complete": false,
+      "tree_complete": false,
+      "reasons": [
+        {
+          "code": "r10-unreachable-EH-method-epilogue-unvalidated",
+          "node_id": "S1",
+          "detail": ""
+        },
+        {
+          "code": "r10-terminal-finally-epilogue-unvalidated",
+          "node_id": "S1",
+          "detail": ""
+        }
+      ],
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::Switch(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::SwitchBreakTail(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::SwitchContinueTail(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::SwitchBreakMid(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::SwitchContinueMid(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L6"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L6"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L6"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L2",
+            "L3"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L6"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "blt",
+          "target_label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::Dense(System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::DenseGap(System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L2",
+            "L1"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L2",
+            "L1"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::DenseNegative(System.Int32)->System.Void",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::DenseReturn(System.Int32)->System.Int32",
+      "complete": true,
+      "plan_complete": true,
+      "tree_complete": true,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L0",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": true,
+      "trees_equal": true
+    },
+    {
+      "method_id": "Fixture::Sparse(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::Mixed(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "switch",
+          "target_labels": [
+            "L1",
+            "L1",
+            "L2"
+          ]
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L0"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L3"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::StringSwitch(System.String)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "beq",
+          "target_label": "L2"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L4"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L3"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L4"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L5"
+        },
+        {
+          "kind": "label",
+          "label": "L5"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::StringOne(System.String)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brtrue",
+          "target_label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L2"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "brfalse",
+          "target_label": "L1"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L1"
+        },
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L2"
+        },
+        {
+          "kind": "label",
+          "label": "L2"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::DefaultOnly(System.Int32)->System.Void",
+      "complete": false,
+      "plan_complete": true,
+      "tree_complete": false,
+      "equal": true,
+      "source_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "IL_plan": [
+        {
+          "kind": "leaf"
+        },
+        {
+          "kind": "branch",
+          "opcode": "br",
+          "target_label": "L0"
+        },
+        {
+          "kind": "label",
+          "label": "L0"
+        },
+        {
+          "kind": "return",
+          "opcode": "ret"
+        }
+      ],
+      "eh_entry_edges": {
+        "source": [],
+        "IL": [],
+        "equal": true
+      },
+      "paired_tree_complete": false
+    },
+    {
+      "method_id": "Fixture::ConstantSwitch()->System.Void",
+      "complete": false,
+      "plan_complete": false,
+      "tree_complete": false,
+      "reasons": [
+        {
+          "code": "r10-constant-switch-pruning-not-yet-proven",
+          "node_id": "S1",
+          "detail": ""
+        },
+        {
+          "code": "r10-switch-tree-ownership-or-dispatch-unsupported",
+          "node_id": "S1",
+          "detail": ""
+        }
+      ],
+      "paired_tree_complete": false
+    }
+  ],
+  "source_sha256": "bf98746bcb2ca06c7817585bcf09601c0e4f9f1300acc9cdd3869a80656c1616",
+  "AST_source_sha256": "a53da00da03047ed09069c107f846dd5ed74ce3d8730836a4c547c74348a651d"
+}

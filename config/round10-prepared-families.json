@@ -1,0 +1,44 @@
+[
+  {
+    "id": "d-setwin-chara-training",
+    "state": "READY",
+    "assembly": "Assembly-CSharp",
+    "rule": "d10-exact-setwin-chara-training",
+    "external": true,
+    "ready": "reports/round10-training-ready.json",
+    "bundle": "reports/round10-training-patches.json",
+    "doc": "docs/notes/round10-prepared-queue.md",
+    "method_ids": [
+      "form.SubForm::SetWinCharaTraining(System.Int32,System.Int32)->System.Void"
+    ],
+    "hypothesis": "Compose positive mode2/common exit and direct0/1/3 dispatch without the recovered switch cache; fixture and fresh model required."
+  },
+  {
+    "id": "d-cgi-common-query-cctor",
+    "state": "READY",
+    "assembly": "Assembly-CSharp",
+    "rule": "static-initializer-ternary-polarity",
+    "external": true,
+    "ready": "reports/round10-initializer-isolated-manifest-ready.json",
+    "bundle": "reports/round10-initializer-isolated-manifest-patches.json",
+    "doc": "docs/notes/round10-prepared-queue.md",
+    "method_ids": [
+      "main.AppData::.cctor()->System.Void"
+    ],
+    "hypothesis": "Rewrite only the verified static field initializer; bind original/rebuilt stsfld mechanically and preserve beforefieldinit, no explicit static ctor."
+  },
+  {
+    "id": "d-subform-draw4",
+    "state": "READY",
+    "assembly": "Assembly-CSharp",
+    "rule": "d10-subform-draw4-composition",
+    "external": true,
+    "ready": "reports/round10-draw4-ready.json",
+    "bundle": "reports/round10-draw4-patches.json",
+    "doc": "docs/notes/round10-prepared-queue.md",
+    "method_ids": [
+      "form.SubForm::_draw4(kairo.unity.ui.Graphics)->System.Void"
+    ],
+    "hypothesis": "Compute the full multi-hunk/control/local-scope source composition; ambiguous scopes remain UNKNOWN until independently modeled and verified."
+  }
+]
