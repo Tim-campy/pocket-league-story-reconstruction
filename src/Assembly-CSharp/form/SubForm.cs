@@ -8865,12 +8865,9 @@ int num38 = 9;
 			if (type_ == 42)
 			{
 				int num = ary1.Size();
-				{ bool recoveredCondition_273013 = canvas_.CheckKeyRepeat(131072);
-if (recoveredCondition_273013)
-				{
+				if (canvas_.CheckKeyRepeat(131072)) {
 					select_ = (select_ - 1 + num) % num;
 				}
-}
 				if (canvas_.CheckKeyRepeat(524288))
 				{
 					select_ = (select_ + 1) % num;
@@ -8888,14 +8885,15 @@ if (recoveredCondition_273013)
 				{
 					SponsorData.RemoveNew();
 					SponsorData sponsorData = (SponsorData)ary1.ElementAt(select_);
-					if (sponsorData.state_ != 2)
-					{
+					if (sponsorData.state_ == 2) {
+					apdat_.ExecEvent(144, sponsorData.name_ + "\t" + MyFormBase.YEN("万", sponsorData.GetIncome()) + "\t" + sponsorData.satisfactPoint_, null);
+
+} else {
 						SubForm subForm = new SubForm(43);
 						subForm.sponsorData_ = sponsorData;
 						return Push(subForm);
-					}
-					apdat_.ExecEvent(144, sponsorData.name_ + "\t" + MyFormBase.YEN("万", sponsorData.GetIncome()) + "\t" + sponsorData.satisfactPoint_, null);
-				}
+
+}}
 				else if (apdat_.IsPushSoftLabel(2))
 				{
 					SponsorData.RemoveNew();
@@ -8915,10 +8913,7 @@ if (recoveredCondition_273013)
 				if (canvas_.CheckKeyPulse(1048576))
 				{
 					SponsorData sponsorData2 = sponsorData_;
-					if (select_ != 0)
-					{
-						return Pop();
-					}
+					if (select_ == 0) {
 					if (udat_.ChResearchPoin(sponsorData2.costType_, sponsorData2.cost_))
 					{
 						udat_.SubResearchPoint(sponsorData2.costType_, sponsorData2.cost_);
@@ -8931,7 +8926,11 @@ if (recoveredCondition_273013)
 						apdat_.ExecEvent(13, null, null);
 					}
 					Pop();
-				}
+
+} else {
+						return Pop();
+
+}}
 				else if (apdat_.IsPushSoftLabel(2))
 				{
 					return Pop();
@@ -9185,7 +9184,7 @@ if (recoveredCondition_273013)
 					return Pop();
 				}
 			}
-			else if (type_ != 48)
+			else if (type_ == 48) { } else
 			{
 				if (type_ == 49)
 				{
@@ -9234,10 +9233,7 @@ if (recoveredCondition_273013)
 								}
 								PlayerData playerData2 = apdat_.pData_[TrainingData.TRA_PLAYER[l]];
 								playerData2.AddPhysicalParam(TrainingData.TRA_ADD[l]);
-								if (apdat_.CheckAlreadyEvent(189))
-								{
-									continue;
-								}
+								if (!apdat_.CheckAlreadyEvent(189)) {
 								for (int m = 0; m < playerData2.paramPhysical_.Length; m++)
 								{
 									if (playerData2.paramPhysical_[m] >= 1000)
@@ -9246,7 +9242,8 @@ if (recoveredCondition_273013)
 										break;
 									}
 								}
-							}
+
+}}
 							return Pop();
 						}
 					}
@@ -9457,10 +9454,7 @@ if (recoveredCondition_273013)
 					}
 					if (canvas_.CheckKeyPulse(1048576))
 					{
-						if (select_ != 0)
-						{
-							return Pop();
-						}
+						if (select_ == 0) {
 						TradeData tradeData3 = tradeData_;
 						if (apdat_.ChPayMoney(tradeData3.cost_))
 						{
@@ -9475,7 +9469,11 @@ if (recoveredCondition_273013)
 							result_ = 1;
 							Pop();
 						}
-					}
+
+} else {
+							return Pop();
+
+}}
 					else if (apdat_.IsPushSoftLabel(2))
 					{
 						return Pop();
@@ -9627,10 +9625,7 @@ if (recoveredCondition_273013)
 					}
 					if (canvas_.CheckKeyPulse(1048576))
 					{
-						if (page_ != 0)
-						{
-							return Pop();
-						}
+						if (page_ == 0) {
 						QuestMatchData questMatchData = qmData_;
 						if (apdat_.ChPayMoney(questMatchData.joinCost_) || questMatchData.joinCost_ == 0)
 						{
@@ -9643,7 +9638,11 @@ if (recoveredCondition_273013)
 						{
 							apdat_.ExecEvent(14, null, null);
 						}
-					}
+
+} else {
+							return Pop();
+
+}}
 					else if (apdat_.IsPushSoftLabel(2))
 					{
 						return Pop();
@@ -9729,23 +9728,25 @@ if (recoveredCondition_273013)
 					}
 					if (canvas_.CheckKeyPulse(1048576))
 					{
-						if (select_ != 0)
-						{
-							return Pop();
-						}
+						if (select_ == 0) {
 						Tenant tenant = udat_.tenants_[tenantId_];
 						TenantData tenantData3 = apdat_.tenantData_[tenantDataId_];
-						if (!apdat_.ChPayMoney(tenantData3.buildCost_))
-						{
-							apdat_.ExecEvent(14, null, null);
-							return Pop();
-						}
+						if (apdat_.ChPayMoney(tenantData3.buildCost_)) {
 						apdat_.SubMoney(tenantData3.buildCost_, 1);
 						tenant.BuildTenant(tenantData3.id_);
 						apdat_.mapMain_.UpdateTenantMapcip();
 						formMan_.ChangeCurrentForm(apdat_.frmGame_);
 						apdat_.AddPopupMessage(31, tenantData3.name_);
-					}
+
+} else {
+							apdat_.ExecEvent(14, null, null);
+							return Pop();
+
+}
+} else {
+							return Pop();
+
+}}
 					else if (apdat_.IsPushSoftLabel(2))
 					{
 						return Pop();
@@ -9767,19 +9768,12 @@ if (recoveredCondition_273013)
 					}
 					if (canvas_.CheckKeyPulse(1048576))
 					{
-						if (select_ != 0)
-						{
-							return Pop();
-						}
+						if (select_ == 0) {
 						if (!tenantData4.IsStreangth())
 						{
 							return Pop();
 						}
-						if (!apdat_.ChPayMoney(tenantData4.paramStrengthCost_))
-						{
-							apdat_.ExecEvent(14, null, null);
-							return Pop();
-						}
+						if (apdat_.ChPayMoney(tenantData4.paramStrengthCost_)) {
 						apdat_.SubMoney(tenantData4.paramStrengthCost_, 1);
 						if (!tenantData4.IsTAreaOrStadiumTenant())
 						{
@@ -9789,10 +9783,7 @@ if (recoveredCondition_273013)
 						}
 						else
 						{
-							if (!tenantData4.IsStreangth())
-							{
-								return Pop();
-							}
+							if (tenantData4.IsStreangth()) {
 							formMan_.ChangeCurrentForm(apdat_.frmGame_);
 							TenantData.ProcStrenSpecialTenant(tenantData4);
 							if (tenantData4.id_ == TenantData.TENANT_ID_STADIUM)
@@ -9803,8 +9794,21 @@ if (recoveredCondition_273013)
 							{
 								apdat_.AddPopupMessage(33, tenantData4.name_);
 							}
-						}
-					}
+
+} else {
+								return Pop();
+
+}}
+
+} else {
+							apdat_.ExecEvent(14, null, null);
+							return Pop();
+
+}
+} else {
+							return Pop();
+
+}}
 					else if (apdat_.IsPushSoftLabel(2))
 					{
 						return Pop();
@@ -10064,7 +10068,7 @@ if (recoveredCondition_273013)
 									formMan_.DrawAllForms();
 								}
 							}
-							else if (select_ != 2 && select_ == 3)
+							else if (select_ == 2) { } else if (select_ == 3)
 							{
 								try
 								{
@@ -10102,18 +10106,19 @@ if (recoveredCondition_273013)
 						}
 						if (canvas_.CheckKeyPulse(1048576))
 						{
-							if (select_ != 0)
-							{
-								apdat_.ExecEvent(116, null, null);
-								return Pop();
-							}
+							if (select_ == 0) {
 							if (udat_.memberPDataist_.Size() > 11)
 							{
 								apdat_.ExecEvent(117, null, null);
 								return Push(new SubForm(31));
 							}
 							apdat_.ExecEvent(121, null, null);
-						}
+
+} else {
+								apdat_.ExecEvent(116, null, null);
+								return Pop();
+
+}}
 						else if (apdat_.IsPushSoftLabel(2))
 						{
 							return Pop();
@@ -10176,12 +10181,13 @@ if (recoveredCondition_273013)
 							if (canvas_.CheckKeyPulse(1048576))
 							{
 								FanBonusData fanBonusData = (FanBonusData)ary1.ElementAt(select_);
-								if (fanBonusData.state_ != 0)
-								{
-									return Pop();
-								}
+								if (fanBonusData.state_ == 0) {
 								apdat_.ExecEvent(190, null, null);
-							}
+
+} else {
+									return Pop();
+
+}}
 							else if (apdat_.IsPushSoftLabel(2))
 							{
 								return Pop();
@@ -10194,7 +10200,8 @@ if (recoveredCondition_273013)
 							if (frame_ >= udat_.memberPDataist_.Size() * 12 + 20 || canvas_.CheckKeyPulse(1048576))
 							{
 								apdat_.frmGame_.SetBattleData();
-								if (udat_.GetMatchInfoJoin() == 0 && !apdat_.CheckAlreadyEvent(176))
+								int recoveredMatchInfoJoin = udat_.GetMatchInfoJoin();
+if (recoveredMatchInfoJoin == 0 && !apdat_.CheckAlreadyEvent(176))
 								{
 									apdat_.ExecEvent(176, null, null);
 								}

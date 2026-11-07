@@ -205,6 +205,8 @@ def load_context():
         if document.get('official_verified') and path.name=='round10-'+document['run_label']+'-adoption.json':adoptions[document['run_label']]=document
     for cycle in cycles:
         if cycle['label'] not in adoptions:raise ValueError('Journal cycle lacks official adoption proof: '+cycle['label'])
+        for proof in adoptions[cycle['label']]['assemblies'].values():
+            if proof.get('matched_losses'):raise ValueError('Cycle adoption records matched losses: '+cycle['label'])
     historical=[]
     historical_paths=sorted((ROOT/'reports').glob('round7-*-engine.json'))+sorted((ROOT/'reports').glob('round8-*-engine.json'))+sorted((ROOT/'reports').glob('round9-*-engine.json'))
     for path in historical_paths:
@@ -392,11 +394,13 @@ def render(ctx,short=False):
             add(table(evidence.get('render_headers',['Medida','Valor']),evidence['render_rows']))
     add('Ganhos oficiais vêm do diário após adoção e verificação completa, incluindo auxiliares liberados pelo verificador. Sondas e avanços parciais são registrados separadamente; não se somam aos ganhos oficiais. Transformações herdadas da rodada 7 só aparecem abaixo quando foram efetivamente tentadas nesta rodada.')
     if short:
-        add(table(['Ciclo','Assembly / regra','Matched ganhos','Bytes ganhos'],[
-            (c['label'],c['assembly']+' / '+c['rule'],c['methods_gained'],c['il_bytes_gained']) for c in cycles]))
+        add(table(['Ciclo','Assembly / regra','Matched ganhos','Bytes ganhos','Matched perdidos'],[
+            (c['label'],c['assembly']+' / '+c['rule'],c['methods_gained'],c['il_bytes_gained'],
+             sum(len(p.get('matched_losses',[])) for p in ctx['adoptions'][c['label']]['assemblies'].values())) for c in cycles]))
     else:
-        add(table(['Ciclo','Compilador / par','Hipótese','Resultado','Matched ganhos','Bytes ganhos'],[
-            (c['label'],c['assembly']+' / '+c['pair'],c['hypothesis'],c['result'],c['methods_gained'],c['il_bytes_gained']) for c in cycles]))
+        add(table(['Ciclo','Compilador / par','Hipótese','Resultado','Matched ganhos','Bytes ganhos','Matched perdidos'],[
+            (c['label'],c['assembly']+' / '+c['pair'],c['hypothesis'],c['result'],c['methods_gained'],c['il_bytes_gained'],
+             sum(len(p.get('matched_losses',[])) for p in ctx['adoptions'][c['label']]['assemblies'].values())) for c in cycles]))
     preparation=stop.get('preparation_notes',[])
     if isinstance(preparation,str):preparation=[preparation]
     for note in preparation:add(str(note))
@@ -461,6 +465,7 @@ def render(ctx,short=False):
     add(model_table(ctx))
     if exists('reports/round10-control-results.json'):
         control=read('reports/round10-control-results.json')
+        application=control['application']
         control_path=ctx['cfg'].get('control_extractor_validation','reports/round10-control-validation-public.json')
         extraction=ctx['control_extraction'];m=extraction['matched'];p=extraction['pending']
         add('**Extrator de controle smcs.** Corpus congelado: '+inline(extraction['snapshot'])+'. Planos e árvores completos têm denominadores distintos; uma cobertura integral das instruções não completa uma árvore ambígua.',
@@ -469,8 +474,8 @@ def render(ctx,short=False):
                 ('Cobertura das árvores nos corpos matched',str(m['paired_tree_complete'])+'/'+str(m['methods'])+' ('+pct(m['paired_tree_complete'],m['methods'])+')'),
                 ('Planos completos iguais / completos',str(m['plans_equal'])+'/'+str(m['paired_plan_complete'])),
                 ('Pendentes: IL completo / fonte completa / pares completos',str(p['il_tree_complete'])+' / '+str(p['source_tree_complete'])+' / '+str(p['paired_tree_complete'])),
-                ('Parte C: diferenças antes / reescritas com árvore igual / corpos fechados',str(control['structural_differences_before'])+' / '+str(control['control_rewrites_tree_equal_after'])+' / '+str(control['control_rewrites_matched'])),
-                ('Parte C: corpo adicional por locais sem uso',control['additional_calculated_unused_suffix_matched'])]))
+                ('Parte C: diferenças antes / reescritas com árvore igual / corpos fechados',str(application['trees_different_before'])+' / '+str(application['candidate_tree_and_plan_equal_original'])+' / '+str(application['body_matches_officially_adopted'])),
+                ('Parte C: bytes de IL adotados oficialmente',application['original_il_bytes_gained'])]))
         add('A árvore original não distingue formas fonte que emitem os mesmos saltos sem evidência adicional. Ownership de salto ambíguo, EH, switch, construções anônimas e outros casos sem molde provado continuam incompletos. A AST é extraída somente do fonte; planos da compilação própria autenticam o vínculo das folhas, nunca inventam estrutura fonte. A correspondência final continua sendo corpo completo e metadados no verificador.')
     add('Precisão usa somente previsões completas; cobertura usa todos os corpos matched do corpus congelado. Incompletos ou métodos gerados sem mapeamento continuam UNKNOWN. Coincidência de tipos em previsão incompleta não é prova do lowering. '+policy_text(ctx))
     if not short:
