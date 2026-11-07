@@ -1,0 +1,60 @@
+{
+  "operation": "smcs-array-foreach-composition-fixtures",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "06e5a26a4ab6bfb50487568a995695b19e7980d4d7b3d6f16115724700b54251",
+  "driver_sha256": "28d71d11aa8c41194baa7445998138f0591ab77b3c33f4528a71d7d47ab22d67",
+  "game_compilations": 0,
+  "toy_compilations": 8,
+  "positive_full_bodies": 4,
+  "negative_controls": 6,
+  "fixtures": [
+    {
+      "role": "language",
+      "before": "public bool Run(){List<string[]> list=new List<string[]>();string[][] systemLanguagePackFiles=Language.GetSystemLanguagePackFiles();for(int spriteIndex=0;spriteIndex<systemLanguagePackFiles.Length;spriteIndex++){string[] item=systemLanguagePackFiles[spriteIndex];list.Add(item);}int num=command_;switch(num){case -3:Keep(\"case -2: break;\");Count+=3;break;case -2:{System.Threading.ThreadStart action=delegate{Count+=2;};action();break;}case -1:{System.Threading.ThreadStart action=delegate{Count++;};action();break;}default:{string text2=\"x\";if(num!=-1){text2=languages_[num][1];}if(Language.GetLanguagePackFile()!=text2&&Language.SetLanguagePack(text2)&&callback_!=null){callback_();}break;}}return Pop();}",
+      "after": "public bool Run(){List<string[]> list=new List<string[]>();foreach (string[] item in Language.GetSystemLanguagePackFiles()) {list.Add(item);}int num=command_;if (num == -3) {\r\nKeep(\"case -2: break;\");Count+=3;\r\n}\r\nelse if (num == -2) {System.Threading.ThreadStart action=delegate{Count+=2;};action();}\r\nelse if (num == -1) {System.Threading.ThreadStart action=delegate{Count++;};action();}\r\nelse {string text2=\"x\";if(num!=-1){text2=languages_[num][1];}if (Language.GetLanguagePackFile() != text2) {\r\nbool recoveredLanguagePackChanged = Language.SetLanguagePack(text2);\r\nif (recoveredLanguagePackChanged && callback_ != null) {callback_();}\r\n}}return Pop();}",
+      "expected_manual": "public bool Run(){List<string[]> list=new List<string[]>();foreach(string[] item in Language.GetSystemLanguagePackFiles()){list.Add(item);}int num=command_;if(num==-3){Keep(\"case -2: break;\");Count+=3;}else if(num==-2){System.Threading.ThreadStart action=delegate{Count+=2;};action();}else if(num==-1){System.Threading.ThreadStart action=delegate{Count++;};action();}else{string text2=\"x\";if(num!=-1){text2=languages_[num][1];}if(Language.GetLanguagePackFile()!=text2){bool recoveredLanguagePackChanged=Language.SetLanguagePack(text2);if(recoveredLanguagePackChanged&&callback_!=null){callback_();}}}return Pop();}",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "anonymous_refs_compared": true
+    },
+    {
+      "role": "billing",
+      "before": "public void Run(string[][] array,string productId){string[][] array2=array;foreach(string[] array3 in array2){if((array3[0]!=productId)){return;}Count+=array3[1].Length;}Count+=7;}",
+      "after": "public void Run(string[][] array,string productId){foreach(string[] array3 in array){if((array3[0]!=productId)){continue;}Count+=array3[1].Length;}Count+=7;}",
+      "expected_manual": "public void Run(string[][] array,string productId){foreach(string[] array3 in array){if((array3[0]!=productId)){continue;}Count+=array3[1].Length;}Count+=7;}",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "anonymous_refs_compared": false
+    },
+    {
+      "role": "query",
+      "before": "public Inventory Run(List<string> moreItemSkus,List<string> moreSubsSkus){List<string> list=new List<string>();List<string>[] array=new List<string>[2]{moreItemSkus,moreSubsSkus};List<string>[] array2=array;foreach(List<string> list2 in array2){if(list2!=null){for(int j=0;j<list2.Count;j++){list.Add(list2[j]);}}}if(list.Count<=0){return new Inventory();}return new Inventory();}",
+      "after": "public Inventory Run(List<string> moreItemSkus,List<string> moreSubsSkus){List<string> list=new List<string>();List<string>[] array=new List<string>[2]{moreItemSkus,moreSubsSkus};foreach(List<string> list2 in array){if(list2!=null){for(int j=0;j<list2.Count;j++){list.Add(list2[j]);}}}if(list.Count<=0){return new Inventory();}{\r\nInventory recoveredInventoryResult = new Inventory();\r\nreturn recoveredInventoryResult;\r\n}}",
+      "expected_manual": "public Inventory Run(List<string> moreItemSkus,List<string> moreSubsSkus){List<string> list=new List<string>();List<string>[] array=new List<string>[2]{moreItemSkus,moreSubsSkus};foreach(List<string> list2 in array){if(list2!=null){for(int j=0;j<list2.Count;j++){list.Add(list2[j]);}}}if(list.Count<=0){return new Inventory();}{Inventory recoveredInventoryResult=new Inventory();return recoveredInventoryResult;}}",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "anonymous_refs_compared": false
+    },
+    {
+      "role": "process-existing-primitive",
+      "before": "public void Run(BillingItem[] items){BillingItem found=null;BillingItem[] array=items;foreach(BillingItem billingItem2 in array){if(billingItem2!=null){found=billingItem2;break;}}if(found!=null)Count++;}",
+      "after": "public void Run(BillingItem[] items){BillingItem found=null;foreach(BillingItem billingItem2 in items){if(billingItem2!=null){found=billingItem2;break;}}if(found!=null)Count++;}",
+      "expected_manual": "public void Run(BillingItem[] items){BillingItem found=null;foreach(BillingItem billingItem2 in items){if(billingItem2!=null){found=billingItem2;break;}}if(found!=null)Count++;}",
+      "full_body_equal": true,
+      "locals_equal": true,
+      "anonymous_refs_compared": false
+    }
+  ],
+  "negatives": [
+    "extra-array-use",
+    "duplicate-alias",
+    "extra-index-use",
+    "wrong-case-order",
+    "unknown-break-owner",
+    "wrong-final-return"
+  ],
+  "language_array_expression_evaluated_once": true,
+  "compiler_generated_classes_not_written_manually": true,
+  "existing_process_primitive_not_claimed_new": true,
+  "limitations": "Exact source templates supported by original IL; no game method is claimed matched before the real oracle."
+}

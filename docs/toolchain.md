@@ -359,3 +359,7 @@ quota and the two-consecutive-primary-method limit remain active. Incomplete
 slot predictions retain the 12-variant/pass, 24-variant/method/cycle budget.
 Complete incompatible predictions still refuse compilation. Every commit
 requires fresh full verification and compilation of the Git index sources.
+# Nomes de locais recuperados na rodada 9
+
+`recoveredLanguagePackChanged` e `recoveredInventoryResult` são nomes escolhidos no fonte para reproduzir tipos, ordem e duração dos slots originais. Os nomes históricos desses locais são UNKNOWN. Eles não são apresentados como nomes originais nem campos/membros recuperados dos metadados.
+

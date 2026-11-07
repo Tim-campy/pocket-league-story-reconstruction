@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,030 de 5,245 métodos matched (95.90%).** 871,497 bytes de IL nos assemblies alvo.
-593,897 bytes IL matched (68.15%).
+**5,034 de 5,245 métodos matched (95.98%).** 871,497 bytes de IL nos assemblies alvo.
+596,249 bytes IL matched (68.42%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 214 |
+| decompiled | 210 |
 | equivalent | 0 |
-| matched | 5030 |
+| matched | 5034 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1813 / 92.59% | 372975 / 62.00% |
+| `Assembly-CSharp` | 1958 | 601603 | 1817 / 92.80% | 375327 / 62.39% |
 | `KairoLibrary` | 3287 | 269894 | 3217 / 97.87% | 220922 / 81.86% |
 
 ## Namespaces
@@ -75,9 +75,9 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `surface` | 122 | 26518 | 109 / 89.34% | 16686 / 62.92% |
 | `system` | 20 | 1636 | 19 / 95.00% | 1036 / 63.33% |
 | `system.billing` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
-| `system.billing.ui` | 153 | 13782 | 145 / 94.77% | 10122 / 73.44% |
+| `system.billing.ui` | 153 | 13782 | 148 / 96.73% | 11788 / 85.53% |
 | `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
-| `system.form` | 192 | 33269 | 179 / 93.23% | 14575 / 43.81% |
+| `system.form` | 192 | 33269 | 180 / 93.75% | 15261 / 45.87% |
 | `system.friend` | 4 | 570 | 3 / 75.00% | 284 / 49.82% |
 | `system.friend.ui` | 47 | 4407 | 47 / 100.00% | 4407 / 100.00% |
 | `system.lineup` | 3 | 46 | 3 / 100.00% | 46 / 100.00% |
@@ -164,11 +164,11 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::system.billing.MyBilling` | 8 | 956 | 6 / 75.00% | 688 / 71.97% |
 | `Assembly-CSharp::system.billing.ui.ApplyTask` | 12 | 1507 | 12 / 100.00% | 1507 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.BillingItem` | 26 | 1007 | 26 / 100.00% | 1007 / 100.00% |
-| `Assembly-CSharp::system.billing.ui.BillingManager` | 44 | 6863 | 39 / 88.64% | 3587 / 52.27% |
+| `Assembly-CSharp::system.billing.ui.BillingManager` | 44 | 6863 | 40 / 90.91% | 4968 / 72.39% |
 | `Assembly-CSharp::system.billing.ui.PurchaseLogView` | 3 | 130 | 3 / 100.00% | 130 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.PurchaseRecord` | 12 | 1155 | 12 / 100.00% | 1155 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.Receipt` | 26 | 932 | 26 / 100.00% | 932 / 100.00% |
-| `Assembly-CSharp::system.billing.ui.StoreBase` | 28 | 2159 | 25 / 89.29% | 1775 / 82.21% |
+| `Assembly-CSharp::system.billing.ui.StoreBase` | 28 | 2159 | 27 / 96.43% | 2060 / 95.41% |
 | `Assembly-CSharp::system.billing.ui.StoreBase+<SetRestoreRequest>c__AnonStorey7` | 2 | 29 | 2 / 100.00% | 29 / 100.00% |
 | `Assembly-CSharp::system.billing.util.IabHelper` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::system.billing.util.Inventory` | 11 | 288 | 11 / 100.00% | 288 / 100.00% |
@@ -181,7 +181,7 @@ KairoLibrary: 3143 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::system.form.HttpForm` | 16 | 894 | 16 / 100.00% | 894 / 100.00% |
 | `Assembly-CSharp::system.form.HttpForm+HttpMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
 | `Assembly-CSharp::system.form.HttpForm+ResultData` | 11 | 132 | 11 / 100.00% | 132 / 100.00% |
-| `Assembly-CSharp::system.form.LanguageForm` | 13 | 1452 | 10 / 76.92% | 579 / 39.88% |
+| `Assembly-CSharp::system.form.LanguageForm` | 13 | 1452 | 11 / 84.62% | 1265 / 87.12% |
 | `Assembly-CSharp::system.form.LineupForm` | 15 | 1711 | 13 / 86.67% | 1433 / 83.75% |
 | `Assembly-CSharp::system.form.MatchForm` | 19 | 3263 | 18 / 94.74% | 3012 / 92.31% |
 | `Assembly-CSharp::system.form.MatchForm+UserRecord` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |

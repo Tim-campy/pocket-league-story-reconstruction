@@ -92,11 +92,10 @@ namespace system.billing.ui
 		{
 			List<string> list = new List<string>();
 			List<string>[] array = new List<string>[2] { moreItemSkus, moreSubsSkus };
-			List<string>[] array2 = array;
-			foreach (List<string> list2 in array2)
+
+			foreach (List<string> list2 in array)
 			{
-				if (list2 != null)
-				{
+				if (list2 == null) { } else {
 					for (int j = 0; j < list2.Count; j++)
 					{
 						list.Add(list2[j]);
@@ -107,7 +106,10 @@ namespace system.billing.ui
 			{
 				return new Inventory();
 			}
-			return new Inventory();
+			{
+Inventory recoveredInventoryResult = new Inventory();
+return recoveredInventoryResult;
+}
 		}
 
 		public bool ConsumeItem(Purchase purchase)
@@ -261,8 +263,8 @@ if (!item.IsTicketProduct()) {
 				BillingItem[] items = GetItems();
 				Receipt receipt = incompletePayments[0];
 				BillingItem billingItem = null;
-				BillingItem[] array = items;
-				foreach (BillingItem billingItem2 in array)
+
+				foreach (BillingItem billingItem2 in items)
 				{
 					if (billingItem2 != null && billingItem2.GetProductId() == receipt.GetProductID())
 					{

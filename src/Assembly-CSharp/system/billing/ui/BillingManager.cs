@@ -418,10 +418,10 @@ if (billingItem.state_.Get() == 1 && take)
 				}
 				if (array != null && billingItem2.Check(1))
 				{
-					string[][] array2 = array;
-					foreach (string[] array3 in array2)
+
+					foreach (string[] array3 in array)
 					{
-						if ((array3[0] != productId)) { return; }
+						if ((array3[0] != productId)) { continue; }
 Purchase purchase2 = new Purchase();
 purchase2.mOrderId = array3[1];
 billingItem2.recovery_ = true;
@@ -476,7 +476,7 @@ flag = true;
 							continue;
 						}
 						billingItem3.price_ = skuDetails.GetPrice();
-						billingItem3.type_ = ((!skuDetails.GetTypeA().Equals("inapp")) ? 1 : 0);
+						billingItem3.type_ = ((skuDetails.GetTypeA().Equals("inapp")) ? (0) : (1));
 						billingItem3.explain_ = skuDetails.GetDescription();
 						if (billingItem3.explain_ != null)
 						{
@@ -508,7 +508,7 @@ flag = true;
 						continue;
 					}
 					billingItem4.price_ = skuDetails2.GetPrice();
-					billingItem4.type_ = ((!skuDetails2.GetTypeA().Equals("inapp")) ? 1 : 0);
+					billingItem4.type_ = ((skuDetails2.GetTypeA().Equals("inapp")) ? (0) : (1));
 					billingItem4.explain_ = skuDetails2.GetDescription();
 					if (billingItem4.explain_ != null)
 					{

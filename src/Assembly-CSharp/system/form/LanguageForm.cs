@@ -57,9 +57,7 @@ namespace system.form
 			{
 				start_ = true;
 				List<string[]> list = new List<string[]>();
-				string[][] systemLanguagePackFiles = Language.GetSystemLanguagePackFiles();
-				for (int spriteIndex = 0; spriteIndex < systemLanguagePackFiles.Length; spriteIndex++) {
-string[] item = systemLanguagePackFiles[spriteIndex];
+				foreach (string[] item in Language.GetSystemLanguagePackFiles()) {
 list.Add(item);
 }
 				string customLanguagePackLocation = Language.GetCustomLanguagePackLocation();
@@ -113,13 +111,11 @@ list.Add(item);
 			if (languagePanelResult[0] != null)
 			{
 				int num = int.Parse(languagePanelResult[0]);
-				switch (num)
-				{
-				case -3:
-					Canvas.OpenBrowser("http://kairopark.jp/language_pack_en.html");
-					break;
-				case -2:
-				{
+				if (num == -3) {
+Canvas.OpenBrowser("http://kairopark.jp/language_pack_en.html");
+
+}
+else if (num == -2) {
 					langPackJapanese_ = false;
 					if (languagePanelResult[1] == "ja")
 					{
@@ -143,10 +139,9 @@ if (recoveredCondition_3348)
 						instance.ConnectLangPackWeb(langPackFile_);
 					});
 					Push(languageForm);
-					break;
+
 				}
-				case -1:
-				{
+else if (num == -1) {
 					langDownloadUrl_ = languagePanelResult[1];
 					langDownloadData_ = null;
 					HttpForm httpForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)
@@ -174,21 +169,21 @@ if (testedValue && callback_ != null)
 					});
 					Push(httpForm);
 					httpForm.ProcessError = false;
-					break;
+
 				}
-				default:
-				{
+else {
 					string text2 = languagePanelResult[1];
 					if (num != -1)
 					{
 						text2 = languages_[num][1];
 					}
-					if (Language.GetLanguagePackFile() != text2 && Language.SetLanguagePack(text2) && callback_ != null)
-					{
+					if (Language.GetLanguagePackFile() != text2) {
+bool recoveredLanguagePackChanged = Language.SetLanguagePack(text2);
+if (recoveredLanguagePackChanged && callback_ != null) {
 						callback_();
 					}
-					break;
-				}
+}
+
 				}
 			}
 			return Pop();
