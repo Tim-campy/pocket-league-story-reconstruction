@@ -1655,16 +1655,15 @@ if (num4 < 400f)
 				{
 					Player player3 = udat_.teams_[1 - team_id_].players_[l];
 					if ((address_[0] == player3.address_[0]) && (address_[1] == player3.address_[1])) { continue; }
-if (!(GameUtil.ChOnLine(screen_pos_, player2.screen_pos_, 12, player3.screen_pos_))) { continue; }
+if (GameUtil.ChOnLine(screen_pos_, player2.screen_pos_, 12, player3.screen_pos_)) {
 flag2 = true;
 eva_pass_info_onEnemy[k][0] = 1;
 break;
-				}
-				if (flag2 && eva_pass_info[k][0] != 1)
-				{
+				}}
+				if (flag2) { if (eva_pass_info[k][0] == 1) { } else {
 					eva_pass_info[k][0] = 1;
 					num7 = num7 * 70 / 100;
-				}
+				} }
 				eva_pass[k][0] = num7 + GameUtil.Random(num) - num / 2;
 			}
 			bool flag3 = true;
@@ -1680,11 +1679,10 @@ break;
 			{
 				for (int n = 0; n < eva_pass.Length; n++)
 				{
-					if (n != p_id_)
-					{
+					if (n == p_id_) { continue; }
 						eva_pass[n][0] = 1f;
 						break;
-					}
+
 				}
 			}
 			for (int num9 = 1; num9 < udat_.teams_[team_id_].players_.Length; num9++)
@@ -1700,10 +1698,9 @@ break;
 					continue;
 				}
 				Player player4 = udat_.teams_[team_id_].players_[num9];
-				if ((team_id_ == 0 && pos_.z_ > player4.pos_.z_) || (team_id_ == 1 && pos_.z_ < player4.pos_.z_) || (player4.address_[0] == player4.mostEvaAddres_[0] && player4.address_[1] == player4.mostEvaAddres_[1]))
-				{
-					continue;
-				}
+				if (team_id_ == 0) { if (pos_.z_ > player4.pos_.z_) { continue; } }
+				if (team_id_ == 1) { if (pos_.z_ < player4.pos_.z_) { continue; } }
+				if (player4.address_[0] == player4.mostEvaAddres_[0] && player4.address_[1] == player4.mostEvaAddres_[1]) { continue; }
 				eva_pass_info[num9][1] = 0;
 				eva_pass_info_onEnemy[num9][1] = 0;
 				int num10 = 0;
@@ -1726,8 +1723,8 @@ break;
 				for (int num12 = 0; num12 < udat_.teams_[1 - team_id_].players_.Length; num12++)
 				{
 					Player player5 = udat_.teams_[1 - team_id_].players_[num12];
-					if ((address_[0] != player5.address_[0] || address_[1] != player5.address_[1]) && GameUtil.ChOnLine(screen_pos_, temp_afr_mostEvaSPos, 12, player5.screen_pos_))
-					{
+					if (address_[0] == player5.address_[0] && address_[1] == player5.address_[1]) { continue; }
+					if (GameUtil.ChOnLine(screen_pos_, temp_afr_mostEvaSPos, 12, player5.screen_pos_)) {
 						flag4 = true;
 						eva_pass_info_onEnemy[num9][1] = 1;
 						break;

@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,048 de 5,245 métodos matched (96.24%).** 871,497 bytes de IL nos assemblies alvo.
-633,980 bytes IL matched (72.75%).
+**5,049 de 5,245 métodos matched (96.26%).** 871,497 bytes de IL nos assemblies alvo.
+638,323 bytes IL matched (73.24%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3150 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 196 |
+| decompiled | 195 |
 | equivalent | 0 |
-| matched | 5048 |
+| matched | 5049 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1824 / 93.16% | 400176 / 66.52% |
+| `Assembly-CSharp` | 1958 | 601603 | 1825 / 93.21% | 404519 / 67.24% |
 | `KairoLibrary` | 3287 | 269894 | 3224 / 98.08% | 233804 / 86.63% |
 
 ## Namespaces
@@ -38,7 +38,7 @@ KairoLibrary: 3150 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `cfg` | 2 | 348 | 1 / 50.00% | 7 / 2.01% |
 | `data` | 255 | 26353 | 252 / 98.82% | 23108 / 87.69% |
 | `form` | 371 | 250649 | 337 / 90.84% | 166106 / 66.27% |
-| `game` | 441 | 202949 | 391 / 88.66% | 125504 / 61.84% |
+| `game` | 441 | 202949 | 392 / 88.89% | 129847 / 63.98% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
@@ -133,7 +133,7 @@ KairoLibrary: 3150 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.Map` | 18 | 13729 | 11 / 61.11% | 4291 / 31.26% |
 | `Assembly-CSharp::game.MapMain` | 14 | 7415 | 12 / 85.71% | 6109 / 82.39% |
 | `Assembly-CSharp::game.MapObject` | 2 | 46 | 2 / 100.00% | 46 / 100.00% |
-| `Assembly-CSharp::game.Player` | 63 | 32346 | 54 / 85.71% | 19288 / 59.63% |
+| `Assembly-CSharp::game.Player` | 63 | 32346 | 55 / 87.30% | 23631 / 73.06% |
 | `Assembly-CSharp::game.TArea` | 14 | 4070 | 13 / 92.86% | 2882 / 70.81% |
 | `Assembly-CSharp::game.TBall` | 14 | 5087 | 14 / 100.00% | 5087 / 100.00% |
 | `Assembly-CSharp::game.TGroupArea` | 14 | 7524 | 11 / 78.57% | 3518 / 46.76% |

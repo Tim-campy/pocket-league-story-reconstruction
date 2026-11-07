@@ -1,0 +1,380 @@
+{
+  "operation": "smcs-whole-six-hunk-dribble-composition-fixture",
+  "compiler_sha256": "26b4f7cde44cb44fe79c4981f17235de6c477df20c8daef4509903b69cc56fc0",
+  "producer_sha256": "a702dd67d54522fdb99f4157b9c4216ea3ebf40090e0ca87c18bd49f6779f4b7",
+  "driver_sha256": "823f70c7b6eb8403690c1cbbbad4623593a8f6b58486f54a814b3397b51d22c7",
+  "game_compilations": 0,
+  "toy_compilations": 3,
+  "positive_full_bodies": 1,
+  "negative_controls": 6,
+  "negatives": [
+    "line-guard-effect",
+    "guard-empty-value-other",
+    "wrong-loop-owner",
+    "wrong-coordinate-index",
+    "float-other-relation",
+    "address-guard-effect"
+  ],
+  "fixtures": [
+    {
+      "before": "public void Run(){int num7=100;for(int k=1;k<3;k++){Player player2=Other;bool flag2=false;\nfor(int l=0;l<3;l++){Player player3=Other;\nif((address_[0]==player3.address_[0])&&(address_[1]==player3.address_[1])){continue;}\nif(!(GameUtil.ChOnLine(screen_pos_,player2.screen_pos_,12,player3.screen_pos_))){continue;}\nflag2=true;eva_pass_info_onEnemy[k][0]=1;break;\n}\nif(flag2&&eva_pass_info[k][0]!=1){eva_pass_info[k][0]=1;num7=num7*70/100;}}\nfor(int n=0;n<3;n++){if(n!=p_id_){eva_pass[n][0]=1f;break;}}\nfor(int num9=1;num9<3;num9++){Player player4=Other;\nif((team_id_==0&&pos_.z_>player4.pos_.z_)||(team_id_==1&&pos_.z_<player4.pos_.z_)||(player4.address_[0]==player4.mostEvaAddres_[0]&&player4.address_[1]==player4.mostEvaAddres_[1])){continue;}\nbool flag4=false;\nfor(int num12=0;num12<3;num12++){Player player5=Other;\nif((address_[0]!=player5.address_[0]||address_[1]!=player5.address_[1])&&GameUtil.ChOnLine(screen_pos_,temp_afr_mostEvaSPos,12,player5.screen_pos_)){flag4=true;eva_pass_info_onEnemy[num9][1]=1;break;}}\nif(flag4){Count++;}\n}\nCount+=num7;\n}",
+      "after": "public void Run(){int num7=100;for(int k=1;k<3;k++){Player player2=Other;bool flag2=false;\nfor(int l=0;l<3;l++){Player player3=Other;\nif((address_[0]==player3.address_[0])&&(address_[1]==player3.address_[1])){continue;}\nif (GameUtil.ChOnLine(screen_pos_, player2.screen_pos_, 12, player3.screen_pos_)) {\nflag2=true;eva_pass_info_onEnemy[k][0]=1;break;\n}}\nif (flag2) { if (eva_pass_info[k][0] == 1) { } else {eva_pass_info[k][0]=1;num7=num7*70/100;} }}\nfor(int n=0;n<3;n++){if (n == p_id_) { continue; }eva_pass[n][0]=1f;break;}\nfor(int num9=1;num9<3;num9++){Player player4=Other;\nif (team_id_ == 0) { if (pos_.z_ > player4.pos_.z_) { continue; } }\r\n\t\t\t\tif (team_id_ == 1) { if (pos_.z_ < player4.pos_.z_) { continue; } }\r\n\t\t\t\tif (player4.address_[0] == player4.mostEvaAddres_[0] && player4.address_[1] == player4.mostEvaAddres_[1]) { continue; }\nbool flag4=false;\nfor(int num12=0;num12<3;num12++){Player player5=Other;\nif (address_[0] == player5.address_[0] && address_[1] == player5.address_[1]) { continue; }\r\n\t\t\t\t\tif (GameUtil.ChOnLine(screen_pos_, temp_afr_mostEvaSPos, 12, player5.screen_pos_)) {flag4=true;eva_pass_info_onEnemy[num9][1]=1;break;}}\nif(flag4){Count++;}\n}\nCount+=num7;\n}",
+      "manual_control": "public void Run(){int num7=100;for(int k=1;k<3;k++){Player player2=Other;bool flag2=false;\nfor(int l=0;l<3;l++){Player player3=Other;\nif((address_[0]==player3.address_[0])&&(address_[1]==player3.address_[1])){continue;}\nif(GameUtil.ChOnLine(screen_pos_,player2.screen_pos_,12,player3.screen_pos_)){flag2=true;eva_pass_info_onEnemy[k][0]=1;break;}}\nif(flag2){if(eva_pass_info[k][0]==1){}else{eva_pass_info[k][0]=1;num7=num7*70/100;}}}\nfor(int n=0;n<3;n++){if(n==p_id_){continue;}eva_pass[n][0]=1f;break;}\nfor(int num9=1;num9<3;num9++){Player player4=Other;\nif(team_id_==0){if(pos_.z_>player4.pos_.z_){continue;}}\nif(team_id_==1){if(pos_.z_<player4.pos_.z_){continue;}}\nif(player4.address_[0]==player4.mostEvaAddres_[0]&&player4.address_[1]==player4.mostEvaAddres_[1]){continue;}\nbool flag4=false;\nfor(int num12=0;num12<3;num12++){Player player5=Other;\nif(address_[0]==player5.address_[0]&&address_[1]==player5.address_[1]){continue;}\nif(GameUtil.ChOnLine(screen_pos_,temp_afr_mostEvaSPos,12,player5.screen_pos_)){flag4=true;eva_pass_info_onEnemy[num9][1]=1;break;}}\nif(flag4){Count++;}\n}\nCount+=num7;\n}",
+      "full_body_equal": true,
+      "before_body_different": true,
+      "locals_unchanged": true,
+      "unordered_opcodes": [
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "ble.un",
+        "bne.un",
+        "bge.un",
+        "bne.un",
+        "bne.un",
+        "bne.un",
+        "bne.un"
+      ]
+    }
+  ],
+  "float_cases": [
+    {
+      "a": "0.0",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "0.0",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "0.0",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "0.0",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "0.0",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "0.0",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "-0.0",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "-0.0",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "-0.0",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "-0.0",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "-0.0",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "-0.0",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "nan",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "nan",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "nan",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "nan",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "nan",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "nan",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "0.0",
+      "b": "nan",
+      "team": 0,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "0.0",
+      "b": "nan",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "0.0",
+      "b": "nan",
+      "team": 1,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "0.0",
+      "b": "nan",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "0.0",
+      "b": "nan",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "0.0",
+      "b": "nan",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "inf",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": false,
+      "outcome": true
+    },
+    {
+      "a": "inf",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "inf",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "inf",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "inf",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "inf",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "-inf",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "-inf",
+      "b": "0.0",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "-inf",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": false,
+      "outcome": true
+    },
+    {
+      "a": "-inf",
+      "b": "0.0",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "-inf",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "-inf",
+      "b": "0.0",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "1.0",
+      "b": "2.0",
+      "team": 0,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "1.0",
+      "b": "2.0",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "1.0",
+      "b": "2.0",
+      "team": 1,
+      "address_equal": false,
+      "outcome": true
+    },
+    {
+      "a": "1.0",
+      "b": "2.0",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "1.0",
+      "b": "2.0",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "1.0",
+      "b": "2.0",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "2.0",
+      "b": "1.0",
+      "team": 0,
+      "address_equal": false,
+      "outcome": true
+    },
+    {
+      "a": "2.0",
+      "b": "1.0",
+      "team": 0,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "2.0",
+      "b": "1.0",
+      "team": 1,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "2.0",
+      "b": "1.0",
+      "team": 1,
+      "address_equal": true,
+      "outcome": true
+    },
+    {
+      "a": "2.0",
+      "b": "1.0",
+      "team": 2,
+      "address_equal": false,
+      "outcome": false
+    },
+    {
+      "a": "2.0",
+      "b": "1.0",
+      "team": 2,
+      "address_equal": true,
+      "outcome": true
+    }
+  ],
+  "limitations": "One joint calculated game target. All six hunk shapes in independent toy; does not replay isolated C17 candidate. Runtime equivalence or role mapping never promotes a method."
+}
