@@ -782,12 +782,15 @@ namespace kairo.unity.surface
 						TouchPoint touchPoint = startTouchList_.ElementAt(num6);
 						float num8 = touchPoint.x - (float)num2;
 						float num9 = touchPoint.y - (float)num3;
-						if (!(num8 * num8 + num9 * num9 < 225f))
+						if (num8 * num8 + num9 * num9 < 225f)
+						{
+							taskBuffer_.Add(CreateTouchEvent(5, c));
+						}
+						else
 						{
 							touchEvent = CreateTouchEvent(1, c);
 							goto case 2;
 						}
-						taskBuffer_.Add(CreateTouchEvent(5, c));
 					}
 					taskBuffer_.Add(CreateTouchEvent(1, c));
 				}
@@ -918,6 +921,8 @@ namespace kairo.unity.surface
 					num6 = startTouchList_.Size() - 1;
 				}
 				break;
+			case 3:
+				break;
 			}
 			if (touchEvent != null)
 			{
@@ -929,8 +934,10 @@ namespace kairo.unity.surface
 				if (CheckHitPointRect((int)((double)(array[0][0] - x_) / num), (int)((double)(array[0][1] - y_) / num), c.x, c.y, c.width, c.height) && CheckHitPointRect((int)((double)(array[1][0] - x_) / num), (int)((double)(array[1][1] - y_) / num), c.x, c.y, c.width, c.height))
 				{
 					int i;
-					for (i = num7; i < taskBuffer_.Size() && taskBuffer_.ElementAt(i).IsPositive(); i++)
+					for (i = num7; i < taskBuffer_.Size(); i++)
 					{
+						if (!taskBuffer_.ElementAt(i).IsPositive())
+							break;
 					}
 					if (pinchStart_)
 					{

@@ -1,0 +1,28 @@
+{
+  "operation": "historical-csc-Surface-switch-float-loop-composition-fixture",
+  "compiler_sha256": "53b693536e8a86f35d05d2165ff9b3e0aeaa499ecfd8135a9f99ab4404ca86c3",
+  "producer_sha256": "fe88e12da0183ca8e7364daa008c262af14d2b27f8a8d4efc77b37e1471fa05e",
+  "driver_sha256": "f031b292dd67e468a06a61b435d1c5a7542c70d3099e901c768b370b9b81e011",
+  "game_compilations": 0,
+  "toy_compilations": 3,
+  "positive_full_bodies": 1,
+  "negative_controls": 6,
+  "negatives": [
+    "enum-unknown-selector",
+    "shadowed-selector",
+    "unknown-float-type",
+    "nonempty-loop",
+    "different-goto-owner",
+    "extra-switch"
+  ],
+  "full_body_equal": true,
+  "switch_arity_before": 3,
+  "switch_arity_after": 4,
+  "unordered_float_branch_preserved": true,
+  "existing_index_declaration_preserved": true,
+  "body_before_demonstrably_differs": true,
+  "before": "public bool Run(TouchComponent c)\n{\n int action = c.Action;\n int num7=0;\n TouchEvent touchEvent=null;\n switch (action)\n {\n case 0:\n  taskBuffer_.Add(CreateTouchEvent(0,c));\n  break;\n case 1:\n {\n  float num8 = c.X;\n  float num9 = c.Y;\n  if (!(num8 * num8 + num9 * num9 < 225f))\n  {\n   touchEvent = CreateTouchEvent(1, c);\n   goto case 2;\n  }\n  taskBuffer_.Add(CreateTouchEvent(5, c));\n }\n break;\n case 2:\n  taskBuffer_.Add(touchEvent);\n  break;\n }\n int i;\n for (i = num7; i < taskBuffer_.Size() && taskBuffer_.ElementAt(i).IsPositive(); i++)\n {\n }\n return i==num7;\n}",
+  "after": "public bool Run(TouchComponent c)\n{\n int action = c.Action;\n int num7=0;\n TouchEvent touchEvent=null;\n switch (action)\n {\n case 0:\n  taskBuffer_.Add(CreateTouchEvent(0,c));\n  break;\n case 1:\n {\n  float num8 = c.X;\n  float num9 = c.Y;\n  if (num8 * num8 + num9 * num9 < 225f)\r\n  {\r\n  \ttaskBuffer_.Add(CreateTouchEvent(5, c));\r\n  }\r\n  else\r\n  {\n   touchEvent = CreateTouchEvent(1, c);\n   goto case 2;\n  }\n }\n break;\n case 2:\n  taskBuffer_.Add(touchEvent);\n  break;\n case 3:\r\n \tbreak;\r\n }\n int i;\n for (i = num7; i < taskBuffer_.Size(); i++)\r\n {\r\n \tif (!taskBuffer_.ElementAt(i).IsPositive())\r\n \t\tbreak;\r\n }\n return i==num7;\n}",
+  "manual_control": "public bool Run(TouchComponent c)\n{\n int action=c.Action;int num7=0;TouchEvent touchEvent=null;\n switch(action){\n case 0:taskBuffer_.Add(CreateTouchEvent(0,c));break;\n case 1:{float num8=c.X;float num9=c.Y;\n if(num8*num8+num9*num9<225f){taskBuffer_.Add(CreateTouchEvent(5,c));}\n else{touchEvent=CreateTouchEvent(1,c);goto case 2;}}\n break;\n case 2:taskBuffer_.Add(touchEvent);break;\n case 3:break;\n }\n int i;for(i=num7;i<taskBuffer_.Size();i++){if(!taskBuffer_.ElementAt(i).IsPositive())break;}\n return i==num7;\n}",
+  "limitations": "One real target proved by bounded scan; no second or third real analog inferred. Actual field types and body oracle still required."
+}
