@@ -2678,8 +2678,12 @@ g.DrawString(T_S, 120 - font.StringWidth(T_S) / 2, (num3 + num2) / 2 - GHeight /
 
 		public void Draw3DBox(Graphics g, int offset_x, int offset_y, int width, int height, int[][] colors)
 		{
-			g.SetColor(Graphics.GetColorOfRGB(colors[0][0], colors[0][1], colors[0][2]));
-			g.DrawRect(offset_x, offset_y, width - 1, height - 1);
+			int recoveredBorderX = offset_x;
+int recoveredBorderY = offset_y;
+int recoveredBorderWidth = width;
+int recoveredBorderHeight = height;
+g.SetColor(Graphics.GetColorOfRGB(colors[0][0], colors[0][1], colors[0][2]));
+			g.DrawRect(recoveredBorderX, recoveredBorderY, recoveredBorderWidth - 1, recoveredBorderHeight - 1);
 			int num = offset_x + 1;
 			int num2 = offset_y + 1;
 			int num3 = width - 2;
@@ -5866,7 +5870,9 @@ if (num2 > num4)
 		public void DrawTrophyEffect(Graphics g, int trophy_id, int subform_frame, int px, int py)
 		{
 			DrawSeb(g, px, py, resCom2_.seb[106], resCom2_.img[190], sysSave_.ints[10] - 1);
-			int num = (subform_frame - 20) % 66;
+			int trophyOriginX = px;
+int trophyOriginY = py;
+int num = (subform_frame - 20) % 66;
 			int[] array = null;
 			array = resCom2_.seb[106].GetSprite(trophy_id, 0);
 			int num2 = array[5];
@@ -5894,8 +5900,8 @@ if (num2 > num4)
 				{
 					num6 = Graph.Easing(array3[1], array3[0], array[4] / 2, num5 - array[4] / 2, 0);
 				}
-				int num7 = px + array[6] + num5 - num6 / 2;
-				int num8 = py + array[7];
+				int num7 = trophyOriginX + array[6] + num5 - num6 / 2;
+				int num8 = trophyOriginY + array[7];
 				int num9 = array[2] + num5 - num6 / 2;
 				int sy = array[3];
 				int num10 = num6;

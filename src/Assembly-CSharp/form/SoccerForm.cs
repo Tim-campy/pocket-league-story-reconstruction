@@ -2714,7 +2714,7 @@ if (state_ == 0 || state_ == 1 || state_ == 7 || state_ == 8)
 				gAlias.SetColor(Graphics.GetColorOfRGB(128, 128, 128));
 				gAlias.DrawString(teamData2.name_, drawTBAROff2, num, 2);
 			}
-			UpdateOffscreenTopBar(gAlias, false);
+			UpdateOffscreenTopBar(g, false);
 		}
 
 		public void Draw_matchElse(Graphics g)
