@@ -462,9 +462,10 @@ def main():
             compiler_sources.update(proposal.get('pinned_compiler_source_sha256',{}))
         for relative,expected in compiler_sources.items():
             path=(ROOT/relative).resolve()
-            if (not path.is_relative_to((ROOT/'analysis/tools/round5-mono-source').resolve())
+            if (not any(path.is_relative_to((ROOT/root).resolve()) for root in
+                        ('analysis/tools/round5-mono-source','analysis/tools/round6-roslyn-source'))
                     or path.suffix.lower() not in ('.cs','.jay') or sha(path)!=expected):
-                raise ValueError('Read-only pinned Mono source changed: '+relative)
+                raise ValueError('Read-only pinned compiler source changed: '+relative)
         for field in ('calculator','syntax_source'):
             expected=proposal_doc.get(field+'_sha256')
             if expected and not any(sha(p)==expected for p in (ROOT/'tools').glob('*') if p.is_file()):

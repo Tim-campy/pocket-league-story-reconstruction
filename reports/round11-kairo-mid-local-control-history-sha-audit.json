@@ -1,0 +1,214 @@
+[
+  {
+    "method_id": "kairo.unity.ui.Image::SetTransparentEnabled(System.Boolean)->System.Void",
+    "captured_records": 51,
+    "actual_trials": 9,
+    "adopted_steps": 0,
+    "same_complete_candidate_found": [],
+    "trial_summaries": [
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "local-declaration-scope-hoist",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 38,
+        "before_sha256": "9d8d36e197c64bf474ae03be91d6b9a50736f7b111d7177202c0a8327be3f152",
+        "after_sha256": "e4244c042216b2c5d08aa7427e9c38faf04ea82635e0a944cbb2f38b182bad57",
+        "before_preview": "if (enabled)\r\n\t\t\t{\r\n\t\t\t\tbool flag = false;",
+        "after_preview": "bool flag;\nif (enabled)\r\n\t\t\t{\r\n\t\t\t\tflag = false;"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "if-polarity",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 37,
+        "before_sha256": "353b8289beaf297b900ca6f9bad1c6dd7bcf1b06c815f051c1e62a4e8b0569b2",
+        "after_sha256": "4052be3ce3e17128ae4495dca7394efa5049661eb7290efecfc9e488ac1fb644",
+        "before_preview": "if (enabled)\r\n\t\t\t{\r\n\t\t\t\tbool flag = false;\r\n\t\t\t\tif (!IsAlphaFormat((Format)GetTexture2D().format))\r\n\t\t\t\t{\r\n\t\t\t\t\timage_ =",
+        "after_preview": "if (!(enabled)) {\r\n\t\t\t\tif (IsAlphaFormat((Format)GetTexture2D().format))\r\n\t\t\t\t{\r\n\t\t\t\t\timage_ = new Texture2D(image_.widt"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "condition-local",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 38,
+        "before_sha256": "9739320fbb75e56ed8d1d613e63163db1a153e27dae1a9a5f556e688f350f035",
+        "after_sha256": "b82d4d8b5f894684bd802680d4908840715581ca8d603cbffe3ad9064e6fbe8f",
+        "before_preview": "if (!IsAlphaFormat((Format)GetTexture2D().format))\r\n\t\t\t\t{\r\n\t\t\t\t\timage_ = new Texture2D(image_.width, image_.height, Text",
+        "after_preview": "{ bool recoveredCondition_22915 = IsAlphaFormat((Format)GetTexture2D().format);\nif (!recoveredCondition_22915)\r\n\t\t\t\t{\r\n\t"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "tail-early-return",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 38,
+        "before_sha256": "86e9b7d99e71678f6b9587efe9db01f802bfd1de91e67b18fdb78b92d3225b0f",
+        "after_sha256": "1280664d5f2442ca130876cb03c7eaad02b0a1a9029d9a01532eb96ebe8c3f66",
+        "before_preview": "if (alphaType_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\talphaType_ = 1;\r\n\t\t\t\t}",
+        "after_preview": "if (alphaType_ != 0) { return; }\nalphaType_ = 1;"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "if-polarity",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 38,
+        "before_sha256": "8d3b93c2b43a49b8d8bfa5538cd27841653c09e218311f3765a95ce24820e62c",
+        "after_sha256": "f50ff4aeec30935b75f06bb2412696627d48bafc515ab8fc0b38ec4a9f950a46",
+        "before_preview": "if ((aRGBPixels[i] & 0xFFFFFF) == num)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\taRGBPixels[i] &= 16777215;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (flag)\r\n\t\t\t\t\t{\r\n\t",
+        "after_preview": "if ((aRGBPixels[i] & 0xFFFFFF) != num) if (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\taRGBPixels[i] = -16777216 | aRGBPixels[i];\r\n\t\t\t\t\t} else "
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "condition-local",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 38,
+        "before_sha256": "8d3b93c2b43a49b8d8bfa5538cd27841653c09e218311f3765a95ce24820e62c",
+        "after_sha256": "f984a06e3ffe8e14270dedf23f731afc6a53e850266a4f81e38505f2bd693a65",
+        "before_preview": "if ((aRGBPixels[i] & 0xFFFFFF) == num)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\taRGBPixels[i] &= 16777215;\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if (flag)\r\n\t\t\t\t\t{\r\n\t",
+        "after_preview": "{ bool recoveredCondition_23149 = (aRGBPixels[i] & 0xFFFFFF) == num;\nif (recoveredCondition_23149)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\taRGBPi"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "condition-local",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 38,
+        "before_sha256": "86e9b7d99e71678f6b9587efe9db01f802bfd1de91e67b18fdb78b92d3225b0f",
+        "after_sha256": "06a747417357c9104527e705bce99120a8652175ddabdd6971b7c316290739d5",
+        "before_preview": "if (alphaType_ == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\talphaType_ = 1;\r\n\t\t\t\t}",
+        "after_preview": "{ bool recoveredCondition_23400 = alphaType_ == 0;\nif (recoveredCondition_23400)\r\n\t\t\t\t{\r\n\t\t\t\t\talphaType_ = 1;\r\n\t\t\t\t}\n}"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "condition-local",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 38,
+        "before_sha256": "fa7e4f36b6f9e244190f28764b5e6d3be951511223305650931b3138e40efb3c",
+        "after_sha256": "a7db2d517fad1a89079f06feca7b8c778238aecdbf877ebd042df36c864dd784",
+        "before_preview": "if (IsAlphaFormat((Format)GetTexture2D().format))\r\n\t\t\t\t{\r\n\t\t\t\t\timage_ = new Texture2D(image_.width, image_.height, Textu",
+        "after_preview": "{ bool recoveredCondition_23483 = IsAlphaFormat((Format)GetTexture2D().format);\nif (recoveredCondition_23483)\r\n\t\t\t\t{\r\n\t\t"
+      },
+      {
+        "report": "reports\\round7-part-a-KairoLibrary-engine.json",
+        "rule": "roslyn-solver-group-block-declarations",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": 38,
+        "new_prefix": null,
+        "before_sha256": "9defe0dd71f5d22674807bf7d9917ac3747daf4277fbadf21a3edeea801801e7",
+        "after_sha256": "a709b5dab4b9be659293e17888247f023ebbde848a8cec99d4eb554356e05fc4",
+        "before_preview": "public void SetTransparentEnabled(bool enabled)\r\n\t\t{\r\n\t\t\tint num = transparentColor_ & 0xFFFFFF;\r\n\t\t\tint[] aRGBPixels = ",
+        "after_preview": "public void SetTransparentEnabled(bool enabled)\r\n\t\t{\r\n\t\t\t\nint num;\nint[] aRGBPixels;\nnum = transparentColor_ & 0xFFFFFF;"
+      }
+    ],
+    "limits": "Only exact recorded source/text provenance excludes duplicate; zero-candidate runs are not refuted hypotheses."
+  },
+  {
+    "method_id": "kairo.unity.util.Language::TranslateSoftLabel(System.String)->System.String",
+    "captured_records": 51,
+    "actual_trials": 7,
+    "adopted_steps": 0,
+    "same_complete_candidate_found": [],
+    "trial_summaries": [
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "condition-local",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 15,
+        "before_sha256": "e9b14e6f6dcd5e9a3ce6d217e607f78b30dc49b9edaae0660fb77423ecb08e14",
+        "after_sha256": "6656e498c1d8090a18b727a0749daee1ca11874d561e504f96e249146bfbca28",
+        "before_preview": "if (softlabelTable_ != null)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < softlabelTable_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (softlabel.Leng",
+        "after_preview": "{ bool recoveredCondition_38338 = softlabelTable_ != null;\nif (recoveredCondition_38338)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < "
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "local-declaration-scope-hoist",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 15,
+        "before_sha256": "ebd5690228b016b07759176bdd96f04ccd8e2a56fd4b2fe79e0acd462e3a14db",
+        "after_sha256": "65028f84b587af38354d3b150b957c65031630816dc75959308c64106444b35b",
+        "before_preview": "if (softlabelTable_ != null)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < softlabelTable_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (softlabel.Leng",
+        "after_preview": "int num;\nif (softlabelTable_ != null)\r\n\t\t\t{\r\n\t\t\t\tfor (int i = 0; i < softlabelTable_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (softl"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "condition-split-and",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 15,
+        "before_sha256": "63f6faab94af5258ffcfe443ca0b349f1b71c75851043f40d8221cd1d464e0b9",
+        "after_sha256": "0c327806f1e2c64fd9c9f70fc026b729ea4e291491eb5ea807308ca6025ff7e5",
+        "before_preview": "if (softlabel.Length == softlabelTable_[i][0].Length && softlabel.Equals(softlabelTable_[i][0]))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn s",
+        "after_preview": "if (softlabel.Length == softlabelTable_[i][0].Length) { if (softlabel.Equals(softlabelTable_[i][0])) {\r\n\t\t\t\t\t\treturn sof"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "loop-continue-guards",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 15,
+        "before_sha256": "63f6faab94af5258ffcfe443ca0b349f1b71c75851043f40d8221cd1d464e0b9",
+        "after_sha256": "611f54d4732bef995acc3d1ee40c1fb56ac1c247024733841951f7850e65855b",
+        "before_preview": "if (softlabel.Length == softlabelTable_[i][0].Length && softlabel.Equals(softlabelTable_[i][0]))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn s",
+        "after_preview": "if (softlabel.Length != softlabelTable_[i][0].Length) { continue; }\nif (!(softlabel.Equals(softlabelTable_[i][0]))) { co"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "loop-continue-guard",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 15,
+        "before_sha256": "63f6faab94af5258ffcfe443ca0b349f1b71c75851043f40d8221cd1d464e0b9",
+        "after_sha256": "c45c5984f2562197a96af25d876b41161aaed69130bec68f6d5b906b8c82081d",
+        "before_preview": "if (softlabel.Length == softlabelTable_[i][0].Length && softlabel.Equals(softlabelTable_[i][0]))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn s",
+        "after_preview": "if ((softlabel.Length != softlabelTable_[i][0].Length) || (!(softlabel.Equals(softlabelTable_[i][0])))) { continue; }\nre"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "return-local",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 15,
+        "before_sha256": "dd97f39e69271a2882011297b357e7784dcd2605e0c83a459cb5aa3207494ae1",
+        "after_sha256": "2ae8dc3596340c5d5db718593a22f3174183b0d36e3f215689d48df8e8103802",
+        "before_preview": "return softlabelTable_[i][1];",
+        "after_preview": "{ string recoveredReturn_38552 = softlabelTable_[i][1]; return recoveredReturn_38552; }"
+      },
+      {
+        "report": "reports\\round4-KairoLibrary-engine.json",
+        "rule": "condition-local",
+        "compile_pass": true,
+        "accepted": false,
+        "screen_prefix": null,
+        "new_prefix": 15,
+        "before_sha256": "63f6faab94af5258ffcfe443ca0b349f1b71c75851043f40d8221cd1d464e0b9",
+        "after_sha256": "08d89525c01058ab8ae5290f098bcb3a4c05bae619e6cbf23fe522cbde5661e1",
+        "before_preview": "if (softlabel.Length == softlabelTable_[i][0].Length && softlabel.Equals(softlabelTable_[i][0]))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\treturn s",
+        "after_preview": "{ bool recoveredCondition_38440 = softlabel.Length == softlabelTable_[i][0].Length && softlabel.Equals(softlabelTable_[i"
+      }
+    ],
+    "limits": "Only exact recorded source/text provenance excludes duplicate; zero-candidate runs are not refuted hypotheses."
+  }
+]

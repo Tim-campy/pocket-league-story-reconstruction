@@ -2,22 +2,22 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,168 de 5,245 métodos matched (98.53%).** 871,497 bytes de IL nos assemblies alvo.
-829,365 bytes IL matched (95.17%).
+**5,170 de 5,245 métodos matched (98.57%).** 871,497 bytes de IL nos assemblies alvo.
+829,855 bytes IL matched (95.22%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3196 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3198 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 76 |
+| decompiled | 74 |
 | equivalent | 0 |
-| matched | 5168 |
+| matched | 5170 |
 | external | 0 |
 
 ## Assemblies
@@ -25,7 +25,7 @@ KairoLibrary: 3196 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
 | `Assembly-CSharp` | 1958 | 601603 | 1898 / 96.94% | 561744 / 93.37% |
-| `KairoLibrary` | 3287 | 269894 | 3270 / 99.48% | 267621 / 99.16% |
+| `KairoLibrary` | 3287 | 269894 | 3272 / 99.54% | 268111 / 99.34% |
 
 ## Namespaces
 
@@ -66,8 +66,8 @@ KairoLibrary: 3196 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.system.notification.ui` | 24 | 911 | 24 / 100.00% | 911 / 100.00% |
 | `kairo.unity.system.payment` | 14 | 752 | 14 / 100.00% | 752 / 100.00% |
 | `kairo.unity.system.tapjoy.ui` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
-| `kairo.unity.ui` | 1021 | 100597 | 1018 / 99.71% | 100018 / 99.42% |
-| `kairo.unity.util` | 518 | 43955 | 517 / 99.81% | 43740 / 99.51% |
+| `kairo.unity.ui` | 1021 | 100597 | 1019 / 99.80% | 100293 / 99.70% |
+| `kairo.unity.util` | 518 | 43955 | 518 / 100.00% | 43955 / 100.00% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
 | `main` | 223 | 35448 | 217 / 97.31% | 31913 / 90.03% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
@@ -402,7 +402,7 @@ KairoLibrary: 3196 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.IApplication` | 77 | 4239 | 76 / 98.70% | 4040 / 95.31% |
 | `KairoLibrary::kairo.unity.ui.IApplication+MethodTask` | 2 | 28 | 2 / 100.00% | 28 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.IApplication+UIMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
-| `KairoLibrary::kairo.unity.ui.Image` | 92 | 8726 | 91 / 98.91% | 8451 / 96.85% |
+| `KairoLibrary::kairo.unity.ui.Image` | 92 | 8726 | 92 / 100.00% | 8726 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass155_0` | 2 | 380 | 2 / 100.00% | 380 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass156_0` | 2 | 42 | 2 / 100.00% | 42 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Image+<>c__DisplayClass157_0` | 2 | 48 | 2 / 100.00% | 48 / 100.00% |
@@ -468,7 +468,7 @@ KairoLibrary: 3196 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.util.JarInflater` | 15 | 1433 | 15 / 100.00% | 1433 / 100.00% |
 | `KairoLibrary::kairo.unity.util.JarInflater+FileInfo` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `KairoLibrary::kairo.unity.util.KairoException` | 2 | 23 | 2 / 100.00% | 23 / 100.00% |
-| `KairoLibrary::kairo.unity.util.Language` | 33 | 22129 | 32 / 96.97% | 21914 / 99.03% |
+| `KairoLibrary::kairo.unity.util.Language` | 33 | 22129 | 33 / 100.00% | 22129 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Language+LangPackFormat` | 1 | 44 | 1 / 100.00% | 44 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Language+LangPackRecord` | 2 | 85 | 2 / 100.00% | 85 / 100.00% |
 | `KairoLibrary::kairo.unity.util.Language+LanguagePackInfo` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |

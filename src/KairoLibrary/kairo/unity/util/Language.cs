@@ -1001,11 +1001,12 @@ namespace kairo.unity.util
 			{
 				return softlabel;
 			}
+string softLabelInput = softlabel;
 			if (softlabelTable_ != null)
 			{
 				for (int i = 0; i < softlabelTable_.Length; i++)
 				{
-					if (softlabel.Length == softlabelTable_[i][0].Length && softlabel.Equals(softlabelTable_[i][0]))
+					if (softLabelInput.Length == softlabelTable_[i][0].Length && softLabelInput.Equals(softlabelTable_[i][0]))
 					{
 						return softlabelTable_[i][1];
 					}
@@ -1018,7 +1019,7 @@ namespace kairo.unity.util
 				{
 					for (int j = 0; j < BUILTIN_SOFTLABEL_TABLE.Length; j++)
 					{
-						if (softlabel.Length == BUILTIN_SOFTLABEL_TABLE[j][0].Length && softlabel.Equals(BUILTIN_SOFTLABEL_TABLE[j][0]))
+						if (softLabelInput.Length == BUILTIN_SOFTLABEL_TABLE[j][0].Length && softLabelInput.Equals(BUILTIN_SOFTLABEL_TABLE[j][0]))
 						{
 							if (num >= BUILTIN_SOFTLABEL_TABLE[j].Length)
 							{

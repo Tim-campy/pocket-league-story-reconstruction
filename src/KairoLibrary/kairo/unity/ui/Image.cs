@@ -930,7 +930,7 @@ if (alpha_ != alpha) {
 				{
 					if ((aRGBPixels[i] & 0xFFFFFF) == num)
 					{
-						aRGBPixels[i] &= 16777215;
+						aRGBPixels[i] = aRGBPixels[i] & 16777215;
 					}
 					else if (flag)
 					{
