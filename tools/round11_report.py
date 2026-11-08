@@ -14,6 +14,9 @@ ASSEMBLIES = ('KairoLibrary', 'Assembly-CSharp')
 SECTIONS = ('1. PROGRESSO', '2. O QUE FOI FEITO NESTA RODADA', '3. HIPÓTESES',
             '4. PENDENTES POR GRUPO', '5. TOOLCHAIN', '6. COMPONENTES EXTERNOS E METADADOS',
             '7. BLOQUEIOS', '8. SUA RECOMENDAÇÃO')
+APK_CONTRACT_NOTE = ('Critério final do APK: payload comprimido idêntico para todas as entradas salvo as duas DLLs e os portadores exatos da assinatura; preservar ordem, método e alinhamento. Comparar as duas DLLs descomprimidas e integralmente, permitindo somente os seis campos não determinísticos comprovados. Exceções ZIP originais de assinatura: META-INF/MANIFEST.MF, META-INF/CERT.SF e META-INF/CERT.RSA; eventual APK Signing Block tratado separadamente. Não copiar nem forjar a assinatura original. Encoder histórico exato: UNKNOWN.')
+C6_SOURCE_NOTE = ('C6: Roslyn revisão 4cb203dab89e1542cdf7d88cb6d32767bc0e5460, src/Compilers/CSharp/Portable/Lowering/LocalRewriter/LocalRewriter_IfStatement.cs:40–63 emite BoundConditionalGoto(rewrittenCondition.Syntax, rewrittenCondition, false, afterif); CodeGen/EmitStatement.cs:364–385 só dobra quando condition.ConstantValue != null. Um local Boolean não const de uso único conserva o branch e pode ser agendado na pilha; if(true) e const bool foram refutados nas fixtures. Seb.Draw fechou com esse local, no c09.')
+EXTERNALS_NOTE = ('Provas externas preservadas: sete DLLs gerenciadas e seis bibliotecas nativas coincidem com a distribuição oficial Unity 5.3.4f1. UnityEngine.dll corresponde à variante AndroidPlayer/Variations/mono/Managed, SHA-256 7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421; libunity ARMv7/x86 corresponde a Mono Release. Não houve nova auditoria ou decompilação de externos nesta rodada.')
 
 
 def read(path):
@@ -155,6 +158,8 @@ def render(ctx):
         levels = [r['level'] for r in row['levels'] if r['compressed_bytes_equal_original']]
         add('B — ' + assembly + ': níveis DEFLATE com stream integral idêntico: ' + str(levels) + '; stream original ' + str(row['original_compressed_size']) + ' bytes; zlib ' + b['zlib_runtime_version'] + '; parâmetros ' + json.dumps(b['parameters'], ensure_ascii=False) + '.')
     add('APK montado: ' + str(b['apk_built']) + '; alvo executado nesta calibração: ' + str(b['target_executed']) + '.')
+    add(APK_CONTRACT_NOTE)
+    add(C6_SOURCE_NOTE)
     hypotheses = read('reports/round11-hypotheses.json')['hypotheses']
     for h in hypotheses:
         add(h['status'] + ' — ' + h['hypothesis'] + ' Evidência: ' + h['evidence'])
@@ -207,6 +212,7 @@ def render(ctx):
     exceptions = selected['non_deterministic_exceptions']
     add(table(['Assembly', 'Campo não determinístico', 'Prova'], [[r['assembly'], r['field'], r['evidence']] for r in exceptions]))
     add('Essas exceções são somente contabilidade de diferenças: nenhum byte é normalizado. Externos não foram decompilados nesta rodada; seu inventário/provas anteriores permanecem em docs/toolchain.md. DEX/Java permanece fora do escopo.')
+    add(EXTERNALS_NOTE)
     for assembly, row in cfg.get('raw_evaluations', {}).items():
         add('Raw ' + assembly + ': gatilho medido em ' + row['trigger_label'] + '; recibos ' + ', '.join(row['reports']) + '. Resultado integral deve ser lido nesses recibos; não se presume igualdade por fechamento de métodos.')
     if not cfg.get('raw_evaluations'):

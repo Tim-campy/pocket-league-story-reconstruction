@@ -51,6 +51,10 @@ B — Assembly-CSharp: níveis DEFLATE com stream integral idêntico: [6]; strea
 
 APK montado: False; alvo executado nesta calibração: False.
 
+Critério final do APK: payload comprimido idêntico para todas as entradas salvo as duas DLLs e os portadores exatos da assinatura; preservar ordem, método e alinhamento. Comparar as duas DLLs descomprimidas e integralmente, permitindo somente os seis campos não determinísticos comprovados. Exceções ZIP originais de assinatura: META-INF/MANIFEST.MF, META-INF/CERT.SF e META-INF/CERT.RSA; eventual APK Signing Block tratado separadamente. Não copiar nem forjar a assinatura original. Encoder histórico exato: UNKNOWN.
+
+C6: Roslyn revisão 4cb203dab89e1542cdf7d88cb6d32767bc0e5460, src/Compilers/CSharp/Portable/Lowering/LocalRewriter/LocalRewriter_IfStatement.cs:40–63 emite BoundConditionalGoto(rewrittenCondition.Syntax, rewrittenCondition, false, afterif); CodeGen/EmitStatement.cs:364–385 só dobra quando condition.ConstantValue != null. Um local Boolean não const de uso único conserva o branch e pode ser agendado na pilha; if(true) e const bool foram refutados nas fixtures. Seb.Draw fechou com esse local, no c09.
+
 INCONCLUSIVA — A família r11-c1 produz ao menos um novo corpo integral. Evidência: c01: 0 matched, 0 IL bytes; INCONCLUSIVA: nenhum candidato autorizado pelo modelo/mapeamento; 0 tentativas da regra, 0 avancos. Proposta investigada: Restore three protected returns in the Play lambda while retaining payloads and lexical scopes
 
 CONFIRMADA — A família r11-c1 produz ao menos um novo corpo integral. Evidência: c02: 1 matched, 383 IL bytes; Novos corpos aprovados; 1 tentativas da regra, 1 avancos. Proposta investigada: After GUID-bound private PDB mirroring, test the three protected returns in the Play lambda; first pass had no mapped trial
@@ -85,21 +89,21 @@ CONFIRMADA — A família r11-kairo-ui produz ao menos um novo corpo integral. E
 
 CONFIRMADA — A família r11-kairo-mid- produz ao menos um novo corpo integral. Evidência: cycle06: 2 matched, 490 IL bytes; Novos corpos aprovados; 2 tentativas da regra, 2 avancos. Proposta investigada: Restore explicit indexed integer-mask assignment and input-string alias before protected table loops while preserving the argument fallback; diagnostic rule aliases retain original rule identities
 
-CONFIRMADA — O caminho hist?rico do PDB pode ser reproduzido pelo compilador sem reescrever a DLL. Evidência: reports/round11-pdb-path.json:97 diferen?as de caminho/padding ca?ram para0, com os corpos e metadados preservados.
+CONFIRMADA — Reproduzir o caminho histórico do PDB elimina as diferenças de caminho sem reescrever a DLL. Evidência: Parte A: 97 diferenças de caminho/padding caíram para zero; corpos e metadados preservados.
 
-CONFIRMADA — O deflate n?vel6 e os par?metros medidos reproduzem os dois fluxos comprimidos originais. Evidência: reports/round11-apk-contract.json:Kairo248092bytes e App321171bytes; igualdade integral de streams, zlib1.3.1. Encoder hist?rico exato UNKNOWN.
+CONFIRMADA — Deflate nível 6 com os parâmetros registrados reproduz os dois streams originais. Evidência: Parte B: Kairo 248092 bytes e App 321171 bytes, igualdade integral; zlib 1.3.1. Encoder histórico UNKNOWN.
 
-REFUTADA — Literal if(true) ou const bool=true produz o branch ldc.i4.1/brfalse de Seb.Draw. Evidência: Fixtures C6 dobraram os dois testes; local Boolean n?o const de uso ?nico conservou o par e fechou Seb.Draw no c09.
+REFUTADA — Literal if(true) ou const bool=true produz o branch de Seb.Draw. Evidência: As duas fixtures dobraram o teste; local Boolean não const conservou ldc.i4.1/brfalse e fechou Seb.Draw em c09.
 
-INCONCLUSIVA — A troca gen?rica dos operandos de compara??o resolve os pendentes desta rodada. Evidência: C5:7trials smcs+5Roslyn,0avan?os/0matched. O resultado n?o refuta a forma para toda constru??o; os alvos medidos n?o fecharam.
+INCONCLUSIVA — Espelhar operandos resolve os pendentes desta rodada. Evidência: 7 trials smcs e 5 Roslyn: zero avanços. Isso não refuta a forma para toda construção.
 
-REFUTADA — A primeira diferen?a de Map.SetCoatLine desta rodada ? uma compara??o com operandos espelhados. Evidência: C06:as oito diverg?ncias eram subtra??es Int32 neg versus0-x; a restaura??o gerou2711ILbytes integrais iguais.
+REFUTADA — A diferença de Map.SetCoatLine é comparação espelhada. Evidência: C06: oito subtrações Int32 neg versus 0-x; a restauração fechou os 2711 bytes IL.
 
-CONFIRMADA — O modelo Roslyn8 omite um tempor?rio de getter de struct por valor em MeshManager.GetMeshBuilder. Evidência: Proposta privada cache:baseline prev?4locais onde a assinatura recompilada tem5; extens?o gen?rica privada prev?5no baseline/4no candidato, mas n?o foi selecionada.
+CONFIRMADA — O modelo Roslyn8 omite um temporário de getter de struct por valor em MeshManager.GetMeshBuilder. Evidência: Baseline prevê 4 locais contra 5 reais. Extensão privada prevê 5 no baseline/4 no candidato; não foi selecionada.
 
-INCONCLUSIVA — As quatro propostas privadas restantes reproduzem os corpos reais. Evidência: Material110+Mesh141+Pause199+Transpose197=647ILbytes; fixtures pr?prias passaram,0compila??es do jogo at? a parada.
+INCONCLUSIVA — As quatro propostas privadas restantes reproduzem os corpos reais. Evidência: Material 110 + Mesh 141 + Pause 199 + Transpose 197 = 647 bytes IL. Fixtures próprias passaram; zero compilações do jogo.
 
-INCONCLUSIVA — Os operadores hist?ricos do teste vazio de SaveToTmpCaptureDirectory podem ser determinados pela igualdade de IL. Evidência: Fixtures ==,!=,> geraram o mesmo corpo; D05 reproduziu297ILbytes, mas a rela??o exata continua UNKNOWN.
+INCONCLUSIVA — O operador histórico do teste vazio de SaveToTmpCaptureDirectory pode ser identificado pelo IL. Evidência: Fixtures ==, != e > geraram o mesmo corpo. D05 reproduziu 297 bytes IL; relação exata UNKNOWN.
 
 INCONCLUSIVA — `game.UserData::SetTrainingCommonMethod(System.Boolean)->System.Void`: 2 avanços parciais em round11-c05-Assembly-CSharp-engine.json; prefixo 802 → 1334; corpo integral ainda diferente.
 
@@ -371,6 +375,8 @@ Assembly-CSharp: tipos/metadados estruturais 129/129; igualdade estrutural globa
 
 Essas exceções são somente contabilidade de diferenças: nenhum byte é normalizado. Externos não foram decompilados nesta rodada; seu inventário/provas anteriores permanecem em docs/toolchain.md. DEX/Java permanece fora do escopo.
 
+Provas externas preservadas: sete DLLs gerenciadas e seis bibliotecas nativas coincidem com a distribuição oficial Unity 5.3.4f1. UnityEngine.dll corresponde à variante AndroidPlayer/Variations/mono/Managed, SHA-256 7cc901371cc77e103d00b5845e8285f85fbdf36bb47ccf3d824f94c4ead32421; libunity ARMv7/x86 corresponde a Mono Release. Não houve nova auditoria ou decompilação de externos nesta rodada.
+
 Comparação bruta completa não repetida nesta rodada: KairoLibrary ainda tem corpos divergentes e Assembly-CSharp tem mais de dez. Além do caminho PDB medido na Parte A, as diferenças remanescentes de tabelas, heaps, seções e suas causas são UNKNOWN neste checkpoint; igualdade estrutural não prova igualdade bruta.
 
 7. BLOQUEIOS
@@ -379,17 +385,17 @@ Motivo da parada: Solicitação explícita do usuário: me envie o relatorio fin
 
 Fila inicial explícita precedeu a descoberta autônoma. Após ela, os ciclos D04–D06 priorizaram Kairo, que ainda não fechou seus corpos. A/B: zero ganhos de métodos e IL. Orçamento de previsões incompletas: 12 variantes por método/passe e 24/ciclo; previsões completas erradas foram recusadas.
 
-Parada solicitada pelo usu?rio ap?s D06, com zero ciclos D consecutivos sem ganho; o limite40 e a condi??o5zeros n?o foram atingidos. N?o houve D07. Quatro propostas privadas congeladas permanecem pendentes, total4m?todos/647bytes IL; fixtures n?o s?o ganho real.
+Parada solicitada pelo usuário após D06, com zero ciclos D consecutivos sem ganho. O limite de 40 e a condição de 5 zeros não foram atingidos. Não houve D07. Quatro propostas privadas congeladas permanecem pendentes: 4 métodos/647 bytes IL; fixtures não são ganho real.
 
-Resultado negativo C5: espelhamento gen?rico compilou7 candidatos smcs e5 Roslyn sem avan?o; Map.SetCoatLine fechou ao restaurar oito subtra??es Int32 na forma0-x, e n?o pela troca de operandos de compara??o. A prote??o foi refor?ada contra convers?es definidas pelo usu?rio; os12trials anteriores eram Int32 nativos e continuam v?lidos.
+C5: espelhamento genérico compilou 7 candidatos smcs e 5 Roslyn sem avanço. Map.SetCoatLine fechou ao restaurar oito subtrações Int32 na forma 0-x. A proteção foi reforçada contra conversões definidas pelo usuário; os 12 trials anteriores eram Int32 nativos e continuam válidos.
 
-C1 primeiro passe foi INFRA_NOT_EVALUATED:24alvos sem PDB mape?vel,0trials; o espelhamento autenticado de PDB corrigiu a infraestrutura e a repeti??o c02 fechou SoundOGG. Init2 teve rejei??o de v?nculo de modelo antes de trials; v?nculo ao modelo de produ??o11 foi refeito e D03 fechou o corpo. As tentativas antigas permanecem registradas.
+C1 inicial: INFRA_NOT_EVALUATED, 24 alvos sem PDB mapeável, zero trials. O espelhamento autenticado de PDB corrigiu a infraestrutura e c02 fechou SoundOGG. Init2 teve rejeição de vínculo de modelo antes de trials; o vínculo foi refeito e D03 fechou o corpo.
 
-Dois testes puros falharam em D04 por reutilizar estados da fila viva, n?o por falha do or?culo; a fixture foi isolada e21testes passaram. Na finaliza??o,23testes passaram incluindo a parada expl?cita e a recusa de parada inferida pelo agente.
+Dois testes puros falharam em D04 por reutilizar estados da fila viva; a fixture foi isolada e 21 testes passaram. Na finalização, 23 testes passaram, incluindo parada explícita e recusa de parada inferida pelo agente.
 
-Modelo Roslyn8: MeshManager.GetMeshBuilder tem previs?o completa4 contra assinatura real5 por faltar um tempor?rio KeyValuePair de getter sobre struct retornado por indexador. Uma extens?o privada foi medida em3196corpos matched:2250previs?es completas/exatas,0falsos completos. Nenhum modelo Roslyn novo foi publicado ou selecionado; a proposta Mesh n?o foi compilada no jogo.
+Roslyn8: MeshManager.GetMeshBuilder prevê 4 locais contra 5 reais, por faltar temporário KeyValuePair de getter sobre struct por valor. Extensão privada medida em 3196 corpos matched: 2250 previsões completas/exatas, zero falsos completos. Não foi selecionada nem publicada. Nenhuma proposta nova foi compilada no jogo após D06.
 
-Errata do relat?rio anterior: Assembly-CSharp usa a KairoLibrary original somente como refer?ncia de metadados/API na compila??o. O teste funcional anterior usou DLL reconstru?da. Esta sele??o de refer?ncias n?o foi alterada nesta rodada. Init2 tinha68locais em quantidade, mas25posi??es de tipos divergiam; a igualdade de quantidade n?o foi tratada como igualdade de assinatura.
+Errata: Assembly-CSharp referencia KairoLibrary original como metadados/API na compilação; o APK funcional anterior usou a DLL reconstruída. A referência não mudou. Init2 tinha 68 locais, mas 25 posições de tipos divergiam antes da correção.
 
 | Proposta preservada sem teste no jogo | Métodos | IL original potencial | Estado |
 | --- | --- | --- | --- |
@@ -402,6 +408,6 @@ Nenhuma instalação ou arquivo solicitado ao usuário. A rodada foi encerrada p
 
 8. SUA RECOMENDAÇÃO
 
-1. Validar e selecionar uma extens?o gen?rica do modelo Roslyn para o tempor?rio de getter de struct retornado por indexador; depois testar as duas propostas de MaterialManager/GetMaterial e MeshManager/GetMeshBuilder. Potencial:2 m?todos/251 bytes IL; fixtures pr?prias fecham, resultado real UNKNOWN.
-2. Compilar as duas propostas j? congeladas de IApplication.OnApplicationPause e Transform.Transpose. Potencial:2 m?todos/396 bytes IL; fixtures inteiras fecham, sem compila??o do jogo at? a parada.
-3. Continuar a KairoLibrary pelos nove corpos restantes ap?s essa fila, incluindo LineupData.GetRatio192 e a lambda KairoBase.Start182. Faixa de busca inicial:2 m?todos/374 bytes IL, n?o ganho previsto; primeiro confirmar em fixtures e no verificador. Somente ap?s fechar a KairoLibrary realizar a compara??o bruta completa e voltar ao Assembly-CSharp.
+1. Validar e selecionar a extensão genérica do modelo Roslyn para getter de struct retornado por indexador; testar MaterialManager.GetMaterial e MeshManager.GetMeshBuilder. Potencial: 2 métodos/251 bytes IL; fixtures passaram, resultado real UNKNOWN.
+2. Testar as propostas congeladas de IApplication.OnApplicationPause e Transform.Transpose. Potencial: 2 métodos/396 bytes IL; fixtures inteiras passaram, sem compilação do jogo até a parada.
+3. Continuar a KairoLibrary pelos outros nove corpos, começando por LineupData.GetRatio (192 bytes) e a lambda KairoBase.Start (182 bytes). São 2 alvos/374 bytes de busca, sem ganho previsto. Após fechar Kairo, medir bytes brutos e voltar ao Assembly-CSharp.
