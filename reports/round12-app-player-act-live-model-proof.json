@@ -1,0 +1,792 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports/round12-app-player-act-family-patches.json",
+  "old_bundle_sha256": "9e60d088181a0be54285e70a1b1c226c4db165511f94e44c3818890ba25248b7",
+  "assembly": "Assembly-CSharp",
+  "baseline": "build/round12/runs/b10/commit/postverify01/Assembly-CSharp",
+  "manifest_sha256": "bcc85bc7536c79dc1810871bc2add48aaacb822333c9b9b4f7b32b93b6985ce3",
+  "model_validation": "reports/round11-slot-model-validation.json",
+  "model_validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "records": [
+    {
+      "method_id": "game.Player::Act(System.Int32)->System.Boolean",
+      "logical_source": "src/Assembly-CSharp/game/Player.cs",
+      "frozen_full_source_sha256": "4220c6838d3c4fe14c0c7abe62b297f6e5ac8de0f1283bf4a7fa594edaf4c5ef",
+      "live_full_source_sha256": "4220c6838d3c4fe14c0c7abe62b297f6e5ac8de0f1283bf4a7fa594edaf4c5ef",
+      "candidate_full_source_sha256": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "game.Player::Act(System.Int32)->System.Boolean",
+        "complete": true,
+        "predicted_types": [
+          "System.Int32",
+          "System.Int32",
+          "System.Int32[]",
+          "System.Int32[]",
+          "System.Int32[]",
+          "System.Int32[]",
+          "System.Int32[]",
+          "System.Int32[]",
+          "game.Player",
+          "System.Int32[]",
+          "System.Int32[]"
+        ],
+        "variables": [
+          {
+            "name": "physicalHpMax",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 23266,
+            "end": 23315,
+            "slot": 0,
+            "block": 1,
+            "type_source": "int",
+            "statement_start": 23262,
+            "statement_end": 23316,
+            "lexical_scope_start": 23232,
+            "lexical_scope_end": 27561,
+            "initializer": "PlayerData.GetPhysicalHpMax(this)"
+          },
+          {
+            "name": "toThrowInPID",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 23970,
+            "end": 24002,
+            "slot": 1,
+            "block": 10,
+            "type_source": "int",
+            "statement_start": 23966,
+            "statement_end": 24003,
+            "lexical_scope_start": 23959,
+            "lexical_scope_end": 24396,
+            "initializer": "GetToThrowInPID()"
+          },
+          {
+            "name": "collisionData5",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 24434,
+            "end": 24479,
+            "slot": 2,
+            "block": 13,
+            "type_source": "int[]",
+            "statement_start": 24428,
+            "statement_end": 24480,
+            "lexical_scope_start": 24421,
+            "lexical_scope_end": 25085,
+            "initializer": "udat_.GetCollisionData(0, 0)"
+          },
+          {
+            "name": "collisionData6",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 24492,
+            "end": 24537,
+            "slot": 3,
+            "block": 14,
+            "type_source": "int[]",
+            "statement_start": 24486,
+            "statement_end": 24538,
+            "lexical_scope_start": 24421,
+            "lexical_scope_end": 25085,
+            "initializer": "udat_.GetCollisionData(1, 1)"
+          },
+          {
+            "name": "collisionData3",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 25124,
+            "end": 25169,
+            "slot": 4,
+            "block": 17,
+            "type_source": "int[]",
+            "statement_start": 25118,
+            "statement_end": 25170,
+            "lexical_scope_start": 25111,
+            "lexical_scope_end": 25781,
+            "initializer": "udat_.GetCollisionData(0, 0)"
+          },
+          {
+            "name": "collisionData4",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 25182,
+            "end": 25227,
+            "slot": 5,
+            "block": 18,
+            "type_source": "int[]",
+            "statement_start": 25176,
+            "statement_end": 25228,
+            "lexical_scope_start": 25111,
+            "lexical_scope_end": 25781,
+            "initializer": "udat_.GetCollisionData(1, 1)"
+          },
+          {
+            "name": "collisionData7",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 25928,
+            "end": 25973,
+            "slot": 6,
+            "block": 24,
+            "type_source": "int[]",
+            "statement_start": 25922,
+            "statement_end": 25974,
+            "lexical_scope_start": 25915,
+            "lexical_scope_end": 26448,
+            "initializer": "udat_.GetCollisionData(0, 0)"
+          },
+          {
+            "name": "collisionData8",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 25986,
+            "end": 26031,
+            "slot": 7,
+            "block": 25,
+            "type_source": "int[]",
+            "statement_start": 25980,
+            "statement_end": 26032,
+            "lexical_scope_start": 25915,
+            "lexical_scope_end": 26448,
+            "initializer": "udat_.GetCollisionData(1, 0)"
+          },
+          {
+            "name": "lastKicker",
+            "type": "game.Player",
+            "kind": "declared",
+            "start": 26488,
+            "end": 26539,
+            "slot": 8,
+            "block": 28,
+            "type_source": "Player",
+            "statement_start": 26481,
+            "statement_end": 26540,
+            "lexical_scope_start": 26474,
+            "lexical_scope_end": 27447,
+            "initializer": "udat_.teams_[team_id_].GetLastKicker()"
+          },
+          {
+            "name": "collisionData",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 26860,
+            "end": 26904,
+            "slot": 9,
+            "block": 31,
+            "type_source": "int[]",
+            "statement_start": 26854,
+            "statement_end": 26905,
+            "lexical_scope_start": 26474,
+            "lexical_scope_end": 27447,
+            "initializer": "udat_.GetCollisionData(0, 0)"
+          },
+          {
+            "name": "collisionData2",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 26917,
+            "end": 26962,
+            "slot": 10,
+            "block": 32,
+            "type_source": "int[]",
+            "statement_start": 26911,
+            "statement_end": 26963,
+            "lexical_scope_start": 26474,
+            "lexical_scope_end": 27447,
+            "initializer": "udat_.GetCollisionData(1, 0)"
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 23232,
+            "end": 27561,
+            "parent": -1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 23262,
+            "end": 23316,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "physicalHpMax",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 23266,
+                "end": 23315,
+                "slot": 0,
+                "block": 1,
+                "type_source": "int",
+                "statement_start": 23262,
+                "statement_end": 23316,
+                "lexical_scope_start": 23232,
+                "lexical_scope_end": 27561,
+                "initializer": "PlayerData.GetPhysicalHpMax(this)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 23359,
+            "end": 23455,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 23493,
+            "end": 23547,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 23571,
+            "end": 23591,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 23616,
+            "end": 23636,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 23661,
+            "end": 23680,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 23705,
+            "end": 23725,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 23750,
+            "end": 23765,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 23790,
+            "end": 23934,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 23959,
+            "end": 24396,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "toThrowInPID",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 23970,
+                "end": 24002,
+                "slot": 1,
+                "block": 10,
+                "type_source": "int",
+                "statement_start": 23966,
+                "statement_end": 24003,
+                "lexical_scope_start": 23959,
+                "lexical_scope_end": 24396,
+                "initializer": "GetToThrowInPID()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "explicit",
+            "start": 24134,
+            "end": 24176,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 24192,
+            "end": 24235,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "explicit",
+            "start": 24421,
+            "end": 25085,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData5",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 24434,
+                "end": 24479,
+                "slot": 2,
+                "block": 13,
+                "type_source": "int[]",
+                "statement_start": 24428,
+                "statement_end": 24480,
+                "lexical_scope_start": 24421,
+                "lexical_scope_end": 25085,
+                "initializer": "udat_.GetCollisionData(0, 0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "implicit-after-statement",
+            "start": 24486,
+            "end": 24538,
+            "parent": 13,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData6",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 24492,
+                "end": 24537,
+                "slot": 3,
+                "block": 14,
+                "type_source": "int[]",
+                "statement_start": 24486,
+                "statement_end": 24538,
+                "lexical_scope_start": 24421,
+                "lexical_scope_end": 25085,
+                "initializer": "udat_.GetCollisionData(1, 1)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 15,
+            "kind": "explicit",
+            "start": 24827,
+            "end": 25015,
+            "parent": 14,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 16,
+            "kind": "explicit",
+            "start": 25031,
+            "end": 25077,
+            "parent": 14,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 17,
+            "kind": "explicit",
+            "start": 25111,
+            "end": 25781,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData3",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 25124,
+                "end": 25169,
+                "slot": 4,
+                "block": 17,
+                "type_source": "int[]",
+                "statement_start": 25118,
+                "statement_end": 25170,
+                "lexical_scope_start": 25111,
+                "lexical_scope_end": 25781,
+                "initializer": "udat_.GetCollisionData(0, 0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 18,
+            "kind": "implicit-after-statement",
+            "start": 25176,
+            "end": 25228,
+            "parent": 17,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData4",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 25182,
+                "end": 25227,
+                "slot": 5,
+                "block": 18,
+                "type_source": "int[]",
+                "statement_start": 25176,
+                "statement_end": 25228,
+                "lexical_scope_start": 25111,
+                "lexical_scope_end": 25781,
+                "initializer": "udat_.GetCollisionData(1, 1)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 19,
+            "kind": "explicit",
+            "start": 25517,
+            "end": 25711,
+            "parent": 18,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 20,
+            "kind": "explicit",
+            "start": 25727,
+            "end": 25773,
+            "parent": 18,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 21,
+            "kind": "explicit",
+            "start": 25806,
+            "end": 25810,
+            "parent": 1,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 22,
+            "kind": "explicit",
+            "start": 25835,
+            "end": 25889,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 23,
+            "kind": "explicit",
+            "start": 25857,
+            "end": 25885,
+            "parent": 22,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 24,
+            "kind": "explicit",
+            "start": 25915,
+            "end": 26448,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData7",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 25928,
+                "end": 25973,
+                "slot": 6,
+                "block": 24,
+                "type_source": "int[]",
+                "statement_start": 25922,
+                "statement_end": 25974,
+                "lexical_scope_start": 25915,
+                "lexical_scope_end": 26448,
+                "initializer": "udat_.GetCollisionData(0, 0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 25,
+            "kind": "implicit-after-statement",
+            "start": 25980,
+            "end": 26032,
+            "parent": 24,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData8",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 25986,
+                "end": 26031,
+                "slot": 7,
+                "block": 25,
+                "type_source": "int[]",
+                "statement_start": 25980,
+                "statement_end": 26032,
+                "lexical_scope_start": 25915,
+                "lexical_scope_end": 26448,
+                "initializer": "udat_.GetCollisionData(1, 0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 26,
+            "kind": "explicit",
+            "start": 26315,
+            "end": 26381,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 27,
+            "kind": "explicit",
+            "start": 26397,
+            "end": 26440,
+            "parent": 25,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 28,
+            "kind": "explicit",
+            "start": 26474,
+            "end": 27447,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "lastKicker",
+                "type": "game.Player",
+                "kind": "declared",
+                "start": 26488,
+                "end": 26539,
+                "slot": 8,
+                "block": 28,
+                "type_source": "Player",
+                "statement_start": 26481,
+                "statement_end": 26540,
+                "lexical_scope_start": 26474,
+                "lexical_scope_end": 27447,
+                "initializer": "udat_.teams_[team_id_].GetLastKicker()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 29,
+            "kind": "explicit",
+            "start": 26575,
+            "end": 26602,
+            "parent": 28,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 30,
+            "kind": "explicit",
+            "start": 26629,
+            "end": 26714,
+            "parent": 28,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 31,
+            "kind": "implicit-after-statement",
+            "start": 26854,
+            "end": 26905,
+            "parent": 28,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 26860,
+                "end": 26904,
+                "slot": 9,
+                "block": 31,
+                "type_source": "int[]",
+                "statement_start": 26854,
+                "statement_end": 26905,
+                "lexical_scope_start": 26474,
+                "lexical_scope_end": 27447,
+                "initializer": "udat_.GetCollisionData(0, 0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 32,
+            "kind": "implicit-after-statement",
+            "start": 26911,
+            "end": 26963,
+            "parent": 31,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData2",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 26917,
+                "end": 26962,
+                "slot": 10,
+                "block": 32,
+                "type_source": "int[]",
+                "statement_start": 26911,
+                "statement_end": 26963,
+                "lexical_scope_start": 26474,
+                "lexical_scope_end": 27447,
+                "initializer": "udat_.GetCollisionData(1, 0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 33,
+            "kind": "explicit",
+            "start": 27232,
+            "end": 27298,
+            "parent": 32,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 34,
+            "kind": "explicit",
+            "start": 27340,
+            "end": 27385,
+            "parent": 32,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 35,
+            "kind": "explicit",
+            "start": 27401,
+            "end": 27439,
+            "parent": 32,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 36,
+            "kind": "explicit",
+            "start": 27473,
+            "end": 27539,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 37,
+            "kind": "explicit",
+            "start": 27496,
+            "end": 27535,
+            "parent": 36,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 23201,
+        "declaration_end": 27561,
+        "body_start": 23232,
+        "body_end": 27561
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}

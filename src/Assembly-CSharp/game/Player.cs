@@ -1218,7 +1218,8 @@ udat_.ball_.SetPassData(this, 0, p_id_ - 1, 0, false);
 					Move(udat_.ball_.pos_, act_id);
 				}
 
-			} else if ((act_id == 6)) {
+			} else if ((act_id == 5)) {
+} else if ((act_id == 6)) {
 if (seb_ == 1)
 				{
 					return false;
