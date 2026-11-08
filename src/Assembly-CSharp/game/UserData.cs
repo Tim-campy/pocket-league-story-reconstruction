@@ -4851,12 +4851,9 @@ continue; }
 						continue;
 					}
 					int areaMaxNum = tAreas_[num14][num17].GetAreaMaxNum(tModeList_[num14][num17]);
-					for (int num18 = 0; num18 < areaMaxNum; num18++)
+					for (int num18 = 0; num18 < areaMaxNum && array[num14].Size() > 0; num18++)
 					{
-						if (array[num14].Size() <= 0)
-						{
-							break;
-						}
+
 						int areaMaxNum2 = TGroupArea.GetAreaMaxNum(tModeList_[num14][num17]);
 						for (int num19 = 0; num19 < tAreas_[num14][num17].tGroupAreas_.Length; num19++)
 						{
