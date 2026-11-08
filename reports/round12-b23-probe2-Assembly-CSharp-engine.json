@@ -1,0 +1,1186 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1927,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+      "number": 1,
+      "initial_offset": 37,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards",
+          "start": 40453,
+          "end": 41524,
+          "before": "internal void OnTouchVScrollBar(int type, int v, TouchEvent e)\r\n\t\t{\r\n\t\t\tTouchComponent component = e.component;\r\n\t\t\tint[] args = e.component.option.args;\r\n\t\t\tint num = args[0];\r\n\t\t\tint num2 = args[1];\r\n\t\t\tint num3;\nif (2 < args.Length) { num3 = args[2]; } else { num3 = (-1); }\r\n\t\t\tint num4 = int.MaxValue;\r\n\t\t\tswitch (type)\r\n\t\t\t{\r\n\t\t\tcase 8:\r\n\t\t\t\tnum4 = Get(v) + e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 9:\r\n\t\t\t\tnum4 = e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (num4 == int.MaxValue)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tif (num4 > num - num2)\r\n\t\t\t{\r\n\t\t\t\tnum4 = num - num2;\r\n\t\t\t}\r\n\t\t\tif (num4 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum4 = 0;\r\n\t\t\t}\r\n\t\t\tif (Get(v) == num4)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num5 = num4 - Get(v);\r\n\t\t\tSet(v, num4, e.component);\r\n\t\t\tif (num3 == -1)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num6 = Get(num3);\r\n\t\t\tif (component.id == 14)\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5 * 2;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t\tif (num6 >= num)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = num - 1;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tSet(num3, num6, e.component);\r\n\t\t}",
+          "after": "internal void OnTouchVScrollBar(int type, int v, TouchEvent e)\r\n\t\t{\r\n\t\t\tTouchComponent component = e.component;\r\n\t\t\tint[] args = e.component.option.args;\r\n\t\t\tint num = args[0];\r\n\t\t\tint num2 = args[1];\r\n\t\t\tint num3 = (2 < args.Length) ? args[2] : -1;\r\n\t\t\tint num4 = int.MaxValue;\r\n\t\t\tswitch (type)\r\n\t\t\t{\r\n\t\t\tcase 8:\r\n\t\t\t\tnum4 = Get(v) + e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 9:\r\n\t\t\t\tnum4 = e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (num4 == int.MaxValue)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tif (num4 > num - num2)\r\n\t\t\t{\r\n\t\t\t\tnum4 = num - num2;\r\n\t\t\t}\r\n\t\t\tif (num4 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum4 = 0;\r\n\t\t\t}\r\n\t\t\tif (Get(v) != num4) {\r\n\r\n\t\t\tint num5 = num4 - Get(v);\r\n\t\t\tSet(v, num4, e.component);\r\n\t\t\tif (num3 != -1) {\r\n\r\n\t\t\tint num6 = Get(num3);\r\n\t\t\tif (component.id == 14)\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5 * 2;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t\tif (num6 >= num)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = num - 1;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tSet(num3, num6, e.component);\r\n\t\t\r\n}\r\n}}",
+          "compile_pass": true,
+          "old_prefix": 37,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.surface.TouchComponent",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32"
+            ],
+            "method_id": "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GameView.cs",
+            "full_source_sha256": "b8ccd082ce0009a8fa5d1873c826e3450ff2bdeeb3fd4598c05c875390fc4094"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124882067556500\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.9840000001713634,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 302,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 302,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void"
+          ],
+          "matched_IL_gain": 302
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards",
+          "start": 40453,
+          "end": 41524,
+          "before": "internal void OnTouchVScrollBar(int type, int v, TouchEvent e)\r\n\t\t{\r\n\t\t\tTouchComponent component = e.component;\r\n\t\t\tint[] args = e.component.option.args;\r\n\t\t\tint num = args[0];\r\n\t\t\tint num2 = args[1];\r\n\t\t\tint num3;\nif (2 < args.Length) { num3 = args[2]; } else { num3 = (-1); }\r\n\t\t\tint num4 = int.MaxValue;\r\n\t\t\tswitch (type)\r\n\t\t\t{\r\n\t\t\tcase 8:\r\n\t\t\t\tnum4 = Get(v) + e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 9:\r\n\t\t\t\tnum4 = e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (num4 == int.MaxValue)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tif (num4 > num - num2)\r\n\t\t\t{\r\n\t\t\t\tnum4 = num - num2;\r\n\t\t\t}\r\n\t\t\tif (num4 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum4 = 0;\r\n\t\t\t}\r\n\t\t\tif (Get(v) == num4)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num5 = num4 - Get(v);\r\n\t\t\tSet(v, num4, e.component);\r\n\t\t\tif (num3 == -1)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num6 = Get(num3);\r\n\t\t\tif (component.id == 14)\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5 * 2;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t\tif (num6 >= num)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = num - 1;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tSet(num3, num6, e.component);\r\n\t\t}",
+          "after": "internal void OnTouchVScrollBar(int type, int v, TouchEvent e)\r\n\t\t{\r\n\t\t\tTouchComponent component = e.component;\r\n\t\t\tint[] args = e.component.option.args;\r\n\t\t\tint num = args[0];\r\n\t\t\tint num2 = args[1];\r\n\t\t\tint num3 = (2 < args.Length) ? args[2] : -1;\r\n\t\t\tint num4 = int.MaxValue;\r\n\t\t\tswitch (type)\r\n\t\t\t{\r\n\t\t\tcase 8:\r\n\t\t\t\tnum4 = Get(v) + e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 9:\r\n\t\t\t\tnum4 = e.dy;\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (num4 == int.MaxValue)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tif (num4 > num - num2)\r\n\t\t\t{\r\n\t\t\t\tnum4 = num - num2;\r\n\t\t\t}\r\n\t\t\tif (num4 < 0)\r\n\t\t\t{\r\n\t\t\t\tnum4 = 0;\r\n\t\t\t}\r\n\t\t\tif (Get(v) != num4) {\r\n\r\n\t\t\tint num5 = num4 - Get(v);\r\n\t\t\tSet(v, num4, e.component);\r\n\t\t\tif (num3 != -1) {\r\n\r\n\t\t\tint num6 = Get(num3);\r\n\t\t\tif (component.id == 14)\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5 * 2;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tnum6 += num5;\r\n\t\t\t\tif (num6 < 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = 0;\r\n\t\t\t\t}\r\n\t\t\t\tif (num6 >= num)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum6 = num - 1;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tSet(num3, num6, e.component);\r\n\t\t\r\n}\r\n}}",
+          "compile_pass": true,
+          "old_prefix": 37,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.surface.TouchComponent",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32"
+            ],
+            "method_id": "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GameView.cs",
+            "full_source_sha256": "b8ccd082ce0009a8fa5d1873c826e3450ff2bdeeb3fd4598c05c875390fc4094"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124882067556500\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.9840000001713634,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 302,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 302,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void"
+          ],
+          "matched_IL_gain": 302
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 44,
+            "rebuilt_offset": 44,
+            "opcode_pair": [
+              "br",
+              "stloc.s"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 37,
+        "source": "src/Assembly-CSharp/surface/GameView.cs",
+        "point": {
+          "offset": 41,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GameView.cs",
+          "start_line": 1653,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 44,
+          "line": 1653,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "insert",
+          "original_offset": 44,
+          "rebuilt_offset": 44,
+          "original_index": 24,
+          "rebuilt_index": 24,
+          "original_instruction": {
+            "opcode": "INSERTION_POINT",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 44,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 4
+            }
+          },
+          "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"stloc.s\",\"operand\":{\"local\":4}}",
+          "opcode_pair": "INSERTION_POINT => stloc.s",
+          "original_context": [
+            {
+              "offset": 42,
+              "opcode": "ldc.i4.2",
+              "operand": null
+            },
+            {
+              "offset": 43,
+              "opcode": "ldelem.i4",
+              "operand": null
+            },
+            {
+              "offset": 44,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L1"
+                ]
+              }
+            },
+            {
+              "offset": 49,
+              "opcode": "ldc.i4.m1",
+              "operand": null,
+              "label": "L0"
+            },
+            {
+              "offset": 50,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              },
+              "label": "L1"
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 42,
+              "opcode": "ldc.i4.2",
+              "operand": null
+            },
+            {
+              "offset": 43,
+              "opcode": "ldelem.i4",
+              "operand": null
+            },
+            {
+              "offset": 44,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 46,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L2"
+                ]
+              }
+            },
+            {
+              "offset": 51,
+              "opcode": "ldc.i4.m1",
+              "operand": null,
+              "label": "L0"
+            }
+          ],
+          "original_labels": {
+            "49": "L0",
+            "50": "L1",
+            "52": "L2",
+            "84": "L3",
+            "105": "L4",
+            "118": "L5",
+            "131": "L6",
+            "146": "L7",
+            "157": "L8",
+            "171": "L9",
+            "206": "L10",
+            "249": "L11",
+            "254": "L12",
+            "272": "L13",
+            "285": "L14",
+            "301": "L15"
+          },
+          "rebuilt_labels": {
+            "51": "L0",
+            "52": "L1",
+            "54": "L2",
+            "86": "L3",
+            "107": "L4",
+            "120": "L5",
+            "133": "L6",
+            "148": "L7",
+            "159": "L8",
+            "174": "L9",
+            "210": "L10",
+            "253": "L11",
+            "258": "L12",
+            "276": "L13",
+            "289": "L14",
+            "305": "L15"
+          },
+          "sequence_edits": [
+            {
+              "kind": "insert",
+              "original_start": 24,
+              "original_stop": 24,
+              "rebuilt_start": 24,
+              "rebuilt_stop": 25
+            },
+            {
+              "kind": "replace",
+              "original_start": 72,
+              "original_stop": 73,
+              "rebuilt_start": 73,
+              "rebuilt_stop": 75
+            },
+            {
+              "kind": "replace",
+              "original_start": 87,
+              "original_stop": 88,
+              "rebuilt_start": 89,
+              "rebuilt_stop": 91
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 24,
+              "original_stop": 25,
+              "rebuilt_start": 25,
+              "rebuilt_stop": 26,
+              "target_ordinal": 0,
+              "original_target": 50,
+              "rebuilt_target": 54
+            }
+          ],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 40668,
+          "end": 40730,
+          "line": 1653,
+          "column": 1,
+          "text": "if (2 < args.Length) { num3 = args[2]; } else { num3 = (-1); }",
+          "kind": "IfStatement",
+          "method_id": "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+          "point": 40668,
+          "declaration_start": 40453,
+          "declaration_end": 41524
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 6,
+              "last_use": 216,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 23,
+              "last_use": 41,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 27,
+              "last_use": 280,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 31,
+              "last_use": 142,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 50,
+              "last_use": 286,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 57,
+              "last_use": 185,
+              "loads": 6,
+              "stores": 5
+            },
+            {
+              "slot": 6,
+              "first_use": 181,
+              "last_use": 256,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 214,
+              "last_use": 288,
+              "loads": 6,
+              "stores": 6
+            },
+            {
+              "slot": 8,
+              "first_use": 60,
+              "last_use": 70,
+              "loads": 2,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 11
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 12
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 3
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "component",
+              "type": "kairo.unity.surface.TouchComponent",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "args",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num",
+              "type": "System.Int32",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Int32",
+              "rebuilt_slot": 3,
+              "desired_slot": 3,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Int32",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Int32",
+              "rebuilt_slot": 5,
+              "desired_slot": 5,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num5",
+              "type": "System.Int32",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num6",
+              "type": "System.Int32",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 40519,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 11,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 10,
+          "selected_rule_prefix": "r12-vscroll-value-and-controls-"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards": 1
+          },
+          "model_approved": {
+            "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 302,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards:attempts": 1,
+    "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards:accepted_steps": 1,
+    "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards:body_gains": 1,
+    "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards:IL_gains": 302
+  },
+  "completed": true,
+  "run_label": "b23-probe2",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b23\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-vscroll-value-and-controls-",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else",
+    "r12-smcs-player-collision-v2-proved-guard-splitting-positive-regions-and-arm-stores",
+    "r12-block-local-layout-",
+    "r12-smcs-player-collision-v3-positive-height-plus-original-tail-return",
+    "r12-shared-score-graph-layout-",
+    "r12-dup-store-composition-",
+    "r12-player-act-preserve-empty-action-five-arm",
+    "r12-gamepad-boolean-and-id-conditional-values",
+    "r12-smcs-soccer-main-terminal-positive-empty-debug-test",
+    "r12-selector-and-touch-layout-",
+    "r12-league-root-score-locals-and-loop-local-team-ids",
+    "r12-common-branch-and-selector-",
+    "r12-compensated-empty-arms-",
+    "r12-gameform-init-explicit-vector-elements-and-unused-single",
+    "r12-argument-local-flow-",
+    "r12-smcs-billing-generic-init-single-explicit-shift-mask-removal-after-double-resolution-proof",
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+    "r12-tenant-accumulator-then-array-store",
+    "r12-vscroll-value-and-controls-"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-vscroll-value-and-controls-",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 10,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-vscroll-controls-live-model-patches.json",
+    "sha256": "10187836452f3aaa99bf0dc503d9ad156ae6655bee0d4e961a682d8885d9876d",
+    "dependencies_checked": {
+      "tools/round12_app_vscroll_button_source.py": "9d46be4ebe34b34a8a1c2b457fe3c624f871457cdfe9b3733e27647615602ab6",
+      "tools/round12_publish_bound_subfamily.py": "54910495e1846a4f5ff6a27f16dfb9ac6feca5692ee6718ba248e47925bfd2e3",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round9_part_b_fixtures.py": "994bfb9d0399d6982003ec869d9168b3cbc9362682b2701438a4f2f2a12b499e",
+      "tools/round6_alignment.py": "958871a4ab740c51efc31a777c3c4316ed02a1c3734551c49d4fe31de20c32e5",
+      "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_app_vscroll_bar_source.py": "9d46be4ebe34b34a8a1c2b457fe3c624f871457cdfe9b3733e27647615602ab6",
+      "tools/round12_merge_source_bundles.py": "3b6559c37f1efde954094c95b2f7ae942b9c97125cdcc006a22676d55f69ad03",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-vscroll-button-fixture-report.json": "e21fb3e2b404f71118b0dc394aad2d663229f1ed413f19196dca6aba06ae0153",
+      "reports/round12-app-vscroll-bar-fixture-report.json": "e21fb3e2b404f71118b0dc394aad2d663229f1ed413f19196dca6aba06ae0153",
+      "reports/round12-app-vscroll-button-family-patches.json": "bb7f97e008489e55304f800a17326564e127fb0bb8d4e69aa303c162c1fa6063",
+      "reports/round12-app-vscroll-bar-family-patches.json": "97d14b0a5d5076b9f19fed0b89f32b5c2c754a0ac263bb986945f9a321d418a9",
+      "reports/round12-app-vscroll-controls-family-patches.json": "9f54b681a88e59bb29c7f64fe85f88ddd8e09fe3cfb77c4599a5767cd1a01a6d",
+      "reports/round12-app-vscroll-controls-live-model-proof.json": "820928884000cc61a681d411ae98c12692d9daa19bdc6abc236da2f979b7b746",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-vscroll-controls-private/analysis-manifest.json": "a8487abbf9573fc463a5b7f4770365f69cb69347d187d792fed4fbdcb9edb025",
+      "build/round12/app-vscroll-controls-private/calculate.py": "9d46be4ebe34b34a8a1c2b457fe3c624f871457cdfe9b3733e27647615602ab6",
+      "build/round12/app-vscroll-controls-private/fixture-report.json": "e21fb3e2b404f71118b0dc394aad2d663229f1ed413f19196dca6aba06ae0153",
+      "build/round12/app-vscroll-controls-private/fixtures.py": "8a1dceb1bcf3b845170d1e87b831340de1a2c7612a6025c9a950b2fee0035a27",
+      "build/round12/app-vscroll-controls-private/NOTE.md": "cd86f82f033eadf9185ee82ea4d5bbe14124f0eaf53dc2beef6d4593644b48a9",
+      "build/round12/app-vscroll-controls-private/package-index.json": "8e461b8c269c51583f0486bc5836f4e03368c182233bd68bc3de5da569870c7e",
+      "build/round12/app-vscroll-controls-private/package.py": "03be2cdea3794530aa80eb2d7aa6d3e1d6646e35f9adaca395bdba1cabf2750c",
+      "build/round12/app-vscroll-controls-private/prepare.py": "e756621aa3318dc7ff1630a3313e577e6df439d0cb4d1137f4f654fe131840ef",
+      "build/round12/app-vscroll-controls-private/producer-negatives.json": "7ba9f45e26ffcdec32f3a684a5de580cafad445a688deb04370bc6a421dda2b7",
+      "build/round12/app-vscroll-controls-private/bar/after-method.cs": "125d6b58e5e25c533b45372d1cea7213f50303ec94f1b65ff24620f06c2dcee5",
+      "build/round12/app-vscroll-controls-private/bar/alignment.json": "1b876fd041818e10c32a100d74b5d7a4dc5839f99aefc517f16a69cdcd6ec923",
+      "build/round12/app-vscroll-controls-private/bar/before-method.cs": "20cb0fd9d0b7b2f4daad0a97f703a201aaaef8d61f5b0fe0a19661dae5e29631",
+      "build/round12/app-vscroll-controls-private/bar/bindings.json": "b6d14913696e195774e769c420d9022a20f099d42d6652d9ec62d7e7d8ae6a54",
+      "build/round12/app-vscroll-controls-private/bar/candidate-source.cs": "9cd8847b177493355dedc318f26623006054e3a3055c8f220a12a73af8b2104a",
+      "build/round12/app-vscroll-controls-private/bar/control-projection.json": "524bba1242f623cfcf23ced274cddfce06f4941144ba02c17eda0e4ec414d394",
+      "build/round12/app-vscroll-controls-private/bar/history.json": "8d5ac00c75ea6995896a9ab58da1cd4471819947ebd2f2d018863ab727346a84",
+      "build/round12/app-vscroll-controls-private/bar/model.json": "e15522bf9b316013ed64bbcf7df6cfc58d1809e3c0b204c06adb38565d5f4568",
+      "build/round12/app-vscroll-controls-private/bar/patches.json": "99f2f9649c5f92b60d48bbca12d3e904a93042b2963e7e20f566c6ec40b3642b",
+      "build/round12/app-vscroll-controls-private/bar/rea-method.json": "7c09250fa5e0907488fef82fd3087132209afcad3cca34416ff91e5e05681ead",
+      "build/round12/app-vscroll-controls-private/bar/slot-constraints.json": "1ff29601e268521d88b1d93ce7057e38d8e9115a359cd47e6a9ff02431e86431",
+      "build/round12/app-vscroll-controls-private/bar/source.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+      "build/round12/app-vscroll-controls-private/button/after-method.cs": "0a3c691416d5b01308812ef9f225bf5378ad7fa5b2bc8f0aae1067337e642dbc",
+      "build/round12/app-vscroll-controls-private/button/alignment.json": "a455c1e043c1981e79a546aa9bdcbd29a38b1648069d398f39d302f298cba9f7",
+      "build/round12/app-vscroll-controls-private/button/before-method.cs": "dfc89bacd494e42c92fb8fce2295cf0932c55d6292a0beba312c52ded41e2477",
+      "build/round12/app-vscroll-controls-private/button/bindings.json": "6eeaad9ab2aa9fcede7ff69f21f87f0dd9da1e95a94d29eb481f856d3ad782cc",
+      "build/round12/app-vscroll-controls-private/button/candidate-source.cs": "9601dfe6a36bd94433be2d399449da744e4f4ee9f6c781a3157a192342b1f2df",
+      "build/round12/app-vscroll-controls-private/button/control-projection.json": "9f53f08f85b9d64471bc897bbd5eefd7bd5e2d63b0278d7f3a0f50e929894a5e",
+      "build/round12/app-vscroll-controls-private/button/history.json": "456735a33f699ea45e61cf3da4c4219ee1d865b9cc8586ff73af688322985740",
+      "build/round12/app-vscroll-controls-private/button/model.json": "85f9cf66b5c97a0dbb6415379f82ef94584a670ed0db3c33a6a41e90715ec6b7",
+      "build/round12/app-vscroll-controls-private/button/patches.json": "29f28cf38bbde8adafc1226f856a02e9f8668d8c86735bd9fa10320fa6376e07",
+      "build/round12/app-vscroll-controls-private/button/rea-method.json": "8ff6a33dcf1bcee91a8b69d4c3241bc9fde8334d96fcb88bfecce1b4184a1ea1",
+      "build/round12/app-vscroll-controls-private/button/slot-constraints.json": "f12ef42dffe78b1650e65943cae1768df5b78e470ef521031a6aa63d4c4cb361",
+      "build/round12/app-vscroll-controls-private/button/source.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/before/compiler.log": "627afdc6789b2aee95304eb6ea05cc888ad81e26a2e02b1a4ccd8a4b90b40c33",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/before/Fixture.cs": "c8cdc283ab7676e846927a97bedb8a45b6f18249dacbf078d114c6d3442bbdb8",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/before/Fixture.dll": "dc546aa7e932a9fdca49b5f168d0c60e05800d38ec1031db42dd31db76f77a59",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/before/methods.json": "7ff1d291fc74f218c8677ea7a520ae884b37e0a256b69481a7fc23715cf85685",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/candidate/compiler.log": "9ef600a20581a2037eb5a26582a0d8e824a27f8dbadb362c478bcbf8b1346a22",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/candidate/Fixture.cs": "82bc03d87e82b875e6ed939696a52ea55e70e2b28da7f94749c1923b3e5fd28c",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/candidate/Fixture.dll": "4e1f0c9d639fe6b013b029468360f4b14feccc44b0d67b1adc39875248e1f598",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/candidate/methods.json": "8a5733686c0ebdc72954b72c90eeb5de8ea1ab5fc44694daaf1bcf80e1312cec",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/control-only/compiler.log": "427507f49c7ff7fc5bab6c40efe51a0c4c02a613afd0cdfa6bf0a0e891ed4fe9",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/control-only/Fixture.cs": "0308931438bf4a1743b01648b876e4a5561f744532e7c2ad48210546a9bfdf10",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/control-only/Fixture.dll": "7f659b49c1f79e2d833451e09a8aadfe22c3df781bd2859d3f433736929e36af",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/control-only/methods.json": "7a91e594834ebb40dd2e2b8f25fe9f3671f9be15dc027aef9efe03b92d4d2e38",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/manual-control/compiler.log": "8c176c7582340aa7b35d4460a5d9e5b74e4e032f32cf947317b5d117d9ffdf37",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/manual-control/Fixture.cs": "30049a9041a7c96900820326cd9f1b54cbd5fb436363ae2e01996c39d6b58e77",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/manual-control/Fixture.dll": "cb0e884f0b787691bef4580dd1630adae8631228592e926bcc76c0974fababe5",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/manual-control/methods.json": "8a5733686c0ebdc72954b72c90eeb5de8ea1ab5fc44694daaf1bcf80e1312cec",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/ternary-only/compiler.log": "54e2c2e2cbeb8cdf698c91a10be208813da079f99a7a9f39e048ed092f0d90fa",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/ternary-only/Fixture.cs": "1b9f104df9ce4d58af9a4e16c1d79adcb72e0a54a13db85e9c2d48049f557c49",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/ternary-only/Fixture.dll": "e7fc70b4bc850c66ef7284727b5eae2f52a4024ee3983cb32aa09bd02acbeb8a",
+      "build/round12/app-vscroll-controls-private/bar/fixtures/ternary-only/methods.json": "4712b616f2c9db9e5d7db9fce975ae3c9df71ba96fc7a5bdc80c17a947f33a31",
+      "build/round12/app-vscroll-controls-private/button/fixtures/before/compiler.log": "580635961e559c5ef6fb2f9e66438f05b1083ff17f77fb0899cf79e58de790e9",
+      "build/round12/app-vscroll-controls-private/button/fixtures/before/Fixture.cs": "c6205f30c792dae761c4011d2a605dc21bb4a22ea1ca16d01f450a5d59e7b96e",
+      "build/round12/app-vscroll-controls-private/button/fixtures/before/Fixture.dll": "5d8c3596cf579cf78d038b4b21859ba3ed4ded81a2a680af96715ea3f82ce366",
+      "build/round12/app-vscroll-controls-private/button/fixtures/before/methods.json": "32577f9d6e3ce493c2e9d075cbc3a76bf5bd98925d0863295be50330b891a6a5",
+      "build/round12/app-vscroll-controls-private/button/fixtures/candidate/compiler.log": "e27711b2c6d6ba99cf5a0c5f9f85dfe23efb2d5cc8ef47955c6f4aa58b9172c5",
+      "build/round12/app-vscroll-controls-private/button/fixtures/candidate/Fixture.cs": "726842f9f9450e4b8093d19d4803fa4a78e7f719a40b4c3b29f717617ad9fce5",
+      "build/round12/app-vscroll-controls-private/button/fixtures/candidate/Fixture.dll": "cd82fd75de84039c03aa73d4c7df0fd5c9155f0fc50624879ccdc3693bb67eda",
+      "build/round12/app-vscroll-controls-private/button/fixtures/candidate/methods.json": "6b8878dfa32266ee6f82259c182d1e1b458b874dfb6b4220d56f43856200588f",
+      "build/round12/app-vscroll-controls-private/button/fixtures/control-only/compiler.log": "68d4ac18e142b26f93d292bd7fb27e40b4186554de8274558376b3c03602c9a9",
+      "build/round12/app-vscroll-controls-private/button/fixtures/control-only/Fixture.cs": "f82ec4d39ef31c71890eebd6e2660864618cd302780f147d953264fb5d2c95a9",
+      "build/round12/app-vscroll-controls-private/button/fixtures/control-only/Fixture.dll": "5680f14dde338e777b3150829e70ee238242de20321ddca8a51e167a1b13e92e",
+      "build/round12/app-vscroll-controls-private/button/fixtures/control-only/methods.json": "487e356d498983c41ba3c1851257551bf9f61cbcf6c3d02fec7829c0c3d945f3",
+      "build/round12/app-vscroll-controls-private/button/fixtures/manual-control/compiler.log": "613c4bc58d1574ef336aa6ff2047f9b0f0389011ebf04cee89fc772fd4a6b8ab",
+      "build/round12/app-vscroll-controls-private/button/fixtures/manual-control/Fixture.cs": "7e31669faf395a607031f3d4c078b33177075348a394267c2d4cb9ffe8224b4b",
+      "build/round12/app-vscroll-controls-private/button/fixtures/manual-control/Fixture.dll": "a8c4ed86c2abde4675112322d69283d9712ab4b6ed1694f262c744901dbea907",
+      "build/round12/app-vscroll-controls-private/button/fixtures/manual-control/methods.json": "6b8878dfa32266ee6f82259c182d1e1b458b874dfb6b4220d56f43856200588f",
+      "build/round12/app-vscroll-controls-private/button/fixtures/ternary-only/compiler.log": "06a8b99cf15672cbef70870df27ca894810a8e2da56f0a6152fb4df21ebb551e",
+      "build/round12/app-vscroll-controls-private/button/fixtures/ternary-only/Fixture.cs": "2d17c3b110949f3743545ef8ac5a56657a043cfefa7e0dd4758969cb898c23a1",
+      "build/round12/app-vscroll-controls-private/button/fixtures/ternary-only/Fixture.dll": "9067a3adc98872a5e97d4686cd136b64f228ad27de70f56b9ded608bf3e8a0bf",
+      "build/round12/app-vscroll-controls-private/button/fixtures/ternary-only/methods.json": "a197c5baa46fe4bca4547be50077e6ee65f0a9dabd4ef2627d4cca62a5f53a31",
+      "build/round12/app-vscroll-controls-private/freeze.json": "d71694f87cd06dbfc5379921d344210d424d6cafd6a72aeae012bc12c88a65f3"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {
+      "analysis/tools/round5-mono-source/mcs/mcs/statement.cs": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+      "analysis/tools/round5-mono-source/mcs/mcs/expression.cs": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124882067556500",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 0.9840000001713634,
+        "wall_seconds": 7.687999999849126,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.9840000001713634,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124882067556500\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124882067556500\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "dd2585917de20c99b270a61d27fcf355715fa18a55f01c6c6dc3d6bed6ee6065",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+          "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+          "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+          "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+          "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+          "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+          "src/Assembly-CSharp/game/UserData.cs": "5d7e7ddc77a8401fcb8882461574dfc2c2afe8b3caff446a259825f566adda39",
+          "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+          "src/Assembly-CSharp/surface/GameView.cs": "967a4065c69a9d17859071e4fa3f9145dc0161c68b03364feda9d262a4383740",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "a19572cf7558bd2fcf99e5cf373cd53a36b3877b6a31f4c6fb23c0b370d4800a",
+        "accepted_source_set_sha256": "45e1014e86a678acf291cd8193047b7123711aca802d097482d1a23136a255e2",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "1c6c0ca92d6a671ef2c595ec7f4b882e1fb869384143cb442bfc05312ed066aa"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+        "rule": "r12-vscroll-value-and-controls-r12-vscroll-bar-ternary-and-nested-positive-guards",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1928,
+  "body_gains": [
+    "surface.GameView::OnTouchVScrollBar(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 302,
+  "builds": 6,
+  "build_seconds": 7.062000000150874,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "6383125892a5490c2f93cebcef7d765161a11afa9f6790ae73ade9224ffb8376",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b23-probe2\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "a19572cf7558bd2fcf99e5cf373cd53a36b3877b6a31f4c6fb23c0b370d4800a",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "dd2585917de20c99b270a61d27fcf355715fa18a55f01c6c6dc3d6bed6ee6065",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+    "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+    "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+    "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+    "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+    "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+    "src/Assembly-CSharp/game/UserData.cs": "5d7e7ddc77a8401fcb8882461574dfc2c2afe8b3caff446a259825f566adda39",
+    "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+    "src/Assembly-CSharp/surface/GameView.cs": "b8ccd082ce0009a8fa5d1873c826e3450ff2bdeeb3fd4598c05c875390fc4094",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

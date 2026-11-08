@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b22-postverify01-KairoLibrary-raw.json](reports/round12-b22-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `20318770e0cacf0de1867c6f8c2ed63d996aabf0761fa6ee5d86f403a9cd2981`. Sem normalização.
+Prova literal atual: [reports/round12-b23-postverify01-KairoLibrary-raw.json](reports/round12-b23-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `8dc365b3f91ae7c69d373b4b479ab124dacda89e5076e705e30d350de051982f`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,219 de 5,245 métodos matched (99.50%).** 871,497 bytes de IL nos assemblies alvo.
-865,175 bytes IL matched (99.27%).
+**5,221 de 5,245 métodos matched (99.54%).** 871,497 bytes de IL nos assemblies alvo.
+865,802 bytes IL matched (99.35%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 25 |
+| decompiled | 23 |
 | equivalent | 0 |
-| matched | 5219 |
+| matched | 5221 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1932 / 98.67% | 595281 / 98.95% |
+| `Assembly-CSharp` | 1958 | 601603 | 1934 / 98.77% | 595908 / 99.05% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -75,7 +75,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `main` | 223 | 35448 | 220 / 98.65% | 34969 / 98.65% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `surface` | 122 | 26518 | 119 / 97.54% | 25781 / 97.22% |
+| `surface` | 122 | 26518 | 121 / 99.18% | 26408 / 99.59% |
 | `system` | 20 | 1636 | 20 / 100.00% | 1636 / 100.00% |
 | `system.billing` | 8 | 956 | 8 / 100.00% | 956 / 100.00% |
 | `system.billing.ui` | 153 | 13782 | 151 / 98.69% | 13519 / 98.09% |
@@ -158,7 +158,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::native.WebBoxPlugin+<SetVisible>c__AnonStorey6` | 2 | 43 | 2 / 100.00% | 43 / 100.00% |
 | `Assembly-CSharp::panel.MainPanel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
 | `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 29 / 100.00% | 9686 / 100.00% |
-| `Assembly-CSharp::surface.GameView` | 66 | 13578 | 63 / 95.45% | 12841 / 94.57% |
+| `Assembly-CSharp::surface.GameView` | 66 | 13578 | 65 / 98.48% | 13468 / 99.19% |
 | `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 8 / 100.00% | 1729 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffect` | 5 | 821 | 5 / 100.00% | 821 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffectManager` | 14 | 704 | 14 / 100.00% | 704 / 100.00% |
@@ -519,8 +519,8 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::game.GameUtil` | 1 | `Assembly-CSharp::game.GameUtil::.ctor()->System.Void` |
 | `Assembly-CSharp::game.MapMain` | 1 | `Assembly-CSharp::game.MapMain::Draw_coat(kairo.unity.ui.Graphics,System.Boolean)->System.Void` |
 | `Assembly-CSharp::game.Player` | 1 | `Assembly-CSharp::game.Player::ChSlidingTackleEva(game.Player)->System.Boolean` |
+| `Assembly-CSharp::surface.GameView` | 1 | `Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent` |
 | `Assembly-CSharp::system.billing.ui.BillingManager` | 1 | `Assembly-CSharp::system.billing.ui.BillingManager::AddPurchaseLog(System.String,System.Int32,system.billing.util.Purchase)->System.Void` |
-| `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
 
 ## Bloqueios
 

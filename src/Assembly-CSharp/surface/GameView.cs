@@ -1649,8 +1649,7 @@ break;
 			int[] args = e.component.option.args;
 			int num = args[0];
 			int num2 = args[1];
-			int num3;
-if (2 < args.Length) { num3 = args[2]; } else { num3 = (-1); }
+			int num3 = (2 < args.Length) ? args[2] : -1;
 			int num4 = int.MaxValue;
 			switch (type)
 			{
@@ -1673,16 +1672,12 @@ if (2 < args.Length) { num3 = args[2]; } else { num3 = (-1); }
 			{
 				num4 = 0;
 			}
-			if (Get(v) == num4)
-			{
-				return;
-			}
+			if (Get(v) != num4) {
+
 			int num5 = num4 - Get(v);
 			Set(v, num4, e.component);
-			if (num3 == -1)
-			{
-				return;
-			}
+			if (num3 != -1) {
+
 			int num6 = Get(num3);
 			if (component.id == 14)
 			{
@@ -1705,22 +1700,24 @@ if (2 < args.Length) { num3 = args[2]; } else { num3 = (-1); }
 				}
 			}
 			Set(num3, num6, e.component);
-		}
+
+}
+}}
 
 		internal void OnTouchVScrollButton(int type, int v, TouchEvent e)
 		{
 			TouchOption option = e.component.option;
 			int num = option.args[0];
 			int num2 = option.args[1];
-			int num3;
-if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
+			int num3 = (2 < option.args.Length) ? option.args[2] : -1;
 			if (num3 == -1)
 			{
 				return;
 			}
 			int num4 = v & 0xFFFF;
-			if (type == 13)
-			{
+			switch (type) {
+case 13:
+
 				if (num4 == 0 && Get(num3) > 0)
 				{
 					Set(num3, Get(num3) - 1, e.component);
@@ -1741,7 +1738,9 @@ if (2 < option.args.Length) { num3 = option.args[2]; } else { num3 = (-1); }
 				{
 					Set(v, Get(v) - 1, e.component);
 				}
-			}
+
+break;
+}
 		}
 
 		internal void OnTouchUnMarker(int type, int v, TouchEvent e)
