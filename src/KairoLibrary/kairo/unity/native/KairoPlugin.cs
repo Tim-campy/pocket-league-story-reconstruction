@@ -273,7 +273,7 @@ namespace kairo.unity.native
 					if (unityVersion[i] != '.')
 					{
 						int result = 0;
-						if (!int.TryParse(Application.unityVersion[i].ToString() ?? "", out result))
+						if (!int.TryParse((Application.unityVersion[i] + ""), out result))
 						{
 							break;
 						}

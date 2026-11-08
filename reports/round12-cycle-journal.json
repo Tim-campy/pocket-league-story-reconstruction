@@ -219,6 +219,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 7,
+      "part_cycle": 7,
+      "label": "a07",
+      "phase": "A",
+      "primary_target": "kairo.unity.native.KairoPlugin::GetUnityVarsion()->System.Int32",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-kairo-char-empty-concat-constrained-object",
+      "assembly": "KairoLibrary",
+      "pair": "call => constrained. / callvirt",
+      "hypothesis": "Spell only the character-to-string expression as Char plus empty string, restoring constrained object ToString and its temporary; keep the genuine incomplete string-concat model status and require the emitted five-local signature.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 128
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 128,
+      "before_measurement": "reports\\round12-a07-before-measurement.json",
+      "before_sha256": "86ba8db698bf753a30580f400f59c7ece2bdec100492819645f129a805946b00",
+      "after_measurement": "reports/round12-a07-postverify01-measurement.json",
+      "after_sha256": "1bc6ea44de1926a2730d85064ac91f7a7dc1b0d2a72877d57f8f14c88a699a75",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-a07-after-measurement.json",
+          "previous_after_sha256": "49310e7e66385c0607cf47a71aa95b6bd27353e0bb0c6927f1f7a1d4a62b8eb8",
+          "new_after_measurement": "reports/round12-a07-postverify01-measurement.json",
+          "new_after_sha256": "1bc6ea44de1926a2730d85064ac91f7a7dc1b0d2a72877d57f8f14c88a699a75",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0
