@@ -1,0 +1,28 @@
+{
+  "operation": "pure-test-fixture-isolation-repair",
+  "original_run": {
+    "tests": 21,
+    "failures": 1,
+    "errors": 1,
+    "cause": "setUp copied already-consumed live queue statuses; initial-queue fixture assumptions no longer held",
+    "affected_tests": [
+      "test_initial_app_is_explicit_priority_exception",
+      "test_discovery_cannot_skip_initial_queue"
+    ]
+  },
+  "fixed_run": {
+    "tests": 21,
+    "failures": 0,
+    "errors": 0
+  },
+  "fix_scope": "Reset mutable queue, raw-evaluation and start status in the unit fixture only; no controller/oracle changes",
+  "test_source": "tools/round11_test_protocol.py",
+  "test_source_sha256": "aef6000a45a7cb87b186591fd71565f2b235971800a7251fea1769599650e733",
+  "misSequencedCommandAcknowledged": "A multi-command PowerShell cell did not stop after the native test exit. The production cycle independently validated the real autonomous selection. Future dependent commands use separate checked calls or subprocess(check=True).",
+  "production_cycle": "cycle04",
+  "production_engine_sha256": "407b7dbe5a5ff5b6a0ac06b9e47375f1e6e5755b11c129abed20699fed6902d3",
+  "official_adoption_sha256": "1c37cdb90c25b77503edf7aaf81e0378cbe51bbdcd39811f5edf33077c9a7efe",
+  "game_source_writes_outside_authorized_pipeline": 0,
+  "target_compilations_in_fix": 0,
+  "ledger_writes_in_fix": 0
+}

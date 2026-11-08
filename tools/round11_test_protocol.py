@@ -18,6 +18,14 @@ class Protocol(unittest.TestCase):
         self.cfg = json.loads((ROOT / 'config/round11-protocol.json').read_text())
         self.cfg['required_parts'] = dict(A='complete', B='complete', C='complete')
         self.cfg['phase'] = 'part_C'
+        self.cfg['autonomous_started'] = False
+        self.cfg.pop('raw_evaluations', None)
+        # Unit fixtures describe the initial queue independently of its live
+        # execution status; consuming a real queue item must not mutate tests.
+        for item in self.cfg['prepared_queue']:
+            item['status'] = 'pending'
+            for field in ('report', 'tested_ids', 'baseline_equal_ids'):
+                item.pop(field, None)
         for front in self.cfg['c_fronts'].values():
             front['status'] = 'verified'
         self.measurement = {'assemblies': {'KairoLibrary': {'divergent_bodies': 24},

@@ -1,0 +1,30 @@
+[
+  {
+    "path": "compiler-source\\BasicBlock.cs",
+    "sha256": "1922562cd24c3de272130aef84c66070fc4a70d0a96b6401ccefafe499b875e4",
+    "git_blob_sha1": "605b6e24ee323d8eed8dbbca4076e8e5f4b0b3d0",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "url": "https://raw.githubusercontent.com/dotnet/roslyn/4cb203dab89e1542cdf7d88cb6d32767bc0e5460/src/Compilers/Core/Portable/CodeGen/BasicBlock.cs",
+    "start_line": 470,
+    "end_line": 490,
+    "text": "                        }\n\n                        // our next block is now where we used to branch\n                        this.NextBlock = BranchBlock;\n\n                        // swap BranchCode for revBrOp\n                        // set our branch label where next block used to branch.\n                        var origBrOp = this.BranchCode;\n                        this.SetBranch(next.BranchLabel, revBrOp, origBrOp);\n\n                        return true;\n                    }\n                }\n\n                return false;\n            }\n\n            private bool TryOptimizeBranchToNextOrRet(BasicBlock next, ref int delta)\n            {\n                var curBranchCode = this.BranchCode;\n                if (curBranchCode == ILOpCode.Br || curBranchCode == ILOpCode.Br_s)"
+  },
+  {
+    "path": "compiler-source\\ILBuilder.cs",
+    "sha256": "2e4ed8846f21da3495923bbe4e6f2658f06c27bc487bc3381ed9beec16db29a8",
+    "git_blob_sha1": "2be13edcd8e26251574972d4eb74a58653ffaa3c",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "url": "https://raw.githubusercontent.com/dotnet/roslyn/4cb203dab89e1542cdf7d88cb6d32767bc0e5460/src/Compilers/Core/Portable/CodeGen/ILBuilder.cs",
+    "start_line": 736,
+    "end_line": 755,
+    "text": "\n        /// <summary>\n        /// Returns true if the block has the signature of the special\n        /// labeled block that follows a complete try/catch or try/finally.\n        /// </summary>\n        private static bool IsSpecialEndHandlerBlock(BasicBlock block)\n        {\n            if ((block.BranchCode != ILOpCode.Nop) || (block.BranchLabel == null))\n            {\n                return false;\n            }\n\n            // Should branch back to itself.\n            Debug.Assert(block.BranchBlock == block);\n            return true;\n        }\n\n        private void RewriteBranchesAcrossExceptionHandlers()\n        {\n            var current = leaderBlock;"
+  },
+  {
+    "path": "analysis\\tools\\round6-roslyn-source\\src\\Compilers\\CSharp\\Portable\\CodeGen\\EmitExpression.cs",
+    "sha256": "4beb87ae114cd851204eed776ed12f9cc8d533b86299d8683bf455c212876f09",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "start_line": 2639,
+    "end_line": 2647,
+    "text": "        private void EmitConditionalOperator(BoundConditionalOperator expr, bool used)\n        {\n            Debug.Assert(expr.ConstantValue == null, \"Constant value should have been emitted directly\");\n\n            object consequenceLabel = new object();\n            object doneLabel = new object();\n\n            EmitCondBranch(expr.Condition, ref consequenceLabel, sense: true);\n            EmitExpression(expr.Alternative, used);"
+  }
+]

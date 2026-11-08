@@ -781,20 +781,13 @@ namespace kairo.unity.native
 					file = text + "." + file;
 				}
 				file = file.Replace("{date}", text);
-				if (!kairo.common.cfg.Config.UNITY_EDITOR)
-				{
-					int aPPLI_TYPE = kairo.common.cfg.Config.APPLI_TYPE;
-					int num = 2;
-					return (object)null;
-				}
-				string text2 = app_.GetDataPath() + "/tmp/capture";
-				if (!Directory.Exists(text2))
-				{
-					Directory.CreateDirectory(text2);
-				}
-				File.WriteAllBytes(text2 + "/" + file, data);
-				Log.Info(text2 + "/" + file);
-				return (object)null;
+				if (kairo.common.cfg.Config.UNITY_EDITOR) {
+string text2 = app_.GetDataPath() + "/tmp/capture";
+if (!Directory.Exists(text2)) { Directory.CreateDirectory(text2); }
+File.WriteAllBytes(text2 + "/" + file, data);
+Log.Info(text2 + "/" + file);
+} else { if(kairo.common.cfg.Config.APPLI_TYPE==2){} return (object)null; }
+return (object)null;
 			}, true);
 			return save != null;
 		}
@@ -908,7 +901,10 @@ namespace kairo.unity.native
 				{
 					AndroidJavaClass androidJavaClass = new AndroidJavaClass("android.content.Intent");
 					AndroidJavaClass androidJavaClass2 = new AndroidJavaClass("android.support.v4.content.IntentCompat");
-					AndroidJavaObject androidJavaObject = ((type == 0) ? new AndroidJavaObject("android.content.Intent", "net.kairosoft.android.LOBI_CHAT") : ((type != 1) ? new AndroidJavaObject("android.content.Intent", androidJavaClass.GetStatic<string>("ACTION_MAIN")) : new AndroidJavaObject("android.content.Intent", "net.kairosoft.android.LOBI_RANKING")));
+					AndroidJavaObject androidJavaObject;
+if(type==0){androidJavaObject=new AndroidJavaObject("android.content.Intent","net.kairosoft.android.LOBI_CHAT");}
+else if(type==1){androidJavaObject=new AndroidJavaObject("android.content.Intent","net.kairosoft.android.LOBI_RANKING");}
+else{androidJavaObject=new AndroidJavaObject("android.content.Intent",androidJavaClass.GetStatic<string>("ACTION_MAIN"));}
 					androidJavaObject.Call<AndroidJavaObject>("setClassName", new object[2] { "net.kairosoft.android.kairoclub", "net.kairosoft.android.kairoclub.LobiMain" });
 					androidJavaObject.Call<AndroidJavaObject>("setFlags", new object[1] { androidJavaClass.GetStatic<int>("FLAG_ACTIVITY_NEW_TASK") | androidJavaClass2.GetStatic<int>("FLAG_ACTIVITY_CLEAR_TASK") });
 					androidJavaObject.Call<AndroidJavaObject>("putExtra", new object[2] { "net.kairosoft.android.LobiDataVersion", 100 });
