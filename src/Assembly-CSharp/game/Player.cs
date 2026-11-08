@@ -2131,38 +2131,29 @@ return array;
 			{
 				flag2 = true;
 			}
-			{ bool recoveredCondition_54620 = udat_.gm_.state_ == 0 && flag;
-if (recoveredCondition_54620)
+			if (udat_.gm_.state_ == 0 && flag)
 			{
 				for (int i = 0; i < 2; i++)
 				{
 					for (int j = 0; j < udat_.teams_[i].players_.Length; j++)
 					{
-						if (j == 0 || (i == team_id_ && j == p_id_))
-						{
-							continue;
-						}
+						if (j == 0) {continue;}
+if (i == team_id_ && j == p_id_) {continue;}
 						Player player = udat_.teams_[i].players_[j];
-						if (JMath.Abs(address_[0] - player.address_[0]) >= 2 || JMath.Abs(address_[1] - player.address_[1]) >= 2 || BitUtil.Check(player.flag_, 16408))
-						{
-							continue;
-						}
+						if (JMath.Abs(address_[0] - player.address_[0]) >= 2) {continue;}
+if (JMath.Abs(address_[1] - player.address_[1]) >= 2) {continue;}
+if (BitUtil.Check(player.flag_, 16408)) {continue;}
 						int[] collisionData = udat_.GetCollisionData(0, 0);
 						int[] collisionData2 = udat_.GetCollisionData(1, 0);
-						if (!GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData[0], pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], player.pos_.x_ + (float)collisionData2[0], player.pos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true))
-						{
-							continue;
-						}
+						if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData[0], pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], player.pos_.x_ + (float)collisionData2[0], player.pos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true)) {
 						float num = collisionData2[2] / 2;
 						float num2 = collisionData2[3] / 2;
 						float num3 = JMath.Abs(player.pos_.x_ - pos_.x_);
 						float num4 = JMath.Abs(player.pos_.z_ - pos_.z_);
-						if (num3 < 0.001f || num4 < 0.001f)
-						{
-							continue;
-						}
+						if (num3 < 0.001f) {continue;}
+if (num4 < 0.001f) {continue;}
 						int num5 = 0;
-						num5 = ((!(num4 > num3)) ? 1 : 0);
+						if (num4 > num3) {num5 = 0;} else {num5 = 1;}
 						chColPos.Set(pos_);
 						if (num5 == 0)
 						{
@@ -2215,25 +2206,17 @@ if (recoveredCondition_54620)
 							}
 						}
 					}
+}
 				}
 			}
-}
-			if (udat_.gm_.state_ != 0 || udat_.gm_.gameState_ != 2 || !BitUtil.Check(udat_.ball_.flag_, 8))
-			{
-				return;
-			}
+
+			if (udat_.gm_.state_ == 0 && udat_.gm_.gameState_ == 2 && BitUtil.Check(udat_.ball_.flag_, 8)) {
 			if (role_ == 0)
 			{
-				if (!(udat_.ball_.pos_.y_ < 20f))
-				{
-					return;
-				}
-				int[] collisionData3 = udat_.GetCollisionData(0, 0);
-				int[] collisionData4 = udat_.GetCollisionData(1, 1);
-				if (!GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData3[0], pos_.z_ + (float)collisionData3[1], collisionData3[2], collisionData3[3], udat_.ball_.pos_.x_ + (float)collisionData4[0], udat_.ball_.pos_.z_ + (float)collisionData4[1], collisionData4[2], collisionData4[3], true))
-				{
-					return;
-				}
+				if (!(udat_.ball_.pos_.y_ < 20f)) { return; }
+int[] collisionData3 = udat_.GetCollisionData(0, 0);
+int[] collisionData4 = udat_.GetCollisionData(1, 1);
+if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData3[0], pos_.z_ + (float)collisionData3[1], collisionData3[2], collisionData3[3], udat_.ball_.pos_.x_ + (float)collisionData4[0], udat_.ball_.pos_.z_ + (float)collisionData4[1], collisionData4[2], collisionData4[3], true)) {
 				if (BitUtil.Check(flag_, 8))
 				{
 					if (SoccerForm.DEBUG_GK_MODE == 1 && team_id_ == 0)
@@ -2252,14 +2235,17 @@ if (recoveredCondition_54620)
 					{
 						front = true;
 					}
-					switch (PlayerData.GetCatchProc(this, udat_.ball_.v_len_, front))
-					{
-					case 2:
+					int recoveredCatchResult = PlayerData.GetCatchProc(this, udat_.ball_.v_len_, front);
+if (recoveredCatchResult == 2)
+{
 						udat_.ball_.ReceiveBall(this);
-						break;
-					case 1:
-					{
+
+}
+else if (recoveredCatchResult == 1)
+{
 						int angle2 = GameUtil.Random(180) + team_id_ * 180;
+float recoveredUnusedVelocityX;
+float recoveredUnusedVelocityY;
 						float num7 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 5f, 10f, true);
 						int x2 = GameUtil.Random(100);
 						float dis2 = GameUtil.RateConvert(x2, 0, 99, 5, 20, true);
@@ -2269,11 +2255,13 @@ if (recoveredCondition_54620)
 						udat_.ball_.v_.Set(num7 * GameUtil.Cos(angle2), 0f, num7 * GameUtil.Sin(angle2));
 						udat_.ball_.v_.y_ = GameUtil.SetVStop(dis2, t2);
 						udat_.ball_.a_.y_ = GameUtil.SetAStop(dis2, t2);
-						break;
-					}
-					default:
-					{
+
+}
+else
+{
 						int angle = GameUtil.Random(180) + (1 - team_id_) * 180;
+float recoveredUnusedVelocityX;
+float recoveredUnusedVelocityY;
 						float num6 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 2.5f, 5f, true);
 						int x = GameUtil.Random(100);
 						float dis = GameUtil.RateConvert(x, 0, 99, 5, 20, true);
@@ -2283,20 +2271,21 @@ if (recoveredCondition_54620)
 						udat_.ball_.v_.Set(num6 * GameUtil.Cos(angle), 0f, num6 * GameUtil.Sin(angle));
 						udat_.ball_.v_.y_ = GameUtil.SetVStop(dis, t);
 						udat_.ball_.a_.y_ = GameUtil.SetAStop(dis, t);
-						break;
-					}
-					}
+
+}
 				}
 				else
 				{
 					udat_.ball_.ReceiveBall(this);
 				}
 			}
+}
 			else if ((!BitUtil.Check(udat_.ball_.flag_, 16) || !BitUtil.Check(udat_.ball_.flag_, 32) || udat_.ball_.boundNum_ != 0) && ChTrapOrHeading())
 			{
 				ChRepetition();
 			}
 		}
+}
 
 		public static bool ChBodyHitBody(Player charge_p, Player receive_p)
 		{

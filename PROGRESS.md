@@ -1,7 +1,7 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b05-postverify01-KairoLibrary-raw.json](reports/round12-b05-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `84912d874aa2c65a72a7448c5c791d7e15bb8dce0c3dbdf5154b68b1ca51b05d`. Sem normalização.
+Prova literal atual: [reports/round12-b06-postverify01-KairoLibrary-raw.json](reports/round12-b06-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `f0027e20697287096c8664367d7175796b89e062fea5013ff5017a9191d74100`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
