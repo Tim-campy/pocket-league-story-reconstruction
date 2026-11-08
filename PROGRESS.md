@@ -2,8 +2,8 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,158 de 5,245 métodos matched (98.34%).** 871,497 bytes de IL nos assemblies alvo.
-817,692 bytes IL matched (93.83%).
+**5,162 de 5,245 métodos matched (98.42%).** 871,497 bytes de IL nos assemblies alvo.
+823,559 bytes IL matched (94.50%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -15,16 +15,16 @@ KairoLibrary: 3191 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 86 |
+| decompiled | 82 |
 | equivalent | 0 |
-| matched | 5158 |
+| matched | 5162 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1893 / 96.68% | 552033 / 91.76% |
+| `Assembly-CSharp` | 1958 | 601603 | 1897 / 96.88% | 557900 / 92.74% |
 | `KairoLibrary` | 3287 | 269894 | 3265 / 99.33% | 265659 / 98.43% |
 
 ## Namespaces
@@ -37,7 +37,7 @@ KairoLibrary: 3191 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 254 / 99.61% | 26251 / 99.61% |
-| `form` | 371 | 250649 | 353 / 95.15% | 230163 / 91.83% |
+| `form` | 371 | 250649 | 354 / 95.42% | 233440 / 93.13% |
 | `game` | 441 | 202949 | 420 / 95.24% | 184510 / 90.91% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
@@ -69,13 +69,13 @@ KairoLibrary: 3191 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.ui` | 1021 | 100597 | 1016 / 99.51% | 99028 / 98.44% |
 | `kairo.unity.util` | 518 | 43955 | 517 / 99.81% | 43740 / 99.51% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
-| `main` | 223 | 35448 | 216 / 96.86% | 31403 / 88.59% |
+| `main` | 223 | 35448 | 217 / 97.31% | 31913 / 90.03% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `surface` | 122 | 26518 | 114 / 93.44% | 22024 / 83.05% |
+| `surface` | 122 | 26518 | 115 / 94.26% | 23709 / 89.41% |
 | `system` | 20 | 1636 | 20 / 100.00% | 1636 / 100.00% |
 | `system.billing` | 8 | 956 | 8 / 100.00% | 956 / 100.00% |
-| `system.billing.ui` | 153 | 13782 | 149 / 97.39% | 12417 / 90.10% |
+| `system.billing.ui` | 153 | 13782 | 150 / 98.04% | 12812 / 92.96% |
 | `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
 | `system.form` | 192 | 33269 | 189 / 98.44% | 32996 / 99.18% |
 | `system.friend` | 4 | 570 | 3 / 75.00% | 284 / 49.82% |
@@ -114,7 +114,7 @@ KairoLibrary: 3191 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::data.TenantData` | 26 | 2743 | 25 / 96.15% | 2641 / 96.28% |
 | `Assembly-CSharp::data.TradeData` | 13 | 757 | 13 / 100.00% | 757 / 100.00% |
 | `Assembly-CSharp::data.TrainingData` | 14 | 762 | 14 / 100.00% | 762 / 100.00% |
-| `Assembly-CSharp::form.BootForm` | 21 | 7712 | 19 / 90.48% | 4194 / 54.38% |
+| `Assembly-CSharp::form.BootForm` | 21 | 7712 | 20 / 95.24% | 7471 / 96.88% |
 | `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 21 / 100.00% | 45497 / 100.00% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
 | `Assembly-CSharp::form.GameForm` | 51 | 16474 | 48 / 94.12% | 12835 / 77.91% |
@@ -141,7 +141,7 @@ KairoLibrary: 3191 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 40 / 95.24% | 20671 / 92.90% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 13 / 92.86% | 2200 / 81.72% |
 | `Assembly-CSharp::game.UserData` | 92 | 55470 | 85 / 92.39% | 49035 / 88.40% |
-| `Assembly-CSharp::main.AppData` | 201 | 33806 | 194 / 96.52% | 29761 / 88.03% |
+| `Assembly-CSharp::main.AppData` | 201 | 33806 | 195 / 97.01% | 30271 / 89.54% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::main.Main` | 11 | 1287 | 11 / 100.00% | 1287 / 100.00% |
@@ -154,7 +154,7 @@ KairoLibrary: 3191 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::native.WebBoxPlugin+<SetViewRect>c__AnonStorey4` | 2 | 85 | 2 / 100.00% | 85 / 100.00% |
 | `Assembly-CSharp::native.WebBoxPlugin+<SetVisible>c__AnonStorey6` | 2 | 43 | 2 / 100.00% | 43 / 100.00% |
 | `Assembly-CSharp::panel.MainPanel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 27 / 93.10% | 6659 / 68.75% |
+| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 28 / 96.55% | 8344 / 86.14% |
 | `Assembly-CSharp::surface.GameView` | 66 | 13578 | 60 / 90.91% | 12111 / 89.20% |
 | `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 8 / 100.00% | 1729 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffect` | 5 | 821 | 5 / 100.00% | 821 / 100.00% |
@@ -164,7 +164,7 @@ KairoLibrary: 3191 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `Assembly-CSharp::system.billing.MyBilling` | 8 | 956 | 8 / 100.00% | 956 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.ApplyTask` | 12 | 1507 | 12 / 100.00% | 1507 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.BillingItem` | 26 | 1007 | 26 / 100.00% | 1007 / 100.00% |
-| `Assembly-CSharp::system.billing.ui.BillingManager` | 44 | 6863 | 41 / 93.18% | 5597 / 81.55% |
+| `Assembly-CSharp::system.billing.ui.BillingManager` | 44 | 6863 | 42 / 95.45% | 5992 / 87.31% |
 | `Assembly-CSharp::system.billing.ui.PurchaseLogView` | 3 | 130 | 3 / 100.00% | 130 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.PurchaseRecord` | 12 | 1155 | 12 / 100.00% | 1155 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.Receipt` | 26 | 932 | 26 / 100.00% | 932 / 100.00% |
@@ -509,6 +509,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | Tipo | Pendentes | Primeiro método |
 |---|---:|---|
 | `Assembly-CSharp::data.TenantData` | 1 | `Assembly-CSharp::data.TenantData::StrengthTenant()->System.Void` |
+| `Assembly-CSharp::form.BootForm` | 1 | `Assembly-CSharp::form.BootForm::Draw(kairo.unity.ui.Graphics)->System.Void` |
 | `Assembly-CSharp::form.MyFormBase` | 1 | `Assembly-CSharp::form.MyFormBase::GetTouchValue(System.Int32,System.Int32)->System.Int32` |
 | `Assembly-CSharp::form.SpForm` | 1 | `Assembly-CSharp::form.SpForm::SetTouchValue(System.Int32,System.Int32)->System.Void` |
 | `Assembly-CSharp::form.TitleForm` | 1 | `Assembly-CSharp::form.TitleForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
@@ -517,7 +518,6 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::game.MapMain` | 1 | `Assembly-CSharp::game.MapMain::Draw_coat(kairo.unity.ui.Graphics,System.Boolean)->System.Void` |
 | `Assembly-CSharp::game.TPlayer` | 1 | `Assembly-CSharp::game.TPlayer::CollisionSaving(game.TBall)->System.Void` |
 | `Assembly-CSharp::game.Tenant` | 1 | `Assembly-CSharp::game.Tenant::Draw(kairo.unity.ui.Graphics)->System.Void` |
-| `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
 
 ## Bloqueios
 

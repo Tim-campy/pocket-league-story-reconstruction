@@ -456,70 +456,26 @@ namespace surface
 								DrawImage(g, x, y, array[5]);
 							}
 							string text = null;
-							switch (id)
-							{
-							case 0:
-							case 5:
-								text = canvas_.GetSoftLabelL();
-								break;
-							case 1:
-								text = canvas_.GetSoftLabelR();
-								break;
-							case 2:
-								text = canvas_.GetSoftLabel(2);
-								break;
-							case 3:
-								text = canvas_.GetSoftLabel(3);
-								break;
-							case 11:
-								text = "debug";
-								break;
-							case 12:
-								text = "skip";
-								break;
-							case 13:
-								text = "dialog";
-								break;
-							case 14:
-								text = "hittest";
-								break;
-							case 15:
-								text = "slow";
-								break;
-							case 16:
-								text = optionPage_ + 1 + " / " + optionPageMax_;
-								break;
-							case 17:
-								text = "layout";
-								break;
-							case 18:
-								text = ((!FormManager.GetInstance().IsPause()) ? "pause" : "play");
-								break;
-							case 19:
-								text = "captcha";
-								break;
-							case 20:
-								text = "hide";
-								break;
-							case 4:
-								text = canvas_.GetSoftLabel(2);
-								{ bool recoveredCondition_12162 = text == null;
-if (recoveredCondition_12162)
-								{
-									text = canvas_.GetSoftLabel(3);
+							if (id == 0 || id == 5) {text = canvas_.GetSoftLabelL();
+								} else if (id == 1) {text = canvas_.GetSoftLabelR();
+								} else if (id == 2) {text = canvas_.GetSoftLabel(2);
+								} else if (id == 3) {text = canvas_.GetSoftLabel(3);
+								} else if (id == 11) {text = "debug";
+								} else if (id == 12) {text = "skip";
+								} else if (id == 13) {text = "dialog";
+								} else if (id == 14) {text = "hittest";
+								} else if (id == 15) {text = "slow";
+								} else if (id == 16) {text = optionPage_ + 1 + " / " + optionPageMax_;
+								} else if (id == 17) {text = "layout";
+								} else if (id == 18) {text = ((FormManager.GetInstance().IsPause()) ? ("play") : ("pause"));
+								} else if (id == 19) {text = "captcha";
+								} else if (id == 20) {text = "hide";
+								} else if (id == 4) {text = canvas_.GetSoftLabel(2);
+								if(text == null){text=canvas_.GetSoftLabel(3);}
 								}
-}
-								break;
-							}
-							switch (id)
-							{
-							case 21:
-								DrawImage(g, x + 26f, y + 4f, 19);
-								break;
-							case 22:
-								DrawImage(g, x + 26f, y + 4f, 20);
-								break;
-							}
+							if (id == 21) {DrawImage(g, x + 26f, y + 4f, 19);
+								} else if (id == 22) {DrawImage(g, x + 26f, y + 4f, 20);
+								}
 							if (text != null)
 							{
 								float num3 = x + (float)(array2[5] + array2[1]) / 2f - 1f;
@@ -528,7 +484,7 @@ if (recoveredCondition_12162)
 								{
 									bool linearFilterEnable = canvas_.IsLinearFilterEnable();
 									canvas_.SetLinearFilterEnable(true);
-									DrawImage(g, num3 - 27f, num4 - 10f, (JSystem.CurrentTimeMillis() % 800 >= 400) ? 16 : 15);
+									DrawImage(g, num3 - 27f, num4 - 10f, (JSystem.CurrentTimeMillis() % 800 < 400) ? (15) : (16));
 									canvas_.SetLinearFilterEnable(linearFilterEnable);
 									num3 += 12f;
 								}
@@ -555,18 +511,10 @@ if (recoveredCondition_12162)
 							bool flag = array[6] != -1;
 							if (flag)
 							{
-								switch (id)
-								{
-								case 2:
-									flag = canvas_.GetSoftLabel(2) != null;
-									break;
-								case 3:
-									flag = canvas_.GetSoftLabel(3) != null;
-									break;
-								case 4:
-									flag = canvas_.GetSoftLabel(2) != null || canvas_.GetSoftLabel(3) != null;
-									break;
-								}
+								if (id == 2) {flag = canvas_.GetSoftLabel(2) != null;
+									} else if (id == 3) {flag = canvas_.GetSoftLabel(3) != null;
+									} else if (id == 4) {flag = canvas_.GetSoftLabel(2) != null || canvas_.GetSoftLabel(3) != null;
+									}
 							}
 							if (flag)
 							{

@@ -534,15 +534,14 @@ num2 = 91;
 				apdat_.resCom2_.Dispose();
 			}
 			loadCnt_++;
-			global::kairo.unity.io.RecordStore recordStore;
-JarInflater jarInflater = null;
+			string[] array; JarInflater jarInflater = null;
 			try
 			{
-				recordStore = RecordStore.OpenRecordStore(1);
+				RecordStore recordStore = RecordStore.OpenRecordStore(1);
 				byte[] data = recordStore.ReadRecord(6);
 				recordStore.CloseRecordStore();
 				jarInflater = new JarInflater(data);
-				string[] array = StringUtil.LoadStringArray(jarInflater, "player.txt");
+				array = StringUtil.LoadStringArray(jarInflater,"player.txt");
 				apdat_.pData_ = new PlayerData[array.Length];
 				for (int i = 0; i < apdat_.pData_.Length; i++)
 				{

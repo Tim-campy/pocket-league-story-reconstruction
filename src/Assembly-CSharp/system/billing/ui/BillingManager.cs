@@ -1005,8 +1005,7 @@ if (text.Length() > 0)
 					{
 						text += "\t";
 					}
-string text2 = text;
-text = text2 + purchaseRecord.productId_ + "," + purchaseRecord.orderId_ + "," + purchaseRecord.state_;
+text += purchaseRecord.productId_ + "," + purchaseRecord.orderId_ + "," + purchaseRecord.state_;
 for (int j = 0; j < purchaseRecord.timestamp_.Length; j++)
 					{
 						text = text + "," + purchaseRecord.timestamp_[j];

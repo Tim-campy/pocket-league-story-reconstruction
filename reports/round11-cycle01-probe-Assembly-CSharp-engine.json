@@ -1,0 +1,2269 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1888,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "form.BootForm::Load()->System.Void",
+      "number": 1,
+      "initial_offset": 75,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r11-initial-slot-layout-and-concat-alias-composition",
+          "start": 11426,
+          "end": 21613,
+          "before": "public void Load()\r\n\t\t{\r\n\t\t\tCreateAllClass();\r\n\t\t\tloadMax_ = 30;\r\n\t\t\tloadCnt_ = 0;\r\n\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t}\r\n\t\t\tloadCnt_++;\r\n\t\t\tglobal::kairo.unity.io.RecordStore recordStore;\nJarInflater jarInflater = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\trecordStore = RecordStore.OpenRecordStore(1);\r\n\t\t\t\tbyte[] data = recordStore.ReadRecord(6);\r\n\t\t\t\trecordStore.CloseRecordStore();\r\n\t\t\t\tjarInflater = new JarInflater(data);\r\n\t\t\t\tstring[] array = StringUtil.LoadStringArray(jarInflater, \"player.txt\");\r\n\t\t\t\tapdat_.pData_ = new PlayerData[array.Length];\r\n\t\t\t\tfor (int i = 0; i < apdat_.pData_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.pData_[i] = new PlayerData(array[i]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"team.txt\");\r\n\t\t\t\tapdat_.tData_ = new TeamData[array.Length];\r\n\t\t\t\tfor (int j = 0; j < apdat_.tData_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tData_[j] = new TeamData(array[j]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"supervisor.txt\");\r\n\t\t\t\tapdat_.svisorData_ = new SupervisorData[array.Length];\r\n\t\t\t\tfor (int k = 0; k < apdat_.svisorData_.Length; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.svisorData_[k] = new SupervisorData(array[k]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"formation.txt\");\r\n\t\t\t\tapdat_.formationData_ = new FormationData[array.Length];\r\n\t\t\t\tfor (int l = 0; l < apdat_.formationData_.Length; l++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.formationData_[l] = new FormationData(array[l]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_match.txt\");\r\n\t\t\t\tapdat_.mapchipMatch_ = new MapchipMatch[array.Length];\r\n\t\t\t\tfor (int m = 0; m < apdat_.mapchipMatch_.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMatch_[m] = new MapchipMatch(array[m]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_main.txt\");\r\n\t\t\t\tapdat_.mapchipMain_ = new MapchipMain[array.Length];\r\n\t\t\t\tfor (int n = 0; n < apdat_.mapchipMain_.Length; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMain_[n] = new MapchipMain(array[n]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"stadium.txt\");\r\n\t\t\t\tapdat_.stadiumData_ = new StadiumData[array.Length];\r\n\t\t\t\tfor (int num = 0; num < apdat_.stadiumData_.Length; num++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.stadiumData_[num] = new StadiumData(array[num]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanActData.txt\");\r\n\t\t\t\tapdat_.fanActData_ = new FanActData[array.Length];\r\n\t\t\t\tfor (int num2 = 0; num2 < apdat_.fanActData_.Length; num2++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanActData_[num2] = new FanActData(array[num2]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"sponsorData.txt\");\r\n\t\t\t\tapdat_.sponsorData_ = new SponsorData[array.Length];\r\n\t\t\t\tfor (int num3 = 0; num3 < apdat_.sponsorData_.Length; num3++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.sponsorData_[num3] = new SponsorData(array[num3]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanBonus.txt\");\r\n\t\t\t\tapdat_.fanBonus_ = new FanBonusData[array.Length];\r\n\t\t\t\tfor (int num4 = 0; num4 < apdat_.fanBonus_.Length; num4++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanBonus_[num4] = new FanBonusData(array[num4]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"questMatch.txt\");\r\n\t\t\t\tapdat_.qmData_ = new QuestMatchData[array.Length];\r\n\t\t\t\tfor (int num5 = 0; num5 < apdat_.qmData_.Length; num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.qmData_[num5] = new QuestMatchData(array[num5]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tenantData.txt\");\r\n\t\t\t\tapdat_.tenantData_ = new TenantData[array.Length];\r\n\t\t\t\tfor (int num6 = 0; num6 < apdat_.tenantData_.Length; num6++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tenantData_[num6] = new TenantData(array[num6]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tradePlayer.txt\");\r\n\t\t\t\tapdat_.tradeData_ = new TradeData[array.Length];\r\n\t\t\t\tfor (int num7 = 0; num7 < apdat_.tradeData_.Length; num7++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tradeData_[num7] = new TradeData(array[num7]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"trainingData.txt\");\r\n\t\t\t\tapdat_.trainingData_ = new TrainingData[array.Length];\r\n\t\t\t\tfor (int num8 = 0; num8 < apdat_.trainingData_.Length; num8++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.trainingData_[num8] = new TrainingData(array[num8]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"leagueData.txt\");\r\n\t\t\t\tapdat_.leagueData_ = new LeagueData[array.Length];\r\n\t\t\t\tfor (int num9 = 0; num9 < apdat_.leagueData_.Length; num9++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.leagueData_[num9] = new LeagueData(array[num9]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tInputStream inputStream = null;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"manual.txt\");\r\n\t\t\t\t\tbyte[] bytes = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.manualTexts_ = StringUtil.Split(JString.New(bytes), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk.txt\");\r\n\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tAppData.talks_ = StringUtil.Split(JString.New(bytes2), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"news.txt\");\r\n\t\t\t\t\tbyte[] bytes3 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array2 = StringUtil.Split(JString.New(bytes3), \"|\");\r\n\t\t\t\t\tapdat_.newsTypes_ = new int[array2.Length];\r\n\t\t\t\t\tapdat_.newsTitles_ = new string[array2.Length];\r\n\t\t\t\t\tapdat_.newsTexts_ = new string[array2.Length];\r\n\t\t\t\t\tfor (int num10 = 0; num10 < array2.Length; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array3 = StringUtil.Split(array2[num10], \"\\t\");\r\n\t\t\t\t\t\tapdat_.newsTypes_[num10] = JInteger.ParseInt(array3[0]);\r\n\t\t\t\t\t\tapdat_.newsTitles_[num10] = array3[1];\r\n\t\t\t\t\t\tapdat_.newsTexts_[num10] = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"evtmsgs.txt\");\r\n\t\t\t\t\tbyte[] bytes4 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.eventMsgs_ = StringUtil.Split(JString.New(bytes4), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"events.txt\");\r\n\t\t\t\tapdat_.eventData_ = new EventData[array.Length];\r\n\t\t\t\tfor (int num11 = 0; num11 < array.Length; num11++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.eventData_[num11] = new EventData(array[num11]);\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.eventData_ = (EventData[])apdat_.AdjustDataList(apdat_.eventData_, 1);\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk_specialChara.txt\");\r\n\t\t\t\t\tbyte[] bytes5 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array4 = StringUtil.Split(JString.New(bytes5), \"\\n\");\r\n\t\t\t\t\tUserData instance = UserData.GetInstance();\r\n\t\t\t\t\tinstance.TALK_SCHARA_ID = new int[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_NAME = new string[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX = new int[array4.Length];\r\n\t\t\t\t\tfor (int num12 = 0; num12 < array4.Length; num12++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array5 = StringUtil.Split(array4[num12], \"\\t\");\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_ID[num12] = JInteger.ParseInt(array5[0]);\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_NAME[num12] = array5[1];\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX[num12] = JInteger.ParseInt(array5[2]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() xls\u30c7\u30fc\u30bf\u306e\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (jarInflater != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tjarInflater.Close();\r\n\t\t\t\t}\r\n\t\t\t\tjarInflater = null;\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resCom2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resCom2_.Load(RecordStore.ReadRecord(1, 1));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHuman2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHuman2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHuman2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHuman2_.Load(RecordStore.ReadRecord(1, 9));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHumanHead_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHumanHead_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHumanHead_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHumanHead_.Load(RecordStore.ReadRecord(1, 10));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resEvent_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resEvent_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resEvent_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resEvent_.Load(RecordStore.ReadRecord(1, 3));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tapdat_.resSound_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resSound_.Load(AppData.RSFILENAMESS[1][11]);\r\n\t\t\t\tfor (int num13 = 0; num13 < AppData.BGM.Length; num13++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetLoop(-1);\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetSoundType(0);\r\n\t\t\t\t}\r\n\t\t\t\tfor (int num14 = 0; num14 < AppData.SE.Length; num14++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.SE[num14]].SetSoundType(1);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t2)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t2);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() \u30ea\u30bd\u30fc\u30b9\u30c7\u30fc\u30bf\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (Config.DEBUG_CMD)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t}\r\n\t\t\tTenantData.Load2();\r\n\t\t\tFanBonusData.Load2();\r\n\t\t\tMap.Load2();\r\n\t\t\tMapMain.Load2();\r\n\t\t\tTrainingData.Load2();\r\n\t\t\tMapMain.CreateMap();\r\n\t\t\tUserData.GetInstance().ProcCommonMethod();\r\n\t\t\tCreateAllClass();\r\n\t\t}",
+          "after": "public void Load()\r\n\t\t{\r\n\t\t\tCreateAllClass();\r\n\t\t\tloadMax_ = 30;\r\n\t\t\tloadCnt_ = 0;\r\n\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t}\r\n\t\t\tloadCnt_++;\r\n\t\t\tstring[] array; JarInflater jarInflater = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tRecordStore recordStore = RecordStore.OpenRecordStore(1);\r\n\t\t\t\tbyte[] data = recordStore.ReadRecord(6);\r\n\t\t\t\trecordStore.CloseRecordStore();\r\n\t\t\t\tjarInflater = new JarInflater(data);\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater,\"player.txt\");\r\n\t\t\t\tapdat_.pData_ = new PlayerData[array.Length];\r\n\t\t\t\tfor (int i = 0; i < apdat_.pData_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.pData_[i] = new PlayerData(array[i]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"team.txt\");\r\n\t\t\t\tapdat_.tData_ = new TeamData[array.Length];\r\n\t\t\t\tfor (int j = 0; j < apdat_.tData_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tData_[j] = new TeamData(array[j]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"supervisor.txt\");\r\n\t\t\t\tapdat_.svisorData_ = new SupervisorData[array.Length];\r\n\t\t\t\tfor (int k = 0; k < apdat_.svisorData_.Length; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.svisorData_[k] = new SupervisorData(array[k]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"formation.txt\");\r\n\t\t\t\tapdat_.formationData_ = new FormationData[array.Length];\r\n\t\t\t\tfor (int l = 0; l < apdat_.formationData_.Length; l++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.formationData_[l] = new FormationData(array[l]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_match.txt\");\r\n\t\t\t\tapdat_.mapchipMatch_ = new MapchipMatch[array.Length];\r\n\t\t\t\tfor (int m = 0; m < apdat_.mapchipMatch_.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMatch_[m] = new MapchipMatch(array[m]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_main.txt\");\r\n\t\t\t\tapdat_.mapchipMain_ = new MapchipMain[array.Length];\r\n\t\t\t\tfor (int n = 0; n < apdat_.mapchipMain_.Length; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMain_[n] = new MapchipMain(array[n]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"stadium.txt\");\r\n\t\t\t\tapdat_.stadiumData_ = new StadiumData[array.Length];\r\n\t\t\t\tfor (int num = 0; num < apdat_.stadiumData_.Length; num++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.stadiumData_[num] = new StadiumData(array[num]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanActData.txt\");\r\n\t\t\t\tapdat_.fanActData_ = new FanActData[array.Length];\r\n\t\t\t\tfor (int num2 = 0; num2 < apdat_.fanActData_.Length; num2++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanActData_[num2] = new FanActData(array[num2]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"sponsorData.txt\");\r\n\t\t\t\tapdat_.sponsorData_ = new SponsorData[array.Length];\r\n\t\t\t\tfor (int num3 = 0; num3 < apdat_.sponsorData_.Length; num3++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.sponsorData_[num3] = new SponsorData(array[num3]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanBonus.txt\");\r\n\t\t\t\tapdat_.fanBonus_ = new FanBonusData[array.Length];\r\n\t\t\t\tfor (int num4 = 0; num4 < apdat_.fanBonus_.Length; num4++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanBonus_[num4] = new FanBonusData(array[num4]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"questMatch.txt\");\r\n\t\t\t\tapdat_.qmData_ = new QuestMatchData[array.Length];\r\n\t\t\t\tfor (int num5 = 0; num5 < apdat_.qmData_.Length; num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.qmData_[num5] = new QuestMatchData(array[num5]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tenantData.txt\");\r\n\t\t\t\tapdat_.tenantData_ = new TenantData[array.Length];\r\n\t\t\t\tfor (int num6 = 0; num6 < apdat_.tenantData_.Length; num6++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tenantData_[num6] = new TenantData(array[num6]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tradePlayer.txt\");\r\n\t\t\t\tapdat_.tradeData_ = new TradeData[array.Length];\r\n\t\t\t\tfor (int num7 = 0; num7 < apdat_.tradeData_.Length; num7++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tradeData_[num7] = new TradeData(array[num7]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"trainingData.txt\");\r\n\t\t\t\tapdat_.trainingData_ = new TrainingData[array.Length];\r\n\t\t\t\tfor (int num8 = 0; num8 < apdat_.trainingData_.Length; num8++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.trainingData_[num8] = new TrainingData(array[num8]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"leagueData.txt\");\r\n\t\t\t\tapdat_.leagueData_ = new LeagueData[array.Length];\r\n\t\t\t\tfor (int num9 = 0; num9 < apdat_.leagueData_.Length; num9++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.leagueData_[num9] = new LeagueData(array[num9]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tInputStream inputStream = null;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"manual.txt\");\r\n\t\t\t\t\tbyte[] bytes = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.manualTexts_ = StringUtil.Split(JString.New(bytes), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk.txt\");\r\n\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tAppData.talks_ = StringUtil.Split(JString.New(bytes2), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"news.txt\");\r\n\t\t\t\t\tbyte[] bytes3 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array2 = StringUtil.Split(JString.New(bytes3), \"|\");\r\n\t\t\t\t\tapdat_.newsTypes_ = new int[array2.Length];\r\n\t\t\t\t\tapdat_.newsTitles_ = new string[array2.Length];\r\n\t\t\t\t\tapdat_.newsTexts_ = new string[array2.Length];\r\n\t\t\t\t\tfor (int num10 = 0; num10 < array2.Length; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array3 = StringUtil.Split(array2[num10], \"\\t\");\r\n\t\t\t\t\t\tapdat_.newsTypes_[num10] = JInteger.ParseInt(array3[0]);\r\n\t\t\t\t\t\tapdat_.newsTitles_[num10] = array3[1];\r\n\t\t\t\t\t\tapdat_.newsTexts_[num10] = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"evtmsgs.txt\");\r\n\t\t\t\t\tbyte[] bytes4 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.eventMsgs_ = StringUtil.Split(JString.New(bytes4), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"events.txt\");\r\n\t\t\t\tapdat_.eventData_ = new EventData[array.Length];\r\n\t\t\t\tfor (int num11 = 0; num11 < array.Length; num11++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.eventData_[num11] = new EventData(array[num11]);\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.eventData_ = (EventData[])apdat_.AdjustDataList(apdat_.eventData_, 1);\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk_specialChara.txt\");\r\n\t\t\t\t\tbyte[] bytes5 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array4 = StringUtil.Split(JString.New(bytes5), \"\\n\");\r\n\t\t\t\t\tUserData instance = UserData.GetInstance();\r\n\t\t\t\t\tinstance.TALK_SCHARA_ID = new int[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_NAME = new string[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX = new int[array4.Length];\r\n\t\t\t\t\tfor (int num12 = 0; num12 < array4.Length; num12++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array5 = StringUtil.Split(array4[num12], \"\\t\");\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_ID[num12] = JInteger.ParseInt(array5[0]);\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_NAME[num12] = array5[1];\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX[num12] = JInteger.ParseInt(array5[2]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() xls\u30c7\u30fc\u30bf\u306e\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (jarInflater != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tjarInflater.Close();\r\n\t\t\t\t}\r\n\t\t\t\tjarInflater = null;\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resCom2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resCom2_.Load(RecordStore.ReadRecord(1, 1));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHuman2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHuman2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHuman2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHuman2_.Load(RecordStore.ReadRecord(1, 9));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHumanHead_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHumanHead_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHumanHead_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHumanHead_.Load(RecordStore.ReadRecord(1, 10));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resEvent_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resEvent_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resEvent_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resEvent_.Load(RecordStore.ReadRecord(1, 3));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tapdat_.resSound_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resSound_.Load(AppData.RSFILENAMESS[1][11]);\r\n\t\t\t\tfor (int num13 = 0; num13 < AppData.BGM.Length; num13++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetLoop(-1);\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetSoundType(0);\r\n\t\t\t\t}\r\n\t\t\t\tfor (int num14 = 0; num14 < AppData.SE.Length; num14++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.SE[num14]].SetSoundType(1);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t2)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t2);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() \u30ea\u30bd\u30fc\u30b9\u30c7\u30fc\u30bf\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (Config.DEBUG_CMD)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t}\r\n\t\t\tTenantData.Load2();\r\n\t\t\tFanBonusData.Load2();\r\n\t\t\tMap.Load2();\r\n\t\t\tMapMain.Load2();\r\n\t\t\tTrainingData.Load2();\r\n\t\t\tMapMain.CreateMap();\r\n\t\t\tUserData.GetInstance().ProcCommonMethod();\r\n\t\t\tCreateAllClass();\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 75,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.String[]",
+              "kairo.unity.util.JarInflater",
+              "kairo.unity.io.RecordStore",
+              "System.Byte[]",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "java.io.InputStream",
+              "System.Byte[]",
+              "System.Byte[]",
+              "System.Byte[]",
+              "System.String[]",
+              "System.Int32",
+              "System.String[]",
+              "System.Byte[]",
+              "System.Int32",
+              "System.Byte[]",
+              "System.String[]",
+              "game.UserData",
+              "System.Int32",
+              "System.String[]",
+              "System.Exception",
+              "System.Int32",
+              "System.Int32",
+              "System.Exception"
+            ],
+            "method_id": "form.BootForm::Load()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\BootForm.cs",
+            "full_source_sha256": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794097204708507400\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.625,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 3277,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 3277,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.BootForm::Load()->System.Void"
+          ],
+          "matched_IL_gain": 3277
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r11-initial-slot-layout-and-concat-alias-composition",
+          "start": 11426,
+          "end": 21613,
+          "before": "public void Load()\r\n\t\t{\r\n\t\t\tCreateAllClass();\r\n\t\t\tloadMax_ = 30;\r\n\t\t\tloadCnt_ = 0;\r\n\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t}\r\n\t\t\tloadCnt_++;\r\n\t\t\tglobal::kairo.unity.io.RecordStore recordStore;\nJarInflater jarInflater = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\trecordStore = RecordStore.OpenRecordStore(1);\r\n\t\t\t\tbyte[] data = recordStore.ReadRecord(6);\r\n\t\t\t\trecordStore.CloseRecordStore();\r\n\t\t\t\tjarInflater = new JarInflater(data);\r\n\t\t\t\tstring[] array = StringUtil.LoadStringArray(jarInflater, \"player.txt\");\r\n\t\t\t\tapdat_.pData_ = new PlayerData[array.Length];\r\n\t\t\t\tfor (int i = 0; i < apdat_.pData_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.pData_[i] = new PlayerData(array[i]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"team.txt\");\r\n\t\t\t\tapdat_.tData_ = new TeamData[array.Length];\r\n\t\t\t\tfor (int j = 0; j < apdat_.tData_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tData_[j] = new TeamData(array[j]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"supervisor.txt\");\r\n\t\t\t\tapdat_.svisorData_ = new SupervisorData[array.Length];\r\n\t\t\t\tfor (int k = 0; k < apdat_.svisorData_.Length; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.svisorData_[k] = new SupervisorData(array[k]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"formation.txt\");\r\n\t\t\t\tapdat_.formationData_ = new FormationData[array.Length];\r\n\t\t\t\tfor (int l = 0; l < apdat_.formationData_.Length; l++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.formationData_[l] = new FormationData(array[l]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_match.txt\");\r\n\t\t\t\tapdat_.mapchipMatch_ = new MapchipMatch[array.Length];\r\n\t\t\t\tfor (int m = 0; m < apdat_.mapchipMatch_.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMatch_[m] = new MapchipMatch(array[m]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_main.txt\");\r\n\t\t\t\tapdat_.mapchipMain_ = new MapchipMain[array.Length];\r\n\t\t\t\tfor (int n = 0; n < apdat_.mapchipMain_.Length; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMain_[n] = new MapchipMain(array[n]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"stadium.txt\");\r\n\t\t\t\tapdat_.stadiumData_ = new StadiumData[array.Length];\r\n\t\t\t\tfor (int num = 0; num < apdat_.stadiumData_.Length; num++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.stadiumData_[num] = new StadiumData(array[num]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanActData.txt\");\r\n\t\t\t\tapdat_.fanActData_ = new FanActData[array.Length];\r\n\t\t\t\tfor (int num2 = 0; num2 < apdat_.fanActData_.Length; num2++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanActData_[num2] = new FanActData(array[num2]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"sponsorData.txt\");\r\n\t\t\t\tapdat_.sponsorData_ = new SponsorData[array.Length];\r\n\t\t\t\tfor (int num3 = 0; num3 < apdat_.sponsorData_.Length; num3++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.sponsorData_[num3] = new SponsorData(array[num3]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanBonus.txt\");\r\n\t\t\t\tapdat_.fanBonus_ = new FanBonusData[array.Length];\r\n\t\t\t\tfor (int num4 = 0; num4 < apdat_.fanBonus_.Length; num4++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanBonus_[num4] = new FanBonusData(array[num4]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"questMatch.txt\");\r\n\t\t\t\tapdat_.qmData_ = new QuestMatchData[array.Length];\r\n\t\t\t\tfor (int num5 = 0; num5 < apdat_.qmData_.Length; num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.qmData_[num5] = new QuestMatchData(array[num5]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tenantData.txt\");\r\n\t\t\t\tapdat_.tenantData_ = new TenantData[array.Length];\r\n\t\t\t\tfor (int num6 = 0; num6 < apdat_.tenantData_.Length; num6++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tenantData_[num6] = new TenantData(array[num6]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tradePlayer.txt\");\r\n\t\t\t\tapdat_.tradeData_ = new TradeData[array.Length];\r\n\t\t\t\tfor (int num7 = 0; num7 < apdat_.tradeData_.Length; num7++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tradeData_[num7] = new TradeData(array[num7]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"trainingData.txt\");\r\n\t\t\t\tapdat_.trainingData_ = new TrainingData[array.Length];\r\n\t\t\t\tfor (int num8 = 0; num8 < apdat_.trainingData_.Length; num8++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.trainingData_[num8] = new TrainingData(array[num8]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"leagueData.txt\");\r\n\t\t\t\tapdat_.leagueData_ = new LeagueData[array.Length];\r\n\t\t\t\tfor (int num9 = 0; num9 < apdat_.leagueData_.Length; num9++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.leagueData_[num9] = new LeagueData(array[num9]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tInputStream inputStream = null;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"manual.txt\");\r\n\t\t\t\t\tbyte[] bytes = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.manualTexts_ = StringUtil.Split(JString.New(bytes), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk.txt\");\r\n\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tAppData.talks_ = StringUtil.Split(JString.New(bytes2), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"news.txt\");\r\n\t\t\t\t\tbyte[] bytes3 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array2 = StringUtil.Split(JString.New(bytes3), \"|\");\r\n\t\t\t\t\tapdat_.newsTypes_ = new int[array2.Length];\r\n\t\t\t\t\tapdat_.newsTitles_ = new string[array2.Length];\r\n\t\t\t\t\tapdat_.newsTexts_ = new string[array2.Length];\r\n\t\t\t\t\tfor (int num10 = 0; num10 < array2.Length; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array3 = StringUtil.Split(array2[num10], \"\\t\");\r\n\t\t\t\t\t\tapdat_.newsTypes_[num10] = JInteger.ParseInt(array3[0]);\r\n\t\t\t\t\t\tapdat_.newsTitles_[num10] = array3[1];\r\n\t\t\t\t\t\tapdat_.newsTexts_[num10] = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"evtmsgs.txt\");\r\n\t\t\t\t\tbyte[] bytes4 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.eventMsgs_ = StringUtil.Split(JString.New(bytes4), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"events.txt\");\r\n\t\t\t\tapdat_.eventData_ = new EventData[array.Length];\r\n\t\t\t\tfor (int num11 = 0; num11 < array.Length; num11++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.eventData_[num11] = new EventData(array[num11]);\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.eventData_ = (EventData[])apdat_.AdjustDataList(apdat_.eventData_, 1);\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk_specialChara.txt\");\r\n\t\t\t\t\tbyte[] bytes5 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array4 = StringUtil.Split(JString.New(bytes5), \"\\n\");\r\n\t\t\t\t\tUserData instance = UserData.GetInstance();\r\n\t\t\t\t\tinstance.TALK_SCHARA_ID = new int[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_NAME = new string[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX = new int[array4.Length];\r\n\t\t\t\t\tfor (int num12 = 0; num12 < array4.Length; num12++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array5 = StringUtil.Split(array4[num12], \"\\t\");\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_ID[num12] = JInteger.ParseInt(array5[0]);\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_NAME[num12] = array5[1];\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX[num12] = JInteger.ParseInt(array5[2]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() xls\u30c7\u30fc\u30bf\u306e\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (jarInflater != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tjarInflater.Close();\r\n\t\t\t\t}\r\n\t\t\t\tjarInflater = null;\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resCom2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resCom2_.Load(RecordStore.ReadRecord(1, 1));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHuman2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHuman2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHuman2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHuman2_.Load(RecordStore.ReadRecord(1, 9));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHumanHead_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHumanHead_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHumanHead_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHumanHead_.Load(RecordStore.ReadRecord(1, 10));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resEvent_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resEvent_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resEvent_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resEvent_.Load(RecordStore.ReadRecord(1, 3));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tapdat_.resSound_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resSound_.Load(AppData.RSFILENAMESS[1][11]);\r\n\t\t\t\tfor (int num13 = 0; num13 < AppData.BGM.Length; num13++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetLoop(-1);\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetSoundType(0);\r\n\t\t\t\t}\r\n\t\t\t\tfor (int num14 = 0; num14 < AppData.SE.Length; num14++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.SE[num14]].SetSoundType(1);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t2)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t2);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() \u30ea\u30bd\u30fc\u30b9\u30c7\u30fc\u30bf\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (Config.DEBUG_CMD)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t}\r\n\t\t\tTenantData.Load2();\r\n\t\t\tFanBonusData.Load2();\r\n\t\t\tMap.Load2();\r\n\t\t\tMapMain.Load2();\r\n\t\t\tTrainingData.Load2();\r\n\t\t\tMapMain.CreateMap();\r\n\t\t\tUserData.GetInstance().ProcCommonMethod();\r\n\t\t\tCreateAllClass();\r\n\t\t}",
+          "after": "public void Load()\r\n\t\t{\r\n\t\t\tCreateAllClass();\r\n\t\t\tloadMax_ = 30;\r\n\t\t\tloadCnt_ = 0;\r\n\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t{\r\n\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t}\r\n\t\t\tloadCnt_++;\r\n\t\t\tstring[] array; JarInflater jarInflater = null;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tRecordStore recordStore = RecordStore.OpenRecordStore(1);\r\n\t\t\t\tbyte[] data = recordStore.ReadRecord(6);\r\n\t\t\t\trecordStore.CloseRecordStore();\r\n\t\t\t\tjarInflater = new JarInflater(data);\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater,\"player.txt\");\r\n\t\t\t\tapdat_.pData_ = new PlayerData[array.Length];\r\n\t\t\t\tfor (int i = 0; i < apdat_.pData_.Length; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.pData_[i] = new PlayerData(array[i]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"team.txt\");\r\n\t\t\t\tapdat_.tData_ = new TeamData[array.Length];\r\n\t\t\t\tfor (int j = 0; j < apdat_.tData_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tData_[j] = new TeamData(array[j]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"supervisor.txt\");\r\n\t\t\t\tapdat_.svisorData_ = new SupervisorData[array.Length];\r\n\t\t\t\tfor (int k = 0; k < apdat_.svisorData_.Length; k++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.svisorData_[k] = new SupervisorData(array[k]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"formation.txt\");\r\n\t\t\t\tapdat_.formationData_ = new FormationData[array.Length];\r\n\t\t\t\tfor (int l = 0; l < apdat_.formationData_.Length; l++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.formationData_[l] = new FormationData(array[l]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_match.txt\");\r\n\t\t\t\tapdat_.mapchipMatch_ = new MapchipMatch[array.Length];\r\n\t\t\t\tfor (int m = 0; m < apdat_.mapchipMatch_.Length; m++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMatch_[m] = new MapchipMatch(array[m]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"mapchip_main.txt\");\r\n\t\t\t\tapdat_.mapchipMain_ = new MapchipMain[array.Length];\r\n\t\t\t\tfor (int n = 0; n < apdat_.mapchipMain_.Length; n++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.mapchipMain_[n] = new MapchipMain(array[n]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"stadium.txt\");\r\n\t\t\t\tapdat_.stadiumData_ = new StadiumData[array.Length];\r\n\t\t\t\tfor (int num = 0; num < apdat_.stadiumData_.Length; num++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.stadiumData_[num] = new StadiumData(array[num]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanActData.txt\");\r\n\t\t\t\tapdat_.fanActData_ = new FanActData[array.Length];\r\n\t\t\t\tfor (int num2 = 0; num2 < apdat_.fanActData_.Length; num2++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanActData_[num2] = new FanActData(array[num2]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"sponsorData.txt\");\r\n\t\t\t\tapdat_.sponsorData_ = new SponsorData[array.Length];\r\n\t\t\t\tfor (int num3 = 0; num3 < apdat_.sponsorData_.Length; num3++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.sponsorData_[num3] = new SponsorData(array[num3]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"fanBonus.txt\");\r\n\t\t\t\tapdat_.fanBonus_ = new FanBonusData[array.Length];\r\n\t\t\t\tfor (int num4 = 0; num4 < apdat_.fanBonus_.Length; num4++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.fanBonus_[num4] = new FanBonusData(array[num4]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"questMatch.txt\");\r\n\t\t\t\tapdat_.qmData_ = new QuestMatchData[array.Length];\r\n\t\t\t\tfor (int num5 = 0; num5 < apdat_.qmData_.Length; num5++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.qmData_[num5] = new QuestMatchData(array[num5]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tenantData.txt\");\r\n\t\t\t\tapdat_.tenantData_ = new TenantData[array.Length];\r\n\t\t\t\tfor (int num6 = 0; num6 < apdat_.tenantData_.Length; num6++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tenantData_[num6] = new TenantData(array[num6]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"tradePlayer.txt\");\r\n\t\t\t\tapdat_.tradeData_ = new TradeData[array.Length];\r\n\t\t\t\tfor (int num7 = 0; num7 < apdat_.tradeData_.Length; num7++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.tradeData_[num7] = new TradeData(array[num7]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"trainingData.txt\");\r\n\t\t\t\tapdat_.trainingData_ = new TrainingData[array.Length];\r\n\t\t\t\tfor (int num8 = 0; num8 < apdat_.trainingData_.Length; num8++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.trainingData_[num8] = new TrainingData(array[num8]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"leagueData.txt\");\r\n\t\t\t\tapdat_.leagueData_ = new LeagueData[array.Length];\r\n\t\t\t\tfor (int num9 = 0; num9 < apdat_.leagueData_.Length; num9++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.leagueData_[num9] = new LeagueData(array[num9]);\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tInputStream inputStream = null;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"manual.txt\");\r\n\t\t\t\t\tbyte[] bytes = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.manualTexts_ = StringUtil.Split(JString.New(bytes), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk.txt\");\r\n\t\t\t\t\tbyte[] bytes2 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tAppData.talks_ = StringUtil.Split(JString.New(bytes2), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"news.txt\");\r\n\t\t\t\t\tbyte[] bytes3 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array2 = StringUtil.Split(JString.New(bytes3), \"|\");\r\n\t\t\t\t\tapdat_.newsTypes_ = new int[array2.Length];\r\n\t\t\t\t\tapdat_.newsTitles_ = new string[array2.Length];\r\n\t\t\t\t\tapdat_.newsTexts_ = new string[array2.Length];\r\n\t\t\t\t\tfor (int num10 = 0; num10 < array2.Length; num10++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array3 = StringUtil.Split(array2[num10], \"\\t\");\r\n\t\t\t\t\t\tapdat_.newsTypes_[num10] = JInteger.ParseInt(array3[0]);\r\n\t\t\t\t\t\tapdat_.newsTitles_[num10] = array3[1];\r\n\t\t\t\t\t\tapdat_.newsTexts_[num10] = array3[2];\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"evtmsgs.txt\");\r\n\t\t\t\t\tbyte[] bytes4 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tapdat_.eventMsgs_ = StringUtil.Split(JString.New(bytes4), \"|\");\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tarray = StringUtil.LoadStringArray(jarInflater, \"events.txt\");\r\n\t\t\t\tapdat_.eventData_ = new EventData[array.Length];\r\n\t\t\t\tfor (int num11 = 0; num11 < array.Length; num11++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.eventData_[num11] = new EventData(array[num11]);\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.eventData_ = (EventData[])apdat_.AdjustDataList(apdat_.eventData_, 1);\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\ttry\r\n\t\t\t\t{\r\n\t\t\t\t\tinputStream = jarInflater.GetInputStream(\"talk_specialChara.txt\");\r\n\t\t\t\t\tbyte[] bytes5 = StreamUtil.Read(inputStream);\r\n\t\t\t\t\tstring[] array4 = StringUtil.Split(JString.New(bytes5), \"\\n\");\r\n\t\t\t\t\tUserData instance = UserData.GetInstance();\r\n\t\t\t\t\tinstance.TALK_SCHARA_ID = new int[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_NAME = new string[array4.Length];\r\n\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX = new int[array4.Length];\r\n\t\t\t\t\tfor (int num12 = 0; num12 < array4.Length; num12++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tstring[] array5 = StringUtil.Split(array4[num12], \"\\t\");\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_ID[num12] = JInteger.ParseInt(array5[0]);\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_NAME[num12] = array5[1];\r\n\t\t\t\t\t\tinstance.TALK_SCHARA_IMGINDEX[num12] = JInteger.ParseInt(array5[2]);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tfinally\r\n\t\t\t\t{\r\n\t\t\t\t\tif (inputStream != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinputStream.Close();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tinputStream = null;\r\n\t\t\t\t}\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t}\r\n\t\t\tcatch (Exception t)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t\t}\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() xls\u30c7\u30fc\u30bf\u306e\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfinally\r\n\t\t\t{\r\n\t\t\t\tif (jarInflater != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tjarInflater.Close();\r\n\t\t\t\t}\r\n\t\t\t\tjarInflater = null;\r\n\t\t\t}\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tif (apdat_.resCom2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resCom2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resCom2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resCom2_.Load(RecordStore.ReadRecord(1, 1));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHuman2_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHuman2_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHuman2_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHuman2_.Load(RecordStore.ReadRecord(1, 9));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resHumanHead_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resHumanHead_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resHumanHead_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resHumanHead_.Load(RecordStore.ReadRecord(1, 10));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tif (apdat_.resEvent_ != null)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resEvent_.Dispose();\r\n\t\t\t\t}\r\n\t\t\t\tapdat_.resEvent_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resEvent_.Load(RecordStore.ReadRecord(1, 3));\r\n\t\t\t\tloadCnt_++;\r\n\t\t\t\tapdat_.resSound_ = new ResourceManager(null, null, null, null, null, null, null);\r\n\t\t\t\tapdat_.resSound_.Load(AppData.RSFILENAMESS[1][11]);\r\n\t\t\t\tfor (int num13 = 0; num13 < AppData.BGM.Length; num13++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetLoop(-1);\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.BGM[num13]].SetSoundType(0);\r\n\t\t\t\t}\r\n\t\t\t\tfor (int num14 = 0; num14 < AppData.SE.Length; num14++)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.resSound_.sound[AppData.SE[num14]].SetSoundType(1);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tcatch (Exception t2)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(t2);\r\n\t\t\t\tif (Config.PRINT)\r\n\t\t\t\t{\r\n\t\t\t\t\tLog.Info(\"\u25a0BootForm.java load() \u30ea\u30bd\u30fc\u30b9\u30c7\u30fc\u30bf\u8aad\u307f\u8fbc\u307f\u3067\u30a8\u30e9\u30fc\");\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tif (Config.DEBUG_CMD)\r\n\t\t\t{\r\n\t\t\t\tLog.Info(\"\u25a0BootForm.java load() loadCnt_ = \" + loadCnt_);\r\n\t\t\t}\r\n\t\t\tTenantData.Load2();\r\n\t\t\tFanBonusData.Load2();\r\n\t\t\tMap.Load2();\r\n\t\t\tMapMain.Load2();\r\n\t\t\tTrainingData.Load2();\r\n\t\t\tMapMain.CreateMap();\r\n\t\t\tUserData.GetInstance().ProcCommonMethod();\r\n\t\t\tCreateAllClass();\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 75,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.String[]",
+              "kairo.unity.util.JarInflater",
+              "kairo.unity.io.RecordStore",
+              "System.Byte[]",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "java.io.InputStream",
+              "System.Byte[]",
+              "System.Byte[]",
+              "System.Byte[]",
+              "System.String[]",
+              "System.Int32",
+              "System.String[]",
+              "System.Byte[]",
+              "System.Int32",
+              "System.Byte[]",
+              "System.String[]",
+              "game.UserData",
+              "System.Int32",
+              "System.String[]",
+              "System.Exception",
+              "System.Int32",
+              "System.Int32",
+              "System.Exception"
+            ],
+            "method_id": "form.BootForm::Load()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\BootForm.cs",
+            "full_source_sha256": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794097204708507400\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.625,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 3277,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 3277,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.BootForm::Load()->System.Void"
+          ],
+          "matched_IL_gain": 3277
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 75,
+            "rebuilt_offset": 75,
+            "opcode_pair": [
+              "stloc.2",
+              "stloc.0"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "d49920ec4abbe8b9d3a7e4c4decd6b9f5869ffdb2b203df9510defd1203a8c46",
+      "stop_point": {
+        "offset": 75,
+        "source": "src/Assembly-CSharp/form/BootForm.cs",
+        "point": {
+          "offset": 69,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\BootForm.cs",
+          "start_line": 541,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 75,
+          "line": 541,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 75,
+          "rebuilt_offset": 75,
+          "original_index": 26,
+          "rebuilt_index": 26,
+          "original_instruction": {
+            "offset": 75,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 75,
+            "opcode": "stloc.0",
+            "operand": null
+          },
+          "pair": "{\"opcode\":\"stloc.2\",\"operand\":null} => {\"opcode\":\"stloc.0\",\"operand\":null}",
+          "opcode_pair": "stloc.2 => stloc.0",
+          "original_context": [
+            {
+              "offset": 69,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 70,
+              "opcode": "call",
+              "operand": {
+                "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::OpenRecordStore``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 75,
+              "opcode": "stloc.2",
+              "operand": null
+            },
+            {
+              "offset": 76,
+              "opcode": "ldloc.2",
+              "operand": null
+            },
+            {
+              "offset": 77,
+              "opcode": "ldc.i4.6",
+              "operand": null
+            },
+            {
+              "offset": 78,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ReadRecord``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=True;explicit=False;cc=Default"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 69,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 70,
+              "opcode": "call",
+              "operand": {
+                "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::OpenRecordStore``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 75,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 76,
+              "opcode": "ldloc.0",
+              "operand": null
+            },
+            {
+              "offset": 77,
+              "opcode": "ldc.i4.6",
+              "operand": null
+            },
+            {
+              "offset": 78,
+              "opcode": "callvirt",
+              "operand": {
+                "method": "class kairo.unity.io.RecordStore @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::ReadRecord``0(valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e)->valuetype System.Byte @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e[];this=True;explicit=False;cc=Default"
+              }
+            }
+          ],
+          "original_labels": {
+            "53": "L0",
+            "136": "L1",
+            "165": "L2",
+            "238": "L3",
+            "267": "L4",
+            "340": "L5",
+            "369": "L6",
+            "442": "L7",
+            "471": "L8",
+            "544": "L9",
+            "573": "L10",
+            "646": "L11",
+            "675": "L12",
+            "748": "L13",
+            "777": "L14",
+            "850": "L15",
+            "879": "L16",
+            "952": "L17",
+            "981": "L18",
+            "1054": "L19",
+            "1083": "L20",
+            "1156": "L21",
+            "1185": "L22",
+            "1258": "L23",
+            "1287": "L24",
+            "1360": "L25",
+            "1389": "L26",
+            "1462": "L27",
+            "1491": "L28",
+            "1564": "L29",
+            "1593": "L30",
+            "1699": "L31",
+            "1703": "L32",
+            "1780": "L33",
+            "1784": "L34",
+            "1907": "L35",
+            "1989": "L36",
+            "2019": "L37",
+            "2023": "L38",
+            "2106": "L39",
+            "2110": "L40",
+            "2163": "L41",
+            "2192": "L42",
+            "2359": "L43",
+            "2434": "L44",
+            "2464": "L45",
+            "2468": "L46",
+            "2535": "L47",
+            "2557": "L48",
+            "2574": "L49",
+            "2577": "L50",
+            "2609": "L51",
+            "2702": "L52",
+            "2796": "L53",
+            "2890": "L54",
+            "3009": "L55",
+            "3077": "L56",
+            "3099": "L57",
+            "3136": "L58",
+            "3187": "L59",
+            "3192": "L60",
+            "3230": "L61"
+          },
+          "rebuilt_labels": {
+            "53": "L0",
+            "136": "L1",
+            "165": "L2",
+            "238": "L3",
+            "267": "L4",
+            "340": "L5",
+            "369": "L6",
+            "442": "L7",
+            "471": "L8",
+            "544": "L9",
+            "573": "L10",
+            "646": "L11",
+            "675": "L12",
+            "748": "L13",
+            "777": "L14",
+            "850": "L15",
+            "879": "L16",
+            "952": "L17",
+            "981": "L18",
+            "1054": "L19",
+            "1083": "L20",
+            "1156": "L21",
+            "1185": "L22",
+            "1258": "L23",
+            "1287": "L24",
+            "1360": "L25",
+            "1389": "L26",
+            "1462": "L27",
+            "1491": "L28",
+            "1564": "L29",
+            "1593": "L30",
+            "1699": "L31",
+            "1703": "L32",
+            "1780": "L33",
+            "1784": "L34",
+            "1907": "L35",
+            "1989": "L36",
+            "2019": "L37",
+            "2023": "L38",
+            "2106": "L39",
+            "2110": "L40",
+            "2163": "L41",
+            "2192": "L42",
+            "2359": "L43",
+            "2434": "L44",
+            "2464": "L45",
+            "2468": "L46",
+            "2535": "L47",
+            "2557": "L48",
+            "2574": "L49",
+            "2577": "L50",
+            "2609": "L51",
+            "2702": "L52",
+            "2796": "L53",
+            "2890": "L54",
+            "3009": "L55",
+            "3077": "L56",
+            "3099": "L57",
+            "3136": "L58",
+            "3187": "L59",
+            "3192": "L60",
+            "3230": "L61"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 26,
+              "original_stop": 28,
+              "rebuilt_start": 26,
+              "rebuilt_stop": 28
+            },
+            {
+              "kind": "replace",
+              "original_start": 30,
+              "original_stop": 31,
+              "rebuilt_start": 30,
+              "rebuilt_stop": 33
+            },
+            {
+              "kind": "delete",
+              "original_start": 32,
+              "original_stop": 34,
+              "rebuilt_start": 34,
+              "rebuilt_stop": 34
+            },
+            {
+              "kind": "replace",
+              "original_start": 39,
+              "original_stop": 40,
+              "rebuilt_start": 39,
+              "rebuilt_stop": 40
+            },
+            {
+              "kind": "replace",
+              "original_start": 42,
+              "original_stop": 43,
+              "rebuilt_start": 42,
+              "rebuilt_stop": 43
+            },
+            {
+              "kind": "replace",
+              "original_start": 54,
+              "original_stop": 55,
+              "rebuilt_start": 54,
+              "rebuilt_stop": 55
+            },
+            {
+              "kind": "replace",
+              "original_start": 79,
+              "original_stop": 80,
+              "rebuilt_start": 79,
+              "rebuilt_stop": 80
+            },
+            {
+              "kind": "replace",
+              "original_start": 82,
+              "original_stop": 83,
+              "rebuilt_start": 82,
+              "rebuilt_stop": 83
+            },
+            {
+              "kind": "replace",
+              "original_start": 94,
+              "original_stop": 95,
+              "rebuilt_start": 94,
+              "rebuilt_stop": 95
+            },
+            {
+              "kind": "replace",
+              "original_start": 119,
+              "original_stop": 120,
+              "rebuilt_start": 119,
+              "rebuilt_stop": 120
+            },
+            {
+              "kind": "replace",
+              "original_start": 122,
+              "original_stop": 123,
+              "rebuilt_start": 122,
+              "rebuilt_stop": 123
+            },
+            {
+              "kind": "replace",
+              "original_start": 134,
+              "original_stop": 135,
+              "rebuilt_start": 134,
+              "rebuilt_stop": 135
+            },
+            {
+              "kind": "replace",
+              "original_start": 159,
+              "original_stop": 160,
+              "rebuilt_start": 159,
+              "rebuilt_stop": 160
+            },
+            {
+              "kind": "replace",
+              "original_start": 162,
+              "original_stop": 163,
+              "rebuilt_start": 162,
+              "rebuilt_stop": 163
+            },
+            {
+              "kind": "replace",
+              "original_start": 174,
+              "original_stop": 175,
+              "rebuilt_start": 174,
+              "rebuilt_stop": 175
+            },
+            {
+              "kind": "replace",
+              "original_start": 199,
+              "original_stop": 200,
+              "rebuilt_start": 199,
+              "rebuilt_stop": 200
+            },
+            {
+              "kind": "replace",
+              "original_start": 202,
+              "original_stop": 203,
+              "rebuilt_start": 202,
+              "rebuilt_stop": 203
+            },
+            {
+              "kind": "replace",
+              "original_start": 214,
+              "original_stop": 215,
+              "rebuilt_start": 214,
+              "rebuilt_stop": 215
+            },
+            {
+              "kind": "replace",
+              "original_start": 239,
+              "original_stop": 240,
+              "rebuilt_start": 239,
+              "rebuilt_stop": 240
+            },
+            {
+              "kind": "replace",
+              "original_start": 242,
+              "original_stop": 243,
+              "rebuilt_start": 242,
+              "rebuilt_stop": 243
+            },
+            {
+              "kind": "replace",
+              "original_start": 254,
+              "original_stop": 255,
+              "rebuilt_start": 254,
+              "rebuilt_stop": 255
+            },
+            {
+              "kind": "replace",
+              "original_start": 279,
+              "original_stop": 280,
+              "rebuilt_start": 279,
+              "rebuilt_stop": 280
+            },
+            {
+              "kind": "replace",
+              "original_start": 282,
+              "original_stop": 283,
+              "rebuilt_start": 282,
+              "rebuilt_stop": 283
+            },
+            {
+              "kind": "replace",
+              "original_start": 294,
+              "original_stop": 295,
+              "rebuilt_start": 294,
+              "rebuilt_stop": 295
+            },
+            {
+              "kind": "replace",
+              "original_start": 319,
+              "original_stop": 320,
+              "rebuilt_start": 319,
+              "rebuilt_stop": 320
+            },
+            {
+              "kind": "replace",
+              "original_start": 322,
+              "original_stop": 323,
+              "rebuilt_start": 322,
+              "rebuilt_stop": 323
+            },
+            {
+              "kind": "replace",
+              "original_start": 334,
+              "original_stop": 335,
+              "rebuilt_start": 334,
+              "rebuilt_stop": 335
+            },
+            {
+              "kind": "replace",
+              "original_start": 359,
+              "original_stop": 360,
+              "rebuilt_start": 359,
+              "rebuilt_stop": 360
+            },
+            {
+              "kind": "replace",
+              "original_start": 362,
+              "original_stop": 363,
+              "rebuilt_start": 362,
+              "rebuilt_stop": 363
+            },
+            {
+              "kind": "replace",
+              "original_start": 374,
+              "original_stop": 375,
+              "rebuilt_start": 374,
+              "rebuilt_stop": 375
+            },
+            {
+              "kind": "replace",
+              "original_start": 399,
+              "original_stop": 400,
+              "rebuilt_start": 399,
+              "rebuilt_stop": 400
+            },
+            {
+              "kind": "replace",
+              "original_start": 402,
+              "original_stop": 403,
+              "rebuilt_start": 402,
+              "rebuilt_stop": 403
+            },
+            {
+              "kind": "replace",
+              "original_start": 414,
+              "original_stop": 415,
+              "rebuilt_start": 414,
+              "rebuilt_stop": 415
+            },
+            {
+              "kind": "replace",
+              "original_start": 439,
+              "original_stop": 440,
+              "rebuilt_start": 439,
+              "rebuilt_stop": 440
+            },
+            {
+              "kind": "replace",
+              "original_start": 442,
+              "original_stop": 443,
+              "rebuilt_start": 442,
+              "rebuilt_stop": 443
+            },
+            {
+              "kind": "replace",
+              "original_start": 454,
+              "original_stop": 455,
+              "rebuilt_start": 454,
+              "rebuilt_stop": 455
+            },
+            {
+              "kind": "replace",
+              "original_start": 479,
+              "original_stop": 480,
+              "rebuilt_start": 479,
+              "rebuilt_stop": 480
+            },
+            {
+              "kind": "replace",
+              "original_start": 482,
+              "original_stop": 483,
+              "rebuilt_start": 482,
+              "rebuilt_stop": 483
+            },
+            {
+              "kind": "replace",
+              "original_start": 494,
+              "original_stop": 495,
+              "rebuilt_start": 494,
+              "rebuilt_stop": 495
+            },
+            {
+              "kind": "replace",
+              "original_start": 519,
+              "original_stop": 520,
+              "rebuilt_start": 519,
+              "rebuilt_stop": 520
+            },
+            {
+              "kind": "replace",
+              "original_start": 522,
+              "original_stop": 523,
+              "rebuilt_start": 522,
+              "rebuilt_stop": 523
+            },
+            {
+              "kind": "replace",
+              "original_start": 534,
+              "original_stop": 535,
+              "rebuilt_start": 534,
+              "rebuilt_stop": 535
+            },
+            {
+              "kind": "replace",
+              "original_start": 559,
+              "original_stop": 560,
+              "rebuilt_start": 559,
+              "rebuilt_stop": 560
+            },
+            {
+              "kind": "replace",
+              "original_start": 562,
+              "original_stop": 563,
+              "rebuilt_start": 562,
+              "rebuilt_stop": 563
+            },
+            {
+              "kind": "replace",
+              "original_start": 574,
+              "original_stop": 575,
+              "rebuilt_start": 574,
+              "rebuilt_stop": 575
+            },
+            {
+              "kind": "replace",
+              "original_start": 599,
+              "original_stop": 600,
+              "rebuilt_start": 599,
+              "rebuilt_stop": 600
+            },
+            {
+              "kind": "replace",
+              "original_start": 602,
+              "original_stop": 603,
+              "rebuilt_start": 602,
+              "rebuilt_stop": 603
+            },
+            {
+              "kind": "replace",
+              "original_start": 614,
+              "original_stop": 615,
+              "rebuilt_start": 614,
+              "rebuilt_stop": 615
+            },
+            {
+              "kind": "replace",
+              "original_start": 813,
+              "original_stop": 814,
+              "rebuilt_start": 813,
+              "rebuilt_stop": 814
+            },
+            {
+              "kind": "replace",
+              "original_start": 816,
+              "original_stop": 817,
+              "rebuilt_start": 816,
+              "rebuilt_stop": 817
+            },
+            {
+              "kind": "replace",
+              "original_start": 828,
+              "original_stop": 829,
+              "rebuilt_start": 828,
+              "rebuilt_stop": 829
+            },
+            {
+              "kind": "replace",
+              "original_start": 838,
+              "original_stop": 839,
+              "rebuilt_start": 838,
+              "rebuilt_stop": 839
+            }
+          ],
+          "branch_retarget_differences": [],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 2577,
+              "try_end": 3155,
+              "handler_start": 3155,
+              "handler_end": 3192,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 2255,
+              "try_end": 2450,
+              "handler_start": 2450,
+              "handler_end": 2468,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 2037,
+              "try_end": 2092,
+              "handler_start": 2092,
+              "handler_end": 2110,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 1798,
+              "try_end": 2005,
+              "handler_start": 2005,
+              "handler_end": 2023,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 1717,
+              "try_end": 1766,
+              "handler_start": 1766,
+              "handler_end": 1784,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 1630,
+              "try_end": 1685,
+              "handler_start": 1685,
+              "handler_end": 1703,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Catch",
+              "try_start": 69,
+              "try_end": 2487,
+              "handler_start": 2487,
+              "handler_end": 2562,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 69,
+              "try_end": 2562,
+              "handler_start": 2562,
+              "handler_end": 2577,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 2577,
+              "try_end": 3155,
+              "handler_start": 3155,
+              "handler_end": 3192,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 2255,
+              "try_end": 2450,
+              "handler_start": 2450,
+              "handler_end": 2468,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 2037,
+              "try_end": 2092,
+              "handler_start": 2092,
+              "handler_end": 2110,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 1798,
+              "try_end": 2005,
+              "handler_start": 2005,
+              "handler_end": 2023,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 1717,
+              "try_end": 1766,
+              "handler_start": 1766,
+              "handler_end": 1784,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Finally",
+              "try_start": 1630,
+              "try_end": 1685,
+              "handler_start": 1685,
+              "handler_end": 1703,
+              "filter_start": -1,
+              "catch_type": null
+            },
+            {
+              "kind": "Catch",
+              "try_start": 69,
+              "try_end": 2487,
+              "handler_start": 2487,
+              "handler_end": 2562,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            },
+            {
+              "kind": "Finally",
+              "try_start": 69,
+              "try_end": 2562,
+              "handler_start": 2562,
+              "handler_end": 2577,
+              "filter_start": -1,
+              "catch_type": null
+            }
+          ]
+        },
+        "statement": {
+          "start": 11705,
+          "end": 11750,
+          "line": 541,
+          "column": 5,
+          "text": "recordStore = RecordStore.OpenRecordStore(1);",
+          "kind": "ExpressionStatement",
+          "method_id": "form.BootForm::Load()->System.Void",
+          "point": 11701,
+          "declaration_start": 11426,
+          "declaration_end": 21613
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 108,
+              "last_use": 2194,
+              "loads": 33,
+              "stores": 16
+            },
+            {
+              "slot": 1,
+              "first_use": 68,
+              "last_use": 2575,
+              "loads": 23,
+              "stores": 3
+            },
+            {
+              "slot": 2,
+              "first_use": 75,
+              "last_use": 84,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 83,
+              "last_use": 90,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 129,
+              "last_use": 165,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 5,
+              "first_use": 231,
+              "last_use": 267,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 6,
+              "first_use": 333,
+              "last_use": 369,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 7,
+              "first_use": 435,
+              "last_use": 471,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 8,
+              "first_use": 537,
+              "last_use": 573,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 9,
+              "first_use": 639,
+              "last_use": 675,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 10,
+              "first_use": 741,
+              "last_use": 777,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 11,
+              "first_use": 843,
+              "last_use": 879,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 12,
+              "first_use": 945,
+              "last_use": 981,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 13,
+              "first_use": 1047,
+              "last_use": 1083,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 14,
+              "first_use": 1149,
+              "last_use": 1185,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 15,
+              "first_use": 1251,
+              "last_use": 1287,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 16,
+              "first_use": 1353,
+              "last_use": 1389,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 17,
+              "first_use": 1455,
+              "last_use": 1491,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 18,
+              "first_use": 1557,
+              "last_use": 1593,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 19,
+              "first_use": 1628,
+              "last_use": 2465,
+              "loads": 15,
+              "stores": 11
+            },
+            {
+              "slot": 20,
+              "first_use": 1650,
+              "last_use": 1658,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 21,
+              "first_use": 1737,
+              "last_use": 1739,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 22,
+              "first_use": 1818,
+              "last_use": 1820,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 23,
+              "first_use": 1837,
+              "last_use": 1991,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 24,
+              "first_use": 1900,
+              "last_use": 1989,
+              "loads": 6,
+              "stores": 2
+            },
+            {
+              "slot": 25,
+              "first_use": 1922,
+              "last_use": 1978,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 26,
+              "first_use": 2057,
+              "last_use": 2065,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 27,
+              "first_use": 2156,
+              "last_use": 2192,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 28,
+              "first_use": 2275,
+              "last_use": 2277,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 29,
+              "first_use": 2294,
+              "last_use": 2436,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 30,
+              "first_use": 2301,
+              "last_use": 2409,
+              "loads": 6,
+              "stores": 1
+            },
+            {
+              "slot": 31,
+              "first_use": 2352,
+              "last_use": 2434,
+              "loads": 6,
+              "stores": 2
+            },
+            {
+              "slot": 32,
+              "first_use": 2374,
+              "last_use": 2418,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 33,
+              "first_use": 2487,
+              "last_use": 2489,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 34,
+              "first_use": 3002,
+              "last_use": 3077,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 35,
+              "first_use": 3092,
+              "last_use": 3136,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 36,
+              "first_use": 3155,
+              "last_use": 3157,
+              "loads": 1,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 2,
+              "votes": {
+                "2": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 26
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 3,
+              "votes": {
+                "3": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 0,
+              "votes": {
+                "0": 49
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 9,
+              "votes": {
+                "9": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 10,
+              "votes": {
+                "10": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 11,
+              "votes": {
+                "11": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 12,
+              "original_slot": 12,
+              "votes": {
+                "12": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 13,
+              "original_slot": 13,
+              "votes": {
+                "13": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 14,
+              "original_slot": 14,
+              "votes": {
+                "14": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 15,
+              "original_slot": 15,
+              "votes": {
+                "15": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 16,
+              "original_slot": 16,
+              "votes": {
+                "16": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 17,
+              "original_slot": 17,
+              "votes": {
+                "17": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 18,
+              "original_slot": 18,
+              "votes": {
+                "18": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 19,
+              "original_slot": 19,
+              "votes": {
+                "19": 26
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 20,
+              "original_slot": 20,
+              "votes": {
+                "20": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 21,
+              "original_slot": 21,
+              "votes": {
+                "21": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 22,
+              "original_slot": 22,
+              "votes": {
+                "22": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 23,
+              "original_slot": 23,
+              "votes": {
+                "23": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 24,
+              "original_slot": 24,
+              "votes": {
+                "24": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 25,
+              "original_slot": 25,
+              "votes": {
+                "25": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 26,
+              "original_slot": 26,
+              "votes": {
+                "26": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 27,
+              "original_slot": 27,
+              "votes": {
+                "27": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 28,
+              "original_slot": 28,
+              "votes": {
+                "28": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 29,
+              "original_slot": 29,
+              "votes": {
+                "29": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 30,
+              "original_slot": 30,
+              "votes": {
+                "30": 7
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 31,
+              "original_slot": 31,
+              "votes": {
+                "31": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 32,
+              "original_slot": 32,
+              "votes": {
+                "32": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 33,
+              "original_slot": 33,
+              "votes": {
+                "33": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 34,
+              "original_slot": 34,
+              "votes": {
+                "34": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 35,
+              "original_slot": 35,
+              "votes": {
+                "35": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 36,
+              "original_slot": 36,
+              "votes": {
+                "36": 2
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "recordStore",
+              "type": "kairo.unity.io.RecordStore",
+              "rebuilt_slot": 0,
+              "desired_slot": 2,
+              "lexical_block": 11448,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "jarInflater",
+              "type": "kairo.unity.util.JarInflater",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 11448,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "data",
+              "type": "System.Byte[]",
+              "rebuilt_slot": 2,
+              "desired_slot": 3,
+              "lexical_block": 11698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array",
+              "type": "System.String[]",
+              "rebuilt_slot": 3,
+              "desired_slot": 0,
+              "lexical_block": 11698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "inputStream",
+              "type": "java.io.InputStream",
+              "rebuilt_slot": 19,
+              "desired_slot": 19,
+              "lexical_block": 11698,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "bytes",
+              "type": "System.Byte[]",
+              "rebuilt_slot": 20,
+              "desired_slot": 20,
+              "lexical_block": 16152,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "bytes2",
+              "type": "System.Byte[]",
+              "rebuilt_slot": 21,
+              "desired_slot": 21,
+              "lexical_block": 16504,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "bytes3",
+              "type": "System.Byte[]",
+              "rebuilt_slot": 22,
+              "desired_slot": 22,
+              "lexical_block": 16851,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array2",
+              "type": "System.String[]",
+              "rebuilt_slot": 23,
+              "desired_slot": 23,
+              "lexical_block": 16851,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array3",
+              "type": "System.String[]",
+              "rebuilt_slot": 25,
+              "desired_slot": 25,
+              "lexical_block": 17254,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "bytes4",
+              "type": "System.Byte[]",
+              "rebuilt_slot": 26,
+              "desired_slot": 26,
+              "lexical_block": 17649,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "bytes5",
+              "type": "System.Byte[]",
+              "rebuilt_slot": 28,
+              "desired_slot": 28,
+              "lexical_block": 18356,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array4",
+              "type": "System.String[]",
+              "rebuilt_slot": 29,
+              "desired_slot": 29,
+              "lexical_block": 18356,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "instance",
+              "type": "game.UserData",
+              "rebuilt_slot": 30,
+              "desired_slot": 30,
+              "lexical_block": 18356,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array5",
+              "type": "System.String[]",
+              "rebuilt_slot": 32,
+              "desired_slot": 32,
+              "lexical_block": 18845,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 17,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 16,
+          "selected_rule_prefix": "r11-initial-slot-layout-and-concat-alias-composition"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r11-initial-slot-layout-and-concat-alias-composition": 1
+          },
+          "model_approved": {
+            "r11-initial-slot-layout-and-concat-alias-composition": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 3277,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "form.BootForm::Load()->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r11-initial-slot-layout-and-concat-alias-composition:attempts": 1,
+    "r11-initial-slot-layout-and-concat-alias-composition:accepted_steps": 1,
+    "r11-initial-slot-layout-and-concat-alias-composition:body_gains": 1,
+    "r11-initial-slot-layout-and-concat-alias-composition:IL_gains": 3277
+  },
+  "completed": true,
+  "run_label": "cycle01-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\cycles\\cycle01\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r11-initial-slot-layout-and-concat-alias-composition",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r11-initial-slot-layout-and-concat-alias-composition",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 16,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round11-initial-slot-queue-patches.json",
+    "sha256": "e244439b28f70726e1747a09a863791db5b5494d4d7ae38339055ee00877831e",
+    "dependencies_checked": {
+      "tools/round11_initial_slot_queue_source.py": "76e8fe87106951eee8e77d8dfbaef3ae4826a0535ad9b30d3466e2145cc68158",
+      "tools/round11_publish_initial_family.py": "7623d5f4dbdb7de374f64f7a5041adccc26afb0a3a8f17ad911e88a3574f67f0",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6"
+    },
+    "read_only_evidence_checked": {
+      "reports/round11-initial-slot-queue-fixture-results.json": "e40e3ed4efa8130b76ccd6fa9e1e4e94e7e3564f4ac352dedc282fef6fbc915b",
+      "reports/round11-initial-slot-queue-history-sha-gates.json": "690088c9048fc7083f05dc757457acad7884b57f9c23a75db3112e16b4f7bb36",
+      "reports/round11-initial-slot-queue-model-comparison.json": "56e0e09d76e66c63593bbcfed9620a3b45765d8c3930c034aa66854049b4d7c6",
+      "reports/round11-initial-slot-queue-model-control-results.json": "e9f47cb72cf866e51e235258669374330a8ff8529fc1f59b8313ae1ae2e9d5b2",
+      "reports/round11-initial-slot-queue-compiler-citations.json": "1f2a3c94200d8fa92534b280bcb4861f80952b60338f5aa27999543408ff876e"
+    },
+    "frozen_evidence_checked": {
+      "build/round11/initial-slot-queue/1-SendSaveData/analysis.json": "78d20d59c28259aa87175d785d640c108abac46820c442a349f1028d8afcf895",
+      "build/round11/initial-slot-queue/1-SendSaveData/history.json": "0835ae36bcaf1d766634a42258ab0c37cd6d6523bdc68ed108ec55561231d932",
+      "build/round11/initial-slot-queue/1-SendSaveData/method.after.cs": "750d6fee608b17e6df3c118d673e97fb00a09bddc7849460144e797de5477e64",
+      "build/round11/initial-slot-queue/1-SendSaveData/method.before.cs": "31a0742745bb80f3a4f54dcfda5c55c00b299cbfd090057e07afd5ae9a75ea2e",
+      "build/round11/initial-slot-queue/1-SendSaveData/model-after.json": "80ca426554a7d96e2118b9f0f044274e67140934ffd952ab73e12f220ba7424a",
+      "build/round11/initial-slot-queue/1-SendSaveData/model-before.json": "72388ab69903ae9eccf4a67aaaa50c7a1c4b70b922ad49bd0e187bed35641a06",
+      "build/round11/initial-slot-queue/1-SendSaveData/private-model-after.json": "f37d5fe1e6cd5a02e734b68be624cd2147db2b47c7ae4d35ac60a48efddc5334",
+      "build/round11/initial-slot-queue/1-SendSaveData/private-model-before.json": "c27806b5aff67c50c0f0c5bc4f1ef3edd07700db08c0610f511775761e709f92",
+      "build/round11/initial-slot-queue/1-SendSaveData/roles-and-ranges.json": "d3a8bb4ddfe3c1ce1b2e528d601f33a4fb50bc87b6779b56b0128d322749d05f",
+      "build/round11/initial-slot-queue/2-AddTouch/analysis.json": "4b3ed0c76a664eb7481cda3b0ac54a8022c5cb5189807cc60927251f3f569b79",
+      "build/round11/initial-slot-queue/2-AddTouch/history.json": "0835ae36bcaf1d766634a42258ab0c37cd6d6523bdc68ed108ec55561231d932",
+      "build/round11/initial-slot-queue/2-AddTouch/method.after.cs": "cc99f0b38143aa738a07e011e4f90cd7b28e500dcc0dce5a6f3d0926b03853f4",
+      "build/round11/initial-slot-queue/2-AddTouch/method.before.cs": "c1ab054b610bd4a29be9c58c37cc38f6fe913f2e0b7fd182b62d3d422fdcfa29",
+      "build/round11/initial-slot-queue/2-AddTouch/model-after.json": "733ae21039507e4bc3552e37076e5e4c4c3e5de6a29cb0b4c9bda22216cdfce7",
+      "build/round11/initial-slot-queue/2-AddTouch/model-before.json": "6fc116d38ee8eb6db4555c31df57262f9b3cfacef1450feb4df0110eab7431fb",
+      "build/round11/initial-slot-queue/2-AddTouch/private-model-after.json": "733ae21039507e4bc3552e37076e5e4c4c3e5de6a29cb0b4c9bda22216cdfce7",
+      "build/round11/initial-slot-queue/2-AddTouch/private-model-before.json": "6fc116d38ee8eb6db4555c31df57262f9b3cfacef1450feb4df0110eab7431fb",
+      "build/round11/initial-slot-queue/2-AddTouch/roles-and-ranges.json": "920254ced5331a675ec624cad7cc53d2b2d8a541a196b0104ce609a09fedf4c2",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/analysis.json": "ca7391250c7f808535e70328bf93273d45d3d345dcf1983d02ac88f95b9d6206",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/history.json": "0835ae36bcaf1d766634a42258ab0c37cd6d6523bdc68ed108ec55561231d932",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/method.after.cs": "9d88537265fde2c2f0fd870414d878263c03ad6a14cb6cf257dee86ba1951038",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/method.before.cs": "ec81d175b79826019a28b1af8facd06f29e6187af836b72ff859cd5ba35c4988",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/model-after.json": "e3650fb3e732305ba6016b7228d1782432744c80ef63cf351a262ef834782902",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/model-before.json": "a092d9db017bef6f6f12034ffce79bcd974d604b0fb0a62c59b430d25df32211",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/private-model-after.json": "1fe066f48595ee777ab66449bdfe5cb695e1503b7a37c94ccbef6c8acdf5c00b",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/private-model-before.json": "a092d9db017bef6f6f12034ffce79bcd974d604b0fb0a62c59b430d25df32211",
+      "build/round11/initial-slot-queue/3-ConnectRegistMarketPurchase/roles-and-ranges.json": "5b405d31c7417c51105b9565ed4902867e773edddbc6fc3d1c6aad11671e3060",
+      "build/round11/initial-slot-queue/4-Load/analysis.json": "549de307e7b4c4a5e771fb0fd52e0fe9d407c4a8699ae673a3e0e2650c454e08",
+      "build/round11/initial-slot-queue/4-Load/history.json": "0835ae36bcaf1d766634a42258ab0c37cd6d6523bdc68ed108ec55561231d932",
+      "build/round11/initial-slot-queue/4-Load/method.after.cs": "5a562c6745be7193b55498f452457d849d23eaa0bae66156079250d2189e1ae3",
+      "build/round11/initial-slot-queue/4-Load/method.before.cs": "52c820a5c726ab61297939d6b1e1d701a359e6d8f4a0720b1f7ba91653611d0e",
+      "build/round11/initial-slot-queue/4-Load/model-after.json": "a5ea81d179a320603ea2b820d556cbc2237ebcb0390fe59a2addb465a1e6e00b",
+      "build/round11/initial-slot-queue/4-Load/model-before.json": "aa68a1435aa285d637c71a9c5e9274e09666eb349c7039b8eb2cdf9826872a7c",
+      "build/round11/initial-slot-queue/4-Load/private-model-after.json": "a5ea81d179a320603ea2b820d556cbc2237ebcb0390fe59a2addb465a1e6e00b",
+      "build/round11/initial-slot-queue/4-Load/private-model-before.json": "aa68a1435aa285d637c71a9c5e9274e09666eb349c7039b8eb2cdf9826872a7c",
+      "build/round11/initial-slot-queue/4-Load/roles-and-ranges.json": "feca53e1fdcfa9ab5db9a11dd5dc56c253b087199a97e0246b73fbd73b9cd163",
+      "build/round11/initial-slot-queue/5-Draw/analysis.json": "886d935475a9f2b866f420b74b806dd12ca87518c786ecaf066259b886478ca1",
+      "build/round11/initial-slot-queue/5-Draw/history.json": "0835ae36bcaf1d766634a42258ab0c37cd6d6523bdc68ed108ec55561231d932",
+      "build/round11/initial-slot-queue/5-Draw/method.after.cs": "74bbb70e33eb829de3f94410aaa67abf3a2d7855b19a2f9d308cd7ec8b971a14",
+      "build/round11/initial-slot-queue/5-Draw/method.before.cs": "2efbf9cff26a1d31cefbf32192532c7b511c1304724eea053b5d0928adfd7b6a",
+      "build/round11/initial-slot-queue/5-Draw/model-after.json": "6b199b262129631aca1ad85809caa485b53b40f1cf49ce2918e7f611a775d959",
+      "build/round11/initial-slot-queue/5-Draw/model-before.json": "15704c3da3d7264ea2382543990a82c43da3c26d43599a373bd292d87ecfee24",
+      "build/round11/initial-slot-queue/5-Draw/private-model-after.json": "6b199b262129631aca1ad85809caa485b53b40f1cf49ce2918e7f611a775d959",
+      "build/round11/initial-slot-queue/5-Draw/private-model-before.json": "15704c3da3d7264ea2382543990a82c43da3c26d43599a373bd292d87ecfee24",
+      "build/round11/initial-slot-queue/5-Draw/roles-and-ranges.json": "94778a41bf0b394074cc2ec4632520acb1f4aefad5976773972b533819b00a68",
+      "build/round11/initial-slot-queue/before-methods.json": "eb909ede775fd25fdb6209bbb14cbb784a4407adec62732669380c76507f9164",
+      "build/round11/initial-slot-queue/calculator.py": "76e8fe87106951eee8e77d8dfbaef3ae4826a0535ad9b30d3466e2145cc68158",
+      "build/round11/initial-slot-queue/candidate-methods.json": "b912f85cb3a0c1dd1403e4424ecaccfd4df7201b4790074ced393a7686a27ace",
+      "build/round11/initial-slot-queue/compiled/before/compiler.log": "eca7e98b11438270893c6abb4353a20ffa0f4dab529780fc1cbbb6196eeed25f",
+      "build/round11/initial-slot-queue/compiled/before/Fixture.cs": "b42268f305c445d5114d95faeb1b2a4cd8ac311146e40416b14f35f1bad38834",
+      "build/round11/initial-slot-queue/compiled/before/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round11/initial-slot-queue/compiled/candidate/compiler.log": "f638843e75a9bbe0b999094804b58906dc9bce17c0617936fbfdc722b3b0def1",
+      "build/round11/initial-slot-queue/compiled/candidate/Fixture.cs": "c691d17da38a28d0fe09f1fd184e2bc06d7bab5c6173df27977ea85e3f9300dd",
+      "build/round11/initial-slot-queue/compiled/candidate/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round11/initial-slot-queue/compiled/control/compiler.log": "1d1be888200a87921419aa395b1ad4737b33e8aa7aeea9867f73267dc90af0b4",
+      "build/round11/initial-slot-queue/compiled/control/Fixture.cs": "00ba8817d7bd0333c409f9af0ed7e339b81fa12f9c37493a6af6959b2a97e38c",
+      "build/round11/initial-slot-queue/compiled/control/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round11/initial-slot-queue/compiled/model-controls/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round11/initial-slot-queue/compiled/model-controls/Fixture.cs": "d57b5f76dfe56c872cc3f7d42784c39d77f444309aa33d304a61ae4b879c3bac",
+      "build/round11/initial-slot-queue/compiler-citations.json": "1f2a3c94200d8fa92534b280bcb4861f80952b60338f5aa27999543408ff876e",
+      "build/round11/initial-slot-queue/control-methods.json": "b912f85cb3a0c1dd1403e4424ecaccfd4df7201b4790074ced393a7686a27ace",
+      "build/round11/initial-slot-queue/fixture-model-manifest.json": "a47ef8f5e2d7416a3432dc8e74cc2efbcc6a74b7fa666a08df3a022d92604b82",
+      "build/round11/initial-slot-queue/fixture-results.json": "e40e3ed4efa8130b76ccd6fa9e1e4e94e7e3564f4ac352dedc282fef6fbc915b",
+      "build/round11/initial-slot-queue/FixtureCandidate.cs": "6c975c180934c752401103c3cb0db8a8c95f967654b0e86452b004f974c43d21",
+      "build/round11/initial-slot-queue/FixtureControl.cs": "c39616b90b633b6f19a6b3a89f07a09e5a36bb0e76a15b0f252c2351374db64b",
+      "build/round11/initial-slot-queue/FixtureControl.methods.txt": "1821f918d024e0b322cac6c2069bc24547f5ad767d736de5646c70e1a232ead8",
+      "build/round11/initial-slot-queue/FixtureCurrent.cs": "241a6f52d1582b2b3c9996ae47237e3d1be658cccd4b7314f924d98e92c008a7",
+      "build/round11/initial-slot-queue/FixtureRunner.cs": "94fd40aa702f5b7f9842f8949f1ca93605bee19b2876c3c23579ba48961faa0f",
+      "build/round11/initial-slot-queue/frozen-source-manifest.json": "a8d87a1732a06a980eeb32340d8316e0f6b75eb15f0ec303930a52fa5084f0ca",
+      "build/round11/initial-slot-queue/history-sha-gates.json": "690088c9048fc7083f05dc757457acad7884b57f9c23a75db3112e16b4f7bb36",
+      "build/round11/initial-slot-queue/model-comparison.json": "56e0e09d76e66c63593bbcfed9620a3b45765d8c3930c034aa66854049b4d7c6",
+      "build/round11/initial-slot-queue/model-control-methods.json": "cc9006adbcd57ccd8454fd18b046c562edd79c942efb97f88ed48ca089d1941d",
+      "build/round11/initial-slot-queue/model-control-results.json": "e9f47cb72cf866e51e235258669374330a8ff8529fc1f59b8313ae1ae2e9d5b2",
+      "build/round11/initial-slot-queue/model-controls-manifest.json": "166a62b740b531f478da3278f343eae9886e012e001015592dbe6c545f5346f6",
+      "build/round11/initial-slot-queue/ModelControls.cs": "d57b5f76dfe56c872cc3f7d42784c39d77f444309aa33d304a61ae4b879c3bac",
+      "build/round11/initial-slot-queue/own-runner/before.stdout": "cc94a707efa1b3a48dbf1964dff38c3d1db9157c81be0e76707c971210830c65",
+      "build/round11/initial-slot-queue/own-runner/candidate.stdout": "cc94a707efa1b3a48dbf1964dff38c3d1db9157c81be0e76707c971210830c65",
+      "build/round11/initial-slot-queue/own-runner/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round11/initial-slot-queue/own-runner/control.stdout": "cc94a707efa1b3a48dbf1964dff38c3d1db9157c81be0e76707c971210830c65",
+      "build/round11/initial-slot-queue/package.py": "46998d1bbf2925c9a9b2357df26f6cafa599f11cca7a305b5b7816cbb4bf1cb9",
+      "build/round11/initial-slot-queue/prepare.py": "d20126c8746b238b54b81214e6a722a30b72f849a976f5af617cdfb10974d162",
+      "build/round11/initial-slot-queue/private-model/87df4f115f73ef7a/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round11/initial-slot-queue/private-model/87df4f115f73ef7a/Round11PrivateSlotModel.runtimeconfig.json": "3759934027d22781c6c59fb71733aef379d514c0f7fa5dbb51f1f658f6543439",
+      "build/round11/initial-slot-queue/private-model/a3f707ad7c211eee/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round11/initial-slot-queue/private-model/a3f707ad7c211eee/Round11PrivateSlotModel.runtimeconfig.json": "3759934027d22781c6c59fb71733aef379d514c0f7fa5dbb51f1f658f6543439",
+      "build/round11/initial-slot-queue/private-model/compile.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round11/initial-slot-queue/private-model/Round11PrivateSlotModel.runtimeconfig.json": "3759934027d22781c6c59fb71733aef379d514c0f7fa5dbb51f1f658f6543439",
+      "build/round11/initial-slot-queue/private-model.diff": "465e49aca056dbef8adf11fd7ec7f515e86df26e952b31a0bf792b48e9d48459",
+      "build/round11/initial-slot-queue/private_model.py": "cc4cfab9fcd9743c75f8dbb2e47f47899947e30cacc4a85d56512f57dec04453",
+      "build/round11/initial-slot-queue/rea-billing.json": "6b0b04c2b60a62fdaeeea52c0da22b509a3881802ccb8f939308825e88bce519",
+      "build/round11/initial-slot-queue/rea-boot.json": "98674e71e0ef5e3cbfe7d76ae8b374f949768b3589d9c1298e52c2d13dfee6c0",
+      "build/round11/initial-slot-queue/rea-draw.json": "582c48972ec6ee94979fe4dbb294fad49344acaa301c0d8624ac116c2bacf368",
+      "build/round11/initial-slot-queue/rea-pad.json": "08db7dc970ddf2b9703177be1725f8b08ea5b1394f2a0147b231dc365811e766",
+      "build/round11/initial-slot-queue/rea-send.json": "be6bf76f97b8a0b13d3ac1e945583053b15f43be1885e5e5bb464eaec4d0a064",
+      "build/round11/initial-slot-queue/README.md": "eeeb4512e01b6f9fcd742e5cf554eea60a68fea5a976bb185cdfb8933240624a",
+      "build/round11/initial-slot-queue/Round11PrivateSlotModel.cs": "a0d7b425c0c60af3ae36a83e77383281976fa144f6c9d69a3c2d8f8588976869",
+      "build/round11/initial-slot-queue/RunBilling-fixture-model.json": "c4f5e417699555580928251f25534819f9f770cd71905ea7e0a252d87ac474ee",
+      "build/round11/initial-slot-queue/RunBoot-fixture-model.json": "8d6ca9802edfb76c9e266400a3c0f41037490ad795bdc6f281c3fffbb5395359",
+      "build/round11/initial-slot-queue/RunDraw-fixture-model.json": "c4480c3756cf0d9034b58df24927b8d3ceda31c4c5bb610b4aed11ab36b085d2",
+      "build/round11/initial-slot-queue/RunPad-fixture-model.json": "650e190a2b9598d38f970726a8f16198e17af13306973aeed652d4aca614ba2f",
+      "build/round11/initial-slot-queue/RunSave-fixture-model.json": "4764721340cd6414e25910c7efd6b9c12c6a2c99b5ff2959625f0b0ff08ced62",
+      "build/round11/initial-slot-queue/runtime-comparison.json": "eb1d41f682bcd500df8c7d61aa481ec5de6e71ff8a6b710d0a8f0052e3e33ae5",
+      "build/round11/initial-slot-queue/source-patches.json": "e5683a397d02110d6304a19ce99bef1f5deda8b30539b2d150344d3e3b2e2304",
+      "build/round11/initial-slot-queue/stage-results.json": "c757e7b68e628b167c583f7ee8891f194918338bfd34dd77381452b038d120d9",
+      "build/round11/initial-slot-queue/validate.py": "b695b1fe06232851598eb8f1c8c377c1c114033c1a0aca9fb4efcdd4b5794cd7",
+      "build/round11/initial-slot-queue/frozen-index.json": "1b17a229adff0ddd673e799b03d5e9a9f67dc6a47cd066e1ea5c4e34d8667db9"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {},
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "form.BootForm::Load()->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794097204708507400",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.625,
+        "wall_seconds": 11.468999999808148,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.625,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794097204708507400\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794097204708507400\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "28c2fb144926eb01b0621949edbbd856741ae91b0fecd9367054f47e97497b2d",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "361ebf2270f0711913589c6b2f9178624cdde495eeb84c7c9c2323d27d269564",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+          "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+          "src/Assembly-CSharp/form/SubForm.cs": "4bbba7380796ab5df5dd2f48f09c1a44fad0254cf9c3e5e6dfc615126cf9c39f",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "85a67c871ccdde8f50e9b1363e8d50872d6118b7ad6044ebb3e7ca10d69018dd",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "b8224506ff5924369420f8fc1d72c04aa5ca71b56825f738f6928c4bf8c3a8b9",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+          "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "4dff063ac3cb843249ae54d8b749ac00facf3c36bf7e43ed78b280d8f840fde9",
+          "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+          "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "0ded7b830a78601458b6ffa700cec624235ea5fb080569d4af7a64fd3b2825ae",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "d28645f95060fb0675d7f4eff10831062436f5a9917c28c30a9959eafe64fe08",
+        "accepted_source_set_sha256": "22c7ff0e13e980e0d4bc43aa1668ba498bb194bd79371f3a22c8dc45216a8c6b",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "b7fcacf0b7f6abe4164caeb6c903221d36d26032dd777f47514e9c2ff4cbd236"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "form.BootForm::Load()->System.Void",
+        "rule": "r11-initial-slot-layout-and-concat-alias-composition",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1889,
+  "body_gains": [
+    "form.BootForm::Load()->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 3277,
+  "builds": 6,
+  "build_seconds": 8.406999999890104,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "0c5bbd04121d8f881b15cf9039cdad46d9648d3f709004f05a311b9c137b09f5",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round11\\runs\\cycle01-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "d28645f95060fb0675d7f4eff10831062436f5a9917c28c30a9959eafe64fe08",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "361ebf2270f0711913589c6b2f9178624cdde495eeb84c7c9c2323d27d269564",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+    "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+    "src/Assembly-CSharp/form/SubForm.cs": "4bbba7380796ab5df5dd2f48f09c1a44fad0254cf9c3e5e6dfc615126cf9c39f",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+    "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "85a67c871ccdde8f50e9b1363e8d50872d6118b7ad6044ebb3e7ca10d69018dd",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "b8224506ff5924369420f8fc1d72c04aa5ca71b56825f738f6928c4bf8c3a8b9",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+    "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+    "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+    "src/Assembly-CSharp/game/UserData.cs": "4dff063ac3cb843249ae54d8b749ac00facf3c36bf7e43ed78b280d8f840fde9",
+    "src/Assembly-CSharp/main/AppData.cs": "73450a9d3e7cb04a0aa387d7e0182342a1022b2c72ebdb5d739ed4aa17224189",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "cfd10a29c4d0c800c6e19d3a2e8558ff2250d7207eee66c4435d329e2b87cf2c",
+    "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "0ded7b830a78601458b6ffa700cec624235ea5fb080569d4af7a64fd3b2825ae",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

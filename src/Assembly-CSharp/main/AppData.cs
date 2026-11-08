@@ -5583,8 +5583,7 @@ if (num2 > num4)
 					{
 						text9 = text9.SubstringJ(0, num);
 					}
-					string text10 = text8;
-					text8 = text10 + text9 + "," + Http.GetErrorCode() + "\n";
+					text8 += text9 + "," + Http.GetErrorCode() + "\n";
 				}
 				string text11 = string.Empty + th;
 				string text12 = th.GetType().Name;
@@ -5648,24 +5647,17 @@ if (num2 > num4)
 					byte[] array = null;
 					if (Config.APPLI_TYPE == 0)
 					{
-						switch (type)
-						{
-						case 1:
-							text += "\nscratchpad";
+						if (type == 1) {text += "\nscratchpad";
 							array = ScratchPad.ReadByteArray(0, 0, ScratchPad.GetSPSize(0));
-							break;
-						case 2:
-						{
+							} else if (type == 2) {{
 							text += "\nall-scratchpad";
 							byte[] array2 = ScratchPad.ReadByteArray(0, 0, ScratchPad.GetSPSize(0));
 							byte[] array3 = ScratchPad.ReadByteArray(1, 0, ScratchPad.GetSPSize(1));
 							array = new byte[array2.Length + array3.Length];
 							JSystem.Arraycopy(array2, 0, array, 0, array2.Length);
 							JSystem.Arraycopy(array3, 0, array, array2.Length, array3.Length);
-							break;
-						}
-						case 0:
-							try
+
+						}} else if (type == 0) {try
 							{
 								RecordStore recordStore = RecordStore.OpenRecordStore(0);
 								array = RecordStore.ReadRecord(0, 1 + currentSaveSlot_);
@@ -5680,8 +5672,7 @@ if (num2 > num4)
 								array = ScratchPad.ReadByteArray(0, 0, ScratchPad.GetSPSize(0));
 								flag = true;
 							}
-							break;
-						}
+							}
 					}
 					else if (Config.APPLI_TYPE == 1)
 					{
@@ -5735,15 +5726,9 @@ if (num2 > num4)
 						array4[num6] = new byte[num5];
 						JSystem.Arraycopy(array, num4, array4[num6], 0, num5);
 						array5[num6] = "save";
-						switch (type)
-						{
-						case 1:
-							array5[num6] += "-sys";
-							break;
-						case 2:
-							array5[num6] += "-all";
-							break;
-						}
+						if (type == 1) {array5[num6] += "-sys";
+							} else if (type == 2) {array5[num6] += "-all";
+							}
 						array6[num6] = JString.ValueOf(i);
 						num4 += num5;
 					}
@@ -5838,9 +5823,7 @@ if (num2 > num4)
 
 		private void Draw(string err, bool copy)
 		{
-			global::kairo.unity.ui.Graphics graphics;
-Canvas instance = Canvas.GetInstance();
-			graphics = instance.BeginPaint();
+			string text; Canvas instance = Canvas.GetInstance(); Graphics graphics = instance.BeginPaint();
 			Font font = graphics.GetFont(null);
 			graphics.SetColor(Graphics.GetColorOfRGB(0, 0, 64));
 			graphics.FillRect(0f, 0f, 240f, 240f);
@@ -5866,7 +5849,7 @@ Canvas instance = Canvas.GetInstance();
 			if (sendState_ == 0)
 			{
 				graphics.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
-				string text = "決定キーを押すと送信を開始します。";
+				text = "決定キーを押すと送信を開始します。";
 				graphics.DrawString(text, 120 - font.StringWidth(text) / 2, num);
 				if (instance.CheckKeyPulse(1048576))
 				{
@@ -5876,7 +5859,7 @@ Canvas instance = Canvas.GetInstance();
 			else if (sendState_ == 1)
 			{
 				graphics.SetColor(Graphics.GetColorOfRGB(255, 255, 255));
-				string text = "セーブデータの送信中...";
+				text = "セーブデータの送信中...";
 				graphics.DrawString(text, 120 - font.StringWidth(text) / 2, num);
 				text = "電源キーを押さないでください。";
 				graphics.DrawString(text, 120 - font.StringWidth(text) / 2, num + 16);
