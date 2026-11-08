@@ -85,7 +85,7 @@ for (int j = 0; j < array[1].Length(); j++)
 					char c = array[1].CharAt(j);
 					if (c == '1')
 					{
-						num |= 1 << (j & 0x1F);
+						num |= 1 << j;
 					}
 				}
 BillingItem billingItem = new T();

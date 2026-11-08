@@ -1,0 +1,47 @@
+[
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\assign.cs",
+    "sha256": "00dafa1b0447a9215a619803a8e672f4f775c5412a1c7cc8e919bc29c2ec053c",
+    "first": 335,
+    "last": 344,
+    "text": "335: \t\tpublic override Expression DoResolve (ResolveContext ec)\n336: \t\t{\n337: \t\t\tbool ok = true;\n338: \t\t\tsource = source.Resolve (ec);\n339: \t\t\t\t\t\t\n340: \t\t\tif (source == null) {\n341: \t\t\t\tok = false;\n342: \t\t\t\tsource = EmptyExpression.Null;\n343: \t\t\t}\n344: ",
+    "installed_manufacturing_revision": "UNKNOWN; own fixtures establish the actual compiler behavior"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\assign.cs",
+    "sha256": "00dafa1b0447a9215a619803a8e672f4f775c5412a1c7cc8e919bc29c2ec053c",
+    "first": 629,
+    "last": 665,
+    "text": "629: \t\tpublic override Expression DoResolve (ResolveContext ec)\n630: \t\t{\n631: \t\t\tright = right.Resolve (ec);\n632: \t\t\tif (right == null)\n633: \t\t\t\treturn null;\n634: \n635: \t\t\tMemberAccess ma = target as MemberAccess;\n636: \t\t\tusing (ec.Set (ResolveContext.Options.CompoundAssignmentScope)) {\n637: \t\t\t\ttarget = target.Resolve (ec);\n638: \t\t\t}\n639: \t\t\t\n640: \t\t\tif (target == null)\n641: \t\t\t\treturn null;\n642: \n643: \t\t\tif (target is MethodGroupExpr){\n644: \t\t\t\tec.Report.Error (1656, loc,\n645: \t\t\t\t\t\"Cannot assign to `{0}' because it is a `{1}'\",\n646: \t\t\t\t\t((MethodGroupExpr)target).Name, target.ExprClassName);\n647: \t\t\t\treturn null;\n648: \t\t\t}\n649: \n650: \t\t\tif (target is EventExpr)\n651: \t\t\t\treturn new EventAddOrRemove (target, op, right, loc).DoResolve (ec);\n652: \n653: \t\t\t//\n654: \t\t\t// Only now we can decouple the original source/target\n655: \t\t\t// into a tree, to guarantee that we do not have side\n656: \t\t\t// effects.\n657: \t\t\t//\n658: \t\t\tif (left == null)\n659: \t\t\t\tleft = new TargetExpression (target);\n660: \n661: \t\t\tsource = new Binary (op, left, right, true);\n662: \n663: \t\t\t// TODO: TargetExpression breaks MemberAccess composition\n664: \t\t\tif (target is DynamicMemberBinder) {\n665: \t\t\t\tArguments targs = ((DynamicMemberBinder) target).Arguments;",
+    "installed_manufacturing_revision": "UNKNOWN; own fixtures establish the actual compiler behavior"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\assign.cs",
+    "sha256": "00dafa1b0447a9215a619803a8e672f4f775c5412a1c7cc8e919bc29c2ec053c",
+    "first": 692,
+    "last": 699,
+    "text": "692: \n693: \t\t\treturn base.DoResolve (ec);\n694: \t\t}\n695: \n696: #if NET_4_0\n697: \t\tpublic override System.Linq.Expressions.Expression MakeExpression (BuilderContext ctx)\n698: \t\t{\n699: \t\t\tvar target_object = target.MakeExpression (ctx);",
+    "installed_manufacturing_revision": "UNKNOWN; own fixtures establish the actual compiler behavior"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\expression.cs",
+    "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+    "first": 1807,
+    "last": 1834,
+    "text": "1807: \n1808: \t\tclass PredefinedShiftOperator : PredefinedOperator {\n1809: \t\t\tpublic PredefinedShiftOperator (Type ltype, Operator op_mask) :\n1810: \t\t\t\tbase (ltype, TypeManager.int32_type, op_mask)\n1811: \t\t\t{\n1812: \t\t\t}\n1813: \n1814: \t\t\tpublic override Expression ConvertResult (ResolveContext ec, Binary b)\n1815: \t\t\t{\n1816: \t\t\t\tb.left = Convert.ImplicitConversion (ec, b.left, left, b.left.Location);\n1817: \n1818: \t\t\t\tExpression expr_tree_expr = EmptyCast.Create (b.right, TypeManager.int32_type);\n1819: \n1820: \t\t\t\tint right_mask = left == TypeManager.int32_type || left == TypeManager.uint32_type ? 0x1f : 0x3f;\n1821: \n1822: \t\t\t\t//\n1823: \t\t\t\t// b = b.left >> b.right & (0x1f|0x3f)\n1824: \t\t\t\t//\n1825: \t\t\t\tb.right = new Binary (Operator.BitwiseAnd,\n1826: \t\t\t\t\tb.right, new IntConstant (right_mask, b.right.Location)).Resolve (ec);\n1827: \n1828: \t\t\t\t//\n1829: \t\t\t\t// Expression tree representation does not use & mask\n1830: \t\t\t\t//\n1831: \t\t\t\tb.right = ReducedExpression.Create (b.right, expr_tree_expr).Resolve (ec);\n1832: \t\t\t\tb.type = ReturnType;\n1833: \t\t\t\treturn b;\n1834: \t\t\t}",
+    "installed_manufacturing_revision": "UNKNOWN; own fixtures establish the actual compiler behavior"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\expression.cs",
+    "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+    "first": 2624,
+    "last": 2637,
+    "text": "2624: \n2625: \t\t\t\t// FIXME: resolve right expression as unreachable\n2626: \t\t\t\t// right.Resolve (ec);\n2627: \n2628: \t\t\t\tec.Report.Warning (429, 4, loc, \"Unreachable expression code detected\");\n2629: \t\t\t\treturn left;\n2630: \t\t\t}\n2631: \n2632: \t\t\tright = right.Resolve (ec);\n2633: \t\t\tif (right == null)\n2634: \t\t\t\treturn null;\n2635: \n2636: \t\t\teclass = ExprClass.Value;\n2637: \t\t\tConstant rc = right as Constant;",
+    "installed_manufacturing_revision": "UNKNOWN; own fixtures establish the actual compiler behavior"
+  }
+]
