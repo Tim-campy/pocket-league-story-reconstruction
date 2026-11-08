@@ -1,0 +1,32 @@
+[
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 233,
+    "last": 269,
+    "purpose": "If code order and false-edge",
+    "text": "233: \t\t\t// eliminated dead code for us.\n234: \t\t\t//\n235: \t\t\tConstant c = expr as Constant;\n236: \t\t\tif (c != null){\n237: \t\t\t\tc.EmitSideEffect (ec);\n238: \n239: \t\t\t\tif (!c.IsDefaultValue)\n240: \t\t\t\t\tTrueStatement.Emit (ec);\n241: \t\t\t\telse if (FalseStatement != null)\n242: \t\t\t\t\tFalseStatement.Emit (ec);\n243: \n244: \t\t\t\treturn;\n245: \t\t\t}\t\t\t\n246: \t\t\t\n247: \t\t\texpr.EmitBranchable (ec, false_target, false);\n248: \t\t\t\n249: \t\t\tTrueStatement.Emit (ec);\n250: \n251: \t\t\tif (FalseStatement != null){\n252: \t\t\t\tbool branch_emitted = false;\n253: \t\t\t\t\n254: \t\t\t\tend = ig.DefineLabel ();\n255: \t\t\t\tif (!is_true_ret){\n256: \t\t\t\t\tig.Emit (OpCodes.Br, end);\n257: \t\t\t\t\tbranch_emitted = true;\n258: \t\t\t\t}\n259: \n260: \t\t\t\tig.MarkLabel (false_target);\n261: \t\t\t\tFalseStatement.Emit (ec);\n262: \n263: \t\t\t\tif (branch_emitted)\n264: \t\t\t\t\tig.MarkLabel (end);\n265: \t\t\t} else {\n266: \t\t\t\tig.MarkLabel (false_target);\n267: \t\t\t}\n268: \t\t}\n269: ",
+    "installed_exact_source_revision": "UNKNOWN; installed smcs2.6.5 behavior tested in own fixtures"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 3825,
+    "last": 3869,
+    "purpose": "Nonconstant switch stores even named selector to LocalTemporary, released after emission",
+    "text": "3825: \t\t\tILGenerator ig = ec.ig;\n3826: \n3827: \t\t\tdefault_target = ig.DefineLabel ();\n3828: \t\t\tnull_target = ig.DefineLabel ();\n3829: \n3830: \t\t\t// Store variable for comparission purposes\n3831: \t\t\t// TODO: Don't duplicate non-captured VariableReference\n3832: \t\t\tLocalTemporary value;\n3833: \t\t\tif (HaveUnwrap) {\n3834: \t\t\t\tvalue = new LocalTemporary (SwitchType);\n3835: \t\t\t\tunwrap.EmitCheck (ec);\n3836: \t\t\t\tig.Emit (OpCodes.Brfalse, null_target);\n3837: \t\t\t\tnew_expr.Emit (ec);\n3838: \t\t\t\tvalue.Store (ec);\n3839: \t\t\t} else if (!is_constant) {\n3840: \t\t\t\tvalue = new LocalTemporary (SwitchType);\n3841: \t\t\t\tnew_expr.Emit (ec);\n3842: \t\t\t\tvalue.Store (ec);\n3843: \t\t\t} else\n3844: \t\t\t\tvalue = null;\n3845: \n3846: \t\t\t//\n3847: \t\t\t// Setup the codegen context\n3848: \t\t\t//\n3849: \t\t\tLabel old_end = ec.LoopEnd;\n3850: \t\t\tSwitch old_switch = ec.Switch;\n3851: \t\t\t\n3852: \t\t\tec.LoopEnd = ig.DefineLabel ();\n3853: \t\t\tec.Switch = this;\n3854: \n3855: \t\t\t// Emit Code.\n3856: \t\t\tif (is_constant) {\n3857: \t\t\t\tif (constant_section != null)\n3858: \t\t\t\t\tconstant_section.Block.Emit (ec);\n3859: \t\t\t} else if (string_dictionary != null) {\n3860: \t\t\t\tDoEmitStringSwitch (value, ec);\n3861: \t\t\t} else {\n3862: \t\t\t\tTableSwitchEmit (ec, value);\n3863: \t\t\t}\n3864: \n3865: \t\t\tif (value != null)\n3866: \t\t\t\tvalue.Release (ec);\n3867: \n3868: \t\t\t// Restore context state. \n3869: \t\t\tig.MarkLabel (ec.LoopEnd);",
+    "installed_exact_source_revision": "UNKNOWN; installed smcs2.6.5 behavior tested in own fixtures"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 2010,
+    "last": 2052,
+    "purpose": "Block metadata variables/temporary registration and children",
+    "text": "2010: \t\t\t\tif (variables != null) {\n2011: \t\t\t\t\tforeach (LocalInfo li in variables.Values) {\n2012: \t\t\t\t\t\tif (!li.Resolve (ec))\n2013: \t\t\t\t\t\t\tcontinue;\n2014: \t\t\t\t\t\tli.VariableInfo = new VariableInfo (li, offset);\n2015: \t\t\t\t\t\toffset += li.VariableInfo.Length;\n2016: \t\t\t\t\t}\n2017: \t\t\t\t}\n2018: \t\t\t\tassignable_slots = offset;\n2019: \n2020: \t\t\t\tDoResolveConstants (ec);\n2021: \n2022: \t\t\t\tif (children == null)\n2023: \t\t\t\t\treturn;\n2024: \t\t\t\tforeach (Block b in children)\n2025: \t\t\t\t\tb.ResolveMeta (ec, offset);\n2026: \t\t\t}\n2027: \t\t}\n2028: \n2029: \t\t//\n2030: \t\t// Emits the local variable declarations for a block\n2031: \t\t//\n2032: \t\tpublic virtual void EmitMeta (EmitContext ec)\n2033: \t\t{\n2034: \t\t\tif (variables != null){\n2035: \t\t\t\tforeach (LocalInfo vi in variables.Values)\n2036: \t\t\t\t\tvi.ResolveVariable (ec);\n2037: \t\t\t}\n2038: \n2039: \t\t\tif (temporary_variables != null) {\n2040: \t\t\t\tfor (int i = 0; i < temporary_variables.Count; i++)\n2041: \t\t\t\t\t((LocalInfo)temporary_variables[i]).ResolveVariable(ec);\n2042: \t\t\t}\n2043: \n2044: \t\t\tif (children != null) {\n2045: \t\t\t\tfor (int i = 0; i < children.Count; i++)\n2046: \t\t\t\t\t((Block)children[i]).EmitMeta(ec);\n2047: \t\t\t}\n2048: \t\t}\n2049: \n2050: \t\tvoid UsageWarning (BlockContext ec)\n2051: \t\t{\n2052: \t\t\tif (variables == null || ec.Report.WarningLevel < 3)",
+    "installed_exact_source_revision": "UNKNOWN; installed smcs2.6.5 behavior tested in own fixtures"
+  }
+]

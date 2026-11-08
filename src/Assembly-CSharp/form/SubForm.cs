@@ -10821,20 +10821,16 @@ if (SponsorData.IsExistNew())
 			g.SetOrigin(originX, originY);
 			AppData instance2 = AppData.GetInstance();
 			UserData instance3 = UserData.GetInstance();
-			int num3;
-			int num2;
-			int num4;
-			int num = (num2 = (num3 = (num4 = 0)));
+			int num4, num5, num, num2, num3;
+num5 = num = num2 = num3 = num4 = 0;
 			TeamData teamData = instance2.tData_[instance3.gm_.teamId_[0]];
 			TeamData teamData2 = instance2.tData_[instance3.gm_.teamId_[1]];
 			int matchInfoJoin = instance3.GetMatchInfoJoin();
-			switch (matchInfoJoin)
-			{
-			case 0:
+			if (matchInfoJoin == 0) {
 				num = 25;
 				instance2.frmGame_.Draw_stadiumName(g, num, 120);
-				break;
-			case 1:
+
+			} else if (matchInfoJoin == 1) {
 			{
 				QuestMatchData questMatchData = instance2.qmData_[instance3.selectQmId_];
 				num = 9;
@@ -10843,12 +10839,12 @@ if (SponsorData.IsExistNew())
 				g.DrawString(MyFormBase.LT("<0>  <1>回戦", questMatchData.name_ + "\t" + (instance3.battleQmIndex_ + 1)), 120f, num + 3, 2);
 				num = 32;
 				instance2.frmGame_.Draw_stadiumName(g, num, 120);
-				break;
+
 			}
 			}
 			num4 = GameUtil.RateConvert(frame, 10, 18, 120, 0, true);
 			num4 = 0;
-			int num5 = 4;
+			num5 = 4;
 			num = 61;
 			g.SetColor(Graphics.GetColorOfRGB(0, 162, 35));
 			g.FillRect(num5, num, 232f, 17f);
@@ -10923,14 +10919,12 @@ if (SponsorData.IsExistNew())
 					num5 = 129;
 				}
 				TeamData teamData3 = null;
-				switch (l)
-				{
-				case 0:
+				if (l == 0) {
 					teamData3 = teamData;
-					break;
-				case 1:
+
+				} else if (l == 1) {
 					teamData3 = teamData2;
-					break;
+
 				}
 				g.SetColor(Graphics.GetColorOfRGB(0, 124, 27));
 				g.FillRect(num5, num, 107f, 17f);
