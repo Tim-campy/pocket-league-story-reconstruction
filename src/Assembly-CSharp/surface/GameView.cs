@@ -632,8 +632,12 @@ namespace surface
 
 		public static TouchComponent AddTouch(Graphics g, int id, Image img, int x, int y, int u, int v, int w, int h, int value, TouchOption opt)
 		{
-			g.DrawImage(img, x, y, u, v, w, h);
-			TouchComponent touchComponent = instance_._addTouch(g, id, x, y, w, h, value, opt);
+			int savedX = x;
+int savedY = y;
+int savedWidth = w;
+int savedHeight = h;
+g.DrawImage(img, x, y, u, v, w, h);
+			TouchComponent touchComponent = instance_._addTouch(g, id, savedX, savedY, savedWidth, savedHeight, value, opt);
 			if (touchComponent == null)
 			{
 				return null;

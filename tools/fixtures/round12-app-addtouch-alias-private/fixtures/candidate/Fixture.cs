@@ -1,0 +1,5 @@
+public class Image{}public class TouchOption{}public class TouchComponent{public void SetPaint(int x,int y){}}public class Graphics{public void DrawImage(Image img,float x,float y,int u,int v,int w,int h){}public int GetOriginX(){return 0;}public int GetOriginY(){return 0;}}public class Fixture{public static Fixture instance_;public TouchComponent _addTouch(Graphics g,int id,int x,int y,int w,int h,int value,TouchOption opt){return null;}public static TouchComponent AddTouch(Graphics g,int id,Image img,int x,int y,int u,int v,int w,int h,int value,TouchOption opt){int savedX = x;
+int savedY = y;
+int savedWidth = w;
+int savedHeight = h;
+g.DrawImage(img, x, y, u, v, w, h);TouchComponent touchComponent=instance_._addTouch(g, id, savedX, savedY, savedWidth, savedHeight, value, opt);if(touchComponent==null){return null;}if(g==null){touchComponent.SetPaint(x,y);}else{touchComponent.SetPaint(g.GetOriginX()+x,g.GetOriginY()+y);}return touchComponent;}}

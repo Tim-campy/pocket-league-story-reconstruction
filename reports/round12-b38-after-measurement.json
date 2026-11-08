@@ -1,0 +1,772 @@
+{
+  "schema_version": 1,
+  "operation": "read-only-first-IL-divergence-measurement",
+  "baseline_commit": "a075dcc8ca7b08e2cb9fcdd0cbcb5ce1fe8cd236",
+  "metric": "Only metadata-token identities resolved. All branch targets, operand bytes, instruction widths, constants and nops retained. Whole-body acceptance also requires header, locals and EH equality.",
+  "snapshot": "build\\round12\\cycles\\b38\\after",
+  "pair_grouping": "Exact opcode and resolved operand; opcode projection is diagnostic only.",
+  "ledger_sha256": "5667c756e99612d43aa4df470393b78f7d7155ba33cf189922a44fd512428816",
+  "assemblies": {
+    "KairoLibrary": {
+      "assembly": "KairoLibrary",
+      "compiler": "roslyn-1.1.0",
+      "provenance": {
+        "original_dump": "build\\round12\\cycles\\b38\\after\\KairoLibrary\\original-methods.json",
+        "original_dump_sha256": "d3340a2a774d1c4a604c750ca0e7b36b5fbb15da96a4d0dabc60033066dc844a",
+        "rebuilt_dump": "build\\round12\\cycles\\b38\\after\\KairoLibrary\\rebuilt-methods.json",
+        "rebuilt_dump_sha256": "6fe69eddf2744a9c25a4d1ca7f3e2347a3ce46660f2e0d132173d525c9fe950f",
+        "receipt": "build\\round12\\cycles\\b38\\after\\KairoLibrary\\verification.json",
+        "receipt_sha256": "dfaf4ad1209253833eca6768194f310c8a3a6d7dff8f7ac32b280233cf4d60b9",
+        "build_sha256": "324db13b177242ec7f4bd7cb76ff48dc8bc241c9f77e4b24446c65a899ab94d6"
+      },
+      "total_methods": 3287,
+      "matched_methods": 3287,
+      "original_total_il_bytes": 269894,
+      "matched_original_il_bytes": 269894,
+      "divergent_bodies": 0,
+      "divergent_original_il_bytes": 0,
+      "equal_il_but_other_body_differences": 0,
+      "size_distribution": {
+        "<=64": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        "65-256": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        "257-1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        ">1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        }
+      },
+      "first_pair_exact_histogram": [],
+      "first_pair_opcode_histogram": [],
+      "methods": [],
+      "alignment": {
+        "methods": [],
+        "exact_histogram": [],
+        "opcode_histogram": []
+      },
+      "pending_local_signatures_equal": 0,
+      "pending_local_signatures_different": 0,
+      "equal_body_held_methods": 0,
+      "equal_body_held_method_ids": []
+    },
+    "Assembly-CSharp": {
+      "assembly": "Assembly-CSharp",
+      "compiler": "mono-smcs",
+      "provenance": {
+        "original_dump": "build\\round12\\cycles\\b38\\after\\Assembly-CSharp\\original-methods.json",
+        "original_dump_sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+        "rebuilt_dump": "build\\round12\\cycles\\b38\\after\\Assembly-CSharp\\rebuilt-methods.json",
+        "rebuilt_dump_sha256": "ab7ad0d6cb458d43d3de5bd77d91bba9bc329823e2c19923dd89aa4c54b5dbcb",
+        "receipt": "build\\round12\\cycles\\b38\\after\\Assembly-CSharp\\verification.json",
+        "receipt_sha256": "f06f2d32ff6430b51ddf3b4431e682db6fc96a0cda382aa00c1aefe446ba1061",
+        "build_sha256": "78a963ca1af81ee26299e96d6f8086c09fd7851688c00be485a24ce076fdad26"
+      },
+      "total_methods": 1958,
+      "matched_methods": 1956,
+      "original_total_il_bytes": 601603,
+      "matched_original_il_bytes": 601490,
+      "divergent_bodies": 1,
+      "divergent_original_il_bytes": 106,
+      "equal_il_but_other_body_differences": 0,
+      "size_distribution": {
+        "<=64": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        "65-256": {
+          "methods": 1,
+          "original_il_bytes": 106
+        },
+        "257-1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        ">1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        }
+      },
+      "first_pair_exact_histogram": [
+        {
+          "pair": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+          "methods": 1,
+          "original_il_bytes": 106,
+          "method_ids": [
+            "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void",
+            "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+            "source": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+            "original_il_bytes": 106,
+            "rebuilt_il_bytes": 106,
+            "first_il_difference_offset": 66,
+            "first_original_instruction": {
+              "offset": 66,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            "first_rebuilt_instruction": {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            "original_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 71,
+                "opcode": "stloc.2",
+                "operand": null
+              },
+              {
+                "offset": 72,
+                "opcode": "ldloc.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              {
+                "offset": 67,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 72,
+                "opcode": "stloc.2",
+                "operand": null
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "first_pair_opcodes": "newobj => ldloc.1",
+            "body_differences": [
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        }
+      ],
+      "first_pair_opcode_histogram": [
+        {
+          "pair": "newobj => ldloc.1",
+          "methods": 1,
+          "original_il_bytes": 106,
+          "method_ids": [
+            "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void",
+            "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+            "source": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+            "original_il_bytes": 106,
+            "rebuilt_il_bytes": 106,
+            "first_il_difference_offset": 66,
+            "first_original_instruction": {
+              "offset": 66,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            "first_rebuilt_instruction": {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            "original_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 71,
+                "opcode": "stloc.2",
+                "operand": null
+              },
+              {
+                "offset": 72,
+                "opcode": "ldloc.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              {
+                "offset": 67,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 72,
+                "opcode": "stloc.2",
+                "operand": null
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "first_pair_opcodes": "newobj => ldloc.1",
+            "body_differences": [
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void",
+          "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+          "source": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+          "original_il_bytes": 106,
+          "rebuilt_il_bytes": 106,
+          "first_il_difference_offset": 66,
+          "first_original_instruction": {
+            "offset": 66,
+            "opcode": "newobj",
+            "operand": {
+              "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+            }
+          },
+          "first_rebuilt_instruction": {
+            "offset": 66,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          "original_context": [
+            {
+              "offset": 60,
+              "opcode": "call",
+              "operand": {
+                "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 65,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 66,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 71,
+              "opcode": "stloc.2",
+              "operand": null
+            },
+            {
+              "offset": 72,
+              "opcode": "ldloc.2",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 60,
+              "opcode": "call",
+              "operand": {
+                "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 65,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 67,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 72,
+              "opcode": "stloc.2",
+              "operand": null
+            }
+          ],
+          "first_pair_exact": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+          "first_pair_opcodes": "newobj => ldloc.1",
+          "body_differences": [
+            "instructions",
+            "resolved_body_bytes"
+          ],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        }
+      ],
+      "alignment": {
+        "methods": [
+          {
+            "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+            "diagnostic_only": true,
+            "kind": "insert",
+            "original_offset": 66,
+            "rebuilt_offset": 66,
+            "original_index": 18,
+            "rebuilt_index": 18,
+            "original_instruction": {
+              "opcode": "INSERTION_POINT",
+              "operand": null
+            },
+            "rebuilt_instruction": {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "opcode_pair": "INSERTION_POINT => ldloc.1",
+            "original_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                },
+                "label": "L1"
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 71,
+                "opcode": "stloc.2",
+                "operand": null
+              },
+              {
+                "offset": 72,
+                "opcode": "ldloc.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                },
+                "label": "L1"
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              {
+                "offset": 67,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 72,
+                "opcode": "stloc.2",
+                "operand": null
+              }
+            ],
+            "original_labels": {
+              "55": "L0",
+              "60": "L1",
+              "105": "L2"
+            },
+            "rebuilt_labels": {
+              "55": "L0",
+              "60": "L1",
+              "105": "L2"
+            },
+            "sequence_edits": [
+              {
+                "kind": "insert",
+                "original_start": 18,
+                "original_stop": 18,
+                "rebuilt_start": 18,
+                "rebuilt_stop": 19
+              },
+              {
+                "kind": "delete",
+                "original_start": 23,
+                "original_stop": 24,
+                "rebuilt_start": 24,
+                "rebuilt_stop": 24
+              }
+            ],
+            "branch_retarget_differences": [],
+            "deferred_branch_targets": [],
+            "branch_width_differences": [],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": [],
+            "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+            "original_il_bytes": 106
+          }
+        ],
+        "exact_histogram": [
+          {
+            "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "methods": 1,
+            "original_il_bytes": 106,
+            "method_ids": [
+              "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "insert",
+              "original_offset": 66,
+              "rebuilt_offset": 66,
+              "original_index": 18,
+              "rebuilt_index": 18,
+              "original_instruction": {
+                "opcode": "INSERTION_POINT",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+              "opcode_pair": "INSERTION_POINT => ldloc.1",
+              "original_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 71,
+                  "opcode": "stloc.2",
+                  "operand": null
+                },
+                {
+                  "offset": 72,
+                  "opcode": "ldloc.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "ldloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 67,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 72,
+                  "opcode": "stloc.2",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "rebuilt_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "insert",
+                  "original_start": 18,
+                  "original_stop": 18,
+                  "rebuilt_start": 18,
+                  "rebuilt_stop": 19
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 23,
+                  "original_stop": 24,
+                  "rebuilt_start": 24,
+                  "rebuilt_stop": 24
+                }
+              ],
+              "branch_retarget_differences": [],
+              "deferred_branch_targets": [],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+              "original_il_bytes": 106
+            }
+          }
+        ],
+        "opcode_histogram": [
+          {
+            "pair": "INSERTION_POINT => ldloc.1",
+            "methods": 1,
+            "original_il_bytes": 106,
+            "method_ids": [
+              "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "insert",
+              "original_offset": 66,
+              "rebuilt_offset": 66,
+              "original_index": 18,
+              "rebuilt_index": 18,
+              "original_instruction": {
+                "opcode": "INSERTION_POINT",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+              "opcode_pair": "INSERTION_POINT => ldloc.1",
+              "original_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 71,
+                  "opcode": "stloc.2",
+                  "operand": null
+                },
+                {
+                  "offset": 72,
+                  "opcode": "ldloc.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "ldloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 67,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 72,
+                  "opcode": "stloc.2",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "rebuilt_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "insert",
+                  "original_start": 18,
+                  "original_stop": 18,
+                  "rebuilt_start": 18,
+                  "rebuilt_stop": 19
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 23,
+                  "original_stop": 24,
+                  "rebuilt_start": 24,
+                  "rebuilt_stop": 24
+                }
+              ],
+              "branch_retarget_differences": [],
+              "deferred_branch_targets": [],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+              "original_il_bytes": 106
+            }
+          }
+        ]
+      },
+      "pending_local_signatures_equal": 1,
+      "pending_local_signatures_different": 0,
+      "equal_body_held_methods": 1,
+      "equal_body_held_method_ids": [
+        "<PrivateImplementationDetails>::.ctor()->System.Void"
+      ]
+    }
+  }
+}
