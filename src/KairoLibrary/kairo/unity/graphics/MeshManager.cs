@@ -75,7 +75,7 @@ namespace kairo.unity.graphics
 			MeshBuilder value;
 			if (!meshList_.TryGetValue(material, out value))
 			{
-				value = (meshList_[material] = new MeshBuilder(this, !material.UntiColor));
+				meshList_[material] = (value = new MeshBuilder(this, !material.UntiColor));
 				int renderQueue = material.RenderQueue;
 				for (int i = 0; i < sortedMeshList_.Count + 1; i++)
 				{

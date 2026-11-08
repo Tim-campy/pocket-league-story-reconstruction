@@ -1,0 +1,184 @@
+{
+  "maximum_consecutive_primary_same_method": 2,
+  "incomplete_candidate_variants_per_method_per_cycle": 24,
+  "incomplete_candidate_variants_per_method_per_pass": 12,
+  "complete_wrong_signature_rejected": true,
+  "incomplete_prediction_does_not_reject": true,
+  "require_original_signature_after_compilation": true,
+  "models": {
+    "Assembly-CSharp": {
+      "module": "round11_slot_model",
+      "source": "tools/Round11SlotModel.cs",
+      "client": "tools/round11_slot_model.py",
+      "solver": "tools/round7_slot_solver.py",
+      "validation": "reports/round11-slot-model-validation.json",
+      "corpus_baseline": "build/round11/cycles/c06/after/Assembly-CSharp"
+    },
+    "KairoLibrary": {
+      "module": "round12_roslyn_model",
+      "source": "tools/Round12RoslynModel.cs",
+      "client": "tools/round12_roslyn_model.py",
+      "solver": "tools/round7_roslyn_solver.py",
+      "validation": "reports/round12-roslyn-model-validation.json",
+      "corpus_baseline": "build/round12/baseline/KairoLibrary"
+    }
+  },
+  "persistent_repertoire_rules": [
+    "r11-c5"
+  ],
+  "schema": "round12-protocol-v1",
+  "baseline_commit": "a075dcc8ca7b08e2cb9fcdd0cbcb5ce1fe8cd236",
+  "phase": "part_A",
+  "maximum_cycles": 40,
+  "consecutive_zero_stop": 5,
+  "cycle_count_scope": "Part B only; Part A has separate uncapped count",
+  "part_a_count_limit": null,
+  "part_a_zero_stop": null,
+  "required_parts": {
+    "A": "in_progress",
+    "B": "blocked"
+  },
+  "part_a_raw_gate": {
+    "status": "NOT_EVALUATED"
+  },
+  "baseline_measurement": "reports/round12-baseline-measurement.json",
+  "prepared_queue": [
+    {
+      "id": "initial-kairo-cache",
+      "phase": "A",
+      "selection_mode": "queue_initial",
+      "assembly": "KairoLibrary",
+      "status": "tested",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.graphics.MaterialManager::GetMaterial(kairo.unity.graphics.Material,kairo.unity.ui.Image)->kairo.unity.graphics.Material",
+        "kairo.unity.graphics.MeshManager::GetMeshBuilder(kairo.unity.graphics.Material)->kairo.unity.graphics.MeshBuilder"
+      ],
+      "potential_original_il_bytes": 251,
+      "source_proposals": "reports/round12-kairo-cache-live-model-patches.json",
+      "source_proposals_sha256": "a6f5af47a07f304653c46ecae00c0795aaf644f58aa6de9e9b5c7a1b4306d306",
+      "private_publication_pending": false,
+      "report": "reports/round12-a01-KairoLibrary-engine.json",
+      "tested_ids": [
+        "kairo.unity.graphics.MaterialManager::GetMaterial(kairo.unity.graphics.Material,kairo.unity.ui.Image)->kairo.unity.graphics.Material",
+        "kairo.unity.graphics.MeshManager::GetMeshBuilder(kairo.unity.graphics.Material)->kairo.unity.graphics.MeshBuilder"
+      ],
+      "baseline_equal_ids": []
+    },
+    {
+      "id": "initial-kairo-pause-transpose",
+      "phase": "A",
+      "selection_mode": "queue_initial",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.ui.IApplication::OnApplicationPause(System.Boolean)->System.Void",
+        "kairo.unity.m3d4.util3d.Transform::Transpose()->System.Void"
+      ],
+      "potential_original_il_bytes": 396,
+      "source_proposals": "reports/round12-kairo-pause-transpose-live-model-patches.json",
+      "source_proposals_sha256": "bdf5033114e245e71bc0922e6e557ce138a00c1051e077e7feb79472924f9828",
+      "private_publication_pending": false
+    },
+    {
+      "id": "initial-app-user-training",
+      "phase": "B",
+      "selection_mode": "queue_initial",
+      "assembly": "Assembly-CSharp",
+      "status": "pending",
+      "readiness": "ORDERED_RECOMMENDATION_NOT_YET_COMPOSED",
+      "method_ids": [
+        "game.UserData::SetTrainingCommonMethod(System.Boolean)->System.Void"
+      ],
+      "potential_original_il_bytes": 3287,
+      "game_body_status": "UNKNOWN"
+    },
+    {
+      "id": "initial-app-send-save",
+      "phase": "B",
+      "selection_mode": "queue_initial",
+      "assembly": "Assembly-CSharp",
+      "status": "pending",
+      "readiness": "ORDERED_RECOMMENDATION_NOT_YET_COMPOSED",
+      "method_ids": [
+        "main.AppData::SendSaveData(System.String,System.Int32,System.Exception)->System.Void"
+      ],
+      "potential_original_il_bytes": 2207,
+      "game_body_status": "UNKNOWN"
+    },
+    {
+      "id": "initial-app-gameform-draw",
+      "phase": "B",
+      "selection_mode": "queue_initial",
+      "assembly": "Assembly-CSharp",
+      "status": "pending",
+      "readiness": "ORDERED_RECOMMENDATION_NOT_YET_COMPOSED",
+      "method_ids": [
+        "form.GameForm::_draw(kairo.unity.ui.Graphics)->System.Void"
+      ],
+      "potential_original_il_bytes": 2703,
+      "game_body_status": "UNKNOWN"
+    },
+    {
+      "id": "initial-app-draw-battle-pic",
+      "phase": "B",
+      "selection_mode": "queue_initial",
+      "assembly": "Assembly-CSharp",
+      "status": "pending",
+      "readiness": "ORDERED_RECOMMENDATION_NOT_YET_COMPOSED",
+      "method_ids": [
+        "form.SubForm::Draw_battlePic(kairo.unity.ui.Graphics,System.Int32)->System.Void"
+      ],
+      "potential_original_il_bytes": 2263,
+      "game_body_status": "UNKNOWN"
+    },
+    {
+      "id": "initial-app-camera-update",
+      "phase": "B",
+      "selection_mode": "queue_initial",
+      "assembly": "Assembly-CSharp",
+      "status": "pending",
+      "readiness": "ORDERED_RECOMMENDATION_NOT_YET_COMPOSED",
+      "method_ids": [
+        "game.Camera::Update_pos()->System.Void"
+      ],
+      "potential_original_il_bytes": 2454,
+      "game_body_status": "UNKNOWN"
+    }
+  ],
+  "selection_policy": {
+    "A": "KairoLibrary only until zero divergent bodies and zero held methods, then await root exhaustive raw PASS",
+    "B": "ordered initial five App recommendations then highest-weight residual first-divergence family; 40 B cycles or 5 zero-gain B cycles with empty queue before and after"
+  },
+  "stop_counter_requires_empty_prepared_queue": true,
+  "orchestration_owner": "round7_smcs_model; exclusive target compiler/adoption/commit until handoff",
+  "raw_owner": "root; tools/round12_raw_compare.py; no normalization",
+  "preparation_notes": [
+    "Round11 frozen inputs reused read-only; no production mutation until root baseline release.",
+    "Baseline and model/raw measurements never count as A/B reconstruction cycles.",
+    "Only full verifier may release held generated helpers; neither queue nor controller edits method states.",
+    "Part A cannot be declared complete before root raw PASS outside exactly four proven fields."
+  ],
+  "part_evidence": {
+    "initial_doctor": {
+      "owner": "root",
+      "managed_mcp_available": true,
+      "managed_mcp_version": "6.5",
+      "doctor_exit_code": 1,
+      "optional_missing": [
+        "Hopper",
+        "IDA",
+        "JADX"
+      ],
+      "configuration_drift_reported": true,
+      "installation_or_repair_performed": false,
+      "evidence_status": "Root session receipt supplied; doctor/MCP response confirmed before target work"
+    }
+  },
+  "baseline_measurement_sha256": "93bb100e7757e361dc53936e5844d5767831b54458fc6533a8af9a54a7914372",
+  "deferred_round11_inputs": {
+    "report": "reports/round11-deferred-proposals.json",
+    "sha256": "66572aeb5f10f27caed9bce8968c85ed602ac8cd683faa88a3c96dab6e62971f"
+  }
+}

@@ -181,7 +181,7 @@ namespace kairo.unity.graphics
 			Dictionary<string, Material> value;
 			if (!materlas_.TryGetValue(key, out value))
 			{
-				value = (materlas_[key] = new Dictionary<string, Material>());
+				materlas_[key] = (value = new Dictionary<string, Material>());
 			}
 			if (value.ContainsKey(material.key_))
 			{
