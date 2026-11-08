@@ -33,7 +33,7 @@
   "required_parts": {
     "A": "complete",
     "B": "complete",
-    "C": "not_started"
+    "C": "complete"
   },
   "c_fronts": {
     "C1": {
@@ -148,8 +148,17 @@
     },
     "C6": {
       "name": "constant-true-lowering-Seb.Draw",
-      "status": "not_started",
-      "attempts": [],
+      "status": "verified",
+      "attempts": [
+        {
+          "label": "c09",
+          "engine": "reports/round11-c09-KairoLibrary-engine.json",
+          "adoption": "reports/round11-c09-adoption.json",
+          "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+          "assembly": "KairoLibrary",
+          "evaluation_status": "evaluated"
+        }
+      ],
       "required_assemblies": [
         "KairoLibrary"
       ]
@@ -342,7 +351,7 @@
     "scope": "both compilers; pure primitive locals/parameters and numeric literals with equal ConvertedType; outer negation preserved",
     "fixture_report": "reports/round11-c5-mirror-integration-fixtures.json",
     "fixture_report_sha256": "2f0d6517c34c067b082ae153e944d441b1593c8623a0d13a89e4ae54c24ba7fd",
-    "target_status": "Initial identifier-only App mirror vetoed by complete local signature; literal-inclusive App and Kairo evaluations pending",
+    "target_status": "Evaluated both compilers:12 compiled literal-inclusive mirrors,0 advances/0matched; 17 complete-signature vetoes in App. Separate earlier identifier-only App veto1.",
     "availability": "Retained as fixture-validated opt-in repertoire; later source candidates still require model/compilation/oracle gates.",
     "initial_App_audit": "reports/round11-c5-app-initial-mirror-audit.json",
     "literal_fixture_report": "reports/round11-c5-literal-mirror-fixtures.json",
@@ -356,7 +365,9 @@
       "accepted": 0,
       "methods_gained": 0,
       "target_status": "Tested alternatives did not advance; not a universal operator refutation"
-    }
+    },
+    "game_evaluations": "reports/round11-c5-game-evaluations.json",
+    "game_evaluations_sha256": "504bf1e35252cf54c19bab6f6b23985f22ec4bb17a3e29dd227da3d188c21376"
   },
   "persistent_repertoire_rules": [
     "r11-c5"

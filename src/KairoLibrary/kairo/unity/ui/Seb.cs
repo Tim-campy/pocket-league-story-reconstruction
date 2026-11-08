@@ -1014,8 +1014,8 @@ for (int i = 0; i < layerHeads_.Length; i++)
 				int sy = sp[3];
 				int width = sp[4];
 				int height = sp[5];
-				if (true)
-				{
+				bool recoveredDrawRegion = true;
+if (recoveredDrawRegion) {
 					int num4 = sp[8] * 1 + sp[9] * 2;
 					if (num4 != 0)
 					{
