@@ -1,0 +1,1140 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1898,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void",
+      "number": 1,
+      "initial_offset": 140,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope",
+          "start": 346454,
+          "end": 350429,
+          "before": "public void Draw_clearPoint(Graphics g)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont(null);\r\n\t\t\tapdat_.DrawWindow(g, 222, 155, 0, \"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u767a\u8868\");\r\n\t\t\tapdat_.DrawBox(g, 17, 81, 224, 177);\r\n\t\t\tint num2;\nint num3;\nint num = 105;\r\n\t\t\tnum2 = 30;\r\n\t\t\tnum = 105;\r\n\t\t\tg.DrawImage(apdat_.resEvent_.img[11], num2, num);\r\n\t\t\tapdat_.DrawBox(g, 21, 85, 218, 137);\r\n\t\t\tnum = 181;\r\n\t\t\tif (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tnum3 = 0;\r\n\t\t\t\tif (frame_ % 6 * 2 < 6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 = 1;\r\n\t\t\t\t}\r\n\t\t\t\tDraw_chara(g, 171, 2, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 2, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\tif (clearPoint_mode == 0)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u305d\u308c\u3067\u306f\u3055\u3063\u305d\u304f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306b\u5165\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 1)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(UserData.CPOINT_STR[clearPoint_index][0], 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0><1>\", AppData.CommaSeparate(udat_.clear_point[clearPoint_index][0]) + \"\\t\" + MyFormBase.LT(UserData.CPOINT_STR[clearPoint_index][1])), 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 2)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306b\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 3)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\tempty = AppData.CommaSeparate(udat_.clear_point[clearPoint_index][1]);\r\n\t\t\t\t\tstring text = \"\u70b9\u8ffd\u52a0!!\";\r\n\t\t\t\t\tnum2 = 120 - (font.StringWidth(empty) + font.StringWidth(text)) / 2;\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tg.DrawString(empty, num2, num);\r\n\t\t\t\t\tnum2 += font.StringWidth(empty);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(text, num2, num);\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tnum = 117;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u30cf\u30a4\u30b9\u30b3\u30a2\u66f4\u65b0\uff01\", 120f, num, 2);\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 5)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u3064\u3065\u304d\u307e\u3057\u3066\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 6)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\u4ee5\u4e0a\u3068\u306a\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 167, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tnum = 78;\r\n\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\tif (!En())\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 93f, num, 4);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 33f, num, 1);\r\n\t\t\t}\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_score)), 213f, num, 4);\r\n\t\t\tnum = 192;\r\n\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\tg.DrawString(\"\uff8a\uff72\uff7d\uff7a\uff71  :\", 93f, num, 4);\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_highScore)), 213f, num, 4);\r\n\t\t}",
+          "after": "public void Draw_clearPoint(Graphics g)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont(null);\r\n\t\t\tapdat_.DrawWindow(g, 222, 155, 0, \"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u767a\u8868\");\r\n\t\t\tapdat_.DrawBox(g, 17, 81, 224, 177);\r\n\t\t\tint num2;\nint recoveredUnusedLayout;\nint num = 105;\r\n\t\t\tnum2 = 30;\r\n\t\t\tnum = 105;\r\n\t\t\tg.DrawImage(apdat_.resEvent_.img[11], num2, num);\r\n\t\t\tapdat_.DrawBox(g, 21, 85, 218, 137);\r\n\t\t\tnum = 181;\r\n\t\t\tif (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tint num3 = 0;\r\n\t\t\t\tif (frame_ % 6 * 2 < 6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 = 1;\r\n\t\t\t\t}\r\n\t\t\t\tDraw_chara(g, 171, 2, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 2, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\tif (clearPoint_mode == 0)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u305d\u308c\u3067\u306f\u3055\u3063\u305d\u304f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306b\u5165\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 1)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(UserData.CPOINT_STR[clearPoint_index][0], 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0><1>\", AppData.CommaSeparate(udat_.clear_point[clearPoint_index][0]) + \"\\t\" + MyFormBase.LT(UserData.CPOINT_STR[clearPoint_index][1])), 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 2)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306b\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 3)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\tempty = AppData.CommaSeparate(udat_.clear_point[clearPoint_index][1]);\r\n\t\t\t\t\tstring text = \"\u70b9\u8ffd\u52a0!!\";\r\n\t\t\t\t\tnum2 = 120 - (font.StringWidth(empty) + font.StringWidth(text)) / 2;\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tg.DrawString(empty, num2, num);\r\n\t\t\t\t\tnum2 += font.StringWidth(empty);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(text, num2, num);\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tnum = 117;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u30cf\u30a4\u30b9\u30b3\u30a2\u66f4\u65b0\uff01\", 120f, num, 2);\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 5)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u3064\u3065\u304d\u307e\u3057\u3066\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 6)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\u4ee5\u4e0a\u3068\u306a\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 167, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tnum = 78;\r\n\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\tif (!En())\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 93f, num, 4);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 33f, num, 1);\r\n\t\t\t}\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_score)), 213f, num, 4);\r\n\t\t\tnum = 192;\r\n\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\tg.DrawString(\"\uff8a\uff72\uff7d\uff7a\uff71  :\", 93f, num, 4);\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_highScore)), 213f, num, 4);\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 140,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.ui.Font",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.String",
+              "System.String"
+            ],
+            "method_id": "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SubForm.cs",
+            "full_source_sha256": "1cce0adb209b7be7bde8c988c58410fcdcef896b3cb50c50f2aefcf5edbdce28"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794118223390503200\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.9690000000409782,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1476,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1476,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void"
+          ],
+          "matched_IL_gain": 1476
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope",
+          "start": 346454,
+          "end": 350429,
+          "before": "public void Draw_clearPoint(Graphics g)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont(null);\r\n\t\t\tapdat_.DrawWindow(g, 222, 155, 0, \"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u767a\u8868\");\r\n\t\t\tapdat_.DrawBox(g, 17, 81, 224, 177);\r\n\t\t\tint num2;\nint num3;\nint num = 105;\r\n\t\t\tnum2 = 30;\r\n\t\t\tnum = 105;\r\n\t\t\tg.DrawImage(apdat_.resEvent_.img[11], num2, num);\r\n\t\t\tapdat_.DrawBox(g, 21, 85, 218, 137);\r\n\t\t\tnum = 181;\r\n\t\t\tif (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tnum3 = 0;\r\n\t\t\t\tif (frame_ % 6 * 2 < 6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 = 1;\r\n\t\t\t\t}\r\n\t\t\t\tDraw_chara(g, 171, 2, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 2, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\tif (clearPoint_mode == 0)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u305d\u308c\u3067\u306f\u3055\u3063\u305d\u304f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306b\u5165\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 1)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(UserData.CPOINT_STR[clearPoint_index][0], 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0><1>\", AppData.CommaSeparate(udat_.clear_point[clearPoint_index][0]) + \"\\t\" + MyFormBase.LT(UserData.CPOINT_STR[clearPoint_index][1])), 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 2)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306b\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 3)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\tempty = AppData.CommaSeparate(udat_.clear_point[clearPoint_index][1]);\r\n\t\t\t\t\tstring text = \"\u70b9\u8ffd\u52a0!!\";\r\n\t\t\t\t\tnum2 = 120 - (font.StringWidth(empty) + font.StringWidth(text)) / 2;\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tg.DrawString(empty, num2, num);\r\n\t\t\t\t\tnum2 += font.StringWidth(empty);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(text, num2, num);\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tnum = 117;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u30cf\u30a4\u30b9\u30b3\u30a2\u66f4\u65b0\uff01\", 120f, num, 2);\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 5)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u3064\u3065\u304d\u307e\u3057\u3066\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 6)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\u4ee5\u4e0a\u3068\u306a\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 167, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tnum = 78;\r\n\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\tif (!En())\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 93f, num, 4);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 33f, num, 1);\r\n\t\t\t}\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_score)), 213f, num, 4);\r\n\t\t\tnum = 192;\r\n\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\tg.DrawString(\"\uff8a\uff72\uff7d\uff7a\uff71  :\", 93f, num, 4);\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_highScore)), 213f, num, 4);\r\n\t\t}",
+          "after": "public void Draw_clearPoint(Graphics g)\r\n\t\t{\r\n\t\t\tFont font = g.GetFont(null);\r\n\t\t\tapdat_.DrawWindow(g, 222, 155, 0, \"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u767a\u8868\");\r\n\t\t\tapdat_.DrawBox(g, 17, 81, 224, 177);\r\n\t\t\tint num2;\nint recoveredUnusedLayout;\nint num = 105;\r\n\t\t\tnum2 = 30;\r\n\t\t\tnum = 105;\r\n\t\t\tg.DrawImage(apdat_.resEvent_.img[11], num2, num);\r\n\t\t\tapdat_.DrawBox(g, 21, 85, 218, 137);\r\n\t\t\tnum = 181;\r\n\t\t\tif (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tint num3 = 0;\r\n\t\t\t\tif (frame_ % 6 * 2 < 6)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum3 = 1;\r\n\t\t\t\t}\r\n\t\t\t\tDraw_chara(g, 171, 2, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 2, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tDraw_chara(g, 171, 0, 1, frame_, 190, num);\r\n\t\t\t\tDraw_chara(g, 172, 0, 0, frame_, 51, num);\r\n\t\t\t}\r\n\t\t\tif (clearPoint_mode == 0)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u305d\u308c\u3067\u306f\u3055\u3063\u305d\u304f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306b\u5165\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 1)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(UserData.CPOINT_STR[clearPoint_index][0], 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(MyFormBase.LT(\"<0><1>\", AppData.CommaSeparate(udat_.clear_point[clearPoint_index][0]) + \"\\t\" + MyFormBase.LT(UserData.CPOINT_STR[clearPoint_index][1])), 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 2)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306b\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 3)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tstring empty = string.Empty;\r\n\t\t\t\t\tempty = AppData.CommaSeparate(udat_.clear_point[clearPoint_index][1]);\r\n\t\t\t\t\tstring text = \"\u70b9\u8ffd\u52a0!!\";\r\n\t\t\t\t\tnum2 = 120 - (font.StringWidth(empty) + font.StringWidth(text)) / 2;\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\t\tg.DrawString(empty, num2, num);\r\n\t\t\t\t\tnum2 += font.StringWidth(empty);\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(text, num2, num);\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 179, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 4)\r\n\t\t\t{\r\n\t\t\t\tnum = 117;\r\n\t\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\t\tg.DrawString(\"\u30cf\u30a4\u30b9\u30b3\u30a2\u66f4\u65b0\uff01\", 120f, num, 2);\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 5)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 117;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\u3064\u3065\u304d\u307e\u3057\u3066\u2026\", 120f, num, 2);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (clearPoint_mode == 6)\r\n\t\t\t{\r\n\t\t\t\tif (clearPoint_cnt >= 15)\r\n\t\t\t\t{\r\n\t\t\t\t\tnum = 105;\r\n\t\t\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\t\t\tg.DrawString(\"\uff78\uff98\uff71\uff8e\uff9f\uff72\uff9d\uff84\u306e\u8a08\u7b97\u306f\", 120f, num, 2);\r\n\t\t\t\t\tif (clearPoint_cnt >= (CLEARPOINT_ANIMETIME[clearPoint_mode] + 15) / 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum += 22;\r\n\t\t\t\t\t\tg.DrawString(\"\u4ee5\u4e0a\u3068\u306a\u308a\u307e\u3059\u3002\", 120f, num, 2);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (clearPoint_cnt == CLEARPOINT_ANIMETIME[clearPoint_mode] && frame_ % 40 > 20)\r\n\t\t\t\t{\r\n\t\t\t\t\tapdat_.DrawSeb(g, 213, 167, apdat_.resCom2_.seb[63], apdat_.resCom2_.img[72], 0);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tnum = 78;\r\n\t\t\tg.SetColor(SC_WINDOW_BLACK);\r\n\t\t\tif (!En())\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 93f, num, 4);\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tg.DrawString(\"\u73fe\u5728\uff8e\uff9f\uff72\uff9d\uff84:\", 33f, num, 1);\r\n\t\t\t}\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_score)), 213f, num, 4);\r\n\t\t\tnum = 192;\r\n\t\t\tg.SetColor(SC_WINDOW_BLUE);\r\n\t\t\tg.DrawString(\"\uff8a\uff72\uff7d\uff7a\uff71  :\", 93f, num, 4);\r\n\t\t\tg.DrawString(MyFormBase.LT(\"<0>\u70b9\", AppData.CommaSeparate(clearPoint_highScore)), 213f, num, 4);\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 140,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.ui.Font",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.String",
+              "System.String"
+            ],
+            "method_id": "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SubForm.cs",
+            "full_source_sha256": "1cce0adb209b7be7bde8c988c58410fcdcef896b3cb50c50f2aefcf5edbdce28"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794118223390503200\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.9690000000409782,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1476,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1476,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void"
+          ],
+          "matched_IL_gain": 1476
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 145,
+            "rebuilt_offset": 145,
+            "opcode_pair": [
+              "stloc.s",
+              "stloc.2"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 140,
+        "source": "src/Assembly-CSharp/form/SubForm.cs",
+        "point": {
+          "offset": 144,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\SubForm.cs",
+          "start_line": 11466,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 145,
+          "line": 11466,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 145,
+          "rebuilt_offset": 145,
+          "original_index": 53,
+          "rebuilt_index": 53,
+          "original_instruction": {
+            "offset": 145,
+            "opcode": "stloc.s",
+            "operand": {
+              "local": 4
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 145,
+            "opcode": "stloc.2",
+            "operand": null
+          },
+          "pair": "{\"opcode\":\"stloc.s\",\"operand\":{\"local\":4}} => {\"opcode\":\"stloc.2\",\"operand\":null}",
+          "opcode_pair": "stloc.s => stloc.2",
+          "original_context": [
+            {
+              "offset": 139,
+              "opcode": "bne.un",
+              "operand": {
+                "labels": [
+                  "L1"
+                ]
+              }
+            },
+            {
+              "offset": 144,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 145,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 147,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 148,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::frame_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 139,
+              "opcode": "bne.un",
+              "operand": {
+                "labels": [
+                  "L1"
+                ]
+              }
+            },
+            {
+              "offset": 144,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 145,
+              "opcode": "stloc.2",
+              "operand": null
+            },
+            {
+              "offset": 146,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 147,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class form.SubForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::frame_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "original_labels": {
+            "166": "L0",
+            "218": "L1",
+            "265": "L2",
+            "374": "L3",
+            "474": "L4",
+            "479": "L5",
+            "657": "L6",
+            "662": "L7",
+            "720": "L8",
+            "725": "L9",
+            "874": "L10",
+            "974": "L11",
+            "979": "L12",
+            "1029": "L13",
+            "1087": "L14",
+            "1092": "L15",
+            "1202": "L16",
+            "1302": "L17",
+            "1350": "L18",
+            "1369": "L19"
+          },
+          "rebuilt_labels": {
+            "164": "L0",
+            "216": "L1",
+            "263": "L2",
+            "372": "L3",
+            "472": "L4",
+            "477": "L5",
+            "655": "L6",
+            "660": "L7",
+            "718": "L8",
+            "723": "L9",
+            "872": "L10",
+            "972": "L11",
+            "977": "L12",
+            "1027": "L13",
+            "1085": "L14",
+            "1090": "L15",
+            "1200": "L16",
+            "1300": "L17",
+            "1348": "L18",
+            "1367": "L19"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 53,
+              "original_stop": 54,
+              "rebuilt_start": 53,
+              "rebuilt_stop": 54
+            },
+            {
+              "kind": "replace",
+              "original_start": 63,
+              "original_stop": 64,
+              "rebuilt_start": 63,
+              "rebuilt_stop": 64
+            },
+            {
+              "kind": "replace",
+              "original_start": 272,
+              "original_stop": 273,
+              "rebuilt_start": 272,
+              "rebuilt_stop": 273
+            },
+            {
+              "kind": "insert",
+              "original_start": 282,
+              "original_stop": 282,
+              "rebuilt_start": 282,
+              "rebuilt_stop": 284
+            },
+            {
+              "kind": "delete",
+              "original_start": 283,
+              "original_stop": 285,
+              "rebuilt_start": 285,
+              "rebuilt_stop": 285
+            },
+            {
+              "kind": "replace",
+              "original_start": 287,
+              "original_stop": 288,
+              "rebuilt_start": 287,
+              "rebuilt_stop": 288
+            },
+            {
+              "kind": "replace",
+              "original_start": 290,
+              "original_stop": 291,
+              "rebuilt_start": 290,
+              "rebuilt_stop": 291
+            },
+            {
+              "kind": "replace",
+              "original_start": 303,
+              "original_stop": 304,
+              "rebuilt_start": 303,
+              "rebuilt_stop": 304
+            },
+            {
+              "kind": "replace",
+              "original_start": 311,
+              "original_stop": 312,
+              "rebuilt_start": 311,
+              "rebuilt_stop": 312
+            },
+            {
+              "kind": "replace",
+              "original_start": 319,
+              "original_stop": 320,
+              "rebuilt_start": 319,
+              "rebuilt_stop": 320
+            }
+          ],
+          "branch_retarget_differences": [],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 346846,
+          "end": 346855,
+          "line": 11466,
+          "column": 5,
+          "text": "num3 = 0;",
+          "kind": "ExpressionStatement",
+          "method_id": "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void",
+          "point": 346842,
+          "declaration_start": 346454,
+          "declaration_end": 350429
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 7,
+              "last_use": 841,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 67,
+              "last_use": 865,
+              "loads": 4,
+              "stores": 3
+            },
+            {
+              "slot": 3,
+              "first_use": 64,
+              "last_use": 1467,
+              "loads": 24,
+              "stores": 15
+            },
+            {
+              "slot": 4,
+              "first_use": 145,
+              "last_use": 164,
+              "loads": 0,
+              "stores": 2
+            },
+            {
+              "slot": 5,
+              "first_use": 755,
+              "last_use": 842,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 6,
+              "first_use": 789,
+              "last_use": 863,
+              "loads": 2,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 7
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 4,
+              "votes": {
+                "4": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 39
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 5,
+              "votes": {
+                "5": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 6,
+              "votes": {
+                "6": 3
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "font",
+              "type": "kairo.unity.ui.Font",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 346497,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Int32",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 346497,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Int32",
+              "rebuilt_slot": 2,
+              "desired_slot": 4,
+              "lexical_block": 346497,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num",
+              "type": "System.Int32",
+              "rebuilt_slot": 3,
+              "desired_slot": 3,
+              "lexical_block": 346497,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "empty",
+              "type": "System.String",
+              "rebuilt_slot": 4,
+              "desired_slot": 5,
+              "lexical_block": 348466,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "text",
+              "type": "System.String",
+              "rebuilt_slot": 5,
+              "desired_slot": 6,
+              "lexical_block": 348466,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 8,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 7,
+          "selected_rule_prefix": "r12-block-local-layout-"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope": 1
+          },
+          "model_approved": {
+            "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 1476,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope:attempts": 1,
+    "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope:accepted_steps": 1,
+    "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope:body_gains": 1,
+    "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope:IL_gains": 1476
+  },
+  "completed": true,
+  "run_label": "b07-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b07\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-block-local-layout-",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else",
+    "r12-smcs-player-collision-v2-proved-guard-splitting-positive-regions-and-arm-stores",
+    "r12-block-local-layout-"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-block-local-layout-",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 7,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-shared-layout-live-model-patches.json",
+    "sha256": "786ecb685a05f9360c756e5cea4c686dd0370961a0530fc65c101fa3c457fc58",
+    "dependencies_checked": {
+      "tools/round12_app_clear_point_source.py": "2c67deecdd24649228d45b65eea0d3678587e54c27190ed0a5764c4f46f279e0",
+      "tools/round12_publish_subfamily_path.py": "320019fdd5e5368736d5a09b9adcf051c039008c05b0b9ac0d8bb55c3b98a917",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_app_map_goal_source.py": "2c67deecdd24649228d45b65eea0d3678587e54c27190ed0a5764c4f46f279e0",
+      "tools/round12_merge_source_bundles.py": "3b6559c37f1efde954094c95b2f7ae942b9c97125cdcc006a22676d55f69ad03",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-clear-point-family-patches.json": "03d8efe2bf6d9311b0a50bf80135908f38b92879ba1279da4afd3f15e6610a8c",
+      "reports/round12-app-map-goal-family-patches.json": "dc9b1d86e76c1b8050dbb20c9265e52a602bdc8d6f4633e302935b517afb7f26",
+      "reports/round12-app-shared-layout-family-patches.json": "adb2e8f75c6e1d3650b47bfaeebcb1bef37e69aaa235c3b511238ff5bea14b95",
+      "reports/round12-app-shared-layout-live-model-proof.json": "6597c293b0867c45aae3b4f5f3282f22ccb2b723ac2a57c55b8925b609eaa6d4",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-shared-layout-private/abstract_check.py": "10add1a11ed2e00ba38fba8a3cd94e11d8f8dc8941e0c8c6266faaf748e1d2b1",
+      "build/round12/app-shared-layout-private/analysis-manifest.json": "40a927aa5ea684946e5fad2e8351479842777fbb465c2d8110c4b3974ecb2707",
+      "build/round12/app-shared-layout-private/calculate.py": "2c67deecdd24649228d45b65eea0d3678587e54c27190ed0a5764c4f46f279e0",
+      "build/round12/app-shared-layout-private/fixture-summary.json": "c4c1403c53c0072b45d53799669966594b3224be7bb68c399729dbf40353bdec",
+      "build/round12/app-shared-layout-private/fixtures.py": "44b32e0342c1302b8b340c8f3413ba6ce75d83e999f4a61139464d0ca1e3ccba",
+      "build/round12/app-shared-layout-private/NOTE.md": "4588b7120938da1b8144ad46729e608ef747bd822ca00d963698823ba94e99d2",
+      "build/round12/app-shared-layout-private/package-index.json": "ebae343ffac00a83e772beb54e8564e806f7bafeaa2f154c0ba594d0e529c9ae",
+      "build/round12/app-shared-layout-private/package.py": "787bad5e459e90759870e18fc147542787de343870c1b9bc1895741eb10d3484",
+      "build/round12/app-shared-layout-private/clear/abstract-report.json": "3812fd62c25e8137ff97b44887fe18632099dfae7b9402c7adf845cdea662ae5",
+      "build/round12/app-shared-layout-private/clear/after-method.cs": "eaad9fdf4f9dc2dacd2ffd88e2059734a86db25cd1a409473fb739f2e74e309f",
+      "build/round12/app-shared-layout-private/clear/before-method.cs": "2b4239878bc05b5b8f99862c42f0f0c05a95bb21d746c5aaa1232cdd4d9b1a55",
+      "build/round12/app-shared-layout-private/clear/bindings.json": "4f362e23b050dcbe02d7aceb5b2a3b706a377b3e9a0992d115403b9c70a0af77",
+      "build/round12/app-shared-layout-private/clear/candidate-source.cs": "7bc39b68c3748fe5fbd945206b00d10e169589500d8f25a3402fda8a6e43c47a",
+      "build/round12/app-shared-layout-private/clear/fixture-report.json": "003855be0cd47df533fe5ae6ce6ac97f0b2d3496041fb9c26fd669d12a9c9c94",
+      "build/round12/app-shared-layout-private/clear/history.json": "1ed3895f4c004895907c7c109ff73c9e194cdc9532ad5671b8c8375030743bf8",
+      "build/round12/app-shared-layout-private/clear/model.json": "64cc84c607d99279b0921aa32b963558aa6849d3dc61e074e196417ddb250665",
+      "build/round12/app-shared-layout-private/clear/patches.json": "6344776d531abc6a5a2712390a1134630b803c4a2f771d930edcd09cb874c4e2",
+      "build/round12/app-shared-layout-private/clear/rea-method.json": "d325269f4ccb90ffe144c032eedae77618daec3de59134ccc9481194caa5cdc9",
+      "build/round12/app-shared-layout-private/clear/rea-summary.json": "cd72bf9b239bb60f6e9db3e753882d3a5c0c4f9f50144116f9690e2d30e7f270",
+      "build/round12/app-shared-layout-private/clear/slot-constraints.json": "69ad434d631c366331820dd9bcde2c420926a54d04ebe6ede74b225b3e8270e0",
+      "build/round12/app-shared-layout-private/clear/source.cs": "7ee7d10b727179eb7a71ea1ed901c41489d94215a933ad7cf988faab3c6b9f69",
+      "build/round12/app-shared-layout-private/goal/abstract-report.json": "749ea5b894a9076ee78c7edb9417bdff50b05fff108a54280c0993d0adecd7d6",
+      "build/round12/app-shared-layout-private/goal/after-method.cs": "81ab4a24ff965721abc9ed3535da3b9da3c322aa0086fbed3ca42e65f8076df3",
+      "build/round12/app-shared-layout-private/goal/before-method.cs": "4f7a8aa1febc0bed05ea556a6ca7cca055e7b9370893dac1eec31bfa75546334",
+      "build/round12/app-shared-layout-private/goal/bindings.json": "0a4dedbab460df35112b7e3000368dcdb6b098c7c2804564d29fd127e2bae786",
+      "build/round12/app-shared-layout-private/goal/candidate-source.cs": "2afd816d2d9cd88032916c001e199a8525ff63e22f5ca9e7d4eda8ad6b38e8aa",
+      "build/round12/app-shared-layout-private/goal/fixture-report.json": "db33c5f17282a88563f0e6513a51bb70291596abb9f0f255da62bd0a5df7db67",
+      "build/round12/app-shared-layout-private/goal/history.json": "43f77fc15c44bba7cf3decde5b281380eb0212e4a445d924295af8e1fcd853df",
+      "build/round12/app-shared-layout-private/goal/model.json": "758c97e9c6301eb8f3fa0badd84b479cfef4cdfb7c0ef41eae025fe11c422b21",
+      "build/round12/app-shared-layout-private/goal/patches.json": "33e28a6b820c957200923b5401c0706331805b9684e7e9e48fb98ee97e7b9d72",
+      "build/round12/app-shared-layout-private/goal/rea-method.json": "88293b2cbe2cf261d7b02e2a403866d6525180fee17dcb5d14c1de04325a95f6",
+      "build/round12/app-shared-layout-private/goal/rea-summary.json": "d0858d2410c1fb23b6b497b31689d8c1e7db9a9cb284c39e749778e65847ca6b",
+      "build/round12/app-shared-layout-private/goal/slot-constraints.json": "0937e1a1454e38481b7373f0be2e43fc92d670d0319583a62ca4ca740ab69631",
+      "build/round12/app-shared-layout-private/goal/source.cs": "85a67c871ccdde8f50e9b1363e8d50872d6118b7ad6044ebb3e7ca10d69018dd",
+      "build/round12/app-shared-layout-private/clear/fixtures/before/compiler.log": "a6f76c9bd1c9c65e4f55f43fde9715f9bdff2522cb380d8c65e0220567a97471",
+      "build/round12/app-shared-layout-private/clear/fixtures/before/Fixture.cs": "de29433d0e7ddb3d5a580d513bbba8a863d394462bbbf74959713ee132380b7c",
+      "build/round12/app-shared-layout-private/clear/fixtures/before/Fixture.dll": "7511d6e856b6186623e1f888958519da7d2480c1605825a625e60cbee41437de",
+      "build/round12/app-shared-layout-private/clear/fixtures/before/methods.json": "128de9f7f035c2e02055f935c90c57c167534d14bebc3ef3012ca420331a5322",
+      "build/round12/app-shared-layout-private/clear/fixtures/candidate/compiler.log": "85625a343aa968eb0133ad4c49a6bf52a9eedfc1903794ae7b997c3970d62631",
+      "build/round12/app-shared-layout-private/clear/fixtures/candidate/Fixture.cs": "b1919fc66ae7a8acde8fc357c18a79e4a0cf58b9461efe002fa2499121fa2c9f",
+      "build/round12/app-shared-layout-private/clear/fixtures/candidate/Fixture.dll": "81c80aaedfd38083ccba2343e67ca4f247f8b6e6b777a63a73c0eff010a67af9",
+      "build/round12/app-shared-layout-private/clear/fixtures/candidate/methods.json": "7164d6da85602563c8b4294386323f4a311138d123a325353ac4118ea7f8c9f3",
+      "build/round12/app-shared-layout-private/clear/fixtures/counter-still-root/compiler.log": "e7b911cc8dfb5fd9f76b1274d75b03e5defffcdf1eb51f84f281872e716b428d",
+      "build/round12/app-shared-layout-private/clear/fixtures/counter-still-root/Fixture.cs": "4afd89bb7696b2cc64eba4d0cc3a4322ce4e8f1c26dfbfdc7968611282b86c96",
+      "build/round12/app-shared-layout-private/clear/fixtures/counter-still-root/Fixture.dll": "720e8aaaab4c19c1edc8155f4ccb2b1388e38199e542a964310394b8a02103df",
+      "build/round12/app-shared-layout-private/clear/fixtures/counter-still-root/methods.json": "bc8516c614c94cbd9093909ff514b9fba93f6bac0d9b246b83e64c6b64b1f8a2",
+      "build/round12/app-shared-layout-private/clear/fixtures/manual-control/compiler.log": "2dbff87fc2aab857ae260c6a98afd147dd6718011db02a15ae6cb5e7340d0896",
+      "build/round12/app-shared-layout-private/clear/fixtures/manual-control/Fixture.cs": "9f04d0c813d40bc6014b45f522bddb4fb7a89b265c78eac7261fd51b38faa7b9",
+      "build/round12/app-shared-layout-private/clear/fixtures/manual-control/Fixture.dll": "8836daad3c9d8f0ed7230687eeee8ff8a92a5a9f675f487a5ca916f6dc3b43e1",
+      "build/round12/app-shared-layout-private/clear/fixtures/manual-control/methods.json": "7164d6da85602563c8b4294386323f4a311138d123a325353ac4118ea7f8c9f3",
+      "build/round12/app-shared-layout-private/clear/fixtures/missing-unused/compiler.log": "96a08e0bb2c4bd24aa574f568201d1c78f30a5b01516c5d976e74e3ac21aef34",
+      "build/round12/app-shared-layout-private/clear/fixtures/missing-unused/Fixture.cs": "9485a71a2d891b78d5b05dcf6918d2c55732b015614eed13adc54c3fb236a813",
+      "build/round12/app-shared-layout-private/clear/fixtures/missing-unused/Fixture.dll": "8352b053d3442a96b25070240b512cd0a28b81d1b0388567feee786196baa1ec",
+      "build/round12/app-shared-layout-private/clear/fixtures/missing-unused/methods.json": "20e7bc171babc7ba4aef7ce6b71fc5e1a257801b1ac9c689123030b5b96c430d",
+      "build/round12/app-shared-layout-private/goal/fixtures/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-shared-layout-private/goal/fixtures/before/Fixture.cs": "0ffb8ac0edd0481986bfc6d97c40033f8f11d118d2d2cab7010c3c68841bc10d",
+      "build/round12/app-shared-layout-private/goal/fixtures/before/Fixture.dll": "1d569f2a473ddfe95f19b02050379e5d5ad2a45bdbc1ed6937265361375ae3b7",
+      "build/round12/app-shared-layout-private/goal/fixtures/before/methods.json": "2994a5e79d9fafcba6c38efbe2a0028b75c0b82268f8578d6703595b73f0cfcb",
+      "build/round12/app-shared-layout-private/goal/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-shared-layout-private/goal/fixtures/candidate/Fixture.cs": "d160250b1364e64e08b6851f1fdaac5a3afb13f3852a3ea401c5900ec66008c8",
+      "build/round12/app-shared-layout-private/goal/fixtures/candidate/Fixture.dll": "cc8d322fb64186759f9b89824c7b6b7021d15cf479511353364a9f484d1761fd",
+      "build/round12/app-shared-layout-private/goal/fixtures/candidate/methods.json": "497f82cf42bbd34110615539ae0ddd009f52c805c06f05e3cc9e8b7ee15c3398",
+      "build/round12/app-shared-layout-private/goal/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-shared-layout-private/goal/fixtures/manual-control/Fixture.cs": "0b01701e3062b38cd1ed6e07d1d41057d7802856a2ab54096b4350ac36655495",
+      "build/round12/app-shared-layout-private/goal/fixtures/manual-control/Fixture.dll": "519f2503b9a41dc2517b5d982a8d67795ffb99057eb546d7370eca5ce6ff8264",
+      "build/round12/app-shared-layout-private/goal/fixtures/manual-control/methods.json": "497f82cf42bbd34110615539ae0ddd009f52c805c06f05e3cc9e8b7ee15c3398",
+      "build/round12/app-shared-layout-private/goal/fixtures/wrong-root-order/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-shared-layout-private/goal/fixtures/wrong-root-order/Fixture.cs": "bbbdd2ac5c2cf7d27206966b106729daa67c65df5360e481887641f19c84a03b",
+      "build/round12/app-shared-layout-private/goal/fixtures/wrong-root-order/Fixture.dll": "1ecaf5e155993deba3794641531b8266dbd868e06d1565472a0943a656585809",
+      "build/round12/app-shared-layout-private/goal/fixtures/wrong-root-order/methods.json": "5340f4bbdc482a7217fa262697c2ef520d2753fbc8114ede0a107e215782c81c",
+      "build/round12/app-shared-layout-private/freeze.json": "a85fdb4ed9ca8299906436e753177f739dc1da636780fc3b20ffcaeb516b6613"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {},
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794118223390503200",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 0.9690000000409782,
+        "wall_seconds": 8.218000000109896,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.9690000000409782,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794118223390503200\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794118223390503200\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "5e53fe2fbe1c06718c940dbd43a6182361a1521c2a8c42d5fd4a30e3c8eb3438",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+          "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+          "src/Assembly-CSharp/form/SubForm.cs": "d06b736ebb5a3e60decee23f883a3bfc94982cfe51bf3c9609a80ee25a9da071",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+          "src/Assembly-CSharp/game/Camera.cs": "1f205fa8791d11c114a5623219766c21cce3def203ac17b2ebab226552d49a36",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "85a67c871ccdde8f50e9b1363e8d50872d6118b7ad6044ebb3e7ca10d69018dd",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "f38d4a77a3dd39acb37c1a571bbb4e682cab649d7f1aa8c20959c4487e3b2dcf",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+          "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "53a89c36b20d4bc9aab5e4f807fa7df34057f72c0bb0baff3d28f10ec79edeef",
+          "src/Assembly-CSharp/main/AppData.cs": "ee43c3e361e0c6fadf5a2520b4c856177b4d3ae850d76666b0bf73e0bc95051f",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+          "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "83a47130a51ddbaa9172cfe87c9b752f344a22ed5419f3218af1603ca4f66b55",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "cb838b2c364221c895605bf656993351de77e177179257196c63045216d20c47",
+        "accepted_source_set_sha256": "44a94a46f4ab4664cac3b5c8514eeb16b3795d1b58a22159aef49586c00c33b4",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "e6c6c9f3d59e3e55b9d7338c2ab70bbaff3f6b04e66e0dcdd3ec48bc7738e0c8"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void",
+        "rule": "r12-block-local-layout-r12-clear-point-unused-int-and-inner-counter-scope",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1899,
+  "body_gains": [
+    "form.SubForm::Draw_clearPoint(kairo.unity.ui.Graphics)->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 1476,
+  "builds": 6,
+  "build_seconds": 7.17200000048615,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "fdc5c88ad1d92fc537360e4f83e5cac63efaa7162d50088ce99b88483202ed75",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b07-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "cb838b2c364221c895605bf656993351de77e177179257196c63045216d20c47",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "5e53fe2fbe1c06718c940dbd43a6182361a1521c2a8c42d5fd4a30e3c8eb3438",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+    "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+    "src/Assembly-CSharp/form/SubForm.cs": "1cce0adb209b7be7bde8c988c58410fcdcef896b3cb50c50f2aefcf5edbdce28",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+    "src/Assembly-CSharp/game/Camera.cs": "1f205fa8791d11c114a5623219766c21cce3def203ac17b2ebab226552d49a36",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "85a67c871ccdde8f50e9b1363e8d50872d6118b7ad6044ebb3e7ca10d69018dd",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "f38d4a77a3dd39acb37c1a571bbb4e682cab649d7f1aa8c20959c4487e3b2dcf",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+    "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+    "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+    "src/Assembly-CSharp/game/UserData.cs": "53a89c36b20d4bc9aab5e4f807fa7df34057f72c0bb0baff3d28f10ec79edeef",
+    "src/Assembly-CSharp/main/AppData.cs": "ee43c3e361e0c6fadf5a2520b4c856177b4d3ae850d76666b0bf73e0bc95051f",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+    "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "83a47130a51ddbaa9172cfe87c9b752f344a22ed5419f3218af1603ca4f66b55",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

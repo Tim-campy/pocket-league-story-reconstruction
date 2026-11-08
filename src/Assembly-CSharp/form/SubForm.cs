@@ -11454,7 +11454,7 @@ frame = 2 + direct;
 			apdat_.DrawWindow(g, 222, 155, 0, "ｸﾘｱﾎﾟｲﾝﾄ発表");
 			apdat_.DrawBox(g, 17, 81, 224, 177);
 			int num2;
-int num3;
+int recoveredUnusedLayout;
 int num = 105;
 			num2 = 30;
 			num = 105;
@@ -11463,7 +11463,7 @@ int num = 105;
 			num = 181;
 			if (clearPoint_mode == 4)
 			{
-				num3 = 0;
+				int num3 = 0;
 				if (frame_ % 6 * 2 < 6)
 				{
 					num3 = 1;

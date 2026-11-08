@@ -972,15 +972,16 @@ for (int num6 = udat_.teams_.Length - 1; num6 >= 0; num6--)
 		{
 			int num = -13;
 			int num2 = 17;
+			int x, y, depth;
 			for (int i = 0; i < GOAL1.Length; i++)
 			{
 				Camera.ConvertScreenToCamera(GOAL1[i], camera_pos);
 			}
 			for (int j = 0; j < GOAL1_PARTS_POS.Length; j++)
 			{
-				int x = camera_pos[0] + GOAL1_PARTS_POS[j][0] + num;
-				int y = camera_pos[1] + GOAL1_PARTS_POS[j][1] + num2;
-				int depth = camera_pos[1] + GOAL1_PARTS_POS[j][1] + num2 + GOAL1_PARTS_GRA[j][2];
+				x = camera_pos[0] + GOAL1_PARTS_POS[j][0] + num;
+				y = camera_pos[1] + GOAL1_PARTS_POS[j][1] + num2;
+				depth = camera_pos[1] + GOAL1_PARTS_POS[j][1] + num2 + GOAL1_PARTS_GRA[j][2];
 				apdat_.InsertGameObject(8, 0, depth, GOAL1_PARTS_GRA[j][0], GOAL1_PARTS_GRA[j][1], 0, x, y, false, 0);
 			}
 			num = 12;
@@ -991,9 +992,9 @@ for (int num6 = udat_.teams_.Length - 1; num6 >= 0; num6--)
 			}
 			for (int l = 0; l < GOAL2_PARTS_POS.Length; l++)
 			{
-				int x = camera_pos[0] + GOAL2_PARTS_POS[l][0] + num;
-				int y = camera_pos[1] + GOAL2_PARTS_POS[l][1] + num2;
-				int depth = camera_pos[1] + GOAL2_PARTS_POS[l][1] + num2 + GOAL2_PARTS_GRA[l][2];
+				x = camera_pos[0] + GOAL2_PARTS_POS[l][0] + num;
+				y = camera_pos[1] + GOAL2_PARTS_POS[l][1] + num2;
+				depth = camera_pos[1] + GOAL2_PARTS_POS[l][1] + num2 + GOAL2_PARTS_GRA[l][2];
 				apdat_.InsertGameObject(8, 0, depth, GOAL2_PARTS_GRA[l][0], GOAL2_PARTS_GRA[l][1], 0, x, y, false, 0);
 			}
 		}
