@@ -1623,14 +1623,12 @@ ary1.RemoveElement(playerData);
 					for (int j = 0; j < udat_.memberPDataist_.Size(); j++)
 					{
 						PlayerData playerData = (PlayerData)udat_.memberPDataist_.ElementAt(j);
-						if (TrainingData.TRA_PLAYER[i] != playerData.id_) { continue; }
-flag = true;
-break;
+						if (TrainingData.TRA_PLAYER[i] == playerData.id_) { flag = true; break; }
 					}
 					if (!flag)
 					{
 						TrainingData.TRA_PLAYER[i] = -1;
-					}
+					} else { }
 				}
 				bool flag2 = false;
 				for (int k = 0; k < TrainingData.TRA_PLAYER.Length; k++)
@@ -1686,7 +1684,7 @@ break;
 				}
 				for (int num3 = 0; num3 < TrainingData.TRA_PLAYER.Length; num3++)
 				{
-					if (TrainingData.TRA_PLAYER[num3] != -1 && value1_ != num3)
+					if (TrainingData.TRA_PLAYER[num3] == -1) { } else if (value1_ == num3) { } else
 					{
 						PlayerData obj = apdat_.pData_[TrainingData.TRA_PLAYER[num3]];
 						ary1.RemoveElement(obj);
@@ -1725,7 +1723,7 @@ break;
 				TrainingData trainingData2 = apdat_.trainingData_[TrainingData.TRA_SELECT_TRA];
 				for (int num7 = 0; num7 < TrainingData.TRA_PLAYER.Length; num7++)
 				{
-					if (TrainingData.TRA_PLAYER[num7] != -1)
+					if (TrainingData.TRA_PLAYER[num7] == -1) { } else
 					{
 						PlayerData playerData3 = apdat_.pData_[TrainingData.TRA_PLAYER[num7]];
 						for (int num8 = 0; num8 < trainingData2.eff_.Length; num8++)
@@ -1760,7 +1758,7 @@ break;
 				SupervisorData supervisorData2 = (SupervisorData)ary1.FirstElement();
 				udat_.SetPlayerParam(supervisorData2.paramPhysical_, supervisorData2.paramPhysical_);
 			}
-			else if (type_ != 52)
+			else if (type_ == 52) { } else
 			{
 				if (type_ == 53)
 				{
@@ -1788,7 +1786,7 @@ break;
 						return Pop();
 					}
 				}
-				else if (type_ != 54)
+				else if (type_ == 54) { } else
 				{
 					if (type_ == 55)
 					{
@@ -1796,30 +1794,26 @@ break;
 						udat_.SetNegotiateResult(tradeData2.feelPt_, tradeData2.difficult_);
 						apdat_.PlayBgm(4);
 					}
-					else if (type_ != 56 && type_ != 57)
+					else if (type_ == 56) { } else if (type_ == 57) { } else
 					{
 						if (type_ == 58)
 						{
-							switch (udat_.GetMatchInfoJoin())
-							{
-							case 0:
-							{
+							int init2MatchJoin = udat_.GetMatchInfoJoin();
+if (init2MatchJoin == 0) {
 								LeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];
 								apdat_.ExecEvent(18, leagueData.name_, null);
 								return Pop();
 							}
-							case 1:
-							{
+else if (init2MatchJoin == 1) {
 								QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 								apdat_.ExecEvent(19, questMatchData.name_, null);
 								return Pop();
-							}
 							}
 							Vector vector = new Vector();
 							Vector vector2 = new Vector();
 							for (int num13 = 0; num13 < apdat_.tData_.Length; num13++)
 							{
-								if (num13 != 0)
+								if (num13 == 0) { } else
 								{
 									vector.AddElement(apdat_.tData_[num13]);
 								}
@@ -1859,7 +1853,7 @@ break;
 									}
 									for (int num18 = 0; num18 < apdat_.tData_.Length; num18++)
 									{
-										if (num18 != 0)
+										if (num18 == 0) { } else
 										{
 											TeamData teamData3 = apdat_.tData_[num18];
 											if (teamData3.warPotential_ >= warPotential_ + array[num16][0] && teamData3.warPotential_ <= warPotential_ + array[num16][1])
@@ -1919,7 +1913,7 @@ break;
 							for (int num23 = 0; num23 < apdat_.qmData_.Length; num23++)
 							{
 								QuestMatchData questMatchData3 = apdat_.qmData_[num23];
-								if (questMatchData3.state_ != 0)
+								if (questMatchData3.state_ == 0) { } else
 								{
 									ary1.AddElement(questMatchData3);
 								}
@@ -1957,7 +1951,7 @@ break;
 								SetSoftLabel(AppData.softLabels_[0], AppData.softLabels_[2]);
 							}
 						}
-						else if (type_ != 66)
+						else if (type_ == 66) { } else
 						{
 							if (type_ == 67)
 							{
@@ -1988,12 +1982,12 @@ break;
 								SetTicketWindowBtmMsg("左右ｷｰで設定します。");
 								value1_ = udat_.ticketPrice_;
 							}
-							else if (type_ != 69 && type_ != 71 && type_ != 72 && type_ != 74 && type_ == 77)
+							else if (type_ == 69) { } else if (type_ == 71) { } else if (type_ == 72) { } else if (type_ == 74) { } else if (type_ == 77)
 							{
 								ary1 = new Vector();
 								for (int num28 = 0; num28 < apdat_.fanBonus_.Length; num28++)
 								{
-									if (BitUtil.Check(apdat_.fanBonus_[num28].flag_, 4))
+									if (!BitUtil.Check(apdat_.fanBonus_[num28].flag_, 4)) { } else
 									{
 										ary1.AddElement(apdat_.fanBonus_[num28]);
 									}
