@@ -1,0 +1,68 @@
+[
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "repository": "Unity-Technologies/mono",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 233,
+    "last": 269,
+    "meaning": "If false-edge, arm completion and explicit join",
+    "text": "233: \t\t\t// eliminated dead code for us.\n234: \t\t\t//\n235: \t\t\tConstant c = expr as Constant;\n236: \t\t\tif (c != null){\n237: \t\t\t\tc.EmitSideEffect (ec);\n238: \n239: \t\t\t\tif (!c.IsDefaultValue)\n240: \t\t\t\t\tTrueStatement.Emit (ec);\n241: \t\t\t\telse if (FalseStatement != null)\n242: \t\t\t\t\tFalseStatement.Emit (ec);\n243: \n244: \t\t\t\treturn;\n245: \t\t\t}\t\t\t\n246: \t\t\t\n247: \t\t\texpr.EmitBranchable (ec, false_target, false);\n248: \t\t\t\n249: \t\t\tTrueStatement.Emit (ec);\n250: \n251: \t\t\tif (FalseStatement != null){\n252: \t\t\t\tbool branch_emitted = false;\n253: \t\t\t\t\n254: \t\t\t\tend = ig.DefineLabel ();\n255: \t\t\t\tif (!is_true_ret){\n256: \t\t\t\t\tig.Emit (OpCodes.Br, end);\n257: \t\t\t\t\tbranch_emitted = true;\n258: \t\t\t\t}\n259: \n260: \t\t\t\tig.MarkLabel (false_target);\n261: \t\t\t\tFalseStatement.Emit (ec);\n262: \n263: \t\t\t\tif (branch_emitted)\n264: \t\t\t\t\tig.MarkLabel (end);\n265: \t\t\t} else {\n266: \t\t\t\tig.MarkLabel (false_target);\n267: \t\t\t}\n268: \t\t}\n269: ",
+    "exact_installed_compiler_source_revision": "UNKNOWN; own fixture emission verifies the installed pinned executable"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "repository": "Unity-Technologies/mono",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 571,
+    "last": 619,
+    "meaning": "For entry-to-test, body, increment target and true-edge",
+    "text": "571: \t\t\tif (InitStatement != null && InitStatement != EmptyStatement.Value)\n572: \t\t\t\tInitStatement.Emit (ec);\n573: \n574: \t\t\tif (empty) {\n575: \t\t\t\tTest.EmitSideEffect (ec);\n576: \t\t\t\treturn;\n577: \t\t\t}\n578: \n579: \t\t\tILGenerator ig = ec.ig;\n580: \t\t\tLabel old_begin = ec.LoopBegin;\n581: \t\t\tLabel old_end = ec.LoopEnd;\n582: \t\t\tLabel loop = ig.DefineLabel ();\n583: \t\t\tLabel test = ig.DefineLabel ();\n584: \n585: \t\t\tec.LoopBegin = ig.DefineLabel ();\n586: \t\t\tec.LoopEnd = ig.DefineLabel ();\n587: \n588: \t\t\tig.Emit (OpCodes.Br, test);\n589: \t\t\tig.MarkLabel (loop);\n590: \t\t\tStatement.Emit (ec);\n591: \n592: \t\t\tig.MarkLabel (ec.LoopBegin);\n593: \t\t\tif (Increment != EmptyStatement.Value)\n594: \t\t\t\tIncrement.Emit (ec);\n595: \n596: \t\t\tig.MarkLabel (test);\n597: \t\t\t//\n598: \t\t\t// If test is null, there is no test, and we are just\n599: \t\t\t// an infinite loop\n600: \t\t\t//\n601: \t\t\tif (Test != null){\n602: \t\t\t\t//\n603: \t\t\t\t// The Resolve code already catches the case for\n604: \t\t\t\t// Test == Constant (false) so we know that\n605: \t\t\t\t// this is true\n606: \t\t\t\t//\n607: \t\t\t\tif (Test is Constant) {\n608: \t\t\t\t\tTest.EmitSideEffect (ec);\n609: \t\t\t\t\tig.Emit (OpCodes.Br, loop);\n610: \t\t\t\t} else {\n611: \t\t\t\t\tTest.EmitBranchable (ec, loop, true);\n612: \t\t\t\t}\n613: \t\t\t\t\n614: \t\t\t} else\n615: \t\t\t\tig.Emit (OpCodes.Br, loop);\n616: \t\t\tig.MarkLabel (ec.LoopEnd);\n617: \n618: \t\t\tec.LoopBegin = old_begin;\n619: \t\t\tec.LoopEnd = old_end;",
+    "exact_installed_compiler_source_revision": "UNKNOWN; own fixture emission verifies the installed pinned executable"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "repository": "Unity-Technologies/mono",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 770,
+    "last": 782,
+    "meaning": "Return unwind uses leave to ReturnLabel",
+    "text": "770: \t\tprotected override void DoEmit (EmitContext ec)\n771: \t\t{\n772: \t\t\tif (Expr != null) {\n773: \t\t\t\tExpr.Emit (ec);\n774: \n775: \t\t\t\tif (unwind_protect)\n776: \t\t\t\t\tec.ig.Emit (OpCodes.Stloc, ec.TemporaryReturn ());\n777: \t\t\t}\n778: \n779: \t\t\tif (unwind_protect)\n780: \t\t\t\tec.ig.Emit (OpCodes.Leave, ec.ReturnLabel);\n781: \t\t\telse\n782: \t\t\t\tec.ig.Emit (OpCodes.Ret);",
+    "exact_installed_compiler_source_revision": "UNKNOWN; own fixture emission verifies the installed pinned executable"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "repository": "Unity-Technologies/mono",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 804,
+    "last": 841,
+    "meaning": "Goto resolves unwind and emits leave or br",
+    "text": "804: \n805: \t\tpublic override bool Resolve (BlockContext ec)\n806: \t\t{\n807: \t\t\tunwind_protect = ec.CurrentBranching.AddGotoOrigin (ec.CurrentBranching.CurrentUsageVector, this);\n808: \t\t\tec.CurrentBranching.CurrentUsageVector.Goto ();\n809: \t\t\treturn true;\n810: \t\t}\n811: \t\t\n812: \t\tpublic Goto (string label, Location l)\n813: \t\t{\n814: \t\t\tloc = l;\n815: \t\t\ttarget = label;\n816: \t\t}\n817: \n818: \t\tpublic string Target {\n819: \t\t\tget { return target; }\n820: \t\t}\n821: \n822: \t\tpublic void SetResolvedTarget (LabeledStatement label)\n823: \t\t{\n824: \t\t\tthis.label = label;\n825: \t\t\tlabel.AddReference ();\n826: \t\t}\n827: \n828: \t\tprotected override void CloneTo (CloneContext clonectx, Statement target)\n829: \t\t{\n830: \t\t\t// Nothing to clone\n831: \t\t}\n832: \n833: \t\tprotected override void DoEmit (EmitContext ec)\n834: \t\t{\n835: \t\t\tif (label == null)\n836: \t\t\t\tthrow new InternalErrorException (\"goto emitted before target resolved\");\n837: \t\t\tLabel l = label.LabelTarget (ec);\n838: \t\t\tec.ig.Emit (unwind_protect ? OpCodes.Leave : OpCodes.Br, l);\n839: \t\t}\n840: \n841: \t\tpublic override void MutateHoistedGenericType (AnonymousMethodStorey storey)",
+    "exact_installed_compiler_source_revision": "UNKNOWN; own fixture emission verifies the installed pinned executable"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "repository": "Unity-Technologies/mono",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 1115,
+    "last": 1118,
+    "meaning": "Break targets current loop exit",
+    "text": "1115: \t\t}\n1116: \n1117: \t\tprotected override void DoEmit (EmitContext ec)\n1118: \t\t{",
+    "exact_installed_compiler_source_revision": "UNKNOWN; own fixture emission verifies the installed pinned executable"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "repository": "Unity-Technologies/mono",
+    "source": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\statement.cs",
+    "sha256": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a",
+    "first": 1146,
+    "last": 1149,
+    "meaning": "Continue targets current loop begin/increment",
+    "text": "1146: \t\t}\n1147: \n1148: \t\tprotected override void DoEmit (EmitContext ec)\n1149: \t\t{",
+    "exact_installed_compiler_source_revision": "UNKNOWN; own fixture emission verifies the installed pinned executable"
+  }
+]

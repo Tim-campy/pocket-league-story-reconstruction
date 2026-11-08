@@ -5637,12 +5637,7 @@ if (num2 > num4)
 						{
 							sendState_ = 1;
 						}
-						goto IL_0817;
-					}
-					if (sendState_ != 1)
-					{
-						goto IL_0817;
-					}
+						} else if (sendState_ == 1) {
 					Draw(text8);
 					byte[] array = null;
 					if (Config.APPLI_TYPE == 0)
@@ -5694,7 +5689,7 @@ if (num2 > num4)
 					string[] array6 = new string[array5.Length];
 					if (Config.DEBUG)
 					{
-						string str = ((save_ == null) ? string.Empty : save_.strs[0]) + "\n" + text + "\n";
+						string str = ((save_ != null) ? save_.strs[0] : string.Empty) + "\n" + text + "\n";
 						try
 						{
 							RecordStore recordStore3 = RecordStore.OpenRecordStore(0);
@@ -5710,7 +5705,7 @@ if (num2 > num4)
 					}
 					else
 					{
-						array4[0] = (((save_ == null) ? string.Empty : save_.strs[0]) + "\n" + text).GetBytes();
+						array4[0] = (((save_ != null) ? save_.strs[0] : string.Empty) + "\n" + text).GetBytes();
 					}
 					array5[0] = "info";
 					array6[0] = "0";
@@ -5732,31 +5727,21 @@ if (num2 > num4)
 						array6[num6] = JString.ValueOf(i);
 						num4 += num5;
 					}
-					int num7 = 0;
-					while (true)
-					{
-						IL_07cd:
-						if (num7 < array4.Length)
-						{
-							while (true)
-							{
+					for (int num7 = 0; num7 < array4.Length; num7++) {
+ recoveredSendRetry:
+
 								Draw(text8);
-								try
-								{
+								try {
 									Post(url, array5[num7], array6[num7], date, array4[num7]);
-								}
-								catch (Exception t)
-								{
+								continue;
+} catch (Exception t) {
 									if (Config.PRINT)
 									{
 										Log.Info(t);
 									}
 									Dialog dialog = new Dialog(3, "ｴﾗｰ");
 									dialog.SetText("エラーが発生しました。リトライしますか？");
-									if (dialog.Show() != 8)
-									{
-										continue;
-									}
+									if (dialog.Show() == 8) {
 									while ((instance.GetKeypadState() & 0x100000) != 0)
 									{
 										try
@@ -5769,24 +5754,21 @@ if (num2 > num4)
 									}
 									sendState_ = 0;
 									instance.ClearKeyBuffer();
-									break;
+									goto recoveredSendOuterEnd;
 								}
-								num7++;
-								goto IL_07cd;
-							}
-							break;
-						}
+}
+ goto recoveredSendRetry;
+}
+
 						sysSave_.strs[10] = string.Empty;
 						SaveSystem();
 						Dialog dialog2 = new Dialog(0, "完了");
 						dialog2.SetText("送信を完了しました。\nご協力ありがとうございます。\n今後もカイロパークを宜しくお願い致します。");
 						dialog2.Show();
 						return;
+
 					}
-					goto end_IL_038e;
-					IL_0817:
-					JThread.Sleep(100L);
-					end_IL_038e:;
+ JThread.Sleep(100L);
 				}
 				catch (Exception t2)
 				{
@@ -5796,10 +5778,7 @@ if (num2 > num4)
 					}
 					Dialog dialog3 = new Dialog(3, "ｴﾗｰ");
 					dialog3.SetText("エラーが発生しました。リトライしますか？");
-					if (dialog3.Show() != 8)
-					{
-						continue;
-					}
+					if (dialog3.Show() == 8) {
 					while ((instance.GetKeypadState() & 0x100000) != 0)
 					{
 						try
@@ -5813,6 +5792,8 @@ if (num2 > num4)
 					sendState_ = 0;
 					instance.ClearKeyBuffer();
 				}
+}
+ recoveredSendOuterEnd:;
 			}
 		}
 

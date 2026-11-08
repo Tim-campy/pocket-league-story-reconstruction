@@ -88,6 +88,11 @@ def main():
         cfg_path.write_text(json.dumps(cfg, indent=2) + '\n', encoding='utf-8')
     elif semantic_closed(current):
         run(['tools/round12_raw_gate.py', '--snapshot', snapshot, '--measurement', measurement, '--label', label])
+    from round12_app_raw_trigger import measure_if_due
+    app_raw = measure_if_due(current, snapshot, label)
+    if app_raw is not None:
+        cfg.setdefault('app_raw_measurements', []).append(app_raw)
+        cfg_path.write_text(json.dumps(cfg, indent=2) + '\n', encoding='utf-8')
     journal['cycles'][-1] = updated
     journal_path.write_text(json.dumps(journal, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     print(json.dumps(dict(postverify_snapshot=str(snapshot), measurement=str(measurement),
