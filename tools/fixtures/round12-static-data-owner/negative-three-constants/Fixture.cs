@@ -1,0 +1,1 @@
+public static class Fixture {public static int[] Numbers(){return new int[]{1,2,3};}}

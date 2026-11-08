@@ -1,0 +1,1 @@
+public static class Fixture {public static string[] Strings(){return new string[]{"a","b","c","d","e"};}}

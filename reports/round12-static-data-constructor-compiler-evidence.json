@@ -1,0 +1,85 @@
+{
+  "citations": [
+    {
+      "path": "compiler-source\\rootcontext.cs",
+      "sha256": "c4d7c13f7a45918f545ac147ad644cc27c45686fceff4d3b39d5175c1cc155d5",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/rootcontext.cs#L273",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 273,
+      "end_line": 284,
+      "claim": "CloseTypes attaches CompilerGenerated and calls TypeBuilder.CreateType on registered helper classes.",
+      "excerpt": "273: \n274: \n275: \t\t\t//\n276: \t\t\t// If we have a <PrivateImplementationDetails> class, close it\n277: \t\t\t//\n278: \t\t\tif (helper_classes != null){\n279: \t\t\t\tforeach (TypeBuilder type_builder in helper_classes) {\n280: \t\t\t\t\tPredefinedAttributes.Get.CompilerGenerated.EmitAttribute (type_builder);\n281: \t\t\t\t\ttype_builder.CreateType ();\n282: \t\t\t\t}\n283: \t\t\t}\n284: \t\t\t"
+    },
+    {
+      "path": "compiler-source\\rootcontext.cs",
+      "sha256": "c4d7c13f7a45918f545ac147ad644cc27c45686fceff4d3b39d5175c1cc155d5",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/rootcontext.cs#L405",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 405,
+      "end_line": 423,
+      "claim": "MakeStaticData defines holder NotPublic/Object, registers compiler-generated type, creates initialized Static|Assembly fields.",
+      "excerpt": "405: \t\tstatic public FieldBuilder MakeStaticData (byte [] data)\n406: \t\t{\n407: \t\t\tFieldBuilder fb;\n408: \t\t\t\n409: \t\t\tif (impl_details_class == null){\n410: \t\t\t\timpl_details_class = ToplevelTypes.Builder.DefineType (\n411: \t\t\t\t\t\"<PrivateImplementationDetails>\",\n412:                                         TypeAttributes.NotPublic,\n413:                                         TypeManager.object_type);\n414:                                 \n415: \t\t\t\tRegisterCompilerGeneratedType (impl_details_class);\n416: \t\t\t}\n417: \n418: \t\t\tfb = impl_details_class.DefineInitializedData (\n419: \t\t\t\t\"$$field-\" + (field_count++), data,\n420: \t\t\t\tFieldAttributes.Static | FieldAttributes.Assembly);\n421: \t\t\t\n422: \t\t\treturn fb;\n423: \t\t}"
+    },
+    {
+      "path": "compiler-source\\TypeBuilder.cs",
+      "sha256": "91dd48bdc9a0f7885a31c21adb40e3e025afc208a28d4b19acb12b90d895d1c8",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/class/corlib/System.Reflection.Emit/TypeBuilder.cs#L496",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 496,
+      "end_line": 523,
+      "claim": "DefineDefaultConstructor emits ldarg0, call parent default constructor, ret.",
+      "excerpt": "496: \t\tpublic ConstructorBuilder DefineDefaultConstructor (MethodAttributes attributes)\n497: \t\t{\n498: \t\t\tType parent_type;\n499: \n500: \t\t\tif (parent != null)\n501: \t\t\t\tparent_type = parent;\n502: \t\t\telse\n503: \t\t\t\tparent_type = pmodule.assemblyb.corlib_object_type;\n504: \n505: \t\t\tConstructorInfo parent_constructor =\n506: \t\t\t\tparent_type.GetConstructor (\n507: \t\t\t\t\tBindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,\n508: \t\t\t\t\tnull, Type.EmptyTypes, null);\n509: \t\t\tif (parent_constructor == null) {\n510: \t\t\t\tthrow new NotSupportedException (\"Parent does\"\n511: \t\t\t\t\t+ \" not have a default constructor.\"\n512: \t\t\t\t\t+ \" The default constructor must be\"\n513: \t\t\t\t\t+ \" explicitly defined.\");\n514: \t\t\t}\n515: \n516: \t\t\tConstructorBuilder cb = DefineConstructor (attributes, \n517: \t\t\t\tCallingConventions.Standard, Type.EmptyTypes);\n518: \t\t\tILGenerator ig = cb.GetILGenerator ();\n519: \t\t\tig.Emit (OpCodes.Ldarg_0);\n520: \t\t\tig.Emit (OpCodes.Call, parent_constructor);\n521: \t\t\tig.Emit (OpCodes.Ret);\n522: \t\t\treturn cb;\n523: \t\t}"
+    },
+    {
+      "path": "compiler-source\\TypeBuilder.cs",
+      "sha256": "91dd48bdc9a0f7885a31c21adb40e3e025afc208a28d4b19acb12b90d895d1c8",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/class/corlib/System.Reflection.Emit/TypeBuilder.cs#L831",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 831,
+      "end_line": 837,
+      "claim": "CreateType implicitly defines a Public default constructor for an eligible class with no constructors.",
+      "excerpt": "831: \t\t\t//\n832: \t\t\t// On classes, define a default constructor if not provided\n833: \t\t\t//\n834: \t\t\tif (!(IsInterface || IsValueType) && (ctors == null) && (tname != \"<Module>\") && \n835: \t\t\t\t(GetAttributeFlagsImpl () & TypeAttributes.Abstract | TypeAttributes.Sealed) != (TypeAttributes.Abstract | TypeAttributes.Sealed) && !has_ctor_method ())\n836: \t\t\t\tDefineDefaultConstructor (MethodAttributes.Public);\n837: "
+    },
+    {
+      "path": "compiler-source\\ConstructorBuilder.cs",
+      "sha256": "5be6519f0c92e573ef5b144afdf4239efdfbc7c17f1d815b1dce8fd56d55c114",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/class/corlib/System.Reflection.Emit/ConstructorBuilder.cs#L64",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 64,
+      "end_line": 73,
+      "claim": "ConstructorBuilder combines Public with SpecialName and RTSpecialName, yielding0x1806.",
+      "excerpt": "64: \t\tprivate Type[][] paramModOpt;\n65: \t\tprivate RefEmitPermissionSet[] permissions;\n66: #pragma warning restore 169, 414\n67: \n68: \t\tinternal ConstructorBuilder (TypeBuilder tb, MethodAttributes attributes, CallingConventions callingConvention, Type[] parameterTypes, Type[][] paramModReq, Type[][] paramModOpt)\n69: \t\t{\n70: \t\t\tattrs = attributes | MethodAttributes.SpecialName | MethodAttributes.RTSpecialName;\n71: \t\t\tcall_conv = callingConvention;\n72: \t\t\tif (parameterTypes != null) {\n73: \t\t\t\tfor (int i = 0; i < parameterTypes.Length; ++i)"
+    },
+    {
+      "path": "compiler-source\\TypeBuilder.cs",
+      "sha256": "91dd48bdc9a0f7885a31c21adb40e3e025afc208a28d4b19acb12b90d895d1c8",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/class/corlib/System.Reflection.Emit/TypeBuilder.cs#L1605",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 1605,
+      "end_line": 1634,
+      "claim": "DefineInitializedData stores RVA bytes; nonempty backing blob uses nested explicit-layout sealed ValueType, Static|HasFieldRVA field.",
+      "excerpt": "1605: \t\tpublic FieldBuilder DefineInitializedData (string name, byte[] data, FieldAttributes attributes) {\n1606: \t\t\tif (data == null)\n1607: \t\t\t\tthrow new ArgumentNullException (\"data\");\n1608: \n1609: \t\t\tFieldBuilder res = DefineUninitializedData (name, data.Length, attributes);\n1610: \t\t\tres.SetRVAData (data);\n1611: \t\t\treturn res;\n1612: \t\t}\n1613: \n1614: \t\tpublic FieldBuilder DefineUninitializedData (string name, int size, FieldAttributes attributes)\n1615: \t\t{\n1616: \t\t\tif (name == null)\n1617: \t\t\t\tthrow new ArgumentNullException (\"name\");\n1618: \t\t\tif (name.Length == 0)\n1619: \t\t\t\tthrow new ArgumentException (\"Empty name is not legal\", \"name\");\n1620: \t\t\tif ((size <= 0) || (size > 0x3f0000))\n1621: \t\t\t\tthrow new ArgumentException (\"Data size must be > 0 and < 0x3f0000\");\n1622: \t\t\tcheck_not_created ();\n1623: \n1624: \t\t\tstring typeName = \"$ArrayType$\" + size;\n1625: \t\t\tType datablobtype = pmodule.GetRegisteredType (fullname + \"+\" + typeName);\n1626: \t\t\tif (datablobtype == null) {\n1627: \t\t\t\tTypeBuilder tb = DefineNestedType (typeName,\n1628: \t\t\t\t\tTypeAttributes.NestedPrivate|TypeAttributes.ExplicitLayout|TypeAttributes.Sealed,\n1629: \t\t\t\t\tpmodule.assemblyb.corlib_value_type, null, PackingSize.Size1, size);\n1630: \t\t\t\ttb.CreateType ();\n1631: \t\t\t\tdatablobtype = tb;\n1632: \t\t\t}\n1633: \t\t\treturn DefineField (name, datablobtype, attributes|FieldAttributes.Static|FieldAttributes.HasFieldRVA);\n1634: \t\t}"
+    },
+    {
+      "path": "compiler-source\\expression.cs",
+      "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/expression.cs#L6266",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 6266,
+      "end_line": 6291,
+      "claim": "ArrayCreation.EmitStaticInitializers builds data, calls MakeStaticData, emits dup/ldtoken/InitializeArray.",
+      "excerpt": "6266: \t\tvoid EmitStaticInitializers (EmitContext ec)\n6267: \t\t{\n6268: \t\t\t// FIXME: This should go to Resolve !\n6269: \t\t\tif (TypeManager.void_initializearray_array_fieldhandle == null) {\n6270: \t\t\t\tTypeManager.void_initializearray_array_fieldhandle = TypeManager.GetPredefinedMethod (\n6271: \t\t\t\t\tTypeManager.runtime_helpers_type, \"InitializeArray\", loc,\n6272: \t\t\t\t\tTypeManager.array_type, TypeManager.runtime_field_handle_type);\n6273: \t\t\t\tif (TypeManager.void_initializearray_array_fieldhandle == null)\n6274: \t\t\t\t\treturn;\n6275: \t\t\t}\n6276: \n6277: \t\t\t//\n6278: \t\t\t// First, the static data\n6279: \t\t\t//\n6280: \t\t\tFieldBuilder fb;\n6281: \t\t\tILGenerator ig = ec.ig;\n6282: \t\t\t\n6283: \t\t\tbyte [] data = MakeByteBlob ();\n6284: \n6285: \t\t\tfb = RootContext.MakeStaticData (data);\n6286: \n6287: \t\t\tig.Emit (OpCodes.Dup);\n6288: \t\t\tig.Emit (OpCodes.Ldtoken, fb);\n6289: \t\t\tig.Emit (OpCodes.Call,\n6290: \t\t\t\t TypeManager.void_initializearray_array_fieldhandle);\n6291: \t\t}"
+    },
+    {
+      "path": "compiler-source\\expression.cs",
+      "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+      "url": "https://github.com/Unity-Technologies/mono/blob/b6587926c0f146c8b12985744f33a13b39a22d57/mcs/mcs/expression.cs#L6380",
+      "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+      "start_line": 6380,
+      "end_line": 6408,
+      "claim": "ArrayCreation.Emit selects static data for>=4 non-default primitive constants above the density threshold; other initializers use element stores.",
+      "excerpt": "6380: \n6381: \t\t\tforeach (Expression e in arguments)\n6382: \t\t\t\te.Emit (ec);\n6383: \n6384: \t\t\tif (arguments.Count == 1)\n6385: \t\t\t\tig.Emit (OpCodes.Newarr, array_element_type);\n6386: \t\t\telse {\n6387: \t\t\t\tig.Emit (OpCodes.Newobj, GetArrayMethod (arguments.Count));\n6388: \t\t\t}\n6389: \t\t\t\n6390: \t\t\tif (initializers == null)\n6391: \t\t\t\treturn;\n6392: \n6393: \t\t\t// Emit static initializer for arrays which have contain more than 4 items and\n6394: \t\t\t// the static initializer will initialize at least 25% of array values.\n6395: \t\t\t// NOTE: const_initializers_count does not contain default constant values.\n6396: \t\t\tif (const_initializers_count >= 4 && const_initializers_count * 4 > (array_data.Count) &&\n6397: \t\t\t\tTypeManager.IsPrimitiveType (array_element_type)) {\n6398: \t\t\t\tEmitStaticInitializers (ec);\n6399: \n6400: \t\t\t\tif (!only_constant_initializers)\n6401: \t\t\t\t\tEmitDynamicInitializers (ec, false);\n6402: \t\t\t} else {\n6403: \t\t\t\tEmitDynamicInitializers (ec, true);\n6404: \t\t\t}\n6405: \n6406: \t\t\tif (first_emit_temp != null)\n6407: \t\t\t\tfirst_emit_temp.Release (ec);\n6408: \t\t}"
+    }
+  ],
+  "installed_compiler_runtime_source_manufacturing_revision": "UNKNOWN: pinned source explains the independently observed installed behavior, not proof of original build manufacturing revision."
+}

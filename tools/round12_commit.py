@@ -36,7 +36,11 @@ def main():
     parser.add_argument('--push',action='store_true')
     parser.add_argument('--final-report',action='store_true')
     parser.add_argument('--raw-source',action='store_true',help='Consolidate measured source metadata steps without rewriting body-cycle provenance')
+    parser.add_argument('--verification-release',action='store_true',help='Measure a verified generated-origin release without adding/recounting a reconstruction cycle')
+    parser.add_argument('--origin-proof',help='Reviewed generic origin certificate for the first release event')
+    parser.add_argument('--origin-proof-sha256')
     args=parser.parse_args()
+    if args.raw_source and args.verification_release:raise ValueError('Distinct provenance events cannot share a commit mode')
     folder=ROOT/'build/round12/runs'/args.run_label/'commit';folder.mkdir(parents=True,exist_ok=True)
     run([sys.executable,'tools/verify','--all'],folder/'full-verification.log',accepted=(0,1))
     for a in ('KairoLibrary','Assembly-CSharp'):
@@ -44,7 +48,13 @@ def main():
         if not receipt_is_fresh(ROOT,receipt) or any(receipt.get(k) for k in ('regressions','body_regressions','type_regressions')):raise ValueError('Fresh verification failed '+a)
     # Full verification creates fresh nondeterministic PE fields. Keep the journal
     # bound to these exact PEs; after root's first raw PASS, renew that literal test.
-    if args.raw_source:
+    cfg=json.loads((ROOT/'config/round12-protocol.json').read_text(encoding='utf-8'))
+    if args.verification_release or (args.final_report and cfg.get('verification_current_measurement')):
+        command=[sys.executable,'tools/round12_verification_release.py','--label',args.run_label]
+        if args.origin_proof:command+=['--origin-proof',args.origin_proof]
+        if args.origin_proof_sha256:command+=['--origin-proof-sha256',args.origin_proof_sha256]
+        run(command,folder/'verification-release-provenance.log')
+    elif args.raw_source:
         run([sys.executable,'tools/round12_raw_source_postverify.py','--label',args.run_label],folder/'postverify-provenance.log')
     elif (ROOT/'reports/round12-cycle-journal.json').exists():
         run([sys.executable,'tools/round12_postverify_provenance.py','--label',args.run_label],folder/'postverify-provenance.log')

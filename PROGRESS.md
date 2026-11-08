@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b39-postverify01-KairoLibrary-raw.json](reports/round12-b39-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `c9bffe26ec6b0bc107f06b31179a35ab3dd2905492ad1c20bbeb83c862f49368`. Sem normalização.
+Prova literal atual: [reports/round12-verification-origin-release-verification02-KairoLibrary-raw.json](reports/round12-verification-origin-release-verification02-KairoLibrary-raw.json); SHA-256 do PE recompilado `76b79ce4ba7b9eb3cd9f09a6af96c27009d4dbe5f04ae66e90cfc9893d1ea501`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,244 de 5,245 métodos matched (99.98%).** 871,497 bytes de IL nos assemblies alvo.
-871,490 bytes IL matched (100.00%).
+**5,245 de 5,245 métodos matched (100.00%).** 871,497 bytes de IL nos assemblies alvo.
+871,497 bytes IL matched (100.00%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -17,24 +17,24 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 
 | Estado | Métodos |
 |---|---:|
-| todo | 1 |
+| todo | 0 |
 | decompiled | 0 |
 | equivalent | 0 |
-| matched | 5244 |
+| matched | 5245 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1957 / 99.95% | 601596 / 100.00% |
+| `Assembly-CSharp` | 1958 | 601603 | 1958 / 100.00% | 601603 / 100.00% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `(global)` | 2 | 14 | 1 / 50.00% | 7 / 50.00% |
+| `(global)` | 2 | 14 | 2 / 100.00% | 14 / 100.00% |
 | `BuildInfos` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `UnityEngine.Purchasing` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
@@ -94,7 +94,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp::<PrivateImplementationDetails>` | 1 | 7 | 0 / 0.00% | 0 / 0.00% |
+| `Assembly-CSharp::<PrivateImplementationDetails>` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::BuildInfos.BuildInfo` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::TJPlacement` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::UnityEngine.Purchasing.Product` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |

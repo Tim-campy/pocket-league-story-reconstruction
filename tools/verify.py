@@ -72,7 +72,7 @@ def main():
         if args.method:
             receipt=json.loads((ROOT/f'build/verification-{assembly}.json').read_text(encoding='utf-8'))
             print(json.dumps({'method':args.method,'result':receipt['methods'][args.method]}))
-    return status or 2
+    return status
 
 
 def cli():

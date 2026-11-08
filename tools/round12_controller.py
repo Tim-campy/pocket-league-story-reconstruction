@@ -43,6 +43,46 @@ def measured_zero_streak(journal):
     return count
 
 
+def measured_semantic_completion(cfg, journal):
+    """Natural completion is a hash-bound verifier result, never a count alone."""
+    rows = part_rows(journal, 'B')
+    if (not rows or cfg.get('phase') not in ('part_B', 'stopped')
+            or cfg.get('required_parts', {}).get('A') != 'complete'
+            or not rows[-1].get('after_measurement') or not rows[-1].get('after_sha256')):
+        return False
+    measurement = current_measurement(cfg, journal)
+    expected = {'KairoLibrary': (3287, 337), 'Assembly-CSharp': (1958, 129)}
+    for assembly, (methods, types) in expected.items():
+        row = measurement.get('assemblies', {}).get(assembly, {})
+        if (row.get('total_methods') != methods or row.get('matched_methods') != methods
+                or row.get('divergent_bodies') != 0 or row.get('equal_body_held_methods') != 0
+                or row.get('matched_original_il_bytes') != row.get('original_total_il_bytes')
+                or not row.get('original_total_il_bytes')):
+            return False
+    if file_hash(ROOT / 'config/methods.csv') != measurement.get('ledger_sha256'):
+        raise GuardError('Natural completion ledger differs from the verified measurement')
+    from apply_il_rules import receipt_is_fresh
+    for assembly, (methods, types) in expected.items():
+        receipt = load(ROOT / ('build/verification-' + assembly + '.json'))
+        if (not receipt_is_fresh(ROOT, receipt)
+                or any(receipt.get(k) for k in ('regressions', 'body_regressions', 'type_regressions'))
+                or receipt.get('types_equal') != types or receipt.get('types_total') != types
+                or receipt.get('build_sha256') != measurement['assemblies'][assembly]['provenance']['build_sha256']):
+            raise GuardError('Natural completion requires fresh full verifier proof: ' + assembly)
+        rows = receipt.get('methods', {})
+        if (len(rows) != methods or any(row.get('state') != 'matched'
+                or row.get('generated_group_pending')
+                or (row.get('body_present') and row.get('body_equal') is not True)
+                or (not row.get('body_present') and row.get('metadata_declaration_equal') is not True)
+                for row in rows.values())):
+            raise GuardError('Natural completion has an unproved declaration: ' + assembly)
+        for name, digest in receipt.get('helper_source_hashes', {}).items():
+            if file_hash(ROOT / name) != digest:
+                raise GuardError('Natural completion verifier helper changed: ' + name)
+    verify_raw_gate(cfg, measurement)
+    return True
+
+
 def stop_reason(cfg, journal):
     if cfg.get('requested_stop', {}).get('source') == 'user':
         return 'explicit_user_stop'
@@ -50,6 +90,8 @@ def stop_reason(cfg, journal):
         return 'maximum_40_Part_B_cycles'
     if queue_empty(cfg) and measured_zero_streak(journal) >= cfg['consecutive_zero_stop']:
         return 'five_zero_Part_B_cycles_with_queue_empty_before_and_after'
+    if measured_semantic_completion(cfg, journal):
+        return 'all_method_and_structural_metadata_targets_closed'
     return None
 
 
@@ -155,6 +197,11 @@ def validate_cycle(cfg, journal, request, measurement):
 
 
 def current_measurement(cfg, journal):
+    if cfg.get('verification_current_measurement'):
+        from round12_verification_release import validate_pointer
+        return validate_pointer(ROOT, cfg, journal)
+    if cfg.get('verification_origin_release'):
+        raise GuardError('Explicit hash-bound verification-release measurement is required')
     rows = journal.get('cycles', [])
     raw_source_path = ROOT / 'reports/round12-raw-source-journal.json'
     source_commits = load(raw_source_path).get('commit_provenance', []) if raw_source_path.exists() else []

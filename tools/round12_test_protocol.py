@@ -24,6 +24,8 @@ class Protocol(unittest.TestCase):
         self.cfg['prepared_queue'] = []
         self.cfg.pop('requested_stop', None)
         self.cfg.pop('raw_source_current_measurement', None)
+        self.cfg.pop('verification_current_measurement', None)
+        self.cfg.pop('verification_origin_release', None)
         self.journal = {'cycles': []}
         self.measurement = {'assemblies': {'KairoLibrary': {'divergent_bodies': 13,
                                                           'equal_body_held_methods': 2}}}

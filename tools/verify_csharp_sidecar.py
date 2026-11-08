@@ -12,7 +12,7 @@ import re
 import subprocess
 from build_csharp import sha
 from compare_kairo import differences,patterns
-from generated_groups import prove_groups
+from generated_groups import prove_groups, compiled_static_data_origins
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -50,6 +50,7 @@ def main():
     generated_ids={m['stable_id'] for m in originals if ledger[token(m)]['gerado_por']}
     equal_ids={m['stable_id'] for m in originals if 'raw_body_hex' in m and not differences(m,candidates.get(m['stable_id']))[0]}
     ownership,groups=prove_groups(original,rebuilt,generated_ids,equal_ids)
+    source_rows={m['stable_id']:ledger[token(m)] for m in originals}
     generated_signatures={m['signature'] for m in originals if m['stable_id'] in generated_ids}
     compiled={s['path'] for s in manifest['sources']}
     counts=Counter();facets=Counter();traits=Counter();results={}
@@ -63,7 +64,8 @@ def main():
             r in generated_signatures for r in references if isinstance(r,str))
         proof=ownership.get(method['stable_id'])
         if pending and proof and proof['proved']:pending=False
-        available=row['fonte'] in compiled
+        source_proof=compiled_static_data_origins(proof,source_rows,compiled)
+        available=row['fonte'] in compiled or source_proof['proved']
         state='matched' if body_equal and not pending and available else 'decompiled' if available else 'todo'
         labels=patterns(method,candidate) if delta else []
         counts[state]+=1;counts['body_equal']+=body_equal;counts['declarations_without_body']+=not has_body
@@ -72,7 +74,7 @@ def main():
         if delta and has_body:facets.update(delta);traits.update(labels)
         results[row['id']]={'state':state,'percent':percent,'differences':delta,'body_present':has_body,
             'body_equal':body_equal,'generated_group_pending':pending,'patterns':labels,'ownership_proof':proof,
-            'stable_id':method['stable_id']}
+            'stable_id':method['stable_id'],'source_availability_proof':source_proof}
     summary={'schema_version':1,'assembly':'Assembly-CSharp','compiler_candidate':manifest['compiler'],
         'historical_compiler_identity':'UNKNOWN','original_sha256':sha(oracle),'build_sha256':sha(artifact),
         'build_artifact':artifact.relative_to(ROOT).as_posix(),'counts':dict(counts),'difference_facets':dict(facets),
