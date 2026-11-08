@@ -240,13 +240,11 @@ namespace kairo.unity.io
 						heapData_.RemoveElementAt(num);
 						heapName_.RemoveElementAt(num);
 					}
-				}
-				else
-				{
-					if (media_ == 3 || (media_ != 1 && media_ != 4))
-					{
-						return;
-					}
+
+return;
+}
+if (media_ == 3) { return; }
+if (media_ == 1 || media_ == 4) {
 					if (filename.Contains(':'))
 					{
 						if (File.Exists(filename))
@@ -258,7 +256,8 @@ namespace kairo.unity.io
 					{
 						File.Delete(folder_ + "/" + filename);
 					}
-				}
+
+}
 			}
 			catch (UnauthorizedAccessException ex)
 			{

@@ -1,0 +1,366 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports\\round12-kairo-tail-record-patches.json",
+  "old_bundle_sha256": "06046b0bb2322d845bdb0cd794921ea3443126f8339dde4dd38dfff0a435da13",
+  "assembly": "KairoLibrary",
+  "baseline": "build\\round12\\runs\\a04\\commit\\postverify01\\KairoLibrary",
+  "manifest_sha256": "d649d42bdc614608b8ee093fcf1c7e20a730da2ed99f79a95dd4b17d595aaaa1",
+  "model_validation": "reports/round12-roslyn-model-validation.json",
+  "model_validation_sha256": "ddc53773415a1c6e7d820a1005952ea2ef6eb0538cef36fc7de6ac7993bbfcae",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round12RoslynModel.cs": "11082c1fa1e5e96373c16a62c76ecfae2cdf4a4a3409d4108eb253725cf359ea",
+    "tools/round12_roslyn_model.py": "e6dac3815d3cb9d2fdee74e1b99e7b36657fa41c96bfbcbd89d780c6a64ad792",
+    "tools/round7_roslyn_solver.py": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991"
+  },
+  "records": [
+    {
+      "method_id": "kairo.unity.io.RecordStore::RemoveAllRecord()->System.Void",
+      "logical_source": "src/KairoLibrary/kairo/unity/io/RecordStore.cs",
+      "frozen_full_source_sha256": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+      "live_full_source_sha256": "fb8d8c3639992470a8c4475a2317c6244359b096149bce96a978d58972f49373",
+      "candidate_full_source_sha256": "0b7db60bb734d8d4ee11f24ec38a56f525ef18e5b44a11d1efcf0d3848192580",
+      "previous_model_binding": {
+        "model_source_sha256": "11082c1fa1e5e96373c16a62c76ecfae2cdf4a4a3409d4108eb253725cf359ea",
+        "client_sha256": "e6dac3815d3cb9d2fdee74e1b99e7b36657fa41c96bfbcbd89d780c6a64ad792",
+        "complete": false,
+        "predicted_types": [
+          "System.String[]",
+          "System.String[]",
+          "System.Int32",
+          "System.String"
+        ],
+        "unsupported_reasons": [
+          "foreach_collection_local_stack_scheduler",
+          "foreach_iteration_stack_scheduler"
+        ]
+      },
+      "prediction": {
+        "method_id": "kairo.unity.io.RecordStore::RemoveAllRecord()->System.Void",
+        "complete": false,
+        "predicted_types": [
+          "System.String[]",
+          "System.String[]",
+          "System.Int32",
+          "System.String"
+        ],
+        "variables": [
+          {
+            "name": "files",
+            "type": "System.String[]",
+            "kind": "declared",
+            "start": 6640,
+            "end": 6667,
+            "slot": 0,
+            "block": 2,
+            "type_source": "string[]",
+            "statement_start": 6631,
+            "statement_end": 6668,
+            "lexical_scope_start": 6624,
+            "lexical_scope_end": 6761,
+            "storage_proofs": [],
+            "initializer": "storage_.GetFiles()",
+            "next_statement_start": 6674,
+            "next_statement_end": 6755,
+            "next_statement_kind": "ForEachStatement"
+          },
+          {
+            "name": "$array",
+            "type": "System.String[]",
+            "kind": "emit-temporary",
+            "start": 6674,
+            "end": 6755,
+            "slot": 1,
+            "block": -1,
+            "type_source": null,
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "storage_proofs": [],
+            "initializer": null,
+            "next_statement_start": -1,
+            "next_statement_end": -1,
+            "next_statement_kind": null
+          },
+          {
+            "name": "$index0",
+            "type": "System.Int32",
+            "kind": "emit-temporary",
+            "start": 6674,
+            "end": 6755,
+            "slot": 2,
+            "block": -1,
+            "type_source": null,
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "storage_proofs": [],
+            "initializer": null,
+            "next_statement_start": -1,
+            "next_statement_end": -1,
+            "next_statement_kind": null
+          },
+          {
+            "name": "filename",
+            "type": "System.String",
+            "kind": "declared",
+            "start": 6674,
+            "end": 6755,
+            "slot": 3,
+            "block": 3,
+            "type_source": "string",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "storage_proofs": [],
+            "initializer": null,
+            "next_statement_start": -1,
+            "next_statement_end": -1,
+            "next_statement_kind": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 6522,
+            "end": 6887,
+            "parent": -1,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 6574,
+            "end": 6594,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 6624,
+            "end": 6761,
+            "parent": 0,
+            "used": false,
+            "variables": [
+              {
+                "name": "files",
+                "type": "System.String[]",
+                "kind": "declared",
+                "start": 6640,
+                "end": 6667,
+                "slot": 0,
+                "block": 2,
+                "type_source": "string[]",
+                "statement_start": 6631,
+                "statement_end": 6668,
+                "lexical_scope_start": 6624,
+                "lexical_scope_end": 6761,
+                "storage_proofs": [],
+                "initializer": "storage_.GetFiles()",
+                "next_statement_start": 6674,
+                "next_statement_end": 6755,
+                "next_statement_kind": "ForEachStatement"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "foreach",
+            "start": 6674,
+            "end": 6755,
+            "parent": 2,
+            "used": false,
+            "variables": [
+              {
+                "name": "filename",
+                "type": "System.String",
+                "kind": "declared",
+                "start": 6674,
+                "end": 6755,
+                "slot": 3,
+                "block": 3,
+                "type_source": "string",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "storage_proofs": [],
+                "initializer": null,
+                "next_statement_start": -1,
+                "next_statement_end": -1,
+                "next_statement_kind": null
+              }
+            ],
+            "registered": [
+              {
+                "name": "$array",
+                "type": "System.String[]",
+                "kind": "foreach-array-copy",
+                "start": 6702,
+                "end": 6707,
+                "slot": 1,
+                "block": 3,
+                "type_source": null,
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "storage_proofs": [],
+                "initializer": null,
+                "next_statement_start": -1,
+                "next_statement_end": -1,
+                "next_statement_kind": null
+              },
+              {
+                "name": "$index0",
+                "type": "System.Int32",
+                "kind": "foreach-index",
+                "start": 6674,
+                "end": 6755,
+                "slot": 2,
+                "block": 3,
+                "type_source": null,
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "storage_proofs": [],
+                "initializer": null,
+                "next_statement_start": -1,
+                "next_statement_end": -1,
+                "next_statement_kind": null
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 6714,
+            "end": 6755,
+            "parent": 3,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 6775,
+            "end": 6882,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "foreach",
+            "start": 6782,
+            "end": 6876,
+            "parent": 5,
+            "used": false,
+            "variables": [
+              {
+                "name": "key",
+                "type": "System.String",
+                "kind": "declared",
+                "start": 6782,
+                "end": 6876,
+                "slot": -1,
+                "block": 6,
+                "type_source": "string",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "storage_proofs": [],
+                "initializer": null,
+                "next_statement_start": -1,
+                "next_statement_end": -1,
+                "next_statement_kind": null
+              }
+            ],
+            "registered": [
+              {
+                "name": "$array",
+                "type": "System.String[]",
+                "kind": "foreach-array-copy",
+                "start": 6805,
+                "end": 6836,
+                "slot": 1,
+                "block": 6,
+                "type_source": null,
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "storage_proofs": [],
+                "initializer": null,
+                "next_statement_start": -1,
+                "next_statement_end": -1,
+                "next_statement_kind": null
+              },
+              {
+                "name": "$index0",
+                "type": "System.Int32",
+                "kind": "foreach-index",
+                "start": 6782,
+                "end": 6876,
+                "slot": 2,
+                "block": 6,
+                "type_source": null,
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "storage_proofs": [],
+                "initializer": null,
+                "next_statement_start": -1,
+                "next_statement_end": -1,
+                "next_statement_kind": null
+              }
+            ]
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 6838,
+            "end": 6876,
+            "parent": 6,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "modeled_lowerings": [],
+        "unsupported_reasons": [
+          "foreach_collection_local_stack_scheduler",
+          "foreach_iteration_stack_scheduler"
+        ],
+        "declaration_start": 6489,
+        "declaration_end": 6887,
+        "body_start": 6522,
+        "body_end": 6887
+      },
+      "original_signature_equal": false,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}

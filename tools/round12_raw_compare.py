@@ -8,6 +8,7 @@ No normalized image/hash is created and no target executable is run.
 import argparse
 from collections import Counter
 import csv
+from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
@@ -28,6 +29,87 @@ def digest(data):
 
 def read(path):
     return json.loads(Path(path).read_text(encoding='utf-8-sig'))
+
+
+def compilation_authority(base, assembly, receipt, output_sha256):
+    """A missing build manifest must never silently weaken the proof profile."""
+    folder = base / assembly
+    manifest_path = folder / 'build-manifest.json'
+    manifest = read(manifest_path)
+    if (not re.fullmatch('[0-9a-f]{64}', manifest.get('compiler_sha256', '')) or
+            manifest.get('output_sha256') != output_sha256 or manifest.get('exit_code') != 0):
+        raise ValueError('Build manifest does not bind compiler and measured output')
+    if not manifest.get('sources') or manifest['sources'] != receipt.get('sources'):
+        raise ValueError('Build and official verification source inventories differ')
+    for item in manifest['sources']:
+        path = (folder / item['path']).resolve()
+        if not path.is_relative_to(folder.resolve()) or digest(path.read_bytes()) != item['sha256']:
+            raise ValueError('Frozen source is absent, outside snapshot, or differs from build')
+    snapshot_path = base / 'snapshot.json'
+    snapshot = read(snapshot_path)
+    ledger = base / 'methods.csv'
+    if snapshot.get('ledger_sha256') != digest(ledger.read_bytes()):
+        raise ValueError('Snapshot ledger hash is stale')
+    if any(receipt.get(k) for k in ('regressions', 'body_regressions', 'type_regressions')):
+        raise ValueError('Semantic receipt contains regressions')
+    return dict(compiler_sha256=manifest['compiler_sha256'],
+                manifest_sha256=digest(manifest_path.read_bytes()),
+                snapshot_sha256=digest(snapshot_path.read_bytes()),
+                ledger_sha256=digest(ledger.read_bytes()), source_files=len(manifest['sources']))
+
+
+@lru_cache(maxsize=1)
+def opcode_geometry():
+    result = read(ROOT / 'tools/round9_control_opcodes.json')
+    # Cecil uses these historical display names; the byte stream and the
+    # exhaustive comparator remain untouched by this diagnostic-width lookup.
+    result['ldelem.any'] = result['ldelem']
+    result['stelem.any'] = result['stelem']
+    return result
+
+
+def checked_method_geometry(method, payload):
+    """Bound DTO labels by independently parsed header and encoded operand widths."""
+    if not payload:
+        raise ValueError('Missing method body')
+    if payload[0] & 3 == 2:
+        size, code_size, form = 1, payload[0] >> 2, 'tiny'
+    elif payload[0] & 3 == 3 and len(payload) >= 12:
+        size = (int.from_bytes(payload[:2], 'little') >> 12) * 4
+        code_size, form = int.from_bytes(payload[4:8], 'little'), 'fat'
+        if size < 12:
+            raise ValueError('Fat header is shorter than required fields')
+    else:
+        raise ValueError('Unsupported or truncated method header')
+    header = method['header']
+    if (header['size'] != size or header['code_size'] != code_size or header['format'] != form
+            or size + code_size > len(payload)):
+        raise ValueError('Method DTO geometry differs from authenticated bytes')
+    opcodes = opcode_geometry()
+    widths = {'InlineNone': 0, 'ShortInlineI': 1, 'ShortInlineVar': 1,
+              'ShortInlineBrTarget': 1, 'InlineVar': 2, 'InlineI': 4,
+              'InlineBrTarget': 4, 'ShortInlineR': 4, 'InlineField': 4,
+              'InlineMethod': 4, 'InlineSig': 4, 'InlineString': 4,
+              'InlineTok': 4, 'InlineType': 4, 'InlineI8': 8, 'InlineR': 8}
+    cursor = 0
+    for instruction in method['instructions']:
+        if instruction['offset'] != cursor or cursor >= code_size:
+            raise ValueError('Instruction offsets do not partition the actual IL')
+        info = opcodes[instruction['opcode']]
+        kind = info['operand_type']
+        operand = size + cursor + info['size']
+        if kind == 'InlineSwitch':
+            if operand + 4 > size + code_size:
+                raise ValueError('Truncated switch count')
+            width = 4 + 4 * int.from_bytes(payload[operand:operand + 4], 'little')
+        else:
+            width = widths[kind]
+        cursor += info['size'] + width
+        if cursor > code_size:
+            raise ValueError('Instruction leaves the authenticated IL body')
+    if cursor != code_size:
+        raise ValueError('Instructions do not cover every IL byte')
+    return size, code_size
 
 
 def field_map(size, fields):
@@ -102,7 +184,7 @@ def regions(data, layout, detail, side, method_rows=None, methods=None):
             raise ValueError('Shared method RVA has inconsistent dump bytes')
         label = 'METHOD/' + '|'.join(m['stable_id'] for m, _ in aliases)
         paint(offset, len(payload), label + '/body')
-        header, code_size = method['header']['size'], method['header']['code_size']
+        header, code_size = checked_method_geometry(method, payload)
         paint(offset, header, label + '/header')
         if method['header']['format'] == 'fat':
             paint(offset + 8, 4, label + '/local-signature-token')
@@ -206,6 +288,7 @@ def main():
     left, right = original.read_bytes(), rebuilt.read_bytes()
     if digest(left) != receipt['original_sha256'] or digest(right) != receipt['build_sha256'] or digest(right) != manifest['sha256']:
         raise ValueError('Snapshot/receipt/input identity mismatch')
+    authority = compilation_authority(base, args.assembly, receipt, digest(right))
     body_rows = [r for r in receipt['methods'].values() if r.get('body_present')]
     divergent = sum(not r.get('body_equal') for r in body_rows)
     held = sum(r.get('body_equal') and r.get('state') != 'matched' for r in body_rows)
@@ -277,11 +360,13 @@ def main():
                   excluded_differing_bytes=counts['excluded_differing_bytes'],
                   exception_coordinates_equal=fields_same, exception_coordinates=selected,
                   exception_proof=proof, remaining_regions=dict(regions_count.most_common()),
+                  compilation_authority=authority,
                   outputs={k: dict(path=str(p.relative_to(ROOT)), sha256=digest(p.read_bytes())) for k, p in outputs.items() if k != 'report'},
                   semantic_receipt_sha256=digest((base / args.assembly / 'verification.json').read_bytes()),
                   method_dump_sha256={s: digest((base / args.assembly / (s + '-methods.json')).read_bytes())
                                       for s in ('original', 'rebuilt')},
                   producer_sha256=digest(Path(__file__).read_bytes()),
+                  region_opcode_schema_sha256=digest((ROOT / 'tools/round9_control_opcodes.json').read_bytes()),
                   DLL_writes=False, normalization_applied=False, target_executed=False,
                   method_or_type_states_modified=False,
                   limitations='Causes remain UNKNOWN unless independently established. Sections, streams and table summaries overlap and are not additive. PASS uses literal whole-file offsets, not aligned region summaries.')

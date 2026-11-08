@@ -42,6 +42,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--label', required=True)
     args = p.parse_args()
+    if (ROOT / 'build/round12/ROOT_RAW_WRITE_HOLD').exists():
+        raise RuntimeError('Root raw files are being edited; preserve journal and retry commit only after freeze confirmation')
     journal_path = ROOT / 'reports/round12-cycle-journal.json'
     journal = load(journal_path)
     if not journal['cycles'] or (args.label != journal['cycles'][-1]['label'] and args.label != 'final-report'):

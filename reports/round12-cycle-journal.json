@@ -137,6 +137,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 5,
+      "part_cycle": 5,
+      "label": "a05",
+      "phase": "A",
+      "primary_target": "kairo.unity.io.Storage::Delete(System.String)->System.Void",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-storage-delete-heap-return-media-positive-body",
+      "assembly": "KairoLibrary",
+      "pair": "leave.s => br.s",
+      "hypothesis": "Restore independent heap and media3 exits and the positive media1-or4 body, preserving the original try/catch boundary and leave owners; no raw-byte normalization.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 164
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 164,
+      "before_measurement": "reports\\round12-a05-before-measurement.json",
+      "before_sha256": "dcdead52fd56b1b0c4c9f38f3a82d5aa797b447d2710bc26f1f6cfd737812d52",
+      "after_measurement": "reports/round12-a05-postverify01-measurement.json",
+      "after_sha256": "339ba67091d99462a28997bd0280a30569bdf0375033cda3f3956e045bbee32f",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-a05-after-measurement.json",
+          "previous_after_sha256": "768978a017595ccb439924cd5285d9c1f74528bd02ed183551237e3c8d8b82b9",
+          "new_after_measurement": "reports/round12-a05-postverify01-measurement.json",
+          "new_after_sha256": "339ba67091d99462a28997bd0280a30569bdf0375033cda3f3956e045bbee32f",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0

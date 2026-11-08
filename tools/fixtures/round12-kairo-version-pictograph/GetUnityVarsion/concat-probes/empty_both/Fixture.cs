@@ -1,0 +1,1 @@
+using System; public class Fixture { public static string Run(string s,int i) { return ""+s[i]+""; } }

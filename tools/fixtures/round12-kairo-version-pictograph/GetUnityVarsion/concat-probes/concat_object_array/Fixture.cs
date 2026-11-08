@@ -1,0 +1,1 @@
+using System; public class Fixture { public static string Run(string s,int i) { return string.Concat(new object[]{s[i]}); } }

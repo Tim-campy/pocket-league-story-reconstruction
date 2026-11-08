@@ -197,15 +197,21 @@
       "phase": "A",
       "selection_mode": "autonomous_selection",
       "assembly": "KairoLibrary",
-      "status": "pending",
-      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "status": "tested",
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN",
       "method_ids": [
         "kairo.unity.io.Storage::Delete(System.String)->System.Void"
       ],
       "potential_original_il_bytes": 164,
-      "source_proposals": "build/round12/kairo-storage-utc-layout/storage/ready-for-game-probe.json",
-      "source_proposals_sha256": "c477d10674870fcd8028d1dea9737eb7a6e5c27afdb1203cc71cbe37f217fe68",
-      "private_publication_pending": true
+      "source_proposals": "reports/round12-kairo-storage-live-model-patches.json",
+      "source_proposals_sha256": "eeabc73eba87edb16d66235532c229b13945e5c935475c628dd9126da323c697",
+      "private_publication_pending": false,
+      "rule_prefix": "r12-storage-delete-heap-return-media-positive-body",
+      "report": "reports/round12-a05-KairoLibrary-engine.json",
+      "tested_ids": [
+        "kairo.unity.io.Storage::Delete(System.String)->System.Void"
+      ],
+      "baseline_equal_ids": []
     },
     {
       "id": "prepared-kairo-utc",
@@ -213,14 +219,95 @@
       "selection_mode": "autonomous_selection",
       "assembly": "KairoLibrary",
       "status": "pending",
-      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN",
       "method_ids": [
         "java.native.JavaPlugin/<>c__DisplayClass8_0::<GetUtcOffset>b__0()->System.Object"
       ],
       "potential_original_il_bytes": 140,
-      "source_proposals": "build/round12/kairo-storage-utc-layout/utc/ready-for-game-probe.json",
-      "source_proposals_sha256": "eb5cb0df08b886230b422e0e6df294b0a8dd56fc2352bd56a922127f27dbe57a",
-      "private_publication_pending": true
+      "source_proposals": "reports/round12-kairo-utc-live-model-patches.json",
+      "source_proposals_sha256": "2daa514b4514565eb0d303912ec976609af8450582d50728f16019acc63aa017",
+      "private_publication_pending": false,
+      "rule_prefix": "r12-utc-fallback-local-after-using-return-temp"
+    },
+    {
+      "id": "prepared-kairo-version",
+      "phase": "A",
+      "selection_mode": "autonomous_selection",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "method_ids": [
+        "kairo.unity.native.KairoPlugin::GetUnityVarsion()->System.Int32"
+      ],
+      "source_proposals": "reports/round12-kairo-version-pictograph-live-model-patches.json",
+      "source_proposals_sha256": "d70b578a6c371442788b6fd3b5bf56071aaa74f418bb21cca0782e689def2cd3",
+      "rule_prefix": "r12-kairo-char-empty-concat-constrained-object",
+      "potential_original_il_bytes": 128,
+      "private_publication_pending": false,
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN"
+    },
+    {
+      "id": "prepared-kairo-pictograph",
+      "phase": "A",
+      "selection_mode": "autonomous_selection",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "method_ids": [
+        "kairo.unity.ui.TextLayout::AddPictograph(System.String,kairo.unity.ui.Seb,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)->kairo.unity.ui.Pictograph"
+      ],
+      "source_proposals": "reports/round12-kairo-version-pictograph-live-model-patches.json",
+      "source_proposals_sha256": "d70b578a6c371442788b6fd3b5bf56071aaa74f418bb21cca0782e689def2cd3",
+      "rule_prefix": "r12-kairo-pictograph-local-inside-dictionary-setter",
+      "potential_original_il_bytes": 105,
+      "private_publication_pending": false,
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN"
+    },
+    {
+      "id": "prepared-kairo-record",
+      "phase": "A",
+      "selection_mode": "autonomous_selection",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "method_ids": [
+        "kairo.unity.io.RecordStore::RemoveAllRecord()->System.Void"
+      ],
+      "source_proposals": "reports/round12-kairo-tail-record-live-model-patches.json",
+      "source_proposals_sha256": "b29eae7c4bfceed9aa4c8ab05b3ec005af9240500ee1c4d754ca1d19a631a820",
+      "rule_prefix": "r12-recordstore-preference-array-foreach-reused-temps",
+      "potential_original_il_bytes": 94,
+      "private_publication_pending": false,
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN"
+    },
+    {
+      "id": "prepared-kairo-translate",
+      "phase": "A",
+      "selection_mode": "autonomous_selection",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "method_ids": [
+        "kairo.unity.m3d4.util3d.Transform::Translate(System.Single,System.Single,System.Single)->System.Void"
+      ],
+      "source_proposals": "reports/round12-kairo-tail-translate-live-model-patches.json",
+      "source_proposals_sha256": "b9bae9f1115f24f492d9b10a1210220667c04666cbb90e10d872a3b8f10c0305",
+      "rule_prefix": "r12-translate-inline-mixed-array-set-argument",
+      "potential_original_il_bytes": 67,
+      "private_publication_pending": false,
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN"
+    },
+    {
+      "id": "prepared-kairo-sqrt",
+      "phase": "A",
+      "selection_mode": "autonomous_selection",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "method_ids": [
+        "kairo.unity.math.KairoMath::Sqrt(System.Int64)->System.Int64"
+      ],
+      "source_proposals": "reports/round12-kairo-tail-sqrt-live-model-patches.json",
+      "source_proposals_sha256": "72c856083ae218c58c1f8626d8c0d75eef12e2e69faaf9acacc5c817f8d29cb1",
+      "rule_prefix": "r12-sqrt-root-local-order-preserved-initialization",
+      "potential_original_il_bytes": 46,
+      "private_publication_pending": false,
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN"
     }
   ],
   "selection_policy": {

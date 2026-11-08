@@ -1,7 +1,10 @@
 """Counterexamples for exception accounting; only synthetic byte arrays."""
 import unittest
 import struct
-from round12_raw_compare import differences, field_map, regions
+import tempfile
+import json
+from pathlib import Path
+from round12_raw_compare import differences, field_map, regions, compilation_authority, digest, checked_method_geometry
 
 
 class RawAccounting(unittest.TestCase):
@@ -102,6 +105,61 @@ class RawAccounting(unittest.TestCase):
         labels = regions(data, layout, detail, 'original', [dict(RVA=8192)] * 2, [method, alias])
         self.assertIn('T::M()', labels[513])
         self.assertIn('U::N()', labels[513])
+
+    def test_dto_cannot_paint_outside_authentic_tiny_method(self):
+        data, layout, detail, method = self.layout_fixture()
+        method['header']['code_size'] = 65
+        method['instructions'][0]['offset'] = 64
+        with self.assertRaises(ValueError):
+            regions(data, layout, detail, 'original', [dict(RVA=8192)], [method])
+
+    def test_dto_instruction_offsets_must_partition_actual_code(self):
+        data, layout, detail, method = self.layout_fixture()
+        method['instructions'][0]['offset'] = 1
+        with self.assertRaises(ValueError):
+            regions(data, layout, detail, 'original', [dict(RVA=8192)], [method])
+
+    def test_cecil_array_opcode_names_have_their_actual_operand_width(self):
+        for name, value in [('ldelem.any', 0xa3), ('stelem.any', 0xa4)]:
+            payload = bytes([0x1a, value, 1, 0, 0, 2, 0x2a])
+            method = dict(header=dict(size=1, code_size=6, format='tiny'),
+                          instructions=[dict(offset=0, opcode=name), dict(offset=5, opcode='ret')])
+            self.assertEqual((1, 6), checked_method_geometry(method, payload))
+
+    def authority_fixture(self, base):
+        folder = base / 'Own'; folder.mkdir()
+        source = folder / 'Own.cs'; source.write_bytes(b'class Own {}')
+        sources = [dict(path='Own.cs', sha256=digest(source.read_bytes()))]
+        manifest = dict(compiler_sha256='a' * 64, output_sha256=digest(b'own-output'),
+                        exit_code=0, sources=sources)
+        (folder / 'build-manifest.json').write_text(json.dumps(manifest))
+        (base / 'methods.csv').write_bytes(b'own-ledger')
+        (base / 'snapshot.json').write_text(json.dumps(dict(ledger_sha256=digest(b'own-ledger'))))
+        return manifest, dict(sources=sources)
+
+    def test_build_manifest_is_required_and_output_bound(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp); manifest, receipt = self.authority_fixture(base)
+            self.assertEqual(1, compilation_authority(base, 'Own', receipt, digest(b'own-output'))['source_files'])
+            for field in ('compiler_sha256', 'output_sha256'):
+                broken = dict(manifest); broken.pop(field)
+                (base / 'Own/build-manifest.json').write_text(json.dumps(broken))
+                with self.assertRaises(ValueError):
+                    compilation_authority(base, 'Own', receipt, digest(b'own-output'))
+            (base / 'Own/build-manifest.json').unlink()
+            with self.assertRaises(FileNotFoundError):
+                compilation_authority(base, 'Own', receipt, digest(b'own-output'))
+
+    def test_frozen_source_and_ledger_cannot_change_silently(self):
+        with tempfile.TemporaryDirectory() as temp:
+            base = Path(temp); manifest, receipt = self.authority_fixture(base)
+            (base / 'Own/Own.cs').write_bytes(b'changed')
+            with self.assertRaises(ValueError):
+                compilation_authority(base, 'Own', receipt, digest(b'own-output'))
+            (base / 'Own/Own.cs').write_bytes(b'class Own {}')
+            (base / 'methods.csv').write_bytes(b'changed')
+            with self.assertRaises(ValueError):
+                compilation_authority(base, 'Own', receipt, digest(b'own-output'))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,256 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports\\round12-kairo-storage-patches.json",
+  "old_bundle_sha256": "8990f82638cc992900e25fa1b86ff8eda79ac71fcc8c936cc3d063544d8b70cc",
+  "assembly": "KairoLibrary",
+  "baseline": "build\\round12\\runs\\a04\\commit\\postverify01\\KairoLibrary",
+  "manifest_sha256": "d649d42bdc614608b8ee093fcf1c7e20a730da2ed99f79a95dd4b17d595aaaa1",
+  "model_validation": "reports/round12-roslyn-model-validation.json",
+  "model_validation_sha256": "ddc53773415a1c6e7d820a1005952ea2ef6eb0538cef36fc7de6ac7993bbfcae",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round12RoslynModel.cs": "11082c1fa1e5e96373c16a62c76ecfae2cdf4a4a3409d4108eb253725cf359ea",
+    "tools/round12_roslyn_model.py": "e6dac3815d3cb9d2fdee74e1b99e7b36657fa41c96bfbcbd89d780c6a64ad792",
+    "tools/round7_roslyn_solver.py": "271f04450baf763d3ae0b606759f3320d1bf2a8b20d27e98e3378233fcf85991"
+  },
+  "records": [
+    {
+      "method_id": "kairo.unity.io.Storage::Delete(System.String)->System.Void",
+      "logical_source": "src/KairoLibrary/kairo/unity/io/Storage.cs",
+      "frozen_full_source_sha256": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+      "live_full_source_sha256": "b96651130c469bb46ac09dbf73e9bbddcd5538bd3fadc3774e8eec298d16406f",
+      "candidate_full_source_sha256": "1a72edeccf29f68ef5c831fe2f115ca50e9ae3cb1ef93074e257131e171931b4",
+      "previous_model_binding": {
+        "model_source_sha256": "11082c1fa1e5e96373c16a62c76ecfae2cdf4a4a3409d4108eb253725cf359ea",
+        "client_sha256": "e6dac3815d3cb9d2fdee74e1b99e7b36657fa41c96bfbcbd89d780c6a64ad792",
+        "complete": false,
+        "predicted_types": [
+          "System.Int32",
+          "System.UnauthorizedAccessException"
+        ],
+        "unsupported_reasons": [
+          "stack_scheduler_multiple_use:num",
+          "exception_lowering"
+        ]
+      },
+      "prediction": {
+        "method_id": "kairo.unity.io.Storage::Delete(System.String)->System.Void",
+        "complete": false,
+        "predicted_types": [
+          "System.Int32",
+          "System.UnauthorizedAccessException"
+        ],
+        "variables": [
+          {
+            "name": "num",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 5108,
+            "end": 5139,
+            "slot": 0,
+            "block": 2,
+            "type_source": "int",
+            "statement_start": 5104,
+            "statement_end": 5140,
+            "lexical_scope_start": 5096,
+            "lexical_scope_end": 5271,
+            "storage_proofs": [],
+            "initializer": "_SearchHeapFile(filename)",
+            "next_statement_start": 5147,
+            "next_statement_end": 5255,
+            "next_statement_kind": "IfStatement"
+          },
+          {
+            "name": "ex",
+            "type": "System.UnauthorizedAccessException",
+            "kind": "declared",
+            "start": 5587,
+            "end": 5619,
+            "slot": 1,
+            "block": 9,
+            "type_source": "UnauthorizedAccessException",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "storage_proofs": [],
+            "initializer": null,
+            "next_statement_start": -1,
+            "next_statement_end": -1,
+            "next_statement_kind": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 4975,
+            "end": 5730,
+            "parent": -1,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 4989,
+            "end": 5576,
+            "parent": 0,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 5096,
+            "end": 5271,
+            "parent": 1,
+            "used": false,
+            "variables": [
+              {
+                "name": "num",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 5108,
+                "end": 5139,
+                "slot": 0,
+                "block": 2,
+                "type_source": "int",
+                "statement_start": 5104,
+                "statement_end": 5140,
+                "lexical_scope_start": 5096,
+                "lexical_scope_end": 5271,
+                "storage_proofs": [],
+                "initializer": "_SearchHeapFile(filename)",
+                "next_statement_start": 5147,
+                "next_statement_end": 5255,
+                "next_statement_kind": "IfStatement"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 5168,
+            "end": 5255,
+            "parent": 2,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 5289,
+            "end": 5300,
+            "parent": 1,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 5333,
+            "end": 5570,
+            "parent": 1,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 5375,
+            "end": 5467,
+            "parent": 5,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 5418,
+            "end": 5459,
+            "parent": 6,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 5507,
+            "end": 5562,
+            "parent": 5,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "catch-variable",
+            "start": 5581,
+            "end": 5725,
+            "parent": 0,
+            "used": false,
+            "variables": [
+              {
+                "name": "ex",
+                "type": "System.UnauthorizedAccessException",
+                "kind": "declared",
+                "start": 5587,
+                "end": 5619,
+                "slot": 1,
+                "block": 9,
+                "type_source": "UnauthorizedAccessException",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "storage_proofs": [],
+                "initializer": null,
+                "next_statement_start": -1,
+                "next_statement_end": -1,
+                "next_statement_kind": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 5624,
+            "end": 5725,
+            "parent": 9,
+            "used": false,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "modeled_lowerings": [],
+        "unsupported_reasons": [
+          "stack_scheduler_multiple_use:num",
+          "exception_lowering"
+        ],
+        "declaration_start": 4936,
+        "declaration_end": 5730,
+        "body_start": 4975,
+        "body_end": 5730
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}
