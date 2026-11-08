@@ -1113,7 +1113,7 @@
       "queue_empty": false,
       "rule": "r12-compensated-empty-arms-",
       "assembly": "Assembly-CSharp",
-      "pair": "empty-else-join=>DELETION_POINT",
+      "pair": "INSERTION_POINT => ldc.r4",
       "hypothesis": "Shared emitter mechanism: restore unconditional joins retained by explicit empty arms. Keep distinct subcases: KickOff composes its last neg with false empty else; Offence removes the recovered Boolean and restores two positive empty arms. Each has separate controls and exact complete signatures1/16.",
       "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
       "gains": {
@@ -1139,6 +1139,55 @@
           "previous_after_sha256": "a85edc129cce4e44e88b021bdc1a5a4de5cf760d776636181a0d6ec9564536be",
           "new_after_measurement": "reports/round12-b17-postverify01-measurement.json",
           "new_after_sha256": "cc5ab8cb7aad546975376c2270ba9fc1794472d81bf31e5fd4fca41498f38884",
+          "gains_unchanged": true
+        }
+      ],
+      "submitted_pair": "empty-else-join=>DELETION_POINT",
+      "pair_diagnostic_provenance": {
+        "measurement": "reports\\round12-b17-before-measurement.json",
+        "sha256": "25f4ddbaab2aa7024237be210d8d1733299287297d4393b96949a9623582bd51",
+        "original_offset": 800,
+        "rebuilt_offset": 800,
+        "family_mechanism_preserved_in_hypothesis": true
+      }
+    },
+    {
+      "cycle": 29,
+      "part_cycle": 18,
+      "label": "b18",
+      "phase": "B",
+      "primary_target": "form.GameForm::Init()->System.Boolean",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-gameform-init-explicit-vector-elements-and-unused-single",
+      "assembly": "Assembly-CSharp",
+      "pair": "stloc.3=>dup",
+      "hypothesis": "Reserve the original unused Single slot2 and expand only the Vector3D array to explicit element stores, keeping JTool int arrays unchanged. Complete10 roles/types and full independent fixture distinguish equal-size wrong layouts; historical unused local name/scope remain UNKNOWN.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 1,
+          "il_bytes_gained": 758
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 758,
+      "before_measurement": "reports\\round12-b18-before-measurement.json",
+      "before_sha256": "b32c5c829752d19c78ed532e2febeff685a9b94a29d15dd56094d875577636bc",
+      "after_measurement": "reports/round12-b18-postverify01-measurement.json",
+      "after_sha256": "1a8777553b8e9ceb6e2f87cc5d213ce86c759b691abcf2d6db42eff22c93a9f8",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-b18-after-measurement.json",
+          "previous_after_sha256": "d2aff4ac5ed547ec2428a386ea8c72393d9de0da37e349a5b7ce33f83fb83813",
+          "new_after_measurement": "reports/round12-b18-postverify01-measurement.json",
+          "new_after_sha256": "1a8777553b8e9ceb6e2f87cc5d213ce86c759b691abcf2d6db42eff22c93a9f8",
           "gains_unchanged": true
         }
       ]

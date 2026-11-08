@@ -277,13 +277,12 @@ namespace form
 			if (num == 1)
 			{
 			}
-			Vector3D[] array = new Vector3D[4]
-			{
-				new Vector3D(0f, 0f, 0f),
-				new Vector3D(900f, 0f, 0f),
-				new Vector3D(900f, 0f, 900f),
-				new Vector3D(0f, 0f, 900f)
-			};
+			float recoveredUnusedScale;
+Vector3D[] array = new Vector3D[4];
+array[0] = new Vector3D(0f, 0f, 0f);
+array[1] = new Vector3D(900f, 0f, 0f);
+array[2] = new Vector3D(900f, 0f, 900f);
+array[3] = new Vector3D(0f, 0f, 900f);
 			int[][] array2 = JTool.MakeArray<int[][]>(new int[2] { 4, 2 });
 			int[][] array3 = JTool.MakeArray<int[][]>(new int[2] { 4, 2 });
 			for (int j = 0; j < array.Length; j++)

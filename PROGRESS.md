@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b17-postverify01-KairoLibrary-raw.json](reports/round12-b17-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `5eac9cfbf990da80aa6167d1a4730488cab0ceff7c0e184b94abda5e736dead7`. Sem normalização.
+Prova literal atual: [reports/round12-b18-postverify01-KairoLibrary-raw.json](reports/round12-b18-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `b8c1146b3e6d4d73a171b63b66349f6f50bdc8815188f144fba641cbdd3cb70d`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,212 de 5,245 métodos matched (99.37%).** 871,497 bytes de IL nos assemblies alvo.
-861,085 bytes IL matched (98.81%).
+**5,213 de 5,245 métodos matched (99.39%).** 871,497 bytes de IL nos assemblies alvo.
+861,843 bytes IL matched (98.89%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 32 |
+| decompiled | 31 |
 | equivalent | 0 |
-| matched | 5212 |
+| matched | 5213 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1925 / 98.31% | 591191 / 98.27% |
+| `Assembly-CSharp` | 1958 | 601603 | 1926 / 98.37% | 591949 / 98.40% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -40,7 +40,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 254 / 99.61% | 26251 / 99.61% |
-| `form` | 371 | 250649 | 363 / 97.84% | 247892 / 98.90% |
+| `form` | 371 | 250649 | 364 / 98.11% | 248650 / 99.20% |
 | `game` | 441 | 202949 | 432 / 97.96% | 198903 / 98.01% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
@@ -120,7 +120,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::form.BootForm` | 21 | 7712 | 20 / 95.24% | 7471 / 96.88% |
 | `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 21 / 100.00% | 45497 / 100.00% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
-| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 49 / 96.08% | 15538 / 94.32% |
+| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 50 / 98.04% | 16296 / 98.92% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 48 / 100.00% | 3906 / 100.00% |
 | `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
 | `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 59 / 95.16% | 32507 / 96.63% |
@@ -513,6 +513,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 |---|---:|---|
 | `Assembly-CSharp::data.TenantData` | 1 | `Assembly-CSharp::data.TenantData::StrengthTenant()->System.Void` |
 | `Assembly-CSharp::form.BootForm` | 1 | `Assembly-CSharp::form.BootForm::Draw(kairo.unity.ui.Graphics)->System.Void` |
+| `Assembly-CSharp::form.GameForm` | 1 | `Assembly-CSharp::form.GameForm::Script()->System.Void` |
 | `Assembly-CSharp::form.TitleForm` | 1 | `Assembly-CSharp::form.TitleForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
 | `Assembly-CSharp::game.Ball` | 1 | `Assembly-CSharp::game.Ball::ReceiveBall(game.Player,System.Boolean)->System.Void` |
 | `Assembly-CSharp::game.Camera` | 1 | `Assembly-CSharp::game.Camera::Collision(System.Int32,System.Int32)->System.Void` |
@@ -520,7 +521,6 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::game.MapMain` | 1 | `Assembly-CSharp::game.MapMain::Draw_coat(kairo.unity.ui.Graphics,System.Boolean)->System.Void` |
 | `Assembly-CSharp::game.Player` | 1 | `Assembly-CSharp::game.Player::ChSlidingTackleEva(game.Player)->System.Boolean` |
 | `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
-| `Assembly-CSharp::system.billing.util.Json` | 1 | `Assembly-CSharp::system.billing.util.Json::MakeJson(System.String[])->System.String` |
 
 ## Bloqueios
 
