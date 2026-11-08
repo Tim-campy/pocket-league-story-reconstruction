@@ -1,0 +1,1174 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports/round12-app-page-saving-family-patches.json",
+  "old_bundle_sha256": "09b89a555f9c375586f3ba188404485d214ee6d0444e74cb9189dcd2dcfe0cfd",
+  "assembly": "Assembly-CSharp",
+  "baseline": "build/round12/runs/b13/commit/postverify01/Assembly-CSharp",
+  "manifest_sha256": "7104c23ae6b956e99f7103e5a29d695aef2683b2736103ebbf481f6cdfc1c46e",
+  "model_validation": "reports/round11-slot-model-validation.json",
+  "model_validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "records": [
+    {
+      "method_id": "game.TPlayer::CollisionSaving(game.TBall)->System.Void",
+      "logical_source": "src/Assembly-CSharp/game/TPlayer.cs",
+      "frozen_full_source_sha256": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+      "live_full_source_sha256": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+      "candidate_full_source_sha256": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "game.TPlayer::CollisionSaving(game.TBall)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "System.Int32[]",
+          "System.Int32[]",
+          "System.Int32",
+          "System.Int32",
+          "System.Single",
+          "System.Single",
+          "System.Single",
+          "System.Int32",
+          "System.Single",
+          "System.Int32",
+          "System.Int32",
+          "System.Single",
+          "System.Single",
+          "System.Single",
+          "System.Int32",
+          "System.Single",
+          "System.Int32"
+        ],
+        "variables": [
+          {
+            "name": "collisionData",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 41266,
+            "end": 41317,
+            "slot": 0,
+            "block": 0,
+            "type_source": "int[]",
+            "statement_start": 41260,
+            "statement_end": 41318,
+            "lexical_scope_start": 41254,
+            "lexical_scope_end": 43090,
+            "initializer": "Player.udat_.GetCollisionData(0, 0)"
+          },
+          {
+            "name": "collisionData2",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 41329,
+            "end": 41381,
+            "slot": 1,
+            "block": 1,
+            "type_source": "int[]",
+            "statement_start": 41323,
+            "statement_end": 41382,
+            "lexical_scope_start": 41254,
+            "lexical_scope_end": 43090,
+            "initializer": "Player.udat_.GetCollisionData(1, 1)"
+          },
+          {
+            "name": "recoveredSavingChoice",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 41691,
+            "end": 41733,
+            "slot": 2,
+            "block": 2,
+            "type_source": "int",
+            "statement_start": 41687,
+            "statement_end": 41734,
+            "lexical_scope_start": 41680,
+            "lexical_scope_end": 43085,
+            "initializer": "GameUtil.Random(3)"
+          },
+          {
+            "name": "angle2",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 41883,
+            "end": 41929,
+            "slot": 3,
+            "block": 4,
+            "type_source": "int",
+            "statement_start": 41879,
+            "statement_end": 41930,
+            "lexical_scope_start": 41871,
+            "lexical_scope_end": 42475,
+            "initializer": "GameUtil.Random(180) + team_id_ * 180"
+          },
+          {
+            "name": "recoveredUnusedX2",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 41943,
+            "end": 41960,
+            "slot": 4,
+            "block": 5,
+            "type_source": "float",
+            "statement_start": 41937,
+            "statement_end": 41980,
+            "lexical_scope_start": 41871,
+            "lexical_scope_end": 42475,
+            "initializer": null
+          },
+          {
+            "name": "recoveredUnusedY2",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 41962,
+            "end": 41979,
+            "slot": 5,
+            "block": 5,
+            "type_source": "float",
+            "statement_start": 41937,
+            "statement_end": 41980,
+            "lexical_scope_start": 41871,
+            "lexical_scope_end": 42475,
+            "initializer": null
+          },
+          {
+            "name": "num2",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 41988,
+            "end": 42061,
+            "slot": 6,
+            "block": 5,
+            "type_source": "float",
+            "statement_start": 41982,
+            "statement_end": 42062,
+            "lexical_scope_start": 41871,
+            "lexical_scope_end": 42475,
+            "initializer": "GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 5f, 10f, true)"
+          },
+          {
+            "name": "x2",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 42073,
+            "end": 42098,
+            "slot": 7,
+            "block": 6,
+            "type_source": "int",
+            "statement_start": 42069,
+            "statement_end": 42099,
+            "lexical_scope_start": 41871,
+            "lexical_scope_end": 42475,
+            "initializer": "GameUtil.Random(100)"
+          },
+          {
+            "name": "dis2",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 42112,
+            "end": 42163,
+            "slot": 8,
+            "block": 7,
+            "type_source": "float",
+            "statement_start": 42106,
+            "statement_end": 42164,
+            "lexical_scope_start": 41871,
+            "lexical_scope_end": 42475,
+            "initializer": "GameUtil.RateConvert(x2, 0, 99, 5, 20, true)"
+          },
+          {
+            "name": "t2",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 42175,
+            "end": 42224,
+            "slot": 9,
+            "block": 8,
+            "type_source": "int",
+            "statement_start": 42171,
+            "statement_end": 42225,
+            "lexical_scope_start": 41871,
+            "lexical_scope_end": 42475,
+            "initializer": "GameUtil.RateConvert(x2, 0, 99, 5, 10, true)"
+          },
+          {
+            "name": "angle",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 42493,
+            "end": 42548,
+            "slot": 10,
+            "block": 9,
+            "type_source": "int",
+            "statement_start": 42489,
+            "statement_end": 42549,
+            "lexical_scope_start": 42481,
+            "lexical_scope_end": 43079,
+            "initializer": "GameUtil.Random(90) + 45 + (1 - team_id_) * 180"
+          },
+          {
+            "name": "recoveredUnusedX",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 42562,
+            "end": 42578,
+            "slot": 11,
+            "block": 10,
+            "type_source": "float",
+            "statement_start": 42556,
+            "statement_end": 42597,
+            "lexical_scope_start": 42481,
+            "lexical_scope_end": 43079,
+            "initializer": null
+          },
+          {
+            "name": "recoveredUnusedY",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 42580,
+            "end": 42596,
+            "slot": 12,
+            "block": 10,
+            "type_source": "float",
+            "statement_start": 42556,
+            "statement_end": 42597,
+            "lexical_scope_start": 42481,
+            "lexical_scope_end": 43079,
+            "initializer": null
+          },
+          {
+            "name": "num",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 42605,
+            "end": 42678,
+            "slot": 13,
+            "block": 10,
+            "type_source": "float",
+            "statement_start": 42599,
+            "statement_end": 42679,
+            "lexical_scope_start": 42481,
+            "lexical_scope_end": 43079,
+            "initializer": "GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 2.5f, 5f, true)"
+          },
+          {
+            "name": "x",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 42690,
+            "end": 42714,
+            "slot": 14,
+            "block": 11,
+            "type_source": "int",
+            "statement_start": 42686,
+            "statement_end": 42715,
+            "lexical_scope_start": 42481,
+            "lexical_scope_end": 43079,
+            "initializer": "GameUtil.Random(100)"
+          },
+          {
+            "name": "dis",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 42728,
+            "end": 42777,
+            "slot": 15,
+            "block": 12,
+            "type_source": "float",
+            "statement_start": 42722,
+            "statement_end": 42778,
+            "lexical_scope_start": 42481,
+            "lexical_scope_end": 43079,
+            "initializer": "GameUtil.RateConvert(x, 0, 99, 2, 10, true)"
+          },
+          {
+            "name": "t",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 42789,
+            "end": 42836,
+            "slot": 16,
+            "block": 13,
+            "type_source": "int",
+            "statement_start": 42785,
+            "statement_end": 42837,
+            "lexical_scope_start": 42481,
+            "lexical_scope_end": 43079,
+            "initializer": "GameUtil.RateConvert(x, 0, 99, 5, 10, true)"
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 41254,
+            "end": 43090,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 41266,
+                "end": 41317,
+                "slot": 0,
+                "block": 0,
+                "type_source": "int[]",
+                "statement_start": 41260,
+                "statement_end": 41318,
+                "lexical_scope_start": 41254,
+                "lexical_scope_end": 43090,
+                "initializer": "Player.udat_.GetCollisionData(0, 0)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 41323,
+            "end": 41382,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "collisionData2",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 41329,
+                "end": 41381,
+                "slot": 1,
+                "block": 1,
+                "type_source": "int[]",
+                "statement_start": 41323,
+                "statement_end": 41382,
+                "lexical_scope_start": 41254,
+                "lexical_scope_end": 43090,
+                "initializer": "Player.udat_.GetCollisionData(1, 1)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 41680,
+            "end": 43085,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "recoveredSavingChoice",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 41691,
+                "end": 41733,
+                "slot": 2,
+                "block": 2,
+                "type_source": "int",
+                "statement_start": 41687,
+                "statement_end": 41734,
+                "lexical_scope_start": 41680,
+                "lexical_scope_end": 43085,
+                "initializer": "GameUtil.Random(3)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 41768,
+            "end": 41833,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 41871,
+            "end": 42475,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "angle2",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 41883,
+                "end": 41929,
+                "slot": 3,
+                "block": 4,
+                "type_source": "int",
+                "statement_start": 41879,
+                "statement_end": 41930,
+                "lexical_scope_start": 41871,
+                "lexical_scope_end": 42475,
+                "initializer": "GameUtil.Random(180) + team_id_ * 180"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "implicit-after-statement",
+            "start": 41937,
+            "end": 41980,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "recoveredUnusedX2",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 41943,
+                "end": 41960,
+                "slot": 4,
+                "block": 5,
+                "type_source": "float",
+                "statement_start": 41937,
+                "statement_end": 41980,
+                "lexical_scope_start": 41871,
+                "lexical_scope_end": 42475,
+                "initializer": null
+              },
+              {
+                "name": "recoveredUnusedY2",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 41962,
+                "end": 41979,
+                "slot": 5,
+                "block": 5,
+                "type_source": "float",
+                "statement_start": 41937,
+                "statement_end": 41980,
+                "lexical_scope_start": 41871,
+                "lexical_scope_end": 42475,
+                "initializer": null
+              },
+              {
+                "name": "num2",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 41988,
+                "end": 42061,
+                "slot": 6,
+                "block": 5,
+                "type_source": "float",
+                "statement_start": 41982,
+                "statement_end": 42062,
+                "lexical_scope_start": 41871,
+                "lexical_scope_end": 42475,
+                "initializer": "GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 5f, 10f, true)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "implicit-after-statement",
+            "start": 42069,
+            "end": 42099,
+            "parent": 5,
+            "used": true,
+            "variables": [
+              {
+                "name": "x2",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 42073,
+                "end": 42098,
+                "slot": 7,
+                "block": 6,
+                "type_source": "int",
+                "statement_start": 42069,
+                "statement_end": 42099,
+                "lexical_scope_start": 41871,
+                "lexical_scope_end": 42475,
+                "initializer": "GameUtil.Random(100)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "implicit-after-statement",
+            "start": 42106,
+            "end": 42164,
+            "parent": 6,
+            "used": true,
+            "variables": [
+              {
+                "name": "dis2",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 42112,
+                "end": 42163,
+                "slot": 8,
+                "block": 7,
+                "type_source": "float",
+                "statement_start": 42106,
+                "statement_end": 42164,
+                "lexical_scope_start": 41871,
+                "lexical_scope_end": 42475,
+                "initializer": "GameUtil.RateConvert(x2, 0, 99, 5, 20, true)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "implicit-after-statement",
+            "start": 42171,
+            "end": 42225,
+            "parent": 7,
+            "used": true,
+            "variables": [
+              {
+                "name": "t2",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 42175,
+                "end": 42224,
+                "slot": 9,
+                "block": 8,
+                "type_source": "int",
+                "statement_start": 42171,
+                "statement_end": 42225,
+                "lexical_scope_start": 41871,
+                "lexical_scope_end": 42475,
+                "initializer": "GameUtil.RateConvert(x2, 0, 99, 5, 10, true)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 42481,
+            "end": 43079,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "angle",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 42493,
+                "end": 42548,
+                "slot": 10,
+                "block": 9,
+                "type_source": "int",
+                "statement_start": 42489,
+                "statement_end": 42549,
+                "lexical_scope_start": 42481,
+                "lexical_scope_end": 43079,
+                "initializer": "GameUtil.Random(90) + 45 + (1 - team_id_) * 180"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "implicit-after-statement",
+            "start": 42556,
+            "end": 42597,
+            "parent": 9,
+            "used": true,
+            "variables": [
+              {
+                "name": "recoveredUnusedX",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 42562,
+                "end": 42578,
+                "slot": 11,
+                "block": 10,
+                "type_source": "float",
+                "statement_start": 42556,
+                "statement_end": 42597,
+                "lexical_scope_start": 42481,
+                "lexical_scope_end": 43079,
+                "initializer": null
+              },
+              {
+                "name": "recoveredUnusedY",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 42580,
+                "end": 42596,
+                "slot": 12,
+                "block": 10,
+                "type_source": "float",
+                "statement_start": 42556,
+                "statement_end": 42597,
+                "lexical_scope_start": 42481,
+                "lexical_scope_end": 43079,
+                "initializer": null
+              },
+              {
+                "name": "num",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 42605,
+                "end": 42678,
+                "slot": 13,
+                "block": 10,
+                "type_source": "float",
+                "statement_start": 42599,
+                "statement_end": 42679,
+                "lexical_scope_start": 42481,
+                "lexical_scope_end": 43079,
+                "initializer": "GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 2.5f, 5f, true)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "implicit-after-statement",
+            "start": 42686,
+            "end": 42715,
+            "parent": 10,
+            "used": true,
+            "variables": [
+              {
+                "name": "x",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 42690,
+                "end": 42714,
+                "slot": 14,
+                "block": 11,
+                "type_source": "int",
+                "statement_start": 42686,
+                "statement_end": 42715,
+                "lexical_scope_start": 42481,
+                "lexical_scope_end": 43079,
+                "initializer": "GameUtil.Random(100)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "implicit-after-statement",
+            "start": 42722,
+            "end": 42778,
+            "parent": 11,
+            "used": true,
+            "variables": [
+              {
+                "name": "dis",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 42728,
+                "end": 42777,
+                "slot": 15,
+                "block": 12,
+                "type_source": "float",
+                "statement_start": 42722,
+                "statement_end": 42778,
+                "lexical_scope_start": 42481,
+                "lexical_scope_end": 43079,
+                "initializer": "GameUtil.RateConvert(x, 0, 99, 2, 10, true)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "implicit-after-statement",
+            "start": 42785,
+            "end": 42837,
+            "parent": 12,
+            "used": true,
+            "variables": [
+              {
+                "name": "t",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 42789,
+                "end": 42836,
+                "slot": 16,
+                "block": 13,
+                "type_source": "int",
+                "statement_start": 42785,
+                "statement_end": 42837,
+                "lexical_scope_start": 42481,
+                "lexical_scope_end": 43079,
+                "initializer": "GameUtil.RateConvert(x, 0, 99, 5, 10, true)"
+              }
+            ],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 41210,
+        "declaration_end": 43090,
+        "body_start": 41254,
+        "body_end": 43090
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    },
+    {
+      "method_id": "surface.GameView::OnTouchDlgPage(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+      "logical_source": "src/Assembly-CSharp/surface/GameView.cs",
+      "frozen_full_source_sha256": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+      "live_full_source_sha256": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+      "candidate_full_source_sha256": "ff937535429794cbdb2a6781c6862b64d70bc159749cf9d6ef31a4ec2d7e675d",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "surface.GameView::OnTouchDlgPage(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "kairo.unity.surface.TouchComponent",
+          "surface.TouchEffect",
+          "System.Int32"
+        ],
+        "variables": [
+          {
+            "name": "component",
+            "type": "kairo.unity.surface.TouchComponent",
+            "kind": "declared",
+            "start": 34636,
+            "end": 34659,
+            "slot": 0,
+            "block": 0,
+            "type_source": "TouchComponent",
+            "statement_start": 34621,
+            "statement_end": 34660,
+            "lexical_scope_start": 34615,
+            "lexical_scope_end": 35450,
+            "initializer": "e.component"
+          },
+          {
+            "name": "touchEffect",
+            "type": "surface.TouchEffect",
+            "kind": "declared",
+            "start": 34677,
+            "end": 34688,
+            "slot": 1,
+            "block": 1,
+            "type_source": "TouchEffect",
+            "statement_start": 34665,
+            "statement_end": 34689,
+            "lexical_scope_start": 34615,
+            "lexical_scope_end": 35450,
+            "initializer": null
+          },
+          {
+            "name": "$switch",
+            "type": "System.Int32",
+            "kind": "emit-temporary",
+            "start": 34699,
+            "end": 34703,
+            "slot": 2,
+            "block": -1,
+            "type_source": null,
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 34615,
+            "end": 35450,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "component",
+                "type": "kairo.unity.surface.TouchComponent",
+                "kind": "declared",
+                "start": 34636,
+                "end": 34659,
+                "slot": 0,
+                "block": 0,
+                "type_source": "TouchComponent",
+                "statement_start": 34621,
+                "statement_end": 34660,
+                "lexical_scope_start": 34615,
+                "lexical_scope_end": 35450,
+                "initializer": "e.component"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 34665,
+            "end": 34689,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "touchEffect",
+                "type": "surface.TouchEffect",
+                "kind": "declared",
+                "start": 34677,
+                "end": 34688,
+                "slot": 1,
+                "block": 1,
+                "type_source": "TouchEffect",
+                "statement_start": 34665,
+                "statement_end": 34689,
+                "lexical_scope_start": 34615,
+                "lexical_scope_end": 35450,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "switch-section",
+            "start": 34715,
+            "end": 35353,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 34792,
+            "end": 34915,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 34934,
+            "end": 35056,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 35075,
+            "end": 35199,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 35218,
+            "end": 35341,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "switch-section",
+            "start": 35358,
+            "end": 35439,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 34552,
+        "declaration_end": 35450,
+        "body_start": 34615,
+        "body_end": 35450
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    },
+    {
+      "method_id": "surface.GameView::OnTouchDlgPage2(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+      "logical_source": "src/Assembly-CSharp/surface/GameView.cs",
+      "frozen_full_source_sha256": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+      "live_full_source_sha256": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+      "candidate_full_source_sha256": "d6724ec5b0e8295376f45aa8ec5f825bda4e6901868c21f36431a6469c050052",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "surface.GameView::OnTouchDlgPage2(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "kairo.unity.surface.TouchComponent",
+          "surface.TouchEffect",
+          "System.Int32"
+        ],
+        "variables": [
+          {
+            "name": "component",
+            "type": "kairo.unity.surface.TouchComponent",
+            "kind": "declared",
+            "start": 35646,
+            "end": 35669,
+            "slot": 0,
+            "block": 0,
+            "type_source": "TouchComponent",
+            "statement_start": 35631,
+            "statement_end": 35670,
+            "lexical_scope_start": 35625,
+            "lexical_scope_end": 36741,
+            "initializer": "e.component"
+          },
+          {
+            "name": "touchEffect",
+            "type": "surface.TouchEffect",
+            "kind": "declared",
+            "start": 35687,
+            "end": 35698,
+            "slot": 1,
+            "block": 1,
+            "type_source": "TouchEffect",
+            "statement_start": 35675,
+            "statement_end": 35699,
+            "lexical_scope_start": 35625,
+            "lexical_scope_end": 36741,
+            "initializer": null
+          },
+          {
+            "name": "$switch",
+            "type": "System.Int32",
+            "kind": "emit-temporary",
+            "start": 35709,
+            "end": 35713,
+            "slot": 2,
+            "block": -1,
+            "type_source": null,
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 35625,
+            "end": 36741,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "component",
+                "type": "kairo.unity.surface.TouchComponent",
+                "kind": "declared",
+                "start": 35646,
+                "end": 35669,
+                "slot": 0,
+                "block": 0,
+                "type_source": "TouchComponent",
+                "statement_start": 35631,
+                "statement_end": 35670,
+                "lexical_scope_start": 35625,
+                "lexical_scope_end": 36741,
+                "initializer": "e.component"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 35675,
+            "end": 35699,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "touchEffect",
+                "type": "surface.TouchEffect",
+                "kind": "declared",
+                "start": 35687,
+                "end": 35698,
+                "slot": 1,
+                "block": 1,
+                "type_source": "TouchEffect",
+                "statement_start": 35675,
+                "statement_end": 35699,
+                "lexical_scope_start": 35625,
+                "lexical_scope_end": 36741,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "switch-section",
+            "start": 35725,
+            "end": 36343,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 35782,
+            "end": 35905,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 35924,
+            "end": 36046,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 36065,
+            "end": 36189,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 36208,
+            "end": 36331,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "switch-section",
+            "start": 36348,
+            "end": 36639,
+            "parent": 2,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 36419,
+            "end": 36627,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 36501,
+            "end": 36559,
+            "parent": 8,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 36577,
+            "end": 36620,
+            "parent": 8,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "switch-section",
+            "start": 36644,
+            "end": 36725,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 35560,
+        "declaration_end": 36741,
+        "body_start": 35625,
+        "body_end": 36741
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}

@@ -1367,16 +1367,13 @@ Player.apdat_.InsertGameObject(3, trainingId_[0], depth, 0, 0, 0, camera_pos[0],
 			int[] collisionData2 = Player.udat_.GetCollisionData(1, 1);
 			if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData[0], pos_.z_ + (float)collisionData[1], collisionData[2], collisionData[3], tball.pos_.x_ + (float)collisionData2[0], tball.pos_.z_ + (float)collisionData2[1], collisionData2[2], collisionData2[3], true) && BitUtil.Check(flag_, 8))
 			{
-				switch (GameUtil.Random(3))
-				{
-				case 2:
-					tball.v_.Set(0f, 0f, 0f);
+				int recoveredSavingChoice = GameUtil.Random(3);
+if (recoveredSavingChoice == 2) {tball.v_.Set(0f, 0f, 0f);
 					tball.ReceiveBall(this);
-					break;
-				case 1:
-				{
+					} else if (recoveredSavingChoice == 1) {
 					int angle2 = GameUtil.Random(180) + team_id_ * 180;
-					float num2 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 5f, 10f, true);
+					float recoveredUnusedX2, recoveredUnusedY2;
+float num2 = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 5f, 10f, true);
 					int x2 = GameUtil.Random(100);
 					float dis2 = GameUtil.RateConvert(x2, 0, 99, 5, 20, true);
 					int t2 = GameUtil.RateConvert(x2, 0, 99, 5, 10, true);
@@ -1385,12 +1382,10 @@ Player.apdat_.InsertGameObject(3, trainingId_[0], depth, 0, 0, 0, camera_pos[0],
 					tball.v_.Set(num2 * GameUtil.Cos(angle2), 0f, num2 * GameUtil.Sin(angle2));
 					tball.v_.y_ = GameUtil.SetVStop(dis2, t2);
 					tball.a_.y_ = GameUtil.SetAStop(dis2, t2);
-					break;
-				}
-				default:
-				{
+					} else {
 					int angle = GameUtil.Random(90) + 45 + (1 - team_id_) * 180;
-					float num = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 2.5f, 5f, true);
+					float recoveredUnusedX, recoveredUnusedY;
+float num = GameUtil.RateConvert(GameUtil.Random(100), 0f, 99f, 2.5f, 5f, true);
 					int x = GameUtil.Random(100);
 					float dis = GameUtil.RateConvert(x, 0, 99, 2, 10, true);
 					int t = GameUtil.RateConvert(x, 0, 99, 5, 10, true);
@@ -1399,9 +1394,7 @@ Player.apdat_.InsertGameObject(3, trainingId_[0], depth, 0, 0, 0, camera_pos[0],
 					tball.v_.Set(num * GameUtil.Cos(angle), 0f, num * GameUtil.Sin(angle));
 					tball.v_.y_ = GameUtil.SetVStop(dis, t);
 					tball.a_.y_ = GameUtil.SetAStop(dis, t);
-					break;
-				}
-				}
+					}
 			}
 		}
 

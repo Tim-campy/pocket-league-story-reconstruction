@@ -1347,37 +1347,24 @@ return;
 		internal void OnTouchDlgPage(int type, int v, TouchEvent e)
 		{
 			TouchComponent component = e.component;
-			switch (type)
+			TouchEffect touchEffect;
+switch (type)
 			{
 			case 0:
 				canvas_.KeyDown(GetKey(e.component, 1 << v));
-				switch (v)
-				{
-				case 16:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 2, component);
+				if (v == 16) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 2, component);
 					touchEffect.vx_ = -10f;
-					break;
-				}
-				case 18:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 3, component);
+					} else if (v == 18) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 3, component);
 					touchEffect.vx_ = 10f;
-					break;
-				}
-				case 17:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 14, component);
+					} else if (v == 17) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 14, component);
 					touchEffect.vy_ = -10f;
-					break;
-				}
-				case 19:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 15, component);
+					} else if (v == 19) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 15, component);
 					touchEffect.vy_ = 10f;
-					break;
-				}
-				}
+					}
 				break;
 			case 6:
 			case 10:
@@ -1389,37 +1376,24 @@ return;
 		protected void OnTouchDlgPage2(int type, int v, TouchEvent e)
 		{
 			TouchComponent component = e.component;
-			switch (type)
+			TouchEffect touchEffect;
+switch (type)
 			{
 			case 5:
 				canvas_.KeyClick(1 << v);
-				switch (v)
-				{
-				case 16:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 2, component);
+				if (v == 16) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 2, component);
 					touchEffect.vx_ = -10f;
-					break;
-				}
-				case 18:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 3, component);
+					} else if (v == 18) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 3, component);
 					touchEffect.vx_ = 10f;
-					break;
-				}
-				case 17:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 14, component);
+					} else if (v == 17) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 14, component);
 					touchEffect.vy_ = -10f;
-					break;
-				}
-				case 19:
-				{
-					TouchEffect touchEffect = AddEffect(0, component.paintX, component.paintY, 15, component);
+					} else if (v == 19) {
+					touchEffect = AddEffect(0, component.paintX, component.paintY, 15, component);
 					touchEffect.vy_ = 10f;
-					break;
-				}
-				}
+					}
 				break;
 			case 1:
 			case 2:
@@ -1440,12 +1414,7 @@ return;
 			case 10:
 				canvas_.KeyUp(GetKey(e.component, 1 << v));
 				break;
-			case 3:
-			case 4:
-			case 7:
-			case 8:
-			case 9:
-				break;
+
 			}
 		}
 
