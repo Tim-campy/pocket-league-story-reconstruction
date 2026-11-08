@@ -1,0 +1,10 @@
+public class TPlayer{public int flag_;public int[] screen_pos_;}public class Tenant{public int root_;public int[] address_;}public class Vector{public int Size(){return 1;}public object ElementAt(int n){return null;}}public class TGroupArea{public Vector tPlayerList_;}public class TArea{public TGroupArea[] tGroupAreas_;}public class UserData{public TArea[][] tAreas_;public Tenant[] tenants_;public int tAreaRootNum_;}public static class BitUtil{public static bool Check(int a,int b){return(a&b)!=0;}}public static class GameUtil{public static bool ChRectHitRect(int a,int b,int c,int d,int e,int f,int g,int h,bool i){return a==e;}}
+public class Fixture{public UserData udat_;public TPlayer subPlayer_;public Tenant subTenant_;public int[] temp_address;public void Run(int cursor_sx,int cursor_sy){bool flag=false;for (int i = 0; i < udat_.tAreas_.Length && !flag; i++){
+for (int j = 0; j < udat_.tAreas_[i].Length && !flag; j++){TArea tArea=udat_.tAreas_[i][j];
+for (int k = 0; k < tArea.tGroupAreas_.Length && !flag; k++){TGroupArea tGroupArea=tArea.tGroupAreas_[k];
+for(int l=0;l<tGroupArea.tPlayerList_.Size();l++){TPlayer tPlayer=(TPlayer)tGroupArea.tPlayerList_.ElementAt(l);
+if (BitUtil.Check(tPlayer.flag_, 1)) { continue; }
+if (GameUtil.ChRectHitRect(cursor_sx-4,cursor_sy+4,8,8,tPlayer.screen_pos_[0]-7,tPlayer.screen_pos_[1]+28,14,28,true)){flag=true;subPlayer_=tPlayer;break;}}}}}
+subTenant_=null;for(int m=0;m<udat_.tenants_.Length;m++){Tenant tenant=udat_.tenants_[m];if (tenant.root_ == 1 && udat_.tAreaRootNum_ == 1) { continue; }
+if ((temp_address[0]==tenant.address_[0]||temp_address[0]==tenant.address_[0]+1)&&(temp_address[1]==tenant.address_[1]||temp_address[1]==tenant.address_[1]-1)){subTenant_=tenant;}}
+}}

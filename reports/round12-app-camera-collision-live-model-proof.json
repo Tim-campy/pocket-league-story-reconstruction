@@ -1,0 +1,634 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports/round12-app-camera-collision-family-patches.json",
+  "old_bundle_sha256": "02997e72cf16d3123e572e7f3cc3cde594713effa9f7adde0a279f7d42dd1e94",
+  "assembly": "Assembly-CSharp",
+  "baseline": "build/round12/runs/b20/commit/postverify01/Assembly-CSharp",
+  "manifest_sha256": "c601cb8c99a8b72c933c418bab42a844355f08eaad760f95a09213d51ef22262",
+  "model_validation": "reports/round11-slot-model-validation.json",
+  "model_validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "records": [
+    {
+      "method_id": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+      "logical_source": "src/Assembly-CSharp/game/Camera.cs",
+      "frozen_full_source_sha256": "1f205fa8791d11c114a5623219766c21cce3def203ac17b2ebab226552d49a36",
+      "live_full_source_sha256": "1f205fa8791d11c114a5623219766c21cce3def203ac17b2ebab226552d49a36",
+      "candidate_full_source_sha256": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "form.FormManager",
+          "kairo.unity.form.FormBase",
+          "System.Boolean",
+          "System.Int32",
+          "System.Int32",
+          "game.TArea",
+          "System.Int32",
+          "game.TGroupArea",
+          "System.Int32",
+          "game.TPlayer",
+          "System.Int32",
+          "game.Tenant"
+        ],
+        "variables": [
+          {
+            "name": "formManager",
+            "type": "form.FormManager",
+            "kind": "declared",
+            "start": 22928,
+            "end": 22967,
+            "slot": 0,
+            "block": 1,
+            "type_source": "FormManager",
+            "statement_start": 22916,
+            "statement_end": 22968,
+            "lexical_scope_start": 22637,
+            "lexical_scope_end": 24511,
+            "initializer": "FormManager.GetInstance()"
+          },
+          {
+            "name": "currentForm",
+            "type": "kairo.unity.form.FormBase",
+            "kind": "declared",
+            "start": 22982,
+            "end": 23024,
+            "slot": 1,
+            "block": 2,
+            "type_source": "FormBase",
+            "statement_start": 22973,
+            "statement_end": 23025,
+            "lexical_scope_start": 22637,
+            "lexical_scope_end": 24511,
+            "initializer": "formManager.GetCurrentForm()"
+          },
+          {
+            "name": "flag",
+            "type": "System.Boolean",
+            "kind": "declared",
+            "start": 23072,
+            "end": 23084,
+            "slot": 2,
+            "block": 3,
+            "type_source": "bool",
+            "statement_start": 23067,
+            "statement_end": 23085,
+            "lexical_scope_start": 23060,
+            "lexical_scope_end": 24506,
+            "initializer": "false"
+          },
+          {
+            "name": "i",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 23099,
+            "end": 23104,
+            "slot": 3,
+            "block": 4,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "j",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 23166,
+            "end": 23171,
+            "slot": 4,
+            "block": 6,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tArea",
+            "type": "game.TArea",
+            "kind": "declared",
+            "start": 23235,
+            "end": 23262,
+            "slot": 5,
+            "block": 7,
+            "type_source": "TArea",
+            "statement_start": 23229,
+            "statement_end": 23263,
+            "lexical_scope_start": 23221,
+            "lexical_scope_end": 23845,
+            "initializer": "udat_.tAreas_[i][j]"
+          },
+          {
+            "name": "k",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 23279,
+            "end": 23284,
+            "slot": 6,
+            "block": 8,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tGroupArea",
+            "type": "game.TGroupArea",
+            "kind": "declared",
+            "start": 23357,
+            "end": 23391,
+            "slot": 7,
+            "block": 9,
+            "type_source": "TGroupArea",
+            "statement_start": 23346,
+            "statement_end": 23392,
+            "lexical_scope_start": 23337,
+            "lexical_scope_end": 23838,
+            "initializer": "tArea.tGroupAreas_[k]"
+          },
+          {
+            "name": "l",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 23409,
+            "end": 23414,
+            "slot": 8,
+            "block": 10,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tPlayer",
+            "type": "game.TPlayer",
+            "kind": "declared",
+            "start": 23482,
+            "end": 23537,
+            "slot": 9,
+            "block": 11,
+            "type_source": "TPlayer",
+            "statement_start": 23474,
+            "statement_end": 23538,
+            "lexical_scope_start": 23464,
+            "lexical_scope_end": 23830,
+            "initializer": "(TPlayer)tGroupArea.tPlayerList_.ElementAt(l)"
+          },
+          {
+            "name": "m",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 24125,
+            "end": 24130,
+            "slot": 10,
+            "block": 15,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tenant",
+            "type": "game.Tenant",
+            "kind": "declared",
+            "start": 24182,
+            "end": 24208,
+            "slot": 11,
+            "block": 16,
+            "type_source": "Tenant",
+            "statement_start": 24175,
+            "statement_end": 24209,
+            "lexical_scope_start": 24168,
+            "lexical_scope_end": 24504,
+            "initializer": "udat_.tenants_[m]"
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 22637,
+            "end": 24511,
+            "parent": -1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 22916,
+            "end": 22968,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "formManager",
+                "type": "form.FormManager",
+                "kind": "declared",
+                "start": 22928,
+                "end": 22967,
+                "slot": 0,
+                "block": 1,
+                "type_source": "FormManager",
+                "statement_start": 22916,
+                "statement_end": 22968,
+                "lexical_scope_start": 22637,
+                "lexical_scope_end": 24511,
+                "initializer": "FormManager.GetInstance()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "implicit-after-statement",
+            "start": 22973,
+            "end": 23025,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "currentForm",
+                "type": "kairo.unity.form.FormBase",
+                "kind": "declared",
+                "start": 22982,
+                "end": 23024,
+                "slot": 1,
+                "block": 2,
+                "type_source": "FormBase",
+                "statement_start": 22973,
+                "statement_end": 23025,
+                "lexical_scope_start": 22637,
+                "lexical_scope_end": 24511,
+                "initializer": "formManager.GetCurrentForm()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 23060,
+            "end": 24506,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "flag",
+                "type": "System.Boolean",
+                "kind": "declared",
+                "start": 23072,
+                "end": 23084,
+                "slot": 2,
+                "block": 3,
+                "type_source": "bool",
+                "statement_start": 23067,
+                "statement_end": 23085,
+                "lexical_scope_start": 23060,
+                "lexical_scope_end": 24506,
+                "initializer": "false"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "for",
+            "start": 23090,
+            "end": 24088,
+            "parent": 3,
+            "used": false,
+            "variables": [
+              {
+                "name": "i",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 23099,
+                "end": 23104,
+                "slot": 3,
+                "block": 4,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 23150,
+            "end": 24088,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "for",
+            "start": 23157,
+            "end": 23845,
+            "parent": 5,
+            "used": false,
+            "variables": [
+              {
+                "name": "j",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 23166,
+                "end": 23171,
+                "slot": 4,
+                "block": 6,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 23221,
+            "end": 23845,
+            "parent": 6,
+            "used": true,
+            "variables": [
+              {
+                "name": "tArea",
+                "type": "game.TArea",
+                "kind": "declared",
+                "start": 23235,
+                "end": 23262,
+                "slot": 5,
+                "block": 7,
+                "type_source": "TArea",
+                "statement_start": 23229,
+                "statement_end": 23263,
+                "lexical_scope_start": 23221,
+                "lexical_scope_end": 23845,
+                "initializer": "udat_.tAreas_[i][j]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "for",
+            "start": 23270,
+            "end": 23838,
+            "parent": 7,
+            "used": false,
+            "variables": [
+              {
+                "name": "k",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 23279,
+                "end": 23284,
+                "slot": 6,
+                "block": 8,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 23337,
+            "end": 23838,
+            "parent": 8,
+            "used": true,
+            "variables": [
+              {
+                "name": "tGroupArea",
+                "type": "game.TGroupArea",
+                "kind": "declared",
+                "start": 23357,
+                "end": 23391,
+                "slot": 7,
+                "block": 9,
+                "type_source": "TGroupArea",
+                "statement_start": 23346,
+                "statement_end": 23392,
+                "lexical_scope_start": 23337,
+                "lexical_scope_end": 23838,
+                "initializer": "tArea.tGroupAreas_[k]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "for",
+            "start": 23400,
+            "end": 23830,
+            "parent": 9,
+            "used": false,
+            "variables": [
+              {
+                "name": "l",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 23409,
+                "end": 23414,
+                "slot": 8,
+                "block": 10,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "explicit",
+            "start": 23464,
+            "end": 23830,
+            "parent": 10,
+            "used": true,
+            "variables": [
+              {
+                "name": "tPlayer",
+                "type": "game.TPlayer",
+                "kind": "declared",
+                "start": 23482,
+                "end": 23537,
+                "slot": 9,
+                "block": 11,
+                "type_source": "TPlayer",
+                "statement_start": 23474,
+                "statement_end": 23538,
+                "lexical_scope_start": 23464,
+                "lexical_scope_end": 23830,
+                "initializer": "(TPlayer)tGroupArea.tPlayerList_.ElementAt(l)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 23584,
+            "end": 23597,
+            "parent": 11,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "explicit",
+            "start": 23741,
+            "end": 23821,
+            "parent": 11,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "explicit",
+            "start": 24018,
+            "end": 24082,
+            "parent": 5,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 15,
+            "kind": "for",
+            "start": 24116,
+            "end": 24504,
+            "parent": 3,
+            "used": false,
+            "variables": [
+              {
+                "name": "m",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 24125,
+                "end": 24130,
+                "slot": 10,
+                "block": 15,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 16,
+            "kind": "explicit",
+            "start": 24168,
+            "end": 24504,
+            "parent": 15,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenant",
+                "type": "game.Tenant",
+                "kind": "declared",
+                "start": 24182,
+                "end": 24208,
+                "slot": 11,
+                "block": 16,
+                "type_source": "Tenant",
+                "statement_start": 24175,
+                "statement_end": 24209,
+                "lexical_scope_start": 24168,
+                "lexical_scope_end": 24504,
+                "initializer": "udat_.tenants_[m]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 17,
+            "kind": "explicit",
+            "start": 24266,
+            "end": 24279,
+            "parent": 16,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 18,
+            "kind": "explicit",
+            "start": 24463,
+            "end": 24498,
+            "parent": 16,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 22582,
+        "declaration_end": 24511,
+        "body_start": 22637,
+        "body_end": 24511
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}

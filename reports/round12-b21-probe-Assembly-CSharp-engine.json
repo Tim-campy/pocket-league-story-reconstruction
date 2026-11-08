@@ -1,0 +1,1257 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1925,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+      "number": 1,
+      "initial_offset": 125,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+          "start": 22582,
+          "end": 24593,
+          "before": "public void Collision(int cursor_sx, int cursor_sy)\r\n\t\t{\r\n\t\t\ttemp_spos[0] = cursor_sx;\r\n\t\t\ttemp_spos[1] = cursor_sy;\r\n\t\t\tConvertScreenToGlobal(temp_spos, temp_gpos);\r\n\t\t\tCAMERA_ADS_GPOS.Set(temp_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, temp_gpos.z_ - CAMERA_BASE_GPOS.z_);\r\n\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, temp_address);\r\n\t\t\tFormManager formManager = FormManager.GetInstance();\r\n\t\t\tFormBase currentForm = formManager.GetCurrentForm();\r\n\t\t\tif (currentForm.GetId() == 9) {\n\r\n\t\t\tbool flag = false;\r\n\t\t\tfor (int i = 0; i < udat_.tAreas_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tfor (int j = 0; j < udat_.tAreas_[i].Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTArea tArea = udat_.tAreas_[i][j];\r\n\t\t\t\t\tfor (int k = 0; k < tArea.tGroupAreas_.Length; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (flag)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tTGroupArea tGroupArea = tArea.tGroupAreas_[k];\r\n\t\t\t\t\t\tfor (int l = 0; l < tGroupArea.tPlayerList_.Size(); l++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tTPlayer tPlayer = (TPlayer)tGroupArea.tPlayerList_.ElementAt(l);\r\n\t\t\t\t\t\t\tif (!BitUtil.Check(tPlayer.flag_, 1) && GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, tPlayer.screen_pos_[0] - 7, tPlayer.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t\t\t\tsubPlayer_ = tPlayer;\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (!flag && GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, udat_.tp_svisor_.screen_pos_[0] - 7, udat_.tp_svisor_.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t{\r\n\t\t\t\t\tflag = true;\r\n\t\t\t\t\tsubSvisor_ = udat_.tp_svisor_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tsubTenant_ = null;\r\n\t\t\tfor (int m = 0; m < udat_.tenants_.Length; m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant = udat_.tenants_[m];\r\n\t\t\t\tif ((tenant.root_ != 1 || udat_.tAreaRootNum_ != 1) && (temp_address[0] == tenant.address_[0] || temp_address[0] == tenant.address_[0] + 1) && (temp_address[1] == tenant.address_[1] || temp_address[1] == tenant.address_[1] - 1))\r\n\t\t\t\t{\r\n\t\t\t\t\tsubTenant_ = tenant;\r\n\t\t\t\t}\r\n\t\t\t}\n}\r\n\t\t}",
+          "after": "public void Collision(int cursor_sx, int cursor_sy)\r\n\t\t{\r\n\t\t\ttemp_spos[0] = cursor_sx;\r\n\t\t\ttemp_spos[1] = cursor_sy;\r\n\t\t\tConvertScreenToGlobal(temp_spos, temp_gpos);\r\n\t\t\tCAMERA_ADS_GPOS.Set(temp_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, temp_gpos.z_ - CAMERA_BASE_GPOS.z_);\r\n\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, temp_address);\r\n\t\t\tFormManager formManager = FormManager.GetInstance();\r\n\t\t\tFormBase currentForm = formManager.GetCurrentForm();\r\n\t\t\tif (currentForm.GetId() == 9) {\n\r\n\t\t\tbool flag = false;\r\n\t\t\tfor (int i = 0; i < udat_.tAreas_.Length && !flag; i++)\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < udat_.tAreas_[i].Length && !flag; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTArea tArea = udat_.tAreas_[i][j];\r\n\t\t\t\t\tfor (int k = 0; k < tArea.tGroupAreas_.Length && !flag; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tTGroupArea tGroupArea = tArea.tGroupAreas_[k];\r\n\t\t\t\t\t\tfor (int l = 0; l < tGroupArea.tPlayerList_.Size(); l++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tTPlayer tPlayer = (TPlayer)tGroupArea.tPlayerList_.ElementAt(l);\r\n\t\t\t\t\t\t\tif (BitUtil.Check(tPlayer.flag_, 1)) { continue; }\nif (GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, tPlayer.screen_pos_[0] - 7, tPlayer.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t\t\t\tsubPlayer_ = tPlayer;\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (!flag && GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, udat_.tp_svisor_.screen_pos_[0] - 7, udat_.tp_svisor_.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t{\r\n\t\t\t\t\tflag = true;\r\n\t\t\t\t\tsubSvisor_ = udat_.tp_svisor_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tsubTenant_ = null;\r\n\t\t\tfor (int m = 0; m < udat_.tenants_.Length; m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant = udat_.tenants_[m];\r\n\t\t\t\tif (tenant.root_ == 1 && udat_.tAreaRootNum_ == 1) { continue; }\nif ((temp_address[0] == tenant.address_[0] || temp_address[0] == tenant.address_[0] + 1) && (temp_address[1] == tenant.address_[1] || temp_address[1] == tenant.address_[1] - 1))\r\n\t\t\t\t{\r\n\t\t\t\t\tsubTenant_ = tenant;\r\n\t\t\t\t}\r\n\t\t\t}\n}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 125,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "kairo.unity.form.FormBase",
+              "System.Boolean",
+              "System.Int32",
+              "System.Int32",
+              "game.TArea",
+              "System.Int32",
+              "game.TGroupArea",
+              "System.Int32",
+              "game.TPlayer",
+              "System.Int32",
+              "game.Tenant"
+            ],
+            "method_id": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Camera.cs",
+            "full_source_sha256": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794123920295068800\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0309999999590218,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 691,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 691,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Camera::Collision(System.Int32,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 691
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+          "start": 22582,
+          "end": 24593,
+          "before": "public void Collision(int cursor_sx, int cursor_sy)\r\n\t\t{\r\n\t\t\ttemp_spos[0] = cursor_sx;\r\n\t\t\ttemp_spos[1] = cursor_sy;\r\n\t\t\tConvertScreenToGlobal(temp_spos, temp_gpos);\r\n\t\t\tCAMERA_ADS_GPOS.Set(temp_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, temp_gpos.z_ - CAMERA_BASE_GPOS.z_);\r\n\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, temp_address);\r\n\t\t\tFormManager formManager = FormManager.GetInstance();\r\n\t\t\tFormBase currentForm = formManager.GetCurrentForm();\r\n\t\t\tif (currentForm.GetId() == 9) {\n\r\n\t\t\tbool flag = false;\r\n\t\t\tfor (int i = 0; i < udat_.tAreas_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tfor (int j = 0; j < udat_.tAreas_[i].Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tTArea tArea = udat_.tAreas_[i][j];\r\n\t\t\t\t\tfor (int k = 0; k < tArea.tGroupAreas_.Length; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (flag)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tTGroupArea tGroupArea = tArea.tGroupAreas_[k];\r\n\t\t\t\t\t\tfor (int l = 0; l < tGroupArea.tPlayerList_.Size(); l++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tTPlayer tPlayer = (TPlayer)tGroupArea.tPlayerList_.ElementAt(l);\r\n\t\t\t\t\t\t\tif (!BitUtil.Check(tPlayer.flag_, 1) && GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, tPlayer.screen_pos_[0] - 7, tPlayer.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t\t\t\tsubPlayer_ = tPlayer;\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (!flag && GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, udat_.tp_svisor_.screen_pos_[0] - 7, udat_.tp_svisor_.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t{\r\n\t\t\t\t\tflag = true;\r\n\t\t\t\t\tsubSvisor_ = udat_.tp_svisor_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tsubTenant_ = null;\r\n\t\t\tfor (int m = 0; m < udat_.tenants_.Length; m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant = udat_.tenants_[m];\r\n\t\t\t\tif ((tenant.root_ != 1 || udat_.tAreaRootNum_ != 1) && (temp_address[0] == tenant.address_[0] || temp_address[0] == tenant.address_[0] + 1) && (temp_address[1] == tenant.address_[1] || temp_address[1] == tenant.address_[1] - 1))\r\n\t\t\t\t{\r\n\t\t\t\t\tsubTenant_ = tenant;\r\n\t\t\t\t}\r\n\t\t\t}\n}\r\n\t\t}",
+          "after": "public void Collision(int cursor_sx, int cursor_sy)\r\n\t\t{\r\n\t\t\ttemp_spos[0] = cursor_sx;\r\n\t\t\ttemp_spos[1] = cursor_sy;\r\n\t\t\tConvertScreenToGlobal(temp_spos, temp_gpos);\r\n\t\t\tCAMERA_ADS_GPOS.Set(temp_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, temp_gpos.z_ - CAMERA_BASE_GPOS.z_);\r\n\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, temp_address);\r\n\t\t\tFormManager formManager = FormManager.GetInstance();\r\n\t\t\tFormBase currentForm = formManager.GetCurrentForm();\r\n\t\t\tif (currentForm.GetId() == 9) {\n\r\n\t\t\tbool flag = false;\r\n\t\t\tfor (int i = 0; i < udat_.tAreas_.Length && !flag; i++)\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < udat_.tAreas_[i].Length && !flag; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tTArea tArea = udat_.tAreas_[i][j];\r\n\t\t\t\t\tfor (int k = 0; k < tArea.tGroupAreas_.Length && !flag; k++)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tTGroupArea tGroupArea = tArea.tGroupAreas_[k];\r\n\t\t\t\t\t\tfor (int l = 0; l < tGroupArea.tPlayerList_.Size(); l++)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tTPlayer tPlayer = (TPlayer)tGroupArea.tPlayerList_.ElementAt(l);\r\n\t\t\t\t\t\t\tif (BitUtil.Check(tPlayer.flag_, 1)) { continue; }\nif (GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, tPlayer.screen_pos_[0] - 7, tPlayer.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tflag = true;\r\n\t\t\t\t\t\t\t\tsubPlayer_ = tPlayer;\r\n\t\t\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (!flag && GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, udat_.tp_svisor_.screen_pos_[0] - 7, udat_.tp_svisor_.screen_pos_[1] + 28, 14, 28, true))\r\n\t\t\t\t{\r\n\t\t\t\t\tflag = true;\r\n\t\t\t\t\tsubSvisor_ = udat_.tp_svisor_;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tsubTenant_ = null;\r\n\t\t\tfor (int m = 0; m < udat_.tenants_.Length; m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant = udat_.tenants_[m];\r\n\t\t\t\tif (tenant.root_ == 1 && udat_.tAreaRootNum_ == 1) { continue; }\nif ((temp_address[0] == tenant.address_[0] || temp_address[0] == tenant.address_[0] + 1) && (temp_address[1] == tenant.address_[1] || temp_address[1] == tenant.address_[1] - 1))\r\n\t\t\t\t{\r\n\t\t\t\t\tsubTenant_ = tenant;\r\n\t\t\t\t}\r\n\t\t\t}\n}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 125,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "form.FormManager",
+              "kairo.unity.form.FormBase",
+              "System.Boolean",
+              "System.Int32",
+              "System.Int32",
+              "game.TArea",
+              "System.Int32",
+              "game.TGroupArea",
+              "System.Int32",
+              "game.TPlayer",
+              "System.Int32",
+              "game.Tenant"
+            ],
+            "method_id": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Camera.cs",
+            "full_source_sha256": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794123920295068800\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0309999999590218,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 691,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 691,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Camera::Collision(System.Int32,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 691
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 138,
+            "rebuilt_offset": 138,
+            "opcode_pair": [
+              "ldc.i4.0",
+              "ldloc.2"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 125,
+        "source": "src/Assembly-CSharp/game/Camera.cs",
+        "point": {
+          "offset": 138,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Camera.cs",
+          "start_line": 868,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 138,
+          "line": 868,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "insert",
+          "original_offset": 138,
+          "rebuilt_offset": 138,
+          "original_index": 41,
+          "rebuilt_index": 41,
+          "original_instruction": {
+            "opcode": "INSERTION_POINT",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 138,
+            "opcode": "ldloc.2",
+            "operand": null
+          },
+          "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.2\",\"operand\":null}",
+          "opcode_pair": "INSERTION_POINT => ldloc.2",
+          "original_context": [
+            {
+              "offset": 132,
+              "opcode": "stloc.3",
+              "operand": null
+            },
+            {
+              "offset": 133,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L13"
+                ]
+              }
+            },
+            {
+              "offset": 138,
+              "opcode": "ldc.i4.0",
+              "operand": null,
+              "label": "L0"
+            },
+            {
+              "offset": 139,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            },
+            {
+              "offset": 141,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L10"
+                ]
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 132,
+              "opcode": "stloc.3",
+              "operand": null
+            },
+            {
+              "offset": 133,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L13"
+                ]
+              }
+            },
+            {
+              "offset": 138,
+              "opcode": "ldloc.2",
+              "operand": null,
+              "label": "R138"
+            },
+            {
+              "offset": 139,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "L0"
+                ]
+              }
+            },
+            {
+              "offset": 144,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L14"
+                ]
+              }
+            },
+            {
+              "offset": 149,
+              "opcode": "ldc.i4.0",
+              "operand": null,
+              "label": "L0"
+            },
+            {
+              "offset": 150,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 4
+              }
+            }
+          ],
+          "original_labels": {
+            "138": "L0",
+            "146": "L1",
+            "172": "L2",
+            "192": "L3",
+            "236": "L4",
+            "297": "L5",
+            "303": "L6",
+            "322": "L7",
+            "328": "L8",
+            "350": "L9",
+            "356": "L10",
+            "384": "L11",
+            "473": "L12",
+            "477": "L13",
+            "502": "L14",
+            "517": "L15",
+            "568": "L16",
+            "612": "L17",
+            "656": "L18",
+            "664": "L19",
+            "670": "L20",
+            "690": "L21"
+          },
+          "rebuilt_labels": {
+            "149": "L0",
+            "168": "L1",
+            "205": "L2",
+            "225": "L3",
+            "264": "L4",
+            "325": "L5",
+            "331": "L6",
+            "350": "L7",
+            "356": "L8",
+            "372": "L9",
+            "378": "L10",
+            "400": "L11",
+            "489": "L12",
+            "493": "L13",
+            "512": "L14",
+            "527": "L15",
+            "573": "L16",
+            "617": "L17",
+            "661": "L18",
+            "669": "L19",
+            "675": "L20",
+            "695": "L21",
+            "138": "R138",
+            "157": "R157",
+            "194": "R194"
+          },
+          "sequence_edits": [
+            {
+              "kind": "insert",
+              "original_start": 41,
+              "original_stop": 41,
+              "rebuilt_start": 41,
+              "rebuilt_stop": 44
+            },
+            {
+              "kind": "insert",
+              "original_start": 43,
+              "original_stop": 43,
+              "rebuilt_start": 46,
+              "rebuilt_stop": 49
+            },
+            {
+              "kind": "insert",
+              "original_start": 54,
+              "original_stop": 54,
+              "rebuilt_start": 60,
+              "rebuilt_stop": 63
+            },
+            {
+              "kind": "replace",
+              "original_start": 73,
+              "original_stop": 75,
+              "rebuilt_start": 82,
+              "rebuilt_stop": 83
+            },
+            {
+              "kind": "replace",
+              "original_start": 124,
+              "original_stop": 127,
+              "rebuilt_start": 132,
+              "rebuilt_stop": 133
+            },
+            {
+              "kind": "replace",
+              "original_start": 139,
+              "original_stop": 142,
+              "rebuilt_start": 145,
+              "rebuilt_stop": 146
+            },
+            {
+              "kind": "replace",
+              "original_start": 190,
+              "original_stop": 193,
+              "rebuilt_start": 194,
+              "rebuilt_stop": 195
+            },
+            {
+              "kind": "replace",
+              "original_start": 213,
+              "original_stop": 215,
+              "rebuilt_start": 215,
+              "rebuilt_stop": 216
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 43,
+              "original_stop": 44,
+              "rebuilt_start": 49,
+              "rebuilt_stop": 50,
+              "target_ordinal": 0,
+              "original_target": 356,
+              "rebuilt_target": 400
+            },
+            {
+              "kind": "branch_retarget",
+              "original_start": 54,
+              "original_stop": 55,
+              "rebuilt_start": 63,
+              "rebuilt_stop": 64,
+              "target_ordinal": 0,
+              "original_target": 328,
+              "rebuilt_target": 372
+            }
+          ],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 23148,
+          "end": 23184,
+          "line": 868,
+          "column": 5,
+          "text": "if (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+          "point": 23144,
+          "declaration_start": 22582,
+          "declaration_end": 24593
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 108,
+              "last_use": 109,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 115,
+              "last_use": 116,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 130,
+              "last_use": 496,
+              "loads": 4,
+              "stores": 3
+            },
+            {
+              "slot": 3,
+              "first_use": 132,
+              "last_use": 477,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 4,
+              "first_use": 139,
+              "last_use": 356,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 5,
+              "first_use": 162,
+              "last_use": 330,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 165,
+              "last_use": 328,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 7,
+              "first_use": 182,
+              "last_use": 305,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 185,
+              "last_use": 303,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 9,
+              "first_use": 211,
+              "last_use": 285,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 10,
+              "first_use": 510,
+              "last_use": 670,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 11,
+              "first_use": 531,
+              "last_use": 657,
+              "loads": 6,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 9,
+              "votes": {
+                "9": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 10,
+              "votes": {
+                "10": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 11,
+              "votes": {
+                "11": 7
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "formManager",
+              "type": "form.FormManager",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 22637,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "currentForm",
+              "type": "kairo.unity.form.FormBase",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 22637,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "flag",
+              "type": "System.Boolean",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 23060,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tArea",
+              "type": "game.TArea",
+              "rebuilt_slot": 5,
+              "desired_slot": 5,
+              "lexical_block": 23245,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tGroupArea",
+              "type": "game.TGroupArea",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 23398,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tPlayer",
+              "type": "game.TPlayer",
+              "rebuilt_slot": 9,
+              "desired_slot": 9,
+              "lexical_block": 23575,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tenant",
+              "type": "game.Tenant",
+              "rebuilt_slot": 11,
+              "desired_slot": 11,
+              "lexical_block": 24264,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 8,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 7,
+          "selected_rule_prefix": "r12-camera-collision-loop-flag-conditions-and-two-continue-guards"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-camera-collision-loop-flag-conditions-and-two-continue-guards": 1
+          },
+          "model_approved": {
+            "r12-camera-collision-loop-flag-conditions-and-two-continue-guards": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 691,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "game.Camera::Collision(System.Int32,System.Int32)->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards:attempts": 1,
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards:accepted_steps": 1,
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards:body_gains": 1,
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards:IL_gains": 691
+  },
+  "completed": true,
+  "run_label": "b21-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b21\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else",
+    "r12-smcs-player-collision-v2-proved-guard-splitting-positive-regions-and-arm-stores",
+    "r12-block-local-layout-",
+    "r12-smcs-player-collision-v3-positive-height-plus-original-tail-return",
+    "r12-shared-score-graph-layout-",
+    "r12-dup-store-composition-",
+    "r12-player-act-preserve-empty-action-five-arm",
+    "r12-gamepad-boolean-and-id-conditional-values",
+    "r12-smcs-soccer-main-terminal-positive-empty-debug-test",
+    "r12-selector-and-touch-layout-",
+    "r12-league-root-score-locals-and-loop-local-team-ids",
+    "r12-common-branch-and-selector-",
+    "r12-compensated-empty-arms-",
+    "r12-gameform-init-explicit-vector-elements-and-unused-single",
+    "r12-argument-local-flow-",
+    "r12-smcs-billing-generic-init-single-explicit-shift-mask-removal-after-double-resolution-proof",
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 7,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-camera-collision-live-model-patches.json",
+    "sha256": "930364ac1255b6dff3a78e18c9421727a5773eff855f8cec469970008443972a",
+    "dependencies_checked": {
+      "tools/round12_app_camera_collision_private_source.py": "feb3dfbb61341a8d396f3b68d26e19c9adefdfa8def5be4bae2301fdbd180731",
+      "tools/round12_publish_bound_family.py": "1c152a882cb30a6c6c49ad08d5df0e831a7b9000e87492d64b8c8035301824c8",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-camera-collision-private-fixture-report.json": "8ad6739f19f12d881af222e34aa00e1e9a63e569c8d27c49bebc418df85a3738",
+      "reports/round12-app-camera-collision-family-patches.json": "02997e72cf16d3123e572e7f3cc3cde594713effa9f7adde0a279f7d42dd1e94",
+      "reports/round12-app-camera-collision-live-model-proof.json": "474f07347dce40de82b3386aabd1ddc27dedcad577f1b9e457b8ce8dba930ae4",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-camera-collision-private/calculate.py": "feb3dfbb61341a8d396f3b68d26e19c9adefdfa8def5be4bae2301fdbd180731",
+      "build/round12/app-camera-collision-private/fixture-report.json": "8ad6739f19f12d881af222e34aa00e1e9a63e569c8d27c49bebc418df85a3738",
+      "build/round12/app-camera-collision-private/fixtures/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-camera-collision-private/fixtures/before/Fixture.cs": "06c364762cd1bebdee847175c26c86a67496e6d0fe5a3f86b9d77eeb33b9cd9b",
+      "build/round12/app-camera-collision-private/fixtures/before/Fixture.dll": "ebe05c1f7841e63f8f15bad38a0b6aff35587645fb6d84849d4a3e9dd119e0bc",
+      "build/round12/app-camera-collision-private/fixtures/before/method.json": "8cb6c5698cdc55f751b4e26d721824d22afe4bbb93c52b243f6ecce4d3d38094",
+      "build/round12/app-camera-collision-private/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-camera-collision-private/fixtures/candidate/Fixture.cs": "4c3e782838a5f2bdf3a03afe4f8e3a38b0a7b610adb703165c95ede2fcbaff38",
+      "build/round12/app-camera-collision-private/fixtures/candidate/Fixture.dll": "20ec2bd8bf14e1b9e9ef6fab7bb835d33d85f1eb445ac8ee0f59c80dbba676b1",
+      "build/round12/app-camera-collision-private/fixtures/candidate/method.json": "7f5628d19f640174b877cbd408ffb517217d538105b361f1fabbb3bd006c035b",
+      "build/round12/app-camera-collision-private/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-camera-collision-private/fixtures/manual-control/Fixture.cs": "980736646ae3f4784c3635086d0e773eb27908465c5d9814f7ad837d070fc1ee",
+      "build/round12/app-camera-collision-private/fixtures/manual-control/Fixture.dll": "6b3524038f419ad9a314eafea741950917e06146f7f4f83c8c487124b24207f0",
+      "build/round12/app-camera-collision-private/fixtures/manual-control/method.json": "7f5628d19f640174b877cbd408ffb517217d538105b361f1fabbb3bd006c035b",
+      "build/round12/app-camera-collision-private/fixtures/wrong-condition-order/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-camera-collision-private/fixtures/wrong-condition-order/Fixture.cs": "1444f43b3c55d56bd38a6160e0b7ba37e84fe31be7387f059d6b0f2b7f9bb464",
+      "build/round12/app-camera-collision-private/fixtures/wrong-condition-order/Fixture.dll": "b04c5b01cad7ea6f86e0142b6d7b491cd4530b66017a3fbe75802a645156bd61",
+      "build/round12/app-camera-collision-private/fixtures/wrong-condition-order/method.json": "b500eae68833b19a4e761f5d3f86b09da82440843448acae3daffd81b985f757",
+      "build/round12/app-camera-collision-private/fixtures/wrong-continue-owner/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-camera-collision-private/fixtures/wrong-continue-owner/Fixture.cs": "1bedcb2779c3603e55db0fd0648d85cb63cc8fdf6847dab70f089b0b8b7b84cb",
+      "build/round12/app-camera-collision-private/fixtures/wrong-continue-owner/Fixture.dll": "11dc50b443e52e3a247c04fd32e92eac7fbe46632a54429ff698f96d9ad83d3d",
+      "build/round12/app-camera-collision-private/fixtures/wrong-continue-owner/method.json": "ef2dedff6c8e43ca5463f7573a499408591ba53927a8adad7ec05f16f09a5b31",
+      "build/round12/app-camera-collision-private/fixtures.py": "3b4f30c171e30ea18893ddbe7488262be5c6eb8ac1be4a42b29912cd566ab38c",
+      "build/round12/app-camera-collision-private/history.json": "ad8e8c582f1f8ce31dea1a3da6bf45336138cfcae7df030a599d81de6f4c961f",
+      "build/round12/app-camera-collision-private/manifest.json": "50c5acf5707332ec5e595b38b388000914388f74a919d5884f40e980b468b80b",
+      "build/round12/app-camera-collision-private/method.after.cs": "31e9d3feedb6ed903143b1ab6d445a7010c07b4393e3aac3d74c8384ad179719",
+      "build/round12/app-camera-collision-private/method.before.cs": "eb5588dccf89e9c9c2d9935c2572368549345809fd8dba8f44f4f90b8dfddee5",
+      "build/round12/app-camera-collision-private/model.json": "aa418ae88005ad7b55b49eeaf4036431908f3423b858f18b3cbd2e2d2b3afabf",
+      "build/round12/app-camera-collision-private/NOTE.md": "409d1fd17faa2ed4fc4f3b49a9f000c729b41e67317ad332548dd49b3b64b767",
+      "build/round12/app-camera-collision-private/prepare.py": "7fed5123578c2a892d8eb4cca14e17ff6ac8cb72baa678ac4fe5ed4bf9a9e283",
+      "build/round12/app-camera-collision-private/proposal.diff": "261cc13d9a03d4daa924677f3d950ee854dba7d1d61a3ffaa2e494aeb7b368f9",
+      "build/round12/app-camera-collision-private/rea-member.json": "4b82a1d792498819511236a76a6ef74eb3024d0b7ebc1ebc117db1af9129d9d5",
+      "build/round12/app-camera-collision-private/source-patches.json": "0d4ec0d054f66cb34b127ea5bc31e1a8a9e33717cb083dd703387f72d3195bbb",
+      "build/round12/app-camera-collision-private/source.after.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+      "build/round12/app-camera-collision-private/freeze.json": "59aafb2b73fcef77d3927398e7c2ef9e0ab1dafbfb7fd052120b0eada722e709"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {},
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794123920295068800",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.0309999999590218,
+        "wall_seconds": 7.563000000081956,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.0309999999590218,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794123920295068800\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794123920295068800\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "dd2585917de20c99b270a61d27fcf355715fa18a55f01c6c6dc3d6bed6ee6065",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+          "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+          "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+          "src/Assembly-CSharp/game/Camera.cs": "1f205fa8791d11c114a5623219766c21cce3def203ac17b2ebab226552d49a36",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+          "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+          "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+          "src/Assembly-CSharp/game/UserData.cs": "246a934933b4f5a8406408f4a4267f4b0c6184c40505c4e86fb1e07a874dcfee",
+          "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+          "src/Assembly-CSharp/surface/GameView.cs": "967a4065c69a9d17859071e4fa3f9145dc0161c68b03364feda9d262a4383740",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "c601cb8c99a8b72c933c418bab42a844355f08eaad760f95a09213d51ef22262",
+        "accepted_source_set_sha256": "28383e816dffae23019866526d0c2e949006d2e46fd751b1ee452dbe594a12c8",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "2145119ddab3621b95feb5f12437c5b5ceeaab21e97bef91423a5069781572ae"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "game.Camera::Collision(System.Int32,System.Int32)->System.Void",
+        "rule": "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1926,
+  "body_gains": [
+    "game.Camera::Collision(System.Int32,System.Int32)->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 691,
+  "builds": 6,
+  "build_seconds": 7.187000000150874,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "01d3575ddea8fb1da8c04ea558e314fe13ef1ee38485668023446f7a70305afd",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b21-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "c601cb8c99a8b72c933c418bab42a844355f08eaad760f95a09213d51ef22262",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "dd2585917de20c99b270a61d27fcf355715fa18a55f01c6c6dc3d6bed6ee6065",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+    "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+    "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+    "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+    "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+    "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+    "src/Assembly-CSharp/game/UserData.cs": "246a934933b4f5a8406408f4a4267f4b0c6184c40505c4e86fb1e07a874dcfee",
+    "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+    "src/Assembly-CSharp/surface/GameView.cs": "967a4065c69a9d17859071e4fa3f9145dc0161c68b03364feda9d262a4383740",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

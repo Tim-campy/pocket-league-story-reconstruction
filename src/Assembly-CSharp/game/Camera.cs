@@ -863,30 +863,19 @@ if (cursor_pos.y_ > (float)(CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.V
 			if (currentForm.GetId() == 9) {
 
 			bool flag = false;
-			for (int i = 0; i < udat_.tAreas_.Length; i++)
+			for (int i = 0; i < udat_.tAreas_.Length && !flag; i++)
 			{
-				if (flag)
+				for (int j = 0; j < udat_.tAreas_[i].Length && !flag; j++)
 				{
-					break;
-				}
-				for (int j = 0; j < udat_.tAreas_[i].Length; j++)
-				{
-					if (flag)
-					{
-						break;
-					}
 					TArea tArea = udat_.tAreas_[i][j];
-					for (int k = 0; k < tArea.tGroupAreas_.Length; k++)
+					for (int k = 0; k < tArea.tGroupAreas_.Length && !flag; k++)
 					{
-						if (flag)
-						{
-							break;
-						}
 						TGroupArea tGroupArea = tArea.tGroupAreas_[k];
 						for (int l = 0; l < tGroupArea.tPlayerList_.Size(); l++)
 						{
 							TPlayer tPlayer = (TPlayer)tGroupArea.tPlayerList_.ElementAt(l);
-							if (!BitUtil.Check(tPlayer.flag_, 1) && GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, tPlayer.screen_pos_[0] - 7, tPlayer.screen_pos_[1] + 28, 14, 28, true))
+							if (BitUtil.Check(tPlayer.flag_, 1)) { continue; }
+if (GameUtil.ChRectHitRect(cursor_sx - 4, cursor_sy + 4, 8, 8, tPlayer.screen_pos_[0] - 7, tPlayer.screen_pos_[1] + 28, 14, 28, true))
 							{
 								flag = true;
 								subPlayer_ = tPlayer;
@@ -905,7 +894,8 @@ if (cursor_pos.y_ > (float)(CAMERA_RECT[0][1] + CURSOR_LIMIT_OFF[0] - GameForm.V
 			for (int m = 0; m < udat_.tenants_.Length; m++)
 			{
 				Tenant tenant = udat_.tenants_[m];
-				if ((tenant.root_ != 1 || udat_.tAreaRootNum_ != 1) && (temp_address[0] == tenant.address_[0] || temp_address[0] == tenant.address_[0] + 1) && (temp_address[1] == tenant.address_[1] || temp_address[1] == tenant.address_[1] - 1))
+				if (tenant.root_ == 1 && udat_.tAreaRootNum_ == 1) { continue; }
+if ((temp_address[0] == tenant.address_[0] || temp_address[0] == tenant.address_[0] + 1) && (temp_address[1] == tenant.address_[1] || temp_address[1] == tenant.address_[1] - 1))
 				{
 					subTenant_ = tenant;
 				}

@@ -1,0 +1,159 @@
+{
+  "scope": "own nested-loop and two continue-guards projection",
+  "game_compilations": 0,
+  "fixture_compilations": 5,
+  "candidate_vs_control": [],
+  "negative_controls": {
+    "before": [
+      "header",
+      "instructions",
+      "resolved_body_bytes"
+    ],
+    "wrong-condition-order": [
+      "instructions",
+      "resolved_body_bytes"
+    ],
+    "wrong-continue-owner": [
+      "instructions",
+      "resolved_body_bytes"
+    ]
+  },
+  "headers": {
+    "before": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 13,
+      "initlocals": true,
+      "code_size": 474
+    },
+    "candidate": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 13,
+      "initlocals": true,
+      "code_size": 469
+    },
+    "manual-control": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 13,
+      "initlocals": true,
+      "code_size": 469
+    },
+    "wrong-condition-order": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 13,
+      "initlocals": true,
+      "code_size": 469
+    },
+    "wrong-continue-owner": {
+      "format": "fat",
+      "size": 12,
+      "flags": 19,
+      "maxstack": 13,
+      "initlocals": true,
+      "code_size": 469
+    }
+  },
+  "locals": {
+    "before": [
+      "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TGroupArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TPlayer @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class Tenant @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+    ],
+    "candidate": [
+      "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TGroupArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TPlayer @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class Tenant @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+    ],
+    "manual-control": [
+      "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TGroupArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TPlayer @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class Tenant @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+    ],
+    "wrong-condition-order": [
+      "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TGroupArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TPlayer @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class Tenant @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+    ],
+    "wrong-continue-owner": [
+      "valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TGroupArea @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class TPlayer @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "class Tenant @ Fixture, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+    ]
+  },
+  "EH": {
+    "before": [],
+    "candidate": [],
+    "manual-control": [],
+    "wrong-condition-order": [],
+    "wrong-continue-owner": []
+  },
+  "artifacts": [
+    {
+      "label": "before",
+      "source_sha256": "06c364762cd1bebdee847175c26c86a67496e6d0fe5a3f86b9d77eeb33b9cd9b",
+      "binary_sha256": "ebe05c1f7841e63f8f15bad38a0b6aff35587645fb6d84849d4a3e9dd119e0bc"
+    },
+    {
+      "label": "candidate",
+      "source_sha256": "4c3e782838a5f2bdf3a03afe4f8e3a38b0a7b610adb703165c95ede2fcbaff38",
+      "binary_sha256": "20ec2bd8bf14e1b9e9ef6fab7bb835d33d85f1eb445ac8ee0f59c80dbba676b1"
+    },
+    {
+      "label": "manual-control",
+      "source_sha256": "980736646ae3f4784c3635086d0e773eb27908465c5d9814f7ad837d070fc1ee",
+      "binary_sha256": "6b3524038f419ad9a314eafea741950917e06146f7f4f83c8c487124b24207f0"
+    },
+    {
+      "label": "wrong-condition-order",
+      "source_sha256": "1444f43b3c55d56bd38a6160e0b7ba37e84fe31be7387f059d6b0f2b7f9bb464",
+      "binary_sha256": "b04c5b01cad7ea6f86e0142b6d7b491cd4530b66017a3fbe75802a645156bd61"
+    },
+    {
+      "label": "wrong-continue-owner",
+      "source_sha256": "1bedcb2779c3603e55db0fd0648d85cb63cc8fdf6847dab70f089b0b8b7b84cb",
+      "binary_sha256": "11dc50b443e52e3a247c04fd32e92eac7fbe46632a54429ff698f96d9ad83d3d"
+    }
+  ]
+}
