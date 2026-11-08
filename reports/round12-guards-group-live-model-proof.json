@@ -1,0 +1,437 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports/round12-guards-group-merged-patches.json",
+  "old_bundle_sha256": "dcddc6b6fa1f882e6c2b250b9904d12fa5b7a8b244bdea06a344da68bcb3e0ed",
+  "assembly": "Assembly-CSharp",
+  "baseline": "build\\round12\\runs\\b31\\commit\\postverify01\\Assembly-CSharp",
+  "manifest_sha256": "7025f3f4a1dac045091e43a529f91922b2ab64e479d5ff393e2bb90ffb4203d2",
+  "model_validation": "reports/round11-slot-model-validation.json",
+  "model_validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "records": [
+    {
+      "method_id": "data.TenantData::StrengthTenant()->System.Void",
+      "logical_source": "src/Assembly-CSharp/data/TenantData.cs",
+      "frozen_full_source_sha256": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+      "live_full_source_sha256": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+      "candidate_full_source_sha256": "f623b9f1ed19e1f183f53eda7bb9a25a40c9cba09c863decc51ab2cb8541619c",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "data.TenantData::StrengthTenant()->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "System.Int32",
+          "game.Tenant"
+        ],
+        "variables": [
+          {
+            "name": "i",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 7534,
+            "end": 7539,
+            "slot": 0,
+            "block": 2,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "tenant",
+            "type": "game.Tenant",
+            "kind": "declared",
+            "start": 7591,
+            "end": 7617,
+            "slot": 1,
+            "block": 3,
+            "type_source": "Tenant",
+            "statement_start": 7584,
+            "statement_end": 7618,
+            "lexical_scope_start": 7577,
+            "lexical_scope_end": 7729,
+            "initializer": "udat_.tenants_[i]"
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 7476,
+            "end": 7754,
+            "parent": -1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 7500,
+            "end": 7520,
+            "parent": 0,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "for",
+            "start": 7525,
+            "end": 7729,
+            "parent": 0,
+            "used": false,
+            "variables": [
+              {
+                "name": "i",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 7534,
+                "end": 7539,
+                "slot": 0,
+                "block": 2,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "explicit",
+            "start": 7577,
+            "end": 7729,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "tenant",
+                "type": "game.Tenant",
+                "kind": "declared",
+                "start": 7591,
+                "end": 7617,
+                "slot": 1,
+                "block": 3,
+                "type_source": "Tenant",
+                "statement_start": 7584,
+                "statement_end": 7618,
+                "lexical_scope_start": 7577,
+                "lexical_scope_end": 7729,
+                "initializer": "udat_.tenants_[i]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 7648,
+            "end": 7661,
+            "parent": 3,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 7696,
+            "end": 7723,
+            "parent": 3,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [],
+        "diagnostic_evidence": [],
+        "declaration_start": 7444,
+        "declaration_end": 7754,
+        "body_start": 7476,
+        "body_end": 7754
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    },
+    {
+      "method_id": "system.billing.ui.BillingManager::AddPurchaseLog(System.String,System.Int32,system.billing.util.Purchase)->System.Void",
+      "logical_source": "src/Assembly-CSharp/system/billing/ui/BillingManager.cs",
+      "frozen_full_source_sha256": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+      "live_full_source_sha256": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+      "candidate_full_source_sha256": "9ec71a52d402b70f13ec45ba6fac88494746a420c2e2738065792afad1db1808",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "system.billing.ui.BillingManager::AddPurchaseLog(System.String,System.Int32,system.billing.util.Purchase)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "system.billing.ui.PurchaseRecord",
+          "System.String",
+          "System.Int32",
+          "system.billing.ui.PurchaseRecord"
+        ],
+        "variables": [
+          {
+            "name": "purchaseRecord",
+            "type": "system.billing.ui.PurchaseRecord",
+            "kind": "declared",
+            "start": 24532,
+            "end": 24553,
+            "slot": 0,
+            "block": 0,
+            "type_source": "PurchaseRecord",
+            "statement_start": 24517,
+            "statement_end": 24554,
+            "lexical_scope_start": 24511,
+            "lexical_scope_end": 25248,
+            "initializer": "null"
+          },
+          {
+            "name": "text",
+            "type": "System.String",
+            "kind": "declared",
+            "start": 24566,
+            "end": 24577,
+            "slot": 1,
+            "block": 1,
+            "type_source": "string",
+            "statement_start": 24559,
+            "statement_end": 24578,
+            "lexical_scope_start": 24511,
+            "lexical_scope_end": 25248,
+            "initializer": "null"
+          },
+          {
+            "name": "num",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 24665,
+            "end": 24694,
+            "slot": 2,
+            "block": 3,
+            "type_source": "int",
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          },
+          {
+            "name": "purchaseRecord2",
+            "type": "system.billing.ui.PurchaseRecord",
+            "kind": "declared",
+            "start": 24739,
+            "end": 24800,
+            "slot": 3,
+            "block": 4,
+            "type_source": "PurchaseRecord",
+            "statement_start": 24724,
+            "statement_end": 24801,
+            "lexical_scope_start": 24717,
+            "lexical_scope_end": 24984,
+            "initializer": "(PurchaseRecord)purchaseLog_.ElementAt(num)"
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 24511,
+            "end": 25248,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "purchaseRecord",
+                "type": "system.billing.ui.PurchaseRecord",
+                "kind": "declared",
+                "start": 24532,
+                "end": 24553,
+                "slot": 0,
+                "block": 0,
+                "type_source": "PurchaseRecord",
+                "statement_start": 24517,
+                "statement_end": 24554,
+                "lexical_scope_start": 24511,
+                "lexical_scope_end": 25248,
+                "initializer": "null"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 24559,
+            "end": 24578,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "text",
+                "type": "System.String",
+                "kind": "declared",
+                "start": 24566,
+                "end": 24577,
+                "slot": 1,
+                "block": 1,
+                "type_source": "string",
+                "statement_start": 24559,
+                "statement_end": 24578,
+                "lexical_scope_start": 24511,
+                "lexical_scope_end": 25248,
+                "initializer": "null"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "explicit",
+            "start": 24609,
+            "end": 24651,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "for",
+            "start": 24656,
+            "end": 24984,
+            "parent": 1,
+            "used": false,
+            "variables": [
+              {
+                "name": "num",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 24665,
+                "end": 24694,
+                "slot": 2,
+                "block": 3,
+                "type_source": "int",
+                "statement_start": -1,
+                "statement_end": -1,
+                "lexical_scope_start": -1,
+                "lexical_scope_end": -1,
+                "initializer": null
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "explicit",
+            "start": 24717,
+            "end": 24984,
+            "parent": 3,
+            "used": true,
+            "variables": [
+              {
+                "name": "purchaseRecord2",
+                "type": "system.billing.ui.PurchaseRecord",
+                "kind": "declared",
+                "start": 24739,
+                "end": 24800,
+                "slot": 3,
+                "block": 4,
+                "type_source": "PurchaseRecord",
+                "statement_start": 24724,
+                "statement_end": 24801,
+                "lexical_scope_start": 24717,
+                "lexical_scope_end": 24984,
+                "initializer": "(PurchaseRecord)purchaseLog_.ElementAt(num)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 24858,
+            "end": 24871,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 24934,
+            "end": 24978,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "explicit",
+            "start": 25037,
+            "end": 25149,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 25186,
+            "end": 25243,
+            "parent": 1,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 24433,
+        "declaration_end": 25248,
+        "body_start": 24511,
+        "body_end": 25248
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}

@@ -974,9 +974,8 @@ if (flag2)
 			for (int num = purchaseLog_.Size() - 1; num >= 0; num--)
 			{
 				PurchaseRecord purchaseRecord2 = (PurchaseRecord)purchaseLog_.ElementAt(num);
-				if ((!(purchaseRecord2.productId_.Equals(productId))) || ((text != null) && (!(purchaseRecord2.orderId_.Equals(text))))) { continue; }
-purchaseRecord = purchaseRecord2;
-break;
+				if (!purchaseRecord2.productId_.Equals(productId)) { continue; }
+if ((text == null) || purchaseRecord2.orderId_.Equals(text)) { purchaseRecord = purchaseRecord2; break; }
 			}
 			if (purchaseRecord == null && text != null)
 			{

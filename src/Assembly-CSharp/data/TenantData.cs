@@ -345,8 +345,8 @@ SetLv(lv_ + 1);
 			for (int i = 0; i < udat_.tenants_.Length; i++)
 			{
 				Tenant tenant = udat_.tenants_[i];
-				if ((tenant.state_ == 0) || (tenant.tenantDataId_ != id_)) { continue; }
-tenant.StrenghTenant();
+				if (tenant.state_ == 0) { continue; }
+if (tenant.tenantDataId_ == id_) { tenant.StrenghTenant(); }
 			}
 			ChangeState(2);
 		}

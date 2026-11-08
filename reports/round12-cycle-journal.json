@@ -1724,6 +1724,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 43,
+      "part_cycle": 32,
+      "label": "b32",
+      "phase": "B",
+      "primary_target": "system.billing.ui.BillingManager::AddPurchaseLog(System.String,System.Int32,system.billing.util.Purchase)->System.Void",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-loop-first-continue-",
+      "assembly": "Assembly-CSharp",
+      "pair": "brtrue => brfalse",
+      "hypothesis": "Shared mechanism: first loop continue guard followed by positive work arm. Tenant state==0 skips current item; Billing product mismatch skips item, then null/order match assigns and breaks the for. Distinct predicates, increment/exit owners and two/four locals remain independently proved. Split-only and positive-only variants are old negative controls.",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 2,
+          "il_bytes_gained": 266
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 2,
+      "il_bytes_gained": 266,
+      "before_measurement": "reports\\round12-b32-before-measurement.json",
+      "before_sha256": "3688b260f97beed1e6675993756b375185b7e8b8e82014793ff733cc108bafce",
+      "after_measurement": "reports/round12-b32-postverify01-measurement.json",
+      "after_sha256": "9400e5b7dcda86b87db062201db195753ef9b21d8531de8802c30fe32dddcbf1",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-b32-after-measurement.json",
+          "previous_after_sha256": "ec192615f4c0d52fdb071d42600f66b049dd0bd89813aab1a97d4899918c6461",
+          "new_after_measurement": "reports/round12-b32-postverify01-measurement.json",
+          "new_after_sha256": "9400e5b7dcda86b87db062201db195753ef9b21d8531de8802c30fe32dddcbf1",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0
