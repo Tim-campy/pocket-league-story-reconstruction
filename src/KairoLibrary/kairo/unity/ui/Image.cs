@@ -753,9 +753,10 @@ for ( num15 = 0; num15 < optimizePass_; num15++)
 					{
 						Log.Info("Image.use() 失敗 [" + name_ + "]" + ((file_ == null) ? "" : (" file=" + file_)));
 					}
-				}
-				else
-				{
+
+return;
+}
+{
 					int num = 0;
 					while (true)
 					{
