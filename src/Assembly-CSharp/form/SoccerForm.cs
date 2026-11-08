@@ -785,23 +785,22 @@ else if (type == 6) {
 			while (script_.Size() > 0)
 			{
 				int[] firstScript = GetFirstScript();
-				switch (firstScript[0])
-				{
-				case 1:
-					Push(SubForm.MakeWait(firstScript[1]));
+				int recoveredScriptKind = firstScript[0];
+if (recoveredScriptKind == 1) {
+Push(SubForm.MakeWait(firstScript[1]));
 					script_.RemoveElementAt(0);
-					return;
-				case 0:
-					script_.RemoveElementAt(0);
-					return;
-				case 2:
-					script_.RemoveElementAt(0);
-					break;
-				case 3:
-					script_.RemoveElementAt(0);
-					return;
-				case 4:
-					if (firstScript[1] == 0)
+}
+else if (recoveredScriptKind == 0) {
+script_.RemoveElementAt(0);
+}
+else if (recoveredScriptKind == 2) {
+script_.RemoveElementAt(0);continue;
+}
+else if (recoveredScriptKind == 3) {
+script_.RemoveElementAt(0);
+}
+else if (recoveredScriptKind == 4) {
+if (firstScript[1] == 0)
 					{
 						udat_.gm_.ChangeState(10);
 						udat_.gm_.time_card = firstScript[2];
@@ -814,17 +813,15 @@ else if (type == 6) {
 					{
 						udat_.gm_.ChangeState(0);
 						script_.RemoveElementAt(0);
-						break;
+						continue;
 					}
-					return;
-				case 5:
-					udat_.gm_.ChangeState(firstScript[1]);
-					script_.RemoveElementAt(0);
-					break;
-				default:
-					return;
-				}
-			}
+}
+else if (recoveredScriptKind == 5) {
+udat_.gm_.ChangeState(firstScript[1]);
+					script_.RemoveElementAt(0);continue;
+}
+break;
+}
 		}
 
 		public override bool Resume()

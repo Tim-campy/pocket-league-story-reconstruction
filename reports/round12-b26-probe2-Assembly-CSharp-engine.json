@@ -1,0 +1,1031 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1932,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "form.GameForm::Script()->System.Void",
+      "number": 1,
+      "initial_offset": 1,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits",
+          "start": 11215,
+          "end": 11758,
+          "before": "public void Script()\r\n\t\t{\r\n\t\t\twhile (script_.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\tint[] firstScript = GetFirstScript();\r\n\t\t\t\tswitch (firstScript[0])\r\n\t\t\t\t{\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tPush(SubForm.MakeWait(firstScript[1]));\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tapdat_.ExecEvent(firstScript[1], apdat_.save_.strs[0], null);\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tcase 2:\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 3:\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void Script()\r\n\t\t{\r\n\t\t\twhile (script_.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\tint[] firstScript = GetFirstScript();\r\n\t\t\t\tint recoveredScriptKind = firstScript[0];\r\nif (recoveredScriptKind == 1) {\r\nPush(SubForm.MakeWait(firstScript[1]));\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n}\r\nelse if (recoveredScriptKind == 0) {\r\napdat_.ExecEvent(firstScript[1], apdat_.save_.strs[0], null);\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n}\r\nelse if (recoveredScriptKind == 2) {\r\nscript_.RemoveElementAt(0);\r\ncontinue;\r\n}\r\nelse if (recoveredScriptKind == 3) {\r\nscript_.RemoveElementAt(0);\r\n}\r\nbreak;\r\n}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 1,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32[]",
+              "System.Int32"
+            ],
+            "method_id": "form.GameForm::Script()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\GameForm.cs",
+            "full_source_sha256": "8811a141be8d13343e88fb066611bf96de87a01eb02401448e787ba971b4d885"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794126321531831400\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.9689999998081475,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 178,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 178,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.GameForm::Script()->System.Void"
+          ],
+          "matched_IL_gain": 178
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits",
+          "start": 11215,
+          "end": 11758,
+          "before": "public void Script()\r\n\t\t{\r\n\t\t\twhile (script_.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\tint[] firstScript = GetFirstScript();\r\n\t\t\t\tswitch (firstScript[0])\r\n\t\t\t\t{\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tPush(SubForm.MakeWait(firstScript[1]));\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tapdat_.ExecEvent(firstScript[1], apdat_.save_.strs[0], null);\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tcase 2:\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 3:\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void Script()\r\n\t\t{\r\n\t\t\twhile (script_.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\tint[] firstScript = GetFirstScript();\r\n\t\t\t\tint recoveredScriptKind = firstScript[0];\r\nif (recoveredScriptKind == 1) {\r\nPush(SubForm.MakeWait(firstScript[1]));\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n}\r\nelse if (recoveredScriptKind == 0) {\r\napdat_.ExecEvent(firstScript[1], apdat_.save_.strs[0], null);\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n}\r\nelse if (recoveredScriptKind == 2) {\r\nscript_.RemoveElementAt(0);\r\ncontinue;\r\n}\r\nelse if (recoveredScriptKind == 3) {\r\nscript_.RemoveElementAt(0);\r\n}\r\nbreak;\r\n}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 1,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32[]",
+              "System.Int32"
+            ],
+            "method_id": "form.GameForm::Script()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\GameForm.cs",
+            "full_source_sha256": "8811a141be8d13343e88fb066611bf96de87a01eb02401448e787ba971b4d885"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794126321531831400\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 0.9689999998081475,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 178,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 178,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "form.GameForm::Script()->System.Void"
+          ],
+          "matched_IL_gain": 178
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 17,
+            "rebuilt_offset": 17,
+            "opcode_pair": [
+              "ldc.i4.1",
+              "switch"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 1,
+        "source": "src/Assembly-CSharp/form/GameForm.cs",
+        "point": {
+          "offset": 12,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\form\\GameForm.cs",
+          "start_line": 507,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 17,
+          "line": 507,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 17,
+          "rebuilt_offset": 17,
+          "original_index": 9,
+          "rebuilt_index": 9,
+          "original_instruction": {
+            "offset": 17,
+            "opcode": "ldc.i4.1",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 17,
+            "opcode": "switch",
+            "operand": {
+              "switch": [
+                71,
+                43,
+                118,
+                123
+              ]
+            }
+          },
+          "pair": "{\"opcode\":\"ldc.i4.1\",\"operand\":null} => {\"opcode\":\"switch\",\"operand\":{\"switch\":[71,43,118,123]}}",
+          "opcode_pair": "ldc.i4.1 => switch",
+          "original_context": [
+            {
+              "offset": 15,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 16,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 17,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            },
+            {
+              "offset": 18,
+              "opcode": "bne.un",
+              "operand": {
+                "labels": [
+                  "O55"
+                ]
+              }
+            },
+            {
+              "offset": 23,
+              "opcode": "ldarg.0",
+              "operand": null,
+              "label": "L1"
+            },
+            {
+              "offset": 24,
+              "opcode": "ldloc.0",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 15,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 16,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 17,
+              "opcode": "switch",
+              "operand": {
+                "labels": [
+                  "L2",
+                  "L1",
+                  "L3",
+                  "L4"
+                ]
+              }
+            },
+            {
+              "offset": 38,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "R136"
+                ]
+              }
+            },
+            {
+              "offset": 43,
+              "opcode": "ldarg.0",
+              "operand": null,
+              "label": "L1"
+            },
+            {
+              "offset": 44,
+              "opcode": "ldloc.0",
+              "operand": null
+            }
+          ],
+          "original_labels": {
+            "5": "L0",
+            "23": "L1",
+            "61": "L2",
+            "107": "L3",
+            "119": "L4",
+            "143": "L5",
+            "160": "L6",
+            "177": "L7",
+            "55": "O55",
+            "112": "O112",
+            "136": "O136",
+            "155": "O155"
+          },
+          "rebuilt_labels": {
+            "5": "L0",
+            "43": "L1",
+            "71": "L2",
+            "118": "L3",
+            "123": "L4",
+            "137": "L5",
+            "149": "L6",
+            "166": "L7",
+            "136": "R136"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 9,
+              "original_stop": 11,
+              "rebuilt_start": 9,
+              "rebuilt_stop": 11
+            },
+            {
+              "kind": "replace",
+              "original_start": 22,
+              "original_stop": 25,
+              "rebuilt_start": 22,
+              "rebuilt_stop": 23
+            },
+            {
+              "kind": "insert",
+              "original_start": 43,
+              "original_stop": 43,
+              "rebuilt_start": 41,
+              "rebuilt_stop": 42
+            },
+            {
+              "kind": "delete",
+              "original_start": 44,
+              "original_stop": 47,
+              "rebuilt_start": 43,
+              "rebuilt_stop": 43
+            },
+            {
+              "kind": "replace",
+              "original_start": 51,
+              "original_stop": 55,
+              "rebuilt_start": 47,
+              "rebuilt_stop": 49
+            },
+            {
+              "kind": "delete",
+              "original_start": 59,
+              "original_stop": 60,
+              "rebuilt_start": 53,
+              "rebuilt_stop": 53
+            }
+          ],
+          "branch_retarget_differences": [],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 107,
+              "rebuilt_offset": 118,
+              "target_ordinal": 0,
+              "original_target": 155,
+              "rebuilt_target": 137,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 11326,
+          "end": 11714,
+          "line": 507,
+          "column": 5,
+          "text": "switch (firstScript[0])\r\n\t\t\t\t{\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tPush(SubForm.MakeWait(firstScript[1]));\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tapdat_.ExecEvent(firstScript[1], apdat_.save_.strs[0], null);\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tcase 2:\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 3:\r\n\t\t\t\t\tscript_.RemoveElementAt(0);\r\n\t\t\t\t\treturn;\r\n\t\t\t\tdefault:\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}",
+          "kind": "SwitchStatement",
+          "method_id": "form.GameForm::Script()->System.Void",
+          "point": 11322,
+          "declaration_start": 11215,
+          "declaration_end": 11758
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 11,
+              "last_use": 67,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 15,
+              "last_use": 136,
+              "loads": 4,
+              "stores": 1
+            }
+          ],
+          "constraints": [
+            "fewer_than_two_ordinary_block_declarations"
+          ],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 2
+              },
+              "selected": true
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 1,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 0,
+          "selected_rule_prefix": "r12-script-selector-and-loop-owner-"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits": 1
+          },
+          "model_approved": {
+            "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 178,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "form.GameForm::Script()->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits:attempts": 1,
+    "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits:accepted_steps": 1,
+    "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits:body_gains": 1,
+    "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits:IL_gains": 178
+  },
+  "completed": true,
+  "run_label": "b26-probe2",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b26\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-script-selector-and-loop-owner-",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else",
+    "r12-smcs-player-collision-v2-proved-guard-splitting-positive-regions-and-arm-stores",
+    "r12-block-local-layout-",
+    "r12-smcs-player-collision-v3-positive-height-plus-original-tail-return",
+    "r12-shared-score-graph-layout-",
+    "r12-dup-store-composition-",
+    "r12-player-act-preserve-empty-action-five-arm",
+    "r12-gamepad-boolean-and-id-conditional-values",
+    "r12-smcs-soccer-main-terminal-positive-empty-debug-test",
+    "r12-selector-and-touch-layout-",
+    "r12-league-root-score-locals-and-loop-local-team-ids",
+    "r12-common-branch-and-selector-",
+    "r12-compensated-empty-arms-",
+    "r12-gameform-init-explicit-vector-elements-and-unused-single",
+    "r12-argument-local-flow-",
+    "r12-smcs-billing-generic-init-single-explicit-shift-mask-removal-after-double-resolution-proof",
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+    "r12-tenant-accumulator-then-array-store",
+    "r12-vscroll-value-and-controls-",
+    "r12-float-interval-exits-",
+    "r12-smcs-mapmain-coat-nonnegative-direct-dispatch-and-two-inner-loop-continues",
+    "r12-script-selector-and-loop-owner-"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-script-selector-and-loop-owner-",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 0,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-script-dispatch-live-model-patches.json",
+    "sha256": "6c93e2265bbe292aa637ed4a11197f6b547ca6e3fc0592a9a141c1ce2437c98d",
+    "dependencies_checked": {
+      "tools/round12_app_game_script_source.py": "a3ccc488b562798d00c79ca9a9d2458c3ec1e8edb47abb01f47f216518c82fd3",
+      "tools/round12_publish_bound_subfamily.py": "54910495e1846a4f5ff6a27f16dfb9ac6feca5692ee6718ba248e47925bfd2e3",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round9_part_b_fixtures.py": "994bfb9d0399d6982003ec869d9168b3cbc9362682b2701438a4f2f2a12b499e",
+      "tools/round6_alignment.py": "958871a4ab740c51efc31a777c3c4316ed02a1c3734551c49d4fe31de20c32e5",
+      "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_app_soccer_script_source.py": "a3ccc488b562798d00c79ca9a9d2458c3ec1e8edb47abb01f47f216518c82fd3",
+      "tools/round12_merge_source_bundles.py": "3b6559c37f1efde954094c95b2f7ae942b9c97125cdcc006a22676d55f69ad03",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-game-script-fixture-report.json": "77c07f4c1bee2e1a6b08ed2383f3ab409948e3e246764464acfe6174c08967b6",
+      "reports/round12-app-soccer-script-fixture-report.json": "77c07f4c1bee2e1a6b08ed2383f3ab409948e3e246764464acfe6174c08967b6",
+      "reports/round12-app-game-script-family-patches.json": "fbb34bad930323c6ecc64b0973ad3f8f3a8d6f8d33ff320080b9d692e4d6fcbe",
+      "reports/round12-app-soccer-script-family-patches.json": "06272b6597165798a4b4aaecb5de12754bc4da740bca790e366f57cf36784ba3",
+      "reports/round12-app-script-dispatch-family-patches.json": "946131a07c5b36eea10a550d3e5343738ec409894f787252598d8531d66af45b",
+      "reports/round12-app-script-dispatch-live-model-proof.json": "c2c21469460ee699db287757cf75a45c9d3242811e7be893332e9da01e521de0",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-script-dispatch-private/analysis-manifest.json": "a8487abbf9573fc463a5b7f4770365f69cb69347d187d792fed4fbdcb9edb025",
+      "build/round12/app-script-dispatch-private/calculate.py": "a3ccc488b562798d00c79ca9a9d2458c3ec1e8edb47abb01f47f216518c82fd3",
+      "build/round12/app-script-dispatch-private/fixture-report.json": "77c07f4c1bee2e1a6b08ed2383f3ab409948e3e246764464acfe6174c08967b6",
+      "build/round12/app-script-dispatch-private/fixtures.py": "c68dfcac6d26c34215fb480342c1ee0143e8e5afe0272dbf511096d8676cfe9a",
+      "build/round12/app-script-dispatch-private/NOTE.md": "0faea81b38cffa8a3e3fb304b5adca0797cf30f603675769af3dca0d10c4a1f9",
+      "build/round12/app-script-dispatch-private/package-index.json": "80dde365cf960fe2e7c1a5bab4fc4b189af23406fa8deb63ff8df42e4f1abf9a",
+      "build/round12/app-script-dispatch-private/package.py": "93b392d01843c9dd0b6a4aa50ab4f5ae7e53b6e063d12ea2411dff62b695ad86",
+      "build/round12/app-script-dispatch-private/prepare.py": "ff74e63e27469bc071bb55770fa515e2319c0706b11ccc0caaccec81c62d007e",
+      "build/round12/app-script-dispatch-private/producer-negatives.json": "f196bc65928c197eda2eabfe51a963c363b2e1c8162b706805b79a401e6ffd63",
+      "build/round12/app-script-dispatch-private/game/after-method.cs": "aa5d1fc6a1c6b18d3c48a7978ebfa48b393b9b79ba3ec1bb9504f5b9ca11aa72",
+      "build/round12/app-script-dispatch-private/game/alignment.json": "1bb443d5b853eaa90a2ee9d085b377188ee4d751db22a6e57996aa9b651faf35",
+      "build/round12/app-script-dispatch-private/game/before-method.cs": "ab1aa11064d248ab5fa94ffa7ad07ca1129b433005e14641b519d6e104bf2dad",
+      "build/round12/app-script-dispatch-private/game/bindings.json": "4c7201de95fb1f12c02410cc5b51dd66dc56d220895ba847955d36e90cf34d6b",
+      "build/round12/app-script-dispatch-private/game/candidate-source.cs": "a705d4da73d6b49842cc8e4dbb80e3ac012d2bcbdeed35dd149df0c8c8f1ba90",
+      "build/round12/app-script-dispatch-private/game/control-projection.json": "b9f817209896cbfb7cee693dc927cae8ed834d07918ac057bf47f677ed708da6",
+      "build/round12/app-script-dispatch-private/game/history.json": "ce0136e82b8382f98925da76ccca4f30c64a850bcef6af984102a9e2823748a4",
+      "build/round12/app-script-dispatch-private/game/model.json": "2742507cea4bffb4cacafb189442c3128b3178df599db5b0d8b0a15f8d781d94",
+      "build/round12/app-script-dispatch-private/game/patches.json": "5d242c95ddb39ae7a67d900e0eeed43e5f8c4e3281e0c486b8fc943bf1f06e02",
+      "build/round12/app-script-dispatch-private/game/rea-method.json": "36424ad1ba5be7c69f0fdae746ae355211aff9d16765ee54999febbde42232c1",
+      "build/round12/app-script-dispatch-private/game/slot-constraints.json": "f6276a2c5474ed769992630a76359d65963194236c3e11b105f8857a65ae4439",
+      "build/round12/app-script-dispatch-private/game/source.cs": "5e53fe2fbe1c06718c940dbd43a6182361a1521c2a8c42d5fd4a30e3c8eb3438",
+      "build/round12/app-script-dispatch-private/soccer/after-method.cs": "c76fe50cce6e3733a05e1b4a408afa57e8a76ab035d3340769040a3b59c62d0c",
+      "build/round12/app-script-dispatch-private/soccer/alignment.json": "252bacac5377ef3a56d607cf644bc2419b07d1597b8217d44a76babff19db767",
+      "build/round12/app-script-dispatch-private/soccer/before-method.cs": "6700ab4f8995820254720ae2c5b44b147b0cee8add6a183448ba6bbc0a2ee2b7",
+      "build/round12/app-script-dispatch-private/soccer/bindings.json": "e31548d348b5fa3587e9968edf19a861c3f6e1670af7fab705ee7e167783de67",
+      "build/round12/app-script-dispatch-private/soccer/candidate-source.cs": "9b92603715f11345522ba95d27ed6abf9ea71e732ce9ad95f42debea24cd7c42",
+      "build/round12/app-script-dispatch-private/soccer/control-projection.json": "172432544ea01e284016ac55cc11e25b716ac0d826f86a9cf9d5ac671f40ee73",
+      "build/round12/app-script-dispatch-private/soccer/history.json": "a264ad7150474561839148a237c4c65120d5513f22fa6cc4034aa1adb1ac26a1",
+      "build/round12/app-script-dispatch-private/soccer/model.json": "c1aa33f672a5b090ef173da847e70c2e226aed3ce4320f38805280b83e0bea18",
+      "build/round12/app-script-dispatch-private/soccer/patches.json": "f4188837dc668843201a45f1a7914fbb9214bc5c80b90a9e5ce1522e12979489",
+      "build/round12/app-script-dispatch-private/soccer/rea-method.json": "331362e612e685db93284f2de6b63a805abc0ca6672338919c5d84926f37ebb0",
+      "build/round12/app-script-dispatch-private/soccer/slot-constraints.json": "402e550cb4d29fd23bb7c916ec36dfb57537aeadc9ddc43abe150bd59d3747eb",
+      "build/round12/app-script-dispatch-private/soccer/source.cs": "f2162b8648ef44b553eec10df71b0600a665e5528a269106c5a664c9ffca067e",
+      "build/round12/app-script-dispatch-private/game/fixtures/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/game/fixtures/before/Fixture.cs": "07511bcd69555f3fa5b33ec54b20fb81a607650300971755ea093afbf35d42ed",
+      "build/round12/app-script-dispatch-private/game/fixtures/before/Fixture.dll": "b05b765d2d4b1da062160e71d1708246031e3a2eec95157ba4107abe2784bea7",
+      "build/round12/app-script-dispatch-private/game/fixtures/before/methods.json": "82ffac8244c7a32b7d1a8f921eeefa76a581758db0b272689c06210aaa1624b8",
+      "build/round12/app-script-dispatch-private/game/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/game/fixtures/candidate/Fixture.cs": "1851f78447ad83d97a2c1e67b2094010bc0e6375250a167c2af83f8586580dd5",
+      "build/round12/app-script-dispatch-private/game/fixtures/candidate/Fixture.dll": "75bca9729cb6e84b360720487917fa1572223720a1334a6fb93319c99db37a12",
+      "build/round12/app-script-dispatch-private/game/fixtures/candidate/methods.json": "f285de2fdc0e84fa993e9ac92955ded610ca1bedb5e2876ba2fafb25b9913de1",
+      "build/round12/app-script-dispatch-private/game/fixtures/dispatch-only/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/game/fixtures/dispatch-only/Fixture.cs": "9a45ec47dac70b365be8f82317df2228fe3d9c774f4355fce8ed4e83b0f8d087",
+      "build/round12/app-script-dispatch-private/game/fixtures/dispatch-only/Fixture.dll": "947ba431c3a1c0d0e55bfc4ff5f96a737906280b5d19cd44805d01cd6d499f49",
+      "build/round12/app-script-dispatch-private/game/fixtures/dispatch-only/methods.json": "12a9d155eeb5511d6a474f87d734f2db92ed894e068b9d5bc1eb84b3228a56f5",
+      "build/round12/app-script-dispatch-private/game/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/game/fixtures/manual-control/Fixture.cs": "089430451dd22d8203557440bee1d6cccabf3dddb5eaf6a15f94d4827f616a98",
+      "build/round12/app-script-dispatch-private/game/fixtures/manual-control/Fixture.dll": "5e704aed305ab1340017f37792090cd03cb3e2d9e48666ca263b5f3b1f32930b",
+      "build/round12/app-script-dispatch-private/game/fixtures/manual-control/methods.json": "f285de2fdc0e84fa993e9ac92955ded610ca1bedb5e2876ba2fafb25b9913de1",
+      "build/round12/app-script-dispatch-private/game/fixtures/wrong-loop-owner/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/game/fixtures/wrong-loop-owner/Fixture.cs": "6e827cfcea89f4ed0cd19d04951bfec14b6473abbb4d048b14067f876b5f7abc",
+      "build/round12/app-script-dispatch-private/game/fixtures/wrong-loop-owner/Fixture.dll": "260f54f01f279457c7c10e5c3f6bf89a02463f1069094dae368e7fbd2bc8afff",
+      "build/round12/app-script-dispatch-private/game/fixtures/wrong-loop-owner/methods.json": "fff55341f52d62f2552f2c93ada2524e01ced9de7d449a05c6dd30b1441cc2c2",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/before/Fixture.cs": "f20c42e3721ddb801fb1698192375bac201ca4aa7453f78a5d1a2a5b910f39db",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/before/Fixture.dll": "e529dc0e5ee2b6ea5c7ac4bc8db33fb5a2d03e0a28654d07d6abeaa19fb7cc58",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/before/methods.json": "01862d4499f018350d1d10b46da5ef9254e20714fcb4ce81c6fdd00e7c287551",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/candidate/Fixture.cs": "4b90d5a5869bb5fcf607a1a40e734a211248a6339f3474b08645c6e26f7c9ada",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/candidate/Fixture.dll": "b3aee2fbcf79d1bd1d998a423b7bcf1aea700b74f6cd96964d6aa90f68512f42",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/candidate/methods.json": "9a7152bb1f640bfff1f41ee45ef9d3ae254682d1e8b6faba697370fef69f7fba",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/dispatch-only/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/dispatch-only/Fixture.cs": "be81c6afa00231acb2e04c4f8b6bbf3176f7cfdeea03fe16be07bc6c9385200b",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/dispatch-only/Fixture.dll": "a1642a5fb1f24ba0c50657ddd5e1bf0cef370b9d49080c7879d4163e36d959a7",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/dispatch-only/methods.json": "66571632d9d92443712861e37e3fcd86645669ae4800e5252d2c0230fc31dffa",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/manual-control/Fixture.cs": "1b0ece9407657da285879fd22956113ee8c49f7bba46970137afd2ca793a194b",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/manual-control/Fixture.dll": "10502a2bd840756261b667c74627a7740ef6cdce33548c6fe086fa26a4ab9844",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/manual-control/methods.json": "9a7152bb1f640bfff1f41ee45ef9d3ae254682d1e8b6faba697370fef69f7fba",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/wrong-loop-owner/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/wrong-loop-owner/Fixture.cs": "eb4e260d99075c4c4a5dc128bc173a3163f51a8874f3ec6efd23904b4f1b15dd",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/wrong-loop-owner/Fixture.dll": "195b11f35b9959119d20f84a74e45240191595f5e1e36866bca4c61f3c636e93",
+      "build/round12/app-script-dispatch-private/soccer/fixtures/wrong-loop-owner/methods.json": "f675521bbd55949fec18aa361eefa8c0139e6629477e46ab3f15fd4e48bf4d7a",
+      "build/round12/app-script-dispatch-private/freeze.json": "6f644f809e21bd88bf970e213b19318d8b03a7a2009dd2f2f01fae8374cb87ac"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {
+      "analysis/tools/round5-mono-source/mcs/mcs/statement.cs": "063a437095e1d608d045383d76291c9359e9a98220eea7750018a3d42712437a"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "form.GameForm::Script()->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794126321531831400",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 0.9689999998081475,
+        "wall_seconds": 7.547000000020489,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 0.9689999998081475,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794126321531831400\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794126321531831400\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "dd2585917de20c99b270a61d27fcf355715fa18a55f01c6c6dc3d6bed6ee6065",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+          "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+          "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "89a7d6fdcaeb9d1a53d7a562bee8d19384f6281a069aac9e60df41b8e71bb2e0",
+          "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+          "src/Assembly-CSharp/game/MapMain.cs": "9c91433ec4c078067cc601f0a8f2f073f06cb4116ed9806f8f5ddee30a1d1e35",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "6822750ad23bb7a0a81f812814908be1bbc099f3cb7f95f23b27d9c64e738d1a",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+          "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+          "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+          "src/Assembly-CSharp/game/UserData.cs": "5d7e7ddc77a8401fcb8882461574dfc2c2afe8b3caff446a259825f566adda39",
+          "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+          "src/Assembly-CSharp/surface/GameView.cs": "7d6186ad8c84f0863a21ee2057144caafd118e5f02d3585de598b5a7acf28a24",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "d1b6ad8a1b568ee4549c18d157a21d7498819c20625b0c7c163f149113fb2b5d",
+        "accepted_source_set_sha256": "c3d87ff7029f7a7f0aa9356851c46b7c0cf1828232dc70e6ceb0caed46345382",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "f8f85ce38415f2e79b64521face696dc9566b96e0a67c4308432a149ff76199b"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "form.GameForm::Script()->System.Void",
+        "rule": "r12-script-selector-and-loop-owner-r12-script-named-dispatch-if-chain-and-loop-exits",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1933,
+  "body_gains": [
+    "form.GameForm::Script()->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 178,
+  "builds": 6,
+  "build_seconds": 6.641000000294298,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "b34cc356a55c318c61d8b8cda4deba6fed1151423a72f492ae7f8174f1bbf27c",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b26-probe2\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "d1b6ad8a1b568ee4549c18d157a21d7498819c20625b0c7c163f149113fb2b5d",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "8811a141be8d13343e88fb066611bf96de87a01eb02401448e787ba971b4d885",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+    "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+    "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "89a7d6fdcaeb9d1a53d7a562bee8d19384f6281a069aac9e60df41b8e71bb2e0",
+    "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+    "src/Assembly-CSharp/game/MapMain.cs": "9c91433ec4c078067cc601f0a8f2f073f06cb4116ed9806f8f5ddee30a1d1e35",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "6822750ad23bb7a0a81f812814908be1bbc099f3cb7f95f23b27d9c64e738d1a",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+    "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+    "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+    "src/Assembly-CSharp/game/UserData.cs": "5d7e7ddc77a8401fcb8882461574dfc2c2afe8b3caff446a259825f566adda39",
+    "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+    "src/Assembly-CSharp/surface/GameView.cs": "7d6186ad8c84f0863a21ee2057144caafd118e5f02d3585de598b5a7acf28a24",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

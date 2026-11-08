@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b25-postverify01-KairoLibrary-raw.json](reports/round12-b25-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `f032cea65f8382b82b9d8f86c899baba5244ddbd6f7b69fd783b82235fccf54a`. Sem normalização.
+Prova literal atual: [reports/round12-b26-postverify01-KairoLibrary-raw.json](reports/round12-b26-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `7c2b03cc813f74ecb2593d802802116c3eae10201f87bf0d397c0ffc99240c5b`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,224 de 5,245 métodos matched (99.60%).** 871,497 bytes de IL nos assemblies alvo.
-867,581 bytes IL matched (99.55%).
+**5,226 de 5,245 métodos matched (99.64%).** 871,497 bytes de IL nos assemblies alvo.
+868,137 bytes IL matched (99.61%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 20 |
+| decompiled | 18 |
 | equivalent | 0 |
-| matched | 5224 |
+| matched | 5226 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1937 / 98.93% | 597687 / 99.35% |
+| `Assembly-CSharp` | 1958 | 601603 | 1939 / 99.03% | 598243 / 99.44% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -40,7 +40,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 254 / 99.61% | 26251 / 99.61% |
-| `form` | 371 | 250649 | 365 / 98.38% | 249082 / 99.37% |
+| `form` | 371 | 250649 | 367 / 98.92% | 249638 / 99.60% |
 | `game` | 441 | 202949 | 437 / 99.09% | 202026 / 99.55% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
@@ -120,10 +120,10 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::form.BootForm` | 21 | 7712 | 20 / 95.24% | 7471 / 96.88% |
 | `Assembly-CSharp::form.DebugForm` | 21 | 45497 | 21 / 100.00% | 45497 / 100.00% |
 | `Assembly-CSharp::form.FormManager` | 13 | 577 | 13 / 100.00% | 577 / 100.00% |
-| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 50 / 98.04% | 16296 / 98.92% |
+| `Assembly-CSharp::form.GameForm` | 51 | 16474 | 51 / 100.00% | 16474 / 100.00% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 48 / 100.00% | 3906 / 100.00% |
 | `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
-| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 60 / 96.77% | 32939 / 97.92% |
+| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 61 / 98.39% | 33317 / 99.04% |
 | `Assembly-CSharp::form.SpForm` | 19 | 7256 | 19 / 100.00% | 7256 / 100.00% |
 | `Assembly-CSharp::form.SubForm` | 95 | 125345 | 95 / 100.00% | 125345 / 100.00% |
 | `Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0` | 3 | 227 | 2 / 66.67% | 31 / 13.66% |
@@ -513,7 +513,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 |---|---:|---|
 | `Assembly-CSharp::data.TenantData` | 1 | `Assembly-CSharp::data.TenantData::StrengthTenant()->System.Void` |
 | `Assembly-CSharp::form.BootForm` | 1 | `Assembly-CSharp::form.BootForm::Draw(kairo.unity.ui.Graphics)->System.Void` |
-| `Assembly-CSharp::form.GameForm` | 1 | `Assembly-CSharp::form.GameForm::Script()->System.Void` |
+| `Assembly-CSharp::form.SoccerForm` | 1 | `Assembly-CSharp::form.SoccerForm::OnTouchCamera(System.Int32,System.Int32,kairo.unity.surface.TouchEvent)->System.Void` |
 | `Assembly-CSharp::form.TitleForm` | 1 | `Assembly-CSharp::form.TitleForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean` |
 | `Assembly-CSharp::game.GameUtil` | 1 | `Assembly-CSharp::game.GameUtil::.ctor()->System.Void` |
 | `Assembly-CSharp::surface.GameView` | 1 | `Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent` |

@@ -504,26 +504,24 @@ g.DrawImage(apdat_.resCom2_.img[26], dx, 0f, 238, 0, w, 24);
 			while (script_.Size() > 0)
 			{
 				int[] firstScript = GetFirstScript();
-				switch (firstScript[0])
-				{
-				case 1:
-					Push(SubForm.MakeWait(firstScript[1]));
+				int recoveredScriptKind = firstScript[0];
+if (recoveredScriptKind == 1) {
+Push(SubForm.MakeWait(firstScript[1]));
 					script_.RemoveElementAt(0);
-					return;
-				case 0:
-					apdat_.ExecEvent(firstScript[1], apdat_.save_.strs[0], null);
+}
+else if (recoveredScriptKind == 0) {
+apdat_.ExecEvent(firstScript[1], apdat_.save_.strs[0], null);
 					script_.RemoveElementAt(0);
-					return;
-				case 2:
-					break;
-				case 3:
-					script_.RemoveElementAt(0);
-					return;
-				default:
-					return;
-				}
-				script_.RemoveElementAt(0);
-			}
+}
+else if (recoveredScriptKind == 2) {
+script_.RemoveElementAt(0);
+continue;
+}
+else if (recoveredScriptKind == 3) {
+script_.RemoveElementAt(0);
+}
+break;
+}
 		}
 
 		public override bool Resume()
