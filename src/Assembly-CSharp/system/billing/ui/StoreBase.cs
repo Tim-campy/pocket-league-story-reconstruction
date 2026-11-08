@@ -349,7 +349,7 @@ text += json[i];
 				{
 					throw new Exception();
 				}
-				return false;
+				flag = false;
 			}
 			catch (Exception ex)
 			{
@@ -363,7 +363,8 @@ text += json[i];
 				dialog.Show();
 				throw ex;
 			}
-		}
+		return flag;
+}
 
 		public void Save(OutputStream stream)
 		{

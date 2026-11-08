@@ -1,0 +1,1 @@
+public class Fixture{public int GetTime(int w,int t){int value=0;value+=w%4*21600;value+=t/4;value=(value+43200)%86400;return value;}private static string MakeJson(string[] rows){string output="{";for(int n=0;n<rows.Length;n++){output+=rows[n];if(n!=rows.Length-1){output+=",";}}output+="}";return output;}}

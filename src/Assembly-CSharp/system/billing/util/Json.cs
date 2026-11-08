@@ -68,7 +68,8 @@ namespace system.billing.util
 					text += ",";
 				}
 			}
-			return text + "}";
+			text += "}";
+return text;
 		}
 
 		public static string AdjustJson(Product p)

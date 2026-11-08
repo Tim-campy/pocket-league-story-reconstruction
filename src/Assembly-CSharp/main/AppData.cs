@@ -4208,7 +4208,8 @@ return;
 			int num = 0;
 			num += week % 4 * 21600;
 			num += time / 4;
-			return (num + 43200) % 86400;
+			num = (num + 43200) % 86400;
+return num;
 		}
 
 		public bool CheckNightTime(int time)

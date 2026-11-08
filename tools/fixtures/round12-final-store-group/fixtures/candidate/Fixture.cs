@@ -1,0 +1,3 @@
+public class Fixture{public int GetTime(int week,int time){int num=0;num+=week%4*21600;num+=time/4;num = (num + 43200) % 86400;
+return num;}private static string MakeJson(string[] records){string text="{";for(int i=0;i<records.Length;i++){text+=records[i];if(i!=records.Length-1){text+=",";}}text += "}";
+return text;}}

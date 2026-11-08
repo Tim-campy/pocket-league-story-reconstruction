@@ -1854,6 +1854,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 46,
+      "part_cycle": 35,
+      "label": "b35",
+      "phase": "B",
+      "primary_target": "system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-existing-result-",
+      "assembly": "Assembly-CSharp",
+      "pair": "stloc.0 => stloc.s",
+      "hypothesis": "Shared mechanism: store the final result back into an existing local before return, adding no new result local. GetTime arithmetic and Json suffix use their existing slot0. Store maintenance additionally moves the return after try/catch, reuses flag0 and preserves throw ex; its EH lowering is a separate subcase. Independent probes and controls remain required.",
+      "result": "Novos corpos aprovados; 3 tentativas da regra, 3 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 3,
+          "il_bytes_gained": 208
+        }
+      },
+      "rule_accepted_steps": 3,
+      "methods_gained": 3,
+      "il_bytes_gained": 208,
+      "before_measurement": "reports\\round12-b35-before-measurement.json",
+      "before_sha256": "36b1fed44c0209f5ebbead7dd7d8c1226d6df17f6023c6ee7728947299a24f79",
+      "after_measurement": "reports/round12-b35-postverify01-measurement.json",
+      "after_sha256": "b85f183fde544181c2b8dd42a5e71be94810ac1056fa1fc5ba7aca4d349e53b9",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-b35-after-measurement.json",
+          "previous_after_sha256": "2ffb66f249008050904159796a3879ef198955f97a37eb6ef231113637e4c83a",
+          "new_after_measurement": "reports/round12-b35-postverify01-measurement.json",
+          "new_after_sha256": "b85f183fde544181c2b8dd42a5e71be94810ac1056fa1fc5ba7aca4d349e53b9",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0

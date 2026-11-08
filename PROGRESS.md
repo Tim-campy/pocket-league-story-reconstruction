@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b34-postverify01-KairoLibrary-raw.json](reports/round12-b34-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `f26b56a08015e1e22fe4bfbfbe8837572cf4dbd51c7311c0bfd26c1461386461`. Sem normalização.
+Prova literal atual: [reports/round12-b35-postverify01-KairoLibrary-raw.json](reports/round12-b35-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `edf311bc247c3edcc9f9fcce89b64fefc8d7768e5b2af31772f58815037f4e3d`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,236 de 5,245 métodos matched (99.83%).** 871,497 bytes de IL nos assemblies alvo.
-870,666 bytes IL matched (99.90%).
+**5,239 de 5,245 métodos matched (99.89%).** 871,497 bytes de IL nos assemblies alvo.
+870,874 bytes IL matched (99.93%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 8 |
+| decompiled | 5 |
 | equivalent | 0 |
-| matched | 5236 |
+| matched | 5239 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1949 / 99.54% | 600772 / 99.86% |
+| `Assembly-CSharp` | 1958 | 601603 | 1952 / 99.69% | 600980 / 99.90% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -72,14 +72,14 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `kairo.unity.ui` | 1021 | 100597 | 1021 / 100.00% | 100597 / 100.00% |
 | `kairo.unity.util` | 518 | 43955 | 518 / 100.00% | 43955 / 100.00% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
-| `main` | 223 | 35448 | 222 / 99.55% | 35412 / 99.90% |
+| `main` | 223 | 35448 | 223 / 100.00% | 35448 / 100.00% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
 | `surface` | 122 | 26518 | 121 / 99.18% | 26408 / 99.59% |
 | `system` | 20 | 1636 | 20 / 100.00% | 1636 / 100.00% |
 | `system.billing` | 8 | 956 | 8 / 100.00% | 956 / 100.00% |
-| `system.billing.ui` | 153 | 13782 | 152 / 99.35% | 13683 / 99.28% |
-| `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
+| `system.billing.ui` | 153 | 13782 | 153 / 100.00% | 13782 / 100.00% |
+| `system.billing.util` | 45 | 1788 | 45 / 100.00% | 1788 / 100.00% |
 | `system.form` | 192 | 33269 | 191 / 99.48% | 33163 / 99.68% |
 | `system.friend` | 4 | 570 | 4 / 100.00% | 570 / 100.00% |
 | `system.friend.ui` | 47 | 4407 | 47 / 100.00% | 4407 / 100.00% |
@@ -144,7 +144,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 42 / 100.00% | 22251 / 100.00% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 14 / 100.00% | 2692 / 100.00% |
 | `Assembly-CSharp::game.UserData` | 92 | 55470 | 91 / 98.91% | 55432 / 99.93% |
-| `Assembly-CSharp::main.AppData` | 201 | 33806 | 200 / 99.50% | 33770 / 99.89% |
+| `Assembly-CSharp::main.AppData` | 201 | 33806 | 201 / 100.00% | 33806 / 100.00% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::main.Main` | 11 | 1287 | 11 / 100.00% | 1287 / 100.00% |
@@ -171,11 +171,11 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::system.billing.ui.PurchaseLogView` | 3 | 130 | 3 / 100.00% | 130 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.PurchaseRecord` | 12 | 1155 | 12 / 100.00% | 1155 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.Receipt` | 26 | 932 | 26 / 100.00% | 932 / 100.00% |
-| `Assembly-CSharp::system.billing.ui.StoreBase` | 28 | 2159 | 27 / 96.43% | 2060 / 95.41% |
+| `Assembly-CSharp::system.billing.ui.StoreBase` | 28 | 2159 | 28 / 100.00% | 2159 / 100.00% |
 | `Assembly-CSharp::system.billing.ui.StoreBase+<SetRestoreRequest>c__AnonStorey7` | 2 | 29 | 2 / 100.00% | 29 / 100.00% |
 | `Assembly-CSharp::system.billing.util.IabHelper` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::system.billing.util.Inventory` | 11 | 288 | 11 / 100.00% | 288 / 100.00% |
-| `Assembly-CSharp::system.billing.util.Json` | 7 | 672 | 6 / 85.71% | 599 / 89.14% |
+| `Assembly-CSharp::system.billing.util.Json` | 7 | 672 | 7 / 100.00% | 672 / 100.00% |
 | `Assembly-CSharp::system.billing.util.Purchase` | 15 | 527 | 15 / 100.00% | 527 / 100.00% |
 | `Assembly-CSharp::system.billing.util.SkuDetails` | 11 | 294 | 11 / 100.00% | 294 / 100.00% |
 | `Assembly-CSharp::system.form.BillingForm` | 42 | 7424 | 42 / 100.00% | 7424 / 100.00% |
@@ -513,10 +513,7 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 |---|---:|---|
 | `Assembly-CSharp::game.GameUtil` | 1 | `Assembly-CSharp::game.GameUtil::.ctor()->System.Void` |
 | `Assembly-CSharp::game.UserData` | 1 | `Assembly-CSharp::game.UserData::SetMatchInfoJoin(System.Int32)->System.Void` |
-| `Assembly-CSharp::main.AppData` | 1 | `Assembly-CSharp::main.AppData::GetTime(System.Int32,System.Int32)->System.Int32` |
 | `Assembly-CSharp::surface.GameView` | 1 | `Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent` |
-| `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
-| `Assembly-CSharp::system.billing.util.Json` | 1 | `Assembly-CSharp::system.billing.util.Json::MakeJson(System.String[])->System.String` |
 | `Assembly-CSharp::system.form.LanguageForm` | 1 | `Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void` |
 
 ## Bloqueios

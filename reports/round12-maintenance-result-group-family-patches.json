@@ -1,0 +1,93 @@
+{
+  "source_only": true,
+  "patches": [
+    {
+      "method_id": "system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean",
+      "logical_path": "src/Assembly-CSharp/system/billing/ui/StoreBase.cs",
+      "start": 7454,
+      "end": 7994,
+      "before": "public bool CheckPaymentMaintenance()\r\n\t\t{\r\n\t\t\tbool flag = true;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tKairoBase instance = KairoBase.GetInstance();\r\n\t\t\t\tint paymentMoney = instance.GetPaymentMoney();\r\n\t\t\t\tif (paymentMoney == -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tthrow new Exception();\r\n\t\t\t\t}\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\tstring text = \"\u901a\u4fe1\u306b\u5931\u6557\u3057\u307e\u3057\u305f\";\r\n\t\t\t\tif (Http.GetErrorCode() != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ttext = Http.GetErrorText();\r\n\t\t\t\t}\r\n\t\t\t\tDialog dialog = new Dialog(2, \"\uff74\uff97\uff70\");\r\n\t\t\t\tdialog.SetText(text);\r\n\t\t\t\tdialog.Show();\r\n\t\t\t\tthrow ex;\r\n\t\t\t}\r\n\t\t}",
+      "after": "public bool CheckPaymentMaintenance()\r\n\t\t{\r\n\t\t\tbool flag = true;\r\n\t\t\ttry\r\n\t\t\t{\r\n\t\t\t\tKairoBase instance = KairoBase.GetInstance();\r\n\t\t\t\tint paymentMoney = instance.GetPaymentMoney();\r\n\t\t\t\tif (paymentMoney == -1)\r\n\t\t\t\t{\r\n\t\t\t\t\tthrow new Exception();\r\n\t\t\t\t}\r\n\t\t\t\tflag = false;\r\n\t\t\t}\r\n\t\t\tcatch (Exception ex)\r\n\t\t\t{\r\n\t\t\t\tstring text = \"\u901a\u4fe1\u306b\u5931\u6557\u3057\u307e\u3057\u305f\";\r\n\t\t\t\tif (Http.GetErrorCode() != 0)\r\n\t\t\t\t{\r\n\t\t\t\t\ttext = Http.GetErrorText();\r\n\t\t\t\t}\r\n\t\t\t\tDialog dialog = new Dialog(2, \"\uff74\uff97\uff70\");\r\n\t\t\t\tdialog.SetText(text);\r\n\t\t\t\tdialog.Show();\r\n\t\t\t\tthrow ex;\r\n\t\t\t}\r\n\t\treturn flag;\n}",
+      "rule": "r12-existing-result-r12-smcs-maintenance-result-local-after-try-catch",
+      "api": "transform",
+      "source_span_units": "UTF16",
+      "rebase_unique": true,
+      "source_sha256": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+      "original_token": "0x06000648",
+      "original_artifact_sha256": "3620ed91bd3a99cba9901cea111e6f6e489474e5c0b97b99676e5d4623817949",
+      "original_il_sha256": "046280ee36fb2229d775487b0c6cd7ab1b5faf70458f4e2b05080cd1bf0f228a",
+      "rea_evidence_id": "ev_4e89356a7e0d91a48b7d64c087d686e65f3ced6620dcbc574c0586f989550029",
+      "model_complete": true,
+      "model_predicted_types": [
+        "System.Boolean",
+        "kairo.unity.system.KairoBase",
+        "System.Int32",
+        "System.Exception",
+        "System.String",
+        "kairo.unity.ui.Dialog"
+      ],
+      "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "model_client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "original_bytes_copied": false,
+      "target_body_outcome": "UNKNOWN",
+      "original_rule": "r12-smcs-maintenance-result-local-after-try-catch",
+      "frozen_evidence_sha256": {},
+      "historical_frozen_evidence_sha256": {},
+      "pinned_compiler_source_sha256": {},
+      "evidence_sha256": {},
+      "dependency_sha256": {},
+      "game_body_status": "UNKNOWN",
+      "pure_api": "transform"
+    }
+  ],
+  "dependency_sha256": {
+    "tools/round12_maintenance_result_group_source.py": "35457b932d7f81a575890cf8c9ee17f02a2821d2d82f474278c53f7500fb28a8",
+    "tools/round12_publish_bound_subfamily.py": "54910495e1846a4f5ff6a27f16dfb9ac6feca5692ee6718ba248e47925bfd2e3",
+    "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+    "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6"
+  },
+  "evidence_sha256": {
+    "reports/round12-maintenance-result-group-fixture-report.json": "201b457195f40cfdeae0ad71905f528bf1d3a8265cc078969638be4964fb25db"
+  },
+  "frozen_evidence_sha256": {
+    "build/round12/app-maintenance-result-private/calculate.py": "35457b932d7f81a575890cf8c9ee17f02a2821d2d82f474278c53f7500fb28a8",
+    "build/round12/app-maintenance-result-private/fixture-report.json": "201b457195f40cfdeae0ad71905f528bf1d3a8265cc078969638be4964fb25db",
+    "build/round12/app-maintenance-result-private/fixtures/before/compiler.log": "d3cc5d3484edcada7c5a17a903de744fcb3961363fdc9878eab5dfd8d59dca0c",
+    "build/round12/app-maintenance-result-private/fixtures/before/Fixture.cs": "b2d84fce07d6f24b3738f835e45088323874785130da428709d750ba72eda0c8",
+    "build/round12/app-maintenance-result-private/fixtures/before/Fixture.dll": "53441e2e25e908825bb422956f282efea65ac4639c836983e767c3752f47591d",
+    "build/round12/app-maintenance-result-private/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/round12/app-maintenance-result-private/fixtures/candidate/Fixture.cs": "71d14b59a54d8bcbc836115a3ec725bdec798ce11a6c4c979257012d8a5a2ca6",
+    "build/round12/app-maintenance-result-private/fixtures/candidate/Fixture.dll": "79aa4277b254571b9aa09d2dbd06ff7a0d6db23766f50e977ffd9d74961ff8ca",
+    "build/round12/app-maintenance-result-private/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/round12/app-maintenance-result-private/fixtures/manual-control/Fixture.cs": "07d7130c00b497bbbc610b1182f103b19a053e2002ef259e86797d09c04e6078",
+    "build/round12/app-maintenance-result-private/fixtures/manual-control/Fixture.dll": "95655194ff08e3a3e14e5c8d1da2f3a395c38ebae69a0a6cb0617c030a4be4a1",
+    "build/round12/app-maintenance-result-private/fixtures/wrong-rethrow/compiler.log": "80830c942c88bba16cbbe3f2987f04ddd7ab8bf8a6d1094709c0988cd4ca05b1",
+    "build/round12/app-maintenance-result-private/fixtures/wrong-rethrow/Fixture.cs": "7b05006ffcaa8d94cbdf07dd836bc175689392cfb5081961e83f2bbb309c06c5",
+    "build/round12/app-maintenance-result-private/fixtures/wrong-rethrow/Fixture.dll": "12d2716134f6e8be27ecd752c8bd9115518f935913f009db5d9858b040875ba9",
+    "build/round12/app-maintenance-result-private/fixtures.py": "c1b40e85a0767412dfd19e92122a58e8a685532c94f13da2459f8ace6adf6778",
+    "build/round12/app-maintenance-result-private/history.json": "f210f19695e3c943abc6b0c0a5ec7f69a9fde7816e95b343c152e35e7060de50",
+    "build/round12/app-maintenance-result-private/manifest.json": "b3066c5b35116f3ed463611db5a4194f80b7d802b72d4b41c89462bf0e1497f8",
+    "build/round12/app-maintenance-result-private/method.after.cs": "261ff9e3382297b7f6a215d7b4ad8138cf3cfa8124237febcdf85ad001573983",
+    "build/round12/app-maintenance-result-private/method.before.cs": "9794e46db0f3b9e2fc0e5ab6fa07ace480468af001cb0db4642fc0d22dff9ae1",
+    "build/round12/app-maintenance-result-private/model.json": "6497dddb9855c3677207a45379a81cedef54ddce8b027d9ad0233edfa67e4e87",
+    "build/round12/app-maintenance-result-private/NOTE.md": "1610361796183561b0047676540838f6af03436f7537f391e93e06dc1fd8a05b",
+    "build/round12/app-maintenance-result-private/prepare.py": "7bf735b56fb43bd67b26b53bfc108e15ed03b033f5001d3ddf0eb48c2270f326",
+    "build/round12/app-maintenance-result-private/proposal.diff": "da87dc1e9902da8f9d648808bb6b5a5a95d26e5180e1f64b29161cba0eee42d7",
+    "build/round12/app-maintenance-result-private/rea-member.json": "944dd2b7aa62465a3fd57aeccd8fe245f7a6508b5e528c2edfd316de093fa514",
+    "build/round12/app-maintenance-result-private/source-patches.json": "bd56fffabc6723ac0473b134d8d9b23617100b7b2f3de09ab1f586ef990892e4",
+    "build/round12/app-maintenance-result-private/source.after.cs": "9924c795d5cf90f04695fde5890d7af4f146cc6bbe619fae4253cbf42e2ffe02",
+    "build/round12/app-maintenance-result-private/freeze.json": "957658fbdb2d78df8b391ae49ae6341be831ae790b31a36389cedede1784f562"
+  },
+  "historical_frozen_evidence_sha256": {},
+  "pinned_compiler_source_sha256": {},
+  "own_fixture_source_sha256": {
+    "tools/fixtures/round12-maintenance-result-group/fixtures/before/Fixture.cs": "b2d84fce07d6f24b3738f835e45088323874785130da428709d750ba72eda0c8",
+    "tools/fixtures/round12-maintenance-result-group/fixtures/candidate/Fixture.cs": "71d14b59a54d8bcbc836115a3ec725bdec798ce11a6c4c979257012d8a5a2ca6",
+    "tools/fixtures/round12-maintenance-result-group/fixtures/manual-control/Fixture.cs": "07d7130c00b497bbbc610b1182f103b19a053e2002ef259e86797d09c04e6078",
+    "tools/fixtures/round12-maintenance-result-group/fixtures/wrong-rethrow/Fixture.cs": "7b05006ffcaa8d94cbdf07dd836bc175689392cfb5081961e83f2bbb309c06c5"
+  },
+  "public_pure_api_reproduction_exact": true,
+  "target_compilations": 0,
+  "own_fixture_trivia_format_review": [],
+  "note": "Candidate source only; independent live model and game oracle remain mandatory."
+}
