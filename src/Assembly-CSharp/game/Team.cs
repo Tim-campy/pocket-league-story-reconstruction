@@ -987,8 +987,7 @@ if (player.seb_ == 12) { continue; }
 			}
 			if (ch_ceva[0] == 1)
 			{
-				{ bool recoveredCondition_27548 = team_id_ == 0;
-if (recoveredCondition_27548)
+				if (team_id_ == 0)
 				{
 					for (int k = 0; k < Map.MAPCHIP_COAT_HNUM; k++)
 					{
@@ -1000,8 +999,7 @@ if (recoveredCondition_27548)
 							coatEva_new_offence_passer[k][l] = (int)num;
 						}
 					}
-					if (ChPAreaLineOver())
-					{
+					if (!ChPAreaLineOver()) { } else {
 						for (int m = 0; m < Map.MAPCHIP_COAT_HNUM; m++)
 						{
 							for (int n = 0; n < Map.MAPCHIP_COAT_WNUM; n++)
@@ -1023,8 +1021,7 @@ if (recoveredCondition_27548)
 							coatEva_new_offence_passer[num2][num4] = (int)num3;
 						}
 					}
-					if (ChPAreaLineOver())
-					{
+					if (!ChPAreaLineOver()) { } else {
 						for (int num5 = 0; num5 < Map.MAPCHIP_COAT_HNUM; num5++)
 						{
 							for (int num6 = 0; num6 < Map.MAPCHIP_COAT_WNUM; num6++)
@@ -1034,7 +1031,7 @@ if (recoveredCondition_27548)
 						}
 					}
 				}
-}
+
 			}
 			if (ch_ceva[2] == 1)
 			{
@@ -2038,11 +2035,11 @@ for (int i = 0; i < PANEL_DIRECT_R_9BLOCK.Length; i++)
 				}
 				else
 				{
-					players_[players_.Length - 2].pos_.Set(-(FORMATION_KICKOFF[1].x_), 0f, 0f - FORMATION_KICKOFF[1].z_);
+					players_[players_.Length - 2].pos_.Set(-(FORMATION_KICKOFF[1].x_), 0f, -(FORMATION_KICKOFF[1].z_));
 				}
 			}
 			udat_.ball_.ReceiveBall(players_[players_.Length - 1]);
-}
+} else { }
 		}
 
 		public void SetPositionThrowIn()

@@ -22,6 +22,10 @@ def run(arguments):
     if result.returncode:raise RuntimeError('Cycle step failed: '+str(arguments))
 
 
+def probe_should_stop(body_equal, probe_all=False):
+    return bool(body_equal) and not probe_all
+
+
 def validate_candidate_budgets(label,probes,assembly,cfg):
     counts={}
     labels=[p['label'] for p in probes]+[label]
@@ -47,6 +51,7 @@ def main():
     p.add_argument('--pair',required=True)
     p.add_argument('--hypothesis',required=True)
     p.add_argument('--probe-substring',required=True,action='append')
+    p.add_argument('--probe-all',action='store_true',help='Evaluate every explicitly named isolated probe, retaining each independent result')
     p.add_argument('--push',action='store_true')
     p.add_argument('--external-proposals',type=Path)
     p.add_argument('--use-prepared-baseline',action='store_true',help='Resume preparation only with unchanged HEAD, ledgers, sources and fresh receipts')
@@ -117,8 +122,9 @@ def main():
             'body_equal':bool(method and method['body_equal']),
             'stop_reason':method['stop_reason'] if method else 'already_equal_at_baseline',
             'accepted_steps':len(method['steps']) if method else 0})
-        if probes[-1]['body_equal']:break
+        if probe_should_stop(probes[-1]['body_equal'], args.probe_all):break
     (ROOT/('reports/round12-'+label+'-probe-summary.json')).write_text(json.dumps({'probes':probes,
+        'probe_policy':'all_explicit_probes' if args.probe_all else 'until_first_complete_match',
         'isolated_complete_match':any(p['body_equal'] for p in probes)},indent=2)+'\n',encoding='utf-8',newline='\n')
     full_args=[]
     if args.target_substring:
