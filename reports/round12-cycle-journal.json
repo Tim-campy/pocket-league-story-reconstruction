@@ -1396,6 +1396,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 35,
+      "part_cycle": 24,
+      "label": "b24",
+      "phase": "B",
+      "primary_target": "game.Ball::ReceiveBall(game.Player,System.Boolean)->System.Void",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-float-interval-exits-",
+      "assembly": "Assembly-CSharp",
+      "pair": "blt.un=>bge",
+      "hypothesis": "Shared mechanism: restore explicit Float range guard exits without complementing original operators or NaN behavior. Distinct subcases: Ball restores two OR/void-return guards under state/allow; Sliding restores positive empty range plus false return and its score-before-float slots. Separate controls, projection limits and exact0/11 signatures retained.",
+      "result": "Novos corpos aprovados; 2 tentativas da regra, 2 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 2,
+          "il_bytes_gained": 1156
+        }
+      },
+      "rule_accepted_steps": 2,
+      "methods_gained": 2,
+      "il_bytes_gained": 1156,
+      "before_measurement": "reports\\round12-b24-before-measurement.json",
+      "before_sha256": "ef6c6509d78460e92e4870527bb09861c690fe934208888fb70d77d415cfbed3",
+      "after_measurement": "reports/round12-b24-postverify01-measurement.json",
+      "after_sha256": "4d1d75e56c645d5ffcf3411caa33934eee3d10cd28ac0f2c44b45b4a097088c8",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-b24-after-measurement.json",
+          "previous_after_sha256": "dc604bcdca49fa9d15a8c5b3d65e2f5ed02f3d23448f019595e0013f430ac988",
+          "new_after_measurement": "reports/round12-b24-postverify01-measurement.json",
+          "new_after_sha256": "4d1d75e56c645d5ffcf3411caa33934eee3d10cd28ac0f2c44b45b4a097088c8",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0

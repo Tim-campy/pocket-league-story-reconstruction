@@ -3430,10 +3430,10 @@ num = body_off[seb][0];
 				return false;
 			}
 			float num = (float)JMath.Sqrt((target_player.pos_.x_ - pos_.x_) * (target_player.pos_.x_ - pos_.x_) + (target_player.pos_.z_ - pos_.z_) * (target_player.pos_.z_ - pos_.z_));
-			if (!(num >= 30f) || !(num < 70f))
-			{
-				return false;
-			}
+			int num4;
+int num5;
+int num8;
+if (num >= 30f && num < 70f) { } else { return false; }
 			st_a_vec = Map.DIRECT_VEC[target_player.direct_];
 			st_b_vec.x_ = target_player.pos_.x_ - pos_.x_;
 			st_b_vec.z_ = target_player.pos_.z_ - pos_.z_;
@@ -3444,11 +3444,11 @@ num = body_off[seb][0];
 				return false;
 			}
 			float x = (st_a_vec.x_ * st_b_vec.x_ + st_a_vec.z_ * st_b_vec.z_) / (num2 * num3);
-			int num4 = (int)GameUtil.RateConvert(x, 0f, -1f, 0f, 100f, true);
-			int num5 = 0;
+			num4 = (int)GameUtil.RateConvert(x, 0f, -1f, 0f, 100f, true);
+			num5 = 0;
 			int num6 = eva_pos_;
 			int num7 = udat_.teams_[team_id_].Get_playerPosEva(this, address_[0], address_[1], false);
-			int num8 = GameUtil.RateConvert(num7 - num6, 20, 0, 0, 100, true);
+			num8 = GameUtil.RateConvert(num7 - num6, 20, 0, 0, 100, true);
 			int num9 = (int)((0.6f * (float)num4 + 0.2f * (float)num5 + 0.3f * (float)num8) / 1.1f);
 			if (num9 > 50)
 			{

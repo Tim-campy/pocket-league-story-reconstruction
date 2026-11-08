@@ -2,7 +2,7 @@
 
 O verificador confirmou 3.287 métodos, 269.894 bytes de IL e 337 tipos. A aceitação independente do root está em [round12-kairo-independent-raw-acceptance.json](../../reports/round12-kairo-independent-raw-acceptance.json).
 
-O PE original e o recompilado têm 569.856 bytes. Todos os 569.816 bytes fora dos quatro campos comprovadamente não determinísticos são idênticos. Os únicos 40 bytes diferentes pertencem a `Module.Mvid`, `COFF.TimeDateStamp`, `IMAGE_DEBUG_DIRECTORY.TimeDateStamp` e `CodeView.RSDS.PdbGuid`, nas mesmas posições dos dois arquivos. Não houve normalização ou edição de DLL.
+O PE original e o recompilado têm 569.856 bytes. Todos os 569.816 bytes fora dos quatro campos comprovadamente não determinísticos são idênticos. Os quatro campos ocupam 40 bytes: `Module.Mvid`, `COFF.TimeDateStamp`, `IMAGE_DEBUG_DIRECTORY.TimeDateStamp` e `CodeView.RSDS.PdbGuid`, nas mesmas posições dos dois arquivos. Qualquer byte efetivamente diferente fica dentro deles; a quantidade de bytes diferentes varia entre compilações. Não houve normalização ou edição de DLL.
 
 A comparação inicial falhou apesar dos métodos correspondentes: faltavam quatro linhas de `StandAloneSig`, deslocando os heaps em oito bytes. Nenhuma referência ou opção de compilação foi trocada para corrigir isso. Os testes mostraram que dados de depuração nativos também influenciam metadados do PE.
 

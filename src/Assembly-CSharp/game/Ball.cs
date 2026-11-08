@@ -830,8 +830,12 @@ int num10 = 0;
 
 		public void ReceiveBall(Player player, bool coatOut_ok)
 		{
-			if ((udat_.gm_.state_ != 0 && coatOut_ok) || (!(pos_.z_ >= 900f) && !(pos_.z_ <= -900f) && !(pos_.x_ <= -450f) && !(pos_.x_ >= 450f) && !(player.pos_.z_ >= 900f) && !(player.pos_.z_ <= -900f) && !(player.pos_.x_ <= -450f) && !(player.pos_.x_ >= 450f)))
-			{
+			if (udat_.gm_.state_ == 0 || !coatOut_ok)
+{
+if (pos_.z_ >= 900f || pos_.z_ <= -900f || pos_.x_ <= -450f || pos_.x_ >= 450f) { return; }
+if (player.pos_.z_ >= 900f || player.pos_.z_ <= -900f || player.pos_.x_ <= -450f || player.pos_.x_ >= 450f) { return; }
+}
+
 				flag_ = BitUtil.Off(flag_, 1);
 				a_.x_ = 0f;
 				a_.z_ = 0f;
@@ -862,7 +866,7 @@ int num10 = 0;
 				{
 					udat_.teams_[player.team_id_].Amefto_start();
 				}
-			}
+
 		}
 
 		public void ReleaseBall(Player player)

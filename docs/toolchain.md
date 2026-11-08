@@ -449,8 +449,9 @@ bytes. Isso não identifica a biblioteca histórica. Contrato de comparação:
 
 Sem trocar compilador, referências ou opções, a fonte recompilada passou a
 reproduzir todos os 3.287 métodos, 337 tipos e os 569.816 bytes fora dos quatro
-campos comprovadamente não determinísticos. As únicas diferenças são 40 bytes
-nas mesmas coordenadas desses campos. A aceitação independente é
+campos comprovadamente não determinísticos. Esses campos ocupam 40 bytes nas
+mesmas coordenadas; qualquer byte efetivamente diferente fica dentro deles.
+A quantidade de bytes diferentes varia entre compilações. A aceitação independente é
 `reports/round12-kairo-independent-raw-acceptance.json`.
 
 Além do IL, foi necessário reproduzir efeitos de informação de depuração nativa:
