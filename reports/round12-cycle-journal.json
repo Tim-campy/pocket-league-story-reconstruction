@@ -285,7 +285,7 @@
       "queue_empty": false,
       "rule": "r12-kairo-pictograph-local-inside-dictionary-setter",
       "assembly": "KairoLibrary",
-      "pair": "named assignment => assignment-result temporary",
+      "pair": "INSERTION_POINT => stloc.1",
       "hypothesis": "Move the Pictograph local assignment inside the existing dictionary setter, preserving constructor arguments and dictionary evaluation order, to remove only the redundant result temporary; require one emitted local and maxstack9.",
       "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
       "gains": {
@@ -311,6 +311,55 @@
           "previous_after_sha256": "5377719a0b1008acde31b91669d0a3fb8aaf96badf0d824c9a136ccf64cb8948",
           "new_after_measurement": "reports/round12-a08-postverify01-measurement.json",
           "new_after_sha256": "df091e4e74320378ed3ce976cc780867ad3c0f849feacaef62014028158d0967",
+          "gains_unchanged": true
+        }
+      ],
+      "submitted_pair_label": "named assignment => assignment-result temporary",
+      "diagnostic_label_correction": {
+        "source": "reports/round12-a08-before-measurement.json",
+        "source_sha256": "4e080f1c0b01915fde8466747d55c82f975137a46037dca94781720f40d172f0",
+        "original_offset": 97,
+        "rebuilt_offset": 97,
+        "reason": "Replace descriptive pattern label with measured original-to-rebuilt aligned opcode pair; source and gains unchanged."
+      }
+    },
+    {
+      "cycle": 9,
+      "part_cycle": 9,
+      "label": "a09",
+      "phase": "A",
+      "primary_target": "kairo.unity.io.RecordStore::RemoveAllRecord()->System.Void",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-recordstore-preference-array-foreach-reused-temps",
+      "assembly": "KairoLibrary",
+      "pair": "stloc.0 => stloc.3",
+      "hypothesis": "Inline GetPreferenceKeys into a string-array foreach while leaving the earlier file foreach untouched, allowing compiler array/index temporary reuse; require the original three emitted locals and whole94-byte body.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 94
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 94,
+      "before_measurement": "reports\\round12-a09-before-measurement.json",
+      "before_sha256": "d1a019ae95d2e789c6a9b2432804ddb03801da17da91fca9e902a183f95e23be",
+      "after_measurement": "reports/round12-a09-postverify01-measurement.json",
+      "after_sha256": "12192d4b2fada68ec91e510e742c6d25e31e50a6b6d2822351d339a84d98ec96",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-a09-after-measurement.json",
+          "previous_after_sha256": "9be2573860af39f7a232b0db35aa97209920efda1bc65c5d4285c6cd791792a4",
+          "new_after_measurement": "reports/round12-a09-postverify01-measurement.json",
+          "new_after_sha256": "12192d4b2fada68ec91e510e742c6d25e31e50a6b6d2822351d339a84d98ec96",
           "gains_unchanged": true
         }
       ]

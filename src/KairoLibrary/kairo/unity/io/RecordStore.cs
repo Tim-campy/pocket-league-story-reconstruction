@@ -300,11 +300,7 @@ if (!usePreference_)
 			}
 			else
 			{
-				string[] files = KairoPlugin.GetPreferenceKeys();
-				for (int i = 0; i < files.Length; i++)
-				{
-					KairoPlugin.RemovePreference(files[i]);
-				}
+				foreach (string key in KairoPlugin.GetPreferenceKeys()) { KairoPlugin.RemovePreference(key); }
 			}
 		}
 
