@@ -179,15 +179,7 @@ namespace kairo.unity.m3d4.util3d
 				throw new ArgumentException();
 			}
 			Transform transform = new Transform();
-			float[] obj = new float[16]
-			{
-				1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f,
-				1f, 0f, 0f, 0f, 0f, 1f
-			};
-			obj[3] = x;
-			obj[7] = y;
-			obj[11] = z;
-			transform.Set(obj);
+			transform.Set(new float[16] { 1f, 0f, 0f, x, 0f, 1f, 0f, y, 0f, 0f, 1f, z, 0f, 0f, 0f, 1f });
 			Multiply(transform);
 		}
 

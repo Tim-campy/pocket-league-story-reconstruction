@@ -363,6 +363,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 10,
+      "part_cycle": 10,
+      "label": "a10",
+      "phase": "A",
+      "primary_target": "kairo.unity.m3d4.util3d.Transform::Translate(System.Single,System.Single,System.Single)->System.Void",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-translate-inline-mixed-array-set-argument",
+      "assembly": "KairoLibrary",
+      "pair": "ldloc.0 => DELETION_POINT",
+      "hypothesis": "Inline the existing mixed float-array initializer into Set's argument while preserving every literal, parameter read and previously approved Transpose body; the compiler must regenerate its data field and original67-byte body without copying a blob.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 67
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 67,
+      "before_measurement": "reports\\round12-a10-before-measurement.json",
+      "before_sha256": "e0eb92bc7f70b366c04e7f2693d8717c76a475360596e7acd3e1b662ecd22cbc",
+      "after_measurement": "reports/round12-a10-postverify01-measurement.json",
+      "after_sha256": "504037dd6d36ccc65b35691bf85502e5ea0e7040c5f69c59f1aba0b3c439e566",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-a10-after-measurement.json",
+          "previous_after_sha256": "1754d630765136d63a16cafe22c2892a9839bd55ca164efcd1b2cef6cc5d99ca",
+          "new_after_measurement": "reports/round12-a10-postverify01-measurement.json",
+          "new_after_sha256": "504037dd6d36ccc65b35691bf85502e5ea0e7040c5f69c59f1aba0b3c439e566",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0
