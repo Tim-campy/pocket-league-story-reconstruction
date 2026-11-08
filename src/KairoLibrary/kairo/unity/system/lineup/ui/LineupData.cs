@@ -91,14 +91,11 @@ namespace kairo.unity.system.lineup.ui
 			KairoBase instance = KairoBase.GetInstance();
 			bool flag = false;
 			int num;
-GameAppli[] appList = instance.GetAppList();
-			for (int i = 0; i < appList.Length; i++)
-			{
-				if (appList[i].Pid == gameId_)
-				{
-					flag = true;
-				}
-			}
+GameAppli[] appList=instance.GetAppList();
+for(int i=0;i<appList.Length;i++){
+GameAppli recoveredApp=appList[i];
+if(recoveredApp.Pid==gameId_){flag=true;}
+}
 			if (!flag)
 			{
 				return 0;
