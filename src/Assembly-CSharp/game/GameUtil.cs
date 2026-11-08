@@ -77,7 +77,7 @@ namespace game
 			MAX_ANGLEDATA_COS2 = Cos(MAX_ANGLE2);
 			MAX_ANGLEDATA_SIN3 = SIN[MAX_ANGLE3];
 			MAX_ANGLEDATA_COS3 = Cos(MAX_ANGLE3);
-			if (Config.DEBUG_CMD) { return; }
+			if (Config.DEBUG_CMD) { }
 
 		}
 

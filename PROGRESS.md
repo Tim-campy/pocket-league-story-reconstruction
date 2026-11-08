@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b35-postverify01-KairoLibrary-raw.json](reports/round12-b35-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `edf311bc247c3edcc9f9fcce89b64fefc8d7768e5b2af31772f58815037f4e3d`. Sem normalização.
+Prova literal atual: [reports/round12-b36-postverify01-KairoLibrary-raw.json](reports/round12-b36-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `12a2b5773bd1a92472b6c1a15b1037eafb2f639f82d2206b98d1716fbf727549`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,239 de 5,245 métodos matched (99.89%).** 871,497 bytes de IL nos assemblies alvo.
-870,874 bytes IL matched (99.93%).
+**5,241 de 5,245 métodos matched (99.92%).** 871,497 bytes de IL nos assemblies alvo.
+871,078 bytes IL matched (99.95%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 5 |
+| decompiled | 3 |
 | equivalent | 0 |
-| matched | 5239 |
+| matched | 5241 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1952 / 99.69% | 600980 / 99.90% |
+| `Assembly-CSharp` | 1958 | 601603 | 1954 / 99.80% | 601184 / 99.93% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -41,7 +41,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 255 / 100.00% | 26353 / 100.00% |
 | `form` | 371 | 250649 | 370 / 99.73% | 250453 / 99.92% |
-| `game` | 441 | 202949 | 439 / 99.55% | 202745 / 99.90% |
+| `game` | 441 | 202949 | 441 / 100.00% | 202949 / 100.00% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 34 / 100.00% | 13621 / 100.00% |
@@ -132,7 +132,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::game.Camera` | 31 | 7399 | 31 / 100.00% | 7399 / 100.00% |
 | `Assembly-CSharp::game.DelayEvent` | 4 | 456 | 4 / 100.00% | 456 / 100.00% |
 | `Assembly-CSharp::game.GameManager` | 20 | 11549 | 20 / 100.00% | 11549 / 100.00% |
-| `Assembly-CSharp::game.GameUtil` | 47 | 3570 | 46 / 97.87% | 3404 / 95.35% |
+| `Assembly-CSharp::game.GameUtil` | 47 | 3570 | 47 / 100.00% | 3570 / 100.00% |
 | `Assembly-CSharp::game.Map` | 18 | 13729 | 18 / 100.00% | 13729 / 100.00% |
 | `Assembly-CSharp::game.MapMain` | 14 | 7415 | 14 / 100.00% | 7415 / 100.00% |
 | `Assembly-CSharp::game.MapObject` | 2 | 46 | 2 / 100.00% | 46 / 100.00% |
@@ -143,7 +143,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 34 / 100.00% | 13693 / 100.00% |
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 42 / 100.00% | 22251 / 100.00% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 14 / 100.00% | 2692 / 100.00% |
-| `Assembly-CSharp::game.UserData` | 92 | 55470 | 91 / 98.91% | 55432 / 99.93% |
+| `Assembly-CSharp::game.UserData` | 92 | 55470 | 92 / 100.00% | 55470 / 100.00% |
 | `Assembly-CSharp::main.AppData` | 201 | 33806 | 201 / 100.00% | 33806 / 100.00% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
@@ -511,8 +511,6 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 
 | Tipo | Pendentes | Primeiro método |
 |---|---:|---|
-| `Assembly-CSharp::game.GameUtil` | 1 | `Assembly-CSharp::game.GameUtil::.ctor()->System.Void` |
-| `Assembly-CSharp::game.UserData` | 1 | `Assembly-CSharp::game.UserData::SetMatchInfoJoin(System.Int32)->System.Void` |
 | `Assembly-CSharp::surface.GameView` | 1 | `Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent` |
 | `Assembly-CSharp::system.form.LanguageForm` | 1 | `Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void` |
 

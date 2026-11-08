@@ -1,0 +1,2516 @@
+{
+  "schema_version": 1,
+  "operation": "read-only-first-IL-divergence-measurement",
+  "baseline_commit": "a075dcc8ca7b08e2cb9fcdd0cbcb5ce1fe8cd236",
+  "metric": "Only metadata-token identities resolved. All branch targets, operand bytes, instruction widths, constants and nops retained. Whole-body acceptance also requires header, locals and EH equality.",
+  "snapshot": "build\\round12\\runs\\b36\\commit\\postverify01",
+  "pair_grouping": "Exact opcode and resolved operand; opcode projection is diagnostic only.",
+  "ledger_sha256": "8785aaa3a834f586fb59fb6a05985f5c2d4ec6a427f8c1f2ea88ac8146965fcf",
+  "assemblies": {
+    "KairoLibrary": {
+      "assembly": "KairoLibrary",
+      "compiler": "roslyn-1.1.0",
+      "provenance": {
+        "original_dump": "build\\round12\\runs\\b36\\commit\\postverify01\\KairoLibrary\\original-methods.json",
+        "original_dump_sha256": "d3340a2a774d1c4a604c750ca0e7b36b5fbb15da96a4d0dabc60033066dc844a",
+        "rebuilt_dump": "build\\round12\\runs\\b36\\commit\\postverify01\\KairoLibrary\\rebuilt-methods.json",
+        "rebuilt_dump_sha256": "d9d060c8642055edfd09edc46ef60e59d17e85b0d8502f59096a09577ef7ae44",
+        "receipt": "build\\round12\\runs\\b36\\commit\\postverify01\\KairoLibrary\\verification.json",
+        "receipt_sha256": "4452872b31f6db610ce2d1452b2348232115dcb0c2b33ba65602eb97340d471f",
+        "build_sha256": "12a2b5773bd1a92472b6c1a15b1037eafb2f639f82d2206b98d1716fbf727549"
+      },
+      "total_methods": 3287,
+      "matched_methods": 3287,
+      "original_total_il_bytes": 269894,
+      "matched_original_il_bytes": 269894,
+      "divergent_bodies": 0,
+      "divergent_original_il_bytes": 0,
+      "equal_il_but_other_body_differences": 0,
+      "size_distribution": {
+        "<=64": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        "65-256": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        "257-1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        ">1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        }
+      },
+      "first_pair_exact_histogram": [],
+      "first_pair_opcode_histogram": [],
+      "methods": [],
+      "alignment": {
+        "methods": [],
+        "exact_histogram": [],
+        "opcode_histogram": []
+      },
+      "pending_local_signatures_equal": 0,
+      "pending_local_signatures_different": 0,
+      "equal_body_held_methods": 0,
+      "equal_body_held_method_ids": []
+    },
+    "Assembly-CSharp": {
+      "assembly": "Assembly-CSharp",
+      "compiler": "mono-smcs",
+      "provenance": {
+        "original_dump": "build\\round12\\runs\\b36\\commit\\postverify01\\Assembly-CSharp\\original-methods.json",
+        "original_dump_sha256": "6d7cc1a3a908d05b0c287622631d67a60c826e697ec9237def81c38f0ffd7a9c",
+        "rebuilt_dump": "build\\round12\\runs\\b36\\commit\\postverify01\\Assembly-CSharp\\rebuilt-methods.json",
+        "rebuilt_dump_sha256": "586425403c8fb84033dbd69c6a975a1f741dbeb4c2296345717fed57e45f6aac",
+        "receipt": "build\\round12\\runs\\b36\\commit\\postverify01\\Assembly-CSharp\\verification.json",
+        "receipt_sha256": "1c53f8f513e0982cdae31114b97162c5eea24eb09dfdd76c24aa3c115d295ab1",
+        "build_sha256": "45f941d76c86806889776790ec483792bceeb7fd27fb33867887e339ec7231ee"
+      },
+      "total_methods": 1958,
+      "matched_methods": 1954,
+      "original_total_il_bytes": 601603,
+      "matched_original_il_bytes": 601184,
+      "divergent_bodies": 3,
+      "divergent_original_il_bytes": 412,
+      "equal_il_but_other_body_differences": 0,
+      "size_distribution": {
+        "<=64": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        "65-256": {
+          "methods": 3,
+          "original_il_bytes": 412
+        },
+        "257-1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        },
+        ">1024": {
+          "methods": 0,
+          "original_il_bytes": 0
+        }
+      },
+      "first_pair_exact_histogram": [
+        {
+          "pair": "{\"opcode\":\"brfalse\",\"operand\":{\"branch\":195}} => {\"opcode\":\"brfalse\",\"operand\":{\"branch\":187}}",
+          "methods": 1,
+          "original_il_bytes": 196,
+          "method_ids": [
+            "Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+            "stable_id": "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+            "source": "src/Assembly-CSharp/form/SubForm.cs",
+            "original_il_bytes": 196,
+            "rebuilt_il_bytes": 188,
+            "first_il_difference_offset": 2,
+            "first_original_instruction": {
+              "offset": 1,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 195
+              }
+            },
+            "first_rebuilt_instruction": {
+              "offset": 1,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 187
+              }
+            },
+            "original_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.1",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "brfalse",
+                "operand": {
+                  "branch": 195
+                }
+              },
+              {
+                "offset": 6,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 7,
+                "opcode": "ldfld",
+                "operand": {
+                  "field": "class form.SubForm/<Update2>c__AnonStorey0 @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::t_data:class data.TeamData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+                }
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.1",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "brfalse",
+                "operand": {
+                  "branch": 187
+                }
+              },
+              {
+                "offset": 6,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 7,
+                "opcode": "ldfld",
+                "operand": {
+                  "field": "class form.SubForm/<Update2>c__AnonStorey0 @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::t_data:class data.TeamData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+                }
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"brfalse\",\"operand\":{\"branch\":195}} => {\"opcode\":\"brfalse\",\"operand\":{\"branch\":187}}",
+            "first_pair_opcodes": "brfalse => brfalse",
+            "body_differences": [
+              "header",
+              "locals",
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        },
+        {
+          "pair": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"ldarg.0\",\"operand\":null}",
+          "methods": 1,
+          "original_il_bytes": 110,
+          "method_ids": [
+            "Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+            "stable_id": "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+            "source": "src/Assembly-CSharp/surface/GameView.cs",
+            "original_il_bytes": 110,
+            "rebuilt_il_bytes": 97,
+            "first_il_difference_offset": 0,
+            "first_original_instruction": {
+              "offset": 0,
+              "opcode": "ldarg.3",
+              "operand": null
+            },
+            "first_rebuilt_instruction": {
+              "offset": 0,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            "original_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.3",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "stloc.0",
+                "operand": null
+              },
+              {
+                "offset": 2,
+                "opcode": "ldarg.s",
+                "operand": {
+                  "parameter": 4
+                }
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "ldarg.2",
+                "operand": null
+              },
+              {
+                "offset": 2,
+                "opcode": "ldarg.3",
+                "operand": null
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"ldarg.0\",\"operand\":null}",
+            "first_pair_opcodes": "ldarg.3 => ldarg.0",
+            "body_differences": [
+              "header",
+              "locals",
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        },
+        {
+          "pair": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+          "methods": 1,
+          "original_il_bytes": 106,
+          "method_ids": [
+            "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void",
+            "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+            "source": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+            "original_il_bytes": 106,
+            "rebuilt_il_bytes": 106,
+            "first_il_difference_offset": 66,
+            "first_original_instruction": {
+              "offset": 66,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            "first_rebuilt_instruction": {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            "original_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 71,
+                "opcode": "stloc.2",
+                "operand": null
+              },
+              {
+                "offset": 72,
+                "opcode": "ldloc.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              {
+                "offset": 67,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 72,
+                "opcode": "stloc.2",
+                "operand": null
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "first_pair_opcodes": "newobj => ldloc.1",
+            "body_differences": [
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        }
+      ],
+      "first_pair_opcode_histogram": [
+        {
+          "pair": "brfalse => brfalse",
+          "methods": 1,
+          "original_il_bytes": 196,
+          "method_ids": [
+            "Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+            "stable_id": "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+            "source": "src/Assembly-CSharp/form/SubForm.cs",
+            "original_il_bytes": 196,
+            "rebuilt_il_bytes": 188,
+            "first_il_difference_offset": 2,
+            "first_original_instruction": {
+              "offset": 1,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 195
+              }
+            },
+            "first_rebuilt_instruction": {
+              "offset": 1,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 187
+              }
+            },
+            "original_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.1",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "brfalse",
+                "operand": {
+                  "branch": 195
+                }
+              },
+              {
+                "offset": 6,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 7,
+                "opcode": "ldfld",
+                "operand": {
+                  "field": "class form.SubForm/<Update2>c__AnonStorey0 @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::t_data:class data.TeamData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+                }
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.1",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "brfalse",
+                "operand": {
+                  "branch": 187
+                }
+              },
+              {
+                "offset": 6,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 7,
+                "opcode": "ldfld",
+                "operand": {
+                  "field": "class form.SubForm/<Update2>c__AnonStorey0 @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::t_data:class data.TeamData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+                }
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"brfalse\",\"operand\":{\"branch\":195}} => {\"opcode\":\"brfalse\",\"operand\":{\"branch\":187}}",
+            "first_pair_opcodes": "brfalse => brfalse",
+            "body_differences": [
+              "header",
+              "locals",
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        },
+        {
+          "pair": "ldarg.3 => ldarg.0",
+          "methods": 1,
+          "original_il_bytes": 110,
+          "method_ids": [
+            "Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+            "stable_id": "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+            "source": "src/Assembly-CSharp/surface/GameView.cs",
+            "original_il_bytes": 110,
+            "rebuilt_il_bytes": 97,
+            "first_il_difference_offset": 0,
+            "first_original_instruction": {
+              "offset": 0,
+              "opcode": "ldarg.3",
+              "operand": null
+            },
+            "first_rebuilt_instruction": {
+              "offset": 0,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            "original_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.3",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "stloc.0",
+                "operand": null
+              },
+              {
+                "offset": 2,
+                "opcode": "ldarg.s",
+                "operand": {
+                  "parameter": 4
+                }
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "ldarg.2",
+                "operand": null
+              },
+              {
+                "offset": 2,
+                "opcode": "ldarg.3",
+                "operand": null
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"ldarg.0\",\"operand\":null}",
+            "first_pair_opcodes": "ldarg.3 => ldarg.0",
+            "body_differences": [
+              "header",
+              "locals",
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        },
+        {
+          "pair": "newobj => ldloc.1",
+          "methods": 1,
+          "original_il_bytes": 106,
+          "method_ids": [
+            "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void"
+          ],
+          "example": {
+            "id": "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void",
+            "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+            "source": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+            "original_il_bytes": 106,
+            "rebuilt_il_bytes": 106,
+            "first_il_difference_offset": 66,
+            "first_original_instruction": {
+              "offset": 66,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            "first_rebuilt_instruction": {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            "original_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 71,
+                "opcode": "stloc.2",
+                "operand": null
+              },
+              {
+                "offset": 72,
+                "opcode": "ldloc.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              {
+                "offset": 67,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 72,
+                "opcode": "stloc.2",
+                "operand": null
+              }
+            ],
+            "first_pair_exact": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "first_pair_opcodes": "newobj => ldloc.1",
+            "body_differences": [
+              "instructions",
+              "resolved_body_bytes"
+            ],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": []
+          }
+        }
+      ],
+      "methods": [
+        {
+          "id": "Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+          "stable_id": "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+          "source": "src/Assembly-CSharp/form/SubForm.cs",
+          "original_il_bytes": 196,
+          "rebuilt_il_bytes": 188,
+          "first_il_difference_offset": 2,
+          "first_original_instruction": {
+            "offset": 1,
+            "opcode": "brfalse",
+            "operand": {
+              "branch": 195
+            }
+          },
+          "first_rebuilt_instruction": {
+            "offset": 1,
+            "opcode": "brfalse",
+            "operand": {
+              "branch": 187
+            }
+          },
+          "original_context": [
+            {
+              "offset": 0,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 1,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 195
+              }
+            },
+            {
+              "offset": 6,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 7,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class form.SubForm/<Update2>c__AnonStorey0 @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::t_data:class data.TeamData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 0,
+              "opcode": "ldarg.1",
+              "operand": null
+            },
+            {
+              "offset": 1,
+              "opcode": "brfalse",
+              "operand": {
+                "branch": 187
+              }
+            },
+            {
+              "offset": 6,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 7,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class form.SubForm/<Update2>c__AnonStorey0 @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::t_data:class data.TeamData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "first_pair_exact": "{\"opcode\":\"brfalse\",\"operand\":{\"branch\":195}} => {\"opcode\":\"brfalse\",\"operand\":{\"branch\":187}}",
+          "first_pair_opcodes": "brfalse => brfalse",
+          "body_differences": [
+            "header",
+            "locals",
+            "instructions",
+            "resolved_body_bytes"
+          ],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        {
+          "id": "Assembly-CSharp::surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+          "stable_id": "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+          "source": "src/Assembly-CSharp/surface/GameView.cs",
+          "original_il_bytes": 110,
+          "rebuilt_il_bytes": 97,
+          "first_il_difference_offset": 0,
+          "first_original_instruction": {
+            "offset": 0,
+            "opcode": "ldarg.3",
+            "operand": null
+          },
+          "first_rebuilt_instruction": {
+            "offset": 0,
+            "opcode": "ldarg.0",
+            "operand": null
+          },
+          "original_context": [
+            {
+              "offset": 0,
+              "opcode": "ldarg.3",
+              "operand": null
+            },
+            {
+              "offset": 1,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            {
+              "offset": 2,
+              "opcode": "ldarg.s",
+              "operand": {
+                "parameter": 4
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 0,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 1,
+              "opcode": "ldarg.2",
+              "operand": null
+            },
+            {
+              "offset": 2,
+              "opcode": "ldarg.3",
+              "operand": null
+            }
+          ],
+          "first_pair_exact": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"ldarg.0\",\"operand\":null}",
+          "first_pair_opcodes": "ldarg.3 => ldarg.0",
+          "body_differences": [
+            "header",
+            "locals",
+            "instructions",
+            "resolved_body_bytes"
+          ],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        {
+          "id": "Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void",
+          "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+          "source": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+          "original_il_bytes": 106,
+          "rebuilt_il_bytes": 106,
+          "first_il_difference_offset": 66,
+          "first_original_instruction": {
+            "offset": 66,
+            "opcode": "newobj",
+            "operand": {
+              "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+            }
+          },
+          "first_rebuilt_instruction": {
+            "offset": 66,
+            "opcode": "ldloc.1",
+            "operand": null
+          },
+          "original_context": [
+            {
+              "offset": 60,
+              "opcode": "call",
+              "operand": {
+                "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 65,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 66,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 71,
+              "opcode": "stloc.2",
+              "operand": null
+            },
+            {
+              "offset": 72,
+              "opcode": "ldloc.2",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 60,
+              "opcode": "call",
+              "operand": {
+                "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 65,
+              "opcode": "stloc.1",
+              "operand": null
+            },
+            {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            {
+              "offset": 67,
+              "opcode": "newobj",
+              "operand": {
+                "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+              }
+            },
+            {
+              "offset": 72,
+              "opcode": "stloc.2",
+              "operand": null
+            }
+          ],
+          "first_pair_exact": "{\"opcode\":\"newobj\",\"operand\":{\"method\":\"class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default\"}} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+          "first_pair_opcodes": "newobj => ldloc.1",
+          "body_differences": [
+            "instructions",
+            "resolved_body_bytes"
+          ],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        }
+      ],
+      "alignment": {
+        "methods": [
+          {
+            "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+            "diagnostic_only": true,
+            "kind": "insert",
+            "original_offset": 55,
+            "rebuilt_offset": 55,
+            "original_index": 15,
+            "rebuilt_index": 15,
+            "original_instruction": {
+              "opcode": "INSERTION_POINT",
+              "operand": null
+            },
+            "rebuilt_instruction": {
+              "offset": 55,
+              "opcode": "stloc.0",
+              "operand": null
+            },
+            "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"stloc.0\",\"operand\":null}",
+            "opcode_pair": "INSERTION_POINT => stloc.0",
+            "original_context": [
+              {
+                "offset": 45,
+                "opcode": "stfld",
+                "operand": {
+                  "field": "class form.TitleForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::newGameName_:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                }
+              },
+              {
+                "offset": 50,
+                "opcode": "ldsfld",
+                "operand": {
+                  "field": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::Empty:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                }
+              },
+              {
+                "offset": 55,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 56,
+                "opcode": "ldc.i4.0",
+                "operand": null
+              },
+              {
+                "offset": 57,
+                "opcode": "stloc.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 45,
+                "opcode": "stfld",
+                "operand": {
+                  "field": "class form.TitleForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::newGameName_:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                }
+              },
+              {
+                "offset": 50,
+                "opcode": "ldsfld",
+                "operand": {
+                  "field": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::Empty:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                }
+              },
+              {
+                "offset": 55,
+                "opcode": "stloc.0",
+                "operand": null
+              },
+              {
+                "offset": 56,
+                "opcode": "ldc.i4.0",
+                "operand": null
+              },
+              {
+                "offset": 57,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 58,
+                "opcode": "ldc.i4.0",
+                "operand": null
+              }
+            ],
+            "original_labels": {
+              "68": "L0",
+              "117": "L1",
+              "133": "L2",
+              "183": "L3",
+              "195": "L4",
+              "124": "O124",
+              "126": "O126",
+              "131": "O131",
+              "150": "O150",
+              "170": "O170"
+            },
+            "rebuilt_labels": {
+              "67": "L0",
+              "126": "L1",
+              "134": "L2",
+              "175": "L3",
+              "187": "L4",
+              "112": "R112",
+              "127": "R127",
+              "128": "R128",
+              "145": "R145",
+              "163": "R163"
+            },
+            "sequence_edits": [
+              {
+                "kind": "insert",
+                "original_start": 15,
+                "original_stop": 15,
+                "rebuilt_start": 15,
+                "rebuilt_stop": 17
+              },
+              {
+                "kind": "delete",
+                "original_start": 20,
+                "original_stop": 22,
+                "rebuilt_start": 22,
+                "rebuilt_stop": 22
+              },
+              {
+                "kind": "insert",
+                "original_start": 24,
+                "original_stop": 24,
+                "rebuilt_start": 24,
+                "rebuilt_stop": 27
+              },
+              {
+                "kind": "delete",
+                "original_start": 25,
+                "original_stop": 28,
+                "rebuilt_start": 28,
+                "rebuilt_stop": 28
+              },
+              {
+                "kind": "replace",
+                "original_start": 30,
+                "original_stop": 32,
+                "rebuilt_start": 30,
+                "rebuilt_stop": 32
+              },
+              {
+                "kind": "replace",
+                "original_start": 34,
+                "original_stop": 36,
+                "rebuilt_start": 34,
+                "rebuilt_stop": 38
+              },
+              {
+                "kind": "replace",
+                "original_start": 37,
+                "original_stop": 38,
+                "rebuilt_start": 39,
+                "rebuilt_stop": 42
+              },
+              {
+                "kind": "replace",
+                "original_start": 39,
+                "original_stop": 46,
+                "rebuilt_start": 43,
+                "rebuilt_stop": 49
+              },
+              {
+                "kind": "delete",
+                "original_start": 47,
+                "original_stop": 52,
+                "rebuilt_start": 50,
+                "rebuilt_stop": 50
+              },
+              {
+                "kind": "replace",
+                "original_start": 54,
+                "original_stop": 56,
+                "rebuilt_start": 52,
+                "rebuilt_stop": 54
+              },
+              {
+                "kind": "replace",
+                "original_start": 58,
+                "original_stop": 60,
+                "rebuilt_start": 56,
+                "rebuilt_stop": 58
+              },
+              {
+                "kind": "replace",
+                "original_start": 62,
+                "original_stop": 64,
+                "rebuilt_start": 60,
+                "rebuilt_stop": 62
+              },
+              {
+                "kind": "replace",
+                "original_start": 69,
+                "original_stop": 70,
+                "rebuilt_start": 67,
+                "rebuilt_stop": 68
+              }
+            ],
+            "branch_retarget_differences": [
+              {
+                "kind": "branch_retarget",
+                "original_start": 32,
+                "original_stop": 33,
+                "rebuilt_start": 32,
+                "rebuilt_stop": 33,
+                "target_ordinal": 0,
+                "original_target": 133,
+                "rebuilt_target": 128
+              }
+            ],
+            "deferred_branch_targets": [
+              {
+                "original_offset": 63,
+                "rebuilt_offset": 62,
+                "target_ordinal": 0,
+                "original_target": 170,
+                "rebuilt_target": 163,
+                "status": "target_in_unmatched_sequence_range"
+              },
+              {
+                "original_offset": 140,
+                "rebuilt_offset": 135,
+                "target_ordinal": 0,
+                "original_target": 150,
+                "rebuilt_target": 145,
+                "status": "target_in_unmatched_sequence_range"
+              }
+            ],
+            "branch_width_differences": [],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": [],
+            "stable_id": "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+            "original_il_bytes": 196
+          },
+          {
+            "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+            "diagnostic_only": true,
+            "kind": "delete",
+            "original_offset": 0,
+            "rebuilt_offset": 0,
+            "original_index": 0,
+            "rebuilt_index": 0,
+            "original_instruction": {
+              "offset": 0,
+              "opcode": "ldarg.3",
+              "operand": null
+            },
+            "rebuilt_instruction": {
+              "opcode": "DELETION_POINT",
+              "operand": null
+            },
+            "pair": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"DELETION_POINT\",\"operand\":null}",
+            "opcode_pair": "ldarg.3 => DELETION_POINT",
+            "original_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.3",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "stloc.0",
+                "operand": null
+              },
+              {
+                "offset": 2,
+                "opcode": "ldarg.s",
+                "operand": {
+                  "parameter": 4
+                }
+              },
+              {
+                "offset": 4,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 5,
+                "opcode": "ldarg.s",
+                "operand": {
+                  "parameter": 7
+                }
+              },
+              {
+                "offset": 7,
+                "opcode": "stloc.2",
+                "operand": null
+              },
+              {
+                "offset": 8,
+                "opcode": "ldarg.s",
+                "operand": {
+                  "parameter": 8
+                }
+              },
+              {
+                "offset": 10,
+                "opcode": "stloc.3",
+                "operand": null
+              },
+              {
+                "offset": 11,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 12,
+                "opcode": "ldarg.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 0,
+                "opcode": "ldarg.0",
+                "operand": null
+              },
+              {
+                "offset": 1,
+                "opcode": "ldarg.2",
+                "operand": null
+              },
+              {
+                "offset": 2,
+                "opcode": "ldarg.3",
+                "operand": null
+              }
+            ],
+            "original_labels": {
+              "62": "L0",
+              "83": "O83",
+              "107": "O107"
+            },
+            "rebuilt_labels": {
+              "52": "L0",
+              "72": "R72",
+              "95": "R95"
+            },
+            "sequence_edits": [
+              {
+                "kind": "delete",
+                "original_start": 0,
+                "original_stop": 8,
+                "rebuilt_start": 0,
+                "rebuilt_stop": 0
+              },
+              {
+                "kind": "replace",
+                "original_start": 22,
+                "original_stop": 26,
+                "rebuilt_start": 14,
+                "rebuilt_stop": 18
+              },
+              {
+                "kind": "replace",
+                "original_start": 29,
+                "original_stop": 31,
+                "rebuilt_start": 21,
+                "rebuilt_stop": 23
+              },
+              {
+                "kind": "replace",
+                "original_start": 36,
+                "original_stop": 37,
+                "rebuilt_start": 28,
+                "rebuilt_stop": 29
+              },
+              {
+                "kind": "replace",
+                "original_start": 41,
+                "original_stop": 42,
+                "rebuilt_start": 33,
+                "rebuilt_stop": 34
+              },
+              {
+                "kind": "replace",
+                "original_start": 51,
+                "original_stop": 52,
+                "rebuilt_start": 43,
+                "rebuilt_stop": 44
+              }
+            ],
+            "branch_retarget_differences": [],
+            "deferred_branch_targets": [
+              {
+                "original_offset": 63,
+                "rebuilt_offset": 53,
+                "target_ordinal": 0,
+                "original_target": 83,
+                "rebuilt_target": 72,
+                "status": "target_in_unmatched_sequence_range"
+              },
+              {
+                "original_offset": 78,
+                "rebuilt_offset": 67,
+                "target_ordinal": 0,
+                "original_target": 107,
+                "rebuilt_target": 95,
+                "status": "target_in_unmatched_sequence_range"
+              }
+            ],
+            "branch_width_differences": [],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": [],
+            "stable_id": "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+            "original_il_bytes": 110
+          },
+          {
+            "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+            "diagnostic_only": true,
+            "kind": "insert",
+            "original_offset": 66,
+            "rebuilt_offset": 66,
+            "original_index": 18,
+            "rebuilt_index": 18,
+            "original_instruction": {
+              "opcode": "INSERTION_POINT",
+              "operand": null
+            },
+            "rebuilt_instruction": {
+              "offset": 66,
+              "opcode": "ldloc.1",
+              "operand": null
+            },
+            "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "opcode_pair": "INSERTION_POINT => ldloc.1",
+            "original_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                },
+                "label": "L1"
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 71,
+                "opcode": "stloc.2",
+                "operand": null
+              },
+              {
+                "offset": 72,
+                "opcode": "ldloc.2",
+                "operand": null
+              }
+            ],
+            "rebuilt_context": [
+              {
+                "offset": 60,
+                "opcode": "call",
+                "operand": {
+                  "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                },
+                "label": "L1"
+              },
+              {
+                "offset": 65,
+                "opcode": "stloc.1",
+                "operand": null
+              },
+              {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              {
+                "offset": 67,
+                "opcode": "newobj",
+                "operand": {
+                  "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                }
+              },
+              {
+                "offset": 72,
+                "opcode": "stloc.2",
+                "operand": null
+              }
+            ],
+            "original_labels": {
+              "55": "L0",
+              "60": "L1",
+              "105": "L2"
+            },
+            "rebuilt_labels": {
+              "55": "L0",
+              "60": "L1",
+              "105": "L2"
+            },
+            "sequence_edits": [
+              {
+                "kind": "insert",
+                "original_start": 18,
+                "original_stop": 18,
+                "rebuilt_start": 18,
+                "rebuilt_stop": 19
+              },
+              {
+                "kind": "delete",
+                "original_start": 23,
+                "original_stop": 24,
+                "rebuilt_start": 24,
+                "rebuilt_stop": 24
+              }
+            ],
+            "branch_retarget_differences": [],
+            "deferred_branch_targets": [],
+            "branch_width_differences": [],
+            "original_exception_regions": [],
+            "rebuilt_exception_regions": [],
+            "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+            "original_il_bytes": 106
+          }
+        ],
+        "exact_histogram": [
+          {
+            "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"stloc.0\",\"operand\":null}",
+            "methods": 1,
+            "original_il_bytes": 196,
+            "method_ids": [
+              "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "insert",
+              "original_offset": 55,
+              "rebuilt_offset": 55,
+              "original_index": 15,
+              "rebuilt_index": 15,
+              "original_instruction": {
+                "opcode": "INSERTION_POINT",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "offset": 55,
+                "opcode": "stloc.0",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"stloc.0\",\"operand\":null}",
+              "opcode_pair": "INSERTION_POINT => stloc.0",
+              "original_context": [
+                {
+                  "offset": 45,
+                  "opcode": "stfld",
+                  "operand": {
+                    "field": "class form.TitleForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::newGameName_:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 50,
+                  "opcode": "ldsfld",
+                  "operand": {
+                    "field": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::Empty:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 55,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 56,
+                  "opcode": "ldc.i4.0",
+                  "operand": null
+                },
+                {
+                  "offset": 57,
+                  "opcode": "stloc.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 45,
+                  "opcode": "stfld",
+                  "operand": {
+                    "field": "class form.TitleForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::newGameName_:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 50,
+                  "opcode": "ldsfld",
+                  "operand": {
+                    "field": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::Empty:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 55,
+                  "opcode": "stloc.0",
+                  "operand": null
+                },
+                {
+                  "offset": 56,
+                  "opcode": "ldc.i4.0",
+                  "operand": null
+                },
+                {
+                  "offset": 57,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 58,
+                  "opcode": "ldc.i4.0",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "68": "L0",
+                "117": "L1",
+                "133": "L2",
+                "183": "L3",
+                "195": "L4",
+                "124": "O124",
+                "126": "O126",
+                "131": "O131",
+                "150": "O150",
+                "170": "O170"
+              },
+              "rebuilt_labels": {
+                "67": "L0",
+                "126": "L1",
+                "134": "L2",
+                "175": "L3",
+                "187": "L4",
+                "112": "R112",
+                "127": "R127",
+                "128": "R128",
+                "145": "R145",
+                "163": "R163"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "insert",
+                  "original_start": 15,
+                  "original_stop": 15,
+                  "rebuilt_start": 15,
+                  "rebuilt_stop": 17
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 20,
+                  "original_stop": 22,
+                  "rebuilt_start": 22,
+                  "rebuilt_stop": 22
+                },
+                {
+                  "kind": "insert",
+                  "original_start": 24,
+                  "original_stop": 24,
+                  "rebuilt_start": 24,
+                  "rebuilt_stop": 27
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 25,
+                  "original_stop": 28,
+                  "rebuilt_start": 28,
+                  "rebuilt_stop": 28
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 30,
+                  "original_stop": 32,
+                  "rebuilt_start": 30,
+                  "rebuilt_stop": 32
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 34,
+                  "original_stop": 36,
+                  "rebuilt_start": 34,
+                  "rebuilt_stop": 38
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 37,
+                  "original_stop": 38,
+                  "rebuilt_start": 39,
+                  "rebuilt_stop": 42
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 39,
+                  "original_stop": 46,
+                  "rebuilt_start": 43,
+                  "rebuilt_stop": 49
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 47,
+                  "original_stop": 52,
+                  "rebuilt_start": 50,
+                  "rebuilt_stop": 50
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 54,
+                  "original_stop": 56,
+                  "rebuilt_start": 52,
+                  "rebuilt_stop": 54
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 58,
+                  "original_stop": 60,
+                  "rebuilt_start": 56,
+                  "rebuilt_stop": 58
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 62,
+                  "original_stop": 64,
+                  "rebuilt_start": 60,
+                  "rebuilt_stop": 62
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 69,
+                  "original_stop": 70,
+                  "rebuilt_start": 67,
+                  "rebuilt_stop": 68
+                }
+              ],
+              "branch_retarget_differences": [
+                {
+                  "kind": "branch_retarget",
+                  "original_start": 32,
+                  "original_stop": 33,
+                  "rebuilt_start": 32,
+                  "rebuilt_stop": 33,
+                  "target_ordinal": 0,
+                  "original_target": 133,
+                  "rebuilt_target": 128
+                }
+              ],
+              "deferred_branch_targets": [
+                {
+                  "original_offset": 63,
+                  "rebuilt_offset": 62,
+                  "target_ordinal": 0,
+                  "original_target": 170,
+                  "rebuilt_target": 163,
+                  "status": "target_in_unmatched_sequence_range"
+                },
+                {
+                  "original_offset": 140,
+                  "rebuilt_offset": 135,
+                  "target_ordinal": 0,
+                  "original_target": 150,
+                  "rebuilt_target": 145,
+                  "status": "target_in_unmatched_sequence_range"
+                }
+              ],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+              "original_il_bytes": 196
+            }
+          },
+          {
+            "pair": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"DELETION_POINT\",\"operand\":null}",
+            "methods": 1,
+            "original_il_bytes": 110,
+            "method_ids": [
+              "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "delete",
+              "original_offset": 0,
+              "rebuilt_offset": 0,
+              "original_index": 0,
+              "rebuilt_index": 0,
+              "original_instruction": {
+                "offset": 0,
+                "opcode": "ldarg.3",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "opcode": "DELETION_POINT",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"DELETION_POINT\",\"operand\":null}",
+              "opcode_pair": "ldarg.3 => DELETION_POINT",
+              "original_context": [
+                {
+                  "offset": 0,
+                  "opcode": "ldarg.3",
+                  "operand": null
+                },
+                {
+                  "offset": 1,
+                  "opcode": "stloc.0",
+                  "operand": null
+                },
+                {
+                  "offset": 2,
+                  "opcode": "ldarg.s",
+                  "operand": {
+                    "parameter": 4
+                  }
+                },
+                {
+                  "offset": 4,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 5,
+                  "opcode": "ldarg.s",
+                  "operand": {
+                    "parameter": 7
+                  }
+                },
+                {
+                  "offset": 7,
+                  "opcode": "stloc.2",
+                  "operand": null
+                },
+                {
+                  "offset": 8,
+                  "opcode": "ldarg.s",
+                  "operand": {
+                    "parameter": 8
+                  }
+                },
+                {
+                  "offset": 10,
+                  "opcode": "stloc.3",
+                  "operand": null
+                },
+                {
+                  "offset": 11,
+                  "opcode": "ldarg.0",
+                  "operand": null
+                },
+                {
+                  "offset": 12,
+                  "opcode": "ldarg.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 0,
+                  "opcode": "ldarg.0",
+                  "operand": null
+                },
+                {
+                  "offset": 1,
+                  "opcode": "ldarg.2",
+                  "operand": null
+                },
+                {
+                  "offset": 2,
+                  "opcode": "ldarg.3",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "62": "L0",
+                "83": "O83",
+                "107": "O107"
+              },
+              "rebuilt_labels": {
+                "52": "L0",
+                "72": "R72",
+                "95": "R95"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "delete",
+                  "original_start": 0,
+                  "original_stop": 8,
+                  "rebuilt_start": 0,
+                  "rebuilt_stop": 0
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 22,
+                  "original_stop": 26,
+                  "rebuilt_start": 14,
+                  "rebuilt_stop": 18
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 29,
+                  "original_stop": 31,
+                  "rebuilt_start": 21,
+                  "rebuilt_stop": 23
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 36,
+                  "original_stop": 37,
+                  "rebuilt_start": 28,
+                  "rebuilt_stop": 29
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 41,
+                  "original_stop": 42,
+                  "rebuilt_start": 33,
+                  "rebuilt_stop": 34
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 51,
+                  "original_stop": 52,
+                  "rebuilt_start": 43,
+                  "rebuilt_stop": 44
+                }
+              ],
+              "branch_retarget_differences": [],
+              "deferred_branch_targets": [
+                {
+                  "original_offset": 63,
+                  "rebuilt_offset": 53,
+                  "target_ordinal": 0,
+                  "original_target": 83,
+                  "rebuilt_target": 72,
+                  "status": "target_in_unmatched_sequence_range"
+                },
+                {
+                  "original_offset": 78,
+                  "rebuilt_offset": 67,
+                  "target_ordinal": 0,
+                  "original_target": 107,
+                  "rebuilt_target": 95,
+                  "status": "target_in_unmatched_sequence_range"
+                }
+              ],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+              "original_il_bytes": 110
+            }
+          },
+          {
+            "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+            "methods": 1,
+            "original_il_bytes": 106,
+            "method_ids": [
+              "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "insert",
+              "original_offset": 66,
+              "rebuilt_offset": 66,
+              "original_index": 18,
+              "rebuilt_index": 18,
+              "original_instruction": {
+                "opcode": "INSERTION_POINT",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+              "opcode_pair": "INSERTION_POINT => ldloc.1",
+              "original_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 71,
+                  "opcode": "stloc.2",
+                  "operand": null
+                },
+                {
+                  "offset": 72,
+                  "opcode": "ldloc.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "ldloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 67,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 72,
+                  "opcode": "stloc.2",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "rebuilt_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "insert",
+                  "original_start": 18,
+                  "original_stop": 18,
+                  "rebuilt_start": 18,
+                  "rebuilt_stop": 19
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 23,
+                  "original_stop": 24,
+                  "rebuilt_start": 24,
+                  "rebuilt_stop": 24
+                }
+              ],
+              "branch_retarget_differences": [],
+              "deferred_branch_targets": [],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+              "original_il_bytes": 106
+            }
+          }
+        ],
+        "opcode_histogram": [
+          {
+            "pair": "INSERTION_POINT => stloc.0",
+            "methods": 1,
+            "original_il_bytes": 196,
+            "method_ids": [
+              "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "insert",
+              "original_offset": 55,
+              "rebuilt_offset": 55,
+              "original_index": 15,
+              "rebuilt_index": 15,
+              "original_instruction": {
+                "opcode": "INSERTION_POINT",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "offset": 55,
+                "opcode": "stloc.0",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"stloc.0\",\"operand\":null}",
+              "opcode_pair": "INSERTION_POINT => stloc.0",
+              "original_context": [
+                {
+                  "offset": 45,
+                  "opcode": "stfld",
+                  "operand": {
+                    "field": "class form.TitleForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::newGameName_:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 50,
+                  "opcode": "ldsfld",
+                  "operand": {
+                    "field": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::Empty:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 55,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 56,
+                  "opcode": "ldc.i4.0",
+                  "operand": null
+                },
+                {
+                  "offset": 57,
+                  "opcode": "stloc.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 45,
+                  "opcode": "stfld",
+                  "operand": {
+                    "field": "class form.TitleForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::newGameName_:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 50,
+                  "opcode": "ldsfld",
+                  "operand": {
+                    "field": "class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e::Empty:class System.String @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  }
+                },
+                {
+                  "offset": 55,
+                  "opcode": "stloc.0",
+                  "operand": null
+                },
+                {
+                  "offset": 56,
+                  "opcode": "ldc.i4.0",
+                  "operand": null
+                },
+                {
+                  "offset": 57,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 58,
+                  "opcode": "ldc.i4.0",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "68": "L0",
+                "117": "L1",
+                "133": "L2",
+                "183": "L3",
+                "195": "L4",
+                "124": "O124",
+                "126": "O126",
+                "131": "O131",
+                "150": "O150",
+                "170": "O170"
+              },
+              "rebuilt_labels": {
+                "67": "L0",
+                "126": "L1",
+                "134": "L2",
+                "175": "L3",
+                "187": "L4",
+                "112": "R112",
+                "127": "R127",
+                "128": "R128",
+                "145": "R145",
+                "163": "R163"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "insert",
+                  "original_start": 15,
+                  "original_stop": 15,
+                  "rebuilt_start": 15,
+                  "rebuilt_stop": 17
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 20,
+                  "original_stop": 22,
+                  "rebuilt_start": 22,
+                  "rebuilt_stop": 22
+                },
+                {
+                  "kind": "insert",
+                  "original_start": 24,
+                  "original_stop": 24,
+                  "rebuilt_start": 24,
+                  "rebuilt_stop": 27
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 25,
+                  "original_stop": 28,
+                  "rebuilt_start": 28,
+                  "rebuilt_stop": 28
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 30,
+                  "original_stop": 32,
+                  "rebuilt_start": 30,
+                  "rebuilt_stop": 32
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 34,
+                  "original_stop": 36,
+                  "rebuilt_start": 34,
+                  "rebuilt_stop": 38
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 37,
+                  "original_stop": 38,
+                  "rebuilt_start": 39,
+                  "rebuilt_stop": 42
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 39,
+                  "original_stop": 46,
+                  "rebuilt_start": 43,
+                  "rebuilt_stop": 49
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 47,
+                  "original_stop": 52,
+                  "rebuilt_start": 50,
+                  "rebuilt_stop": 50
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 54,
+                  "original_stop": 56,
+                  "rebuilt_start": 52,
+                  "rebuilt_stop": 54
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 58,
+                  "original_stop": 60,
+                  "rebuilt_start": 56,
+                  "rebuilt_stop": 58
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 62,
+                  "original_stop": 64,
+                  "rebuilt_start": 60,
+                  "rebuilt_stop": 62
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 69,
+                  "original_stop": 70,
+                  "rebuilt_start": 67,
+                  "rebuilt_stop": 68
+                }
+              ],
+              "branch_retarget_differences": [
+                {
+                  "kind": "branch_retarget",
+                  "original_start": 32,
+                  "original_stop": 33,
+                  "rebuilt_start": 32,
+                  "rebuilt_stop": 33,
+                  "target_ordinal": 0,
+                  "original_target": 133,
+                  "rebuilt_target": 128
+                }
+              ],
+              "deferred_branch_targets": [
+                {
+                  "original_offset": 63,
+                  "rebuilt_offset": 62,
+                  "target_ordinal": 0,
+                  "original_target": 170,
+                  "rebuilt_target": 163,
+                  "status": "target_in_unmatched_sequence_range"
+                },
+                {
+                  "original_offset": 140,
+                  "rebuilt_offset": 135,
+                  "target_ordinal": 0,
+                  "original_target": 150,
+                  "rebuilt_target": 145,
+                  "status": "target_in_unmatched_sequence_range"
+                }
+              ],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "form.SubForm/<Update2>c__AnonStorey0::<>m__0(System.String)->System.Void",
+              "original_il_bytes": 196
+            }
+          },
+          {
+            "pair": "ldarg.3 => DELETION_POINT",
+            "methods": 1,
+            "original_il_bytes": 110,
+            "method_ids": [
+              "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "delete",
+              "original_offset": 0,
+              "rebuilt_offset": 0,
+              "original_index": 0,
+              "rebuilt_index": 0,
+              "original_instruction": {
+                "offset": 0,
+                "opcode": "ldarg.3",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "opcode": "DELETION_POINT",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"ldarg.3\",\"operand\":null} => {\"opcode\":\"DELETION_POINT\",\"operand\":null}",
+              "opcode_pair": "ldarg.3 => DELETION_POINT",
+              "original_context": [
+                {
+                  "offset": 0,
+                  "opcode": "ldarg.3",
+                  "operand": null
+                },
+                {
+                  "offset": 1,
+                  "opcode": "stloc.0",
+                  "operand": null
+                },
+                {
+                  "offset": 2,
+                  "opcode": "ldarg.s",
+                  "operand": {
+                    "parameter": 4
+                  }
+                },
+                {
+                  "offset": 4,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 5,
+                  "opcode": "ldarg.s",
+                  "operand": {
+                    "parameter": 7
+                  }
+                },
+                {
+                  "offset": 7,
+                  "opcode": "stloc.2",
+                  "operand": null
+                },
+                {
+                  "offset": 8,
+                  "opcode": "ldarg.s",
+                  "operand": {
+                    "parameter": 8
+                  }
+                },
+                {
+                  "offset": 10,
+                  "opcode": "stloc.3",
+                  "operand": null
+                },
+                {
+                  "offset": 11,
+                  "opcode": "ldarg.0",
+                  "operand": null
+                },
+                {
+                  "offset": 12,
+                  "opcode": "ldarg.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 0,
+                  "opcode": "ldarg.0",
+                  "operand": null
+                },
+                {
+                  "offset": 1,
+                  "opcode": "ldarg.2",
+                  "operand": null
+                },
+                {
+                  "offset": 2,
+                  "opcode": "ldarg.3",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "62": "L0",
+                "83": "O83",
+                "107": "O107"
+              },
+              "rebuilt_labels": {
+                "52": "L0",
+                "72": "R72",
+                "95": "R95"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "delete",
+                  "original_start": 0,
+                  "original_stop": 8,
+                  "rebuilt_start": 0,
+                  "rebuilt_stop": 0
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 22,
+                  "original_stop": 26,
+                  "rebuilt_start": 14,
+                  "rebuilt_stop": 18
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 29,
+                  "original_stop": 31,
+                  "rebuilt_start": 21,
+                  "rebuilt_stop": 23
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 36,
+                  "original_stop": 37,
+                  "rebuilt_start": 28,
+                  "rebuilt_stop": 29
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 41,
+                  "original_stop": 42,
+                  "rebuilt_start": 33,
+                  "rebuilt_stop": 34
+                },
+                {
+                  "kind": "replace",
+                  "original_start": 51,
+                  "original_stop": 52,
+                  "rebuilt_start": 43,
+                  "rebuilt_stop": 44
+                }
+              ],
+              "branch_retarget_differences": [],
+              "deferred_branch_targets": [
+                {
+                  "original_offset": 63,
+                  "rebuilt_offset": 53,
+                  "target_ordinal": 0,
+                  "original_target": 83,
+                  "rebuilt_target": 72,
+                  "status": "target_in_unmatched_sequence_range"
+                },
+                {
+                  "original_offset": 78,
+                  "rebuilt_offset": 67,
+                  "target_ordinal": 0,
+                  "original_target": 107,
+                  "rebuilt_target": 95,
+                  "status": "target_in_unmatched_sequence_range"
+                }
+              ],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "surface.GameView::AddTouch(kairo.unity.ui.Graphics,System.Int32,kairo.unity.ui.Image,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,kairo.unity.surface.TouchOption)->kairo.unity.surface.TouchComponent",
+              "original_il_bytes": 110
+            }
+          },
+          {
+            "pair": "INSERTION_POINT => ldloc.1",
+            "methods": 1,
+            "original_il_bytes": 106,
+            "method_ids": [
+              "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void"
+            ],
+            "example": {
+              "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+              "diagnostic_only": true,
+              "kind": "insert",
+              "original_offset": 66,
+              "rebuilt_offset": 66,
+              "original_index": 18,
+              "rebuilt_index": 18,
+              "original_instruction": {
+                "opcode": "INSERTION_POINT",
+                "operand": null
+              },
+              "rebuilt_instruction": {
+                "offset": 66,
+                "opcode": "ldloc.1",
+                "operand": null
+              },
+              "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.1\",\"operand\":null}",
+              "opcode_pair": "INSERTION_POINT => ldloc.1",
+              "original_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 71,
+                  "opcode": "stloc.2",
+                  "operand": null
+                },
+                {
+                  "offset": 72,
+                  "opcode": "ldloc.2",
+                  "operand": null
+                }
+              ],
+              "rebuilt_context": [
+                {
+                  "offset": 60,
+                  "opcode": "call",
+                  "operand": {
+                    "method": "class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::GetInstance``0()->class form.FormManager @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null;this=False;explicit=False;cc=Default"
+                  },
+                  "label": "L1"
+                },
+                {
+                  "offset": 65,
+                  "opcode": "stloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 66,
+                  "opcode": "ldloc.1",
+                  "operand": null
+                },
+                {
+                  "offset": 67,
+                  "opcode": "newobj",
+                  "operand": {
+                    "method": "class system.form.LanguageForm @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::.ctor``0()->class System.Void @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e;this=True;explicit=False;cc=Default"
+                  }
+                },
+                {
+                  "offset": 72,
+                  "opcode": "stloc.2",
+                  "operand": null
+                }
+              ],
+              "original_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "rebuilt_labels": {
+                "55": "L0",
+                "60": "L1",
+                "105": "L2"
+              },
+              "sequence_edits": [
+                {
+                  "kind": "insert",
+                  "original_start": 18,
+                  "original_stop": 18,
+                  "rebuilt_start": 18,
+                  "rebuilt_stop": 19
+                },
+                {
+                  "kind": "delete",
+                  "original_start": 23,
+                  "original_stop": 24,
+                  "rebuilt_start": 24,
+                  "rebuilt_stop": 24
+                }
+              ],
+              "branch_retarget_differences": [],
+              "deferred_branch_targets": [],
+              "branch_width_differences": [],
+              "original_exception_regions": [],
+              "rebuilt_exception_regions": [],
+              "stable_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+              "original_il_bytes": 106
+            }
+          }
+        ]
+      },
+      "pending_local_signatures_equal": 1,
+      "pending_local_signatures_different": 2,
+      "equal_body_held_methods": 1,
+      "equal_body_held_method_ids": [
+        "<PrivateImplementationDetails>::.ctor()->System.Void"
+      ]
+    }
+  }
+}

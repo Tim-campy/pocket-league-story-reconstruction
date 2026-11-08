@@ -5301,9 +5301,7 @@ int c1max = 25;
 		public void SetMatchInfoJoin(int matchInfoJoin)
 		{
 			matchInfoJoin_ = matchInfoJoin;
-			switch (matchInfoJoin)
-			{
-			}
+			if (matchInfoJoin == 0) { } else if (matchInfoJoin == 1) { } else if (matchInfoJoin == 2) { }
 		}
 
 		public int GetMatchInfoJoin()
