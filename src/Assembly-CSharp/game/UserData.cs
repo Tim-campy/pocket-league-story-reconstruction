@@ -5366,8 +5366,8 @@ return num2;
 			for (int i = 0; i < 9; i++)
 			{
 				if ((i == 0)) { AddTestPlayerParam(i, (int)apdat_.save_.lngs[0]);
-continue; } else if ((i == 4) || (i == 5) || (i == 6) || (i == 7)) { AddTestPlayerParam(i, researchPoint_[i - 4]);
-continue; } else if ((i == 1) || (i == 2) || (i == 3)) { continue; }
+continue; } else if ((i == 1) || (i == 2) || (i == 3)) { continue; } else if ((i >= 4) && (i <= 7)) { AddTestPlayerParam(i, researchPoint_[i - 4]);
+continue; }
 				if (i == 8)
 				{
 					TeamData teamData = apdat_.tData_[0];
