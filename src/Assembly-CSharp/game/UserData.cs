@@ -4218,37 +4218,32 @@ coalescedValue = num = num2 = num3 = 0;
 			if (isTouch)
 			{
 				int num = 786432;
-				switch (type)
-				{
-				case 0:
+				if (type == 0) {
 					num = 786432;
-					break;
-				case 1:
+					} else if (type == 1) {
 					num = 851968;
-					break;
-				case 2:
+					} else if (type == 2) {
 					num = 917504;
-					break;
-				case 3:
+					} else if (type == 3) {
 					num = 983040;
-					break;
-				case 4:
+					} else if (type == 4) {
 					num = 1048576;
-					break;
-				case 5:
+					} else if (type == 5) {
 					num = 1114112;
-					break;
-				case 6:
+					} else if (type == 6) {
 					num = 1179648;
-					break;
-				}
-				if (isMarker)
+					}
+				int touchDx = dx;
+int touchDy = dy;
+int touchWidth = W;
+int touchHeight = H;
+if (isMarker)
 				{
-					GameView.AddTouch(g, 23, dx, dy, W, H, num | index, TouchOption.Create(16).Margin(5, 5, 5, 5));
+					GameView.AddTouch(g,23,touchDx,touchDy,touchWidth,touchHeight,num|index, TouchOption.Create(16).Margin(5, 5, 5, 5));
 				}
 				else
 				{
-					GameView.AddTouch(g, 23, dx, dy, W, H, num | index, TouchOption.Create().Margin(5, 5, 5, 5));
+					GameView.AddTouch(g,23,touchDx,touchDy,touchWidth,touchHeight,num|index, TouchOption.Create().Margin(5, 5, 5, 5));
 				}
 			}
 		}

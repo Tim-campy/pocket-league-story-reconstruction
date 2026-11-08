@@ -1,0 +1,12 @@
+using System;
+public class Graphics{public int PrefixCalls;public void Prefix(int x,int y,int w,int h,bool selected){PrefixCalls++;}}
+public class TouchOption{public int Marker,MarginValue;public static int Creates,Margins;public static TouchOption Create(){Creates++;return new TouchOption();}public static TouchOption Create(int marker){Creates++;TouchOption t=new TouchOption();t.Marker=marker;return t;}public TouchOption Margin(int a,int b,int c,int d){Margins++;MarginValue=a+b+c+d;return this;}}
+public class GameView{public static int Calls,X,Y,W,H,Value,Kind;public static TouchOption Option;public static void AddTouch(Graphics g,int kind,int x,int y,int w,int h,int value,TouchOption option){Calls++;X=x;Y=y;W=w;H=h;Value=value;Kind=kind;Option=option;}}
+public class Fixture{
+public void Run(Graphics g,int dx,int dy,int W,int H,bool select,int type,int index,bool isTouch,bool isMarker){g.Prefix(dx,dy,W,H,select);if(isTouch){int num=786432;if(type==0){num=786432;}else if(type==1){num=851968;}else if(type==2){num=917504;}else if(type==3){num=983040;}else if(type==4){num=1048576;}else if(type==5){num=1114112;}else if(type==6){num=1179648;}int touchDx=dx;int touchDy=dy;int touchWidth=W;int touchHeight=H;if(isMarker){GameView.AddTouch(g,23,touchDx,touchDy,touchWidth,touchHeight,num|index,TouchOption.Create(16).Margin(5,5,5,5));}else{GameView.AddTouch(g,23,touchDx,touchDy,touchWidth,touchHeight,num|index,TouchOption.Create().Margin(5,5,5,5));}}}
+public static int SemanticChecks(){Fixture f=new Fixture();Graphics g=new Graphics();int[][] coords=new int[][]{new int[]{4,8,26,19},new int[]{-7,0,5,9},new int[]{0,-3,1,1}};foreach(int[] c in coords)for(int selected=0;selected<2;selected++)for(int touch=0;touch<2;touch++)for(int marker=0;marker<2;marker++)foreach(int type in new int[]{-1,0,1,2,3,4,5,6,7,99}){
+ g.PrefixCalls=0;GameView.Calls=0;GameView.Option=null;TouchOption.Creates=0;TouchOption.Margins=0;int index=type&65535;f.Run(g,c[0],c[1],c[2],c[3],selected!=0,type,index,touch!=0,marker!=0);if(g.PrefixCalls!=1||GameView.Calls!=touch||TouchOption.Creates!=touch||TouchOption.Margins!=touch)return 1;
+ if(touch!=0){int value=786432;if(type>=0&&type<=6)value=786432+65536*type;if(GameView.X!=c[0]||GameView.Y!=c[1]||GameView.W!=c[2]||GameView.H!=c[3]||GameView.Value!=(value|index)||GameView.Kind!=23||GameView.Option.Marker!=(marker!=0?16:0)||GameView.Option.MarginValue!=20)return 2;}
+}return 0;}
+public static float FloatNeg(float v){return -v;}public static float FloatZeroSub(float v){return 0f-v;}
+}
