@@ -10017,7 +10017,8 @@ int num38 = 9;
 										{
 											t_data.name_ = JString.New(temp_name);
 											apdat_.frmTitle_.newGameName_ = JString.New(temp_name);
-											string text = string.Empty;
+											int recoveredUnusedNameWidth;
+string text = string.Empty;
 											int num38 = 0;
 											int num39 = 0;
 											for (int num40 = 0; num40 < temp_name.Length(); num40++)
@@ -10026,7 +10027,9 @@ int num38 = 9;
 												int stringLength = GetStringLength(JString.ValueOf(c));
 												if (num40 == 0)
 												{
-													num39 = ((!MyFormBase.Jp()) ? 8 : ((stringLength != 1) ? 4 : 5));
+													if (MyFormBase.Jp()) {
+ if (stringLength == 1) { num39 = 5; } else { num39 = 4; }
+} else { num39 = 8; }
 												}
 												num38 += stringLength;
 												if (num38 > num39)
