@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from round12_controller import (BASE_COMMIT, GuardError, measured_zero_streak,
     selection_mode, stop_reason, validate_config, validate_cycle, verify_raw_gate)
+from round12_postverify_provenance import reconcile, METRICS
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -114,6 +115,38 @@ class Protocol(unittest.TestCase):
     def test_user_stop_overrides(self):
         self.cfg['requested_stop'] = dict(source='user', reason='explicit request')
         self.assertEqual(stop_reason(self.cfg, self.journal), 'explicit_user_stop')
+
+    def provenance_fixture(self):
+        before = {'assemblies': {'KairoLibrary': dict(zip(METRICS, [10, 100, 3, 30, 2]))}}
+        after = {'assemblies': {'KairoLibrary': dict(zip(METRICS, [11, 110, 2, 20, 2]))}}
+        row = dict(after_measurement='old.json', after_sha256='old-sha',
+                   gains={'KairoLibrary': dict(methods_gained=1, il_bytes_gained=10)})
+        return before, after, row
+
+    def test_postverify_preserves_gains_and_old_provenance(self):
+        before, after, row = self.provenance_fixture()
+        result = reconcile(row, before, after, copy.deepcopy(after), 'new.json', 'new-sha')
+        self.assertEqual(result['gains'], row['gains'])
+        self.assertEqual(result['after_measurement'], 'new.json')
+        self.assertEqual(result['postverify_provenance'][0]['previous_after_measurement'], 'old.json')
+        self.assertEqual(row['after_measurement'], 'old.json')
+
+    def test_postverify_rejects_changed_methods(self):
+        before, after, row = self.provenance_fixture()
+        changed = copy.deepcopy(after)
+        changed['assemblies']['KairoLibrary']['matched_methods'] += 1
+        with self.assertRaises(ValueError): reconcile(row, before, after, changed, 'new.json', 'sha')
+
+    def test_postverify_rejects_changed_held_count(self):
+        before, after, row = self.provenance_fixture()
+        changed = copy.deepcopy(after)
+        changed['assemblies']['KairoLibrary']['equal_body_held_methods'] = 0
+        with self.assertRaises(ValueError): reconcile(row, before, after, changed, 'new.json', 'sha')
+
+    def test_postverify_rejects_inflated_gain(self):
+        before, after, row = self.provenance_fixture()
+        row['gains']['KairoLibrary']['methods_gained'] = 2
+        with self.assertRaises(ValueError): reconcile(row, before, after, after, 'new.json', 'sha')
 
 
 if __name__ == '__main__':

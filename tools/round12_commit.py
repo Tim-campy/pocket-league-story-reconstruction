@@ -41,6 +41,10 @@ def main():
     for a in ('KairoLibrary','Assembly-CSharp'):
         receipt=json.loads((ROOT/('build/verification-'+a+'.json')).read_text(encoding='utf-8-sig'))
         if not receipt_is_fresh(ROOT,receipt) or any(receipt.get(k) for k in ('regressions','body_regressions','type_regressions')):raise ValueError('Fresh verification failed '+a)
+    # Full verification creates fresh nondeterministic PE fields. Keep the journal
+    # bound to these exact PEs; after root's first raw PASS, renew that literal test.
+    if (ROOT/'reports/round12-cycle-journal.json').exists():
+        run([sys.executable,'tools/round12_postverify_provenance.py','--label',args.run_label],folder/'postverify-provenance.log')
     if args.final_report:
         run([sys.executable,'tools/round12_measure.py','--label','final'],folder/'final-measurement.log')
         run([sys.executable,'tools/round12_hypotheses.py'],folder/'hypotheses.log')

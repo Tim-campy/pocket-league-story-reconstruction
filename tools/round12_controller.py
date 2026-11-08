@@ -94,6 +94,10 @@ def verify_raw_gate(cfg, measurement):
     dll = snapshot / artifact['path']
     if artifact['sha256'] != report['recompiled_sha256'] or file_hash(dll) != artifact['sha256']:
         raise GuardError('Passing raw report belongs to another recompiled PE')
+    live = load(ROOT / 'build/verification-KairoLibrary.json')
+    if (live['build_sha256'] != report['recompiled_sha256']
+            or file_hash(ROOT / live['build_artifact']) != report['recompiled_sha256']):
+        raise GuardError('Canonical Kairo PE changed after its literal raw PASS; renew comparison')
     return report
 
 

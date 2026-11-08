@@ -397,11 +397,7 @@ namespace kairo.unity.system
 						Dialog dialog = new Dialog(3, title);
 						dialog.SetText(text);
 						dialog.SetButtons(text2.Split(','));
-						if (dialog.Show() != 4)
-						{
-							return false;
-						}
-						num++;
+						if (dialog.Show() == 4) { num++; continue; } return false;
 					}
 					catch
 					{
