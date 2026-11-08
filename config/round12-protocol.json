@@ -28,7 +28,7 @@
   ],
   "schema": "round12-protocol-v1",
   "baseline_commit": "a075dcc8ca7b08e2cb9fcdd0cbcb5ce1fe8cd236",
-  "phase": "part_A",
+  "phase": "awaiting_root_raw",
   "maximum_cycles": 40,
   "consecutive_zero_stop": 5,
   "cycle_count_scope": "Part B only; Part A has separate uncapped count",
@@ -39,7 +39,9 @@
     "B": "blocked"
   },
   "part_a_raw_gate": {
-    "status": "NOT_EVALUATED"
+    "status": "AWAITING_ROOT_RAW",
+    "request": "reports/round12-a11-postverify01-raw-handoff.json",
+    "sha256": "7203a6dfdea4a9169116d69cc6432d3b0940b7eab5e882e67de30894840b7a18"
   },
   "baseline_measurement": "reports/round12-baseline-measurement.json",
   "prepared_queue": [
@@ -323,7 +325,7 @@
       "phase": "A",
       "selection_mode": "autonomous_selection",
       "assembly": "KairoLibrary",
-      "status": "pending",
+      "status": "tested",
       "method_ids": [
         "kairo.unity.math.KairoMath::Sqrt(System.Int64)->System.Int64"
       ],
@@ -332,7 +334,12 @@
       "rule_prefix": "r12-sqrt-root-local-order-preserved-initialization",
       "potential_original_il_bytes": 46,
       "private_publication_pending": false,
-      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN"
+      "readiness": "FROZEN_FIXTURES_AND_FRESH_MODEL_GAME_UNKNOWN",
+      "report": "reports/round12-a11-KairoLibrary-engine.json",
+      "tested_ids": [
+        "kairo.unity.math.KairoMath::Sqrt(System.Int64)->System.Int64"
+      ],
+      "baseline_equal_ids": []
     }
   ],
   "selection_policy": {

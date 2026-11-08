@@ -623,14 +623,13 @@ Vector3D vector3D = new Vector3D(pos1.GetX() - pos2.GetX(), 0f, pos1.GetZ() - po
 			{
 				return 0L;
 			}
-			int num = 10;
-			long num2 = 0L;
+			long num2; int i; int num = 10; num2 = 0L;
 			do
 			{
 				num2++;
 			}
 			while (num2 * num2 < c);
-			for (int i = 0; i < num; i++)
+			for (i = 0; i < num; i++)
 			{
 				num2 = (num2 + c / num2) / 2;
 			}
