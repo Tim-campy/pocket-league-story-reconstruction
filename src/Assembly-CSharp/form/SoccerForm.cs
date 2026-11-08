@@ -3417,8 +3417,12 @@ ResetOffscreen();
 			float num2 = e.dy * 100 / scale_;
 			switch (type)
 			{
-			case 5:
-				if (touchCameraPoint_.Size() != 0)
+			case 0:
+break;
+case 8:
+break;
+case 5:
+				if (touchCameraPoint_.Size() == 0)
 				{
 				}
 				break;
