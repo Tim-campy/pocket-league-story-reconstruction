@@ -1314,6 +1314,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 33,
+      "part_cycle": 22,
+      "label": "b22",
+      "phase": "B",
+      "primary_target": "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-tenant-accumulator-then-array-store",
+      "assembly": "Assembly-CSharp",
+      "pair": "INSERTION_POINT=>ldloc.s",
+      "hypothesis": "Restore accumulator computation/store before the array reference and index, eliminating the extra assignment temporary while preserving earlier guards. Complete15 slots and own whole-body control distinguish chained assignment and wrong timing; original retargeted branch prefix is diagnostic only.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 1,
+          "il_bytes_gained": 653
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 653,
+      "before_measurement": "reports\\round12-b22-before-measurement.json",
+      "before_sha256": "3b8f03935862ad0d12d0f25e80577d2ea05e4e61c884facb6f9e62da0ea33596",
+      "after_measurement": "reports/round12-b22-postverify01-measurement.json",
+      "after_sha256": "cabfac7d6a954ef5ab6ad805431456da11048b95869fb747aed7a9d4a7689711",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-b22-after-measurement.json",
+          "previous_after_sha256": "9b6063e699fb5fc63480cffa7302cea28c12c590535cf3abc9daa522d04fe27f",
+          "new_after_measurement": "reports/round12-b22-postverify01-measurement.json",
+          "new_after_sha256": "cabfac7d6a954ef5ab6ad805431456da11048b95869fb747aed7a9d4a7689711",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0

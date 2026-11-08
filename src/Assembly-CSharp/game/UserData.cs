@@ -5038,7 +5038,8 @@ tenantList.AddElement(tenants_[j]);
 			for (int l = 0; l < tenantList.Size(); l++)
 			{
 				Tenant tenant3 = (Tenant)tenantList.ElementAt(l);
-				num2 = (array[l] = num2 + apdat_.tenantData_[tenant3.tenantDataId_].charm_);
+				num2 = num2 + apdat_.tenantData_[tenant3.tenantDataId_].charm_;
+array[l] = num2;
 			}
 			int num3 = GameUtil.Random(num2);
 			for (int m = 0; m < tenantList.Size(); m++)

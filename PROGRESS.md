@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b21-postverify01-KairoLibrary-raw.json](reports/round12-b21-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `a79b7c82ef1842135f04acb22ad4879373908e16eba51d8ba2839898fcc81903`. Sem normalização.
+Prova literal atual: [reports/round12-b22-postverify01-KairoLibrary-raw.json](reports/round12-b22-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `20318770e0cacf0de1867c6f8c2ed63d996aabf0761fa6ee5d86f403a9cd2981`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,218 de 5,245 métodos matched (99.49%).** 871,497 bytes de IL nos assemblies alvo.
-864,522 bytes IL matched (99.20%).
+**5,219 de 5,245 métodos matched (99.50%).** 871,497 bytes de IL nos assemblies alvo.
+865,175 bytes IL matched (99.27%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 26 |
+| decompiled | 25 |
 | equivalent | 0 |
-| matched | 5218 |
+| matched | 5219 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1931 / 98.62% | 594628 / 98.84% |
+| `Assembly-CSharp` | 1958 | 601603 | 1932 / 98.67% | 595281 / 98.95% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -41,7 +41,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 254 / 99.61% | 26251 / 99.61% |
 | `form` | 371 | 250649 | 365 / 98.38% | 249082 / 99.37% |
-| `game` | 441 | 202949 | 433 / 98.19% | 199594 / 98.35% |
+| `game` | 441 | 202949 | 434 / 98.41% | 200247 / 98.67% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 34 / 100.00% | 13621 / 100.00% |
@@ -143,7 +143,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 34 / 100.00% | 13693 / 100.00% |
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 42 / 100.00% | 22251 / 100.00% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 14 / 100.00% | 2692 / 100.00% |
-| `Assembly-CSharp::game.UserData` | 92 | 55470 | 88 / 95.65% | 54060 / 97.46% |
+| `Assembly-CSharp::game.UserData` | 92 | 55470 | 89 / 96.74% | 54713 / 98.64% |
 | `Assembly-CSharp::main.AppData` | 201 | 33806 | 198 / 98.51% | 33327 / 98.58% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |

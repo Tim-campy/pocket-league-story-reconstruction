@@ -1,0 +1,1278 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1926,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean",
+      "number": 1,
+      "initial_offset": 476,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-tenant-accumulator-then-array-store",
+          "start": 144782,
+          "end": 146586,
+          "before": "public bool SetTenantIn(TPlayer tPlayer)\r\n\t\t{\r\n\t\t\ttPlayer.useTenantCnt_ = 0;\r\n\t\t\tif (tenantList.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\ttenantList.RemoveAllElements();\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < tenants_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (tenants_[i].state_ != 1) { continue; }\nif (tenants_[i].useTPlayers_.Size() > 3) { continue; }\ntenantList.AddElement(tenants_[i]);\r\n\t\t\t}\r\n\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < tenants_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (tenants_[j].state_ != 1) { continue; }\ntenantList.AddElement(tenants_[j]);\r\n\t\t\t\t}\r\n\t\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (restTPlayers_.IndexOf(tPlayer) == -1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\trestTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int k = 0; k < tenantList.Size() - 1; k++)\r\n\t\t\t{\r\n\t\t\t\tfor (int num = tenantList.Size() - 1; num > k; num--)\r\n\t\t\t\t{\r\n\t\t\t\t\tTenant tenant = (Tenant)tenantList.ElementAt(k);\r\n\t\t\t\t\tTenant tenant2 = (Tenant)tenantList.ElementAt(num);\r\n\t\t\t\t\tTenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];\r\n\t\t\t\t\tTenantData tenantData2 = apdat_.tenantData_[tenant2.tenantDataId_];\r\n\t\t\t\t\tif (tenantData2.charm_ > tenantData.charm_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant2, k);\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint[] array = new int[tenantList.Size()];\r\n\t\t\tint num2 = 0;\r\n\t\t\tfor (int l = 0; l < tenantList.Size(); l++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant3 = (Tenant)tenantList.ElementAt(l);\r\n\t\t\t\tnum2 = (array[l] = num2 + apdat_.tenantData_[tenant3.tenantDataId_].charm_);\r\n\t\t\t}\r\n\t\t\tint num3 = GameUtil.Random(num2);\r\n\t\t\tfor (int m = 0; m < tenantList.Size(); m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant4 = (Tenant)tenantList.ElementAt(m);\r\n\t\t\t\tif (num3 < array[m])\r\n\t\t\t\t{\r\n\t\t\t\t\ttenant4.useTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+          "after": "public bool SetTenantIn(TPlayer tPlayer)\r\n\t\t{\r\n\t\t\ttPlayer.useTenantCnt_ = 0;\r\n\t\t\tif (tenantList.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\ttenantList.RemoveAllElements();\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < tenants_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (tenants_[i].state_ != 1) { continue; }\nif (tenants_[i].useTPlayers_.Size() > 3) { continue; }\ntenantList.AddElement(tenants_[i]);\r\n\t\t\t}\r\n\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < tenants_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (tenants_[j].state_ != 1) { continue; }\ntenantList.AddElement(tenants_[j]);\r\n\t\t\t\t}\r\n\t\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (restTPlayers_.IndexOf(tPlayer) == -1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\trestTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int k = 0; k < tenantList.Size() - 1; k++)\r\n\t\t\t{\r\n\t\t\t\tfor (int num = tenantList.Size() - 1; num > k; num--)\r\n\t\t\t\t{\r\n\t\t\t\t\tTenant tenant = (Tenant)tenantList.ElementAt(k);\r\n\t\t\t\t\tTenant tenant2 = (Tenant)tenantList.ElementAt(num);\r\n\t\t\t\t\tTenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];\r\n\t\t\t\t\tTenantData tenantData2 = apdat_.tenantData_[tenant2.tenantDataId_];\r\n\t\t\t\t\tif (tenantData2.charm_ > tenantData.charm_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant2, k);\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint[] array = new int[tenantList.Size()];\r\n\t\t\tint num2 = 0;\r\n\t\t\tfor (int l = 0; l < tenantList.Size(); l++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant3 = (Tenant)tenantList.ElementAt(l);\r\n\t\t\t\tnum2 = num2 + apdat_.tenantData_[tenant3.tenantDataId_].charm_;\r\narray[l] = num2;\r\n\t\t\t}\r\n\t\t\tint num3 = GameUtil.Random(num2);\r\n\t\t\tfor (int m = 0; m < tenantList.Size(); m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant4 = (Tenant)tenantList.ElementAt(m);\r\n\t\t\t\tif (num3 < array[m])\r\n\t\t\t\t{\r\n\t\t\t\t\ttenant4.useTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 476,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "game.Tenant",
+              "game.Tenant",
+              "data.TenantData",
+              "data.TenantData",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32",
+              "game.Tenant",
+              "System.Int32",
+              "System.Int32",
+              "game.Tenant"
+            ],
+            "method_id": "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\UserData.cs",
+            "full_source_sha256": "5d7e7ddc77a8401fcb8882461574dfc2c2afe8b3caff446a259825f566adda39"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124289442650000\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0160000000614673,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 653,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 653,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean"
+          ],
+          "matched_IL_gain": 653
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-tenant-accumulator-then-array-store",
+          "start": 144782,
+          "end": 146586,
+          "before": "public bool SetTenantIn(TPlayer tPlayer)\r\n\t\t{\r\n\t\t\ttPlayer.useTenantCnt_ = 0;\r\n\t\t\tif (tenantList.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\ttenantList.RemoveAllElements();\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < tenants_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (tenants_[i].state_ != 1) { continue; }\nif (tenants_[i].useTPlayers_.Size() > 3) { continue; }\ntenantList.AddElement(tenants_[i]);\r\n\t\t\t}\r\n\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < tenants_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (tenants_[j].state_ != 1) { continue; }\ntenantList.AddElement(tenants_[j]);\r\n\t\t\t\t}\r\n\t\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (restTPlayers_.IndexOf(tPlayer) == -1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\trestTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int k = 0; k < tenantList.Size() - 1; k++)\r\n\t\t\t{\r\n\t\t\t\tfor (int num = tenantList.Size() - 1; num > k; num--)\r\n\t\t\t\t{\r\n\t\t\t\t\tTenant tenant = (Tenant)tenantList.ElementAt(k);\r\n\t\t\t\t\tTenant tenant2 = (Tenant)tenantList.ElementAt(num);\r\n\t\t\t\t\tTenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];\r\n\t\t\t\t\tTenantData tenantData2 = apdat_.tenantData_[tenant2.tenantDataId_];\r\n\t\t\t\t\tif (tenantData2.charm_ > tenantData.charm_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant2, k);\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint[] array = new int[tenantList.Size()];\r\n\t\t\tint num2 = 0;\r\n\t\t\tfor (int l = 0; l < tenantList.Size(); l++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant3 = (Tenant)tenantList.ElementAt(l);\r\n\t\t\t\tnum2 = (array[l] = num2 + apdat_.tenantData_[tenant3.tenantDataId_].charm_);\r\n\t\t\t}\r\n\t\t\tint num3 = GameUtil.Random(num2);\r\n\t\t\tfor (int m = 0; m < tenantList.Size(); m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant4 = (Tenant)tenantList.ElementAt(m);\r\n\t\t\t\tif (num3 < array[m])\r\n\t\t\t\t{\r\n\t\t\t\t\ttenant4.useTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+          "after": "public bool SetTenantIn(TPlayer tPlayer)\r\n\t\t{\r\n\t\t\ttPlayer.useTenantCnt_ = 0;\r\n\t\t\tif (tenantList.Size() > 0)\r\n\t\t\t{\r\n\t\t\t\ttenantList.RemoveAllElements();\r\n\t\t\t}\r\n\t\t\tfor (int i = 0; i < tenants_.Length; i++)\r\n\t\t\t{\r\n\t\t\t\tif (tenants_[i].state_ != 1) { continue; }\nif (tenants_[i].useTPlayers_.Size() > 3) { continue; }\ntenantList.AddElement(tenants_[i]);\r\n\t\t\t}\r\n\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t{\r\n\t\t\t\tfor (int j = 0; j < tenants_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (tenants_[j].state_ != 1) { continue; }\ntenantList.AddElement(tenants_[j]);\r\n\t\t\t\t}\r\n\t\t\t\tif (tenantList.Size() == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (restTPlayers_.IndexOf(tPlayer) == -1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\trestTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tfor (int k = 0; k < tenantList.Size() - 1; k++)\r\n\t\t\t{\r\n\t\t\t\tfor (int num = tenantList.Size() - 1; num > k; num--)\r\n\t\t\t\t{\r\n\t\t\t\t\tTenant tenant = (Tenant)tenantList.ElementAt(k);\r\n\t\t\t\t\tTenant tenant2 = (Tenant)tenantList.ElementAt(num);\r\n\t\t\t\t\tTenantData tenantData = apdat_.tenantData_[tenant.tenantDataId_];\r\n\t\t\t\t\tTenantData tenantData2 = apdat_.tenantData_[tenant2.tenantDataId_];\r\n\t\t\t\t\tif (tenantData2.charm_ > tenantData.charm_)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant2, k);\r\n\t\t\t\t\t\ttenantList.SetElementAt(tenant, num);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tint[] array = new int[tenantList.Size()];\r\n\t\t\tint num2 = 0;\r\n\t\t\tfor (int l = 0; l < tenantList.Size(); l++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant3 = (Tenant)tenantList.ElementAt(l);\r\n\t\t\t\tnum2 = num2 + apdat_.tenantData_[tenant3.tenantDataId_].charm_;\r\narray[l] = num2;\r\n\t\t\t}\r\n\t\t\tint num3 = GameUtil.Random(num2);\r\n\t\t\tfor (int m = 0; m < tenantList.Size(); m++)\r\n\t\t\t{\r\n\t\t\t\tTenant tenant4 = (Tenant)tenantList.ElementAt(m);\r\n\t\t\t\tif (num3 < array[m])\r\n\t\t\t\t{\r\n\t\t\t\t\ttenant4.useTPlayers_.AddElement(tPlayer);\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 476,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "game.Tenant",
+              "game.Tenant",
+              "data.TenantData",
+              "data.TenantData",
+              "System.Int32[]",
+              "System.Int32",
+              "System.Int32",
+              "game.Tenant",
+              "System.Int32",
+              "System.Int32",
+              "game.Tenant"
+            ],
+            "method_id": "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\UserData.cs",
+            "full_source_sha256": "5d7e7ddc77a8401fcb8882461574dfc2c2afe8b3caff446a259825f566adda39"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124289442650000\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0160000000614673,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 653,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 653,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean"
+          ],
+          "matched_IL_gain": 653
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 500,
+            "rebuilt_offset": 500,
+            "opcode_pair": [
+              "ldloc.s",
+              "ldloc.s"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 476,
+        "source": "src/Assembly-CSharp/game/UserData.cs",
+        "point": {
+          "offset": 500,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\UserData.cs",
+          "start_line": 5041,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 500,
+          "line": 5041,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "insert",
+          "original_offset": 500,
+          "rebuilt_offset": 500,
+          "original_index": 181,
+          "rebuilt_index": 181,
+          "original_instruction": {
+            "opcode": "INSERTION_POINT",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 500,
+            "opcode": "ldloc.s",
+            "operand": {
+              "local": 8
+            }
+          },
+          "pair": "{\"opcode\":\"INSERTION_POINT\",\"operand\":null} => {\"opcode\":\"ldloc.s\",\"operand\":{\"local\":8}}",
+          "opcode_pair": "INSERTION_POINT => ldloc.s",
+          "original_context": [
+            {
+              "offset": 493,
+              "opcode": "castclass",
+              "operand": {
+                "type": "class game.Tenant @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 498,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 500,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 502,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 503,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.UserData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::apdat_:class main.AppData @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 493,
+              "opcode": "castclass",
+              "operand": {
+                "type": "class game.Tenant @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+              }
+            },
+            {
+              "offset": 498,
+              "opcode": "stloc.s",
+              "operand": {
+                "local": 11
+              }
+            },
+            {
+              "offset": 500,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 8
+              }
+            },
+            {
+              "offset": 502,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 10
+              }
+            },
+            {
+              "offset": 504,
+              "opcode": "ldloc.s",
+              "operand": {
+                "local": 9
+              }
+            },
+            {
+              "offset": 506,
+              "opcode": "ldarg.0",
+              "operand": null
+            }
+          ],
+          "original_labels": {
+            "35": "L0",
+            "42": "L1",
+            "66": "L2",
+            "95": "L3",
+            "114": "L4",
+            "118": "L5",
+            "155": "L6",
+            "179": "L7",
+            "198": "L8",
+            "202": "L9",
+            "262": "L10",
+            "264": "L11",
+            "271": "L12",
+            "290": "L13",
+            "417": "L14",
+            "421": "L15",
+            "432": "L16",
+            "480": "L17",
+            "542": "L18",
+            "577": "L19",
+            "627": "L20",
+            "633": "L21",
+            "651": "L22"
+          },
+          "rebuilt_labels": {
+            "35": "L0",
+            "42": "L1",
+            "66": "L2",
+            "95": "L3",
+            "114": "L4",
+            "118": "L5",
+            "155": "L6",
+            "179": "L7",
+            "198": "L8",
+            "202": "L9",
+            "262": "L10",
+            "264": "L11",
+            "271": "L12",
+            "290": "L13",
+            "417": "L14",
+            "421": "L15",
+            "432": "L16",
+            "480": "L17",
+            "545": "L18",
+            "580": "L19",
+            "630": "L20",
+            "636": "L21",
+            "654": "L22"
+          },
+          "sequence_edits": [
+            {
+              "kind": "insert",
+              "original_start": 181,
+              "original_stop": 181,
+              "rebuilt_start": 181,
+              "rebuilt_stop": 183
+            },
+            {
+              "kind": "insert",
+              "original_start": 190,
+              "original_stop": 190,
+              "rebuilt_start": 192,
+              "rebuilt_stop": 196
+            },
+            {
+              "kind": "delete",
+              "original_start": 191,
+              "original_stop": 195,
+              "rebuilt_start": 197,
+              "rebuilt_stop": 197
+            }
+          ],
+          "branch_retarget_differences": [],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 146228,
+          "end": 146304,
+          "line": 5041,
+          "column": 5,
+          "text": "num2 = (array[l] = num2 + apdat_.tenantData_[tenant3.tenantDataId_].charm_);",
+          "kind": "ExpressionStatement",
+          "method_id": "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean",
+          "point": 146224,
+          "declaration_start": 144782,
+          "declaration_end": 146586
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 36,
+              "last_use": 118,
+              "loads": 5,
+              "stores": 2
+            },
+            {
+              "slot": 1,
+              "first_use": 149,
+              "last_use": 202,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 2,
+              "first_use": 265,
+              "last_use": 432,
+              "loads": 5,
+              "stores": 2
+            },
+            {
+              "slot": 3,
+              "first_use": 284,
+              "last_use": 421,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 4,
+              "first_use": 307,
+              "last_use": 409,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 326,
+              "last_use": 395,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 347,
+              "last_use": 377,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 368,
+              "last_use": 370,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 467,
+              "last_use": 599,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 9,
+              "first_use": 470,
+              "last_use": 560,
+              "loads": 3,
+              "stores": 2
+            },
+            {
+              "slot": 10,
+              "first_use": 473,
+              "last_use": 542,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 11,
+              "first_use": 498,
+              "last_use": 513,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 12,
+              "first_use": 567,
+              "last_use": 597,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 13,
+              "first_use": 570,
+              "last_use": 633,
+              "loads": 4,
+              "stores": 2
+            },
+            {
+              "slot": 14,
+              "first_use": 595,
+              "last_use": 609,
+              "loads": 1,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 7
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 7
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 9,
+              "votes": {
+                "9": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 10,
+              "votes": {
+                "10": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 11,
+              "votes": {
+                "11": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 12,
+              "original_slot": 12,
+              "votes": {
+                "12": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 13,
+              "original_slot": 13,
+              "votes": {
+                "13": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 14,
+              "original_slot": 14,
+              "votes": {
+                "14": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 15,
+              "original_slot": 9,
+              "votes": {
+                "9": 1,
+                "10": 1
+              },
+              "selected": false
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "tenant",
+              "type": "game.Tenant",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 145621,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tenant2",
+              "type": "game.Tenant",
+              "rebuilt_slot": 5,
+              "desired_slot": 5,
+              "lexical_block": 145621,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tenantData",
+              "type": "data.TenantData",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 145621,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tenantData2",
+              "type": "data.TenantData",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 145621,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 8,
+              "desired_slot": 8,
+              "lexical_block": 144826,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Int32",
+              "rebuilt_slot": 9,
+              "desired_slot": 9,
+              "lexical_block": 144826,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tenant3",
+              "type": "game.Tenant",
+              "rebuilt_slot": 11,
+              "desired_slot": 11,
+              "lexical_block": 146166,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Int32",
+              "rebuilt_slot": 12,
+              "desired_slot": 12,
+              "lexical_block": 144826,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "tenant4",
+              "type": "game.Tenant",
+              "rebuilt_slot": 14,
+              "desired_slot": 14,
+              "lexical_block": 146401,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 7,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 6,
+          "selected_rule_prefix": "r12-tenant-accumulator-then-array-store"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-tenant-accumulator-then-array-store": 1
+          },
+          "model_approved": {
+            "r12-tenant-accumulator-then-array-store": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 653,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-tenant-accumulator-then-array-store:attempts": 1,
+    "r12-tenant-accumulator-then-array-store:accepted_steps": 1,
+    "r12-tenant-accumulator-then-array-store:body_gains": 1,
+    "r12-tenant-accumulator-then-array-store:IL_gains": 653
+  },
+  "completed": true,
+  "run_label": "b22-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b22\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-tenant-accumulator-then-array-store",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else",
+    "r12-smcs-player-collision-v2-proved-guard-splitting-positive-regions-and-arm-stores",
+    "r12-block-local-layout-",
+    "r12-smcs-player-collision-v3-positive-height-plus-original-tail-return",
+    "r12-shared-score-graph-layout-",
+    "r12-dup-store-composition-",
+    "r12-player-act-preserve-empty-action-five-arm",
+    "r12-gamepad-boolean-and-id-conditional-values",
+    "r12-smcs-soccer-main-terminal-positive-empty-debug-test",
+    "r12-selector-and-touch-layout-",
+    "r12-league-root-score-locals-and-loop-local-team-ids",
+    "r12-common-branch-and-selector-",
+    "r12-compensated-empty-arms-",
+    "r12-gameform-init-explicit-vector-elements-and-unused-single",
+    "r12-argument-local-flow-",
+    "r12-smcs-billing-generic-init-single-explicit-shift-mask-removal-after-double-resolution-proof",
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+    "r12-tenant-accumulator-then-array-store"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-tenant-accumulator-then-array-store",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 6,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-tenant-assignment-live-model-patches.json",
+    "sha256": "d4de007c8dd99674d876b1a8f4d7a5ade3815e94a1d138648f929405e7c208ea",
+    "dependencies_checked": {
+      "tools/round12_app_tenant_assignment_private_source.py": "594ebe6c6b985ded67f4d8b6bda784e45e3ce8fc5587739a4a70ed076287e877",
+      "tools/round12_publish_bound_family.py": "1c152a882cb30a6c6c49ad08d5df0e831a7b9000e87492d64b8c8035301824c8",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round9_part_b_fixtures.py": "994bfb9d0399d6982003ec869d9168b3cbc9362682b2701438a4f2f2a12b499e",
+      "tools/round6_alignment.py": "958871a4ab740c51efc31a777c3c4316ed02a1c3734551c49d4fe31de20c32e5",
+      "tools/compare_kairo.py": "d3ae9c45ac76d1180a512c00bb6c708543c4c9adace6e35186fdf227fcd92f91",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-tenant-assignment-private-fixture-report.json": "661b97e9a549e19f42da7ce4a30e9b04f8323db5044e2e656c342c814a5c78a9",
+      "reports/round12-app-tenant-assignment-family-patches.json": "9844ddb1739f1e2f2a6232061debcc753093bac5206fdba3b3c11ca5fd70d299",
+      "reports/round12-app-tenant-assignment-live-model-proof.json": "849ead86af0d2bf12f25fe5863e03e36038665212a0926b40b390cd6fd8dca32",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-tenant-assignment-private/abstract-report.json": "0398ae405243fa99f5d3e03acc0b63c0c1e3bcacd26506adb9090f62e69f5790",
+      "build/round12/app-tenant-assignment-private/after-method.cs": "d98798be8f3357b025b1d131019be79db7087c10678e0df76d25b4d92dfc03bc",
+      "build/round12/app-tenant-assignment-private/alignment.json": "9740a7592e483e40fc8072bb56ba47ac742cb3882ebd4bc8e216482c8e24a13f",
+      "build/round12/app-tenant-assignment-private/analysis-manifest.json": "2e8159b422f835864a452beacc863714365a1ba6d1ece989736458ca873332bc",
+      "build/round12/app-tenant-assignment-private/before-method.cs": "6383657df4233f382767ccf3f7b502c92295b8d4e0a1e66c795f886412790782",
+      "build/round12/app-tenant-assignment-private/bindings.json": "bca5c6d931bba0ce6203887503d4948a7a263d317a8a3fd7bc1a9d59f1c34744",
+      "build/round12/app-tenant-assignment-private/calculate.py": "594ebe6c6b985ded67f4d8b6bda784e45e3ce8fc5587739a4a70ed076287e877",
+      "build/round12/app-tenant-assignment-private/candidate-source.cs": "6f7af6fd49dc03e11da4e7fb09f6ae5ba420755b0eab758711f17b97380fdf05",
+      "build/round12/app-tenant-assignment-private/fixture-report.json": "661b97e9a549e19f42da7ce4a30e9b04f8323db5044e2e656c342c814a5c78a9",
+      "build/round12/app-tenant-assignment-private/fixtures.py": "d329dce9effac83311cab40a35ce1c95c7209238b9e4f5921a277cade86a0988",
+      "build/round12/app-tenant-assignment-private/history.json": "ff581373652deeabbe23ffc6b33b1c69bbba04763c9deb5563445e7f8776e551",
+      "build/round12/app-tenant-assignment-private/model.json": "ac77f250957150c9f009bb8138dab0d687409c30377eb2fa96b8342cd67d8cf6",
+      "build/round12/app-tenant-assignment-private/model_check.py": "c2ff271d34d555e62ba917010a746b58e3b3fa38d909bb3224265d5d79ba6b00",
+      "build/round12/app-tenant-assignment-private/NOTE.md": "62349a180741fcd92a1e6a71730c13a03cf9e53136cb2e69ef76bad4129e350b",
+      "build/round12/app-tenant-assignment-private/package.py": "05f9b86dcee94bfdbe0167c8e61719352c3088624ff5b0072610bf19962bfb61",
+      "build/round12/app-tenant-assignment-private/patches.json": "d9ef25e23e8c32a8999cc41c24c7508346857dca22f09c34e74eafab83fd4016",
+      "build/round12/app-tenant-assignment-private/prepare.py": "cf6fed684d53babed6842e2c9b1e4530d95cf775826303a09b362d5177fbdca4",
+      "build/round12/app-tenant-assignment-private/producer-negatives.json": "d017b22130730eac2a698d0fdc6beb7ed900dbb6b0a8fc8a49f2fd3b7248f883",
+      "build/round12/app-tenant-assignment-private/rea-method.json": "e4a6289b1053048622b6e87dbfcc280d0fba8b4ea07397ad1d4b1f03bff0c23d",
+      "build/round12/app-tenant-assignment-private/slot-constraints.json": "9f1ce259d1cbc55c8a92558c8992c62cbb85ccccbd7ab323537a956485190090",
+      "build/round12/app-tenant-assignment-private/source.cs": "ab25c6c4d9582ef57f817db460d4cd756eff44755b35746eece4b27dd7415e9a",
+      "build/round12/app-tenant-assignment-private/fixtures/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-tenant-assignment-private/fixtures/before/Fixture.cs": "1033d818dcad20482743040a169689164872e06efa80caa137c11a4a1cdd7080",
+      "build/round12/app-tenant-assignment-private/fixtures/before/Fixture.dll": "1671d67f71df3b17d4672f0b5b98b25827aa7edc7c08dfe7c6fc905c641f9837",
+      "build/round12/app-tenant-assignment-private/fixtures/before/methods.json": "b79b059bfaf25b9104b861da43f35f794b739f5d875cc576248441896566d09e",
+      "build/round12/app-tenant-assignment-private/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-tenant-assignment-private/fixtures/candidate/Fixture.cs": "5fc021796192afdea9ce6715479da90999eb926989c6ca735513205f771c42b0",
+      "build/round12/app-tenant-assignment-private/fixtures/candidate/Fixture.dll": "489303ae5e4cbf34dc5c52b1e5c3e02aa014d6474a6b37931c85543ff4d5cd65",
+      "build/round12/app-tenant-assignment-private/fixtures/candidate/methods.json": "d66f6dc71fbede683f053d12cd1c54298fedafc7991aff7a204319053d62d83f",
+      "build/round12/app-tenant-assignment-private/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-tenant-assignment-private/fixtures/manual-control/Fixture.cs": "3b9a057d018ab7059a88f61d695cc85cdf2c154ffce7747e915a8e1ca34b9e5b",
+      "build/round12/app-tenant-assignment-private/fixtures/manual-control/Fixture.dll": "ae5707d20e8f6522654a62924e326cf63a65263965e1cb5b0117410dd00467fa",
+      "build/round12/app-tenant-assignment-private/fixtures/manual-control/methods.json": "d66f6dc71fbede683f053d12cd1c54298fedafc7991aff7a204319053d62d83f",
+      "build/round12/app-tenant-assignment-private/fixtures/reversed-chain/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-tenant-assignment-private/fixtures/reversed-chain/Fixture.cs": "8649db820e5620c98a5e649360840dae6197f017e61067f3fd74aa2c58f839c2",
+      "build/round12/app-tenant-assignment-private/fixtures/reversed-chain/Fixture.dll": "4b66586d866ed59f8b92305bb8f37cb42ce16beddf28f8a1318d36442b05b51d",
+      "build/round12/app-tenant-assignment-private/fixtures/reversed-chain/methods.json": "781964f24af3d09315c7468c7b49096b2a358b10a31e3264b9fc3daaffb60e11",
+      "build/round12/app-tenant-assignment-private/fixtures/store-before-accumulate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-tenant-assignment-private/fixtures/store-before-accumulate/Fixture.cs": "f85642eb6ead139eb71c12c3e5cb48d868331d455f3729ab7159564543784d6a",
+      "build/round12/app-tenant-assignment-private/fixtures/store-before-accumulate/Fixture.dll": "8debe0608e968b97e0fb3417ffd405b75deffa7691bee888543620d346bacfd6",
+      "build/round12/app-tenant-assignment-private/fixtures/store-before-accumulate/methods.json": "636c7421c42d927db357e2cc60bddf8b6848d5cedd3d665cec0b26bc0e3c8fba",
+      "build/round12/app-tenant-assignment-private/freeze.json": "f1335b4682b02b3dbe4037cc874f2258953aa2653ccd3964b4b0a0e225c2c03b"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {
+      "analysis/tools/round5-mono-source/mcs/mcs/assign.cs": "00dafa1b0447a9215a619803a8e672f4f775c5412a1c7cc8e919bc29c2ec053c",
+      "analysis/tools/round5-mono-source/mcs/mcs/expression.cs": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af"
+    },
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124289442650000",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.0160000000614673,
+        "wall_seconds": 8.375,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.0160000000614673,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124289442650000\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794124289442650000\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "dd2585917de20c99b270a61d27fcf355715fa18a55f01c6c6dc3d6bed6ee6065",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+          "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+          "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+          "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+          "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+          "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+          "src/Assembly-CSharp/game/UserData.cs": "246a934933b4f5a8406408f4a4267f4b0c6184c40505c4e86fb1e07a874dcfee",
+          "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+          "src/Assembly-CSharp/surface/GameView.cs": "967a4065c69a9d17859071e4fa3f9145dc0161c68b03364feda9d262a4383740",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "30d5057b4404774ccc24165f38be3d77b03c2f5053b819e3775dcaaff2ca156d",
+        "accepted_source_set_sha256": "7b08ef122ac3717184527758577ec19d9088e28d56e5c68cb15da486989c12d6",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "8979e37bf2ace2d09fe68819e14c23debd62c17b0b7793663f985cca1b62880f"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean",
+        "rule": "r12-tenant-accumulator-then-array-store",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1927,
+  "body_gains": [
+    "game.UserData::SetTenantIn(game.TPlayer)->System.Boolean"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 653,
+  "builds": 6,
+  "build_seconds": 7.702999999979511,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "5856210673ea3ca943a7469e91aa37d9d3e173980b69d600e9774e5b7e91193a",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b22-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "30d5057b4404774ccc24165f38be3d77b03c2f5053b819e3775dcaaff2ca156d",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "dd2585917de20c99b270a61d27fcf355715fa18a55f01c6c6dc3d6bed6ee6065",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "0a22cbb978f70167f9f84a4d1deed7df709987448546c1e2f17bc405c72dd878",
+    "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+    "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+    "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+    "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+    "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+    "src/Assembly-CSharp/game/UserData.cs": "5d7e7ddc77a8401fcb8882461574dfc2c2afe8b3caff446a259825f566adda39",
+    "src/Assembly-CSharp/main/AppData.cs": "5251f4cb3aeed63e7799efff792bf18c413a35e26aa6b55cedf0eb4e3e102859",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+    "src/Assembly-CSharp/surface/GameView.cs": "967a4065c69a9d17859071e4fa3f9145dc0161c68b03364feda9d262a4383740",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "3c24c70fed887265fdf111cbc5e8a1abbc11bde2c0aca53778d8c30a367ee92f",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}
