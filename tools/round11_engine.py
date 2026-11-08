@@ -457,6 +457,14 @@ def main():
             path=(ROOT/relative).resolve()
             if not path.is_relative_to((ROOT/'build/round10/final-corpus').resolve()) or path.suffix!='.json' or sha(path)!=expected:
                 raise ValueError('Read-only historical JSON evidence changed: '+relative)
+        compiler_sources=dict(proposal_doc.get('pinned_compiler_source_sha256',{}))
+        for proposal in proposal_doc['patches']:
+            compiler_sources.update(proposal.get('pinned_compiler_source_sha256',{}))
+        for relative,expected in compiler_sources.items():
+            path=(ROOT/relative).resolve()
+            if (not path.is_relative_to((ROOT/'analysis/tools/round5-mono-source').resolve())
+                    or path.suffix.lower() not in ('.cs','.jay') or sha(path)!=expected):
+                raise ValueError('Read-only pinned Mono source changed: '+relative)
         for field in ('calculator','syntax_source'):
             expected=proposal_doc.get(field+'_sha256')
             if expected and not any(sha(p)==expected for p in (ROOT/'tools').glob('*') if p.is_file()):
@@ -466,6 +474,7 @@ def main():
             'dependencies_checked':dependencies,'read_only_evidence_checked':evidence,
             'frozen_evidence_checked':frozen_evidence,
             'historical_frozen_evidence_checked':historical,
+            'pinned_compiler_source_checked':compiler_sources,
             'fresh_model_required':True,'exact_unique_rebase':True}
     baseline_variants = {}
     if args.calculated_alternatives:
@@ -855,6 +864,9 @@ def main():
                 by_family.setdefault(patch['rule'], patch)
             first_ids = {id(p) for p in by_family.values()}
             patches = list(by_family.values()) + [p for p in patches if id(p) not in first_ids]
+            family_audit={'iteration':iteration+1,'generated_after_cycle_filter':dict(Counter(p['rule'] for p in patches)),
+                          'model_approved':{},'model_rejected':{}}
+            row.setdefault('candidate_family_audit',[]).append(family_audit)
             if slot_model:
                 approved = []
                 rejected_counts = Counter()
@@ -875,6 +887,7 @@ def main():
                     prediction = slot_model.predict(path=str(c.paths[logical]), source=candidate, method_id=key)
                     report['slot_model_gate']['predicted'] += 1
                     if model_approval(prediction, plain_local_types.get(key, [])):
+                        family_audit['model_approved'][patch['rule']]=family_audit['model_approved'].get(patch['rule'],0)+1
                         summary = {k: prediction[k] for k in ('complete', 'predicted_types', 'method_id', 'unsupported_reasons') if k in prediction}
                         patch = dict(patch, slot_model_prediction=summary)
                         approved.append(patch)
@@ -885,6 +898,7 @@ def main():
                         reason = 'incomplete' if not prediction.get('complete') else 'wrong_signature'
                         report['slot_model_gate'][reason] += 1
                         rejected_counts[reason] += 1
+                        family_audit['model_rejected'].setdefault(patch['rule'],{})[reason]=family_audit['model_rejected'].get(patch['rule'],{}).get(reason,0)+1
                 row.setdefault('model_rejections', []).append(dict(rejected_counts))
                 patches = approved
             if not patches:

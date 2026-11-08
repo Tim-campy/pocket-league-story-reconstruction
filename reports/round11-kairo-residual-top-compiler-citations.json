@@ -1,0 +1,52 @@
+[
+  {
+    "tag": "version-1.1.0",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "path": "analysis\\tools\\round6-roslyn-source\\src\\Compilers\\CSharp\\Portable\\CodeGen\\EmitExpression.cs",
+    "git_blob_sha1": "38ea770e7d301964c604e1e046a5a072245059d4",
+    "sha256": "4beb87ae114cd851204eed776ed12f9cc8d533b86299d8683bf455c212876f09",
+    "start_line": 2639,
+    "end_line": 2647,
+    "text": "        private void EmitConditionalOperator(BoundConditionalOperator expr, bool used)\n        {\n            Debug.Assert(expr.ConstantValue == null, \"Constant value should have been emitted directly\");\n\n            object consequenceLabel = new object();\n            object doneLabel = new object();\n\n            EmitCondBranch(expr.Condition, ref consequenceLabel, sense: true);\n            EmitExpression(expr.Alternative, used);"
+  },
+  {
+    "tag": "version-1.1.0",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "path": "analysis\\tools\\round6-roslyn-source\\src\\Compilers\\CSharp\\Portable\\CodeGen\\EmitExpression.cs",
+    "git_blob_sha1": "38ea770e7d301964c604e1e046a5a072245059d4",
+    "sha256": "4beb87ae114cd851204eed776ed12f9cc8d533b86299d8683bf455c212876f09",
+    "start_line": 2683,
+    "end_line": 2691,
+    "text": "            if (used)\n            {\n                // If we get to consequenceLabel, we should not have Alternative on stack, adjust for that.\n                _builder.AdjustStack(-1);\n            }\n\n            _builder.MarkLabel(consequenceLabel);\n            EmitExpression(expr.Consequence, used);\n"
+  },
+  {
+    "tag": "version-1.1.0",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "path": "analysis\\tools\\round6-roslyn-source\\src\\Compilers\\CSharp\\Portable\\CodeGen\\EmitStatement.cs",
+    "git_blob_sha1": "8b8d9d4d8b7d7218b3daa8422b7b2197d37543c5",
+    "sha256": "d09dff456ccf0855cc9947e45efbb676c9baa4ee1df58eb5db414dc7866e6195",
+    "start_line": 594,
+    "end_line": 612,
+    "text": "        private void EmitBlock(BoundBlock block)\n        {\n            var hasLocals = !block.Locals.IsEmpty;\n\n            if (hasLocals)\n            {\n                _builder.OpenLocalScope();\n\n                foreach (var local in block.Locals)\n                {\n                    var declaringReferences = local.DeclaringSyntaxReferences;\n                    DefineLocal(local, !declaringReferences.IsEmpty ? (CSharpSyntaxNode)declaringReferences[0].GetSyntax() : block.Syntax);\n                }\n            }\n\n            foreach (var statement in block.Statements)\n            {\n                EmitStatement(statement);\n            }"
+  },
+  {
+    "tag": "version-1.1.0",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "path": "analysis\\tools\\round6-roslyn-source\\src\\Compilers\\CSharp\\Portable\\CodeGen\\Optimizer.cs",
+    "git_blob_sha1": "02e74e771a0b712d929c8599c41d13b2ed07fdde",
+    "sha256": "3051e87f8c65d35a7613a8035a6c9005d58095d652219b51f182a4759988c3e6",
+    "start_line": 54,
+    "end_line": 74,
+    "text": "            out HashSet<LocalSymbol> stackLocals)\n        {\n            //TODO: run other optimizing passes here.\n            //      stack scheduler must be the last one.\n\n            var locals = PooledDictionary<LocalSymbol, LocalDefUseInfo>.GetInstance();\n            src = (BoundStatement)StackOptimizerPass1.Analyze(src, locals, debugFriendly);\n\n            FilterValidStackLocals(locals);\n\n            BoundStatement result;\n            if (locals.Count == 0)\n            {\n                stackLocals = null;\n                result = src;\n            }\n            else\n            {\n                stackLocals = new HashSet<LocalSymbol>(locals.Keys);\n                result = StackOptimizerPass2.Rewrite(src, locals);\n            }"
+  },
+  {
+    "tag": "version-1.1.0",
+    "commit": "4cb203dab89e1542cdf7d88cb6d32767bc0e5460",
+    "path": "analysis\\tools\\round6-roslyn-source\\src\\Compilers\\CSharp\\Portable\\CodeGen\\Optimizer.cs",
+    "git_blob_sha1": "02e74e771a0b712d929c8599c41d13b2ed07fdde",
+    "sha256": "3051e87f8c65d35a7613a8035a6c9005d58095d652219b51f182a4759988c3e6",
+    "start_line": 1926,
+    "end_line": 1940,
+    "text": "            // do actual assignment\n\n            Debug.Assert(locInfo.LocalDefs.Any((d) => _nodeCounter == d.start && _nodeCounter <= d.end));\n            var isLast = IsLastAccess(locInfo, _nodeCounter);\n\n            if (isLast)\n            {\n                // assigned local is not used later => just emit the Right \n                return right;\n            }\n            else\n            {\n                // assigned local used later - keep assignment. \n                // codegen will keep value on stack when sees assignment \"stackLocal = expr\"\n                return node.Update(left, right, node.RefKind, node.Type);"
+  }
+]

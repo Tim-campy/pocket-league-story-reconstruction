@@ -1,0 +1,9 @@
+# Round 11: concatenação composta e assinatura de locais
+
+O novo `tools/Round11SlotModel.cs` amplia o modelo de análise do smcs; não compila código do jogo. Os modelos das rodadas anteriores permanecem intactos. A regra é genérica: uma atribuição composta a um local String, resolvida para `String.Concat` com array de argumentos, guarda o valor esquerdo num temporário antes de construir o array. O modelo considera a fusão de constantes de string e a diferença entre os overloads de quatro strings e de objetos. Campos, propriedades e indexadores não recebem essa nova regra.
+
+As citações do Mono fixado em `b6587926c0f146c8b12985744f33a13b39a22d57` estão em `reports/round11-initial-slot-queue-compiler-citations.json`: `expression.cs:5965–5969`, `6376–6378`, `6406–6407`, `assign.cs` e o pool por tipo de `codegen.cs`. O arquivo privado do analista foi preservado; somente dois sinais de pontuação em comentários foram convertidos para ASCII na cópia pública. A validação pública usa o hash dessa cópia, não o hash privado.
+
+Em `reports/round11-slot-model-validation.json`, a leitura do snapshot C06 encontrou 1.887 corpos matched: 1.804 previsões completas, todas exatas; 82 métodos gerados sem fonte mapeada e um método com CS0030 permanecem incompletos. Nenhum erro semântico foi ignorado e não houve falso completo. Os 43 casos antigos de previsão mapeada incompleta passaram a completos e exatos.
+
+`reports/round11-slot-model-published-controls.json` confirma cinco controles próprios completos/exatos e cinco assinaturas calculadas dos candidatos da fila: quatro completas, uma incompleta com motivo explícito. Essas medidas não confirmam corpos do jogo. O verificador e a compilação real de cada candidato continuam obrigatórios. Nenhuma assinatura do original foi usada como resultado do modelo.

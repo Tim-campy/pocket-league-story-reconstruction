@@ -1,0 +1,50 @@
+[
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "file": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\expression.cs",
+    "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+    "start": 5956,
+    "end": 5974,
+    "text": "\t\tExpression first_emit;\n\t\tLocalTemporary first_emit_temp;\n\n\t\tprotected virtual Expression ResolveArrayElement (ResolveContext ec, Expression element)\n\t\t{\n\t\t\telement = element.Resolve (ec);\n\t\t\tif (element == null)\n\t\t\t\treturn null;\n\n\t\t\tif (element is CompoundAssign.TargetExpression) {\n\t\t\t\tif (first_emit != null)\n\t\t\t\t\tthrow new InternalErrorException (\"Can only handle one mutator at a time\");\n\t\t\t\tfirst_emit = element;\n\t\t\t\telement = first_emit_temp = new LocalTemporary (element.Type);\n\t\t\t}\n\n\t\t\treturn Convert.ImplicitConversionRequired (\n\t\t\t\tec, element, array_element_type, loc);\n\t\t}"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "file": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\expression.cs",
+    "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+    "start": 6372,
+    "end": 6379,
+    "text": "\t\tpublic override void Emit (EmitContext ec)\n\t\t{\n\t\t\tILGenerator ig = ec.ig;\n\n\t\t\tif (first_emit != null) {\n\t\t\t\tfirst_emit.Emit (ec);\n\t\t\t\tfirst_emit_temp.Store (ec);\n\t\t\t}"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "file": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\expression.cs",
+    "sha256": "3e6392384936d08bd7142f8bf68d21ae4f8c429f9c8b0ac099da97bff53c74af",
+    "start": 6403,
+    "end": 6408,
+    "text": "\t\t\t\tEmitDynamicInitializers (ec, true);\n\t\t\t}\n\n\t\t\tif (first_emit_temp != null)\n\t\t\t\tfirst_emit_temp.Release (ec);\n\t\t}"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "file": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\assign.cs",
+    "sha256": "00dafa1b0447a9215a619803a8e672f4f775c5412a1c7cc8e919bc29c2ec053c",
+    "start": 266,
+    "end": 278,
+    "text": "\t\t}\n\n\t\t// NB: if you have `is_address' on the stack there must\n\t\t// be a managed pointer. Otherwise, it is the type from\n\t\t// the ctor.\n\t\tpublic void Store (EmitContext ec)\n\t\t{\n\t\t\tILGenerator ig = ec.ig;\n\t\t\tif (builder == null)\n\t\t\t\tbuilder = ec.GetTemporaryLocal (is_address ? TypeManager.GetReferenceType (type): type);\n\n\t\t\tig.Emit (OpCodes.Stloc, builder);\n\t\t}"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "file": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\codegen.cs",
+    "sha256": "622e8f428875d92653218e3aa45e54e42b5f942f2b78bc8a55256b78d4832ac1",
+    "start": 350,
+    "end": 375,
+    "text": "\t\t\tSymbolWriter.CloseScope(ig);\n\t\t}\n\n\t\t/// <summary>\n\t\t///   Returns a temporary storage for a variable of type t as \n\t\t///   a local variable in the current body.\n\t\t/// </summary>\n\t\tpublic LocalBuilder GetTemporaryLocal (Type t)\n\t\t{\n\t\t\tif (temporary_storage != null) {\n\t\t\t\tobject o = temporary_storage [t];\n\t\t\t\tif (o != null) {\n\t\t\t\t\tif (o is Stack) {\n\t\t\t\t\t\tStack s = (Stack) o;\n\t\t\t\t\t\to = s.Count == 0 ? null : s.Pop ();\n\t\t\t\t\t} else {\n\t\t\t\t\t\ttemporary_storage.Remove (t);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tif (o != null)\n\t\t\t\t\treturn (LocalBuilder) o;\n\t\t\t}\n\t\t\treturn ig.DeclareLocal (t);\n\t\t}\n\n\t\tpublic void FreeTemporaryLocal (LocalBuilder b, Type t)"
+  },
+  {
+    "pin": "b6587926c0f146c8b12985744f33a13b39a22d57",
+    "file": "analysis\\tools\\round5-mono-source\\mcs\\mcs\\assign.cs",
+    "sha256": "00dafa1b0447a9215a619803a8e672f4f775c5412a1c7cc8e919bc29c2ec053c",
+    "start": 662,
+    "end": 669,
+    "text": "\n\t\t\t// TODO: TargetExpression breaks MemberAccess composition\n\t\t\tif (target is DynamicMemberBinder) {\n\t\t\t\tArguments targs = ((DynamicMemberBinder) target).Arguments;\n\t\t\t\tsource = source.Resolve (ec);\n\n\t\t\t\tArguments args = new Arguments (2);\n\t\t\t\targs.AddRange (targs);"
+  }
+]

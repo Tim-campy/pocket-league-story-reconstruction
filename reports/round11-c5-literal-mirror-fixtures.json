@@ -1,0 +1,231 @@
+{
+  "target_compilations": 0,
+  "own_fixture_compilations": 4,
+  "AST_positive_methods": 8,
+  "AST_route_requests": 48,
+  "literal_and_retained_hints": [
+    {
+      "method": "ZeroInt",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 2598,
+        "end": 2603,
+        "before": "a < 0",
+        "after": "(0 > a)",
+        "distance": 7
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    },
+    {
+      "method": "NegatedFloat",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 2663,
+        "end": 2669,
+        "before": "a < 0f",
+        "after": "(0f > a)",
+        "distance": 9
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    },
+    {
+      "method": "NegativeZeroDouble",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 2735,
+        "end": 2743,
+        "before": "a <= -0d",
+        "after": "(-0d >= a)",
+        "distance": 7
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    },
+    {
+      "method": "ConstantFirstFloat",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 2807,
+        "end": 2813,
+        "before": "0f < a",
+        "after": "(a > 0f)",
+        "distance": 7
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    },
+    {
+      "method": "ZeroUInt",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 2866,
+        "end": 2873,
+        "before": "a == 0u",
+        "after": "(0u == a)",
+        "distance": 7
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    },
+    {
+      "method": "ZeroLong",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 2926,
+        "end": 2933,
+        "before": "a >= 0L",
+        "after": "(0L <= a)",
+        "distance": 7
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    },
+    {
+      "method": "ZeroDouble",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 2990,
+        "end": 2997,
+        "before": "a != 0d",
+        "after": "(0d != a)",
+        "distance": 7
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    },
+    {
+      "method": "ConvertedFloat",
+      "patch": {
+        "rule": "r11-c5-mirror-primitive-operands",
+        "start": 3057,
+        "end": 3062,
+        "before": "a < 0",
+        "after": "(0 > a)",
+        "distance": 7
+      },
+      "primary_and_retained_both_compilers_equal": true,
+      "disabled": true
+    }
+  ],
+  "guard_negatives": [
+    {
+      "method": "Field",
+      "rejected": true
+    },
+    {
+      "method": "Ref",
+      "rejected": true
+    },
+    {
+      "method": "Mixed",
+      "rejected": true
+    },
+    {
+      "method": "Call",
+      "rejected": true
+    },
+    {
+      "method": "BoolLiteral",
+      "rejected": true
+    },
+    {
+      "method": "ConstantOnly",
+      "rejected": true
+    }
+  ],
+  "compiler_results": [
+    {
+      "compiler": "smcs",
+      "all_methods_equal": 32,
+      "body_differences": {
+        "Fixture::.cctor()->System.Void": [],
+        "Fixture::Read()->System.Int32": [],
+        "Fixture::ArrayLocal()->System.Int32": [],
+        "Fixture::InverseChain()->System.Int32": [],
+        "Fixture::MapInts(System.Int32[])->System.Void": [],
+        "Fixture::LtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NotLtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::LeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GtInt(System.Int32,System.Int32)->System.Int32": [],
+        "Fixture::EqFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::WrongNegatedFloatComplement(System.Single,System.Single)->System.Int32": [],
+        "Fixture::FloatNeg(System.Single)->System.Single": [],
+        "Fixture::FloatZeroSub(System.Single)->System.Single": [],
+        "Fixture::Field(System.Int32)->System.Int32": [],
+        "Fixture::Ref(System.Int32&,System.Int32)->System.Int32": [],
+        "Fixture::Mixed(System.Int32,System.Single)->System.Int32": [],
+        "Fixture::Call(System.Int32)->System.Int32": [],
+        "Fixture::ZeroInt(System.Int32)->System.Int32": [],
+        "Fixture::NegatedFloat(System.Single)->System.Int32": [],
+        "Fixture::NegativeZeroDouble(System.Double)->System.Int32": [],
+        "Fixture::ConstantFirstFloat(System.Single)->System.Int32": [],
+        "Fixture::ZeroUInt(System.UInt32)->System.Int32": [],
+        "Fixture::ZeroLong(System.Int64)->System.Int32": [],
+        "Fixture::ZeroDouble(System.Double)->System.Int32": [],
+        "Fixture::ConvertedFloat(System.Single)->System.Int32": [],
+        "Fixture::BoolLiteral(System.Boolean)->System.Int32": [],
+        "Fixture::ConstantOnly()->System.Int32": [],
+        "Fixture::SemanticChecks()->System.Int32": [],
+        "Vector::.ctor()->System.Void": [],
+        "<PrivateImplementationDetails>::.ctor()->System.Void": []
+      },
+      "runtime_NaN_infinities_signed_zero_passed": true
+    },
+    {
+      "compiler": "roslyn",
+      "all_methods_equal": 31,
+      "body_differences": {
+        "Fixture::Read()->System.Int32": [],
+        "Fixture::ArrayLocal()->System.Int32": [],
+        "Fixture::InverseChain()->System.Int32": [],
+        "Fixture::MapInts(System.Int32[])->System.Void": [],
+        "Fixture::LtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NotLtFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::LeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::GtInt(System.Int32,System.Int32)->System.Int32": [],
+        "Fixture::EqFloat(System.Single,System.Single)->System.Int32": [],
+        "Fixture::NeDouble(System.Double,System.Double)->System.Int32": [],
+        "Fixture::WrongNegatedFloatComplement(System.Single,System.Single)->System.Int32": [],
+        "Fixture::FloatNeg(System.Single)->System.Single": [],
+        "Fixture::FloatZeroSub(System.Single)->System.Single": [],
+        "Fixture::Field(System.Int32)->System.Int32": [],
+        "Fixture::Ref(System.Int32&,System.Int32)->System.Int32": [],
+        "Fixture::Mixed(System.Int32,System.Single)->System.Int32": [],
+        "Fixture::Call(System.Int32)->System.Int32": [],
+        "Fixture::ZeroInt(System.Int32)->System.Int32": [],
+        "Fixture::NegatedFloat(System.Single)->System.Int32": [],
+        "Fixture::NegativeZeroDouble(System.Double)->System.Int32": [],
+        "Fixture::ConstantFirstFloat(System.Single)->System.Int32": [],
+        "Fixture::ZeroUInt(System.UInt32)->System.Int32": [],
+        "Fixture::ZeroLong(System.Int64)->System.Int32": [],
+        "Fixture::ZeroDouble(System.Double)->System.Int32": [],
+        "Fixture::ConvertedFloat(System.Single)->System.Int32": [],
+        "Fixture::BoolLiteral(System.Boolean)->System.Int32": [],
+        "Fixture::ConstantOnly()->System.Int32": [],
+        "Fixture::SemanticChecks()->System.Int32": [],
+        "Fixture::.cctor()->System.Void": [],
+        "Vector::.ctor()->System.Void": []
+      },
+      "runtime_NaN_infinities_signed_zero_passed": true
+    }
+  ],
+  "syntax_identity": "d49920ec4abbe8b9d3a7e4c4decd6b9f5869ffdb2b203df9510defd1203a8c46",
+  "source_sha256": {
+    "build/round11/c5-literal/check.py": "495b72f2bd33844f855160a5e68ade0b8623fbd65d93933f4fa636f71d863436",
+    "build/round11/c5-literal/FixtureCurrent.cs": "ddec07abcee8a6f63d2ff796cee0f62e270497b23c87b74001c246c1a0759609",
+    "build/round11/c5-literal/FixtureCandidate.cs": "9a356b5dfe49ae83d2076ec50f50b6dd6e6dc9584b2b6220b81da6635556377a",
+    "build/round11/c5-literal/FixtureControl.cs": "2c90a4552a21a0e72f18dab67223fd7be8eac2c6c8b254c5bb20b339e5bb5b57",
+    "tools/Round11ComparisonRules.cs": "840543167ee386c39b6b422ed039ca0a7329de7e406737c963ff7bea21a0ecfa"
+  },
+  "public_fixture_source_sha256": {
+    "tools/fixtures/round11-c5-literals/FixtureCandidate.cs": "9a356b5dfe49ae83d2076ec50f50b6dd6e6dc9584b2b6220b81da6635556377a",
+    "tools/fixtures/round11-c5-literals/FixtureControl.cs": "2c90a4552a21a0e72f18dab67223fd7be8eac2c6c8b254c5bb20b339e5bb5b57",
+    "tools/fixtures/round11-c5-literals/FixtureCurrent.cs": "ddec07abcee8a6f63d2ff796cee0f62e270497b23c87b74001c246c1a0759609"
+  },
+  "scope": "Pure primitive local/parameter versus same converted numeric-type local/parameter or numeric literal; explicit outer negation preserved. Different named operand types, fields, calls, ref, Bool and constant-only rejected."
+}

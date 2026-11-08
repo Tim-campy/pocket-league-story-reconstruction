@@ -11,12 +11,12 @@
   "stop_counter_requires_empty_prepared_queue": true,
   "models": {
     "Assembly-CSharp": {
-      "module": "round7_slot_model",
-      "source": "tools/Round7SlotModel.cs",
-      "client": "tools/round7_slot_model.py",
+      "module": "round11_slot_model",
+      "source": "tools/Round11SlotModel.cs",
+      "client": "tools/round11_slot_model.py",
       "solver": "tools/round7_slot_solver.py",
-      "validation": "reports/round8-slot-model-validation.json",
-      "corpus_baseline": "build/round8/baseline/Assembly-CSharp"
+      "validation": "reports/round11-slot-model-validation.json",
+      "corpus_baseline": "build/round11/cycles/c06/after/Assembly-CSharp"
     },
     "KairoLibrary": {
       "module": "round8_roslyn_model",
@@ -123,6 +123,14 @@
           "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
           "assembly": "Assembly-CSharp",
           "evaluation_status": "evaluated"
+        },
+        {
+          "label": "c07",
+          "engine": "reports/round11-c07-Assembly-CSharp-engine.json",
+          "adoption": "reports/round11-c07-adoption.json",
+          "result": "Nenhum candidato compilado avancou; 7 tentativas da regra, 0 avancos",
+          "assembly": "Assembly-CSharp",
+          "evaluation_status": "evaluated"
         }
       ],
       "required_assemblies": [
@@ -146,7 +154,7 @@
       "phase": "D",
       "assembly": "Assembly-CSharp",
       "status": "pending",
-      "readiness": "REQUIRES_NEW_SOURCE_PROPOSALS",
+      "readiness": "AUTHENTICATED_SOURCE_AND_OWN_FIXTURES_GAME_UNKNOWN",
       "method_ids": [
         "main.AppData::SendSaveData(System.String,System.Int32,System.Exception)->System.Void",
         "surface.GamePad::AddTouch(kairo.unity.ui.Graphics,System.Single,System.Single,System.Int32,System.Int32,System.Boolean)->System.Void",
@@ -154,7 +162,9 @@
         "form.BootForm::Load()->System.Void",
         "main.AppData::Draw(System.String,System.Boolean)->System.Void"
       ],
-      "potential_original_il_bytes": 8074
+      "potential_original_il_bytes": 8074,
+      "source_proposals": "reports/round11-initial-slot-queue-patches.json",
+      "source_proposals_sha256": "e244439b28f70726e1747a09a863791db5b5494d4d7ae38339055ee00877831e"
     },
     {
       "id": "initial-image-use",
@@ -162,11 +172,13 @@
       "phase": "D",
       "assembly": "KairoLibrary",
       "status": "pending",
-      "readiness": "REQUIRES_NEW_SOURCE_PROPOSALS",
+      "readiness": "AUTHENTICATED_SOURCE_AND_OWN_FIXTURES_GAME_UNKNOWN",
       "method_ids": [
         "kairo.unity.ui.Image::<Use>b__96_0()->System.Void"
       ],
-      "potential_original_il_bytes": 680
+      "potential_original_il_bytes": 680,
+      "source_proposals": "reports/round11-initial-image-use-patches.json",
+      "source_proposals_sha256": "d70c31d69a258cd020d375044636ba683ad6cfdd8bc6e0898a026cd7fbf34f52"
     },
     {
       "id": "initial-app-init2",
@@ -174,11 +186,29 @@
       "phase": "D",
       "assembly": "Assembly-CSharp",
       "status": "pending",
-      "readiness": "REQUIRES_NEW_SOURCE_PROPOSALS",
+      "readiness": "AUTHENTICATED_SOURCE_AND_OWN_FIXTURES_GAME_UNKNOWN",
       "method_ids": [
         "form.SubForm::Init2()->System.Boolean"
       ],
-      "potential_original_il_bytes": 3844
+      "potential_original_il_bytes": 3844,
+      "source_proposals": "reports/round11-initial-init2-patches.json",
+      "source_proposals_sha256": "32f924e11a706838f97a7cca06da934192137f47fb65313cbf824b1d3c8de903"
+    },
+    {
+      "id": "prepared-kairo-stores-format-layout",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "AUTHENTICATED_SOURCE_AND_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.surface.TouchEvent::ToString()->System.String",
+        "kairo.unity.ui.Image::GetAreaSize(System.Byte[])->System.Int32[]"
+      ],
+      "potential_original_il_bytes": 682,
+      "source_proposals": "reports/round11-kairo-residual-top-patches.json",
+      "source_proposals_sha256": "fe5556dade168dc10d054c1659188b886c5e3bacabb44f7881ce160d438da84c",
+      "note": "Explicit residual ready family; only selected after ordered initial queue and by fresh Kairo weighting. Not a matched claim."
     }
   ],
   "baseline_measurement": "reports/round11-baseline-measurement.json",
@@ -268,7 +298,7 @@
     "files_sha256": {
       "tools/round11_controller.py": "3f5a400ed862b736439ea6a9307ddd800ef44f527267069949d56ed8ccbe5996",
       "tools/round11_cycle.py": "0483c216e8c35794e5b20f81cf418e638d7ac676044320fdf63daefd8e856308",
-      "tools/round11_engine.py": "b95d4757d4508830c483135d1a050c4695c701ed6d06fae73f54c4507e7c30de",
+      "tools/round11_engine.py": "015cb923fec621d36938061e51b945fec6a2e595669593d2fdd93de11a85b125",
       "tools/round11_adopt.py": "c2a87b7a35a15051c0b9f7ca262b10cddf1e67cd901b89059b3f8924c52d78a4",
       "tools/round11_commit.py": "fd9273123929d752a58deb3da11d2575d70564e9eb9b2859110340bae38f78cb",
       "tools/round11_git_proof.py": "a1d3c37ae185088878d9f6b331ab21c923be777642d322d4923ff2ce672e0758",
@@ -286,7 +316,7 @@
       "tools/round11_test_protocol.py": "fd2012801dfa7a9c4cfaa75fc8e444e41f5e9a5962e8ebca3611a14c4757e8a4",
       "tools/round11_pdb_mirror.py": "5574c8f6f56d249a068ae38a2e67d95fbc2baf1e0c33278ca701eca7bf54034b",
       "tools/round11_test_pdb_mirror.py": "f23c41ebabb60998016cbdaaa604679b5951b5ff4c2a219a353e61b6a0a8e3ce",
-      "tools/Round11ComparisonRules.cs": "1e4f3c6e06a2b0f4aa958c6feb479292f33a92d4be4f28c033da60a8443488ef",
+      "tools/Round11ComparisonRules.cs": "840543167ee386c39b6b422ed039ca0a7329de7e406737c963ff7bea21a0ecfa",
       "tools/prepare_round11_transform.py": "99ac7ddcdb24f38d2c44a8316f0d6cc3979eba65c79425738c7bf2a3f94c1604",
       "tools/round11_transform.py": "f78cd4e22455c40d8cc1b98b2348018d3e1d41779f9f49c3154ff98895b11115"
     },
@@ -294,16 +324,21 @@
       "fixture_report": "reports/round11-pdb-mirror-fixture.json",
       "fixture_sha256": "cced59471bbde026c5ac669eb2d80e01f2004d477321d59accd8bc532df15966",
       "private_PE_never_modified": true
-    }
+    },
+    "new_smcs_model_validation": "reports/round11-slot-model-validation.json",
+    "new_smcs_model_controls": "reports/round11-slot-model-published-controls.json"
   },
   "baseline_measurement_sha256": "bdd425f0a17a6cb8ae76e0ef552d898b67bb841dab8abc8037ed66126188092c",
   "comparison_mirror_repertoire": {
     "rule": "r11-c5-mirror-primitive-operands",
-    "scope": "both compilers; symbol-proven primitive locals/parameters; outer negation preserved",
+    "scope": "both compilers; pure primitive locals/parameters and numeric literals with equal ConvertedType; outer negation preserved",
     "fixture_report": "reports/round11-c5-mirror-integration-fixtures.json",
     "fixture_report_sha256": "2f0d6517c34c067b082ae153e944d441b1593c8623a0d13a89e4ae54c24ba7fd",
-    "target_status": "UNKNOWN before actual C5 passes",
-    "availability": "Retained as fixture-validated opt-in repertoire; later source candidates still require model/compilation/oracle gates."
+    "target_status": "Initial identifier-only App mirror vetoed by complete local signature; literal-inclusive App and Kairo evaluations pending",
+    "availability": "Retained as fixture-validated opt-in repertoire; later source candidates still require model/compilation/oracle gates.",
+    "initial_App_audit": "reports/round11-c5-app-initial-mirror-audit.json",
+    "literal_fixture_report": "reports/round11-c5-literal-mirror-fixtures.json",
+    "literal_fixture_sha256": "fc6d6ee3d7d25d96f50ec659ac43dde4593e9cbe5454a686a4b67b741581d105"
   },
   "persistent_repertoire_rules": [
     "r11-c5"
