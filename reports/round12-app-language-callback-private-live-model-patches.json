@@ -1,0 +1,117 @@
+{
+  "source_only": true,
+  "patches": [
+    {
+      "method_id": "system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm/ResultData)->System.Void",
+      "logical_path": "src/Assembly-CSharp/system/form/LanguageForm.cs",
+      "start": 923,
+      "end": 4898,
+      "before": "public override bool Update()\r\n\t\t{\r\n\t\t\tbase.Update();\r\n\t\t\tif (!start_)\r\n\t\t\t{\r\n\t\t\t\tstart_ = true;\r\n\t\t\t\tList<string[]> list = new List<string[]>();\r\n\t\t\t\tforeach (string[] item in Language.GetSystemLanguagePackFiles()) {\nlist.Add(item);\n}\r\n\t\t\t\tstring customLanguagePackLocation = Language.GetCustomLanguagePackLocation();\r\n\t\t\t\tif (customLanguagePackLocation != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (Storage.Exists(1, \"_custom_lang_pack.csv\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbyte[] data = Storage.Read(1, false, \"_custom_lang_pack.csv\");\r\n\t\t\t\t\t\t\tLanguage.LanguagePackInfo languagePackInfo = Language.GetLanguagePackInfo(data);\r\n\t\t\t\t\t\t\tstring text = string.Empty;\r\n\t\t\t\t\t\t\tif (languagePackInfo.Title != null)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\ttext += languagePackInfo.Title;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (languagePackInfo.Author != null)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\ttext = text + \"@\" + languagePackInfo.Author;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tlist.Add(new string[2] { text, customLanguagePackLocation });\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tlanguages_ = list.ToArray();\r\n\t\t\t\tint index = 0;\r\n\t\t\t\tstring[] array = new string[languages_.Length];\r\n\t\t\t\tfor (int j = 0; j < languages_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tarray[j] = languages_[j][0];\r\n\t\t\t\t\tif (languages_[j][1] == Language.GetLanguagePackFile())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tindex = j;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (langDownloadUrl_ == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tlangDownloadUrl_ = Language.GetCustomLanguagePackLocation();\r\n\t\t\t\t}\r\n\t\t\t\tKairoPlugin.StartLanguagePanel(array, index, langDownloadUrl_, mode_);\r\n\t\t\t\treturn true;\r\n\t\t\t}\r\n\t\t\tif (!KairoPlugin.IsLanguagePanelFinish())\r\n\t\t\t{\r\n\t\t\t\treturn true;\r\n\t\t\t}\r\n\t\t\tstring[] languagePanelResult = KairoPlugin.GetLanguagePanelResult();\r\n\t\t\tif (languagePanelResult[0] != null)\r\n\t\t\t{\r\n\t\t\t\tint num = int.Parse(languagePanelResult[0]);\r\n\t\t\t\tif (num == -3) {\r\nCanvas.OpenBrowser(\"http://kairopark.jp/language_pack_en.html\");\r\n\r\n}\r\nelse if (num == -2) {\r\n\t\t\t\t\tlangPackJapanese_ = false;\r\n\t\t\t\t\tif (languagePanelResult[1] == \"ja\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlangPackJapanese_ = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tHttpForm languageForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tKairoBase instance = KairoBase.GetInstance();\r\n\t\t\t\t\t\tstring data2;\r\n\t\t\t\t\t\tLanguage.MakeLangPackTemplate(langPackJapanese_, 202, out langPackFile_, out data2);\r\n\t\t\t\t\t\tint hashCode = data2.GetHashCode();\r\n\t\t\t\t\t\t{ bool recoveredCondition_3348 = instance.ConnectLangPackCheck(langPackFile_, 202, hashCode);\nif (recoveredCondition_3348)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tinstance.ConnectLangPackSet(langPackFile_, 202, hashCode, data2);\r\n\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t}, delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tKairoBase instance = KairoBase.GetInstance();\r\n\t\t\t\t\t\tinstance.ConnectLangPackWeb(langPackFile_);\r\n\t\t\t\t\t});\r\n\t\t\t\t\tPush(languageForm);\r\n\r\n\t\t\t\t}\r\nelse if (num == -1) {\r\n\t\t\t\t\tlangDownloadUrl_ = languagePanelResult[1];\r\n\t\t\t\t\tlangDownloadData_ = null;\r\n\t\t\t\t\tHttpForm httpForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlangDownloadData_ = Http.Connect(langDownloadUrl_, null, false);\r\n\t\t\t\t\t}, delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (data.Succeed)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool testedValue = Language.SetLanguagePack(langDownloadUrl_, langDownloadData_);\nif (testedValue && callback_ != null)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcallback_();\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\t\t\t\t\tinstance.Push(new LanguageForm\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tmode_ = 1\r\n\t\t\t\t\t\t\t});\r\n\t\t\t\t\t\t\tinstance.Push(SubForm.MakeDialog(data.Error));\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t});\r\n\t\t\t\t\tPush(httpForm);\r\n\t\t\t\t\thttpForm.ProcessError = false;\r\n\r\n\t\t\t\t}\r\nelse {\r\n\t\t\t\t\tstring text2 = languagePanelResult[1];\r\n\t\t\t\t\tif (num != -1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext2 = languages_[num][1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (Language.GetLanguagePackFile() != text2) {\r\nbool recoveredLanguagePackChanged = Language.SetLanguagePack(text2);\r\nif (recoveredLanguagePackChanged && callback_ != null) {\r\n\t\t\t\t\t\tcallback_();\r\n\t\t\t\t\t}\r\n}\r\n\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn Pop();\r\n\t\t}",
+      "after": "public override bool Update()\r\n\t\t{\r\n\t\t\tbase.Update();\r\n\t\t\tif (!start_)\r\n\t\t\t{\r\n\t\t\t\tstart_ = true;\r\n\t\t\t\tList<string[]> list = new List<string[]>();\r\n\t\t\t\tforeach (string[] item in Language.GetSystemLanguagePackFiles()) {\nlist.Add(item);\n}\r\n\t\t\t\tstring customLanguagePackLocation = Language.GetCustomLanguagePackLocation();\r\n\t\t\t\tif (customLanguagePackLocation != null)\r\n\t\t\t\t{\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (Storage.Exists(1, \"_custom_lang_pack.csv\"))\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbyte[] data = Storage.Read(1, false, \"_custom_lang_pack.csv\");\r\n\t\t\t\t\t\t\tLanguage.LanguagePackInfo languagePackInfo = Language.GetLanguagePackInfo(data);\r\n\t\t\t\t\t\t\tstring text = string.Empty;\r\n\t\t\t\t\t\t\tif (languagePackInfo.Title != null)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\ttext += languagePackInfo.Title;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tif (languagePackInfo.Author != null)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\ttext = text + \"@\" + languagePackInfo.Author;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tlist.Add(new string[2] { text, customLanguagePackLocation });\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tlanguages_ = list.ToArray();\r\n\t\t\t\tint index = 0;\r\n\t\t\t\tstring[] array = new string[languages_.Length];\r\n\t\t\t\tfor (int j = 0; j < languages_.Length; j++)\r\n\t\t\t\t{\r\n\t\t\t\t\tarray[j] = languages_[j][0];\r\n\t\t\t\t\tif (languages_[j][1] == Language.GetLanguagePackFile())\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tindex = j;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (langDownloadUrl_ == null)\r\n\t\t\t\t{\r\n\t\t\t\t\tlangDownloadUrl_ = Language.GetCustomLanguagePackLocation();\r\n\t\t\t\t}\r\n\t\t\t\tKairoPlugin.StartLanguagePanel(array, index, langDownloadUrl_, mode_);\r\n\t\t\t\treturn true;\r\n\t\t\t}\r\n\t\t\tif (!KairoPlugin.IsLanguagePanelFinish())\r\n\t\t\t{\r\n\t\t\t\treturn true;\r\n\t\t\t}\r\n\t\t\tstring[] languagePanelResult = KairoPlugin.GetLanguagePanelResult();\r\n\t\t\tif (languagePanelResult[0] != null)\r\n\t\t\t{\r\n\t\t\t\tint num = int.Parse(languagePanelResult[0]);\r\n\t\t\t\tif (num == -3) {\r\nCanvas.OpenBrowser(\"http://kairopark.jp/language_pack_en.html\");\r\n\r\n}\r\nelse if (num == -2) {\r\n\t\t\t\t\tlangPackJapanese_ = false;\r\n\t\t\t\t\tif (languagePanelResult[1] == \"ja\")\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlangPackJapanese_ = true;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tHttpForm languageForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tKairoBase instance = KairoBase.GetInstance();\r\n\t\t\t\t\t\tstring data2;\r\n\t\t\t\t\t\tLanguage.MakeLangPackTemplate(langPackJapanese_, 202, out langPackFile_, out data2);\r\n\t\t\t\t\t\tint hashCode = data2.GetHashCode();\r\n\t\t\t\t\t\t{ bool recoveredCondition_3348 = instance.ConnectLangPackCheck(langPackFile_, 202, hashCode);\nif (recoveredCondition_3348)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tinstance.ConnectLangPackSet(langPackFile_, 202, hashCode, data2);\r\n\t\t\t\t\t\t}\n}\r\n\t\t\t\t\t}, delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tKairoBase instance = KairoBase.GetInstance();\r\n\t\t\t\t\t\tinstance.ConnectLangPackWeb(langPackFile_);\r\n\t\t\t\t\t});\r\n\t\t\t\t\tPush(languageForm);\r\n\r\n\t\t\t\t}\r\nelse if (num == -1) {\r\n\t\t\t\t\tlangDownloadUrl_ = languagePanelResult[1];\r\n\t\t\t\t\tlangDownloadData_ = null;\r\n\t\t\t\t\tHttpForm httpForm = new HttpForm(delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tlangDownloadData_ = Http.Connect(langDownloadUrl_, null, false);\r\n\t\t\t\t\t}, delegate(HttpForm form, HttpForm.ResultData data)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tif (data.Succeed)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tbool testedValue = Language.SetLanguagePack(langDownloadUrl_, langDownloadData_);\nif (testedValue && callback_ != null)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tcallback_();\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\telse\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\t\t\t\t\tLanguageForm nextLanguageForm = new LanguageForm();\nnextLanguageForm.mode_ = 1;\ninstance.Push(nextLanguageForm);\r\n\t\t\t\t\t\t\tinstance.Push(SubForm.MakeDialog(data.Error));\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t});\r\n\t\t\t\t\tPush(httpForm);\r\n\t\t\t\t\thttpForm.ProcessError = false;\r\n\r\n\t\t\t\t}\r\nelse {\r\n\t\t\t\t\tstring text2 = languagePanelResult[1];\r\n\t\t\t\t\tif (num != -1)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttext2 = languages_[num][1];\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (Language.GetLanguagePackFile() != text2) {\r\nbool recoveredLanguagePackChanged = Language.SetLanguagePack(text2);\r\nif (recoveredLanguagePackChanged && callback_ != null) {\r\n\t\t\t\t\t\tcallback_();\r\n\t\t\t\t\t}\r\n}\r\n\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn Pop();\r\n\t\t}",
+      "rule": "r12-smcs-language-callback-explicit-object-local-before-push-receiver",
+      "api": "transform",
+      "source_span_units": "UTF16",
+      "rebase_unique": true,
+      "source_sha256": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+      "original_token": "0x0600070e",
+      "original_artifact_sha256": "3620ed91bd3a99cba9901cea111e6f6e489474e5c0b97b99676e5d4623817949",
+      "original_il_sha256": "b4218b74858c04d56bcb2c15e9693e2a1b2061ef3e88ff504153172be136cbed",
+      "rea_evidence_id": "ev_0d6b11885b0c8eec086e874d8cfc24da023fe0b8d2fba4e5a90be5bd9766080b",
+      "model_complete": true,
+      "model_predicted_types": [
+        "System.Boolean",
+        "form.FormManager",
+        "system.form.LanguageForm"
+      ],
+      "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "model_client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "original_bytes_copied": false,
+      "target_body_outcome": "UNKNOWN",
+      "frozen_evidence_sha256": {},
+      "historical_frozen_evidence_sha256": {},
+      "pinned_compiler_source_sha256": {},
+      "evidence_sha256": {},
+      "dependency_sha256": {},
+      "game_body_status": "UNKNOWN",
+      "pure_api": "transform",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "complete": true,
+      "predicted_types": [
+        "System.Boolean",
+        "form.FormManager",
+        "system.form.LanguageForm"
+      ],
+      "unsupported_reasons": [],
+      "source_model_fields_derived_not_promoted": true
+    }
+  ],
+  "dependency_sha256": {
+    "tools/round12_app_language_callback_private_source.py": "e87998b907087daf599bf2a3ad4c019f5b69ab8016516b611cf04ab9902fc7cd",
+    "tools/round12_publish_bound_family.py": "1c152a882cb30a6c6c49ad08d5df0e831a7b9000e87492d64b8c8035301824c8",
+    "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+    "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "evidence_sha256": {
+    "reports/round12-app-language-callback-private-fixture-report.json": "f6bd90fa57df488bb797dcb3f96a9c0754dc1f70558aebd7fcff5395f5a85c10",
+    "reports/round12-app-language-callback-private-family-patches.json": "547268ca583dc251adf3a94ae7990640a0b86d9dbd38025a056a487db0e48ef3",
+    "reports/round12-app-language-callback-private-live-model-proof.json": "ff5de92bfa10caf708f578ce3f0a0b718334713f664c5a78635f638613e60ea8",
+    "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+  },
+  "frozen_evidence_sha256": {
+    "build/round12/app-language-callback-private/calculate.py": "e87998b907087daf599bf2a3ad4c019f5b69ab8016516b611cf04ab9902fc7cd",
+    "build/round12/app-language-callback-private/fixture-report.json": "f6bd90fa57df488bb797dcb3f96a9c0754dc1f70558aebd7fcff5395f5a85c10",
+    "build/round12/app-language-callback-private/fixtures/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/round12/app-language-callback-private/fixtures/before/Fixture.cs": "7384172cfe793b0668e840312b4997c7c8cedc867c883a92ba2cd9b003e001c6",
+    "build/round12/app-language-callback-private/fixtures/before/Fixture.dll": "d5deda944831f44766dde49195edec4f9442db706b009c6223e1dfbfe4e81fa4",
+    "build/round12/app-language-callback-private/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/round12/app-language-callback-private/fixtures/candidate/Fixture.cs": "a8e761fe52f08c5258f54fa5613e0e989e91f6f69f29401479f81fc95add586d",
+    "build/round12/app-language-callback-private/fixtures/candidate/Fixture.dll": "7e24a459d52cd3e16ac18d4531cd3ef933e0dbbdcab9ddd9f31b6fb7a2c8c77c",
+    "build/round12/app-language-callback-private/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/round12/app-language-callback-private/fixtures/manual-control/Fixture.cs": "197587514997ac1900bb895cb90d511496ba0e181ca53876a25b5ad008f32f16",
+    "build/round12/app-language-callback-private/fixtures/manual-control/Fixture.dll": "488575b864586cba1c4c4bcc90f3c900d6091aff51eac4d65945ce30f3178755",
+    "build/round12/app-language-callback-private/fixtures/wrong-initialization-order/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/round12/app-language-callback-private/fixtures/wrong-initialization-order/Fixture.cs": "1caf820526b268f461168b58ee072e21874fb11e314e0af3f267e0c6344beff6",
+    "build/round12/app-language-callback-private/fixtures/wrong-initialization-order/Fixture.dll": "8ec44fc1d6fd2fb640c6bc0c6ad57760e24284f73c15b2da6d11c33be7c10621",
+    "build/round12/app-language-callback-private/fixtures.py": "1a1c2712b401c5eb05dd6078f42c7455199022aca54680d8ce24afa8eb8c271c",
+    "build/round12/app-language-callback-private/history.json": "5bfed3bc93bbc94b84f2a9bd3267547c9ecbf3ee53d63e3bd2bb51b92c42c7e7",
+    "build/round12/app-language-callback-private/manifest.json": "b3066c5b35116f3ed463611db5a4194f80b7d802b72d4b41c89462bf0e1497f8",
+    "build/round12/app-language-callback-private/method.after.cs": "c8558d687e8d1b0e43b75007f1bef1fb6cbb75e6080f4d80e69b1d9af34ef6f0",
+    "build/round12/app-language-callback-private/method.before.cs": "c06a4ab5d3147133d2637af4d509c33bcca85b9e52574ae2d82cf4806ce9c6e9",
+    "build/round12/app-language-callback-private/model.json": "b4e418fd31929e111c63256323173ef38bddef8055959d012d4610115cf200e6",
+    "build/round12/app-language-callback-private/NOTE.md": "ddd00f6fe52606a16b47583c926ab454f96106c3ecba091710caa5e6538571bb",
+    "build/round12/app-language-callback-private/prepare.py": "4bc384878d86c0ef2795cc5e76b8a1b927fffde85438df60af1950daf6e4495f",
+    "build/round12/app-language-callback-private/proposal.diff": "e8b476a02fc011403ad8e9f50b6bf41c590c1f44ac633036b9cd837cccec43ba",
+    "build/round12/app-language-callback-private/rea-member.json": "8db2350f1989a0894cfac85388db29aff019e077d4801553e03ea0bd658f2c93",
+    "build/round12/app-language-callback-private/source-patches.json": "5cfca688a57c31ddea369d9cfa4c1ed13abe55215b1f486a9b6f4d08d56c52f9",
+    "build/round12/app-language-callback-private/source.after.cs": "dd2aad304ae8637c68549934df27feef12755f0cd696f3541eb74f5cddb17f8f",
+    "build/round12/app-language-callback-private/freeze.json": "befab4ceb921d648cb45338ce49fa5e8f3f7d9edb05b3d13e1661be9fdb3d07d"
+  },
+  "historical_frozen_evidence_sha256": {},
+  "pinned_compiler_source_sha256": {},
+  "own_fixture_source_sha256": {
+    "tools/fixtures/round12-app-language-callback-private/fixtures/before/Fixture.cs": "7384172cfe793b0668e840312b4997c7c8cedc867c883a92ba2cd9b003e001c6",
+    "tools/fixtures/round12-app-language-callback-private/fixtures/candidate/Fixture.cs": "a8e761fe52f08c5258f54fa5613e0e989e91f6f69f29401479f81fc95add586d",
+    "tools/fixtures/round12-app-language-callback-private/fixtures/manual-control/Fixture.cs": "197587514997ac1900bb895cb90d511496ba0e181ca53876a25b5ad008f32f16",
+    "tools/fixtures/round12-app-language-callback-private/fixtures/wrong-initialization-order/Fixture.cs": "1caf820526b268f461168b58ee072e21874fb11e314e0af3f267e0c6344beff6"
+  },
+  "public_pure_api_reproduction_exact": true,
+  "target_compilations": 0,
+  "own_fixture_trivia_format_review": [],
+  "note": "Candidate source only; independent live model and game oracle remain mandatory.",
+  "source_model_rebinding": {
+    "proof": "reports/round12-app-language-callback-private-live-model-proof.json",
+    "sha256": "ff5de92bfa10caf708f578ce3f0a0b718334713f664c5a78635f638613e60ea8",
+    "original_bundle_preserved": true
+  }
+}

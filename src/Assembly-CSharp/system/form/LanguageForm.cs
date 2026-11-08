@@ -160,10 +160,9 @@ if (testedValue && callback_ != null)
 						else
 						{
 							FormManager instance = FormManager.GetInstance();
-							instance.Push(new LanguageForm
-							{
-								mode_ = 1
-							});
+							LanguageForm nextLanguageForm = new LanguageForm();
+nextLanguageForm.mode_ = 1;
+instance.Push(nextLanguageForm);
 							instance.Push(SubForm.MakeDialog(data.Error));
 						}
 					});
