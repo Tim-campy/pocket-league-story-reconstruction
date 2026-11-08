@@ -198,12 +198,13 @@ return;
 			if ((useTPlayers_.Size() > 1) && (apdat_.save_.ints[12] == 1)) {
 
 			camera_pos[1] += 40;
-			int num = 0;
-			draw_cnt = 0;
+			int x, num;
+x = num = 0;
+draw_cnt = 0;
 			int num2 = AppData.ClampMax(4, useTPlayers_.Size() - 1);
 			for (int num3 = num2; num3 >= 1; num3--)
 			{
-				int x = camera_pos[0] + (num3 - 1) * 8;
+				x = camera_pos[0] + (num3 - 1) * 8;
 				num = camera_pos[1] + (num3 - 1) * -4;
 				TPlayer tPlayer2 = (TPlayer)useTPlayers_.ElementAt(num3);
 				tPlayer2.direct_ = 2;

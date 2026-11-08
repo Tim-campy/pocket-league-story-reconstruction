@@ -10523,14 +10523,16 @@ if (SponsorData.IsExistNew())
 
 		public void DrawMenu_btmInfo(Graphics g)
 		{
-			int num = 0;
-			int num2 = 0;
+			int num3, num;
+num3 = num = 0;
+int num7, num2;
+num7 = num2 = 0;
 			TeamData teamData = apdat_.tData_[0];
 			GameView instance = GameView.GetInstance();
 			int matchInfoJoin = udat_.GetMatchInfoJoin();
 			if (matchInfoJoin != 2)
 			{
-				int num3 = instance.GetSideSoftWidth() + 1;
+				num3 = instance.GetSideSoftWidth() + 1;
 				num = instance.GetGameHeight() - 43 - 25;
 				g.SetColor(Graphics.GetColorOfRGB(46, 209, 80));
 				g.DrawRect(num3, num, 111f, 41f);
@@ -10542,9 +10544,7 @@ if (SponsorData.IsExistNew())
 				g.FillRect(num3 + 2, num + 2 + 20, 108f, 18f);
 				SetFontSize(g, 10);
 				int num4 = 0;
-				switch (matchInfoJoin)
-				{
-				case 0:
+				if (matchInfoJoin == 0) {
 				{
 					LeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];
 					g.SetColor(Graphics.GetColorOfRGB(255, 236, 238));
@@ -10552,15 +10552,15 @@ if (SponsorData.IsExistNew())
 					int[] leagueData2 = udat_.GetLeagueData(0);
 					g.DrawString(MyFormBase.LT("<0>位", leagueData2[7]), num3 + 105, num + 5, 4);
 					num4 = leagueData.schedule_ - udat_.matchInfoWeek_;
-					break;
+
 				}
-				case 1:
+				} else if (matchInfoJoin == 1) {
 				{
 					QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 					g.SetColor(Graphics.GetColorOfRGB(255, 236, 238));
 					g.DrawString(questMatchData.name_, num3 + 5, num + 5);
 					num4 = questMatchData.schedule_ - udat_.matchInfoWeek_;
-					break;
+
 				}
 				}
 				g.DrawString("次の試合", num3 + 5, num + 5 + 20);
@@ -10569,7 +10569,7 @@ if (SponsorData.IsExistNew())
 				g.DrawString(MyFormBase.LT("<0>月<1>週", num5 + "\t" + num6), num3 + 105, num + 5 + 20, 4);
 				ResetFontSize(g);
 			}
-			int num7 = instance.GetGameWidth() - 123 - instance.GetSideSoftWidth();
+			num7 = instance.GetGameWidth() - 123 - instance.GetSideSoftWidth();
 			num2 = instance.GetGameHeight() - 106;
 			g.DrawImage(apdat_.resCom2_.img[134], num7, num2);
 			num7 = instance.GetGameWidth() - 91 - instance.GetSideSoftWidth();
@@ -10604,22 +10604,20 @@ if (SponsorData.IsExistNew())
 				num2 = num + 14 * i;
 				int fanEva = FanActData.GetFanEva(i);
 				int fanDispParam = FanActData.GetFanDispParam(fanEva, i);
-				switch (i)
-				{
-				case 0:
+				if (i == 0) {
 					apdat_.DrawNumImageComma(g, 78, fanDispParam, num7 - 14, num2, 0, 0, 4);
-					break;
-				case 1:
+
+				} else if (i == 1) {
 				{
 					int num8 = 52;
 					int num9 = 0;
 					num9 = GameUtil.RateConvert(fanDispParam, 0, 100, 0, num8 - 2, true);
 					g.DrawImage(apdat_.resCom2_.img[129], num7 - 52 + 1 - 13, num2 + 2, 1, 10, num9, 8);
-					break;
+
 				}
-				case 2:
+				} else if (i == 2) {
 					apdat_.DrawNumImage(g, 78, fanDispParam, num7 - 14, num2 + 1, 0, 4);
-					break;
+
 				}
 			}
 		}
