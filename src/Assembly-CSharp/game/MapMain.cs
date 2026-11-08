@@ -466,18 +466,13 @@ for (int num = MAPCHIP_FIELD_HNUM - 1; num >= 0; num--)
 						num2 = mapchipMain2.fenceId_;
 						if (udat_.tAreaLv_ < 2)
 						{
-							switch (num2)
-							{
-							case 0:
+							if (num2 >= 0) {if (num2 == 0) {
 								mapchipMain2 = apdat_.mapchipMain_[MAPCHIP_IMG[num][i] + 1];
-								break;
-							case 3:
+								} else if (num2 == 3) {
 								mapchipMain2 = apdat_.mapchipMain_[MAPCHIP_IMG[num][i] - 1];
-								break;
-							case 6:
+								} else if (num2 == 6) {
 								num2 = 5;
-								break;
-							}
+								}}
 						}
 						if (BitUtil.Check(mapchipMain2.flag_, 1))
 						{
@@ -500,14 +495,14 @@ for (int num = MAPCHIP_FIELD_HNUM - 1; num >= 0; num--)
 						}
 					}
 					Image image = apdat_.resMapChipMain_.img[mapchipMain2.img_];
-					if (GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image.GetHeight(), 60, image.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))
-					{
+					if (!(GameUtil.ChRectHitRect(camera_pos[0], camera_pos[1] + 29 - image.GetHeight(), 60, image.GetHeight(), GameForm.VIEW_X, GameForm.VIEW_Y, GameForm.VIEW_W, GameForm.VIEW_H, false))) {continue;}
+
 						apdat_.InsertGameObject(5, 0, camera_pos[1], mapchipMain2.img_, mapchipMain2.seb_, 0, camera_pos[0], camera_pos[1], false, 0);
-						if (num2 >= 5)
-						{
+						if (num2 < 5) {continue;}
+
 							apdat_.InsertGameObject(6, 0, camera_pos[1] + 1, FENCE_DATA[num2][2], 0, 0, camera_pos[0] + FENCE_DATA[num2][0], camera_pos[1] + FENCE_DATA[num2][1], false, 0);
-						}
-					}
+
+
 				}
 			}
 		}
