@@ -231,8 +231,8 @@
       "queue_empty": false,
       "rule": "r12-kairo-char-empty-concat-constrained-object",
       "assembly": "KairoLibrary",
-      "pair": "call => constrained. / callvirt",
-      "hypothesis": "Spell only the character-to-string expression as Char plus empty string, restoring constrained object ToString and its temporary; keep the genuine incomplete string-concat model status and require the emitted five-local signature.",
+      "pair": "constrained. => call",
+      "hypothesis": "Spell the character-to-string expression as Char plus empty string, restoring constrained.Char and callvirt Object.ToString while preserving the five emitted locals. The model prediction of four locals remains incomplete.",
       "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
       "gains": {
         "KairoLibrary": {
@@ -257,6 +257,60 @@
           "previous_after_sha256": "49310e7e66385c0607cf47a71aa95b6bd27353e0bb0c6927f1f7a1d4a62b8eb8",
           "new_after_measurement": "reports/round12-a07-postverify01-measurement.json",
           "new_after_sha256": "1bc6ea44de1926a2730d85064ac91f7a7dc1b0d2a72877d57f8f14c88a699a75",
+          "gains_unchanged": true
+        }
+      ],
+      "submitted_pair_label": "call => constrained. / callvirt",
+      "submitted_hypothesis": "Spell only the character-to-string expression as Char plus empty string, restoring constrained object ToString and its temporary; keep the genuine incomplete string-concat model status and require the emitted five-local signature.",
+      "diagnostic_label_correction": {
+        "source": "reports/round12-a07-before-measurement.json",
+        "source_sha256": "86ba8db698bf753a30580f400f59c7ece2bdec100492819645f129a805946b00",
+        "original_to_rebuilt_pair": "constrained. => call",
+        "original_offset": 56,
+        "rebuilt_offset": 56,
+        "original_locals": 5,
+        "before_emitted_locals": 5,
+        "signature_count_changed": false,
+        "reason": "Previous pair label described transformation direction; this row now follows original-to-rebuilt convention. No source, method states, counters or measurement hashes changed."
+      }
+    },
+    {
+      "cycle": 8,
+      "part_cycle": 8,
+      "label": "a08",
+      "phase": "A",
+      "primary_target": "kairo.unity.ui.TextLayout::AddPictograph(System.String,kairo.unity.ui.Seb,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)->kairo.unity.ui.Pictograph",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-kairo-pictograph-local-inside-dictionary-setter",
+      "assembly": "KairoLibrary",
+      "pair": "named assignment => assignment-result temporary",
+      "hypothesis": "Move the Pictograph local assignment inside the existing dictionary setter, preserving constructor arguments and dictionary evaluation order, to remove only the redundant result temporary; require one emitted local and maxstack9.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 1,
+          "il_bytes_gained": 105
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 105,
+      "before_measurement": "reports\\round12-a08-before-measurement.json",
+      "before_sha256": "4e080f1c0b01915fde8466747d55c82f975137a46037dca94781720f40d172f0",
+      "after_measurement": "reports/round12-a08-postverify01-measurement.json",
+      "after_sha256": "df091e4e74320378ed3ce976cc780867ad3c0f849feacaef62014028158d0967",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-a08-after-measurement.json",
+          "previous_after_sha256": "5377719a0b1008acde31b91669d0a3fb8aaf96badf0d824c9a136ccf64cb8948",
+          "new_after_measurement": "reports/round12-a08-postverify01-measurement.json",
+          "new_after_sha256": "df091e4e74320378ed3ce976cc780867ad3c0f849feacaef62014028158d0967",
           "gains_unchanged": true
         }
       ]

@@ -33,7 +33,12 @@
     {
       "status": "CONFIRMADA",
       "hypothesis": "A família r12-kairo-char-empty-concat-constrained-object produz ao menos um novo corpo integral.",
-      "evidence": "a07: 1 matched, 128 IL bytes; Novos corpos aprovados; 1 tentativas da regra, 1 avancos. Proposta investigada: Spell only the character-to-string expression as Char plus empty string, restoring constrained object ToString and its temporary; keep the genuine incomplete string-concat model status and require the emitted five-local signature."
+      "evidence": "a07: 1 matched, 128 IL bytes; Novos corpos aprovados; 1 tentativas da regra, 1 avancos. Proposta investigada: Spell the character-to-string expression as Char plus empty string, restoring constrained.Char and callvirt Object.ToString while preserving the five emitted locals. The model prediction of four locals remains incomplete."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "A família r12-kairo-pictograph-local-inside-dictionary-setter produz ao menos um novo corpo integral.",
+      "evidence": "a08: 1 matched, 105 IL bytes; Novos corpos aprovados; 1 tentativas da regra, 1 avancos. Proposta investigada: Move the Pictograph local assignment inside the existing dictionary setter, preserving constructor arguments and dictionary evaluation order, to remove only the redundant result temporary; require one emitted local and maxstack9."
     }
   ]
 }

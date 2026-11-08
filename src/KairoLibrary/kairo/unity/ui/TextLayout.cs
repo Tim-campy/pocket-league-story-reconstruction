@@ -1320,7 +1320,7 @@ if (num2) {
 				pictograph.Margin = margin;
 				pictograph.Transform = new Matrix();
 			} else {
-				pictograph = (pictographList_[key] = new Pictograph(key, seb, frame, wait, x, y, margin));
+				pictographList_[key] = (pictograph = new Pictograph(key, seb, frame, wait, x, y, margin));
 			}
 			return pictograph;
 		}
