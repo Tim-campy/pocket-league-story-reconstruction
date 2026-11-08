@@ -123,7 +123,8 @@ def load_context():
             document = read(path)
             if document.get('completed'):
                 historical.append((path.name, document))
-    return dict(cfg=cfg, stop=stop, baseline=baseline, final=final, journal=journal,
+    control = read(cfg['control_extractor_validation']) if cfg.get('control_extractor_validation') else None
+    return dict(cfg=cfg, stop=stop, baseline=baseline, final=final, journal=journal, control=control,
                 receipts=receipts, metadata=metadata, models=models, engines=engines,
                 historical=historical, stable_sources=stable_sources,
                 manifests=manifests, baseline_manifests=baseline_manifests)
@@ -167,6 +168,13 @@ def render(ctx):
          m['matched_model_complete'], m['matched_complete_exact'], pct(m['matched_complete_exact'], m['matched_model_complete']),
          pct(m['matched_model_complete'], m['matched_bodies']), m.get('matched_mapped_incomplete', 'UNKNOWN')]
         for assembly, m in ctx['models'].items()]))
+    if ctx.get('control'):
+        control = ctx['control']
+        add('Extrator smcs: medição somente de leitura no corpus final; nenhuma árvore incompleta foi tratada como recuperação completa.')
+        add(table(['Corpus', 'Métodos', 'Duas árvores completas', 'Árvores iguais', 'Cobertura', 'Igualdade entre completas'], [
+            [name, row['methods'], row['paired_tree_complete'], row['trees_equal'],
+             pct(row['paired_tree_complete'], row['methods']), pct(row['trees_equal'], row['paired_tree_complete'])]
+            for name, row in [('matched', control['matched']), ('pendentes', control['pending'])]]))
     add(SECTIONS[3])
     for assembly, a in ctx['final']['assemblies'].items():
         add(assembly + ': ' + str(a['divergent_bodies']) + ' corpos divergentes / ' + str(a['divergent_original_il_bytes']) + ' bytes de IL.')
@@ -201,9 +209,17 @@ def render(ctx):
     add('Essas exceções são somente contabilidade de diferenças: nenhum byte é normalizado. Externos não foram decompilados nesta rodada; seu inventário/provas anteriores permanecem em docs/toolchain.md. DEX/Java permanece fora do escopo.')
     for assembly, row in cfg.get('raw_evaluations', {}).items():
         add('Raw ' + assembly + ': gatilho medido em ' + row['trigger_label'] + '; recibos ' + ', '.join(row['reports']) + '. Resultado integral deve ser lido nesses recibos; não se presume igualdade por fechamento de métodos.')
+    if not cfg.get('raw_evaluations'):
+        add('Comparação bruta completa não repetida nesta rodada: KairoLibrary ainda tem corpos divergentes e Assembly-CSharp tem mais de dez. Além do caminho PDB medido na Parte A, as diferenças remanescentes de tabelas, heaps, seções e suas causas são UNKNOWN neste checkpoint; igualdade estrutural não prova igualdade bruta.')
     add(SECTIONS[6])
     add('Motivo da parada: ' + ctx['stop']['reason'] + '. Ciclos D: ' + str(len(d_rows(ctx['journal']))) + '/' + str(cfg['maximum_cycles']) + '; ciclos C: ' + str(sum(c['phase'] == 'C' for c in cycles)) + '.')
-    add('Fila inicial explícita precedeu a descoberta autônoma. Após ela, Kairo teve prioridade até fechar seus corpos. A/B: zero ganhos de métodos e IL. Orçamento de previsões incompletas: 12 variantes por método/passe e 24/ciclo; previsões completas erradas foram recusadas.')
+    add('Fila inicial explícita precedeu a descoberta autônoma. Após ela, os ciclos D04–D06 priorizaram Kairo, que ainda não fechou seus corpos. A/B: zero ganhos de métodos e IL. Orçamento de previsões incompletas: 12 variantes por método/passe e 24/ciclo; previsões completas erradas foram recusadas.')
+    for note in cfg.get('final_report_notes', []):
+        add(note)
+    pending = [q for q in cfg['prepared_queue'] if q['status'] == 'pending']
+    if pending:
+        add(table(['Proposta preservada sem teste no jogo', 'Métodos', 'IL original potencial', 'Estado'], [
+            [q['id'], ', '.join(q['method_ids']), q['potential_original_il_bytes'], 'UNKNOWN — não adotada'] for q in pending]))
     add(' '.join(ctx['stop'].get('blockers', [])) or 'UNKNOWN: bloqueios externos não informados.')
     add(SECTIONS[7])
     add('\n'.join(str(i) + '. ' + str(row) for i, row in enumerate(ctx['stop']['recommendations'], 1)))

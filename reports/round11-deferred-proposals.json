@@ -1,0 +1,91 @@
+{
+  "operation": "preserve-prepared-work-at-user-requested-stop",
+  "checkpoint": "d5aaa33c330e4137218bc8216a48c348e672bef7",
+  "no_new_target_compilations": true,
+  "production_models": {
+    "Assembly-CSharp": {
+      "module": "round11_slot_model",
+      "source": "tools/Round11SlotModel.cs",
+      "client": "tools/round11_slot_model.py",
+      "solver": "tools/round7_slot_solver.py",
+      "validation": "reports/round11-slot-model-validation.json",
+      "corpus_baseline": "build/round11/cycles/c06/after/Assembly-CSharp"
+    },
+    "KairoLibrary": {
+      "module": "round8_roslyn_model",
+      "source": "tools/Round8RoslynModel.cs",
+      "client": "tools/round8_roslyn_model.py",
+      "solver": "tools/round7_roslyn_solver.py",
+      "validation": "reports/round8-roslyn-model-validation.json",
+      "corpus_baseline": "build/round8/baseline/KairoLibrary"
+    }
+  },
+  "proposals": [
+    {
+      "id": "prepared-kairo-pause-notify",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.ui.IApplication::OnApplicationPause(System.Boolean)->System.Void"
+      ],
+      "potential_original_il_bytes": 199,
+      "source_proposals": "build/round11/kairo-pause-transpose/ready-for-game-probe.json",
+      "source_proposals_sha256": "6ffa40a52f73a4e8a29ccad28f6bb498e53de758678413c6f690cf4ee9d6c792",
+      "private_publication_pending": true,
+      "rule_prefix": "r11-pause-notify-receivers-and-branch-scopes"
+    },
+    {
+      "id": "prepared-kairo-transpose-stack",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.m3d4.util3d.Transform::Transpose()->System.Void"
+      ],
+      "potential_original_il_bytes": 197,
+      "source_proposals": "build/round11/kairo-pause-transpose/ready-for-game-probe.json",
+      "source_proposals_sha256": "6ffa40a52f73a4e8a29ccad28f6bb498e53de758678413c6f690cf4ee9d6c792",
+      "private_publication_pending": true,
+      "rule_prefix": "r11-array-initializer-last-use-stack-consumption"
+    },
+    {
+      "id": "prepared-kairo-cache-material",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.graphics.MaterialManager::GetMaterial(kairo.unity.graphics.Material,kairo.unity.ui.Image)->kairo.unity.graphics.Material"
+      ],
+      "potential_original_il_bytes": 110,
+      "source_proposals": "build/round11/kairo-material-cache/source-patches.json",
+      "source_proposals_sha256": "638e9ed293ecb3ac4e4d365a4b10980830d6e8bf446f00d86df80f441a0dd86a",
+      "private_publication_pending": true,
+      "note": "Prepared before user stop; not compiled in game. Mesh requires corrected and corpus-validated slot model before a complete prediction can approve the candidate."
+    },
+    {
+      "id": "prepared-kairo-cache-mesh",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.graphics.MeshManager::GetMeshBuilder(kairo.unity.graphics.Material)->kairo.unity.graphics.MeshBuilder"
+      ],
+      "potential_original_il_bytes": 141,
+      "source_proposals": "build/round11/kairo-material-cache/source-patches.json",
+      "source_proposals_sha256": "638e9ed293ecb3ac4e4d365a4b10980830d6e8bf446f00d86df80f441a0dd86a",
+      "private_publication_pending": true,
+      "note": "Prepared before user stop; not compiled in game. Mesh requires corrected and corpus-validated slot model before a complete prediction can approve the candidate."
+    }
+  ],
+  "pending_methods": 4,
+  "potential_original_il_bytes": 647
+}

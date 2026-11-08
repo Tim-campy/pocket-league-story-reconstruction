@@ -20,6 +20,7 @@ class Protocol(unittest.TestCase):
         self.cfg['phase'] = 'part_C'
         self.cfg['autonomous_started'] = False
         self.cfg.pop('raw_evaluations', None)
+        self.cfg.pop('requested_stop', None)
         # Unit fixtures describe the initial queue independently of its live
         # execution status; consuming a real queue item must not mutate tests.
         for item in self.cfg['prepared_queue']:
@@ -91,6 +92,18 @@ class Protocol(unittest.TestCase):
         self.empty_queue()
         self.append_d(5, gain=0)
         self.assertEqual('five_zero_D_cycles_with_queue_empty_before_and_after', controller.stop_reason(self.cfg, self.journal))
+
+    def test_explicit_user_report_stops_with_ready_queue(self):
+        self.cfg['requested_stop'] = dict(source='user', request='me envie o relatorio final',
+                                          operation='final_report_requested')
+        self.assertEqual('user_requested_final_report', controller.stop_reason(self.cfg, self.journal))
+        with self.assertRaises(controller.GuardError):
+            controller.validate_cycle(self.cfg, self.journal, self.request(), self.measurement)
+
+    def test_inferred_report_stop_is_not_authorization(self):
+        self.cfg['requested_stop'] = dict(source='agent', request='me envie o relatorio final',
+                                          operation='final_report_requested')
+        self.assertIsNone(controller.stop_reason(self.cfg, self.journal))
 
     def test_queue_consumption_zero_is_not_empty_before(self):
         self.empty_queue()

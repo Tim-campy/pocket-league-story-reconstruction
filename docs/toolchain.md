@@ -1,6 +1,29 @@
 # Toolchain e evidências
 
-## Estado atual — rodada iniciada em 66eea9d
+## Estado atual — encerramento da rodada 11 (base b1116f9)
+
+Parada solicitada pelo usuário: **“me envie o relatorio final”**, após **6 ciclos D e 9 avaliações C**. Checkpoint de código: `d5aaa33c330e4137218bc8216a48c348e672bef7`. Não houve D07; os limites de quarenta ciclos e cinco ciclos sem ganho não foram atingidos.
+
+| Assembly | Matched anterior → atual / total | IL matched anterior → atual / total | Tipos iguais |
+| --- | --- | --- | --- |
+| KairoLibrary | 3261 → 3272 / 3287 | 263611 → 268111 / 269894 | 337/337 |
+| Assembly-CSharp | 1892 → 1898 / 1958 | 549322 → 561744 / 601603 | 129/129 |
+
+Total: **5170/5245 métodos, 829855/871497 bytes IL**; ganho de **17 métodos e 16922 bytes**, zero regressões. Restam 13 corpos divergentes Kairo (1765 bytes IL), 59 App (39852 bytes IL) e três corpos iguais retidos por vínculos de auxiliares. As 82 declarações sem corpo passam nos metadados.
+
+Compiladores e referências preservados: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** e **Unity 5.3.4f1 / smcs 2.6.5.0**. Kairo agora recebe `/pdb:E:\workspace\Library\KairoLibrary\obj\Android\KairoLibrary.pdb`. A unidade SUBST tem propriedade verificada dentro de `build/`; o compilador emite o PDB nesse caminho. Nenhum byte da DLL é editado depois. As **97 diferenças de caminho/padding do CodeView desapareceram**. [Prova](../reports/round11-pdb-path.json).
+
+Critério final do APK: os payloads comprimidos de todas as entradas, exceto as duas DLLs e os portadores exatos da assinatura, permanecem idênticos, com ordem, método e alinhamento preservados. As DLLs são comparadas descomprimidas e integralmente, sem resolução de tokens ou normalização, permitindo apenas os campos comprovados. Raw DEFLATE **nível 6, wbits=-15, memLevel=8, Z_DEFAULT_STRATEGY, Z_FINISH**, zlib **1.3.1**, reproduziu os streams originais completos de **248092 bytes (Kairo)** e **321171 bytes (App)**. Encoder histórico exato: **UNKNOWN**. Nenhum APK novo foi montado ou executado nesta rodada. [Contrato](notes/round11-apk-final-comparison.md), [calibração](../reports/round11-apk-contract.json).
+
+Modelos de produção: `round11_slot_model` para smcs e `round8_roslyn_model` para Roslyn. Quatro propostas privadas ficaram sem teste no jogo: 4 métodos/647 bytes IL. MeshManager.GetMeshBuilder comprova uma limitação do modelo Roslyn: falta prever o temporário de getter de struct retornado por indexador. Uma extensão foi medida em privado, mas **não foi selecionada nem publicada como produção**. [Fila preservada](../reports/round11-deferred-proposals.json).
+
+As exceções permanecem: Kairo — Module.Mvid, COFF.TimeDateStamp, IMAGE_DEBUG_DIRECTORY.TimeDateStamp e CodeView.RSDS.PdbGuid; App — Module.Mvid e COFF.TimeDateStamp. O caminho do PDB não é exceção. Executáveis históricos exatos, comando original e hashes históricos das referências continuam **UNKNOWN**.
+
+Errata: Assembly-CSharp compila contra a KairoLibrary original como referência de metadados/API; o APK funcional anterior utilizou a DLL reconstruída. A seleção não mudou. Init2 tinha 68 locais em quantidade, mas 25 posições de tipos divergiam antes da correção; não era assinatura igual.
+
+Os números abaixo são históricos. [Relatório completo desta rodada](../reports/round11-final-report.md).
+
+## Histórico — rodada iniciada em 66eea9d
 
 Produção preservada: **Microsoft.Net.Compilers 1.1.0 / csc 1.1.0.51109** para KairoLibrary; **Unity 5.3.4f1 / smcs 2.6.5.0** para Assembly-CSharp. Compiladores, defines, flags, perfis, referências e sua ordem não mudaram. Nenhuma nova exceção não determinística.
 

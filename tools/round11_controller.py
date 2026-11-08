@@ -36,6 +36,11 @@ def measured_zero_streak(journal):
 
 
 def stop_reason(cfg, journal):
+    request = cfg.get('requested_stop', {})
+    if (request.get('source') == 'user' and
+            request.get('request') == 'me envie o relatorio final' and
+            request.get('operation') == 'final_report_requested'):
+        return 'user_requested_final_report'
     if len(d_rows(journal)) >= cfg['maximum_cycles']:
         return 'maximum_40_D_cycles'
     if queue_empty(cfg) and measured_zero_streak(journal) >= cfg['consecutive_zero_stop']:

@@ -55,12 +55,20 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--recommendations',required=True,type=Path)
     p.add_argument('--push',action='store_true')
+    p.add_argument('--user-requested-report',action='store_true',
+                   help='Record the current explicit user request for the final report; run no new reconstruction cycle')
     args=p.parse_args()
     cfg=read('config/round11-protocol.json');journal=read('reports/round11-cycle-journal.json')
     if cfg.get('report_schema_reviewed') is not True:raise ValueError('Review Round10 ABC report adapter before finalization')
     autonomous=[r for r in journal['cycles'] if r.get('phase')=='D']
     pending=[q['id'] for q in cfg['prepared_queue'] if q['status']=='pending']
-    if len(autonomous)>=cfg['maximum_cycles']:
+    if args.user_requested_report:
+        cfg['requested_stop']={'source':'user','request':'me envie o relatorio final',
+            'operation':'final_report_requested',
+            'after_autonomous_cycle':len(autonomous),
+            'checkpoint_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT).decode().strip()}
+        reason='Solicitação explícita do usuário: me envie o relatorio final; parada após o ciclo D06'
+    elif len(autonomous)>=cfg['maximum_cycles']:
         reason=f"Limite de {cfg['maximum_cycles']} ciclos autônomos concluídos"
     elif not pending and journal['consecutive_zero_cycles']>=cfg['consecutive_zero_stop']:
         reason=f"{journal['consecutive_zero_cycles']} ciclos D consecutivos sem novo matched, com a fila preparada vazia"
@@ -93,7 +101,7 @@ def main():
         'autonomous_cycles_completed':len(autonomous),
         'consecutive_zero_D_cycles':journal['consecutive_zero_cycles'],
         'prepared_pending_at_stop':pending,
-        'blockers':['Nenhuma instalação, arquivo ou decisão de escopo exigida para esta rodada. Métodos restantes continuam divergentes; a parada segue o limite autorizado.'],
+        'blockers':['Nenhuma instalação ou arquivo solicitado ao usuário. A rodada foi encerrada pelo pedido de relatório final, antes dos limites normais; há quatro propostas privadas não compiladas no jogo e um defeito conhecido do modelo Roslyn em um método pendente.'],
         'recommendations':recommendations,
         'preparation_notes':cfg.get('preparation_notes',[])}
     (ROOT/'reports/round11-stop.json').write_text(json.dumps(stop,indent=2)+'\n',encoding='utf-8',newline='\n')

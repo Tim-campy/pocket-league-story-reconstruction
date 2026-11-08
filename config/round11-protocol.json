@@ -28,7 +28,7 @@
     }
   },
   "baseline_commit": "b1116f9635778eaf19218175bb7391ee0adf2a9a",
-  "phase": "autonomous_D",
+  "phase": "stopped",
   "autonomous_started": true,
   "required_parts": {
     "A": "complete",
@@ -319,6 +319,70 @@
         "kairo.unity.util.Language::TranslateSoftLabel(System.String)->System.String"
       ],
       "baseline_equal_ids": []
+    },
+    {
+      "id": "prepared-kairo-pause-notify",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.ui.IApplication::OnApplicationPause(System.Boolean)->System.Void"
+      ],
+      "potential_original_il_bytes": 199,
+      "source_proposals": "build/round11/kairo-pause-transpose/ready-for-game-probe.json",
+      "source_proposals_sha256": "6ffa40a52f73a4e8a29ccad28f6bb498e53de758678413c6f690cf4ee9d6c792",
+      "private_publication_pending": true,
+      "rule_prefix": "r11-pause-notify-receivers-and-branch-scopes"
+    },
+    {
+      "id": "prepared-kairo-transpose-stack",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.m3d4.util3d.Transform::Transpose()->System.Void"
+      ],
+      "potential_original_il_bytes": 197,
+      "source_proposals": "build/round11/kairo-pause-transpose/ready-for-game-probe.json",
+      "source_proposals_sha256": "6ffa40a52f73a4e8a29ccad28f6bb498e53de758678413c6f690cf4ee9d6c792",
+      "private_publication_pending": true,
+      "rule_prefix": "r11-array-initializer-last-use-stack-consumption"
+    },
+    {
+      "id": "prepared-kairo-cache-material",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.graphics.MaterialManager::GetMaterial(kairo.unity.graphics.Material,kairo.unity.ui.Image)->kairo.unity.graphics.Material"
+      ],
+      "potential_original_il_bytes": 110,
+      "source_proposals": "build/round11/kairo-material-cache/source-patches.json",
+      "source_proposals_sha256": "638e9ed293ecb3ac4e4d365a4b10980830d6e8bf446f00d86df80f441a0dd86a",
+      "private_publication_pending": true,
+      "note": "Preparada antes da parada; n\u00e3o compilada no jogo. Mesh exige corre\u00e7\u00e3o gen\u00e9rica e valida\u00e7\u00e3o do modelo antes de aprovar o candidato."
+    },
+    {
+      "id": "prepared-kairo-cache-mesh",
+      "selection_mode": "autonomous_selection",
+      "phase": "D",
+      "assembly": "KairoLibrary",
+      "status": "pending",
+      "readiness": "FROZEN_OWN_FIXTURES_GAME_UNKNOWN",
+      "method_ids": [
+        "kairo.unity.graphics.MeshManager::GetMeshBuilder(kairo.unity.graphics.Material)->kairo.unity.graphics.MeshBuilder"
+      ],
+      "potential_original_il_bytes": 141,
+      "source_proposals": "build/round11/kairo-material-cache/source-patches.json",
+      "source_proposals_sha256": "638e9ed293ecb3ac4e4d365a4b10980830d6e8bf446f00d86df80f441a0dd86a",
+      "private_publication_pending": true,
+      "note": "Preparada antes da parada; n\u00e3o compilada no jogo. Mesh exige corre\u00e7\u00e3o gen\u00e9rica e valida\u00e7\u00e3o do modelo antes de aprovar o candidato."
     }
   ],
   "baseline_measurement": "reports/round11-baseline-measurement.json",
@@ -395,7 +459,8 @@
     "Root report QA corrected effective compiler options to come from build manifests, explicitly rejects nested adoption losses, and reports model accuracy and coverage.",
     "A late round11_transform import was detected before any target trial and corrected to the existing immutable round10 TransformClient; an AST import-graph regression check covers nested imports.",
     "Immutable aliases for the A/B after-measurement are in reports/round11-after-ab-frozen-provenance.json; all recorded dump, receipt and build hashes equal the frozen Part A snapshot.",
-    "Correction to previous report: Assembly-CSharp compiles against original KairoLibrary as a metadata/API reference; the test APK contained reconstructed KairoLibrary. No compilation reference was changed."
+    "Correction to previous report: Assembly-CSharp compiles against original KairoLibrary as a metadata/API reference; the test APK contained reconstructed KairoLibrary. No compilation reference was changed.",
+    "User explicitly requested the final report after D06; no D07 or new target candidates were run. Four frozen private proposals remain pending, totaling647 original IL bytes. This is not a forty-cycle or five-zero stop."
   ],
   "orchestration_review": {
     "pure_tests": 21,
@@ -470,5 +535,31 @@
   },
   "persistent_repertoire_rules": [
     "r11-c5"
-  ]
+  ],
+  "requested_stop": {
+    "source": "user",
+    "request": "me envie o relatorio final",
+    "operation": "final_report_requested",
+    "after_autonomous_cycle": 6,
+    "checkpoint_commit": "d5aaa33c330e4137218bc8216a48c348e672bef7"
+  },
+  "final_report_notes": [
+    "Parada solicitada pelo usu\u00e1rio ap\u00f3s D06, com zero ciclos D consecutivos sem ganho. O limite de 40 e a condi\u00e7\u00e3o de 5 zeros n\u00e3o foram atingidos. N\u00e3o houve D07. Quatro propostas privadas congeladas permanecem pendentes: 4 m\u00e9todos/647 bytes IL; fixtures n\u00e3o s\u00e3o ganho real.",
+    "C5: espelhamento gen\u00e9rico compilou 7 candidatos smcs e 5 Roslyn sem avan\u00e7o. Map.SetCoatLine fechou ao restaurar oito subtra\u00e7\u00f5es Int32 na forma 0-x. A prote\u00e7\u00e3o foi refor\u00e7ada contra convers\u00f5es definidas pelo usu\u00e1rio; os 12 trials anteriores eram Int32 nativos e continuam v\u00e1lidos.",
+    "C1 inicial: INFRA_NOT_EVALUATED, 24 alvos sem PDB mape\u00e1vel, zero trials. O espelhamento autenticado de PDB corrigiu a infraestrutura e c02 fechou SoundOGG. Init2 teve rejei\u00e7\u00e3o de v\u00ednculo de modelo antes de trials; o v\u00ednculo foi refeito e D03 fechou o corpo.",
+    "Dois testes puros falharam em D04 por reutilizar estados da fila viva; a fixture foi isolada e 21 testes passaram. Na finaliza\u00e7\u00e3o, 23 testes passaram, incluindo parada expl\u00edcita e recusa de parada inferida pelo agente.",
+    "Roslyn8: MeshManager.GetMeshBuilder prev\u00ea 4 locais contra 5 reais, por faltar tempor\u00e1rio KeyValuePair de getter sobre struct por valor. Extens\u00e3o privada medida em 3196 corpos matched: 2250 previs\u00f5es completas/exatas, zero falsos completos. N\u00e3o foi selecionada nem publicada. Nenhuma proposta nova foi compilada no jogo ap\u00f3s D06.",
+    "Errata: Assembly-CSharp referencia KairoLibrary original como metadados/API na compila\u00e7\u00e3o; o APK funcional anterior usou a DLL reconstru\u00edda. A refer\u00eancia n\u00e3o mudou. Init2 tinha 68 locais, mas 25 posi\u00e7\u00f5es de tipos divergiam antes da corre\u00e7\u00e3o."
+  ],
+  "final_model_measurements": {
+    "Assembly-CSharp": {
+      "validation": "reports/round11-final-smcs-model-validation.json",
+      "corpus_baseline": "build/round11/final-corpus/Assembly-CSharp"
+    },
+    "KairoLibrary": {
+      "validation": "reports/round11-final-roslyn-model-validation.json",
+      "corpus_baseline": "build/round11/final-corpus/KairoLibrary"
+    }
+  },
+  "control_extractor_validation": "reports/round11-control-validation-final.json"
 }

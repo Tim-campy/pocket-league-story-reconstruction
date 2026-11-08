@@ -1,0 +1,36 @@
+{
+  "operation": "measured-round11-stop",
+  "new_reconstruction_work_stopped": true,
+  "reason": "Solicita\u00e7\u00e3o expl\u00edcita do usu\u00e1rio: me envie o relatorio final; parada ap\u00f3s o ciclo D06",
+  "cycles_completed": 15,
+  "autonomous_cycles_completed": 6,
+  "consecutive_zero_D_cycles": 0,
+  "prepared_pending_at_stop": [
+    "prepared-kairo-pause-notify",
+    "prepared-kairo-transpose-stack",
+    "prepared-kairo-cache-material",
+    "prepared-kairo-cache-mesh"
+  ],
+  "blockers": [
+    "Nenhuma instala\u00e7\u00e3o ou arquivo solicitado ao usu\u00e1rio. A rodada foi encerrada pelo pedido de relat\u00f3rio final, antes dos limites normais; h\u00e1 quatro propostas privadas n\u00e3o compiladas no jogo e um defeito conhecido do modelo Roslyn em um m\u00e9todo pendente."
+  ],
+  "recommendations": [
+    "Validar e selecionar a extens\u00e3o gen\u00e9rica do modelo Roslyn para getter de struct retornado por indexador; testar MaterialManager.GetMaterial e MeshManager.GetMeshBuilder. Potencial: 2 m\u00e9todos/251 bytes IL; fixtures passaram, resultado real UNKNOWN.",
+    "Testar as propostas congeladas de IApplication.OnApplicationPause e Transform.Transpose. Potencial: 2 m\u00e9todos/396 bytes IL; fixtures inteiras passaram, sem compila\u00e7\u00e3o do jogo at\u00e9 a parada.",
+    "Continuar a KairoLibrary pelos outros nove corpos, come\u00e7ando por LineupData.GetRatio (192 bytes) e a lambda KairoBase.Start (182 bytes). S\u00e3o 2 alvos/374 bytes de busca, sem ganho previsto. Ap\u00f3s fechar Kairo, medir bytes brutos e voltar ao Assembly-CSharp."
+  ],
+  "preparation_notes": [
+    "Parallel orchestration workers were restricted to new round11 files; the root executed the authorized A/B build-path change and full verifier sequentially.",
+    "A and B are evidence-only phases: no method or IL gains may be attributed to them. C1-C6 must each receive full official verification before D.",
+    "The three explicit initial recommendations run before autonomous discovery; App initial items are the only priority exception while Kairo still diverges. Do not wait indefinitely behind Kairo closure.",
+    "All incompleteness, failed trials and partial prefix advances must remain explicit. Only official verifier promotes methods.",
+    "No generated class is hand-written, no original IL is copied into output, and no assembly normalization is permitted.",
+    "Part A output uses the historical PDB path via an owned SUBST drive, with no post-build DLL edit; the initial measurement is retained separately from the frozen final A proof.",
+    "A one-off read-only diagnostic had an unmatched-parenthesis syntax error before any read/write; it was corrected and the dedicated proof tool passed.",
+    "Root report QA corrected effective compiler options to come from build manifests, explicitly rejects nested adoption losses, and reports model accuracy and coverage.",
+    "A late round11_transform import was detected before any target trial and corrected to the existing immutable round10 TransformClient; an AST import-graph regression check covers nested imports.",
+    "Immutable aliases for the A/B after-measurement are in reports/round11-after-ab-frozen-provenance.json; all recorded dump, receipt and build hashes equal the frozen Part A snapshot.",
+    "Correction to previous report: Assembly-CSharp compiles against original KairoLibrary as a metadata/API reference; the test APK contained reconstructed KairoLibrary. No compilation reference was changed.",
+    "User explicitly requested the final report after D06; no D07 or new target candidates were run. Four frozen private proposals remain pending, totaling647 original IL bytes. This is not a forty-cycle or five-zero stop."
+  ]
+}
