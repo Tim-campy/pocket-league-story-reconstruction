@@ -212,12 +212,7 @@ namespace system.form
 		public override void SetTouchValue(int type, int value)
 		{
 			type = (int)(type & 0xFFFF0000u);
-			int num = type;
-			if (num != 131072) {
-				base.SetTouchValue(type, value);
-			} else {
-				select_ = value;
-			}
+			switch (type) {case 131072: select_ = value; break; default: base.SetTouchValue(type,value); break;}
 		}
 
 		public override bool CheckMainWindow()

@@ -1031,7 +1031,7 @@ apdat_.InsertGameObject(7, 0, camera_pos[1] + image.GetHeight(), mapObjects_[i].
 			if ((parts_id == 3)) { if (udat_.ball_.pos_.z_ < GOAL1_GLOBAL_POS[2].z_)
 				{
 					return udat_.ball_.camera_pos_[1] - 1;
-				} }
+				} } else if (parts_id == 4) {} else if (parts_id == 5) {} else if (parts_id == 6) {} else if (parts_id == 7) {}
 			return 0;
 		}
 	}

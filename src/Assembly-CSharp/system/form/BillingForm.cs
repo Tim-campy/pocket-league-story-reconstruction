@@ -843,14 +843,13 @@ while (scrollValue_ > 0 && num < scrollValue_ + showMax)
 			TouchComponent component = e.component;
 			if (type_ == 2 && component.id == 4)
 			{
-				int type = e.type;
-				if ((type != 1) && (type != 2)) { } else {
+				switch (e.type) {case 2: goto case 1; case 1: {
 					select2_ = component.value;
 					if (e.type == 1)
 					{
 						canvas_.KeyClick(2048);
 					}
-				}
+				break;}}
 				return false;
 			}
 			return true;

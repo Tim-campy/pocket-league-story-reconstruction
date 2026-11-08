@@ -298,8 +298,9 @@ namespace form
 				{
 					throw new ArgumentException("getTouchValue() : not found value type (" + type + ")");
 				}
-				return 0;
+				break;
 			}
+return 0;
 		}
 
 		public override void SetTouchValue(int type, int value)
