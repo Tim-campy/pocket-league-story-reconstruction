@@ -1,0 +1,10 @@
+public class Graphics{public void SetOrigin(int x,int y){}}public static class MyFormBase{public static string LT(string s){return s;}public static bool Jp(){return true;}}public static class AppData{public static string[] resourceString;}public class Parent{public virtual void Draw(Graphics g){}}public class Fixture:Parent{public int state_,frame_,bowWait_,loadCnt_,loadMax_;public void SmartBeginPaint(Graphics g){}public void LoadBox(Graphics g,string text,int current,int max){}public override void Draw(Graphics g){base.Draw(g);SmartBeginPaint(g);if(state_==0){}else{if(state_==1){string text=MyFormBase.LT("start");for (int i = 4; i < frame_ && bowWait_ == 0; i += 4)
+{text+=".";}LoadBox(g,text,loadCnt_,loadMax_);}else if(state_==2){string empty=string.Empty;if (MyFormBase.Jp())
+{
+empty = MyFormBase.LT("verify");
+}
+else
+{
+empty = AppData.resourceString[6];
+}for (int j = 4; j < frame_ && bowWait_ == 0; j += 4)
+{empty+=".";}LoadBox(g,empty,0,0);}}g.SetOrigin(0,0);}}

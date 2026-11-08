@@ -221,12 +221,8 @@ namespace form
 				if (state_ == 1)
 				{
 					string text = MyFormBase.LT("ｱﾌﾟﾘ起動中");
-					for (int i = 4; i < frame_; i += 4)
-					{
-						if (bowWait_ != 0)
-						{
-							break;
-						}
+					for (int i = 4; i < frame_ && bowWait_ == 0; i += 4)
+{
 						text += ".";
 					}
 					LoadBox(g, text, loadCnt_, loadMax_);
@@ -234,13 +230,16 @@ namespace form
 				else if (state_ == 2)
 				{
 					string empty = string.Empty;
-					empty = ((!MyFormBase.Jp()) ? AppData.resourceString[6] : MyFormBase.LT("認証中"));
-					for (int j = 4; j < frame_; j += 4)
-					{
-						if (bowWait_ != 0)
-						{
-							break;
-						}
+					if (MyFormBase.Jp())
+{
+empty = MyFormBase.LT("認証中");
+}
+else
+{
+empty = AppData.resourceString[6];
+}
+					for (int j = 4; j < frame_ && bowWait_ == 0; j += 4)
+{
 						empty += ".";
 					}
 					LoadBox(g, empty, 0, 0);
