@@ -44,10 +44,8 @@ namespace system.friend
 
 		public override Vector CgiGetFriendList()
 		{
-			if (0 == 0)
-			{
-				return base.CgiGetFriendList();
-			}
+			bool useCustomFriendList = false;
+if (!useCustomFriendList) {return base.CgiGetFriendList();}
 			Vector vector = new Vector();
 			Vector vector2 = new Vector();
 			byte[] array = KairoBase.Connect("friend/friend_get.php");

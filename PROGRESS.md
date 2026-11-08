@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b29-postverify01-KairoLibrary-raw.json](reports/round12-b29-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `424dbc025ba1b6400551418536f745f8afcbf749868ea9e26d18274213844873`. Sem normalização.
+Prova literal atual: [reports/round12-b30-postverify01-KairoLibrary-raw.json](reports/round12-b30-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `1c19e3637e41d0564b58d4d874225c917cfc0f6c4edb5123e4451f2fdef465e6`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,230 de 5,245 métodos matched (99.71%).** 871,497 bytes de IL nos assemblies alvo.
-869,348 bytes IL matched (99.75%).
+**5,231 de 5,245 métodos matched (99.73%).** 871,497 bytes de IL nos assemblies alvo.
+869,634 bytes IL matched (99.79%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 14 |
+| decompiled | 13 |
 | equivalent | 0 |
-| matched | 5230 |
+| matched | 5231 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1943 / 99.23% | 599454 / 99.64% |
+| `Assembly-CSharp` | 1958 | 601603 | 1944 / 99.28% | 599740 / 99.69% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -81,7 +81,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `system.billing.ui` | 153 | 13782 | 151 / 98.69% | 13519 / 98.09% |
 | `system.billing.util` | 45 | 1788 | 44 / 97.78% | 1715 / 95.92% |
 | `system.form` | 192 | 33269 | 191 / 99.48% | 33163 / 99.68% |
-| `system.friend` | 4 | 570 | 3 / 75.00% | 284 / 49.82% |
+| `system.friend` | 4 | 570 | 4 / 100.00% | 570 / 100.00% |
 | `system.friend.ui` | 47 | 4407 | 47 / 100.00% | 4407 / 100.00% |
 | `system.lineup` | 3 | 46 | 3 / 100.00% | 46 / 100.00% |
 | `system.notification` | 4 | 89 | 4 / 100.00% | 89 / 100.00% |
@@ -189,7 +189,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::system.form.MatchForm` | 19 | 3263 | 19 / 100.00% | 3263 / 100.00% |
 | `Assembly-CSharp::system.form.MatchForm+UserRecord` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
 | `Assembly-CSharp::system.form.RestoreForm` | 7 | 222 | 7 / 100.00% | 222 / 100.00% |
-| `Assembly-CSharp::system.friend.MyFriend` | 4 | 570 | 3 / 75.00% | 284 / 49.82% |
+| `Assembly-CSharp::system.friend.MyFriend` | 4 | 570 | 4 / 100.00% | 570 / 100.00% |
 | `Assembly-CSharp::system.friend.ui.Friend` | 6 | 661 | 6 / 100.00% | 661 / 100.00% |
 | `Assembly-CSharp::system.friend.ui.FriendData` | 37 | 3548 | 37 / 100.00% | 3548 / 100.00% |
 | `Assembly-CSharp::system.friend.ui.FriendPlayTimeData` | 4 | 198 | 4 / 100.00% | 198 / 100.00% |
@@ -519,8 +519,8 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 | `Assembly-CSharp::system.billing.ui.StoreBase` | 1 | `Assembly-CSharp::system.billing.ui.StoreBase::CheckPaymentMaintenance()->System.Boolean` |
 | `Assembly-CSharp::system.billing.util.Json` | 1 | `Assembly-CSharp::system.billing.util.Json::MakeJson(System.String[])->System.String` |
 | `Assembly-CSharp::system.form.LanguageForm` | 1 | `Assembly-CSharp::system.form.LanguageForm::<Update>m__20(system.form.HttpForm,system.form.HttpForm+ResultData)->System.Void` |
-| `Assembly-CSharp::system.friend.MyFriend` | 1 | `Assembly-CSharp::system.friend.MyFriend::CgiGetFriendList()->java.util.Vector` |
 | `Assembly-CSharp::game.UserData` | 2 | `Assembly-CSharp::game.UserData::SetMatchInfoJoin(System.Int32)->System.Void` |
+| `Assembly-CSharp::main.AppData` | 2 | `Assembly-CSharp::main.AppData::GetTime(System.Int32,System.Int32)->System.Int32` |
 
 ## Bloqueios
 

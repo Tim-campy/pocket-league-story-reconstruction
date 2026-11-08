@@ -1,0 +1,508 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports/round12-app-friend-list-private-family-patches.json",
+  "old_bundle_sha256": "5ce0d446f9b4b8945c33139d53de9978b109c36265f6377ac25cb5712a7184b1",
+  "assembly": "Assembly-CSharp",
+  "baseline": "build\\round12\\runs\\b29\\commit\\postverify01\\Assembly-CSharp",
+  "manifest_sha256": "4d23bdfad3088831836db7dd6b979521c1e1bdc5034151bd65037aa56fa2bfbc",
+  "model_validation": "reports/round11-slot-model-validation.json",
+  "model_validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "records": [
+    {
+      "method_id": "system.friend.MyFriend::CgiGetFriendList()->java.util.Vector",
+      "logical_source": "src/Assembly-CSharp/system/friend/MyFriend.cs",
+      "frozen_full_source_sha256": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+      "live_full_source_sha256": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+      "candidate_full_source_sha256": "2f1039afe97324e32c4faf1f3c8a9475cca4a50f96a2cec0b2ed89184b2d30c0",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+        "complete": true,
+        "predicted_types": [
+          "System.Boolean",
+          "java.util.Vector",
+          "java.util.Vector",
+          "System.Byte[]",
+          "System.String[]",
+          "System.Int32",
+          "system.friend.ui.Friend",
+          "System.Int32",
+          "System.Int32"
+        ],
+        "unsupported_reasons": []
+      },
+      "prediction": {
+        "method_id": "system.friend.MyFriend::CgiGetFriendList()->java.util.Vector",
+        "complete": true,
+        "predicted_types": [
+          "System.Boolean",
+          "java.util.Vector",
+          "java.util.Vector",
+          "System.Byte[]",
+          "System.String[]",
+          "System.Int32",
+          "system.friend.ui.Friend",
+          "System.Int32",
+          "System.Int32"
+        ],
+        "variables": [
+          {
+            "name": "useCustomFriendList",
+            "type": "System.Boolean",
+            "kind": "declared",
+            "start": 1541,
+            "end": 1568,
+            "slot": 0,
+            "block": 0,
+            "type_source": "bool",
+            "statement_start": 1536,
+            "statement_end": 1569,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "false"
+          },
+          {
+            "name": "vector",
+            "type": "java.util.Vector",
+            "kind": "declared",
+            "start": 1641,
+            "end": 1662,
+            "slot": 1,
+            "block": 2,
+            "type_source": "Vector",
+            "statement_start": 1634,
+            "statement_end": 1663,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "new Vector()"
+          },
+          {
+            "name": "vector2",
+            "type": "java.util.Vector",
+            "kind": "declared",
+            "start": 1675,
+            "end": 1697,
+            "slot": 2,
+            "block": 3,
+            "type_source": "Vector",
+            "statement_start": 1668,
+            "statement_end": 1698,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "new Vector()"
+          },
+          {
+            "name": "array",
+            "type": "System.Byte[]",
+            "kind": "declared",
+            "start": 1710,
+            "end": 1760,
+            "slot": 3,
+            "block": 4,
+            "type_source": "byte[]",
+            "statement_start": 1703,
+            "statement_end": 1761,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "KairoBase.Connect(\"friend/friend_get.php\")"
+          },
+          {
+            "name": "array2",
+            "type": "System.String[]",
+            "kind": "declared",
+            "start": 1839,
+            "end": 1889,
+            "slot": 4,
+            "block": 6,
+            "type_source": "string[]",
+            "statement_start": 1830,
+            "statement_end": 1890,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "StringUtil.Split(JString.New(array), \",\")"
+          },
+          {
+            "name": "num",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 1899,
+            "end": 1906,
+            "slot": 5,
+            "block": 7,
+            "type_source": "int",
+            "statement_start": 1895,
+            "statement_end": 1907,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "0"
+          },
+          {
+            "name": "friend",
+            "type": "system.friend.ui.Friend",
+            "kind": "declared",
+            "start": 1958,
+            "end": 1990,
+            "slot": 6,
+            "block": 8,
+            "type_source": "Friend",
+            "statement_start": 1951,
+            "statement_end": 1991,
+            "lexical_scope_start": 1944,
+            "lexical_scope_end": 2179,
+            "initializer": "new Friend(array2[num])"
+          },
+          {
+            "name": "num2",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 2225,
+            "end": 2233,
+            "slot": 7,
+            "block": 11,
+            "type_source": "int",
+            "statement_start": 2221,
+            "statement_end": 2234,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "0"
+          },
+          {
+            "name": "num3",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 2390,
+            "end": 2398,
+            "slot": 8,
+            "block": 13,
+            "type_source": "int",
+            "statement_start": 2386,
+            "statement_end": 2399,
+            "lexical_scope_start": 1530,
+            "lexical_scope_end": 2540,
+            "initializer": "0"
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 1530,
+            "end": 2540,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "useCustomFriendList",
+                "type": "System.Boolean",
+                "kind": "declared",
+                "start": 1541,
+                "end": 1568,
+                "slot": 0,
+                "block": 0,
+                "type_source": "bool",
+                "statement_start": 1536,
+                "statement_end": 1569,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "false"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "explicit",
+            "start": 1596,
+            "end": 1629,
+            "parent": 0,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "implicit-after-statement",
+            "start": 1634,
+            "end": 1663,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "vector",
+                "type": "java.util.Vector",
+                "kind": "declared",
+                "start": 1641,
+                "end": 1662,
+                "slot": 1,
+                "block": 2,
+                "type_source": "Vector",
+                "statement_start": 1634,
+                "statement_end": 1663,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "new Vector()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "implicit-after-statement",
+            "start": 1668,
+            "end": 1698,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "vector2",
+                "type": "java.util.Vector",
+                "kind": "declared",
+                "start": 1675,
+                "end": 1697,
+                "slot": 2,
+                "block": 3,
+                "type_source": "Vector",
+                "statement_start": 1668,
+                "statement_end": 1698,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "new Vector()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "implicit-after-statement",
+            "start": 1703,
+            "end": 1761,
+            "parent": 3,
+            "used": true,
+            "variables": [
+              {
+                "name": "array",
+                "type": "System.Byte[]",
+                "kind": "declared",
+                "start": 1710,
+                "end": 1760,
+                "slot": 3,
+                "block": 4,
+                "type_source": "byte[]",
+                "statement_start": 1703,
+                "statement_end": 1761,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "KairoBase.Connect(\"friend/friend_get.php\")"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 1793,
+            "end": 1825,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "implicit-after-statement",
+            "start": 1830,
+            "end": 1890,
+            "parent": 4,
+            "used": true,
+            "variables": [
+              {
+                "name": "array2",
+                "type": "System.String[]",
+                "kind": "declared",
+                "start": 1839,
+                "end": 1889,
+                "slot": 4,
+                "block": 6,
+                "type_source": "string[]",
+                "statement_start": 1830,
+                "statement_end": 1890,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "StringUtil.Split(JString.New(array), \",\")"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "implicit-after-statement",
+            "start": 1895,
+            "end": 1907,
+            "parent": 6,
+            "used": true,
+            "variables": [
+              {
+                "name": "num",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 1899,
+                "end": 1906,
+                "slot": 5,
+                "block": 7,
+                "type_source": "int",
+                "statement_start": 1895,
+                "statement_end": 1907,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "0"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 1944,
+            "end": 2179,
+            "parent": 7,
+            "used": true,
+            "variables": [
+              {
+                "name": "friend",
+                "type": "system.friend.ui.Friend",
+                "kind": "declared",
+                "start": 1958,
+                "end": 1990,
+                "slot": 6,
+                "block": 8,
+                "type_source": "Friend",
+                "statement_start": 1951,
+                "statement_end": 1991,
+                "lexical_scope_start": 1944,
+                "lexical_scope_end": 2179,
+                "initializer": "new Friend(array2[num])"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 2032,
+            "end": 2074,
+            "parent": 8,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "explicit",
+            "start": 2120,
+            "end": 2161,
+            "parent": 8,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "implicit-after-statement",
+            "start": 2221,
+            "end": 2234,
+            "parent": 7,
+            "used": true,
+            "variables": [
+              {
+                "name": "num2",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 2225,
+                "end": 2233,
+                "slot": 7,
+                "block": 11,
+                "type_source": "int",
+                "statement_start": 2221,
+                "statement_end": 2234,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "0"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 2272,
+            "end": 2345,
+            "parent": 11,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "implicit-after-statement",
+            "start": 2386,
+            "end": 2399,
+            "parent": 11,
+            "used": true,
+            "variables": [
+              {
+                "name": "num3",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 2390,
+                "end": 2398,
+                "slot": 8,
+                "block": 13,
+                "type_source": "int",
+                "statement_start": 2386,
+                "statement_end": 2399,
+                "lexical_scope_start": 1530,
+                "lexical_scope_end": 2540,
+                "initializer": "0"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "explicit",
+            "start": 2438,
+            "end": 2511,
+            "parent": 13,
+            "used": true,
+            "variables": [],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 1485,
+        "declaration_end": 2540,
+        "body_start": 1530,
+        "body_end": 2540
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}
