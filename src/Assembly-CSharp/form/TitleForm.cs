@@ -870,9 +870,11 @@ udat_.DrawDispPlayer(g, ta_data[num4][2], ta_data[num4][3] + num3);
 			TouchComponent component = e.component;
 			if (state_ == 0)
 			{
-				int id = component.id;
-				if (id == 27 && e.type == 1)
-				{
+				switch (component.id)
+{
+case 27:
+if (e.type == 1)
+{
 					if ((component.value & 0xFFFF0000u) == 1441792)
 					{
 						try
@@ -902,7 +904,10 @@ udat_.DrawDispPlayer(g, ta_data[num4][2], ta_data[num4][3] + num3);
 						}
 					}
 					return false;
-				}
+
+}
+break;
+}
 			}
 			return true;
 		}

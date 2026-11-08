@@ -1,0 +1,61 @@
+{
+  "source_only": true,
+  "patches": [
+    {
+      "method_id": "form.TitleForm::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Boolean",
+      "logical_path": "src/Assembly-CSharp/form/TitleForm.cs",
+      "start": 24281,
+      "end": 25219,
+      "before": "public override bool OnTouchEvent(TouchEvent e)\r\n\t\t{\r\n\t\t\tif (!LanguageForm.OnTouchEvent(e))\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tTouchComponent component = e.component;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tint id = component.id;\r\n\t\t\t\tif (id == 27 && e.type == 1)\r\n\t\t\t\t{\r\n\t\t\t\t\tif ((component.value & 0xFFFF0000u) == 1441792)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tUpdateKairoAdClickNum();\r\n\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!MyConfig.SMART_PASS && !MyConfig.AMAZON && kairoAdClickNum_ <= 2 && MyFormBase.Jp())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tCanvas.OpenBrowser(kairoAdUrl_jp);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if ((component.value & 0xFFFF0000u) == 1507328)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tUpdateKairoAdClickNum(10);\r\n\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception t2)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(t2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+      "after": "public override bool OnTouchEvent(TouchEvent e)\r\n\t\t{\r\n\t\t\tif (!LanguageForm.OnTouchEvent(e))\r\n\t\t\t{\r\n\t\t\t\treturn false;\r\n\t\t\t}\r\n\t\t\tTouchComponent component = e.component;\r\n\t\t\tif (state_ == 0)\r\n\t\t\t{\r\n\t\t\t\tswitch (component.id)\n{\ncase 27:\nif (e.type == 1)\n{\r\n\t\t\t\t\tif ((component.value & 0xFFFF0000u) == 1441792)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tUpdateKairoAdClickNum();\r\n\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception t)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(t);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif (!MyConfig.SMART_PASS && !MyConfig.AMAZON && kairoAdClickNum_ <= 2 && MyFormBase.Jp())\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tCanvas.OpenBrowser(kairoAdUrl_jp);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\telse if ((component.value & 0xFFFF0000u) == 1507328)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\ttry\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tUpdateKairoAdClickNum(10);\r\n\t\t\t\t\t\t\tapdat_.SaveSystem();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch (Exception t2)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tLog.Info(t2);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t\treturn false;\r\n\t\t\t\t\n}\nbreak;\n}\r\n\t\t\t}\r\n\t\t\treturn true;\r\n\t\t}",
+      "rule": "r12-single-case-dispatch-r12-title-single-case-switch-emission-temp",
+      "api": "transform",
+      "source_span_units": "UTF16",
+      "rebase_unique": true,
+      "source_sha256": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+      "original_token": "[Method:0x0270]",
+      "original_artifact_sha256": "3620ed91bd3a99cba9901cea111e6f6e489474e5c0b97b99676e5d4623817949",
+      "model_complete": true,
+      "model_predicted_types": [
+        "kairo.unity.surface.TouchComponent",
+        "System.Exception",
+        "System.Exception",
+        "System.Int32"
+      ],
+      "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "model_client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "original_bytes_copied": false,
+      "target_body_outcome": "UNKNOWN",
+      "original_rule": "r12-title-single-case-switch-emission-temp",
+      "frozen_evidence_sha256": {},
+      "historical_frozen_evidence_sha256": {},
+      "pinned_compiler_source_sha256": {},
+      "evidence_sha256": {},
+      "dependency_sha256": {},
+      "game_body_status": "UNKNOWN",
+      "pure_api": "transform"
+    }
+  ],
+  "dependency_sha256": {
+    "tools/round12_app_title_wrapper_private_source.py": "7df06002719a4d20d130159eeb0a16bdbac9b0ab7b424d9ac1b56bc5b19e6029",
+    "tools/round12_publish_bound_family.py": "1c152a882cb30a6c6c49ad08d5df0e831a7b9000e87492d64b8c8035301824c8",
+    "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+    "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6"
+  },
+  "evidence_sha256": {},
+  "frozen_evidence_sha256": {
+    "build/round12/app-title-wrapper-private/calculate.py": "7df06002719a4d20d130159eeb0a16bdbac9b0ab7b424d9ac1b56bc5b19e6029",
+    "build/round12/app-title-wrapper-private/manifest.json": "b3066c5b35116f3ed463611db5a4194f80b7d802b72d4b41c89462bf0e1497f8",
+    "build/round12/app-title-wrapper-private/model.json": "28038dead5cfdc9a46934620ebb25ac987349fd72142ba1bcb54be3c63dbff73",
+    "build/round12/app-title-wrapper-private/prepare.py": "d6aa4571fadeee66fdccec8ab345053a2ad1fc877e03607b7be6cb920494953e",
+    "build/round12/app-title-wrapper-private/source-patches.json": "29c27f16f82901a6eb1c68246e2bc2bc1858680862d6e773e396ae76883e2135",
+    "build/round12/app-title-wrapper-private/freeze.json": "41cea45837db1de49c09aeaf8faec28e75118d742524959293cf62c4ef0f3043"
+  },
+  "historical_frozen_evidence_sha256": {},
+  "pinned_compiler_source_sha256": {},
+  "own_fixture_source_sha256": {},
+  "public_pure_api_reproduction_exact": true,
+  "target_compilations": 0,
+  "own_fixture_trivia_format_review": [],
+  "note": "Candidate source only; independent live model and game oracle remain mandatory."
+}

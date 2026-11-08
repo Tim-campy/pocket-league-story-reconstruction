@@ -4477,9 +4477,9 @@ return;
 			{
 				int[] array = script[i];
 				int num = array[0];
-				int num2 = num;
-				if (num2 == 5)
-				{
+				switch (num) {
+case 5:
+
 					delayEvent = new DelayEvent(GetDelayId(script), i + 1, array[1], -1, save_.ints[9], args, argi);
 					if (2 < array.Length)
 					{
@@ -4487,12 +4487,15 @@ return;
 					}
 					delayEvents_.AddElement(delayEvent);
 					return subForm;
-				}
-				subForm = ExecuteScript(array, popup, args, argi, script);
-				if ((talkCharaIndex == -1) || (subForm == null)) { continue; }
-if (subForm.humanCharaIndex_ != -1) { continue; }
+
+default:
+subForm = ExecuteScript(array, popup, args, argi, script);
+if (talkCharaIndex != -1 && subForm != null && subForm.humanCharaIndex_ == -1) {
 subForm.humanCharaType_ = talkCharaType;
 subForm.humanCharaIndex_ = talkCharaIndex;
+}
+break;
+}
 			}
 			return subForm;
 		}
