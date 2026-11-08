@@ -5121,17 +5121,10 @@ int num2 = termsAlias[1];
 			}
 			int num;
 			while (true)
-			{
-				num = depth + 360;
-				if (num < 0 || zsortObjectCount_.Length <= num)
-				{
-					return;
-				}
-				if (zsortObjectCount_[num] >= 30) { } else {
-					break;
-				}
-				depth++;
-			}
+			{num = depth + 360;
+if (num < 0 || zsortObjectCount_.Length <= num) {return;}
+if (zsortObjectCount_[num] >= 30) {depth++; continue;}
+
 			zsortObjects_[num][zsortObjectCount_[num]] = gameObjectPoolIndex_;
 			zsortObjectCount_[num]++;
 			if (zsortObjectStart_ > num)
@@ -5154,7 +5147,9 @@ int num2 = termsAlias[1];
 			array[8] = (dark ? 1 : 0);
 			array[9] = layer;
 			gameObjectPoolIndex_++;
-		}
+
+break;
+}}
 
 		public void DrawZSortObjects(Graphics g)
 		{

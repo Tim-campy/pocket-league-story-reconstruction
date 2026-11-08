@@ -53,7 +53,7 @@ def main():
         run([sys.executable,'tools/round12_hypotheses.py'],folder/'hypotheses.log')
         run([sys.executable,'tools/round12_report.py'],folder/'final-report.log')
     run([sys.executable,'tools/progress'],folder/'progress.log')
-    run(['git','add','--','tools','reports','src','docs','config','PROGRESS.md','README.md'])
+    run(['git','add','--','tools','reports','src','docs','config','PROGRESS.md','README.md','.gitignore','.gitattributes'])
     staged=run(['git','diff','--cached','--name-only','-z']).stdout.decode('utf-8').split('\0')
     forbidden={'.apk','.dll','.exe','.pdb','.mdb','.zip','.nupkg','.so'}
     for name in filter(None,staged):

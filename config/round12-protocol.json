@@ -41,10 +41,10 @@
   "part_a_raw_gate": {
     "status": "PASS",
     "candidate_status": "PASS",
-    "report": "reports/round12-b32-postverify01-KairoLibrary-raw.json",
-    "sha256": "75f629719e56a8a1cd46bc460fdefe219b802f1f28033ef729aa15e773f63da8",
-    "snapshot": "build/round12/runs/b32/commit/postverify01",
-    "recompiled_sha256": "339aa4d5ece949a82d24aa6cebc0f591a14aa8068b8b47e41bbd94ee823415fe",
+    "report": "reports/round12-b33-postverify03-KairoLibrary-raw.json",
+    "sha256": "75d6cceb424d94160c75043409cf60856f56ff2ee8265e5ec9de1ca40d5a7319",
+    "snapshot": "build/round12/runs/b33/commit/postverify03",
+    "recompiled_sha256": "1a42c2e0870e34752ec6b6a961116ce5402e47c09c29b4a6272015a9375b0e2c",
     "raw_source_journal_sha256": "bd4af6a6eeb7d0acabfe6c89aca6c3981d453ea3b05c5945b618fe401594269b",
     "root_initial_acceptance": {
       "report": "reports/round12-kairo-independent-raw-acceptance.json",
@@ -1246,16 +1246,23 @@
       "phase": "B",
       "selection_mode": "autonomous_selection",
       "assembly": "Assembly-CSharp",
-      "status": "pending",
-      "readiness": "FROZEN_PRIVATE_OWN_FIXTURES_GAME_UNKNOWN",
+      "status": "tested",
+      "readiness": "FROZEN_OWN_FIXTURES_FRESH_REAL_MODEL_WHOLE_ORACLE_REQUIRED",
       "method_ids": [
         "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void"
       ],
       "potential_original_il_bytes": 253,
       "private_index": "build/round12/app-insert-object-private/frozen-index.json",
       "private_index_sha256": "41c34c50cddcd774cf06110e3dcb3853aae7f5ad5dc2548b43ad273387b2dd5c",
-      "private_publication_pending": true,
-      "game_body_status": "UNKNOWN"
+      "private_publication_pending": false,
+      "game_body_status": "UNKNOWN",
+      "source_proposals": "reports/round12-app-insert-object-private-live-model-patches.json",
+      "source_proposals_sha256": "d24351722627b8306ef23aedd94d13b25fe49a2e3d1f64cba230876ace85207a",
+      "report": "reports/round12-b33-Assembly-CSharp-engine.json",
+      "tested_ids": [
+        "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void"
+      ],
+      "baseline_equal_ids": []
     },
     {
       "id": "prepared-app-language-callback",
@@ -1373,5 +1380,34 @@
     "snapshot": "build/round12/raw-source-trials/raw-source-consolidated/postverify01",
     "recompiled_sha256": "9854ef583f24ef1435649a1219e8235a7eb1c31fe303632b93cd1ae0a6ba74ac",
     "raw_source_journal_sha256": "bd4af6a6eeb7d0acabfe6c89aca6c3981d453ea3b05c5945b618fe401594269b"
-  }
+  },
+  "app_raw_measurements": [
+    {
+      "report": "reports/round12-b33-postverify02-app-threshold-Assembly-CSharp-raw.json",
+      "sha256": "72c99224ce6eebed8bdc223a0a64967cb5011d32394f96cf90df9e113c95e412",
+      "snapshot": "build\\round12\\runs\\b33\\commit\\postverify02",
+      "recompiled_sha256": "f19ddac93299471dbf3e25a1a527b3852c2e63d3ee47150d3c0ef43bc7bbfb11",
+      "status": "DIFFERENT",
+      "measurement_only": true,
+      "outside_exceptions_differing_bytes": 734107,
+      "target_compilations": 0,
+      "states_modified": false
+    },
+    {
+      "report": "reports/round12-b33-postverify03-app-threshold-Assembly-CSharp-raw.json",
+      "sha256": "047acf4d71b4630dc47dc673342a48d8f91d485201e54a4744e4c3019214888d",
+      "snapshot": "build\\round12\\runs\\b33\\commit\\postverify03",
+      "recompiled_sha256": "6b3bdcb87049efde62f5b829a7e73a44262c8b945c3075c940d6dceab20c5711",
+      "status": "DIFFERENT",
+      "measurement_only": true,
+      "outside_exceptions_differing_bytes": 734107,
+      "target_compilations": 0,
+      "states_modified": false,
+      "transport": {
+        "manifest": "reports/round12-b33-postverify03-app-threshold-Assembly-CSharp-archive-manifest.json",
+        "sha256": "78d16131b47c075be10933f0db306f156a1aac38bb44601b656f899132e530a5",
+        "lossless": true
+      }
+    }
+  ]
 }

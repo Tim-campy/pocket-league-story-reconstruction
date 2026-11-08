@@ -1,0 +1,1002 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1942,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void",
+      "number": 1,
+      "initial_offset": 61,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-smcs-retry-loop-insertion-tail-with-continue-and-break",
+          "start": 131970,
+          "end": 132961,
+          "before": "public void InsertGameObject(int type, int id, int depth, int img, int seb, int frame, int x, int y, bool dark, int layer)\r\n\t\t{\r\n\t\t\tif (gameObjectPoolIndex_ >= gameObjectPool_.Length)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num;\r\n\t\t\twhile (true)\r\n\t\t\t{\r\n\t\t\t\tnum = depth + 360;\r\n\t\t\t\tif (num < 0 || zsortObjectCount_.Length <= num)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tif (zsortObjectCount_[num] >= 30) { } else {\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tdepth++;\r\n\t\t\t}\r\n\t\t\tzsortObjects_[num][zsortObjectCount_[num]] = gameObjectPoolIndex_;\r\n\t\t\tzsortObjectCount_[num]++;\r\n\t\t\tif (zsortObjectStart_ > num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectStart_ = num;\r\n\t\t\t}\r\n\t\t\tif (zsortObjectLast_ < num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectLast_ = num;\r\n\t\t\t}\r\n\t\t\tint[] array = gameObjectPool_[gameObjectPoolIndex_];\r\n\t\t\tarray[0] = type;\r\n\t\t\tarray[1] = id;\r\n\t\t\tarray[2] = depth;\r\n\t\t\tarray[3] = img;\r\n\t\t\tarray[4] = seb;\r\n\t\t\tarray[5] = frame;\r\n\t\t\tarray[6] = x;\r\n\t\t\tarray[7] = y;\r\n\t\t\tarray[8] = (dark ? 1 : 0);\r\n\t\t\tarray[9] = layer;\r\n\t\t\tgameObjectPoolIndex_++;\r\n\t\t}",
+          "after": "public void InsertGameObject(int type, int id, int depth, int img, int seb, int frame, int x, int y, bool dark, int layer)\r\n\t\t{\r\n\t\t\tif (gameObjectPoolIndex_ >= gameObjectPool_.Length)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num;\r\n\t\t\twhile (true)\r\n\t\t\t{num = depth + 360;\nif (num < 0 || zsortObjectCount_.Length <= num) {return;}\nif (zsortObjectCount_[num] >= 30) {depth++; continue;}\n\r\n\t\t\tzsortObjects_[num][zsortObjectCount_[num]] = gameObjectPoolIndex_;\r\n\t\t\tzsortObjectCount_[num]++;\r\n\t\t\tif (zsortObjectStart_ > num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectStart_ = num;\r\n\t\t\t}\r\n\t\t\tif (zsortObjectLast_ < num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectLast_ = num;\r\n\t\t\t}\r\n\t\t\tint[] array = gameObjectPool_[gameObjectPoolIndex_];\r\n\t\t\tarray[0] = type;\r\n\t\t\tarray[1] = id;\r\n\t\t\tarray[2] = depth;\r\n\t\t\tarray[3] = img;\r\n\t\t\tarray[4] = seb;\r\n\t\t\tarray[5] = frame;\r\n\t\t\tarray[6] = x;\r\n\t\t\tarray[7] = y;\r\n\t\t\tarray[8] = (dark ? 1 : 0);\r\n\t\t\tarray[9] = layer;\r\n\t\t\tgameObjectPoolIndex_++;\r\n\t\t\nbreak;\n}}",
+          "compile_pass": true,
+          "old_prefix": 61,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32",
+              "System.Int32[]"
+            ],
+            "method_id": "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\main\\AppData.cs",
+            "full_source_sha256": "de9a2956a5b1207283e18d67da85d915ca9b8ed940d5542605846201a21061f5"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794128708615984200\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0780000002123415,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 253,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 253,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 253
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-smcs-retry-loop-insertion-tail-with-continue-and-break",
+          "start": 131970,
+          "end": 132961,
+          "before": "public void InsertGameObject(int type, int id, int depth, int img, int seb, int frame, int x, int y, bool dark, int layer)\r\n\t\t{\r\n\t\t\tif (gameObjectPoolIndex_ >= gameObjectPool_.Length)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num;\r\n\t\t\twhile (true)\r\n\t\t\t{\r\n\t\t\t\tnum = depth + 360;\r\n\t\t\t\tif (num < 0 || zsortObjectCount_.Length <= num)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tif (zsortObjectCount_[num] >= 30) { } else {\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t\tdepth++;\r\n\t\t\t}\r\n\t\t\tzsortObjects_[num][zsortObjectCount_[num]] = gameObjectPoolIndex_;\r\n\t\t\tzsortObjectCount_[num]++;\r\n\t\t\tif (zsortObjectStart_ > num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectStart_ = num;\r\n\t\t\t}\r\n\t\t\tif (zsortObjectLast_ < num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectLast_ = num;\r\n\t\t\t}\r\n\t\t\tint[] array = gameObjectPool_[gameObjectPoolIndex_];\r\n\t\t\tarray[0] = type;\r\n\t\t\tarray[1] = id;\r\n\t\t\tarray[2] = depth;\r\n\t\t\tarray[3] = img;\r\n\t\t\tarray[4] = seb;\r\n\t\t\tarray[5] = frame;\r\n\t\t\tarray[6] = x;\r\n\t\t\tarray[7] = y;\r\n\t\t\tarray[8] = (dark ? 1 : 0);\r\n\t\t\tarray[9] = layer;\r\n\t\t\tgameObjectPoolIndex_++;\r\n\t\t}",
+          "after": "public void InsertGameObject(int type, int id, int depth, int img, int seb, int frame, int x, int y, bool dark, int layer)\r\n\t\t{\r\n\t\t\tif (gameObjectPoolIndex_ >= gameObjectPool_.Length)\r\n\t\t\t{\r\n\t\t\t\treturn;\r\n\t\t\t}\r\n\t\t\tint num;\r\n\t\t\twhile (true)\r\n\t\t\t{num = depth + 360;\nif (num < 0 || zsortObjectCount_.Length <= num) {return;}\nif (zsortObjectCount_[num] >= 30) {depth++; continue;}\n\r\n\t\t\tzsortObjects_[num][zsortObjectCount_[num]] = gameObjectPoolIndex_;\r\n\t\t\tzsortObjectCount_[num]++;\r\n\t\t\tif (zsortObjectStart_ > num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectStart_ = num;\r\n\t\t\t}\r\n\t\t\tif (zsortObjectLast_ < num)\r\n\t\t\t{\r\n\t\t\t\tzsortObjectLast_ = num;\r\n\t\t\t}\r\n\t\t\tint[] array = gameObjectPool_[gameObjectPoolIndex_];\r\n\t\t\tarray[0] = type;\r\n\t\t\tarray[1] = id;\r\n\t\t\tarray[2] = depth;\r\n\t\t\tarray[3] = img;\r\n\t\t\tarray[4] = seb;\r\n\t\t\tarray[5] = frame;\r\n\t\t\tarray[6] = x;\r\n\t\t\tarray[7] = y;\r\n\t\t\tarray[8] = (dark ? 1 : 0);\r\n\t\t\tarray[9] = layer;\r\n\t\t\tgameObjectPoolIndex_++;\r\n\t\t\nbreak;\n}}",
+          "compile_pass": true,
+          "old_prefix": 61,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Int32",
+              "System.Int32[]"
+            ],
+            "method_id": "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\main\\AppData.cs",
+            "full_source_sha256": "de9a2956a5b1207283e18d67da85d915ca9b8ed940d5542605846201a21061f5"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794128708615984200\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0780000002123415,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 253,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 253,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void"
+          ],
+          "matched_IL_gain": 253
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 60,
+            "rebuilt_offset": 60,
+            "opcode_pair": [
+              "blt",
+              "blt"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 61,
+        "source": "src/Assembly-CSharp/main/AppData.cs",
+        "point": {
+          "offset": 50,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\main\\AppData.cs",
+          "start_line": 5130,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 60,
+          "line": 5130,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "branch_retarget",
+          "original_offset": 60,
+          "rebuilt_offset": 60,
+          "original_index": 27,
+          "rebuilt_index": 27,
+          "original_instruction": {
+            "offset": 60,
+            "opcode": "blt",
+            "operand": {
+              "branch": 75
+            }
+          },
+          "rebuilt_instruction": {
+            "offset": 60,
+            "opcode": "blt",
+            "operand": {
+              "branch": 70
+            }
+          },
+          "pair": "{\"opcode\":\"blt\",\"operand\":{\"branch\":75}} => {\"opcode\":\"blt\",\"operand\":{\"branch\":70}}",
+          "opcode_pair": "blt => blt",
+          "original_context": [
+            {
+              "offset": 57,
+              "opcode": "ldelem.u1",
+              "operand": null
+            },
+            {
+              "offset": 58,
+              "opcode": "ldc.i4.s",
+              "operand": 30
+            },
+            {
+              "offset": 60,
+              "opcode": "blt",
+              "operand": {
+                "labels": [
+                  "L4"
+                ]
+              }
+            },
+            {
+              "offset": 65,
+              "opcode": "ldarg.3",
+              "operand": null,
+              "label": "L3"
+            },
+            {
+              "offset": 66,
+              "opcode": "ldc.i4.1",
+              "operand": null
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 57,
+              "opcode": "ldelem.u1",
+              "operand": null
+            },
+            {
+              "offset": 58,
+              "opcode": "ldc.i4.s",
+              "operand": 30
+            },
+            {
+              "offset": 60,
+              "opcode": "blt",
+              "operand": {
+                "labels": [
+                  "R70"
+                ]
+              }
+            },
+            {
+              "offset": 65,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L3"
+                ]
+              }
+            },
+            {
+              "offset": 70,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L4"
+                ]
+              },
+              "label": "R70"
+            }
+          ],
+          "original_labels": {
+            "20": "L0",
+            "49": "L1",
+            "50": "L2",
+            "65": "L3",
+            "75": "L4",
+            "135": "L5",
+            "154": "L6",
+            "220": "L7",
+            "221": "L8",
+            "252": "L9"
+          },
+          "rebuilt_labels": {
+            "20": "L0",
+            "49": "L1",
+            "50": "L2",
+            "75": "L3",
+            "85": "L4",
+            "145": "L5",
+            "164": "L6",
+            "230": "L7",
+            "231": "L8",
+            "252": "L9",
+            "70": "R70"
+          },
+          "sequence_edits": [
+            {
+              "kind": "insert",
+              "original_start": 28,
+              "original_stop": 28,
+              "rebuilt_start": 28,
+              "rebuilt_stop": 30
+            },
+            {
+              "kind": "delete",
+              "original_start": 124,
+              "original_stop": 126,
+              "rebuilt_start": 126,
+              "rebuilt_stop": 126
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 27,
+              "original_stop": 28,
+              "rebuilt_start": 27,
+              "rebuilt_stop": 28,
+              "target_ordinal": 0,
+              "original_target": 75,
+              "rebuilt_target": 70
+            }
+          ],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 132325,
+          "end": 132389,
+          "line": 5130,
+          "column": 5,
+          "text": "if (zsortObjectCount_[num] >= 30) { } else {\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}",
+          "kind": "IfStatement",
+          "method_id": "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void",
+          "point": 132321,
+          "declaration_start": 131970,
+          "declaration_end": 132961
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 27,
+              "last_use": 148,
+              "loads": 10,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 167,
+              "last_use": 222,
+              "loads": 10,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 11
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 11
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "num",
+              "type": "System.Int32",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 132096,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 132096,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 7,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 6,
+          "selected_rule_prefix": "r12-smcs-retry-loop-insertion-tail-with-continue-and-break"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-smcs-retry-loop-insertion-tail-with-continue-and-break": 1
+          },
+          "model_approved": {
+            "r12-smcs-retry-loop-insertion-tail-with-continue-and-break": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 253,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-smcs-retry-loop-insertion-tail-with-continue-and-break:attempts": 1,
+    "r12-smcs-retry-loop-insertion-tail-with-continue-and-break:accepted_steps": 1,
+    "r12-smcs-retry-loop-insertion-tail-with-continue-and-break:body_gains": 1,
+    "r12-smcs-retry-loop-insertion-tail-with-continue-and-break:IL_gains": 253
+  },
+  "completed": true,
+  "run_label": "b33-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b33\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-smcs-retry-loop-insertion-tail-with-continue-and-break",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else",
+    "r12-smcs-player-collision-v2-proved-guard-splitting-positive-regions-and-arm-stores",
+    "r12-block-local-layout-",
+    "r12-smcs-player-collision-v3-positive-height-plus-original-tail-return",
+    "r12-shared-score-graph-layout-",
+    "r12-dup-store-composition-",
+    "r12-player-act-preserve-empty-action-five-arm",
+    "r12-gamepad-boolean-and-id-conditional-values",
+    "r12-smcs-soccer-main-terminal-positive-empty-debug-test",
+    "r12-selector-and-touch-layout-",
+    "r12-league-root-score-locals-and-loop-local-team-ids",
+    "r12-common-branch-and-selector-",
+    "r12-compensated-empty-arms-",
+    "r12-gameform-init-explicit-vector-elements-and-unused-single",
+    "r12-argument-local-flow-",
+    "r12-smcs-billing-generic-init-single-explicit-shift-mask-removal-after-double-resolution-proof",
+    "r12-camera-collision-loop-flag-conditions-and-two-continue-guards",
+    "r12-tenant-accumulator-then-array-store",
+    "r12-vscroll-value-and-controls-",
+    "r12-float-interval-exits-",
+    "r12-smcs-mapmain-coat-nonnegative-direct-dispatch-and-two-inner-loop-continues",
+    "r12-script-selector-and-loop-owner-",
+    "r12-smcs-userdata-edit-button-direct-dispatch-and-four-shared-coordinate-aliases",
+    "r12-single-case-dispatch-",
+    "r12-touchcamera-empty-cases-0-8-and-zero-test",
+    "r12-smcs-myfriend-ordinary-false-boolean-and-nonconstant-negative-guard",
+    "r12-rotate-empty-123-before-inclusive-47-range",
+    "r12-loop-first-continue-",
+    "r12-smcs-retry-loop-insertion-tail-with-continue-and-break"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-smcs-retry-loop-insertion-tail-with-continue-and-break",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 6,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-insert-object-private-live-model-patches.json",
+    "sha256": "d24351722627b8306ef23aedd94d13b25fe49a2e3d1f64cba230876ace85207a",
+    "dependencies_checked": {
+      "tools/round12_app_insert_object_private_source.py": "ef62f1565899eaa4260e67d7f3cdfa8a2bf6bce1d03ba74f07dd08487b178021",
+      "tools/round12_publish_bound_family.py": "1c152a882cb30a6c6c49ad08d5df0e831a7b9000e87492d64b8c8035301824c8",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-insert-object-private-fixture-results.json": "eba9b61e4aa42abc15cad5777ae97bca8aad82e751b2aae91faf0421a955c337",
+      "reports/round12-app-insert-object-private-family-patches.json": "b963ae470e612117491d799f98b01ed15b40dc3276523ea83be97678b3929a1e",
+      "reports/round12-app-insert-object-private-live-model-proof.json": "e37f54b5c0403c0f37bd2b454114ce226fd54d3d0f34ee937dd3e3bfb8ece490",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-insert-object-private/analysis.json": "1f00842dbee4d0081f76eb43e0d8195162b9b674c409b8b8bfe2e71e6e15b0ca",
+      "build/round12/app-insert-object-private/calculate.py": "ef62f1565899eaa4260e67d7f3cdfa8a2bf6bce1d03ba74f07dd08487b178021",
+      "build/round12/app-insert-object-private/compiler-source-evidence.json": "b18ae00785dc600f68fe70e131d9e3cccf73b8df9b06c79c8c2a815e52f9aff6",
+      "build/round12/app-insert-object-private/fixture-results.json": "eba9b61e4aa42abc15cad5777ae97bca8aad82e751b2aae91faf0421a955c337",
+      "build/round12/app-insert-object-private/fixtures/before/command.json": "055745f5e92d785aa472f13f4f6ac37b0aa3f766f2b868a5655d6feca40a6332",
+      "build/round12/app-insert-object-private/fixtures/before/compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/before/compiler.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/before/Fixture.cs": "c8aaa4131889019fa26b2010ca2b9e8efb4c5d0847a0449d310196efdf3b8edf",
+      "build/round12/app-insert-object-private/fixtures/before/Fixture.dll": "1d011e91e0dcd0c3c7cb10732025c0f12aa6952cc110095cdc209a09d8513a69",
+      "build/round12/app-insert-object-private/fixtures/before/methods.json": "6486dfc42ff289ede1ce97141b7d684f6f1e94b90fe6c26a7cb1444e8f6fe815",
+      "build/round12/app-insert-object-private/fixtures/before/model-manifest.json": "134e801d02845973be292e73c14ab2e45948d7bc7d7660649fe7f038c28e6088",
+      "build/round12/app-insert-object-private/fixtures/before/runtime.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/before/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round12/app-insert-object-private/fixtures/candidate/command.json": "2a84f65d4e979a25caa9c96a1d4e24ee7ae85529bbec58f58a1b0237ad53f528",
+      "build/round12/app-insert-object-private/fixtures/candidate/compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/candidate/compiler.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/candidate/Fixture.cs": "bd8e77d01a1661bc4f31b24d831980cd8529a54b3bc60ef3680be9095a23af75",
+      "build/round12/app-insert-object-private/fixtures/candidate/Fixture.dll": "020c90f8040f3541e25d5c7552b4b7971b858918eabf29a53a675919c206baf3",
+      "build/round12/app-insert-object-private/fixtures/candidate/methods.json": "bb444775ed006c0946e25872e6342a8284f790227e436498876f59275f68b735",
+      "build/round12/app-insert-object-private/fixtures/candidate/model-manifest.json": "a7c91385c164958627393cdeb14f04017660427e19ddcb6aa63722dc3c9caf1f",
+      "build/round12/app-insert-object-private/fixtures/candidate/runtime.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/candidate/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round12/app-insert-object-private/fixtures/control/command.json": "e362a75ba362f5a758d13c38c678291c0050ad8b696fcf01021fc741e0bd9894",
+      "build/round12/app-insert-object-private/fixtures/control/compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/control/compiler.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/control/Fixture.cs": "535136661f42771348fb87963d52749848e1794ae6b57f054d015ac88488ccb7",
+      "build/round12/app-insert-object-private/fixtures/control/Fixture.dll": "6a4946f8378800794508fb6b4a66915c53d287408101006dc6284edd105ca6c4",
+      "build/round12/app-insert-object-private/fixtures/control/methods.json": "58430d61e90b46fec3357cf5e272bbab7471b4f0e608b7c18c51f2aa0ed29790",
+      "build/round12/app-insert-object-private/fixtures/control/model-manifest.json": "451413c28b0c3e253363046eb373c2963ad09d7cb207df01b0b3ce97bae9e07c",
+      "build/round12/app-insert-object-private/fixtures/control/runtime.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/control/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/command.json": "9ecdfa4c948fe3e3dc9ececba0ae6cb9b5b339c43ff66fe3474d9ee36859fde3",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/compiler.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/Fixture.cs": "51d6ee89ff7c9732a9cfe451baf70047a7c5b6ad494b671245fba6deb043bfe3",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/Fixture.dll": "c070c6fd3ac8c17b6cd5b3f242a8772b3105510215694547630bc1842b046c1c",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/methods.json": "c0fce619edfd8ba14de2169e329d5cea69a8695670faa1715e4f8546061d316c",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/runtime.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/negative-for-loop-form/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/command.json": "57fcf6abb29f1d84354566df54de9e246636edf54c6e0abd51853737dd3b5c0f",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/compiler.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/compiler.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/Fixture.cs": "3dc437b88a5088f1556c9ecb337ca2e3ace46738b575561ee36fe578ba63b374",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/Fixture.dll": "1fcafd29c8fa05f04f9eafd75935b7fc5d8b5e1b6f6d06816b3551312765882a",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/methods.json": "5bd73671249b6358449336bf884fe0eabd87ffab89c95f178a3a4f61554a1fe6",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/runtime.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-insert-object-private/fixtures/negative-return-instead-of-break/runtime.stdout": "e2a6e192c22a5c49fd6689265f65b44ebd6eb358ffcf2eaa672b05a12b5a2b2e",
+      "build/round12/app-insert-object-private/fixtures.py": "3f7a8d1ed943b6a8c72a91d9c1886d4b82c7949444adb1f4437646e016494a8f",
+      "build/round12/app-insert-object-private/freeze.py": "d28586a97f1458d71e93cccfb9112fce012f437fc2466936e8a80eadd4fc6524",
+      "build/round12/app-insert-object-private/history.json": "8aa865508d9803ee189050c5e04c247042376d5e3988750e63bdc2dd78d37976",
+      "build/round12/app-insert-object-private/history.py": "2d5d88b438df6c20cb80536150608a3b3c0f839260948806ba6675f6eb889959",
+      "build/round12/app-insert-object-private/hypotheses.json": "0958331ed0a59e71c0c80ca1009b92859cccc468969d22e48e3c80c0396f0ce3",
+      "build/round12/app-insert-object-private/manifest.json": "1b077e7af171a218414d28559d17c000dd5d2fad5919232e6920c2ec28b2b04d",
+      "build/round12/app-insert-object-private/method.after.cs": "cf2ba2a2eaee2e5aa911dfe3e50b5b4b7f36a93bd48fe0546cd000a5cdcc50ae",
+      "build/round12/app-insert-object-private/method.before.cs": "65aec19cee4642df40b7c3c9ade9cf0834b9e0c7b8e6115a297f2f4d8636a509",
+      "build/round12/app-insert-object-private/model-after.json": "e9848036732494d6b762dcb74e94ddd53a3d2e18de4323d417a01bdaf280206b",
+      "build/round12/app-insert-object-private/model-before.json": "6a0bf2bfd3eab9baa3fc84a7307c6a652f05ba2037e9221f98004838d9138414",
+      "build/round12/app-insert-object-private/package.py": "01cdb73d1b40dfb61040c34def26010e396d4f137eb87674f11308086626e540",
+      "build/round12/app-insert-object-private/predict.py": "a778147d90d28e83fa6b0a36ea4d34b3ba635bab68e5a78ef1d2501dc4d0fef9",
+      "build/round12/app-insert-object-private/prepare.py": "02eba984e53e63322facec18ed7b8dab98e0e9052a434c0aeb076369967f7cfe",
+      "build/round12/app-insert-object-private/rea-method.json": "33cca0dd727cdb164119e95b6ada1ff6547c7634b749a72f03813073bdd5465b",
+      "build/round12/app-insert-object-private/rea-proof.json": "32032c018725f7951d69da8ba7aa9a0efd0b0acee767eab594c4aee27910a185",
+      "build/round12/app-insert-object-private/rea-summary.json": "5a28942baba02ccb92e65080664dbc8b9d4f313f186dba94dbd6a7d1ff6305ce",
+      "build/round12/app-insert-object-private/rea-types.json": "f6e9aeec14dda74af73ffbdc33fc3af15fffb7b20c883fbd5449d94712dfef27",
+      "build/round12/app-insert-object-private/README.md": "98438086e104fbee9979eb7745c948795472969342b8b9ad8db03f87ee515607",
+      "build/round12/app-insert-object-private/source-patches.json": "04e436c0cdca7b974d70bdef58724c6ea9d99c4918b266badca6faa36013ef05",
+      "build/round12/app-insert-object-private/source-proof.json": "dfe311b076af16712fe906fc36cc08c45dec4e3b57678c7381cc5646f7159065",
+      "build/round12/app-insert-object-private/source.after.cs": "466e8d352c326f0d7ca5efd514204ed8b8aab41d7cdc946ed647ba9c13a49226",
+      "build/round12/app-insert-object-private/validate.py": "c1877fb8052d137123a782bd0480417d4485a16e115aac4cb19f8e3d29b96f48",
+      "build/round12/app-insert-object-private/frozen-index.json": "41c34c50cddcd774cf06110e3dcb3853aae7f5ad5dc2548b43ad273387b2dd5c"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {},
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794128708615984200",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.0780000002123415,
+        "wall_seconds": 7.859999999869615,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.0780000002123415,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794128708615984200\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794128708615984200\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "f623b9f1ed19e1f183f53eda7bb9a25a40c9cba09c863decc51ab2cb8541619c",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "8811a141be8d13343e88fb066611bf96de87a01eb02401448e787ba971b4d885",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "e5c27fa053d1fa15ff50acf6cdc5b6db2c61ef976d32e1480bbda79d38e18323",
+          "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+          "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+          "src/Assembly-CSharp/form/TitleForm.cs": "f8adc8d88c826c2fbbd2ea5a704fa167fcfc07aaeb5869fa0fba8cd5b5ef5861",
+          "src/Assembly-CSharp/game/Ball.cs": "89a7d6fdcaeb9d1a53d7a562bee8d19384f6281a069aac9e60df41b8e71bb2e0",
+          "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+          "src/Assembly-CSharp/game/MapMain.cs": "9c91433ec4c078067cc601f0a8f2f073f06cb4116ed9806f8f5ddee30a1d1e35",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "6822750ad23bb7a0a81f812814908be1bbc099f3cb7f95f23b27d9c64e738d1a",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+          "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+          "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+          "src/Assembly-CSharp/game/UserData.cs": "2fbc2dbe2ad14e8cabd5dad76df42e849dc70bcbf8596a47d37fcc45bfdca959",
+          "src/Assembly-CSharp/main/AppData.cs": "958614b8f2909ae323a020a8c44e76cab1be7030b9022fe4b4643f6864c5fe77",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+          "src/Assembly-CSharp/surface/GameView.cs": "7d6186ad8c84f0863a21ee2057144caafd118e5f02d3585de598b5a7acf28a24",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "9ec71a52d402b70f13ec45ba6fac88494746a420c2e2738065792afad1db1808",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "2f1039afe97324e32c4faf1f3c8a9475cca4a50f96a2cec0b2ed89184b2d30c0",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "ffa54432b9e35cbdd4f8b1058aaa5d04e016948d43bfbdfd9fc2af1669bced68",
+        "accepted_source_set_sha256": "db07c080e525b46052214cdecd243b5bf9004df357425f60757e3ebeaa993cd8",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "72eec73fff375b72291c02f133986bd55118e63bcb6b9d91566ad1f237d3ee91"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void",
+        "rule": "r12-smcs-retry-loop-insertion-tail-with-continue-and-break",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1943,
+  "body_gains": [
+    "main.AppData::InsertGameObject(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 253,
+  "builds": 6,
+  "build_seconds": 7.875000000232831,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "b713a1b50f6274ba262616d82bc9f5731f460f6c068df289d0951c363504244f",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b33-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "ffa54432b9e35cbdd4f8b1058aaa5d04e016948d43bfbdfd9fc2af1669bced68",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "f623b9f1ed19e1f183f53eda7bb9a25a40c9cba09c863decc51ab2cb8541619c",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "8811a141be8d13343e88fb066611bf96de87a01eb02401448e787ba971b4d885",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "08c51be89bf90ebfafc6ee53356fa5da1a435862812642ab4c8aa81bd9c9ed91",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "e5c27fa053d1fa15ff50acf6cdc5b6db2c61ef976d32e1480bbda79d38e18323",
+    "src/Assembly-CSharp/form/SpForm.cs": "a1e9e00a82d89e76dd9d6474f9d9f7c2dccd9f7bd0177445d7364f9041420d09",
+    "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+    "src/Assembly-CSharp/form/TitleForm.cs": "f8adc8d88c826c2fbbd2ea5a704fa167fcfc07aaeb5869fa0fba8cd5b5ef5861",
+    "src/Assembly-CSharp/game/Ball.cs": "89a7d6fdcaeb9d1a53d7a562bee8d19384f6281a069aac9e60df41b8e71bb2e0",
+    "src/Assembly-CSharp/game/Camera.cs": "57ba7b8b47b08c71b7fc628a876442970788517b087ceff53cf7eea35d40d2d0",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "ffab07908dac44a8c8c4620e3fbfd2a8d50f8b083460f61b3e88e47c1bb791d5",
+    "src/Assembly-CSharp/game/MapMain.cs": "9c91433ec4c078067cc601f0a8f2f073f06cb4116ed9806f8f5ddee30a1d1e35",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "6822750ad23bb7a0a81f812814908be1bbc099f3cb7f95f23b27d9c64e738d1a",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "067b98fa3e1d37cb348c3e4042979842f62d4a86c844e1e5811622bea71ae3a0",
+    "src/Assembly-CSharp/game/Team.cs": "98df78d3c9a8126efcc278ebd872ceb52fc2336bfc3d7eb4781f6eb7dd9f787f",
+    "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+    "src/Assembly-CSharp/game/UserData.cs": "2fbc2dbe2ad14e8cabd5dad76df42e849dc70bcbf8596a47d37fcc45bfdca959",
+    "src/Assembly-CSharp/main/AppData.cs": "de9a2956a5b1207283e18d67da85d915ca9b8ed940d5542605846201a21061f5",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+    "src/Assembly-CSharp/surface/GameView.cs": "7d6186ad8c84f0863a21ee2057144caafd118e5f02d3585de598b5a7acf28a24",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "9ec71a52d402b70f13ec45ba6fac88494746a420c2e2738065792afad1db1808",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "b2a9ede35ac787fe073275f3e8587238e424f3f0cda62471fa5dadc436e6ddab",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "8c9e5f8c1738aea0147a068d9882f7b276df982103c9c91ca3311d3979b38d3e",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "2f1039afe97324e32c4faf1f3c8a9475cca4a50f96a2cec0b2ed89184b2d30c0",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

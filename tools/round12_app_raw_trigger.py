@@ -22,8 +22,10 @@ def measure_if_due(measurement, snapshot, label):
                     '--label', raw_label, '--allow-pending-measurement'], cwd=ROOT, check=True)
     path = Path('reports/round12-' + raw_label + '-Assembly-CSharp-raw.json')
     report = json.loads((ROOT / path).read_text(encoding='utf-8'))
+    from round12_raw_transport import archive_report
+    transport = archive_report(path.as_posix())
     return dict(report=path.as_posix(), sha256=sha(ROOT / path),
                 snapshot=str(snapshot), recompiled_sha256=report['recompiled_sha256'],
                 status=report['status'], measurement_only=True,
                 outside_exceptions_differing_bytes=report['outside_exceptions_differing_bytes'],
-                target_compilations=0, states_modified=False)
+                target_compilations=0, states_modified=False, transport=transport)
