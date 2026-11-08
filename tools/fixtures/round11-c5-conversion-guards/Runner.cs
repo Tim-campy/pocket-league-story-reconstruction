@@ -1,0 +1,1 @@
+using System;using System.Reflection;public class Runner {public static int Main(string[] args){int n=(int)Assembly.LoadFrom(args[0]).GetType("Fixture",true).GetMethod("SemanticChecks").Invoke(null,null);Console.WriteLine("{\"semantic\":"+n+"}");return n;}}

@@ -1163,37 +1163,24 @@ if (alpha_ != alpha) {
 		public static int[] GetAreaSize(byte[] data)
 		{
 			int[] array = getAreaSize_result;
-			int num;
-array[0] = (array[1] = 0);
-			switch (GetFileFormat(data))
-			{
-			case "gif":
-				array[0] = (data[6] & 0xFF) | ((data[7] & 0xFF) << 8);
+			array[0] = (array[1] = 0); string fileFormat = GetFileFormat(data);
+			if (fileFormat == "gif") {array[0] = (data[6] & 0xFF) | ((data[7] & 0xFF) << 8);
 				array[1] = (data[8] & 0xFF) | ((data[9] & 0xFF) << 8);
-				break;
-			case "png":
-				array[0] = ((data[16] & 0xFF) << 24) | ((data[17] & 0xFF) << 16) | ((data[18] & 0xFF) << 8) | (data[19] & 0xFF);
+				} else if (fileFormat == "png") {array[0] = ((data[16] & 0xFF) << 24) | ((data[17] & 0xFF) << 16) | ((data[18] & 0xFF) << 8) | (data[19] & 0xFF);
 				array[1] = ((data[20] & 0xFF) << 24) | ((data[21] & 0xFF) << 16) | ((data[22] & 0xFF) << 8) | (data[23] & 0xFF);
-				break;
-			case "jpg":
-			{
-				num = 2;
+				} else if (fileFormat == "jpg") {{
+				int num = 2;
 				while (true)
 				{
 					int num2 = (data[num + 0] << 8) | data[num + 1];
 					num += 2;
 					int num3 = (data[num + 0] << 8) | data[num + 1];
-					if (num2 == 65472)
-					{
-						break;
-					}
+					if (num2 == 65472) {array[1] = (data[num + 3] << 8) | data[num + 4]; array[0] = (data[num + 5] << 8) | data[num + 6]; break;}
 					num += num3;
 				}
-				array[1] = (data[num + 3] << 8) | data[num + 4];
-				array[0] = (data[num + 5] << 8) | data[num + 6];
-				break;
-			}
-			}
+
+
+			}}
 			return array;
 		}
 

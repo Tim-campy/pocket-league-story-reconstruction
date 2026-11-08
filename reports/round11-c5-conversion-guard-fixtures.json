@@ -1,0 +1,117 @@
+{
+  "target_compilations": 0,
+  "own_fixture_compilations": 8,
+  "successful_final_own_libraries": 4,
+  "own_runner_compilations": 2,
+  "prior_owned_library_compilations": 2,
+  "initial_runner_attempt": "Inherited runner expected unrelated FloatNeg/FloatZeroSub API and raised NullReference. Next runner was compiled as Fixture.dll and Assembly.LoadFrom unified it with the fixture, raising TypeLoadException. Fixed only the harness by compiling a distinct Runner.exe; no fixture/model semantic change justified by either harness failure.",
+  "analysis_guard_checks": [
+    {
+      "method": "Pair",
+      "compiler": "smcs",
+      "mode": "primary",
+      "rejected": true
+    },
+    {
+      "method": "Pair",
+      "compiler": "smcs",
+      "mode": "retained",
+      "rejected": true
+    },
+    {
+      "method": "Literal",
+      "compiler": "smcs",
+      "mode": "primary",
+      "rejected": true
+    },
+    {
+      "method": "Literal",
+      "compiler": "smcs",
+      "mode": "retained",
+      "rejected": true
+    },
+    {
+      "method": "Operator",
+      "compiler": "smcs",
+      "mode": "primary",
+      "rejected": true
+    },
+    {
+      "method": "Operator",
+      "compiler": "smcs",
+      "mode": "retained",
+      "rejected": true
+    },
+    {
+      "method": "Pair",
+      "compiler": "roslyn",
+      "mode": "primary",
+      "rejected": true
+    },
+    {
+      "method": "Pair",
+      "compiler": "roslyn",
+      "mode": "retained",
+      "rejected": true
+    },
+    {
+      "method": "Literal",
+      "compiler": "roslyn",
+      "mode": "primary",
+      "rejected": true
+    },
+    {
+      "method": "Literal",
+      "compiler": "roslyn",
+      "mode": "retained",
+      "rejected": true
+    },
+    {
+      "method": "Operator",
+      "compiler": "roslyn",
+      "mode": "primary",
+      "rejected": true
+    },
+    {
+      "method": "Operator",
+      "compiler": "roslyn",
+      "mode": "retained",
+      "rejected": true
+    }
+  ],
+  "compiler_controls": [
+    {
+      "compiler": "smcs",
+      "label": "corrected-guard-output",
+      "runtime_success": true,
+      "binary_sha256": "e465a1332d2e2cb819d79d4387e599462a30584fc801ceda3b8a080da9ae458e"
+    },
+    {
+      "compiler": "smcs",
+      "label": "old-rule-counterexample",
+      "runtime_success": false,
+      "binary_sha256": "266aee27126ed0d113d7f301a00009943ea43e239cbd447e7e3329b67d1ec6bf"
+    },
+    {
+      "compiler": "roslyn",
+      "label": "corrected-guard-output",
+      "runtime_success": true,
+      "binary_sha256": "35177a8d257aa235895c98f6af258ce069c1ab4f8e6d3d3098a9d2488f6e394a"
+    },
+    {
+      "compiler": "roslyn",
+      "label": "old-rule-counterexample",
+      "runtime_success": false,
+      "binary_sha256": "29919078bb7fec48f410b997262901de7fab6521c44055899ca69bf99e2d21e6"
+    }
+  ],
+  "reason": "User-defined implicit conversions can have side effects even when binary comparison itself is built-in; identifiers must have declared primitive types as well as equal primitive ConvertedType.",
+  "previous_12_real_trials": "twelve-trial-semantic-audit.json",
+  "source_sha256": {
+    "build/round11/c5-user-conversion-guard/guard_check.py": "de1a78c892f4bf316d268445080b58b6f1c3caaa98c8168f2f6ebaf11c2aadc6",
+    "build/round11/c5-user-conversion-guard/GuardFixture.cs": "29145b6740e976dc337d4a4ebe3ad2e5fa3fef645aad633f2b3b2c6080fa46e2",
+    "build/round11/c5-user-conversion-guard/WrongOrderFixture.cs": "8e9a164d1c3eb29425d4ca284686d5d02f98918f61c36d04a24af064c9fa60c6",
+    "tools/Round11ComparisonRules.cs": "e6810e01ebe897075249b587d67f16bee7c1d5ee19c08e7e71b785c564aba96b"
+  },
+  "syntax_identity": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e"
+}

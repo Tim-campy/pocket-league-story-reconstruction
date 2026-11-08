@@ -42,6 +42,9 @@ public static partial class Round7TransformSyntax {
             var la=model.GetTypeInfo(left);var rb=model.GetTypeInfo(right);
             var ta=la.ConvertedType;var tb=rb.ConvertedType;
             if(ta==null || tb==null || !allowed.Contains(ta.SpecialType) || !SymbolEqualityComparer.Default.Equals(ta,tb)) continue;
+            if((leftId&&(la.Type==null||!allowed.Contains(la.Type.SpecialType))) ||
+               (rightId&&(rb.Type==null||!allowed.Contains(rb.Type.SpecialType))))continue;
+            if(model.GetConversion(binary.Left).IsUserDefined||model.GetConversion(binary.Right).IsUserDefined)continue;
             // Keep mixed named operands outside this conservative family. A
             // literal may adopt its comparison's converted primitive type.
             if(leftId&&rightId&&!SymbolEqualityComparer.Default.Equals(la.Type,rb.Type))continue;

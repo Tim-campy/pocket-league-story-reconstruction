@@ -105,7 +105,7 @@ namespace kairo.unity.surface
 				return string.Concat(this, ":component=") ?? "";
 			}
 			string text = "";
-			if ((type == 0)) { text = "TYPE_DOWN"; } else { text = ((type == 1) ? "TYPE_UP" : ((type == 2) ? "TYPE_ENTER" : ((type == 3) ? "TYPE_LEAVE" : ((type == 4) ? "TYPE_MOVE" : ((type == 5) ? "TYPE_CLICK" : ((type == 6) ? "TYPE_LOST" : ((type == 7) ? "TYPE_DRAG" : ((type == 8) ? "TYPE_GRID_DRAG" : ((type == 9) ? "TYPE_CELL_DRAG" : ((type == 10) ? "TYPE_CANCEL" : ((type != 13) ? ("NONE[" + type + "]") : "TYPE_ON"))))))))))); }
+			if (type == 0) {text="TYPE_DOWN";} else if (type == 1) {text="TYPE_UP";} else if (type == 2) {text="TYPE_ENTER";} else if (type == 3) {text="TYPE_LEAVE";} else if (type == 4) {text="TYPE_MOVE";} else if (type == 5) {text="TYPE_CLICK";} else if (type == 6) {text="TYPE_LOST";} else if (type == 7) {text="TYPE_DRAG";} else if (type == 8) {text="TYPE_GRID_DRAG";} else if (type == 9) {text="TYPE_CELL_DRAG";} else if (type == 10) {text="TYPE_CANCEL";} else if(type==13){text="TYPE_ON";} else{text="NONE["+type+"]";}
 			return "TouchEvent:" + text + " (" + component.id + "," + component.value + ")";
 		}
 
