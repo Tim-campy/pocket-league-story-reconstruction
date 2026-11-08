@@ -1,0 +1,1720 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1897,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "game.Camera::Update_pos()->System.Void",
+      "number": 1,
+      "initial_offset": 367,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-camera-runtime-selector-and-common-goal-else",
+          "start": 6694,
+          "end": 12518,
+          "before": "public void Update_pos()\r\n\t\t{\r\n\t\t\tbool flag = canvas_.CheckKeyState(131072);\r\n\t\t\tbool flag2 = canvas_.CheckKeyState(524288);\r\n\t\t\tbool flag3 = canvas_.CheckKeyState(65536);\r\n\t\t\tbool flag4 = canvas_.CheckKeyState(262144);\r\n\t\t\tif (SoccerForm.DEBUG_PLAYER_NOTACT == 1)\r\n\t\t\t{\r\n\t\t\t\tPlayer player = udat_.GetPlayer(0, 0);\r\n\t\t\t\tplayer.v_.Set(0f, 0f, 0f);\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.z_ = 35f;\r\n\t\t\t\t\tplayer.direct_ = 0;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag2)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.z_ = -35f;\r\n\t\t\t\t\tplayer.direct_ = 2;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag3)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.x_ = -35f;\r\n\t\t\t\t\tplayer.direct_ = 3;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag4)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.x_ = 35f;\r\n\t\t\t\t\tplayer.direct_ = 1;\r\n\t\t\t\t}\r\n\t\t\t\tplayer.pos_.x_ += player.v_.x_;\r\n\t\t\t\tplayer.pos_.z_ += player.v_.z_;\r\n\t\t\t\tConvertGlobalToScreen(player.pos_, player.screen_pos_);\r\n\t\t\t\tpos.x_ = player.screen_pos_[0];\r\n\t\t\t\tpos.y_ = player.screen_pos_[1];\r\n\t\t\t}\r\n\t\t\telse if (udat_.gm_.state_ == 3 && (udat_.gm_.stateCnt_ >= GameManager.WAIT_THROWIN[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_GK[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_CK[0]))\r\n\t\t\t{\r\n\t\t\t\tcamera_gpos.x_ = (int)udat_.ball_.shadowPos_.x_;\r\n\t\t\t\tcamera_gpos.z_ = (int)udat_.ball_.shadowPos_.z_;\r\n\t\t\t\tif (camera_gpos.x_ > CAMERALIMIT_GPOS[1].x_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[1].x_;\r\n\t\t\t\t}\r\n\t\t\t\tif (camera_gpos.x_ < CAMERALIMIT_GPOS[0].x_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[0].x_;\r\n\t\t\t\t}\r\n\t\t\t\tif (camera_gpos.z_ > CAMERALIMIT_GPOS[0].z_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[0].z_;\r\n\t\t\t\t}\r\n\t\t\t\tif (camera_gpos.z_ < CAMERALIMIT_GPOS[2].z_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[2].z_;\r\n\t\t\t\t}\r\n\t\t\t\tConvertGlobalToScreen(camera_gpos, camera_spos);\r\n\t\t\t\tpos.x_ = camera_spos[0];\r\n\t\t\t\tpos.y_ = camera_spos[1];\r\n\t\t\t}\r\n\t\t\telse if (mode_ == 0)\r\n\t\t\t{\r\n\t\t\t\tswitch (0)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tUpdate_normal();\r\n\t\t\t\t\tSetCameraRect();\r\n\t\t\t\t\tcamera_spos[0] = (int)cursor_pos.x_;\r\n\t\t\t\t\tcamera_spos[1] = (int)cursor_pos.y_;\r\n\t\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\r\n\t\t\t\t\tCAMERA_ADS_GPOS.Set(camera_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, camera_gpos.z_ - CAMERA_BASE_GPOS.z_);\r\n\t\t\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, camera_address);\r\n\t\t\t\t\tif (cursorCnt_ < 80)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcursorCnt_++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag || flag2 || flag3 || flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tsubPlayer_ = null;\r\n\t\t\t\t\t\tsubSvisor_ = null;\r\n\t\t\t\t\t\tcursorCnt_ = 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (subCursorCnt_ < 100 && subPlayer_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tsubCursorCnt_++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (subCursorCnt_ >= 100)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tsubCursorCnt_ = 0;\r\n\t\t\t\t\t\tsubPlayer_ = null;\r\n\t\t\t\t\t\tsubSvisor_ = null;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flg_disp)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tCollision((int)cursor_pos.x_, (int)cursor_pos.y_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.z_ += 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.z_ -= 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.x_ -= 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.x_ += 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tConvertGlobalToScreen(ch_global_pos, ch_screen_pos);\r\n\t\t\t\t\tpos.x_ = ch_screen_pos[0];\r\n\t\t\t\t\tpos.y_ = ch_screen_pos[1];\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (mode_ == 1)\r\n\t\t\t{\r\n\t\t\t\tpos.x_ = udat_.ball_.screen_shadowPos_[0];\r\n\t\t\t\tpos.y_ = udat_.ball_.screen_shadowPos_[1];\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tif (mode_ != 2 || apdat_.frmSoccer_.state_ == 8)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tint num = 0;\r\n\t\t\t\tint num2 = 0;\r\n\t\t\t\tint num3 = 0;\r\n\t\t\t\tint num4 = 0;\r\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tif (udat_.ball_.chInGoal_ != 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tTeam team = udat_.teams_[1 - udat_.ball_.chInGoal_];\r\n\t\t\t\t\t\tif (team.lastKickeer_ != -1)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayer player2 = team.players_[team.lastKickeer_];\r\n\t\t\t\t\t\t\tnum = (int)JMath.Abs((float)player2.screen_pos_[0] - pos.x_);\r\n\t\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)player2.screen_pos_[1] - pos.y_);\r\n\t\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 10, true);\r\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[0] < pos.x_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tnum3 *= -1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 10, true);\r\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[1] < pos.y_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tnum4 *= -1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tBall ball_ = udat_.ball_;\r\n\t\t\t\t\tif (ball_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = (int)JMath.Abs((float)ball_.screen_shadowPos_[0] - pos.x_);\r\n\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)ball_.screen_shadowPos_[1] - pos.y_);\r\n\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 13, true);\r\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[0] < pos.x_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum3 *= -1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 13, true);\r\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[1] < pos.y_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 *= -1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tpos.x_ += num3;\r\n\t\t\t\t\tpos.y_ += num4;\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tchPos[0].x_ = pos.x_;\r\n\t\t\t\tchPos[0].z_ = pos.y_;\r\n\t\t\t\tchPos[1].x_ = pos.x_ + (float)num3;\r\n\t\t\t\tchPos[1].z_ = pos.y_ + (float)num4;\r\n\t\t\t\tcamera_spos[0] = (int)pos.x_ + num3;\r\n\t\t\t\tcamera_spos[1] = (int)pos.y_ + num4;\r\n\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\r\n\t\t\t\tbool flag5 = false;\r\n\t\t\t\tfor (int i = 0; i < 4; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tchPos[2].x_ = cameraLimitSPos[i][0];\r\n\t\t\t\t\tchPos[2].z_ = cameraLimitSPos[i][1];\r\n\t\t\t\t\tchPos[3].x_ = cameraLimitSPos[(i + 1) % 4][0];\r\n\t\t\t\t\tchPos[3].z_ = cameraLimitSPos[(i + 1) % 4][1];\r\n\t\t\t\t\tif (GameUtil.ChCrossLine(chPos[0], chPos[1], chPos[2], chPos[3]))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tVector3D crossPoint = GameUtil.GetCrossPoint(chPos[2], chPos[3], chPos[1], true);\r\n\t\t\t\t\t\tpos.x_ = crossPoint.x_;\r\n\t\t\t\t\t\tpos.y_ = crossPoint.z_;\r\n\t\t\t\t\t\tflag5 = true;\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (!flag5)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos.x_ += num3;\r\n\t\t\t\t\tpos.y_ += num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void Update_pos()\n\t\t{\n\t\t\tbool flag = canvas_.CheckKeyState(131072);\n\t\t\tbool flag2 = canvas_.CheckKeyState(524288);\n\t\t\tbool flag3 = canvas_.CheckKeyState(65536);\n\t\t\tbool flag4 = canvas_.CheckKeyState(262144);\n\t\t\tif (SoccerForm.DEBUG_PLAYER_NOTACT == 1)\n\t\t\t{\n\t\t\t\tPlayer player = udat_.GetPlayer(0, 0);\n\t\t\t\tplayer.v_.Set(0f, 0f, 0f);\n\t\t\t\tif (flag)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.z_ = 35f;\n\t\t\t\t\tplayer.direct_ = 0;\n\t\t\t\t}\n\t\t\t\tif (flag2)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.z_ = -35f;\n\t\t\t\t\tplayer.direct_ = 2;\n\t\t\t\t}\n\t\t\t\tif (flag3)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.x_ = -35f;\n\t\t\t\t\tplayer.direct_ = 3;\n\t\t\t\t}\n\t\t\t\tif (flag4)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.x_ = 35f;\n\t\t\t\t\tplayer.direct_ = 1;\n\t\t\t\t}\n\t\t\t\tplayer.pos_.x_ += player.v_.x_;\n\t\t\t\tplayer.pos_.z_ += player.v_.z_;\n\t\t\t\tConvertGlobalToScreen(player.pos_, player.screen_pos_);\n\t\t\t\tpos.x_ = player.screen_pos_[0];\n\t\t\t\tpos.y_ = player.screen_pos_[1];\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\tif (udat_.gm_.state_ == 3 && (udat_.gm_.stateCnt_ >= GameManager.WAIT_THROWIN[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_GK[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_CK[0]))\n\t\t\t{\n\t\t\t\tcamera_gpos.x_ = (int)udat_.ball_.shadowPos_.x_;\n\t\t\t\tcamera_gpos.z_ = (int)udat_.ball_.shadowPos_.z_;\n\t\t\t\tif (camera_gpos.x_ > CAMERALIMIT_GPOS[1].x_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[1].x_;\n\t\t\t\t}\n\t\t\t\tif (camera_gpos.x_ < CAMERALIMIT_GPOS[0].x_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[0].x_;\n\t\t\t\t}\n\t\t\t\tif (camera_gpos.z_ > CAMERALIMIT_GPOS[0].z_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[0].z_;\n\t\t\t\t}\n\t\t\t\tif (camera_gpos.z_ < CAMERALIMIT_GPOS[2].z_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[2].z_;\n\t\t\t\t}\n\t\t\t\tConvertGlobalToScreen(camera_gpos, camera_spos);\n\t\t\t\tpos.x_ = camera_spos[0];\n\t\t\t\tpos.y_ = camera_spos[1];\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tif (mode_ == 0)\n\t\t\t{\n\t\t\t\tfloat recoveredUnusedSingleA;\nint recoveredSelector = 0;\nfloat recoveredUnusedSingleB;\nif (recoveredSelector == 0)\n{\n\t\t\t\t\tUpdate_normal();\n\t\t\t\t\tSetCameraRect();\n\t\t\t\t\tcamera_spos[0] = (int)cursor_pos.x_;\n\t\t\t\t\tcamera_spos[1] = (int)cursor_pos.y_;\n\t\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\n\t\t\t\t\tCAMERA_ADS_GPOS.Set(camera_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, camera_gpos.z_ - CAMERA_BASE_GPOS.z_);\n\t\t\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, camera_address);\n\t\t\t\t\tif (cursorCnt_ < 80)\n\t\t\t\t\t{\n\t\t\t\t\t\tcursorCnt_++;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag || flag2 || flag3 || flag4)\n\t\t\t\t\t{\n\t\t\t\t\t\tsubPlayer_ = null;\n\t\t\t\t\t\tsubSvisor_ = null;\n\t\t\t\t\t\tcursorCnt_ = 0;\n\t\t\t\t\t}\n\t\t\t\t\tif (subCursorCnt_ < 100 && subPlayer_ != null)\n\t\t\t\t\t{\n\t\t\t\t\t\tsubCursorCnt_++;\n\t\t\t\t\t}\n\t\t\t\t\tif (subCursorCnt_ >= 100)\n\t\t\t\t\t{\n\t\t\t\t\t\tsubCursorCnt_ = 0;\n\t\t\t\t\t\tsubPlayer_ = null;\n\t\t\t\t\t\tsubSvisor_ = null;\n\t\t\t\t\t}\n\t\t\t\t\tif (!flg_disp) { return; }\nCollision((int)cursor_pos.x_, (int)cursor_pos.y_);\n}\nelse if (recoveredSelector == 1)\n{\n\t\t\t\t\tif (flag)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.z_ += 10f;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag2)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.z_ -= 10f;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag3)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.x_ -= 10f;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag4)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.x_ += 10f;\n\t\t\t\t\t}\n\t\t\t\t\tConvertGlobalToScreen(ch_global_pos, ch_screen_pos);\n\t\t\t\t\tpos.x_ = ch_screen_pos[0];\n\t\t\t\t\tpos.y_ = ch_screen_pos[1];\n}\n\t\t\t}\n\t\t\telse if (mode_ == 1)\n\t\t\t{\n\t\t\t\tpos.x_ = udat_.ball_.screen_shadowPos_[0];\n\t\t\t\tpos.y_ = udat_.ball_.screen_shadowPos_[1];\n\t\t\t}\n\t\t\telse if (mode_ == 2)\n\t\t\t{\n\t\t\t\tif (apdat_.frmSoccer_.state_ == 8)\n\t\t\t\t{\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tint num = 0;\n\t\t\t\tint num2 = 0;\n\t\t\t\tint num3 = 0;\n\t\t\t\tint num4 = 0;\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\n\t\t\t\t{\n\t\t\t\t\tif (udat_.ball_.chInGoal_ != 2)\n\t\t\t\t\t{\n\t\t\t\t\t\tTeam team = udat_.teams_[1 - udat_.ball_.chInGoal_];\n\t\t\t\t\t\tif (team.lastKickeer_ != -1)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tPlayer player2 = team.players_[team.lastKickeer_];\n\t\t\t\t\t\t\tnum = (int)JMath.Abs((float)player2.screen_pos_[0] - pos.x_);\n\t\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)player2.screen_pos_[1] - pos.y_);\n\t\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 10, true);\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[0] < pos.x_)\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tnum3 *= -1;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 10, true);\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[1] < pos.y_)\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tnum4 *= -1;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tBall ball_ = udat_.ball_;\n\t\t\t\t\tif (ball_ != null)\n\t\t\t\t\t{\n\t\t\t\t\t\tnum = (int)JMath.Abs((float)ball_.screen_shadowPos_[0] - pos.x_);\n\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)ball_.screen_shadowPos_[1] - pos.y_);\n\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 13, true);\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[0] < pos.x_)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tnum3 *= -1;\n\t\t\t\t\t\t}\n\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 13, true);\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[1] < pos.y_)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tnum4 *= -1;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\n\t\t\t\t{\n\t\t\t\t\tpos.x_ += num3;\n\t\t\t\t\tpos.y_ += num4;\n\t\t\t\t\t}\nelse\n{\n\t\t\t\tchPos[0].x_ = pos.x_;\n\t\t\t\tchPos[0].z_ = pos.y_;\n\t\t\t\tchPos[1].x_ = pos.x_ + (float)num3;\n\t\t\t\tchPos[1].z_ = pos.y_ + (float)num4;\n\t\t\t\tcamera_spos[0] = (int)pos.x_ + num3;\n\t\t\t\tcamera_spos[1] = (int)pos.y_ + num4;\n\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\n\t\t\t\tbool flag5 = false;\n\t\t\t\tfor (int i = 0; i < 4; i++)\n\t\t\t\t{\n\t\t\t\t\tchPos[2].x_ = cameraLimitSPos[i][0];\n\t\t\t\t\tchPos[2].z_ = cameraLimitSPos[i][1];\n\t\t\t\t\tchPos[3].x_ = cameraLimitSPos[(i + 1) % 4][0];\n\t\t\t\t\tchPos[3].z_ = cameraLimitSPos[(i + 1) % 4][1];\n\t\t\t\t\tbool recoveredIntersection = GameUtil.ChCrossLine(chPos[0], chPos[1], chPos[2], chPos[3]);\nif (recoveredIntersection)\n\t\t\t\t\t{\n\t\t\t\t\t\tVector3D crossPoint = GameUtil.GetCrossPoint(chPos[2], chPos[3], chPos[1], true);\n\t\t\t\t\t\tpos.x_ = crossPoint.x_;\n\t\t\t\t\t\tpos.y_ = crossPoint.z_;\n\t\t\t\t\t\tflag5 = true;\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tif (!flag5)\n\t\t\t\t{\n\t\t\t\t\tpos.x_ += num3;\n\t\t\t\t\tpos.y_ += num4;\n\t\t\t\t}\n\t\t\t\n}}\n\t\t\t}\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 367,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "game.Player",
+              "System.Single",
+              "System.Int32",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "game.Team",
+              "game.Player",
+              "game.Ball",
+              "System.Boolean",
+              "System.Int32",
+              "System.Boolean",
+              "kairo.unity.m3d4.util3d.Vector3D"
+            ],
+            "method_id": "game.Camera::Update_pos()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Camera.cs",
+            "full_source_sha256": "98d8f0e849113dcffec4a0fb90141cdc71df05950fee345987ce656034b60d9c"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794117233188665800\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.031999999890104,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 2454,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 2454,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Camera::Update_pos()->System.Void"
+          ],
+          "matched_IL_gain": 2454
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-camera-runtime-selector-and-common-goal-else",
+          "start": 6694,
+          "end": 12518,
+          "before": "public void Update_pos()\r\n\t\t{\r\n\t\t\tbool flag = canvas_.CheckKeyState(131072);\r\n\t\t\tbool flag2 = canvas_.CheckKeyState(524288);\r\n\t\t\tbool flag3 = canvas_.CheckKeyState(65536);\r\n\t\t\tbool flag4 = canvas_.CheckKeyState(262144);\r\n\t\t\tif (SoccerForm.DEBUG_PLAYER_NOTACT == 1)\r\n\t\t\t{\r\n\t\t\t\tPlayer player = udat_.GetPlayer(0, 0);\r\n\t\t\t\tplayer.v_.Set(0f, 0f, 0f);\r\n\t\t\t\tif (flag)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.z_ = 35f;\r\n\t\t\t\t\tplayer.direct_ = 0;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag2)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.z_ = -35f;\r\n\t\t\t\t\tplayer.direct_ = 2;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag3)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.x_ = -35f;\r\n\t\t\t\t\tplayer.direct_ = 3;\r\n\t\t\t\t}\r\n\t\t\t\tif (flag4)\r\n\t\t\t\t{\r\n\t\t\t\t\tplayer.v_.x_ = 35f;\r\n\t\t\t\t\tplayer.direct_ = 1;\r\n\t\t\t\t}\r\n\t\t\t\tplayer.pos_.x_ += player.v_.x_;\r\n\t\t\t\tplayer.pos_.z_ += player.v_.z_;\r\n\t\t\t\tConvertGlobalToScreen(player.pos_, player.screen_pos_);\r\n\t\t\t\tpos.x_ = player.screen_pos_[0];\r\n\t\t\t\tpos.y_ = player.screen_pos_[1];\r\n\t\t\t}\r\n\t\t\telse if (udat_.gm_.state_ == 3 && (udat_.gm_.stateCnt_ >= GameManager.WAIT_THROWIN[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_GK[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_CK[0]))\r\n\t\t\t{\r\n\t\t\t\tcamera_gpos.x_ = (int)udat_.ball_.shadowPos_.x_;\r\n\t\t\t\tcamera_gpos.z_ = (int)udat_.ball_.shadowPos_.z_;\r\n\t\t\t\tif (camera_gpos.x_ > CAMERALIMIT_GPOS[1].x_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[1].x_;\r\n\t\t\t\t}\r\n\t\t\t\tif (camera_gpos.x_ < CAMERALIMIT_GPOS[0].x_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[0].x_;\r\n\t\t\t\t}\r\n\t\t\t\tif (camera_gpos.z_ > CAMERALIMIT_GPOS[0].z_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[0].z_;\r\n\t\t\t\t}\r\n\t\t\t\tif (camera_gpos.z_ < CAMERALIMIT_GPOS[2].z_)\r\n\t\t\t\t{\r\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[2].z_;\r\n\t\t\t\t}\r\n\t\t\t\tConvertGlobalToScreen(camera_gpos, camera_spos);\r\n\t\t\t\tpos.x_ = camera_spos[0];\r\n\t\t\t\tpos.y_ = camera_spos[1];\r\n\t\t\t}\r\n\t\t\telse if (mode_ == 0)\r\n\t\t\t{\r\n\t\t\t\tswitch (0)\r\n\t\t\t\t{\r\n\t\t\t\tcase 0:\r\n\t\t\t\t\tUpdate_normal();\r\n\t\t\t\t\tSetCameraRect();\r\n\t\t\t\t\tcamera_spos[0] = (int)cursor_pos.x_;\r\n\t\t\t\t\tcamera_spos[1] = (int)cursor_pos.y_;\r\n\t\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\r\n\t\t\t\t\tCAMERA_ADS_GPOS.Set(camera_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, camera_gpos.z_ - CAMERA_BASE_GPOS.z_);\r\n\t\t\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, camera_address);\r\n\t\t\t\t\tif (cursorCnt_ < 80)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tcursorCnt_++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag || flag2 || flag3 || flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tsubPlayer_ = null;\r\n\t\t\t\t\t\tsubSvisor_ = null;\r\n\t\t\t\t\t\tcursorCnt_ = 0;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (subCursorCnt_ < 100 && subPlayer_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tsubCursorCnt_++;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (subCursorCnt_ >= 100)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tsubCursorCnt_ = 0;\r\n\t\t\t\t\t\tsubPlayer_ = null;\r\n\t\t\t\t\t\tsubSvisor_ = null;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flg_disp)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tCollision((int)cursor_pos.x_, (int)cursor_pos.y_);\r\n\t\t\t\t\t}\r\n\t\t\t\t\tbreak;\r\n\t\t\t\tcase 1:\r\n\t\t\t\t\tif (flag)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.z_ += 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.z_ -= 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag3)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.x_ -= 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (flag4)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tch_global_pos.x_ += 10f;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tConvertGlobalToScreen(ch_global_pos, ch_screen_pos);\r\n\t\t\t\t\tpos.x_ = ch_screen_pos[0];\r\n\t\t\t\t\tpos.y_ = ch_screen_pos[1];\r\n\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\telse if (mode_ == 1)\r\n\t\t\t{\r\n\t\t\t\tpos.x_ = udat_.ball_.screen_shadowPos_[0];\r\n\t\t\t\tpos.y_ = udat_.ball_.screen_shadowPos_[1];\r\n\t\t\t}\r\n\t\t\telse\r\n\t\t\t{\r\n\t\t\t\tif (mode_ != 2 || apdat_.frmSoccer_.state_ == 8)\r\n\t\t\t\t{\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tint num = 0;\r\n\t\t\t\tint num2 = 0;\r\n\t\t\t\tint num3 = 0;\r\n\t\t\t\tint num4 = 0;\r\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tif (udat_.ball_.chInGoal_ != 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tTeam team = udat_.teams_[1 - udat_.ball_.chInGoal_];\r\n\t\t\t\t\t\tif (team.lastKickeer_ != -1)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tPlayer player2 = team.players_[team.lastKickeer_];\r\n\t\t\t\t\t\t\tnum = (int)JMath.Abs((float)player2.screen_pos_[0] - pos.x_);\r\n\t\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)player2.screen_pos_[1] - pos.y_);\r\n\t\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 10, true);\r\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[0] < pos.x_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tnum3 *= -1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 10, true);\r\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[1] < pos.y_)\r\n\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\tnum4 *= -1;\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\telse\r\n\t\t\t\t{\r\n\t\t\t\t\tBall ball_ = udat_.ball_;\r\n\t\t\t\t\tif (ball_ != null)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tnum = (int)JMath.Abs((float)ball_.screen_shadowPos_[0] - pos.x_);\r\n\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)ball_.screen_shadowPos_[1] - pos.y_);\r\n\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 13, true);\r\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[0] < pos.x_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum3 *= -1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 13, true);\r\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[1] < pos.y_)\r\n\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\tnum4 *= -1;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\r\n\t\t\t\t{\r\n\t\t\t\t\tpos.x_ += num3;\r\n\t\t\t\t\tpos.y_ += num4;\r\n\t\t\t\t\treturn;\r\n\t\t\t\t}\r\n\t\t\t\tchPos[0].x_ = pos.x_;\r\n\t\t\t\tchPos[0].z_ = pos.y_;\r\n\t\t\t\tchPos[1].x_ = pos.x_ + (float)num3;\r\n\t\t\t\tchPos[1].z_ = pos.y_ + (float)num4;\r\n\t\t\t\tcamera_spos[0] = (int)pos.x_ + num3;\r\n\t\t\t\tcamera_spos[1] = (int)pos.y_ + num4;\r\n\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\r\n\t\t\t\tbool flag5 = false;\r\n\t\t\t\tfor (int i = 0; i < 4; i++)\r\n\t\t\t\t{\r\n\t\t\t\t\tchPos[2].x_ = cameraLimitSPos[i][0];\r\n\t\t\t\t\tchPos[2].z_ = cameraLimitSPos[i][1];\r\n\t\t\t\t\tchPos[3].x_ = cameraLimitSPos[(i + 1) % 4][0];\r\n\t\t\t\t\tchPos[3].z_ = cameraLimitSPos[(i + 1) % 4][1];\r\n\t\t\t\t\tif (GameUtil.ChCrossLine(chPos[0], chPos[1], chPos[2], chPos[3]))\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tVector3D crossPoint = GameUtil.GetCrossPoint(chPos[2], chPos[3], chPos[1], true);\r\n\t\t\t\t\t\tpos.x_ = crossPoint.x_;\r\n\t\t\t\t\t\tpos.y_ = crossPoint.z_;\r\n\t\t\t\t\t\tflag5 = true;\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (!flag5)\r\n\t\t\t\t{\r\n\t\t\t\t\tpos.x_ += num3;\r\n\t\t\t\t\tpos.y_ += num4;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}",
+          "after": "public void Update_pos()\n\t\t{\n\t\t\tbool flag = canvas_.CheckKeyState(131072);\n\t\t\tbool flag2 = canvas_.CheckKeyState(524288);\n\t\t\tbool flag3 = canvas_.CheckKeyState(65536);\n\t\t\tbool flag4 = canvas_.CheckKeyState(262144);\n\t\t\tif (SoccerForm.DEBUG_PLAYER_NOTACT == 1)\n\t\t\t{\n\t\t\t\tPlayer player = udat_.GetPlayer(0, 0);\n\t\t\t\tplayer.v_.Set(0f, 0f, 0f);\n\t\t\t\tif (flag)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.z_ = 35f;\n\t\t\t\t\tplayer.direct_ = 0;\n\t\t\t\t}\n\t\t\t\tif (flag2)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.z_ = -35f;\n\t\t\t\t\tplayer.direct_ = 2;\n\t\t\t\t}\n\t\t\t\tif (flag3)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.x_ = -35f;\n\t\t\t\t\tplayer.direct_ = 3;\n\t\t\t\t}\n\t\t\t\tif (flag4)\n\t\t\t\t{\n\t\t\t\t\tplayer.v_.x_ = 35f;\n\t\t\t\t\tplayer.direct_ = 1;\n\t\t\t\t}\n\t\t\t\tplayer.pos_.x_ += player.v_.x_;\n\t\t\t\tplayer.pos_.z_ += player.v_.z_;\n\t\t\t\tConvertGlobalToScreen(player.pos_, player.screen_pos_);\n\t\t\t\tpos.x_ = player.screen_pos_[0];\n\t\t\t\tpos.y_ = player.screen_pos_[1];\n\t\t\t}\n\t\t\telse\n\t\t\t{\n\t\t\tif (udat_.gm_.state_ == 3 && (udat_.gm_.stateCnt_ >= GameManager.WAIT_THROWIN[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_GK[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_CK[0]))\n\t\t\t{\n\t\t\t\tcamera_gpos.x_ = (int)udat_.ball_.shadowPos_.x_;\n\t\t\t\tcamera_gpos.z_ = (int)udat_.ball_.shadowPos_.z_;\n\t\t\t\tif (camera_gpos.x_ > CAMERALIMIT_GPOS[1].x_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[1].x_;\n\t\t\t\t}\n\t\t\t\tif (camera_gpos.x_ < CAMERALIMIT_GPOS[0].x_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.x_ = CAMERALIMIT_GPOS[0].x_;\n\t\t\t\t}\n\t\t\t\tif (camera_gpos.z_ > CAMERALIMIT_GPOS[0].z_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[0].z_;\n\t\t\t\t}\n\t\t\t\tif (camera_gpos.z_ < CAMERALIMIT_GPOS[2].z_)\n\t\t\t\t{\n\t\t\t\t\tcamera_gpos.z_ = CAMERALIMIT_GPOS[2].z_;\n\t\t\t\t}\n\t\t\t\tConvertGlobalToScreen(camera_gpos, camera_spos);\n\t\t\t\tpos.x_ = camera_spos[0];\n\t\t\t\tpos.y_ = camera_spos[1];\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tif (mode_ == 0)\n\t\t\t{\n\t\t\t\tfloat recoveredUnusedSingleA;\nint recoveredSelector = 0;\nfloat recoveredUnusedSingleB;\nif (recoveredSelector == 0)\n{\n\t\t\t\t\tUpdate_normal();\n\t\t\t\t\tSetCameraRect();\n\t\t\t\t\tcamera_spos[0] = (int)cursor_pos.x_;\n\t\t\t\t\tcamera_spos[1] = (int)cursor_pos.y_;\n\t\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\n\t\t\t\t\tCAMERA_ADS_GPOS.Set(camera_gpos.x_ - CAMERA_BASE_GPOS.x_, 0f, camera_gpos.z_ - CAMERA_BASE_GPOS.z_);\n\t\t\t\t\tConvertGlobalToAddressMain(CAMERA_ADS_GPOS, camera_address);\n\t\t\t\t\tif (cursorCnt_ < 80)\n\t\t\t\t\t{\n\t\t\t\t\t\tcursorCnt_++;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag || flag2 || flag3 || flag4)\n\t\t\t\t\t{\n\t\t\t\t\t\tsubPlayer_ = null;\n\t\t\t\t\t\tsubSvisor_ = null;\n\t\t\t\t\t\tcursorCnt_ = 0;\n\t\t\t\t\t}\n\t\t\t\t\tif (subCursorCnt_ < 100 && subPlayer_ != null)\n\t\t\t\t\t{\n\t\t\t\t\t\tsubCursorCnt_++;\n\t\t\t\t\t}\n\t\t\t\t\tif (subCursorCnt_ >= 100)\n\t\t\t\t\t{\n\t\t\t\t\t\tsubCursorCnt_ = 0;\n\t\t\t\t\t\tsubPlayer_ = null;\n\t\t\t\t\t\tsubSvisor_ = null;\n\t\t\t\t\t}\n\t\t\t\t\tif (!flg_disp) { return; }\nCollision((int)cursor_pos.x_, (int)cursor_pos.y_);\n}\nelse if (recoveredSelector == 1)\n{\n\t\t\t\t\tif (flag)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.z_ += 10f;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag2)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.z_ -= 10f;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag3)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.x_ -= 10f;\n\t\t\t\t\t}\n\t\t\t\t\tif (flag4)\n\t\t\t\t\t{\n\t\t\t\t\t\tch_global_pos.x_ += 10f;\n\t\t\t\t\t}\n\t\t\t\t\tConvertGlobalToScreen(ch_global_pos, ch_screen_pos);\n\t\t\t\t\tpos.x_ = ch_screen_pos[0];\n\t\t\t\t\tpos.y_ = ch_screen_pos[1];\n}\n\t\t\t}\n\t\t\telse if (mode_ == 1)\n\t\t\t{\n\t\t\t\tpos.x_ = udat_.ball_.screen_shadowPos_[0];\n\t\t\t\tpos.y_ = udat_.ball_.screen_shadowPos_[1];\n\t\t\t}\n\t\t\telse if (mode_ == 2)\n\t\t\t{\n\t\t\t\tif (apdat_.frmSoccer_.state_ == 8)\n\t\t\t\t{\n\t\t\t\t\treturn;\n\t\t\t\t}\n\t\t\t\tint num = 0;\n\t\t\t\tint num2 = 0;\n\t\t\t\tint num3 = 0;\n\t\t\t\tint num4 = 0;\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\n\t\t\t\t{\n\t\t\t\t\tif (udat_.ball_.chInGoal_ != 2)\n\t\t\t\t\t{\n\t\t\t\t\t\tTeam team = udat_.teams_[1 - udat_.ball_.chInGoal_];\n\t\t\t\t\t\tif (team.lastKickeer_ != -1)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tPlayer player2 = team.players_[team.lastKickeer_];\n\t\t\t\t\t\t\tnum = (int)JMath.Abs((float)player2.screen_pos_[0] - pos.x_);\n\t\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)player2.screen_pos_[1] - pos.y_);\n\t\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 10, true);\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[0] < pos.x_)\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tnum3 *= -1;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 10, true);\n\t\t\t\t\t\t\tif ((float)player2.screen_pos_[1] < pos.y_)\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tnum4 *= -1;\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\telse\n\t\t\t\t{\n\t\t\t\t\tBall ball_ = udat_.ball_;\n\t\t\t\t\tif (ball_ != null)\n\t\t\t\t\t{\n\t\t\t\t\t\tnum = (int)JMath.Abs((float)ball_.screen_shadowPos_[0] - pos.x_);\n\t\t\t\t\t\tnum2 = (int)JMath.Abs((float)ball_.screen_shadowPos_[1] - pos.y_);\n\t\t\t\t\t\tnum3 = GameUtil.RateConvert(num, 20, 90, 0, 13, true);\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[0] < pos.x_)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tnum3 *= -1;\n\t\t\t\t\t\t}\n\t\t\t\t\t\tnum4 = GameUtil.RateConvert(num2, 20, 90, 0, 13, true);\n\t\t\t\t\t\tif ((float)ball_.screen_shadowPos_[1] < pos.y_)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tnum4 *= -1;\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tif (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0])\n\t\t\t\t{\n\t\t\t\t\tpos.x_ += num3;\n\t\t\t\t\tpos.y_ += num4;\n\t\t\t\t\t}\nelse\n{\n\t\t\t\tchPos[0].x_ = pos.x_;\n\t\t\t\tchPos[0].z_ = pos.y_;\n\t\t\t\tchPos[1].x_ = pos.x_ + (float)num3;\n\t\t\t\tchPos[1].z_ = pos.y_ + (float)num4;\n\t\t\t\tcamera_spos[0] = (int)pos.x_ + num3;\n\t\t\t\tcamera_spos[1] = (int)pos.y_ + num4;\n\t\t\t\tConvertScreenToGlobal(camera_spos, camera_gpos);\n\t\t\t\tbool flag5 = false;\n\t\t\t\tfor (int i = 0; i < 4; i++)\n\t\t\t\t{\n\t\t\t\t\tchPos[2].x_ = cameraLimitSPos[i][0];\n\t\t\t\t\tchPos[2].z_ = cameraLimitSPos[i][1];\n\t\t\t\t\tchPos[3].x_ = cameraLimitSPos[(i + 1) % 4][0];\n\t\t\t\t\tchPos[3].z_ = cameraLimitSPos[(i + 1) % 4][1];\n\t\t\t\t\tbool recoveredIntersection = GameUtil.ChCrossLine(chPos[0], chPos[1], chPos[2], chPos[3]);\nif (recoveredIntersection)\n\t\t\t\t\t{\n\t\t\t\t\t\tVector3D crossPoint = GameUtil.GetCrossPoint(chPos[2], chPos[3], chPos[1], true);\n\t\t\t\t\t\tpos.x_ = crossPoint.x_;\n\t\t\t\t\t\tpos.y_ = crossPoint.z_;\n\t\t\t\t\t\tflag5 = true;\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tif (!flag5)\n\t\t\t\t{\n\t\t\t\t\tpos.x_ += num3;\n\t\t\t\t\tpos.y_ += num4;\n\t\t\t\t}\n\t\t\t\n}}\n\t\t\t}\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 367,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "System.Boolean",
+              "game.Player",
+              "System.Single",
+              "System.Int32",
+              "System.Single",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "System.Int32",
+              "game.Team",
+              "game.Player",
+              "game.Ball",
+              "System.Boolean",
+              "System.Int32",
+              "System.Boolean",
+              "kairo.unity.m3d4.util3d.Vector3D"
+            ],
+            "method_id": "game.Camera::Update_pos()->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Camera.cs",
+            "full_source_sha256": "98d8f0e849113dcffec4a0fb90141cdc71df05950fee345987ce656034b60d9c"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794117233188665800\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.031999999890104,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 2454,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 2454,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "game.Camera::Update_pos()->System.Void"
+          ],
+          "matched_IL_gain": 2454
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": true,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 790,
+            "rebuilt_offset": 790,
+            "opcode_pair": [
+              "ret",
+              "br"
+            ],
+            "mapping_original_rebuilt_offset": 790,
+            "mapping_selected_rebuilt_offset": 785,
+            "caller_source_identity_confirmed": true,
+            "reason": "exact_transfer_pair_and_required_join_evidence_proved"
+          },
+          "round9_scoped_exit_original_opcode": "ret",
+          "round9_scoped_exit_join_kind": "method-return",
+          "round9_scoped_exit_mapping_rebuilt_offset": 785,
+          "round9_scoped_exit_join_source_point": -1
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 367,
+        "source": "src/Assembly-CSharp/game/Camera.cs",
+        "point": {
+          "offset": 772,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\game\\Camera.cs",
+          "start_line": 346,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 785,
+          "line": 346,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "replace",
+          "original_offset": 790,
+          "rebuilt_offset": 790,
+          "original_index": 224,
+          "rebuilt_index": 224,
+          "original_instruction": {
+            "offset": 790,
+            "opcode": "ret",
+            "operand": null
+          },
+          "rebuilt_instruction": {
+            "offset": 790,
+            "opcode": "br",
+            "operand": {
+              "branch": 2267
+            }
+          },
+          "pair": "{\"opcode\":\"ret\",\"operand\":null} => {\"opcode\":\"br\",\"operand\":{\"branch\":2267}}",
+          "opcode_pair": "ret => br",
+          "original_context": [
+            {
+              "offset": 784,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 785,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::y_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 790,
+              "opcode": "ret",
+              "operand": null
+            },
+            {
+              "offset": 791,
+              "opcode": "ldarg.0",
+              "operand": null,
+              "label": "L10"
+            },
+            {
+              "offset": 792,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Camera @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::mode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 784,
+              "opcode": "conv.r4",
+              "operand": null
+            },
+            {
+              "offset": 785,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class kairo.unity.m3d4.util3d.Vector3D @ KairoLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null::y_:valuetype System.Single @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 790,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L28"
+                ]
+              }
+            },
+            {
+              "offset": 795,
+              "opcode": "ldarg.0",
+              "operand": null,
+              "label": "L10"
+            },
+            {
+              "offset": 796,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class game.Camera @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::mode_:valuetype System.Int32 @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            }
+          ],
+          "original_labels": {
+            "152": "L0",
+            "183": "L1",
+            "214": "L2",
+            "245": "L3",
+            "371": "L4",
+            "477": "L5",
+            "592": "L6",
+            "641": "L7",
+            "690": "L8",
+            "739": "L9",
+            "791": "L10",
+            "974": "L11",
+            "998": "L12",
+            "1019": "L13",
+            "1057": "L14",
+            "1091": "L15",
+            "1103": "L16",
+            "1131": "L17",
+            "1307": "L18",
+            "1312": "L19",
+            "1387": "L20",
+            "1421": "L21",
+            "1422": "L22",
+            "1722": "L23",
+            "1727": "L24",
+            "1901": "L25",
+            "1996": "L26",
+            "2164": "L27",
+            "2453": "L28",
+            "1136": "O1136",
+            "1172": "O1172",
+            "1200": "O1200",
+            "1228": "O1228",
+            "1256": "O1256",
+            "1674": "O1674",
+            "1853": "O1853",
+            "2392": "O2392",
+            "2398": "O2398",
+            "2406": "O2406"
+          },
+          "rebuilt_labels": {
+            "152": "L0",
+            "183": "L1",
+            "214": "L2",
+            "245": "L3",
+            "371": "L4",
+            "477": "L5",
+            "592": "L6",
+            "641": "L7",
+            "690": "L8",
+            "739": "L9",
+            "795": "L10",
+            "968": "L11",
+            "992": "L12",
+            "1013": "L13",
+            "1051": "L14",
+            "1085": "L15",
+            "1096": "L16",
+            "1124": "L17",
+            "1129": "L18",
+            "1134": "L19",
+            "1209": "L20",
+            "1243": "L21",
+            "1244": "L22",
+            "1544": "L23",
+            "1549": "L24",
+            "1723": "L25",
+            "1814": "L26",
+            "1982": "L27",
+            "2267": "L28",
+            "1496": "R1496",
+            "1675": "R1675",
+            "2206": "R2206",
+            "2212": "R2212",
+            "2220": "R2220"
+          },
+          "sequence_edits": [
+            {
+              "kind": "replace",
+              "original_start": 224,
+              "original_stop": 225,
+              "rebuilt_start": 224,
+              "rebuilt_stop": 225
+            },
+            {
+              "kind": "delete",
+              "original_start": 227,
+              "original_stop": 231,
+              "rebuilt_start": 227,
+              "rebuilt_stop": 227
+            },
+            {
+              "kind": "replace",
+              "original_start": 322,
+              "original_stop": 324,
+              "rebuilt_start": 318,
+              "rebuilt_stop": 319
+            },
+            {
+              "kind": "delete",
+              "original_start": 333,
+              "original_stop": 383,
+              "rebuilt_start": 328,
+              "rebuilt_stop": 328
+            },
+            {
+              "kind": "insert",
+              "original_start": 419,
+              "original_stop": 419,
+              "rebuilt_start": 364,
+              "rebuilt_stop": 370
+            },
+            {
+              "kind": "delete",
+              "original_start": 420,
+              "original_stop": 426,
+              "rebuilt_start": 371,
+              "rebuilt_stop": 371
+            },
+            {
+              "kind": "replace",
+              "original_start": 456,
+              "original_stop": 458,
+              "rebuilt_start": 401,
+              "rebuilt_stop": 403
+            },
+            {
+              "kind": "replace",
+              "original_start": 461,
+              "original_stop": 462,
+              "rebuilt_start": 406,
+              "rebuilt_stop": 407
+            },
+            {
+              "kind": "replace",
+              "original_start": 463,
+              "original_stop": 464,
+              "rebuilt_start": 408,
+              "rebuilt_stop": 409
+            },
+            {
+              "kind": "replace",
+              "original_start": 466,
+              "original_stop": 468,
+              "rebuilt_start": 411,
+              "rebuilt_stop": 413
+            },
+            {
+              "kind": "replace",
+              "original_start": 477,
+              "original_stop": 479,
+              "rebuilt_start": 422,
+              "rebuilt_stop": 424
+            },
+            {
+              "kind": "replace",
+              "original_start": 488,
+              "original_stop": 490,
+              "rebuilt_start": 433,
+              "rebuilt_stop": 435
+            },
+            {
+              "kind": "replace",
+              "original_start": 496,
+              "original_stop": 498,
+              "rebuilt_start": 441,
+              "rebuilt_stop": 443
+            },
+            {
+              "kind": "replace",
+              "original_start": 505,
+              "original_stop": 506,
+              "rebuilt_start": 450,
+              "rebuilt_stop": 451
+            },
+            {
+              "kind": "replace",
+              "original_start": 508,
+              "original_stop": 510,
+              "rebuilt_start": 453,
+              "rebuilt_stop": 455
+            },
+            {
+              "kind": "replace",
+              "original_start": 516,
+              "original_stop": 518,
+              "rebuilt_start": 461,
+              "rebuilt_stop": 463
+            },
+            {
+              "kind": "replace",
+              "original_start": 525,
+              "original_stop": 526,
+              "rebuilt_start": 470,
+              "rebuilt_stop": 471
+            },
+            {
+              "kind": "replace",
+              "original_start": 528,
+              "original_stop": 529,
+              "rebuilt_start": 473,
+              "rebuilt_stop": 474
+            },
+            {
+              "kind": "replace",
+              "original_start": 533,
+              "original_stop": 535,
+              "rebuilt_start": 478,
+              "rebuilt_stop": 480
+            },
+            {
+              "kind": "replace",
+              "original_start": 536,
+              "original_stop": 537,
+              "rebuilt_start": 481,
+              "rebuilt_stop": 482
+            },
+            {
+              "kind": "replace",
+              "original_start": 546,
+              "original_stop": 548,
+              "rebuilt_start": 491,
+              "rebuilt_stop": 493
+            },
+            {
+              "kind": "replace",
+              "original_start": 557,
+              "original_stop": 559,
+              "rebuilt_start": 502,
+              "rebuilt_stop": 504
+            },
+            {
+              "kind": "replace",
+              "original_start": 565,
+              "original_stop": 567,
+              "rebuilt_start": 510,
+              "rebuilt_stop": 512
+            },
+            {
+              "kind": "replace",
+              "original_start": 574,
+              "original_stop": 575,
+              "rebuilt_start": 519,
+              "rebuilt_stop": 520
+            },
+            {
+              "kind": "replace",
+              "original_start": 577,
+              "original_stop": 579,
+              "rebuilt_start": 522,
+              "rebuilt_stop": 524
+            },
+            {
+              "kind": "replace",
+              "original_start": 585,
+              "original_stop": 587,
+              "rebuilt_start": 530,
+              "rebuilt_stop": 532
+            },
+            {
+              "kind": "replace",
+              "original_start": 594,
+              "original_stop": 595,
+              "rebuilt_start": 539,
+              "rebuilt_stop": 540
+            },
+            {
+              "kind": "replace",
+              "original_start": 597,
+              "original_stop": 598,
+              "rebuilt_start": 542,
+              "rebuilt_stop": 543
+            },
+            {
+              "kind": "replace",
+              "original_start": 615,
+              "original_stop": 616,
+              "rebuilt_start": 560,
+              "rebuilt_stop": 561
+            },
+            {
+              "kind": "replace",
+              "original_start": 622,
+              "original_stop": 623,
+              "rebuilt_start": 567,
+              "rebuilt_stop": 568
+            },
+            {
+              "kind": "replace",
+              "original_start": 626,
+              "original_stop": 627,
+              "rebuilt_start": 571,
+              "rebuilt_stop": 572
+            },
+            {
+              "kind": "replace",
+              "original_start": 647,
+              "original_stop": 648,
+              "rebuilt_start": 592,
+              "rebuilt_stop": 593
+            },
+            {
+              "kind": "replace",
+              "original_start": 657,
+              "original_stop": 658,
+              "rebuilt_start": 602,
+              "rebuilt_stop": 603
+            },
+            {
+              "kind": "replace",
+              "original_start": 666,
+              "original_stop": 667,
+              "rebuilt_start": 611,
+              "rebuilt_stop": 612
+            },
+            {
+              "kind": "replace",
+              "original_start": 674,
+              "original_stop": 675,
+              "rebuilt_start": 619,
+              "rebuilt_stop": 620
+            },
+            {
+              "kind": "replace",
+              "original_start": 681,
+              "original_stop": 682,
+              "rebuilt_start": 626,
+              "rebuilt_stop": 627
+            },
+            {
+              "kind": "replace",
+              "original_start": 683,
+              "original_stop": 684,
+              "rebuilt_start": 628,
+              "rebuilt_stop": 629
+            },
+            {
+              "kind": "replace",
+              "original_start": 691,
+              "original_stop": 692,
+              "rebuilt_start": 636,
+              "rebuilt_stop": 637
+            },
+            {
+              "kind": "replace",
+              "original_start": 703,
+              "original_stop": 704,
+              "rebuilt_start": 648,
+              "rebuilt_stop": 649
+            },
+            {
+              "kind": "replace",
+              "original_start": 715,
+              "original_stop": 716,
+              "rebuilt_start": 660,
+              "rebuilt_stop": 661
+            },
+            {
+              "kind": "replace",
+              "original_start": 731,
+              "original_stop": 732,
+              "rebuilt_start": 676,
+              "rebuilt_stop": 677
+            },
+            {
+              "kind": "delete",
+              "original_start": 758,
+              "original_stop": 760,
+              "rebuilt_start": 703,
+              "rebuilt_stop": 703
+            },
+            {
+              "kind": "replace",
+              "original_start": 775,
+              "original_stop": 776,
+              "rebuilt_start": 718,
+              "rebuilt_stop": 719
+            },
+            {
+              "kind": "replace",
+              "original_start": 777,
+              "original_stop": 778,
+              "rebuilt_start": 720,
+              "rebuilt_stop": 721
+            },
+            {
+              "kind": "replace",
+              "original_start": 781,
+              "original_stop": 782,
+              "rebuilt_start": 724,
+              "rebuilt_stop": 725
+            },
+            {
+              "kind": "replace",
+              "original_start": 785,
+              "original_stop": 786,
+              "rebuilt_start": 728,
+              "rebuilt_stop": 729
+            },
+            {
+              "kind": "replace",
+              "original_start": 787,
+              "original_stop": 788,
+              "rebuilt_start": 730,
+              "rebuilt_stop": 731
+            },
+            {
+              "kind": "replace",
+              "original_start": 790,
+              "original_stop": 792,
+              "rebuilt_start": 733,
+              "rebuilt_stop": 735
+            },
+            {
+              "kind": "replace",
+              "original_start": 794,
+              "original_stop": 795,
+              "rebuilt_start": 737,
+              "rebuilt_stop": 738
+            },
+            {
+              "kind": "replace",
+              "original_start": 799,
+              "original_stop": 800,
+              "rebuilt_start": 742,
+              "rebuilt_stop": 743
+            },
+            {
+              "kind": "replace",
+              "original_start": 806,
+              "original_stop": 807,
+              "rebuilt_start": 749,
+              "rebuilt_stop": 750
+            }
+          ],
+          "branch_retarget_differences": [
+            {
+              "kind": "branch_retarget",
+              "original_start": 410,
+              "original_stop": 411,
+              "rebuilt_start": 355,
+              "rebuilt_stop": 356,
+              "target_ordinal": 0,
+              "original_target": 2453,
+              "rebuilt_target": 1243
+            }
+          ],
+          "deferred_branch_targets": [
+            {
+              "original_offset": 807,
+              "rebuilt_offset": 801,
+              "target_ordinal": 0,
+              "original_target": 1136,
+              "rebuilt_target": 1134,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1663,
+              "rebuilt_offset": 1485,
+              "target_ordinal": 0,
+              "original_target": 1674,
+              "rebuilt_target": 1496,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 1842,
+              "rebuilt_offset": 1664,
+              "target_ordinal": 0,
+              "original_target": 1853,
+              "rebuilt_target": 1675,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2159,
+              "rebuilt_offset": 1977,
+              "target_ordinal": 0,
+              "original_target": 2398,
+              "rebuilt_target": 2212,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2313,
+              "rebuilt_offset": 2127,
+              "target_ordinal": 0,
+              "original_target": 2392,
+              "rebuilt_target": 2206,
+              "status": "target_in_unmatched_sequence_range"
+            },
+            {
+              "original_offset": 2387,
+              "rebuilt_offset": 2201,
+              "target_ordinal": 0,
+              "original_target": 2406,
+              "rebuilt_target": 2220,
+              "status": "target_in_unmatched_sequence_range"
+            }
+          ],
+          "branch_width_differences": [],
+          "original_exception_regions": [],
+          "rebuilt_exception_regions": []
+        },
+        "statement": {
+          "start": 8422,
+          "end": 8446,
+          "line": 346,
+          "column": 5,
+          "text": "pos.y_ = camera_spos[1];",
+          "kind": "ExpressionStatement",
+          "method_id": "game.Camera::Update_pos()->System.Void",
+          "point": 8418,
+          "declaration_start": 6694,
+          "declaration_end": 12518
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 16,
+              "last_use": 1144,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 33,
+              "last_use": 1172,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 50,
+              "last_use": 1200,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 67,
+              "last_use": 1228,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 92,
+              "last_use": 351,
+              "loads": 17,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 803,
+              "last_use": 1136,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 1423,
+              "last_use": 1805,
+              "loads": 2,
+              "stores": 3
+            },
+            {
+              "slot": 9,
+              "first_use": 1426,
+              "last_use": 1853,
+              "loads": 2,
+              "stores": 3
+            },
+            {
+              "slot": 10,
+              "first_use": 1429,
+              "last_use": 2424,
+              "loads": 6,
+              "stores": 5
+            },
+            {
+              "slot": 11,
+              "first_use": 1432,
+              "last_use": 2444,
+              "loads": 6,
+              "stores": 5
+            },
+            {
+              "slot": 12,
+              "first_use": 1536,
+              "last_use": 1558,
+              "loads": 3,
+              "stores": 1
+            },
+            {
+              "slot": 13,
+              "first_use": 1566,
+              "last_use": 1691,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 14,
+              "first_use": 1738,
+              "last_use": 1870,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 15,
+              "first_use": 2154,
+              "last_use": 2406,
+              "loads": 1,
+              "stores": 2
+            },
+            {
+              "slot": 16,
+              "first_use": 2157,
+              "last_use": 2398,
+              "loads": 6,
+              "stores": 2
+            },
+            {
+              "slot": 17,
+              "first_use": 2309,
+              "last_use": 2311,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 18,
+              "first_use": 2348,
+              "last_use": 2372,
+              "loads": 2,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 18
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 8,
+              "votes": {
+                "8": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 9,
+              "votes": {
+                "9": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 10,
+              "votes": {
+                "10": 11
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 11,
+              "votes": {
+                "11": 11
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 12,
+              "votes": {
+                "12": 4
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 13,
+              "votes": {
+                "13": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 14,
+              "votes": {
+                "14": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 12,
+              "original_slot": 15,
+              "votes": {
+                "15": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 13,
+              "original_slot": 16,
+              "votes": {
+                "16": 8
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 14,
+              "original_slot": 18,
+              "votes": {
+                "18": 3
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "flag",
+              "type": "System.Boolean",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 6722,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "flag2",
+              "type": "System.Boolean",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 6722,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "flag3",
+              "type": "System.Boolean",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 6722,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "flag4",
+              "type": "System.Boolean",
+              "rebuilt_slot": 3,
+              "desired_slot": 3,
+              "lexical_block": 6722,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "player",
+              "type": "game.Player",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 6963,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num",
+              "type": "System.Int32",
+              "rebuilt_slot": 5,
+              "desired_slot": 8,
+              "lexical_block": 9974,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Int32",
+              "rebuilt_slot": 6,
+              "desired_slot": 9,
+              "lexical_block": 9974,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num3",
+              "type": "System.Int32",
+              "rebuilt_slot": 7,
+              "desired_slot": 10,
+              "lexical_block": 9974,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num4",
+              "type": "System.Int32",
+              "rebuilt_slot": 8,
+              "desired_slot": 11,
+              "lexical_block": 9974,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "team",
+              "type": "game.Team",
+              "rebuilt_slot": 9,
+              "desired_slot": 12,
+              "lexical_block": 10267,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "player2",
+              "type": "game.Player",
+              "rebuilt_slot": 10,
+              "desired_slot": 13,
+              "lexical_block": 10372,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "ball_",
+              "type": "game.Ball",
+              "rebuilt_slot": 11,
+              "desired_slot": 14,
+              "lexical_block": 10926,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "flag5",
+              "type": "System.Boolean",
+              "rebuilt_slot": 12,
+              "desired_slot": 15,
+              "lexical_block": 9974,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "crossPoint",
+              "type": "kairo.unity.m3d4.util3d.Vector3D",
+              "rebuilt_slot": 14,
+              "desired_slot": 18,
+              "lexical_block": 12230,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 17,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 16,
+          "selected_rule_prefix": "r12-camera-runtime-selector-and-common-goal-else"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-camera-runtime-selector-and-common-goal-else": 1
+          },
+          "model_approved": {
+            "r12-camera-runtime-selector-and-common-goal-else": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 2454,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "game.Camera::Update_pos()->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-camera-runtime-selector-and-common-goal-else:attempts": 1,
+    "r12-camera-runtime-selector-and-common-goal-else:accepted_steps": 1,
+    "r12-camera-runtime-selector-and-common-goal-else:body_gains": 1,
+    "r12-camera-runtime-selector-and-common-goal-else:IL_gains": 2454
+  },
+  "completed": true,
+  "run_label": "b05-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b05\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-camera-runtime-selector-and-common-goal-else",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-camera-runtime-selector-and-common-goal-else",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 16,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-camera-v2-live-model-patches.json",
+    "sha256": "7cff46a8c47acfa67c34037a228c4baca8610ce38d764b10fae0d195135afbc5",
+    "dependencies_checked": {
+      "tools/round12_app_camera_v2_private_source.py": "86ccbec62549ef95d7656763ec87b2cb932459ee2db67e7aae8ac3044accaca2",
+      "tools/round12_publish_path_family.py": "381d1e18de40a420c8f61452fd5413d0bd8fe74c810ffd02fb429df15925b74e",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-camera-v2-private-fixture-report.json": "15f53d4aa41ebac3fb9b456f19b2abee7b6d36f59fc20d16297623052aceb372",
+      "reports/round12-app-camera-v2-family-patches.json": "e20dc473361ace27534e3de6a61887c387542feff17dc5ea20f2249fff98248e",
+      "reports/round12-app-camera-v2-live-model-proof.json": "eca71de6ad0cd30a7011dec7cab48421605bcb73d18e1c9fc988b7d1c56a4154",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-camera-private/freeze.json": "335d07dc5e614434701b4cf39a14fc02ce8e1a5450f327467d73586af2e344b1",
+      "build/round12/app-camera-v2-private/analysis.json": "f05f12266f3689a3b2e7795309380946d4ad84e4406985f5f4755192edbe0f0b",
+      "build/round12/app-camera-v2-private/calculate.py": "86ccbec62549ef95d7656763ec87b2cb932459ee2db67e7aae8ac3044accaca2",
+      "build/round12/app-camera-v2-private/fixture-report.json": "15f53d4aa41ebac3fb9b456f19b2abee7b6d36f59fc20d16297623052aceb372",
+      "build/round12/app-camera-v2-private/fixtures/before/compiler.log": "8679366edcf746cae91b379ec80f893453eaf819ffc5e3700f9fe9f3b1d4e5e4",
+      "build/round12/app-camera-v2-private/fixtures/before/Fixture.cs": "52f70cf437b53a65fe5877bef31326850268315389c44b79d8d74e5b49302f8e",
+      "build/round12/app-camera-v2-private/fixtures/before/Fixture.dll": "cd8dbbb1630b695911366792292f6f4d2133f8fc8289f8e2d0ae00ba15858732",
+      "build/round12/app-camera-v2-private/fixtures/before/method.json": "e65289ad9451e456949cfb2b094f5fdf471d3e21f10ecdb9a6f39601e3efc4da",
+      "build/round12/app-camera-v2-private/fixtures/candidate/compiler.log": "908e39dc638497deae0884ecb76ca8a944afda4959740efe1980c45d35326757",
+      "build/round12/app-camera-v2-private/fixtures/candidate/Fixture.cs": "9d5d4efe58fd1e57d2d338c6d40fbe87b04bece3f2144291b4d4d3424b52ca71",
+      "build/round12/app-camera-v2-private/fixtures/candidate/Fixture.dll": "07d792c4bd91321f30b0d755d4cdcd233f979e3790e8822facee70a56be6bca3",
+      "build/round12/app-camera-v2-private/fixtures/candidate/method.json": "0978aa990c70f2c2af9aa3ebfcae1f40e1389d4497bc9d945d6b6b809de4b216",
+      "build/round12/app-camera-v2-private/fixtures/fallthrough-without-else/compiler.log": "a7322b74e5ce82c57db76d7248457f954f8fa0eb304b2503d76d63ae49fa2b6b",
+      "build/round12/app-camera-v2-private/fixtures/fallthrough-without-else/Fixture.cs": "0cbdf7d5468ce1d62e8523814f749f5c52df27fcc797b88474c1a7321e9d12f7",
+      "build/round12/app-camera-v2-private/fixtures/fallthrough-without-else/Fixture.dll": "97a28ed812863fb017b90fc1069c3b4b072053c1c53b5230335a6c933f217e30",
+      "build/round12/app-camera-v2-private/fixtures/fallthrough-without-else/method.json": "66047fab7c2b57368f985a1f77ac7b39db01a401d901a35607d694ae5b5feb7b",
+      "build/round12/app-camera-v2-private/fixtures/manual-control/compiler.log": "7bc63d21cab0f92a988469d6f5821142073447a1c6f025e439080209cd79197c",
+      "build/round12/app-camera-v2-private/fixtures/manual-control/Fixture.cs": "17affa5835491c5f4bab01fa4861366a8a033bbb1e992ffd343b687051032334",
+      "build/round12/app-camera-v2-private/fixtures/manual-control/Fixture.dll": "3e9e8fd3a2bcc2f6d8e4a6cc01322332cc4d1111ae6b5a9bde70cd692826ff8d",
+      "build/round12/app-camera-v2-private/fixtures/manual-control/method.json": "0978aa990c70f2c2af9aa3ebfcae1f40e1389d4497bc9d945d6b6b809de4b216",
+      "build/round12/app-camera-v2-private/fixtures.py": "b9802effd38ec5c1786efb61be46efaa1bb3523de019e693d946dfa67b44637c",
+      "build/round12/app-camera-v2-private/manifest.json": "ec9bba3dd22999c60356ce8e40ce7691c8b56afbb5e962401ea502a72cfdec69",
+      "build/round12/app-camera-v2-private/method.after.cs": "fd76ba526f7250c5dda1e52c92e788cba3efae5721ba3dc8127c82232f478dc2",
+      "build/round12/app-camera-v2-private/method.before.cs": "f4e7c977296e4931b4235b7ef8c6b235060c26a21d22a90e7c33e1352b89cdfc",
+      "build/round12/app-camera-v2-private/model.json": "23bfe320f689d17c7ce6a203f463c500ee840e42e7089f6b3132bd99ca2cc52f",
+      "build/round12/app-camera-v2-private/NOTE.md": "c8a2021bbdc290f24860813662380788c822deda123023a7d9c0382df21d82d5",
+      "build/round12/app-camera-v2-private/prepare.py": "79ea8fb4f9a18cc230309fc0197dea21a410a972cb18f2c31b723e9099f23ef8",
+      "build/round12/app-camera-v2-private/proposal.diff": "05093e3efa9457a0db64334c30a0001545fb6f126f173a888e65e53801b0d50b",
+      "build/round12/app-camera-v2-private/rea-member.json": "048135b50f2f47b715881186143b614043ece59874be783ab732a70268c25daa",
+      "build/round12/app-camera-v2-private/source-patches.json": "d17227f1fb42b8addf9e22de02c7ee899aa6699ba38fe80e7ff37e2587edbfcf",
+      "build/round12/app-camera-v2-private/source.after.cs": "98d8f0e849113dcffec4a0fb90141cdc71df05950fee345987ce656034b60d9c",
+      "build/round12/app-camera-v2-private/freeze.json": "53b4d271fba0a51736633f49003bb97552316c85d03ba341cac821c0370f940b"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {},
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "game.Camera::Update_pos()->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794117233188665800",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.031999999890104,
+        "wall_seconds": 8.172000000020489,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.031999999890104,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794117233188665800\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794117233188665800\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "5e53fe2fbe1c06718c940dbd43a6182361a1521c2a8c42d5fd4a30e3c8eb3438",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+          "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+          "src/Assembly-CSharp/form/SubForm.cs": "d06b736ebb5a3e60decee23f883a3bfc94982cfe51bf3c9609a80ee25a9da071",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+          "src/Assembly-CSharp/game/Camera.cs": "23bebdb724035c73394e4be95a83830e444259d3e036e1ce34d39c0149247270",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "85a67c871ccdde8f50e9b1363e8d50872d6118b7ad6044ebb3e7ca10d69018dd",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "b8224506ff5924369420f8fc1d72c04aa5ca71b56825f738f6928c4bf8c3a8b9",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+          "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+          "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+          "src/Assembly-CSharp/game/UserData.cs": "53a89c36b20d4bc9aab5e4f807fa7df34057f72c0bb0baff3d28f10ec79edeef",
+          "src/Assembly-CSharp/main/AppData.cs": "ee43c3e361e0c6fadf5a2520b4c856177b4d3ae850d76666b0bf73e0bc95051f",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+          "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "83a47130a51ddbaa9172cfe87c9b752f344a22ed5419f3218af1603ca4f66b55",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "d0af6139711b56b05e5c343ddc19340a270baa748de5400dd3fccb125f1c8a9b",
+        "accepted_source_set_sha256": "15ad378f5b791a36eecd7569e9ac91e8ad9c62f0effdf2a78bddc51d2f2a8bba",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "021167f37ab7344915793703541f8761056337d25b8f3238e5db1ff0c043a2cd"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "game.Camera::Update_pos()->System.Void",
+        "rule": "r12-camera-runtime-selector-and-common-goal-else",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1898,
+  "body_gains": [
+    "game.Camera::Update_pos()->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 2454,
+  "builds": 6,
+  "build_seconds": 8.406999999890104,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "acec9de17ce43561f0848e3aeb8ec8ceff37f6fc3f2a481b1712f6237388e8b7",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b05-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "d0af6139711b56b05e5c343ddc19340a270baa748de5400dd3fccb125f1c8a9b",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "5e53fe2fbe1c06718c940dbd43a6182361a1521c2a8c42d5fd4a30e3c8eb3438",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "2994f3ea5e03eeaf612f85cc133783c943248b280cd0f9acf04e8105501b737f",
+    "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+    "src/Assembly-CSharp/form/SubForm.cs": "d06b736ebb5a3e60decee23f883a3bfc94982cfe51bf3c9609a80ee25a9da071",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+    "src/Assembly-CSharp/game/Camera.cs": "98d8f0e849113dcffec4a0fb90141cdc71df05950fee345987ce656034b60d9c",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "85a67c871ccdde8f50e9b1363e8d50872d6118b7ad6044ebb3e7ca10d69018dd",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "b8224506ff5924369420f8fc1d72c04aa5ca71b56825f738f6928c4bf8c3a8b9",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+    "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+    "src/Assembly-CSharp/game/Tenant.cs": "3ba6e32087b59fe7e6148061e71044ddd50bbb3f28949d3b8d6aeb01d3ca9d34",
+    "src/Assembly-CSharp/game/UserData.cs": "53a89c36b20d4bc9aab5e4f807fa7df34057f72c0bb0baff3d28f10ec79edeef",
+    "src/Assembly-CSharp/main/AppData.cs": "ee43c3e361e0c6fadf5a2520b4c856177b4d3ae850d76666b0bf73e0bc95051f",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+    "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "83a47130a51ddbaa9172cfe87c9b752f344a22ed5419f3218af1603ca4f66b55",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}

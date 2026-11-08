@@ -1,0 +1,2 @@
+public class Manager{public int state_,stateCnt_;}public class UserData{public Manager gm_;}public class Vector{public float x_,y_;}public static class GameManager{public static int[] WAIT_GOAL;}
+public class Fixture{public UserData udat_;public Vector pos;int sink;void Use(int n){sink=n;}public void Run(){int num3=1;int num4=2;if (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0]){Use(0);}else{Use(1);}if (udat_.gm_.state_ == 8 && udat_.gm_.stateCnt_ >= GameManager.WAIT_GOAL[0]){pos.x_ += num3;pos.y_ += num4;}else{Use(2);}}}

@@ -321,7 +321,9 @@ namespace game
 				pos.x_ = player.screen_pos_[0];
 				pos.y_ = player.screen_pos_[1];
 			}
-			else if (udat_.gm_.state_ == 3 && (udat_.gm_.stateCnt_ >= GameManager.WAIT_THROWIN[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_GK[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_CK[0]))
+			else
+			{
+			if (udat_.gm_.state_ == 3 && (udat_.gm_.stateCnt_ >= GameManager.WAIT_THROWIN[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_GK[0] || udat_.gm_.stateCnt_ >= GameManager.WAIT_CK[0]))
 			{
 				camera_gpos.x_ = (int)udat_.ball_.shadowPos_.x_;
 				camera_gpos.z_ = (int)udat_.ball_.shadowPos_.z_;
@@ -344,12 +346,15 @@ namespace game
 				ConvertGlobalToScreen(camera_gpos, camera_spos);
 				pos.x_ = camera_spos[0];
 				pos.y_ = camera_spos[1];
+				return;
 			}
-			else if (mode_ == 0)
+			if (mode_ == 0)
 			{
-				switch (0)
-				{
-				case 0:
+				float recoveredUnusedSingleA;
+int recoveredSelector = 0;
+float recoveredUnusedSingleB;
+if (recoveredSelector == 0)
+{
 					Update_normal();
 					SetCameraRect();
 					camera_spos[0] = (int)cursor_pos.x_;
@@ -377,12 +382,11 @@ namespace game
 						subPlayer_ = null;
 						subSvisor_ = null;
 					}
-					if (flg_disp)
-					{
-						Collision((int)cursor_pos.x_, (int)cursor_pos.y_);
-					}
-					break;
-				case 1:
+					if (!flg_disp) { return; }
+Collision((int)cursor_pos.x_, (int)cursor_pos.y_);
+}
+else if (recoveredSelector == 1)
+{
 					if (flag)
 					{
 						ch_global_pos.z_ += 10f;
@@ -402,17 +406,16 @@ namespace game
 					ConvertGlobalToScreen(ch_global_pos, ch_screen_pos);
 					pos.x_ = ch_screen_pos[0];
 					pos.y_ = ch_screen_pos[1];
-					break;
-				}
+}
 			}
 			else if (mode_ == 1)
 			{
 				pos.x_ = udat_.ball_.screen_shadowPos_[0];
 				pos.y_ = udat_.ball_.screen_shadowPos_[1];
 			}
-			else
+			else if (mode_ == 2)
 			{
-				if (mode_ != 2 || apdat_.frmSoccer_.state_ == 8)
+				if (apdat_.frmSoccer_.state_ == 8)
 				{
 					return;
 				}
@@ -466,8 +469,9 @@ namespace game
 				{
 					pos.x_ += num3;
 					pos.y_ += num4;
-					return;
-				}
+					}
+else
+{
 				chPos[0].x_ = pos.x_;
 				chPos[0].z_ = pos.y_;
 				chPos[1].x_ = pos.x_ + (float)num3;
@@ -482,7 +486,8 @@ namespace game
 					chPos[2].z_ = cameraLimitSPos[i][1];
 					chPos[3].x_ = cameraLimitSPos[(i + 1) % 4][0];
 					chPos[3].z_ = cameraLimitSPos[(i + 1) % 4][1];
-					if (GameUtil.ChCrossLine(chPos[0], chPos[1], chPos[2], chPos[3]))
+					bool recoveredIntersection = GameUtil.ChCrossLine(chPos[0], chPos[1], chPos[2], chPos[3]);
+if (recoveredIntersection)
 					{
 						Vector3D crossPoint = GameUtil.GetCrossPoint(chPos[2], chPos[3], chPos[1], true);
 						pos.x_ = crossPoint.x_;
@@ -496,6 +501,8 @@ namespace game
 					pos.x_ += num3;
 					pos.y_ += num4;
 				}
+
+}}
 			}
 		}
 
