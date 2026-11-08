@@ -1,0 +1,64 @@
+{
+  "hypotheses": [
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "O construtor retido pertence ao reservatório de dados estáticos gerado pelo compilador, sem chamada direta; sua origem pode ser comprovada pelos consumidores dos campos.",
+      "evidence": "A regra genérica exige corpo de sete bytes e metadados iguais, 217 campos RVA com 6660 bytes idênticos, 15 layouts iguais e 217 sequências dup/ldtoken/InitializeArray em 32 consumidores com corpos e declarações iguais, compilados de 19 arquivos. Seis fixtures próprias confirmam a emissão: dois positivos e quatro controles sem reservatório. rootcontext.cs:405–423 e :280–281 cria/fecha a classe; TypeBuilder.cs:831–836 acrescenta o construtor, :519–521 emite o corpo; ConstructorBuilder.cs:70 acrescenta os atributos 6150. Código consultado na revisão b6587926c0f146c8b12985744f33a13b39a22d57; revisão fabril exata UNKNOWN. Quinze testes da regra e sete anteriores de comparação passam."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "O código de saída 2 da primeira verificação integral depois da certificação indicava um assembly ainda divergente.",
+      "evidence": "Os dois subverificadores retornaram zero e produziram 5245 métodos aprovados, mas o wrapper usava return status or 2 e transformava zero em dois. A correção preserva o status agregado. Oito testes CLI mantêm sucesso zero, diferenças um, falta de escopo dois e propagação de erro do filho. Nenhum corpo, referência, opção ou exceção foi alterado por essa correção."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "A falha do primeiro gatilho bruto do Assembly-CSharp demonstrava falta de prova física dos dois campos não determinísticos.",
+      "evidence": "O esquema v1 da prova da rodada 3 omitia apenas all_identified_fields_observed_changing. Os dois PEs retidos, de 893440 bytes, conservam os SHAs registrados e diferem exatamente nos 17 offsets antigos: 16 no MVID em 891852 e 1 no timestamp COFF em 136. Os 97 fontes retidos conferem; os manifests são idênticos exceto pelo hash de saída. O relatório derivado foi calculado desses arquivos, sem nova compilação, exceção, edição de DLL ou alteração do comparador; a prova antiga foi preservada."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "O modelo Roslyn de produção deve materializar o temporário de getter em struct devolvido por indexador.",
+      "evidence": "A extensão foi validada no corpus inicial de 3.196 corpos matched sem previsão completa incorreta e, após o fechamento, em 3.211 corpos: 2.253 previsões completas, todas exatas. O modelo só prevê locais; o verificador decide os corpos."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "As quatro linhas StandAloneSig ausentes na KairoLibrary inicial representam locais executáveis perdidos.",
+      "evidence": "As 530 assinaturas usadas têm correspondência bijetiva entre original e compilado. As quatro linhas originais sem uso são FIELD_SIG 0608, 060e, 0605 e 060c, nas RIDs 43, 48, 85 e 310; fixtures do csc 1.1 e R03–R06 confirmaram sua emissão por constantes locais do PDB, preservando todos os corpos."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "As três diferenças da tabela AssemblyRef inicial exigem trocar as referências de compilação da KairoLibrary.",
+      "evidence": "Só os índices do blob de public-key-token diferiam; identidades, versões e payloads eram iguais. A assinatura FIELD Byte antecipada em R05 restaurou os três índices, sem alterar compilador, opções ou referências. R06 deu zero bytes residuais."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "Constantes locais e aliases não usados podem alterar metadados do PE com /debug:pdbonly sem mudar corpos.",
+      "evidence": "Seis fixtures próprias demonstraram quatro assinaturas FIELD com constantes usadas e não usadas, sua ausência com debug desativado e mudanças de TypeRef/TypeSpec por aliases. R01–R06 reproduziram a emissão no jogo e fecharam a comparação literal."
+    },
+    {
+      "status": "INCONCLUSIVA",
+      "hypothesis": "Os nomes e valores escolhidos para as quatro constantes de depuração e os aliases são os históricos.",
+      "evidence": "O PDB original não está disponível. Os nomes e valores escolhidos produzem a DLL exigida, mas o assembly não permite recuperar unicamente esses nomes e valores. Identidade histórica: UNKNOWN."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "O smcs 2.6.5 pode conservar na assinatura uma variável local declarada sem inicializador e sem uso no IL.",
+      "evidence": "Fixtures próprias de Camera, Collision e Draw_clearPoint conservaram esses slots sem instruções de carga ou armazenamento. Os tipos e a ausência de usos são verificáveis no original; nomes e escopos históricos dessas declarações permanecem UNKNOWN."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Uma assinatura com a mesma sequência de tipos basta para comprovar a correspondência dos papéis de variáveis.",
+      "evidence": "A primeira proposta privada de DrawGraph_menuElement tinha os mesmos 12 tipos previstos, mas o cálculo por âncoras encontrou 25 operações usando slots errados. Foi retirada antes de emitir qualquer alvo; a composição corrigida preservou o registro negativo."
+    },
+    {
+      "status": "REFUTADA",
+      "hypothesis": "Em uma guarda de Collision, x < eps pode ser substituído por !(x >= eps) sem prova de ponto flutuante.",
+      "evidence": "A fixture negativa foi executada e divergiu para NaN, com saída 3; a variante positiva preservou o operador < e os desvios .un do original. O teste não foi usado para promover estados do jogo."
+    },
+    {
+      "status": "CONFIRMADA",
+      "hypothesis": "As duas máscaras de deslocamento em BillingManager.Init genérico podem ser emitidas pelo smcs ao resolver duas vezes o RHS da atribuição composta, sem máscara explícita no fonte.",
+      "evidence": "B20 fechou o corpo completo de 707 bytes ao trocar num |= 1 << (j & 31) por num |= 1 << j. Fonte Mono fixado na revisão b6587926c0f146c8b12985744f33a13b39a22d57: assign.cs:631 resolve o RHS, :661 cria Binary(op,left,right,true), :693 chama base.DoResolve, Assign:338 resolve novamente; expression.cs:2632 resolve de novo o operando direito e PredefinedShiftOperator.ConvertResult:1814–1831 acrescenta & 31 a cada passagem. Seis fixtures próprias distinguiram duas máscaras do controle de três do before e uma da atribuição simples; a grafia histórica exata permanece UNKNOWN."
+    }
+  ]
+}

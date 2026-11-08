@@ -28,7 +28,7 @@
   ],
   "schema": "round12-protocol-v1",
   "baseline_commit": "a075dcc8ca7b08e2cb9fcdd0cbcb5ce1fe8cd236",
-  "phase": "part_B",
+  "phase": "stopped",
   "maximum_cycles": 40,
   "consecutive_zero_stop": 5,
   "cycle_count_scope": "Part B only; Part A has separate uncapped count",
@@ -36,15 +36,15 @@
   "part_a_zero_stop": null,
   "required_parts": {
     "A": "complete",
-    "B": "active"
+    "B": "complete"
   },
   "part_a_raw_gate": {
     "status": "PASS",
     "candidate_status": "PASS",
-    "report": "reports/round12-verification-origin-release-verification02-KairoLibrary-raw.json",
-    "sha256": "2639d82678d78d4e37c42f568a31d436793c1f894e619efe13e4f94c1c39bcd9",
-    "snapshot": "build/round12/verification-origin-release/verification-origin-release-verification02",
-    "recompiled_sha256": "76b79ce4ba7b9eb3cd9f09a6af96c27009d4dbe5f04ae66e90cfc9893d1ea501",
+    "report": "reports/round12-final-report-verification01-KairoLibrary-raw.json",
+    "sha256": "5e5a861d7455a40f9ebe3dc05c854696557f234241dae397692afb744f421332",
+    "snapshot": "build/round12/verification-origin-release/final-report-verification01",
+    "recompiled_sha256": "57ce09b19392b8463db950dc16ede49d9c4f5f396689632b772c3a685d5e1d9d",
     "raw_source_journal_sha256": "bd4af6a6eeb7d0acabfe6c89aca6c3981d453ea3b05c5945b618fe401594269b",
     "root_initial_acceptance": {
       "report": "reports/round12-kairo-independent-raw-acceptance.json",
@@ -1571,16 +1571,43 @@
         "sha256": "65b4314c3001a82252a8a3362e27b87a271143c4a3afc19d5a3ea6ed63e703a3",
         "lossless": true
       }
+    },
+    {
+      "report": "reports/round12-final-report-verification01-app-threshold-Assembly-CSharp-raw.json",
+      "sha256": "8577e2dfd4a96f305147bf193d523863f0557f5ebb494ea180f472dff0937cc4",
+      "snapshot": "build\\round12\\verification-origin-release\\final-report-verification01",
+      "recompiled_sha256": "a990af8231716d5d6d710970e7fd9c356e4829d2b4a6c20537b2522e260eab70",
+      "status": "PASS",
+      "measurement_only": true,
+      "outside_exceptions_differing_bytes": 0,
+      "target_compilations": 0,
+      "states_modified": false,
+      "transport": {
+        "manifest": "reports/round12-final-report-verification01-app-threshold-Assembly-CSharp-archive-manifest.json",
+        "sha256": "b7176a8fed045e503f2d10db3b9cae97d40e3bd7ad96b4950872c27234d2f597",
+        "lossless": true
+      }
     }
   ],
   "verification_origin_release": {
     "record": "reports/round12-verification-origin-release.json",
-    "sha256": "4544e56337425a944d535fbf26bf82a553c82e17a71991b7a8e7f8dbd3751f08"
+    "sha256": "2ddcc4687d32e4f7329b3cbff2948acd6a143df392b7514deecbed5a0465003b"
   },
   "verification_current_measurement": {
-    "path": "reports/round12-verification-origin-release-verification02-measurement.json",
-    "sha256": "225dcf0de4429a68d872f2525d246c3c05a2ea49188a720d5d3e2884da1acae8",
-    "snapshot": "build\\round12\\verification-origin-release\\verification-origin-release-verification02",
-    "event_record_sha256": "4544e56337425a944d535fbf26bf82a553c82e17a71991b7a8e7f8dbd3751f08"
-  }
+    "path": "reports/round12-final-report-verification01-measurement.json",
+    "sha256": "ff0b3fdd60d68059ea7acfbcdf38d2295cf6eaae25facee40a78b32e4d704f20",
+    "snapshot": "build\\round12\\verification-origin-release\\final-report-verification01",
+    "event_record_sha256": "2ddcc4687d32e4f7329b3cbff2948acd6a143df392b7514deecbed5a0465003b"
+  },
+  "final_model_measurements": {
+    "KairoLibrary": {
+      "validation": "reports/round12-final-roslyn-model-validation.json",
+      "corpus_baseline": "build\\round12\\verification-origin-release\\verification-origin-release-verification02/KairoLibrary"
+    },
+    "Assembly-CSharp": {
+      "validation": "reports/round12-final-smcs-model-validation.json",
+      "corpus_baseline": "build\\round12\\verification-origin-release\\verification-origin-release-verification02/Assembly-CSharp"
+    }
+  },
+  "control_extractor_validation": "reports/round12-control-validation-final.json"
 }

@@ -11,7 +11,7 @@ from round12_controller import (BASE_COMMIT, GuardError, measured_zero_streak,
     selection_mode, stop_reason, validate_config, validate_cycle, verify_raw_gate,
     current_measurement, file_hash)
 from round12_postverify_provenance import reconcile, METRICS
-from round12_progress_status import kairo_completion
+from round12_progress_status import kairo_completion,app_completion
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -197,6 +197,22 @@ class Protocol(unittest.TestCase):
                 result=kairo_completion(root)
             self.assertFalse(result['complete'])
             self.assertEqual(result['status'],'RAW_RENEWAL_REQUIRED')
+
+    def test_app_badge_rejects_stale_current_source_proof(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'config').mkdir();(root/'reports').mkdir()
+            (root/'config/round12-protocol.json').write_text(json.dumps(dict(app_raw_measurements=[dict(status='PASS')],)))
+            (root/'reports/round12-cycle-journal.json').write_text(json.dumps(dict(cycles=[])))
+            with patch('round12_controller.current_measurement',side_effect=GuardError('source changed')):
+                result=app_completion(root)
+            self.assertFalse(result['complete'])
+            self.assertEqual(result['status'],'RAW_RENEWAL_REQUIRED')
+
+    def test_app_badge_does_not_promote_pending_raw_result(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);(root/'config').mkdir()
+            (root/'config/round12-protocol.json').write_text(json.dumps(dict(app_raw_measurements=[dict(status='DIFFERENT')],)))
+            self.assertFalse(app_completion(root)['complete'])
 
 
 if __name__ == '__main__':

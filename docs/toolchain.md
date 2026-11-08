@@ -465,3 +465,22 @@ não houve edição de PE ou transplante de bytes. Ver
 Uma recompilação muda os campos não determinísticos. O gerador de progresso
 exige SHA do PE canônico, fontes verificadas e comparação bruta renovada para
 exibir CONCLUÍDA; não basta reaproveitar o recibo de uma compilação anterior.
+
+### Rodada 12: Assembly-CSharp concluído pelo mesmo critério
+
+O smcs 2.6.5.0 e sua receita anterior, sem mudar flags ou referências,
+reproduzem os 1.958 métodos, 601.603 bytes de IL e 129 tipos, além de todos os
+895.468 bytes fora de `COFF.TimeDateStamp` e `Module.Mvid`. Os dois campos
+ocupam 20 bytes, com coordenadas iguais nos PEs; nenhuma outra diferença resta.
+Ver `docs/notes/round12-app-byte-closure.md`.
+
+A prova de repetibilidade App foi revalidada fisicamente a partir dos dois
+PEs e 97 fontes retidos. `reports/round12-Assembly-CSharp-repeatability-profile.json`
+preserva o vínculo com a prova antiga e calcula o resumo exigido pelo leitor;
+não amplia exceções. A origem do construtor implícito do reservatório de dados
+é demonstrada por campos RVA, payloads, layouts e consumidores compilados.
+Sua liberação pelo verificador é um evento separado, sem novo ciclo de fonte.
+
+As versões históricas exatas e nomes de locais não recuperáveis continuam
+UNKNOWN. A conclusão afirma identidade dos arquivos fora dos campos provados,
+não identidade única do texto histórico. Não houve APK novo nesta rodada.

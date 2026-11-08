@@ -6,7 +6,7 @@ from pathlib import Path
 from verification_state import validate_matched
 from metadata_state import validate_type_metadata
 from kairo_candidate import PACKAGE_VERSION
-from round12_progress_status import kairo_completion
+from round12_progress_status import kairo_completion, app_completion
 ROOT=Path(__file__).resolve().parents[1]
 
 
@@ -31,6 +31,7 @@ def main():
     verified=json.loads(summary_path.read_text(encoding='utf-8'))['counts'] if summary_path.is_file() else {}
     categories=Counter(r['categoria'] for r in inventory)
     closure=kairo_completion(ROOT)
+    app_closure=app_completion(ROOT)
     lines=['# Progresso dos métodos C#','',
         'Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.','',
         f'**{len(matched):,} de {len(methods):,} métodos matched ({100*len(matched)/len(methods):.2f}%).** {total_il:,} bytes de IL nos assemblies alvo.',
@@ -44,6 +45,9 @@ def main():
             f"Prova literal atual: [{closure['report']}]({closure['report']}); SHA-256 do PE recompilado `{closure['recompiled_sha256']}`. Sem normalização.",'']
     elif closure['status']=='RAW_RENEWAL_REQUIRED':
         lines[2:2]=['KairoLibrary: prova bruta aguardando renovação para o PE/fonte atual; a correspondência de métodos não substitui essa prova.','']
+    if app_closure['complete']:
+        lines[2:2]=['**Assembly-CSharp: CONCLUÍDA.** 1.958 métodos, 129 tipos e todos os bytes fora dos dois campos comprovadamente não determinísticos correspondem ao original.',
+            f"Prova literal atual: `{app_closure['report']}`; SHA-256 do PE recompilado `{app_closure['recompiled_sha256']}`. Evidência integral em gzip lossless, sem normalização.",'']
     lines += [f'| {state} | {states[state]} |' for state in ('todo','decompiled','equivalent','matched','external')]
     for label,key in (('Assemblies','assembly'),('Namespaces','namespace'),('Tipos','tipo')):
         groups=defaultdict(list)
@@ -62,7 +66,7 @@ def main():
         f"{len(inventory)} entradas: {categories['alvo']} alvo, {categories['externo']} externas e {categories['dados']} dados.",
         'Externos e dados não entram na porcentagem de código. DEX e plugins nativos não ampliam o escopo C#.','',
         '## Próximos tipos e métodos','',
-        'Priorizar tipos com fonte compilado e menos pendências; ajustar um método por vez.','',
+        ('Nenhum método C# pendente.' if len(matched)==len(methods) else 'Priorizar tipos com fonte compilado e menos pendências; ajustar um método por vez.'),'',
         '| Tipo | Pendentes | Primeiro método |','|---|---:|---|']
     by_type=defaultdict(list)
     for m in methods: by_type[(m['assembly'],m['tipo'])].append(m)
@@ -75,8 +79,8 @@ def main():
     generated=sum(m['gerado_por']=='UNKNOWN' for m in methods)
     lines += ['','## Bloqueios','',
         f'- Versão histórica exata dos compiladores: UNKNOWN; pacote Roslyn {PACKAGE_VERSION} é o melhor candidato testado para KairoLibrary.',
-        '- Assembly-CSharp: configuração stdlib default validada e chamada original de IndexOf restaurada; os corpos restantes ainda exigem recuperação.',
-        ('- Todos os tipos e metadados de definição têm identidade estrutural comprovada; corpos e bytes brutos continuam divergentes.' if matched_types==len(types) else '- Comparação estrutural dos tipos implementada; persistem diferenças de metadados e bytes brutos.'),
+        ('- Assembly-CSharp: todos os corpos e vínculos gerados foram aprovados.' if len(matched)==len(methods) else '- Assembly-CSharp: configuração stdlib default validada; os corpos restantes ainda exigem recuperação.'),
+        ('- Os dois assemblies estão concluídos pelo critério literal, com as exceções comprovadas.' if closure['complete'] and app_closure['complete'] else '- Todos os tipos e metadados de definição têm identidade estrutural comprovada; a camada literal requer prova própria.' if matched_types==len(types) else '- Comparação estrutural dos tipos implementada; persistem diferenças de metadados e bytes brutos.'),
         f'- {generated} membros têm campo gerado_por UNKNOWN; propriedades e caches compartilhados podem ter vínculo comprovado no relatório sem uma origem única representável nesse campo.',
         '- Campos variáveis comprovados: quatro em Kairo e dois em App; nenhuma normalização de assembly foi aplicada.',
         '', 'Plano: [DECOMP_PLAN.md](DECOMP_PLAN.md). Ferramentas: [docs/toolchain.md](docs/toolchain.md).','']

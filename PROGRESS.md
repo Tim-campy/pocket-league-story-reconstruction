@@ -1,7 +1,10 @@
 # Progresso dos métodos C#
 
+**Assembly-CSharp: CONCLUÍDA.** 1.958 métodos, 129 tipos e todos os bytes fora dos dois campos comprovadamente não determinísticos correspondem ao original.
+Prova literal atual: `reports/round12-final-report-verification01-app-threshold-Assembly-CSharp-raw.json`; SHA-256 do PE recompilado `a990af8231716d5d6d710970e7fd9c356e4829d2b4a6c20537b2522e260eab70`. Evidência integral em gzip lossless, sem normalização.
+
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-verification-origin-release-verification02-KairoLibrary-raw.json](reports/round12-verification-origin-release-verification02-KairoLibrary-raw.json); SHA-256 do PE recompilado `76b79ce4ba7b9eb3cd9f09a6af96c27009d4dbe5f04ae66e90cfc9893d1ea501`. Sem normalização.
+Prova literal atual: [reports/round12-final-report-verification01-KairoLibrary-raw.json](reports/round12-final-report-verification01-KairoLibrary-raw.json); SHA-256 do PE recompilado `57ce09b19392b8463db950dc16ede49d9c4f5f396689632b772c3a685d5e1d9d`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
@@ -507,7 +510,7 @@ Externos e dados não entram na porcentagem de código. DEX e plugins nativos n�
 
 ## Próximos tipos e métodos
 
-Priorizar tipos com fonte compilado e menos pendências; ajustar um método por vez.
+Nenhum método C# pendente.
 
 | Tipo | Pendentes | Primeiro método |
 |---|---:|---|
@@ -515,8 +518,8 @@ Priorizar tipos com fonte compilado e menos pendências; ajustar um método por 
 ## Bloqueios
 
 - Versão histórica exata dos compiladores: UNKNOWN; pacote Roslyn 1.1.0 é o melhor candidato testado para KairoLibrary.
-- Assembly-CSharp: configuração stdlib default validada e chamada original de IndexOf restaurada; os corpos restantes ainda exigem recuperação.
-- Todos os tipos e metadados de definição têm identidade estrutural comprovada; corpos e bytes brutos continuam divergentes.
+- Assembly-CSharp: todos os corpos e vínculos gerados foram aprovados.
+- Os dois assemblies estão concluídos pelo critério literal, com as exceções comprovadas.
 - 57 membros têm campo gerado_por UNKNOWN; propriedades e caches compartilhados podem ter vínculo comprovado no relatório sem uma origem única representável nesse campo.
 - Campos variáveis comprovados: quatro em Kairo e dois em App; nenhuma normalização de assembly foi aplicada.
 
