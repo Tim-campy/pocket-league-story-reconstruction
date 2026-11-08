@@ -1,0 +1,20 @@
+# Os seis ajustes de emissão de metadados da KairoLibrary
+
+Todos são mudanças de **fonte C# compilado** já validadas na rodada 12. Nenhum altera uma DLL pronta, copia IL/blob original ou introduz classe gerada escrita à mão. Cada um preservou todos os métodos e tipos aprovados: **zero métodos ganhos, zero perdidos, zero bytes IL alterados**. Seu objetivo foi fechar a camada literal que ainda falhava com todos os corpos iguais.
+
+| Ajuste | Mudança final no fonte | Região afetada e motivo confirmado |
+|---|---|---|
+| R01 | Em `src/KairoLibrary/kairo/unity/ui/SoundPlayer.cs`, retirar `using Object = UnityEngine.Object` e escrever `global::UnityEngine.Object.Destroy(...)` na chamada | Os imports de depuração do alias antecipavam a referência. A remoção restaurou ordem e bytes das **187 linhas TypeRef**. |
+| R02 | Em `src/KairoLibrary/kairo/unity/graphics/MeshManager.cs`, acrescentar `using MeshPair = global::System.Collections.Generic.KeyValuePair<global::kairo.unity.graphics.Material, global::kairo.unity.graphics.MeshBuilder>;` e `using MeshTable = global::System.Collections.Generic.Dictionary<global::kairo.unity.graphics.Material, global::kairo.unity.graphics.MeshBuilder>;` | Imports genéricos do PDB causam visita às assinaturas no emissor. A ordem ordinal dos nomes MeshPair/MeshTable restaurou as **136 linhas TypeSpec**, preservando TypeRef. |
+| R03 | Em `Language.LoadLanguagePack`, declarar `const int recoveredPdbConstInt32 = 0;` | A constante de escopo do PDB emite FIELD signature `0608` em **StandAloneSig RID 43** (`0x1100002b`), índice Blob 249. Total de linhas passou a 531. |
+| R04 | Em `Log.GetThrowableName`, declarar `const string recoveredPdbConstString = "";` | FIELD signature `060e` em **StandAloneSig RID 48** (`0x11000030`), Blob 1824. Total 532. |
+| R05 | Em `StringUtil.GetCode`, declarar `const byte recoveredPdbConstByte = 0;` | FIELD signature `0605` em **StandAloneSig RID 85** (`0x11000055`), Blob 2362. Total 533. O heap Blob ficou exato, inclusive os três índices de token público da tabela AssemblyRef (11268 → 11271); a identidade das referências já era igual. |
+| R06 | Em `SurfaceManagerBase.GetSelectPaintPoint`, declarar `const float recoveredPdbConstSingle = 36f;` | FIELD signature `060c` em **StandAloneSig RID 310** (`0x11000136`), Blob 2649. Total **534**. As quatro linhas antes ausentes explicavam oito bytes de deslocamento dos heaps; resultado final: **zero bytes residuais**. |
+
+As constantes são locais não usadas: não viram slots de IL. Seus nomes/valores e os nomes dos aliases são escolhas da reconstrução; os nomes/valores históricos são **UNKNOWN**. A evidência identifica os tipos, a necessidade de emissão e a posição, não recupera o texto original. Não remover esses elementos como “código morto”. `/debug:pdbonly` é parte necessária da receita, mesmo com otimização ligada.
+
+Seis fixtures próprias isolaram o mecanismo: constantes usadas e não usadas geraram as quatro assinaturas FIELD sem alterar os corpos; `/debug-` as retirou; aliases não usados mudaram a ordem TypeRef/TypeSpec. No Roslyn oficial fixado em `4cb203dab89e1542cdf7d88cb6d32767bc0e5460`, `PdbWriter.cs` linhas 723–730 serializa as constantes de escopo, `MetadataWriter.cs` linhas 4398–4413 produz a assinatura FIELD e `FullMetadataWriter.cs` linhas 280–287 interna o blob. Caminhos e trechos completos estão nas evidências da rodada.
+
+A sequência mediu diferenças residuais **142347 → 140454 → 137185 → 136712 → 136449 → 132864 → 0**. Esses números pertencem aos snapshots de cada ajuste, não somam bytes IL nem ganhos de métodos. Referências, opções e compilador permaneceram fixos. Os 116 payloads FieldRVA (16.491 bytes) já eram iguais; não foram transplantados nem alterados.
+
+Evidências: [diário dos ajustes](../../reports/round12-raw-source-journal.json), [fechamento literal](round12-kairo-byte-closure.md) e [relatório completo da rodada](../../reports/round12-final-report.md). As provas literais são renovadas após compilar, pois os quatro campos comprovados variam; o caminho PDB não é exceção.

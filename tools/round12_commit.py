@@ -39,6 +39,7 @@ def main():
     parser.add_argument('--verification-release',action='store_true',help='Measure a verified generated-origin release without adding/recounting a reconstruction cycle')
     parser.add_argument('--origin-proof',help='Reviewed generic origin certificate for the first release event')
     parser.add_argument('--origin-proof-sha256')
+    parser.add_argument('--closure-docs',action='store_true',help='Generate closure/release hashes after this full verification; no reconstruction cycle')
     args=parser.parse_args()
     if args.raw_source and args.verification_release:raise ValueError('Distinct provenance events cannot share a commit mode')
     folder=ROOT/'build/round12/runs'/args.run_label/'commit';folder.mkdir(parents=True,exist_ok=True)
@@ -62,6 +63,8 @@ def main():
         run([sys.executable,'tools/round12_measure.py','--label','final'],folder/'final-measurement.log')
         run([sys.executable,'tools/round12_hypotheses.py'],folder/'hypotheses.log')
         run([sys.executable,'tools/round12_report.py'],folder/'final-report.log')
+    if args.closure_docs:
+        run([sys.executable,'tools/reconstruction_closure.py','--final'],folder/'closure-docs.log')
     run([sys.executable,'tools/progress'],folder/'progress.log')
     run(['git','add','--','tools','reports','src','docs','config','PROGRESS.md','README.md','.gitignore','.gitattributes'])
     staged=run(['git','diff','--cached','--name-only','-z']).stdout.decode('utf-8').split('\0')

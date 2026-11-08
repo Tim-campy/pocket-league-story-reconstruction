@@ -1,10 +1,10 @@
 # Progresso dos métodos C#
 
 **Assembly-CSharp: CONCLUÍDA.** 1.958 métodos, 129 tipos e todos os bytes fora dos dois campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: `reports/round12-final-report-verification01-app-threshold-Assembly-CSharp-raw.json`; SHA-256 do PE recompilado `a990af8231716d5d6d710970e7fd9c356e4829d2b4a6c20537b2522e260eab70`. Evidência integral em gzip lossless, sem normalização.
+Prova literal atual: `reports/round12-reconstruction-closure-verification01-app-threshold-Assembly-CSharp-raw.json`; SHA-256 do PE recompilado `3a3939e52bee4404097083fb2ab3c7397b7107917dff551691735d59e2f5ee32`. Evidência integral em gzip lossless, sem normalização.
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-final-report-verification01-KairoLibrary-raw.json](reports/round12-final-report-verification01-KairoLibrary-raw.json); SHA-256 do PE recompilado `57ce09b19392b8463db950dc16ede49d9c4f5f396689632b772c3a685d5e1d9d`. Sem normalização.
+Prova literal atual: [reports/round12-reconstruction-closure-verification01-KairoLibrary-raw.json](reports/round12-reconstruction-closure-verification01-KairoLibrary-raw.json); SHA-256 do PE recompilado `114f39eb77f294d33288915b7dc11bf3401478b9c7ed9beb6f94980bba02d376`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
@@ -524,3 +524,19 @@ Nenhum método C# pendente.
 - Campos variáveis comprovados: quatro em Kairo e dois em App; nenhuma normalização de assembly foi aplicada.
 
 Plano: [DECOMP_PLAN.md](DECOMP_PLAN.md). Ferramentas: [docs/toolchain.md](docs/toolchain.md).
+
+## Exceções comprovadas do fechamento literal
+
+Offsets absolutos em bytes, base zero, iguais no original e reconstruído. Nenhuma DLL foi normalizada.
+
+| Assembly | Campo | Offset | Bytes |
+|---|---|---:|---:|
+| KairoLibrary | Module.Mvid | 527096 | 16 |
+| KairoLibrary | COFF.TimeDateStamp | 136 | 4 |
+| KairoLibrary | IMAGE_DEBUG_DIRECTORY.TimeDateStamp | 550520 | 4 |
+| KairoLibrary | CodeView.RSDS.PdbGuid | 550548 | 16 |
+| Assembly-CSharp | Module.Mvid | 893568 | 16 |
+| Assembly-CSharp | COFF.TimeDateStamp | 136 | 4 |
+
+1.465.284 bytes literalmente iguais fora dos seis campos (60 bytes de extensão); zero diferenças residuais.
+DLLs finais ainda não testadas em aparelho. APK final apenas documentado em [docs/apk-final.md](docs/apk-final.md).

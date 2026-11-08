@@ -84,6 +84,19 @@ def main():
         f'- {generated} membros têm campo gerado_por UNKNOWN; propriedades e caches compartilhados podem ter vínculo comprovado no relatório sem uma origem única representável nesse campo.',
         '- Campos variáveis comprovados: quatro em Kairo e dois em App; nenhuma normalização de assembly foi aplicada.',
         '', 'Plano: [DECOMP_PLAN.md](DECOMP_PLAN.md). Ferramentas: [docs/toolchain.md](docs/toolchain.md).','']
+    closure_path=ROOT/'reports/reconstruction-closure.json'
+    if closure_path.is_file() and closure['complete'] and app_closure['complete']:
+        final=json.loads(closure_path.read_text(encoding='utf-8'))
+        live={'KairoLibrary':closure,'Assembly-CSharp':app_closure}
+        if all(final['assemblies'][a]['rebuilt_sha256']==live[a]['recompiled_sha256'] for a in live):
+            lines += ['## Exceções comprovadas do fechamento literal','',
+                'Offsets absolutos em bytes, base zero, iguais no original e reconstruído. Nenhuma DLL foi normalizada.',
+                '', '| Assembly | Campo | Offset | Bytes |','|---|---|---:|---:|']
+            for assembly in ('KairoLibrary','Assembly-CSharp'):
+                for name,field in final['assemblies'][assembly]['exceptions'].items():
+                    lines.append(f"| {assembly} | {name} | {field['offset']} | {field['size']} |")
+            lines += ['', '1.465.284 bytes literalmente iguais fora dos seis campos (60 bytes de extensão); zero diferenças residuais.',
+                'DLLs finais ainda não testadas em aparelho. APK final apenas documentado em [docs/apk-final.md](docs/apk-final.md).','']
     (ROOT/'PROGRESS.md').write_text('\n'.join(lines),encoding='utf-8')
     print(json.dumps({'methods':len(methods),'types':len(types),'il_bytes':total_il,'matched':len(matched),'matched_il_bytes':matched_il,'categories':dict(categories)}))
 
