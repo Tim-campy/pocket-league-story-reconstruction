@@ -437,7 +437,8 @@ foreach (string text2 in files)
 			isPause_ = pauseStatus;
 			if (pauseStatus)
 			{
-				NotifyManager.GetInstance()?.DoNotify();
+				NotifyManager pauseNotify = NotifyManager.GetInstance();
+if ((object)pauseNotify != null) { pauseNotify.DoNotify(); }
 				KairoPlugin.SetNotificationBackground(true);
 				FormManagerBase.ProcessEvent(AppEventType.Hidden);
 				FormManagerBase formManager = GetFormManager();
@@ -454,8 +455,9 @@ foreach (string text2 in files)
 				}
 				OnSuspend();
 				return;
-			}
-			NotifyManager.GetInstance()?.DoCancel();
+			} else {
+			NotifyManager resumeNotify = NotifyManager.GetInstance();
+if ((object)resumeNotify != null) { resumeNotify.DoCancel(); }
 			KairoPlugin.SetNotificationBackground(false);
 			FormManagerBase.ProcessEvent(AppEventType.Resume);
 			AnalyticsTracker.DispatchPageView();
@@ -472,7 +474,8 @@ foreach (string text2 in files)
 				}
 			}
 			OnResume();
-		}
+
+}}
 
 		private void OnApplicationFocus(bool focusStatus)
 		{

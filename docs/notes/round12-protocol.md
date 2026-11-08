@@ -1,15 +1,17 @@
-# Rodada 12: protocolo de execu??o
+# Rodada 12: protocolo de execução
 
-Base: a075dcc8ca7b08e2cb9fcdd0cbcb5ce1fe8cd236. A baseline pr?pria est? congelada em build/round12/baseline. Round11 permanece hist?rico somente leitura.
+Base: a075dcc8ca7b08e2cb9fcdd0cbcb5ce1fe8cd236. Baseline própria: build/round12/baseline. Round11 permanece histórico somente leitura.
 
-A Parte A tem contagem pr?pria, sem teto artificial de 40 ou parada de cinco zeros. Reconstr?i somente KairoLibrary, come?a pelos quatro candidatos congelados (251 + 396 bytes IL) e continua at? n?o haver corpo divergente nem auxiliar retido. Uma hip?tese sem avan?o exige diagn?stico novo: n?o se repetem fontes id?nticos. O verificador continua sendo o ?nico escritor de estados.
+A Parte A tem contagem própria, sem teto de 40 nem parada de cinco zeros. Reconstrói somente KairoLibrary, começa pelos quatro candidatos congelados (251 + 396 bytes IL) e continua até não haver corpo divergente nem auxiliar retido. Hipótese sem avanço exige diagnóstico novo, sem repetir fontes idênticos. Somente o verificador escreve os estados.
 
-Depois desse fechamento sem?ntico, a produ??o para para o root comparar cada byte do PE congelado com o original. O gate B exige PASS num recibo hash-bound ao pr?prio PE, zero m?todos divergentes, zero retidos e zero bytes diferentes fora dos quatro campos comprovados. Igualdade estrutural ou contagem de m?todos n?o substitui esse teste. N?o h? normaliza??o nem edi??o de DLL. Se o bruto divergir, a causa fica em diagn?stico antes de declarar A conclu?da.
+Após o fechamento semântico, root compara cada byte do PE congelado com o original. O gate B exige recibo PASS ligado por SHA ao próprio PE, zero métodos divergentes, zero retidos e zero bytes diferentes fora dos quatro campos comprovados. Contagens e igualdade estrutural não substituem esse teste. Não há normalização nem edição de DLL. Se o bruto divergir, diagnosticar a causa antes de declarar A concluída.
 
-A Parte B s? come?a depois do PASS. Tem seu pr?prio limite de 40 ciclos e parada ap?s cinco ciclos consecutivos sem matched novo, com fila vazia antes e depois. A fila expl?cita ? UserTraining, SendSave, GameForm._draw, Draw_battlePic e Camera.Update_pos; depois a sele??o usa o maior peso residual por IL. No m?ximo dois ciclos consecutivos com o mesmo m?todo principal em cada parte.
+B só começa depois do PASS. Tem limite próprio de 40 ciclos e parada após cinco ciclos consecutivos sem matched novo, com fila vazia antes e depois. Fila explícita: UserTraining, SendSave, GameForm._draw, Draw_battlePic e Camera.Update_pos; depois selecionar o maior peso residual por IL. No máximo dois ciclos consecutivos com o mesmo principal em cada parte.
 
-Cada ciclo tem sonda isolada e passe principal em TODOS os corpos pendentes do assembly. Predi??o completa com tipos errados recusa; incompletude genu?na permite at? 12 variantes por m?todo/passe e 24/ciclo. Toda compila??o candidata ainda precisa da assinatura original exata e de aprova??o integral de cabe?alho, locais, IL e EH. S? a ado??o oficial e verifica??o completa podem gerar ganho. Ganho da sonda n?o se soma ao principal.
+Cada ciclo tem sonda e passe principal em TODOS os corpos pendentes do assembly. Predição completa errada recusa; incompletude genuína permite 12 variantes por método/passe e 24/ciclo. Toda compilação candidata exige assinatura original exata e aprovação integral de cabeçalho, locais, IL e EH. Apenas adoção oficial e verificação completa geram ganho. Não somar ganho da sonda ao principal.
 
-Nenhum auxiliar gerado ? escrito ? m?o. Nenhum byte original ? transplantado. Original/build/chaves/bin?rios n?o entram em Git. Falha de commit ap?s di?rio n?o autoriza repetir ciclo: preserva-se o resultado e refaz-se apenas a prova/commit. Ao parar, o operador entrega a propriedade ao root para QA e relat?rio final de oito se??es; n?o executa finish por conta pr?pria.
+Nenhuma classe gerada é escrita manualmente; nenhum byte original é transplantado. Original/build/chaves/binários ficam fora de Git. Falha de commit após diário exige reparar só prova/commit, nunca duplicar ciclo. Ao parar, entregar propriedade ao root para QA e relatório final de oito seções; não executar finish por conta própria.
 
-Doctor inicial executado pelo root: MCP gerenciado6.5 dispon?vel; exit1 por ferramentas opcionais Hopper/IDA/JADX ausentes e drift. N?o houve instala??o ou reparo. A refer?ncia de compila??o de Assembly-CSharp continua sendo a KairoLibrary ORIGINAL.
+Doctor inicial pelo root: MCP gerenciado 6.5 disponível; exit1 por Hopper/IDA/JADX opcionais ausentes e drift. Sem instalação ou reparo. Assembly-CSharp continua referenciando KairoLibrary ORIGINAL.
+
+Errata documental após A01: a pipe PowerShell corrompeu acentos da nota inicial. Este texto foi regravado com OutputEncoding UTF8 explícito. Nenhum C# de jogo, produtor congelado ou corpo medido foi alterado pela correção.

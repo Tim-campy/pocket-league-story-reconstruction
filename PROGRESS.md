@@ -2,22 +2,22 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,172 de 5,245 métodos matched (98.61%).** 871,497 bytes de IL nos assemblies alvo.
-830,106 bytes IL matched (95.25%).
+**5,174 de 5,245 métodos matched (98.65%).** 871,497 bytes de IL nos assemblies alvo.
+830,502 bytes IL matched (95.30%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3200 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3202 corpos correspondem com tokens resolvidos; 2 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 72 |
+| decompiled | 70 |
 | equivalent | 0 |
-| matched | 5172 |
+| matched | 5174 |
 | external | 0 |
 
 ## Assemblies
@@ -25,7 +25,7 @@ KairoLibrary: 3200 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
 | `Assembly-CSharp` | 1958 | 601603 | 1898 / 96.94% | 561744 / 93.37% |
-| `KairoLibrary` | 3287 | 269894 | 3274 / 99.60% | 268362 / 99.43% |
+| `KairoLibrary` | 3287 | 269894 | 3276 / 99.67% | 268758 / 99.58% |
 
 ## Namespaces
 
@@ -53,7 +53,7 @@ KairoLibrary: 3200 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.iOSsupport` | 4 | 18 | 4 / 100.00% | 18 / 100.00% |
 | `kairo.unity.io` | 149 | 9866 | 147 / 98.66% | 9608 / 97.38% |
 | `kairo.unity.licensing` | 7 | 101 | 7 / 100.00% | 101 / 100.00% |
-| `kairo.unity.m3d4.util3d` | 67 | 2810 | 65 / 97.01% | 2546 / 90.60% |
+| `kairo.unity.m3d4.util3d` | 67 | 2810 | 66 / 98.51% | 2743 / 97.62% |
 | `kairo.unity.math` | 57 | 5195 | 56 / 98.25% | 5149 / 99.11% |
 | `kairo.unity.native` | 212 | 10404 | 211 / 99.53% | 10276 / 98.77% |
 | `kairo.unity.native.util` | 16 | 1601 | 16 / 100.00% | 1601 / 100.00% |
@@ -66,7 +66,7 @@ KairoLibrary: 3200 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `kairo.unity.system.notification.ui` | 24 | 911 | 24 / 100.00% | 911 / 100.00% |
 | `kairo.unity.system.payment` | 14 | 752 | 14 / 100.00% | 752 / 100.00% |
 | `kairo.unity.system.tapjoy.ui` | 1 | 0 | 1 / 100.00% | 0 / 0.00% |
-| `kairo.unity.ui` | 1021 | 100597 | 1019 / 99.80% | 100293 / 99.70% |
+| `kairo.unity.ui` | 1021 | 100597 | 1020 / 99.90% | 100492 / 99.90% |
 | `kairo.unity.util` | 518 | 43955 | 518 / 100.00% | 43955 / 100.00% |
 | `kfw.panel` | 15 | 1718 | 15 / 100.00% | 1718 / 100.00% |
 | `main` | 223 | 35448 | 217 / 97.31% | 31913 / 90.03% |
@@ -297,7 +297,7 @@ KairoLibrary: 3200 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.io.Storage` | 18 | 1744 | 17 / 94.44% | 1580 / 90.60% |
 | `KairoLibrary::kairo.unity.licensing.LicenseChecker` | 7 | 101 | 7 / 100.00% | 101 / 100.00% |
 | `KairoLibrary::kairo.unity.m3d4.util3d.FastMath` | 16 | 325 | 16 / 100.00% | 325 / 100.00% |
-| `KairoLibrary::kairo.unity.m3d4.util3d.Transform` | 27 | 1710 | 25 / 92.59% | 1446 / 84.56% |
+| `KairoLibrary::kairo.unity.m3d4.util3d.Transform` | 27 | 1710 | 26 / 96.30% | 1643 / 96.08% |
 | `KairoLibrary::kairo.unity.m3d4.util3d.Vector3D` | 24 | 775 | 24 / 100.00% | 775 / 100.00% |
 | `KairoLibrary::kairo.unity.math.KairoMath` | 57 | 5195 | 56 / 98.25% | 5149 / 99.11% |
 | `KairoLibrary::kairo.unity.native.AdMobPlugin` | 14 | 566 | 14 / 100.00% | 566 / 100.00% |
@@ -399,7 +399,7 @@ KairoLibrary: 3200 corpos correspondem com tokens resolvidos; 2 ficam retidos po
 | `KairoLibrary::kairo.unity.ui.Handler` | 5 | 443 | 5 / 100.00% | 443 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Handler+<>c__DisplayClass3_0` | 2 | 19 | 2 / 100.00% | 19 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.Handler+PostData` | 1 | 55 | 1 / 100.00% | 55 / 100.00% |
-| `KairoLibrary::kairo.unity.ui.IApplication` | 77 | 4239 | 76 / 98.70% | 4040 / 95.31% |
+| `KairoLibrary::kairo.unity.ui.IApplication` | 77 | 4239 | 77 / 100.00% | 4239 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.IApplication+MethodTask` | 2 | 28 | 2 / 100.00% | 28 / 100.00% |
 | `KairoLibrary::kairo.unity.ui.IApplication+UIMethod` | 4 | 0 | 4 / 100.00% | 0 / 0.00% |
 | `KairoLibrary::kairo.unity.ui.Image` | 92 | 8726 | 92 / 100.00% | 8726 / 100.00% |
