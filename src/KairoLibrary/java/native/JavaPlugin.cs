@@ -84,13 +84,15 @@ namespace java.native
 						return androidJavaObject.Call<int>("getRawOffset", new object[0]);
 					}
 				}
-				if (utcOffsetTable_.Count == 0)
+				{
+if (utcOffsetTable_.Count == 0)
 				{
 					CreateUtcOffsetTable();
 				}
 				int value = 0;
 				utcOffsetTable_.TryGetValue(timezone, out value);
 				return value;
+}
 			}, true);
 		}
 

@@ -2,22 +2,22 @@
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,179 de 5,245 métodos matched (98.74%).** 871,497 bytes de IL nos assemblies alvo.
-831,058 bytes IL matched (95.36%).
+**5,180 de 5,245 métodos matched (98.76%).** 871,497 bytes de IL nos assemblies alvo.
+831,198 bytes IL matched (95.38%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
 
-KairoLibrary: 3205 corpos correspondem com tokens resolvidos; 0 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
+KairoLibrary: 3206 corpos correspondem com tokens resolvidos; 0 ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.
 
 ## Estados
 
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 65 |
+| decompiled | 64 |
 | equivalent | 0 |
-| matched | 5179 |
+| matched | 5180 |
 | external | 0 |
 
 ## Assemblies
@@ -25,7 +25,7 @@ KairoLibrary: 3205 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
 | `Assembly-CSharp` | 1958 | 601603 | 1898 / 96.94% | 561744 / 93.37% |
-| `KairoLibrary` | 3287 | 269894 | 3281 / 99.82% | 269314 / 99.79% |
+| `KairoLibrary` | 3287 | 269894 | 3282 / 99.85% | 269454 / 99.84% |
 
 ## Namespaces
 
@@ -41,7 +41,7 @@ KairoLibrary: 3205 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `game` | 441 | 202949 | 420 / 95.24% | 184510 / 90.91% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
-| `java.native` | 34 | 13621 | 33 / 97.06% | 13481 / 98.97% |
+| `java.native` | 34 | 13621 | 34 / 100.00% | 13621 / 100.00% |
 | `java.net` | 5 | 502 | 5 / 100.00% | 502 / 100.00% |
 | `java.util` | 107 | 3643 | 107 / 100.00% | 3643 / 100.00% |
 | `kairo.common.cfg` | 7 | 2180 | 7 / 100.00% | 2180 / 100.00% |
@@ -221,7 +221,7 @@ KairoLibrary: 3205 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `KairoLibrary::java.lang.StringEx` | 14 | 199 | 14 / 100.00% | 199 / 100.00% |
 | `KairoLibrary::java.native.JavaPlugin` | 8 | 12561 | 8 / 100.00% | 12561 / 100.00% |
 | `KairoLibrary::java.native.JavaPlugin+<>c` | 6 | 407 | 6 / 100.00% | 407 / 100.00% |
-| `KairoLibrary::java.native.JavaPlugin+<>c__DisplayClass8_0` | 2 | 147 | 1 / 50.00% | 7 / 4.76% |
+| `KairoLibrary::java.native.JavaPlugin+<>c__DisplayClass8_0` | 2 | 147 | 2 / 100.00% | 147 / 100.00% |
 | `KairoLibrary::java.native.PluginBase` | 6 | 312 | 6 / 100.00% | 312 / 100.00% |
 | `KairoLibrary::java.native.PluginBase+<>c__DisplayClass0_0` | 2 | 31 | 2 / 100.00% | 31 / 100.00% |
 | `KairoLibrary::java.native.PluginBase+<>c__DisplayClass1_0` | 2 | 31 | 2 / 100.00% | 31 / 100.00% |
