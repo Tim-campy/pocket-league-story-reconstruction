@@ -2036,7 +2036,7 @@ x = num6 = 0;
 					apdat_.DrawNumImage(g, 23, string.Empty, draw_time, string.Empty, 5, 55, 0);
 				}
 			}
-			if ((!(Config.DEBUG_CMD)) || (SHOW_DRAWNUM == 1)) { return; }
+			if (Config.DEBUG_CMD && SHOW_DRAWNUM == 1) { }
 
 		}
 
