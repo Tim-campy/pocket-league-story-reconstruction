@@ -1939,18 +1939,18 @@ for (int j = 0; j < league_fightCombi_.Length; j++)
 		{
 			LeagueData leagueData = apdat_.leagueData_[selectLeagueId_];
 			SetFightCombi(league_setu_);
-			int num;
-int num2;
+			int num5;
+int num6;
 for (int i = 0; i < league_fightCombi_.Length; i++)
 			{
-				num = league_fightCombi_[i][0];
-				num2 = league_fightCombi_[i][1];
+				int num = league_fightCombi_[i][0];
+				int num2 = league_fightCombi_[i][1];
 				int num3 = leagueData.matchEnemy_[num];
 				int num4 = leagueData.matchEnemy_[num2];
 				TeamData teamData = apdat_.tData_[num3];
 				TeamData teamData2 = apdat_.tData_[num4];
-				int num5 = GetTeamScore(teamData.war_offence_, teamData2.war_deffence_);
-				int num6 = GetTeamScore(teamData2.war_offence_, teamData.war_deffence_);
+				num5 = GetTeamScore(teamData.war_offence_, teamData2.war_deffence_);
+				num6 = GetTeamScore(teamData2.war_offence_, teamData.war_deffence_);
 				if (leagueData.matchEnemy_[num] == 0 || leagueData.matchEnemy_[num2] == 0)
 				{
 					if (leagueData.matchEnemy_[num] == 0)
