@@ -295,6 +295,7 @@ if (text2[num4] > ' ') { break; }
 
 		public static string GetCode(byte[] bytes)
 		{
+			const byte recoveredPdbConstByte = 0;
 			string[] array = new string[2] { "UTF-8", "Shift_JIS" };
 			if (bytes.Length == 0)
 			{

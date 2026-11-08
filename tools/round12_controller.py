@@ -95,6 +95,9 @@ def verify_raw_gate(cfg, measurement):
     if artifact['sha256'] != report['recompiled_sha256'] or file_hash(dll) != artifact['sha256']:
         raise GuardError('Passing raw report belongs to another recompiled PE')
     live = load(ROOT / 'build/verification-KairoLibrary.json')
+    from apply_il_rules import receipt_is_fresh
+    if not receipt_is_fresh(ROOT, live):
+        raise GuardError('Canonical Kairo source/profile no longer matches its verified PE')
     if (live['build_sha256'] != report['recompiled_sha256']
             or file_hash(ROOT / live['build_artifact']) != report['recompiled_sha256']):
         raise GuardError('Canonical Kairo PE changed after its literal raw PASS; renew comparison')
@@ -153,8 +156,20 @@ def validate_cycle(cfg, journal, request, measurement):
 
 def current_measurement(cfg, journal):
     rows = journal.get('cycles', [])
-    path = ROOT / (rows[-1]['after_measurement'] if rows else cfg['baseline_measurement'])
-    expected = rows[-1]['after_sha256'] if rows else cfg.get('baseline_measurement_sha256')
+    raw_source_path = ROOT / 'reports/round12-raw-source-journal.json'
+    source_commits = load(raw_source_path).get('commit_provenance', []) if raw_source_path.exists() else []
+    pointer = cfg.get('raw_source_current_measurement')
+    if pointer and not part_rows(journal, 'B'):
+        path = ROOT / pointer['path']
+        expected = pointer['sha256']
+        if source_commits and (source_commits[-1]['measurement'] != pointer['path']
+                              or source_commits[-1]['measurement_sha256'] != expected):
+            raise GuardError('Raw-source pointer does not describe latest verified source/PE')
+    elif source_commits and not part_rows(journal, 'B'):
+        raise GuardError('Explicit hash-bound raw-source current measurement is required before B')
+    else:
+        path = ROOT / (rows[-1]['after_measurement'] if rows else cfg['baseline_measurement'])
+        expected = rows[-1]['after_sha256'] if rows else cfg.get('baseline_measurement_sha256')
     if not expected or file_hash(path) != expected:
         raise GuardError('Current measurement is missing or not hash-bound')
     result = load(path)

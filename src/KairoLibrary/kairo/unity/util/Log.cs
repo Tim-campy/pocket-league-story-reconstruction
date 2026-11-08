@@ -116,6 +116,7 @@ namespace kairo.unity.util
 
 		protected static string GetThrowableName(Exception t)
 		{
+			const string recoveredPdbConstString = "";
 			if (t == null)
 			{
 				return "";

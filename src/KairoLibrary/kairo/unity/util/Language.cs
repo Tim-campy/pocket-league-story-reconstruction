@@ -1392,6 +1392,7 @@ string result = text;
 
 		private static void LoadLanguagePack(byte[] data)
 		{
+			const int recoveredPdbConstInt32 = 0;
 			JarInflater jarInflater = null;
 			LangPackRecord[] array = langPackRecords_;
 			string[] array2 = langPackFolders_;

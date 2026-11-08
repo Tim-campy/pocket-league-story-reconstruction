@@ -1,3 +1,5 @@
+using MeshPair = global::System.Collections.Generic.KeyValuePair<global::kairo.unity.graphics.Material, global::kairo.unity.graphics.MeshBuilder>;
+using MeshTable = global::System.Collections.Generic.Dictionary<global::kairo.unity.graphics.Material, global::kairo.unity.graphics.MeshBuilder>;
 using System;
 using System.Collections.Generic;
 using kairo.unity.form;

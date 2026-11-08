@@ -6,6 +6,7 @@ from pathlib import Path
 from verification_state import validate_matched
 from metadata_state import validate_type_metadata
 from kairo_candidate import PACKAGE_VERSION
+from round12_progress_status import kairo_completion
 ROOT=Path(__file__).resolve().parents[1]
 
 
@@ -29,6 +30,7 @@ def main():
     summary_path=ROOT/'reports/KairoLibrary-verification.json'
     verified=json.loads(summary_path.read_text(encoding='utf-8'))['counts'] if summary_path.is_file() else {}
     categories=Counter(r['categoria'] for r in inventory)
+    closure=kairo_completion(ROOT)
     lines=['# Progresso dos métodos C#','',
         'Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.','',
         f'**{len(matched):,} de {len(methods):,} métodos matched ({100*len(matched)/len(methods):.2f}%).** {total_il:,} bytes de IL nos assemblies alvo.',
@@ -37,6 +39,11 @@ def main():
         f'Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn {PACKAGE_VERSION}; Assembly-CSharp usa smcs 2.6.5.0.','',
         f"KairoLibrary: {verified.get('body_equal',0)} corpos correspondem com tokens resolvidos; {verified.get('equal_body_held_for_generated_group',0)} ficam retidos por dependências de membros gerados. Declarações sem CIL só entram em matched com prova completa dos metadados do método e do tipo.",'',
         '## Estados','', '| Estado | Métodos |','|---|---:|']
+    if closure['complete']:
+        lines[2:2]=['**KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.',
+            f"Prova literal atual: [{closure['report']}]({closure['report']}); SHA-256 do PE recompilado `{closure['recompiled_sha256']}`. Sem normalização.",'']
+    elif closure['status']=='RAW_RENEWAL_REQUIRED':
+        lines[2:2]=['KairoLibrary: prova bruta aguardando renovação para o PE/fonte atual; a correspondência de métodos não substitui essa prova.','']
     lines += [f'| {state} | {states[state]} |' for state in ('todo','decompiled','equivalent','matched','external')]
     for label,key in (('Assemblies','assembly'),('Namespaces','namespace'),('Tipos','tipo')):
         groups=defaultdict(list)

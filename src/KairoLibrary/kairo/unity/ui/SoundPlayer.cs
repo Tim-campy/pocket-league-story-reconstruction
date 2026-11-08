@@ -1,4 +1,3 @@
-using Object = UnityEngine.Object;
 using System;
 using java.util;
 using UnityEngine;
@@ -323,7 +322,7 @@ namespace kairo.unity.ui
 					continue;
 				}
 				RemovePort(i);
-				Object.Destroy(port_[i].component);
+				global::UnityEngine.Object.Destroy(port_[i].component);
 			}
 			for (int j = 0; j < array.Length; j++)
 			{

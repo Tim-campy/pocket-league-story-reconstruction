@@ -8,8 +8,10 @@ import unittest
 from unittest.mock import patch
 
 from round12_controller import (BASE_COMMIT, GuardError, measured_zero_streak,
-    selection_mode, stop_reason, validate_config, validate_cycle, verify_raw_gate)
+    selection_mode, stop_reason, validate_config, validate_cycle, verify_raw_gate,
+    current_measurement, file_hash)
 from round12_postverify_provenance import reconcile, METRICS
+from round12_progress_status import kairo_completion
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -21,6 +23,7 @@ class Protocol(unittest.TestCase):
         self.cfg['part_a_raw_gate'] = {'status': 'NOT_EVALUATED'}
         self.cfg['prepared_queue'] = []
         self.cfg.pop('requested_stop', None)
+        self.cfg.pop('raw_source_current_measurement', None)
         self.journal = {'cycles': []}
         self.measurement = {'assemblies': {'KairoLibrary': {'divergent_bodies': 13,
                                                           'equal_body_held_methods': 2}}}
@@ -147,6 +150,51 @@ class Protocol(unittest.TestCase):
         before, after, row = self.provenance_fixture()
         row['gains']['KairoLibrary']['methods_gained'] = 2
         with self.assertRaises(ValueError): reconcile(row, before, after, after, 'new.json', 'sha')
+
+    def test_raw_source_measurement_precedes_old_A11_until_B_starts(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); (root/'reports').mkdir()
+            for name in ['A', 'metadata', 'B']:
+                (root/(name+'.json')).write_text(json.dumps(dict(baseline_commit=BASE_COMMIT, marker=name)))
+            (root/'reports/round12-raw-source-journal.json').write_text(json.dumps(dict(commit_provenance=[
+                dict(measurement='metadata.json',measurement_sha256=file_hash(root/'metadata.json'))])))
+            journal = dict(cycles=[dict(phase='A',after_measurement='A.json',after_sha256=file_hash(root/'A.json'))])
+            cfg = dict(self.cfg,raw_source_current_measurement=dict(path='metadata.json',sha256=file_hash(root/'metadata.json')))
+            with patch('round12_controller.ROOT', root):
+                self.assertEqual(current_measurement(cfg,journal)['marker'], 'metadata')
+                journal['cycles'].append(dict(phase='B',after_measurement='B.json',after_sha256=file_hash(root/'B.json')))
+                self.assertEqual(current_measurement(cfg,journal)['marker'], 'B')
+
+    def test_raw_source_measurement_hash_failure_never_falls_back_to_A11(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/'reports').mkdir()
+            (root/'metadata.json').write_text(json.dumps(dict(baseline_commit=BASE_COMMIT)))
+            (root/'reports/round12-raw-source-journal.json').write_text(json.dumps(dict(commit_provenance=[
+                dict(measurement='metadata.json',measurement_sha256='incorrect')])))
+            cfg = dict(self.cfg,raw_source_current_measurement=dict(path='metadata.json',sha256='incorrect'))
+            with patch('round12_controller.ROOT', root):
+                with self.assertRaises(GuardError): current_measurement(cfg,dict(cycles=[]))
+
+    def test_valid_old_A11_hash_is_not_a_current_metadata_pointer(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/'reports').mkdir()
+            for name in ('old','fresh'):
+                (root/(name+'.json')).write_text(json.dumps(dict(baseline_commit=BASE_COMMIT)))
+            (root/'reports/round12-raw-source-journal.json').write_text(json.dumps(dict(commit_provenance=[
+                dict(measurement='fresh.json',measurement_sha256=file_hash(root/'fresh.json'))])))
+            cfg=dict(self.cfg,raw_source_current_measurement=dict(path='old.json',sha256=file_hash(root/'old.json')))
+            with patch('round12_controller.ROOT',root):
+                with self.assertRaises(GuardError): current_measurement(cfg,dict(cycles=[]))
+
+    def test_progress_stale_PE_never_claims_complete_or_blocks_verifier(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); (root/'config').mkdir(); (root/'reports').mkdir()
+            (root/'config/round12-protocol.json').write_text(json.dumps(dict(part_a_raw_gate=dict(status='PASS'))))
+            (root/'reports/round12-cycle-journal.json').write_text(json.dumps(dict(cycles=[])))
+            with patch('round12_controller.current_measurement',return_value={}), patch('round12_controller.verify_raw_gate',side_effect=GuardError('canonical SHA changed')):
+                result=kairo_completion(root)
+            self.assertFalse(result['complete'])
+            self.assertEqual(result['status'],'RAW_RENEWAL_REQUIRED')
 
 
 if __name__ == '__main__':

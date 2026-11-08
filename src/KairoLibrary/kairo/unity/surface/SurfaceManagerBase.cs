@@ -187,6 +187,7 @@ namespace kairo.unity.surface
 
 		private bool GetSelectPaintPoint(float x, float y, out int rectIndex, out int handleIndex)
 		{
+			const float recoveredPdbConstSingle = 36f;
 			rectIndex = -1;
 			handleIndex = -1;
 			float num = 36f;

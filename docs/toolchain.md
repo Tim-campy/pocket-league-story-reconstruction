@@ -444,3 +444,23 @@ wbits=-15, memLevel=8, estratégia padrão e Z_FINISH. Aplicado às DLLs origina
 reproduziu os streams comprimidos completos, respectivamente 248092 e321171
 bytes. Isso não identifica a biblioteca histórica. Contrato de comparação:
 `docs/notes/round11-apk-final-comparison.md`; medição: `reports/round11-apk-contract.json`.
+
+### Rodada 12: KairoLibrary concluída pelo critério literal
+
+Sem trocar compilador, referências ou opções, a fonte recompilada passou a
+reproduzir todos os 3.287 métodos, 337 tipos e os 569.816 bytes fora dos quatro
+campos comprovadamente não determinísticos. As únicas diferenças são 40 bytes
+nas mesmas coordenadas desses campos. A aceitação independente é
+`reports/round12-kairo-independent-raw-acceptance.json`.
+
+Além do IL, foi necessário reproduzir efeitos de informação de depuração nativa:
+remover um alias `Object` introduzido pela reconstrução, acrescentar dois aliases
+genéricos e recuperar quatro tipos de constantes locais indicados pelas
+assinaturas FIELD não referenciadas pelo IL. Nomes e valores locais foram
+escolhidos e continuam UNKNOWN como texto histórico. São construções C# normais;
+não houve edição de PE ou transplante de bytes. Ver
+`docs/notes/round12-kairo-byte-closure.md` e o diário próprio de metadados.
+
+Uma recompilação muda os campos não determinísticos. O gerador de progresso
+exige SHA do PE canônico, fontes verificadas e comparação bruta renovada para
+exibir CONCLUÍDA; não basta reaproveitar o recibo de uma compilação anterior.
