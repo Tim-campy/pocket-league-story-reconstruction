@@ -5177,36 +5177,38 @@ return;
 
 		public void DrawGraph_menuElement(Graphics g, int ox, int oy, int[] param1, int[] param2, int frame)
 		{
-			for (int i = 0; i < MENUGRAPH_POINTPOS.Length; i++)
+			int num, num2, num3, num4;
+for (int i = 0; i < MENUGRAPH_POINTPOS.Length; i++)
 			{
 			}
 			g.SetColor(Graphics.GetColorOfRGB(214, 214, 214));
 			for (int j = 0; j < 5; j++)
 			{
-				int num = ox + MENUGRAPH_POINTPOS[5][0];
-				int num2 = oy + MENUGRAPH_POINTPOS[5][1];
-				int num3 = ox + MENUGRAPH_POINTPOS[j][0];
-				int num4 = oy + MENUGRAPH_POINTPOS[j][1];
+				num = ox + MENUGRAPH_POINTPOS[5][0];
+				num2 = oy + MENUGRAPH_POINTPOS[5][1];
+				num3 = ox + MENUGRAPH_POINTPOS[j][0];
+				num4 = oy + MENUGRAPH_POINTPOS[j][1];
 				g.DrawLine(num, num2, num3, num4);
 			}
 			g.SetColor(Graphics.GetColorOfRGB(160, 160, 160));
 			for (int k = 0; k < 5; k++)
 			{
-				int num = ox + MENUGRAPH_POINTPOS[k][0];
-				int num2 = oy + MENUGRAPH_POINTPOS[k][1];
-				int num3 = ox + MENUGRAPH_POINTPOS[(k + 1) % 5][0];
-				int num4 = oy + MENUGRAPH_POINTPOS[(k + 1) % 5][1];
+				num = ox + MENUGRAPH_POINTPOS[k][0];
+				num2 = oy + MENUGRAPH_POINTPOS[k][1];
+				num3 = ox + MENUGRAPH_POINTPOS[(k + 1) % 5][0];
+				num4 = oy + MENUGRAPH_POINTPOS[(k + 1) % 5][1];
 				g.DrawLine(num, num2, num3, num4);
 			}
-			int c1max = 25;
+			int x, x2;
+int c1max = 25;
 			for (int l = 0; l < 5; l++)
 			{
-				int x = GameUtil.RateConvert(frame, 0, c1max, param1[l], param2[l], true);
-				int x2 = GameUtil.RateConvert(frame, 0, c1max, param1[(l + 1) % 5], param2[(l + 1) % 5], true);
-				int num = ox + GameUtil.RateConvert(x, 0, 1000, MENUGRAPH_POINTPOS[l][0] / 5, MENUGRAPH_POINTPOS[l][0], true);
-				int num2 = oy + GameUtil.RateConvert(x, 0, 1000, MENUGRAPH_POINTPOS[l][1] / 5, MENUGRAPH_POINTPOS[l][1], true);
-				int num3 = ox + GameUtil.RateConvert(x2, 0, 1000, MENUGRAPH_POINTPOS[(l + 1) % 5][0] / 5, MENUGRAPH_POINTPOS[(l + 1) % 5][0], true);
-				int num4 = oy + GameUtil.RateConvert(x2, 0, 1000, MENUGRAPH_POINTPOS[(l + 1) % 5][1] / 5, MENUGRAPH_POINTPOS[(l + 1) % 5][1], true);
+				x = GameUtil.RateConvert(frame, 0, c1max, param1[l], param2[l], true);
+				x2 = GameUtil.RateConvert(frame, 0, c1max, param1[(l + 1) % 5], param2[(l + 1) % 5], true);
+				num = ox + GameUtil.RateConvert(x, 0, 1000, MENUGRAPH_POINTPOS[l][0] / 5, MENUGRAPH_POINTPOS[l][0], true);
+				num2 = oy + GameUtil.RateConvert(x, 0, 1000, MENUGRAPH_POINTPOS[l][1] / 5, MENUGRAPH_POINTPOS[l][1], true);
+				num3 = ox + GameUtil.RateConvert(x2, 0, 1000, MENUGRAPH_POINTPOS[(l + 1) % 5][0] / 5, MENUGRAPH_POINTPOS[(l + 1) % 5][0], true);
+				num4 = oy + GameUtil.RateConvert(x2, 0, 1000, MENUGRAPH_POINTPOS[(l + 1) % 5][1] / 5, MENUGRAPH_POINTPOS[(l + 1) % 5][1], true);
 				for (int num5 = 4; num5 >= 0; num5--)
 				{
 					if (num5 > 0)

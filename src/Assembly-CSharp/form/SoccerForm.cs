@@ -1609,32 +1609,29 @@ apdat_.AddMoney(bonus_in_param[n][0], 4);
 				apdat_.offScore1_ = -1;
 				apdat_.offScore2_ = -1;
 			}
-			global::data.TeamData teamData2;
-global::surface.GameView instance;
-int topBarOffN;
-int num;
+			int num2, num5, num3, num4;
 TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
-			teamData2 = apdat_.tData_[udat_.gm_.teamId_[1]];
-			instance = GameView.GetInstance();
-			topBarOffN = GetTopBarOffN();
-			num = AppData.ClampMin((instance.GetGameWidth() - (240 + topBarOffN * 2)) / 2, 0);
+			TeamData teamData2 = apdat_.tData_[udat_.gm_.teamId_[1]];
+			GameView instance = GameView.GetInstance();
+			int topBarOffN = GetTopBarOffN();
+			int num = AppData.ClampMin((instance.GetGameWidth() - (240 + topBarOffN * 2)) / 2, 0);
 			if (num > 0)
 			{
 				Draw_topBarParts(g, 6, 0, num);
 				Draw_topBarParts(g, 6, instance.GetGameWidth() - num, num);
 			}
-			int num2 = num;
+			num2 = num;
 			Draw_topBarParts(g, 1, num, TBAR_W[1]);
 			num += TBAR_W[1];
-			int num3 = num;
+			num3 = num;
 			Draw_topBarParts(g, 2, num, TBAR_W[2] + topBarOffN);
 			num += TBAR_W[2] + topBarOffN;
 			Draw_topBarParts(g, 3, num, TBAR_W[3]);
 			num += TBAR_W[3];
-			int num4 = num;
+			num4 = num;
 			Draw_topBarParts(g, 4, num, TBAR_W[4] + topBarOffN);
 			num += TBAR_W[4] + topBarOffN;
-			int num5 = num;
+			num5 = num;
 			Draw_topBarParts(g, 5, num, TBAR_W[5]);
 			num += TBAR_W[5];
 			apdat_.DrawSeb(g, num2 + 1, 4, apdat_.resCom2_.seb[28], apdat_.resCom2_.img[33], udat_.selectUniform_);
@@ -1642,11 +1639,12 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 			g.SetColor(Graphics.GetColorOfRGB(214, 241, 255));
 			g.DrawString(teamData.name_, num3 + topBarOffN / 2 + 43, 4f, 2);
 			g.DrawString(teamData2.name_, num4 + topBarOffN / 2 + 43, 4f, 2);
-			int num6 = 0;
+			int x, num6;
+x = num6 = 0;
 			if (apdat_.offScore1_ != udat_.gm_.score_[0] || apdat_.offScore2_ != udat_.gm_.score_[1])
 			{
 				apdat_.offScore1_ = udat_.gm_.score_[0];
-				int x = instance.GetGameWidth() / 2 - 13;
+				x = instance.GetGameWidth() / 2 - 13;
 				num6 = 4;
 				g.DrawImage(apdat_.resCom2_.img[32], instance.GetGameWidth() / 2 - 21, 3f, 99, 3, 17, 16);
 				if (udat_.gm_.score_[0] > udat_.gm_.score_[1])
@@ -1661,7 +1659,7 @@ TeamData teamData = apdat_.tData_[udat_.gm_.teamId_[0]];
 			if (apdat_.offScore2_ != udat_.gm_.score_[1])
 			{
 				apdat_.offScore2_ = udat_.gm_.score_[1];
-				int x = instance.GetGameWidth() / 2 + 13;
+				x = instance.GetGameWidth() / 2 + 13;
 				num6 = 4;
 				g.DrawImage(apdat_.resCom2_.img[32], instance.GetGameWidth() / 2 + 4, 3f, 124, 3, 17, 16);
 				apdat_.DrawNumImage(g, 30, udat_.gm_.score_[1], x, num6, 0, 2);

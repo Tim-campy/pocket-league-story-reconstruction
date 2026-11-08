@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b08-postverify01-KairoLibrary-raw.json](reports/round12-b08-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `3ee8f53784c1048e1c293d70da219bcd9b610273d6a43694c18008ff9dff3a27`. Sem normalização.
+Prova literal atual: [reports/round12-b09-postverify01-KairoLibrary-raw.json](reports/round12-b09-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `ae94699c3ebb223ee4d1102081e6b91bfa9f2a1e469ace4e1a1f4d39308416c2`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,193 de 5,245 métodos matched (99.01%).** 871,497 bytes de IL nos assemblies alvo.
-848,571 bytes IL matched (97.37%).
+**5,195 de 5,245 métodos matched (99.05%).** 871,497 bytes de IL nos assemblies alvo.
+850,371 bytes IL matched (97.58%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 51 |
+| decompiled | 49 |
 | equivalent | 0 |
-| matched | 5193 |
+| matched | 5195 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1906 / 97.34% | 578677 / 96.19% |
+| `Assembly-CSharp` | 1958 | 601603 | 1908 / 97.45% | 580477 / 96.49% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -40,8 +40,8 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `analytics` | 4 | 93 | 4 / 100.00% | 93 / 100.00% |
 | `cfg` | 2 | 348 | 2 / 100.00% | 348 / 100.00% |
 | `data` | 255 | 26353 | 254 / 99.61% | 26251 / 99.61% |
-| `form` | 371 | 250649 | 358 / 96.50% | 243726 / 97.24% |
-| `game` | 441 | 202949 | 424 / 96.15% | 192794 / 95.00% |
+| `form` | 371 | 250649 | 359 / 96.77% | 244817 / 97.67% |
+| `game` | 441 | 202949 | 425 / 96.37% | 193503 / 95.35% |
 | `java.io` | 89 | 2223 | 89 / 100.00% | 2223 / 100.00% |
 | `java.lang` | 171 | 4928 | 171 / 100.00% | 4928 / 100.00% |
 | `java.native` | 34 | 13621 | 34 / 100.00% | 13621 / 100.00% |
@@ -123,7 +123,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::form.GameForm` | 51 | 16474 | 49 / 96.08% | 15538 / 94.32% |
 | `Assembly-CSharp::form.MyFormBase` | 48 | 3906 | 47 / 97.92% | 3418 / 87.51% |
 | `Assembly-CSharp::form.RankForm` | 14 | 1516 | 14 / 100.00% | 1516 / 100.00% |
-| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 57 / 91.94% | 30108 / 89.50% |
+| `Assembly-CSharp::form.SoccerForm` | 62 | 33639 | 58 / 93.55% | 31199 / 92.75% |
 | `Assembly-CSharp::form.SpForm` | 19 | 7256 | 18 / 94.74% | 7200 / 99.23% |
 | `Assembly-CSharp::form.SubForm` | 95 | 125345 | 94 / 98.95% | 124122 / 99.02% |
 | `Assembly-CSharp::form.SubForm+<Update2>c__AnonStorey0` | 3 | 227 | 2 / 66.67% | 31 / 13.66% |
@@ -143,7 +143,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::game.TPlayer` | 34 | 13693 | 33 / 97.06% | 13109 / 95.74% |
 | `Assembly-CSharp::game.Team` | 42 | 22251 | 40 / 95.24% | 20671 / 92.90% |
 | `Assembly-CSharp::game.Tenant` | 14 | 2692 | 13 / 92.86% | 2200 / 81.72% |
-| `Assembly-CSharp::game.UserData` | 92 | 55470 | 86 / 93.48% | 52322 / 94.32% |
+| `Assembly-CSharp::game.UserData` | 92 | 55470 | 87 / 94.57% | 53031 / 95.60% |
 | `Assembly-CSharp::main.AppData` | 201 | 33806 | 196 / 97.51% | 32478 / 96.07% |
 | `Assembly-CSharp::main.AppData+<DrawFukidashiKimochi>c__AnonStorey1` | 2 | 126 | 2 / 100.00% | 126 / 100.00% |
 | `Assembly-CSharp::main.AppData+stringErrorCode` | 1 | 7 | 1 / 100.00% | 7 / 100.00% |
