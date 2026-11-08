@@ -1113,9 +1113,8 @@ return false;
 		public void _draw(Graphics g)
 		{
 			errLine_ = 10;
-			int num2;
-			int num3;
-			int num = (num2 = (num3 = 0));
+			int num13, num, num2, num3;
+			num13 = num = num2 = num3 = 0;
 			Camera.SetDrawCenter(VIEW_X, VIEW_Y, VIEW_W, VIEW_H);
 			g.SetColor(Graphics.GetColorOfRGB(50, 205, 255));
 			g.FillRect(VIEW_X, VIEW_Y, VIEW_W, VIEW_H);
@@ -1195,21 +1194,13 @@ return false;
 				g.DrawImage(apdat_.resCom2_.img[144], view_.GetGameWidth() - 89, num - 3);
 				int num9 = GameUtil.RateConvert(LEAGUE_SCHEDULE_UPDATECNT, 12, 0, -12, 0, true);
 				int num10 = 0;
-				switch (matchInfoJoin)
-				{
-				case 0:
-				{
+				if (matchInfoJoin == 0) {
 					LeagueData leagueData = apdat_.leagueData_[udat_.selectLeagueId_];
 					num10 = leagueData.schedule_ - udat_.matchInfoWeek_;
-					break;
-				}
-				case 1:
-				{
+					} else if (matchInfoJoin == 1) {
 					QuestMatchData questMatchData = apdat_.qmData_[udat_.selectQmId_];
 					num10 = questMatchData.schedule_ - udat_.matchInfoWeek_;
-					break;
-				}
-				}
+					}
 				int num11 = view_.GetGameWidth() - 25;
 				if (MyFormBase.En())
 				{
@@ -1254,7 +1245,7 @@ return false;
 			}
 			else if (state_ == 3)
 			{
-				int num13 = 0;
+				num13 = 0;
 				num = 0;
 				for (int i = 0; i < view_.GetGameHeight() / 40 + 1; i++)
 				{
