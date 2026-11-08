@@ -2213,7 +2213,7 @@ if (num4 < 0.001f) {continue;}
 			if (udat_.gm_.state_ == 0 && udat_.gm_.gameState_ == 2 && BitUtil.Check(udat_.ball_.flag_, 8)) {
 			if (role_ == 0)
 			{
-				if (!(udat_.ball_.pos_.y_ < 20f)) { return; }
+				if (udat_.ball_.pos_.y_ < 20f) {
 int[] collisionData3 = udat_.GetCollisionData(0, 0);
 int[] collisionData4 = udat_.GetCollisionData(1, 1);
 if (GameUtil.ChRectHitRect(pos_.x_ + (float)collisionData3[0], pos_.z_ + (float)collisionData3[1], collisionData3[2], collisionData3[3], udat_.ball_.pos_.x_ + (float)collisionData4[0], udat_.ball_.pos_.z_ + (float)collisionData4[1], collisionData4[2], collisionData4[3], true)) {
@@ -2280,10 +2280,11 @@ float recoveredUnusedVelocityY;
 				}
 			}
 }
-			else if ((!BitUtil.Check(udat_.ball_.flag_, 16) || !BitUtil.Check(udat_.ball_.flag_, 32) || udat_.ball_.boundNum_ != 0) && ChTrapOrHeading())
-			{
-				ChRepetition();
-			}
+}
+			else {
+if (BitUtil.Check(udat_.ball_.flag_, 16) && BitUtil.Check(udat_.ball_.flag_, 32) && udat_.ball_.boundNum_ == 0) {return;}
+if (ChTrapOrHeading()) {ChRepetition();}
+}
 		}
 }
 

@@ -732,6 +732,47 @@
           "gains_unchanged": true
         }
       ]
+    },
+    {
+      "cycle": 19,
+      "part_cycle": 8,
+      "label": "b08",
+      "phase": "B",
+      "primary_target": "game.Player::Collision()->System.Void",
+      "selection_mode": "autonomous_selection",
+      "queue_empty_before": false,
+      "queue_empty": false,
+      "rule": "r12-smcs-player-collision-v3-positive-height-plus-original-tail-return",
+      "assembly": "Assembly-CSharp",
+      "pair": "bge.un=>blt",
+      "hypothesis": "Compose the original positive height block with the tail bits16/32/bound return, undoing the misplaced legacy early-return; preserve31 slots, DEBUG return and floating NaN behavior. New independent fixtures cover both remaining aligned edits.",
+      "result": "Novos corpos aprovados; 1 tentativas da regra, 1 avancos",
+      "gains": {
+        "KairoLibrary": {
+          "methods_gained": 0,
+          "il_bytes_gained": 0
+        },
+        "Assembly-CSharp": {
+          "methods_gained": 1,
+          "il_bytes_gained": 2145
+        }
+      },
+      "rule_accepted_steps": 1,
+      "methods_gained": 1,
+      "il_bytes_gained": 2145,
+      "before_measurement": "reports\\round12-b08-before-measurement.json",
+      "before_sha256": "03222a65f5e5a7c924a291d397a8588aa8f5a7b8f30e33230bccddf31f6562ed",
+      "after_measurement": "reports/round12-b08-postverify01-measurement.json",
+      "after_sha256": "f600bc638206e38cd4abb30333dc76f33fb39372a0deb7b91940c14866801dd2",
+      "postverify_provenance": [
+        {
+          "previous_after_measurement": "reports\\round12-b08-after-measurement.json",
+          "previous_after_sha256": "6269648096d6c78f766902c0bc31b4c3dc6b2023495f3219506cd2e2733d836b",
+          "new_after_measurement": "reports/round12-b08-postverify01-measurement.json",
+          "new_after_sha256": "f600bc638206e38cd4abb30333dc76f33fb39372a0deb7b91940c14866801dd2",
+          "gains_unchanged": true
+        }
+      ]
     }
   ],
   "consecutive_zero_cycles": 0

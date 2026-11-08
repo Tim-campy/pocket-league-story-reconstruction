@@ -1,4 +1,4 @@
-"""Record measured round-eleven outcomes; never changes reconstruction state."""
+"""Record measured round-twelve outcomes; never changes reconstruction state."""
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -23,10 +23,10 @@ def main():
         for identity,method in sorted(final_methods.items()):
             accepted=[t for t in method.get('trials',[]) if t.get('accepted')]
             if accepted and method.get('body_equal') is not True:
-                hypotheses.append({'status':'INCONCLUSIVA',
+                hypotheses.append({'status':'REFUTADA',
                     'hypothesis':'O candidato parcial de '+r['label']+' reproduz integralmente '+identity+'.',
                     'evidence':str(len(accepted))+' avanços aceitos, mas corpo integral não igual no fim desse ciclo; parada '+
-                        str(method.get('stop_reason','UNKNOWN'))+'. Ganhos de outros métodos da família não confirmam este candidato.'})
+                        str(method.get('stop_reason','UNKNOWN'))+'. A diferença exata de corpo refuta esta afirmação de identidade integral; não implica diagnóstico de erro semântico. Ganhos de outros métodos da família não confirmam este candidato.'})
     extra=ROOT/'reports/round12-additional-hypotheses.json'
     if extra.exists():hypotheses+=json.loads(extra.read_text(encoding='utf-8'))['hypotheses']
     (ROOT/'reports/round12-hypotheses.json').write_text(json.dumps({'hypotheses':hypotheses},indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
