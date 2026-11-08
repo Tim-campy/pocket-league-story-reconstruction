@@ -1,12 +1,12 @@
 # Progresso dos métodos C#
 
 **KairoLibrary: CONCLUÍDA.** 3.287 métodos, 337 tipos e todos os bytes fora dos quatro campos comprovadamente não determinísticos correspondem ao original.
-Prova literal atual: [reports/round12-b11-postverify01-KairoLibrary-raw.json](reports/round12-b11-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `d810d5a1dca0a4ba553a328a9681e56245ad3d8c899469493c7d2f31d19fdd89`. Sem normalização.
+Prova literal atual: [reports/round12-b12-postverify01-KairoLibrary-raw.json](reports/round12-b12-postverify01-KairoLibrary-raw.json); SHA-256 do PE recompilado `17552453e170651d2e4d40439390b4f1058dde41552e912405c8d1a36c22fe88`. Sem normalização.
 
 Gerado por `python tools/progress` a partir de `config/methods.csv` e `config/types.csv`.
 
-**5,198 de 5,245 métodos matched (99.10%).** 871,497 bytes de IL nos assemblies alvo.
-853,685 bytes IL matched (97.96%).
+**5,199 de 5,245 métodos matched (99.12%).** 871,497 bytes de IL nos assemblies alvo.
+855,027 bytes IL matched (98.11%).
 Cabeçalhos, locais e exceções também precisam corresponder; o denominador acima mede somente bytes IL.
 
 Ambos os assemblies foram recuperados e compilam integralmente. KairoLibrary usa o candidato Roslyn 1.1.0; Assembly-CSharp usa smcs 2.6.5.0.
@@ -18,16 +18,16 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | Estado | Métodos |
 |---|---:|
 | todo | 1 |
-| decompiled | 46 |
+| decompiled | 45 |
 | equivalent | 0 |
-| matched | 5198 |
+| matched | 5199 |
 | external | 0 |
 
 ## Assemblies
 
 | Grupo | Métodos | Bytes IL | Métodos matched | Bytes IL matched |
 |---|---:|---:|---:|---:|
-| `Assembly-CSharp` | 1958 | 601603 | 1911 / 97.60% | 583791 / 97.04% |
+| `Assembly-CSharp` | 1958 | 601603 | 1912 / 97.65% | 585133 / 97.26% |
 | `KairoLibrary` | 3287 | 269894 | 3287 / 100.00% | 269894 / 100.00% |
 
 ## Namespaces
@@ -75,7 +75,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `main` | 223 | 35448 | 218 / 97.76% | 34120 / 96.25% |
 | `native` | 26 | 896 | 26 / 100.00% | 896 / 100.00% |
 | `panel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `surface` | 122 | 26518 | 115 / 94.26% | 23709 / 89.41% |
+| `surface` | 122 | 26518 | 116 / 95.08% | 25051 / 94.47% |
 | `system` | 20 | 1636 | 20 / 100.00% | 1636 / 100.00% |
 | `system.billing` | 8 | 956 | 8 / 100.00% | 956 / 100.00% |
 | `system.billing.ui` | 153 | 13782 | 150 / 98.04% | 12812 / 92.96% |
@@ -157,7 +157,7 @@ KairoLibrary: 3211 corpos correspondem com tokens resolvidos; 0 ficam retidos po
 | `Assembly-CSharp::native.WebBoxPlugin+<SetViewRect>c__AnonStorey4` | 2 | 85 | 2 / 100.00% | 85 / 100.00% |
 | `Assembly-CSharp::native.WebBoxPlugin+<SetVisible>c__AnonStorey6` | 2 | 43 | 2 / 100.00% | 43 / 100.00% |
 | `Assembly-CSharp::panel.MainPanel` | 5 | 49 | 5 / 100.00% | 49 / 100.00% |
-| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 28 / 96.55% | 8344 / 86.14% |
+| `Assembly-CSharp::surface.GamePad` | 29 | 9686 | 29 / 100.00% | 9686 / 100.00% |
 | `Assembly-CSharp::surface.GameView` | 66 | 13578 | 60 / 90.91% | 12111 / 89.20% |
 | `Assembly-CSharp::surface.SurfaceManager` | 8 | 1729 | 8 / 100.00% | 1729 / 100.00% |
 | `Assembly-CSharp::surface.TouchEffect` | 5 | 821 | 5 / 100.00% | 821 / 100.00% |

@@ -622,7 +622,7 @@ namespace surface
 			case 14:
 				if (type == 5)
 				{
-					visibleTouchRange_ = !visibleTouchRange_;
+					visibleTouchRange_ = (visibleTouchRange_ ? false : true);
 				}
 				break;
 			case 15:
@@ -658,7 +658,7 @@ namespace surface
 				if (type == 5)
 				{
 					AppData instance2 = AppData.GetInstance();
-					int num = ((id != 21) ? 1 : 0);
+					int num = ((id == 21) ? 0 : 1);
 					SetMode(num);
 					instance2.sysSave_.ints[15] = num;
 					try

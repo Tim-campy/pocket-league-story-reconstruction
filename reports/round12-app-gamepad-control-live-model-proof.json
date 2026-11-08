@@ -1,0 +1,928 @@
+{
+  "operation": "fresh-source-only-model-binding",
+  "old_bundle": "reports/round12-app-gamepad-control-family-patches.json",
+  "old_bundle_sha256": "74bf92b2ba55a3c782e1d3f0b18e3da325b43e2972463c603e4d7605c2f1d613",
+  "assembly": "Assembly-CSharp",
+  "baseline": "build/round12/runs/b11/commit/postverify01/Assembly-CSharp",
+  "manifest_sha256": "362029b28cf123004dd354deb3be7f71bccb46101e2738127dbc06b2aaf98827",
+  "model_validation": "reports/round11-slot-model-validation.json",
+  "model_validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+  "dependency_sha256": {
+    "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+    "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "records": [
+    {
+      "method_id": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+      "logical_source": "src/Assembly-CSharp/surface/GamePad.cs",
+      "frozen_full_source_sha256": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+      "live_full_source_sha256": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+      "candidate_full_source_sha256": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+      "previous_model_binding": {
+        "model_source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+        "client_sha256": null,
+        "complete": null,
+        "predicted_types": null,
+        "unsupported_reasons": null
+      },
+      "prediction": {
+        "method_id": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+        "complete": true,
+        "predicted_types": [
+          "kairo.unity.surface.TouchComponent",
+          "form.FormManager",
+          "System.Int32",
+          "System.Int32",
+          "main.AppData",
+          "System.Int32",
+          "kairo.unity.form.FormBase",
+          "System.Int32[]",
+          "kairo.unity.ui.Image",
+          "System.Single",
+          "System.Object[]",
+          "System.Int32"
+        ],
+        "variables": [
+          {
+            "name": "component",
+            "type": "kairo.unity.surface.TouchComponent",
+            "kind": "declared",
+            "start": 15286,
+            "end": 15311,
+            "slot": 0,
+            "block": 0,
+            "type_source": "TouchComponent",
+            "statement_start": 15271,
+            "statement_end": 15312,
+            "lexical_scope_start": 15265,
+            "lexical_scope_end": 19261,
+            "initializer": "evt.component"
+          },
+          {
+            "name": "instance",
+            "type": "form.FormManager",
+            "kind": "declared",
+            "start": 15329,
+            "end": 15365,
+            "slot": 1,
+            "block": 1,
+            "type_source": "FormManager",
+            "statement_start": 15317,
+            "statement_end": 15366,
+            "lexical_scope_start": 15265,
+            "lexical_scope_end": 19261,
+            "initializer": "FormManager.GetInstance()"
+          },
+          {
+            "name": "id",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 15375,
+            "end": 15396,
+            "slot": 2,
+            "block": 2,
+            "type_source": "int",
+            "statement_start": 15371,
+            "statement_end": 15397,
+            "lexical_scope_start": 15265,
+            "lexical_scope_end": 19261,
+            "initializer": "evt.component.id"
+          },
+          {
+            "name": "type",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 15406,
+            "end": 15421,
+            "slot": 3,
+            "block": 3,
+            "type_source": "int",
+            "statement_start": 15402,
+            "statement_end": 15422,
+            "lexical_scope_start": 15265,
+            "lexical_scope_end": 19261,
+            "initializer": "evt.type"
+          },
+          {
+            "name": "instance2",
+            "type": "main.AppData",
+            "kind": "declared",
+            "start": 17118,
+            "end": 17151,
+            "slot": 4,
+            "block": 23,
+            "type_source": "AppData",
+            "statement_start": 17110,
+            "statement_end": 17152,
+            "lexical_scope_start": 17102,
+            "lexical_scope_end": 17355,
+            "initializer": "AppData.GetInstance()"
+          },
+          {
+            "name": "num",
+            "type": "System.Int32",
+            "kind": "declared",
+            "start": 17163,
+            "end": 17189,
+            "slot": 5,
+            "block": 24,
+            "type_source": "int",
+            "statement_start": 17159,
+            "statement_end": 17190,
+            "lexical_scope_start": 17102,
+            "lexical_scope_end": 17355,
+            "initializer": "((id == 21) ? 0 : 1)"
+          },
+          {
+            "name": "topForm",
+            "type": "kairo.unity.form.FormBase",
+            "kind": "declared",
+            "start": 17475,
+            "end": 17506,
+            "slot": 6,
+            "block": 30,
+            "type_source": "FormBase",
+            "statement_start": 17466,
+            "statement_end": 17507,
+            "lexical_scope_start": 17384,
+            "lexical_scope_end": 17907,
+            "initializer": "instance.GetTopForm()"
+          },
+          {
+            "name": "array",
+            "type": "System.Int32[]",
+            "kind": "declared",
+            "start": 18729,
+            "end": 18764,
+            "slot": 7,
+            "block": 46,
+            "type_source": "int[]",
+            "statement_start": 18723,
+            "statement_end": 18765,
+            "lexical_scope_start": 18716,
+            "lexical_scope_end": 19256,
+            "initializer": "TEXTURES[COMPONENTS[id][5]]"
+          },
+          {
+            "name": "image",
+            "type": "kairo.unity.ui.Image",
+            "kind": "declared",
+            "start": 18777,
+            "end": 18802,
+            "slot": 8,
+            "block": 47,
+            "type_source": "Image",
+            "statement_start": 18771,
+            "statement_end": 18803,
+            "lexical_scope_start": 18716,
+            "lexical_scope_end": 19256,
+            "initializer": "images_[array[0]]"
+          },
+          {
+            "name": "num2",
+            "type": "System.Single",
+            "kind": "declared",
+            "start": 18815,
+            "end": 18876,
+            "slot": 9,
+            "block": 48,
+            "type_source": "float",
+            "statement_start": 18809,
+            "statement_end": 18877,
+            "lexical_scope_start": 18716,
+            "lexical_scope_end": 19256,
+            "initializer": "(float)image.GetWidth() / (float)IMAGE_WIDTH[array[0]]"
+          },
+          {
+            "name": "arg",
+            "type": "System.Object[]",
+            "kind": "declared",
+            "start": 18892,
+            "end": 19142,
+            "slot": 10,
+            "block": 49,
+            "type_source": "object[]",
+            "statement_start": 18883,
+            "statement_end": 19143,
+            "lexical_scope_start": 18716,
+            "lexical_scope_end": 19256,
+            "initializer": "new object[2]\r\n\t\t\t\t{\r\n\t\t\t\t\timages_[array[0]],\r\n\t\t\t\t\tnew float[6]\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray[5],\r\n\t\t\t\t\t\tarray[6],\r\n\t\t\t\t\t\t(float)array[3] * num2,\r\n\t\t\t\t\t\t(float)array[4] * num2,\r\n\t\t\t\t\t\t(float)array[5] * num2,\r\n\t\t\t\t\t\t(float)array[6] * num2\r\n\t\t\t\t\t}\r\n\t\t\t\t}"
+          },
+          {
+            "name": "$switch",
+            "type": "System.Int32",
+            "kind": "emit-temporary",
+            "start": 15435,
+            "end": 15437,
+            "slot": 11,
+            "block": -1,
+            "type_source": null,
+            "statement_start": -1,
+            "statement_end": -1,
+            "lexical_scope_start": -1,
+            "lexical_scope_end": -1,
+            "initializer": null
+          }
+        ],
+        "blocks": [
+          {
+            "id": 0,
+            "kind": "method",
+            "start": 15265,
+            "end": 19261,
+            "parent": -1,
+            "used": true,
+            "variables": [
+              {
+                "name": "component",
+                "type": "kairo.unity.surface.TouchComponent",
+                "kind": "declared",
+                "start": 15286,
+                "end": 15311,
+                "slot": 0,
+                "block": 0,
+                "type_source": "TouchComponent",
+                "statement_start": 15271,
+                "statement_end": 15312,
+                "lexical_scope_start": 15265,
+                "lexical_scope_end": 19261,
+                "initializer": "evt.component"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 1,
+            "kind": "implicit-after-statement",
+            "start": 15317,
+            "end": 15366,
+            "parent": 0,
+            "used": true,
+            "variables": [
+              {
+                "name": "instance",
+                "type": "form.FormManager",
+                "kind": "declared",
+                "start": 15329,
+                "end": 15365,
+                "slot": 1,
+                "block": 1,
+                "type_source": "FormManager",
+                "statement_start": 15317,
+                "statement_end": 15366,
+                "lexical_scope_start": 15265,
+                "lexical_scope_end": 19261,
+                "initializer": "FormManager.GetInstance()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 2,
+            "kind": "implicit-after-statement",
+            "start": 15371,
+            "end": 15397,
+            "parent": 1,
+            "used": true,
+            "variables": [
+              {
+                "name": "id",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 15375,
+                "end": 15396,
+                "slot": 2,
+                "block": 2,
+                "type_source": "int",
+                "statement_start": 15371,
+                "statement_end": 15397,
+                "lexical_scope_start": 15265,
+                "lexical_scope_end": 19261,
+                "initializer": "evt.component.id"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 3,
+            "kind": "implicit-after-statement",
+            "start": 15402,
+            "end": 15422,
+            "parent": 2,
+            "used": true,
+            "variables": [
+              {
+                "name": "type",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 15406,
+                "end": 15421,
+                "slot": 3,
+                "block": 3,
+                "type_source": "int",
+                "statement_start": 15402,
+                "statement_end": 15422,
+                "lexical_scope_start": 15265,
+                "lexical_scope_end": 19261,
+                "initializer": "evt.type"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 4,
+            "kind": "switch-section",
+            "start": 15449,
+            "end": 15664,
+            "parent": 3,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 5,
+            "kind": "explicit",
+            "start": 15518,
+            "end": 15566,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 6,
+            "kind": "explicit",
+            "start": 15606,
+            "end": 15652,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 7,
+            "kind": "switch-section",
+            "start": 15669,
+            "end": 15931,
+            "parent": 4,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 8,
+            "kind": "explicit",
+            "start": 15785,
+            "end": 15833,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 9,
+            "kind": "explicit",
+            "start": 15873,
+            "end": 15919,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 10,
+            "kind": "switch-section",
+            "start": 15936,
+            "end": 16198,
+            "parent": 7,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 11,
+            "kind": "explicit",
+            "start": 16052,
+            "end": 16100,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 12,
+            "kind": "explicit",
+            "start": 16140,
+            "end": 16186,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 13,
+            "kind": "switch-section",
+            "start": 16203,
+            "end": 16321,
+            "parent": 10,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 14,
+            "kind": "explicit",
+            "start": 16237,
+            "end": 16309,
+            "parent": 13,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 15,
+            "kind": "switch-section",
+            "start": 16326,
+            "end": 16588,
+            "parent": 13,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 16,
+            "kind": "explicit",
+            "start": 16442,
+            "end": 16490,
+            "parent": 15,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 17,
+            "kind": "explicit",
+            "start": 16530,
+            "end": 16576,
+            "parent": 15,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 18,
+            "kind": "switch-section",
+            "start": 16593,
+            "end": 17367,
+            "parent": 15,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 19,
+            "kind": "explicit",
+            "start": 16658,
+            "end": 17076,
+            "parent": 18,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 20,
+            "kind": "explicit",
+            "start": 16687,
+            "end": 16749,
+            "parent": 19,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 21,
+            "kind": "explicit",
+            "start": 16878,
+            "end": 17004,
+            "parent": 19,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 22,
+            "kind": "explicit",
+            "start": 17032,
+            "end": 17069,
+            "parent": 19,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 23,
+            "kind": "explicit",
+            "start": 17102,
+            "end": 17355,
+            "parent": 18,
+            "used": true,
+            "variables": [
+              {
+                "name": "instance2",
+                "type": "main.AppData",
+                "kind": "declared",
+                "start": 17118,
+                "end": 17151,
+                "slot": 4,
+                "block": 23,
+                "type_source": "AppData",
+                "statement_start": 17110,
+                "statement_end": 17152,
+                "lexical_scope_start": 17102,
+                "lexical_scope_end": 17355,
+                "initializer": "AppData.GetInstance()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 24,
+            "kind": "implicit-after-statement",
+            "start": 17159,
+            "end": 17190,
+            "parent": 23,
+            "used": true,
+            "variables": [
+              {
+                "name": "num",
+                "type": "System.Int32",
+                "kind": "declared",
+                "start": 17163,
+                "end": 17189,
+                "slot": 5,
+                "block": 24,
+                "type_source": "int",
+                "statement_start": 17159,
+                "statement_end": 17190,
+                "lexical_scope_start": 17102,
+                "lexical_scope_end": 17355,
+                "initializer": "((id == 21) ? 0 : 1)"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 25,
+            "kind": "explicit",
+            "start": 17268,
+            "end": 17308,
+            "parent": 24,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 26,
+            "kind": "explicit",
+            "start": 17339,
+            "end": 17348,
+            "parent": 24,
+            "used": false,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 27,
+            "kind": "switch-section",
+            "start": 17372,
+            "end": 17907,
+            "parent": 18,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 28,
+            "kind": "explicit",
+            "start": 17384,
+            "end": 17907,
+            "parent": 27,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 29,
+            "kind": "explicit",
+            "start": 17411,
+            "end": 17460,
+            "parent": 28,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 30,
+            "kind": "implicit-after-statement",
+            "start": 17466,
+            "end": 17507,
+            "parent": 28,
+            "used": true,
+            "variables": [
+              {
+                "name": "topForm",
+                "type": "kairo.unity.form.FormBase",
+                "kind": "declared",
+                "start": 17475,
+                "end": 17506,
+                "slot": 6,
+                "block": 30,
+                "type_source": "FormBase",
+                "statement_start": 17466,
+                "statement_end": 17507,
+                "lexical_scope_start": 17384,
+                "lexical_scope_end": 17907,
+                "initializer": "instance.GetTopForm()"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 31,
+            "kind": "explicit",
+            "start": 17533,
+            "end": 17593,
+            "parent": 30,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 32,
+            "kind": "explicit",
+            "start": 17744,
+            "end": 17814,
+            "parent": 30,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 33,
+            "kind": "explicit",
+            "start": 17854,
+            "end": 17889,
+            "parent": 30,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 34,
+            "kind": "switch-section",
+            "start": 17912,
+            "end": 18022,
+            "parent": 27,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 35,
+            "kind": "explicit",
+            "start": 17946,
+            "end": 18010,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 36,
+            "kind": "switch-section",
+            "start": 18027,
+            "end": 18158,
+            "parent": 34,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 37,
+            "kind": "explicit",
+            "start": 18061,
+            "end": 18146,
+            "parent": 36,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 38,
+            "kind": "switch-section",
+            "start": 18163,
+            "end": 18311,
+            "parent": 36,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 39,
+            "kind": "explicit",
+            "start": 18197,
+            "end": 18299,
+            "parent": 38,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 40,
+            "kind": "switch-section",
+            "start": 18316,
+            "end": 18418,
+            "parent": 38,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 41,
+            "kind": "explicit",
+            "start": 18350,
+            "end": 18406,
+            "parent": 40,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 42,
+            "kind": "switch-section",
+            "start": 18423,
+            "end": 18499,
+            "parent": 40,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 43,
+            "kind": "explicit",
+            "start": 18457,
+            "end": 18487,
+            "parent": 42,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 44,
+            "kind": "switch-section",
+            "start": 18504,
+            "end": 18599,
+            "parent": 42,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 45,
+            "kind": "explicit",
+            "start": 18538,
+            "end": 18587,
+            "parent": 44,
+            "used": true,
+            "variables": [],
+            "registered": []
+          },
+          {
+            "id": 46,
+            "kind": "explicit",
+            "start": 18716,
+            "end": 19256,
+            "parent": 3,
+            "used": true,
+            "variables": [
+              {
+                "name": "array",
+                "type": "System.Int32[]",
+                "kind": "declared",
+                "start": 18729,
+                "end": 18764,
+                "slot": 7,
+                "block": 46,
+                "type_source": "int[]",
+                "statement_start": 18723,
+                "statement_end": 18765,
+                "lexical_scope_start": 18716,
+                "lexical_scope_end": 19256,
+                "initializer": "TEXTURES[COMPONENTS[id][5]]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 47,
+            "kind": "implicit-after-statement",
+            "start": 18771,
+            "end": 18803,
+            "parent": 46,
+            "used": true,
+            "variables": [
+              {
+                "name": "image",
+                "type": "kairo.unity.ui.Image",
+                "kind": "declared",
+                "start": 18777,
+                "end": 18802,
+                "slot": 8,
+                "block": 47,
+                "type_source": "Image",
+                "statement_start": 18771,
+                "statement_end": 18803,
+                "lexical_scope_start": 18716,
+                "lexical_scope_end": 19256,
+                "initializer": "images_[array[0]]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 48,
+            "kind": "implicit-after-statement",
+            "start": 18809,
+            "end": 18877,
+            "parent": 47,
+            "used": true,
+            "variables": [
+              {
+                "name": "num2",
+                "type": "System.Single",
+                "kind": "declared",
+                "start": 18815,
+                "end": 18876,
+                "slot": 9,
+                "block": 48,
+                "type_source": "float",
+                "statement_start": 18809,
+                "statement_end": 18877,
+                "lexical_scope_start": 18716,
+                "lexical_scope_end": 19256,
+                "initializer": "(float)image.GetWidth() / (float)IMAGE_WIDTH[array[0]]"
+              }
+            ],
+            "registered": []
+          },
+          {
+            "id": 49,
+            "kind": "implicit-after-statement",
+            "start": 18883,
+            "end": 19143,
+            "parent": 48,
+            "used": true,
+            "variables": [
+              {
+                "name": "arg",
+                "type": "System.Object[]",
+                "kind": "declared",
+                "start": 18892,
+                "end": 19142,
+                "slot": 10,
+                "block": 49,
+                "type_source": "object[]",
+                "statement_start": 18883,
+                "statement_end": 19143,
+                "lexical_scope_start": 18716,
+                "lexical_scope_end": 19256,
+                "initializer": "new object[2]\r\n\t\t\t\t{\r\n\t\t\t\t\timages_[array[0]],\r\n\t\t\t\t\tnew float[6]\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray[5],\r\n\t\t\t\t\t\tarray[6],\r\n\t\t\t\t\t\t(float)array[3] * num2,\r\n\t\t\t\t\t\t(float)array[4] * num2,\r\n\t\t\t\t\t\t(float)array[5] * num2,\r\n\t\t\t\t\t\t(float)array[6] * num2\r\n\t\t\t\t\t}\r\n\t\t\t\t}"
+              }
+            ],
+            "registered": []
+          }
+        ],
+        "unsupported_reasons": [],
+        "relaxed_diagnostics": [
+          "CS0012"
+        ],
+        "diagnostic_evidence": [],
+        "declaration_start": 15209,
+        "declaration_end": 19261,
+        "body_start": 15265,
+        "body_end": 19261
+      },
+      "original_signature_equal": true,
+      "original_signature_used_as_prediction": false,
+      "complete_wrong_prediction_bypassed": false,
+      "emitted_original_signature_still_mandatory": true
+    }
+  ],
+  "target_compilations": 0,
+  "ledger_writes": 0,
+  "binary_writes": 0,
+  "source_writes": 0,
+  "game_body_status": "UNKNOWN"
+}

@@ -1,0 +1,1292 @@
+{
+  "assembly": "Assembly-CSharp",
+  "baseline_body_equal": 1906,
+  "limit_iterations": 24,
+  "max_candidates_per_step": 64,
+  "max_model_predictions_per_step": 192,
+  "prefix_metric": "IL bytes with only metadata-token identities resolved; no branch/operand/offset normalization",
+  "adopted_ledger_states": false,
+  "methods": [
+    {
+      "id": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+      "number": 1,
+      "initial_offset": 44,
+      "steps": [
+        {
+          "iteration": 1,
+          "rule": "r12-gamepad-boolean-and-id-conditional-values",
+          "start": 15209,
+          "end": 19245,
+          "before": "protected override void OnTouchEvent(TouchEvent evt)\r\n\t\t{\r\n\t\t\tTouchComponent component = evt.component;\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tint id = evt.component.id;\r\n\t\t\tint type = evt.type;\r\n\t\t\tswitch (id)\r\n\t\t\t{\r\n\t\t\tcase 6:\r\n\t\t\tcase 7:\r\n\t\t\tcase 8:\r\n\t\t\tcase 9:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 12:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 13:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 14:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tvisibleTouchRange_ = !visibleTouchRange_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 15:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 21:\r\n\t\t\tcase 22:\r\n\t\t\t\tif (Config.DEBUG && !Config.PTW)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (type == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 13 && padTouchBegin_ > 0 && CheckFirstTouch(id) && JSystem.CurrentTimeMillis() - padTouchBegin_ > 1000)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t\thideDebugButton_ = !hideDebugButton_;\r\n\t\t\t\t\t\tClearTouchComponent();\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 6)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tAppData instance2 = AppData.GetInstance();\r\n\t\t\t\t\tint num = ((id != 21) ? 1 : 0);\r\n\t\t\t\t\tSetMode(num);\r\n\t\t\t\t\tinstance2.sysSave_.ints[15] = num;\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinstance2.SaveSystem();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 5:\r\n\t\t\t{\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tFormBase topForm = instance.GetTopForm();\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 13 && webTouchBegin_ > 0 && CheckFirstTouch(id) && topForm.GetId() == 1 && JSystem.CurrentTimeMillis() - webTouchBegin_ > 5000)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t\tinstance.Push(new SpForm());\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 10 || type == 6)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tcase 16:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\toptionPage_ = (optionPage_ + 1) % optionPageMax_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 17:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tlayoutMode_ = (layoutMode_ + 1) % 2;\r\n\t\t\t\t\tSetLayoutMode(layoutMode_);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 18:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.SetPause(!instance.IsPause());\r\n\t\t\t\t\tTouchEffectManager.GetInstance().Clear();\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 19:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.Capture(GameView.GetInstance());\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 20:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\thide_ = !hide_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tdefault:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (type == 5 && component.paintX != int.MaxValue && COMPONENTS[id][5] != -1 && id != 21 && id != 22)\r\n\t\t\t{\r\n\t\t\t\tint[] array = TEXTURES[COMPONENTS[id][5]];\r\n\t\t\t\tImage image = images_[array[0]];\r\n\t\t\t\tfloat num2 = (float)image.GetWidth() / (float)IMAGE_WIDTH[array[0]];\r\n\t\t\t\tobject[] arg = new object[2]\r\n\t\t\t\t{\r\n\t\t\t\t\timages_[array[0]],\r\n\t\t\t\t\tnew float[6]\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray[5],\r\n\t\t\t\t\t\tarray[6],\r\n\t\t\t\t\t\t(float)array[3] * num2,\r\n\t\t\t\t\t\t(float)array[4] * num2,\r\n\t\t\t\t\t\t(float)array[5] * num2,\r\n\t\t\t\t\t\t(float)array[6] * num2\r\n\t\t\t\t\t}\r\n\t\t\t\t};\r\n\t\t\t\teffMan_.AddEffect(this, 0, component.paintX + array[1], component.paintY + array[2], component, arg);\r\n\t\t\t}\r\n\t\t}",
+          "after": "protected override void OnTouchEvent(TouchEvent evt)\r\n\t\t{\r\n\t\t\tTouchComponent component = evt.component;\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tint id = evt.component.id;\r\n\t\t\tint type = evt.type;\r\n\t\t\tswitch (id)\r\n\t\t\t{\r\n\t\t\tcase 6:\r\n\t\t\tcase 7:\r\n\t\t\tcase 8:\r\n\t\t\tcase 9:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 12:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 13:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 14:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tvisibleTouchRange_ = (visibleTouchRange_ ? false : true);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 15:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 21:\r\n\t\t\tcase 22:\r\n\t\t\t\tif (Config.DEBUG && !Config.PTW)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (type == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 13 && padTouchBegin_ > 0 && CheckFirstTouch(id) && JSystem.CurrentTimeMillis() - padTouchBegin_ > 1000)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t\thideDebugButton_ = !hideDebugButton_;\r\n\t\t\t\t\t\tClearTouchComponent();\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 6)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tAppData instance2 = AppData.GetInstance();\r\n\t\t\t\t\tint num = ((id == 21) ? 0 : 1);\r\n\t\t\t\t\tSetMode(num);\r\n\t\t\t\t\tinstance2.sysSave_.ints[15] = num;\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinstance2.SaveSystem();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 5:\r\n\t\t\t{\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tFormBase topForm = instance.GetTopForm();\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 13 && webTouchBegin_ > 0 && CheckFirstTouch(id) && topForm.GetId() == 1 && JSystem.CurrentTimeMillis() - webTouchBegin_ > 5000)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t\tinstance.Push(new SpForm());\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 10 || type == 6)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tcase 16:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\toptionPage_ = (optionPage_ + 1) % optionPageMax_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 17:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tlayoutMode_ = (layoutMode_ + 1) % 2;\r\n\t\t\t\t\tSetLayoutMode(layoutMode_);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 18:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.SetPause(!instance.IsPause());\r\n\t\t\t\t\tTouchEffectManager.GetInstance().Clear();\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 19:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.Capture(GameView.GetInstance());\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 20:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\thide_ = !hide_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tdefault:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (type == 5 && component.paintX != int.MaxValue && COMPONENTS[id][5] != -1 && id != 21 && id != 22)\r\n\t\t\t{\r\n\t\t\t\tint[] array = TEXTURES[COMPONENTS[id][5]];\r\n\t\t\t\tImage image = images_[array[0]];\r\n\t\t\t\tfloat num2 = (float)image.GetWidth() / (float)IMAGE_WIDTH[array[0]];\r\n\t\t\t\tobject[] arg = new object[2]\r\n\t\t\t\t{\r\n\t\t\t\t\timages_[array[0]],\r\n\t\t\t\t\tnew float[6]\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray[5],\r\n\t\t\t\t\t\tarray[6],\r\n\t\t\t\t\t\t(float)array[3] * num2,\r\n\t\t\t\t\t\t(float)array[4] * num2,\r\n\t\t\t\t\t\t(float)array[5] * num2,\r\n\t\t\t\t\t\t(float)array[6] * num2\r\n\t\t\t\t\t}\r\n\t\t\t\t};\r\n\t\t\t\teffMan_.AddEffect(this, 0, component.paintX + array[1], component.paintY + array[2], component, arg);\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 44,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.surface.TouchComponent",
+              "form.FormManager",
+              "System.Int32",
+              "System.Int32",
+              "main.AppData",
+              "System.Int32",
+              "kairo.unity.form.FormBase",
+              "System.Int32[]",
+              "kairo.unity.ui.Image",
+              "System.Single",
+              "System.Object[]",
+              "System.Int32"
+            ],
+            "method_id": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GamePad.cs",
+            "full_source_sha256": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794119965759953900\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0620000001508743,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1342,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1342,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void"
+          ],
+          "matched_IL_gain": 1342
+        }
+      ],
+      "trials": [
+        {
+          "iteration": 1,
+          "rule": "r12-gamepad-boolean-and-id-conditional-values",
+          "start": 15209,
+          "end": 19245,
+          "before": "protected override void OnTouchEvent(TouchEvent evt)\r\n\t\t{\r\n\t\t\tTouchComponent component = evt.component;\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tint id = evt.component.id;\r\n\t\t\tint type = evt.type;\r\n\t\t\tswitch (id)\r\n\t\t\t{\r\n\t\t\tcase 6:\r\n\t\t\tcase 7:\r\n\t\t\tcase 8:\r\n\t\t\tcase 9:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 12:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 13:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 14:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tvisibleTouchRange_ = !visibleTouchRange_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 15:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 21:\r\n\t\t\tcase 22:\r\n\t\t\t\tif (Config.DEBUG && !Config.PTW)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (type == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 13 && padTouchBegin_ > 0 && CheckFirstTouch(id) && JSystem.CurrentTimeMillis() - padTouchBegin_ > 1000)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t\thideDebugButton_ = !hideDebugButton_;\r\n\t\t\t\t\t\tClearTouchComponent();\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 6)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tAppData instance2 = AppData.GetInstance();\r\n\t\t\t\t\tint num = ((id != 21) ? 1 : 0);\r\n\t\t\t\t\tSetMode(num);\r\n\t\t\t\t\tinstance2.sysSave_.ints[15] = num;\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinstance2.SaveSystem();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 5:\r\n\t\t\t{\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tFormBase topForm = instance.GetTopForm();\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 13 && webTouchBegin_ > 0 && CheckFirstTouch(id) && topForm.GetId() == 1 && JSystem.CurrentTimeMillis() - webTouchBegin_ > 5000)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t\tinstance.Push(new SpForm());\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 10 || type == 6)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tcase 16:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\toptionPage_ = (optionPage_ + 1) % optionPageMax_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 17:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tlayoutMode_ = (layoutMode_ + 1) % 2;\r\n\t\t\t\t\tSetLayoutMode(layoutMode_);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 18:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.SetPause(!instance.IsPause());\r\n\t\t\t\t\tTouchEffectManager.GetInstance().Clear();\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 19:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.Capture(GameView.GetInstance());\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 20:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\thide_ = !hide_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tdefault:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (type == 5 && component.paintX != int.MaxValue && COMPONENTS[id][5] != -1 && id != 21 && id != 22)\r\n\t\t\t{\r\n\t\t\t\tint[] array = TEXTURES[COMPONENTS[id][5]];\r\n\t\t\t\tImage image = images_[array[0]];\r\n\t\t\t\tfloat num2 = (float)image.GetWidth() / (float)IMAGE_WIDTH[array[0]];\r\n\t\t\t\tobject[] arg = new object[2]\r\n\t\t\t\t{\r\n\t\t\t\t\timages_[array[0]],\r\n\t\t\t\t\tnew float[6]\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray[5],\r\n\t\t\t\t\t\tarray[6],\r\n\t\t\t\t\t\t(float)array[3] * num2,\r\n\t\t\t\t\t\t(float)array[4] * num2,\r\n\t\t\t\t\t\t(float)array[5] * num2,\r\n\t\t\t\t\t\t(float)array[6] * num2\r\n\t\t\t\t\t}\r\n\t\t\t\t};\r\n\t\t\t\teffMan_.AddEffect(this, 0, component.paintX + array[1], component.paintY + array[2], component, arg);\r\n\t\t\t}\r\n\t\t}",
+          "after": "protected override void OnTouchEvent(TouchEvent evt)\r\n\t\t{\r\n\t\t\tTouchComponent component = evt.component;\r\n\t\t\tFormManager instance = FormManager.GetInstance();\r\n\t\t\tint id = evt.component.id;\r\n\t\t\tint type = evt.type;\r\n\t\t\tswitch (id)\r\n\t\t\t{\r\n\t\t\tcase 6:\r\n\t\t\tcase 7:\r\n\t\t\tcase 8:\r\n\t\t\tcase 9:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 12:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 13:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 14:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tvisibleTouchRange_ = (visibleTouchRange_ ? false : true);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 15:\r\n\t\t\t\tif (type == 0 || (type == 13 && !canvas_.CheckKeyState(component.value) && CheckFirstTouch(id)))\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyDown(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 6 || type == 10)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyUp(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 21:\r\n\t\t\tcase 22:\r\n\t\t\t\tif (Config.DEBUG && !Config.PTW)\r\n\t\t\t\t{\r\n\t\t\t\t\tif (type == 0)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 13 && padTouchBegin_ > 0 && CheckFirstTouch(id) && JSystem.CurrentTimeMillis() - padTouchBegin_ > 1000)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t\thideDebugButton_ = !hideDebugButton_;\r\n\t\t\t\t\t\tClearTouchComponent();\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tif (type == 6)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tpadTouchBegin_ = 0L;\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tAppData instance2 = AppData.GetInstance();\r\n\t\t\t\t\tint num = ((id == 21) ? 0 : 1);\r\n\t\t\t\t\tSetMode(num);\r\n\t\t\t\t\tinstance2.sysSave_.ints[15] = num;\r\n\t\t\t\t\ttry\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tinstance2.SaveSystem();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch (Exception)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 5:\r\n\t\t\t{\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tFormBase topForm = instance.GetTopForm();\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = JSystem.CurrentTimeMillis();\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 13 && webTouchBegin_ > 0 && CheckFirstTouch(id) && topForm.GetId() == 1 && JSystem.CurrentTimeMillis() - webTouchBegin_ > 5000)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t\tinstance.Push(new SpForm());\r\n\t\t\t\t}\r\n\t\t\t\tif (type == 10 || type == 6)\r\n\t\t\t\t{\r\n\t\t\t\t\twebTouchBegin_ = 0L;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tcase 16:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\toptionPage_ = (optionPage_ + 1) % optionPageMax_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 17:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tlayoutMode_ = (layoutMode_ + 1) % 2;\r\n\t\t\t\t\tSetLayoutMode(layoutMode_);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 18:\r\n\t\t\t\tif (type == 0)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.SetPause(!instance.IsPause());\r\n\t\t\t\t\tTouchEffectManager.GetInstance().Clear();\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 19:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tinstance.Capture(GameView.GetInstance());\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tcase 20:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\thide_ = !hide_;\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\tdefault:\r\n\t\t\t\tif (type == 5)\r\n\t\t\t\t{\r\n\t\t\t\t\tcanvas_.KeyClick(component.value);\r\n\t\t\t\t}\r\n\t\t\t\tbreak;\r\n\t\t\t}\r\n\t\t\tif (type == 5 && component.paintX != int.MaxValue && COMPONENTS[id][5] != -1 && id != 21 && id != 22)\r\n\t\t\t{\r\n\t\t\t\tint[] array = TEXTURES[COMPONENTS[id][5]];\r\n\t\t\t\tImage image = images_[array[0]];\r\n\t\t\t\tfloat num2 = (float)image.GetWidth() / (float)IMAGE_WIDTH[array[0]];\r\n\t\t\t\tobject[] arg = new object[2]\r\n\t\t\t\t{\r\n\t\t\t\t\timages_[array[0]],\r\n\t\t\t\t\tnew float[6]\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tarray[5],\r\n\t\t\t\t\t\tarray[6],\r\n\t\t\t\t\t\t(float)array[3] * num2,\r\n\t\t\t\t\t\t(float)array[4] * num2,\r\n\t\t\t\t\t\t(float)array[5] * num2,\r\n\t\t\t\t\t\t(float)array[6] * num2\r\n\t\t\t\t\t}\r\n\t\t\t\t};\r\n\t\t\t\teffMan_.AddEffect(this, 0, component.paintX + array[1], component.paintY + array[2], component, arg);\r\n\t\t\t}\r\n\t\t}",
+          "compile_pass": true,
+          "old_prefix": 44,
+          "accepted": true,
+          "slot_model_prediction": {
+            "complete": true,
+            "predicted_types": [
+              "kairo.unity.surface.TouchComponent",
+              "form.FormManager",
+              "System.Int32",
+              "System.Int32",
+              "main.AppData",
+              "System.Int32",
+              "kairo.unity.form.FormBase",
+              "System.Int32[]",
+              "kairo.unity.ui.Image",
+              "System.Single",
+              "System.Object[]",
+              "System.Int32"
+            ],
+            "method_id": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+            "unsupported_reasons": []
+          },
+          "screen_used": true,
+          "candidate_source_provenance": {
+            "full_source_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GamePad.cs",
+            "full_source_sha256": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796"
+          },
+          "screen_log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794119965759953900\\candidate-0000\\compiler.log",
+          "screen_build_seconds": 1.0620000001508743,
+          "incomplete_prediction": false,
+          "predicted_signature_confirmed": true,
+          "original_local_signature_equal": true,
+          "compiled_signature_decision": "compiled_signature_verified",
+          "screen_prefix": 1342,
+          "screen_body_equal": true,
+          "full_compile_pass": true,
+          "new_prefix": 1342,
+          "body_equal": true,
+          "progress_kind": "complete-body",
+          "body_regressions": [],
+          "metadata_types_equal": 129,
+          "metadata_whole_structural_equal": true,
+          "new_equal_ids": [
+            "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void"
+          ],
+          "matched_IL_gain": 1342
+        }
+      ],
+      "mapping": "MDB-full-body-equal-debug-plus-vs-minus",
+      "stop_reason": "body_equal",
+      "symbol_mapping_cache_generations": [
+        0
+      ],
+      "scoped_exit_evidence": [
+        {
+          "round9_scoped_exit_valid": false,
+          "round9_scoped_exit_evidence": {
+            "source_only_patch_generation": true,
+            "original_bytes_copied": false,
+            "MDB_body_exact": true,
+            "original_offset": 402,
+            "rebuilt_offset": 402,
+            "opcode_pair": [
+              "brfalse",
+              "ldc.i4.0"
+            ],
+            "reason": "not_supported_exact_transfer_pair"
+          }
+        }
+      ],
+      "transform_helper_sha256": "66564a9aa8f2bba09cf541b8b6acee5d014f72fc37f88d7b85adb95470bfb75e",
+      "stop_point": {
+        "offset": 44,
+        "source": "src/Assembly-CSharp/surface/GamePad.cs",
+        "point": {
+          "offset": 395,
+          "document": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\sources\\src\\Assembly-CSharp\\surface\\GamePad.cs",
+          "start_line": 625,
+          "start_column": -1,
+          "end_line": -1,
+          "end_column": -1,
+          "hidden": false,
+          "mapping": "compiler_sequence_point",
+          "il_offset": 402,
+          "line": 625,
+          "column": -1
+        },
+        "alignment": {
+          "algorithm": "SequenceMatcher-autojunk-false-with-branch-label-correspondence",
+          "diagnostic_only": true,
+          "kind": "delete",
+          "original_offset": 402,
+          "rebuilt_offset": 402,
+          "original_index": 111,
+          "rebuilt_index": 111,
+          "original_instruction": {
+            "offset": 402,
+            "opcode": "brfalse",
+            "operand": {
+              "branch": 413
+            }
+          },
+          "rebuilt_instruction": {
+            "opcode": "DELETION_POINT",
+            "operand": null
+          },
+          "pair": "{\"opcode\":\"brfalse\",\"operand\":{\"branch\":413}} => {\"opcode\":\"DELETION_POINT\",\"operand\":null}",
+          "opcode_pair": "brfalse => DELETION_POINT",
+          "original_context": [
+            {
+              "offset": 396,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 397,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class surface.GamePad @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::visibleTouchRange_:valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 402,
+              "opcode": "brfalse",
+              "operand": {
+                "labels": [
+                  "O413"
+                ]
+              }
+            },
+            {
+              "offset": 407,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 408,
+              "opcode": "br",
+              "operand": {
+                "labels": [
+                  "L15"
+                ]
+              }
+            }
+          ],
+          "rebuilt_context": [
+            {
+              "offset": 396,
+              "opcode": "ldarg.0",
+              "operand": null
+            },
+            {
+              "offset": 397,
+              "opcode": "ldfld",
+              "operand": {
+                "field": "class surface.GamePad @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::visibleTouchRange_:valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              }
+            },
+            {
+              "offset": 402,
+              "opcode": "ldc.i4.0",
+              "operand": null
+            },
+            {
+              "offset": 403,
+              "opcode": "ceq",
+              "operand": null
+            },
+            {
+              "offset": 405,
+              "opcode": "stfld",
+              "operand": {
+                "field": "class surface.GamePad @ Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::visibleTouchRange_:valuetype System.Boolean @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+              },
+              "label": "L15"
+            }
+          ],
+          "original_labels": {
+            "121": "L0",
+            "145": "L1",
+            "160": "L2",
+            "177": "L3",
+            "182": "L4",
+            "230": "L5",
+            "248": "L6",
+            "263": "L7",
+            "280": "L8",
+            "285": "L9",
+            "333": "L10",
+            "351": "L11",
+            "366": "L12",
+            "383": "L13",
+            "388": "L14",
+            "414": "L15",
+            "419": "L16",
+            "424": "L17",
+            "472": "L18",
+            "490": "L19",
+            "505": "L20",
+            "522": "L21",
+            "527": "L22",
+            "564": "L23",
+            "654": "L24",
+            "669": "L25",
+            "691": "L26",
+            "698": "L27",
+            "743": "L28",
+            "748": "L29",
+            "772": "L30",
+            "797": "L31",
+            "886": "L32",
+            "901": "L33",
+            "909": "L34",
+            "914": "L35",
+            "942": "L36",
+            "947": "L37",
+            "982": "L38",
+            "987": "L39",
+            "1018": "L40",
+            "1023": "L41",
+            "1044": "L42",
+            "1049": "L43",
+            "1071": "L44",
+            "1076": "L45",
+            "1100": "L46",
+            "1105": "L47",
+            "1341": "L48",
+            "413": "O413",
+            "697": "O697"
+          },
+          "rebuilt_labels": {
+            "121": "L0",
+            "145": "L1",
+            "160": "L2",
+            "177": "L3",
+            "182": "L4",
+            "230": "L5",
+            "248": "L6",
+            "263": "L7",
+            "280": "L8",
+            "285": "L9",
+            "333": "L10",
+            "351": "L11",
+            "366": "L12",
+            "383": "L13",
+            "388": "L14",
+            "405": "L15",
+            "410": "L16",
+            "415": "L17",
+            "463": "L18",
+            "481": "L19",
+            "496": "L20",
+            "513": "L21",
+            "518": "L22",
+            "555": "L23",
+            "645": "L24",
+            "660": "L25",
+            "688": "L26",
+            "689": "L27",
+            "734": "L28",
+            "739": "L29",
+            "763": "L30",
+            "788": "L31",
+            "877": "L32",
+            "892": "L33",
+            "900": "L34",
+            "905": "L35",
+            "933": "L36",
+            "938": "L37",
+            "973": "L38",
+            "978": "L39",
+            "1009": "L40",
+            "1014": "L41",
+            "1035": "L42",
+            "1040": "L43",
+            "1062": "L44",
+            "1067": "L45",
+            "1091": "L46",
+            "1096": "L47",
+            "1332": "L48"
+          },
+          "sequence_edits": [
+            {
+              "kind": "delete",
+              "original_start": 111,
+              "original_stop": 112,
+              "rebuilt_start": 111,
+              "rebuilt_stop": 111
+            },
+            {
+              "kind": "replace",
+              "original_start": 113,
+              "original_stop": 115,
+              "rebuilt_start": 112,
+              "rebuilt_stop": 113
+            },
+            {
+              "kind": "replace",
+              "original_start": 205,
+              "original_stop": 206,
+              "rebuilt_start": 203,
+              "rebuilt_stop": 206
+            },
+            {
+              "kind": "delete",
+              "original_start": 207,
+              "original_stop": 209,
+              "rebuilt_start": 207,
+              "rebuilt_stop": 207
+            }
+          ],
+          "branch_retarget_differences": [],
+          "deferred_branch_targets": [],
+          "branch_width_differences": [],
+          "original_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 725,
+              "try_end": 737,
+              "handler_start": 737,
+              "handler_end": 743,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ],
+          "rebuilt_exception_regions": [
+            {
+              "kind": "Catch",
+              "try_start": 716,
+              "try_end": 728,
+              "handler_start": 728,
+              "handler_end": 734,
+              "filter_start": -1,
+              "catch_type": "class System.Exception @ mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            }
+          ]
+        },
+        "statement": {
+          "start": 16245,
+          "end": 16286,
+          "line": 625,
+          "column": 6,
+          "text": "visibleTouchRange_ = !visibleTouchRange_;",
+          "kind": "ExpressionStatement",
+          "method_id": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+          "point": 16240,
+          "declaration_start": 15209,
+          "declaration_end": 19245
+        }
+      },
+      "solver": [
+        {
+          "operation": "declaration-calculation-from-original-slot-uses",
+          "original_lifetimes": [
+            {
+              "slot": 0,
+              "first_use": 6,
+              "last_use": 1332,
+              "loads": 17,
+              "stores": 1
+            },
+            {
+              "slot": 1,
+              "first_use": 12,
+              "last_use": 1030,
+              "loads": 5,
+              "stores": 1
+            },
+            {
+              "slot": 2,
+              "first_use": 24,
+              "last_use": 1169,
+              "loads": 11,
+              "stores": 1
+            },
+            {
+              "slot": 3,
+              "first_use": 31,
+              "last_use": 1105,
+              "loads": 32,
+              "stores": 1
+            },
+            {
+              "slot": 4,
+              "first_use": 681,
+              "last_use": 725,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 5,
+              "first_use": 698,
+              "last_use": 722,
+              "loads": 2,
+              "stores": 1
+            },
+            {
+              "slot": 6,
+              "first_use": 778,
+              "last_use": 830,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 7,
+              "first_use": 1174,
+              "last_use": 1326,
+              "loads": 11,
+              "stores": 1
+            },
+            {
+              "slot": 8,
+              "first_use": 1186,
+              "last_use": 1188,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 9,
+              "first_use": 1208,
+              "last_use": 1293,
+              "loads": 4,
+              "stores": 1
+            },
+            {
+              "slot": 10,
+              "first_use": 1298,
+              "last_use": 1333,
+              "loads": 1,
+              "stores": 1
+            },
+            {
+              "slot": 11,
+              "first_use": 33,
+              "last_use": 35,
+              "loads": 1,
+              "stores": 1
+            }
+          ],
+          "constraints": [],
+          "source_only": true,
+          "slot_correspondence": [
+            {
+              "rebuilt_slot": 0,
+              "original_slot": 0,
+              "votes": {
+                "0": 18
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 1,
+              "original_slot": 1,
+              "votes": {
+                "1": 6
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 2,
+              "original_slot": 2,
+              "votes": {
+                "2": 12
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 3,
+              "original_slot": 3,
+              "votes": {
+                "3": 33
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 4,
+              "original_slot": 4,
+              "votes": {
+                "4": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 5,
+              "original_slot": 5,
+              "votes": {
+                "5": 3
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 6,
+              "original_slot": 6,
+              "votes": {
+                "6": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 7,
+              "original_slot": 7,
+              "votes": {
+                "7": 12
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 8,
+              "original_slot": 8,
+              "votes": {
+                "8": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 9,
+              "original_slot": 9,
+              "votes": {
+                "9": 5
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 10,
+              "original_slot": 10,
+              "votes": {
+                "10": 2
+              },
+              "selected": true
+            },
+            {
+              "rebuilt_slot": 11,
+              "original_slot": 11,
+              "votes": {
+                "11": 2
+              },
+              "selected": true
+            }
+          ],
+          "calculated_declarations": [
+            {
+              "name": "component",
+              "type": "kairo.unity.surface.TouchComponent",
+              "rebuilt_slot": 0,
+              "desired_slot": 0,
+              "lexical_block": 15265,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "instance",
+              "type": "form.FormManager",
+              "rebuilt_slot": 1,
+              "desired_slot": 1,
+              "lexical_block": 15265,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "id",
+              "type": "System.Int32",
+              "rebuilt_slot": 2,
+              "desired_slot": 2,
+              "lexical_block": 15265,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "type",
+              "type": "System.Int32",
+              "rebuilt_slot": 3,
+              "desired_slot": 3,
+              "lexical_block": 15265,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "instance2",
+              "type": "main.AppData",
+              "rebuilt_slot": 4,
+              "desired_slot": 4,
+              "lexical_block": 17086,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num",
+              "type": "System.Int32",
+              "rebuilt_slot": 5,
+              "desired_slot": 5,
+              "lexical_block": 17086,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "topForm",
+              "type": "kairo.unity.form.FormBase",
+              "rebuilt_slot": 6,
+              "desired_slot": 6,
+              "lexical_block": 17368,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "array",
+              "type": "System.Int32[]",
+              "rebuilt_slot": 7,
+              "desired_slot": 7,
+              "lexical_block": 18700,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "image",
+              "type": "kairo.unity.ui.Image",
+              "rebuilt_slot": 8,
+              "desired_slot": 8,
+              "lexical_block": 18700,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "num2",
+              "type": "System.Single",
+              "rebuilt_slot": 9,
+              "desired_slot": 9,
+              "lexical_block": 18700,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            },
+            {
+              "name": "arg",
+              "type": "System.Object[]",
+              "rebuilt_slot": 10,
+              "desired_slot": 10,
+              "lexical_block": 18700,
+              "constraint": "same lexical block; group consecutive desired slots before earliest declaration"
+            }
+          ],
+          "shared_round9_model_policy": true
+        }
+      ],
+      "cycle_repertoire_filters": [
+        {
+          "iteration": 1,
+          "candidate_count_before": 14,
+          "kept_selected_candidates": 1,
+          "removed_legacy_candidates": 13,
+          "selected_rule_prefix": "r12-gamepad-boolean-and-id-conditional-values"
+        }
+      ],
+      "candidate_family_audit": [
+        {
+          "iteration": 1,
+          "generated_after_cycle_filter": {
+            "r12-gamepad-boolean-and-id-conditional-values": 1
+          },
+          "model_approved": {
+            "r12-gamepad-boolean-and-id-conditional-values": 1
+          },
+          "model_rejected": {}
+        }
+      ],
+      "model_rejections": [
+        {}
+      ],
+      "screen_baseline_equal": true,
+      "final_offset": 1342,
+      "body_equal": true,
+      "incomplete_budget_limit_reached": false,
+      "body_gains": [
+        "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void"
+      ],
+      "body_losses": []
+    }
+  ],
+  "transformations": {
+    "r12-gamepad-boolean-and-id-conditional-values:attempts": 1,
+    "r12-gamepad-boolean-and-id-conditional-values:accepted_steps": 1,
+    "r12-gamepad-boolean-and-id-conditional-values:body_gains": 1,
+    "r12-gamepad-boolean-and-id-conditional-values:IL_gains": 1342
+  },
+  "completed": true,
+  "run_label": "b12-probe",
+  "baseline_dir": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\cycles\\b12\\baseline\\Assembly-CSharp",
+  "cycle_rule": "r12-gamepad-boolean-and-id-conditional-values",
+  "trial_compiler_server": "not applicable",
+  "model_policy": {
+    "complete_wrong_signature_rejected": true,
+    "incomplete_prediction_compilation_allowed": true,
+    "incomplete_variants_per_method": 12,
+    "budget_scope": "all iterations of this method in this cycle",
+    "actual_original_signature_required": true,
+    "body_oracle_unchanged": true
+  },
+  "learned_cycle_rules": [
+    "terminal-guard-positive-tail",
+    "void-empty-then-common-exit",
+    "loop-guard-return-to-continue",
+    "empty-if-terminal-polarity",
+    "calculated-original-local-coalescence",
+    "smcs-empty-arm-restore",
+    "calculated-store-anchored-declarations",
+    "smcs-loop-condition-body-guard",
+    "explicit-string-concat-preserve-literals",
+    "smcs-owned-switch-if",
+    "smcs-terminal-actions-common-exit",
+    "smcs-balanced-empty-arms",
+    "calculated-named-switch-selector-coalescence",
+    "smcs-do-infinite-tail-break",
+    "roslyn-for-declaration-immediately-before",
+    "smcs-continue-positive-tail",
+    "smcs-protected-void-guard-tail",
+    "calculated-store-anchored-local-lca",
+    "roslyn-drawpolygons-declaration-scope-and-explicit-array-indices",
+    "switch-owned-break-if-chain",
+    "calculated-shared-payload-switch-guard",
+    "roslyn-store-use-lifetime-scope-shared-scratch-locals",
+    "roslyn-store-use-lifetime-scope-while-counter-scope",
+    "nullable-coalesce-negative-ternary",
+    "calculated-coordinate-local-coalescence",
+    "expand-compound-field-multiply",
+    "b9-guard-return-empty-positive-arm",
+    "b9-positive-render-with-gui-else",
+    "c9-control-skeleton",
+    "terminal-if-arm-return-flatten-else",
+    "d9-joint-flow-local-stores",
+    "scoped-terminal-arm-common-join",
+    "d9-calculated-per-arm-local-stores",
+    "d9-explicit-float-identity-parameter",
+    "d9-calculated-multiple-selector-local-splitting",
+    "d9-calculated-state-dispatch-index",
+    "d9-named-eh-result-rejoin",
+    "d9-array-local-before-population",
+    "d9-explicit-field-division",
+    "d9-protected-exit-owner",
+    "d9-calculated-foreach-slot-control-composition",
+    "d9-calculated-boolean-block-storage-composition",
+    "d9-calculated-root-guard-declaration-composition",
+    "d9-calculated-graphics-Boolean-block-negation-composition",
+    "d9-calculated-surface-switch-float-loop-composition",
+    "d9-calculated-named-receiver-protected-return-order",
+    "d9-calculated-terminal-empty-arm-chain-composition",
+    "d9-calculated-execute-eager-tail-nullguards-if-dispatch",
+    "d9-calculated-terminal-branch-joint-compositions",
+    "d9-calculated-arithmetic-scope-dispatch-compositions",
+    "d9-calculated-late-local-child-scopes",
+    "d9-calculated-dribble-six-hunk-composition",
+    "d9-calculated-draw-ten-hunk-composition",
+    "d9-calculated-render-and-format-foreach-compositions",
+    "d9-calculated-sibling-block-exit-compositions",
+    "d9-calculated-section-and-loop-target-compositions",
+    "d9-calculated-text-and-image-scope-compositions",
+    "d9-calculated-condition-gate-compositions",
+    "d9-calculated-bound-guard-compositions",
+    "d9-calculated-protected-type-and-array-tail-compositions",
+    "d9-calculated-empty-state-compositions",
+    "d9-calculated-join-loop-compositions",
+    "d9-calculated-touch-ticket-compositions",
+    "d9-calculated-image-protected-exit-compositions",
+    "d9-calculated-protected-exit-owner-compositions",
+    "d9-calculated-whole-guard-exit-compositions",
+    "d9-calculated-indexer-local-inner-compositions",
+    "d9-calculated-field-outer-result-compositions",
+    "c10-control-tree",
+    "d10-exact-setwin-chara-training",
+    "static-initializer-ternary-polarity",
+    "d10-subform-draw4-composition",
+    "root-guard-positive-tail",
+    "d10-integer-empty-arm-composition",
+    "d10-roslyn-composition-http-zero-guard-dense-default-bucket",
+    "d10-static-bool-composition",
+    "d10-smcs-bool-value",
+    "d10-smcs-unused-slot",
+    "d10-smcs-named-selector",
+    "d10-canvas-two-residual-composition",
+    "d10-smcs-tplayer",
+    "d10-smcs-subform-update",
+    "d10-smcs-switch-join",
+    "d10-large-lambda-composition-seb-root-tail-dispatch-record",
+    "d10-smcs-subform-update2",
+    "d10-smcs-userdata-draw",
+    "d10-large-lambda-composition-resource-lambda-inline-dispatch",
+    "d10-smcs-branch-joins",
+    "d10-smcs-deleted-stores",
+    "d10-smcs-guard-slot",
+    "d10-explicit-tree-locals-and-index-owners",
+    "d10-large-lambda-composition-http-lambda-declaration-owner",
+    "d10-roslyn-composition-language-body-local-stack-candidate",
+    "d10-late-tail-scope-comparison",
+    "d10-localize-shared-boolean-cache",
+    "d10-roslyn-bound-first-body-break",
+    "d10-roslyn-composition-material-tail-child-scope",
+    "d10-residual-guard-dispatch",
+    "d10-residual-collision",
+    "d10-residual-collision-default",
+    "d10-residual-scoped-guards",
+    "d10-residual-lambda-local-lifetimes",
+    "d10-residual-draw-composition",
+    "r11-c1",
+    "r11-c2",
+    "r11-c3",
+    "r11-c4",
+    "r11-c5",
+    "r11-c6",
+    "r11-initial-slot-layout-and-concat-alias-composition",
+    "r11-d-initial-image-use-local-null-return",
+    "r11-initial-init2-control-composition",
+    "r11-kairo-parent-assignment-and-interleaved-control-composition",
+    "r11-kairo-ui",
+    "r11-kairo-mid-",
+    "r11-kairo-dictionary-cache-local-inside-indexer",
+    "r12-pause-transpose-",
+    "r12-struct-array-copy-before-field-read",
+    "r12-start-dialog-positive-retry-arm",
+    "r12-storage-delete-heap-return-media-positive-body",
+    "r12-utc-fallback-local-after-using-return-temp",
+    "r12-kairo-char-empty-concat-constrained-object",
+    "r12-kairo-pictograph-local-inside-dictionary-setter",
+    "r12-recordstore-preference-array-foreach-reused-temps",
+    "r12-translate-inline-mixed-array-set-argument",
+    "r12-sqrt-root-local-order-preserved-initialization",
+    "r12-training-num18-size-in-loop-condition",
+    "r12-smcs-send-save-positive-dispatch-protected-for-retry-composition",
+    "r12-gameform-draw-root-zeros-existing-selector-ifchain",
+    "r12-smcs-battle-pic-five-zero-slot-layout-and-two-direct-dispatches",
+    "r12-camera-runtime-selector-and-common-goal-else",
+    "r12-smcs-player-collision-v2-proved-guard-splitting-positive-regions-and-arm-stores",
+    "r12-block-local-layout-",
+    "r12-smcs-player-collision-v3-positive-height-plus-original-tail-return",
+    "r12-shared-score-graph-layout-",
+    "r12-dup-store-composition-",
+    "r12-player-act-preserve-empty-action-five-arm",
+    "r12-gamepad-boolean-and-id-conditional-values"
+  ],
+  "cycle_repertoire_policy": {
+    "selected_rule_prefix": "r12-gamepad-boolean-and-id-conditional-values",
+    "before_first_accepted_step": "only selected rule family",
+    "after_first_accepted_step": "all repertoire",
+    "filter_before_model_gate_and_candidate_build": true,
+    "all_pending_methods_still_mapped_and_evaluated": true
+  },
+  "cycle_repertoire_counts": {
+    "filtered_steps": 1,
+    "removed_legacy_candidates": 13,
+    "kept_selected_candidates": 1
+  },
+  "slot_model_identity": {
+    "validation_sha256": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669",
+    "source_sha256": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+    "client_sha256": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+    "solver_sha256": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+  },
+  "external_proposals": {
+    "path": "reports\\round12-app-gamepad-control-live-model-patches.json",
+    "sha256": "703db54d5d927431464e14bdffdec212b57db5406b9fc6452d632e9b107b7c4f",
+    "dependencies_checked": {
+      "tools/round12_app_gamepad_control_private_source.py": "74409e0fbd7a62f0b3f7468f3835cce9a1cee90dd86d4a3a5185a0816b2af967",
+      "tools/round12_publish_path_family.py": "381d1e18de40a420c8f61452fd5413d0bd8fe74c810ffd02fb429df15925b74e",
+      "tools/round10_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
+      "tools/round10_smcs_empty_arms_source.py": "d8cb2b654bbba6791537752a60cc290edcdf2c58a3cc0214878a9108b9525db6",
+      "tools/round12_rebind_proposal_model.py": "c5b1b1e08f4a03bc17e917befcd7d6c4ff99ef0442970edb8f49cd44da5799e5",
+      "tools/Round11SlotModel.cs": "5ce84bd4f8b72d5db7e68ffa73996867d107d985a5b568ef3f63361aeca06a5e",
+      "tools/round11_slot_model.py": "cd0ab396277c1e18098624e73179be8830360bdf6bfa7c388dd8e8319b094380",
+      "tools/round7_slot_solver.py": "d6377160363911cc11735ce17ee543821e2eb53719091a2b745b5f2d341f4cb7"
+    },
+    "read_only_evidence_checked": {
+      "reports/round12-app-gamepad-control-private-fixture-report.json": "b093906b76da9374f5004e7f56e736afece87e1185c5b612d2c32b652639b5bf",
+      "reports/round12-app-gamepad-control-family-patches.json": "74bf92b2ba55a3c782e1d3f0b18e3da325b43e2972463c603e4d7605c2f1d613",
+      "reports/round12-app-gamepad-control-live-model-proof.json": "0ef2a59bea1f18015837b8d191317ac7d76beea544daa39e0a6be5f67e451eb7",
+      "reports/round11-slot-model-validation.json": "52d76e2e5673f1ab354aee6877ee3f4def2d8ca5e9ca31c32896229317a86669"
+    },
+    "frozen_evidence_checked": {
+      "build/round12/app-gamepad-control-private/abstract-report.json": "cf23d6350944242d655ff0fca89756a8a8a195de6ed3f989c5b82276112b8b95",
+      "build/round12/app-gamepad-control-private/after-method.cs": "d6f62f80eca018bd44d7cf98448950baa722a65c9da5a3c7c10c9163ccbe509e",
+      "build/round12/app-gamepad-control-private/alignment.json": "a1b9e641d0308809d597518ed216216772feb3b6192a660c45da5ddb73eb0bf8",
+      "build/round12/app-gamepad-control-private/analysis-manifest.json": "f4851d8c29cb5cf0bcb79e07510d784cc74d53da4c77d8bb3fe1eb45daa09d3a",
+      "build/round12/app-gamepad-control-private/before-method.cs": "b623644e64112b443292b9e7e68dfd00826d80d0a2e8ea822446c11102dbecc4",
+      "build/round12/app-gamepad-control-private/bindings.json": "f98ca97aa9601caab8020142b2bae72e063549c226af0eab40ed6a61631ffbd3",
+      "build/round12/app-gamepad-control-private/calculate.py": "74409e0fbd7a62f0b3f7468f3835cce9a1cee90dd86d4a3a5185a0816b2af967",
+      "build/round12/app-gamepad-control-private/candidate-source.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+      "build/round12/app-gamepad-control-private/fixture-report.json": "b093906b76da9374f5004e7f56e736afece87e1185c5b612d2c32b652639b5bf",
+      "build/round12/app-gamepad-control-private/fixtures.py": "922d9466cc77c95b636d9a419892fbe3d178dd425223677c1ef5423c60305588",
+      "build/round12/app-gamepad-control-private/history.json": "c10aeed69a9e56d503e1cdae9a054b107142d6db1bea33d876a6608ead1fcc0b",
+      "build/round12/app-gamepad-control-private/model.json": "ed406f7a45ab3ce7dc3a843fbe1b8a5a0a4522f132d11f429b670080a4b43e76",
+      "build/round12/app-gamepad-control-private/NOTE.md": "1ea9c7cbe1f1f46b3f96bd4264683839d88117f086015de5b6cd606389aeea83",
+      "build/round12/app-gamepad-control-private/patches.json": "42a942e9734b37e05cbe29688ecad1a95ec89c75d8dc83c41d19de08a091a4a7",
+      "build/round12/app-gamepad-control-private/prepare.py": "a9a08407dae4a6d272b505229a8dee4ac3375b145ee2071c4b9f5ae9580519df",
+      "build/round12/app-gamepad-control-private/producer-negatives.json": "6e7483fb852d4a0133338498ef0b399ea19a01fb5cc360b3b9338695f3d1e6d2",
+      "build/round12/app-gamepad-control-private/rea-method.json": "ea2f7984b0a3066ceed8571deec31af845a8ada5ac8b021fc5935d4b9723a22a",
+      "build/round12/app-gamepad-control-private/source.cs": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+      "build/round12/app-gamepad-control-private/fixtures/before/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-gamepad-control-private/fixtures/before/Fixture.cs": "37397a847f26ea22dd02a534b2fad134da9820149cee47f6b6320d5604a847c5",
+      "build/round12/app-gamepad-control-private/fixtures/before/Fixture.dll": "142b3a7441181b75ae894f872b42b337a51dcda2f6142aa4686e167d25b1842d",
+      "build/round12/app-gamepad-control-private/fixtures/before/methods.json": "2de847ce34ac934d55e43765e357bd795f2ec53febe5900eb5952eb9ca0accad",
+      "build/round12/app-gamepad-control-private/fixtures/boolean-only/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-gamepad-control-private/fixtures/boolean-only/Fixture.cs": "943f52d54990025ee43491045265d28d588cf197f7e942a1f99906cae3cff325",
+      "build/round12/app-gamepad-control-private/fixtures/boolean-only/Fixture.dll": "00a29b255ba0ad43d712e9dd230e628fb95f25906a81770973040696d6793a6f",
+      "build/round12/app-gamepad-control-private/fixtures/boolean-only/methods.json": "e4a6959ad91389e4852c7b4ead00f91f56bfea7a23a6240e72597d5a96f13af5",
+      "build/round12/app-gamepad-control-private/fixtures/candidate/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-gamepad-control-private/fixtures/candidate/Fixture.cs": "001d7f1489810b52273edb222d66f78a1d50a2111e38cfa8e5b2dc8c66216d8c",
+      "build/round12/app-gamepad-control-private/fixtures/candidate/Fixture.dll": "d2f78cf48efd5d733a3b8de2376e71ab298373b198185a65bf7155653e3d6386",
+      "build/round12/app-gamepad-control-private/fixtures/candidate/methods.json": "c5710ba7b58a0b4629b48a915b798ed0bdfc916259f8815a74594b170caf9562",
+      "build/round12/app-gamepad-control-private/fixtures/duplicate-stores/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-gamepad-control-private/fixtures/duplicate-stores/Fixture.cs": "3161d1420529d6602ffd3f72f15c57274602324aefec93119f56d0ea0b241a7e",
+      "build/round12/app-gamepad-control-private/fixtures/duplicate-stores/Fixture.dll": "f3e6ed45d22cc93c0213ebb45bce9cabac16ef1da9d21b7328c139007f742c95",
+      "build/round12/app-gamepad-control-private/fixtures/duplicate-stores/methods.json": "81919776a81ce9f59fdc284acdac42f927c34d0339d8d0bbb397f6e27417aac0",
+      "build/round12/app-gamepad-control-private/fixtures/manual-control/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-gamepad-control-private/fixtures/manual-control/Fixture.cs": "94fd00c660cbe65acf32860c027fb130d7f81ae371cda20fa482980c5babfbcf",
+      "build/round12/app-gamepad-control-private/fixtures/manual-control/Fixture.dll": "f578fd4381b9ad55df3b1f58793c71bc5b8393c6256e54527663feca095eff6f",
+      "build/round12/app-gamepad-control-private/fixtures/manual-control/methods.json": "c5710ba7b58a0b4629b48a915b798ed0bdfc916259f8815a74594b170caf9562",
+      "build/round12/app-gamepad-control-private/fixtures/numeric-only/compiler.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "build/round12/app-gamepad-control-private/fixtures/numeric-only/Fixture.cs": "bca717ee8924b46051491c37aece605dca43d65bdccfb3042ef90413c848cdd1",
+      "build/round12/app-gamepad-control-private/fixtures/numeric-only/Fixture.dll": "8056c8465335fb91845d52300225560f3eaa058e0491400a53fe7d31621b117a",
+      "build/round12/app-gamepad-control-private/fixtures/numeric-only/methods.json": "2562204a16971cedfb952c06a935fb26d22d69bf4b9c89fec161e6ffa5f3fc6f",
+      "build/round12/app-gamepad-control-private/freeze.json": "d09f5fa7d1e6c00b5e5cd7e6ab5c611970640b61fb8246329b1936e8c7dd11a4"
+    },
+    "historical_frozen_evidence_checked": {},
+    "pinned_compiler_source_checked": {},
+    "fresh_model_required": true,
+    "exact_unique_rebase": true
+  },
+  "aligned_partial_search": {
+    "raw_equal_prefix_must_not_regress": true,
+    "first_real_aligned_original_instruction_must_advance": true,
+    "body_oracle_unchanged": true,
+    "scope": "only resume passes explicitly enabling --aligned-search-progress"
+  },
+  "screening": {
+    "baseline_checks": 1,
+    "baseline_equal": 1,
+    "baseline_different_or_failed": 0,
+    "candidates": 1,
+    "rejected": 0,
+    "full_positive_checks": 1,
+    "false_positive_prefixes": 0,
+    "batches": [
+      {
+        "method_id": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+        "iteration": 1,
+        "folder": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794119965759953900",
+        "submitted": 1,
+        "finished": 1,
+        "cancelled": 0,
+        "compile_failures": 0,
+        "seconds": 1.0620000001508743,
+        "wall_seconds": 8.639999999897555,
+        "unused_speculative_finished": 0,
+        "screening_only": true,
+        "statuses": [
+          {
+            "index": 0,
+            "observed_by_caller": true,
+            "cancelled": false,
+            "compile_pass": true,
+            "seconds": 1.0620000001508743,
+            "binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794119965759953900\\candidate-0000\\Assembly-CSharp.dll",
+            "log_path": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\screen-pools\\method-001-step-00-1794119965759953900\\candidate-0000\\compiler.log",
+            "error": null,
+            "exit_code": 0
+          }
+        ]
+      }
+    ]
+  },
+  "slot_model_gate": {
+    "predicted": 1,
+    "approved": 1,
+    "incomplete": 0,
+    "wrong_signature": 0,
+    "post_compile_disagreements": 0
+  },
+  "symbol_mapping_cache": {
+    "enabled": true,
+    "generation": 1,
+    "requests": 1,
+    "hits": 0,
+    "loads": 1,
+    "load_failures": 0,
+    "missing_methods": 0,
+    "MDB_body_mismatches": 0,
+    "accepted_invalidations": 1,
+    "generation_proofs": [
+      {
+        "sources": {
+          "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+          "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+          "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+          "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+          "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+          "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+          "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+          "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+          "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+          "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+          "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+          "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+          "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+          "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+          "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+          "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+          "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+          "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+          "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+          "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+          "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+          "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+          "src/Assembly-CSharp/form/GameForm.cs": "5e53fe2fbe1c06718c940dbd43a6182361a1521c2a8c42d5fd4a30e3c8eb3438",
+          "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+          "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+          "src/Assembly-CSharp/form/SoccerForm.cs": "3beb847cd578329edb08cdadb39a3c76c3ef509581975bc59d16156ba163b143",
+          "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+          "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+          "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+          "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+          "src/Assembly-CSharp/game/Camera.cs": "1f205fa8791d11c114a5623219766c21cce3def203ac17b2ebab226552d49a36",
+          "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+          "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+          "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+          "src/Assembly-CSharp/game/Map.cs": "2afd816d2d9cd88032916c001e199a8525ff63e22f5ca9e7d4eda8ad6b38e8aa",
+          "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+          "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+          "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+          "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+          "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+          "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+          "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+          "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+          "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+          "src/Assembly-CSharp/game/UserData.cs": "ab25c6c4d9582ef57f817db460d4cd756eff44755b35746eece4b27dd7415e9a",
+          "src/Assembly-CSharp/main/AppData.cs": "ee43c3e361e0c6fadf5a2520b4c856177b4d3ae850d76666b0bf73e0bc95051f",
+          "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+          "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+          "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+          "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+          "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+          "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+          "src/Assembly-CSharp/surface/GamePad.cs": "5598c604a79c150ac4317eb0d5fe8205c1d2a24e50aa207584a0ed76caae48b6",
+          "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+          "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+          "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+          "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+          "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+          "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+          "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+          "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+          "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+          "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "83a47130a51ddbaa9172cfe87c9b752f344a22ed5419f3218af1603ca4f66b55",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+          "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+          "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+          "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+          "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+          "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+          "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+          "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+          "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+          "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+          "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+          "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+          "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+          "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+          "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+          "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+          "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+          "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+          "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+          "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+          "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+          "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+          "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+          "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+          "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+          "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+          "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+          "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+          "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+          "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+        },
+        "manifest_sha256": "362029b28cf123004dd354deb3be7f71bccb46101e2738127dbc06b2aaf98827",
+        "accepted_source_set_sha256": "b920af788cd00e801e56eda12636931f9b994d95d7b8945c948f021c75d43774",
+        "generation": 0,
+        "method_count": 1958,
+        "symbol_kind": "MDB",
+        "binary_sha256": "81356b4b8d2bcf90b4c26c294fef3799be6600cdbda39685d7f89ed8b89c646b"
+      }
+    ],
+    "invalidations": [
+      {
+        "generation": 1,
+        "accepted_method": "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void",
+        "rule": "r12-gamepad-boolean-and-id-conditional-values",
+        "full_verification_passed": true
+      }
+    ],
+    "oracle_use": false,
+    "mutable_binary_paths_used_on_hit": false
+  },
+  "body_equal": 1907,
+  "body_gains": [
+    "surface.GamePad::OnTouchEvent(kairo.unity.surface.TouchEvent)->System.Void"
+  ],
+  "body_losses": [],
+  "matched_IL_gains": 1342,
+  "builds": 6,
+  "build_seconds": 7.577000000281259,
+  "iteration_limit_hits": 0,
+  "final_binary": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\current\\Assembly-CSharp.dll",
+  "final_sha256": "c6d49c76c2416bca1351f70e004da5d4a660d30304e985d93ff0d1679ec30b0c",
+  "source_map": "C:\\Users\\l_abn\\Documents\\Projetos\\Pocket League Story\\build\\round12\\runs\\b12-probe\\engine\\Assembly-CSharp\\source-map.json",
+  "metadata_types_equal": 129,
+  "metadata_types_total": 129,
+  "metadata_whole_structural_equal": true,
+  "incomplete_budget_summary": {
+    "variants_compiled": 0,
+    "candidate_compiler_invocations": 0,
+    "methods_with_variants": 0,
+    "methods_at_limit": 0
+  },
+  "adoption_eligible": true,
+  "baseline_manifest_sha256": "362029b28cf123004dd354deb3be7f71bccb46101e2738127dbc06b2aaf98827",
+  "source_hashes": {
+    "src/Assembly-CSharp/analytics/AnalyticsTracker.cs": "37782c22bbdc0fc6077fb2a5c9066af07a4942e6b773fd97dbf8d30ce9e00d1a",
+    "src/Assembly-CSharp/cfg/MyConfig.cs": "13da0e5690d1b2429c5779983d1bf9cf1c573e4494f4aaaaa01504802a39cbe0",
+    "src/Assembly-CSharp/data/BaseData.cs": "c76e5ed1e843f05b2805591ba5f91f67bc9f6db54a2c6893d74ad26780b3e659",
+    "src/Assembly-CSharp/data/EventData.cs": "a1dd40337426addad019d0fd58c23f2df0faeb5c20c094de52b9c8298d404059",
+    "src/Assembly-CSharp/data/FanActData.cs": "564763156b651fcb13767fe52d3a756e6783bac363ee8ebab441f8af35ea280e",
+    "src/Assembly-CSharp/data/FanBonusData.cs": "a7b50ebde98efe42abf282dbb8dfc756664fd2d4a6a4575f78a2342d0910d8c6",
+    "src/Assembly-CSharp/data/FormationData.cs": "a4c4b756311ac499d3708a9bf5fa8b39e55099115defddf29502dac317289945",
+    "src/Assembly-CSharp/data/LeagueData.cs": "fede8c6998dce143cb11d8be31e9389fc4d10feb7f5265d272ee208a655b1fc0",
+    "src/Assembly-CSharp/data/MapchipMain.cs": "f3f756d925748a5a1a5ee8dde6ce07f30ddad7a9332c4466d0e8ba3af0f90089",
+    "src/Assembly-CSharp/data/MapchipMatch.cs": "98aad97031a51ef57936a2d78e021f1a2f2e5d99a50269c6bb75d242c4ccdbbd",
+    "src/Assembly-CSharp/data/PlayerData.cs": "29f28beb00145c890f12269f694b5a5499a6c164f92c5c65332f62ac8da8c8ad",
+    "src/Assembly-CSharp/data/QuestMatchData.cs": "ffd77ad5db3144c296a98e424b5a072c53e1cbe23d33685ee28bf57c427586ce",
+    "src/Assembly-CSharp/data/SponsorData.cs": "8587a49b5e571b3bbc15cfdebda685c9e1c1789b2c34c08d483f89380986942a",
+    "src/Assembly-CSharp/data/StadiumData.cs": "9dddf654649d63fd848e58a2d8185d975846ad950931d51f8bc76e6e58f0e413",
+    "src/Assembly-CSharp/data/SupervisorData.cs": "2ff8ce4966049a27f34e762dfdf2f1f2202f54960ecaa5c262db4ac9b68bf3a5",
+    "src/Assembly-CSharp/data/TeamData.cs": "0b837a7ab5c2b3bffbbc8f80cad499f04d1913beb388deb51e27923a197ce2ad",
+    "src/Assembly-CSharp/data/TenantData.cs": "4d7aca759dec70bea7d07cb509524b6610bcf2ef00de7c75efea657d9d83db68",
+    "src/Assembly-CSharp/data/TradeData.cs": "893d4a2de0255b18d9ef58221630bfb0f69e00ad62fab4abe4e2deabdff209df",
+    "src/Assembly-CSharp/data/TrainingData.cs": "cf191ed429d5a382e3f5b48f71f0b19ad6312aea4f6fdf2349f7b75c7b435ff8",
+    "src/Assembly-CSharp/form/BootForm.cs": "df976844d45ee6fbe8fce52e9a3047fecb5969c13e3e6dd1051614c6377fd605",
+    "src/Assembly-CSharp/form/DebugForm.cs": "eb712bc99e60bba79288d3b53c7acbc33124c3f3e467c1ec391189d6fe93ce51",
+    "src/Assembly-CSharp/form/FormManager.cs": "d75a0cbac4234f33da896eb2e9f227e496b74c0c0194b6793144da060938f791",
+    "src/Assembly-CSharp/form/GameForm.cs": "5e53fe2fbe1c06718c940dbd43a6182361a1521c2a8c42d5fd4a30e3c8eb3438",
+    "src/Assembly-CSharp/form/MyFormBase.cs": "513b084eda75d5fc625e7efdf2b3bfe3a2bdc0ed566637256129ee563817875d",
+    "src/Assembly-CSharp/form/RankForm.cs": "04605a2d57d51ba71c45356a8d7a6f9e4b766cd93819f6671d3907b4e4c8ac76",
+    "src/Assembly-CSharp/form/SoccerForm.cs": "3beb847cd578329edb08cdadb39a3c76c3ef509581975bc59d16156ba163b143",
+    "src/Assembly-CSharp/form/SpForm.cs": "ae304752283869a647776c9f4ec288c99222995efcde3fd60d5eee925d6ab4cd",
+    "src/Assembly-CSharp/form/SubForm.cs": "1f96d33bcc8bee8e81ce3e0700bab047fbfb12748fbf3432083db75d91db62fc",
+    "src/Assembly-CSharp/form/TitleForm.cs": "31634296ab67b949301ef2c5db279589170ad0cb8f5c1b39a81e1583893c2d59",
+    "src/Assembly-CSharp/game/Ball.cs": "511e67ccad85487b613023026e9189d2b104259b15a43925688fc7d176355a86",
+    "src/Assembly-CSharp/game/Camera.cs": "1f205fa8791d11c114a5623219766c21cce3def203ac17b2ebab226552d49a36",
+    "src/Assembly-CSharp/game/DelayEvent.cs": "308beae0798cf9c1f61f1af3defdfc90ddf78dac9e89a4787826b0e1022b2c3d",
+    "src/Assembly-CSharp/game/GameManager.cs": "087fa5b935cf4d332cc48807916b7e9bb64890820af74b86829ece1d3e52984c",
+    "src/Assembly-CSharp/game/GameUtil.cs": "5b4260942735f55ff877aaef69324d5d7546f9bf515640cc8588de4ff469826f",
+    "src/Assembly-CSharp/game/Map.cs": "2afd816d2d9cd88032916c001e199a8525ff63e22f5ca9e7d4eda8ad6b38e8aa",
+    "src/Assembly-CSharp/game/MapMain.cs": "f4b223125a4700441e49d3d4c8ee35929bb3075a50275e5f78ba7612ebf9038b",
+    "src/Assembly-CSharp/game/MapObject.cs": "04a287bd44ee6e0f8695181354f73f44cd711c80e35eb547b1521bbcf461069c",
+    "src/Assembly-CSharp/game/Player.cs": "3f76c8cce9c7276f4db3d9a4b2ef1ef4c3ba1edb67a2ab1b8456ca84268a9b0c",
+    "src/Assembly-CSharp/game/TArea.cs": "84f78f61794cf0de64bd640702af04adf166126596244fdf3fde3ed0c2c8353d",
+    "src/Assembly-CSharp/game/TBall.cs": "b3b7addd6df4b58510b844ff876cb3b110fff849e752671f719d5bc6d9dd7438",
+    "src/Assembly-CSharp/game/TGroupArea.cs": "d9cfc61c935b89249cec8d948dc77620ffa9bc5261b95724f4f913a690e5c3ba",
+    "src/Assembly-CSharp/game/TPlayer.cs": "dffdda24f1de38f5cc7bbb15abb637bd9ca6cdba0b92960fbf9f546b0b6876ec",
+    "src/Assembly-CSharp/game/Team.cs": "0ad5055e0a02001f3efc5cdecb03965bd9e4e224cc0228507e57de031f4b36b4",
+    "src/Assembly-CSharp/game/Tenant.cs": "c6d8fac7fee1664042cba58d6df98287338e8f7d111395044c85e60e7cd19f2e",
+    "src/Assembly-CSharp/game/UserData.cs": "ab25c6c4d9582ef57f817db460d4cd756eff44755b35746eece4b27dd7415e9a",
+    "src/Assembly-CSharp/main/AppData.cs": "ee43c3e361e0c6fadf5a2520b4c856177b4d3ae850d76666b0bf73e0bc95051f",
+    "src/Assembly-CSharp/main/Main.cs": "ac5571d0fd7f076531391709d81d01376d5e4e1d2902a316a90cd4dd14a1d49e",
+    "src/Assembly-CSharp/main/WebBox.cs": "dc72d92418951f6ecd28adb89304b0580a8c72ac98c40cc2999615de1063ce09",
+    "src/Assembly-CSharp/native/AppPlugin.cs": "6b3f41ec43f966e0784dbf537becb93740d7ada21abab4ca91d4399631fb7118",
+    "src/Assembly-CSharp/BuildInfos/BuildInfo.cs": "bb17bcc61d48230b0d9f5471c0873d0c705bcd34142455c816f8eeddd88fd7d9",
+    "src/Assembly-CSharp/native/WebBoxPlugin.cs": "a58fc5a50f683c49d48ee7de16ed93a6dcf92839d83d3ffe0959f29418c71691",
+    "src/Assembly-CSharp/panel/MainPanel.cs": "694a9f627d23856312dd2a496f0b9a14306f36b063a27f0b2f1226f008fcecb7",
+    "src/Assembly-CSharp/surface/GamePad.cs": "fe8e0dcd3bdae5fd58f481fd8f987cc77c30ee65119b849c9165e958fbcc1796",
+    "src/Assembly-CSharp/surface/GameView.cs": "844ea4055239ac2a803c825ad6aefd7a0ced86f1590f8ea1fe0e00d1a4af7b0a",
+    "src/Assembly-CSharp/surface/SurfaceManager.cs": "208504f20ad8f226da2f4cef3e5218005494dd14825ae2e0012243eec542b57c",
+    "src/Assembly-CSharp/surface/TouchEffect.cs": "5e329b04882976772ea607bab19321b41f0feaa6068a9bf90c2dd3c9d3b66fdf",
+    "src/Assembly-CSharp/surface/TouchEffectManager.cs": "86a8dafef273d3c87d48804eeebfc0962183c8e79751545ff1bfa69987a2db84",
+    "src/Assembly-CSharp/system/KairoService.cs": "e3d8cf223d475e52d69174943beda5c27915d4e22225f295799865bfd7b75bfe",
+    "src/Assembly-CSharp/system/KairoText.cs": "885764eaa5ee4194675162bafa55c11ff91143efff512bc444b036c2cc236377",
+    "src/Assembly-CSharp/system/billing/MyBilling.cs": "eb618e2d683329fe09b4f713fe189fe3a685899305d903a1b7564857daf6c28b",
+    "src/Assembly-CSharp/system/billing/ui/ApplyTask.cs": "4b82311ae314e49e73dfb88b2ba394e9358fc720fe792eeaaa78001658902577",
+    "src/Assembly-CSharp/system/billing/ui/BillingItem.cs": "8836404274d24b05e700ba8ba8b163becbf7b64149180833264d1e1eac1c2ab7",
+    "src/Assembly-CSharp/system/billing/ui/BillingManager.cs": "83a47130a51ddbaa9172cfe87c9b752f344a22ed5419f3218af1603ca4f66b55",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseLogView.cs": "17dc4a5fea634e8ed9f98d599d8f66923f9ed9a677db425e98a7c0b78b58eaf5",
+    "src/Assembly-CSharp/system/billing/ui/PurchaseRecord.cs": "621755a071db827e85089f6661803187ea23f5a7c630e30e45315cd132a13093",
+    "src/Assembly-CSharp/system/billing/ui/Receipt.cs": "3118a2f025c0f181e51e282368f26afd4278719ce04eb4bd20a4e24f772944f7",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreListener.cs": "fae6d27bf37bad07c856e30ec7bb78edc1eac33b5454a5480dc21a95bb2b3a05",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IStoreController.cs": "b84ddeccb9cbdce5a3d09bcc961ca794f307992a28fc4533bff9a61ca56c6ba1",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/IExtensionProvider.cs": "fc5d0f8f1e8a116e34a50bedcc20ac31c2de4471c4c2a1dee5e4dd9e1f5824f4",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/ProductType.cs": "011e53f22e8fb7c5484f2da8c337a3868e26da15eef6175dacb5159f0144e9c2",
+    "src/Assembly-CSharp/UnityEngine/Purchasing/Product.cs": "dc65496b832ecba47b3008547686edeca875e60a122c477ebd2a7ef2d3d8d32c",
+    "src/Assembly-CSharp/system/billing/ui/StoreBase.cs": "d1b346d24ad1cb023dc403b45649f2cfd1086e1ae6a2aed5d9bfeb96a98c22dd",
+    "src/Assembly-CSharp/system/billing/util/IabHelper.cs": "b2dbbd66a672d8cac0d1175b6579efbfc0e99491c5e7fdc2ee4c322bb289c451",
+    "src/Assembly-CSharp/system/billing/util/Inventory.cs": "1dd5f79c7b974bf930d45835dfb3f8eb8e2fe067011e4a03d7db489d4adf764a",
+    "src/Assembly-CSharp/system/billing/util/Json.cs": "97c727e418a6496e6e69eb2fb706cf68d243f9acf629b2645734e8c96e30de10",
+    "src/Assembly-CSharp/system/billing/util/Purchase.cs": "fb8bf2b8d62212b5a426e7e475db5f749d0347b817e4a4f93b5a874af9849bb7",
+    "src/Assembly-CSharp/system/billing/util/SkuDetails.cs": "939dcedce19386f95d7269e4df871f163e416d727cd4edf41dda041838361c07",
+    "src/Assembly-CSharp/system/form/BillingForm.cs": "015a9678532d07eb5ae54a2c73e473f0b5de8b82828baae3f8e56db2c6db35fe",
+    "src/Assembly-CSharp/system/form/ConnectForm.cs": "4c6dc6e086ae48f40764eea42640cdfa8f38ec3bc7d94aa21dda7d95d8757051",
+    "src/Assembly-CSharp/system/form/FriendForm.cs": "633c53118f32e567c64b2dbbebf935533597ec4c33fd6205da173d9e1e36c512",
+    "src/Assembly-CSharp/system/form/HttpForm.cs": "1e47dfeec8d29f611e06b5ddee14de90e542291fc7f56f9c506438f3d01e0fd6",
+    "src/Assembly-CSharp/system/form/LanguageForm.cs": "c566d28e710b616b788198e2dc12e53f9d6fcddb9d0efd1a0622b14087bca05c",
+    "src/Assembly-CSharp/system/form/LineupForm.cs": "cadff2d27bc521594fb1e97ebc6e5a38c32c262ac2c478a7601357f3e129a572",
+    "src/Assembly-CSharp/system/form/MatchForm.cs": "905a63b1886960e70b0e429b630c54fbcb30e518e9c4617a60e17d817624270b",
+    "src/Assembly-CSharp/system/form/RestoreForm.cs": "f0e36c3c03afcd9deb0296212c60a2b8204115da14a9fb920dd1560f203aada4",
+    "src/Assembly-CSharp/system/friend/MyFriend.cs": "ef70f20c24f11075e74fdd93a4000ecad3c4e6a96e48bdb0b6a1e2c66476de4d",
+    "src/Assembly-CSharp/system/friend/ui/Friend.cs": "3d5c5fae94eb8b18b06707ba5192c3b8bcef5685ce7009ccad7b3c242a4d9a98",
+    "src/Assembly-CSharp/system/friend/ui/FriendData.cs": "42570968d493799b13518fa882e26687628b94b296bdd23accadba1003f01d16",
+    "src/Assembly-CSharp/system/friend/ui/FriendPlayTimeData.cs": "04b7b45f260c7f9b5750807b400743975576bd13eeecdf18771b666817a3d791",
+    "src/Assembly-CSharp/system/lineup/MyLineup.cs": "20c6be26fce2c4b8e1ea59569aa31e17f5be0d799640d2a8bbae3b42a0670ee5",
+    "src/Assembly-CSharp/system/notification/MyNotify.cs": "0471c9873db577e637e84b218320cb4237e68ad951907cceb7e6a37a020d6062",
+    "src/Assembly-CSharp/system/panel/InputPanel.cs": "e11bbc09ab9cf547834d32c3914b4c2fccbf01673f1d354008c93e680d5c9e8c",
+    "src/Assembly-CSharp/system/surface/GameBanner.cs": "a30d07427672606c4e3368ddd75aecdf543e04a9cb468bea1ddbe3df25f19917",
+    "src/Assembly-CSharp/system/tapjoy/MyTapjoy.cs": "3f5d41c07920b2de7e61fed48d8480547666b2bcfa6e29fd28054f750303f44a",
+    "src/Assembly-CSharp/TJPlacement.cs": "9d1078f1b6b44d40e7c28e2ca6b25df297dbb702bb59f53481c0c2c7db6555a6",
+    "src/Assembly-CSharp/system/tapjoy/ui/Tapjoy.cs": "326210f2849f6bde65f1abb67c4fdb2c399248e761522911753028c9758875ac",
+    "src/Assembly-CSharp/AssemblyInfo.cs": "249d1af9956fd21e20afd63daf7347aa18127a5319d84222af9dfba0e08f8f94"
+  }
+}
