@@ -114,7 +114,7 @@
     },
     "C5": {
       "name": "mirror-comparison-operands-both-compilers",
-      "status": "partial",
+      "status": "verified",
       "attempts": [
         {
           "label": "c06",
@@ -130,6 +130,14 @@
           "adoption": "reports/round11-c07-adoption.json",
           "result": "Nenhum candidato compilado avancou; 7 tentativas da regra, 0 avancos",
           "assembly": "Assembly-CSharp",
+          "evaluation_status": "evaluated"
+        },
+        {
+          "label": "c08",
+          "engine": "reports/round11-c08-KairoLibrary-engine.json",
+          "adoption": "reports/round11-c08-adoption.json",
+          "result": "Nenhum candidato compilado avancou; 5 tentativas da regra, 0 avancos",
+          "assembly": "KairoLibrary",
           "evaluation_status": "evaluated"
         }
       ],
@@ -247,7 +255,7 @@
     }
   },
   "report_schema_reviewed": true,
-  "controller_review_status": "PURE_QA_PASSED_20_TESTS_NO_TARGET_EXECUTION",
+  "controller_review_status": "PURE_QA_PASSED_21_TESTS_NO_TARGET_EXECUTION",
   "selection_policy": {
     "initial_queue_precedes_autonomous_selection": true,
     "initial_queue_allows_App_while_Kairo_diverges": true,
@@ -288,7 +296,7 @@
     "Correction to previous report: Assembly-CSharp compiles against original KairoLibrary as a metadata/API reference; the test APK contained reconstructed KairoLibrary. No compilation reference was changed."
   ],
   "orchestration_review": {
-    "pure_tests": 20,
+    "pure_tests": 21,
     "target_compilations": 0,
     "model_executions": 0,
     "verifier_executions": 0,
@@ -306,14 +314,14 @@
       "tools/round11_measure.py": "f898a6c5befd590d2496c7bab9d5a4ca48d40331c7d2558714eae42230b49dca",
       "tools/round11_journal.py": "2c1f5e14c2b20ba5da09f2a501401e90e1a25ac3694a7afc254e03c6cdadbb3a",
       "tools/round11_hypotheses.py": "76fe87ca3ef41f2a8f8726d9ee1ac4d818ad2d1f6a45c547b8d7d7f7879e5c00",
-      "tools/round11_finish.py": "71c03b01b60627118fca82ceee5b2b856724dc6ea32b9e8579e57f64db3c578b",
+      "tools/round11_finish.py": "ac7a8c6fc8bb7003f8a98a405c3899a97d44cd344e654c381bb3551d6956c630",
       "tools/round11_clean_added_whitespace.py": "33b5977b08ec8b44b93e1763c90e35c90a23bc02e808465164925cb8face6cb1",
       "tools/round11_roslyn_validate.py": "d62cb2bfc06e89ad2b7275c7aeebab743070daf62b9410def1698bf6fa9d1127",
       "tools/round11_control_validate.py": "ccca34aef3bd634acbdcde2ebb578e2a65eaf328326a2132c105b6f77224c0d8",
       "tools/round11_parts.py": "895131a7c946ebb7fc8789bbb72dbd19625d17881216c778dda9648946bcaad2",
       "tools/round11_raw_gate.py": "0fdbeae23111b0629a461968ed631afdd87a445c4e00072bf2bbbbbf1fd44430",
       "tools/round11_report.py": "3ea2c8272fed5e5f01f344203fb6eb56e9a485a3da522476be265c9ec416f30d",
-      "tools/round11_test_protocol.py": "fd2012801dfa7a9c4cfaa75fc8e444e41f5e9a5962e8ebca3611a14c4757e8a4",
+      "tools/round11_test_protocol.py": "5e08084774adfd437b33cebc01825aa5cc82547a227c3d97c500900bf84e0079",
       "tools/round11_pdb_mirror.py": "5574c8f6f56d249a068ae38a2e67d95fbc2baf1e0c33278ca701eca7bf54034b",
       "tools/round11_test_pdb_mirror.py": "f23c41ebabb60998016cbdaaa604679b5951b5ff4c2a219a353e61b6a0a8e3ce",
       "tools/Round11ComparisonRules.cs": "840543167ee386c39b6b422ed039ca0a7329de7e406737c963ff7bea21a0ecfa",
@@ -338,7 +346,17 @@
     "availability": "Retained as fixture-validated opt-in repertoire; later source candidates still require model/compilation/oracle gates.",
     "initial_App_audit": "reports/round11-c5-app-initial-mirror-audit.json",
     "literal_fixture_report": "reports/round11-c5-literal-mirror-fixtures.json",
-    "literal_fixture_sha256": "fc6d6ee3d7d25d96f50ec659ac43dde4593e9cbe5454a686a4b67b741581d105"
+    "literal_fixture_sha256": "fc6d6ee3d7d25d96f50ec659ac43dde4593e9cbe5454a686a4b67b741581d105",
+    "App_literal_evaluation": {
+      "report": "reports/round11-c07-Assembly-CSharp-engine.json",
+      "sha256": "d29da1ed90da040759149caeb98e49563b45083f5d5064ab7408b2e3849c72dc",
+      "generated": 24,
+      "complete_wrong_signature_veto": 17,
+      "compiled": 7,
+      "accepted": 0,
+      "methods_gained": 0,
+      "target_status": "Tested alternatives did not advance; not a universal operator refutation"
+    }
   },
   "persistent_repertoire_rules": [
     "r11-c5"

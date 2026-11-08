@@ -15,6 +15,13 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 def read(path):return json.loads((ROOT/path).read_text(encoding='utf-8-sig'))
+
+def selected_smcs_validator(cfg):
+    validators={'round7_slot_model':'tools/round7_slot_validate.py',
+                'round11_slot_model':'tools/round11_slot_validate.py'}
+    module=cfg['models']['Assembly-CSharp']['module']
+    if module not in validators:raise ValueError('No final validator for production source model '+module)
+    return validators[module]
 def run(arguments,label,accepted=(0,)):
     folder=ROOT/'build/round11/final-report';folder.mkdir(parents=True,exist_ok=True)
     result=subprocess.run([sys.executable,'-X','utf8',*arguments],cwd=ROOT,capture_output=True)
@@ -65,7 +72,7 @@ def main():
     run(['tools/verify','--all'],'full-verification',accepted=(0,1))
     corpus='build/round11/final-corpus'
     run(['tools/round11_freeze.py','--destination',corpus],'freeze-final')
-    jobs=[(['tools/round7_slot_validate.py','--baseline',corpus+'/Assembly-CSharp',
+    jobs=[([selected_smcs_validator(cfg),'--baseline',corpus+'/Assembly-CSharp',
             '--output','reports/round11-final-smcs-model-validation.json'],'smcs-final'),
           (['tools/round11_roslyn_validate.py','--baseline',corpus+'/KairoLibrary',
             '--output','reports/round11-final-roslyn-model-validation.json'],'roslyn-final'),

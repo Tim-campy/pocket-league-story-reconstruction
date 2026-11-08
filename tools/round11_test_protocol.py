@@ -203,6 +203,16 @@ class Protocol(unittest.TestCase):
                         self.assertTrue((ROOT / 'tools' / (name + '.py')).is_file(),
                                         str(path) + ':' + str(node.lineno) + ' imports ' + name)
 
+    def test_final_validator_matches_production_model_namespace(self):
+        from round11_finish import selected_smcs_validator
+        cfg=copy.deepcopy(self.cfg)
+        for name,expected in [('round7_slot_model','tools/round7_slot_validate.py'),
+                              ('round11_slot_model','tools/round11_slot_validate.py')]:
+            cfg['models']['Assembly-CSharp']['module']=name
+            self.assertEqual(selected_smcs_validator(cfg),expected)
+        cfg['models']['Assembly-CSharp']['module']='unregistered_model'
+        with self.assertRaises(ValueError):selected_smcs_validator(cfg)
+
 
 if __name__ == '__main__':
     unittest.main()

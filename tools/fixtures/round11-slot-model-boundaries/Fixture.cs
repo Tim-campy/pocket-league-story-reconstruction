@@ -1,0 +1,1 @@
+public static class Fixture { public static string NullBetween(string a,string b,string c){string text="";text += a + null + b + c;return text;} public static string ExplicitEmpty(string a,string b,string c){string text="";text += a + "" + b + c;return text;} }
